@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 104956 2024-06-18 11:44:59Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 104984 2024-06-20 14:07:04Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -841,6 +841,9 @@ AssertCompile(RT_IS_POWER_OF_TWO(IEMTLB_ENTRY_COUNT));
 #define IEM_F_X86_CPL_MASK                  UINT32_C(0x00000300)
 /** X86: The current protection level (CPL) shifted mask. */
 #define IEM_F_X86_CPL_SMASK                 UINT32_C(0x00000003)
+
+/** X86: Alignment checks enabled (CR0.AM=1 & EFLAGS.AC=1). */
+#define IEM_F_X86_AC                        UINT32_C(0x00080000)
 
 /** X86 execution context.
  * The IEM_F_X86_CTX_XXX values are individual flags that can be combined (with

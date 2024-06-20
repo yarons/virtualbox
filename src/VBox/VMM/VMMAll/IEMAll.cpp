@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 104956 2024-06-18 11:44:59Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 104984 2024-06-20 14:07:04Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -3842,7 +3842,7 @@ iemRaiseXcptOrIntInLongMode(PVMCPUCC    pVCpu,
     if (fFlags & IEM_XCPT_FLAGS_T_CPU_XCPT)
         iemRaiseXcptAdjustState(pVCpu, u8Vector);
 
-    iemRecalcExecModeAndCplFlags(pVCpu);
+    iemRecalcExecModeAndCplAndAcFlags(pVCpu);
 
     return fFlags & IEM_XCPT_FLAGS_T_CPU_XCPT ? VINF_IEM_RAISED_XCPT : VINF_SUCCESS;
 }

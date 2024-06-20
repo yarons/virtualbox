@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstOneByte.cpp.h 104419 2024-04-24 14:32:29Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllInstOneByte.cpp.h 104984 2024-06-20 14:07:04Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -7156,7 +7156,7 @@ FNIEMOP_DEF(iemOp_popf_Fv)
     IEMOP_MNEMONIC(popf_Fv, "popf Fv");
     IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX();
     IEMOP_HLP_DEFAULT_64BIT_OP_SIZE();
-    IEM_MC_DEFER_TO_CIMPL_1_RET(IEM_CIMPL_F_VMEXIT | IEM_CIMPL_F_RFLAGS | IEM_CIMPL_F_CHECK_IRQ_BEFORE_AND_AFTER,
+    IEM_MC_DEFER_TO_CIMPL_1_RET(IEM_CIMPL_F_VMEXIT | IEM_CIMPL_F_RFLAGS | IEM_CIMPL_F_MODE | IEM_CIMPL_F_CHECK_IRQ_BEFORE_AND_AFTER,
                                 RT_BIT_64(kIemNativeGstReg_GprFirst + X86_GREG_xSP),
                                 iemCImpl_popf, pVCpu->iem.s.enmEffOpSize);
 }
