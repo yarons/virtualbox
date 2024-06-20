@@ -1,4 +1,4 @@
-/* $Id: QILineEdit.cpp 104981 2024-06-20 13:24:16Z sergey.dubov@oracle.com $ */
+/* $Id: QILineEdit.cpp 104982 2024-06-20 13:28:23Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QILineEdit class implementation.
  */
@@ -88,6 +88,9 @@ void QILineEdit::setMarkable(bool fMarkable)
     m_fMarkable = fMarkable;
     if (m_pLabelIcon)
         m_pLabelIcon->setVisible(fMarkable);
+
+    /* Update label position on visibility changes: */
+    moveIconLabel();
 }
 
 void QILineEdit::mark(bool fError, const QString &strErrorMessage, const QString &strNoErrorMessage)
@@ -107,7 +110,9 @@ void QILineEdit::mark(bool fError, const QString &strErrorMessage, const QString
     m_pLabelIcon->resize(m_pLabelIcon->minimumSizeHint());
     m_pLabelIcon->setToolTip(strToolTip);
     m_iIconMargin = (height() - m_pLabelIcon->height()) / 2;
-    update();
+
+    /* Update label position on icon changes: */
+    moveIconLabel();
 }
 
 bool QILineEdit::event(QEvent *pEvent)
@@ -200,4 +205,5 @@ void QILineEdit::moveIconLabel()
 
     /* We do it cause we have manual layout for the label: */
     m_pLabelIcon->move(width() - m_pLabelIcon->width() - m_iIconMargin, m_iIconMargin);
+    update();
 }
