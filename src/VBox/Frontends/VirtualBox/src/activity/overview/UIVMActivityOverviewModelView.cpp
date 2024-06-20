@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewModelView.cpp 104972 2024-06-20 09:21:03Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityOverviewModelView.cpp 104977 2024-06-20 11:24:36Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewModelView class implementation.
  */
@@ -66,15 +66,13 @@ class UIVMActivityOverviewCell : public QITableViewCell
 
 public:
 
-    UIVMActivityOverviewCell(QITableViewRow *pRow, int iColumnIndex);
+    UIVMActivityOverviewCell(QITableViewRow *pRow);
     virtual QString text() const RT_OVERRIDE RT_FINAL;
     int columnLength(int iColumnIndex) const;
     void setText(const QString &strText);
 
 private:
 
-    /* VMActivityOverviewColumn enum: */
-    int m_iColumnIndex;
     QString m_strText;
 };
 
@@ -202,9 +200,8 @@ private:
 *   UIVMActivityOverviewCell implementation.                                                                             *
 *********************************************************************************************************************************/
 
-UIVMActivityOverviewCell::UIVMActivityOverviewCell(QITableViewRow *pRow, int iColumnIndex)
+UIVMActivityOverviewCell::UIVMActivityOverviewCell(QITableViewRow *pRow)
     :QITableViewCell(pRow)
-    , m_iColumnIndex(iColumnIndex)
 {
 }
 
@@ -216,7 +213,6 @@ QString UIVMActivityOverviewCell::text() const
 int UIVMActivityOverviewCell::columnLength(int /*iColumnIndex*/) const
 {
     return 0;
-    //return m_columnData.value(iColumnIndex, QString()).length();
 }
 
 void UIVMActivityOverviewCell::setText(const QString &strText)
@@ -273,7 +269,7 @@ UIVMActivityOverviewRow::~UIVMActivityOverviewRow()
 void UIVMActivityOverviewRow::initCells()
 {
     for (int i = (int) VMActivityOverviewColumn_Name; i < (int) VMActivityOverviewColumn_Max; ++i)
-        m_cells[i] = new UIVMActivityOverviewCell(this, i);
+        m_cells[i] = new UIVMActivityOverviewCell(this);
     m_cells[VMActivityOverviewColumn_Name]->setText(m_strMachineName);
 }
 
