@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.cpp 105004 2024-06-24 17:28:18Z sergey.dubov@oracle.com $ */
+/* $Id: UIPortForwardingTable.cpp 105005 2024-06-24 17:33:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class implementation.
  */
@@ -554,7 +554,7 @@ void UIPortForwardingModel::setRules(const UIPortForwardingDataList &newRules)
     {
         beginInsertRows(QModelIndex(), 0, newRules.size() - 1);
         foreach (const UIDataPortForwardingRule &rule, newRules)
-            m_dataList << new UIPortForwardingRow(qobject_cast<QITableView*>(parent()),
+            m_dataList << new UIPortForwardingRow(view(),
                                                   rule.name, rule.protocol,
                                                   rule.hostIp, rule.hostPort,
                                                   rule.guestIp, rule.guestPort);
@@ -744,7 +744,7 @@ QVariant UIPortForwardingModel::data(const QModelIndex &index, int iRole) const
                 case UIPortForwardingDataType_HostIp:
                 case UIPortForwardingDataType_GuestIp:
                 {
-                    const QFontMetrics fm = qobject_cast<QWidget*>(parent())->fontMetrics();
+                    const QFontMetrics fm = m_pPortForwardingTable->fontMetrics();
                     return QSize(fm.horizontalAdvance(" 888.888.888.888 "), fm.height());
                 }
                 default: return QVariant();
