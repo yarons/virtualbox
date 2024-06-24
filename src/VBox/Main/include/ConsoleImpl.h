@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 104286 2024-04-11 01:56:27Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImpl.h 105006 2024-06-24 17:43:00Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -203,6 +203,7 @@ public:
     int i_recordingGetSettings(settings::RecordingSettings &recording);
     int i_recordingStart(util::AutoWriteLock *pAutoLock = NULL);
     int i_recordingStop(util::AutoWriteLock *pAutoLock = NULL);
+    int i_recordingCursorShapeChange(bool fVisible, bool fAlpha, uint32_t xHot, uint32_t yHot, uint32_t uWidth, uint32_t uHeight, const uint8_t *pu8Shape, uint32_t cbShape);
 # ifdef VBOX_WITH_AUDIO_RECORDING
     AudioVideoRec *i_recordingGetAudioDrv(void) const { return mRecording.mAudioRec; }
 # endif
