@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerTable.cpp 104995 2024-06-24 13:26:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -63,7 +63,7 @@
 *   UIGuestControlFileView definition.                                                                                           *
 *********************************************************************************************************************************/
 
-/** Using QITableView causes the following problem when I click on the table items
+/** Using QTableView causes the following problem when I click on the table items
     Qt WARNING: Cannot creat accessible child interface for object:  UIGuestControlFileView.....
     so for now subclass QTableView */
 class UIGuestControlFileView : public QTableView

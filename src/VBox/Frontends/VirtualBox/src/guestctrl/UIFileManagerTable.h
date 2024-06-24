@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.h 104228 2024-04-08 12:40:22Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerTable.h 104995 2024-06-24 13:26:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class declaration.
  */
@@ -34,6 +34,7 @@
 /* Qt includes: */
 #include <QItemSelectionModel>
 #include <QMutex>
+#include <QTableView>
 #include <QThread>
 #include <QWidget>
 
@@ -43,7 +44,6 @@
 
 /* GUI includes: */
 #include "QIDialog.h"
-#include "QITableView.h"
 #include "UIGuestControlDefs.h"
 
 /* Forward declarations: */
