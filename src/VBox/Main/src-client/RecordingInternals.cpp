@@ -1,4 +1,4 @@
-/* $Id: RecordingInternals.cpp 105009 2024-06-24 17:57:54Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingInternals.cpp 105010 2024-06-24 18:47:56Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording internals code.
  */
@@ -230,7 +230,8 @@ void RecordingVideoFrameClear(PRECORDINGVIDEOFRAME pFrame)
  * Simple blitting function for raw image data, inlined version.
  *
  * @returns VBox status code.
- * @param   pFrame              Destination frame.
+ * @param   pu8Dst              Destination buffer.
+ * @param   cbDst               Size (in bytes) of \a pu8Dst.
  * @param   uDstX               X destination (in pixel) within destination frame.
  * @param   uDstY               Y destination (in pixel) within destination frame.
  * @param   uDstBytesPerLine    Bytes per line in destination buffer.

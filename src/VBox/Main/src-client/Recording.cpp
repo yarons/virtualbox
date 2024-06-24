@@ -1,4 +1,4 @@
-/* $Id: Recording.cpp 105006 2024-06-24 17:43:00Z andreas.loeffler@oracle.com $ */
+/* $Id: Recording.cpp 105010 2024-06-24 18:47:56Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording context code.
  *
@@ -386,6 +386,7 @@ int RecordingContext::writeCommonData(RecordingBlockMap &mapCommon, PRECORDINGCO
 
     switch (enmType)
     {
+#ifdef VBOX_WITH_AUDIO_RECORDING
         case RECORDINGFRAME_TYPE_AUDIO:
         {
             pFrame = (PRECORDINGFRAME)RTMemAlloc(sizeof(RECORDINGFRAME));
@@ -399,11 +400,14 @@ int RecordingContext::writeCommonData(RecordingBlockMap &mapCommon, PRECORDINGCO
             pAudioFrame->cbBuf = cbData;
             break;
         }
-
+#endif
         default:
             AssertFailed();
             break;
     }
+
+    if (!pFrame)
+        return VINF_SUCCESS;
 
     lock();
 

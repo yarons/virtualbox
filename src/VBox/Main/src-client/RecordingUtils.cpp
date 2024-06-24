@@ -1,4 +1,4 @@
-/* $Id: RecordingUtils.cpp 105009 2024-06-24 17:57:54Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingUtils.cpp 105010 2024-06-24 18:47:56Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording utility code.
  */
@@ -414,9 +414,9 @@ int RecordingUtilsDbgDumpImageData(const uint8_t *pu8RGBBuf, size_t cbRGBBuf, co
     char szPath[RTPATH_MAX];
     if (!pszPath)
     {
-        int rc2 = RTPathTemp(szPath, sizeof(szPath));
-        if (RT_FAILURE(rc2))
-            return rc2;
+        int vrc2 = RTPathTemp(szPath, sizeof(szPath));
+        if (RT_FAILURE(vrc2))
+            return vrc2;
     }
 
     char szFileName[RTPATH_MAX];

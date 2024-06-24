@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 105006 2024-06-24 17:43:00Z andreas.loeffler@oracle.com $ */
+/* $Id: MouseImpl.cpp 105010 2024-06-24 18:47:56Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -240,7 +240,6 @@ Mouse::~Mouse()
 HRESULT Mouse::FinalConstruct()
 {
     RT_ZERO(mpDrv);
-    RT_ZERO(mPointerData);
     mcLastX = 0x8000;
     mcLastY = 0x8000;
     mfLastButtons = 0;
