@@ -1,4 +1,4 @@
-/* $Id: UICloudMachineSettingsDialogPage.cpp 104273 2024-04-10 12:24:28Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICloudMachineSettingsDialogPage.cpp 104998 2024-06-24 14:23:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudMachineSettingsDialogPage class implementation.
  */
@@ -119,7 +119,7 @@ void UICloudMachineSettingsDialogPage::updateEditor()
         if (m_strFilter.isNull())
         {
             /* Push initial values to editor: */
-            m_pFormEditor->setValues(initialValues);
+            m_pFormEditor->setFormValues(initialValues);
         }
         /* If filter present: */
         else
@@ -132,7 +132,7 @@ void UICloudMachineSettingsDialogPage::updateEditor()
                 if (groupFields.contains(comValue.GetLabel()))
                     filteredValues << comValue;
             /* Push filtered values to editor: */
-            m_pFormEditor->setValues(filteredValues);
+            m_pFormEditor->setFormValues(filteredValues);
         }
     }
 

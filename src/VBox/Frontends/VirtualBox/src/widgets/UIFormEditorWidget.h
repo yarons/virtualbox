@@ -1,4 +1,4 @@
-/* $Id: UIFormEditorWidget.h 104997 2024-06-24 13:46:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIFormEditorWidget.h 104998 2024-06-24 14:23:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFormEditorWidget class declaration.
  */
@@ -73,8 +73,8 @@ public:
 
     /** Clears form. */
     void clearForm();
-    /** Defines @a values to be edited. */
-    void setValues(const QVector<CFormValue> &values);
+    /** Defines form @a values to be edited. */
+    void setFormValues(const QVector<CFormValue> &values);
     /** Defines @a comForm to be edited. */
     void setForm(const CForm &comForm);
     /** Defines virtual system description @a comForm to be edited. */
@@ -83,18 +83,10 @@ public:
     /** Makes sure current editor data committed. */
     void makeSureEditorDataCommitted();
 
-protected:
-
-    /** Preprocesses any Qt @a pEvent for passed @a pObject. */
-    virtual bool eventFilter(QObject *pObject, QEvent *pEvent) RT_OVERRIDE;
-
 private:
 
     /** Prepares all. */
     void prepare();
-
-    /** Adjusts table column sizes. */
-    void adjustTable();
 
     /** Holds the notification-center reference. */
     UINotificationCenter *m_pNotificationCenter;
