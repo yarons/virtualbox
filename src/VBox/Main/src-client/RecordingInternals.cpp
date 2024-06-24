@@ -1,4 +1,4 @@
-/* $Id: RecordingInternals.cpp 105006 2024-06-24 17:43:00Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingInternals.cpp 105009 2024-06-24 17:57:54Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording internals code.
  */
@@ -36,8 +36,6 @@
 # include <iprt/file.h>
 # include <iprt/formats/bmp.h>
 #endif
-
-#include "../src-client/Remotery.h"
 
 
 /*********************************************************************************************************************************
