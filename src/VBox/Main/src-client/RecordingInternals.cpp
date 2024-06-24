@@ -1,4 +1,4 @@
-/* $Id: RecordingInternals.cpp 105010 2024-06-24 18:47:56Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingInternals.cpp 105011 2024-06-24 18:56:05Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording internals code.
  */
@@ -87,8 +87,8 @@ PRECORDINGVIDEOFRAME RecordingVideoFrameAllocEx(const void *pvData, uint32_t x, 
 {
     PRECORDINGVIDEOFRAME pFrame = recordingVideoFrameAlloc();
     AssertPtrReturn(pFrame, NULL);
-    int rc = recordingVideoFrameInit(pFrame, RECORDINGVIDEOFRAME_F_VISIBLE, w, h, x, y, uBPP, enmFmt);
-    AssertRCReturn(rc, NULL);
+    int vrc = recordingVideoFrameInit(pFrame, RECORDINGVIDEOFRAME_F_VISIBLE, w, h, x, y, uBPP, enmFmt);
+    AssertRCReturn(vrc, NULL);
     memcpy(pFrame->pau8Buf, pvData, pFrame->cbBuf);
 
     return VINF_SUCCESS;
