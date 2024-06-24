@@ -1,4 +1,4 @@
-/* $Id: UIFormEditorWidget.h 104998 2024-06-24 14:23:44Z sergey.dubov@oracle.com $ */
+/* $Id: UIFormEditorWidget.h 104999 2024-06-24 14:33:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFormEditorWidget class declaration.
  */
@@ -40,8 +40,8 @@
 
 /* Forward declarations: */
 class QHeaderView;
+class QITableView;
 class UIFormEditorModel;
-class UIFormEditorView;
 class UINotificationCenter;
 class CForm;
 class CVirtualSystemDescriptionForm;
@@ -63,7 +63,7 @@ public:
     void setNotificationCenter(UINotificationCenter *pNotificationCenter) { m_pNotificationCenter = pNotificationCenter; }
 
     /** Returns table-view reference. */
-    UIFormEditorView *view() const;
+    QITableView *view() const;
     /** Returns horizontal header reference. */
     QHeaderView *horizontalHeader() const;
     /** Returns vertical header reference. */
@@ -92,7 +92,7 @@ private:
     UINotificationCenter *m_pNotificationCenter;
 
     /** Holds the table-view instance. */
-    UIFormEditorView  *m_pTableView;
+    QITableView       *m_pTableView;
     /** Holds the table-model instance. */
     UIFormEditorModel *m_pTableModel;
 };

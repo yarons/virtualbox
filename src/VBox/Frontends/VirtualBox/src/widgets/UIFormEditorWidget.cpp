@@ -1,4 +1,4 @@
-/* $Id: UIFormEditorWidget.cpp 104998 2024-06-24 14:23:44Z sergey.dubov@oracle.com $ */
+/* $Id: UIFormEditorWidget.cpp 104999 2024-06-24 14:33:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFormEditorWidget class implementation.
  */
@@ -665,7 +665,7 @@ void TextEditor::sltHandleButtonClick()
         if (   !parent()
             || !parent()->parent())
             break;
-        UIFormEditorView *pView = qobject_cast<UIFormEditorView*>(parent()->parent());
+        QITableView *pView = qobject_cast<QITableView*>(parent()->parent());
 
         /* Get the proxy model: */
         if (   !pView
@@ -1710,7 +1710,7 @@ UIFormEditorWidget::UIFormEditorWidget(QWidget *pParent /* = 0 */,
     prepare();
 }
 
-UIFormEditorView *UIFormEditorWidget::view() const
+QITableView *UIFormEditorWidget::view() const
 {
     return m_pTableView;
 }
