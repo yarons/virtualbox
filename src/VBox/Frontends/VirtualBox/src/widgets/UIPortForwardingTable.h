@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.h 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIPortForwardingTable.h 105004 2024-06-24 17:28:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class declaration.
  */
@@ -221,6 +221,10 @@ public:
     UIPortForwardingTable(const UIPortForwardingDataList &rules, bool fIPv6, bool fAllowEmptyGuestIPs);
     /** Destructs Port Forwarding table. */
     virtual ~UIPortForwardingTable() RT_OVERRIDE;
+
+    /** Returns table-view reference. */
+    QITableView *view() const;
+
     /** Returns the list of port forwarding rules. */
     UIPortForwardingDataList rules() const;
     /** Defines the list of port forwarding @a newRules.
