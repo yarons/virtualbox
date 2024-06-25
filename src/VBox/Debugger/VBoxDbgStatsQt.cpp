@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt.cpp 104735 2024-05-20 17:19:14Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxDbgStatsQt.cpp 105022 2024-06-25 14:55:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -3652,7 +3652,10 @@ VBoxDbgStatsView::VBoxDbgStatsView(VBoxDbgGui *a_pDbgGui, VBoxDbgStatsModel *a_p
     setSelectionBehavior(SelectRows);
     setSelectionMode(SingleSelection);
     if (a_pProxyModel)
+    {
+        header()->setSortIndicator(0, Qt::AscendingOrder); /* defaults to DescendingOrder */
         setSortingEnabled(true);
+    }
 
     /*
      * Create and setup the actions.
