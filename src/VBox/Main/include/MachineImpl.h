@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 105016 2024-06-25 10:28:21Z brent.paulson@oracle.com $ */
+/* $Id: MachineImpl.h 105018 2024-06-25 11:06:29Z brent.paulson@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -910,7 +910,6 @@ protected:
     friend class RecordingSettings;
     friend class RecordingScreenSettings;
     friend class SessionMachine;
-    friend class SharedFolder;
     friend class SnapshotMachine;
     friend class VirtualBox;
 
