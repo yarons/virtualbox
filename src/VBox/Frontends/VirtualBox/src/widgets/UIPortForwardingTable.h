@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.h 105007 2024-06-24 17:48:11Z sergey.dubov@oracle.com $ */
+/* $Id: UIPortForwardingTable.h 105021 2024-06-25 13:58:19Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class declaration.
  */
@@ -261,10 +261,12 @@ private slots:
     /** Marks table data as changed. */
     void sltTableDataChanged();
 
-    /** Handles current item change. */
-    void sltCurrentChanged();
+    /** Updates actions. */
+    void sltUpdateActions();
+
     /** Handles request to show context-menu in certain @a position. */
     void sltShowTableContexMenu(const QPoint &position);
+
     /** Adjusts table column sizes. */
     void sltAdjustTable();
 
@@ -274,10 +276,10 @@ private:
     void prepare();
     /** Prepares layout. */
     void prepareLayout();
-    /** Prepares table-view. */
-    void prepareTableView();
     /** Prepares table-model. */
     void prepareTableModel();
+    /** Prepares table-view. */
+    void prepareTableView();
     /** Prepares toolbar. */
     void prepareToolbar();
 
