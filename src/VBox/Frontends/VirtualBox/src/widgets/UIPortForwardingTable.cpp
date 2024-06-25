@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.cpp 105008 2024-06-24 17:51:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIPortForwardingTable.cpp 105019 2024-06-25 12:09:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class implementation.
  */
@@ -878,6 +878,7 @@ void UIPortForwardingView::cleanup()
     delete m_pItemEditorFactory;
     m_pItemEditorFactory = 0;
 }
+
 
 /*********************************************************************************************************************************
 *   Class UIPortForwardingTable implementation.                                                                                  *
