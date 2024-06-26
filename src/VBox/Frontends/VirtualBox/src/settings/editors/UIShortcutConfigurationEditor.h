@@ -1,4 +1,4 @@
-/* $Id: UIShortcutConfigurationEditor.h 105032 2024-06-26 15:29:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIShortcutConfigurationEditor.h 105033 2024-06-26 17:05:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIShortcutConfigurationEditor class declaration.
  */
@@ -57,6 +57,45 @@ public:
         {
             const BaseClass &iteratedShortcut = shortcuts.at(i);
             if (iteratedShortcut.key() == shortcut.key())
+                return i;
+        }
+        return -1;
+    }
+
+    /** Returns the position of the 1st occurrence of the
+      * @a shortcut in the @a shortcuts list, or -1 otherwise. */
+    int operator()(const QList<BaseClass*> &shortcuts, const BaseClass &shortcut)
+    {
+        for (int i = 0; i < shortcuts.size(); ++i)
+        {
+            const BaseClass *pIteratedShortcut = shortcuts.at(i);
+            if (pIteratedShortcut->key() == shortcut.key())
+                return i;
+        }
+        return -1;
+    }
+
+    /** Returns the position of the 1st occurrence of the
+      * @a shortcut in the @a shortcuts list, or -1 otherwise. */
+    int operator()(const QList<BaseClass> &shortcuts, const BaseClass *pShortcut)
+    {
+        for (int i = 0; i < shortcuts.size(); ++i)
+        {
+            const BaseClass &iteratedShortcut = shortcuts.at(i);
+            if (iteratedShortcut.key() == pShortcut->key())
+                return i;
+        }
+        return -1;
+    }
+
+    /** Returns the position of the 1st occurrence of the
+      * @a shortcut in the @a shortcuts list, or -1 otherwise. */
+    int operator()(const QList<BaseClass*> &shortcuts, const BaseClass *pShortcut)
+    {
+        for (int i = 0; i < shortcuts.size(); ++i)
+        {
+            const BaseClass *pIteratedShortcut = shortcuts.at(i);
+            if (pIteratedShortcut->key() == pShortcut->key())
                 return i;
         }
         return -1;
