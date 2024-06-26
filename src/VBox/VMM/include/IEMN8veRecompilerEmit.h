@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerEmit.h 104984 2024-06-20 14:07:04Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompilerEmit.h 105036 2024-06-26 22:33:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Inlined Emitters.
  */
@@ -6898,7 +6898,7 @@ DECL_INLINE_THROW(void) iemNativeFixupFixedJump(PIEMRECOMPILERSTATE pReNative, u
     if ((uint8_t)(bOpcode - 0x70) < (uint8_t)0x10 || bOpcode == 0xeb)
     {
         pbCodeBuf[offFixup + 1] = (uint8_t)(offTarget - (offFixup + 2));
-        AssertStmt(pbCodeBuf[offFixup + 1] == offTarget - (offFixup + 2),
+        AssertStmt((int8_t)pbCodeBuf[offFixup + 1] == (int32_t)(offTarget - (offFixup + 2)),
                    IEMNATIVE_DO_LONGJMP(pReNative, VERR_IEM_EMIT_FIXED_JUMP_OUT_OF_RANGE));
     }
     else
