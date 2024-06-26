@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-weird-1.c 102789 2024-01-08 21:48:55Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-weird-1.c 105035 2024-06-26 19:48:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-weird-1, 16-bit C code.
  */
@@ -45,10 +45,10 @@
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *
 *********************************************************************************************************************************/
-FNBS3TESTDOMODE bs3CpuWeird1_DbgInhibitRingXfer_f16;
-FNBS3TESTDOMODE bs3CpuWeird1_PcWrapping_f16;
-FNBS3TESTDOMODE bs3CpuWeird1_PushPop_f16;
-FNBS3TESTDOMODE bs3CpuWeird1_PushPopSReg_f16;
+FNBS3TESTDOMODE BS3_CMN_FAR_NM(bs3CpuWeird1_DbgInhibitRingXfer);
+FNBS3TESTDOMODE BS3_CMN_FAR_NM(bs3CpuWeird1_PcWrapping);
+FNBS3TESTDOMODE BS3_CMN_FAR_NM(bs3CpuWeird1_PushPop);
+FNBS3TESTDOMODE BS3_CMN_FAR_NM(bs3CpuWeird1_PushPopSReg);
 
 
 /*********************************************************************************************************************************
@@ -57,13 +57,13 @@ FNBS3TESTDOMODE bs3CpuWeird1_PushPopSReg_f16;
 static const BS3TESTMODEBYONEENTRY g_aModeByOneTests[] =
 {
 #if 0 /** @todo fails in native recompiler atm. */ /** @todo asserts in ring-0 on VT-x! */
-    { "dbg+inhibit+ringxfer", bs3CpuWeird1_DbgInhibitRingXfer_f16, 0 },
+    { "dbg+inhibit+ringxfer", BS3_CMN_FAR_NM(bs3CpuWeird1_DbgInhibitRingXfer), 0 },
 #endif
-#if 0 /** @todo asserts in native recompiler debug builds, but seems to work otherwise. */
-    { "pc wrapping", bs3CpuWeird1_PcWrapping_f16, 0 },
+#if 1 /** @todo asserts in native recompiler debug builds, but seems to work otherwise. */
+    { "pc wrapping", BS3_CMN_FAR_NM(bs3CpuWeird1_PcWrapping), 0 },
 #endif
-//    { "push/pop", bs3CpuWeird1_PushPop_f16, 0 },
-    { "push/pop sreg", bs3CpuWeird1_PushPopSReg_f16, 0 },
+//    { "push/pop", BS3_CMN_FAR_NM(bs3CpuWeird1_PushPop), 0 },
+    { "push/pop sreg", BS3_CMN_FAR_NM(bs3CpuWeird1_PushPopSReg), 0 },
 };
 
 

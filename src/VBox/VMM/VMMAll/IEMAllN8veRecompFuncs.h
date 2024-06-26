@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompFuncs.h 104984 2024-06-20 14:07:04Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompFuncs.h 105035 2024-06-26 19:48:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler - Inlined Bits.
  */
@@ -413,7 +413,10 @@ iemNativeEmitFinishInstructionWithStatus(PIEMRECOMPILERSTATE pReNative, uint32_t
          *   we're executing on and another 15 bytes before we run into CS.LIM.
          */
         if (   IEM_F_MODE_X86_IS_FLAT(pReNative->fExec)
-            || !(pTbOrg->fFlags & IEMTB_F_CS_LIM_CHECKS) )
+# if 0 /** @todo breaks on IP/EIP/RIP wraparound tests in bs3-cpu-weird-1. See also iemNativeHlpReturnBreakViaLookup. */
+            || !(pTbOrg->fFlags & IEMTB_F_CS_LIM_CHECKS)
+# endif
+           )
         {
             RTGCPHYS const GCPhysPcCurrent = iemNativeCallEntryToGCPhysPc(pTbOrg, pCallEntry);
             RTGCPHYS const GCPhysPcNext    = GCPhysPcCurrent + pCallEntry->cbOpcode + (int64_t)(a_fIsJump ? offJump : 0);
