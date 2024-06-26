@@ -1,4 +1,4 @@
-/* $Id: UIShortcutConfigurationEditor.h 105031 2024-06-26 11:13:53Z sergey.dubov@oracle.com $ */
+/* $Id: UIShortcutConfigurationEditor.h 105032 2024-06-26 15:29:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIShortcutConfigurationEditor class declaration.
  */
@@ -37,8 +37,8 @@
 /* Forward declartions: */
 class QLineEdit;
 class QTabWidget;
+class QITableView;
 class UIShortcutConfigurationModel;
-class UIShortcutConfigurationView;
 
 /** Shortcut search functor template. */
 template <class BaseClass>
@@ -169,6 +169,11 @@ public:
     /** Constructs editor passing @a pParent to the base-class. */
     UIShortcutConfigurationEditor(QWidget *pParent = 0);
 
+    /** Returns manager table-view reference. */
+    QITableView *viewManager();
+    /** Returns runtime table-view reference. */
+    QITableView *viewRuntime();
+
     /** Loads shortcut configuration list from passed @a value. */
     void load(const UIShortcutConfigurationList &value);
     /** Saves shortcut configuration list to passed @a value. */
@@ -212,11 +217,11 @@ private:
     /** Holds the Manager UI shortcuts filter instance. */
     QLineEdit                    *m_pEditorFilterManager;
     /** Holds the Manager UI shortcuts table instance. */
-    UIShortcutConfigurationView  *m_pTableManager;
+    QITableView                  *m_pTableManager;
     /** Holds the Runtime UI shortcuts filter instance. */
     QLineEdit                    *m_pEditorFilterRuntime;
     /** Holds the Runtime UI shortcuts table instance. */
-    UIShortcutConfigurationView  *m_pTableRuntime;
+    QITableView                  *m_pTableRuntime;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_settings_editors_UIShortcutConfigurationEditor_h */
