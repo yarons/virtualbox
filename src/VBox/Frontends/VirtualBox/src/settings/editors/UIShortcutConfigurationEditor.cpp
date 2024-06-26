@@ -1,4 +1,4 @@
-/* $Id: UIShortcutConfigurationEditor.cpp 105033 2024-06-26 17:05:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIShortcutConfigurationEditor.cpp 105034 2024-06-26 18:15:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIShortcutConfigurationEditor class implementation.
  */
@@ -653,6 +653,7 @@ QITableView *UIShortcutConfigurationModel::view() const
     {
         case UIType_ManagerUI: return m_pShortcutConfigurationEditor->viewManager();
         case UIType_RuntimeUI: return m_pShortcutConfigurationEditor->viewRuntime();
+        default: return 0;
     }
 }
 
