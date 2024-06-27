@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 105020 2024-06-25 12:39:37Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMR3CpuId.cpp 105057 2024-06-27 11:14:40Z alexander.eichner@oracle.com $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -4437,9 +4437,18 @@ static int cpumR3LoadCpuIdInner(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, PCP
 
     /*
      * This can be skipped.
+     *
+     * @note On ARM we disable the strict checks for now because we can't verify with what the host supports
+     *       and just assume the interpreter/recompiler supports everything what was exposed earlier.
      */
     bool fStrictCpuIdChecks;
-    CFGMR3QueryBoolDef(CFGMR3GetChild(CFGMR3GetRoot(pVM), "CPUM"), "StrictCpuIdChecks", &fStrictCpuIdChecks, true);
+    CFGMR3QueryBoolDef(CFGMR3GetChild(CFGMR3GetRoot(pVM), "CPUM"), "StrictCpuIdChecks", &fStrictCpuIdChecks,
+#ifdef RT_ARCH_ARM64
+                       false
+#else
+                       true
+#endif
+                       );
 
     /*
      * Define a bunch of macros for simplifying the santizing/checking code below.
