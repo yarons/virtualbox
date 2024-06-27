@@ -1,4 +1,4 @@
-/* $Id: DevEFI.h 98131 2023-01-19 09:20:54Z alexander.eichner@oracle.com $ */
+/* $Id: DevEFI.h 105042 2024-06-27 08:53:11Z alexander.eichner@oracle.com $ */
 /** @file
  * EFI for VirtualBox Common Definitions.
  *
@@ -84,6 +84,7 @@ typedef enum
     EFI_INFO_INDEX_APIC_MODE,
     EFI_INFO_INDEX_CPU_COUNT_CURRENT,
     EFI_INFO_INDEX_CPU_COUNT_MAX,
+    EFI_INFO_INDEX_TPM_PPI_BASE,
     EFI_INFO_INDEX_END
 } EfiInfoIndex;
 
