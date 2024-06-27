@@ -1,4 +1,4 @@
-/* $Id: QITableView.h 104897 2024-06-12 14:23:26Z sergey.dubov@oracle.com $ */
+/* $Id: QITableView.h 105063 2024-06-27 14:04:43Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITableView class declaration.
  */
@@ -115,11 +115,6 @@ public:
     QITableView(QWidget *pParent = 0);
     /** Destructs table-view. */
     virtual ~QITableView() RT_OVERRIDE;
-
-    /** Returns the number of children. */
-    virtual int childCount() const { return 0; }
-    /** Returns the child item with @a iIndex. */
-    virtual QITableViewRow *childItem(int /* iIndex */) const { return 0; }
 
     /** Makes sure current editor data committed. */
     void makeSureEditorDataCommitted();
