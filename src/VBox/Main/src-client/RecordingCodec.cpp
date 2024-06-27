@@ -1,4 +1,4 @@
-/* $Id: RecordingCodec.cpp 105066 2024-06-27 17:29:18Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingCodec.cpp 105067 2024-06-27 19:54:55Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording codec wrapper.
  */
@@ -87,6 +87,7 @@ static int recordingCodecVPXEncodeWorker(PRECORDINGCODEC pCodec, vpx_image_t *pI
 *   Generic inline functions                                                                                                     *
 *********************************************************************************************************************************/
 
+#ifdef VBOX_WITH_LIBVPX /* Currently only used by VPX. */
 DECLINLINE(void) recordingCodecLock(PRECORDINGCODEC pCodec)
 {
     int vrc2 = RTCritSectEnter(&pCodec->CritSect);
@@ -98,6 +99,7 @@ DECLINLINE(void) recordingCodecUnlock(PRECORDINGCODEC pCodec)
     int vrc2 = RTCritSectLeave(&pCodec->CritSect);
     AssertRC(vrc2);
 }
+#endif
 
 
 /*********************************************************************************************************************************
