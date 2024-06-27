@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigX86.cpp 105043 2024-06-27 08:54:21Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImplConfigX86.cpp 105048 2024-06-27 09:06:33Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -93,6 +93,7 @@
 
 /** The TPM PPI MMIO base default (compatible with qemu). */
 #define TPM_PPI_MMIO_BASE_DEFAULT UINT64_C(0xfed45000)
+
 
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *
