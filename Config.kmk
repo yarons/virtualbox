@@ -1,4 +1,4 @@
-# $Id: Config.kmk 104863 2024-06-06 14:29:21Z sergey.dubov@oracle.com $
+# $Id: Config.kmk 105070 2024-06-27 21:48:17Z jack.doherty@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -594,6 +594,10 @@ VBOX_WITH_INIP = 1
 VBOX_WITH_LWIP_NAT = 1
 # Enables compilation of NAT service
 VBOX_WITH_NAT_SERVICE = 1
+# Enable NAT with Libslirp
+if1of ($(KBUILD_TARGET), darwin)
+ VBOX_WITH_LIBSLIRP = 1
+endif
 # Enable the E1000 feature.
 VBOX_WITH_E1000 = 1
 # Enable the Virtio feature.
@@ -9308,7 +9312,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 104863 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 105070 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
