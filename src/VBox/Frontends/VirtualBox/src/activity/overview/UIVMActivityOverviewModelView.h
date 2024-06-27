@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewModelView.h 104972 2024-06-20 09:21:03Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityOverviewModelView.h 105062 2024-06-27 13:41:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewModelView class declaration.
  */
@@ -131,6 +131,7 @@ public:
 
     ~UIVMActivityOverviewModel();
     UIVMActivityOverviewModel(QObject *pParent, QITableView *pView);
+    QModelIndex index(int iRow, int iColumn, const QModelIndex &parentIdx = QModelIndex()) const RT_OVERRIDE RT_FINAL;
     int      rowCount(const QModelIndex &parent = QModelIndex()) const RT_OVERRIDE RT_FINAL;
     int      columnCount(const QModelIndex &parent = QModelIndex()) const RT_OVERRIDE RT_FINAL;
     QVariant data(const QModelIndex &index, int role) const RT_OVERRIDE RT_FINAL;
