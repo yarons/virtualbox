@@ -1,4 +1,4 @@
-/* $Id: RecordingCodec.cpp 105006 2024-06-24 17:43:00Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingCodec.cpp 105066 2024-06-27 17:29:18Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording codec wrapper.
  */
@@ -78,7 +78,9 @@
 /*********************************************************************************************************************************
 *   Prototypes                                                                                                                   *
 *********************************************************************************************************************************/
+#ifdef VBOX_WITH_LIBVPX
 static int recordingCodecVPXEncodeWorker(PRECORDINGCODEC pCodec, vpx_image_t *pImage, uint64_t msTimestamp);
+#endif
 
 
 /*********************************************************************************************************************************
