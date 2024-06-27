@@ -1,4 +1,4 @@
-/* $Id: vbox-tpm.dsl 105045 2024-06-27 09:01:20Z alexander.eichner@oracle.com $ */
+/* $Id: vbox-tpm.dsl 105047 2024-06-27 09:05:56Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox ACPI - TPM ACPI device.
  */
@@ -134,8 +134,8 @@ DefinitionBlock ("SSDT.aml", "SSDT", 1, "VBOX  ", "VBOXTPMT", 2)
 
                 Name (TPB3, Package (0x03)
                 {
-                    Zero, 
-                    Zero, 
+                    Zero,
+                    Zero,
                     Zero
                 })
 
