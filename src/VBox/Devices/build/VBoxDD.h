@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 101618 2023-10-27 12:47:55Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxDD.h 105041 2024-06-27 08:52:03Z alexander.eichner@oracle.com $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -115,6 +115,7 @@ extern const PDMDEVREG g_DeviceVirtualKD;
 extern const PDMDEVREG g_DeviceQemuFwCfg;
 #ifdef VBOX_WITH_TPM
 extern const PDMDEVREG g_DeviceTpm;
+extern const PDMDEVREG g_DeviceTpmPpi;
 #endif
 
 extern const PDMDRVREG g_DrvMouseQueue;

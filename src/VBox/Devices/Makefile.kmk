@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 104914 2024-06-13 11:25:00Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 105041 2024-06-27 08:52:03Z alexander.eichner@oracle.com $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -640,6 +640,7 @@ if !defined(VBOX_ONLY_EXTPACKS) && "$(intersects $(KBUILD_TARGET_ARCH),$(VBOX_SU
   VBoxDD_DEFS           += VBOX_WITH_TPM
   VBoxDD_SOURCES        += \
   	Security/DevTpm.cpp \
+  	Security/DevTpmPpi.cpp \
   	Security/DrvTpmEmu.cpp
 
   VBoxDD_SOURCES.linux += \
