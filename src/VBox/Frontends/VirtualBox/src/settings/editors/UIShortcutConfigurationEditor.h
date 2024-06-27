@@ -1,10 +1,10 @@
-/* $Id: UIShortcutConfigurationEditor.h 105033 2024-06-26 17:05:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIShortcutConfigurationEditor.h 105056 2024-06-27 11:06:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIShortcutConfigurationEditor class declaration.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
