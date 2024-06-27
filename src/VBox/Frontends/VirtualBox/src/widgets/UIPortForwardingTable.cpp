@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.cpp 105029 2024-06-26 10:58:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIPortForwardingTable.cpp 105052 2024-06-27 09:36:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class implementation.
  */
@@ -965,6 +965,7 @@ void UIPortForwardingView::adjust()
     }
     horizontalHeader()->setStretchLastSection(true);
 }
+
 
 /*********************************************************************************************************************************
 *   Class UIPortForwardingTable implementation.                                                                                  *
