@@ -1,4 +1,4 @@
-/* $Id: DrvNATlibslirp.cpp 105070 2024-06-27 21:48:17Z jack.doherty@oracle.com $ */
+/* $Id: DrvNATlibslirp.cpp 105071 2024-06-28 09:22:57Z alexander.rudnev@oracle.com $ */
 /** @file
  * DrvNATlibslirp - NATlibslirp network transport driver.
  */
@@ -1071,6 +1071,8 @@ static DECLCALLBACK(int64_t) slirpClockGetNsCb(void *opaque)
     PDRVNAT pThis = (PDRVNAT)opaque;
     Assert(pThis);
 
+    RT_NOREF(pThis);
+
     return (int64_t)RTTimeNanoTS();
 }
 
@@ -1140,6 +1142,8 @@ static DECLCALLBACK(void) slirpTimerModCb(void *pTimer, int64_t expireTime, void
 {
     PDRVNAT pThis = (PDRVNAT)opaque;
     Assert(pThis);
+
+    RT_NOREF(pThis);
 
     ((SlirpTimer *)pTimer)->uTimeExpire = expireTime;
 }
