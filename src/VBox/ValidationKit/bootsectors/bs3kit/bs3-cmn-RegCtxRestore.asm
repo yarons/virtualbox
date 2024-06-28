@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-RegCtxRestore.asm 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+; $Id: bs3-cmn-RegCtxRestore.asm 105073 2024-06-28 15:20:50Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - Bs3RegCtxRestore.
 ;
@@ -83,8 +83,13 @@ BS3_PROC_BEGIN_CMN Bs3RegCtxRestore, BS3_PBC_HYBRID
 %if TMPL_BITS == 16
         cmp     byte [BS3_DATA16_WRT(g_bBs3CurrentMode)], BS3_MODE_RM
         je      .in_ring0
+        cmp     byte [BS3_DATA16_WRT(g_bBs3CurrentMode)], BS3_MODE_LM16
+        je      .do_syscall_restore_ctx
         test    byte [BS3_DATA16_WRT(g_bBs3CurrentMode)], BS3_MODE_CODE_V86
         jnz     .do_syscall_restore_ctx
+%elif TMPL_BITS == 32
+        cmp     byte [BS3_DATA16_WRT(g_bBs3CurrentMode)], BS3_MODE_LM32
+        je      .do_syscall_restore_ctx
 %endif
         mov     ax, ss
         test    al, 3
