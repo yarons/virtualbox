@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 104071 2024-03-26 20:20:34Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 105075 2024-06-28 15:45:11Z knut.osmundsen@oracle.com $
 ## @file
 # VirtualBox Validation Kit - Bootsector Kit v3
 #
@@ -54,10 +54,16 @@ VBoxBs3ObjConverter_SOURCES  = \
 	$(PATH_ROOT)/src/VBox/Runtime/common/sort/shellsort.cpp
 
 
-# The boot sector.
+# The boot sector for regular floppies.
 MISCBINS += bs3-bootsector
 bs3-bootsector_TEMPLATE = VBoxBS3KitBS
 bs3-bootsector_SOURCES  = bs3-bootsector.asm
+
+# The boot sector for 63.5MB floppies.
+MISCBINS += bs3-bootsector-63MB
+bs3-bootsector-63MB_TEMPLATE = VBoxBS3KitBS
+bs3-bootsector-63MB_DEFS     = BS3KIT_BOOTSECTOR_SUPPORT_63_5MB_FLOPPIES
+bs3-bootsector-63MB_SOURCES  = bs3-bootsector.asm
 
 
 #

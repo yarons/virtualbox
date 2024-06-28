@@ -1,4 +1,4 @@
-; $Id: bs3-bootsector.asm 103866 2024-03-15 12:07:48Z bela.lubkin@oracle.com $
+; $Id: bs3-bootsector.asm 105075 2024-06-28 15:45:11Z knut.osmundsen@oracle.com $
 ;; @file
 ; Generic bootsector for BS3.
 ;
@@ -55,7 +55,8 @@
 ;; Enables load progress dots.
 %define BS3KIT_BOOTSECTOR_LOAD_DOTS
 ;; Enables support for fake 63.5 MB floppies with 255 sectors, 2 heads and 255 tracks.
-%define BS3KIT_BOOTSECTOR_SUPPORT_63_5MB_FLOPPIES
+;; @note This is typically enabled by the makefile.
+;%define BS3KIT_BOOTSECTOR_SUPPORT_63_5MB_FLOPPIES
 ;; Enables code to avoid trying to read across 64kB DMA boundaries.
 %define BS3KIT_BOOTSECTOR_DODGE_BOUNDARIES
 
