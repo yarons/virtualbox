@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-weird-1.c 105035 2024-06-26 19:48:07Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-weird-1.c 105072 2024-06-28 12:03:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-weird-1, 16-bit C code.
  */
@@ -56,10 +56,10 @@ FNBS3TESTDOMODE BS3_CMN_FAR_NM(bs3CpuWeird1_PushPopSReg);
 *********************************************************************************************************************************/
 static const BS3TESTMODEBYONEENTRY g_aModeByOneTests[] =
 {
-#if 0 /** @todo fails in native recompiler atm. */ /** @todo asserts in ring-0 on VT-x! */
+#if 1/** @todo asserts in ring-0 on VT-x! */
     { "dbg+inhibit+ringxfer", BS3_CMN_FAR_NM(bs3CpuWeird1_DbgInhibitRingXfer), 0 },
 #endif
-#if 1 /** @todo asserts in native recompiler debug builds, but seems to work otherwise. */
+#if 1
     { "pc wrapping", BS3_CMN_FAR_NM(bs3CpuWeird1_PcWrapping), 0 },
 #endif
 //    { "push/pop", BS3_CMN_FAR_NM(bs3CpuWeird1_PushPop), 0 },

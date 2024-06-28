@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp 104984 2024-06-20 14:07:04Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImpl.cpp 105072 2024-06-28 12:03:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -6642,8 +6642,17 @@ IEM_CIMPL_DEF_2(iemCImpl_mov_Dd_Rd, uint8_t, iDrReg, uint8_t, iGReg)
 
     /*
      * Re-init hardware breakpoint summary if it was DR7 that got changed.
+     *
+     * We also do this when an active data breakpoint is updated so that the
+     * TLB entry can be correctly invalidated.
      */
-    if (iDrReg == 7)
+    if (   iDrReg == 7
+#ifdef IEM_WITH_DATA_TLB
+        || (   iDrReg <= 3
+            && (X86_DR7_L_G(iDrReg) & pVCpu->cpum.GstCtx.dr[7])
+            && X86_DR7_IS_W_CFG(pVCpu->cpum.GstCtx.dr[7], iDrReg) )
+#endif
+       )
         iemRecalcExecDbgFlags(pVCpu);
 
     return iemRegAddToRipAndFinishingClearingRF(pVCpu, cbInstr);
