@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 105077 2024-07-01 07:57:14Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 105086 2024-07-01 22:18:47Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -73,7 +73,8 @@ endif
 
 # libslirp for NAT
 if   defined(VBOX_WITH_LIBSLIRP) \
-  && !defined(VBOX_ONLY_BUILD)
+  && !defined(VBOX_ONLY_BUILD) \
+  && "$(intersects $(KBUILD_TARGET_ARCH),$(VBOX_SUPPORTED_HOST_ARCHS))" != ""
  include $(PATH_SUB_CURRENT)/libslirp-4.7.0/Makefile.kmk
 endif
 
