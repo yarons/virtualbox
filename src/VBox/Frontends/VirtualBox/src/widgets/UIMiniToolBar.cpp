@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMiniToolBar.cpp 105081 2024-07-01 15:38:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class implementation.
  */
@@ -53,6 +53,9 @@
 #ifdef VBOX_WS_NIX
 # include "UIExtraDataManager.h"
 #endif
+
+/* Other VBox includes: */
+#include "iprt/assert.h"
 
 
 /** QIToolBar reimplementation

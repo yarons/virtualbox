@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 104902 2024-06-12 16:45:56Z sergey.dubov@oracle.com $ */
+/* $Id: UISnapshotPane.cpp 105081 2024-07-01 15:38:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -49,6 +49,7 @@
 #include "UIConverter.h"
 #include "UIExtraDataManager.h"
 #include "UIIconPool.h"
+#include "UILocalMachineStuff.h"
 #include "UILoggingDefs.h"
 #include "UIMediumTools.h"
 #include "UIMessageCenter.h"
@@ -1087,9 +1088,9 @@ void UISnapshotPane::sltApplySnapshotDetailsChanges()
         /* Open a session (this call will handle all errors): */
         CSession comSession;
         if (m_sessionStates.value(pSnapshotItem->machineID()) != KSessionState_Unlocked)
-            comSession = uiCommon().openExistingSession(pSnapshotItem->machineID());
+            comSession = openExistingSession(pSnapshotItem->machineID());
         else
-            comSession = uiCommon().openSession(pSnapshotItem->machineID());
+            comSession = openSession(pSnapshotItem->machineID());
         if (comSession.isNotNull())
         {
             /* Get corresponding machine object: */
@@ -1221,7 +1222,7 @@ void UISnapshotPane::sltHandleItemChange(QTreeWidgetItem *pItem)
             if (comSnapshot.GetName() != pSnapshotItem->name())
             {
                 /* We need to open a session when we manipulate the snapshot data of a machine: */
-                CSession comSession = uiCommon().openExistingSession(comSnapshot.GetMachine().GetId());
+                CSession comSession = openExistingSession(comSnapshot.GetMachine().GetId());
                 if (!comSession.isNull())
                 {
                     /// @todo Add settings save validation.

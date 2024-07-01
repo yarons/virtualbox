@@ -1,4 +1,4 @@
-/* $Id: UIWelcomePane.cpp 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWelcomePane.cpp 105081 2024-07-01 15:38:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWelcomePane class implementation.
  */
@@ -42,6 +42,9 @@
 #include "UIIconPool.h"
 #include "UITranslationEventListener.h"
 #include "UIWelcomePane.h"
+
+/* Other VBox includes: */
+#include "iprt/assert.h"
 
 
 /*********************************************************************************************************************************

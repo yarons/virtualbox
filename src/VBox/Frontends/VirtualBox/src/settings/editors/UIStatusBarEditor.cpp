@@ -1,4 +1,4 @@
-/* $Id: UIStatusBarEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIStatusBarEditor.cpp 105081 2024-07-01 15:38:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStatusBarEditor class implementation.
  */
@@ -50,6 +50,9 @@
 #include "UIMachineWindow.h"
 #include "UIStatusBarEditor.h"
 #include "UITranslationEventListener.h"
+
+/* Other VBox includes: */
+#include "iprt/assert.h"
 
 /* Forward declarations: */
 class QAccessibleInterface;

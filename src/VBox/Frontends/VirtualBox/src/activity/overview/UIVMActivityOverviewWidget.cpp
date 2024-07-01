@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.cpp 105062 2024-06-27 13:41:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMActivityOverviewWidget.cpp 105081 2024-07-01 15:38:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class implementation.
  */
@@ -49,6 +49,7 @@
 #include "UIExtraDataManager.h"
 #include "UIGlobalSession.h"
 #include "UIIconPool.h"
+#include "UILocalMachineStuff.h"
 #include "UIMessageCenter.h"
 #include "UITranslator.h"
 #include "UITranslationEventListener.h"
@@ -884,7 +885,7 @@ bool UIVMActivityOverviewItemLocal::isWithGuestAdditions()
 
 void UIVMActivityOverviewItemLocal::resetDebugger()
 {
-    m_comSession = uiCommon().openSession(m_VMuid, KLockType_Shared);
+    m_comSession = openSession(m_VMuid, KLockType_Shared);
     if (!m_comSession.isNull())
     {
         CConsole comConsole = m_comSession.GetConsole();

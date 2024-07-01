@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 104917 2024-06-13 17:32:20Z sergey.dubov@oracle.com $ */
+/* $Id: UIIndicatorsPool.cpp 105081 2024-07-01 15:38:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -44,6 +44,9 @@
 #include "UIIndicatorsPool.h"
 #include "UIMachine.h"
 #include "UITranslationEventListener.h"
+
+/* Other VBox includes: */
+#include "iprt/assert.h"
 
 
 /** QIStateStatusBarIndicator extension for Runtime UI. */

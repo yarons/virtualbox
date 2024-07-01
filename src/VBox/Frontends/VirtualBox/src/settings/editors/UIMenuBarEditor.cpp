@@ -1,4 +1,4 @@
-/* $Id: UIMenuBarEditor.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMenuBarEditor.cpp 105081 2024-07-01 15:38:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMenuBarEditor class implementation.
  */
@@ -49,6 +49,9 @@
 #include "UIIconPool.h"
 #include "UIMachineWindow.h"
 #include "UIMenuBarEditor.h"
+
+/* Other VBox includes: */
+#include "iprt/assert.h"
 
 /* Forward declarations: */
 class QAccessibleInterface;

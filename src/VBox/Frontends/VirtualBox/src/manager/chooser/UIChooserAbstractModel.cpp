@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 104592 2024-05-13 12:34:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserAbstractModel.cpp 105081 2024-07-01 15:38:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -40,6 +40,7 @@
 #include "UICloudNetworkingStuff.h"
 #include "UIExtraDataManager.h"
 #include "UIGlobalSession.h"
+#include "UILocalMachineStuff.h"
 #include "UILoggingDefs.h"
 #include "UIMessageCenter.h"
 #include "UINotificationCenter.h"
@@ -239,7 +240,7 @@ void UIThreadGroupSettingsSave::run()
         do
         {
             /* 1. Open session: */
-            comSession = uiCommon().openSession(QUuid(strId));
+            comSession = openSession(QUuid(strId));
             if (comSession.isNull())
                 break;
 

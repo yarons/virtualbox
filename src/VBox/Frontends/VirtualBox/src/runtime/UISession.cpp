@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 104917 2024-06-13 17:32:20Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 105081 2024-07-01 15:38:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -41,6 +41,7 @@
 #include "UIGlobalSession.h"
 #include "UIIconPool.h"
 #include "UIGuestOSType.h"
+#include "UILocalMachineStuff.h"
 #include "UILoggingDefs.h"
 #include "UIMachine.h"
 #include "UIMachineLogic.h"
@@ -2509,10 +2510,10 @@ void UISession::sltHandleSnapshotRestored(bool)
 bool UISession::prepareCOMStuff()
 {
     /* Open session: */
-    m_comSession = uiCommon().openSession(uiCommon().managedVMUuid(),
-                                            uiCommon().isSeparateProcess()
-                                          ? KLockType_Shared
-                                          : KLockType_VM);
+    m_comSession = openSession(uiCommon().managedVMUuid(),
+                                 uiCommon().isSeparateProcess()
+                               ? KLockType_Shared
+                               : KLockType_VM);
     if (m_comSession.isNull())
         return false;
 

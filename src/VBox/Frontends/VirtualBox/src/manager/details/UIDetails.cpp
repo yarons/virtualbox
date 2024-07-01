@@ -1,4 +1,4 @@
-/* $Id: UIDetails.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDetails.cpp 105081 2024-07-01 15:38:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetails class implementation.
  */
@@ -34,6 +34,9 @@
 #include "UIDetailsModel.h"
 #include "UIDetailsView.h"
 #include "UIExtraDataManager.h"
+
+/* Other VBox includes: */
+#include "iprt/assert.h"
 
 
 UIDetails::UIDetails(QWidget *pParent /* = 0 */)

@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 104968 2024-06-19 18:51:37Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.cpp 105081 2024-07-01 15:38:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -58,6 +58,7 @@
 #include "UIExtraDataManager.h"
 #include "UIGlobalSession.h"
 #include "UIHostComboEditor.h"
+#include "UILocalMachineStuff.h"
 #include "UILoggingDefs.h"
 #include "UIMainEventListener.h"
 #include "UIMessageCenter.h"
@@ -2152,9 +2153,9 @@ void UIExtraDataManager::setExtraDataString(const QString &strKey, const QString
         /* Prepare machine session: */
         CSession comSession;
         if (enmLevel == ConfigurationAccessLevel_Full)
-            comSession = uiCommon().openSession(uID);
+            comSession = openSession(uID);
         else
-            comSession = uiCommon().openExistingSession(uID);
+            comSession = openExistingSession(uID);
         AssertReturnVoid(!comSession.isNull());
         /* Get machine from that session: */
         CMachine comSessionMachine = comSession.GetMachine();
@@ -2249,9 +2250,9 @@ void UIExtraDataManager::setExtraDataStringList(const QString &strKey, const QSt
         /* Prepare machine session: */
         CSession comSession;
         if (enmLevel == ConfigurationAccessLevel_Full)
-            comSession = uiCommon().openSession(uID);
+            comSession = openSession(uID);
         else
-            comSession = uiCommon().openExistingSession(uID);
+            comSession = openExistingSession(uID);
         AssertReturnVoid(!comSession.isNull());
         /* Get machine from that session: */
         CMachine comSessionMachine = comSession.GetMachine();

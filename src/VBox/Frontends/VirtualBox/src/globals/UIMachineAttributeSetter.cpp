@@ -1,4 +1,4 @@
-/* $Id: UIMachineAttributeSetter.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineAttributeSetter.cpp 105081 2024-07-01 15:38:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineAttributeSetter namespace implementation.
  */
@@ -30,7 +30,7 @@
 
 /* GUI includes: */
 #include "UIBootOrderEditor.h"
-#include "UICommon.h"
+#include "UILocalMachineStuff.h"
 #include "UIMachineAttributeSetter.h"
 #include "UIMessageCenter.h"
 #include "UINotificationCenter.h"
@@ -89,7 +89,7 @@ void UIMachineAttributeSetter::setMachineAttribute(const CMachine &comConstMachi
 {
     /* Get editable machine & session: */
     CMachine comMachine = comConstMachine;
-    CSession comSession = uiCommon().tryToOpenSessionFor(comMachine);
+    CSession comSession = tryToOpenSessionFor(comMachine);
 
     /* Main API block: */
     do

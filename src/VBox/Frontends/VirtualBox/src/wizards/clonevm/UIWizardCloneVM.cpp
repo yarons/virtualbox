@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.cpp 104295 2024-04-11 12:50:44Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardCloneVM.cpp 105081 2024-07-01 15:38:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVM class implementation.
  */
@@ -229,8 +229,6 @@ bool UIWizardCloneVM::cloneVM()
                                                                                              cloneMachine,
                                                                                              m_enmCloneMode,
                                                                                              options);
-    connect(pNotification, &UINotificationProgressMachineCopy::sigMachineCopied,
-            &uiCommon(), &UICommon::sltHandleMachineCreated);
     gpNotificationCenter->append(pNotification);
 
     return true;

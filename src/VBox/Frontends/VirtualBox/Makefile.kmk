@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 104922 2024-06-14 15:13:48Z serkan.bayraktar@oracle.com $
+# $Id: Makefile.kmk 105081 2024-07-01 15:38:32Z sergey.dubov@oracle.com $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -1404,6 +1404,7 @@ UICommon_SOURCES = \
 	src/globals/UIGuestOSType.cpp \
 	src/globals/UIIconPool.cpp \
 	src/globals/UIImageTools.cpp \
+	src/globals/UILocalMachineStuff.cpp \
 	src/globals/UIMachineAttributeSetter.cpp \
 	src/globals/UIMainEventListener.cpp \
 	src/globals/UIMessageCenter.cpp \

@@ -1,4 +1,4 @@
-/* $Id: UIHostComboEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHostComboEditor.cpp 105081 2024-07-01 15:38:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHostComboEditor class implementation.
  */
@@ -55,6 +55,7 @@
 #endif
 
 /* Other VBox includes: */
+#include "iprt/assert.h"
 #if defined(VBOX_WS_NIX)
 # include <VBox/VBoxKeyboard.h>
 #endif

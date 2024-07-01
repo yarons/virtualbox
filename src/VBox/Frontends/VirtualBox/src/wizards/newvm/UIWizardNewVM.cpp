@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 104891 2024-06-12 12:41:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVM.cpp 105081 2024-07-01 15:38:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -33,6 +33,7 @@
 #include "UICommon.h"
 #include "UIGlobalSession.h"
 #include "UIGuestOSType.h"
+#include "UILocalMachineStuff.h"
 #include "UIMedium.h"
 #include "UIMediumEnumerator.h"
 #include "UINotificationCenter.h"
@@ -276,7 +277,7 @@ bool UIWizardNewVM::attachDefaultDevices()
 {
     bool success = false;
     QUuid uMachineId = m_machine.GetId();
-    CSession session = uiCommon().openSession(uMachineId);
+    CSession session = openSession(uMachineId);
     if (!session.isNull())
     {
         CMachine machine = session.GetMachine();

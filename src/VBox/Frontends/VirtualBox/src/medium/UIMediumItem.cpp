@@ -1,4 +1,4 @@
-/* $Id: UIMediumItem.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumItem.cpp 105081 2024-07-01 15:38:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class implementation.
  */
@@ -32,10 +32,10 @@
 /* GUI includes: */
 #include "QIFileDialog.h"
 #include "QIMessageBox.h"
-#include "UICommon.h"
 #include "UIExtraDataManager.h"
 #include "UIGlobalSession.h"
 #include "UIIconPool.h"
+#include "UILocalMachineStuff.h"
 #include "UIMediumItem.h"
 #include "UIMessageCenter.h"
 #include "UINotificationCenter.h"
@@ -314,7 +314,7 @@ void UIMediumItem::refresh()
 bool UIMediumItem::releaseFrom(const QUuid &uMachineId)
 {
     /* Open session: */
-    CSession session = uiCommon().openSession(uMachineId);
+    CSession session = openSession(uMachineId);
     if (session.isNull())
         return false;
 
@@ -345,7 +345,7 @@ bool UIMediumItem::releaseFrom(const QUuid &uMachineId)
 bool UIMediumItem::attachTo(const AttachmentCache &attachmentCache)
 {
     /* Open session: */
-    CSession comSession = uiCommon().openSession(attachmentCache.m_uMachineId);
+    CSession comSession = openSession(attachmentCache.m_uMachineId);
     if (comSession.isNull())
         return false;
 

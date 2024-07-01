@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemLocal.cpp 104594 2024-05-13 12:40:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualMachineItemLocal.cpp 105081 2024-07-01 15:38:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItem class implementation.
  */
@@ -35,6 +35,7 @@
 #include "UIErrorString.h"
 #include "UIExtraDataManager.h"
 #include "UIIconPool.h"
+#include "UILocalMachineStuff.h"
 #include "UITranslationEventListener.h"
 #include "UIVirtualMachineItemLocal.h"
 #ifdef VBOX_WS_MAC
@@ -228,7 +229,7 @@ bool UIVirtualMachineItemLocal::isItemRunningHeadless() const
     if (isItemRunning())
     {
         /* Open session to determine which frontend VM is started with: */
-        CSession comSession = uiCommon().openExistingSession(id());
+        CSession comSession = openExistingSession(id());
         if (!comSession.isNull())
         {
             /* Acquire the session name: */

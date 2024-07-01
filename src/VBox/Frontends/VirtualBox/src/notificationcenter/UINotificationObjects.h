@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UINotificationObjects.h 105081 2024-07-01 15:38:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -962,11 +962,6 @@ private:
 class SHARED_LIBRARY_STUFF UINotificationProgressMachineCopy : public UINotificationProgress
 {
     Q_OBJECT;
-
-signals:
-
-    /** Notifies listeners about @a comMachine was copied. */
-    void sigMachineCopied(const CMachine &comMachine);
 
 public:
 

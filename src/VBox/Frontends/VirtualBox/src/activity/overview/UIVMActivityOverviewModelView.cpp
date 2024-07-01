@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewModelView.cpp 105062 2024-06-27 13:41:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMActivityOverviewModelView.cpp 105081 2024-07-01 15:38:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewModelView class implementation.
  */
@@ -33,9 +33,9 @@
 
 /* GUI includes: */
 #include "UIConverter.h"
-#include "UICommon.h"
 #include "UIExtraDataDefs.h"
 #include "UIGlobalSession.h"
+#include "UILocalMachineStuff.h"
 #include "UIMonitorCommon.h"
 #include "UITranslator.h"
 #include "UIVirtualBoxEventHandler.h"
@@ -379,7 +379,7 @@ UIVMActivityOverviewRowLocal::~UIVMActivityOverviewRowLocal()
 
 void UIVMActivityOverviewRowLocal::resetDebugger()
 {
-    m_comSession = uiCommon().openSession(m_uMachineId, KLockType_Shared);
+    m_comSession = openSession(m_uMachineId, KLockType_Shared);
     if (!m_comSession.isNull())
     {
         CConsole comConsole = m_comSession.GetConsole();

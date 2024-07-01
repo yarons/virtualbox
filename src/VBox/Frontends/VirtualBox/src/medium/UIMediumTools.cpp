@@ -1,4 +1,4 @@
-/* $Id: UIMediumTools.cpp 104915 2024-06-13 13:18:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumTools.cpp 105081 2024-07-01 15:38:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumTools class implementation.
  */
@@ -32,11 +32,11 @@
 
 /* GUI includes: */
 #include "QIFileDialog.h"
-#include "UICommon.h"
 #include "UIExtraDataManager.h"
 #include "UIFDCreationDialog.h"
 #include "UIGlobalSession.h"
 #include "UIIconPool.h"
+#include "UILocalMachineStuff.h"
 #include "UIMediumEnumerator.h"
 #include "UIMediumSelector.h"
 #include "UIMediumTools.h"
@@ -246,22 +246,22 @@ QUuid UIMediumTools::openMediumWithFileOpenDialog(UIMediumDeviceType enmMediumTy
         case UIMediumDeviceType_HardDisk:
         {
             filters = HDDBackends(gpGlobalSession->virtualBox());
-            strTitle = UICommon::tr("Please choose a virtual hard disk file");
-            allType = UICommon::tr("All virtual hard disk files (%1)");
+            strTitle = QApplication::translate("UICommon", "Please choose a virtual hard disk file");
+            allType = QApplication::translate("UICommon", "All virtual hard disk files (%1)");
             break;
         }
         case UIMediumDeviceType_DVD:
         {
             filters = DVDBackends(gpGlobalSession->virtualBox());
-            strTitle = UICommon::tr("Please choose a virtual optical disk file");
-            allType = UICommon::tr("All virtual optical disk files (%1)");
+            strTitle = QApplication::translate("UICommon", "Please choose a virtual optical disk file");
+            allType = QApplication::translate("UICommon", "All virtual optical disk files (%1)");
             break;
         }
         case UIMediumDeviceType_Floppy:
         {
             filters = FloppyBackends(gpGlobalSession->virtualBox());
-            strTitle = UICommon::tr("Please choose a virtual floppy disk file");
-            allType = UICommon::tr("All virtual floppy disk files (%1)");
+            strTitle = QApplication::translate("UICommon", "Please choose a virtual floppy disk file");
+            allType = QApplication::translate("UICommon", "All virtual floppy disk files (%1)");
             break;
         }
         default:
@@ -282,7 +282,7 @@ QUuid UIMediumTools::openMediumWithFileOpenDialog(UIMediumDeviceType enmMediumTy
     }
     if (!prefixes.isEmpty())
         backends.insert(0, allType.arg(prefixes.join(" ").trimmed()));
-    backends << UICommon::tr("All files (*)");
+    backends << QApplication::translate("UICommon", "All files (*)");
     strFilter = backends.join(";;").trimmed();
 
     /* Create open file dialog: */
@@ -609,7 +609,7 @@ void UIMediumTools::updateMachineStorage(const CMachine &comConstMachine,
 
     /* Get editable machine & session: */
     CMachine comMachine = comConstMachine;
-    CSession comSession = uiCommon().tryToOpenSessionFor(comMachine);
+    CSession comSession = tryToOpenSessionFor(comMachine);
 
     /* Remount medium to the predefined port/device: */
     bool fWasMounted = false;
