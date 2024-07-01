@@ -1,4 +1,4 @@
-/* $Id: DrvNATlibslirp.cpp 105071 2024-06-28 09:22:57Z alexander.rudnev@oracle.com $ */
+/* $Id: DrvNATlibslirp.cpp 105084 2024-07-01 18:49:38Z jack.doherty@oracle.com $ */
 /** @file
  * DrvNATlibslirp - NATlibslirp network transport driver.
  */
@@ -30,8 +30,6 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_DRV_NAT
-#define __STDC_LIMIT_MACROS
-#define __STDC_CONSTANT_MACROS
 
 #include "DrvNATlibslirp.h"
 
