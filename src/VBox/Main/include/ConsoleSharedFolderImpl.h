@@ -1,4 +1,4 @@
-/* $Id: ConsoleSharedFolderImpl.h 105087 2024-07-01 23:27:59Z brent.paulson@oracle.com $ */
+/* $Id: ConsoleSharedFolderImpl.h 105088 2024-07-01 23:48:50Z brent.paulson@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -91,7 +91,7 @@ public:
     /**
      * Public internal method for getting the symlink policy.
      */
-    const SymlinkPolicy_T i_getSymlinkPolicy() const;
+    SymlinkPolicy_T i_getSymlinkPolicy() const;
 
 protected:
 

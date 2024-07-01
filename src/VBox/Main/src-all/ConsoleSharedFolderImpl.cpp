@@ -1,4 +1,4 @@
-/* $Id: ConsoleSharedFolderImpl.cpp 105087 2024-07-01 23:27:59Z brent.paulson@oracle.com $ */
+/* $Id: ConsoleSharedFolderImpl.cpp 105088 2024-07-01 23:48:50Z brent.paulson@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -344,7 +344,7 @@ const Utf8Str &ConsoleSharedFolder::i_getAutoMountPoint() const
     return m->strAutoMountPoint;
 }
 
-const SymlinkPolicy_T ConsoleSharedFolder::i_getSymlinkPolicy() const
+SymlinkPolicy_T ConsoleSharedFolder::i_getSymlinkPolicy() const
 {
     return m->enmSymlinkPolicy;
 }
