@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 105018 2024-06-25 11:06:29Z brent.paulson@oracle.com $
+# $Id: Makefile.kmk 105087 2024-07-01 23:27:59Z brent.paulson@oracle.com $
 ## @file
 # Sub-Makefile for the Shared Folders Host Service testcases.
 #
@@ -68,6 +68,11 @@ ifdef VBOX_WITH_TESTCASES
  tstSharedFolderService_TEMPLATE = VBoxR3TstExe
  tstSharedFolderService_DEFS    = VBOX_WITH_HGCM UNITTEST
  tstSharedFolderService_INCS    = ..
+ ifneq ($(KBUILD_TARGET),win)
+  tstSharedFolderService_DEFS  += VBOX_WITH_XPCOM
+  tstSharedFolderService_INCS  += $(VBOX_XPCOM_INCS)
+ endif
+ tstSharedFolderService_INCS.win += $(VBOX_PATH_SDK)/bindings/mscom/include
  tstSharedFolderService_SOURCES = \
  	tstSharedFolderService.cpp \
  	../mappings.cpp \

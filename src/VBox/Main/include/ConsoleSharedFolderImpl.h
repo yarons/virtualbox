@@ -1,4 +1,4 @@
-/* $Id: ConsoleSharedFolderImpl.h 105018 2024-06-25 11:06:29Z brent.paulson@oracle.com $ */
+/* $Id: ConsoleSharedFolderImpl.h 105087 2024-07-01 23:27:59Z brent.paulson@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -88,6 +88,11 @@ public:
      */
     const Utf8Str &i_getAutoMountPoint() const;
 
+    /**
+     * Public internal method for getting the symlink policy.
+     */
+    const SymlinkPolicy_T i_getSymlinkPolicy() const;
+
 protected:
 
     HRESULT i_protectedInit(VirtualBoxBase *aParent,
@@ -99,7 +104,7 @@ protected:
                             bool fFailOnError);
 private:
 
-    // wrapped ISharedFolder properies.
+    // wrapped ISharedFolder properties.
     HRESULT getName(com::Utf8Str &aName);
     HRESULT getHostPath(com::Utf8Str &aHostPath);
     HRESULT getAccessible(BOOL *aAccessible);
@@ -110,6 +115,8 @@ private:
     HRESULT getAutoMountPoint(com::Utf8Str &aAutoMountPoint);
     HRESULT setAutoMountPoint(com::Utf8Str const &aAutoMountPoint);
     HRESULT getLastAccessError(com::Utf8Str &aLastAccessError);
+    HRESULT getSymlinkPolicy(SymlinkPolicy_T *aSymlinkPolicy);
+    HRESULT setSymlinkPolicy(SymlinkPolicy_T aSymlinkPolicy);
 
     VirtualBoxBase * const mParent;
 

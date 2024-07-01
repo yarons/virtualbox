@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 105018 2024-06-25 11:06:29Z brent.paulson@oracle.com $ */
+/* $Id: VBoxManageInfo.cpp 105087 2024-07-01 23:27:59Z brent.paulson@oracle.com $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -798,17 +798,36 @@ HRESULT showBandwidthGroups(ComPtr<IBandwidthControl> &bwCtrl,
     return VINF_SUCCESS;
 }
 
+static const char *symlinkPolicyToName(SymlinkPolicy_T enmSymlinkPolicy)
+{
+    switch (enmSymlinkPolicy)
+    {
+        case SymlinkPolicy_AllowedToAnyTarget:
+            return ("any");
+        case SymlinkPolicy_AllowedInShareSubtree:
+            return ("subtree");
+        case SymlinkPolicy_AllowedToRelativeTargets:
+            return ("relative");
+        case SymlinkPolicy_Forbidden:
+            return("forbidden");
+        default:
+            return("none");
+    }
+}
+
 /** Shows a shared folder.   */
 static HRESULT showSharedFolder(ComPtr<ISharedFolder> &sf, VMINFO_DETAILS details, const char *pszDesc,
                                 const char *pszMrInfix, size_t idxMr, bool fFirst)
 {
     Bstr name, hostPath, bstrAutoMountPoint;
     BOOL writable = FALSE, fAutoMount = FALSE;
+    SymlinkPolicy_T enmSymlinkPolicy = SymlinkPolicy_None;
     CHECK_ERROR2I_RET(sf, COMGETTER(Name)(name.asOutParam()), hrcCheck);
     CHECK_ERROR2I_RET(sf, COMGETTER(HostPath)(hostPath.asOutParam()), hrcCheck);
     CHECK_ERROR2I_RET(sf, COMGETTER(Writable)(&writable), hrcCheck);
     CHECK_ERROR2I_RET(sf, COMGETTER(AutoMount)(&fAutoMount), hrcCheck);
     CHECK_ERROR2I_RET(sf, COMGETTER(AutoMountPoint)(bstrAutoMountPoint.asOutParam()), hrcCheck);
+    CHECK_ERROR2I_RET(sf, COMGETTER(SymlinkPolicy)(&enmSymlinkPolicy), hrcCheck);
 
     if (fFirst && details != VMINFO_MACHINEREADABLE)
         RTPrintf("\n\n");
@@ -823,6 +842,8 @@ static HRESULT showSharedFolder(ComPtr<ISharedFolder> &sf, VMINFO_DETAILS detail
         RTPrintf(Info::tr("Name: '%ls', Host path: '%ls' (%s), %s%s"),
                  name.raw(), hostPath.raw(), pszDesc, writable ? Info::tr("writable") : Info::tr("readonly"),
                  fAutoMount ? Info::tr(", auto-mount") : "");
+        if (enmSymlinkPolicy != SymlinkPolicy_None)
+            RTPrintf(Info::tr(", symlink-policy: %s"), symlinkPolicyToName(enmSymlinkPolicy));
         if (bstrAutoMountPoint.isNotEmpty())
             RTPrintf(Info::tr(", mount-point: '%ls'\n"), bstrAutoMountPoint.raw());
         else
