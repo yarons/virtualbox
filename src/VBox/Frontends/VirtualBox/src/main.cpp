@@ -1,4 +1,4 @@
-/* $Id: main.cpp 105082 2024-07-01 15:50:58Z sergey.dubov@oracle.com $ */
+/* $Id: main.cpp 105083 2024-07-01 16:05:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -96,6 +96,7 @@
 #ifdef VBOX_WITH_HARDENING
 # include <iprt/string.h>
 #endif
+
 
 /* XXX Temporarily. Don't rely on the user to hack the Makefile himself! */
 QString g_QStrHintLinuxNoMemory = QApplication::tr(
