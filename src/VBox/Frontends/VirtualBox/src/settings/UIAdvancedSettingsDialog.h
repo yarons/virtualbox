@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialog.h 104363 2024-04-18 17:10:19Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialog.h 105105 2024-07-02 18:26:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class declaration.
  */
@@ -43,7 +43,6 @@ class QGridLayout;
 class QProgressBar;
 class QShowEvent;
 class QStackedWidget;
-class QTimer;
 class QIDialogButtonBox;
 class UIFilterEditor;
 class UIModeCheckBox;
@@ -273,9 +272,6 @@ private:
 
     /** Stores the help tag per page. */
     QMap<int, QString>  m_pageHelpKeywords;
-
-    /** Holds the 'sticky scrolling timer' instance. */
-    QTimer *m_pScrollingTimer;
 
     /** @name Widgets
      * @{ */
