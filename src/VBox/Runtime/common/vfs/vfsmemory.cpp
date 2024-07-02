@@ -1,4 +1,4 @@
-/* $Id: vfsmemory.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
+/* $Id: vfsmemory.cpp 105100 2024-07-02 13:10:46Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Virtual File System, Memory Backed VFS.
  */
@@ -708,10 +708,35 @@ static DECLCALLBACK(int) rtVfsMemFile_SetSize(void *pvThis, uint64_t cbFile, uin
     AssertReturn(RTVFSFILE_SIZE_F_IS_VALID(fFlags), VERR_INVALID_PARAMETER);
 
     PRTVFSMEMFILE pThis = (PRTVFSMEMFILE)pvThis;
-    if (   (fFlags & RTVFSFILE_SIZE_F_ACTION_MASK) == RTVFSFILE_SIZE_F_NORMAL
-        && (RTFOFF)cbFile >= pThis->Base.ObjInfo.cbObject)
+    if ((fFlags & RTVFSFILE_SIZE_F_ACTION_MASK) == RTVFSFILE_SIZE_F_NORMAL)
     {
-        /* Growing is just a matter of increasing the size of the object. */
+        if ((RTFOFF)cbFile < pThis->Base.ObjInfo.cbObject)
+        {
+            /* Remove any extent beyond the file size. */
+            bool            fHit;
+            PRTVFSMEMEXTENT pExtent = rtVfsMemFile_LocateExtent(pThis, cbFile, &fHit);
+            if (   fHit
+                && cbFile < (pExtent->off + pExtent->cb))
+            {
+                /* Clear the data in this extent. */
+                uint64_t cbRemaining = cbFile - pExtent->off;
+                memset(&pExtent->abData[cbRemaining], 0, pExtent->cb - cbRemaining);
+                pExtent = RTListGetNext(&pThis->ExtentHead, pExtent, RTVFSMEMEXTENT, Entry);
+            }
+
+            while (pExtent)
+            {
+                PRTVFSMEMEXTENT pFree = pExtent;
+                pExtent = RTListGetNext(&pThis->ExtentHead, pExtent, RTVFSMEMEXTENT, Entry);
+
+                RTListNodeRemove(&pFree->Entry);
+                RTMemFree(pFree);
+            }
+
+            pThis->pCurExt = NULL;
+        }
+        /* else: Growing is just a matter of increasing the size of the object. */
+
         pThis->Base.ObjInfo.cbObject = cbFile;
         return VINF_SUCCESS;
     }
