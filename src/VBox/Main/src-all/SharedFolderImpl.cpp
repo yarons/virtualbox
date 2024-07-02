@@ -1,4 +1,4 @@
-/* $Id: SharedFolderImpl.cpp 105087 2024-07-01 23:27:59Z brent.paulson@oracle.com $ */
+/* $Id: SharedFolderImpl.cpp 105089 2024-07-02 00:00:14Z brent.paulson@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -442,7 +442,7 @@ const Utf8Str &SharedFolder::i_getAutoMountPoint() const
     return m->strAutoMountPoint;
 }
 
-const SymlinkPolicy_T SharedFolder::i_getSymlinkPolicy() const
+SymlinkPolicy_T SharedFolder::i_getSymlinkPolicy() const
 {
     return m->enmSymlinkPolicy;
 }
