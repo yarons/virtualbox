@@ -1,4 +1,4 @@
-/* $Id: Recording.cpp 105095 2024-07-02 10:06:48Z andreas.loeffler@oracle.com $ */
+/* $Id: Recording.cpp 105097 2024-07-02 12:38:59Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording context code.
  *
@@ -1009,7 +1009,7 @@ bool RecordingContext::NeedsUpdate(uint32_t uScreen, uint64_t msTimestamp)
  * @param   uScreen             The stream's ID (Screen ID).
  * @param   vrc                 Result code of the limit operation.
  */
-DECLCALLBACK(int) RecordingContext::onLimitReached(uint32_t uScreen, int vrc)
+int RecordingContext::onLimitReached(uint32_t uScreen, int vrc)
 {
     LogFlowThisFunc(("Stream %RU32 has reached its limit (%Rrc)\n", uScreen, vrc));
 
