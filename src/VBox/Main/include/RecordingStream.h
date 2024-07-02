@@ -1,4 +1,4 @@
-/* $Id: RecordingStream.h 105006 2024-06-24 17:43:00Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingStream.h 105095 2024-07-02 10:06:48Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording stream code header.
  */
@@ -143,7 +143,7 @@ public:
     PRECORDINGCODEC GetVideoCodec(void) { return &this->m_CodecVideo; };
 
     bool IsLimitReached(uint64_t msTimestamp) const;
-    bool IsReady(void) const;
+    bool IsFeatureEnabled(RecordingFeature_T enmFeature) const;
     bool NeedsUpdate(uint64_t msTimestamp) const;
 
 public:
