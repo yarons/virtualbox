@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 105081 2024-07-01 15:38:32Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.h 105104 2024-07-02 17:55:17Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -56,7 +56,6 @@ class CHostVideoInputDevice;
 class CUSBDevice;
 class CUSBDeviceFilter;
 class UIThreadPool;
-class UITranslationEventListener;
 
 /** QObject subclass containing common GUI functionality. */
 class SHARED_LIBRARY_STUFF UICommon : public QObject
@@ -540,7 +539,6 @@ private:
        int iOriginalFontPointSize;
     /** @} */
 
-    UITranslationEventListener *m_pTranlationEventListener;
     /** Allows for shortcut access. */
     friend UICommon &uiCommon();
 };

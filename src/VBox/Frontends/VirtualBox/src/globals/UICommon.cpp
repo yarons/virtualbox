@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 105081 2024-07-01 15:38:32Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.cpp 105104 2024-07-02 17:55:17Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -186,7 +186,6 @@ UICommon::UICommon(UIType enmType)
     , m_fSettingsPwSet(false)
     , m_pThreadPool(0)
     , m_pThreadPoolCloud(0)
-    , m_pTranlationEventListener(0)
 {
     /* Assign instance: */
     s_pInstance = this;
