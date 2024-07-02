@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 104440 2024-04-26 10:30:39Z bela.lubkin@oracle.com $ */
+/* $Id: bs3kit.h 105094 2024-07-02 09:33:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -3606,6 +3606,19 @@ BS3_CMN_PROTO_STUB(void, Bs3TrapSetJmpAndRestoreInRm,(PCBS3REGCTX pCtxRestore, P
  * Disables a previous #Bs3TrapSetJmp call.
  */
 BS3_CMN_PROTO_STUB(void, Bs3TrapUnsetJmp,(void));
+
+/** Entry point for MSR_K8_LSTAR (64-bit).
+ * This hooks into the default Bs3TrapSetJmp logic. */
+BS3_CMN_PROTO_NOSB(void, Bs3Syscall64Generic,(void));
+/** The 32-bit FLAT address of Bs3Syscall64Generic (for 16-bit code). */
+extern uint32_t g_pfnBs3Syscall64GenericFlat;
+
+/** Entry point for MSR_K8_CSTAR (64-bit).
+ * This hooks into the default Bs3TrapSetJmp logic. */
+BS3_CMN_PROTO_NOSB(void, Bs3Syscall64GenericCompatibility,(void));
+/** The 32-bit FLAT address of Bs3Syscall64Generic (for 16-bit code). */
+extern uint32_t g_pfnBs3Syscall64GenericCompatibilityFlat;
+
 
 
 /**

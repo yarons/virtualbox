@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 105072 2024-06-28 12:03:20Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 105094 2024-07-02 09:33:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -3253,22 +3253,6 @@ iemRaiseXcptOrIntInProtMode(PVMCPUCC    pVCpu,
     IEM_CTX_ASSERT(pVCpu, IEM_CPUMCTX_EXTRN_XCPT_MASK);
 
     /*
-     * Hack alert! Convert incoming debug events to slient on Intel.
-     * See bs3-cpu-weird-1.
-     */
-    if (   !(fFlags & IEM_XCPT_FLAGS_T_SOFT_INT)
-        || !(pVCpu->cpum.GstCtx.eflags.uBoth & CPUMCTX_DBG_HIT_DRX_MASK_NONSILENT)
-        || !IEM_IS_GUEST_CPU_INTEL(pVCpu))
-    { /* ignore */ }
-    else
-    {
-        Log(("iemRaiseXcptOrIntInProtMode: Converting pending %#x debug events to a silent one (intel hack)\n",
-             u8Vector, pVCpu->cpum.GstCtx.eflags.uBoth & CPUMCTX_DBG_HIT_DRX_MASK));
-        pVCpu->cpum.GstCtx.eflags.uBoth = (pVCpu->cpum.GstCtx.eflags.uBoth & ~CPUMCTX_DBG_HIT_DRX_MASK)
-                                        | CPUMCTX_DBG_HIT_DRX_SILENT;
-    }
-
-    /*
      * Read the IDT entry.
      */
     if (pVCpu->cpum.GstCtx.idtr.cbIdt < UINT32_C(8) * u8Vector + 7)
@@ -3768,22 +3752,6 @@ iemRaiseXcptOrIntInLongMode(PVMCPUCC    pVCpu,
                             uint64_t    uCr2) RT_NOEXCEPT
 {
     IEM_CTX_ASSERT(pVCpu, IEM_CPUMCTX_EXTRN_XCPT_MASK);
-
-    /*
-     * Hack alert! Convert incoming debug events to slient on Intel.
-     * See bs3-cpu-weird-1.
-     */
-    if (   !(fFlags & IEM_XCPT_FLAGS_T_SOFT_INT)
-        || !(pVCpu->cpum.GstCtx.eflags.uBoth & CPUMCTX_DBG_HIT_DRX_MASK_NONSILENT)
-        || !IEM_IS_GUEST_CPU_INTEL(pVCpu))
-    { /* ignore */ }
-    else
-    {
-        Log(("iemRaiseXcptOrIntInLongMode: Converting pending %#x debug events to a silent one (intel hack)\n",
-             u8Vector, pVCpu->cpum.GstCtx.eflags.uBoth & CPUMCTX_DBG_HIT_DRX_MASK));
-        pVCpu->cpum.GstCtx.eflags.uBoth = (pVCpu->cpum.GstCtx.eflags.uBoth & ~CPUMCTX_DBG_HIT_DRX_MASK)
-                                        | CPUMCTX_DBG_HIT_DRX_SILENT;
-    }
 
     /*
      * Read the IDT entry.
@@ -4322,6 +4290,22 @@ iemRaiseXcptOrInt(PVMCPUCC    pVCpu,
             EMHistoryAddExit(pVCpu, EMEXIT_MAKE_FT(EMEXIT_F_KIND_XCPT, u8Vector | EMEXIT_F_XCPT_ERRCD), uErr, uTimestamp);
         if (fFlags & IEM_XCPT_FLAGS_CR2)
             EMHistoryAddExit(pVCpu, EMEXIT_MAKE_FT(EMEXIT_F_KIND_XCPT, u8Vector | EMEXIT_F_XCPT_CR2), uCr2, uTimestamp);
+    }
+
+    /*
+     * Hack alert! Convert incoming debug events to slient on Intel.
+     * See the dbg+inhibit+ringxfer test in bs3-cpu-weird-1.
+     */
+    if (   !(fFlags & IEM_XCPT_FLAGS_T_SOFT_INT)
+        || !(pVCpu->cpum.GstCtx.eflags.uBoth & CPUMCTX_DBG_HIT_DRX_MASK_NONSILENT)
+        || !IEM_IS_GUEST_CPU_INTEL(pVCpu))
+    { /* ignore */ }
+    else
+    {
+        Log(("iemRaiseXcptOrIntInLongMode: Converting pending %#x debug events to a silent one (intel hack)\n",
+             u8Vector, pVCpu->cpum.GstCtx.eflags.uBoth & CPUMCTX_DBG_HIT_DRX_MASK));
+        pVCpu->cpum.GstCtx.eflags.uBoth = (pVCpu->cpum.GstCtx.eflags.uBoth & ~CPUMCTX_DBG_HIT_DRX_MASK)
+                                        | CPUMCTX_DBG_HIT_DRX_SILENT;
     }
 
     /*

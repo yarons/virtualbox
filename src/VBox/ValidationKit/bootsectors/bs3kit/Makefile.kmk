@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 105075 2024-06-28 15:45:11Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 105094 2024-07-02 09:33:52Z knut.osmundsen@oracle.com $
 ## @file
 # VirtualBox Validation Kit - Bootsector Kit v3
 #
@@ -371,6 +371,7 @@ bs3kit-common-64_ASDEFS   = RT_ASMDEFS_INC_FIRST_FILE
 bs3kit-common-64_SOURCES  = $(VBOX_BS3KIT_COMMON_SOURCES) \
 	bs3-cmn-PagingMapRamAbove4GForLM.c \
 	bs3-cmn-SwitchHlpConvFlatRetToRetfProtMode.asm \
+	bs3-c64-Syscall64Generic.asm \
 	bs3-c64-Trap64Generic.asm \
 	../../../Runtime/common/asm/ASMGetIDTR.asm \
 	../../../Runtime/common/asm/ASMSetIDTR.asm \
