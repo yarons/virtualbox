@@ -1,4 +1,4 @@
-/* $Id: RecordingStream.cpp 105095 2024-07-02 10:06:48Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingStream.cpp 105096 2024-07-02 10:44:20Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording stream code.
  */
@@ -643,7 +643,7 @@ int RecordingStream::SendVideoFrame(PRECORDINGVIDEOFRAME pVideoFrame, uint64_t m
         offDst += cbDstBytesPerLine;
         offSrc += pVideoFrame->Info.uBytesPerLine;
     }
-    pFrame->u.Video.Info.uBytesPerLine = cbDstBytesPerLine;
+    pFrame->u.Video.Info.uBytesPerLine = (uint32_t)cbDstBytesPerLine;
 
     pFrame->enmType     = RECORDINGFRAME_TYPE_VIDEO;
     pFrame->msTimestamp = msTimestamp;
