@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 105121 2024-07-03 17:03:52Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.cpp 105122 2024-07-03 17:12:22Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -1776,6 +1776,8 @@ bool UICommon::isDebuggerWorker(int *piDbgCfgVar, const char *pszExtraDataName) 
     return (*piDbgCfgVar & UICOMMON_DBG_CFG_VAR_MASK) == UICOMMON_DBG_CFG_VAR_TRUE;
 }
 
+#endif /* VBOX_WITH_DEBUGGER_GUI */
+
 #ifdef RT_OS_LINUX
 /* static */
 void UICommon::checkForWrongUSBMounted()
@@ -1804,5 +1806,3 @@ void UICommon::checkForWrongUSBMounted()
     msgCenter().warnAboutWrongUSBMounted();
 }
 #endif /* RT_OS_LINUX */
-
-#endif /* VBOX_WITH_DEBUGGER_GUI */
