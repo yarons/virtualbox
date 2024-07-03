@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 105076 2024-06-28 18:35:41Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 105123 2024-07-03 17:19:44Z sergey.dubov@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -2203,7 +2203,7 @@ typedef struct IEMCPU
     STAMCOUNTER             StatMemBounceBufferCrossPage;
     STAMCOUNTER             StatMemBounceBufferMapPhys;
     /** @} */
-                                        
+
     uint64_t                au64Padding[5];
     /** @} */
 
