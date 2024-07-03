@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 105107 2024-07-03 09:28:18Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 105111 2024-07-03 10:09:15Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the dxvk-native library.
 #
@@ -252,6 +252,8 @@ VBox-DxVkNativeDxVk_VBOX_SHADERS := \
 	$(PATH_SUB_CURRENT)/src/dxvk/shaders/dxvk_pack_d32s8.comp \
 	$(PATH_SUB_CURRENT)/src/dxvk/shaders/dxvk_clear_image3d_f.comp \
 	$(PATH_SUB_CURRENT)/src/dxvk/shaders/dxvk_pack_d24s8.comp \
+	\
+	$(PATH_SUB_CURRENT)/src/dxvk/shaders/dxvk_fullscreen_geom.geom \
 	\
 	$(PATH_SUB_CURRENT)/src/dxvk/shaders/dxvk_present_vert.vert \
 	$(PATH_SUB_CURRENT)/src/dxvk/shaders/dxvk_fullscreen_vert.vert \
