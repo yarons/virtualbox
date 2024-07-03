@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 105121 2024-07-03 17:03:52Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.h 105128 2024-07-03 22:45:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -40,6 +40,11 @@
 #include "UILibraryDefs.h"
 #ifdef VBOX_WS_NIX
 # include "VBoxUtils-nix.h"
+#endif
+
+/* Other VBox includes: */
+#ifdef VBOX_WITH_DEBUGGER_GUI
+# include <iprt/types.h> /* for RTLDRMOD */
 #endif
 
 /* Forward declarations: */
