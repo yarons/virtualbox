@@ -1,4 +1,4 @@
-/* $Id: VRDEServerImpl.h 105124 2024-07-03 17:50:46Z samantha.scholz@oracle.com $ */
+/* $Id: VRDEServerImpl.h 105127 2024-07-03 22:18:33Z samantha.scholz@oracle.com $ */
 
 /** @file
  *
@@ -59,8 +59,8 @@ public:
     // public methods only for internal purposes
     HRESULT i_loadSettings(const settings::VRDESettings &data);
     HRESULT i_saveSettings(settings::VRDESettings &data);
-    int certificateRepair(BOOL &certificateGenerated);
     int i_generateServerCertificate();
+    HRESULT i_certificateRepair(BOOL &certificateGenerated);
     void i_rollback();
     void i_commit();
     void i_copyFrom(VRDEServer *aThat);
