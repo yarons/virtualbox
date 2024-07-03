@@ -1,10 +1,10 @@
-/* $Id: UIGuestOSType.h 103906 2024-03-18 18:37:37Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestOSType.h 105119 2024-07-03 16:04:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSType class declaration.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -38,6 +38,19 @@
 
 /* COM includes: */
 #include "CGuestOSType.h"
+
+/** Holds various Guest OS type helper stuff. */
+namespace UIGuestOSTypeHelpers
+{
+#ifdef VBOX_WITH_3D_ACCELERATION
+    /** Returns whether guest OS type with passed @a strGuestOSTypeId is WDDM compatible. */
+    SHARED_LIBRARY_STUFF bool isWddmCompatibleOsType(const QString &strGuestOSTypeId);
+#endif
+
+    /** Returns the required video memory in bytes for the current desktop
+      * resolution at maximum possible screen depth in bpp. */
+    SHARED_LIBRARY_STUFF quint64 requiredVideoMemory(const QString &strGuestOSTypeId, int cMonitors = 1);
+}
 
 /** Represents guest OS family info. */
 struct UIFamilyInfo

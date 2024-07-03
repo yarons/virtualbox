@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 105104 2024-07-02 17:55:17Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.h 105119 2024-07-03 16:04:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -41,12 +41,6 @@
 #ifdef VBOX_WS_NIX
 # include "VBoxUtils-nix.h"
 #endif
-
-/* COM includes: */
-#include "KGraphicsControllerType.h"
-
-/* Other VBox includes: */
-#include <iprt/types.h>
 
 /* Forward declarations: */
 class QSessionManager;
@@ -305,18 +299,6 @@ public:
      * @{ */
         /** Assigns minimum @a pSpinBox to correspond to @a cCount digits. */
         static void setMinimumWidthAccordingSymbolCount(QSpinBox *pSpinBox, int cCount);
-    /** @} */
-
-    /** @name Display stuff.
-     * @{ */
-#ifdef VBOX_WITH_3D_ACCELERATION
-        /** Returns whether guest OS type with passed @a strGuestOSTypeId is WDDM compatible. */
-        static bool isWddmCompatibleOsType(const QString &strGuestOSTypeId);
-#endif
-        /** Returns the required video memory in bytes for the current desktop
-          * resolution at maximum possible screen depth in bpp. */
-        static quint64 requiredVideoMemory(const QString &strGuestOSTypeId, int cMonitors = 1);
-        KGraphicsControllerType getRecommendedGraphicsController(const QString &strGuestOSTypeId) const;
     /** @} */
 
     /** @name Thread stuff.
