@@ -1,10 +1,10 @@
-/* $Id: UIRecordingSettingsEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIRecordingSettingsEditor.cpp 105120 2024-07-03 16:15:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIRecordingSettingsEditor class implementation.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -39,6 +39,7 @@
 #include "UIConverter.h"
 #include "UIFilePathSelector.h"
 #include "UIFilmContainer.h"
+#include "UIGlobalSession.h"
 #include "UIRecordingSettingsEditor.h"
 
 /* COM includes: */
@@ -842,7 +843,7 @@ void UIRecordingSettingsEditor::populateComboMode()
         m_pComboMode->clear();
 
         /* Load currently supported recording features: */
-        const int iSupportedFlag = uiCommon().supportedRecordingFeatures();
+        const int iSupportedFlag = gpGlobalSession->supportedRecordingFeatures();
         m_supportedValues.clear();
         if (!iSupportedFlag)
             m_supportedValues << UISettingsDefs::RecordingMode_None;

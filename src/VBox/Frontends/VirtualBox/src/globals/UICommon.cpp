@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 105119 2024-07-03 16:04:01Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.cpp 105120 2024-07-03 16:15:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -86,7 +86,6 @@
 #include "CHostUSBDevice.h"
 #include "CHostVideoInputDevice.h"
 #include "CMachine.h"
-#include "CSystemProperties.h"
 #include "CUSBDevice.h"
 #include "CUSBDeviceFilter.h"
 
@@ -1324,15 +1323,6 @@ QString UICommon::usbToolTip(const CHostVideoInputDevice &comWebcam)
         records << strPath;
 
     return records.join("<br>");
-}
-
-int UICommon::supportedRecordingFeatures() const
-{
-    int iSupportedFlag = 0;
-    CSystemProperties comProperties = gpGlobalSession->virtualBox().GetSystemProperties();
-    foreach (const KRecordingFeature &enmFeature, comProperties.GetSupportedRecordingFeatures())
-        iSupportedFlag |= enmFeature;
-    return iSupportedFlag;
 }
 
 /* static */

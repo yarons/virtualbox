@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSession.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGlobalSession.h 105120 2024-07-03 16:15:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSession class declaration.
  */
@@ -93,6 +93,12 @@ public:
     /** @name Guest OS type stuff.
      * @{ */
         const UIGuestOSTypeManager &guestOSTypeManager();
+    /** @} */
+
+    /** @name Recording stuff.
+     * @{ */
+        /** Returns supported recording features flag. */
+        int supportedRecordingFeatures() const;
     /** @} */
 
 protected slots:
