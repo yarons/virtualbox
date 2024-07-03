@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 104890 2024-06-12 12:28:21Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 105118 2024-07-03 14:22:58Z alexander.eichner@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -55,7 +55,14 @@
 #if defined(Status)
 #undef Status
 #endif
+#ifndef RT_OS_WINDOWS
+# pragma GCC diagnostic push
+# pragma GCC diagnostic ignored "-Wpedantic"
+#endif
 #include <d3d11_1.h>
+#ifndef RT_OS_WINDOWS
+# pragma GCC diagnostic pop
+#endif
 
 
 #ifdef RT_OS_WINDOWS
