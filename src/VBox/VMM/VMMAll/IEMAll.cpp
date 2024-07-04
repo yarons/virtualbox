@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 105094 2024-07-02 09:33:52Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 105137 2024-07-04 09:12:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -4302,8 +4302,8 @@ iemRaiseXcptOrInt(PVMCPUCC    pVCpu,
     { /* ignore */ }
     else
     {
-        Log(("iemRaiseXcptOrIntInLongMode: Converting pending %#x debug events to a silent one (intel hack)\n",
-             u8Vector, pVCpu->cpum.GstCtx.eflags.uBoth & CPUMCTX_DBG_HIT_DRX_MASK));
+        Log(("iemRaiseXcptOrInt: Converting pending %#x debug events to a silent one (intel hack); vec=%#x\n",
+             pVCpu->cpum.GstCtx.eflags.uBoth & CPUMCTX_DBG_HIT_DRX_MASK, u8Vector));
         pVCpu->cpum.GstCtx.eflags.uBoth = (pVCpu->cpum.GstCtx.eflags.uBoth & ~CPUMCTX_DBG_HIT_DRX_MASK)
                                         | CPUMCTX_DBG_HIT_DRX_SILENT;
     }
