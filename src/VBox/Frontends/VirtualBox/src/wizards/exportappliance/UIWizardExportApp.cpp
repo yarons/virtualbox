@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.cpp 103961 2024-03-20 14:34:36Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardExportApp.cpp 105152 2024-07-04 18:42:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportApp class implementation.
  */
@@ -32,7 +32,7 @@
 
 /* GUI includes: */
 #include "UIAddDiskEncryptionPasswordDialog.h"
-#include "UICommon.h"
+#include "UICloudMachineManager.h"
 #include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
 #include "UINotificationCenter.h"
@@ -219,7 +219,7 @@ bool UIWizardExportApp::createCloudVM()
                                                                                                            format(),
                                                                                                            profileName());
     connect(pNotification, &UINotificationProgressCloudMachineCreate::sigCloudMachineCreated,
-            &uiCommon(), &UICommon::sltHandleCloudMachineAdded);
+            gpCloudMachineManager, &UICloudMachineManager::sltHandleCloudMachineAdded);
     gpNotificationCenter->append(pNotification);
 
     /* Return result: */

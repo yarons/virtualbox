@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 105081 2024-07-01 15:38:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserAbstractModel.cpp 105152 2024-07-04 18:42:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -30,6 +30,7 @@
 #include <QThread>
 
 /* GUI includes: */
+#include "UICloudMachineManager.h"
 #include "UICommon.h"
 #include "UIChooser.h"
 #include "UIChooserAbstractModel.h"
@@ -1074,9 +1075,11 @@ void UIChooserAbstractModel::prepareConnections()
             this, &UIChooserAbstractModel::sltCommitData);
     connect(&uiCommon(), &UICommon::sigAskToDetachCOM,
             this, &UIChooserAbstractModel::sltDetachCOM);
-    connect(&uiCommon(), &UICommon::sigCloudMachineUnregistered,
+
+    /* UICloudMachineManager connections: */
+    connect(gpCloudMachineManager, &UICloudMachineManager::sigCloudMachineUnregistered,
             this, &UIChooserAbstractModel::sltCloudMachineUnregistered);
-    connect(&uiCommon(), &UICommon::sigCloudMachineRegistered,
+    connect(gpCloudMachineManager, &UICloudMachineManager::sigCloudMachineRegistered,
             this, &UIChooserAbstractModel::sltCloudMachineRegistered);
 
     /* Global connections: */

@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 105150 2024-07-04 15:53:45Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.cpp 105152 2024-07-04 18:42:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -82,7 +82,6 @@
 #endif
 
 /* COM includes: */
-#include "CCloudMachine.h"
 #include "CMachine.h"
 
 /* Other VBox includes: */
@@ -1138,20 +1137,6 @@ void UICommon::deletePidfile()
 
 #endif /* VBOX_GUI_WITH_PIDFILE */
 
-void UICommon::notifyCloudMachineUnregistered(const QString &strProviderShortName,
-                                              const QString &strProfileName,
-                                              const QUuid &uId)
-{
-    emit sigCloudMachineUnregistered(strProviderShortName, strProfileName, uId);
-}
-
-void UICommon::notifyCloudMachineRegistered(const QString &strProviderShortName,
-                                            const QString &strProfileName,
-                                            const CCloudMachine &comMachine)
-{
-    emit sigCloudMachineRegistered(strProviderShortName, strProfileName, comMachine);
-}
-
 /* static */
 QString UICommon::helpFile()
 {
@@ -1370,16 +1355,6 @@ bool UICommon::openURL(const QString &strUrl) const
         UINotificationMessage::cannotOpenURL(strUrl);
 
     return fResult;
-}
-
-void UICommon::sltHandleCloudMachineAdded(const QString &strProviderShortName,
-                                          const QString &strProfileName,
-                                          const CCloudMachine &comMachine)
-{
-    /* Make sure we cached added cloud VM in GUI: */
-    notifyCloudMachineRegistered(strProviderShortName,
-                                 strProfileName,
-                                 comMachine);
 }
 
 bool UICommon::eventFilter(QObject *pObject, QEvent *pEvent)

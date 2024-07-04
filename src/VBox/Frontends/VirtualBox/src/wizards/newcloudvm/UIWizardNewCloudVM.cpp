@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVM.cpp 103961 2024-03-20 14:34:36Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewCloudVM.cpp 105152 2024-07-04 18:42:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVM class implementation.
  */
@@ -26,7 +26,7 @@
  */
 
 /* GUI includes: */
-#include "UICommon.h"
+#include "UICloudMachineManager.h"
 #include "UINotificationCenter.h"
 #include "UIWizardNewCloudVM.h"
 #include "UIWizardNewCloudVMPageSource.h"
@@ -96,7 +96,7 @@ bool UIWizardNewCloudVM::createCloudVM()
                                                                                                            providerShortName(),
                                                                                                            profileName());
     connect(pNotification, &UINotificationProgressCloudMachineCreate::sigCloudMachineCreated,
-            &uiCommon(), &UICommon::sltHandleCloudMachineAdded);
+            gpCloudMachineManager, &UICloudMachineManager::sltHandleCloudMachineAdded);
     gpNotificationCenter->append(pNotification);
 
     /* Positive: */
