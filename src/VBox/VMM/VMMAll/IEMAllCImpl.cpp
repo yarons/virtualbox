@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp 105125 2024-07-03 20:07:48Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImpl.cpp 105148 2024-07-04 12:22:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -4036,7 +4036,7 @@ IEM_CIMPL_DEF_0(iemCImpl_syscall)
     { /* ignore */ }
     else
     {
-        Log(("iemCImpl_syscall: Converting pending debug events to a silent one (intel hack)\n",
+        Log(("iemCImpl_syscall: Converting pending %#x debug events to a silent one (intel hack)\n",
              pVCpu->cpum.GstCtx.eflags.uBoth & CPUMCTX_DBG_HIT_DRX_MASK));
         pVCpu->cpum.GstCtx.eflags.uBoth = (pVCpu->cpum.GstCtx.eflags.uBoth & ~CPUMCTX_DBG_HIT_DRX_MASK)
                                         | CPUMCTX_DBG_HIT_DRX_SILENT;
