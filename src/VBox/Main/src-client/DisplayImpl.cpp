@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 105095 2024-07-02 10:06:48Z andreas.loeffler@oracle.com $ */
+/* $Id: DisplayImpl.cpp 105135 2024-07-04 09:01:06Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2332,13 +2332,19 @@ int Display::i_recordingScreenUpdate(unsigned uScreenId, uint8_t *pauFramebuffer
  */
 int Display::i_recordingScreenUpdate(unsigned uScreenId, uint32_t x, uint32_t y, uint32_t w, uint32_t h)
 {
+    RecordingContext *pCtx = Recording.pCtx;
+
+    if (!pCtx->IsFeatureEnabled(uScreenId, RecordingFeature_Video))
+        return VINF_SUCCESS;
+
     BYTE *pbAddress;
     ULONG ulWidth;
     ULONG ulHeight;
     ULONG ulBitsPerPixel;
     ULONG ulBytesPerLine;
 
-    if (uScreenId == VBOX_VIDEO_PRIMARY_SCREEN) /* Take a shortcut for the primary screen. */
+    if (   uScreenId == VBOX_VIDEO_PRIMARY_SCREEN /* Take a shortcut for the primary screen. */
+        && mpDrv)
     {
         pbAddress      = mpDrv->IConnector.pbData;
         ulWidth        = mpDrv->IConnector.cx;
@@ -2359,12 +2365,6 @@ int Display::i_recordingScreenUpdate(unsigned uScreenId, uint32_t x, uint32_t y,
 
     Log2Func(("uScreenId=%u, pbAddress=%p, ulWidth=%RU32, ulHeight=%RU32, ulBitsPerPixel=%RU32\n",
               uScreenId, pbAddress, ulWidth, ulHeight, ulBitsPerPixel));
-
-    AssertPtr(pbAddress);
-    Assert(ulWidth);
-    Assert(ulHeight);
-    Assert(ulBitsPerPixel);
-    Assert(ulBytesPerLine);
 
     return i_recordingScreenUpdate(uScreenId,
                                    pbAddress, ulHeight * ulBytesPerLine,
