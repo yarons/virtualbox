@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerTlbLookup.h 105036 2024-06-26 22:33:48Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompilerTlbLookup.h 105167 2024-07-05 21:33:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler TLB Lookup Code Emitter.
  */
@@ -328,7 +328,7 @@ DECLASM(void) iemNativeHlpAsmSafeWrapCheckTlbLookup(void);
 template<bool const a_fDataTlb, bool const a_fNoReturn = false>
 DECL_INLINE_THROW(uint32_t)
 iemNativeEmitTlbLookup(PIEMRECOMPILERSTATE pReNative, uint32_t off, IEMNATIVEEMITTLBSTATE const * const pTlbState,
-                       uint8_t iSegReg, uint8_t cbMem, uint8_t fAlignMaskAndCtl, uint32_t fAccess,
+                       uint8_t iSegReg, uint8_t cbMem, uint32_t fAlignMaskAndCtl, uint32_t fAccess,
                        uint32_t idxLabelTlbLookup, uint32_t idxLabelTlbMiss, uint8_t idxRegMemResult,
                        uint8_t offDisp = 0)
 {
