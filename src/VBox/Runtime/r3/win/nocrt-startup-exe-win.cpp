@@ -1,4 +1,4 @@
-/* $Id: nocrt-startup-exe-win.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: nocrt-startup-exe-win.cpp 105155 2024-07-05 02:44:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - No-CRT - Windows EXE startup code.
  *
@@ -81,7 +81,11 @@ static int rtTerminateProcess(int32_t rcExit, bool fDoAtExit)
      * Terminate.
      */
     for (;;)
+#if 1 /* Using NtTerminateProcess triggers heuristics in some annoying AV scanner.  */
+        TerminateProcess(NtCurrentProcess(), rcExit);
+#else
         NtTerminateProcess(NtCurrentProcess(), rcExit);
+#endif
 }
 
 

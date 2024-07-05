@@ -1,4 +1,4 @@
-/* $Id: nocrt-startup-common-win.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: nocrt-startup-common-win.cpp 105155 2024-07-05 02:44:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - No-CRT - Common Windows startup code.
  */
@@ -147,18 +147,33 @@ void rtVccWinInitBssOnNt3(void *pvImageBase)
                     memset(pbToZero, 0, cbToZero);
                 else
                 {
+# if 1              /* This dynamic stupidity is because of stupid AV heuristics. */
+                    static decltype(NtProtectVirtualMemory) *s_pfnNtProtectVirtualMemory = NULL;
+                    if (!s_pfnNtProtectVirtualMemory)
+                        s_pfnNtProtectVirtualMemory
+                            = (decltype(NtProtectVirtualMemory) *)GetProcAddress(GetModuleHandleW(L"ntdll.dll"),
+                                                                                 "NtProtectVirtualMemory");
+                    if (!s_pfnNtProtectVirtualMemory)
+                    {
+                        RT_BREAKPOINT();
+                        continue;
+                    }
+# else
+#  define s_pfnNtProtectVirtualMemory NtProtectVirtualMemory
+# endif
+
                     /* The section is not writable, so temporarily make it writable. */
                     PVOID pvAligned = pbToZero - ((uintptr_t)pbToZero & PAGE_OFFSET_MASK);
                     ULONG cbAligned = RT_ALIGN_32(cbToZero + ((uintptr_t)pbToZero & PAGE_OFFSET_MASK), PAGE_SIZE);
                     ULONG fNewProt  = paSHdrs[i].Characteristics & IMAGE_SCN_MEM_EXECUTE
                                     ? PAGE_EXECUTE_READWRITE : PAGE_READWRITE;
                     ULONG fOldProt  = fNewProt;
-                    NTSTATUS rcNt = NtProtectVirtualMemory(NtCurrentProcess(), &pvAligned, &cbAligned, fNewProt, &fOldProt);
+                    NTSTATUS rcNt = s_pfnNtProtectVirtualMemory(NtCurrentProcess(), &pvAligned, &cbAligned, fNewProt, &fOldProt);
                     if (NT_SUCCESS(rcNt))
                     {
                         memset(pbToZero, 0, cbToZero);
 
-                        rcNt = NtProtectVirtualMemory(NtCurrentProcess(), &pvAligned, &cbAligned, fOldProt, &fNewProt);
+                        rcNt = s_pfnNtProtectVirtualMemory(NtCurrentProcess(), &pvAligned, &cbAligned, fOldProt, &fNewProt);
                     }
                     else
                         RT_BREAKPOINT();
