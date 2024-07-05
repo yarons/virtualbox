@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetFltInternal.h 105163 2024-07-05 14:26:46Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -202,6 +202,8 @@ typedef struct VBOXNETFLTINS
             struct sk_buff_head   XmitQueue;
             struct work_struct    XmitTask;
 #  endif
+            /** Unique identifier of network namespace of device to attach to. */
+            uint32_t uNamespaceInode;
             /** @} */
 # elif defined(RT_OS_SOLARIS)
             /** @name Solaris instance data.

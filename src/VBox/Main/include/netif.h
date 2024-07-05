@@ -1,4 +1,4 @@
-/* $Id: netif.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: netif.h 105163 2024-07-05 14:26:46Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * Main - Network Interfaces.
  */
@@ -42,6 +42,13 @@
 # include <arpa/inet.h>
 # include <stdio.h>
 #endif /* !RT_OS_WINDOWS */
+
+#ifdef RT_OS_LINUX
+# include <linux/version.h>
+# if LINUX_VERSION_CODE >= KERNEL_VERSION(3,10,0) /* proc_ns introduced */
+#  define VBOXNETFLT_LINUX_NAMESPACE_SUPPORT
+# endif
+#endif
 
 #define VBOXNET_IPV4ADDR_DEFAULT      0x0138A8C0  /* 192.168.56.1 */
 #define VBOXNET_IPV4MASK_DEFAULT      "255.255.255.0"

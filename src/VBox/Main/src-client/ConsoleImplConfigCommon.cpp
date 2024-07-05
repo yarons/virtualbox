@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigCommon.cpp 104946 2024-06-17 17:30:00Z andreas.loeffler@oracle.com $ */
+/* $Id: ConsoleImplConfigCommon.cpp 105163 2024-07-05 14:26:46Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2659,6 +2659,17 @@ int Console::i_configNetwork(const char *pszDevice,
                         close(iSock);
                     }
                 }
+#  ifdef VBOXNETFLT_LINUX_NAMESPACE_SUPPORT
+                RTUUID IfaceUuid;
+                Bstr IfId;
+                hrc = hostInterface->COMGETTER(Id)(IfId.asOutParam());                      H();
+                vrc = RTUuidFromUtf16(&IfaceUuid, IfId.raw());
+                AssertRCReturn(vrc, vrc);
+                char szTrunkNameWithNamespace[INTNET_MAX_TRUNK_NAME];
+                RTStrPrintf(szTrunkNameWithNamespace, sizeof(szTrunkNameWithNamespace), "%u/%s",
+                            IfaceUuid.au32[0], pszTrunk);
+                pszTrunk = szTrunkNameWithNamespace;
+#  endif
 
 # else
 #  error "PORTME (VBOX_WITH_NETFLT)"
