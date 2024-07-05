@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98416 2023-02-01 16:25:17Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 105160 2024-07-05 12:02:04Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for VBoxGINA.
 #
@@ -41,6 +41,7 @@ VBoxGINA_LIBS     = \
 	$(VBOX_LIB_IPRT_GUEST_R3) \
 	$(VBOX_LIB_VBGL_R3)
 VBoxGINA_VBOX_IMPORT_CHECKER.win.x86 = nt4 # GINA was introduced with nt351, but we don't have exports for that yet.
+VBoxGINA_VBOX_SET_PE_VERSION.win.x86 = nt351
 
 # Include testcase(s).
 include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
