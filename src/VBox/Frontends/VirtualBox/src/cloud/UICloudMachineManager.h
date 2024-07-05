@@ -1,4 +1,4 @@
-/* $Id: UICloudMachineManager.h 105158 2024-07-05 11:30:03Z sergey.dubov@oracle.com $ */
+/* $Id: UICloudMachineManager.h 105159 2024-07-05 11:42:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudMachineManager class declaration.
  */
@@ -33,6 +33,9 @@
 
 /* Qt includes: */
 #include <QObject>
+
+/* Other VBox includes: */
+#include <iprt/cdefs.h> // for RT_OVERRIDE / RT_FINAL stuff
 
 /* Forward declarations: */
 class QString;
