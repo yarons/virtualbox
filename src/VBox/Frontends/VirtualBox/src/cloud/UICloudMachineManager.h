@@ -1,4 +1,4 @@
-/* $Id: UICloudMachineManager.h 105152 2024-07-04 18:42:00Z sergey.dubov@oracle.com $ */
+/* $Id: UICloudMachineManager.h 105158 2024-07-05 11:30:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudMachineManager class declaration.
  */
@@ -34,16 +34,13 @@
 /* Qt includes: */
 #include <QObject>
 
-/* GUI includes: */
-#include "UILibraryDefs.h"
-
 /* Forward declarations: */
 class QString;
 class QUuid;
 class CCloudMachine;
 
 /** QObject subclass processing various cloud signals and handlers. */
-class SHARED_LIBRARY_STUFF UICloudMachineManager : public QObject
+class UICloudMachineManager : public QObject
 {
     Q_OBJECT;
 
