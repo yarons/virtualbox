@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstTwoByte0f.cpp.h 105172 2024-07-07 12:59:59Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllInstTwoByte0f.cpp.h 105173 2024-07-07 13:04:51Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -5871,7 +5871,7 @@ FNIEMOP_DEF(iemOp_packuswb_Pq_Qq)
 FNIEMOP_DEF(iemOp_packuswb_Vx_Wx)
 {
     IEMOP_MNEMONIC2(RM, PACKUSWB, packuswb, Vx, Wx, DISOPTYPE_HARMLESS | DISOPTYPE_X86_SSE, 0);
-    return FNIEMOP_CALL_1(iemOpCommonSse2Opt_FullFull_To_Full, iemAImpl_packuswb_u128);
+    SSE2_OPT_BODY_FullFull_To_Full(packuswb, iemAImpl_packuswb_u128, RT_ARCH_VAL_AMD64 | RT_ARCH_VAL_ARM64, RT_ARCH_VAL_AMD64 | RT_ARCH_VAL_ARM64);
 }
 
 
