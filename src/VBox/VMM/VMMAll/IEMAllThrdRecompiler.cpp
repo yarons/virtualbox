@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdRecompiler.cpp 104877 2024-06-10 15:15:11Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdRecompiler.cpp 105178 2024-07-08 10:19:54Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation.
  *
@@ -1104,6 +1104,7 @@ DECL_FORCE_INLINE(PIEMTB) iemTbAllocatorAllocCore(PIEMTBALLOCATOR const pTbAlloc
         AssertLogRelReturn(idxTb >= 0, NULL);
     }
     Assert((uint32_t)idxTb < pTbAllocator->cTotalTbs);
+    pTbAllocator->iStartHint = idxTb;
     ASMBitSet(pTbAllocator->bmAllocated, idxTb);
 
     /** @todo shift/mask optimization for power of two IEMTB sizes. */
