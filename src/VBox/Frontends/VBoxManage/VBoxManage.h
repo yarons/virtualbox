@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxManage.h 105194 2024-07-08 16:33:52Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -155,7 +155,12 @@ HRESULT     errorArgumentHr(const char *pszFormat, ...) RT_IPRT_FORMAT_ATTR(1, 2
 # define SHOW_PROGRESS_NONE     0
 # define SHOW_PROGRESS_DESC     RT_BIT_32(0)
 # define SHOW_PROGRESS          RT_BIT_32(1)
+/** Shows detailed information of the progress.
+ *  Mutually exclusive with SHOW_PROGRESS_OPS. */
 # define SHOW_PROGRESS_DETAILS  RT_BIT_32(2)
+/** Only shows the operation descriptions without other details.
+ *  Mutually exclusive with SHOW_PROGRESS_DETAILS. */
+# define SHOW_PROGRESS_OPS      RT_BIT_32(3)
 HRESULT showProgress(ComPtr<IProgress> progress, uint32_t fFlags = SHOW_PROGRESS);
 
 /* VBoxManage.cpp */
