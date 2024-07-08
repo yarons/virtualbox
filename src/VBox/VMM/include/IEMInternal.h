@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 105179 2024-07-08 10:38:14Z alexander.eichner@oracle.com $ */
+/* $Id: IEMInternal.h 105180 2024-07-08 10:38:39Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -1489,7 +1489,7 @@ typedef struct IEMTBALLOCATOR
     /** Where to start pruning native TBs from when we're out of executable memory.
      *  See iemTbAllocatorFreeupNativeSpace for details. */
     uint32_t        iPruneNativeFrom;
-    /** Index into IEMTBALLOCATOR::aFreeCache were the next freed TB can be stored
+    /** Index into IEMTBALLOCATOR::apTbFreeCache were the next freed TB can be stored
      * (0 means the cache is empty, 32 the cache is full). */
     uint32_t        idxTbCacheFree;
 
