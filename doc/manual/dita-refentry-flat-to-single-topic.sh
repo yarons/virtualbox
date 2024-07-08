@@ -1,5 +1,5 @@
 #!/usr/bin/env kmk_ash
-# $Id: dita-refentry-flat-to-single-topic.sh 105189 2024-07-08 14:00:44Z klaus.espenlaub@oracle.com $
+# $Id: dita-refentry-flat-to-single-topic.sh 105198 2024-07-08 18:31:05Z klaus.espenlaub@oracle.com $
 ## @file
 # Helper Script for splitting up a convert manpage into separate topic
 # files (named by @id).
@@ -92,7 +92,7 @@ do
         --stringparam g_idTopic "${MY_ID}" \
         --output "${MY_OUTPUT_DIR}/${MY_ID}.dita" "${MY_XSLT_TO_SINGLE_TOPIC}" "${MY_INPUT_FILE}"
     echo "    ${MY_OUTPUT_DIR}/${MY_ID}.dita \\" >> "${MY_GENERATED_KMK}"
-
 done
+
 echo "" >> "${MY_GENERATED_KMK}"
 exit 0
