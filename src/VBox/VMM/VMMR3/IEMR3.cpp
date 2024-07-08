@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 105036 2024-06-26 22:33:48Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMR3.cpp 105177 2024-07-08 09:29:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -1038,7 +1038,7 @@ static void iemR3InfoTlbPrintHeader(PVMCPU pVCpu, PCDBGFINFOHLP pHlp, IEMTLB con
 /** Worker for iemR3InfoTlbPrintSlots and iemR3InfoTlbPrintAddress. */
 static void iemR3InfoTlbPrintSlot(PCDBGFINFOHLP pHlp, IEMTLB const *pTlb, IEMTLBENTRY const *pTlbe, uint32_t uSlot)
 {
-    pHlp->pfnPrintf(pHlp, "%02x: %s %#018RX64 -> %RGp / %p / %#05x %s%s%s%s/%s%s%s/%s %s\n",
+    pHlp->pfnPrintf(pHlp, "%02x: %s %#018RX64 -> %RGp / %p / %#05x %s%s%s%s%s/%s%s%s/%s %s\n",
                     uSlot,
                     (pTlbe->uTag & IEMTLB_REVISION_MASK) == pTlb->uTlbRevision ? "valid  "
                     : (pTlbe->uTag & IEMTLB_REVISION_MASK) == 0                ? "empty  "
@@ -1050,6 +1050,7 @@ static void iemR3InfoTlbPrintSlot(PCDBGFINFOHLP pHlp, IEMTLB const *pTlb, IEMTLB
                     pTlbe->fFlagsAndPhysRev & IEMTLBE_F_PT_NO_WRITE     ? "RO" : "RW",
                     pTlbe->fFlagsAndPhysRev & IEMTLBE_F_PT_NO_ACCESSED  ? "-"  : "A",
                     pTlbe->fFlagsAndPhysRev & IEMTLBE_F_PT_NO_DIRTY     ? "-"  : "D",
+                    pTlbe->fFlagsAndPhysRev & IEMTLBE_F_PT_LARGE_PAGE   ? "-"  : "S",
                     pTlbe->fFlagsAndPhysRev & IEMTLBE_F_PG_NO_WRITE     ? "-"  : "w",
                     pTlbe->fFlagsAndPhysRev & IEMTLBE_F_PG_NO_READ      ? "-"  : "r",
                     pTlbe->fFlagsAndPhysRev & IEMTLBE_F_PG_UNASSIGNED   ? "U"  : "-",
