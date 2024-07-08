@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 105177 2024-07-08 09:29:14Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 105179 2024-07-08 10:38:14Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -1489,7 +1489,9 @@ typedef struct IEMTBALLOCATOR
     /** Where to start pruning native TBs from when we're out of executable memory.
      *  See iemTbAllocatorFreeupNativeSpace for details. */
     uint32_t        iPruneNativeFrom;
-    uint32_t        uPadding;
+    /** Index into IEMTBALLOCATOR::aFreeCache were the next freed TB can be stored
+     * (0 means the cache is empty, 32 the cache is full). */
+    uint32_t        idxTbCacheFree;
 
     /** Statistics: Number of TB allocation calls. */
     STAMCOUNTER     StatAllocs;
@@ -1502,6 +1504,8 @@ typedef struct IEMTBALLOCATOR
 
     /** The delayed free list (see iemTbAlloctorScheduleForFree). */
     PIEMTB          pDelayedFreeHead;
+    /* Cache of recently freed TBs for immediate consumption by the allocator. */
+    PIEMTB          apTbFreeCache[32];
 
     /** Allocation chunks. */
     IEMTBCHUNK      aChunks[256];
