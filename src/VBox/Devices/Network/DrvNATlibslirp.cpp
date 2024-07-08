@@ -1,4 +1,4 @@
-/* $Id: DrvNATlibslirp.cpp 105133 2024-07-04 08:56:03Z alexander.eichner@oracle.com $ */
+/* $Id: DrvNATlibslirp.cpp 105201 2024-07-08 19:36:36Z jack.doherty@oracle.com $ */
 /** @file
  * DrvNATlibslirp - NATlibslirp network transport driver.
  */
@@ -1016,6 +1016,9 @@ static void slirpCheckTimeout(void *opaque)
 static DECLCALLBACK(ssize_t) slirpSendPacketCb(const void *pBuf, size_t cb, void *opaque /* PDRVNAT */)
 {
     char *pNewBuf = (char *)RTMemAlloc(cb); /** @todo r=aeichner Missing check whether memory was actually allocated */
+    if (pNewBuf == NULL)
+        return -1;
+
     memcpy(pNewBuf, pBuf, cb);
 
     PDRVNAT pThis = (PDRVNAT)opaque;
