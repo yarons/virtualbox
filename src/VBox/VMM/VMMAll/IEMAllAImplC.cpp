@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 105187 2024-07-08 13:46:15Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 105188 2024-07-08 13:58:21Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -15631,6 +15631,7 @@ DECLINLINE(uint32_t) iemSseSoftStateAndR32ToMxcsrAndIprtResultNoFz(softfloat_sta
 
     return fMxcsr | (fXcpt & X86_MXCSR_XCPT_FLAGS);
 }
+#endif
 
 
 /**
@@ -15669,6 +15670,7 @@ DECLINLINE(uint32_t) iemSseSoftStateAndR64ToMxcsrAndIprtResult(softfloat_state_t
 }
 
 
+#ifdef IEM_WITHOUT_ASSEMBLY
 /**
  * Helper for transfering exception to MXCSR and setting the result value
  * accordingly - ignores Flush-to-Zero.
