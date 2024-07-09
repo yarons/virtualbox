@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 105240 2024-07-09 13:50:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsGenerator.cpp 105241 2024-07-09 15:07:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -576,7 +576,7 @@ UITextTable UIDetailsGenerator::generateMachineInformationStorage(CMachine &comM
     foreach (const CStorageController &comController, comMachine.GetStorageControllers())
     {
         /* Add controller information: */
-        const QString strControllerName = QApplication::translate("UIMachineSettingsStorage", "Controller: %1");
+        const QString strControllerName = QApplication::translate("UIStorageSettingsEditor", "Controller: %1");
         table << UITextTableLine(strControllerName.arg(comController.GetName()), QString());
         /* Populate map (its sorted!): */
         QMap<StorageSlot, QString> attachmentsMap;

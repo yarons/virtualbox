@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 104902 2024-06-12 16:45:56Z sergey.dubov@oracle.com $ */
+/* $Id: UISnapshotDetailsWidget.cpp 105241 2024-07-09 15:07:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -1898,7 +1898,7 @@ QPair<QStringList, QList<QMap<QString, QString> > > UISnapshotDetailsWidget::sto
     foreach (const CStorageController &comController, comMachine.GetStorageControllers())
     {
         /* Append controller information: */
-        aControllers << QApplication::translate("UIMachineSettingsStorage", "Controller: %1").arg(comController.GetName());
+        aControllers << QApplication::translate("UIStorageSettingsEditor", "Controller: %1").arg(comController.GetName());
 
         /* Prepare attachment information: */
         QMap<QString, QString> mapAttachments;
