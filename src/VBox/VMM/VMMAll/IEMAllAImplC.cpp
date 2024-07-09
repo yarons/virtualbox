@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 105221 2024-07-09 09:16:35Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 105222 2024-07-09 09:22:56Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -16156,7 +16156,7 @@ IEM_DECL_IMPL_DEF(uint32_t, iemAImpl_vmulpd_u256_fallback,(uint32_t uMxCsrIn, PX
 
 
 /**
- * MULSD
+ * [V]MULSD
  */
 #ifdef IEM_WITHOUT_ASSEMBLY
 IEM_DECL_IMPL_DEF(uint32_t, iemAImpl_mulsd_u128_r64,(uint32_t uMxCsrIn, PX86XMMREG pResult, PCX86XMMREG puSrc1, PCRTFLOAT64U pr64Src2))
@@ -16165,6 +16165,13 @@ IEM_DECL_IMPL_DEF(uint32_t, iemAImpl_mulsd_u128_r64,(uint32_t uMxCsrIn, PX86XMMR
     return iemAImpl_mulpd_u128_worker(&pResult->ar64[0], uMxCsrIn, &puSrc1->ar64[0], pr64Src2);
 }
 #endif
+
+
+IEM_DECL_IMPL_DEF(uint32_t, iemAImpl_vmulsd_u128_r64_fallback,(uint32_t uMxCsrIn, PX86XMMREG pResult, PCX86XMMREG puSrc1, PCRTFLOAT64U pr64Src2))
+{
+    pResult->ar64[1] = puSrc1->ar64[1];
+    return iemAImpl_mulpd_u128_worker(&pResult->ar64[0], uMxCsrIn, &puSrc1->ar64[0], pr64Src2);
+}
 
 
 /**
