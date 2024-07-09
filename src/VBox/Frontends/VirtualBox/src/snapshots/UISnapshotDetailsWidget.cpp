@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 105245 2024-07-09 17:25:14Z sergey.dubov@oracle.com $ */
+/* $Id: UISnapshotDetailsWidget.cpp 105246 2024-07-09 17:29:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -2058,6 +2058,12 @@ QStringList UISnapshotDetailsWidget::networkReport(CMachine comMachine)
                 case KNetworkAttachmentType_Cloud:
                     strInfo = strInfo.arg(QApplication::translate("UIDetails", "Cloud Network, '%1'", "details (network)")
                                                                   .arg(comAdapter.GetCloudNetwork()));
+                    break;
+#endif
+#ifdef VBOX_WITH_VMNET
+                case KNetworkAttachmentType_HostOnlyNetwork:
+                    strInfo = strInfo.arg(QApplication::translate("UIDetails", "Host-only Network, '%1'", "details (network)")
+                                                                  .arg(comAdapter.GetHostOnlyNetwork()));
                     break;
 #endif
                 default:
