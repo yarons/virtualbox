@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 105218 2024-07-09 08:50:20Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 105219 2024-07-09 09:01:41Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -16022,7 +16022,7 @@ IEM_DECL_IMPL_DEF(uint32_t, iemAImpl_vaddpd_u256_fallback,(uint32_t uMxCsrIn, PX
 
 
 /**
- * ADDSD
+ * [V]ADDSD
  */
 #ifdef IEM_WITHOUT_ASSEMBLY
 IEM_DECL_IMPL_DEF(uint32_t, iemAImpl_addsd_u128_r64,(uint32_t uMxCsrIn, PX86XMMREG pResult, PCX86XMMREG puSrc1, PCRTFLOAT64U pr64Src2))
@@ -16031,6 +16031,13 @@ IEM_DECL_IMPL_DEF(uint32_t, iemAImpl_addsd_u128_r64,(uint32_t uMxCsrIn, PX86XMMR
     return iemAImpl_addpd_u128_worker(&pResult->ar64[0], uMxCsrIn, &puSrc1->ar64[0], pr64Src2);
 }
 #endif
+
+
+IEM_DECL_IMPL_DEF(uint32_t, iemAImpl_vaddsd_u128_r64_fallback,(uint32_t uMxCsrIn, PX86XMMREG pResult, PCX86XMMREG puSrc1, PCRTFLOAT64U pr64Src2))
+{
+    pResult->ar64[1] = puSrc1->ar64[1];
+    return iemAImpl_addpd_u128_worker(&pResult->ar64[0], uMxCsrIn, &puSrc1->ar64[0], pr64Src2);
+}
 
 
 /**
