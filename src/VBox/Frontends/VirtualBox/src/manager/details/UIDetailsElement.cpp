@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 104901 2024-06-12 16:22:14Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsElement.cpp 105245 2024-07-09 17:25:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -1163,6 +1163,9 @@ void UIDetailsElement::popupNetworkAttachmentTypeEditor(const QString &strValue)
             pEditor->setValueNames(KNetworkAttachmentType_HostOnly, UINetworkAttachmentEditor::hostInterfaces());
             pEditor->setValueNames(KNetworkAttachmentType_Generic, UINetworkAttachmentEditor::genericDrivers());
             pEditor->setValueNames(KNetworkAttachmentType_NATNetwork, UINetworkAttachmentEditor::natNetworks());
+#ifdef VBOX_WITH_CLOUD_NET
+            pEditor->setValueNames(KNetworkAttachmentType_Cloud, UINetworkAttachmentEditor::cloudNetworks());
+#endif /* VBOX_WITH_CLOUD_NET */
             pEditor->setValueType(static_cast<KNetworkAttachmentType>(strValue.section(';', 1, 1).toInt()));
             pEditor->setValueName(pEditor->valueType(), strValue.section(';', 2, 2));
             connect(pEditor, &UINetworkAttachmentEditor::sigValidChanged,

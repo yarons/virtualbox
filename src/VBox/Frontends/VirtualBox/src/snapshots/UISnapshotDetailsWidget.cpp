@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 105244 2024-07-09 16:36:56Z sergey.dubov@oracle.com $ */
+/* $Id: UISnapshotDetailsWidget.cpp 105245 2024-07-09 17:25:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -2054,6 +2054,12 @@ QStringList UISnapshotDetailsWidget::networkReport(CMachine comMachine)
                     strInfo = strInfo.arg(QApplication::translate("UIDetails", "NAT Network, '%1'", "details (network)")
                                                                   .arg(comAdapter.GetNATNetwork()));
                     break;
+#ifdef VBOX_WITH_CLOUD_NET
+                case KNetworkAttachmentType_Cloud:
+                    strInfo = strInfo.arg(QApplication::translate("UIDetails", "Cloud Network, '%1'", "details (network)")
+                                                                  .arg(comAdapter.GetCloudNetwork()));
+                    break;
+#endif
                 default:
                     strInfo = strInfo.arg(gpConverter->toString(enmType));
                     break;

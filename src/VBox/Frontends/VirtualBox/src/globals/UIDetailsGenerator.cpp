@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 105242 2024-07-09 15:09:33Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsGenerator.cpp 105245 2024-07-09 17:25:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -865,6 +865,23 @@ UITextTable UIDetailsGenerator::generateMachineInformationNetwork(CMachine &comM
                 }
                 break;
             }
+#ifdef VBOX_WITH_CLOUD_NET
+            case KNetworkAttachmentType_Cloud:
+            {
+                if (fOptions & UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_CloudNetwork)
+                {
+                    const QString strName = comAdapter.GetCloudNetwork();
+                    strAttachmentType = strAttachmentTemplate
+                                            .arg(strAnchorType)
+                                            .arg(uSlot)
+                                            .arg((int)KNetworkAttachmentType_Cloud)
+                                            .arg(strName)
+                                            .arg(QApplication::translate("UIDetails", "Cloud Network, '%1'", "details (network)")
+                                                 .arg(strName));
+                }
+                break;
+            }
+#endif /* VBOX_WITH_CLOUD_NET */
             default:
             {
                 if (fOptions & UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_NotAttached)

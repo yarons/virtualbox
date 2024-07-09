@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 105152 2024-07-04 18:42:00Z sergey.dubov@oracle.com $
+# $Id: Makefile.kmk 105245 2024-07-09 17:25:14Z sergey.dubov@oracle.com $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -125,6 +125,7 @@ ifndef VBOX_WITH_QT6 # qt6: The UICocoaSpecialControls needs restructuring becau
 endif
 VirtualBox_DEFS.win       += UNICODE QT_DLL
 VirtualBox_DEFS           += \
+	$(if $(VBOX_WITH_CLOUD_NET),VBOX_WITH_CLOUD_NET) \
 	$(if $(VBOX_WITH_ADDITIONS_AUTOUPDATE_UI),VBOX_WITH_ADDITIONS_AUTOUPDATE_UI) \
 	$(if $(VBOX_WITH_UPDATE_REQUEST),VBOX_WITH_UPDATE_REQUEST) \
 	$(if $(VBOX_WITH_NETFLT)$(eq $(KBUILD_TARGET),freebsd),VBOX_WITH_NETFLT) \
