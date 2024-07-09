@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIConverterBackendGlobal.cpp 105239 2024-07-09 13:48:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendGlobal implementation.
  */
@@ -110,12 +110,12 @@ template<> SHARED_LIBRARY_STUFF QString UIConverter::toString(const SizeSuffix &
     QString strResult;
     switch (sizeSuffix)
     {
-        case SizeSuffix_Byte:     strResult = QApplication::translate("UICommon", "B", "size suffix Bytes"); break;
-        case SizeSuffix_KiloByte: strResult = QApplication::translate("UICommon", "KB", "size suffix KBytes=1024 Bytes"); break;
-        case SizeSuffix_MegaByte: strResult = QApplication::translate("UICommon", "MB", "size suffix MBytes=1024 KBytes"); break;
-        case SizeSuffix_GigaByte: strResult = QApplication::translate("UICommon", "GB", "size suffix GBytes=1024 MBytes"); break;
-        case SizeSuffix_TeraByte: strResult = QApplication::translate("UICommon", "TB", "size suffix TBytes=1024 GBytes"); break;
-        case SizeSuffix_PetaByte: strResult = QApplication::translate("UICommon", "PB", "size suffix PBytes=1024 TBytes"); break;
+        case SizeSuffix_Byte:     strResult = QApplication::translate("UITranslator", "B", "size suffix Bytes"); break;
+        case SizeSuffix_KiloByte: strResult = QApplication::translate("UITranslator", "KB", "size suffix KBytes=1024 Bytes"); break;
+        case SizeSuffix_MegaByte: strResult = QApplication::translate("UITranslator", "MB", "size suffix MBytes=1024 KBytes"); break;
+        case SizeSuffix_GigaByte: strResult = QApplication::translate("UITranslator", "GB", "size suffix GBytes=1024 MBytes"); break;
+        case SizeSuffix_TeraByte: strResult = QApplication::translate("UITranslator", "TB", "size suffix TBytes=1024 GBytes"); break;
+        case SizeSuffix_PetaByte: strResult = QApplication::translate("UITranslator", "PB", "size suffix PBytes=1024 TBytes"); break;
         default:
         {
             AssertMsgFailed(("No text for size suffix=%d", sizeSuffix));
@@ -129,12 +129,12 @@ template<> SHARED_LIBRARY_STUFF QString UIConverter::toString(const SizeSuffix &
 template<> SHARED_LIBRARY_STUFF SizeSuffix UIConverter::fromString<SizeSuffix>(const QString &strSizeSuffix) const
 {
     QHash<QString, SizeSuffix> list;
-    list.insert(QApplication::translate("UICommon", "B", "size suffix Bytes"),               SizeSuffix_Byte);
-    list.insert(QApplication::translate("UICommon", "KB", "size suffix KBytes=1024 Bytes"),  SizeSuffix_KiloByte);
-    list.insert(QApplication::translate("UICommon", "MB", "size suffix MBytes=1024 KBytes"), SizeSuffix_MegaByte);
-    list.insert(QApplication::translate("UICommon", "GB", "size suffix GBytes=1024 MBytes"), SizeSuffix_GigaByte);
-    list.insert(QApplication::translate("UICommon", "TB", "size suffix TBytes=1024 GBytes"), SizeSuffix_TeraByte);
-    list.insert(QApplication::translate("UICommon", "PB", "size suffix PBytes=1024 TBytes"), SizeSuffix_PetaByte);
+    list.insert(QApplication::translate("UITranslator", "B", "size suffix Bytes"),               SizeSuffix_Byte);
+    list.insert(QApplication::translate("UITranslator", "KB", "size suffix KBytes=1024 Bytes"),  SizeSuffix_KiloByte);
+    list.insert(QApplication::translate("UITranslator", "MB", "size suffix MBytes=1024 KBytes"), SizeSuffix_MegaByte);
+    list.insert(QApplication::translate("UITranslator", "GB", "size suffix GBytes=1024 MBytes"), SizeSuffix_GigaByte);
+    list.insert(QApplication::translate("UITranslator", "TB", "size suffix TBytes=1024 GBytes"), SizeSuffix_TeraByte);
+    list.insert(QApplication::translate("UITranslator", "PB", "size suffix PBytes=1024 TBytes"), SizeSuffix_PetaByte);
     if (!list.contains(strSizeSuffix))
     {
         AssertMsgFailed(("No value for '%s'", strSizeSuffix.toUtf8().constData()));
