@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 105235 2024-07-09 12:30:38Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 105236 2024-07-09 12:33:47Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -15840,7 +15840,6 @@ DECLINLINE(bool) iemSseBinaryValIsNaNR64(PRTFLOAT64U pr64Res, PCRTFLOAT64U pr64V
 }
 
 
-#ifdef IEM_WITHOUT_ASSEMBLY
 /**
  * Validates the given single input operand returning whether the operation can continue or whether
  * contains a NaN value, setting the output accordingly.
@@ -15899,7 +15898,6 @@ DECLINLINE(bool) iemSseUnaryValIsNaNR64(PRTFLOAT64U pr64Res, PCRTFLOAT64U pr64Va
 
     return false;
 }
-#endif
 
 
 /**
