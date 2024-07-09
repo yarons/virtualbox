@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 105239 2024-07-09 13:48:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsGenerator.cpp 105240 2024-07-09 13:50:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -606,7 +606,7 @@ UITextTable UIDetailsGenerator::generateMachineInformationStorage(CMachine &comM
             QString strAttachmentInfo = UIMediumTools::storageDetails(attachment.GetMedium(), false, false);
             /* That hack makes sure 'Inaccessible' word is always bold: */
             { // hack
-                const QString strInaccessibleString(QApplication::translate("UICommon", "Inaccessible", "medium"));
+                const QString strInaccessibleString(QApplication::translate("UIMedium", "Inaccessible", "medium"));
                 const QString strBoldInaccessibleString(QString("<b>%1</b>").arg(strInaccessibleString));
                 strAttachmentInfo.replace(strInaccessibleString, strBoldInaccessibleString);
             } // hack
