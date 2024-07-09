@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-instr-4.c32 105181 2024-07-08 10:52:33Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: bs3-cpu-instr-4.c32 105207 2024-07-09 06:39:50Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-instr-4 - SSE, AVX FPU instructions, C code template.
  */
@@ -3349,6 +3349,18 @@ BS3_DECL_FAR(uint8_t) bs3CpuInstr4_v_mulps(uint8_t bMode)
             { /* =>      */ { BS3_FP32_VAL(0, 0x37be78, 0x95)/*6020924*/, BS3_FP32_VAL(0, 0x30eaa1, 0x93)/*1449300.1250*/, BS3_FP32_VAL(1, 0x39f7d1, 0x96)/*-12187601.0*/, BS3_FP32_VAL(0, 0x356ac4, 0x8e)/*46442.765625*/, BS3_FP32_VAL(0, 0x200000, 0x7b)/*0.078125*/, BS3_FP32_VAL(0, 0x4bb99d, 0x94)/*3337831.25*/, BS3_FP32_VAL(0, 0x23b6a0, 0x8b)/* 5238.828125*/, BS3_FP32_VAL(1, 0x3d400, 0x86)/*-131.828125*/ } },
               /*mask     */ X86_MXCSR_XCPT_MASK,
               /*daz,fz,rc*/ 0, 0, X86_MXCSR_RC_NEAREST,
+              /*flags    */ 0, 0 },
+          { { /*src2     */ { BS3_FP32_NORMAL_SAFE_INT_MAX(0), BS3_FP32_NORMAL_SAFE_INT_MAX(0), BS3_FP32_ONE(1), BS3_FP32_ONE(1), BS3_FP32_VAL(0, BS3_FP32_FRACTION_NORMAL_MAX - 1, BS3_FP32_EXP_SAFE_INT_MAX), BS3_FP32_NORMAL_SAFE_INT_MAX(0), BS3_FP32_ONE(0), BS3_FP32_ONE(0) } },
+            { /*src1     */ { BS3_FP32_ONE(0),                 BS3_FP32_ONE(1),                 BS3_FP32_ONE(1), BS3_FP32_ONE(0), BS3_FP32_ONE(0),                                                              BS3_FP32_ONE(1),                 BS3_FP32_ONE(0), BS3_FP32_ONE(0) } },
+            { /* =>      */ { BS3_FP32_NORMAL_SAFE_INT_MAX(0), BS3_FP32_NORMAL_SAFE_INT_MAX(1), BS3_FP32_ONE(0), BS3_FP32_ONE(1), BS3_FP32_VAL(0, BS3_FP32_FRACTION_NORMAL_MAX - 1, BS3_FP32_EXP_SAFE_INT_MAX), BS3_FP32_NORMAL_SAFE_INT_MAX(1), BS3_FP32_ONE(0), BS3_FP32_ONE(0) } },
+              /*mask     */ X86_MXCSR_XCPT_MASK,
+              /*daz,fz,rc*/ X86_MXCSR_DAZ, X86_MXCSR_FZ, X86_MXCSR_RC_ZERO,
+              /*flags    */ 0, 0 },
+          { { /*src2     */ { BS3_FP32_NORMAL_SAFE_INT_MIN(0), BS3_FP32_ONE(0),                 BS3_FP32_NORMAL_SAFE_INT_MIN(0), BS3_FP32_ONE(1),                 BS3_FP32_NORMAL_SAFE_INT_MIN(1), BS3_FP32_ONE(0),                 BS3_FP32_NORMAL_SAFE_INT_MIN(0), BS3_FP32_VAL(0, 0, 2) } },
+            { /*src1     */ { BS3_FP32_ONE(0),                 BS3_FP32_NORMAL_SAFE_INT_MIN(0), BS3_FP32_ZERO(0),                BS3_FP32_NORMAL_SAFE_INT_MIN(1), BS3_FP32_ZERO(0),                BS3_FP32_NORMAL_SAFE_INT_MIN(1), BS3_FP32_ZERO(0),                BS3_FP32_ONE(0)       } },
+            { /* =>      */ { BS3_FP32_NORMAL_SAFE_INT_MIN(0), BS3_FP32_NORMAL_SAFE_INT_MIN(0), BS3_FP32_ZERO(0),                BS3_FP32_NORMAL_SAFE_INT_MIN(0), BS3_FP32_ZERO(1),                BS3_FP32_NORMAL_SAFE_INT_MIN(1), BS3_FP32_ZERO(0),                BS3_FP32_VAL(0, 0, 2) } },
+              /*mask     */ X86_MXCSR_XCPT_MASK,
+              /*daz,fz,rc*/ X86_MXCSR_DAZ, X86_MXCSR_FZ, X86_MXCSR_RC_ZERO,
               /*flags    */ 0, 0 },
     /** @todo More Normals; Denormals; Underflow, Precision; Rounding, FZ etc. */
     };
