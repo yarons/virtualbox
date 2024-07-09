@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 105211 2024-07-09 08:13:25Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 105212 2024-07-09 08:21:47Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -16589,6 +16589,28 @@ IEM_DECL_IMPL_DEF(uint32_t, iemAImpl_haddps_u128,(uint32_t uMxCsrIn, PX86XMMREG 
            | iemAImpl_addps_u128_worker(&pResult->ar32[3], uMxCsrIn, &puSrc2->ar32[2], &puSrc2->ar32[3]);
 }
 #endif
+
+
+IEM_DECL_IMPL_DEF(uint32_t, iemAImpl_vhaddps_u128_fallback,(uint32_t uMxCsrIn, PX86XMMREG pResult, PCX86XMMREG puSrc1, PCX86XMMREG puSrc2))
+{
+    return   iemAImpl_addps_u128_worker(&pResult->ar32[0], uMxCsrIn, &puSrc1->ar32[0], &puSrc1->ar32[1])
+           | iemAImpl_addps_u128_worker(&pResult->ar32[1], uMxCsrIn, &puSrc1->ar32[2], &puSrc1->ar32[3])
+           | iemAImpl_addps_u128_worker(&pResult->ar32[2], uMxCsrIn, &puSrc2->ar32[0], &puSrc2->ar32[1])
+           | iemAImpl_addps_u128_worker(&pResult->ar32[3], uMxCsrIn, &puSrc2->ar32[2], &puSrc2->ar32[3]);
+}
+
+
+IEM_DECL_IMPL_DEF(uint32_t, iemAImpl_vhaddps_u256_fallback,(uint32_t uMxCsrIn, PX86YMMREG pResult, PCX86YMMREG puSrc1, PCX86YMMREG puSrc2))
+{
+    return   iemAImpl_addps_u128_worker(&pResult->ar32[0], uMxCsrIn, &puSrc1->ar32[0], &puSrc1->ar32[1])
+           | iemAImpl_addps_u128_worker(&pResult->ar32[1], uMxCsrIn, &puSrc1->ar32[2], &puSrc1->ar32[3])
+           | iemAImpl_addps_u128_worker(&pResult->ar32[2], uMxCsrIn, &puSrc2->ar32[0], &puSrc2->ar32[1])
+           | iemAImpl_addps_u128_worker(&pResult->ar32[3], uMxCsrIn, &puSrc2->ar32[2], &puSrc2->ar32[3])
+           | iemAImpl_addps_u128_worker(&pResult->ar32[4], uMxCsrIn, &puSrc1->ar32[4], &puSrc1->ar32[5])
+           | iemAImpl_addps_u128_worker(&pResult->ar32[5], uMxCsrIn, &puSrc1->ar32[6], &puSrc1->ar32[7])
+           | iemAImpl_addps_u128_worker(&pResult->ar32[6], uMxCsrIn, &puSrc2->ar32[4], &puSrc2->ar32[5])
+           | iemAImpl_addps_u128_worker(&pResult->ar32[7], uMxCsrIn, &puSrc2->ar32[6], &puSrc2->ar32[7]);
+}
 
 
 /**
