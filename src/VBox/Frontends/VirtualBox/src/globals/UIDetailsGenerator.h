@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.h 104917 2024-06-13 17:32:20Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsGenerator.h 105233 2024-07-09 11:04:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator declaration.
  */
@@ -104,7 +104,7 @@ namespace UIDetailsGenerator
                                                        bool &fAdaptersPresent, bool &fCablesDisconnected);
 
     SHARED_LIBRARY_STUFF void acquireUsbStatusInfo(CMachine &comMachine, CConsole &comConsole,
-                                                   QString &strInfo, bool &fUsbEnableds);
+                                                   QString &strInfo, bool &fUsbEnabled, uint &cUsbFilterCount);
 
     SHARED_LIBRARY_STUFF void acquireSharedFoldersStatusInfo(CMachine &comMachine, CConsole &comConsole, CGuest &comGuest,
                                                              QString &strInfo, bool &fFoldersPresent);

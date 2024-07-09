@@ -1,4 +1,4 @@
-/* $Id: UISession.h 104917 2024-06-13 17:32:20Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 105233 2024-07-09 11:04:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -516,7 +516,7 @@ public:
         /** Acquires status info for network indicator. */
         void acquireNetworkStatusInfo(QString &strInfo, bool &fAdaptersPresent, bool &fCablesDisconnected);
         /** Acquires status info for USB indicator. */
-        void acquireUsbStatusInfo(QString &strInfo, bool &fUsbEnableds);
+        void acquireUsbStatusInfo(QString &strInfo, bool &fUsbEnabled, uint &cUsbFilterCount);
         /** Acquires status info for Shared Folders indicator. */
         void acquireSharedFoldersStatusInfo(QString &strInfo, bool &fFoldersPresent);
         /** Acquires status info for Display indicator. */

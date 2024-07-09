@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 105081 2024-07-01 15:38:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 105233 2024-07-09 11:04:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -926,9 +926,9 @@ void UIMachine::acquireNetworkStatusInfo(QString &strInfo, bool &fAdaptersPresen
     uisession()->acquireNetworkStatusInfo(strInfo, fAdaptersPresent, fCablesDisconnected);
 }
 
-void UIMachine::acquireUsbStatusInfo(QString &strInfo, bool &fUsbEnableds)
+void UIMachine::acquireUsbStatusInfo(QString &strInfo, bool &fUsbEnabled, uint &cUsbFilterCount)
 {
-    uisession()->acquireUsbStatusInfo(strInfo, fUsbEnableds);
+    uisession()->acquireUsbStatusInfo(strInfo, fUsbEnabled, cUsbFilterCount);
 }
 
 void UIMachine::acquireSharedFoldersStatusInfo(QString &strInfo, bool &fFoldersPresent)

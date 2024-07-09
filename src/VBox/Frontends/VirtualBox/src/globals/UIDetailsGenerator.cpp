@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 105150 2024-07-04 15:53:45Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsGenerator.cpp 105233 2024-07-09 11:04:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -1375,7 +1375,7 @@ void UIDetailsGenerator::acquireNetworkStatusInfo(CMachine &comMachine, QString 
 }
 
 void UIDetailsGenerator::acquireUsbStatusInfo(CMachine &comMachine, CConsole &comConsole,
-                                              QString &strInfo, bool &fUsbEnabled)
+                                              QString &strInfo, bool &fUsbEnabled, uint &cUsbFilterCount)
 {
     /* Check whether there is at least one USB controller with an available proxy: */
     fUsbEnabled =    !comMachine.GetUSBDeviceFilters().isNull()
@@ -1385,7 +1385,10 @@ void UIDetailsGenerator::acquireUsbStatusInfo(CMachine &comMachine, CConsole &co
     {
         /* Enumerate all the USB devices: */
         foreach (const CUSBDevice &comUsbDevice, comConsole.GetUSBDevices())
+        {
+            ++cUsbFilterCount;
             strInfo += e_strTableRow1.arg(usbDetails(comUsbDevice));
+        }
         /* Handle 'no-usb-devices' case: */
         if (strInfo.isNull())
             strInfo = e_strTableRow1

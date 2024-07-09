@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 105150 2024-07-04 15:53:45Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 105233 2024-07-09 11:04:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -2017,7 +2017,7 @@ void UISession::acquireNetworkStatusInfo(QString &strInfo, bool &fAdaptersPresen
     UIDetailsGenerator::acquireNetworkStatusInfo(comMachine, strInfo, fAdaptersPresent, fCablesDisconnected);
 }
 
-void UISession::acquireUsbStatusInfo(QString &strInfo, bool &fUsbEnableds)
+void UISession::acquireUsbStatusInfo(QString &strInfo, bool &fUsbEnabled, uint &cUsbFilterCount)
 {
     CMachine comMachine = machine();
     if (comMachine.isNull())
@@ -2025,7 +2025,7 @@ void UISession::acquireUsbStatusInfo(QString &strInfo, bool &fUsbEnableds)
     CConsole comConsole = console();
     if (comConsole.isNull())
         return;
-    UIDetailsGenerator::acquireUsbStatusInfo(comMachine, comConsole, strInfo, fUsbEnableds);
+    UIDetailsGenerator::acquireUsbStatusInfo(comMachine, comConsole, strInfo, fUsbEnabled, cUsbFilterCount);
 }
 
 void UISession::acquireSharedFoldersStatusInfo(QString &strInfo, bool &fFoldersPresent)
