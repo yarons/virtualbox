@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 105214 2024-07-09 08:27:57Z alexander.eichner@oracle.com $ */
+/* $Id: IEMInternal.h 105215 2024-07-09 08:34:27Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -4559,7 +4559,7 @@ FNIEMAIMPLMEDIAF3U128 iemAImpl_vaddpd_u128, iemAImpl_vaddpd_u128_fallback;
 FNIEMAIMPLFPAVXF3U128 iemAImpl_vmulps_u128, iemAImpl_vmulps_u128_fallback;
 FNIEMAIMPLFPAVXF3U128 iemAImpl_vmulpd_u128, iemAImpl_vmulpd_u128_fallback;
 FNIEMAIMPLMEDIAF3U128 iemAImpl_vsubps_u128, iemAImpl_vsubps_u128_fallback;
-FNIEMAIMPLFPAVXF3U128 iemAImpl_vsubpd_u128, iemAImpl_vsubpd_u128_fallback;
+FNIEMAIMPLMEDIAF3U128 iemAImpl_vsubpd_u128, iemAImpl_vsubpd_u128_fallback;
 FNIEMAIMPLFPAVXF3U128 iemAImpl_vminps_u128, iemAImpl_vminps_u128_fallback;
 FNIEMAIMPLFPAVXF3U128 iemAImpl_vminpd_u128, iemAImpl_vminpd_u128_fallback;
 FNIEMAIMPLFPAVXF3U128 iemAImpl_vdivps_u128, iemAImpl_vdivps_u128_fallback;
