@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstVexMap1.cpp.h 105217 2024-07-09 08:43:03Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllInstVexMap1.cpp.h 105218 2024-07-09 08:50:20Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -2923,7 +2923,14 @@ FNIEMOP_DEF(iemOp_vaddss_Vss_Hss_Wss)
 FNIEMOP_STUB(iemOp_vaddsd_Vsd_Hsd_Wsd);
 
 /** Opcode VEX.0F 0x59 - vmulps Vps, Hps, Wps */
-FNIEMOP_STUB(iemOp_vmulps_Vps_Hps_Wps);
+FNIEMOP_DEF(iemOp_vmulps_Vps_Hps_Wps)
+{
+    IEMOP_MNEMONIC3(VEX_RVM, VMULPS, vmulps, Vps, Hps, Wps, DISOPTYPE_HARMLESS | DISOPTYPE_X86_AVX, 0);
+    IEMOPMEDIAF3_INIT_VARS(          vmulps);
+    return FNIEMOP_CALL_1(iemOpCommonAvxAvx2_Vx_Hx_Wx, IEM_SELECT_HOST_OR_FALLBACK(fAvx, &s_Host, &s_Fallback));
+}
+
+
 /** Opcode VEX.66.0F 0x59 - vmulpd Vpd, Hpd, Wpd */
 FNIEMOP_STUB(iemOp_vmulpd_Vpd_Hpd_Wpd);
 /** Opcode VEX.F3.0F 0x59 - vmulss Vss, Hss, Wss */
