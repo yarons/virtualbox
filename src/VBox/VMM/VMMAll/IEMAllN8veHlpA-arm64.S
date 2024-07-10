@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veHlpA-arm64.S 104798 2024-05-28 07:04:30Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veHlpA-arm64.S 105261 2024-07-10 14:51:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler Assembly Helpers, ARM64 variant.
  */
@@ -93,28 +93,6 @@ BEGINPROC_HIDDEN iemNativeTbEntry
          * Everything is done, jump to the start of the TB.
          */
         br      x2
-
-#ifdef IEMNATIVE_WITH_RECOMPILER_EPILOGUE_SINGLETON
-/**
- * This is the common epilog for all TBs, restoring all volatile registers
- * and cleaning up the stack frame. This is a direct jump target and not a
- * real function to call using bl/blr.
- */
-ALIGNCODE(IEM_HLP_FUNCTION_ALIGNMENT)
-BEGINPROC_HIDDEN iemNativeTbEpilog
-        ldp     x19, x20, [sp, #IEMNATIVE_FRAME_VAR_SIZE]!
-        ldp     x21, x22, [sp, #0x10]
-        ldp     x23, x24, [sp, #0x20]
-        ldp     x25, x26, [sp, #0x30]
-        ldp     x27, x28, [sp, #0x40]
-        ldp     x29, x30, [sp, #0x50]
-        add     sp, sp, #IEMNATIVE_FRAME_SAVE_REG_SIZE
-# ifdef RT_OS_DARWIN
-        retab
-# else
-        ret
-# endif
-#endif
 
 
 /**
