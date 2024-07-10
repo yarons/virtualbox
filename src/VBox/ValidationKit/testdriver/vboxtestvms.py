@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 103702 2024-03-06 13:37:56Z ramshankar.venkataraman@oracle.com $
+# $Id: vboxtestvms.py 105254 2024-07-10 09:39:16Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103702 $"
+__version__ = "$Revision: 105254 $"
 
 # Standard Python imports.
 import copy;
@@ -1896,7 +1896,16 @@ class TestVmSet(object):
                     enmCpuArch = vboxcon.CPUArchitecture_ARMv8_32;
 
             try:
-                aenmExecEngines = oTestDrv.oVBox.systemProperties.getExecutionEnginesForVmCpuArchitecture(enmCpuArch);
+                #
+                # Get the list of theoretically supported execution engines and then filter
+                # out the ones the host doesn't support.
+                #
+                aenmExecEnginesTmp = oTestDrv.oVBox.systemProperties.getExecutionEnginesForVmCpuArchitecture(enmCpuArch);
+
+                aenmExecEngines = [];
+                for enmExecEngine in aenmExecEnginesTmp:
+                    if oTestDrv.oVBox.host.isExecutionEngineSupported(enmCpuArch, enmExecEngine):
+                        aenmExecEngines.append(enmExecEngine);
 
                 if 'raw' in asVirtModesWanted and not oTestDrv.hasRawModeSupport():
                     reporter.log('Raw-mode virtualization is not available in this build (or perhaps for this host), skipping it.');
@@ -1911,7 +1920,8 @@ class TestVmSet(object):
                     reporter.log('Nested paging not supported by the host, skipping it.');
                     asVirtModesWanted.remove('hwvirt-np');
 
-                if 'native-api' in asVirtModesWanted and not vboxcon.VMExecutionEngine_NativeApi in aenmExecEngines:
+                if 'native-api' in asVirtModesWanted and (   not vboxcon.VMExecutionEngine_NativeApi in aenmExecEngines \
+                                                          or not oTestDrv.oVBox.host.isExecutionEngineSupported(enmCpuArch, vboxcon.VMExecutionEngine_NativeApi)):
                     reporter.log('Native API (aka NEM) virtualization is not available in this build (or perhaps for this host) and VM CPU architecture, skipping it.');
                     asVirtModesWanted.remove('native-api');
 

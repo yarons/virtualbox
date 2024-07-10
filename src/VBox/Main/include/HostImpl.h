@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 101176 2023-09-19 16:57:28Z andreas.loeffler@oracle.com $ */
+/* $Id: HostImpl.h 105254 2024-07-10 09:39:16Z alexander.eichner@oracle.com $ */
 /** @file
  * Implementation of IHost.
  */
@@ -176,6 +176,7 @@ private:
                                const std::vector<com::Utf8Str> &aPropertyNames, const std::vector<com::Utf8Str> &aPropertyValues);
 
     HRESULT removeUSBDeviceSource(const com::Utf8Str &aId);
+    HRESULT isExecutionEngineSupported(CPUArchitecture_T enmCpuArchitecture, VMExecutionEngine_T enmExecutionEngine, BOOL *pfIsSupported);
 
     // Internal Methods.
 
@@ -214,6 +215,10 @@ private:
     HRESULT i_getFixedDrivesFromGlobalNamespace(std::list<std::pair<com::Utf8Str, com::Utf8Str> > &aDriveList) RT_NOEXCEPT;
 #endif
     HRESULT i_getDrivesPathsList(std::list<std::pair<com::Utf8Str, com::Utf8Str> > &aDriveList) RT_NOEXCEPT;
+
+#ifdef VBOX_WITH_NATIVE_NEM
+    BOOL i_HostIsNativeApiSupported();
+#endif
 
     struct Data;        // opaque data structure, defined in HostImpl.cpp
     Data *m;
