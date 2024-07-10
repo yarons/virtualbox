@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 105246 2024-07-09 17:29:18Z sergey.dubov@oracle.com $ */
+/* $Id: UISnapshotDetailsWidget.cpp 105258 2024-07-10 13:55:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -1795,10 +1795,7 @@ QString UISnapshotDetailsWidget::efiStateReport(const CMachine &comMachine)
             break;
         }
         default:
-        {
-            /* strReport = */ QApplication::translate("UIDetails", "Disabled", "details (system/EFI)");
             break;
-        }
     }
     /* Return report: */
     return strReport;

@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 105245 2024-07-09 17:25:14Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsGenerator.cpp 105258 2024-07-10 13:55:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -356,11 +356,7 @@ UITextTable UIDetailsGenerator::generateMachineInformationSystem(CMachine &comMa
                 break;
             }
             default:
-            {
-                // For NLS purpose:
-                QApplication::translate("UIDetails", "Disabled", "details (system/EFI)");
                 break;
-            }
         }
     }
 
