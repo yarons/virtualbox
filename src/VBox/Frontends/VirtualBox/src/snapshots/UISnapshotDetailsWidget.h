@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.h 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISnapshotDetailsWidget.h 105259 2024-07-10 14:00:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class declaration.
  */
@@ -183,8 +183,6 @@ private:
     static QString accelerationReport(const CMachine &comMachine);
     /** Acquires @a comMachine scale-factor report. */
     static double scaleFactorReport(CMachine comMachine);
-    /** Acquires @a comMachine display acceleration report. */
-    static QString displayAccelerationReport(CGraphicsAdapter comGraphics);
     /** Acquires @a comMachine VRDE server report. */
     static QStringList vrdeServerReport(CMachine comMachine);
     /** Acquires @a comMachine recording report. */
