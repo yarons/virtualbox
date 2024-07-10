@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDExpertPage.cpp 104985 2024-06-20 14:26:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVDExpertPage.cpp 105260 2024-07-10 14:01:29Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDExpertPage class implementation.
  */
@@ -194,6 +194,8 @@ bool UIWizardNewVDExpertPage::isComplete() const
     if (pWizard->mediumPath().isEmpty())
         return false;
     if (pWizard->mediumSize() > m_uMediumSizeMax || pWizard->mediumSize() < m_uMediumSizeMin)
+        return false;
+    if (!m_pSizeAndPathGroup->filePathUnique() || !m_pSizeAndPathGroup->pathExists())
         return false;
     return true;
 }

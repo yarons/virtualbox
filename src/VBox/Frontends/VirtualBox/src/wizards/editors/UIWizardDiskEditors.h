@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.h 104985 2024-06-20 14:26:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardDiskEditors.h 105260 2024-07-10 14:01:29Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardDiskEditors class declaration.
  */
@@ -136,7 +136,8 @@ public:
     qulonglong mediumSize() const;
     void setMediumSize(qulonglong uSize);
 
-    bool isComplete() const;
+    bool filePathUnique() const;
+    bool pathExists() const;
 
 private slots:
 

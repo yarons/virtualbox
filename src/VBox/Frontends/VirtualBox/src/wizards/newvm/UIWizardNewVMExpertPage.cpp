@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 104899 2024-06-12 14:28:47Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 105260 2024-07-10 14:01:29Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -645,6 +645,10 @@ bool UIWizardNewVMExpertPage::isComplete() const
                                          UIIconPool::iconSet(":/status_error_16px.png"), UIWizardNewVM::tr("Invalid disk size"));
             fIsComplete = false;
         }
+        /* Check only the uniqueness of the file and not path existence since the vm folder (default medium path)
+         * has not been created yet: */
+        if (!m_pSizeAndLocationGroup->filePathUnique())
+            fIsComplete = false;
     }
     return fIsComplete;
 }

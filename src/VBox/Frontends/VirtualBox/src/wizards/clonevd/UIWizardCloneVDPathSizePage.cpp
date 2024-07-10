@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPathSizePage.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardCloneVDPathSizePage.cpp 105260 2024-07-10 14:01:29Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPathSizePage class implementation.
  */
@@ -99,7 +99,11 @@ void UIWizardCloneVDPathSizePage::initializePage()
 bool UIWizardCloneVDPathSizePage::isComplete() const
 {
     AssertReturn(m_pMediumSizePathGroupBox, false);
-    return m_pMediumSizePathGroupBox->isComplete();
+    if (!m_pMediumSizePathGroupBox->pathExists())
+        return false;
+    if (!m_pMediumSizePathGroupBox->filePathUnique())
+        return false;
+    return true;
 }
 
 bool UIWizardCloneVDPathSizePage::validatePage()

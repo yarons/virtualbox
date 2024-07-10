@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.cpp 104985 2024-06-20 14:26:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardDiskEditors.cpp 105260 2024-07-10 14:01:29Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -331,15 +331,27 @@ UIMediumSizeAndPathGroupBox::UIMediumSizeAndPathGroupBox(bool fExpertMode, QWidg
     prepare(uMinimumMediumSize);
 }
 
-bool UIMediumSizeAndPathGroupBox::isComplete() const
+bool UIMediumSizeAndPathGroupBox::pathExists() const
 {
+    /* Check if the path upto file name exists: */
+    if (!QFileInfo(mediumPath()).exists())
+    {
+        m_pLocationEditor->mark(true, tr("Disk file path does not exists"), tr("Disk file path is valid"));
+        return false;
+    }
+    m_pLocationEditor->mark(false, tr("Disk file path does not exists"), tr("Disk file path is valid"));
+    return true;
+}
+
+bool UIMediumSizeAndPathGroupBox::filePathUnique() const
+{
+    /* Check if there is not such file already: */
     if (QFileInfo(mediumFilePath()).exists())
     {
         m_pLocationEditor->mark(true, tr("Disk file name is not unique"), tr("Disk file name is valid"));
         return false;
     }
     m_pLocationEditor->mark(false, tr("Disk file name is not unique"), tr("Disk file name is valid"));
-
     return true;
 }
 
