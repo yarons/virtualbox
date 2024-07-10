@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.h 105263 2024-07-10 16:34:58Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsGenerator.h 105265 2024-07-10 17:00:23Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator declaration.
  */
@@ -110,7 +110,7 @@ namespace UIDetailsGenerator
                                                              QString &strInfo, uint &cFoldersCount);
 
     SHARED_LIBRARY_STUFF void acquireDisplayStatusInfo(CMachine &comMachine, QString &strInfo,
-                                                       bool &fAcceleration3D);
+                                                       uint &uVRAMSize, uint &cMonitorCount, bool &fAcceleration3D);
 
     SHARED_LIBRARY_STUFF void acquireRecordingStatusInfo(CMachine &comMachine, QString &strInfo,
                                                          bool &fRecordingEnabled);

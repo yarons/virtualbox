@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 105263 2024-07-10 16:34:58Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsGenerator.cpp 105265 2024-07-10 17:00:23Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -1431,25 +1431,22 @@ void UIDetailsGenerator::acquireSharedFoldersStatusInfo(CMachine &comMachine, CC
 }
 
 void UIDetailsGenerator::acquireDisplayStatusInfo(CMachine &comMachine, QString &strInfo,
-                                                  bool &fAcceleration3D)
+                                                  uint &uVRAMSize, uint &cMonitorCount, bool &fAcceleration3D)
 {
     /* Get graphics adapter: */
     CGraphicsAdapter comGraphics = comMachine.GetGraphicsAdapter();
 
     /* Video Memory: */
-    const ULONG uVRAMSize = comGraphics.GetVRAMSize();
-    const QString strVRAMSize = QApplication::translate("UIIndicatorDisplay", "<nobr>%1 MB</nobr>").arg(uVRAMSize);
+    uVRAMSize = comGraphics.GetVRAMSize();
+    const QString strVRAMSize = QApplication::translate("UIIndicatorDisplay", "%1 MB").arg(uVRAMSize);
     strInfo += e_strTableRow2
         .arg(QApplication::translate("UIDetails", "Video Memory", "details (display)"), strVRAMSize);
 
     /* Monitor Count: */
-    const ULONG uMonitorCount = comGraphics.GetMonitorCount();
-    if (uMonitorCount > 1)
-    {
-        const QString strMonitorCount = QString::number(uMonitorCount);
+    cMonitorCount = comGraphics.GetMonitorCount();
+    if (cMonitorCount > 1)
         strInfo += e_strTableRow2
-            .arg(QApplication::translate("UIDetails", "Screens", "details (display)"), strMonitorCount);
-    }
+            .arg(QApplication::translate("UIDetails", "Screens", "details (display)"), QString::number(cMonitorCount));
 
     /* 3D acceleration: */
     fAcceleration3D = comGraphics.GetAccelerate3DEnabled();

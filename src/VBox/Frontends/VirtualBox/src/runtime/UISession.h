@@ -1,4 +1,4 @@
-/* $Id: UISession.h 105263 2024-07-10 16:34:58Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 105265 2024-07-10 17:00:23Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -520,7 +520,7 @@ public:
         /** Acquires status info for Shared Folders indicator. */
         void acquireSharedFoldersStatusInfo(QString &strInfo, uint &cFoldersCount);
         /** Acquires status info for Display indicator. */
-        void acquireDisplayStatusInfo(QString &strInfo, bool &fAcceleration3D);
+        void acquireDisplayStatusInfo(QString &strInfo, uint &uVRAMSize, uint &cMonitorCount, bool &fAcceleration3D);
         /** Acquires status info for Recording indicator. */
         void acquireRecordingStatusInfo(QString &strInfo, bool &fRecordingEnabled, bool &fMachinePaused);
         /** Acquires status info for Features indicator. */

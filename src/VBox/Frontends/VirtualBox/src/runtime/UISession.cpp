@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 105263 2024-07-10 16:34:58Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 105265 2024-07-10 17:00:23Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -2042,12 +2042,12 @@ void UISession::acquireSharedFoldersStatusInfo(QString &strInfo, uint &cFoldersC
     UIDetailsGenerator::acquireSharedFoldersStatusInfo(comMachine, comConsole, comGuest, strInfo, cFoldersCount);
 }
 
-void UISession::acquireDisplayStatusInfo(QString &strInfo, bool &fAcceleration3D)
+void UISession::acquireDisplayStatusInfo(QString &strInfo, uint &uVRAMSize, uint &cMonitorCount, bool &fAcceleration3D)
 {
     CMachine comMachine = machine();
     if (comMachine.isNull())
         return;
-    UIDetailsGenerator::acquireDisplayStatusInfo(comMachine, strInfo, fAcceleration3D);
+    UIDetailsGenerator::acquireDisplayStatusInfo(comMachine, strInfo, uVRAMSize, cMonitorCount, fAcceleration3D);
 }
 
 void UISession::acquireRecordingStatusInfo(QString &strInfo, bool &fRecordingEnabled, bool &fMachinePaused)
