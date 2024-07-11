@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 105251 2024-07-10 08:22:00Z alexander.eichner@oracle.com $
+# $Id: IEMAllInstPython.py 105283 2024-07-11 20:26:27Z alexander.eichner@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 105251 $"
+__version__ = "$Revision: 105283 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -3108,6 +3108,7 @@ g_dMcStmtParsers = {
     'IEM_MC_FETCH_MEM_YMM':                                      (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_FETCH_MEM_YMM_ALIGN_AVX':                            (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_FETCH_MEM_YMM_NO_AC':                                (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
+    'IEM_MC_FETCH_MEM_YMM_ALIGN_AVX_AND_YREG_YMM':               (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_FETCH_MEM16_U8':                                     (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_FETCH_MEM32_U8':                                     (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_FETCH_MREG_U8':                                      (McBlock.parseMcGeneric,           False, False, False, ),
@@ -3136,6 +3137,7 @@ g_dMcStmtParsers = {
     'IEM_MC_FETCH_YREG_YMM':                                     (McBlock.parseMcGeneric,           False, False, g_fNativeSimd),
     'IEM_MC_FETCH_YREG_U32':                                     (McBlock.parseMcGeneric,           False, False, g_fNativeSimd),
     'IEM_MC_FETCH_YREG_U64':                                     (McBlock.parseMcGeneric,           False, False, g_fNativeSimd),
+    'IEM_MC_FETCH_YREG_PAIR_YMM':                                (McBlock.parseMcGeneric,           False, False, False, ),
     'IEM_MC_FLIP_EFL_BIT':                                       (McBlock.parseMcGeneric,           True,  True,  True,  ),
     'IEM_MC_FPU_FROM_MMX_MODE':                                  (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_FPU_STACK_DEC_TOP':                                  (McBlock.parseMcGeneric,           True,  True,  False, ),
