@@ -1,4 +1,4 @@
-; $Id: tstDisasm-1A.asm 103717 2024-03-06 21:36:59Z knut.osmundsen@oracle.com $
+; $Id: tstDisasm-1A.asm 105281 2024-07-11 19:23:32Z alexander.eichner@oracle.com $
 ;; @file
 ; VBox disassembler: Assembler test routines
 ;
@@ -489,6 +489,12 @@ BEGINPROC TestProc64
         db 066h
         vpsrldq xmm1, xmm2, 3
         vpsllq xmm15, xmm8, 99
+        vcmpps xmm1, xmm2, xmm3, 1
+        vcmpps ymm1, ymm2, ymm3, 1
+        vcmppd xmm1, xmm2, xmm3, 1
+        vcmppd ymm1, ymm2, ymm3, 1
+        vcmpss xmm1, xmm2, xmm3, 1
+        vcmpsd xmm1, xmm2, xmm3, 1
 
         ; group 7 stuff.
         vmcall
