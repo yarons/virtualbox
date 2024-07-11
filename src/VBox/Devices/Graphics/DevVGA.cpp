@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 105213 2024-07-09 08:25:14Z knut.osmundsen@oracle.com $ */
+/* $Id: DevVGA.cpp 105280 2024-07-11 17:28:42Z klaus.espenlaub@oracle.com $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -7253,10 +7253,6 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
     pThisCC->cbLogo = LogoHdr.cbLogo;
     if (g_cbVgaDefBiosLogo)
         pThisCC->cbLogo = RT_MAX(pThisCC->cbLogo, g_cbVgaDefBiosLogo);
-# ifndef VBOX_OSE
-    if (g_cbVgaDefBiosLogoNY)
-        pThisCC->cbLogo = RT_MAX(pThisCC->cbLogo, g_cbVgaDefBiosLogoNY);
-# endif
     pThisCC->cbLogo += sizeof(LogoHdr);
 
     pThisCC->pbLogo = (uint8_t *)PDMDevHlpMMHeapAlloc(pDevIns, pThisCC->cbLogo);
@@ -7286,23 +7282,7 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
         if (   !pThisCC->pszLogoFile
             || RT_FAILURE(rc))
         {
-# ifndef VBOX_OSE
-            RTTIMESPEC Now;
-            RTTimeLocalNow(&Now);
-            RTTIME T;
-            RTTimeLocalExplode(&T, &Now);
-            bool fSuppressNewYearSplash = false;
-            rc = pHlp->pfnCFGMQueryBoolDef(pCfg, "SuppressNewYearSplash", &fSuppressNewYearSplash, true);
-            if (   !fSuppressNewYearSplash
-                && (T.u16YearDay > 353 || T.u16YearDay < 10))
-            {
-                pLogoHdr->cbLogo = LogoHdr.cbLogo = g_cbVgaDefBiosLogoNY;
-                memcpy(pLogoHdr + 1, g_abVgaDefBiosLogoNY, LogoHdr.cbLogo);
-                pThisCC->fBootMenuInverse = true;
-            }
-            else
-# endif
-                memcpy(pLogoHdr + 1, g_abVgaDefBiosLogo, LogoHdr.cbLogo);
+            memcpy(pLogoHdr + 1, g_abVgaDefBiosLogo, LogoHdr.cbLogo);
             rc = vbeR3ParseBitmap(pThisCC);
             AssertLogRelMsgReturn(RT_SUCCESS(rc), ("Parsing of internal bitmap failed! vbeR3ParseBitmap() -> %Rrc\n", rc), rc);
         }
