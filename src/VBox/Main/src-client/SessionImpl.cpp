@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 105266 2024-07-11 07:49:37Z andreas.loeffler@oracle.com $ */
+/* $Id: SessionImpl.cpp 105267 2024-07-11 07:58:35Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -784,7 +784,7 @@ HRESULT Session::onRecordingStateChange(BOOL aEnable, ComPtr<IProgress> &aProgre
 
     return mConsole->i_onRecordingStateChange(aEnable, aProgress);
 #else
-    RT_NOREF(aEnable);
+    RT_NOREF(aEnable, aProgress);
     return S_OK;
 #endif
 }
@@ -801,7 +801,7 @@ HRESULT Session::onRecordingScreenStateChange(BOOL aEnable, ULONG aScreen)
 
     return mConsole->i_onRecordingScreenStateChange(aEnable, aScreen);
 #else
-    RT_NOREF(aEnable);
+    RT_NOREF(aEnable, aScreen);
     return S_OK;
 #endif
 }
