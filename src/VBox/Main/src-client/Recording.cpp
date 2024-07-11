@@ -1,4 +1,4 @@
-/* $Id: Recording.cpp 105267 2024-07-11 07:58:35Z andreas.loeffler@oracle.com $ */
+/* $Id: Recording.cpp 105268 2024-07-11 08:08:41Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording context code.
  *
@@ -261,7 +261,7 @@ int RecordingContext::progressCreate(const settings::RecordingSettings &Settings
     HRESULT hrc = pProgress.createObject();
     if (SUCCEEDED(hrc))
     {
-        hrc = pProgress->init(m_pConsole, Utf8Str("Recording"),
+        hrc = pProgress->init(static_cast<IConsole *>(m_pConsole), Utf8Str("Recording"),
                               TRUE /* aCancelable */, cOperations, cOperations /* ulTotalOperationsWeight */,
                               Utf8Str("Starting"), 1 /* ulFirstOperationWeight */);
         if (SUCCEEDED(hrc))
