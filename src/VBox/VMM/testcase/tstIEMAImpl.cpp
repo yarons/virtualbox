@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 105274 2024-07-11 15:07:58Z alexander.eichner@oracle.com $ */
+/* $Id: tstIEMAImpl.cpp 105275 2024-07-11 16:56:45Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -990,14 +990,14 @@ const char *GenFormatI16(int16_t const *pi16)
 static void GenerateHeader(PRTSTREAM pOut, const char *pszCpuDesc, const char *pszCpuType)
 {
     /* We want to tag the generated source code with the revision that produced it. */
-    static char s_szRev[] = "$Revision: 105274 $";
+    static char s_szRev[] = "$Revision: 105275 $";
     const char *pszRev = RTStrStripL(strchr(s_szRev, ':') + 1);
     size_t      cchRev = 0;
     while (RT_C_IS_DIGIT(pszRev[cchRev]))
         cchRev++;
 
     RTStrmPrintf(pOut,
-                 "/* $Id: tstIEMAImpl.cpp 105274 2024-07-11 15:07:58Z alexander.eichner@oracle.com $ */\n"
+                 "/* $Id: tstIEMAImpl.cpp 105275 2024-07-11 16:56:45Z alexander.eichner@oracle.com $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data%s%s - r%.*s on %s.\n"
                  " */\n"
@@ -9460,6 +9460,7 @@ TYPEDEF_SUBTEST_TYPE(SSE_PCMPISTRI_T, SSE_PCMPISTRI_TEST_T, PFNIEMAIMPLPCMPISTRI
 static SSE_PCMPISTRI_T g_aSsePcmpistri[] =
 {
     ENTRY_BIN_SSE_OPT(pcmpistri_u128),
+    ENTRY_BIN_SSE_OPT(vpcmpistri_u128),
 };
 
 #ifdef TSTIEMAIMPL_WITH_GENERATOR
@@ -9562,6 +9563,7 @@ TYPEDEF_SUBTEST_TYPE(SSE_PCMPISTRM_T, SSE_PCMPISTRM_TEST_T, PFNIEMAIMPLPCMPISTRM
 static SSE_PCMPISTRM_T g_aSsePcmpistrm[] =
 {
     ENTRY_BIN_SSE_OPT(pcmpistrm_u128),
+    ENTRY_BIN_SSE_OPT(vpcmpistrm_u128),
 };
 
 #ifdef TSTIEMAIMPL_WITH_GENERATOR
@@ -9679,6 +9681,7 @@ TYPEDEF_SUBTEST_TYPE(SSE_PCMPESTRI_T, SSE_PCMPESTRI_TEST_T, PFNIEMAIMPLPCMPESTRI
 static SSE_PCMPESTRI_T g_aSsePcmpestri[] =
 {
     ENTRY_BIN_SSE_OPT(pcmpestri_u128),
+    ENTRY_BIN_SSE_OPT(vpcmpestri_u128),
 };
 
 #ifdef TSTIEMAIMPL_WITH_GENERATOR
@@ -9807,6 +9810,7 @@ TYPEDEF_SUBTEST_TYPE(SSE_PCMPESTRM_T, SSE_PCMPESTRM_TEST_T, PFNIEMAIMPLPCMPESTRM
 static SSE_PCMPESTRM_T g_aSsePcmpestrm[] =
 {
     ENTRY_BIN_SSE_OPT(pcmpestrm_u128),
+    ENTRY_BIN_SSE_OPT(vpcmpestrm_u128),
 };
 
 #ifdef TSTIEMAIMPL_WITH_GENERATOR
@@ -10268,7 +10272,7 @@ int main(int argc, char **argv)
         RTMpGetDescription(NIL_RTCPUID, g_szCpuDesc, sizeof(g_szCpuDesc));
 
         /* For the revision, use the highest for this file and VBoxRT. */
-        static const char s_szRev[] = "$Revision: 105274 $";
+        static const char s_szRev[] = "$Revision: 105275 $";
         const char *pszRev = s_szRev;
         while (*pszRev && !RT_C_IS_DIGIT(*pszRev))
             pszRev++;

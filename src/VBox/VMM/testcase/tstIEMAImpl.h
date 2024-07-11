@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.h 105274 2024-07-11 15:07:58Z alexander.eichner@oracle.com $ */
+/* $Id: tstIEMAImpl.h 105275 2024-07-11 16:56:45Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase, Data Header File.
  */
@@ -1026,9 +1026,13 @@ TSTIEM_DECLARE_TEST_ARRAY_BIN(SseConvert,   SSE_CONVERT_MM_R32_TEST_T,      cvtp
 TSTIEM_DECLARE_TEST_ARRAY_BIN(SseConvert,   SSE_CONVERT_MM_R32_TEST_T,      cvttps2pi_u128       );
 
 TSTIEM_DECLARE_TEST_ARRAY_BIN(SsePcmpxstrx, SSE_PCMPISTRI_TEST_T,           pcmpistri_u128       );
+TSTIEM_DECLARE_TEST_ARRAY_BIN(SsePcmpxstrx, SSE_PCMPISTRI_TEST_T,           vpcmpistri_u128      );
 TSTIEM_DECLARE_TEST_ARRAY_BIN(SsePcmpxstrx, SSE_PCMPESTRI_TEST_T,           pcmpestri_u128       );
+TSTIEM_DECLARE_TEST_ARRAY_BIN(SsePcmpxstrx, SSE_PCMPESTRI_TEST_T,           vpcmpestri_u128      );
 TSTIEM_DECLARE_TEST_ARRAY_BIN(SsePcmpxstrx, SSE_PCMPISTRM_TEST_T,           pcmpistrm_u128       );
+TSTIEM_DECLARE_TEST_ARRAY_BIN(SsePcmpxstrx, SSE_PCMPISTRM_TEST_T,           vpcmpistrm_u128      );
 TSTIEM_DECLARE_TEST_ARRAY_BIN(SsePcmpxstrx, SSE_PCMPESTRM_TEST_T,           pcmpestrm_u128       );
+TSTIEM_DECLARE_TEST_ARRAY_BIN(SsePcmpxstrx, SSE_PCMPESTRM_TEST_T,           vpcmpestrm_u128      );
 
 RT_C_DECLS_END
 

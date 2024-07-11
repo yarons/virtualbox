@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 105274 2024-07-11 15:07:58Z alexander.eichner@oracle.com $ */
+/* $Id: IEMInternal.h 105275 2024-07-11 16:56:45Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -4005,10 +4005,15 @@ typedef FNIEMAIMPLPCMPISTRMU128IMM8 *PFNIEMAIMPLPCMPISTRMU128IMM8;
 typedef IEM_DECL_IMPL_TYPE(void, FNIEMAIMPLPCMPESTRMU128IMM8,(PRTUINT128U puDst, uint32_t *pEFlags, PCIEMPCMPESTRXSRC pSrc, uint8_t bEvil));
 typedef FNIEMAIMPLPCMPESTRMU128IMM8 *PFNIEMAIMPLPCMPESTRMU128IMM8;
 
-FNIEMAIMPLPCMPISTRIU128IMM8 iemAImpl_pcmpistri_u128, iemAImpl_pcmpistri_u128_fallback;
-FNIEMAIMPLPCMPESTRIU128IMM8 iemAImpl_pcmpestri_u128, iemAImpl_pcmpestri_u128_fallback;
-FNIEMAIMPLPCMPISTRMU128IMM8 iemAImpl_pcmpistrm_u128, iemAImpl_pcmpistrm_u128_fallback;
-FNIEMAIMPLPCMPESTRMU128IMM8 iemAImpl_pcmpestrm_u128, iemAImpl_pcmpestrm_u128_fallback;
+FNIEMAIMPLPCMPISTRIU128IMM8 iemAImpl_pcmpistri_u128,  iemAImpl_pcmpistri_u128_fallback;
+FNIEMAIMPLPCMPESTRIU128IMM8 iemAImpl_pcmpestri_u128,  iemAImpl_pcmpestri_u128_fallback;
+FNIEMAIMPLPCMPISTRMU128IMM8 iemAImpl_pcmpistrm_u128,  iemAImpl_pcmpistrm_u128_fallback;
+FNIEMAIMPLPCMPESTRMU128IMM8 iemAImpl_pcmpestrm_u128,  iemAImpl_pcmpestrm_u128_fallback;
+FNIEMAIMPLPCMPISTRIU128IMM8 iemAImpl_vpcmpistri_u128, iemAImpl_vpcmpistri_u128_fallback;
+FNIEMAIMPLPCMPESTRIU128IMM8 iemAImpl_vpcmpestri_u128, iemAImpl_vpcmpestri_u128_fallback;
+FNIEMAIMPLPCMPISTRMU128IMM8 iemAImpl_vpcmpistrm_u128, iemAImpl_vpcmpistrm_u128_fallback;
+FNIEMAIMPLPCMPESTRMU128IMM8 iemAImpl_vpcmpestrm_u128, iemAImpl_vpcmpestrm_u128_fallback;
+
 
 FNIEMAIMPLMEDIAOPTF2U128IMM8 iemAImpl_pclmulqdq_u128, iemAImpl_pclmulqdq_u128_fallback;
 FNIEMAIMPLMEDIAOPTF3U128IMM8 iemAImpl_vpclmulqdq_u128, iemAImpl_vpclmulqdq_u128_fallback;
