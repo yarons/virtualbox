@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstVexMap3.cpp.h 105278 2024-07-11 17:17:02Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllInstVexMap3.cpp.h 105279 2024-07-11 17:19:12Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, 0x0f 0x3a map.
  *
@@ -1804,8 +1804,7 @@ FNIEMOP_STUB(iemOp_vfmsubaddps_Vx_Lx_Wx_Hx);
 FNIEMOP_STUB(iemOp_vfmsubaddpd_Vx_Lx_Wx_Hx);
 
 
-/** Opcode VEX.66.0F3A 0x60.
- *
+/**
  * @opcode      0x60
  * @oppfx       0x66
  * @opflmodify  cf,pf,af,zf,sf,of
@@ -1935,8 +1934,7 @@ FNIEMOP_DEF(iemOp_vpcmpestrm_Vdq_Wdq_Ib)
 }
 
 
-/** Opcode VEX.66.0F3A 0x61,
- *
+/**
  * @opcode      0x61
  * @oppfx       0x66
  * @opflmodify  cf,pf,af,zf,sf,of
@@ -2074,8 +2072,7 @@ FNIEMOP_DEF(iemOp_vpcmpestri_Vdq_Wdq_Ib)
 }
 
 
-/** Opcode VEX.66.0F3A 0x62.
- *
+/**
  * @opcode      0x62
  * @oppfx       0x66
  * @opflmodify  cf,pf,af,zf,sf,of
@@ -2143,8 +2140,7 @@ FNIEMOP_DEF(iemOp_vpcmpistrm_Vdq_Wdq_Ib)
 }
 
 
-/** Opcode VEX.66.0F3A 0x63.
- *
+/**
  * @opcode      0x63
  * @oppfx       0x66
  * @opflmodify  cf,pf,af,zf,sf,of
