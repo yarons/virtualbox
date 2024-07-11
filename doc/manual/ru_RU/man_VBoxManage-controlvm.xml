@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-controlvm" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2024-02-29 21:47:25 +0100 (Thu, 29 Feb 2024) $</pubdate>
+    <pubdate>$Date: 2024-07-11 09:49:37 +0200 (Thu, 11 Jul 2024) $</pubdate>
     <title>VBoxManage controlvm</title>
   </refentryinfo>
 
@@ -456,7 +456,35 @@
         <arg choice="plain">off</arg>
       </group>
     </cmdsynopsis>
+<!--
+    <cmdsynopsis id="synopsis-vboxmanage-controlvm-recording-start">
+      <command>VBoxManage controlvm</command>
+      <group choice="req">
+        <arg choice="plain"><replaceable>uuid</replaceable></arg>
+        <arg choice="plain"><replaceable>vmname</replaceable></arg>
+      </group>
+      <arg choice="plain">recording start</arg>
+      <arg><replaceable>wait</replaceable></arg>
+    </cmdsynopsis>
 
+    <cmdsynopsis id="synopsis-vboxmanage-controlvm-recording-stop">
+      <command>VBoxManage controlvm</command>
+      <group choice="req">
+        <arg choice="plain"><replaceable>uuid</replaceable></arg>
+        <arg choice="plain"><replaceable>vmname</replaceable></arg>
+      </group>
+      <arg choice="plain">recording stop</arg>
+    </cmdsynopsis>
+
+    <cmdsynopsis id="synopsis-vboxmanage-controlvm-recording-attach">
+      <command>VBoxManage controlvm</command>
+      <group choice="req">
+        <arg choice="plain"><replaceable>uuid</replaceable></arg>
+        <arg choice="plain"><replaceable>vmname</replaceable></arg>
+      </group>
+      <arg choice="plain">recording attach</arg>
+    </cmdsynopsis>
+-->
     <cmdsynopsis id="synopsis-vboxmanage-controlvm-recording-screens">
       <command>VBoxManage controlvm</command>
       <group choice="req">

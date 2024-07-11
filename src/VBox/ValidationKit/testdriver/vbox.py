@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 103520 2024-02-22 10:07:39Z andreas.loeffler@oracle.com $
+# $Id: vbox.py 105266 2024-07-11 07:49:37Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103520 $"
+__version__ = "$Revision: 105266 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2717,7 +2717,10 @@ class TestDriver(base.TestDriver):                                              
                         if self.cMbRecordingMax > 0:
                             reporter.log('Recording file limit is set to %d MB' % (self.cMbRecordingMax));
                         oRecSettings = oSession.o.machine.recordingSettings;
-                        oRecSettings.enabled     = True;
+                        oRecSettings.enabled     = True; # For VBox < 7.1 this also starts recording.
+                        if self.fpApiVer >= 7.1:
+                            # For VBox >= 7.1 we have to explicitly start the recording.
+                            oRecSettings.start();
                         aoScreens = self.oVBoxMgr.getArray(oRecSettings, 'screens');
                         for oScreen in aoScreens:
                             try:
