@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 105290 2024-07-12 10:00:14Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 105291 2024-07-12 10:01:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -7573,6 +7573,21 @@ void iemMemRollback(PVMCPUCC pVCpu) RT_NOEXCEPT
 #include "IEMAllMemRWTmpl.cpp.h"
 
 #undef TMPL_MEM_WITH_STACK
+
+#define TMPL_MEM_TYPE       uint32_t
+#define TMPL_MEM_TYPE_ALIGN 0
+#define TMPL_MEM_FN_SUFF    U32NoAc
+#define TMPL_MEM_FMT_TYPE   "%#010x"
+#define TMPL_MEM_FMT_DESC   "dword"
+#include "IEMAllMemRWTmpl.cpp.h"
+#undef TMPL_WITH_PUSH_SREG
+
+#define TMPL_MEM_TYPE       uint64_t
+#define TMPL_MEM_TYPE_ALIGN 0
+#define TMPL_MEM_FN_SUFF    U64NoAc
+#define TMPL_MEM_FMT_TYPE   "%#018RX64"
+#define TMPL_MEM_FMT_DESC   "qword"
+#include "IEMAllMemRWTmpl.cpp.h"
 
 #define TMPL_MEM_TYPE       uint64_t
 #define TMPL_MEM_TYPE_ALIGN (sizeof(uint64_t) * 2 - 1)
