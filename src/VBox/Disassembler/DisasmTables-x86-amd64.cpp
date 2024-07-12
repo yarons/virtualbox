@@ -1,4 +1,4 @@
-/* $Id: DisasmTables-x86-amd64.cpp 105310 2024-07-12 15:32:18Z alexander.eichner@oracle.com $ */
+/* $Id: DisasmTables-x86-amd64.cpp 105314 2024-07-12 17:37:43Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for X86 (32-bit and 16-bit modes).
  */
@@ -3769,8 +3769,8 @@ static const DISOPCODE g_aDisasVexMap1F2[] =
     INVALID_OPCODE,
     OPVEX("vcvtsi2sd %Vpd,%Hpd,%Ey",        IDX_ParseModRM,     IDX_ParseVexDest,   IDX_UseModRM,       0,                  OP_VCVTSI2SD,       OP_PARM_Vps,  OP_PARM_Hps,  OP_PARM_Ey,   OP_PARM_NONE, DISOPTYPE_HARMLESS),
     INVALID_OPCODE,
-    INVALID_OPCODE,
-    INVALID_OPCODE,
+    OPVEX("vcvttsd2si %Gy,%Wsd",            IDX_ParseModRM,     IDX_UseModRM,       0,                  0,                  OP_VCVTTSD2SI,      OP_PARM_Gy,   OP_PARM_Wss,  OP_PARM_NONE, OP_PARM_NONE, DISOPTYPE_HARMLESS),
+    OPVEX("vcvtsd2si %Gy,%Wsd",             IDX_ParseModRM,     IDX_UseModRM,       0,                  0,                  OP_VCVTSD2SI,       OP_PARM_Gy,   OP_PARM_Wss,  OP_PARM_NONE, OP_PARM_NONE, DISOPTYPE_HARMLESS),
     INVALID_OPCODE,
     INVALID_OPCODE,
 
