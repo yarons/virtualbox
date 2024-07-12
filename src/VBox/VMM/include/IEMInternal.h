@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 105309 2024-07-12 15:12:43Z alexander.eichner@oracle.com $ */
+/* $Id: IEMInternal.h 105311 2024-07-12 15:33:03Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -4167,6 +4167,8 @@ typedef FNIEMAIMPLSSEF2R64I64 *PFNIEMAIMPLSSEF2R64I64;
 FNIEMAIMPLSSEF2R64I32 iemAImpl_cvtsi2sd_r64_i32;
 FNIEMAIMPLSSEF2R64I64 iemAImpl_cvtsi2sd_r64_i64;
 
+FNIEMAIMPLAVXF3XMMI32 iemAImpl_vcvtsi2sd_u128_i32, iemAImpl_vcvtsi2sd_u128_i32_fallback;
+FNIEMAIMPLAVXF3XMMI64 iemAImpl_vcvtsi2sd_u128_i64, iemAImpl_vcvtsi2sd_u128_i64_fallback;
 
 typedef IEM_DECL_IMPL_TYPE(uint32_t, FNIEMAIMPLF2EFLMXCSRR32R32,(uint32_t uMxCsrIn, uint32_t *pfEFlags, RTFLOAT32U uSrc1, RTFLOAT32U uSrc2));
 typedef FNIEMAIMPLF2EFLMXCSRR32R32 *PFNIEMAIMPLF2EFLMXCSRR32R32;
