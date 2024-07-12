@@ -1,4 +1,4 @@
-# $Id: pdf-theme-UserManual.yaml 105296 2024-07-12 11:19:48Z klaus.espenlaub@oracle.com $
+# $Id: pdf-theme-UserManual.yaml 105297 2024-07-12 11:22:16Z klaus.espenlaub@oracle.com $
 
 brand:
     color:
@@ -194,6 +194,7 @@ style:
     toc-1:
         color:          $brand-color-primary
         font-family:    $pdf2-font-sans
+        space-before:   5pt
         start-indent:   0pt
 
     toc-2:
