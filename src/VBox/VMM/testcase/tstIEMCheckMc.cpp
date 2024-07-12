@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 105283 2024-07-11 20:26:27Z alexander.eichner@oracle.com $ */
+/* $Id: tstIEMCheckMc.cpp 105295 2024-07-12 11:07:20Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -170,6 +170,7 @@ typedef VBOXSTRICTRC (* PFNIEMOPRM)(PVMCPU pVCpu, uint8_t bRm);
 #define IEMOP_HLP_DONE_VEX_DECODING()                       do { } while (0)
 #define IEMOP_HLP_DONE_VEX_DECODING_EX(a_fFeature)          do { } while (0)
 #define IEMOP_HLP_DONE_VEX_DECODING_L0_EX(a_fFeature)       do { } while (0)
+#define IEMOP_HLP_DONE_VEX_DECODING_L0_EX_2(a_fFeature, a_fFeature2)                                do { } while (0)
 #define IEMOP_HLP_DONE_VEX_DECODING_L1_EX(a_fFeature)       do { } while (0)
 #define IEMOP_HLP_DONE_VEX_DECODING_L0()                    do { } while (0)
 #define IEMOP_HLP_DONE_VEX_DECODING_W0_EX(a_fFeature)       do { } while (0)
@@ -178,6 +179,7 @@ typedef VBOXSTRICTRC (* PFNIEMOPRM)(PVMCPU pVCpu, uint8_t bRm);
 #define IEMOP_HLP_DONE_VEX_DECODING_NO_VVVV_EX(a_fFeature)  do { } while (0)
 #define IEMOP_HLP_DONE_VEX_DECODING_L0_AND_NO_VVVV()        do { } while (0)
 #define IEMOP_HLP_DONE_VEX_DECODING_L0_AND_NO_VVVV_EX(a_fFeature)                                   do { } while (0)
+#define IEMOP_HLP_DONE_VEX_DECODING_L0_AND_NO_VVVV_EX_2(a_fFeature, a_fFeature2)                    do { } while (0)
 #define IEMOP_HLP_DONE_VEX_DECODING_L1_AND_NO_VVVV_EX(a_fFeature)                                   do { } while (0)
 #define IEMOP_HLP_DONE_DECODING_NO_LOCK_REPZ_OR_REPNZ_PREFIXES()                                    do { } while (0)
 #define IEMOP_HLP_DONE_DECODING_NO_SIZE_OP_REPZ_OR_REPNZ_PREFIXES()                                 do { } while (0)
