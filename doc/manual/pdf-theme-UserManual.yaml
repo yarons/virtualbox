@@ -1,4 +1,4 @@
-# $Id: pdf-theme-UserManual.yaml 105297 2024-07-12 11:22:16Z klaus.espenlaub@oracle.com $
+# $Id: pdf-theme-UserManual.yaml 105299 2024-07-12 11:34:48Z klaus.espenlaub@oracle.com $
 
 brand:
     color:
@@ -84,6 +84,7 @@ style:
         # TODO: Could we get an SVG logo? Or at least a higher resolution one (this is 512x512, I think).
         background-image:   en_US/images/vboxlogo.png
         background-repeat:  no-repeat
+        background-position-horizontal: center
 
     cover-title:
         color:              $brand-color-primary
