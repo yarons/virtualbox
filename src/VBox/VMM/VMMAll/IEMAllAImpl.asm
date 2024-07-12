@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 105306 2024-07-12 13:20:30Z alexander.eichner@oracle.com $
+; $Id: IEMAllAImpl.asm 105307 2024-07-12 13:39:37Z alexander.eichner@oracle.com $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -5008,6 +5008,48 @@ BEGINPROC_FASTCALL iemAImpl_vpermpd_u256, 16
  %endrep
 .immEnd:
 ENDPROC iemAImpl_vpermpd_u256
+
+
+;;
+; VPERMPS instruction.
+;
+; @param    A0      Pointer to the first media register size operand (output).
+; @param    A1      Pointer to the second media register size operand (input).
+; @param    A2      Pointer to the third media register size operand (input).
+;
+BEGINPROC_FASTCALL iemAImpl_vpermps_u256, 16
+        PROLOGUE_3_ARGS
+        IEMIMPL_AVX_PROLOGUE
+
+        vmovdqu  ymm0, [A1]
+        vmovdqu  ymm1, [A2]
+        vpermps  ymm0, ymm0, ymm1
+        vmovdqu  [A0], ymm0
+
+        IEMIMPL_AVX_EPILOGUE
+        EPILOGUE_3_ARGS
+ENDPROC iemAImpl_vpermps_u256
+
+
+;;
+; VPERMD instruction.
+;
+; @param    A0      Pointer to the first media register size operand (output).
+; @param    A1      Pointer to the second media register size operand (input).
+; @param    A2      Pointer to the third media register size operand (input).
+;
+BEGINPROC_FASTCALL iemAImpl_vpermd_u256, 16
+        PROLOGUE_3_ARGS
+        IEMIMPL_AVX_PROLOGUE
+
+        vmovdqu  ymm0, [A1]
+        vmovdqu  ymm1, [A2]
+        vpermd   ymm0, ymm0, ymm1
+        vmovdqu  [A0], ymm0
+
+        IEMIMPL_AVX_EPILOGUE
+        EPILOGUE_3_ARGS
+ENDPROC iemAImpl_vpermd_u256
 
 
 ;;

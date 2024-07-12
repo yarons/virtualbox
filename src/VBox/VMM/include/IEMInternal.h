@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 105306 2024-07-12 13:20:30Z alexander.eichner@oracle.com $ */
+/* $Id: IEMInternal.h 105307 2024-07-12 13:39:37Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -3727,6 +3727,8 @@ FNIEMAIMPLMEDIAOPTF3U256 iemAImpl_vpsrlw_u256,     iemAImpl_vpsrlw_u256_fallback
 FNIEMAIMPLMEDIAOPTF3U256 iemAImpl_vpsrld_u256,     iemAImpl_vpsrld_u256_fallback;
 FNIEMAIMPLMEDIAOPTF3U256 iemAImpl_vpsrlq_u256,     iemAImpl_vpsrlq_u256_fallback;
 FNIEMAIMPLMEDIAOPTF3U256 iemAImpl_vpmaddwd_u256, iemAImpl_vpmaddwd_u256_fallback;
+FNIEMAIMPLMEDIAOPTF3U256 iemAImpl_vpermps_u256,    iemAImpl_vpermps_u256_fallback;
+FNIEMAIMPLMEDIAOPTF3U256 iemAImpl_vpermd_u256,     iemAImpl_vpermd_u256_fallback;
 
 FNIEMAIMPLMEDIAOPTF2U256 iemAImpl_vpabsb_u256,     iemAImpl_vpabsb_u256_fallback;
 FNIEMAIMPLMEDIAOPTF2U256 iemAImpl_vpabsw_u256,     iemAImpl_vpabsw_u256_fallback;
