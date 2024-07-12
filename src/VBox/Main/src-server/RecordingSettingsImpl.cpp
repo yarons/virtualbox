@@ -1,4 +1,4 @@
-/* $Id: RecordingSettingsImpl.cpp 105266 2024-07-11 07:49:37Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingSettingsImpl.cpp 105308 2024-07-12 13:40:03Z andreas.loeffler@oracle.com $ */
 /** @file
  *
  * VirtualBox COM class implementation - Machine capture settings.
@@ -322,6 +322,7 @@ HRESULT RecordingSettings::getScreens(std::vector<ComPtr<IRecordingScreenSetting
 HRESULT RecordingSettings::getProgress(ComPtr<IProgress> &aProgress)
 {
 #ifndef VBOX_WITH_RECORDING
+    RT_NOREF(aProgress);
     ReturnComNotImplemented();
 #else
     /* the machine needs to be mutable */
@@ -368,6 +369,7 @@ HRESULT RecordingSettings::getScreenSettings(ULONG uScreenId, ComPtr<IRecordingS
 HRESULT RecordingSettings::start(ComPtr<IProgress> &aProgress)
 {
 #ifndef VBOX_WITH_RECORDING
+    RT_NOREF(aProgress);
     ReturnComNotImplemented();
 #else
     /* the machine needs to be mutable */
