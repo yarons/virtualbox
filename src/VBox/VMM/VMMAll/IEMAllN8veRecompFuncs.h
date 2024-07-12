@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompFuncs.h 105271 2024-07-11 10:30:56Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompFuncs.h 105315 2024-07-12 17:38:53Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler - Inlined Bits.
  */
@@ -4280,7 +4280,10 @@ iemNativeEmitStoreGregU32Const(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint
 #define IEM_MC_STORE_GREG_U32(a_iGReg, a_u32Value) \
     off = iemNativeEmitStoreGregU32(pReNative, off, a_iGReg, a_u32Value)
 
-/** Emits code for IEM_MC_STORE_GREG_U32. */
+#define IEM_MC_STORE_GREG_I32(a_iGReg, a_i32Value) \
+    off = iemNativeEmitStoreGregU32(pReNative, off, a_iGReg, a_i32Value)
+
+/** Emits code for IEM_MC_STORE_GREG_U32/IEM_MC_STORE_GREG_I32. */
 DECL_INLINE_THROW(uint32_t)
 iemNativeEmitStoreGregU32(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t iGReg, uint8_t idxValueVar)
 {
