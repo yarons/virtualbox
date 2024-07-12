@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 105302 2024-07-12 12:44:58Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 105306 2024-07-12 13:20:30Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -20414,4 +20414,28 @@ IEM_DECL_IMPL_DEF(uint32_t, iemAImpl_dppd_u128_fallback,(uint32_t uMxCsrIn, PX86
     RT_NOREF(puDst, pSrc, bImm);
     AssertReleaseFailed();
     return uMxCsrIn;
+}
+
+
+/**
+ * VPERMQ
+ */
+IEM_DECL_IMPL_DEF(void, iemAImpl_vpermq_u256_fallback,(PRTUINT256U puDst, PCRTUINT256U puSrc, uint8_t bImm))
+{
+    puDst->au64[0] = puSrc->au64[bImm        & 0x3];
+    puDst->au64[1] = puSrc->au64[(bImm >> 2) & 0x3];
+    puDst->au64[2] = puSrc->au64[(bImm >> 4) & 0x3];
+    puDst->au64[3] = puSrc->au64[(bImm >> 6) & 0x3];
+}
+
+
+/**
+ * VPERMPD
+ */
+IEM_DECL_IMPL_DEF(void, iemAImpl_vpermpd_u256_fallback,(PRTUINT256U puDst, PCRTUINT256U puSrc, uint8_t bImm))
+{
+    puDst->au64[0] = puSrc->au64[bImm        & 0x3];
+    puDst->au64[1] = puSrc->au64[(bImm >> 2) & 0x3];
+    puDst->au64[2] = puSrc->au64[(bImm >> 4) & 0x3];
+    puDst->au64[3] = puSrc->au64[(bImm >> 6) & 0x3];
 }

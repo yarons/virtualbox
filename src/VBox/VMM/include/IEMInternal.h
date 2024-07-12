@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 105302 2024-07-12 12:44:58Z alexander.eichner@oracle.com $ */
+/* $Id: IEMInternal.h 105306 2024-07-12 13:20:30Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -3999,6 +3999,9 @@ FNIEMAIMPLMEDIAOPTF2U128 iemAImpl_sha256msg2_u128,      iemAImpl_sha256msg2_u128
 FNIEMAIMPLMEDIAOPTF2U128IMM8 iemAImpl_sha1rnds4_u128,   iemAImpl_sha1rnds4_u128_fallback;
 IEM_DECL_IMPL_DEF(void, iemAImpl_sha256rnds2_u128,(PRTUINT128U puDst, PCRTUINT128U puSrc, PCRTUINT128U puXmm0Constants));
 IEM_DECL_IMPL_DEF(void, iemAImpl_sha256rnds2_u128_fallback,(PRTUINT128U puDst, PCRTUINT128U puSrc, PCRTUINT128U puXmm0Constants));
+
+FNIEMAIMPLMEDIAOPTF2U256IMM8 iemAImpl_vpermq_u256,      iemAImpl_vpermq_u256_fallback;
+FNIEMAIMPLMEDIAOPTF2U256IMM8 iemAImpl_vpermpd_u256,     iemAImpl_vpermpd_u256_fallback;
 
 typedef struct IEMPCMPISTRXSRC
 {
