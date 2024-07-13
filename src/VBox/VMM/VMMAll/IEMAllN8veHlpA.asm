@@ -1,4 +1,4 @@
-; $Id: IEMAllN8veHlpA.asm 104378 2024-04-19 14:43:14Z knut.osmundsen@oracle.com $
+; $Id: IEMAllN8veHlpA.asm 105318 2024-07-13 00:53:36Z knut.osmundsen@oracle.com $
 ;; @file
 ; IEM - Native Recompiler Assembly Helpers.
 ;
@@ -256,8 +256,8 @@ SEH64_END_PROLOGUE
 %else
         mov     rdi, [rbp + 10h]
         mov     rsi, [rbp + 18h]
-        mov     ecx, [rbp + 20h]
-        mov     edx, [rbp + 28h]
+        mov     rcx, [rbp + 20h]
+        mov     rdx, [rbp + 28h]
 %endif
         call    NAME(iemNativeHlpCheckTlbLookup)
 
