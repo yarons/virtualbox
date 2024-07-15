@@ -1,4 +1,4 @@
-/* $Id: UIMachineDefs.h 103339 2024-02-13 16:49:47Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineDefs.h 105329 2024-07-15 15:00:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Defines for Virtual Machine classes.
  */
@@ -57,9 +57,8 @@ enum UIVisualElement
 enum UIMouseStateType
 {
     UIMouseStateType_MouseCaptured         = RT_BIT(0),
-    UIMouseStateType_MouseAbsolute         = RT_BIT(1),
-    UIMouseStateType_MouseAbsoluteDisabled = RT_BIT(2),
-    UIMouseStateType_MouseNeedsHostCursor  = RT_BIT(3)
+    UIMouseStateType_MouseSupportsAbsolute = RT_BIT(1),
+    UIMouseStateType_MouseIntegrated       = RT_BIT(2)
 };
 
 /** Keyboard state types. */

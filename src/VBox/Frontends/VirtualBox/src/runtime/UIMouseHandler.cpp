@@ -1,4 +1,4 @@
-﻿/* $Id: UIMouseHandler.cpp 104598 2024-05-13 14:22:21Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIMouseHandler.cpp 105329 2024-07-15 15:00:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class implementation.
  */
@@ -257,10 +257,16 @@ void UIMouseHandler::setMouseIntegrationEnabled(bool fEnabled)
 /* Current mouse state: */
 int UIMouseHandler::state() const
 {
-    return uimachine()->machineState() == KMachineState_Null ? 0 :
-           (uimachine()->isMouseCaptured() ? UIMouseStateType_MouseCaptured : 0) |
-           (uimachine()->isMouseSupportsAbsolute() ? UIMouseStateType_MouseAbsolute : 0) |
-           (uimachine()->isMouseIntegrated() ? 0 : UIMouseStateType_MouseAbsoluteDisabled);
+    int iResult = 0;
+    if (uimachine()->isMouseCaptured())
+        iResult |= UIMouseStateType_MouseCaptured;
+    if (uimachine()->isMouseSupportsAbsolute())
+    {
+        iResult |= UIMouseStateType_MouseSupportsAbsolute;
+        if (uimachine()->isMouseIntegrated())
+            iResult |= UIMouseStateType_MouseIntegrated;
+    }
+    return iResult;
 }
 
 bool UIMouseHandler::nativeEventFilter(void *pMessage, ulong uScreenId)
