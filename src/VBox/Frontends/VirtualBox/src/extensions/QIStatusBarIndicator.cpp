@@ -1,10 +1,10 @@
-/* $Id: QIStatusBarIndicator.cpp 101561 2023-10-23 16:25:05Z sergey.dubov@oracle.com $ */
+/* $Id: QIStatusBarIndicator.cpp 105327 2024-07-15 14:48:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIStatusBarIndicator interface implementation.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -29,7 +29,6 @@
 #include <QApplication>
 #include <QHBoxLayout>
 #include <QLabel>
-#include <QIcon>
 #include <QPainter>
 #include <QStyle>
 #include <QWindow>
@@ -69,11 +68,10 @@ void QIStatusBarIndicator::mousePressEvent(QMouseEvent *pEvent)
         emit sigContextMenuRequest(this, &cme);
         if (cme.isAccepted())
             pEvent->accept();
-        else
-            QWidget::mousePressEvent(pEvent);
     }
-    else
-        QWidget::mousePressEvent(pEvent);
+
+    /* Call to base-class: */
+    QWidget::mousePressEvent(pEvent);
 }
 #endif /* VBOX_WS_MAC */
 
@@ -138,20 +136,17 @@ QITextStatusBarIndicator::QITextStatusBarIndicator(QWidget *pParent /* = 0 */)
     : QIStatusBarIndicator(pParent)
     , m_pLabel(0)
 {
-    /* Create main-layout: */
+    /* Prepare main-layout: */
     QHBoxLayout *pMainLayout = new QHBoxLayout(this);
     if (pMainLayout)
     {
-        /* Configure main-layout: */
         pMainLayout->setContentsMargins(0, 0, 0, 0);
         pMainLayout->setSpacing(0);
+
         /* Create label: */
-        m_pLabel = new QLabel;
+        m_pLabel = new QLabel(this);
         if (m_pLabel)
-        {
-            /* Add label into main-layout: */
             pMainLayout->addWidget(m_pLabel);
-        }
     }
 }
 
