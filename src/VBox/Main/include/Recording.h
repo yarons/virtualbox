@@ -1,4 +1,4 @@
-/* $Id: Recording.h 105266 2024-07-11 07:49:37Z andreas.loeffler@oracle.com $ */
+/* $Id: Recording.h 105337 2024-07-16 08:18:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * Recording code header.
  */
@@ -201,7 +201,7 @@ protected:
 
 protected:
 
-    static DECLCALLBACK(void) s_progressCancelCallback(void *pvUser);
+    static void               s_progressCancelCallback(void *pvUser);
 
     static DECLCALLBACK(void) s_recordingStateChangedCallback(RecordingContext *pCtx, RECORDINGSTS enmSts, uint32_t uScreen, int vrc, void *pvUser);
 

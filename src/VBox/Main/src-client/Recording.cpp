@@ -1,4 +1,4 @@
-/* $Id: Recording.cpp 105268 2024-07-11 08:08:41Z andreas.loeffler@oracle.com $ */
+/* $Id: Recording.cpp 105337 2024-07-16 08:18:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * Recording context code.
  *
@@ -697,7 +697,7 @@ int RecordingContext::audioInit(const settings::RecordingScreenSettings &screenS
  * @param   pvUser              User-supplied pointer. Points to the RecordingContext instance.
  */
 /* static */
-DECLCALLBACK(void) RecordingContext::s_progressCancelCallback(void *pvUser)
+void RecordingContext::s_progressCancelCallback(void *pvUser)
 {
     RecordingContext *pThis = (RecordingContext *)pvUser;
 
