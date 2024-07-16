@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 104642 2024-05-15 13:44:49Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIExtraDataDefs.cpp 105363 2024-07-16 18:12:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -143,9 +143,6 @@ const char *UIExtraDataDefs::GUI_CloudConsole_PublicKey_Path = "GUI/CloudConsole
 const char *UIExtraDataDefs::GUI_ExtraDataManager_Geometry = "GUI/ExtraDataManager/Geometry";
 const char *UIExtraDataDefs::GUI_ExtraDataManager_SplitterHints = "GUI/ExtraDataManager/SplitterHints";
 #endif /* VBOX_GUI_WITH_EXTRADATA_MANAGER_UI */
-
-/* Wizards: */
-const char *UIExtraDataDefs::GUI_HideDescriptionForWizards = "GUI/HideDescriptionForWizards";
 
 
 /* Virtual Machine: */

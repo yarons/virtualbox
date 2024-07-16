@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 104559 2024-05-08 15:14:44Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 105363 2024-07-16 18:12:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class implementation.
  */
@@ -828,7 +828,6 @@ void UIWizardExportAppPageExpert::updateCloudStuff()
     CCloudClient comClient;
     CVirtualSystemDescription comDescription;
     CVirtualSystemDescriptionForm comForm;
-    wizard()->wizardButton(WizardButtonType_Expert)->setEnabled(false);
     refreshCloudStuff(comAppliance,
                       comClient,
                       comDescription,
@@ -838,7 +837,6 @@ void UIWizardExportAppPageExpert::updateCloudStuff()
                       wizard()->machineIDs(),
                       wizard()->uri(),
                       wizard()->cloudExportMode());
-    wizard()->wizardButton(WizardButtonType_Expert)->setEnabled(true);
     wizard()->setCloudAppliance(comAppliance);
     wizard()->setCloudClient(comClient);
     wizard()->setVsd(comDescription);

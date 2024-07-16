@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageSource.cpp 104585 2024-05-13 11:37:59Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardImportAppPageSource.cpp 105363 2024-07-16 18:12:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageSource class implementation.
  */
@@ -830,13 +830,11 @@ void UIWizardImportAppPageSource::sltHandleSourceComboChange()
 void UIWizardImportAppPageSource::sltHandleProfileComboChange()
 {
     /* Refresh required settings: */
-    wizard()->wizardButton(WizardButtonType_Expert)->setEnabled(false);
     refreshCloudProfileInstances(m_pProfileInstanceList,
                                  wizard()->notificationCenter(),
                                  source(m_pSourceComboBox),
                                  profileName(m_pProfileComboBox),
                                  wizard()->isSourceCloudOne());
-    wizard()->wizardButton(WizardButtonType_Expert)->setEnabled(true);
 
     /* Notify about changes: */
     emit completeChanged();
@@ -860,7 +858,6 @@ void UIWizardImportAppPageSource::updateCloudStuff()
     /* Create cloud appliance and VSD import form: */
     CAppliance comAppliance;
     CVirtualSystemDescriptionForm comForm;
-    wizard()->wizardButton(WizardButtonType_Expert)->setEnabled(false);
     refreshCloudStuff(comAppliance,
                       comForm,
                       wizard(),
@@ -868,7 +865,6 @@ void UIWizardImportAppPageSource::updateCloudStuff()
                       source(m_pSourceComboBox),
                       profileName(m_pProfileComboBox),
                       wizard()->isSourceCloudOne());
-    wizard()->wizardButton(WizardButtonType_Expert)->setEnabled(true);
     wizard()->setCloudAppliance(comAppliance);
     wizard()->setVsdImportForm(comForm);
 }

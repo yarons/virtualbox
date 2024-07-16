@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportApp.cpp 103961 2024-03-20 14:34:36Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardImportApp.cpp 105363 2024-07-16 18:12:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardImportApp class implementation.
  */
@@ -156,7 +156,7 @@ private:
 UIWizardImportApp::UIWizardImportApp(QWidget *pParent,
                                      bool fImportFromOCIByDefault,
                                      const QString &strFileName)
-    : UINativeWizard(pParent, WizardType_ImportAppliance, WizardMode_Auto, "ovf")
+    : UINativeWizard(pParent, WizardType_ImportAppliance, "ovf")
     , m_fImportFromOCIByDefault(fImportFromOCIByDefault)
     , m_strFileName(strFileName)
     , m_fSourceCloudOne(false)

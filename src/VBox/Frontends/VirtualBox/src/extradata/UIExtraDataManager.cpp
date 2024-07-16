@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 105081 2024-07-01 15:38:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.cpp 105363 2024-07-16 18:12:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -1943,7 +1943,6 @@ QStringList UIExtraDataManagerWindow::knownExtraDataKeys()
            << GUI_CloudConsoleManager_Restrictions
            << GUI_CloudConsoleManager_Details_Expanded
            << GUI_CloudConsole_PublicKey_Path
-           << GUI_HideDescriptionForWizards
            << GUI_HideFromManager << GUI_HideDetails
            << GUI_PreventReconfiguration << GUI_PreventSnapshotOperations
 #ifndef VBOX_WS_MAC
@@ -3223,31 +3222,6 @@ QString UIExtraDataManager::cloudConsolePublicKeyPath()
 void UIExtraDataManager::setCloudConsolePublicKeyPath(const QString &strPath)
 {
     setExtraDataString(GUI_CloudConsole_PublicKey_Path, strPath);
-}
-
-WizardMode UIExtraDataManager::modeForWizardType(WizardType type)
-{
-    /* Otherwise get mode from cached extra-data: */
-    return extraDataStringList(GUI_HideDescriptionForWizards).contains(gpConverter->toInternalString(type))
-           ? WizardMode_Expert : WizardMode_Basic;
-}
-
-void UIExtraDataManager::setModeForWizardType(WizardType type, WizardMode mode)
-{
-    /* Get wizard name: */
-    const QString strWizardName = gpConverter->toInternalString(type);
-    /* Get current value: */
-    const QStringList oldValue = extraDataStringList(GUI_HideDescriptionForWizards);
-    QStringList newValue = oldValue;
-    /* Include wizard-name into expert-mode wizard list if necessary: */
-    if (mode == WizardMode_Expert && !newValue.contains(strWizardName))
-        newValue << strWizardName;
-    /* Exclude wizard-name from expert-mode wizard list if necessary: */
-    else if (mode == WizardMode_Basic && newValue.contains(strWizardName))
-        newValue.removeAll(strWizardName);
-    /* Update extra-data if necessary: */
-    if (newValue != oldValue)
-        setExtraDataStringList(GUI_HideDescriptionForWizards, newValue);
 }
 
 bool UIExtraDataManager::showMachineInVirtualBoxManagerChooser(const QUuid &uID)

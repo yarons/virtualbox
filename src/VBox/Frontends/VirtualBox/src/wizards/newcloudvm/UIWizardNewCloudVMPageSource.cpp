@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageSource.cpp 104585 2024-05-13 11:37:59Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewCloudVMPageSource.cpp 105363 2024-07-16 18:12:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageSource class implementation.
  */
@@ -607,9 +607,7 @@ void UIWizardNewCloudVMPageSource::sltHandleProfileButtonClick()
 void UIWizardNewCloudVMPageSource::sltHandleSourceTabBarChange()
 {
     /* Update source type: */
-    wizard()->wizardButton(WizardButtonType_Expert)->setEnabled(false);
     populateSourceImages(m_pSourceImageList, m_pSourceTabBar, wizard()->notificationCenter(), wizard()->client());
-    wizard()->wizardButton(WizardButtonType_Expert)->setEnabled(true);
     sltHandleSourceImageChange();
 
     /* Notify about changes: */

@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.cpp 105152 2024-07-04 18:42:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardExportApp.cpp 105363 2024-07-16 18:12:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportApp class implementation.
  */
@@ -50,7 +50,7 @@
 UIWizardExportApp::UIWizardExportApp(QWidget *pParent,
                                      const QStringList &predefinedMachineNames /* = QStringList() */,
                                      bool fFastTraverToExportOCI /* = false */)
-    : UINativeWizard(pParent, WizardType_ExportAppliance, WizardMode_Auto,
+    : UINativeWizard(pParent, WizardType_ExportAppliance,
                      fFastTraverToExportOCI ? "cloud-export-oci" : "ovf")
     , m_predefinedMachineNames(predefinedMachineNames)
     , m_fFastTraverToExportOCI(fFastTraverToExportOCI)
@@ -76,7 +76,6 @@ void UIWizardExportApp::goForward()
 
 void UIWizardExportApp::disableButtons()
 {
-    wizardButton(WizardButtonType_Expert)->setEnabled(false);
     wizardButton(WizardButtonType_Back)->setEnabled(false);
     wizardButton(WizardButtonType_Next)->setEnabled(false);
 }

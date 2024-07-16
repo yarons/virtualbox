@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 104642 2024-05-15 13:44:49Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIExtraDataDefs.h 105363 2024-07-16 18:12:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -264,12 +264,6 @@ namespace UIExtraDataDefs
         SHARED_LIBRARY_STUFF extern const char *GUI_ExtraDataManager_SplitterHints;
     /** @} */
 #endif /* VBOX_GUI_WITH_EXTRADATA_MANAGER_UI */
-
-    /** @name Wizards
-      * @{ */
-        /** Holds wizard types for which descriptions should be hidden. */
-        SHARED_LIBRARY_STUFF extern const char *GUI_HideDescriptionForWizards;
-    /** @} */
 
     /** @name Virtual Machine
       * @{ */
@@ -939,7 +933,6 @@ enum WizardType
 /** Common UI: Wizard modes. */
 enum WizardMode
 {
-    WizardMode_Auto,
     WizardMode_Basic,
     WizardMode_Expert
 };

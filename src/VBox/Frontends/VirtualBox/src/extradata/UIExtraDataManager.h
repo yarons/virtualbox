@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 104968 2024-06-19 18:51:37Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.h 105363 2024-07-16 18:12:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -520,14 +520,6 @@ public:
         QString cloudConsolePublicKeyPath();
         /** Defines Cloud Console public key @a strPath. */
         void setCloudConsolePublicKeyPath(const QString &strPath);
-    /** @} */
-
-    /** @name Wizards
-      * @{ */
-        /** Returns mode for wizard of passed @a type. */
-        WizardMode modeForWizardType(WizardType type);
-        /** Defines @a mode for wizard of passed @a type. */
-        void setModeForWizardType(WizardType type, WizardMode mode);
     /** @} */
 
     /** @name Virtual Machine

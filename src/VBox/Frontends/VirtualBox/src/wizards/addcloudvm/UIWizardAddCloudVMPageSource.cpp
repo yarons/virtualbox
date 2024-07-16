@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageSource.cpp 104585 2024-05-13 11:37:59Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardAddCloudVMPageSource.cpp 105363 2024-07-16 18:12:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageSource class implementation.
  */
@@ -516,9 +516,7 @@ void UIWizardAddCloudVMPageSource::sltHandleProfileComboChange()
     wizard()->setClient(cloudClientByName(wizard()->providerShortName(), wizard()->profileName(), wizard()->notificationCenter()));
 
     /* Update profile instances: */
-    wizard()->wizardButton(WizardButtonType_Expert)->setEnabled(false);
     populateProfileInstances(m_pSourceInstanceList, wizard()->notificationCenter(), wizard()->client());
-    wizard()->wizardButton(WizardButtonType_Expert)->setEnabled(true);
     sltHandleSourceInstanceChange();
 
     /* Notify about changes: */

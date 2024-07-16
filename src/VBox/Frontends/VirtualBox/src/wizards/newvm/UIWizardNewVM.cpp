@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 105119 2024-07-03 16:04:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVM.cpp 105363 2024-07-16 18:12:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -65,7 +65,7 @@ UIWizardNewVM::UIWizardNewVM(QWidget *pParent,
                              UIActionPool *pActionPool,
                              const QString &strMachineGroup,
                              const QString &strISOFilePath /* = QString() */)
-    : UINativeWizard(pParent, WizardType_NewVM, WizardMode_Auto, "create-vm-wizard" /* help keyword */)
+    : UINativeWizard(pParent, WizardType_NewVM, "create-vm-wizard" /* help keyword */)
     , m_strMachineGroup(strMachineGroup)
     , m_iIDECount(0)
     , m_iSATACount(0)
