@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestPropSvc.cpp 101395 2023-10-09 18:36:29Z vadim.galitsyn@oracle.com $ */
+/* $Id: VBoxGuestPropSvc.cpp 105353 2024-07-16 11:47:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * Guest Property Service: Host service entry points.
  */
@@ -1381,8 +1381,7 @@ int Service::notifyHost(const char *pszName, const char *pszValue, uint64_t nsTi
         *pu8++ = 0;
 
         rc = RTReqQueueCallEx(mhReqQNotifyHost, NULL, 0, RTREQFLAGS_VOID | RTREQFLAGS_NO_WAIT,
-                              (PFNRT)notifyHostAsyncWorker, 3,
-                              mpfnHostCallback, mpvHostData, pHostCallbackData);
+                              (PFNRT)notifyHostAsyncWorker, 3, mpfnHostCallback, mpvHostData, pHostCallbackData);
         if (RT_FAILURE(rc))
         {
             RTMemFree(pHostCallbackData);

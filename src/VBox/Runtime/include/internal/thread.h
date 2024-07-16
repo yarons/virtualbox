@@ -1,4 +1,4 @@
-/* $Id: thread.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: thread.h 105353 2024-07-16 11:47:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Internal RTThread header.
  */
@@ -289,7 +289,8 @@ DECLHIDDEN(void)         rtThreadWinTlsDestruction(void); /* in tls-win.cpp */
 # endif
 # ifdef RTTHREAD_POSIX_WITH_CREATE_PRIORITY_PROXY
 DECLHIDDEN(bool) rtThreadPosixPriorityProxyStart(void);
-DECLHIDDEN(int)  rtThreadPosixPriorityProxyCall(PRTTHREADINT pTargetThread, PFNRT pfnFunction, int cArgs, ...);
+DECLHIDDEN(int)  rtThreadPosixPriorityProxyCall(PRTTHREADINT pTargetThread, PFNRT pfnFunction,
+                                                int cArgs, ...) RT_IPRT_CALL_ATTR(2, 3, 4);
 # endif
 #endif
 

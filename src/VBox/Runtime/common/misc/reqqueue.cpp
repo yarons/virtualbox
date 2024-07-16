@@ -1,4 +1,4 @@
-/* $Id: reqqueue.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: reqqueue.cpp 105353 2024-07-16 11:47:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Request Queue.
  */
@@ -250,6 +250,7 @@ RTDECL(int) RTReqQueueCallV(RTREQQUEUE hQueue, PRTREQ *ppReq, RTMSINTERVAL cMill
     }
 
     PRTREQ pReq = NULL;
+    AssertMsgReturn(cArgs <= 9, ("cArgs=%u\n", cArgs), VERR_TOO_MUCH_DATA); /* @bugref{10725} */
     AssertMsgReturn(cArgs * sizeof(uintptr_t) <= sizeof(pReq->u.Internal.aArgs), ("cArgs=%u\n", cArgs), VERR_TOO_MUCH_DATA);
 
     /*

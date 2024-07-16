@@ -1,4 +1,4 @@
-/* $Id: VUSBDevice.cpp 100517 2023-07-11 14:54:11Z michal.necasek@oracle.com $ */
+/* $Id: VUSBDevice.cpp 105353 2024-07-16 11:47:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * Virtual USB - Device.
  */
@@ -553,8 +553,8 @@ static bool vusbDevStdReqClearFeature(PVUSBDEV pDev, int EndPt, PVUSBSETUP pSetu
                 &&  pDev->pUsbIns->pReg->pfnUsbClearHaltedEndpoint)
             {
                 RTCritSectEnter(&pDev->pHub->CritSectDevices);
-                int rc = vusbDevIoThreadExecSync(pDev, (PFNRT)pDev->pUsbIns->pReg->pfnUsbClearHaltedEndpoint,
-                                                 2, pDev->pUsbIns, pSetup->wIndex);
+                int rc = vusbDevIoThreadExecSync(pDev, (PFNRT)pDev->pUsbIns->pReg->pfnUsbClearHaltedEndpoint, 2,
+                                                 pDev->pUsbIns, pSetup->wIndex);
                 RTCritSectLeave(&pDev->pHub->CritSectDevices);
                 return RT_SUCCESS(rc);
             }
