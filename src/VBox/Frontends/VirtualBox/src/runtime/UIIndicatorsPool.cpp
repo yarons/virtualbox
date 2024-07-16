@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 105331 2024-07-15 17:56:25Z sergey.dubov@oracle.com $ */
+/* $Id: UIIndicatorsPool.cpp 105358 2024-07-16 13:47:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -1280,10 +1280,10 @@ protected slots:
             .arg(tr("Keyboard is captured", "Keyboard tooltip"));
         strFullData += s_strTableRow3
             .arg(QString("<img src=:/hostkey_pressed_16px.png/>"))
-            .arg(tr("Keyboard is not captured, host-combo being held", "Keyboard tooltip"));
+            .arg(tr("Keyboard is not captured, host-combo being pressed", "Keyboard tooltip"));
         strFullData += s_strTableRow3
             .arg(QString("<img src=:/hostkey_captured_pressed_16px.png/>"))
-            .arg(tr("Keyboard is captured, host-combo being held", "Keyboard tooltip"));
+            .arg(tr("Keyboard is captured, host-combo being pressed", "Keyboard tooltip"));
         strFullData += s_strTableRow3
             .arg(QString("<img src=:/hostkey_checked_16px.png/>"))
             .arg(tr("Keyboard is not captured, host-combo to be inserted", "Keyboard tooltip"));
@@ -1292,10 +1292,10 @@ protected slots:
             .arg(tr("Keyboard is captured, host-combo to be inserted", "Keyboard tooltip"));
         strFullData += s_strTableRow3
             .arg(QString("<img src=:/hostkey_pressed_checked_16px.png/>"))
-            .arg(tr("Keyboard is not captured, host-combo being held and to be inserted", "Keyboard tooltip"));
+            .arg(tr("Keyboard is not captured, host-combo being pressed and to be inserted", "Keyboard tooltip"));
         strFullData += s_strTableRow3
             .arg(QString("<img src=:/hostkey_captured_pressed_checked_16px.png/>"))
-            .arg(tr("Keyboard is captured, host-combo being held and to be inserted", "Keyboard tooltip"));
+            .arg(tr("Keyboard is captured, host-combo being pressed and to be inserted", "Keyboard tooltip"));
         strFullData = s_strTable.arg(strFullData);
         setToolTip(strToolTip.arg(strFullData));
 
