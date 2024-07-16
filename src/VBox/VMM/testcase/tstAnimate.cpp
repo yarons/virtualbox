@@ -1,4 +1,4 @@
-/* $Id: tstAnimate.cpp 99897 2023-05-22 11:43:38Z knut.osmundsen@oracle.com $ */
+/* $Id: tstAnimate.cpp 105352 2024-07-16 11:21:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Animation Testcase / Tool.
  */
@@ -847,8 +847,8 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
         if (FileRawMem != NIL_RTFILE)
             rc = VMR3ReqCallWaitU(pUVM, VMCPUID_ANY, (PFNRT)loadMem, 3, pVM, FileRawMem, &offRawMem);
         else
-            rc = VMR3ReqCallWaitU(pUVM, VMCPUID_ANY, (PFNRT)SSMR3Load,
-                                  7, pVM, pszSavedState, (uintptr_t)NULL /*pStreamOps*/, (uintptr_t)NULL /*pvUser*/,
+            rc = VMR3ReqCallWaitU(pUVM, VMCPUID_ANY, (PFNRT)SSMR3Load, 7,
+                                  pVM, pszSavedState, (uintptr_t)NULL /*pStreamOps*/, (uintptr_t)NULL /*pvUser*/,
                                   SSMAFTER_DEBUG_IT, (uintptr_t)NULL /*pfnProgress*/, (uintptr_t)NULL /*pvProgressUser*/);
         if (RT_SUCCESS(rc))
         {

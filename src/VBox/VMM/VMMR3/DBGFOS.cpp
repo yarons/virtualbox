@@ -1,4 +1,4 @@
-/* $Id: DBGFOS.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFOS.cpp 105352 2024-07-16 11:21:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Guest OS Diggers.
  */
@@ -519,8 +519,8 @@ VMMR3DECL(int) DBGFR3OSQueryNameAndVersion(PUVM pUVM, char *pszName, size_t cchN
     /*
      * Pass it on to EMT(0).
      */
-    return VMR3ReqPriorityCallWaitU(pUVM, 0 /*idDstCpu*/,
-                                   (PFNRT)dbgfR3OSQueryNameAndVersion, 5, pUVM, pszName, cchName, pszVersion, cchVersion);
+    return VMR3ReqPriorityCallWaitU(pUVM, 0 /*idDstCpu*/, (PFNRT)dbgfR3OSQueryNameAndVersion, 5,
+                                    pUVM, pszName, cchName, pszVersion, cchVersion);
 }
 
 

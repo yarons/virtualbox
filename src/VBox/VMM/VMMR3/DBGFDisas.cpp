@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 104672 2024-05-16 10:50:35Z alexander.eichner@oracle.com $ */
+/* $Id: DBGFDisas.cpp 105352 2024-07-16 11:21:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Disassembler.
  */
@@ -661,7 +661,8 @@ DECLHIDDEN(int) dbgfR3DisasInstrStateEx(PUVM pUVM, VMCPUID idCpu, PDBGFADDRESS p
         rc = dbgfR3DisasInstrExOnVCpu(pVM, pVCpu, pAddr->Sel, &pAddr->off, fFlags, pszOutput, cbOutput, NULL, pDisState);
     else
         rc = VMR3ReqPriorityCallWait(pVM, idCpu, (PFNRT)dbgfR3DisasInstrExOnVCpu, 9,
-                                     pVM, VMMGetCpuById(pVM, idCpu), pAddr->Sel, &pAddr->off, fFlags, pszOutput, cbOutput, NULL, pDisState);
+                                     pVM, VMMGetCpuById(pVM, idCpu), pAddr->Sel, &pAddr->off, fFlags,
+                                     pszOutput, cbOutput, NULL, pDisState);
     return rc;
 }
 

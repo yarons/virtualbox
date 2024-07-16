@@ -1,4 +1,4 @@
-/* $Id: VBoxCompilerPlugInsGcc.cpp 103960 2024-03-20 14:02:02Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxCompilerPlugInsGcc.cpp 105352 2024-07-16 11:21:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * gccplugin - GCC plugin for checking IPRT format strings.
  */
@@ -243,7 +243,7 @@ static const struct register_pass_info  g_MyPassInfo =
 
 
 /** Attribute specifications. */
-static const struct attribute_spec g_AttribSpecs[] =
+static const struct attribute_spec g_aAttribSpecs[] =
 {
     {
         name                    : "iprt_format",
@@ -808,8 +808,8 @@ static void RegisterAttributesEvent(void *pvEventData, void *pvUser)
     NOREF(pvEventData); NOREF(pvUser);
     dprintf("RegisterAttributesEvent: pvEventData=%p\n", pvEventData);
 
-    register_attribute(&g_AttribSpecs[0]);
-    register_attribute(&g_AttribSpecs[1]);
+    for (unsigned i = 0; i < RT_ELEMENTS(g_aAttribSpecs); i++)
+        register_attribute(&g_aAttribSpecs[i]);
 }
 
 

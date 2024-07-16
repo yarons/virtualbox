@@ -1,4 +1,4 @@
-/* $Id: DBGFMem.cpp 99051 2023-03-19 16:40:06Z alexander.eichner@oracle.com $ */
+/* $Id: DBGFMem.cpp 105352 2024-07-16 11:21:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Memory Methods.
  */
@@ -660,6 +660,7 @@ VMMDECL(int) DBGFR3PagingDumpEx(PUVM pUVM, VMCPUID idCpu, uint32_t fFlags, uint6
      * Forward the request to the target CPU.
      */
     return VMR3ReqPriorityCallWaitU(pUVM, idCpu, (PFNRT)dbgfR3PagingDumpEx, 8,
-                                    pUVM, idCpu, fFlags, &cr3, &u64FirstAddr, &u64LastAddr, cMaxDepth, pHlp ? pHlp : DBGFR3InfoLogHlp());
+                                    pUVM, idCpu, fFlags, &cr3, &u64FirstAddr, &u64LastAddr, cMaxDepth,
+                                    pHlp ? pHlp : DBGFR3InfoLogHlp());
 }
 

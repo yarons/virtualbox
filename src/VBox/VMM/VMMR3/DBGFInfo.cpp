@@ -1,4 +1,4 @@
-/* $Id: DBGFInfo.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFInfo.cpp 105352 2024-07-16 11:21:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Info.
  */
@@ -1201,8 +1201,7 @@ VMMR3DECL(int) DBGFR3InfoEx(PUVM pUVM, VMCPUID idCpu, const char *pszName, const
      */
     if (idCpu == NIL_VMCPUID)
         return dbgfR3Info(pUVM, NIL_VMCPUID, pszName, pszArgs, pHlp);
-    return VMR3ReqPriorityCallWaitU(pUVM, idCpu,
-                                    (PFNRT)dbgfR3Info, 5, pUVM, idCpu, pszName, pszArgs, pHlp);
+    return VMR3ReqPriorityCallWaitU(pUVM, idCpu, (PFNRT)dbgfR3Info, 5, pUVM, idCpu, pszName, pszArgs, pHlp);
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 104990 2024-06-20 23:13:34Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMPhys.cpp 105352 2024-07-16 11:21:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -5551,7 +5551,8 @@ VMMR3DECL(int) PGMR3PhysChangeMemBalloon(PVM pVM, bool fInflate, unsigned cPages
 
         memcpy(paPhysPageCopy, paPhysPage, cbPhysPage);
 
-        rc = VMR3ReqCallNoWait(pVM, VMCPUID_ANY_QUEUE, (PFNRT)pgmR3PhysChangeMemBalloonHelper, 4, pVM, fInflate, cPages, paPhysPageCopy);
+        rc = VMR3ReqCallNoWait(pVM, VMCPUID_ANY_QUEUE, (PFNRT)pgmR3PhysChangeMemBalloonHelper, 4,
+                               pVM, fInflate, cPages, paPhysPageCopy);
         AssertRC(rc);
     }
     else

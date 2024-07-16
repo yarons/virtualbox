@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 104840 2024-06-05 00:59:51Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMDevHlp.cpp 105352 2024-07-16 11:21:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -1518,8 +1518,8 @@ static DECLCALLBACK(int) pdmR3DevHlp_VMReqPriorityCallWaitV(PPDMDEVINS pDevIns, 
              pDevIns->pReg->szName, pDevIns->iInstance, idDstCpu, pfnFunction, cArgs));
 
     PVMREQ pReq;
-    int rc = VMR3ReqCallVU(pDevIns->Internal.s.pVMR3->pUVM, idDstCpu, &pReq, RT_INDEFINITE_WAIT, VMREQFLAGS_VBOX_STATUS | VMREQFLAGS_PRIORITY,
-                           pfnFunction, cArgs, Args);
+    int rc = VMR3ReqCallVU(pDevIns->Internal.s.pVMR3->pUVM, idDstCpu, &pReq, RT_INDEFINITE_WAIT,
+                           VMREQFLAGS_VBOX_STATUS | VMREQFLAGS_PRIORITY, pfnFunction, cArgs, Args);
     if (RT_SUCCESS(rc))
         rc = pReq->iStatus;
     VMR3ReqFree(pReq);
