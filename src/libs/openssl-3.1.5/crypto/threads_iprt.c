@@ -1,4 +1,4 @@
-/* $Id: threads_iprt.c 104078 2024-03-27 10:03:49Z alexander.rudnev@oracle.com $ */
+/* $Id: threads_iprt.c 105339 2024-07-16 08:25:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * Crypto threading and atomic functions built upon IPRT.
  */
@@ -176,7 +176,7 @@ int CRYPTO_THREAD_compare_id(CRYPTO_THREAD_ID a, CRYPTO_THREAD_ID b)
 /** @callback_method_impl{FNRTONCE,
  * Wrapper that calls the @a init function given CRYPTO_THREAD_run_once().}
  */
-static int32_t cryptoThreadRunOnceWrapper(void *pvUser)
+static DECLCALLBACK(int32_t) cryptoThreadRunOnceWrapper(void *pvUser)
 {
     void (*pfnInit)(void) = (void (*)(void))pvUser;
     pfnInit();
