@@ -1,4 +1,4 @@
-/* $Id: DBGFReg.cpp 103370 2024-02-14 20:10:18Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFReg.cpp 105379 2024-07-17 14:07:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Register Methods.
  */
@@ -2075,7 +2075,7 @@ VMMR3DECL(int) DBGFR3RegNmQueryEx(PUVM pUVM, VMCPUID idDefCpu, const char *pszRe
         /*
          * Determine how many register values we'd be returning.
          */
-        uint32_t cRegs = 1; /* we always return the direct hit. */
+        size_t cRegs = 1; /* we always return the direct hit. */
 
         if (   (fFlags & DBGFR3REG_QUERY_EX_F_ALIASES)
             && !pLookupRec->pSubField
