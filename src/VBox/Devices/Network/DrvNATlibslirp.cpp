@@ -1,4 +1,4 @@
-/* $Id: DrvNATlibslirp.cpp 105353 2024-07-16 11:47:19Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvNATlibslirp.cpp 105380 2024-07-17 14:08:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * DrvNATlibslirp - NATlibslirp network transport driver.
  */
@@ -82,7 +82,7 @@ static DECLCALLBACK(int) drvNATRecvWakeup(PPDMDRVINS pDrvIns, PPDMTHREAD pThread
  *
  * @thread  NAT
  */
-static DECLCALLBACK(void) drvNATRecvWorker(PDRVNAT pThis, void *pBuf, int cb)
+static DECLCALLBACK(void) drvNATRecvWorker(PDRVNAT pThis, void *pBuf, size_t cb)
 {
     int rc;
     STAM_PROFILE_START(&pThis->StatNATRecv, a);
