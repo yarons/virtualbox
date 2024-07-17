@@ -1,4 +1,4 @@
-/* $Id: VBoxCompilerPlugIns.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxCompilerPlugIns.h 105378 2024-07-17 14:07:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxCompilerPlugIns - Types, Prototypes and Macros common to the VBox compiler plug-ins.
  */
@@ -50,17 +50,21 @@
  */
 typedef struct VFMTCHKSTATE
 {
-    long            iFmt;
-    long            iArgs;
-    const char     *pszFmt;
-    bool            fMaybeNull;
+    long            iFmt;           /**< The format argument number from the attribute. */
+    long            iArgs;          /**< The arguments argument number from the attribute. */
+    bool            fMaybeNull;     /**< Set if in iprt_format_maybe_null mode. */
+    const char     *pszFmt;         /**< The format string being validated, if a constant. */
+
 #if defined(__GNUC__) && !defined(VBOX_COMPILER_PLUG_IN_AGNOSTIC)
+    /** @name GCC specifics
+     * @{ */
 # if RT_GNUC_PREREQ(6, 0)
     gimple const   *hStmt;
 # else
     gimple          hStmt;
 # endif
-    location_t      hFmtLoc;
+    location_t      hFmtLoc; /**< The statement or format-string location */
+    /** @} */
 #endif
 } VFMTCHKSTATE;
 /** Pointer to my checker state. */
