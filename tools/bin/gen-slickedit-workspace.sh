@@ -1,5 +1,5 @@
 #!/usr/bin/env kmk_ash
-# $Id: gen-slickedit-workspace.sh 102431 2023-12-02 02:39:49Z knut.osmundsen@oracle.com $
+# $Id: gen-slickedit-workspace.sh 105381 2024-07-17 14:16:23Z knut.osmundsen@oracle.com $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
@@ -534,6 +534,7 @@ EOF
 #define RTCALL
 #define RT_IPRT_FORMAT_ATTR(a_iFmt, a_iArgs)
 #define RT_IPRT_FORMAT_ATTR_MAYBE_NULL(a_iFmt, a_iArgs)
+#define RT_IPRT_CALLREQ_ATTR(a_iFn, a_iArgc, a_iArgs)
 #define RT_NOCRT(a_Name)                a_Name
 #define DECLASM(type)                   type
 #define DECLINLINE(type)                inline type
