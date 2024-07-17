@@ -1,4 +1,4 @@
-/* $Id: NvramStoreImpl.cpp 105382 2024-07-17 14:32:41Z alexander.eichner@oracle.com $ */
+/* $Id: NvramStoreImpl.cpp 105383 2024-07-17 14:50:17Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM NVRAM store class implementation
  */
@@ -1110,7 +1110,6 @@ HRESULT NvramStore::i_releaseUefiVarStore(RTVFS hVfs)
 HRESULT NvramStore::i_loadSettings(const settings::NvramSettings &data)
 {
     LogFlowThisFuncEnter();
-    LogFlowThisFunc(("data: %p\n", data));
 
     AutoCaller autoCaller(this);
     AssertComRCReturnRC(autoCaller.hrc());
