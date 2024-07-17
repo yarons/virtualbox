@@ -1,4 +1,4 @@
-/* $Id: VBoxAboutDlg.cpp 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
+/* $Id: VBoxAboutDlg.cpp 105391 2024-07-17 21:10:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - VBoxAboutDlg class implementation.
  */
@@ -190,7 +190,7 @@ void VBoxAboutDlg::prepareLabel()
         if (!strColor.isEmpty())
             palette.setColor(QPalette::WindowText, QColor(strColor).name());
         else
-            palette.setColor(QPalette::WindowText, Qt::black);
+            palette.setColor(QPalette::WindowText, Qt::white);
         m_pLabel->setPalette(palette);
         m_pLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
         m_pLabel->setFont(font());
