@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 105271 2024-07-11 10:30:56Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 105375 2024-07-17 13:41:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -2006,7 +2006,7 @@ iemNativeInstrBufEnsure(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint32_t cI
 #define IEMNATIVE_ASSERT_VAR_SIZE(a_pReNative, a_idxVar, a_cbVar) \
     AssertMsg((a_pReNative)->Core.aVars[IEMNATIVE_VAR_IDX_UNPACK(a_idxVar)].cbVar == (a_cbVar), \
               ("%s=%#x: cbVar=%#x, expected %#x!\n", #a_idxVar, a_idxVar, \
-              (a_pReNative)->Core.aVars[IEMNATIVE_VAR_IDX_UNPACK(a_idxVar)].cbVar == (a_cbVar)))
+              (a_pReNative)->Core.aVars[IEMNATIVE_VAR_IDX_UNPACK(a_idxVar)].cbVar, (a_cbVar)))
 
 
 /**
