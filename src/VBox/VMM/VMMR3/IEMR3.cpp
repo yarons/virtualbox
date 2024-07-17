@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 105284 2024-07-12 00:14:36Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMR3.cpp 105376 2024-07-17 13:41:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -1340,7 +1340,7 @@ static DECLCALLBACK(void) iemR3InfoTb(PVM pVM, PCDBGFINFOHLP pHlp, int cArgs, ch
 
             case 'h':
                 pHlp->pfnPrintf(pHlp,
-                                "Usage: info %ctlb [options]\n"
+                                "Usage: info tb [options]\n"
                                 "\n"
                                 "Options:\n"
                                 "  -c<n>, --cpu=<n>, --vcpu=<n>\n"
