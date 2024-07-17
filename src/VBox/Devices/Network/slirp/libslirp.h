@@ -1,4 +1,4 @@
-/* $Id: libslirp.h 105353 2024-07-16 11:47:19Z knut.osmundsen@oracle.com $ */
+/* $Id: libslirp.h 105377 2024-07-17 14:06:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * NAT - slirp interface.
  */
@@ -83,10 +83,10 @@ void slirp_urg_output(void *pvUser, struct mbuf *, const uint8_t *pu8Buf, int cb
 void slirp_post_sent(PNATState pData, void *pvArg);
 
 int slirp_call(void *pvUser, PRTREQ *ppReq, RTMSINTERVAL cMillies,
-               unsigned fFlags, PFNRT pfnFunction, unsigned cArgs, ...) RT_IPRT_CALL_ATTR(5, 6, 7);
+               unsigned fFlags, PFNRT pfnFunction, unsigned cArgs, ...) RT_IPRT_CALLREQ_ATTR(5, 6, 7);
 
 int slirp_call_hostres(void *pvUser, PRTREQ *ppReq, RTMSINTERVAL cMillies,
-                       unsigned fFlags, PFNRT pfnFunction, unsigned cArgs, ...) RT_IPRT_CALL_ATTR(5, 6, 7);
+                       unsigned fFlags, PFNRT pfnFunction, unsigned cArgs, ...) RT_IPRT_CALLREQ_ATTR(5, 6, 7);
 
 
 void slirp_update_guest_addr_guess(PNATState pData, uint32_t guess, const char *msg);
