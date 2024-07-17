@@ -46,8 +46,8 @@
          to add a line entry under [auto-props]:
          *.ditamap = svn:mime-type=text/xml;svn:keywords=Author Date Id Rev URL;
       -->
-      <othermeta name="revision" content="$Rev: 105361 $"/>
-      <othermeta name="rev-date" content="$Date: 2024-07-16 17:42:21 +0200 (Tue, 16 Jul 2024) $"/>
+      <othermeta name="revision" content="$Rev: 105389 $"/>
+      <othermeta name="rev-date" content="$Date: 2024-07-17 21:24:20 +0200 (Wed, 17 Jul 2024) $"/>
       <othermeta name="ditaval" content="ohc.ditaval"/>
       <!-- The bookpartno matches the part and revision in PDB  -->
          <bookid>
@@ -265,9 +265,8 @@
             <topicref href="topics/additions-windows.dita">
                <topicref href="topics/mountingadditionsiso.dita"/>
                <topicref href="topics/additions-windows-updating.dita"/>
-               <topicref href="topics/additions-windows-install-unattended.dita">
-                  <topicref href="topics/additions-windows-install-unattended-certs.dita"/>
-               </topicref>
+               <topicref href="topics/additions-windows-install-unattended.dita"/>
+               <topicref href="topics/additions-windows-install-unattended-certs.dita"/>
                <topicref href="topics/windows-guest-file-extraction.dita"/>
             </topicref>
             <topicref href="topics/additions-linux.dita">
