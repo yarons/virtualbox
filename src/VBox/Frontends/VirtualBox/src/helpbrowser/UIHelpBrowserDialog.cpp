@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserDialog.cpp 104669 2024-05-16 10:35:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIHelpBrowserDialog.cpp 105401 2024-07-18 15:12:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserDialog class implementation.
  */
@@ -188,6 +188,7 @@ void UIHelpBrowserDialog::findManualFileAndShow(const QString &strKeyword /*= QS
     /* For non-OSE version we just open it: */
     showUserManual(uiCommon().helpFile(), strKeyword);
 #else /* #ifndef VBOX_OSE */
+    Q_UNUSED(strKeyword);
 #if 0
     /* For OSE version we have to check if it present first: */
     QString strUserManualFileName1 = uiCommon().helpFile();
