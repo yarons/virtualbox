@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veExecMem.cpp 105282 2024-07-11 20:25:22Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veExecMem.cpp 105413 2024-07-19 07:18:53Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -454,6 +454,10 @@ static void iemExecMemAllocatorPrune(PVMCPU pVCpu, PIEMEXECMEMALLOCATOR pExecMem
      */
     pExecMemAllocator->offChunkPrune = offChunk;
     pExecMemAllocator->idxChunkPrune = idxChunk;
+
+    /* Set the hint to the start of the pruned region. */
+    pExecMemAllocator->idxChunkHint  = idxChunk;
+    pExecMemAllocator->aChunks[idxChunk].idxFreeHint = offChunk / IEMEXECMEM_ALT_SUB_ALLOC_UNIT_SIZE;
 
     STAM_REL_PROFILE_STOP(&pExecMemAllocator->StatPruneProf, a);
 }
