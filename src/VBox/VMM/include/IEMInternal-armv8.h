@@ -1,4 +1,4 @@
-/* $Id: IEMInternal-armv8.h 105177 2024-07-08 09:29:14Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal-armv8.h 105411 2024-07-19 00:29:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file, ARMv8 variant.
  */
@@ -355,10 +355,13 @@ typedef struct IEMTLB
     uint32_t            au32Padding[3+5];
 } IEMTLB;
 AssertCompileSizeAlignment(IEMTLB, 64);
+/** The width (in bits) of the address portion of the TLB tag.   */
+#define IEMTLB_TAG_ADDR_WIDTH   36
 /** IEMTLB::uTlbRevision increment.  */
-#define IEMTLB_REVISION_INCR    RT_BIT_64(36)
+#define IEMTLB_REVISION_INCR    RT_BIT_64(IEMTLB_TAG_ADDR_WIDTH)
 /** IEMTLB::uTlbRevision mask.  */
-#define IEMTLB_REVISION_MASK    (~(RT_BIT_64(36) - 1))
+#define IEMTLB_REVISION_MASK    (~(RT_BIT_64(IEMTLB_TAG_ADDR_WIDTH) - 1))
+
 /** IEMTLB::uTlbPhysRev increment.
  * @sa IEMTLBE_F_PHYS_REV */
 #define IEMTLB_PHYS_REV_INCR    RT_BIT_64(10)
