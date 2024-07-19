@@ -1,4 +1,4 @@
-/* $Id: DBGFInternal.h 105168 2024-07-06 00:01:23Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFInternal.h 105409 2024-07-19 00:27:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Internal header file.
  */
@@ -1166,10 +1166,12 @@ typedef struct DBGF
      */
     struct
     {
-        /** Whether to power off VM on BSOD.   */
+        /** Whether to power off the VM on BSOD.   */
         bool                    fCfgPowerOffOnBsod;
+        /** Whether to suspend the VM on BSOD.   */
+        bool                    fCfgSuspendOnBsod;
         /** Explicit padding. */
-        bool                    afReserved[3];
+        bool                    afReserved[2];
 
         /** The ID of the CPU reporting it. */
         VMCPUID                 idCpu;
