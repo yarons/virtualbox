@@ -1,4 +1,4 @@
-/* $Id: DrvNATlibslirp.cpp 105380 2024-07-17 14:08:25Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvNATlibslirp.cpp 105429 2024-07-22 16:48:02Z jack.doherty@oracle.com $ */
 /** @file
  * DrvNATlibslirp - NATlibslirp network transport driver.
  */
@@ -226,7 +226,7 @@ static DECLCALLBACK(int) drvNATNetworkUp_AllocBuf(PPDMINETWORKUP pInterface, siz
     PDRVNAT pThis = RT_FROM_MEMBER(pInterface, DRVNAT, INetworkUp);
     Assert(RTCritSectIsOwner(&pThis->XmitLock));
 
-    LogFlowFunc(("enter\n"));
+    LogFlowFuncEnter();
 
     /*
      * Drop the incoming frame if the NAT thread isn't running.
