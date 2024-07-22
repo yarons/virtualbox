@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 105434 2024-07-22 19:41:05Z klaus.espenlaub@oracle.com $
+# $Id: vbox.py 105435 2024-07-22 21:22:24Z klaus.espenlaub@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 105434 $"
+__version__ = "$Revision: 105435 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -1505,7 +1505,7 @@ class TestDriver(base.TestDriver):                                              
             reporter.setComXcptFormatter(formatComOrXpComException);
 
             # Enable possibly not production ready code which should be tested.
-            if self.fpApiVer >= 7.1 && utils.getHostArch() == 'arm64':
+            if self.fpApiVer >= 7.1 and utils.getHostArch() == 'arm64':
                 self.oVBox.setExtraData('VBoxInternal2/EnableX86OnArm', '1');
 
         except:
