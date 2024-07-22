@@ -1,4 +1,4 @@
-/* $Id: Recording.cpp 105337 2024-07-16 08:18:27Z knut.osmundsen@oracle.com $ */
+/* $Id: Recording.cpp 105436 2024-07-22 21:44:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * Recording context code.
  *
@@ -55,6 +55,7 @@
 #include <VBox/com/VirtualBox.h>
 
 #include "ConsoleImpl.h"
+#include "ProgressImpl.h"
 #include "Recording.h"
 #include "RecordingInternals.h"
 #include "RecordingStream.h"
