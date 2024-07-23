@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: DevATA.cpp 105452 2024-07-23 15:54:23Z michal.necasek@oracle.com $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -4729,8 +4729,8 @@ static VBOXSTRICTRC ataIOPortWriteU8(PPDMDEVINS pDevIns, PATACONTROLLER pCtl, ui
             pCtl->aIfs[1].uATARegHCyl = val;
             break;
         case 6: /* drive/head */
-            pCtl->aIfs[0].uATARegSelect = (val & ~0x10) | 0xa0;
-            pCtl->aIfs[1].uATARegSelect = (val | 0x10) | 0xa0;
+            pCtl->aIfs[0].uATARegSelect = val & ~0x10;
+            pCtl->aIfs[1].uATARegSelect = val | 0x10;
             if (((val >> 4) & ATA_SELECTED_IF_MASK) != pCtl->iSelectedIf)
             {
                 /* select another drive */
