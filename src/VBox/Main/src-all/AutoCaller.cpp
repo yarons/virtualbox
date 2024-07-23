@@ -1,4 +1,4 @@
-/* $Id: AutoCaller.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: AutoCaller.cpp 105444 2024-07-23 11:55:24Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox object state implementation
  */
@@ -399,6 +399,13 @@ void ObjectState::autoUninitSpanDestructor()
     AutoWriteLock stateLock(mStateLock COMMA_LOCKVAL_SRC_POS);
 
     Assert(mState == InUninit);
+
+    if (mInitUninitWaiters > 0)
+    {
+        /* We have some concurrent uninit() calls on other threads (created
+         * during InUninit), signal that InUninit is finished and they may go on. */
+        RTSemEventMultiSignal(mInitUninitSem);
+    }
 
     setState(NotReady);
 }
