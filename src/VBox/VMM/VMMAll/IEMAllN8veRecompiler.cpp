@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 105318 2024-07-13 00:53:36Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 105445 2024-07-23 12:17:44Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -459,7 +459,7 @@ IEM_DECL_NATIVE_HLP_DEF(int, iemNativeHlpExecRaiseAvxRelated,(PVMCPUCC pVCpu))
 /**
  * Used by TB code when it wants to raise an SSE/AVX floating point exception related \#UD or \#XF.
  *
- * See IEM_MC_MAYBE_RAISE_SSE_AVX_SIMD_FP_OR_UD_XCPT.
+ * See IEM_MC_CALL_AVX_XXX/IEM_MC_CALL_SSE_XXX.
  */
 IEM_DECL_NATIVE_HLP_DEF(int, iemNativeHlpExecRaiseSseAvxFpRelated,(PVMCPUCC pVCpu))
 {
