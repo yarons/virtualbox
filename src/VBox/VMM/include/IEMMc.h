@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 105445 2024-07-23 12:17:44Z alexander.eichner@oracle.com $ */
+/* $Id: IEMMc.h 105446 2024-07-23 13:02:22Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX.
  */
@@ -3102,7 +3102,7 @@ AssertCompile(X86_CR4_FSGSBASE > UINT8_MAX);
  * @param   a0              The first extra argument.
  * @param   a1              The second extra argument.
  *
- * @note This throws an #XF/#UD exception if the helper indicates an exception
+ * @note This throws an \#XF/\#UD exception if the helper indicates an exception
  *       which is unmasked in the guest's MXCSR.
  */
 #define IEM_MC_CALL_SSE_AIMPL_2(a_pfnAImpl, a0, a1) \
@@ -3131,7 +3131,7 @@ AssertCompile(X86_CR4_FSGSBASE > UINT8_MAX);
  * @param   a1              The second extra argument.
  * @param   a2              The third extra argument.
  *
- * @note This throws an #XF/#UD exception if the helper indicates an exception
+ * @note This throws an \#XF/\#UD exception if the helper indicates an exception
  *       which is unmasked in the guest's MXCSR.
  */
 #define IEM_MC_CALL_SSE_AIMPL_3(a_pfnAImpl, a0, a1, a2) \
@@ -3162,7 +3162,7 @@ AssertCompile(X86_CR4_FSGSBASE > UINT8_MAX);
  * @param   a0              The first extra argument.
  * @param   a1              The second extra argument.
  *
- * @note This throws an #XF/#UD exception if the helper indicates an exception
+ * @note This throws an \#XF/\#UD exception if the helper indicates an exception
  *       which is unmasked in the guest's MXCSR.
  */
 #define IEM_MC_CALL_AVX_AIMPL_2(a_pfnAImpl, a0, a1) \
@@ -3193,7 +3193,7 @@ AssertCompile(X86_CR4_FSGSBASE > UINT8_MAX);
  * @param   a1              The second extra argument.
  * @param   a2              The third extra argument.
  *
- * @note This throws an #XF/#UD exception if the helper indicates an exception
+ * @note This throws an \#XF/\#UD exception if the helper indicates an exception
  *       which is unmasked in the guest's MXCSR.
  */
 #define IEM_MC_CALL_AVX_AIMPL_3(a_pfnAImpl, a0, a1, a2) \
