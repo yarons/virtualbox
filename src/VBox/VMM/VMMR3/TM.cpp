@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 105463 2024-07-24 09:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: TM.cpp 105479 2024-07-24 13:08:20Z klaus.espenlaub@oracle.com $ */
 /** @file
  * TM - Time Manager.
  */
@@ -1093,7 +1093,7 @@ static uint64_t tmR3CalibrateTSC(void)
     return u64Hz;
 }
 
-#if 1
+#ifdef TM_SECONDS_TO_AUTOMATIC_POWER_OFF
 # include <iprt/message.h>
 /** @callback_method_impl{FNTMTIMERINT} */
 static DECLCALLBACK(void) tmR3AutoPowerOffTimer(PVM pVM, TMTIMERHANDLE hTimer, void *pvUser)
