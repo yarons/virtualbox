@@ -1,4 +1,4 @@
-/* $Id: DBGFR3BugCheck.cpp 105464 2024-07-24 09:01:57Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFR3BugCheck.cpp 105476 2024-07-24 11:38:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, NT Bug Checks.
  */
@@ -693,6 +693,7 @@ VMMR3DECL(int) DBGFR3FormatBugCheck(PUVM pUVM, char *pszDetails, size_t cbDetail
                 case 0x14: pszCheck = "request too big"; break;
                 case 0x15: pszCheck = "commit limit exceeded"; break;
                 case 0x16: pszCheck = "invalid VA manage query size/whatever"; break;
+                default:   pszCheck = "Todo/Unknown"; break;
             }
 
             cchUsed = RTStrPrintf(pszDetails, cbDetails,
