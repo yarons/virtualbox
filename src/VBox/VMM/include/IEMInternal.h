@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 105465 2024-07-24 09:05:40Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 105466 2024-07-24 09:08:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -797,7 +797,7 @@ typedef IEMTLBTRACEENTRY const *PCIEMTLBTRACEENTRY;
 # define IEMTLBTRACE_LOAD_CR3(a_pVCpu, a_uNew, a_uOld)                  do { } while (0)
 # define IEMTLBTRACE_LOAD_CR4(a_pVCpu, a_uNew, a_uOld)                  do { } while (0)
 # define IEMTLBTRACE_LOAD_EFER(a_pVCpu, a_uNew, a_uOld)                 do { } while (0)
-# define IEMTLBTRACE_IRQ(a_pVCpu, a_uVector, a_fFlags)                  do { } while (0)
+# define IEMTLBTRACE_IRQ(a_pVCpu, a_uVector, a_fFlags, a_fEFlags)       do { } while (0)
 # define IEMTLBTRACE_XCPT(a_pVCpu, a_uVector, a_uErr, a_uCr2, a_fFlags) do { } while (0)
 # define IEMTLBTRACE_IRET(a_pVCpu, a_uRetCs, a_uRetRip, a_fEFlags)      do { } while (0)
 #endif
