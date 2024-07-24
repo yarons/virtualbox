@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 105108 2024-07-03 09:28:58Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 105471 2024-07-24 10:21:57Z valery.portnyagin@oracle.com $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -164,8 +164,8 @@ if   defined(VBOX_WITH_MAIN) \
 
   # libpng for screenshots in main.
   if   !defined(VBOX_ONLY_DOCS) \
-    && "$(SDK_VBoxLibPng_INCS)" == "$(PATH_ROOT)/src/libs/libpng-1.6.42"
-   include $(PATH_SUB_CURRENT)/libpng-1.6.42/Makefile.kmk
+    && "$(SDK_VBoxLibPng_INCS)" == "$(PATH_ROOT)/src/libs/libpng-1.6.43"
+   include $(PATH_SUB_CURRENT)/libpng-1.6.43/Makefile.kmk
   endif
 
 
