@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSType.h 105119 2024-07-03 16:04:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestOSType.h 105461 2024-07-24 08:29:52Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSType class declaration.
  */
@@ -229,6 +229,9 @@ public:
                                          bool fListAll = true,
                                          const QStringList &exceptions = QStringList(),
                                          KPlatformArchitecture enmArch = KPlatformArchitecture_None) const;
+
+    /* Returns true if @p strTypeId is supported by the host. */
+    bool isGuestOSTypeIDSupported(const QString &strTypeId) const;
 
     /** Returns whether specified @a strOSTypeId is of DOS type. */
     static bool isDOSType(const QString &strOSTypeId);

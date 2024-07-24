@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSType.cpp 105119 2024-07-03 16:04:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestOSType.cpp 105461 2024-07-24 08:29:52Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSType class implementation.
  */
@@ -314,6 +314,11 @@ UIGuestOSTypeManager::getTypesForSubtype(const QString &strSubtype,
             typeInfoList << info;
     }
     return typeInfoList;
+}
+
+bool UIGuestOSTypeManager::isGuestOSTypeIDSupported(const QString &strTypeId) const
+{
+    return m_supportedGuestOSTypeIDs.contains(strTypeId);
 }
 
 QString UIGuestOSTypeManager::getFamilyId(const QString &strTypeId) const
