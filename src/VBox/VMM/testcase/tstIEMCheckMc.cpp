@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 105445 2024-07-23 12:17:44Z alexander.eichner@oracle.com $ */
+/* $Id: tstIEMCheckMc.cpp 105489 2024-07-24 14:40:45Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -591,6 +591,7 @@ typedef VBOXSTRICTRC (* PFNIEMOPRM)(PVMCPU pVCpu, uint8_t bRm);
 #define IEM_MC_NATIVE_EMIT_0(a_fnEmitter)                                 do { (void)fMcBegin; } while (0)
 #define IEM_MC_NATIVE_EMIT_1(a_fnEmitter, a0)                             do { (void)fMcBegin; (void)(a0); } while (0)
 #define IEM_MC_NATIVE_EMIT_2(a_fnEmitter, a0, a1)                         do { (void)fMcBegin; (void)(a0), (void)(a1); } while (0)
+#define IEM_MC_NATIVE_EMIT_2_EX(a_fnEmitter, a0, a1)                      do { (void)fMcBegin; (void)(a0), (void)(a1); } while (0)
 #define IEM_MC_NATIVE_EMIT_3(a_fnEmitter, a0, a1, a2)                     do { (void)fMcBegin; (void)(a0), (void)(a1), (void)(a2); } while (0)
 #define IEM_MC_NATIVE_EMIT_4(a_fnEmitter, a0, a1, a2, a3)                 do { (void)fMcBegin; (void)(a0), (void)(a1), (void)(a2), (void)(a3); } while (0)
 #define IEM_MC_NATIVE_EMIT_5(a_fnEmitter, a0, a1, a2, a3, a4)             do { (void)fMcBegin; (void)(a0), (void)(a1), (void)(a2), (void)(a3), (void)(a4); } while (0)
