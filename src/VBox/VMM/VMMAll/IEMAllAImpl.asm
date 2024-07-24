@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 105456 2024-07-24 08:02:04Z alexander.eichner@oracle.com $
+; $Id: IEMAllAImpl.asm 105486 2024-07-24 14:26:58Z alexander.eichner@oracle.com $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -5381,7 +5381,7 @@ IEMIMPL_V_PMOV_SZ_X pmovzxdq
         shr     T1_32, X86_MXCSR_XCPT_MASK_SHIFT
         not     T1_32
         and     T2_32, T1_32
-        bt      T2_32, X86_MXCSR_UE
+        test    T2_32, X86_MXCSR_OE | X86_MXCSR_UE
         jz      .excp_masked
         btr     %1, X86_MXCSR_PE_BIT
 .excp_masked:
