@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstTwoByte0f.cpp.h 105445 2024-07-23 12:17:44Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllInstTwoByte0f.cpp.h 105488 2024-07-24 14:37:18Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -9681,7 +9681,7 @@ FNIEMOP_DEF_1(iemOp_Grp15_fxrstor,  uint8_t, bRm)
     IEM_MC_ACTUALIZE_FPU_STATE_FOR_CHANGE();
     IEM_MC_ARG_CONST(uint8_t,   iEffSeg,      /*=*/ pVCpu->iem.s.iEffSeg,       0);
     IEM_MC_ARG_CONST(IEMMODE,   enmEffOpSize, /*=*/pVCpu->iem.s.enmEffOpSize,   2);
-    IEM_MC_CALL_CIMPL_3(IEM_CIMPL_F_FPU, RT_BIT_64(kIemNativeGstReg_FpuFcw) | RT_BIT_64(kIemNativeGstReg_FpuFsw),
+    IEM_MC_CALL_CIMPL_3(IEM_CIMPL_F_FPU, RT_BIT_64(kIemNativeGstReg_FpuFcw) | RT_BIT_64(kIemNativeGstReg_FpuFsw) | RT_BIT_64(kIemNativeGstReg_MxCsr),
                         iemCImpl_fxrstor, iEffSeg, GCPtrEff, enmEffOpSize);
     IEM_MC_END();
 }
@@ -9753,7 +9753,7 @@ FNIEMOP_DEF_1(iemOp_Grp15_stmxcsr,  uint8_t, bRm)
     IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX();
     IEM_MC_ACTUALIZE_SSE_STATE_FOR_READ();
     IEM_MC_ARG_CONST(uint8_t,   iEffSeg, /*=*/ pVCpu->iem.s.iEffSeg,     0);
-    IEM_MC_CALL_CIMPL_2(IEM_CIMPL_F_FPU, RT_BIT_64(kIemNativeGstReg_MxCsr), iemCImpl_stmxcsr, iEffSeg, GCPtrEff);
+    IEM_MC_CALL_CIMPL_2(IEM_CIMPL_F_FPU, 0, iemCImpl_stmxcsr, iEffSeg, GCPtrEff);
     IEM_MC_END();
 }
 
@@ -9805,7 +9805,7 @@ FNIEMOP_DEF_1(iemOp_Grp15_xrstor,   uint8_t, bRm)
     IEM_MC_ACTUALIZE_FPU_STATE_FOR_READ();
     IEM_MC_ARG_CONST(uint8_t,   iEffSeg,      /*=*/ pVCpu->iem.s.iEffSeg,       0);
     IEM_MC_ARG_CONST(IEMMODE,   enmEffOpSize, /*=*/ pVCpu->iem.s.enmEffOpSize,  2);
-    IEM_MC_CALL_CIMPL_3(IEM_CIMPL_F_FPU, RT_BIT_64(kIemNativeGstReg_FpuFcw) | RT_BIT_64(kIemNativeGstReg_FpuFsw),
+    IEM_MC_CALL_CIMPL_3(IEM_CIMPL_F_FPU, RT_BIT_64(kIemNativeGstReg_FpuFcw) | RT_BIT_64(kIemNativeGstReg_FpuFsw) | RT_BIT_64(kIemNativeGstReg_MxCsr),
                         iemCImpl_xrstor, iEffSeg, GCPtrEff, enmEffOpSize);
     IEM_MC_END();
 }
