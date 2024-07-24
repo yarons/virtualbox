@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 105440 2024-07-23 10:50:17Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 105465 2024-07-24 09:05:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -4437,6 +4437,7 @@ iemRaiseXcptOrInt(PVMCPUCC    pVCpu,
                          ? EMEXIT_MAKE_FT(EMEXIT_F_KIND_IEM, u8Vector)
                          : EMEXIT_MAKE_FT(EMEXIT_F_KIND_IEM, u8Vector | 0x100),
                          pVCpu->cpum.GstCtx.rip + pVCpu->cpum.GstCtx.cs.u64Base, uTimestamp);
+        IEMTLBTRACE_IRQ(pVCpu, u8Vector, fFlags, pVCpu->cpum.GstCtx.rflags.uBoth);
     }
     else
     {
@@ -4448,6 +4449,7 @@ iemRaiseXcptOrInt(PVMCPUCC    pVCpu,
             EMHistoryAddExit(pVCpu, EMEXIT_MAKE_FT(EMEXIT_F_KIND_XCPT, u8Vector | EMEXIT_F_XCPT_ERRCD), uErr, uTimestamp);
         if (fFlags & IEM_XCPT_FLAGS_CR2)
             EMHistoryAddExit(pVCpu, EMEXIT_MAKE_FT(EMEXIT_F_KIND_XCPT, u8Vector | EMEXIT_F_XCPT_CR2), uCr2, uTimestamp);
+        IEMTLBTRACE_XCPT(pVCpu, u8Vector, fFlags & IEM_XCPT_FLAGS_ERR ? uErr : 0, fFlags & IEM_XCPT_FLAGS_CR2 ? uCr2 : 0, fFlags);
     }
 
     /*
