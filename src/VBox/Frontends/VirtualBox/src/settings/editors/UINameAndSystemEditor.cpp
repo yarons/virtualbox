@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 104915 2024-06-13 13:18:04Z sergey.dubov@oracle.com $ */
+/* $Id: UINameAndSystemEditor.cpp 105521 2024-07-26 11:57:29Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -294,6 +294,8 @@ void UINameAndSystemEditor::sltRetranslateUI()
         m_pEditorName->setToolTip(tr("Holds the name for virtual machine."));
     if (m_pSelectorPath)
         m_pSelectorPath->setToolTip(tr("Selects the folder hosting virtual machine."));
+    if (m_pComboEdition)
+        m_pComboEdition->setToolTip(tr("Selects the operating system's edition when possible."));
     if (m_pComboFamily)
         m_pComboFamily->setToolTip(tr("Selects the operating system type that "
                                       "you plan to install into this virtual machine."));

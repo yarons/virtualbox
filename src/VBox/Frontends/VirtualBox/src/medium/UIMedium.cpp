@@ -1,4 +1,4 @@
-/* $Id: UIMedium.cpp 105240 2024-07-09 13:50:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIMedium.cpp 105521 2024-07-26 11:57:29Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMedium class implementation.
  */
@@ -403,7 +403,7 @@ void UIMedium::refresh()
         }
 
         /* Refresh tool-tip: */
-        m_strToolTip = m_sstrRow.arg(QString("<p style=white-space:pre><b>%1</b></p>").arg(m_fHostDrive ? m_strName : m_strLocation));
+        m_strToolTip = m_sstrRow.arg(QString("%1").arg(m_fHostDrive ? m_strName : m_strLocation));
         if (m_type == UIMediumDeviceType_HardDisk)
         {
             m_strToolTip += m_sstrRow.arg(QApplication::translate("UIMedium", "<p style=white-space:pre>Type (Format):  %1 (%2)</p>", "medium")
