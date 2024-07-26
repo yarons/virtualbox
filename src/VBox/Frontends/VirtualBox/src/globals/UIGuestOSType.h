@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSType.h 105461 2024-07-24 08:29:52Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestOSType.h 105518 2024-07-26 10:11:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSType class declaration.
  */
@@ -261,6 +261,9 @@ private:
 
     /** Adds certain @a comType to internal cache. */
     void addGuestOSType(const CGuestOSType &comType);
+
+    /** Holds the list of supported platform architectures. */
+    QVector<KPlatformArchitecture>  m_supportedArchTypes;
 
     /** Holds the list of supported guest OS type IDs. */
     QStringList  m_supportedGuestOSTypeIDs;
