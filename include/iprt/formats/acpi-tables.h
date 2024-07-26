@@ -1,4 +1,4 @@
-/* $Id: acpi-tables.h 105511 2024-07-26 07:12:33Z alexander.eichner@oracle.com $ */
+/* $Id: acpi-tables.h 105512 2024-07-26 07:26:44Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT, ACPI (Advanced Configuration and Power Interface) table format.
  *
@@ -127,6 +127,7 @@ typedef const ACPIGAS *PCACPIGAS;
  *
  * @note This is the format for revision 2 and later.
  */
+#pragma pack(1)
 typedef struct ACPIRSDP
 {
     uint8_t             abSignature[8];                 /**< 0x000: The signature for identifcation ("RSD PTR "). */
@@ -139,6 +140,7 @@ typedef struct ACPIRSDP
     uint8_t             bExtChkSum;                     /**< 0x020: Checksum of the entire table, including both checksum fields. */
     uint8_t             abRsvd[3];                      /**< 0x021: Reserved fields. */
 } ACPIRSDP;
+#pragma pack()
 AssertCompileSize(ACPIRSDP, 36);
 /** Pointer to an ACPI Root System Descriptor Pointer. */
 typedef ACPIRSDP *PACPIRSDP;
