@@ -1,4 +1,4 @@
-/* $Id: acpi-tables.h 105512 2024-07-26 07:26:44Z alexander.eichner@oracle.com $ */
+/* $Id: acpi-tables.h 105522 2024-07-26 14:18:15Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT, ACPI (Advanced Configuration and Power Interface) table format.
  *
@@ -363,6 +363,7 @@ typedef const ACPITBLHDR *PCACPITBLHDR;
 typedef struct ACPIRSDT
 {
     ACPITBLHDR          Hdr;                            /**< 0x000: The table header. */
+    RT_FLEXIBLE_ARRAY_EXTENSION
     uint32_t            au32AddrTbl[RT_FLEXIBLE_ARRAY]; /**< 0x024: Array of 32-bit physical addresses pointing to other tables, variable in size. */
 } ACPIRSDT;
 //AssertCompileSize(ACPIRSDT, 40);
@@ -385,6 +386,7 @@ typedef const ACPIRSDT *PCACPIRSDT;
 typedef struct ACPIXSDT
 {
     ACPITBLHDR          Hdr;                            /**< 0x000: The table header. */
+    RT_FLEXIBLE_ARRAY_EXTENSION
     uint64_t            au64AddrTbl[RT_FLEXIBLE_ARRAY]; /**< 0x024: Array of 64-bit physical addresses pointing to other tables, variable in size. */
 } ACPIXSDT;
 #pragma pack()
