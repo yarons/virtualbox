@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSType.cpp 105519 2024-07-26 10:19:58Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestOSType.cpp 105523 2024-07-26 15:17:22Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSType class implementation.
  */
@@ -197,23 +197,26 @@ void UIGuestOSTypeManager::addGuestOSType(const CGuestOSType &comType)
             m_guestOSFamilies[iIndex].m_fSupported = true; // cause at least one is supported
     }
 
-    /* Cache or update subtype info: */
-    UISubtypeInfo si(strSubtype, enmArch, fSupported);
-    if (!m_guestOSSubtypes.contains(strFamilyId))
-        m_guestOSSubtypes[strFamilyId] << si;
-    else
+    /* Cache or update subtype info (if it's not empty): */
+    if (!strSubtype.isEmpty())
     {
-        UIGuestOSSubtypeInfo &subtypes = m_guestOSSubtypes[strFamilyId];
-        if (!subtypes.contains(si))
-            subtypes << si;
+        UISubtypeInfo si(strSubtype, enmArch, fSupported);
+        if (!m_guestOSSubtypes.contains(strFamilyId))
+            m_guestOSSubtypes[strFamilyId] << si;
         else
         {
-            const int iIndex = subtypes.indexOf(si);
-            AssertReturnVoid(iIndex >= 0);
-            if (subtypes.at(iIndex).m_enmArch != enmArch)
-                subtypes[iIndex].m_enmArch = KPlatformArchitecture_None; // means any
-            if (subtypes.at(iIndex).m_fSupported != fSupported)
-                subtypes[iIndex].m_fSupported = true; // cause at least one is supported
+            UIGuestOSSubtypeInfo &subtypes = m_guestOSSubtypes[strFamilyId];
+            if (!subtypes.contains(si))
+                subtypes << si;
+            else
+            {
+                const int iIndex = subtypes.indexOf(si);
+                AssertReturnVoid(iIndex >= 0);
+                if (subtypes.at(iIndex).m_enmArch != enmArch)
+                    subtypes[iIndex].m_enmArch = KPlatformArchitecture_None; // means any
+                if (subtypes.at(iIndex).m_fSupported != fSupported)
+                    subtypes[iIndex].m_fSupported = true; // cause at least one is supported
+            }
         }
     }
 }
