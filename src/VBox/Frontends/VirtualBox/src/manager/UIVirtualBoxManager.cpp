@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 105161 2024-07-05 12:22:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 105520 2024-07-26 11:33:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -2388,11 +2388,11 @@ void UIVirtualBoxManager::prepare()
         gpMediumEnumerator->enumerateMedia();
 
     /* Prepare: */
+    prepareCloudMachineManager();
     prepareIcon();
     prepareMenuBar();
     prepareStatusBar();
     prepareWidgets();
-    prepareCloudMachineManager();
     prepareConnections();
 
     /* Update actions initially: */
@@ -2419,6 +2419,11 @@ void UIVirtualBoxManager::prepare()
     if (uiCommon().argumentUrlsPresent())
         QMetaObject::invokeMethod(this, "sltHandleOpenUrlCall", Qt::QueuedConnection);
     QMetaObject::invokeMethod(this, "sltCheckUSBAccesibility", Qt::QueuedConnection);
+}
+
+void UIVirtualBoxManager::prepareCloudMachineManager()
+{
+    UICloudMachineManager::create();
 }
 
 void UIVirtualBoxManager::prepareIcon()
@@ -2498,11 +2503,6 @@ void UIVirtualBoxManager::prepareWidgets()
     m_pWidget = new UIVirtualBoxManagerWidget(this);
     if (m_pWidget)
         setCentralWidget(m_pWidget);
-}
-
-void UIVirtualBoxManager::prepareCloudMachineManager()
-{
-    UICloudMachineManager::create();
 }
 
 void UIVirtualBoxManager::prepareConnections()
@@ -2753,11 +2753,6 @@ void UIVirtualBoxManager::cleanupConnections()
     m_pWidget->disconnect(this);
 }
 
-void UIVirtualBoxManager::cleanupCloudMachineManager()
-{
-    UICloudMachineManager::destroy();
-}
-
 void UIVirtualBoxManager::cleanupWidgets()
 {
     /* Deconfigure central-widget: */
@@ -2779,15 +2774,20 @@ void UIVirtualBoxManager::cleanupMenuBar()
     m_pActionPool = 0;
 }
 
+void UIVirtualBoxManager::cleanupCloudMachineManager()
+{
+    UICloudMachineManager::destroy();
+}
+
 void UIVirtualBoxManager::cleanup()
 {
     /* Ask sub-dialogs to commit data: */
     sltHandleCommitData();
 
     /* Cleanup: */
-    cleanupCloudMachineManager();
     cleanupWidgets();
     cleanupMenuBar();
+    cleanupCloudMachineManager();
 }
 
 UIVirtualMachineItem *UIVirtualBoxManager::currentItem() const

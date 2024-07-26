@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 105161 2024-07-05 12:22:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.h 105520 2024-07-26 11:33:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -353,6 +353,8 @@ private:
       * @{ */
         /** Prepares window. */
         void prepare();
+        /** Prepares cloud machine manager. */
+        void prepareCloudMachineManager();
         /** Prepares icon. */
         void prepareIcon();
         /** Prepares menu-bar. */
@@ -363,8 +365,6 @@ private:
         void prepareToolbar();
         /** Prepares widgets. */
         void prepareWidgets();
-        /** Prepares cloud machine manager. */
-        void prepareCloudMachineManager();
         /** Prepares connections. */
         void prepareConnections();
         /** Loads settings. */
@@ -372,12 +372,12 @@ private:
 
         /** Cleanups connections. */
         void cleanupConnections();
-        /** Cleanups cloud machine manager. */
-        void cleanupCloudMachineManager();
         /** Cleanups widgets. */
         void cleanupWidgets();
         /** Cleanups menu-bar. */
         void cleanupMenuBar();
+        /** Cleanups cloud machine manager. */
+        void cleanupCloudMachineManager();
         /** Cleanups window. */
         void cleanup();
     /** @} */
