@@ -1,4 +1,4 @@
-/* $Id: DBGCDumpImage.cpp 105508 2024-07-26 01:46:01Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGCDumpImage.cpp 105531 2024-07-27 00:54:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, Native Commands.
  */
@@ -343,7 +343,7 @@ private:
 
         /* Adjust the RVA if we're reading beyond the end of the image. */
         if (uRva + m_cbBufAlloc > RT_ALIGN_Z(cbMaxRva, 8))
-            uRva = m_cbBufAlloc > RT_ALIGN_Z(cbMaxRva, 8) ? RT_ALIGN_Z(cbMaxRva, 8) - m_cbBufAlloc : 0;
+            uRva = m_cbBufAlloc < RT_ALIGN_Z(cbMaxRva, 8) ? RT_ALIGN_Z(cbMaxRva, 8) - m_cbBufAlloc : 0;
 
         /* Do the read.  In case of failure readBytesAtRva will zero the buffer. */
         m_uRvaBuf = uRva;
