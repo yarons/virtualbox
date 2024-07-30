@@ -1,4 +1,4 @@
-/* $Id: DBGCNtCommands.cpp 105537 2024-07-30 06:58:21Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGCNtCommands.cpp 105538 2024-07-30 07:00:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, Windows NT Related Commands.
  */
@@ -56,15 +56,8 @@
  */
 typedef struct NT_RTL_BALANCED_NODE64
 {
-    union
-    {
-        uint64_t Children[2];
-        struct
-        {
-            uint64_t Left;
-            uint64_t Right;
-        };
-    };
+    uint64_t Left;
+    uint64_t Right;
 
     /**
      * Pointer to the parent node and flags in the least significant bits.
@@ -122,9 +115,9 @@ int dbgCmdNtRbTreeWorker(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PCDBGCVAR pRootAdd
     if ((Root.Root & fAlignMask) == 0 || (Root.Min & fAlignMask) == 0)
     {
         if ((Root.Root & fAlignMask) == 0 && (Root.Min & fAlignMask) == 0)
-            DBGCCmdHlpPrintf(pCmdHlp, "RB Root %DV: Empty\n");
+            DBGCCmdHlpPrintf(pCmdHlp, "RB Root %DV: Empty\n", pRootAddr);
         else
-            DBGCCmdHlpPrintf(pCmdHlp, "RB Root %DV: Bogus root state!\n");
+            DBGCCmdHlpPrintf(pCmdHlp, "RB Root %DV: Bogus root state!\n", pRootAddr);
         return VINF_SUCCESS;
     }
 
