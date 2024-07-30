@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 105152 2024-07-04 18:42:00Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.h 105546 2024-07-30 23:59:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -167,8 +167,10 @@ public:
 
         /** Returns the --restore-current option value (whether we should restore current snapshot before VM started). */
         bool shouldRestoreCurrentSnapshot() const { return m_fRestoreCurrentSnapshot; }
-        /** Defines whether we should fRestore current snapshot before VM started. */
-        void setShouldRestoreCurrentSnapshot(bool fRestore) { m_fRestoreCurrentSnapshot = fRestore; }
+        /** Returns the --restore-snapshot option value (whether to restore named snapshot before starting VM). */
+        QString const &getSnapshotToRestore() const { return m_strSnapshotToRestore; }
+        /** Clears the --restore-current and --restore-snapshot option values. */
+        void clearSnapshotRestoreOptions() { m_fRestoreCurrentSnapshot = false; m_strSnapshotToRestore.clear(); }
 
         /** Returns the --no-keyboard-grabbing option value (whether we should restore
          *  grab the keyboard or not - for debugging). */
@@ -402,11 +404,13 @@ private:
         /** Holds the --aggressive-caching / --no-aggressive-caching option value (whether medium-enumeration is required). */
         bool  m_fAgressiveCaching;
 
-        /** Holds the --restore-current option value. */
-        bool  m_fRestoreCurrentSnapshot;
-
         /** Holds the --no-keyboard-grabbing option value. */
         bool  m_fNoKeyboardGrabbing;
+
+        /** Holds the --restore-current option value. */
+        bool    m_fRestoreCurrentSnapshot;
+        /** Holds the --restore-snapshot option value. */
+        QString m_strSnapshotToRestore;
 
         /** Holds the --fda option value (floppy image). */
         QUuid  m_uFloppyImage;

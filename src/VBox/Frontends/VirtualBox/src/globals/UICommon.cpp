@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 105152 2024-07-04 18:42:00Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.cpp 105546 2024-07-30 23:59:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -162,8 +162,8 @@ UICommon::UICommon(UIType enmType)
 #else
     , m_fAgressiveCaching(true)
 #endif
-    , m_fRestoreCurrentSnapshot(false)
     , m_fNoKeyboardGrabbing(false)
+    , m_fRestoreCurrentSnapshot(false)
     , m_fExecuteAllInIem(false)
     , m_uWarpPct(100)
 #ifdef VBOX_WITH_DEBUGGER_GUI
@@ -429,6 +429,21 @@ void UICommon::prepare()
         {
             enmOptType = OptType_VMRunner;
             m_fRestoreCurrentSnapshot = true;
+            m_strSnapshotToRestore.clear();
+        }
+        else if (   !::strcmp(arg, "--restore-snapshot")
+                 || !::strncmp(arg, RT_STR_TUPLE("--restore-snapshot="))
+                 || !::strncmp(arg, RT_STR_TUPLE("--restore-snapshot:")))
+        {
+            enmOptType = OptType_VMRunner;
+            const char * const pszSep = &arg[sizeof("--restore-snapshot") - 1];
+            if (*pszSep != '\0')
+                m_strSnapshotToRestore = &pszSep[1];
+            else if (++i < argc)
+                m_strSnapshotToRestore = arguments.at(i);
+            else
+                m_strSnapshotToRestore.clear();
+            m_fRestoreCurrentSnapshot = false;
         }
         else if (!::strcmp(arg, "--no-keyboard-grabbing"))
         {
