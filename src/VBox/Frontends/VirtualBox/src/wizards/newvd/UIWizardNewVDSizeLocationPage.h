@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDSizeLocationPage.h 104037 2024-03-25 13:28:11Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVDSizeLocationPage.h 105539 2024-07-30 10:50:44Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDSizeLocationPage class declaration.
  */
@@ -46,7 +46,7 @@ class SHARED_LIBRARY_STUFF UIWizardNewVDSizeLocationPage : public UINativeWizard
 
 public:
 
-    UIWizardNewVDSizeLocationPage(const QString &strDefaultName, const QString &strDefaultPath, qulonglong uDefaultSize);
+    UIWizardNewVDSizeLocationPage(qulonglong uDiskMinimumSize);
 
 private slots:
 
@@ -65,9 +65,6 @@ private:
     UIMediumSizeAndPathGroupBox *m_pMediumSizePathGroup;
     qulonglong m_uMediumSizeMin;
     qulonglong m_uMediumSizeMax;
-    QString m_strDefaultName;
-    QString m_strDefaultPath;
-    qulonglong m_uDefaultSize;
     QSet<QString> m_userModifiedParameters;
 };
 

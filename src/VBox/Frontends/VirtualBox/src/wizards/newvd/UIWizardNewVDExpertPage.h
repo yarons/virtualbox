@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDExpertPage.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVDExpertPage.h 105539 2024-07-30 10:50:44Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDExpertPage class declaration.
  */
@@ -47,7 +47,7 @@ class SHARED_LIBRARY_STUFF UIWizardNewVDExpertPage : public UINativeWizardPage
 
 public:
 
-    UIWizardNewVDExpertPage(const QString &strDefaultName, const QString &strDefaultPath, qulonglong uDefaultSize);
+    UIWizardNewVDExpertPage(qulonglong uDiskMinimumSize);
 
 private slots:
 
@@ -62,7 +62,7 @@ private slots:
 private:
 
     /** Prepare stuff. */
-    void prepare();
+    void prepare(qulonglong uDiskMinimumSize);
     virtual void initializePage() RT_OVERRIDE RT_FINAL;
 
     /** Validation stuff. */
@@ -80,9 +80,6 @@ private:
 
    /** @name Variable
      * @{ */
-       QString m_strDefaultName;
-       QString m_strDefaultPath;
-       qulonglong m_uDefaultSize;
        qulonglong m_uMediumSizeMin;
        qulonglong m_uMediumSizeMax;
    /** @} */
