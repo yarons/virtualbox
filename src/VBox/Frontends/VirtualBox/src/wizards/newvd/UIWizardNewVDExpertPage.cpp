@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDExpertPage.cpp 105542 2024-07-30 12:43:20Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVDExpertPage.cpp 105543 2024-07-30 12:51:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDExpertPage class implementation.
  */
@@ -57,7 +57,7 @@ void UIWizardNewVDExpertPage::prepare(qulonglong uDiskMinimumSize, KDeviceType e
 {
     QVBoxLayout *pMainLayout = new QVBoxLayout(this);
     m_pSizeAndPathGroup = new UIMediumSizeAndPathGroupBox(true /* fExpertMode */, 0 /* parent */,uDiskMinimumSize);
-    m_pFormatComboBox = new UIDiskFormatsComboBox(true /* fExpertMode */, KDeviceType_HardDisk, 0);
+    m_pFormatComboBox = new UIDiskFormatsComboBox(true /* fExpertMode */, enmDeviceType, 0);
     m_pVariantWidget = new UIDiskVariantWidget(0);
 
     m_pFormatVariantGroupBox = new QGroupBox;
