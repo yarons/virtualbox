@@ -1,4 +1,4 @@
-/* $Id: DBGCInternal.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGCInternal.h 105536 2024-07-30 01:08:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, Internal Header File.
  */
@@ -528,6 +528,7 @@ typedef struct DBGCFLOWBRANCHTBLDUMP
 /** Pointer to control flow graph branch table state. */
 typedef DBGCFLOWBRANCHTBLDUMP *PDBGCFLOWBRANCHTBLDUMP;
 
+
 /*******************************************************************************
 *   Internal Functions                                                         *
 *******************************************************************************/
@@ -641,6 +642,10 @@ DECLHIDDEN(PCDBGCSXEVT) dbgcEventLookup(DBGFEVENTTYPE enmType);
 
 DECL_HIDDEN_CALLBACK(int) dbgcGdbStubRunloop(PUVM pUVM, PCDBGCIO pIo, unsigned fFlags);
 DECL_HIDDEN_CALLBACK(int) dbgcKdStubRunloop(PUVM pUVM, PCDBGCIO pIo, unsigned fFlags);
+
+
+extern FNDBGCCMD dbgcCmdDumpImage;
+extern FNDBGCCMD dbgcCmdNtRbTree;
 
 
 /*******************************************************************************

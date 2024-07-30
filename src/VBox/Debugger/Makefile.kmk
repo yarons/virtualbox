@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 105531 2024-07-27 00:54:02Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 105536 2024-07-30 01:08:28Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the VBox debugger.
 #
@@ -55,6 +55,7 @@ Debugger_SOURCES   = \
 	DBGCCmdWorkers.cpp \
 	DBGCCommands.cpp \
 	DBGCDumpImage.cpp \
+	DBGCNtCommands.cpp \
 	DBGCFunctions.cpp \
 	DBGCEmulateCodeView.cpp \
 	DBGCOps.cpp \
@@ -87,6 +88,7 @@ ifdef VBOX_WITH_VIRT_ARMV8
  	DBGCCmdWorkers.cpp \
  	DBGCCommands.cpp \
  	DBGCDumpImage.cpp \
+ 	DBGCNtCommands.cpp \
  	DBGCFunctions.cpp \
  	DBGCEmulateCodeView.cpp \
  	DBGCOps.cpp \
