@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDFileTypePage.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVDFileTypePage.h 105542 2024-07-30 12:43:20Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDFileTypePage class declaration.
  */
@@ -34,6 +34,9 @@
 /* GUI includes: */
 #include "UINativeWizardPage.h"
 
+/* COM includes:*/
+#include "KDeviceType.h"
+
 /* Forward declarations: */
 class QIRichTextLabel;
 class UIDiskFormatsGroupBox;
@@ -46,7 +49,7 @@ class SHARED_LIBRARY_STUFF UIWizardNewVDFileTypePage : public UINativeWizardPage
 public:
 
     /** Constructor. */
-    UIWizardNewVDFileTypePage();
+    UIWizardNewVDFileTypePage(KDeviceType enmDeviceType);
 
 private slots:
 
@@ -55,7 +58,7 @@ private slots:
 
 private:
 
-    void prepare();
+    void prepare(KDeviceType enmDeviceType);
     void initializePage() RT_OVERRIDE RT_FINAL;
 
     /** Validation stuff. */

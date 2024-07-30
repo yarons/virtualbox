@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDFileTypePage.cpp 104069 2024-03-26 18:02:14Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVDFileTypePage.cpp 105542 2024-07-30 12:43:20Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDFileTypePage class implementation.
  */
@@ -34,19 +34,19 @@
 #include "UIWizardNewVD.h"
 #include "QIRichTextLabel.h"
 
-UIWizardNewVDFileTypePage::UIWizardNewVDFileTypePage()
+UIWizardNewVDFileTypePage::UIWizardNewVDFileTypePage(KDeviceType enmDeviceType)
     : m_pLabel(0)
     , m_pFormatButtonGroup(0)
 {
-    prepare();
+    prepare(enmDeviceType);
 }
 
-void UIWizardNewVDFileTypePage::prepare()
+void UIWizardNewVDFileTypePage::prepare(KDeviceType enmDeviceType)
 {
     QVBoxLayout *pMainLayout = new QVBoxLayout(this);
     m_pLabel = new QIRichTextLabel(this);
     pMainLayout->addWidget(m_pLabel);
-    m_pFormatButtonGroup = new UIDiskFormatsGroupBox(false, KDeviceType_HardDisk, 0);
+    m_pFormatButtonGroup = new UIDiskFormatsGroupBox(false, enmDeviceType, 0);
     pMainLayout->addWidget(m_pFormatButtonGroup, false);
 
     pMainLayout->addStretch();

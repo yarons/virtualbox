@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDExpertPage.cpp 105539 2024-07-30 10:50:44Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVDExpertPage.cpp 105542 2024-07-30 12:43:20Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDExpertPage class implementation.
  */
@@ -41,7 +41,7 @@
 /* COM includes: */
 #include "CSystemProperties.h"
 
-UIWizardNewVDExpertPage::UIWizardNewVDExpertPage(qulonglong uDiskMinimumSize)
+UIWizardNewVDExpertPage::UIWizardNewVDExpertPage(qulonglong uDiskMinimumSize, KDeviceType enmDeviceType)
     : UINativeWizardPage()
     , m_pSizeAndPathGroup(0)
     , m_pFormatComboBox(0)
@@ -50,10 +50,10 @@ UIWizardNewVDExpertPage::UIWizardNewVDExpertPage(qulonglong uDiskMinimumSize)
     , m_uMediumSizeMin(_4M)
     , m_uMediumSizeMax(gpGlobalSession->virtualBox().GetSystemProperties().GetInfoVDSize())
 {
-    prepare(uDiskMinimumSize);
+    prepare(uDiskMinimumSize, enmDeviceType);
 }
 
-void UIWizardNewVDExpertPage::prepare(qulonglong uDiskMinimumSize)
+void UIWizardNewVDExpertPage::prepare(qulonglong uDiskMinimumSize, KDeviceType enmDeviceType)
 {
     QVBoxLayout *pMainLayout = new QVBoxLayout(this);
     m_pSizeAndPathGroup = new UIMediumSizeAndPathGroupBox(true /* fExpertMode */, 0 /* parent */,uDiskMinimumSize);

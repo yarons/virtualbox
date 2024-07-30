@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDExpertPage.h 105539 2024-07-30 10:50:44Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVDExpertPage.h 105542 2024-07-30 12:43:20Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDExpertPage class declaration.
  */
@@ -34,6 +34,9 @@
 /* GUI includes: */
 #include "UINativeWizardPage.h"
 
+/* COM includes:*/
+#include "KDeviceType.h"
+
 /* Forward declarations: */
 class QGroupBox;
 class UIDiskFormatsComboBox;
@@ -47,7 +50,7 @@ class SHARED_LIBRARY_STUFF UIWizardNewVDExpertPage : public UINativeWizardPage
 
 public:
 
-    UIWizardNewVDExpertPage(qulonglong uDiskMinimumSize);
+    UIWizardNewVDExpertPage(qulonglong uDiskMinimumSize, KDeviceType enmDeviceType);
 
 private slots:
 
@@ -62,7 +65,7 @@ private slots:
 private:
 
     /** Prepare stuff. */
-    void prepare(qulonglong uDiskMinimumSize);
+    void prepare(qulonglong uDiskMinimumSize, KDeviceType enmDeviceType);
     virtual void initializePage() RT_OVERRIDE RT_FINAL;
 
     /** Validation stuff. */

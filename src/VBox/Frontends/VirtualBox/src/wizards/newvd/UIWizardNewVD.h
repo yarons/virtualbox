@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.h 105539 2024-07-30 10:50:44Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVD.h 105542 2024-07-30 12:43:20Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class declaration.
  */
@@ -109,6 +109,7 @@ private:
     QUuid m_uMediumId;
     /** Holds the source virtual disk wrapper. */
     CMedium m_comSourceVirtualDisk;
+    KDeviceType m_enmDeviceType;
 };
 
 typedef QPointer<UIWizardNewVD> UISafePointerWizardNewVD;
