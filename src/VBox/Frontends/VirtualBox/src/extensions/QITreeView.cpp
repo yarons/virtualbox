@@ -1,4 +1,4 @@
-/* $Id: QITreeView.cpp 105540 2024-07-30 11:41:25Z sergey.dubov@oracle.com $ */
+/* $Id: QITreeView.cpp 105541 2024-07-30 11:55:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITreeView class implementation.
  */
@@ -362,8 +362,30 @@ QString QIAccessibilityInterfaceForQITreeView::text(QAccessible::Text /* enmText
 
 QRect QITreeViewItem::rect() const
 {
-    /* Redirect call to parent-tree: */
-    return parentTree() ? parentTree()->visualRect(modelIndex()) : QRect();
+    /* We can only ask the parent-tree for a rectangle: */
+    if (parentTree())
+    {
+        /* Acquire parent-tree model: */
+        const QAbstractItemModel *pModel = parentTree()->model();
+        AssertPtrReturn(pModel, QRect());
+
+        /* Acquire zero-column rectangle: */
+        QModelIndex itemIndex = modelIndex();
+        QRect rect = parentTree()->visualRect(itemIndex);
+        /* Enumerate all the remaining columns: */
+        for (int i = 1; i < pModel->columnCount(); ++i)
+        {
+            /* Acquire enumerated column rectangle: */
+            QModelIndex itemIndexI = pModel->index(itemIndex.row(), i, itemIndex.parent());
+            QRegion cumulativeRegion(rect);
+            cumulativeRegion += parentTree()->visualRect(itemIndexI);
+            rect = cumulativeRegion.boundingRect();
+        }
+        /* Total rect finally: */
+        return rect;
+    }
+    /* Empty rect by default: */
+    return QRect();
 }
 
 QModelIndex QITreeViewItem::modelIndex() const
