@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMSummaryPage.cpp 105521 2024-07-26 11:57:29Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMSummaryPage.cpp 105551 2024-07-31 17:26:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMSummaryPage class implementation.
  */
@@ -61,6 +61,7 @@ public:
     virtual UIWizardNewVMSummaryItem *childItem(int iIndex) const RT_OVERRIDE RT_FINAL;
     virtual int childCount() const RT_OVERRIDE RT_FINAL;
     virtual QString text() const RT_OVERRIDE RT_FINAL;
+    const QString &name() const;
     const QVariant &data() const;
     const QIcon &icon() const;
 
@@ -176,8 +177,14 @@ int UIWizardNewVMSummaryItem::childCount() const
     return m_childList.size();
 }
 
-
 QString UIWizardNewVMSummaryItem::text() const
+{
+    return   m_data.isValid()
+           ? tr("%1: %2", "col.1 text: col.2 text").arg(m_strText, m_data.toString())
+           : tr("%1", "col.1 text").arg(m_strText);
+}
+
+const QString &UIWizardNewVMSummaryItem::name() const
 {
     return m_strText;
 }
@@ -244,7 +251,7 @@ QVariant UIWizardNewVMSummaryModel::data(const QModelIndex &index, int role /* =
         switch (index.column())
         {
             case 0:
-                return pItem->text();
+                return pItem->name();
                 break;
             case 1:
                 return pItem->data();
