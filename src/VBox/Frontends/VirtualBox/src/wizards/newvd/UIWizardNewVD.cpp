@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 105542 2024-07-30 12:43:20Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVD.cpp 105549 2024-07-31 09:45:06Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class implementation.
  */
@@ -59,6 +59,27 @@ UIWizardNewVD::UIWizardNewVD(QWidget *pParent,
     /* Assign background image: */
     setPixmapName(":/wizard_new_harddisk_bg.png");
 #endif /* VBOX_WS_MAC */
+}
+
+UIWizardNewVD::UIWizardNewVD(QWidget *pParent, const QUuid &uMediumId)
+    : UINativeWizard(pParent, WizardType_CloneVD)
+    , m_iMediumVariantPageIndex(-1)
+    , m_enmDeviceType(KDeviceType_Null)
+{
+#ifndef VBOX_WS_MAC
+    /* Assign watermark: */
+    setPixmapName(":/wizard_new_harddisk.png");
+#else /* VBOX_WS_MAC */
+    /* Assign background image: */
+    setPixmapName(":/wizard_new_harddisk_bg.png");
+#endif /* VBOX_WS_MAC */
+
+    /* Init medium to be cloned: */
+    UIMedium uiMedium = gpMediumEnumerator->medium(uMediumId);
+    m_comSourceVirtualDisk = uiMedium.medium();
+
+    /* Init device type: */
+    m_enmDeviceType = m_comSourceVirtualDisk.GetDeviceType();
 }
 
 qulonglong UIWizardNewVD::mediumVariant() const
@@ -260,4 +281,9 @@ qulonglong UIWizardNewVD::sourceDiskLogicalSize() const
     if (m_comSourceVirtualDisk.isNull())
         return _4M;
     return m_comSourceVirtualDisk.GetLogicalSize();
+}
+
+KDeviceType UIWizardNewVD::deviceType() const
+{
+    return m_enmDeviceType;
 }

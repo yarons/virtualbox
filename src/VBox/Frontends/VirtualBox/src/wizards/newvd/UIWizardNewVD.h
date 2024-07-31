@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.h 105542 2024-07-30 12:43:20Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVD.h 105549 2024-07-31 09:45:06Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class declaration.
  */
@@ -50,6 +50,9 @@ public:
                   const QString &strDefaultPath,
                   qulonglong uDefaultSize);
 
+    /** Constructs wizard to clone medium referenced by @a uMediumId, passing @a pParent to the base-class. */
+    UIWizardNewVD(QWidget *pParent, const QUuid &uMediumId);
+
     bool createVirtualDisk();
 
     /** Creates and shows a UIWizardNewVD wizard.
@@ -83,6 +86,7 @@ public:
        const QString &defaultPath() const;
        const QString &defaultName() const;
        qulonglong defaultSize() const;
+       KDeviceType deviceType() const;
 
 protected:
 
