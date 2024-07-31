@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMSummaryPage.cpp 105551 2024-07-31 17:26:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVMSummaryPage.cpp 105552 2024-07-31 17:29:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMSummaryPage class implementation.
  */
@@ -462,7 +462,7 @@ void UIWizardNewVMSummaryPage::sltRetranslateUI()
                                             " press Finish to create the virtual machine. Alternatively you can go back"
                                             " and modify the configuration."));
     if (m_pTree)
-        m_pLabel->setWhatsThis(UIWizardNewVM::tr("Lists chosen configuration of the guest system."));
+        m_pTree->setWhatsThis(UIWizardNewVM::tr("Lists chosen configuration of the guest system."));
 }
 
 void UIWizardNewVMSummaryPage::initializePage()
