@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.cpp 105239 2024-07-09 13:48:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIApplianceEditorWidget.cpp 105550 2024-07-31 17:01:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class implementation.
  */
@@ -1820,6 +1820,11 @@ UIApplianceEditorWidget::UIApplianceEditorWidget(QWidget *pParent /* = 0 */)
                 /* Create tree-view: */
                 m_pTreeViewSettings = new QITreeView;
                 {
+                    /* Extend trigger set: */
+                    m_pTreeViewSettings->setEditTriggers(  QAbstractItemView::DoubleClicked
+                                                         | QAbstractItemView::SelectedClicked
+                                                         | QAbstractItemView::AnyKeyPressed);
+
                     /* Configure tree-view: */
                     m_pTreeViewSettings->setAlternatingRowColors(true);
                     m_pTreeViewSettings->setAllColumnsShowFocus(true);
