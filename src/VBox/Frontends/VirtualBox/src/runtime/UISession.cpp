@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 105266 2024-07-11 07:49:37Z andreas.loeffler@oracle.com $ */
+/* $Id: UISession.cpp 105548 2024-07-31 00:43:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -175,9 +175,9 @@ bool UISession::initialize()
 
     /* Apply ad-hoc reconfigurations from the command line: */
     if (uiCommon().hasFloppyImageToMount())
-        mountAdHocImage(KDeviceType_Floppy, UIMediumDeviceType_Floppy, uiCommon().getFloppyImage().toString());
+        mountAdHocImage(KDeviceType_Floppy, UIMediumDeviceType_Floppy, uiCommon().getFloppyImage());
     if (uiCommon().hasDvdImageToMount())
-        mountAdHocImage(KDeviceType_DVD, UIMediumDeviceType_DVD, uiCommon().getDvdImage().toString());
+        mountAdHocImage(KDeviceType_DVD, UIMediumDeviceType_DVD, uiCommon().getDvdImage());
 
     /* Power UP if this is NOT separate process: */
     if (!uiCommon().isSeparateProcess())
