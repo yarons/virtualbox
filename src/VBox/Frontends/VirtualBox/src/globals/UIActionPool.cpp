@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 104597 2024-05-13 13:34:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIActionPool.cpp 105553 2024-07-31 17:51:33Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -758,7 +758,7 @@ protected:
     virtual void retranslateUi() RT_OVERRIDE
     {
         setName(QApplication::translate("UIActionPool", "&Online Documentation..."));
-        setStatusTip(QApplication::translate("UIActionPool", "Open the browser and go to the VirtualBox user manual"));
+        setStatusTip(QApplication::translate("UIActionPool", "Open the browser and go to the VirtualBox user guide"));
     }
 };
 
