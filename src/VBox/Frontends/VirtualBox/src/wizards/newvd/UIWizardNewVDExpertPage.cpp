@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDExpertPage.cpp 105549 2024-07-31 09:45:06Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVDExpertPage.cpp 105554 2024-08-01 08:07:26Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDExpertPage class implementation.
  */
@@ -102,7 +102,7 @@ void UIWizardNewVDExpertPage::sltMediumPathChanged(const QString &strPath)
     AssertReturnVoid(pWizard);
     QString strMediumPath =
         UIWizardDiskEditors::appendExtension(strPath,
-                                             UIWizardDiskEditors::defaultExtension(pWizard->mediumFormat(), KDeviceType_HardDisk));
+                                             UIWizardDiskEditors::defaultExtension(pWizard->mediumFormat(), pWizard->deviceType()));
     pWizard->setMediumPath(strMediumPath);
     emit completeChanged();
 }
@@ -130,12 +130,12 @@ void UIWizardNewVDExpertPage::sltSelectLocationButtonClicked()
     CMediumFormat comMediumFormat(pWizard->mediumFormat());
     QString strSelectedPath =
         UIWizardDiskEditors::openFileDialogForDiskFile(pWizard->mediumPath(), comMediumFormat,
-                                                       KDeviceType_HardDisk, pWizard);
+                                                       pWizard->deviceType(), pWizard);
     if (strSelectedPath.isEmpty())
         return;
     QString strMediumPath =
         UIWizardDiskEditors::appendExtension(strSelectedPath,
-                                             UIWizardDiskEditors::defaultExtension(pWizard->mediumFormat(), KDeviceType_HardDisk));
+                                             UIWizardDiskEditors::defaultExtension(pWizard->mediumFormat(), pWizard->deviceType()));
     QFileInfo mediumPath(strMediumPath);
     m_pSizeAndPathGroup->setMediumFilePath(QDir::toNativeSeparators(mediumPath.absoluteFilePath()));
     emit completeChanged();
@@ -157,10 +157,14 @@ void UIWizardNewVDExpertPage::initializePage()
     AssertReturnVoid(!comMediumFormat.isNull());
     pWizard->setMediumFormat(comMediumFormat);
 
+
     QString strExtension = UIWizardDiskEditors::defaultExtension(comMediumFormat, pWizard->deviceType());
     QString strMediumFilePath =
         UIWizardDiskEditors::constructMediumFilePath(UIWizardDiskEditors::appendExtension(pWizard->defaultName(),
                                                                                           strExtension), pWizard->defaultPath());
+
+
+
     m_pSizeAndPathGroup->blockSignals(true);
     m_pSizeAndPathGroup->setMediumFilePath(strMediumFilePath);
     m_pSizeAndPathGroup->blockSignals(false);
@@ -234,5 +238,5 @@ void UIWizardNewVDExpertPage::updateDiskWidgetsAfterMediumFormatChange()
     AssertReturnVoid(!comMediumFormat.isNull());
 
     m_pVariantWidget->updateMediumVariantWidgetsAfterFormatChange(comMediumFormat);
-    m_pSizeAndPathGroup->updateMediumPath(comMediumFormat, m_pFormatComboBox->formatExtensions(), KDeviceType_HardDisk);
+    m_pSizeAndPathGroup->updateMediumPath(comMediumFormat, m_pFormatComboBox->formatExtensions(), pWizard->deviceType());
 }

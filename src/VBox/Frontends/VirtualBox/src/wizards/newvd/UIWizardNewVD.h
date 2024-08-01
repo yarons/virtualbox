@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.h 105549 2024-07-31 09:45:06Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVD.h 105554 2024-08-01 08:07:26Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class declaration.
  */
@@ -101,7 +101,7 @@ private:
     /** Check medium capabilities and decide if medium variant page should be hidden. */
     void setMediumVariantPageVisibility();
     qulonglong diskMinimumSize() const;
-    qulonglong sourceDiskLogicalSize() const;
+
     qulonglong m_uMediumVariant;
     CMediumFormat m_comMediumFormat;
     QString m_strMediumPath;
