@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 105561 2024-08-01 11:10:28Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 105565 2024-08-01 13:31:31Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -85,7 +85,6 @@
 #include "UIVirtualBoxEventHandler.h"
 #include "UIVMLogViewerDialog.h"
 #include "UIWizardAddCloudVM.h"
-#include "UIWizardCloneVD.h"
 #include "UIWizardCloneVM.h"
 #include "UIWizardExportApp.h"
 #include "UIWizardImportApp.h"

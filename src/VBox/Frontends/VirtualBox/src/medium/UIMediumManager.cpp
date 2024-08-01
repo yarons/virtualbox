@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 104904 2024-06-12 17:06:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumManager.cpp 105565 2024-08-01 13:31:31Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -60,7 +60,6 @@
 #include "UINotificationCenter.h"
 #include "UIShortcutPool.h"
 #include "UITranslationEventListener.h"
-#include "UIWizardCloneVD.h"
 #include "UIVirtualBoxEventHandler.h"
 
 /* COM includes: */
