@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 105520 2024-07-26 11:33:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 105561 2024-08-01 11:10:28Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1277,7 +1277,7 @@ void UIVirtualBoxManager::sltOpenWizard(WizardType enmType)
                 break;
             }
             case WizardType_CloneVD:
-                m_wizards[enmType] = new UIWizardCloneVD(this, m_uMediumId);
+                m_wizards[enmType] = new UIWizardNewVD(this, m_uMediumId);
                 break;
             default:
                 break;

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 105558 2024-08-01 10:08:22Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVD.cpp 105561 2024-08-01 11:10:28Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class implementation.
  */
@@ -80,7 +80,7 @@ UIWizardNewVD::UIWizardNewVD(QWidget *pParent, const QUuid &uMediumId)
     m_comSourceVirtualDisk = uiMedium.medium();
 
     m_strDefaultPath = QDir::toNativeSeparators(QFileInfo(m_comSourceVirtualDisk.GetLocation()).absolutePath());
-    m_strDefaultName = QString("%1_%2").arg(m_comSourceVirtualDisk.GetName()).arg(UIWizardNewVD::tr("copy"));
+    m_strDefaultName = QString("%1_%2").arg(QFileInfo(m_comSourceVirtualDisk.GetName()).baseName()).arg(UIWizardNewVD::tr("copy"));
     m_uDefaultSize = m_comSourceVirtualDisk.GetLogicalSize();
     m_enmDeviceType = m_comSourceVirtualDisk.GetDeviceType();
 }

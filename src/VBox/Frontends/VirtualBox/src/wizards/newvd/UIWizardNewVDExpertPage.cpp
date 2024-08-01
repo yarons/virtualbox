@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDExpertPage.cpp 105554 2024-08-01 08:07:26Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVDExpertPage.cpp 105561 2024-08-01 11:10:28Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDExpertPage class implementation.
  */
@@ -157,14 +157,10 @@ void UIWizardNewVDExpertPage::initializePage()
     AssertReturnVoid(!comMediumFormat.isNull());
     pWizard->setMediumFormat(comMediumFormat);
 
-
     QString strExtension = UIWizardDiskEditors::defaultExtension(comMediumFormat, pWizard->deviceType());
     QString strMediumFilePath =
         UIWizardDiskEditors::constructMediumFilePath(UIWizardDiskEditors::appendExtension(pWizard->defaultName(),
                                                                                           strExtension), pWizard->defaultPath());
-
-
-
     m_pSizeAndPathGroup->blockSignals(true);
     m_pSizeAndPathGroup->setMediumFilePath(strMediumFilePath);
     m_pSizeAndPathGroup->blockSignals(false);
