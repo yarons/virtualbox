@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPage.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMDiskPage.cpp 105570 2024-08-01 17:52:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPage class implementation.
  */
@@ -416,12 +416,12 @@ QWidget *UIWizardNewVMDiskPage::createDiskWidgets()
         m_pDiskSelectionButton->setAutoRaise(true);
         m_pDiskSelectionButton->setIcon(UIIconPool::iconSet(":/select_file_16px.png", ":/select_file_disabled_16px.png"));
     }
-    pDiskLayout->addWidget(m_pDiskNew, 0, 0, 1, 6);
-    pDiskLayout->addWidget(createNewDiskWidgets(), 1, 2, 3, 4);
-    pDiskLayout->addWidget(m_pDiskExisting, 4, 0, 1, 6);
-    pDiskLayout->addWidget(m_pDiskSelector, 5, 2, 1, 3);
-    pDiskLayout->addWidget(m_pDiskSelectionButton, 5, 5, 1, 1);
-    pDiskLayout->addWidget(m_pDiskEmpty, 6, 0, 1, 6);
+    pDiskLayout->addWidget(m_pDiskNew, 0, 0, 1, 3);
+    pDiskLayout->addWidget(createNewDiskWidgets(), 1, 1, 3, 2);
+    pDiskLayout->addWidget(m_pDiskExisting, 4, 0, 1, 3);
+    pDiskLayout->addWidget(m_pDiskSelector, 5, 1);
+    pDiskLayout->addWidget(m_pDiskSelectionButton, 5, 2);
+    pDiskLayout->addWidget(m_pDiskEmpty, 6, 0, 1, 3);
     return pDiskContainer;
 }
 
