@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 104769 2024-05-24 09:28:48Z alexander.eichner@oracle.com $
+# $Id: tdStorageBenchmark1.py 105568 2024-08-01 15:54:54Z ksenia.s.stepanova@oracle.com $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 104769 $"
+__version__ = "$Revision: 105568 $"
 
 
 # Standard Python imports.
@@ -276,7 +276,7 @@ class IoPerfTest(object):
         self.fDirectIo    = True;
         self.fReportIoStats = dCfg.get('ReportIoStats', True);
         self.asGstIoPerfPaths   = [
-            '${CDROM}/vboxvalidationkit/${OS/ARCH}/IoPerf${EXESUFF}',
+            '${CDROM}/validationkit/${OS/ARCH}/IoPerf${EXESUFF}',
             '${CDROM}/${OS/ARCH}/IoPerf${EXESUFF}',
         ];
 
