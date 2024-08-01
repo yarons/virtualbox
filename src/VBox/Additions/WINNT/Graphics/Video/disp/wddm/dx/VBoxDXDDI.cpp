@@ -1,4 +1,4 @@
-/* $Id: VBoxDXDDI.cpp 102809 2024-01-10 08:18:11Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxDXDDI.cpp 105566 2024-08-01 13:57:57Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox D3D11 user mode DDI interface.
  */
@@ -787,7 +787,27 @@ static void APIENTRY ddi10SetBlendState(
     //DEBUG_BREAKPOINT_TEST();
     PVBOXDX_DEVICE pDevice = (PVBOXDX_DEVICE)hDevice.pDrvPrivate;
     PVBOXDX_BLENDSTATE pBlendState = (PVBOXDX_BLENDSTATE)hBlendState.pDrvPrivate;
-    LogFlowFunc(("pDevice 0x%p, pBlendState 0x%p, SampleMask 0x%x", pDevice, pBlendState, SampleMask));
+    LogFlowFunc(("pDevice 0x%p, pBlendState 0x%p, BlendFactor (" FLOAT_FMT_STR ", " FLOAT_FMT_STR ", " FLOAT_FMT_STR ", " FLOAT_FMT_STR "), SampleMask 0x%x",
+                 pDevice, pBlendState, FLOAT_FMT_ARGS(BlendFactor[0]), FLOAT_FMT_ARGS(BlendFactor[1]), FLOAT_FMT_ARGS(BlendFactor[2]), FLOAT_FMT_ARGS(BlendFactor[3]), SampleMask));
+
+#ifdef LOG_ENABLED
+    if (pBlendState)
+    {
+        LogFlowFunc(("[%u] ATCE %d, IBE %d, RT: b %d, lo %d, src %d, dest %d. op %d, asrc %d, adest %d. aop %d, lo %d, m %x\n",
+                     pBlendState->uBlendId, pBlendState->BlendDesc.AlphaToCoverageEnable, pBlendState->BlendDesc.IndependentBlendEnable,
+                     pBlendState->BlendDesc.RenderTarget[0].BlendEnable,
+                     pBlendState->BlendDesc.RenderTarget[0].LogicOpEnable,
+                     pBlendState->BlendDesc.RenderTarget[0].SrcBlend,
+                     pBlendState->BlendDesc.RenderTarget[0].DestBlend,
+                     pBlendState->BlendDesc.RenderTarget[0].BlendOp,
+                     pBlendState->BlendDesc.RenderTarget[0].SrcBlendAlpha,
+                     pBlendState->BlendDesc.RenderTarget[0].DestBlendAlpha,
+                     pBlendState->BlendDesc.RenderTarget[0].BlendOpAlpha,
+                     pBlendState->BlendDesc.RenderTarget[0].LogicOp,
+                     pBlendState->BlendDesc.RenderTarget[0].RenderTargetWriteMask));
+    }
+#endif
+
 
     vboxDXSetBlendState(pDevice, pBlendState, BlendFactor, SampleMask);
 }

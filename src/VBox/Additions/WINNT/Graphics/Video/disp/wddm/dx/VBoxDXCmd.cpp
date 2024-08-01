@@ -1,4 +1,4 @@
-/* $Id: VBoxDXCmd.cpp 102809 2024-01-10 08:18:11Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxDXCmd.cpp 105566 2024-08-01 13:57:57Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox D3D user mode driver utilities.
  */
@@ -325,7 +325,10 @@ int vgpu10SetBlendState(PVBOXDX_DEVICE pDevice,
 
     SVGA3dCmdDXSetBlendState *cmd = (SVGA3dCmdDXSetBlendState *)pvCmd;
     SET_CMD_FIELD(blendId);
-    memcpy(cmd->blendFactor, blendFactor, sizeof(blendFactor));
+    SET_CMD_FIELD(blendFactor[0]);
+    SET_CMD_FIELD(blendFactor[1]);
+    SET_CMD_FIELD(blendFactor[2]);
+    SET_CMD_FIELD(blendFactor[3]);
     SET_CMD_FIELD(sampleMask);
 
     vboxDXCommandBufferCommit(pDevice);
