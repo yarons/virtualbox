@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-# $Id: htmlhelp-qthelp.py 105298 2024-07-12 11:26:13Z klaus.espenlaub@oracle.com $
+# $Id: htmlhelp-qthelp.py 105563 2024-08-01 12:03:00Z klaus.espenlaub@oracle.com $
 
 """
 A python script to create a .qhp file out of a given htmlhelp
@@ -53,8 +53,9 @@ def create_keywords_section(folder):
     """
     keywords_section_lines = ['<keywords>']
     for html_file_name in html_files:
+        # dita-ot creates htmlhelp output for en-us language in iso-8859-1 encoding, not utf-8
         full_html_path = os.path.join(folder, html_file_name)
-        file_content = open(full_html_path, encoding='utf-8').read()
+        file_content = open(full_html_path, encoding='iso-8859-1').read()
 
         class html_parser(HTMLParser):
             def __init__(self):
