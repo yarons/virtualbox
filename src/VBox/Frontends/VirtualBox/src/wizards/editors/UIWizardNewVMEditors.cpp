@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.cpp 104915 2024-06-13 13:18:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVMEditors.cpp 105567 2024-08-01 15:34:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -423,6 +423,20 @@ void UINewVMHardwareContainer::prepare()
             this, &UINewVMHardwareContainer::sltRetranslateUI);
 }
 
+void UINewVMHardwareContainer::updateMinimumLayoutHint()
+{
+    /* These editors have own labels, but we want them to be properly layouted according to each other: */
+    int iMinimumLayoutHint = 0;
+    if (m_pBaseMemoryEditor && !m_pBaseMemoryEditor->isHidden())
+        iMinimumLayoutHint = qMax(iMinimumLayoutHint, m_pBaseMemoryEditor->minimumLabelHorizontalHint());
+    if (m_pVirtualCPUEditor && !m_pVirtualCPUEditor->isHidden())
+        iMinimumLayoutHint = qMax(iMinimumLayoutHint, m_pVirtualCPUEditor->minimumLabelHorizontalHint());
+    if (m_pBaseMemoryEditor)
+        m_pBaseMemoryEditor->setMinimumLayoutIndent(iMinimumLayoutHint);
+    if (m_pVirtualCPUEditor)
+        m_pVirtualCPUEditor->setMinimumLayoutIndent(iMinimumLayoutHint);
+}
+
 void UINewVMHardwareContainer::sltRetranslateUI()
 {
     if (m_pEFICheckBox)
@@ -432,4 +446,6 @@ void UINewVMHardwareContainer::sltRetranslateUI()
                                                      "which is required to boot certain guest OSes. Non-EFI aware OSes will not "
                                                      "be able to boot if this option is activated."));
     }
+
+    updateMinimumLayoutHint();
 }

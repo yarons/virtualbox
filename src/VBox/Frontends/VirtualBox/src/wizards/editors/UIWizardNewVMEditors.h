@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.h 103950 2024-03-20 11:41:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMEditors.h 105567 2024-08-01 15:34:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMEditors class declaration.
  */
@@ -188,6 +188,9 @@ private slots:
 private:
 
     void prepare();
+
+    /** Updates minimum layout hint. */
+    void updateMinimumLayoutHint();
 
     UIBaseMemoryEditor *m_pBaseMemoryEditor;
     UIVirtualCPUEditor *m_pVirtualCPUEditor;
