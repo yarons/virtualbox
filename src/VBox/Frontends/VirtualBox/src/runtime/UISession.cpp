@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 105548 2024-07-31 00:43:12Z knut.osmundsen@oracle.com $ */
+/* $Id: UISession.cpp 105577 2024-08-02 13:00:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1752,7 +1752,7 @@ bool UISession::acquireScreenShot(ulong uScreenId, ulong uWidth, ulong uHeight, 
         /* Take the screen-shot directly: */
         comDisplay.TakeScreenShot(uScreenId, pBits, uWidth, uHeight, enmFormat);
         fSuccess = comDisplay.isOk();
-        if (!fSuccess)
+        if (!fSuccess && comDisplay.rc() != VBOX_E_NOT_SUPPORTED) /* VBOX_E_NOT_SUPPORTED: screens size 0x0 can't be snapshotted */
             UINotificationMessage::cannotAcquireDisplayParameter(comDisplay);
     }
     return fSuccess;
