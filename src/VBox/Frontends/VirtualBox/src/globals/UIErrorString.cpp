@@ -1,4 +1,4 @@
-/* $Id: UIErrorString.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIErrorString.cpp 105578 2024-08-02 13:01:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIErrorString class implementation.
  */
@@ -68,7 +68,7 @@ QString UIErrorString::formatRCFull(HRESULT rc)
 {
     /** @todo r=bird: See UIErrorString::formatRC for 31th bit discussion. */
     char szHex[32];
-    RTStrPrintf(szHex, sizeof(szHex), "%#010X", rc);
+    RTStrPrintf(szHex, sizeof(szHex), "%#010x", rc);
 
 #ifdef RT_OS_WINDOWS
     char szDefine[80];
@@ -191,6 +191,12 @@ QString UIErrorString::errorInfoToString(const COMErrorInfo &comInfo, HRESULT wr
                 .arg(QApplication::translate("UIErrorString", "Result&nbsp;Code:", "error info"))
                 .arg(formatRCFull(comInfo.resultCode()));
         }
+
+        if (comInfo.resultDetail() != 0)
+            strFormatted += QString("<tr><td>%1</td><td><tt>%2 (0x%3)</tt></td></tr>")
+                .arg(QApplication::translate("UIErrorString", "Result&nbsp;Detail:", "error info"))
+                .arg(QString::number(int(comInfo.resultDetail()))) /* arg(int()) ends up as unsigned, thus the ::number crap. */
+                .arg(comInfo.resultDetail(), 0, 16);
 
         if (fHaveComponent)
             strFormatted += QString("<tr><td>%1</td><td>%2</td></tr>")
