@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 105264 2024-07-10 16:37:59Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 105575 2024-08-02 12:53:54Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -4056,6 +4056,7 @@ static DECLCALLBACK(int) vmsvga3dBackQueryCaps(PVGASTATECC pThisCC, SVGA3dDevCap
         *pu32Val = VBSVGA3D_CAP_3D;
         if (pState->pBackend->dxDevice.pVideoDevice)
             *pu32Val |= VBSVGA3D_CAP_VIDEO;
+        *pu32Val |= VBSVGA3D_CAP_RASTERIZER_STATE_V2;
         break;
 
     case SVGA3D_DEVCAP_MAX_LIGHTS:
