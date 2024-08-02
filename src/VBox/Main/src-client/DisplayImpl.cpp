@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 105352 2024-07-16 11:21:19Z knut.osmundsen@oracle.com $ */
+/* $Id: DisplayImpl.cpp 105576 2024-08-02 12:58:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2038,8 +2038,10 @@ HRESULT Display::takeScreenShotWorker(ULONG aScreenId,
             RTMemFree(pu8PNG);
         }
     }
-    else if (vrc == VERR_TRY_AGAIN)
-        hrc = setErrorBoth(E_UNEXPECTED, vrc, tr("Screenshot is not available at this time"));
+    else if (vrc == VERR_NOT_SUPPORTED) /* zero screen size (or too large screen size for vram) */
+        hrc = setErrorBoth(VBOX_E_NOT_SUPPORTED, vrc, tr("Screenshot is not possible at this time"));
+    else if (vrc == VERR_TRY_AGAIN)     /* resizing while taking screenshot */
+        hrc = setErrorBoth(E_UNEXPECTED, vrc, tr("Screenshot is not possible at this time"));
     else if (RT_FAILURE(vrc))
         hrc = setErrorBoth(VBOX_E_VM_ERROR, vrc, tr("Could not take a screenshot (%Rrc)"), vrc);
 
