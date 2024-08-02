@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbMon.cpp 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxUsbMon.cpp 105574 2024-08-02 11:45:19Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBox USB Monitor
  */
@@ -1271,7 +1271,7 @@ static NTSTATUS vboxUsbMonIoctlDispatch(PVBOXUSBMONCTX pContext, ULONG Ctl, PVOI
             if (cbOutBuffer)
             {
                 /* we've validated that already */
-                Assert(cbOutBuffer == (ULONG)*pRc);
+                Assert(cbOutBuffer == sizeof (*pRc));
                 *pRc = rc;
                 Info = sizeof (*pRc);
             }
