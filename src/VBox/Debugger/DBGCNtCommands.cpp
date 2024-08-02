@@ -1,4 +1,4 @@
-/* $Id: DBGCNtCommands.cpp 105556 2024-08-01 09:59:44Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGCNtCommands.cpp 105580 2024-08-02 21:18:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, Windows NT Related Commands.
  */
@@ -206,10 +206,10 @@ int dbgCmdNtRbTreeWorker(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PCDBGCVAR pRootAdd
                                 cStackEntries++;
                                 continue;
                             }
-                            rc = DBGCCmdHlpFail(pCmdHlp, pCmd,
-                                                "Left node of %#RX64 at #%RX64 has an incorrect parent value: %#RX64 (Left=%#RX64, Right=%#RX64)",
-                                                (uint64_t)aStack[idxCurEntry].Ptr, Ptr, aStack[cStackEntries].Node.ParentAndFlags,
-                                                aStack[cStackEntries].Node.Left, aStack[cStackEntries].Node.Right);
+                            rcRet = DBGCCmdHlpFail(pCmdHlp, pCmd,
+                                                   "Left node of %#RX64 at #%RX64 has an incorrect parent value: %#RX64 (Left=%#RX64, Right=%#RX64)",
+                                                   (uint64_t)aStack[idxCurEntry].Ptr, Ptr, aStack[cStackEntries].Node.ParentAndFlags,
+                                                   aStack[cStackEntries].Node.Left, aStack[cStackEntries].Node.Right);
                         }
                         else
                             rcRet = DBGCCmdHlpFailRc(pCmdHlp, pCmd, rc,
