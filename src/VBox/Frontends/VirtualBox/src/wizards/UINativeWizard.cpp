@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.cpp 105363 2024-07-16 18:12:00Z sergey.dubov@oracle.com $ */
+/* $Id: UINativeWizard.cpp 105582 2024-08-05 13:53:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class implementation.
  */
@@ -578,27 +578,6 @@ void UINativeWizard::init()
 
     /* Make sure current page initialized: */
     sltCurrentIndexChanged();
-}
-
-void UINativeWizard::deinit()
-{
-    /* Remove all the pages: */
-    m_pWidgetStack->blockSignals(true);
-    while (m_pWidgetStack->count() > 0)
-    {
-        QWidget *pLastWidget = m_pWidgetStack->widget(m_pWidgetStack->count() - 1);
-        m_pWidgetStack->removeWidget(pLastWidget);
-        delete pLastWidget;
-    }
-    m_pWidgetStack->blockSignals(false);
-
-    /* Update last index: */
-    m_iLastIndex = -1;
-    /* Update invisible pages: */
-    m_invisiblePages.clear();
-
-    /* Clean wizard finally: */
-    cleanWizard();
 }
 
 void UINativeWizard::retranslatePages()

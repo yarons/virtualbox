@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.h 105363 2024-07-16 18:12:00Z sergey.dubov@oracle.com $ */
+/* $Id: UINativeWizard.h 105582 2024-08-05 13:53:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class declaration.
  */
@@ -180,8 +180,6 @@ private:
     void cleanup();
     /** Inits all. */
     void init();
-    /** Deinits all. */
-    void deinit();
 
     /** Performs pages translation. */
     void retranslatePages();
