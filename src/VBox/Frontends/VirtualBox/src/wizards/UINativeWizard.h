@@ -1,10 +1,10 @@
-/* $Id: UINativeWizard.h 105582 2024-08-05 13:53:49Z sergey.dubov@oracle.com $ */
+/* $Id: UINativeWizard.h 105583 2024-08-05 14:09:31Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class declaration.
  */
 
 /*
- * Copyright (C) 2009-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -154,6 +154,7 @@ protected:
     virtual void cleanWizard() {}
 
 protected slots:
+
     /** Handles translation event. */
     virtual void sltRetranslateUI();
 
@@ -168,6 +169,8 @@ private slots:
     void sltPrevious();
     /** Switches to next page. */
     void sltNext();
+    /** Aborts wizard. */
+    void sltAbort();
 
     /** Handle help request*/
     void sltHandleHelpRequest();
@@ -209,6 +212,8 @@ private:
     int         m_iLastIndex;
     /** Holds the set of invisible pages. */
     QSet<int>   m_invisiblePages;
+    /** Holds whether user has requested to abort wizard. */
+    bool        m_fAborted;
     /** Holds whether the dialod had emitted signal to be closed. */
     bool        m_fClosed;
 
