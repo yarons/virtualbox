@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 105363 2024-07-16 18:12:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVM.cpp 105584 2024-08-05 14:15:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -94,7 +94,6 @@ UIWizardNewVM::UIWizardNewVM(QWidget *pParent,
     /* Assign background image: */
     setPixmapName(":/wizard_new_welcome_bg.png");
 #endif /* VBOX_WS_MAC */
-    connect(this, &UIWizardNewVM::rejected, this, &UIWizardNewVM::sltHandleWizardCancel);
 
     /* Create installer: */
     m_comUnattended = gpGlobalSession->virtualBox().CreateUnattendedInstaller();
@@ -360,11 +359,6 @@ bool UIWizardNewVM::attachDefaultDevices()
         m_virtualDisk.detach();
 
     return success;
-}
-
-void UIWizardNewVM::sltHandleWizardCancel()
-{
-    cleanWizard();
 }
 
 void UIWizardNewVM::sltRetranslateUI()

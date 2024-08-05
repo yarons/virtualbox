@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVM.h 105584 2024-08-05 14:15:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -179,7 +179,6 @@ protected:
 
 private slots:
 
-    void sltHandleWizardCancel();
     virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
 private:
