@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 105579 2024-08-02 21:10:41Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMR3.cpp 105591 2024-08-05 23:05:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -1256,9 +1256,9 @@ static void iemR3InfoTlbPrintAddress(PVMCPU pVCpu, PCDBGFINFOHLP pHlp, IEMTLB co
 
     uint64_t const    uTag  = IEMTLB_CALC_TAG_NO_REV(uAddress);
 #ifdef IEMTLB_TAG_TO_EVEN_INDEX
-    uint32_t const    uSlot = IEMTLB_TAG_TO_EVEN_INDEX(uAddress);
+    uint32_t const    uSlot = IEMTLB_TAG_TO_EVEN_INDEX(uTag);
 #else
-    uint32_t const    uSlot = IEMTLB_TAG_TO_INDEX(uAddress);
+    uint32_t const    uSlot = IEMTLB_TAG_TO_INDEX(uTag);
 #endif
     IEMTLBENTRY const TlbeL = pTlb->aEntries[uSlot];
 #ifndef VBOX_VMM_TARGET_ARMV8
