@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 105150 2024-07-04 15:53:45Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 105588 2024-08-05 16:26:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -2802,7 +2802,12 @@ void UIMachineLogic::updateMenuDevicesSharedClipboard(QMenu *pMenu)
         }
         /* Connect action-group trigger: */
         connect(m_pSharedClipboardActions, &QActionGroup::triggered, this, &UIMachineLogic::sltChangeSharedClipboardType);
-        m_pFileTransferToggleAction = new QAction(QApplication::translate("UIActionPool", "Enable clipboard file transfers"));
+
+        /* Separator between the radio-buttons and the check-box: */
+        pMenu->addSeparator();
+
+        /* Create checkable action for special 'clipboard file transfers' feature: */
+        m_pFileTransferToggleAction = new QAction(UIActionPool::tr("Enable Clipboard File Transfers"));
         m_pFileTransferToggleAction->setCheckable(true);
         m_pFileTransferToggleAction->setChecked(uimachine()->isClipboardFileTransferEnabled());
         /* pMenu takes the ownership of the m_pFileTransferToggleAction. */

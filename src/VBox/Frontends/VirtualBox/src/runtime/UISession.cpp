@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 105577 2024-08-02 13:00:01Z knut.osmundsen@oracle.com $ */
+/* $Id: UISession.cpp 105588 2024-08-05 16:26:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -646,7 +646,7 @@ bool UISession::toggleClipboardFileTransfer(bool fEnabled)
     comMachine.SetClipboardFileTransfersEnabled(fEnabled);
     const bool fSuccess = comMachine.isOk();
     if (!fSuccess)
-        UINotificationMessage::cannotAcquireMachineParameter(comMachine);
+        UINotificationMessage::cannotChangeMachineParameter(comMachine);
     return fSuccess;
 }
 
