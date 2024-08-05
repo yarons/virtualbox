@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 105591 2024-08-05 23:05:33Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 105592 2024-08-05 23:13:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -803,7 +803,6 @@ DECLINLINE(void) iemTlbInvalidateLargePageWorkerInner(PVMCPUCC pVCpu, IEMTLB *pT
     RTGCPTR const   GCPtrTagMask = fPartialScan ? ~(RTGCPTR)0
                                  : ~(RTGCPTR)(  (RT_BIT_32(a_f2MbLargePage ? 9 : 10) - 1U)
                                               & ~(uint32_t)(RT_BIT_32(IEMTLB_ENTRY_COUNT_AS_POWER_OF_TWO) - 1U));
-IEMTLBTRACE_USER3(pVCpu, GCPtrTagMask, GCPtrTag, RT_MAKE_U32(idxEven, idxEvenEnd), a_fDataTlb);
 
     /*
      * Do the scanning.
