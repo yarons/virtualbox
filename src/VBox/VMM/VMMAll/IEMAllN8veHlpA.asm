@@ -1,4 +1,4 @@
-; $Id: IEMAllN8veHlpA.asm 105571 2024-08-01 18:22:45Z knut.osmundsen@oracle.com $
+; $Id: IEMAllN8veHlpA.asm 105589 2024-08-05 19:29:20Z knut.osmundsen@oracle.com $
 ;; @file
 ; IEM - Native Recompiler Assembly Helpers.
 ;
@@ -293,7 +293,7 @@ BEGINPROC   iemNativeFpCtrlRegRestore
 SEH64_END_PROLOGUE
 
 %ifdef RT_OS_WINDOWS
-        mov     [xSP + xCB], edi            ; use the first parameter spill slot.
+        mov     [xSP + xCB], ecx            ; use the first parameter spill slot.
         ldmxcsr [xSP + xCB]
 %else
         push    xDI
