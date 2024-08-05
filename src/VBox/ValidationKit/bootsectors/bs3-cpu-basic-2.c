@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-basic-2.c 102130 2023-11-16 23:51:25Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-basic-2.c 105590 2024-08-05 23:03:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-basic-2, 16-bit C code.
  */
@@ -124,10 +124,10 @@ BS3_DECL(void) Main_rm()
     NOREF(g_aModeByOneTests);
 #endif
 
-#if 0 /** @todo The '\#PF' test doesn't work right in IEM! */
     /*
      * Do tests driven from 32-bit code (bs3-cpu-basic-2-32.c32 via assembly).
      */
+#if 1
     Bs3SwitchTo32BitAndCallC_rm(bs3CpuBasic2_Do32BitTests_pe32, 0);
 #endif
 

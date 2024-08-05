@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 105094 2024-07-02 09:33:52Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3kit.h 105590 2024-08-05 23:03:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -4222,6 +4222,8 @@ typedef BS3TESTMODEBYONEENTRY const *PCBS3TESTMODEBYONEENTRY;
 #define BS3TESTMODEBYONEENTRY_F_MINIMAL         RT_BIT_32(1)
 /** The 32-bit worker is ready to handle real-mode by mode switching. */
 #define BS3TESTMODEBYONEENTRY_F_REAL_MODE_READY RT_BIT_32(2)
+/** Skip all v8086 mode tests. */
+#define BS3TESTMODEBYONEENTRY_F_SKIP_V8086      RT_BIT_32(3)
 /** @} */
 
 
