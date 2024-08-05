@@ -1,4 +1,4 @@
-/* $Id: vbox_fb.c 104925 2024-06-14 15:43:17Z vadim.galitsyn@oracle.com $ */
+/* $Id: vbox_fb.c 105587 2024-08-05 16:25:37Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -351,7 +351,7 @@ static int vboxfb_create(struct drm_fb_helper *helper,
 	 * The last flag forces a mode set on VT switches even if the kernel
 	 * does not think it is needed.
 	 */
-#if RTLNX_VER_MIN(6,6,0) || RTLNX_SUSE_MAJ_PREREQ(15, 6)
+#if RTLNX_VER_MIN(6,6,0) || RTLNX_SUSE_MAJ_PREREQ(15, 6) || RTLNX_RHEL_RANGE(9,5, 9,99)
 	info->flags = FBINFO_MISC_ALWAYS_SETPAR;
 #else
 	info->flags = FBINFO_DEFAULT | FBINFO_MISC_ALWAYS_SETPAR;

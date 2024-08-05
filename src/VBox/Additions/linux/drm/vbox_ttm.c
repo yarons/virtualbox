@@ -1,4 +1,4 @@
-/* $Id: vbox_ttm.c 104057 2024-03-26 10:50:45Z vadim.galitsyn@oracle.com $ */
+/* $Id: vbox_ttm.c 105587 2024-08-05 16:25:37Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -532,7 +532,7 @@ void vbox_ttm_placement(struct vbox_bo *bo, u32 mem_type)
 #endif
 
 	bo->placement.placement = bo->placements;
-#if RTLNX_VER_MAX(6,9,0)
+#if RTLNX_VER_MAX(6,9,0) && !RTLNX_RHEL_MAJ_PREREQ(9,5)
 	bo->placement.busy_placement = bo->placements;
 #endif
 
@@ -587,7 +587,7 @@ void vbox_ttm_placement(struct vbox_bo *bo, u32 mem_type)
 	}
 
 	bo->placement.num_placement = c;
-#if RTLNX_VER_MAX(6,9,0)
+#if RTLNX_VER_MAX(6,9,0) && !RTLNX_RHEL_MAJ_PREREQ(9,5)
 	bo->placement.num_busy_placement = c;
 #endif
 
