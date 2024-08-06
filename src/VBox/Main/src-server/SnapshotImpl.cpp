@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: SnapshotImpl.cpp 105605 2024-08-06 14:00:56Z andreas.loeffler@oracle.com $ */
 /** @file
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
  */
@@ -1273,7 +1273,7 @@ HRESULT SnapshotMachine::initFromSettings(Machine *aMachine,
                                           const settings::Hardware &hardware,
                                           const settings::Debugging *pDbg,
                                           const settings::Autostart *pAutostart,
-                                          const settings::RecordingSettings &recording,
+                                          const settings::Recording &recording,
                                           IN_GUID aSnapshotId,
                                           const Utf8Str &aStateFilePath)
 {

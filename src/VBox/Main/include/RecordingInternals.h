@@ -1,4 +1,4 @@
-/* $Id: RecordingInternals.h 105095 2024-07-02 10:06:48Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingInternals.h 105605 2024-08-06 14:00:56Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording internals header.
  */
@@ -596,7 +596,7 @@ typedef std::list<RecordingBlock *> RecordingBlockList;
 
 int recordingCodecCreateAudio(PRECORDINGCODEC pCodec, RecordingAudioCodec_T enmAudioCodec);
 int recordingCodecCreateVideo(PRECORDINGCODEC pCodec, RecordingVideoCodec_T enmVideoCodec);
-int recordingCodecInit(const PRECORDINGCODEC pCodec, const PRECORDINGCODECCALLBACKS pCallbacks, const settings::RecordingScreenSettings &Settings);
+int recordingCodecInit(const PRECORDINGCODEC pCodec, const PRECORDINGCODECCALLBACKS pCallbacks, const settings::RecordingScreen &Settings);
 int recordingCodecDestroy(PRECORDINGCODEC pCodec);
 int recordingCodecEncodeFrame(PRECORDINGCODEC pCodec, const PRECORDINGFRAME pFrame, uint64_t msTimestamp, void *pvUser);
 int recordingCodecEncodeCurrent(PRECORDINGCODEC pCodec, uint64_t msTimestamp);

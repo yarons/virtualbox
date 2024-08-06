@@ -1,4 +1,4 @@
-/* $Id: DrvAudioRec.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvAudioRec.h 105605 2024-08-06 14:00:56Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox driver interface video recording audio backend.
  */
@@ -57,7 +57,7 @@ public:
 
 public:
 
-    int applyConfiguration(const settings::RecordingSettings &Settings);
+    int applyConfiguration(const settings::Recording &Settings);
 
 public:
 
@@ -70,9 +70,9 @@ private:
     virtual int configureDriver(PCFGMNODE pLunCfg, PCVMMR3VTABLE pVMM) RT_OVERRIDE;
 
     /** Pointer to the associated video recording audio driver. */
-    struct DRVAUDIORECORDING          *mpDrv;
+    struct DRVAUDIORECORDING  *mpDrv;
     /** Recording settings used for configuring the driver. */
-    struct settings::RecordingSettings mSettings;
+    struct settings::Recording mSettings;
 };
 
 #endif /* !MAIN_INCLUDED_DrvAudioRec_h */

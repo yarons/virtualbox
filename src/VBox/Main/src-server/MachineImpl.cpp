@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 105266 2024-07-11 07:49:37Z andreas.loeffler@oracle.com $ */
+/* $Id: MachineImpl.cpp 105605 2024-08-06 14:00:56Z andreas.loeffler@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -8618,7 +8618,7 @@ HRESULT Machine::i_loadHardware(const Guid *puuidRegistry,
                                 const settings::Hardware &data,
                                 const settings::Debugging *pDbg,
                                 const settings::Autostart *pAutostart,
-                                const settings::RecordingSettings &recording)
+                                const settings::Recording &recording)
 {
     AssertReturn(!i_isSessionMachine(), E_FAIL);
 
@@ -10012,7 +10012,7 @@ HRESULT Machine::i_saveAllSnapshots(settings::MachineConfigFile &config)
  *  @param recording      Reference to reecording settings.
  */
 HRESULT Machine::i_saveHardware(settings::Hardware &data, settings::Debugging *pDbg,
-                                settings::Autostart *pAutostart, settings::RecordingSettings &recording)
+                                settings::Autostart *pAutostart, settings::Recording &recording)
 {
     HRESULT hrc = S_OK;
 
