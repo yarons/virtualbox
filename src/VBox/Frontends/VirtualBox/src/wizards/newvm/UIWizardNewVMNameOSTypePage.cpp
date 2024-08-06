@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePage.cpp 105487 2024-07-24 14:28:08Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMNameOSTypePage.cpp 105603 2024-08-06 12:36:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameOSStype class implementation.
  */
@@ -746,7 +746,7 @@ QWidget *UIWizardNewVMNameOSTypePage::createNameOSTypeWidgets()
             m_pSkipUnattendedCheckBox = new QCheckBox;
             if (m_pSkipUnattendedCheckBox)
                 m_pNameAndSystemLayout->addWidget(m_pSkipUnattendedCheckBox, 1, 1);
-            m_pInfoLabel = new QIRichTextLabel;
+            m_pInfoLabel = new QIRichTextLabel(pContainerWidget);
             if (m_pInfoLabel)
                 m_pNameAndSystemLayout->addWidget(m_pInfoLabel, 2, 1);
         }

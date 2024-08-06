@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPage.cpp 105570 2024-08-01 17:52:49Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVMDiskPage.cpp 105603 2024-08-06 12:36:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPage class implementation.
  */
@@ -439,9 +439,9 @@ QWidget *UIWizardNewVMDiskPage::createMediumVariantWidgets(bool fWithLabels)
         }
         if (fWithLabels)
         {
-            m_pDescriptionLabel = new QIRichTextLabel;
-            m_pDynamicLabel = new QIRichTextLabel;
-            m_pFixedLabel = new QIRichTextLabel;
+            m_pDescriptionLabel = new QIRichTextLabel(pContainerWidget);
+            m_pDynamicLabel = new QIRichTextLabel(pContainerWidget);
+            m_pFixedLabel = new QIRichTextLabel(pContainerWidget);
 
             pMainLayout->addWidget(m_pDescriptionLabel);
             pMainLayout->addWidget(m_pDynamicLabel);

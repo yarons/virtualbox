@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageFormat.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardExportAppPageFormat.h 105603 2024-08-06 12:36:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageFormat class declaration.
  */
@@ -222,7 +222,6 @@ private:
 
     /** Holds the Cloud Profile object instance. */
     CCloudProfile  m_comCloudProfile;
-
 
     /** Holds the format label instance. */
     QIRichTextLabel *m_pLabelFormat;

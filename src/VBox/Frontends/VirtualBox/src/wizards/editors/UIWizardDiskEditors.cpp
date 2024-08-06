@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.cpp 105260 2024-07-10 14:01:29Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardDiskEditors.cpp 105603 2024-08-06 12:36:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -360,7 +360,7 @@ void UIMediumSizeAndPathGroupBox::prepare(qulonglong uMinimumMediumSize)
     QVBoxLayout *pMainLayout = new QVBoxLayout(this);
     /* Location widgets: */
     if (!m_fExpertMode)
-        m_pLocationLabel = new QIRichTextLabel;
+        m_pLocationLabel = new QIRichTextLabel(this);
     QHBoxLayout *pLocationLayout = new QHBoxLayout;
     m_pLocationEditor = new QILineEdit;
     m_pLocationOpenButton = new QIToolButton;
@@ -381,7 +381,7 @@ void UIMediumSizeAndPathGroupBox::prepare(qulonglong uMinimumMediumSize)
 
     /* Size widgets: */
     if (!m_fExpertMode)
-        m_pSizeLabel = new QIRichTextLabel;
+        m_pSizeLabel = new QIRichTextLabel(this);
     m_pMediumSizeEditor = new UIMediumSizeEditor(0 /* parent */, uMinimumMediumSize);
 
     /* Add widgets to main layout: */

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDVariantPage.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVDVariantPage.cpp 105603 2024-08-06 12:36:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDVariantPage class implementation.
  */
@@ -52,10 +52,10 @@ void UIWizardNewVDVariantPage::prepare()
     QVBoxLayout *pMainLayout = new QVBoxLayout(this);
     AssertReturnVoid(pMainLayout);
 
-    m_pDescriptionLabel = new QIRichTextLabel;
-    m_pDynamicLabel = new QIRichTextLabel;
-    m_pFixedLabel = new QIRichTextLabel;
-    m_pSplitLabel = new QIRichTextLabel;
+    m_pDescriptionLabel = new QIRichTextLabel(this);
+    m_pDynamicLabel = new QIRichTextLabel(this);
+    m_pFixedLabel = new QIRichTextLabel(this);
+    m_pSplitLabel = new QIRichTextLabel(this);
 
     pMainLayout->addWidget(m_pDescriptionLabel);
     pMainLayout->addWidget(m_pDynamicLabel);
