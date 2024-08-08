@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageSource.cpp 105363 2024-07-16 18:12:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardAddCloudVMPageSource.cpp 105626 2024-08-08 13:52:02Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageSource class implementation.
  */
@@ -283,6 +283,7 @@ UIWizardAddCloudVMPageSource::UIWizardAddCloudVMPageSource()
             m_pProviderLabel = new QLabel(this);
             if (m_pProviderLabel)
                 m_pProviderLayout->addWidget(m_pProviderLabel, 0, 0, Qt::AlignRight);
+
             /* Prepare provider combo-box: */
             m_pProviderComboBox = new QIComboBox(this);
             if (m_pProviderComboBox)

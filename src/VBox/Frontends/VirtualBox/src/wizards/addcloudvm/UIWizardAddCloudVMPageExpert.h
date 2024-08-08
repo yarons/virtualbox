@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageExpert.h 104568 2024-05-08 16:53:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardAddCloudVMPageExpert.h 105626 2024-08-08 13:52:02Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageExpert class declaration.
  */
@@ -38,7 +38,6 @@
 class QGridLayout;
 class QLabel;
 class QIListWidget;
-class UIToolBox;
 class UIWizardAddCloudVM;
 
 /** UINativeWizardPage extension for Expert page of the Add Cloud VM wizard,
@@ -84,9 +83,6 @@ private slots:
 
 private:
 
-    /** Holds the tool-box instance. */
-    UIToolBox *m_pToolBox;
-
     /** Holds the provider layout instance. */
     QGridLayout  *m_pLayoutProvider;
     /** Holds the provider type label instance. */
@@ -99,7 +95,6 @@ private:
     QIComboBox   *m_pProfileComboBox;
     /** Holds the profile management tool-button instance. */
     QIToolButton *m_pProfileToolButton;
-
     /** Holds the source instance label instance. */
     QLabel       *m_pSourceInstanceLabel;
     /** Holds the source instance list instance. */
