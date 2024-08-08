@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 105588 2024-08-05 16:26:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 105625 2024-08-08 12:54:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -790,6 +790,7 @@ UIMachineLogic::~UIMachineLogic()
 
 void UIMachineLogic::addMachineWindow(UIMachineWindow *pMachineWindow)
 {
+    pMachineWindow->installEventFilter(this);
     m_machineWindowsList << pMachineWindow;
 }
 
