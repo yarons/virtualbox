@@ -1,4 +1,4 @@
-/* $Id: UIVMCloseDialog.cpp 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMCloseDialog.cpp 105624 2024-08-08 12:49:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMCloseDialog class implementation.
  */
@@ -99,14 +99,9 @@ bool UIVMCloseDialog::eventFilter(QObject *pObject, QEvent *pEvent)
     /* For now we are interested in double-click events only: */
     if (pEvent->type() == QEvent::MouseButtonDblClick)
     {
-        /* Make sure it's one of the radio-buttons
-         * which has this event-filter installed: */
-        if (qobject_cast<QRadioButton*>(pObject))
-        {
-            /* Since on double-click the button will be also selected
-             * we are just calling for the *accept* slot: */
-            accept();
-        }
+        /* Since on double-click the button will be also selected
+         * we are just calling for the *accept* slot: */
+        accept();
     }
 
     /* Call to base-class: */
