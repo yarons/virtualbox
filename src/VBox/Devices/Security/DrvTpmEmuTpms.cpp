@@ -1,4 +1,4 @@
-/* $Id: DrvTpmEmuTpms.cpp 105622 2024-08-08 12:30:53Z alexander.eichner@oracle.com $ */
+/* $Id: DrvTpmEmuTpms.cpp 105623 2024-08-08 12:33:42Z alexander.eichner@oracle.com $ */
 /** @file
  * TPM emulation driver based on libtpms.
  */
@@ -319,7 +319,7 @@ static DECLCALLBACK(TPM_RESULT) drvTpmEmuTpmsCbkIoGetPhysicalPresence(TPM_BOOL *
 
 
 /* -=-=-=-=-=-=-=-=- Saved State -=-=-=-=-=-=-=-=- */
-     
+
 /**
  * @callback_method_impl{FNSSMDRVSAVEPREP}
  */
