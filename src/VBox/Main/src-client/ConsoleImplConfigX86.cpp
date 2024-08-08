@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigX86.cpp 105048 2024-06-27 09:06:33Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImplConfigX86.cpp 105621 2024-08-08 12:29:52Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1699,8 +1699,10 @@ int Console::i_configConstructorX86(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Auto
                 InsertConfigInteger(pCfg, "DmiExposeMemoryTable", 1);
             }
 
+#if defined(VBOX_WITH_TPM)
             if (enmTpmType != TpmType_None)
                 InsertConfigInteger(pCfg, "TpmPpiBase", TPM_PPI_MMIO_BASE_DEFAULT);
+#endif
 
             /* Attach the NVRAM storage driver. */
             InsertConfigNode(pInst,    "LUN#0",     &pLunL0);
