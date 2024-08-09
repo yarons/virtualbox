@@ -1,4 +1,4 @@
-/* $Id: path-win.cpp 99758 2023-05-11 21:37:59Z knut.osmundsen@oracle.com $ */
+/* $Id: path-win.cpp 105631 2024-08-09 00:59:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Path manipulation.
  */
@@ -603,11 +603,13 @@ RTR3DECL(int) RTPathRename(const char *pszSrc, const char *pszDst, unsigned fRen
 }
 
 
+#if 0 /* RTPathUnlink-r3-nt.cpp */
 RTR3DECL(int) RTPathUnlink(const char *pszPath, uint32_t fUnlink)
 {
     RT_NOREF_PV(pszPath); RT_NOREF_PV(fUnlink);
     return VERR_NOT_IMPLEMENTED;
 }
+#endif
 
 
 RTDECL(bool) RTPathExists(const char *pszPath)

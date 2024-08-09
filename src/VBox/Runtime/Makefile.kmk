@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 104570 2024-05-10 04:58:46Z samantha.scholz@oracle.com $
+# $Id: Makefile.kmk 105631 2024-08-09 00:59:18Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1052,6 +1052,7 @@ RuntimeBaseR3_SOURCES.win = \
 	r3/nt/RTFileSetMode-r3-nt.cpp \
 	r3/nt/RTPathQueryInfo-nt.cpp \
 	r3/nt/RTPathSetMode-r3-nt.cpp \
+	r3/nt/RTPathUnlink-r3-nt.cpp \
 	r3/nt/RTProcQueryParent-r3-nt.cpp \
 	nt/semevent-nt.cpp \
 	nt/RTSemEventGetResolution-nt.cpp \
@@ -2654,6 +2655,7 @@ RuntimeBldProg_SOURCES.win = \
 	r3/nt/RTFileSetMode-r3-nt.cpp \
 	r3/nt/RTPathQueryInfo-nt.cpp \
 	r3/nt/RTPathSetMode-r3-nt.cpp \
+	r3/nt/RTPathUnlink-r3-nt.cpp \
 	r3/nt/RTProcQueryParent-r3-nt.cpp \
 	r3/win/RTMemProtect-win.cpp \
 	r3/win/allocex-win.cpp \
