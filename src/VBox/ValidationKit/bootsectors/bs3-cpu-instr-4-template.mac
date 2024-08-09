@@ -1,4 +1,4 @@
-; $Id: bs3-cpu-instr-4-template.mac 105611 2024-08-07 03:33:51Z ramshankar.venkataraman@oracle.com $
+; $Id: bs3-cpu-instr-4-template.mac 105632 2024-08-09 06:38:07Z ramshankar.venkataraman@oracle.com $
 ;; @file
 ; BS3Kit - bs3-cpu-instr-4 - SSE, AVX FPU instructions, assembly template.
 ;
@@ -228,6 +228,24 @@ EMIT_INSTR_PLUS_ICEBP       vhaddps, YMM1, YMM2, YMM3
 EMIT_INSTR_PLUS_ICEBP       vhaddps, YMM1, YMM2, FSxBX
 EMIT_INSTR_PLUS_ICEBP_C64   vhaddps, YMM8, YMM9, YMM10
 EMIT_INSTR_PLUS_ICEBP_C64   vhaddps, YMM8, YMM9, FSxBX
+
+;
+;; [v]haddpd
+;
+EMIT_INSTR_PLUS_ICEBP       haddpd, XMM1, XMM2
+EMIT_INSTR_PLUS_ICEBP       haddpd, XMM1, FSxBX
+EMIT_INSTR_PLUS_ICEBP_C64   haddpd, XMM8, XMM9
+EMIT_INSTR_PLUS_ICEBP_C64   haddpd, XMM8, FSxBX
+
+EMIT_INSTR_PLUS_ICEBP       vhaddpd, XMM1, XMM2, XMM3
+EMIT_INSTR_PLUS_ICEBP       vhaddpd, XMM1, XMM2, FSxBX
+EMIT_INSTR_PLUS_ICEBP_C64   vhaddpd, XMM8, XMM9, XMM10
+EMIT_INSTR_PLUS_ICEBP_C64   vhaddpd, XMM8, XMM9, FSxBX
+
+EMIT_INSTR_PLUS_ICEBP       vhaddpd, YMM1, YMM2, YMM3
+EMIT_INSTR_PLUS_ICEBP       vhaddpd, YMM1, YMM2, FSxBX
+EMIT_INSTR_PLUS_ICEBP_C64   vhaddpd, YMM8, YMM9, YMM10
+EMIT_INSTR_PLUS_ICEBP_C64   vhaddpd, YMM8, YMM9, FSxBX
 
 ;
 ;; [v]subps
