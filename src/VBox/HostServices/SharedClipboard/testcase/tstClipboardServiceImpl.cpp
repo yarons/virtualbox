@@ -1,4 +1,4 @@
-/* $Id: tstClipboardServiceImpl.cpp 103631 2024-03-01 11:00:38Z andreas.loeffler@oracle.com $ */
+/* $Id: tstClipboardServiceImpl.cpp 105635 2024-08-09 09:38:27Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard host service implementation (backend) test case.
  */
@@ -88,7 +88,7 @@ static void testAnnounceAndReadData(void)
     HGCMSvcSetU32(&parms[0], VBOX_SHCL_MODE_BIDIRECTIONAL);
     rc = table.pfnHostCall(NULL, VBOX_SHCL_HOST_FN_SET_MODE, 1, parms);
     RTTESTI_CHECK_RC_OK(rc);
-    rc = shClSvcClientInit(&g_Client, 1 /* clientId */);
+    rc = ShClSvcClientInit(&g_Client, 1 /* clientId */);
     RTTESTI_CHECK_RC_OK(rc);
 
     RTTestIRestoreAssertions();
