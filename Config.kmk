@@ -1,4 +1,4 @@
-# $Id: Config.kmk 105497 2024-07-25 01:15:07Z jack.doherty@oracle.com $
+# $Id: Config.kmk 105639 2024-08-09 14:26:57Z andreas.loeffler@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -911,6 +911,10 @@ endif
 VBOX_WITH_LIBVORBIS = 1
 # Enables libogg (Ogg file format). Required for building libvorbis above.
 VBOX_WITH_LIBOGG = 1
+# Currently OggVorbis is our only choice for audio recording support, so check for that.
+if defined(VBOX_WITH_AUDIO_RECORDING) && !defined(VBOX_WITH_LIBVORBIS)
+ $(error Need libvorbis (VBOX_WITH_LIBVORBIS) in order to enable audio recoding support)
+endif
 if defined(VBOX_WITH_LIBVORBIS) && !defined(VBOX_WITH_LIBOGG)
  $(error Need libogg (VBOX_WITH_LIBOGG) in order to build libvorbis (VBOX_WITH_LIBVORBIS))
 endif
@@ -9303,7 +9307,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 105497 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 105639 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
