@@ -1,4 +1,4 @@
-/* $Id: UIIconPool.cpp 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIIconPool.cpp 105640 2024-08-09 17:54:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIconPool class implementation.
  */
@@ -484,6 +484,8 @@ UIIconPoolGeneral::UIIconPoolGeneral()
     m_guestOSTypeIconNames.insert(GUEST_OS_ID_STR_A64("Ubuntu22"),              ":/os_ubuntu.png");
     m_guestOSTypeIconNames.insert(GUEST_OS_ID_STR_X64("Ubuntu23"),              ":/os_ubuntu.png");
     m_guestOSTypeIconNames.insert(GUEST_OS_ID_STR_A64("Ubuntu23"),              ":/os_ubuntu.png");
+    m_guestOSTypeIconNames.insert(GUEST_OS_ID_STR_X64("Ubuntu24_LTS"),          ":/os_ubuntu.png");
+    m_guestOSTypeIconNames.insert(GUEST_OS_ID_STR_A64("Ubuntu24_LTS"),          ":/os_ubuntu.png");
     m_guestOSTypeIconNames.insert(GUEST_OS_ID_STR_X86("Lubuntu"),               ":/os_ubuntu.png");
     m_guestOSTypeIconNames.insert(GUEST_OS_ID_STR_X64("Lubuntu"),               ":/os_ubuntu.png");
     m_guestOSTypeIconNames.insert(GUEST_OS_ID_STR_X86("Xubuntu"),               ":/os_ubuntu.png");
