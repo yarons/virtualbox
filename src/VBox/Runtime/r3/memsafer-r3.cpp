@@ -1,4 +1,4 @@
-/* $Id: memsafer-r3.cpp 100442 2023-07-08 11:10:51Z knut.osmundsen@oracle.com $ */
+/* $Id: memsafer-r3.cpp 105643 2024-08-09 21:38:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Memory Allocate for Sensitive Data, generic heap-based implementation.
  */
@@ -421,7 +421,10 @@ RTDECL(int) RTMemSaferAllocZExTag(void **ppvNew, size_t cb, uint32_t fFlags, con
              * Try allocate the memory, using the best allocator by default and
              * falling back on the less safe one.
              */
-            rc = rtMemSaferSupR3AllocPages(pThis);
+            if (!(fFlags & RTMEMSAFER_F_NO_SUPLIB_ALLOC))
+                rc = rtMemSaferSupR3AllocPages(pThis);
+            else
+                rc = VERR_NO_PAGE_MEMORY;
             if (RT_SUCCESS(rc))
                 pThis->enmAllocator = RTMEMSAFERALLOCATOR_SUPR3;
             else if (!(fFlags & RTMEMSAFER_F_REQUIRE_NOT_PAGABLE))
