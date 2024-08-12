@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtualBoxBase.cpp 105654 2024-08-12 17:25:27Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox COM base classes implementation
  */
@@ -816,6 +816,29 @@ HRESULT VirtualBoxBase::setErrorNoLog(HRESULT aResultCode, const char *pcsz, ...
                                     false /* aWarning */,
                                     false /* aLogIt */);
     va_end(args);
+    return hrc;
+}
+
+/**
+ * Like setErrorBoth(), but disables the "log" flag in the call to setErrorInternal().
+ * @param hrc
+ * @param vrc
+ * @param pcszMsgFmt
+ * @param ...
+ * @return
+ */
+HRESULT VirtualBoxBase::setErrorBothNoLog(HRESULT hrc, int vrc, const char *pcszMsgFmt, ...)
+{
+    va_list va;
+    va_start(va, pcszMsgFmt);
+    hrc = setErrorInternalV(hrc,
+                            this->getClassIID(),
+                            this->getComponentName(),
+                            pcszMsgFmt, va,
+                            false /* aWarning */,
+                            false /* aLogIt */,
+                            vrc /* aResultDetail */);
+    va_end(va);
     return hrc;
 }
 

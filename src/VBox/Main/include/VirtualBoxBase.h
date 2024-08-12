@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtualBoxBase.h 105654 2024-08-12 17:25:27Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox COM base classes definition
  */
@@ -781,6 +781,7 @@ public:
     HRESULT setErrorBoth(HRESULT hrc, int vrc, const char *pcszMsgFmt, ...);
     HRESULT setWarning(HRESULT aResultCode, const char *pcsz, ...);
     HRESULT setErrorNoLog(HRESULT aResultCode, const char *pcsz, ...);
+    HRESULT setErrorBothNoLog(HRESULT hrc, int vrc, const char *pcszMsgFmt, ...);
 
 
     /** Initialize COM for a new thread. */
