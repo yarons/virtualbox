@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompFuncs.h 105656 2024-08-13 07:27:02Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompFuncs.h 105657 2024-08-13 07:40:48Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler - Inlined Bits.
  */
@@ -3793,7 +3793,9 @@ iemNativeEmitFetchGregI16(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t i
 
     iemNativeVarSetKindToStack(pReNative, idxDstVar);
     uint8_t const idxVarReg = iemNativeVarRegisterAcquire(pReNative, idxDstVar, &off);
-#ifdef RT_ARCH_ARM64 /* Note! There are no 16-bit registers on ARM, we emulate that through 32-bit registers which requires sign extension. */
+#ifdef RT_ARCH_AMD64
+    off = iemNativeEmitLoadGprFromGpr16(pReNative, off, idxVarReg, idxGstFullReg);
+#elif defined(RT_ARCH_ARM64) /* Note! There are no 16-bit registers on ARM, we emulate that through 32-bit registers which requires sign extension. */
     off = iemNativeEmitLoadGpr32SignExtendedFromGpr16(pReNative, off, idxVarReg, idxGstFullReg);
 #endif
     iemNativeVarRegisterRelease(pReNative, idxDstVar);
