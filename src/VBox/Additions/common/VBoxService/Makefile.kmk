@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98613 2023-02-17 01:05:30Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 105662 2024-08-13 18:17:28Z dmitrii.grigorev@oracle.com $
 ## @file
 # Sub-Makefile for the Cross Platform Guest Addition Services.
 #
@@ -152,7 +152,12 @@ endif
 
 if1of ($(KBUILD_TARGET), win)
  VBoxService_SOURCES     += \
- 	VBoxServicePageSharing.cpp
+ 	VBoxServicePageSharing.cpp \
+ 	VBoxServiceDisplayConfig.cpp
+ VBoxService_INCS += \
+ 	$(PATH_ROOT)/src/VBox/Additions \
+ 	$(PATH_ROOT)/include/VBox/Graphics \
+ 	$(PATH_ROOT)/src/VBox/Additions/WINNT/include
 endif
 
 ifdef VBOX_WITH_VBOXSERVICE_VMINFO
