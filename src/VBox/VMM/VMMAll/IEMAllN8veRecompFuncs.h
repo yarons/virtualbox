@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompFuncs.h 105652 2024-08-12 12:16:36Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompFuncs.h 105655 2024-08-13 07:06:03Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler - Inlined Bits.
  */
@@ -8044,9 +8044,9 @@ iemNativeEmitStackPopGReg(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t i
         if (idxRegEffSp == idxRegRsp)
         {
             if (cBitsFlat == 64)
-                off = iemNativeEmitAddGprImm8(pReNative, off, idxRegRsp, sizeof(uint64_t));
+                off = iemNativeEmitAddGprImm8(pReNative, off, idxRegRsp, cbMem);
             else
-                off = iemNativeEmitAddGpr32Imm8(pReNative, off, idxRegRsp, sizeof(uint32_t));
+                off = iemNativeEmitAddGpr32Imm8(pReNative, off, idxRegRsp, cbMem);
         }
     }
     else
@@ -8061,9 +8061,9 @@ iemNativeEmitStackPopGReg(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t i
             if (idxRegEffSp == idxRegRsp)
             {
                 if (cBitsFlat == 64)
-                    off = iemNativeEmitAddGprImm8(pReNative, off, idxRegRsp, sizeof(uint64_t));
+                    off = iemNativeEmitAddGprImm8(pReNative, off, idxRegRsp, cbMem);
                 else
-                    off = iemNativeEmitAddGpr32Imm8(pReNative, off, idxRegRsp, sizeof(uint32_t));
+                    off = iemNativeEmitAddGpr32Imm8(pReNative, off, idxRegRsp, cbMem);
             }
             off = iemNativeEmitGprMergeInGpr16(pReNative, off, idxRegRsp, idxRegMemResult);
         }
