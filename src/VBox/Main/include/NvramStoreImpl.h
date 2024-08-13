@@ -1,4 +1,4 @@
-/* $Id: NvramStoreImpl.h 105627 2024-08-08 15:58:25Z andreas.loeffler@oracle.com $ */
+/* $Id: NvramStoreImpl.h 105658 2024-08-13 10:35:19Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM NVRAM store class implementation
  */
@@ -121,7 +121,9 @@ private:
     HRESULT initUefiVariableStore(ULONG aSize);
 
     int i_loadStoreFromTar(RTVFSFSSTREAM hVfsFssTar);
+    int i_loadStoreFromDir(RTVFSDIR hVfsDir, const char *pszNamespace);
     int i_saveStoreAsTar(const char *pszPath);
+    int i_saveStoreAsDir(const char *pszPath);
 
     int i_retainCryptoIf(PCVBOXCRYPTOIF *ppCryptoIf);
     int i_releaseCryptoIf(PCVBOXCRYPTOIF pCryptoIf);
