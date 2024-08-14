@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 105652 2024-08-12 12:16:36Z alexander.eichner@oracle.com $
+# $Id: IEMAllInstPython.py 105664 2024-08-14 08:47:13Z bela.lubkin@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 105652 $"
+__version__ = "$Revision: 105664 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -289,6 +289,9 @@ g_kdOpTypes = {
     'Mpd_WO':       ( 'IDX_UseModRM',       'rm',     '%Mpd', 'Mpd',     'MEM',   ),
     'Mx':           ( 'IDX_UseModRM',       'rm',     '%Mx',  'Mx',      'MEM',   ),
     'Mx_WO':        ( 'IDX_UseModRM',       'rm',     '%Mx',  'Mx',      'MEM',   ),
+    'MVx':          ( 'IDX_UseModRM',       'rm',     '%MVx', 'MVx',     'MEM',   ), ##< VSIB only. 'V' is '*' in AMD manuals.
+    'MVx_RO':       ( 'IDX_UseModRM',       'rm',     '%MVx', 'MVx',     'MEM',   ), ##< VSIB only.
+    'MVx_WO':       ( 'IDX_UseModRM',       'rm',     '%MVx', 'MVx',     'MEM',   ), ##< VSIB only.
     'M_RO':         ( 'IDX_UseModRM',       'rm',     '%M',   'M',       'MEM',   ),
     'M_RW':         ( 'IDX_UseModRM',       'rm',     '%M',   'M',       'MEM',   ),
 

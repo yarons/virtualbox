@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 105652 2024-08-12 12:16:36Z alexander.eichner@oracle.com $ */
+/* $Id: IEMMc.h 105664 2024-08-14 08:47:13Z bela.lubkin@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX.
  */
@@ -2838,7 +2838,7 @@ AssertCompile(X86_CR4_FSGSBASE > UINT8_MAX);
 
 /**
  * Defers the rest of the instruction emulation to a C implementation routine
- * and returns, taking two arguments in addition to the standard ones.
+ * and returns, taking five arguments in addition to the standard ones.
  *
  * @param   a_fFlags        IEM_CIMPL_F_XXX.
  * @param   a_fGstShwFlush  Guest shadow register copies needing to be flushed
