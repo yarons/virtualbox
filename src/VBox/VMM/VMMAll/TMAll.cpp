@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 104788 2024-05-27 10:20:07Z knut.osmundsen@oracle.com $ */
+/* $Id: TMAll.cpp 105673 2024-08-14 13:57:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -1135,13 +1135,37 @@ VMMDECL(bool) TMTimerPollBool(PVMCC pVM, PVMCPUCC pVCpu)
  *                      milliseconds.
  * @thread  The emulation thread.
  */
-VMMDECL(bool) TMTimerPollBoolWith32BitMilliTS(PVMCC pVM, PVMCPUCC pVCpu, uint32_t *pmsNow)
+VMM_INT_DECL(bool) TMTimerPollBoolWith32BitMilliTS(PVMCC pVM, PVMCPUCC pVCpu, uint32_t *pmsNow)
 {
     AssertCompile(TMCLOCK_FREQ_VIRTUAL == 1000000000);
     uint64_t off = 0;
     uint64_t u64Now = 0;
     tmTimerPollInternal(pVM, pVCpu, &off, &u64Now);
     *pmsNow = (uint32_t)(u64Now / RT_NS_1MS);
+    return off == 0;
+}
+
+
+/**
+ * Set FF if we've passed the next virtual event and return virtual time as MS.
+ *
+ * This function is called before FFs are checked in the inner execution EM loops.
+ *
+ * This is used by the IEM recompiler for polling timers while also providing a
+ * free time source for recent use tracking and such.
+ *
+ * @returns true if timers are pending, false if not.
+ *
+ * @param   pVM         The cross context VM structure.
+ * @param   pVCpu       The cross context virtual CPU structure of the calling EMT.
+ * @param   pnsNow      Where to return the current virtual time in nanoseconds.
+ * @thread  The emulation thread.
+ */
+VMM_INT_DECL(bool) TMTimerPollBoolWithNanoTS(PVMCC pVM, PVMCPUCC pVCpu, uint64_t *pnsNow)
+{
+    AssertCompile(TMCLOCK_FREQ_VIRTUAL == 1000000000);
+    uint64_t off = 0;
+    tmTimerPollInternal(pVM, pVCpu, &off, pnsNow);
     return off == 0;
 }
 
