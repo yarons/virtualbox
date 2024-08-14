@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxService.cpp 105677 2024-08-14 19:02:00Z dmitrii.grigorev@oracle.com $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -185,6 +185,9 @@ static struct
 #endif
 #ifdef VBOX_WITH_SHARED_FOLDERS
     { &g_AutoMount,     NIL_RTTHREAD, false, false, false, false, true },
+#endif
+#ifdef RT_OS_WINDOWS
+    { &g_DisplayConfig, NIL_RTTHREAD, false, false, false, false, true },
 #endif
 };
 

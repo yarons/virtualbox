@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceInternal.h 105677 2024-08-14 19:02:00Z dmitrii.grigorev@oracle.com $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -212,6 +212,11 @@ extern VBOXSERVICE  g_PageSharing;
 #ifdef VBOX_WITH_SHARED_FOLDERS
 extern VBOXSERVICE  g_AutoMount;
 #endif
+
+#ifdef RT_OS_WINDOWS
+extern VBOXSERVICE g_DisplayConfig;
+#endif
+
 #ifdef DEBUG
 extern RTCRITSECT   g_csLog; /* For guest process stdout dumping. */
 #endif
