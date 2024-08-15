@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 104384 2024-04-19 22:03:10Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPR3HardenedMain-win.cpp 105680 2024-08-15 03:49:46Z brent.paulson@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -4815,8 +4815,8 @@ static DECL_NO_RETURN(void) supR3HardenedWinDoReSpawn(int iWhich)
                         &ProcessInfoW32))
         supR3HardenedFatalMsg("supR3HardenedWinReSpawn", kSupInitOp_Misc, VERR_INVALID_NAME,
                               "Error relaunching VirtualBox VM process: %u\n"
-                              "Command line: '%ls'",
-                              RtlGetLastWin32Error(), pwszCmdLine);
+                              "Command line: '%ls %ls'",
+                              RtlGetLastWin32Error(), g_wszSupLibHardenedExePath, pwszCmdLine);
     supR3HardenedWinDisableThreadCreation();
 
     SUP_DPRINTF(("supR3HardenedWinDoReSpawn(%d): New child %x.%x [kernel32].\n",
