@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DevLsiLogicSCSI.h 105696 2024-08-15 18:15:38Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox storage devices: LsiLogic LSI53c1030 SCSI controller - Defines and structures.
  */
@@ -237,7 +237,7 @@ AssertCompileSize(MptMessageHdr, 12);
 #define MPT_MESSAGE_HDR_FUNCTION_TARGET_MODE_ABORT      (0x0D)
 #define MPT_MESSAGE_HDR_FUNCTION_FW_UPLOAD              (0x12)
 
-#ifdef DEBUG
+#ifdef LOG_ENABLED
 /**
  * Function names
  */
