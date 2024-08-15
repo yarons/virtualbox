@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 104386 2024-04-20 19:05:54Z alexander.eichner@oracle.com $ */
+/* $Id: PDMDevice.cpp 105687 2024-08-15 12:45:46Z alexander.eichner@oracle.com $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -685,13 +685,11 @@ static int pdmR3DevLoadModules(PVM pVM)
     int rc = pdmR3DevReg_Register(&RegCB.Core, &g_DeviceGIC);
     AssertRCReturn(rc, rc);
 
-# ifdef RT_OS_LINUX
     /*
-     * Register the internal VMM GIC device, KVM variant.
+     * Register the internal VMM GIC device, NEM variant.
      */
-    rc = pdmR3DevReg_Register(&RegCB.Core, &g_DeviceGICKvm);
+    rc = pdmR3DevReg_Register(&RegCB.Core, &g_DeviceGICNem);
     AssertRCReturn(rc, rc);
-# endif
 #else
     /*
      * Register the internal VMM APIC device.
