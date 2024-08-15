@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 104672 2024-05-16 10:50:35Z alexander.eichner@oracle.com $ */
+/* $Id: NEMInternal.h 105690 2024-08-15 12:48:04Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -320,6 +320,8 @@ typedef struct NEM
     bool                        fCreatedEmts : 1;
     /** Set if hv_vm_create() was called successfully. */
     bool                        fCreatedVm   : 1;
+    /** Set if EL2 is enabled. */
+    bool                        fEl2Enabled  : 1;
 # if defined(VBOX_VMM_TARGET_ARMV8)
     /** @name vTimer related state.
      * @{ */
