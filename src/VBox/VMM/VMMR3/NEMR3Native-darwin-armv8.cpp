@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin-armv8.cpp 105689 2024-08-15 12:47:47Z alexander.eichner@oracle.com $ */
+/* $Id: NEMR3Native-darwin-armv8.cpp 105692 2024-08-15 12:56:53Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework, ARMv8 variant.
  *
@@ -180,6 +180,7 @@ typedef hv_return_t     FN_HV_GIC_SET_ICV_REG(hv_vcpu_t vcpu, hv_gic_icv_reg_t r
 typedef hv_return_t     FN_HV_GIC_SET_REDISTRIBUTOR_REG(hv_vcpu_t vcpu, hv_gic_redistributor_reg_t reg, uint64_t value);
 
 typedef hv_return_t     FN_HV_GIC_GET_INTID(hv_gic_intid_t interrupt, uint32_t *intid);
+
 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
