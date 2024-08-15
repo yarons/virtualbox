@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigArmV8.cpp 105600 2024-08-06 09:39:44Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImplConfigArmV8.cpp 105697 2024-08-15 18:28:56Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits for ARMv8.
  */
@@ -419,7 +419,7 @@ int Console::i_configConstructorArmV8(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
         InsertConfigNode(pDevices, "gic",                   &pDev);
 #else
         /* On Linux we default to the KVM in-kernel GIC for now. */
-        InsertConfigNode(pDevices, "gic-kvm",               &pDev);
+        InsertConfigNode(pDevices, "gic-nem",               &pDev);
 #endif
         InsertConfigNode(pDev,     "0",                     &pInst);
         InsertConfigInteger(pInst, "Trusted",               1);
