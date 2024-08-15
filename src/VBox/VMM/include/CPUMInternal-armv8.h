@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal-armv8.h 101549 2023-10-23 09:53:09Z alexander.eichner@oracle.com $ */
+/* $Id: CPUMInternal-armv8.h 105686 2024-08-15 12:36:59Z alexander.eichner@oracle.com $ */
 /** @file
  * CPUM - Internal header file, ARMv8 variant.
  */
@@ -104,7 +104,11 @@ typedef struct CPUM
     /** Indicates that a state restore is pending.
      * This is used to verify load order dependencies (PGM). */
     bool                    fPendingRestore;
-    uint8_t                 abPadding0[6];
+    /** The initial exception level (EL) to start the CPU after a reset,
+     * should be either ARMV8_AARCH64_EL_1 or ARMV8_AARCH64_EL_2 for nested virtualization. */
+    uint8_t                 bResetEl;
+
+    uint8_t                 abPadding0[5];
 
     /** The reset value of the program counter. */
     uint64_t                u64ResetPc;
