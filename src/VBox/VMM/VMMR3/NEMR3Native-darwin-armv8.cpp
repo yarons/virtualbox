@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin-armv8.cpp 105692 2024-08-15 12:56:53Z alexander.eichner@oracle.com $ */
+/* $Id: NEMR3Native-darwin-armv8.cpp 105693 2024-08-15 13:05:42Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework, ARMv8 variant.
  *
@@ -1752,6 +1752,7 @@ static VBOXSTRICTRC nemR3DarwinHandleExitExceptionTrappedSysInsn(PVM pVM, PVMCPU
  * @param   pVCpu           The cross context virtual CPU structure of the
  *                          calling EMT.
  * @param   uIss            The instruction specific syndrome value.
+ * @param   fAdvancePc      Flag whether to advance the guest program counter.
  */
 static VBOXSTRICTRC nemR3DarwinHandleExitExceptionTrappedHvcInsn(PVM pVM, PVMCPU pVCpu, uint32_t uIss, bool fAdvancePc = false)
 {
