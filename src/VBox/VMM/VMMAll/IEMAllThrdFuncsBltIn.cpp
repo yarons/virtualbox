@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdFuncsBltIn.cpp 105673 2024-08-14 13:57:57Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdFuncsBltIn.cpp 105698 2024-08-15 23:33:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, Built-in Threaded Functions.
  *
@@ -198,12 +198,12 @@ IEM_DECL_IEMTHREADEDFUNC_DEF(iemThreadedFunc_BltIn_CheckIrq)
 
 
 /**
- * Built-in function that works the cIrqChecksTillNextPoll counter on direct TB
+ * Built-in function that works the cTbsTillNextTimerPoll counter on direct TB
  * linking, like loop-jumps.
  */
 IEM_DECL_IEMTHREADEDFUNC_DEF(iemThreadedFunc_BltIn_CheckTimers)
 {
-    if (RT_LIKELY(--pVCpu->iem.s.cIrqChecksTillNextPoll > 0))
+    if (RT_LIKELY(--pVCpu->iem.s.cTbsTillNextTimerPoll > 0))
         return VINF_SUCCESS;
 
     Log(("%04x:%08RX32: Check timers\n", pVCpu->cpum.GstCtx.cs.Sel, pVCpu->cpum.GstCtx.eip));
@@ -218,7 +218,7 @@ IEM_DECL_IEMTHREADEDFUNC_DEF(iemThreadedFunc_BltIn_CheckTimers)
  */
 IEM_DECL_IEMTHREADEDFUNC_DEF(iemThreadedFunc_BltIn_CheckTimersAndIrq)
 {
-    if (RT_LIKELY(--pVCpu->iem.s.cIrqChecksTillNextPoll > 0))
+    if (RT_LIKELY(--pVCpu->iem.s.cTbsTillNextTimerPoll > 0))
         return iemThreadedFunc_BltIn_CheckIrqCommon(pVCpu);
 
     Log(("%04x:%08RX32: Check timers\n", pVCpu->cpum.GstCtx.cs.Sel, pVCpu->cpum.GstCtx.eip));
