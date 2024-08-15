@@ -1,4 +1,4 @@
-/* $Id: VBoxDebugAgentLib.c 101297 2023-09-27 15:18:48Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxDebugAgentLib.c 105681 2024-08-15 07:27:48Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox implementation of DebugAgentLib that reports EFI state transitions
  * to DevEFI for debugging purposes.

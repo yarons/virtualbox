@@ -1,4 +1,4 @@
-/* $Id: fsw_base.h 101297 2023-09-27 15:18:48Z alexander.eichner@oracle.com $ */
+/* $Id: fsw_base.h 105681 2024-08-15 07:27:48Z alexander.eichner@oracle.com $ */
 /** @file
  * fsw_base.h - Base definitions switch.
  */

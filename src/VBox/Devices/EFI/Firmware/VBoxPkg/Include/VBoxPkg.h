@@ -1,4 +1,4 @@
-/* $Id: VBoxPkg.h 101297 2023-09-27 15:18:48Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxPkg.h 105681 2024-08-15 07:27:48Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxPkg.h - Common header, must be include before IPRT and VBox headers.
  */
