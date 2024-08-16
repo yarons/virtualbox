@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 105698 2024-08-15 23:33:49Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMR3.cpp 105713 2024-08-16 21:09:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -602,7 +602,7 @@ VMMR3DECL(int)      IEMR3Init(PVM pVM)
 
 # ifdef VBOX_WITH_STATISTICS
         STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.StatTimerPoll, STAMTYPE_PROFILE, STAMVISIBILITY_ALWAYS, STAMUNIT_TICKS_PER_CALL,
-                        "Timer polling profiling",                      "/IEM/CPU%u/re/TimerPoll/", idCpu);
+                        "Timer polling profiling",                      "/IEM/CPU%u/re/TimerPoll", idCpu);
         STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.StatTimerPollRun, STAMTYPE_PROFILE, STAMVISIBILITY_ALWAYS, STAMUNIT_TICKS_PER_CALL,
                         "Timer polling profiling",                      "/IEM/CPU%u/re/TimerPoll/Running", idCpu);
         STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.StatTimerPollUnchanged, STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
@@ -613,9 +613,9 @@ VMMR3DECL(int)      IEMR3Init(PVM pVM)
                         "Timer polling interval calculated using defaults", "/IEM/CPU%u/re/TimerPoll/DefaultCalc", idCpu);
         STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.StatTimerPollMax, STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
                         "Timer polling interval maxed out",             "/IEM/CPU%u/re/TimerPoll/Max", idCpu);
-        STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.StatTimerPollFactorDivision, STAMTYPE_PROFILE, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
+        STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.StatTimerPollFactorDivision, STAMTYPE_PROFILE, STAMVISIBILITY_ALWAYS, STAMUNIT_NS_PER_OCCURENCE,
                         "Timer polling factor",                         "/IEM/CPU%u/re/TimerPoll/FactorDivision", idCpu);
-        STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.StatTimerPollFactorMultiplication, STAMTYPE_PROFILE, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
+        STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.StatTimerPollFactorMultiplication, STAMTYPE_PROFILE, STAMVISIBILITY_ALWAYS, STAMUNIT_NONE,
                         "Timer polling factor",                         "/IEM/CPU%u/re/TimerPoll/FactorMultiplication", idCpu);
 # endif
         STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.cTbsTillNextTimerPollPrev, STAMTYPE_U32, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
