@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 105698 2024-08-15 23:33:49Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 105702 2024-08-16 09:31:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -95,7 +95,7 @@ RT_C_DECLS_BEGIN
 /** @def IEM_WITH_ADAPTIVE_TIMER_POLLING
  * Enables the adaptive timer polling code.
  */
-#if defined(DOXYGEN_RUNNING) || 0
+#if defined(DOXYGEN_RUNNING) || 1
 # define IEM_WITH_ADAPTIVE_TIMER_POLLING
 #endif
 
