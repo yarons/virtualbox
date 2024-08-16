@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstTwoByte0f.cpp.h 105491 2024-07-24 14:51:20Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllInstTwoByte0f.cpp.h 105699 2024-08-16 06:47:00Z bela.lubkin@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -6219,7 +6219,7 @@ FNIEMOP_DEF(iemOp_movd_q_Vy_Ey)
  */
 FNIEMOP_DEF(iemOp_movq_Pq_Qq)
 {
-    IEMOP_MNEMONIC2(RM, MOVD, movd, Pq_WO, Qq, DISOPTYPE_HARMLESS, IEMOPHINT_IGNORES_OP_SIZES);
+    IEMOP_MNEMONIC2(RM, MOVQ, movq, Pq_WO, Qq, DISOPTYPE_HARMLESS, IEMOPHINT_IGNORES_OP_SIZES);
     uint8_t bRm; IEM_OPCODE_GET_NEXT_U8(&bRm);
     if (IEM_IS_MODRM_REG_MODE(bRm))
     {
