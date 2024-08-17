@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 105714 2024-08-17 00:10:53Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 105717 2024-08-17 02:15:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -210,7 +210,6 @@ IEM_DECL_NATIVE_HLP_DEF(uintptr_t, iemNativeHlpReturnBreakViaLookup,(PVMCPUCC pV
                 if (!a_fWithIrqCheck || !iemNativeHlpReturnBreakViaLookupIsIrqOrForceFlagPending(pVCpu) )
                 {
                     /* Do polling. */
-                    uint64_t const cTbExecNative = pVCpu->iem.s.cTbExecNative;
                     if (   RT_LIKELY((int32_t)--pVCpu->iem.s.cTbsTillNextTimerPoll > 0)
                         || iemPollTimers(pVCpu->CTX_SUFF(pVM), pVCpu) == VINF_SUCCESS)
                     {
