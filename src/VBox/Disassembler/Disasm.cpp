@@ -1,4 +1,4 @@
-/* $Id: Disasm.cpp 101539 2023-10-22 02:43:09Z knut.osmundsen@oracle.com $ */
+/* $Id: Disasm.cpp 105724 2024-08-19 13:27:44Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Disassemble and optionally format.
  */
@@ -307,9 +307,10 @@ disInitializeState(PDISSTATE pDis, RTUINTPTR uInstrAddr, DISCPUMODE enmCpuMode, 
     RT_ZERO(*pDis);
 
 #ifdef VBOX_STRICT
-    pDis->Param1.uValue     = UINT64_C(0xb1b1b1b1b1b1b1b1);
-    pDis->Param2.uValue     = UINT64_C(0xb2b2b2b2b2b2b2b2);
-    pDis->Param3.uValue     = UINT64_C(0xb3b3b3b3b3b3b3b3);
+    pDis->aParams[0].uValue = UINT64_C(0xb1b1b1b1b1b1b1b1);
+    pDis->aParams[1].uValue = UINT64_C(0xb2b2b2b2b2b2b2b2);
+    pDis->aParams[2].uValue = UINT64_C(0xb3b3b3b3b3b3b3b3);
+    pDis->aParams[3].uValue = UINT64_C(0xb4b4b4b4b4b4b4b4);
 #endif
 
     pDis->rc                = VINF_SUCCESS;

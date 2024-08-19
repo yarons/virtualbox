@@ -1,4 +1,4 @@
-/* $Id: MakeAlternativeSource.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
+/* $Id: MakeAlternativeSource.cpp 105724 2024-08-19 13:27:44Z alexander.eichner@oracle.com $ */
 /** @file
  * MakeAlternative - Generate an Alternative BIOS Source that requires less tools.
  */
@@ -208,7 +208,7 @@ static bool disError(const char *pszFormat, ...)
 static bool disFileHeader(void)
 {
     bool fRc;
-    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ \n"
+    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 105724 2024-08-19 13:27:44Z alexander.eichner@oracle.com $ \n"
                        ";; @file\n"
                        "; Auto Generated source file. Do not edit.\n"
                        ";\n"
@@ -913,10 +913,10 @@ static bool disIsMemoryParameter(PCDISOPPARAM pParam, uint16_t fParam)
 static bool disAccessesMemory(PCDISSTATE pDis)
 {
     PCDISOPCODE pCurInstr = pDis->pCurInstr;
-    return disIsMemoryParameter(&pDis->Param1, pCurInstr->fParam1)
-        || disIsMemoryParameter(&pDis->Param2, pCurInstr->fParam2)
-        || disIsMemoryParameter(&pDis->Param3, pCurInstr->fParam3)
-        || disIsMemoryParameter(&pDis->Param4, pCurInstr->fParam4);
+    return disIsMemoryParameter(&pDis->aParams[0], pCurInstr->fParam1)
+        || disIsMemoryParameter(&pDis->aParams[1], pCurInstr->fParam2)
+        || disIsMemoryParameter(&pDis->aParams[2], pCurInstr->fParam3)
+        || disIsMemoryParameter(&pDis->aParams[3], pCurInstr->fParam4);
 }
 
 
@@ -2158,7 +2158,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                char szRev[] = "$Revision: 103005 $";
+                char szRev[] = "$Revision: 105724 $";
                 char *psz = szRev;
                 while (*psz && !RT_C_IS_DIGIT(*psz))
                     psz++;

@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 105352 2024-07-16 11:21:19Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFDisas.cpp 105724 2024-08-19 13:27:44Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Disassembler.
  */
@@ -608,10 +608,10 @@ dbgfR3DisasInstrExOnVCpu(PVM pVM, PVMCPU pVCpu, RTSEL Sel, PRTGCPTR pGCPtr, uint
     {
         pDisState->pCurInstr = State.Dis.pCurInstr;
         pDisState->cbInstr   = State.Dis.cbInstr;
-        pDisState->Param1    = State.Dis.Param1;
-        pDisState->Param2    = State.Dis.Param2;
-        pDisState->Param3    = State.Dis.Param3;
-        pDisState->Param4    = State.Dis.Param4;
+        pDisState->Param1    = State.Dis.aParams[0];
+        pDisState->Param2    = State.Dis.aParams[1];
+        pDisState->Param3    = State.Dis.aParams[2];
+        pDisState->Param4    = State.Dis.aParams[3];
     }
 
     dbgfR3DisasInstrDone(&State);
