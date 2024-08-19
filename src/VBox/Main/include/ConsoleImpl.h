@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 105605 2024-08-06 14:00:56Z andreas.loeffler@oracle.com $ */
+/* $Id: ConsoleImpl.h 105726 2024-08-19 14:05:15Z jack.doherty@oracle.com $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -102,6 +102,8 @@ class ResourceStore;
 
 struct VUSBIRHCONFIG;
 typedef struct VUSBIRHCONFIG *PVUSBIRHCONFIG;
+
+struct PDMINETWORKNATDNSCONFIG;
 
 #include <list>
 #include <vector>
@@ -436,7 +438,8 @@ private:
     HRESULT removeEncryptionPassword(const com::Utf8Str &aId);
     HRESULT clearAllEncryptionPasswords();
 
-    void notifyNatDnsChange(PUVM pUVM, PCVMMR3VTABLE pVMM, const char *pszDevice, ULONG ulInstanceMax);
+    void notifyNatDnsChange(PUVM pUVM, PCVMMR3VTABLE pVMM, const char *pszDevice, ULONG ulInstanceMax,
+                            struct PDMINETWORKNATDNSCONFIG const *pDnsConfig);
     Utf8Str VRDPServerErrorToMsg(int vrc);
 
     /**

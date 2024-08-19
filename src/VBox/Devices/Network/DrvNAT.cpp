@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 105353 2024-07-16 11:47:19Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvNAT.cpp 105726 2024-08-19 14:05:15Z jack.doherty@oracle.com $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -1096,8 +1096,9 @@ int slirp_call_hostres(void *pvUser, PRTREQ *ppReq, RTMSINTERVAL cMillies,
  * the current setup we don't get any details and just reread that
  * information ourselves.
  */
-static DECLCALLBACK(void) drvNATNotifyDnsChanged(PPDMINETWORKNATCONFIG pInterface)
+static DECLCALLBACK(void) drvNATNotifyDnsChanged(PPDMINETWORKNATCONFIG pInterface, PCPDMINETWORKNATDNSCONFIG pDnsConf)
 {
+    RT_NOREF(pDnsConf);
     PDRVNAT pThis = RT_FROM_MEMBER(pInterface, DRVNAT, INetworkNATCfg);
     drvNATUpdateDNS(pThis, /* fFlapLink */ true);
 }
