@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.h 104566 2024-05-08 16:37:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewCloudVMPageExpert.h 105730 2024-08-19 16:39:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class declaration.
  */
@@ -39,7 +39,6 @@
 class QGridLayout;
 class QLabel;
 class QIListWidget;
-class UIToolBox;
 class UIWizardNewCloudVM;
 
 /** UINativeWizardPage extension for Expert page of the New Cloud VM wizard,
@@ -95,9 +94,6 @@ private:
     bool     m_fFullWizard;
     /** Holds the image ID. */
     QString  m_strSourceImageId;
-
-    /** Holds the tool-box instance. */
-    UIToolBox *m_pToolBox;
 
     /** Holds the provider layout instance. */
     QGridLayout  *m_pLayoutProvider;
