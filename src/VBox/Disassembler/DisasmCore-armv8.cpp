@@ -1,4 +1,4 @@
-/* $Id: DisasmCore-armv8.cpp 105731 2024-08-19 16:57:30Z alexander.eichner@oracle.com $ */
+/* $Id: DisasmCore-armv8.cpp 105734 2024-08-19 17:06:09Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Disassembler - Core Components.
  */
@@ -295,11 +295,11 @@ static int disArmV8ParseSysReg(PDISSTATE pDis, uint32_t u32Insn, PCDISARMV8INSNC
 
     /* Assumes a op0:op1:CRn:CRm:op2 encoding in the instruction starting at the given bit position. */
     uint32_t u32ImmRaw = disArmV8ExtractBitVecFromInsn(u32Insn, pInsnParm->idxBitStart, pInsnParm->cBits);
-    pParam->armv8.Reg.idSysReg = ARMV8_AARCH64_SYSREG_ID_CREATE(2 + ((u32ImmRaw >> 14) & 0x1),
-                                                                (u32ImmRaw >> 11) & 0x7,
-                                                                (u32ImmRaw >> 7) & 0xf,
-                                                                (u32ImmRaw >> 3) & 0xf,
-                                                                u32ImmRaw & 0x7);
+    pParam->armv8.Reg.idSysReg = ARMV8_AARCH64_SYSREG_ID_CREATE_DYN(2 + ((u32ImmRaw >> 14) & 0x1),
+                                                                    (u32ImmRaw >> 11) & 0x7,
+                                                                    (u32ImmRaw >> 7) & 0xf,
+                                                                    (u32ImmRaw >> 3) & 0xf,
+                                                                    u32ImmRaw & 0x7);
     pParam->armv8.cb = 0;
     pParam->fUse    |= DISUSE_REG_SYSTEM;
     return VINF_SUCCESS;
