@@ -1,4 +1,4 @@
-; $Id: bs3-cpu-instr-4-template.mac 105684 2024-08-15 11:33:35Z ramshankar.venkataraman@oracle.com $
+; $Id: bs3-cpu-instr-4-template.mac 105720 2024-08-19 10:09:55Z ramshankar.venkataraman@oracle.com $
 ;; @file
 ; BS3Kit - bs3-cpu-instr-4 - SSE, AVX FPU instructions, assembly template.
 ;
@@ -357,6 +357,19 @@ EMIT_INSTR_PLUS_ICEBP       vmulss, XMM1, XMM2, XMM3
 EMIT_INSTR_PLUS_ICEBP       vmulss, XMM1, XMM2, FSxBX
 EMIT_INSTR_PLUS_ICEBP_C64   vmulss, XMM8, XMM9, XMM10
 EMIT_INSTR_PLUS_ICEBP_C64   vmulss, XMM8, XMM9, FSxBX
+
+;
+;; [v]mulsd
+;
+EMIT_INSTR_PLUS_ICEBP       mulsd, XMM1, XMM2
+EMIT_INSTR_PLUS_ICEBP       mulsd, XMM1, FSxBX
+EMIT_INSTR_PLUS_ICEBP_C64   mulsd, XMM8, XMM9
+EMIT_INSTR_PLUS_ICEBP_C64   mulsd, XMM8, FSxBX
+
+EMIT_INSTR_PLUS_ICEBP       vmulsd, XMM1, XMM2, XMM3
+EMIT_INSTR_PLUS_ICEBP       vmulsd, XMM1, XMM2, FSxBX
+EMIT_INSTR_PLUS_ICEBP_C64   vmulsd, XMM8, XMM9, XMM10
+EMIT_INSTR_PLUS_ICEBP_C64   vmulsd, XMM8, XMM9, FSxBX
 
 %endif ; BS3_INSTANTIATING_CMN
 
