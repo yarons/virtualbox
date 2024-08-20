@@ -1,10 +1,10 @@
-/* $Id: UIWizardNewVMEditors.h 105567 2024-08-01 15:34:45Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVMEditors.h 105742 2024-08-20 18:18:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMEditors class declaration.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -39,7 +39,6 @@
 class QCheckBox;
 class QGridLayout;
 class QLabel;
-class QIComboBox;
 class QILineEdit;
 class UIBaseMemoryEditor;
 class UIFilePathSelector;

@@ -1,10 +1,10 @@
-/* $Id: UIWizardNewCloudVMPageExpert.h 105735 2024-08-19 17:27:02Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewCloudVMPageExpert.h 105742 2024-08-20 18:18:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class declaration.
  */
 
 /*
- * Copyright (C) 2009-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -97,11 +97,11 @@ private:
     /** Holds the provider type label instance. */
     QLabel       *m_pProviderLabel;
     /** Holds the provider type combo-box instance. */
-    QIComboBox   *m_pProviderComboBox;
+    QComboBox    *m_pProviderComboBox;
     /** Holds the profile label instance. */
     QLabel       *m_pProfileLabel;
     /** Holds the profile combo-box instance. */
-    QIComboBox   *m_pProfileComboBox;
+    QComboBox    *m_pProfileComboBox;
     /** Holds the profile management tool-button instance. */
     QIToolButton *m_pProfileToolButton;
 
