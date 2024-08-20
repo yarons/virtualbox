@@ -1,10 +1,10 @@
-/* $Id: UIMachineSettingsSystem.h 105273 2024-07-11 13:51:10Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsSystem.h 105741 2024-08-20 18:17:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class declaration.
  */
 
 /*
- * Copyright (C) 2008-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2008-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -122,6 +122,9 @@ private slots:
 
     /** Handles translation event. */
     virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
+
+    /** Handles firmware type change. */
+    void sltHandleFirmwareTypeChanged();
 
 private:
 
