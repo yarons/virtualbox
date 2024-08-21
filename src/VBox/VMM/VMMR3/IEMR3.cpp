@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 105718 2024-08-19 02:20:25Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMR3.cpp 105805 2024-08-21 23:52:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -685,6 +685,9 @@ VMMR3DECL(int)      IEMR3Init(PVM pVM)
 
         STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.StatTbLoopFullTbDetected, STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
                         "Detected loop full TB",  "/IEM/CPU%u/re/LoopFullTbDetected", idCpu);
+        STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.StatTbLoopFullTbDetected2, STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
+                        "Detected loop full TB but looping back to before the first TB instruction",
+                        "/IEM/CPU%u/re/LoopFullTbDetected2", idCpu);
         STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.StatTbLoopInTbDetected, STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
                         "Detected loop within TB", "/IEM/CPU%u/re/LoopInTbDetected", idCpu);
 

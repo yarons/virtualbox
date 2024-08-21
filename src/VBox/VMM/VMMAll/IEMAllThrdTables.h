@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdTables.h 105673 2024-08-14 13:57:57Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdTables.h 105805 2024-08-21 23:52:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation, Instruction Tables.
  */
@@ -173,6 +173,19 @@
     } while (0)
 
 
+#ifndef IEM_WITH_INTRA_TB_JUMPS
+/**
+ * Stub for a no-jumps config, see IEMAllThrdRecompiler.cpp for the real thing.
+ */
+DECL_FORCE_INLINE(int) iemThreadedCompileBackAtFirstInstruction(PVMCPU pVCpu, PIEMTB pTb)
+{
+    RT_NOREF(pTb);
+    STAM_REL_COUNTER_INC(&pVCpu->iem.s.StatTbLoopFullTbDetected2);
+    return VINF_IEM_RECOMPILE_END_TB;
+}
+#endif
+
+
 /*
  * Emit call macros.
  */
@@ -204,11 +217,20 @@
             && !pVCpu->iem.s.fTbBranched \
             && !(pTb->fFlags & IEMTB_F_CS_LIM_CHECKS)) \
         { \
-            /** @todo Custom copy function, given range is 1 thru 15 bytes. */ \
-            memcpy(&pTb->pabOpcodes[offOpcodeMc2], pVCpu->iem.s.abOpcode, pVCpu->iem.s.offOpcode); \
-            pTb->cbOpcodes                       = offOpcodeMc2 + pVCpu->iem.s.offOpcode; \
-            pTb->aRanges[idxRangeMc2].cbOpcodes += cbInstrMc2; \
-            Assert(pTb->cbOpcodes <= pVCpu->iem.s.cbOpcodesAllocated); \
+            /* Break/loop if we're back to the first instruction in the TB again. */ \
+            if (   pTb->aRanges[idxRangeMc2].idxPhysPage != 0 \
+                ||    (unsigned)pTb->aRanges[idxRangeMc2].offPhysPage + (unsigned)pTb->aRanges[idxRangeMc2].cbOpcodes \
+                   != (pTb->GCPhysPc & GUEST_PAGE_OFFSET_MASK) \
+                || offOpcodeMc2 == 0) \
+            { \
+                /** @todo Custom copy function, given range is 1 thru 15 bytes. */ \
+                memcpy(&pTb->pabOpcodes[offOpcodeMc2], pVCpu->iem.s.abOpcode, pVCpu->iem.s.offOpcode); \
+                pTb->cbOpcodes                       = offOpcodeMc2 + pVCpu->iem.s.offOpcode; \
+                pTb->aRanges[idxRangeMc2].cbOpcodes += cbInstrMc2; \
+                Assert(pTb->cbOpcodes <= pVCpu->iem.s.cbOpcodesAllocated); \
+            } \
+            else \
+                return iemThreadedCompileBackAtFirstInstruction(pVCpu, pTb); \
         } \
         else if (iemThreadedCompileBeginEmitCallsComplications(pVCpu, pTb)) \
         { /* likely */ } \
