@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatArmV8.cpp 105738 2024-08-19 18:10:56Z alexander.eichner@oracle.com $ */
+/* $Id: DisasmFormatArmV8.cpp 105747 2024-08-21 07:36:27Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Disassembler - Yasm(/Nasm) Style Formatter.
  */
@@ -685,7 +685,7 @@ DISDECL(size_t) DISFormatArmV8Ex(PCDISSTATE pDis, char *pszBuf, size_t cchBuf, u
                             PUT_NUM_S32(offDisplacement * sizeof(uint32_t));
                     }
                     if (fFlags & DIS_FMT_FLAGS_RELATIVE_BRANCH)
-                        PUT_SZ(" (");
+                        PUT_SZ(" ; (");
 
                     RTUINTPTR uTrgAddr = pDis->uInstrAddr + (offDisplacement * sizeof(uint32_t));
                     if (   pDis->uCpuMode == DISCPUMODE_ARMV8_A32
