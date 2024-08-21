@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 103621 2024-02-29 20:52:55Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 105762 2024-08-21 12:39:29Z sergey.dubov@oracle.com $
 ## @file
 # Sub-Makefile for VBoxManage (the CLI frontend).
 #
@@ -144,7 +144,7 @@ ifndef VBOX_ONLY_DOCS
 
   makeallnls:: $(VBoxManageNls_VBOX_ALL_NLS_SOURCES)
 	$(call MSG_L1,lupdate all languages (nls/*.ts))
-	$(QUIET)$(TOOL_QT5_LUPDATE) \
+	$(QUIET)$(TOOL_QT6_LUPDATE) \
 		$^ \
 		-ts \
 		$(filter-out nls/VBoxManageNls_en.ts, $(VBoxManageNls_QT_TRANSLATIONS)) \
@@ -166,7 +166,7 @@ ifndef VBOX_ONLY_DOCS
   # contain the plural forms only.
   $(VBOX_PATH_VBOXMANAGE_SRC)/nls/VBoxManageNls_en.ts: $(VBoxManageNls_VBOX_ALL_NLS_SOURCES)
 	$(call MSG_L1,lupdate $@)
-	$(QUIET)$(TOOL_QT5_LUPDATE) \
+	$(QUIET)$(TOOL_QT6_LUPDATE) \
 		$^ \
 		-ts \
 		"$@"

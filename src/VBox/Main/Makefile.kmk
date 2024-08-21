@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 104803 2024-05-28 11:54:18Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 105762 2024-08-21 12:39:29Z sergey.dubov@oracle.com $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -1596,7 +1596,7 @@ ifdef VBOX_WITH_MAIN_NLS
 
  makeallnls:: $(VirtualBoxAPI_VBOX_ALL_NLS_SOURCES)
 	$(call MSG_L1,lupdate all languages (nls/*.ts))
-	$(QUIET)$(TOOL_QT5_LUPDATE) \
+	$(QUIET)$(TOOL_QT6_LUPDATE) \
 		$^ \
 		-ts \
 		$(filter-out nls/VirtualBoxAPI_en.ts, $(VirtualBoxAPI_QT_TRANSLATIONS)) \
@@ -1618,7 +1618,7 @@ ifdef VBOX_WITH_MAIN_NLS
  # contain the plural forms only.
  $(VBOX_PATH_MAIN_SRC)/nls/VirtualBoxAPI_en.ts: $(VirtualBoxAPI_VBOX_ALL_NLS_SOURCES)
 	$(call MSG_L1,lupdate $@)
-	$(QUIET)$(TOOL_QT5_LUPDATE) \
+	$(QUIET)$(TOOL_QT6_LUPDATE) \
 		$^ \
 		-ts \
 		"$@"
