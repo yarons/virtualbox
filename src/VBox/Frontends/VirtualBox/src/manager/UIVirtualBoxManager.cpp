@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 105565 2024-08-01 13:31:31Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 105773 2024-08-21 14:58:19Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -544,8 +544,8 @@ void UIAcquireCloudMachineCloneNameDialog::prepareWidgets()
 
 void UIAcquireCloudMachineCloneNameDialog::sltRetranslateUI()
 {
-    setWindowTitle(tr("Clone name"));
-    m_pEditor->setPlaceholderText(tr("Enter clone name"));
+    setWindowTitle(tr("Clone Virtual Machine"));
+    m_pEditor->setPlaceholderText(tr("Enter machine name..."));
 }
 
 void UIAcquireCloudMachineCloneNameDialog::sltRevalidate()
