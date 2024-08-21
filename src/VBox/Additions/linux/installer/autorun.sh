@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: autorun.sh 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: autorun.sh 105769 2024-08-21 14:09:45Z vadim.galitsyn@oracle.com $
 ## @file
 # VirtualBox Guest Additions installation script for *nix guests
 #
@@ -76,6 +76,9 @@ case `uname -m` in
     ;;
   x86_64|amd64|AMD64)
     arch='amd64'
+    ;;
+  aarch64)
+    arch='arm64'
     ;;
   *)
     echo "Unknown architecture `uname -m`."
