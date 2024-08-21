@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialogSpecific.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialogSpecific.h 105780 2024-08-21 16:44:16Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialogSpecific class declaration.
  */
@@ -63,8 +63,6 @@ protected:
     /** Saves the dialog data. */
     virtual void save() RT_OVERRIDE;
 
-    /** Returns the dialog title extension. */
-    virtual QString titleExtension() const RT_OVERRIDE;
     /** Returns the dialog title. */
     virtual QString title() const RT_OVERRIDE;
 
@@ -116,8 +114,6 @@ protected:
     /** Saves the dialog data. */
     virtual void save() RT_OVERRIDE;
 
-    /** Returns the dialog title extension. */
-    virtual QString titleExtension() const RT_OVERRIDE;
     /** Returns the dialog title. */
     virtual QString title() const RT_OVERRIDE;
 

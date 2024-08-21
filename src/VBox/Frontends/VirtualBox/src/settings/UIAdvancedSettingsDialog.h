@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialog.h 105105 2024-07-02 18:26:10Z sergey.dubov@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialog.h 105780 2024-08-21 16:44:16Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class declaration.
  */
@@ -148,8 +148,6 @@ protected:
     /** Defines dialog optional @a flags. */
     void setOptionalFlags(const QMap<QString, QVariant> &flags);
 
-    /** Returns the dialog title extension. */
-    virtual QString titleExtension() const = 0;
     /** Returns the dialog title. */
     virtual QString title() const = 0;
 
