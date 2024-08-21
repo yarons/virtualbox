@@ -1,4 +1,4 @@
-/* $Id: script.h 105757 2024-08-21 11:42:13Z alexander.eichner@oracle.com $ */
+/* $Id: script.h 105760 2024-08-21 12:15:14Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - RTScript, Script language support in IPRT.
  */
@@ -367,7 +367,7 @@ typedef FNRTSCRIPTLEXDTOR *PFNRTSCRIPTLEXDTOR;
  *                                 anymore.
  * @param   pCfg                   The lexer config to use for identifying the different tokens.
  */
-RTDECL(int) RTScriptLexCreateFromReader(PRTSCRIPTLEX phScriptLex, PFNRTSCRIPTLEXRDR pfnReader, 
+RTDECL(int) RTScriptLexCreateFromReader(PRTSCRIPTLEX phScriptLex, PFNRTSCRIPTLEXRDR pfnReader,
                                         PFNRTSCRIPTLEXDTOR pfnDtor, void *pvUser,
                                         size_t cchBuf, PRTSTRCACHE phStrCacheId, PRTSTRCACHE phStrCacheStringLit,
                                         PCRTSCRIPTLEXCFG pCfg);
