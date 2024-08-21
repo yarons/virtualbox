@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 105777 2024-08-21 15:38:52Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPoolManager.cpp 105801 2024-08-21 22:27:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -2717,12 +2717,6 @@ protected:
     virtual QString shortcutExtraDataID() const RT_OVERRIDE
     {
         return QString("Clear");
-    }
-
-    /** Returns default shortcut. */
-    virtual QKeySequence defaultShortcut(UIType) const RT_OVERRIDE
-    {
-        return QKeySequence();
     }
 
     /** Handles translation event. */
