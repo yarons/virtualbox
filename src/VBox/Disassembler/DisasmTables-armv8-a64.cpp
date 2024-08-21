@@ -1,4 +1,4 @@
-/* $Id: DisasmTables-armv8-a64.cpp 105779 2024-08-21 16:39:51Z alexander.eichner@oracle.com $ */
+/* $Id: DisasmTables-armv8-a64.cpp 105785 2024-08-21 17:23:15Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for ARMv8 A64.
  */
@@ -521,10 +521,10 @@ DIS_ARMV8_DECODE_INSN_CLASS_DEFINE_BEGIN(g_ArmV8A64LdSt)
 DIS_ARMV8_DECODE_INSN_CLASS_DEFINE_PARAMS_2(g_ArmV8A64LdSt, 0 /*fClass*/,
                                             kDisArmV8OpcDecodeLookup, 0xbfc00000, 0,
                                             kDisArmv8OpParmGpr, kDisArmv8OpParmAddrInGpr)
-    DIS_ARMV8_INSN_PARAM_CREATE(   kDisParmParseIs32Bit,       30,  1, DIS_ARMV8_INSN_PARAM_UNSET),
-    DIS_ARMV8_INSN_PARAM_CREATE(   kDisParmParseReg,            0,  5, 0 /*idxParam*/),
-    DIS_ARMV8_INSN_PARAM_CREATE_EX(kDisParmParseReg,            5,  5, 1 /*idxParam*/, DIS_ARMV8_INSN_PARAM_F_ADDR_BEGIN),
-    DIS_ARMV8_INSN_PARAM_CREATE_EX(kDisParmParseImm,           10, 12, 2 /*idxParam*/, DIS_ARMV8_INSN_PARAM_F_ADDR_END),
+    DIS_ARMV8_INSN_PARAM_CREATE(kDisParmParseIs32Bit,       30,  1, DIS_ARMV8_INSN_PARAM_UNSET),
+    DIS_ARMV8_INSN_PARAM_CREATE(kDisParmParseReg,            0,  5, 0 /*idxParam*/),
+    DIS_ARMV8_INSN_PARAM_CREATE(kDisParmParseReg,            5,  5, 1 /*idxParam*/),
+    DIS_ARMV8_INSN_PARAM_CREATE(kDisParmParseImmMemOff,     10, 12, 1 /*idxParam*/),
     DIS_ARMV8_INSN_PARAM_NONE
 DIS_ARMV8_DECODE_INSN_CLASS_DEFINE_END;
 
