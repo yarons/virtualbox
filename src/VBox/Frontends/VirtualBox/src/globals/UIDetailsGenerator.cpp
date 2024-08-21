@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 105266 2024-07-11 07:49:37Z andreas.loeffler@oracle.com $ */
+/* $Id: UIDetailsGenerator.cpp 105802 2024-08-21 22:47:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -1549,7 +1549,7 @@ void UIDetailsGenerator::acquireFeaturesStatusInfo(CMachine &comMachine, QString
     /* Add CPU count optional info: */
     const int cCpuCount = comMachine.GetCPUCount();
     if (cCpuCount > 1)
-        strInfo += e_strTableRow2.arg(QApplication::translate("UIIndicatorFeatures", "Processors", "details report"), QString::number(cCpuCount));
+        strInfo += e_strTableRow2.arg(QApplication::translate("UIDetails", "Processors", "details (system)"), QString::number(cCpuCount));
 }
 
 QString UIDetailsGenerator::summarizeGenericProperties(const CNetworkAdapter &comAdapter)
