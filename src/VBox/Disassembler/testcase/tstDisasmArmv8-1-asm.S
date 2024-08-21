@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1-asm.S 105790 2024-08-21 18:09:33Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1-asm.S 105793 2024-08-21 18:38:21Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for ARMv8 A64.
  */
@@ -68,6 +68,8 @@ _TestProcA64:
         ret x1
         ret x2
         ret x15
+        br  x15
+        blr x15
 
         ; System register access instructions
         msr ttbr0_el1, x0
