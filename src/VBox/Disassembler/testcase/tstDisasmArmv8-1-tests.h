@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1-tests.h 105748 2024-08-21 07:37:51Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1-tests.h 105759 2024-08-21 12:14:56Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Collection of testcases for the ARMv8 disassembler.
  */
@@ -25,8 +25,8 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-#ifndef VBOX_INCLUDED_SRC_tstDisasmArmv8_1_tests_h
-#define VBOX_INCLUDED_SRC_tstDisasmArmv8_1_tests_h
+#ifndef VBOX_INCLUDED_SRC_testcase_tstDisasmArmv8_1_tests_h
+#define VBOX_INCLUDED_SRC_testcase_tstDisasmArmv8_1_tests_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -40,5 +40,5 @@ extern const unsigned g_cbtstDisasmArmv8_1;
 
 RT_C_DECLS_END
 
-#endif /* !VBOX_INCLUDED_SRC_tstDisasmArmv8_1_tests_h */
+#endif /* !VBOX_INCLUDED_SRC_testcase_tstDisasmArmv8_1_tests_h */
 

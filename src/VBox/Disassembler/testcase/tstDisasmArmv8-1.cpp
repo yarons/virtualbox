@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1.cpp 105758 2024-08-21 11:53:18Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1.cpp 105759 2024-08-21 12:14:56Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Testcase for ARMv8 A64
  */
@@ -165,7 +165,7 @@ static void testDisas(const char *pszSub, uint8_t const *pabInstrs, uintptr_t uE
 
     Rdr.pb = (const char *)pbSrc;
     Rdr.cb = cbSrc;
-    int rc = RTScriptLexCreateFromReader(&hLexSource, testDisasmLexerRead, 
+    int rc = RTScriptLexCreateFromReader(&hLexSource, testDisasmLexerRead,
                                          NULL /*pfnDtor*/, &Rdr /*pvUser*/, cbSrc,
                                          NULL /*phStrCacheId*/, NULL /*phStrCacheStringLit*/,
                                          &s_LexCfg);

@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1-asm.S 105758 2024-08-21 11:53:18Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1-asm.S 105759 2024-08-21 12:14:56Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for ARMv8 A64.
  */
@@ -70,6 +70,8 @@ _TestProcA64:
 ;       mov w0, w1
 
         and x0, x0, #0xffff
+
+        ret x30
 
 .private_extern _TestProcA64_EndProc
 _TestProcA64_EndProc:
