@@ -1,4 +1,4 @@
-/* $Id: PGMDbg.cpp 104840 2024-06-05 00:59:51Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMDbg.cpp 105745 2024-08-21 07:16:50Z alexander.eichner@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor - Debugger & Debugging APIs.
  */
@@ -999,7 +999,7 @@ VMMR3_INT_DECL(int) PGMR3DbgScanVirtual(PVM pVM, PVMCPU pVCpu, RTGCPTR GCPtr, RT
      * Search the memory - ignore MMIO, zero and not-present pages.
      */
     const bool      fAllZero  = ASMMemIsZero(pabNeedle, cbNeedle);
-    RTGCPTR         GCPtrMask = PGMMODE_IS_LONG_MODE(enmMode) ? UINT64_MAX : UINT32_MAX;
+    RTGCPTR         GCPtrMask = PGMMODE_IS_64BIT_MODE(enmMode) ? UINT64_MAX : UINT32_MAX;
     uint8_t         abPrev[MAX_NEEDLE_SIZE];
     size_t          cbPrev    = 0;
     const uint32_t  cIncPages = GCPtrAlign <= GUEST_PAGE_SIZE
