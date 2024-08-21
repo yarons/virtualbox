@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatArmV8.cpp 105785 2024-08-21 17:23:15Z alexander.eichner@oracle.com $ */
+/* $Id: DisasmFormatArmV8.cpp 105794 2024-08-21 18:42:10Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Disassembler - Yasm(/Nasm) Style Formatter.
  */
@@ -720,10 +720,10 @@ DISDECL(size_t) DISFormatArmV8Ex(PCDISSTATE pDis, char *pszBuf, size_t cchBuf, u
                     const char *pszReg = disasmFormatArmV8Reg(pDis, pParam, &cchReg);
                     PUT_STR(pszReg, cchReg);
 
-                    if (pParam->armv8.offBase)
+                    if (pParam->armv8.u.offBase)
                     {
                         PUT_SZ(", #");
-                        PUT_NUM_16(pParam->armv8.offBase);
+                        PUT_NUM_16(pParam->armv8.u.offBase);
                     }
 
                     PUT_C(']');
@@ -755,7 +755,7 @@ DISDECL(size_t) DISFormatArmV8Ex(PCDISSTATE pDis, char *pszBuf, size_t cchBuf, u
                     default:
                         AssertFailed();
                 }
-                PUT_NUM_8(pParam->armv8.cShift);
+                PUT_NUM_8(pParam->armv8.u.cShift);
             }
         }
     }

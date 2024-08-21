@@ -1,4 +1,4 @@
-/* $Id: DisasmCore-armv8.cpp 105789 2024-08-21 17:45:44Z alexander.eichner@oracle.com $ */
+/* $Id: DisasmCore-armv8.cpp 105794 2024-08-21 18:42:10Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Disassembler - Core Components.
  */
@@ -291,7 +291,7 @@ static int disArmV8ParseHw(PDISSTATE pDis, uint32_t u32Insn, PCDISARMV8INSNCLASS
     if (u32)
     {
         pParam->armv8.enmShift = kDisArmv8OpParmShiftLeft;
-        pParam->armv8.cShift   = ((uint8_t)u32 & 0x3) << 4;
+        pParam->armv8.u.cShift = ((uint8_t)u32 & 0x3) << 4;
     }
     return VINF_SUCCESS;
 }
@@ -413,9 +413,9 @@ static int disArmV8ParseShiftAmount(PDISSTATE pDis, uint32_t u32Insn, PCDISARMV8
 
     Assert(pParam->armv8.enmShift != kDisArmv8OpParmShiftNone);
     Assert(u32Amount < 64);
-    pParam->armv8.cShift = (uint8_t)u32Amount;
+    pParam->armv8.u.cShift = (uint8_t)u32Amount;
     /* Any shift operation with a 0 is essentially no shift being applied. */
-    if (pParam->armv8.cShift == 0)
+    if (pParam->armv8.u.cShift == 0)
         pParam->armv8.enmShift = kDisArmv8OpParmShiftNone;
     return VINF_SUCCESS;
 }
@@ -428,7 +428,7 @@ static int disArmV8ParseImmMemOff(PDISSTATE pDis, uint32_t u32Insn, PCDISARMV8IN
     AssertReturn(pInsnParm->cBits <= 12, VERR_INTERNAL_ERROR_2);
 
     uint8_t const uScale = *pf64Bit ? 8 : 4;
-    pParam->armv8.offBase = disArmV8ExtractBitVecFromInsn(u32Insn, pInsnParm->idxBitStart, pInsnParm->cBits) * uScale;
+    pParam->armv8.u.offBase = disArmV8ExtractBitVecFromInsn(u32Insn, pInsnParm->idxBitStart, pInsnParm->cBits) * uScale;
     pParam->armv8.cb = sizeof(uint16_t);
     return VINF_SUCCESS;
 }
