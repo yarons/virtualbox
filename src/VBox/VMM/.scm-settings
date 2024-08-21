@@ -1,4 +1,4 @@
-# $Id: .scm-settings 103810 2024-03-12 20:01:36Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 105770 2024-08-21 14:18:53Z knut.osmundsen@oracle.com $
 ## @file
 # Source code massager settings for the VMM.
 #
@@ -41,6 +41,7 @@
 /VMMAll/PGMAllGst.h: --no-fix-header-guards
 /VMMAll/PGMAllShw.h: --no-fix-header-guards
 /VMMAll/IEMAllInstCommonBodyMacros.h: --no-fix-header-guards
+/VMMAll/IEMAllN8veLiveness.h: --no-fix-header-guards
 /VMMAll/IEMAllN8veRecompFuncs.h: --no-fix-header-guards
 /testcase/tstVMStruct.h: --no-fix-header-guards
 /testcase/tstIEMAImplData.h: --no-fix-header-guards
