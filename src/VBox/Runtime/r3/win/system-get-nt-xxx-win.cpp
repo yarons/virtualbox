@@ -1,4 +1,4 @@
-/* $Id: system-get-nt-xxx-win.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: system-get-nt-xxx-win.cpp 105786 2024-08-21 17:27:35Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - RTSystemQueryOSInfo, generic stub.
  */
@@ -42,8 +42,10 @@
 #include <iprt/win/windows.h>
 
 #include "internal-r3-win.h"
+#include "internal-r3-registry-win.h"
 #include <iprt/system.h>
 #include <iprt/assert.h>
+#include <iprt/err.h>
 
 
 RTDECL(uint32_t) RTSystemGetNtBuildNo(void)
@@ -64,5 +66,35 @@ RTDECL(uint8_t) RTSystemGetNtProductType(void)
 {
     Assert(g_WinOsInfoEx.dwOSVersionInfoSize > 0);
     return g_WinOsInfoEx.wProductType; /* It's a byte, not a word as 'w' normally indicates. (Baka Maikurosofuto!) */
+}
+
+
+RTDECL(int) RTSystemQueryNtFeatureEnabled(RTSYSNTFEATURE enmFeature, bool *pfEnabled)
+{
+    AssertPtrReturn(pfEnabled, VERR_INVALID_POINTER);
+
+    int rc;
+
+    switch (enmFeature)
+    {
+        case RTSYSNTFEATURE_CORE_ISOLATION_MEMORY_INTEGRITY: /* aka Code Integrity */
+        {
+            DWORD dwEnabled;
+            rc = RTSystemWinRegistryQueryDWORD(HKEY_LOCAL_MACHINE,
+                                    "SYSTEM\\CurrentControlSet\\Control\\DeviceGuard\\Scenarios\\HypervisorEnforcedCodeIntegrity",
+                                    "Enabled", &dwEnabled);
+            if (RT_SUCCESS(rc))
+                *pfEnabled = RT_BOOL(dwEnabled);
+            else if (rc == VERR_FILE_NOT_FOUND)
+                rc = VERR_NOT_SUPPORTED;
+            break;
+        }
+
+        default:
+            rc = VERR_NOT_IMPLEMENTED;
+            break;
+    }
+
+    return rc;
 }
 

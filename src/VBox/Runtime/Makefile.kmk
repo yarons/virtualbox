@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 105746 2024-08-21 07:35:33Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 105786 2024-08-21 17:27:35Z andreas.loeffler@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1070,6 +1070,7 @@ RuntimeBaseR3_SOURCES.win = \
 	r3/win/RTSystemQueryDmiString-win.cpp \
 	r3/win/RTSystemFirmware-win.cpp \
 	r3/win/RTSystemQueryTotalRam-win.cpp \
+	r3/win/RTSystemRegistry-win.cpp \
 	r3/win/RTTimeZoneGetCurrent-win.cpp \
 	r3/win/RTMemProtect-win.cpp \
 	r3/win/allocex-win.cpp \
