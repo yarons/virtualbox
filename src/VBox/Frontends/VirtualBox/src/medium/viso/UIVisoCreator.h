@@ -1,10 +1,10 @@
-/* $Id: UIVisoCreator.h 104232 2024-04-08 14:20:52Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.h 105772 2024-08-21 14:56:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes declaration.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -154,7 +154,7 @@ private:
 
     /** @name Main toolbar (and main menu) actions
       * @{ */
-        QAction         *m_pActionSettings;
+        QAction         *m_pActionPreferences;
     /** @} */
 
     /** @name These actions are addded to vertical toolbar, context menus, and the main menu.
