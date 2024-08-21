@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 105362 2024-07-16 16:30:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIConverterBackendGlobal.cpp 105799 2024-08-21 21:50:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendGlobal implementation.
  */
@@ -2377,7 +2377,7 @@ template<> SHARED_LIBRARY_STUFF QString UIConverter::toString(const IndicatorTyp
         case IndicatorType_Features:          strResult = QApplication::translate("UICommon", "Features", "IndicatorType"); break;
         case IndicatorType_Mouse:             strResult = QApplication::translate("UICommon", "Mouse", "IndicatorType"); break;
         case IndicatorType_Keyboard:          strResult = QApplication::translate("UICommon", "Keyboard", "IndicatorType"); break;
-        case IndicatorType_KeyboardExtension: strResult = QApplication::translate("UICommon", "Host-combo", "IndicatorType"); break;
+        case IndicatorType_KeyboardExtension: strResult = QApplication::translate("UICommon", "Keyboard Extension", "IndicatorType"); break;
         default:
         {
             AssertMsgFailed(("No text for indicator type=%d", indicatorType));
