@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGlobalSettingsInput.cpp 105804 2024-08-21 22:51:31Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class implementation.
  */
@@ -105,7 +105,7 @@ void UIGlobalSettingsInput::loadToCacheFrom(QVariant &data)
     UIShortcutConfigurationList list;
     list << UIShortcutConfigurationItem(UIHostCombo::hostComboCacheKey(),
                                         QString(),
-                                        tr("Host Key Combination"),
+                                        tr("Host Key Combo"),
                                         gEDataManager->hostKeyCombination(),
                                         QString());
     const QMap<QString, UIShortcut> &shortcuts = gShortcutPool->shortcuts();
