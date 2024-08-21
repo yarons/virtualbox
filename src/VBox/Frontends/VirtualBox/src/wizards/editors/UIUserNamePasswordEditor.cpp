@@ -1,4 +1,4 @@
-/* $Id: UIUserNamePasswordEditor.cpp 104631 2024-05-14 14:05:33Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIUserNamePasswordEditor.cpp 105800 2024-08-21 22:16:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -227,7 +227,7 @@ bool UIUserNamePasswordEditor::isUserNameComplete()
 {
     bool fComplete = (m_pUserNameLineEdit && !m_pUserNameLineEdit->text().isEmpty());
     if (m_pUserNameLineEdit)
-        m_pUserNameLineEdit->mark(!fComplete, UIUserNamePasswordEditor::tr("Username cannot be an empty string."),
+        m_pUserNameLineEdit->mark(!fComplete, UIUserNamePasswordEditor::tr("Username cannot be an empty string"),
                                   UIUserNamePasswordEditor::tr("Username is valid"));
     return fComplete;
 }
