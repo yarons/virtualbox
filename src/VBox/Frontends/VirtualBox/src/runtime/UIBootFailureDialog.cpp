@@ -1,4 +1,4 @@
-/* $Id: UIBootFailureDialog.cpp 104915 2024-06-13 13:18:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIBootFailureDialog.cpp 105782 2024-08-21 16:44:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIBootTimeErrorDialog class implementation.
  */
@@ -243,7 +243,7 @@ void UIBootFailureDialog::sltFileSelectorPathChanged(const QString &strPath)
     Q_UNUSED(strPath);
     bool fISOValid = checkISOImage();
     if (m_pBootImageSelector)
-        m_pBootImageSelector->mark(!fISOValid, tr("The selected path is invalid."), tr("The path is valid."));
+        m_pBootImageSelector->mark(!fISOValid, tr("The path is invalid."), tr("The path is valid."));
 
     if (m_pResetButton)
         m_pResetButton->setEnabled(fISOValid);
