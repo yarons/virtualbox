@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllN8vePython.py 105652 2024-08-12 12:16:36Z alexander.eichner@oracle.com $
+# $Id: IEMAllN8vePython.py 105768 2024-08-21 14:01:05Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -34,7 +34,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 105652 $"
+__version__ = "$Revision: 105768 $"
 
 # Standard python imports:
 import copy;
@@ -64,23 +64,36 @@ g_dMcStmtThreaded = {
 
     'IEM_MC_REL_JMP_S8_AND_FINISH_THREADED_PC16':                        (None, True,  True,  True,  ),
     'IEM_MC_REL_JMP_S8_AND_FINISH_THREADED_PC32':                        (None, True,  True,  True,  ),
+    'IEM_MC_REL_JMP_S8_AND_FINISH_THREADED_PC32_FLAT':                   (None, True,  True,  True,  ),
     'IEM_MC_REL_JMP_S8_AND_FINISH_THREADED_PC64':                        (None, True,  True,  True,  ),
+    'IEM_MC_REL_JMP_S8_AND_FINISH_THREADED_PC64_INTRAPG':                (None, True,  True,  True,  ),
     'IEM_MC_REL_JMP_S16_AND_FINISH_THREADED_PC16':                       (None, True,  True,  True,  ),
     'IEM_MC_REL_JMP_S16_AND_FINISH_THREADED_PC32':                       (None, True,  True,  True,  ),
+    'IEM_MC_REL_JMP_S16_AND_FINISH_THREADED_PC32_FLAT':                  (None, True,  True,  True,  ),
     'IEM_MC_REL_JMP_S16_AND_FINISH_THREADED_PC64':                       (None, True,  True,  True,  ),
+    'IEM_MC_REL_JMP_S16_AND_FINISH_THREADED_PC64_INTRAPG':               (None, True,  True,  True,  ),
     'IEM_MC_REL_JMP_S32_AND_FINISH_THREADED_PC32':                       (None, True,  True,  True,  ),
+    'IEM_MC_REL_JMP_S32_AND_FINISH_THREADED_PC32_FLAT':                  (None, True,  True,  True,  ),
     'IEM_MC_REL_JMP_S32_AND_FINISH_THREADED_PC64':                       (None, True,  True,  True,  ),
+    'IEM_MC_REL_JMP_S32_AND_FINISH_THREADED_PC64_INTRAPG':               (None, True,  True,  True,  ),
 
     'IEM_MC_REL_JMP_S8_AND_FINISH_THREADED_PC16_WITH_FLAGS':             (None, True,  True,  True,  ),
     'IEM_MC_REL_JMP_S8_AND_FINISH_THREADED_PC32_WITH_FLAGS':             (None, True,  True,  True,  ),
+    'IEM_MC_REL_JMP_S8_AND_FINISH_THREADED_PC32_FLAT_WITH_FLAGS':        (None, True,  True,  True,  ),
     'IEM_MC_REL_JMP_S8_AND_FINISH_THREADED_PC64_WITH_FLAGS':             (None, True,  True,  True,  ),
+    'IEM_MC_REL_JMP_S8_AND_FINISH_THREADED_PC64_INTRAPG_WITH_FLAGS':     (None, True,  True,  True,  ),
     'IEM_MC_REL_JMP_S16_AND_FINISH_THREADED_PC16_WITH_FLAGS':            (None, True,  True,  True,  ),
     'IEM_MC_REL_JMP_S16_AND_FINISH_THREADED_PC32_WITH_FLAGS':            (None, True,  True,  True,  ),
+    'IEM_MC_REL_JMP_S16_AND_FINISH_THREADED_PC32_FLAT_WITH_FLAGS':       (None, True,  True,  True,  ),
     'IEM_MC_REL_JMP_S16_AND_FINISH_THREADED_PC64_WITH_FLAGS':            (None, True,  True,  True,  ),
+    'IEM_MC_REL_JMP_S16_AND_FINISH_THREADED_PC64_INTRAPG_WITH_FLAGS':    (None, True,  True,  True,  ),
     'IEM_MC_REL_JMP_S32_AND_FINISH_THREADED_PC32_WITH_FLAGS':            (None, True,  True,  True,  ),
+    'IEM_MC_REL_JMP_S32_AND_FINISH_THREADED_PC32_FLAT_WITH_FLAGS':       (None, True,  True,  True,  ),
     'IEM_MC_REL_JMP_S32_AND_FINISH_THREADED_PC64_WITH_FLAGS':            (None, True,  True,  True,  ),
+    'IEM_MC_REL_JMP_S32_AND_FINISH_THREADED_PC64_INTRAPG_WITH_FLAGS':    (None, True,  True,  True,  ),
 
     'IEM_MC_REL_CALL_S16_AND_FINISH_THREADED_PC16':                      (None, True,  True,  True,  ),
+    'IEM_MC_REL_CALL_S16_AND_FINISH_THREADED_PC32':                      (None, True,  True,  True,  ),
     'IEM_MC_REL_CALL_S16_AND_FINISH_THREADED_PC32':                      (None, True,  True,  True,  ),
     'IEM_MC_REL_CALL_S16_AND_FINISH_THREADED_PC64':                      (None, True,  True,  True,  ),
     'IEM_MC_REL_CALL_S32_AND_FINISH_THREADED_PC32':                      (None, True,  True,  True,  ),

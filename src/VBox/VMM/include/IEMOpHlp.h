@@ -1,4 +1,4 @@
-/* $Id: IEMOpHlp.h 105295 2024-07-12 11:07:20Z alexander.eichner@oracle.com $ */
+/* $Id: IEMOpHlp.h 105768 2024-08-21 14:01:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Opcode Helpers.
  */
@@ -749,6 +749,14 @@ void iemOpStubMsg2(PVMCPUCC pVCpu) RT_NOEXCEPT;
         else \
             IEMOP_RAISE_INVALID_OPCODE_RET(); \
     } while (0)
+
+/**
+ * Used the threaded code generator to check if a jump stays within the same
+ * page in 64-bit code.
+ */
+#define IEMOP_HLP_PC64_IS_JMP_REL_WITHIN_PAGE(a_offDisp) \
+     (   ((pVCpu->cpum.GstCtx.rip + IEM_GET_INSTR_LEN(pVCpu) + (a_offDisp)) >> GUEST_PAGE_SHIFT) \
+      == (pVCpu->cpum.GstCtx.rip >> GUEST_PAGE_SHIFT))
 
 VBOXSTRICTRC    iemOpHlpCalcRmEffAddr(PVMCPUCC pVCpu, uint8_t bRm, uint32_t cbImmAndRspOffset, PRTGCPTR pGCPtrEff) RT_NOEXCEPT;
 VBOXSTRICTRC    iemOpHlpCalcRmEffAddrEx(PVMCPUCC pVCpu, uint8_t bRm, uint32_t cbImmAndRspOffset, PRTGCPTR pGCPtrEff, uint64_t *puInfo) RT_NOEXCEPT;
