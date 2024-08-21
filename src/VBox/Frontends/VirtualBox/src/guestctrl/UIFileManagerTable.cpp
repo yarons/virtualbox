@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 104995 2024-06-24 13:26:48Z sergey.dubov@oracle.com $ */
+/* $Id: UIFileManagerTable.cpp 105803 2024-08-21 22:49:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -856,7 +856,7 @@ void UIFileManagerTable::sltCreateNewDirectory()
     UIFileSystemItem *parentFolderItem = static_cast<UIFileSystemItem*>(currentIndex.internalPointer());
     if (!parentFolderItem)
         return;
-    QString strBase(UIFileSystemModel::tr("NewDirectory"));
+    QString strBase(UIFileManager::tr("NewDirectory"));
     QString newDirectoryName(strBase);
     QStringList nameList = currentDirectoryListing();
     int iSuffix = 1;
