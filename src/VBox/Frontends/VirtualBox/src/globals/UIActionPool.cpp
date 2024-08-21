@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 105776 2024-08-21 15:30:16Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPool.cpp 105778 2024-08-21 16:05:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -1656,7 +1656,7 @@ protected:
     {
         setName(QApplication::translate("UIActionPool", "&Preferences"));
         setShortcutScope(QApplication::translate("UIActionPool", "File Manager"));
-        setStatusTip(QApplication::translate("UIActionPool", "Open panel with file manager preferences"));
+        setStatusTip(QApplication::translate("UIActionPool", "Open pane with file manager preferences"));
         setToolTip(  QApplication::translate("UIActionPool", "Open Preferences Pane")
                    + (shortcut().isEmpty() ? QString() : QString(" (%1)").arg(shortcut().toString())));
     }
@@ -1697,7 +1697,7 @@ protected:
     {
         setName(QApplication::translate("UIActionPool", "Log"));
         setShortcutScope(QApplication::translate("UIActionPool", "File Manager"));
-        setStatusTip(QApplication::translate("UIActionPool", "Open panel with file manager log"));
+        setStatusTip(QApplication::translate("UIActionPool", "Open pane with file manager log"));
         setToolTip(  QApplication::translate("UIActionPool", "Open Log Pane")
                    + (shortcut().isEmpty() ? QString() : QString(" (%1)").arg(shortcut().toString())));
     }
@@ -1738,7 +1738,7 @@ protected:
     {
         setName(QApplication::translate("UIActionPool", "Operations"));
         setShortcutScope(QApplication::translate("UIActionPool", "File Manager"));
-        setStatusTip(QApplication::translate("UIActionPool", "Open panel with file manager operations"));
+        setStatusTip(QApplication::translate("UIActionPool", "Open pane with file manager operations"));
         setToolTip(  QApplication::translate("UIActionPool", "Open Operations Pane")
                    + (shortcut().isEmpty() ? QString() : QString(" (%1)").arg(shortcut().toString())));
     }
