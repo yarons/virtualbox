@@ -1,6 +1,6 @@
-/* $Id: IEMAllN8veLiveness.cpp 105770 2024-08-21 14:18:53Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veLiveness3.cpp 105797 2024-08-21 20:17:30Z knut.osmundsen@oracle.com $ */
 /** @file
- * IEM - Native Recompiler, Liveness Analysis.
+ * IEM - Native Recompiler, Liveness Analysis, Part 3.
  */
 
 /*
@@ -26,6 +26,10 @@
  */
 
 
+/* Common header with all the IEM_MC_XXX defines and whatnot. */
 #include "IEMAllN8veLiveness.h"
-#include "IEMNativeLiveness.cpp.h"
+
+/* Include the generated headers: */
+#include "IEMNativeLiveness.h"
+#include "IEMNativeLiveness3.cpp.h"
 
