@@ -1,4 +1,4 @@
-/* $Id: scriptbase.h 105746 2024-08-21 07:35:33Z alexander.eichner@oracle.com $ */
+/* $Id: scriptbase.h 105755 2024-08-21 11:04:24Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - RTScript, Script language support in IPRT.
  */
@@ -113,7 +113,6 @@ typedef RTSCRIPTVAL *PRTSCRIPTVAL;
 typedef const RTSCRIPTVAL *PCRTSCRIPTVAL;
 #endif
 
-/** @} */
 
 RT_C_DECLS_END
 
