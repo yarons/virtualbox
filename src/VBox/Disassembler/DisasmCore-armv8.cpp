@@ -1,4 +1,4 @@
-/* $Id: DisasmCore-armv8.cpp 105785 2024-08-21 17:23:15Z alexander.eichner@oracle.com $ */
+/* $Id: DisasmCore-armv8.cpp 105789 2024-08-21 17:45:44Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Disassembler - Core Components.
  */
@@ -461,7 +461,7 @@ static int disArmV8A64ParseInstruction(PDISSTATE pDis, uint32_t u32Insn, PCDISAR
 {
     AssertPtr(pOp);
     AssertPtr(pDis);
-    Assert((u32Insn & pOp->fMask) == pOp->fValue);
+    Assert((u32Insn & pInsnClass->fFixedInsn) == pOp->fValue);
 
     /* Should contain the parameter type on input. */
     pDis->aParams[0].armv8.enmType  = pInsnClass->aenmParamTypes[0];
