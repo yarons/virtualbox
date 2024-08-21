@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 103475 2024-02-20 10:11:53Z alexander.eichner@oracle.com $
+# $Id: tdUnitTest1.py 105767 2024-08-21 13:45:19Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103475 $"
+__version__ = "$Revision: 105767 $"
 
 
 # Standard Python imports.
@@ -308,6 +308,7 @@ class tdUnitTest1(vbox.TestDriver):
         'testcase/tstRTProcIsRunningByName': '',
         'testcase/tstRTProcQueryUsername': '',
         'testcase/tstRTProcWait': '',
+        'testcase/tstRTSystemQueryFirmware': '',
         'testcase/tstTime-2': '',
         'testcase/tstTime-3': '',
         'testcase/tstTime-4': '',
