@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 105772 2024-08-21 14:56:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIVisoCreator.cpp 105825 2024-08-22 17:08:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes implementation.
  */
@@ -261,7 +261,7 @@ void UIVisoSettingWidget::sltRetranslateUI()
         m_pShowHiddenObjectsCheckBox->setText(QApplication::translate("UIVisoCreatorWidget", "Show Hidden Objects"));
     }
     setTabText(1, QApplication::translate("UIVisoCreatorWidget", "Dialog Settings"));
-    setTabText(0, QApplication::translate("UIVisoCreatorWidget", "VISO options"));
+    setTabText(0, QApplication::translate("UIVisoCreatorWidget", "VISO Options"));
 }
 
 void UIVisoSettingWidget::prepareConnections()
