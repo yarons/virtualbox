@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatArmV8.cpp 105794 2024-08-21 18:42:10Z alexander.eichner@oracle.com $ */
+/* $Id: DisasmFormatArmV8.cpp 105810 2024-08-22 08:26:22Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Disassembler - Yasm(/Nasm) Style Formatter.
  */
@@ -727,6 +727,12 @@ DISDECL(size_t) DISFormatArmV8Ex(PCDISSTATE pDis, char *pszBuf, size_t cchBuf, u
                     }
 
                     PUT_C(']');
+                    break;
+                }
+                case kDisArmv8OpParmCond:
+                {
+                    Assert((uint16_t)pParam->armv8.Reg.enmCond < RT_ELEMENTS(g_aszArmV8Cond));
+                    PUT_STR(g_aszArmV8Cond[pParam->armv8.Reg.enmCond], sizeof(g_aszArmV8Cond[0]) - 1);
                     break;
                 }
                 default:
