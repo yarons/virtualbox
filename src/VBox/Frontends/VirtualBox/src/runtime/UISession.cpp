@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 105588 2024-08-05 16:26:51Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 105817 2024-08-22 13:37:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -2476,6 +2476,11 @@ void UISession::sltAdditionsChange()
     emit sigAdditionsStateChange();
 }
 
+void UISession::sltClipboardError(const QString &strMsg)
+{
+    UINotificationMessage::warnAboutClipboardError(strMsg);
+}
+
 void UISession::sltHandleMachineStateSaved(bool fSuccess)
 {
     /* Let user try again if saving failed: */
@@ -2589,7 +2594,7 @@ void UISession::prepareConsoleEventHandlers()
     connect(m_pConsoleEventhandler, &UIConsoleEventHandler::sigClipboardModeChange,
             this, &UISession::sigClipboardModeChange);
     connect(m_pConsoleEventhandler, &UIConsoleEventHandler::sigClipboardError,
-            this, &UISession::sigClipboardError);
+            this, &UISession::sltClipboardError);
     connect(m_pConsoleEventhandler, &UIConsoleEventHandler::sigCPUExecutionCapChange,
             this, &UISession::sigCPUExecutionCapChange);
     connect(m_pConsoleEventhandler, &UIConsoleEventHandler::sigDnDModeChange,

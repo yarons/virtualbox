@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 105266 2024-07-11 07:49:37Z andreas.loeffler@oracle.com $ */
+/* $Id: UIMainEventListener.cpp 105817 2024-08-22 13:37:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class implementation.
  */
@@ -618,7 +618,7 @@ STDMETHODIMP UIMainEventListener::HandleEvent(VBoxEventType_T, IEvent *pEvent)
         case KVBoxEventType_OnClipboardError:
         {
             CClipboardErrorEvent comEventSpecific(pEvent);
-            emit sigClipboardError(comEventSpecific.GetId(), comEventSpecific.GetMsg(), comEventSpecific.GetRcError());
+            emit sigClipboardError(comEventSpecific.GetMsg());
             break;
         }
         case KVBoxEventType_OnDnDModeChanged:
