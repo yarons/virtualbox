@@ -1,4 +1,4 @@
-/* $Id: UIStorageSettingsEditor.cpp 104904 2024-06-12 17:06:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIStorageSettingsEditor.cpp 105816 2024-08-22 13:12:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStorageSettingsEditor class implementation.
  */
@@ -3267,10 +3267,10 @@ void UIStorageSettingsEditor::sltRetranslateUI()
     m_pLabelSeparatorInformation->setText(tr("Information"));
     m_pLabelHDFormat->setText(tr("Type (Format):"));
     m_pLabelCDFDType->setText(tr("Type:"));
-    m_pLabelHDVirtualSize->setText(tr("Virtual Size:"));
-    m_pLabelHDActualSize->setText(tr("Actual Size:"));
+    m_pLabelHDVirtualSize->setText(tr("Virtual size:"));
+    m_pLabelHDActualSize->setText(tr("Actual size:"));
     m_pLabelCDFDSize->setText(tr("Size:"));
-    m_pLabelHDDetails->setText(tr("Details:"));
+    m_pLabelHDDetails->setText(tr("Storage details:"));
     m_pLabelLocation->setText(tr("Location:"));
     m_pLabelUsage->setText(tr("Attached to:"));
     m_pLabelEncryption->setText(tr("Encryption key:"));
