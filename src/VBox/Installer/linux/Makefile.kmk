@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 105729 2024-08-19 14:15:23Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 105822 2024-08-22 15:47:24Z klaus.espenlaub@oracle.com $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -385,7 +385,7 @@ VBOX_DESKTOP_ICONS = \
 	$(addprefix $(PATH_ROOT)/src/VBox/Artwork/$(if $(VBOX_OSE),OSE,NonOSE)/, \
 		$(foreach s,16 20 32 40 48 64 128, \
 			virtualbox-$(s)px.png=>$(s)x$(s)/virtualbox.png) \
-		$(if-expr defined(VBOX_INCLUDE_SVG_ICON_PLEASE_REMOVE_WHEN_UPDATED),virtualbox.svg=>scalable/virtualbox.svg,))
+		virtualbox.svg=>scalable/virtualbox.svg)
 
 #
 # All the bin files that goes into the archives.
