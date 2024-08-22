@@ -1,4 +1,4 @@
-/* $Id: UIFileSystemModel.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIFileSystemModel.cpp 105824 2024-08-22 17:08:08Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileSystemModel class implementation.
  */
@@ -537,9 +537,9 @@ QVariant UIFileSystemModel::data(const QModelIndex &index, int role) const
         if (index.column() == UIFileSystemModelData_DescendantRemovedFromVISO)
         {
             if (item->data(UIFileSystemModelData_DescendantRemovedFromVISO).toBool())
-                return QString(QApplication::translate("UIVisoCreatorWidget", "Yes"));
+                return QString(QApplication::translate("QIMessageBox", "Yes"));
             else
-                return QString(QApplication::translate("UIVisoCreatorWidget", "No"));
+                return QString(QApplication::translate("QIMessageBox", "No"));
         }
         return item->data(index.column());
     }
