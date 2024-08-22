@@ -1,4 +1,4 @@
-/* $Id: DisasmInternal-armv8.h 105808 2024-08-22 07:42:49Z alexander.eichner@oracle.com $ */
+/* $Id: DisasmInternal-armv8.h 105815 2024-08-22 12:25:28Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Internal header.
  */
@@ -50,7 +50,7 @@
 typedef enum DISPARMPARSEIDX
 {
     kDisParmParseNop = 0,
-    kDisParmParseIs32Bit,
+    kDisParmParseSize,
     kDisParmParseImm,
     kDisParmParseImmRel,
     kDisParmParseImmAdr,
@@ -76,8 +76,10 @@ typedef enum DISPARMPARSEIDX
  */
 typedef struct DISARMV8OPCODE
 {
-    /** The value of masked bits of the isntruction. */
+    /** The value of the fixed bits of the instruction. */
     uint32_t            fValue;
+    /** Special flags for the opcode. */
+    uint32_t            fFlags;
     /** The generic opcode structure. */
     DISOPCODE           Opc;
 } DISARMV8OPCODE;
@@ -112,6 +114,7 @@ typedef enum DISARMV8OPCDECODE
 {
     kDisArmV8OpcDecodeNop = 0,
     kDisArmV8OpcDecodeLookup,
+    kDisArmV8OpcDecodeCollate,
     kDisArmV8OpcDecodeMax
 } DISARMV8OPCDECODE;
 
