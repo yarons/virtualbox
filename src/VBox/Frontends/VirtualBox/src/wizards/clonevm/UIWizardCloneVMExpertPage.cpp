@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMExpertPage.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardCloneVMExpertPage.cpp 105828 2024-08-22 17:28:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMExpertPage class implementation.
  */
@@ -99,13 +99,13 @@ void UIWizardCloneVMExpertPage::sltRetranslateUI()
 {
     /* Translate widgets: */
     if (m_pNamePathGroupBox)
-        m_pNamePathGroupBox->setTitle(UIWizardCloneVM::tr("New machine &name and path"));
+        m_pNamePathGroupBox->setTitle(UIWizardCloneVM::tr("New Machine Name and Path"));
     if (m_pCloneTypeGroupBox)
-        m_pCloneTypeGroupBox->setTitle(UIWizardCloneVM::tr("Clone type"));
+        m_pCloneTypeGroupBox->setTitle(UIWizardCloneVM::tr("Clone Type"));
     if (m_pCloneModeGroupBox)
         m_pCloneModeGroupBox->setTitle(UIWizardCloneVM::tr("Snapshots"));
     if (m_pAdditionalOptionsGroupBox)
-        m_pAdditionalOptionsGroupBox->setTitle(UIWizardCloneVM::tr("Additional options"));
+        m_pAdditionalOptionsGroupBox->setTitle(UIWizardCloneVM::tr("Additional Options"));
 }
 
 void UIWizardCloneVMExpertPage::initializePage()
