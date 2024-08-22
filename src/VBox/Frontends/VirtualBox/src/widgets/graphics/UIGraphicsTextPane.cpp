@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsTextPane.cpp 104585 2024-05-13 11:37:59Z sergey.dubov@oracle.com $ */
+/* $Id: UIGraphicsTextPane.cpp 105827 2024-08-22 17:27:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGraphicsTextPane class implementation.
  */
@@ -98,7 +98,7 @@ public:
 
         /* Return the description: */
         if (enmTextRole == QAccessible::Description)
-            return UIGraphicsTextPane::tr("%1: %2", "'key: value', like 'Name: MyVM'").arg(line()->string1(), line()->string2());
+            return QString("%1: %2").arg(line()->string1(), line()->string2());
 
         /* Null-string by default: */
         return QString();
