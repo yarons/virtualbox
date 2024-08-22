@@ -1,4 +1,4 @@
-/* $Id: VBoxLogRelCreate.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxLogRelCreate.cpp 105809 2024-08-22 08:09:33Z andreas.loeffler@oracle.com $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - VBoxLogRelCreate.
  */
@@ -143,6 +143,30 @@ static DECLCALLBACK(void) vboxHeaderFooter(PRTLOGGER pReleaseLogger, RTLOGPHASE 
                    pszExecName ? pszExecName : "unknown",
                    RTProcSelf(),
                    VBOX_PACKAGE_STRING);
+
+#ifdef RT_OS_WINDOWS
+            static struct
+            {
+                const char    *pszDesc;
+                RTSYSNTFEATURE enmFeature;
+            } s_aNtFeatures[] =
+            {
+                { "Core Isolation (Memory Integrity)", RTSYSNTFEATURE_CORE_ISOLATION_MEMORY_INTEGRITY }
+            };
+            pfnLog(pReleaseLogger, "Windows Features:\n");
+            for (size_t i = 0; i < RT_ELEMENTS(s_aNtFeatures); i++)
+            {
+                pfnLog(pReleaseLogger, "  %s: ", s_aNtFeatures[i].pszDesc);
+                bool fEnabled;
+                vrc = RTSystemQueryNtFeatureEnabled(s_aNtFeatures[i].enmFeature, &fEnabled);
+                if (RT_SUCCESS(vrc))
+                    pfnLog(pReleaseLogger, "%s", fEnabled ? "ENABLED\n" : "DISABLED\n");
+                else if (vrc == VERR_NOT_SUPPORTED)
+                    pfnLog(pReleaseLogger, "Not supported\n");
+                else
+                    pfnLog(pReleaseLogger, "Failed to query (%Rrc)\n", vrc);
+            }
+#endif
             RTLogSetBuffering(pReleaseLogger, fOldBuffered);
             break;
         }
