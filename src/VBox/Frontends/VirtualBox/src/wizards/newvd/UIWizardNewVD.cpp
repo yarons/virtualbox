@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 105561 2024-08-01 11:10:28Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVD.cpp 105826 2024-08-22 17:09:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class implementation.
  */
@@ -267,7 +267,7 @@ void UIWizardNewVD::sltRetranslateUI()
     if (!isClonning())
         setWindowTitle(tr("Create Virtual Hard Disk"));
     else
-        setWindowTitle(tr("Copy Virtual Disk"));
+        setWindowTitle(tr("Copy Virtual Hard Disk"));
 }
 
 void UIWizardNewVD::setMediumVariantPageVisibility()

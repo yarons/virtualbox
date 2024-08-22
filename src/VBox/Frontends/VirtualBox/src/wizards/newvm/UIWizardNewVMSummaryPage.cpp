@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMSummaryPage.cpp 105552 2024-07-31 17:29:42Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVMSummaryPage.cpp 105826 2024-08-22 17:09:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMSummaryPage class implementation.
  */
@@ -180,8 +180,8 @@ int UIWizardNewVMSummaryItem::childCount() const
 QString UIWizardNewVMSummaryItem::text() const
 {
     return   m_data.isValid()
-           ? tr("%1: %2", "col.1 text: col.2 text").arg(m_strText, m_data.toString())
-           : tr("%1", "col.1 text").arg(m_strText);
+           ? UIWizardNewVMSummaryPage::tr("%1: %2", "col.1 text: col.2 text").arg(m_strText, m_data.toString())
+           : UIWizardNewVMSummaryPage::tr("%1", "col.1 text").arg(m_strText);
 }
 
 const QString &UIWizardNewVMSummaryItem::name() const
