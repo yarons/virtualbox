@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.cpp 105081 2024-07-01 15:38:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMActivityMonitor.cpp 105823 2024-08-22 17:07:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class implementation.
  */
@@ -1303,7 +1303,7 @@ void UIVMActivityMonitorLocal::sltRetranslateUI()
     UIVMActivityMonitor::sltRetranslateUI();
 
     foreach (UIChart *pChart, m_charts)
-        pChart->setXAxisLabel(QApplication::translate("UIVMInformationDialog", "Sec."));
+        pChart->setXAxisLabel(QApplication::translate("UIVMInformationDialog", "Sec.", "short from seconds"));
 
     m_strVMExitInfoLabelTitle = QApplication::translate("UIVMInformationDialog", "VM Exits");
     m_iMaximumLabelLength = qMax(m_iMaximumLabelLength, m_strVMExitInfoLabelTitle.length());
@@ -2033,7 +2033,7 @@ void UIVMActivityMonitorCloud::sltRetranslateUI()
 {
     UIVMActivityMonitor::sltRetranslateUI();
     foreach (UIChart *pChart, m_charts)
-        pChart->setXAxisLabel(QApplication::translate("UIVMInformationDialog", "Min."));
+        pChart->setXAxisLabel(QApplication::translate("UIVMInformationDialog", "Min.", "short from minutes"));
 
     m_strNetworkInInfoLabelTitle = QApplication::translate("UIVMInformationDialog", "Network");
     m_iMaximumLabelLength = qMax(m_iMaximumLabelLength, m_strNetworkInInfoLabelTitle.length());
