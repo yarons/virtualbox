@@ -1,4 +1,4 @@
-/* $Id: DisasmInternal-armv8.h 105807 2024-08-22 07:41:30Z alexander.eichner@oracle.com $ */
+/* $Id: DisasmInternal-armv8.h 105808 2024-08-22 07:42:49Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Internal header.
  */
@@ -196,7 +196,7 @@ typedef const DISARMV8INSNCLASS *PCDISARMV8INSNCLASS;
                                                                  & g_aArmV8A64Insn ## a_Name ## Opcodes[0], \
                                                                  a_fFixedInsn, a_fClass, a_enmOpcDecode, a_fMask, a_cShift, \
                                                                  { a_enmParamType1, a_enmParamType2, a_enmParamType3, a_enmParamType4 }, \
-                                                                 & g_aArmV8A64Insn ## a_Name ## Decode[0] };
+                                                                 & g_aArmV8A64Insn ## a_Name ## Decode[0] }
 #define DIS_ARMV8_DECODE_INSN_CLASS_DEFINE_END_PARAMS_3(a_Name, a_fFixedInsn, a_fClass, a_enmOpcDecode, a_fMask, a_cShift, \
                                                         a_enmParamType1, a_enmParamType2, a_enmParamType3) \
     DIS_ARMV8_DECODE_INSN_CLASS_DEFINE_END_PARAMS_4(a_Name, a_fFixedInsn, a_fClass, a_enmOpcDecode, a_fMask, a_cShift, \
