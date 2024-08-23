@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1.cpp 105759 2024-08-21 12:14:56Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1.cpp 105848 2024-08-23 16:05:23Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Testcase for ARMv8 A64
  */
@@ -29,6 +29,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define VBOX_DIS_WITH_ARMV8
 #include <VBox/dis.h>
 #include <iprt/test.h>
 #include <iprt/ctype.h>

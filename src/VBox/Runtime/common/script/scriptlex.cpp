@@ -1,4 +1,4 @@
-/* $Id: scriptlex.cpp 105760 2024-08-21 12:15:14Z alexander.eichner@oracle.com $ */
+/* $Id: scriptlex.cpp 105848 2024-08-23 16:05:23Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - RTScript* lexer API.
  */
@@ -912,12 +912,13 @@ RTDECL(int) RTScriptLexScanNumber(RTSCRIPTLEX hScriptLex, uint8_t uBase, bool fA
     if (ch == '0')
     {
         /* Some hex prefix? */
-        if (RTScriptLexPeekCh(hScriptLex, 1) == 'x')
+        char chNext = RTScriptLexPeekCh(hScriptLex, 1);
+        if (chNext == 'x')
         {
             uBase = 16;
             RTScriptLexConsumeCh(hScriptLex);
         }
-        else /* Octal stuff. */
+        else if (chNext >= '0' && chNext <= '9') /* Octal stuff. */
             AssertFailedReturn(VERR_NOT_IMPLEMENTED);
 
         ch = RTScriptLexConsumeCh(hScriptLex);
