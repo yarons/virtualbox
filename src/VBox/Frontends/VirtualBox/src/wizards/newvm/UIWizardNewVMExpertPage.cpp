@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 105833 2024-08-22 20:15:17Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 105851 2024-08-23 16:31:38Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -473,13 +473,8 @@ void UIWizardNewVMExpertPage::markWidgets() const
                                                 UIWizardNewVM::tr("File path is valid"));
     }
     UIWizardNewVM *pWizard = wizardWindow<UIWizardNewVM>();
-    if (pWizard)
-    {
-        if (!pWizard->isGuestOSTypeSupported(pWizard->detectedOSTypeId()))
-            m_pNameAndSystemEditor->markImageEditor(true, UIWizardNewVM::tr("ISO file is for an unsupported guest OS type"), "");
-        if (pWizard->installGuestAdditions() && m_pGAInstallationISOContainer)
-            m_pGAInstallationISOContainer->mark();
-    }
+    if (pWizard && pWizard->installGuestAdditions() && m_pGAInstallationISOContainer)
+        m_pGAInstallationISOContainer->mark();
     if (isUnattendedEnabled())
         m_pAdditionalOptionsContainer->mark();
 }
@@ -635,9 +630,7 @@ bool UIWizardNewVMExpertPage::isComplete() const
             fIsComplete = false;
         }
     }
-    /* Don't allow VM creation if detect OS type id (from selected ISO) is unsupported: */
-    if (!pWizard->isGuestOSTypeSupported(pWizard->detectedOSTypeId()))
-        fIsComplete = false;
+
     if (pWizard->diskSource() == SelectedDiskSource_Existing && gpMediumEnumerator->medium(m_pDiskSelector->id()).isNull())
     {
         m_pToolBox->setPageTitleIcon(ExpertToolboxItems_Disk,
@@ -996,15 +989,7 @@ void UIWizardNewVMExpertPage::setSkipCheckBoxEnable()
         m_pSkipUnattendedCheckBox->setEnabled(false);
         return;
     }
-    UIWizardNewVM *pWizard = wizardWindow<UIWizardNewVM>();
-    if (pWizard)
-    {
-        if (!pWizard->isGuestOSTypeSupported(pWizard->detectedOSTypeId()))
-        {
-            m_pSkipUnattendedCheckBox->setEnabled(false);
-            return;
-        }
-    }
+
     m_pSkipUnattendedCheckBox->setEnabled(UIWizardNewVMNameOSTypeCommon::checkISOFile(m_pNameAndSystemEditor));
 }
 

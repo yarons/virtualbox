@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 105833 2024-08-22 20:15:17Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVM.cpp 105851 2024-08-23 16:31:38Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -741,13 +741,6 @@ void UIWizardNewVM::setEmptyDiskRecommended(bool fEmptyDiskRecommended)
     m_fEmptyDiskRecommended = fEmptyDiskRecommended;
 }
 
-bool UIWizardNewVM::isGuestOSTypeSupported(const QString &strGuestOSTypeId) const
-{
-    if (strGuestOSTypeId.isEmpty())
-        return true;
-    return gpGlobalSession->guestOSTypeManager().isGuestOSTypeIDSupported(strGuestOSTypeId);
-}
-
 void UIWizardNewVM::setDetectedWindowsImageNamesAndIndices(const QVector<QString> &names, const QVector<ulong> &ids)
 {
     AssertMsg(names.size() == ids.size(),
@@ -806,8 +799,6 @@ bool UIWizardNewVM::isUnattendedEnabled() const
     if (m_fSkipUnattendedInstall)
         return false;
     if (!isUnattendedInstallSupported())
-        return false;
-    if (!isGuestOSTypeSupported(detectedOSTypeId()))
         return false;
     return true;
 }

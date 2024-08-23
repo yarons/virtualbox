@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 105833 2024-08-22 20:15:17Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVM.h 105851 2024-08-23 16:31:38Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -157,8 +157,6 @@ public:
 
         bool emptyDiskRecommended() const;
         void setEmptyDiskRecommended(bool fEmptyDiskRecommended);
-
-        bool isGuestOSTypeSupported(const QString &strGuestOSTypeId) const;
 
         void setDetectedWindowsImageNamesAndIndices(const QVector<QString> &names, const QVector<ulong> &ids);
         const QVector<QString> &detectedWindowsImageNames() const;
