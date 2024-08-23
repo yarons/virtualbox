@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 105664 2024-08-14 08:47:13Z bela.lubkin@oracle.com $
+# $Id: IEMAllInstPython.py 105853 2024-08-23 20:36:08Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 105664 $"
+__version__ = "$Revision: 105853 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -1872,6 +1872,16 @@ class McStmt(object):
         self.sName    = sName;     ##< 'IEM_MC_XXX' or 'C++'.
         self.asParams = asParams;
         self.oUser    = None;
+
+    def __eq__(self, oOther):
+        if self.sName != oOther.sName:
+            return False;
+        if len(self.asParams) != len(oOther.asParams):
+            return False;
+        for iParam, sMyParam in enumerate(self.asParams):
+            if sMyParam != oOther.asParams[iParam]:
+                return False;
+        return True;
 
     def renderCode(self, cchIndent = 0):
         """
