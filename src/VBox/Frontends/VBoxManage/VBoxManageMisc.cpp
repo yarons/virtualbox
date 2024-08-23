@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 105333 2024-07-16 02:07:58Z brent.paulson@oracle.com $ */
+/* $Id: VBoxManageMisc.cpp 105847 2024-08-23 15:24:55Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -366,10 +366,28 @@ RTEXITCODE handleCreateVM(HandlerArg *a)
     }
 
     /* check for required options */
-    if (platformArch == PlatformArchitecture_None)
-        return errorSyntax(Misc::tr("Parameter --platform-architecture is required"));
     if (bstrName.isEmpty())
         return errorSyntax(Misc::tr("Parameter --name is required"));
+
+    /* If the platform architecture is not specified explicitly ... */
+    if (platformArch == PlatformArchitecture_None)
+    {
+        /* ... determine it from the guest OS type, if given. */
+        if (bstrOsTypeId.isNotEmpty())
+        {
+            ComPtr<IGuestOSType> ptrGuestOsType;
+            a->virtualBox->GetGuestOSType(bstrOsTypeId.raw(), ptrGuestOsType.asOutParam());
+            if (ptrGuestOsType.isNull())
+                return RTMsgErrorExit(RTEXITCODE_FAILURE, Misc::tr("Unknown or invalid guest OS type given."));
+            CHECK_ERROR2I_RET(ptrGuestOsType, COMGETTER(PlatformArchitecture)(&platformArch), RTEXITCODE_FAILURE);
+        }
+        else /* use the host's platform type as the VM platform type. */
+        {
+            ComPtr<IHost> host;
+            CHECK_ERROR2I_RET(a->virtualBox, COMGETTER(Host)(host.asOutParam()), RTEXITCODE_FAILURE);
+            CHECK_ERROR2I_RET(host, COMGETTER(Architecture)(&platformArch), RTEXITCODE_FAILURE);
+        }
+    }
 
     do
     {
