@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstVexMap1.cpp.h 105699 2024-08-16 06:47:00Z bela.lubkin@oracle.com $ */
+/* $Id: IEMAllInstVexMap1.cpp.h 105834 2024-08-23 01:15:49Z bela.lubkin@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -4262,6 +4262,7 @@ FNIEMOP_DEF(iemOp_vpunpckhqdq_Vx_Hx_W)
 FNIEMOP_DEF(iemOp_vmovd_q_Vy_Ey)
 {
     uint8_t bRm; IEM_OPCODE_GET_NEXT_U8(&bRm);
+    IEMOP_HLP_IGNORE_VEX_W_PREFIX_IF_NOT_IN_64BIT();
     if (pVCpu->iem.s.fPrefixes & IEM_OP_PRF_SIZE_REX_W)
     {
         /**
@@ -5187,6 +5188,7 @@ FNIEMOP_DEF(iemOp_vhsubps_Vps_Hps_Wps)
 FNIEMOP_DEF(iemOp_vmovd_q_Ey_Vy)
 {
     uint8_t bRm; IEM_OPCODE_GET_NEXT_U8(&bRm);
+    IEMOP_HLP_IGNORE_VEX_W_PREFIX_IF_NOT_IN_64BIT();
     if (pVCpu->iem.s.fPrefixes & IEM_OP_PRF_SIZE_REX_W)
     {
         /**
