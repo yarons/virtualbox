@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompFuncs.h 105853 2024-08-23 20:36:08Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompFuncs.h 105854 2024-08-23 21:03:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler - Inlined Bits.
  */
@@ -577,8 +577,6 @@ iemNativeEmitAddToRip64AndFinishingNoFlags(PIEMRECOMPILERSTATE pReNative, uint32
 #endif
 
 #ifdef IEMNATIVE_WITH_DELAYED_PC_UPDATING
-    STAM_COUNTER_INC(&pReNative->pVCpu->iem.s.StatNativePcUpdateTotal);
-
     pReNative->Core.offPc += cbInstr;
     Log4(("offPc=%x cbInstr=%#x off=%#x\n", pReNative->Core.offPc, cbInstr, off));
 # ifdef IEMNATIVE_WITH_DELAYED_PC_UPDATING_DEBUG
@@ -587,12 +585,10 @@ iemNativeEmitAddToRip64AndFinishingNoFlags(PIEMRECOMPILERSTATE pReNative, uint32
 # elif defined(IEMNATIVE_REG_FIXED_PC_DBG)
     off = iemNativePcAdjustCheck(pReNative, off);
 # endif
-
-    if (pReNative->cCondDepth)
-        off = iemNativeEmitPcWriteback(pReNative, off);
-    else
-        pReNative->Core.cInstrPcUpdateSkipped++;
-
+# if defined(IEMNATIVE_WITH_TB_DEBUG_INFO) || defined(VBOX_WITH_STATISTICS)
+    STAM_COUNTER_INC(&pReNative->pVCpu->iem.s.StatNativePcUpdateTotal);
+    pReNative->Core.cInstrPcUpdateSkipped++;
+# endif
 #endif
 
     return off;
@@ -630,8 +626,6 @@ iemNativeEmitAddToEip32AndFinishingNoFlags(PIEMRECOMPILERSTATE pReNative, uint32
 #endif
 
 #ifdef IEMNATIVE_WITH_DELAYED_PC_UPDATING
-    STAM_COUNTER_INC(&pReNative->pVCpu->iem.s.StatNativePcUpdateTotal);
-
     pReNative->Core.offPc += cbInstr;
     Log4(("offPc=%x cbInstr=%#x off=%#x\n", pReNative->Core.offPc, cbInstr, off));
 # ifdef IEMNATIVE_WITH_DELAYED_PC_UPDATING_DEBUG
@@ -640,11 +634,10 @@ iemNativeEmitAddToEip32AndFinishingNoFlags(PIEMRECOMPILERSTATE pReNative, uint32
 # elif defined(IEMNATIVE_REG_FIXED_PC_DBG)
     off = iemNativePcAdjustCheck(pReNative, off);
 # endif
-
-    if (pReNative->cCondDepth)
-        off = iemNativeEmitPcWriteback(pReNative, off);
-    else
-        pReNative->Core.cInstrPcUpdateSkipped++;
+# if defined(IEMNATIVE_WITH_TB_DEBUG_INFO) || defined(VBOX_WITH_STATISTICS)
+    STAM_COUNTER_INC(&pReNative->pVCpu->iem.s.StatNativePcUpdateTotal);
+    pReNative->Core.cInstrPcUpdateSkipped++;
+# endif
 #endif
 
     return off;
@@ -683,8 +676,6 @@ iemNativeEmitAddToIp16AndFinishingNoFlags(PIEMRECOMPILERSTATE pReNative, uint32_
 #endif
 
 #ifdef IEMNATIVE_WITH_DELAYED_PC_UPDATING
-    STAM_COUNTER_INC(&pReNative->pVCpu->iem.s.StatNativePcUpdateTotal);
-
     pReNative->Core.offPc += cbInstr;
     Log4(("offPc=%x cbInstr=%#x off=%#x\n", pReNative->Core.offPc, cbInstr, off));
 # ifdef IEMNATIVE_WITH_DELAYED_PC_UPDATING_DEBUG
@@ -693,11 +684,10 @@ iemNativeEmitAddToIp16AndFinishingNoFlags(PIEMRECOMPILERSTATE pReNative, uint32_
 # elif defined(IEMNATIVE_REG_FIXED_PC_DBG)
     off = iemNativePcAdjustCheck(pReNative, off);
 # endif
-
-    if (pReNative->cCondDepth)
-        off = iemNativeEmitPcWriteback(pReNative, off);
-    else
-        pReNative->Core.cInstrPcUpdateSkipped++;
+# if defined(IEMNATIVE_WITH_TB_DEBUG_INFO) || defined(VBOX_WITH_STATISTICS)
+    STAM_COUNTER_INC(&pReNative->pVCpu->iem.s.StatNativePcUpdateTotal);
+    pReNative->Core.cInstrPcUpdateSkipped++;
+# endif
 #endif
 
     return off;
