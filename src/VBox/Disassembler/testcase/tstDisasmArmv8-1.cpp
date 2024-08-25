@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1.cpp 105848 2024-08-23 16:05:23Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1.cpp 105857 2024-08-25 12:22:39Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Testcase for ARMv8 A64
  */
@@ -382,6 +382,8 @@ static void testDisas(const char *pszSub, uint8_t const *pabInstrs, uintptr_t uE
             RTTESTI_CHECK(szOutput[0]);
             RTTestIPrintf(RTTESTLVL_ALWAYS, "%s\n", szOutput);
         }
+        else
+            break;
 
         /* Check with size-only. */
         uint32_t        cbOnly = 1;
