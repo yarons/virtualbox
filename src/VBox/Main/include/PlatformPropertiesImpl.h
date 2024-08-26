@@ -1,4 +1,4 @@
-/* $Id: PlatformPropertiesImpl.h 105865 2024-08-26 20:37:09Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformPropertiesImpl.h 105866 2024-08-26 20:48:13Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform properties.
  */
@@ -113,7 +113,7 @@ private:
     HRESULT getSupportedVRAMRange(GraphicsControllerType_T aGraphicsControllerType, BOOL fAccelerate3DEnabled,
                                   ULONG *aMinMB, ULONG *aMaxMB, ULONG *aStrideSizeMB) RT_OVERRIDE;
     HRESULT getSupportedGfxFeaturesForType(GraphicsControllerType_T aGraphicsControllerType,
-                                           std::vector<GraphicsFeature_T> &aSupportedGraphicsFeatures);
+                                           std::vector<GraphicsFeature_T> &aSupportedGraphicsFeatures) RT_OVERRIDE;
     HRESULT getDeviceTypesForStorageBus(StorageBus_T aBus,
                                         std::vector<DeviceType_T> &aDeviceTypes) RT_OVERRIDE;
     HRESULT getStorageBusForControllerType(StorageControllerType_T aStorageControllerType,
