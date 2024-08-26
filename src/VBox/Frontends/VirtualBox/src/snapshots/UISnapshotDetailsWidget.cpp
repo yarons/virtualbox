@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 105259 2024-07-10 14:00:00Z sergey.dubov@oracle.com $ */
+/* $Id: UISnapshotDetailsWidget.cpp 105864 2024-08-26 18:45:15Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -1487,12 +1487,12 @@ QString UISnapshotDetailsWidget::detailsReport(DetailsElementType enmType,
                                                      empReport(strGc, strGcOld));
 
             /* Acceleration? */
-            const QString str3DAccelerationStatus = comGraphics.GetAccelerate3DEnabled()
-                                                  ? QApplication::translate("UIDetails", "Enabled", "details (display/3D Acceleration)")
-                                                  : QString();
-            const QString str3DAccelerationStatusOld = comGraphicsOld.GetAccelerate3DEnabled()
-                                                     ? QApplication::translate("UIDetails", "Enabled", "details (display/3D Acceleration)")
-                                                     : QString();
+            const QString str3DAccelerationStatus =   comGraphics.IsFeatureEnabled(KGraphicsFeature_Acceleration3D)
+                                                    ? QApplication::translate("UIDetails", "Enabled", "details (display/3D Acceleration)")
+                                                    : QString();
+            const QString str3DAccelerationStatusOld =   comGraphicsOld.IsFeatureEnabled(KGraphicsFeature_Acceleration3D)
+                                                       ? QApplication::translate("UIDetails", "Enabled", "details (display/3D Acceleration)")
+                                                       : QString();
             if (!str3DAccelerationStatus.isNull())
             {
                 ++iRowCount;

@@ -1,4 +1,4 @@
-/* $Id: PlatformPropertiesImpl.h 104819 2024-05-30 09:17:47Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformPropertiesImpl.h 105864 2024-08-26 18:45:15Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform properties.
  */
@@ -79,7 +79,7 @@ private:
     HRESULT setExclusiveHwVirt(BOOL aExclusiveHwVirt) RT_OVERRIDE;
     HRESULT getSupportedParavirtProviders(std::vector<ParavirtProvider_T> &aSupportedParavirtProviders) RT_OVERRIDE;
     HRESULT getSupportedFirmwareTypes(std::vector<FirmwareType_T> &aSupportedFirmwareTypes) RT_OVERRIDE;
-    HRESULT getSupportedGraphicsControllerTypes(std::vector<GraphicsControllerType_T> &aSupportedGraphicsControllerTypes) RT_OVERRIDE;
+    HRESULT getSupportedGfxControllerTypes(std::vector<GraphicsControllerType_T> &aSupportedGraphicsControllerTypes) RT_OVERRIDE;
     HRESULT getSupportedGuestOSTypes(std::vector<ComPtr<IGuestOSType> > &aSupportedGuestOSTypes) RT_OVERRIDE;
     HRESULT getSupportedNetAdpPromiscModePols(std::vector<NetworkAdapterPromiscModePolicy_T> &aSupportedNetworkAdapterPromiscModePolicies) RT_OVERRIDE;
     HRESULT getSupportedNetworkAdapterTypes(std::vector<NetworkAdapterType_T> &aSupportedNetworkAdapterTypes) RT_OVERRIDE;
@@ -110,6 +110,8 @@ private:
                                         ULONG *aMaxInstances) RT_OVERRIDE;
     HRESULT getSupportedVRAMRange(GraphicsControllerType_T aGraphicsControllerType, BOOL fAccelerate3DEnabled,
                                   ULONG *aMinMB, ULONG *aMaxMB, ULONG *aStrideSizeMB) RT_OVERRIDE;
+    HRESULT getSupportedGfxFeaturesForType(GraphicsControllerType_T aGraphicsControllerType,
+                                           std::vector<GraphicsFeature_T> &aSupportedGraphicsFeatures);
     HRESULT getDeviceTypesForStorageBus(StorageBus_T aBus,
                                         std::vector<DeviceType_T> &aDeviceTypes) RT_OVERRIDE;
     HRESULT getStorageBusForControllerType(StorageControllerType_T aStorageControllerType,

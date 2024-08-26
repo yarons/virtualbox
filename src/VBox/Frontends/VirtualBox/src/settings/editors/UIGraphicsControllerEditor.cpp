@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsControllerEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGraphicsControllerEditor.cpp 105864 2024-08-26 18:45:15Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGraphicsControllerEditor class implementation.
  */
@@ -163,7 +163,7 @@ void UIGraphicsControllerEditor::populateCombo()
                                             ? optionalFlags().value("arch").value<KPlatformArchitecture>()
                                             : KPlatformArchitecture_x86;
         CPlatformProperties comProperties = gpGlobalSession->virtualBox().GetPlatformProperties(enmArch);
-        m_supportedValues = comProperties.GetSupportedGraphicsControllerTypes();
+        m_supportedValues = comProperties.GetSupportedGfxControllerTypes();
 
         /* Make sure requested value if sane is present as well: */
         if (   m_enmValue != KGraphicsControllerType_Max

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 105266 2024-07-11 07:49:37Z andreas.loeffler@oracle.com $ */
+/* $Id: UIMachineSettingsDisplay.cpp 105864 2024-08-26 18:45:15Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -396,7 +396,7 @@ void UIMachineSettingsDisplay::loadToCacheFrom(QVariant &data)
         oldDisplayData.m_scaleFactors = gEDataManager->scaleFactors(m_machine.GetId());
         oldDisplayData.m_graphicsControllerType = comGraphics.GetGraphicsControllerType();
 #ifdef VBOX_WITH_3D_ACCELERATION
-        oldDisplayData.m_f3dAccelerationEnabled = comGraphics.GetAccelerate3DEnabled();
+        oldDisplayData.m_f3dAccelerationEnabled = comGraphics.IsFeatureEnabled(KGraphicsFeature_Acceleration3D);
 #endif
     }
 
@@ -1130,11 +1130,10 @@ bool UIMachineSettingsDisplay::saveScreenData()
             /* Save whether 3D acceleration is enabled: */
             if (fSuccess && isMachineOffline() && newDisplayData.m_f3dAccelerationEnabled != oldDisplayData.m_f3dAccelerationEnabled)
             {
-                comGraphics.SetAccelerate3DEnabled(newDisplayData.m_f3dAccelerationEnabled);
+                comGraphics.SetFeature(KGraphicsFeature_Acceleration3D, newDisplayData.m_f3dAccelerationEnabled);
                 fSuccess = comGraphics.isOk();
             }
 #endif
-
             /* Get machine ID for further activities: */
             QUuid uMachineId;
             if (fSuccess)

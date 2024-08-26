@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 103702 2024-03-06 13:37:56Z ramshankar.venkataraman@oracle.com $
+# $Id: vboxwrappers.py 105864 2024-08-26 18:45:15Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103702 $"
+__version__ = "$Revision: 105864 $"
 
 
 # Standard Python imports.
@@ -1914,7 +1914,10 @@ class SessionWrapper(TdTaskBase):
         fRc = True;
         try:
             if self.fpApiVer >= 6.1 and hasattr(self.o.machine, 'graphicsAdapter'):
-                self.o.machine.graphicsAdapter.accelerate3DEnabled = fEnabled;
+                if self.fpApiVer >= 7.1 and hasattr(self.o.machine.graphicsAdapter, 'isFeatureEnabled'):
+                    self.o.machine.graphicsAdapter.setFeatureEnabled(vboxcon.GraphicsFeature_Acceleration3D, fEnabled);
+                else:
+                    self.o.machine.graphicsAdapter.accelerate3DEnabled = fEnabled;
             else:
                 self.o.machine.accelerate3DEnabled = fEnabled;
         except:

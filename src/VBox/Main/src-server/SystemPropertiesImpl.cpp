@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 105455 2024-07-23 19:02:30Z klaus.espenlaub@oracle.com $ */
+/* $Id: SystemPropertiesImpl.cpp 105864 2024-08-26 18:45:15Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1172,6 +1172,22 @@ HRESULT SystemProperties::getSupportedExportOptions(std::vector<ExportOptions_T>
         ExportOptions_StripAllNonNATMACs,
     };
     MY_VECTOR_ASSIGN_ARRAY(aSupportedExportOptions, s_aExportOptions);
+    return S_OK;
+}
+
+HRESULT SystemProperties::getSupportedGraphicsFeatures(std::vector<GraphicsFeature_T> &aSupportedGraphicsFeatures)
+{
+    static const GraphicsFeature_T s_aGraphicsFeatures[] =
+    {
+#ifdef VBOX_WITH_VIDEOHWACCEL
+        GraphicsFeature_Acceleration2DVideo,
+#endif
+#ifdef VBOX_WITH_3D_ACCELERATION
+        GraphicsFeature_Acceleration3D
+#endif
+    };
+    MY_VECTOR_ASSIGN_ARRAY(aSupportedGraphicsFeatures, s_aGraphicsFeatures);
+
     return S_OK;
 }
 

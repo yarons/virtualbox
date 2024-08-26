@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 105817 2024-08-22 13:37:57Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 105864 2024-08-26 18:45:15Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1604,7 +1604,7 @@ bool UISession::acquireWhetherAccelerate3DEnabled(bool &fEnabled)
         UINotificationMessage::cannotAcquireMachineParameter(comMachine);
     else
     {
-        const BOOL fAccelerate3DEnabeld = comAdapter.GetAccelerate3DEnabled();
+        const BOOL fAccelerate3DEnabeld = comAdapter.IsFeatureEnabled(KGraphicsFeature_Acceleration3D);
         fSuccess = comAdapter.isOk();
         if (!fSuccess)
             UINotificationMessage::cannotAcquireGraphicsAdapterParameter(comAdapter);

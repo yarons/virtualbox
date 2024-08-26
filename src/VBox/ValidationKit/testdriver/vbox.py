@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 105435 2024-07-22 21:22:24Z klaus.espenlaub@oracle.com $
+# $Id: vbox.py 105864 2024-08-26 18:45:15Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 105435 $"
+__version__ = "$Revision: 105864 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2352,11 +2352,19 @@ class TestDriver(base.TestDriver):                                              
                 else:
                     reporter.log("  HPET:               %s" % (oVM.hpetEnabled,));
         if self.fpApiVer >= 6.1 and hasattr(oVM, 'graphicsAdapter'):
-            reporter.log("  3D acceleration:    %s" % (oVM.graphicsAdapter.accelerate3DEnabled,));
-            reporter.log("  2D acceleration:    %s" % (oVM.graphicsAdapter.accelerate2DVideoEnabled,));
+            if self.fpApiVer >= 7.1 and hasattr(oVM.graphicsAdapter, 'isFeatureEnabled'):
+                fAccelerate3DEnabled = \
+                    oVM.graphicsAdapter.isFeatureEnabled(vboxcon.GraphicsFeature_Acceleration3D);
+                fAccelerate2DVideoEnabled = \
+                    oVM.graphicsAdapter.isFeatureEnabled(vboxcon.GraphicsFeature_Acceleration2DVideo);
+            else:
+                fAccelerate3DEnabled      = oVM.graphicsAdapter.accelerate3DEnabled;
+                fAccelerate2DVideoEnabled = oVM.graphicsAdapter.accelerate2DVideoEnabled;
         else:
-            reporter.log("  3D acceleration:    %s" % (oVM.accelerate3DEnabled,));
-            reporter.log("  2D acceleration:    %s" % (oVM.accelerate2DVideoEnabled,));
+            fAccelerate3DEnabled      = oVM.accelerate3DEnabled;
+            fAccelerate2DVideoEnabled = oVM.accelerate2DVideoEnabled;
+        reporter.log("  3D acceleration:    %s" % (fAccelerate3DEnabled,));
+        reporter.log("  2D acceleration:    %s" % (fAccelerate2DVideoEnabled,));
         reporter.log("  TeleporterEnabled:  %s" % (oVM.teleporterEnabled,));
         reporter.log("  TeleporterPort:     %s" % (oVM.teleporterPort,));
         reporter.log("  TeleporterAddress:  %s" % (oVM.teleporterAddress,));

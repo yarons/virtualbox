@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 105080 2024-07-01 13:27:33Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageModifyVM.cpp 105864 2024-08-26 18:45:15Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -1105,14 +1105,14 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
 
             case MODIFYVM_ACCELERATE3D:
             {
-                CHECK_ERROR(pGraphicsAdapter, COMSETTER(Accelerate3DEnabled)(ValueUnion.f));
+                CHECK_ERROR(pGraphicsAdapter, SetFeature(GraphicsFeature_Acceleration3D, ValueUnion.f));
                 break;
             }
 
 #ifdef VBOX_WITH_VIDEOHWACCEL
             case MODIFYVM_ACCELERATE2DVIDEO:
             {
-                CHECK_ERROR(pGraphicsAdapter, COMSETTER(Accelerate2DVideoEnabled)(ValueUnion.f));
+                CHECK_ERROR(pGraphicsAdapter, SetFeature(GraphicsFeature_Acceleration2DVideo, ValueUnion.f));
                 break;
             }
 #endif

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 105266 2024-07-11 07:49:37Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageInfo.cpp 105864 2024-08-26 18:45:15Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1534,9 +1534,9 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
     }
 
     SHOW_ULONG_PROP(pGraphicsAdapter, MonitorCount,             "monitorcount",             Info::tr("Monitor count:"), "");
-    SHOW_BOOLEAN_PROP(pGraphicsAdapter, Accelerate3DEnabled,    "accelerate3d",             Info::tr("3D Acceleration:"));
+    SHOW_BOOLEAN_METHOD(pGraphicsAdapter, IsFeatureEnabled(GraphicsFeature_Acceleration3D, &f), "accelerate3d", "3D Acceleration:");
 #ifdef VBOX_WITH_VIDEOHWACCEL
-    SHOW_BOOLEAN_PROP(pGraphicsAdapter, Accelerate2DVideoEnabled, "accelerate2dvideo",      Info::tr("2D Video Acceleration:"));
+    SHOW_BOOLEAN_METHOD(pGraphicsAdapter, IsFeatureEnabled(GraphicsFeature_Acceleration2DVideo, &f), "accelerate2dvideo", "2D Video Acceleration:");
 #endif
     SHOW_BOOLEAN_PROP(    machine,  TeleporterEnabled,          "teleporterenabled",        Info::tr("Teleporter Enabled:"));
     SHOW_ULONG_PROP(      machine,  TeleporterPort,             "teleporterport",           Info::tr("Teleporter Port:"), "");
