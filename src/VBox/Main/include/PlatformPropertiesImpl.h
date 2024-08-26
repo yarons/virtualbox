@@ -1,4 +1,4 @@
-/* $Id: PlatformPropertiesImpl.h 105864 2024-08-26 18:45:15Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformPropertiesImpl.h 105865 2024-08-26 20:37:09Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform properties.
  */
@@ -67,6 +67,8 @@ public:
     static ULONG s_getMaxNetworkAdapters(ChipsetType_T aChipset);
     static ULONG s_getMaxNetworkAdaptersOfType(ChipsetType_T aChipset, NetworkAttachmentType_T aType);
     static HRESULT s_getSupportedVRAMRange(GraphicsControllerType_T aGraphicsControllerType, BOOL fAccelerate3DEnabled, ULONG *aMinMB, ULONG *aMaxMB, ULONG *aStrideSizeMB);
+    static int  s_getSupportedGraphicsControllerFeatures(GraphicsControllerType_T enmController, std::vector<GraphicsFeature_T> &vecSupportedGraphicsFeatures);
+    static bool s_isGraphicsControllerFeatureSupported(GraphicsControllerType_T enmController, GraphicsFeature_T enmFeature);
 
 private:
 

@@ -1,4 +1,4 @@
-/* $Id: GraphicsAdapterImpl.h 105864 2024-08-26 18:45:15Z andreas.loeffler@oracle.com $ */
+/* $Id: GraphicsAdapterImpl.h 105865 2024-08-26 20:37:09Z andreas.loeffler@oracle.com $ */
 /** @file
  * Implementation of IGraphicsAdapter in VBoxSVC - Header.
  */
@@ -64,12 +64,6 @@ public:
     void i_rollback();
     void i_commit();
     void i_copyFrom(GraphicsAdapter *aThat);
-
-public:
-
-    // static helper functions
-    static int  s_getSupportedFeatures(GraphicsControllerType_T enmController, std::vector<GraphicsFeature_T> &vecSupportedGraphicsFeatures);
-    static bool s_isFeatureSupported(GraphicsControllerType_T enmController, GraphicsFeature_T enmFeature);
 
 private:
 
