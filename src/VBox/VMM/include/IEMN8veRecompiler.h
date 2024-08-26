@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 105856 2024-08-24 01:54:27Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 105863 2024-08-26 15:03:58Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -1810,8 +1810,6 @@ DECL_HIDDEN_THROW(uint32_t) iemNativeEmitCImplCall(PIEMRECOMPILERSTATE pReNative
                                                    uint64_t uParam0, uint64_t uParam1, uint64_t uParam2);
 DECL_HIDDEN_THROW(uint32_t) iemNativeEmitThreadedCall(PIEMRECOMPILERSTATE pReNative, uint32_t off,
                                                       PCIEMTHRDEDCALLENTRY pCallEntry);
-DECL_HIDDEN_THROW(uint32_t) iemNativeEmitCheckGprCanonicalMaybeRaiseGp0(PIEMRECOMPILERSTATE pReNative, uint32_t off,
-                                                                        uint8_t idxAddrReg, uint8_t idxInstr);
 DECL_HIDDEN_THROW(uint32_t) iemNativeEmitLeaGprByGstRegRef(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t idxGprDst,
                                                            IEMNATIVEGSTREGREF enmClass, uint8_t idxRegInClass);
 
