@@ -1,4 +1,4 @@
-/* $Id: GuestControl.h 104003 2024-03-22 16:13:12Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestControl.h 105876 2024-08-27 15:54:44Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest Control - Common Guest and Host Code.
  *
@@ -538,6 +538,8 @@ typedef const GSTCTLFSOBJATTR *PCGSTCTLFSOBJATTR;
 
 /**
  * Filter option for HOST_MSG_DIR_OPEN.
+ *
+ * @note Currently *must* match RTDIRFILTER, so be careful when changing this!
  */
 typedef enum GSTCTLDIRFILTER
 {
