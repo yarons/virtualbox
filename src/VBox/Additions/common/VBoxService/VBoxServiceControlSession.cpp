@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 104565 2024-05-08 16:30:28Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceControlSession.cpp 105875 2024-08-27 15:52:45Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -1067,28 +1067,30 @@ static int vgsvcGstCtrlSessionHandleDirOpen(const PVBOXSERVICECTRLSESSION pSessi
         if (szPath[0])
         {
             pDir->pszPathAbs = RTStrDup(szPath);
-            if (!pDir->pszPathAbs)
-                rc = VERR_NO_MEMORY;
-
-            /* Save reading parameters for subsequent directory entry read calls later. */
-            pDir->fRead          = fReadFlags;
-            pDir->enmReadAttrAdd = enmAttrAdd;
-
-            pDir->cbDirEntryEx = GSTCTL_DIRENTRY_MAX_SIZE;
-            pDir->pDirEntryEx  = (PRTDIRENTRYEX)RTMemAlloc(pDir->cbDirEntryEx);
-            AssertPtrReturn(pDir->pDirEntryEx, VERR_NO_MEMORY);
-
-            if (RT_SUCCESS(rc))
+            if (pDir->pszPathAbs)
             {
-                rc = RTDirOpenFiltered(&pDir->hDir, pDir->pszPathAbs, (RTDIRFILTER)enmFilter, fFlags);
-                if (RT_SUCCESS(rc))
+                /* Save reading parameters for subsequent directory entry read calls later. */
+                pDir->fRead          = fReadFlags;
+                pDir->enmReadAttrAdd = enmAttrAdd;
+
+                pDir->cbDirEntryEx = GSTCTL_DIRENTRY_MAX_SIZE;
+                pDir->pDirEntryEx  = (PRTDIRENTRYEX)RTMemAlloc(pDir->cbDirEntryEx);
+                if (pDir->pDirEntryEx)
                 {
-                    uHandle = VBOX_GUESTCTRL_CONTEXTID_GET_OBJECT(pHostCtx->uContextID);
-                    pDir->uHandle = uHandle;
-                    RTListAppend(&pSession->lstDirs, &pDir->Node);
-                    VGSvcVerbose(2, "[Dir %s] Opened (ID=%RU32)\n", pDir->pszPathAbs, pDir->uHandle);
+                    rc = RTDirOpenFiltered(&pDir->hDir, pDir->pszPathAbs, (RTDIRFILTER)enmFilter, fFlags);
+                    if (RT_SUCCESS(rc))
+                    {
+                        uHandle = VBOX_GUESTCTRL_CONTEXTID_GET_OBJECT(pHostCtx->uContextID);
+                        pDir->uHandle = uHandle;
+                        RTListAppend(&pSession->lstDirs, &pDir->Node);
+                        VGSvcVerbose(2, "[Dir %s] Opened (ID=%RU32)\n", pDir->pszPathAbs, pDir->uHandle);
+                    }
                 }
+                else
+                    rc = VERR_NO_MEMORY;
             }
+            else
+                rc = VERR_NO_MEMORY;
         }
         else
         {
@@ -1100,9 +1102,11 @@ static int vgsvcGstCtrlSessionHandleDirOpen(const PVBOXSERVICECTRLSESSION pSessi
         if (RT_FAILURE(rc))
         {
             RTStrFree(pDir->pszPathAbs);
+            pDir->pszPathAbs = NULL;
             if (pDir->hDir != NIL_RTDIR)
                 RTDirClose(pDir->hDir);
             RTMemFree(pDir);
+            pDir = NULL;
         }
 
         /*
