@@ -1,4 +1,4 @@
-/* $Id: PlatformPropertiesImpl.cpp 105865 2024-08-26 20:37:09Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformPropertiesImpl.cpp 105872 2024-08-27 12:41:13Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform properties.
  */
@@ -855,8 +855,8 @@ HRESULT PlatformProperties::getSupportedUSBControllerTypes(std::vector<USBContro
  * Static helper function to return all supported features for a given graphics controller.
  *
  * @returns VBox status code.
- * @param   enmController                          Graphics controller to return supported features for.
- * @param   vecSupportedGraphicsControllerFeatures Returned features on success.
+ * @param   enmController                Graphics controller to return supported features for.
+ * @param   vecSupportedGraphicsFeatures Returned features on success.
  */
 /* static */
 int PlatformProperties::s_getSupportedGraphicsControllerFeatures(GraphicsControllerType_T enmController,
