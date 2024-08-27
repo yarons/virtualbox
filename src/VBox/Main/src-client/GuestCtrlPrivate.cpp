@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 104178 2024-04-05 12:23:48Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestCtrlPrivate.cpp 105874 2024-08-27 15:15:19Z andreas.loeffler@oracle.com $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -74,6 +74,10 @@ Utf8Str GuestFs::guestErrorToString(const GuestErrorInfo &guestErrorInfo)
             RT_FALL_THROUGH();
         case VERR_PATH_NOT_FOUND:
             strErr.printf(tr("No such file or directory \"%s\""), guestErrorInfo.getWhat().c_str());
+            break;
+
+        case VERR_CANT_CREATE:
+            strErr.printf(tr("File or directory \"%s\" can't be created"), guestErrorInfo.getWhat().c_str());
             break;
 
         case VERR_INVALID_PARAMETER:
