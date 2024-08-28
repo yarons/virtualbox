@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-modifyvm" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2024-07-19 13:34:24 +0200 (Fri, 19 Jul 2024) $</pubdate>
+    <pubdate>$Date: 2024-08-28 18:45:25 +0200 (Wed, 28 Aug 2024) $</pubdate>
     <title>VBoxManage modifyvm</title>
   </refentryinfo>
 
@@ -1079,9 +1079,7 @@ it unless this changes. -->
           <term><option>--accelerate-2d-video=on | off</option></term>
           <listitem><para>
               Включает или отключает 2D видео ускорение для графических
-              адаптеров, поддерживающих это. Эта опция работает только
-              при установленных Дополнений Гостевой ОС. Смотрите
-              <xref linkend="guestadd-2d" />.
+              адаптеров, поддерживающих это.
             </para></listitem>
         </varlistentry>
         <varlistentry>
