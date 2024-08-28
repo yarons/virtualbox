@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 104706 $"
+__version__ = "$Revision: 105888 $"
 
 # Standard Python imports.
 import errno
@@ -1729,8 +1729,10 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
         # Whether to enable verbose logging for VBoxService.
         fEnableVerboseLogging = False;
 
-        # On Windows guests we always can enable verbose logging. NT4 and W2K doesn't have reg.exe nor (at least NT4) sc.exe.
-        if oTestVm.isWindows() and oTestVm.sKind not in ('WindowsNT4', 'Windows2000',):
+        # On Windows and Linux guests we always can enable verbose logging.
+        # NT4 and W2K doesn't have reg.exe nor (at least NT4) sc.exe.
+        if (oTestVm.isWindows() and oTestVm.sKind not in ('WindowsNT4', 'Windows2000',)) \
+        or oTestVm.isLinux():
             fEnableVerboseLogging = True;
 
         # Old TxS versions had a bug which caused an infinite loop when executing stuff containing "$xxx",
