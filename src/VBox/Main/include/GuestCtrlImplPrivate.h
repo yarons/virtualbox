@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 104178 2024-04-05 12:23:48Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestCtrlImplPrivate.h 105892 2024-08-28 16:37:58Z andreas.loeffler@oracle.com $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -727,7 +727,7 @@ struct GuestDirectoryOpenInfo
 {
     GuestDirectoryOpenInfo(void)
         : menmFilter(GSTCTLDIRFILTER_NONE)
-        , mFlags(0) { }
+        , mFlags(GSTCTLDIR_F_NONE) { }
 
     /** The directory path. */
     Utf8Str                 mPath;
@@ -735,7 +735,7 @@ struct GuestDirectoryOpenInfo
     Utf8Str                 mFilter;
     /** The filter option to use. */
     GSTCTLDIRFILTER         menmFilter;
-    /** Opening flags (of type GSTCTLDIRFILTER_XXX). */
+    /** Opening flags (of type GSTCTLDIR_F_XXX). */
     uint32_t                mFlags;
 };
 
