@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceToolBox.cpp 105898 2024-08-29 08:46:43Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -996,19 +996,12 @@ static RTEXITCODE vgsvcToolboxLs(int argc, char **argv)
         if (RT_SUCCESS(rc2))
         {
             if (   RTFS_IS_FILE(objInfo.Attr.fMode)
-                || (   RTFS_IS_SYMLINK(objInfo.Attr.fMode)
-                    && (fFlags & VBOXSERVICETOOLBOXLSFLAG_SYMLINKS)))
-            {
+                || RTFS_IS_SYMLINK(objInfo.Attr.fMode))
                 rc2 = vgsvcToolboxPrintFsInfo(pszPath, strlen(pszPath), fOutputFlags, NULL, &IdCache, &objInfo);
-                if (RT_SUCCESS(rc)) /* Keep initial failing rc. */
-                    rc = rc2;
-            }
             else if (RTFS_IS_DIRECTORY(objInfo.Attr.fMode))
-            {
                 rc2 = vgsvcToolboxLsHandleDir(pszPath, fFlags, fOutputFlags, &IdCache);
-                if (RT_SUCCESS(rc)) /* Keep initial failing rc. */
-                    rc = rc2;
-            }
+            if (RT_SUCCESS(rc)) /* Keep initial failing rc. */
+                rc = rc2;
         }
         else
         {
