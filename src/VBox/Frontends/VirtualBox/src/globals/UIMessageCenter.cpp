@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 105819 2024-08-22 14:20:59Z sergey.dubov@oracle.com $ */
+/* $Id: UIMessageCenter.cpp 105901 2024-08-29 12:39:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1424,7 +1424,7 @@ bool UIMessageCenter::confirmInaccesibleMediaClear(const QStringList &mediaNameL
 bool UIMessageCenter::confirmVisoDiscard(QWidget *pParent /* = 0*/) const
 {
     return questionBinary(pParent, MessageType_Question,
-                          tr("<p>To open a Viso file you will have to discard the current content.</p>"
+                          tr("<p>To open a VISO file you will have to discard the current content.</p>"
                              "<p>Are you sure you want to proceed?</p>"),
                           0 /* auto-confirm id */,
                           tr("Discard") /* ok button text */,

@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 105859 2024-08-26 06:10:37Z sergey.dubov@oracle.com $ */
+/* $Id: UIVisoCreator.cpp 105901 2024-08-29 12:39:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes implementation.
  */
@@ -448,7 +448,7 @@ void UIVisoCreatorWidget::sltSaveAsAction()
     AssertReturnVoid(pActive);
 
     QString strSaveFileName = QIFileDialog::getSaveFileName(visoFileFullPath(), "VISO files (*.viso)", pActive,
-                                                            UIVisoCreatorWidget::tr("Select a file to save Viso content to"));
+                                                            UIVisoCreatorWidget::tr("Select a file to save VISO content to"));
     if (visoFileFullPath() != strSaveFileName)
     {
         QFileInfo fileInfo(strSaveFileName);
