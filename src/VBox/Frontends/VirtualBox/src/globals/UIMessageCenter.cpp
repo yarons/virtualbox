@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 105901 2024-08-29 12:39:07Z sergey.dubov@oracle.com $ */
+/* $Id: UIMessageCenter.cpp 105904 2024-08-29 15:27:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -894,7 +894,7 @@ bool UIMessageCenter::confirmCancelingPortForwardingDialog(QWidget *pParent /* =
 bool UIMessageCenter::confirmRestoringDefaultKeys(QWidget *pParent /* = 0 */) const
 {
     return questionBinary(pParent, MessageType_Question,
-                          tr("<p>Are you going to restore default secure boot keys.</p>"
+                          tr("<p>You are going to restore default secure boot keys.</p>"
                              "<p>If you proceed your current keys will be rewritten. "
                              "You may not be able to boot affected VM anymore.</p>"),
                           0 /* auto-confirm id */,
