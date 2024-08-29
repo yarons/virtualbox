@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 105877 2024-08-27 23:17:09Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 105895 2024-08-29 06:03:30Z bela.lubkin@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -1390,7 +1390,7 @@ typedef struct IEMNATIVECOND
     bool                        fInElse;
     union
     {
-        struct
+        RT_GCC_EXTENSION struct
         {
             /** Set if the if-block unconditionally exited the TB. */
             bool                fIfExitTb;
