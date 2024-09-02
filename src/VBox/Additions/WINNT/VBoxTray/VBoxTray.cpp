@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 105896 2024-08-29 06:50:48Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxTray.cpp 105914 2024-09-02 10:14:32Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -1065,12 +1065,12 @@ int main(int cArgs, char **papszArgs)
         return RTEXITCODE_SUCCESS;
     }
 
-    rc = vboxTrayLogCreate(szLogFile[0] ? szLogFile : NULL);
+    rc = VbglR3Init();
     if (RT_SUCCESS(rc))
     {
         LogRel(("Verbosity level: %d\n", g_cVerbosity));
 
-        rc = VbglR3Init();
+        rc = vboxTrayLogCreate(szLogFile[0] ? szLogFile : NULL);
         if (RT_SUCCESS(rc))
         {
             /* Log the major windows NT version: */
