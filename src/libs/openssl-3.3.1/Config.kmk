@@ -1,4 +1,4 @@
-# $Id: Config.kmk 105920 2024-09-02 17:00:53Z alexander.rudnev@oracle.com $
+# $Id: Config.kmk 105947 2024-09-04 12:04:35Z aleksey.ilyushin@oracle.com $
 ## @file
 # OpenSSL kBuild Configuration file.
 #
@@ -255,6 +255,7 @@ endif
 TEMPLATE_LibCrypto_DEFS = \
 	$(TEMPLATE_VBoxR3RuntimeDllNonPedantic_DEFS) \
 	VBOX_SUFF_DLL=$(VBOX_SUFF_DLL) \
+	OPENSSLDIR="/usr/local/ssl" \
 	DSO_NONE \
 	OPENSSL_USE_NODELETE \
 	OPENSSL_PIC \

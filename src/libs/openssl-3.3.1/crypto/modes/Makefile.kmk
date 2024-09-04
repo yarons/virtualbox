@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 105918 2024-09-02 15:05:01Z alexander.rudnev@oracle.com $
+# $Id: Makefile.kmk 105947 2024-09-04 12:04:35Z aleksey.ilyushin@oracle.com $
 ## @file
 # OpenSSL Sub-Makefile.
 #
@@ -42,7 +42,8 @@ crypto_modes_SOURCES = \
 	ofb128.c \
 	siv128.c \
 	wrap128.c \
-	xts128.c
+	xts128.c \
+	xts128gb.c
 ifdef VBOX_WITH_CRYPTO_ASM
  crypto_modes_SOURCES.x86 += \
  	$(VBOX_PATH_CRYPTO_GENASM)/ghash-x86.S

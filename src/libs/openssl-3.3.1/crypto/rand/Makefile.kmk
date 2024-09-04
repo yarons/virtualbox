@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 105918 2024-09-02 15:05:01Z alexander.rudnev@oracle.com $
+# $Id: Makefile.kmk 105947 2024-09-04 12:04:35Z aleksey.ilyushin@oracle.com $
 ## @file
 # OpenSSL Sub-Makefile.
 #
@@ -39,6 +39,7 @@ crypto_rand_SOURCES = \
 	rand_lib.c \
 	rand_meth.c \
 	rand_pool.c \
+	rand_uniform.c \
 	randfile.c
 $(evalcall VBOX_OPENSSL_X86,crypto_rand)
 

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 105918 2024-09-02 15:05:01Z alexander.rudnev@oracle.com $
+# $Id: Makefile.kmk 105947 2024-09-04 12:04:35Z aleksey.ilyushin@oracle.com $
 ## @file
 # OpenSSL Sub-Makefile.
 #
@@ -58,9 +58,12 @@ crypto_evp_SOURCES = \
 	e_idea.c \
 	e_null.c \
 	e_old.c \
+	e_rc2.c \
 	e_rc4.c \
 	e_rc4_hmac_md5.c \
+	e_rc5.c \
 	e_seed.c \
+	e_sm4.c \
 	e_xcbc_d.c \
 	ec_ctrl.c \
 	ec_support.c \
