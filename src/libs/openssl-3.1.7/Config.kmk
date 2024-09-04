@@ -1,4 +1,4 @@
-# $Id: Config.kmk 105945 2024-09-04 11:32:47Z alexander.rudnev@oracle.com $
+# $Id: Config.kmk 105949 2024-09-04 12:53:14Z alexander.rudnev@oracle.com $
 ## @file
 # OpenSSL kBuild Configuration file.
 #
@@ -55,7 +55,7 @@ VBOX_PATH_CRYPTO_RC4        := $(VBOX_PATH_CRYPTO)/rc4
 VBOX_PATH_CRYPTO_SHA        := $(VBOX_PATH_CRYPTO)/sha
 VBOX_PATH_CRYPTO_DES        := $(VBOX_PATH_CRYPTO)/des
 VBOX_PATH_CRYPTO_CAMELLIA   := $(VBOX_PATH_CRYPTO)/camellia
-VBOX_INST_CRYPTO_HEADERS    := obj/$(if-expr "$(CURSUBDIR)" == ".",,$(CURSUBDIR)/)crypto-3.1.5-headers/include/openssl/
+VBOX_INST_CRYPTO_HEADERS    := obj/$(if-expr "$(CURSUBDIR)" == ".",,$(CURSUBDIR)/)crypto-3.1.7-headers/include/openssl/
 VBOX_PATH_CRYPTO_HEADERS    := $(abspath $(PATH_OUT))/$(patsubst %/,%,$(VBOX_INST_CRYPTO_HEADERS))
 VBOX_PATH_CRYPTO_PROVIDERS  := $(VBOX_PATH_OPENSSL)/providers
 
