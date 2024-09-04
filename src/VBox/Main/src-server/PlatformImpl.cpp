@@ -1,4 +1,4 @@
-/* $Id: PlatformImpl.cpp 102455 2023-12-04 15:53:11Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformImpl.cpp 105959 2024-09-04 16:57:58Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform settings.
  */
@@ -847,5 +847,20 @@ HRESULT Platform::i_applyDefaults(GuestOSType *aOsType)
     Assert(enmChipsetType != ChipsetType_Null);
 
     return hrc;
+}
+
+/**
+ * Internal helper to return the currently set architecture of this platform.
+ *
+ * @returns Currently set architecture.
+ *
+ * @note    Takes the read lock.
+ */
+PlatformArchitecture_T Platform::i_getArchitecture(void)
+{
+    PlatformArchitecture_T enmArchitecture;
+    HRESULT const hrc = getArchitecture(&enmArchitecture);
+    AssertComRCReturn(hrc, PlatformArchitecture_None);
+    return enmArchitecture;
 }
 

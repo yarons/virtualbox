@@ -1,4 +1,4 @@
-/* $Id: PlatformImpl.h 101460 2023-10-17 08:32:09Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformImpl.h 105959 2024-09-04 16:57:58Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform settings.
  */
@@ -69,6 +69,8 @@ public:
 
     HRESULT i_initArchitecture(PlatformArchitecture_T aArchitecture, Platform *that = NULL, bool fCopy = false);
     HRESULT i_applyDefaults(GuestOSType *aOsType);
+
+    PlatformArchitecture_T i_getArchitecture();
 
 public:
 
