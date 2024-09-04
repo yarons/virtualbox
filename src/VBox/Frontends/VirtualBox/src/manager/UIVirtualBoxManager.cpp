@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 105773 2024-08-21 14:58:19Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 105956 2024-09-04 16:28:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -2359,7 +2359,8 @@ void UIVirtualBoxManager::sltPerformShowHelpBrowser()
     QString strHelpKeyword;
     if (m_pWidget)
         strHelpKeyword = m_pWidget->currentHelpKeyword();
-    UIHelpBrowserDialog::findManualFileAndShow(strHelpKeyword);
+    if (!strHelpKeyword.isEmpty())
+        UIHelpBrowserDialog::findManualFileAndShow(strHelpKeyword);
 }
 
 void UIVirtualBoxManager::sltExtensionPackInstalledUninstalled(const QString &strName)

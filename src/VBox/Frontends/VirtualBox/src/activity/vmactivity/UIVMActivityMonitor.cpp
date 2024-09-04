@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.cpp 105823 2024-08-22 17:07:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMActivityMonitor.cpp 105956 2024-09-04 16:28:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class implementation.
  */
@@ -1082,7 +1082,7 @@ UIVMActivityMonitor::UIVMActivityMonitor(EmbedTo enmEmbedding, QWidget *pParent,
     , m_pMainLayout(0)
     , m_enmEmbedding(enmEmbedding)
 {
-    uiCommon().setHelpKeyword(this, "vm-session-information");
+    uiCommon().setHelpKeyword(this, "vm-activity-session-information");
     setContextMenuPolicy(Qt::CustomContextMenu);
     connect(this, &UIVMActivityMonitor::customContextMenuRequested,
             this, &UIVMActivityMonitor::sltCreateContextMenu);

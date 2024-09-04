@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityToolWidget.cpp 104458 2024-04-30 08:36:19Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityToolWidget.cpp 105956 2024-09-04 16:28:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityToolWidget class implementation.
  */
@@ -33,6 +33,7 @@
 /* GUI includes: */
 #include "QIToolBar.h"
 #include "UIActionPoolManager.h"
+#include "UICommon.h"
 #include "UIVMActivityMonitor.h"
 #include "UIVMActivityToolWidget.h"
 #include "UIMessageCenter.h"
@@ -56,6 +57,7 @@ UIVMActivityToolWidget::UIVMActivityToolWidget(EmbedTo enmEmbedding, UIActionPoo
     , m_pToolBar(0)
     , m_pMonitorContainer(0)
 {
+    uiCommon().setHelpKeyword(this, "vm-activity-session-information");
     prepare();
     prepareActions();
     prepareToolBar();
