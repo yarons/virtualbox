@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 105801 2024-08-21 22:27:44Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPoolManager.cpp 105955 2024-09-04 15:54:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -3183,14 +3183,6 @@ protected:
     virtual QKeySequence defaultShortcut(UIType) const RT_OVERRIDE
     {
         return QKeySequence("Ctrl+Shift+H");
-    }
-
-    /** Returns standard shortcut. */
-    virtual QKeySequence standardShortcut(UIType) const RT_OVERRIDE
-    {
-        return   actionPool()->isTemporary()
-               ? QKeySequence()
-               : UIShortcutPool::standardSequence(QKeySequence::HelpContents);
     }
 
     /** Handles translation event. */

@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 104596 2024-05-13 12:52:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIHelpBrowserWidget.cpp 105955 2024-09-04 15:54:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -907,14 +907,16 @@ UIHelpBrowserTabManager::UIHelpBrowserTabManager(const QHelpEngine  *pHelpEngine
 
 void UIHelpBrowserTabManager::addNewTab(const QUrl &initialUrl, bool fBackground)
 {
+#if 0
     /* If there is already a tab with a source which is equal to @initialUrl then make it current: */
     int iExistIndex = findTab(initialUrl);
     if (iExistIndex != -1)
     {
         setCurrentIndex(iExistIndex);
+        setSource(initialUrl);
         return;
     }
-
+#endif
     UIHelpBrowserTab *pTabWidget = new  UIHelpBrowserTab(m_pHelpEngine, m_homeUrl, initialUrl);
     AssertReturnVoid(pTabWidget);
     pTabWidget->setToolBarVisible(m_fToolBarVisible);

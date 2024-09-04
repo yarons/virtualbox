@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserDialog.cpp 105553 2024-07-31 17:51:33Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpBrowserDialog.cpp 105955 2024-09-04 15:54:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserDialog class implementation.
  */
@@ -234,9 +234,10 @@ void UIHelpBrowserDialog::showUserManual(const QString &strHelpFilePath, const Q
         AssertReturnVoid(m_pInstance);
     }
 
-    if (!strKeyword.isEmpty())
-        m_pInstance->showHelpForKeyword(strKeyword);
     m_pInstance->show();
     m_pInstance->setWindowState(m_pInstance->windowState() & ~Qt::WindowMinimized);
     m_pInstance->activateWindow();
+    if (!strKeyword.isEmpty())
+        m_pInstance->showHelpForKeyword(strKeyword);
+
 }
