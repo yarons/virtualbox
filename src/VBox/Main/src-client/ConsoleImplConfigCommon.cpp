@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigCommon.cpp 105871 2024-08-27 12:37:53Z andreas.loeffler@oracle.com $ */
+/* $Id: ConsoleImplConfigCommon.cpp 105965 2024-09-05 06:50:38Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -5074,8 +5074,7 @@ int Console::i_configGraphicsController(PCFGMNODE pDevices,
         InsertConfigInteger(pCfg,  "MonitorCount",         cMonitorCount);
 
         BOOL f3DEnabled = FALSE;
-        ptrGraphicsAdapter->IsFeatureEnabled(GraphicsFeature_Acceleration3D, &f3DEnabled);
-        /* Note: Might return VBOX_E_NOT_SUPPORTED if feature is not supported. */
+        hrc = ptrGraphicsAdapter->IsFeatureEnabled(GraphicsFeature_Acceleration3D, &f3DEnabled);    H();
         InsertConfigInteger(pCfg,  "3DEnabled",            f3DEnabled);
 
         i_attachStatusDriver(pInst, DeviceType_Graphics3D);
