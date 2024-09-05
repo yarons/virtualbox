@@ -1,4 +1,4 @@
-/* $Id: PlatformPropertiesImpl.cpp 105964 2024-09-05 06:48:10Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformPropertiesImpl.cpp 105966 2024-09-05 07:13:29Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform properties.
  */
@@ -849,20 +849,22 @@ int PlatformProperties::s_getSupportedGraphicsControllerFeatures(PlatformArchite
 #ifdef VBOX_WITH_VMSVGA
                 case GraphicsControllerType_VBoxSVGA:
                 {
+#if defined(VBOX_WITH_VIDEOHWACCEL) || defined(VBOX_WITH_3D_ACCELERATION) /* Work around zero-sized arrays. */
                     static const GraphicsFeature_T s_aGraphicsFeatures[] =
                     {
-# ifdef VBOX_WITH_VIDEOHWACCEL
+#  ifdef VBOX_WITH_VIDEOHWACCEL
                         /* @bugref{9691} -- The legacy VHWA acceleration has been disabled completely. */
                         //GraphicsFeature_Acceleration2DVideo,
-# endif
-# ifdef VBOX_WITH_3D_ACCELERATION
+#  endif
+#  ifdef VBOX_WITH_3D_ACCELERATION
                         GraphicsFeature_Acceleration3D
-# endif
+#  endif
                     };
                     RT_CPP_VECTOR_ASSIGN_ARRAY(vecSupportedGraphicsFeatures, s_aGraphicsFeatures);
+# endif
                     break;
                 }
-#endif
+#endif /* VBOX_WITH_VMSVGA */
                 case GraphicsControllerType_VBoxVGA:
                     RT_FALL_THROUGH();
                 case GraphicsControllerType_QemuRamFB:
@@ -872,10 +874,8 @@ int PlatformProperties::s_getSupportedGraphicsControllerFeatures(PlatformArchite
                 }
 
                 default:
-                {
-                    AssertFailedReturn(VERR_INVALID_PARAMETER);
-                    break; /* Never reached. */
-                }
+                    /* In case GraphicsControllerType_VBoxSVGA is not available. */
+                    break;
             }
 
             break;
