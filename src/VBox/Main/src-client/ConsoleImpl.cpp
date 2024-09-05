@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 105726 2024-08-19 14:05:15Z jack.doherty@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 105978 2024-09-05 12:23:55Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -11464,6 +11464,11 @@ void Console::i_powerUpThreadTask(VMPowerUpTask *pTask)
                 MachineDebugger *machineDebugger = pConsole->i_getMachineDebugger();
                 if (machineDebugger)
                     machineDebugger->i_flushQueuedSettings();
+
+                /*
+                 * Set domain name and DNS search list for DrvNAT
+                 */
+                pConsole->i_onNATDnsChanged();
 
                 /*
                  * Shared Folders
