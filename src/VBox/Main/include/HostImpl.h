@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 105254 2024-07-10 09:39:16Z alexander.eichner@oracle.com $ */
+/* $Id: HostImpl.h 105971 2024-09-05 08:03:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * Implementation of IHost.
  */
@@ -129,7 +129,6 @@ private:
     HRESULT getOperatingSystem(com::Utf8Str &aOperatingSystem);
     HRESULT getOSVersion(com::Utf8Str &aOSVersion);
     HRESULT getUTCTime(LONG64 *aUTCTime);
-    HRESULT getAcceleration3DAvailable(BOOL *aAcceleration3DAvailable);
     HRESULT getVideoInputDevices(std::vector<ComPtr<IHostVideoInputDevice> > &aVideoInputDevices);
     HRESULT getUpdateHost(ComPtr<IUpdateAgent> &aUpdate);
     HRESULT getUpdateExtPack(ComPtr<IUpdateAgent> &aUpdate);

@@ -3,7 +3,7 @@
 # pylint: disable=line-too-long
 # pylint: disable=too-many-statements
 # pylint: disable=deprecated-module
-# $Id: vboxshell.py 105864 2024-08-26 18:45:15Z andreas.loeffler@oracle.com $
+# $Id: vboxshell.py 105971 2024-09-05 08:03:42Z andreas.loeffler@oracle.com $
 
 # The following checks for the right (i.e. most recent) Python binary available
 # and re-starts the script using that binary (like a shell wrapper).
@@ -63,7 +63,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 105864 $"
+__version__ = "$Revision: 105971 $"
 
 
 import gc
@@ -1632,10 +1632,6 @@ def hostCmd(ctx, _args):
     print("  %dM (free %dM)" % (host.memorySize, host.memoryAvailable))
     print(colCat(ctx, "OS:"))
     print("  %s (%s)" % (host.operatingSystem, host.OSVersion))
-    if host.acceleration3DAvailable:
-        print(colCat(ctx, "3D acceleration available"))
-    else:
-        print(colCat(ctx, "3D acceleration NOT available"))
 
     print(colCat(ctx, "Network interfaces:"))
     for iface in ctx['global'].getArray(host, 'networkInterfaces'):
