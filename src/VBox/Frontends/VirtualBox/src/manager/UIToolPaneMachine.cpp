@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIToolPaneMachine.cpp 105976 2024-09-05 09:22:06Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class implementation.
  */
@@ -364,6 +364,9 @@ QString UIToolPaneMachine::currentHelpKeyword() const
             break;
         case UIToolType_VMActivity:
             pCurrentToolWidget = m_pPaneVMActivityMonitor;
+            break;
+        case UIToolType_FileManager:
+            pCurrentToolWidget = m_pPaneFileManager;
             break;
         default:
             break;
