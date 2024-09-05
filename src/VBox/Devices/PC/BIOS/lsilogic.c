@@ -1,4 +1,4 @@
-/* $Id: lsilogic.c 101004 2023-09-03 11:07:46Z michal.necasek@oracle.com $ */
+/* $Id: lsilogic.c 105972 2024-09-05 08:12:59Z michal.necasek@oracle.com $ */
 /** @file
  * LsiLogic SCSI host adapter driver to boot from disks.
  */
@@ -47,7 +47,11 @@
 
 
 #ifdef USE_VDS
-#define NUM_SG_BUFFERS      34
+/* The disk BIOS won't transfer more than 64K at a time. The extended
+ * INT 13h interface is limited to 127 sectors (Phoenix EDD 3.0).
+ * We need at most enough for 64K + 1 page for alignment.
+ */
+#define NUM_SG_BUFFERS      17
 #endif
 
 
