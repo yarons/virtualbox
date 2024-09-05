@@ -1,4 +1,4 @@
-/* $Id: GraphicsAdapterImpl.cpp 105959 2024-09-04 16:57:58Z andreas.loeffler@oracle.com $ */
+/* $Id: GraphicsAdapterImpl.cpp 105964 2024-09-05 06:48:10Z andreas.loeffler@oracle.com $ */
 /** @file
  * Implementation of IGraphicsAdapter in VBoxSVC.
  */
@@ -303,18 +303,27 @@ HRESULT GraphicsAdapter::isFeatureEnabled(GraphicsFeature_T aFeature, BOOL *aEna
 
     bool *pfSetting = NULL;
 
-    switch (aFeature)
+    /* If we don't support a feature with this graphics controller type, skip returning
+     * what setting we have stored for it.
+     *
+     * This could happen if loading an old(er) saved state or importing a VM where this feature (formely)
+     * was supported. PlatformProperties::s_isGraphicsControllerFeatureSupported() is the single source of truth here. */
+    if (PlatformProperties::s_isGraphicsControllerFeatureSupported(mParent->i_getPlatform()->i_getArchitecture(),
+                                                                   mData->graphicsControllerType, aFeature))
     {
-        case GraphicsFeature_Acceleration2DVideo:
-            pfSetting = &mData->fAccelerate2DVideo;
-            break;
+        switch (aFeature)
+        {
+            case GraphicsFeature_Acceleration2DVideo:
+                pfSetting = &mData->fAccelerate2DVideo;
+                break;
 
-        case GraphicsFeature_Acceleration3D:
-            pfSetting = &mData->fAccelerate3D;
-            break;
+            case GraphicsFeature_Acceleration3D:
+                pfSetting = &mData->fAccelerate3D;
+                break;
 
-        default:
-            break;
+            default:
+                break;
+        }
     }
 
     *aEnabled = pfSetting ? *pfSetting : FALSE;
