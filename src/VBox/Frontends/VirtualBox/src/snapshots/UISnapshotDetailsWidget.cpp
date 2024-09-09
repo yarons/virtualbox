@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 105864 2024-08-26 18:45:15Z andreas.loeffler@oracle.com $ */
+/* $Id: UISnapshotDetailsWidget.cpp 105991 2024-09-09 16:16:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -413,7 +413,7 @@ void UISnapshotDetailsElement::paintEvent(QPaintEvent * /* pEvent */)
 
 void UISnapshotDetailsElement::prepare()
 {
-    /* Install QIComboBox accessibility interface factory: */
+    /* Install UISnapshotDetailsElement accessibility interface factory: */
     QAccessible::installFactory(UIAccessibilityInterfaceForUISnapshotDetailsElement::pFactory);
 
     /* Create layout: */
