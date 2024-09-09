@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceTcp.cpp 104693 2024-05-16 16:44:11Z andreas.loeffler@oracle.com $ */
+/* $Id: AudioTestServiceTcp.cpp 105987 2024-09-09 16:06:15Z andreas.loeffler@oracle.com $ */
 /** @file
  * AudioTestServiceTcp - Audio test execution server, TCP/IP Transport Layer.
  */
@@ -697,6 +697,7 @@ static DECLCALLBACK(int) atsTcpRecvPkt(PATSTRANSPORTINST pThis, PATSTRANSPORTCLI
         else
         {
             RTMemFree(pbData);
+            pbData = NULL;
 
             /* assume fatal connection error. */
             LogRelFunc(("RTTcpRead -> %Rrc -> atsTcpDisconnectClient(%RTsock)\n", rc, pClient->hTcpClient));
