@@ -1,4 +1,4 @@
-/* $Id: PlatformPropertiesImpl.cpp 105966 2024-09-05 07:13:29Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformPropertiesImpl.cpp 105993 2024-09-09 17:54:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform properties.
  */
@@ -903,10 +903,13 @@ int PlatformProperties::s_getSupportedGraphicsControllerFeatures(PlatformArchite
  * @param   enmFeature              Feature to query.
  */
 /* static */
-bool PlatformProperties::s_isGraphicsControllerFeatureSupported(PlatformArchitecture_T enmArchitecture, GraphicsControllerType_T enmController, GraphicsFeature_T enmFeature)
+bool PlatformProperties::s_isGraphicsControllerFeatureSupported(PlatformArchitecture_T enmArchitecture,
+                                                                GraphicsControllerType_T enmController,
+                                                                GraphicsFeature_T enmFeature)
 {
     std::vector<GraphicsFeature_T> vecSupportedGraphicsFeatures;
-    int vrc = PlatformProperties::s_getSupportedGraphicsControllerFeatures(enmArchitecture, enmController, vecSupportedGraphicsFeatures);
+    int vrc = PlatformProperties::s_getSupportedGraphicsControllerFeatures(enmArchitecture, enmController,
+                                                                           vecSupportedGraphicsFeatures);
     if (RT_SUCCESS(vrc))
         return std::find(vecSupportedGraphicsFeatures.begin(),
                          vecSupportedGraphicsFeatures.end(), enmFeature) != vecSupportedGraphicsFeatures.end();
