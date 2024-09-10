@@ -1,4 +1,4 @@
-/* $Id: DisasmCore-armv8.cpp 106004 2024-09-10 11:51:08Z alexander.eichner@oracle.com $ */
+/* $Id: DisasmCore-armv8.cpp 106005 2024-09-10 12:04:06Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Disassembler - Core Components.
  */
@@ -766,7 +766,7 @@ static int disArmV8ParseImmHImmB(PDISSTATE pDis, uint32_t u32Insn, PCDISARMV8OPC
 
     Assert(pInsnParm->cBits == 7);
     uint32_t u32ImmRaw = disArmV8ExtractBitVecFromInsn(u32Insn, pInsnParm->idxBitStart, pInsnParm->cBits);
-    if (!(u32ImmRaw & RT_BIT_32(6))) /* immh == 0xxx is reserved for the scalar variant. */ 
+    if (!(u32ImmRaw & RT_BIT_32(6))) /* immh == 0xxx is reserved for the scalar variant. */
         return VERR_DIS_INVALID_OPCODE;
 
     pParam->uValue = 2 * 64 - u32ImmRaw;
