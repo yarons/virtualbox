@@ -1,4 +1,4 @@
-/* $Id: UIRecordingSettingsEditor.cpp 105120 2024-07-03 16:15:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIRecordingSettingsEditor.cpp 106002 2024-09-10 11:35:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIRecordingSettingsEditor class implementation.
  */
@@ -511,7 +511,7 @@ void UIRecordingSettingsEditor::prepareWidgets()
                 if (m_pEditorFilePath)
                 {
                     if (m_pLabelFilePath)
-                        m_pLabelFilePath->setBuddy(m_pEditorFilePath->focusProxy());
+                        m_pLabelFilePath->setBuddy(m_pEditorFilePath);
                     m_pEditorFilePath->setEditable(false);
                     m_pEditorFilePath->setMode(UIFilePathSelector::Mode_File_Save);
 

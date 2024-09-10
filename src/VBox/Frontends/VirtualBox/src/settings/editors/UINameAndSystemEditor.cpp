@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 105525 2024-07-26 15:25:30Z sergey.dubov@oracle.com $ */
+/* $Id: UINameAndSystemEditor.cpp 106002 2024-09-10 11:35:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -456,7 +456,7 @@ void UINameAndSystemEditor::prepareWidgets()
             m_pSelectorPath = new UIFilePathSelector(this);
             if (m_pSelectorPath)
             {
-                m_pLabelPath->setBuddy(m_pSelectorPath->focusProxy());
+                m_pLabelPath->setBuddy(m_pSelectorPath);
                 QString strDefaultMachineFolder = gpGlobalSession->virtualBox().GetSystemProperties().GetDefaultMachineFolder();
                 m_pSelectorPath->setPath(strDefaultMachineFolder);
                 m_pSelectorPath->setDefaultPath(strDefaultMachineFolder);
@@ -479,7 +479,7 @@ void UINameAndSystemEditor::prepareWidgets()
             m_pSelectorImage = new UIFilePathSelector(this);
             if (m_pSelectorImage)
             {
-                m_pLabelImage->setBuddy(m_pSelectorImage->focusProxy());
+                m_pLabelImage->setBuddy(m_pSelectorImage);
                 m_pSelectorImage->setResetEnabled(false);
                 m_pSelectorImage->setMode(UIFilePathSelector::Mode_File_Open);
                 m_pSelectorImage->setFileDialogFilters("ISO Images(*.iso *.ISO)");
