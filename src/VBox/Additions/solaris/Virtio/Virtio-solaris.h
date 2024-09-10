@@ -1,4 +1,4 @@
-/* $Id: Virtio-solaris.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: Virtio-solaris.h 106001 2024-09-10 11:15:32Z brent.paulson@oracle.com $ */
 /** @file
  * VirtualBox Guest Additions: Virtio Driver for Solaris, header.
  */
@@ -77,7 +77,7 @@ typedef VIRTIORINGDESC *PVIRTIORINGDESC;
  */
 struct VirtioRingAvail
 {
-    uint16_t                fFlags;             /* Interrupt supression flag. */
+    uint16_t                fFlags;             /* Interrupt suppression flag. */
     uint16_t                Index;              /* Index of available ring. */
     uint16_t                aRings[1];          /* Array of indices into descriptor table. */
 };

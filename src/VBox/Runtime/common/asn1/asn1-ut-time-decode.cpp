@@ -1,4 +1,4 @@
-/* $Id: asn1-ut-time-decode.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: asn1-ut-time-decode.cpp 106001 2024-09-10 11:15:32Z brent.paulson@oracle.com $ */
 /** @file
  * IPRT - ASN.1, UTC TIME and GENERALIZED TIME Types, Decoding.
  */
@@ -69,7 +69,7 @@ static int rtAsn1Time_NormalizeTime(PRTASN1CURSOR pCursor, PRTASN1TIME pThis, co
         && pThis->Time.u8Second <= 60)
     {
         /* Work around clever rounding error in DER_CFDateToUTCTime() on OS X.  This also
-           supresses any attempt at feeding us leap seconds.  If we pass 60 to the
+           suppresses any attempt at feeding us leap seconds.  If we pass 60 to the
            normalization code will move on to the next min/hour/day, which is wrong both
            for the OS X issue and for unwanted leap seconds.  Leap seconds are not valid
            ASN.1 by the by according to the specs available to us.  */

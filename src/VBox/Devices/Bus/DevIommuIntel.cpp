@@ -1,4 +1,4 @@
-/* $Id: DevIommuIntel.cpp 99280 2023-04-04 13:05:53Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: DevIommuIntel.cpp 106001 2024-09-10 11:15:32Z brent.paulson@oracle.com $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - Intel implementation.
  */
@@ -1546,7 +1546,7 @@ static void dmarPrimaryFaultRecord(PPDMDEVINS pDevIns, uint64_t uFrcdHi, uint64_
 static void dmarIrFaultRecord(PPDMDEVINS pDevIns, DMARDIAG enmDiag, uint16_t idDevice, uint16_t idxIntr, PCVTD_IRTE_T pIrte)
 {
     /*
-     * Update the diagnostic reason (even if software wants to supress faults).
+     * Update the diagnostic reason (even if software wants to suppress faults).
      */
     PDMAR pThis = PDMDEVINS_2_DATA(pDevIns, PDMAR);
     pThis->enmDiag = enmDiag;
@@ -1614,7 +1614,7 @@ static void dmarIrFaultRecord(PPDMDEVINS pDevIns, DMARDIAG enmDiag, uint16_t idD
 static void dmarAtFaultRecord(PPDMDEVINS pDevIns, DMARDIAG enmDiag, PCDMARMEMREQIN pMemReqIn, PCDMARMEMREQAUX pMemReqAux)
 {
     /*
-     * Update the diagnostic reason (even if software wants to supress faults).
+     * Update the diagnostic reason (even if software wants to suppress faults).
      */
     PDMAR pThis = PDMDEVINS_2_DATA(pDevIns, PDMAR);
     pThis->enmDiag = enmDiag;
@@ -2445,7 +2445,7 @@ static int dmarDrLegacyModeRemapAddr(PPDMDEVINS pDevIns, uint64_t uRtaddrReg, PD
                     uint64_t const uCtxEntryQword0 = CtxEntry.au64[0];
                     uint64_t const uCtxEntryQword1 = CtxEntry.au64[1];
 
-                    /* Note the FPD bit which software can use to supress translation faults from here on in. */
+                    /* Note the FPD bit which software can use to suppress translation faults from here on in. */
                     pMemReqAux->fFpd = RT_BF_GET(uCtxEntryQword0, VTD_BF_0_CONTEXT_ENTRY_FPD);
 
                     /* Check if the context-entry is present (must be done before validating reserved bits). */

@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioPulseAudio.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostAudioPulseAudio.cpp 106001 2024-09-10 11:15:32Z brent.paulson@oracle.com $ */
 /** @file
  * Host audio driver - Pulse Audio.
  */
@@ -1917,7 +1917,7 @@ static DECLCALLBACK(int) drvHstAudPaHA_StreamPlay(PPDMIHOSTAUDIO pInterface, PPD
     { /* likely */ }
     else
     {
-        LogFunc(("Supressing %Rrc because we wrote %#x bytes\n", rc, cbTotalWritten));
+        LogFunc(("Suppressing %Rrc because we wrote %#x bytes\n", rc, cbTotalWritten));
         rc = VINF_SUCCESS;
     }
     Log3Func(("returns %Rrc *pcbWritten=%#x iLoop=%u @%#RX64\n", rc, cbTotalWritten, iLoop, pStreamPA->offInternal));
@@ -2116,7 +2116,7 @@ static DECLCALLBACK(int) drvHstAudPaHA_StreamCapture(PPDMIHOSTAUDIO pInterface, 
     { /* likely */ }
     else
     {
-        LogFunc(("Supressing %Rrc because we're returning %#x bytes\n", rc, cbTotalRead));
+        LogFunc(("Suppressing %Rrc because we're returning %#x bytes\n", rc, cbTotalRead));
         rc = VINF_SUCCESS;
     }
     Log3Func(("returns %Rrc *pcbRead=%#x (%#x left, peek %#x/%#x) @%#RX64\n",

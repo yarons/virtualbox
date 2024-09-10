@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdFuncsBltIn.cpp 105698 2024-08-15 23:33:49Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdFuncsBltIn.cpp 106001 2024-09-10 11:15:32Z brent.paulson@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, Built-in Threaded Functions.
  *
@@ -166,7 +166,7 @@ DECL_FORCE_INLINE(int) iemThreadedFunc_BltIn_CheckIrqCommon(PVMCPUCC pVCpu)
     /* Since the VMCPU_FF_INTERUPT_XXX flags was once upon a time in fVm and
        we haven't reused the bits yet, we can still reliably check whether
        we're only here for reasons of pending interrupts and whether these
-       are supressed by EFLAGS.IF=0 or interrupt shadowing. */
+       are suppressed by EFLAGS.IF=0 or interrupt shadowing. */
     Assert(!(fVmRaw & (VMCPU_FF_INTERRUPT_APIC | VMCPU_FF_INTERRUPT_PIC)));
     AssertCompile((VMCPU_FF_INTERRUPT_APIC | VMCPU_FF_INTERRUPT_PIC) == 3);
     if (   fFlags <= (VMCPU_FF_INTERRUPT_APIC | VMCPU_FF_INTERRUPT_PIC)

@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 105363 2024-07-16 18:12:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.h 106001 2024-09-10 11:15:32Z brent.paulson@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -198,9 +198,9 @@ public:
 
     /** @name Messaging
       * @{ */
-        /** Returns the list of supressed messages for the Message/Popup center frameworks. */
+        /** Returns the list of suppressed messages for the Message/Popup center frameworks. */
         QStringList suppressedMessages(const QUuid &uID = GlobalID);
-        /** Defines the @a list of supressed messages for the Message/Popup center frameworks. */
+        /** Defines the @a list of suppressed messages for the Message/Popup center frameworks. */
         void setSuppressedMessages(const QStringList &list);
 
         /** Returns the list of messages for the Message/Popup center frameworks with inverted check-box state. */

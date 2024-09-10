@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 105092 2024-07-02 08:55:52Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMAllRegs.cpp 106001 2024-09-10 11:15:32Z brent.paulson@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -991,7 +991,7 @@ VMMDECL(void) CPUMGetGuestCpuId(PVMCPUCC pVCpu, uint32_t uLeaf, uint32_t uSubLea
                     AssertMsgFailed(("uLeaf=%#x\n", uLeaf));
             }
 
-            /* Intel CPUs supresses the SYSCALL bit when not executing in 64-bit mode: */
+            /* Intel CPUs suppress the SYSCALL bit when not executing in 64-bit mode: */
             if (   uLeaf == UINT32_C(0x80000001)
                 && f64BitMode == false
                 && (*pEdx & X86_CPUID_EXT_FEATURE_EDX_SYSCALL)

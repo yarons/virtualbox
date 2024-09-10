@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDHCPServer.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageDHCPServer.cpp 106001 2024-09-10 11:15:32Z brent.paulson@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of dhcpserver command.
  */
@@ -576,7 +576,7 @@ static DECLCALLBACK(RTEXITCODE) dhcpdHandleAddAndModify(PDHCPDCMDCTX pCtx, int a
                     if (pCtx->pCmdDef->fSubcommandScope == HELP_SCOPE_DHCPSERVER_ADD)
                         return errorSyntax(DHCPServer::tr("--unforce-opt does not apply to the 'add' subcommand"));
                     RT_FALL_THROUGH();
-                case DHCP_ADDMOD_UNSUPPRESS_OPTION: // --unsupress-opt
+                case DHCP_ADDMOD_UNSUPPRESS_OPTION: // --unsuppress-opt
                     if (pCtx->pCmdDef->fSubcommandScope == HELP_SCOPE_DHCPSERVER_ADD)
                         return errorSyntax(DHCPServer::tr("--unsuppress-opt does not apply to the 'add' subcommand"));
                     RT_FALL_THROUGH();
