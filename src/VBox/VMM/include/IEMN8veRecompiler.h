@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 105895 2024-08-29 06:03:30Z bela.lubkin@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 105997 2024-09-10 08:55:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -500,6 +500,9 @@ typedef enum
     kIemNativeLabelType_ReturnBreakViaLookupWithTlbAndIrq,
     kIemNativeLabelType_ReturnWithFlags,
     kIemNativeLabelType_NonZeroRetOrPassUp,
+#ifdef IEMNATIVE_WITH_RECOMPILER_PER_CHUNK_TAIL_CODE
+    kIemNativeLabelType_ReturnZero,             /**< Sets eax/w0 to zero and returns. */
+#endif
     kIemNativeLabelType_Return,
     /** The last fixup for branches that can span almost the whole TB length.
      * @note Whether kIemNativeLabelType_Return needs to be one of these is
