@@ -1,4 +1,4 @@
-/* $Id: UINetworkFeaturesEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
+/* $Id: UINetworkFeaturesEditor.cpp 106010 2024-09-11 16:20:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkFeaturesEditor class implementation.
  */
@@ -336,7 +336,6 @@ void UINetworkFeaturesEditor::prepare()
                 m_pLabelMAC->setBuddy(m_pEditorMAC);
             m_pEditorMAC->setAllowToCopyContentsWhenDisabled(true);
             m_pEditorMAC->setValidator(new QRegularExpressionValidator(QRegularExpression("[0-9A-Fa-f]{12}"), this));
-            m_pEditorMAC->setMinimumWidthByText(QString().fill('0', 12));
 
             m_pLayoutSettings->addWidget(m_pEditorMAC, 2, 1, 1, 2);
         }
