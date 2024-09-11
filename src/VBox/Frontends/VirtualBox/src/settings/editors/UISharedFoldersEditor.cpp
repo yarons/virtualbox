@@ -1,4 +1,4 @@
-/* $Id: UISharedFoldersEditor.cpp 104585 2024-05-13 11:37:59Z sergey.dubov@oracle.com $ */
+/* $Id: UISharedFoldersEditor.cpp 106009 2024-09-11 16:19:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISharedFoldersEditor class implementation.
  */
@@ -643,7 +643,8 @@ void UISharedFoldersEditor::prepareTreeWidget()
     if (m_pTreeWidget)
     {
         m_pTreeWidget->header()->setSectionsMovable(false);
-        m_pTreeWidget->setMinimumSize(QSize(0, 200));
+        m_pTreeWidget->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Ignored);
+        m_pTreeWidget->setMinimumHeight(150);
         m_pTreeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
         m_pTreeWidget->setUniformRowHeights(true);
         m_pTreeWidget->setAllColumnsShowFocus(true);

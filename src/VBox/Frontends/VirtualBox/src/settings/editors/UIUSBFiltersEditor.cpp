@@ -1,4 +1,4 @@
-/* $Id: UIUSBFiltersEditor.cpp 105150 2024-07-04 15:53:45Z sergey.dubov@oracle.com $ */
+/* $Id: UIUSBFiltersEditor.cpp 106009 2024-09-11 16:19:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUSBFiltersEditor class implementation.
  */
@@ -566,6 +566,8 @@ void UIUSBFiltersEditor::prepareTreeWidget()
         if (m_pLabelSeparator)
             m_pLabelSeparator->setBuddy(m_pTreeWidget);
         m_pTreeWidget->header()->hide();
+        m_pTreeWidget->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Ignored);
+        m_pTreeWidget->setMinimumHeight(150);
         m_pTreeWidget->setRootIsDecorated(false);
         m_pTreeWidget->setUniformRowHeights(true);
         m_pTreeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
