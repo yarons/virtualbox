@@ -1,4 +1,4 @@
-/* $Id: UIScaleFactorEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIScaleFactorEditor.cpp 106008 2024-09-11 15:36:17Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIScaleFactorEditor class implementation.
  */
@@ -164,11 +164,6 @@ void UIScaleFactorEditor::setIsGlobalScaleFactor(bool bFlag)
 void UIScaleFactorEditor::setDefaultScaleFactor(double dDefaultScaleFactor)
 {
     m_dDefaultScaleFactor = dDefaultScaleFactor;
-}
-
-void UIScaleFactorEditor::setSpinBoxWidthHint(int iHint)
-{
-    m_pScaleSpinBox->setMinimumWidth(iHint);
 }
 
 int UIScaleFactorEditor::minimumLabelHorizontalHint() const

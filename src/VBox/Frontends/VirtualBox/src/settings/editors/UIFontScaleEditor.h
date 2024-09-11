@@ -1,4 +1,4 @@
-/* $Id: UIFontScaleEditor.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFontScaleEditor.h 106008 2024-09-11 15:36:17Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFontScaleEditor class declaration.
  */
@@ -51,9 +51,6 @@ public:
 
     /** Constructs editor passing @a pParent to the base-class. */
     UIFontScaleEditor(QWidget *pParent);
-
-    /** Defines minimum width @a iHint for internal spin-box. */
-    void setSpinBoxWidthHint(int iHint);
 
     /** Returns minimum layout hint. */
     int minimumLabelHorizontalHint() const;

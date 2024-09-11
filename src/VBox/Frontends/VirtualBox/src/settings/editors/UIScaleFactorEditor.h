@@ -1,4 +1,4 @@
-/* $Id: UIScaleFactorEditor.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIScaleFactorEditor.h 106008 2024-09-11 15:36:17Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIScaleFactorEditor class declaration.
  */
@@ -63,9 +63,6 @@ public:
 
     /** Defines @a dDefaultScaleFactor. */
     void setDefaultScaleFactor(double dDefaultScaleFactor);
-
-    /** Defines minimum width @a iHint for internal spin-box. */
-    void setSpinBoxWidthHint(int iHint);
 
     /** Returns minimum layout hint. */
     int minimumLabelHorizontalHint() const;

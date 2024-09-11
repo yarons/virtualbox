@@ -1,4 +1,4 @@
-/* $Id: UIFontScaleEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFontScaleEditor.cpp 106008 2024-09-11 15:36:17Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFontScaleEditor class implementation.
  */
@@ -71,11 +71,6 @@ UIFontScaleEditor::UIFontScaleEditor(QWidget *pParent)
 {
     /* Prepare: */
     prepare();
-}
-
-void UIFontScaleEditor::setSpinBoxWidthHint(int iHint)
-{
-    m_pScaleSpinBox->setMinimumWidth(iHint);
 }
 
 int UIFontScaleEditor::minimumLabelHorizontalHint() const
