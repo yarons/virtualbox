@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 105853 2024-08-23 20:36:08Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 106037 2024-09-12 15:17:06Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 105853 $"
+__version__ = "$Revision: 106037 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -3203,6 +3203,15 @@ g_dMcStmtParsers = {
     'IEM_MC_IND_CALL_U32_AND_FINISH':                            (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_IND_CALL_U64_AND_FINISH':                            (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_INT_CLEAR_ZMM_256_UP':                               (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_LIVENESS_GREG_INPUT':                                (McBlock.parseMcGeneric,           False, False, True,  ),
+    'IEM_MC_LIVENESS_GREG_CLOBBER':                              (McBlock.parseMcGeneric,           False, False, True,  ),
+    'IEM_MC_LIVENESS_GREG_MODIFY':                               (McBlock.parseMcGeneric,           False, False, True,  ),
+    'IEM_MC_LIVENESS_MREG_INPUT':                                (McBlock.parseMcGeneric,           False, False, True,  ),
+    'IEM_MC_LIVENESS_MREG_CLOBBER':                              (McBlock.parseMcGeneric,           False, False, True,  ),
+    'IEM_MC_LIVENESS_MREG_MODIFY':                               (McBlock.parseMcGeneric,           False, False, True,  ),
+    'IEM_MC_LIVENESS_XREG_INPUT':                                (McBlock.parseMcGeneric,           False, False, True,  ),
+    'IEM_MC_LIVENESS_XREG_CLOBBER':                              (McBlock.parseMcGeneric,           False, False, True,  ),
+    'IEM_MC_LIVENESS_XREG_MODIFY':                               (McBlock.parseMcGeneric,           False, False, True,  ),
     'IEM_MC_LOCAL':                                              (McBlock.parseMcLocal,             False, False, True,  ),
     'IEM_MC_LOCAL_ASSIGN':                                       (McBlock.parseMcLocalAssign,       False, False, True,  ),
     'IEM_MC_LOCAL_CONST':                                        (McBlock.parseMcLocalConst,        False, False, True,  ),

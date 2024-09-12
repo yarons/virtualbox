@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 105664 2024-08-14 08:47:13Z bela.lubkin@oracle.com $ */
+/* $Id: IEMMc.h 106037 2024-09-12 15:17:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX.
  */
@@ -3309,6 +3309,29 @@ AssertCompile(X86_CR4_FSGSBASE > UINT8_MAX);
 
 /** Recompiler debugging: Flush guest register shadow copies. */
 #define IEM_MC_HINT_FLUSH_GUEST_SHADOW(g_fGstShwFlush)  ((void)0)
+
+/** Recompiler liveness info: input GPR */
+#define IEM_MC_LIVENESS_GREG_INPUT(a_iGReg)             ((void)0)
+/** Recompiler liveness info: clobbered GPR */
+#define IEM_MC_LIVENESS_GREG_CLOBBER(a_iGReg)           ((void)0)
+/** Recompiler liveness info: modified GPR register (i.e. input & output)  */
+#define IEM_MC_LIVENESS_GREG_MODIFY(a_iGReg)            ((void)0)
+
+/** Recompiler liveness info: input MM register */
+#define IEM_MC_LIVENESS_MREG_INPUT(a_iMReg)             ((void)0)
+/** Recompiler liveness info: clobbered MM register */
+#define IEM_MC_LIVENESS_MREG_CLOBBER(a_iMReg)           ((void)0)
+/** Recompiler liveness info: modified MM register (i.e. input & output)  */
+#define IEM_MC_LIVENESS_MREG_MODIFY(a_iMReg)            ((void)0)
+
+/** Recompiler liveness info: input SSE register */
+#define IEM_MC_LIVENESS_XREG_INPUT(a_iXReg)             ((void)0)
+/** Recompiler liveness info: clobbered SSE register */
+#define IEM_MC_LIVENESS_XREG_CLOBBER(a_iXReg)           ((void)0)
+/** Recompiler liveness info: modified SSE register (i.e. input & output)  */
+#define IEM_MC_LIVENESS_XREG_MODIFY(a_iXReg)            ((void)0)
+
+/** @todo add more as needed. */
 
 /** @}  */
 

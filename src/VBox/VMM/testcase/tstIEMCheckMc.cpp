@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 105652 2024-08-12 12:16:36Z alexander.eichner@oracle.com $ */
+/* $Id: tstIEMCheckMc.cpp 106037 2024-09-12 15:17:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -1150,6 +1150,18 @@ typedef VBOXSTRICTRC (* PFNIEMOPRM)(PVMCPU pVCpu, uint8_t bRm);
 #define IEM_MC_ENDIF()                                                  } do { (void)fMcBegin; } while (0)
 
 #define IEM_MC_HINT_FLUSH_GUEST_SHADOW(g_fGstShwFlush)                  ((void)fMcBegin)
+
+#define IEM_MC_LIVENESS_GREG_INPUT(a_iGReg)                             ((void)a_iGReg)
+#define IEM_MC_LIVENESS_GREG_CLOBBER(a_iGReg)                           ((void)a_iGReg)
+#define IEM_MC_LIVENESS_GREG_MODIFY(a_iGReg)                            ((void)a_iGReg)
+
+#define IEM_MC_LIVENESS_MREG_INPUT(a_iMReg)                             ((void)a_iMReg)
+#define IEM_MC_LIVENESS_MREG_CLOBBER(a_iMReg)                           ((void)a_iMReg)
+#define IEM_MC_LIVENESS_MREG_MODIFY(a_iMReg)                            ((void)a_iMReg)
+
+#define IEM_MC_LIVENESS_XREG_INPUT(a_iXReg)                             ((void)a_iXReg)
+#define IEM_MC_LIVENESS_XREG_CLOBBER(a_iXReg)                           ((void)a_iXReg)
+#define IEM_MC_LIVENESS_XREG_MODIFY(a_iXReg)                            ((void)a_iXReg)
 
 /** @}  */
 

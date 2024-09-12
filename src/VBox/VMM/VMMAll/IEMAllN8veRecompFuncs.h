@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompFuncs.h 106036 2024-09-12 13:40:36Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompFuncs.h 106037 2024-09-12 15:17:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler - Inlined Bits.
  */
@@ -246,6 +246,24 @@ iemNativeRegFlushPendingSpecificWrite(PIEMRECOMPILERSTATE pReNative, uint32_t of
 #define IEM_MC_END() \
         iemNativeVarFreeAll(pReNative); \
     } return off
+
+
+
+/*********************************************************************************************************************************
+*   Liveness Stubs                                                                                                               *
+*********************************************************************************************************************************/
+
+#define IEM_MC_LIVENESS_GREG_INPUT(a_iGReg)     ((void)0)
+#define IEM_MC_LIVENESS_GREG_CLOBBER(a_iGReg)   ((void)0)
+#define IEM_MC_LIVENESS_GREG_MODIFY(a_iGReg)    ((void)0)
+
+#define IEM_MC_LIVENESS_MREG_INPUT(a_iMReg)     ((void)0)
+#define IEM_MC_LIVENESS_MREG_CLOBBER(a_iMReg)   ((void)0)
+#define IEM_MC_LIVENESS_MREG_MODIFY(a_iMReg)    ((void)0)
+
+#define IEM_MC_LIVENESS_XREG_INPUT(a_iXReg)     ((void)0)
+#define IEM_MC_LIVENESS_XREG_CLOBBER(a_iXReg)   ((void)0)
+#define IEM_MC_LIVENESS_XREG_MODIFY(a_iXReg)    ((void)0)
 
 
 
@@ -5977,7 +5995,8 @@ template<IEMNATIVEMITEFLOP const a_enmOp>
 DECL_INLINE_THROW(uint32_t) iemNativeEmitModifyEFlagsBit(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint32_t fEflBit)
 {
     uint8_t const idxEflReg = iemNativeRegAllocTmpForGuestReg(pReNative, &off, kIemNativeGstReg_EFlags,
-                                                              kIemNativeGstRegUse_ForUpdate, false /*fNoVolatileRegs*/);
+                                                              kIemNativeGstRegUse_ForUpdate, false /*fNoVolatileRegs*/,
+                                                              true /*fSkipLivenessAssert*/); /** @todo proper liveness / eflags fix */
 
     /* Using 'if constexpr' forces code elimination in debug builds with VC. */
     if RT_CONSTEXPR_IF(a_enmOp == kIemNativeEmitEflOp_Set)

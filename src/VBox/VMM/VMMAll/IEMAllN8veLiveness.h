@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veLiveness.h 105770 2024-08-21 14:18:53Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veLiveness.h 106037 2024-09-12 15:17:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Liveness Analysis, Common Header.
  */
@@ -1235,4 +1235,16 @@ AssertCompile(IEMLIVENESS_STATE_INPUT == IEMLIVENESS_STATE_MASK);
 #define IEM_MC_ENDIF()                                  } do {} while (0)
 
 #define IEM_MC_HINT_FLUSH_GUEST_SHADOW(g_fGstShwFlush)  NOP()
+
+#define IEM_MC_LIVENESS_GREG_INPUT(a_iGReg)             IEM_LIVENESS_GPR_INPUT(a_iGReg)
+#define IEM_MC_LIVENESS_GREG_CLOBBER(a_iGReg)           IEM_LIVENESS_GPR_CLOBBER(a_iGReg)
+#define IEM_MC_LIVENESS_GREG_MODIFY(a_iGReg)            IEM_LIVENESS_GPR_MODIFY(a_iGReg)
+
+#define IEM_MC_LIVENESS_MREG_INPUT(a_iMReg)             NOP()
+#define IEM_MC_LIVENESS_MREG_CLOBBER(a_iMReg)           NOP()
+#define IEM_MC_LIVENESS_MREG_MODIFY(a_iMReg)            NOP()
+
+#define IEM_MC_LIVENESS_XREG_INPUT(a_iXReg)             NOP()
+#define IEM_MC_LIVENESS_XREG_CLOBBER(a_iXReg)           NOP()
+#define IEM_MC_LIVENESS_XREG_MODIFY(a_iXReg)            NOP()
 
