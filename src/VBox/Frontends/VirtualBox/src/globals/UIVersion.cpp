@@ -1,4 +1,4 @@
-/* $Id: UIVersion.cpp 104055 2024-03-26 09:14:14Z sergey.dubov@oracle.com $ */
+/* $Id: UIVersion.cpp 106032 2024-09-12 13:01:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVersion class implementation.
  */
@@ -210,11 +210,7 @@ QString UIVersionInfo::vboxVersionStringNormalized()
 /* static */
 bool UIVersionInfo::isBeta()
 {
-#if defined(RT_ARCH_ARM64) || defined(RT_ARCH_ARM32)
-    return true;
-#else
     return vboxVersionString().contains(QRegularExpression("BETA|ALPHA", QRegularExpression::CaseInsensitiveOption));
-#endif
 }
 
 /* static */

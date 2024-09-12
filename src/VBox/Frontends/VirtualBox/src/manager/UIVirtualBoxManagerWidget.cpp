@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 105480 2024-07-24 13:16:55Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 106032 2024-09-12 13:01:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -687,28 +687,24 @@ void UIVirtualBoxManagerWidget::prepareWidgets()
                         m_pToolBar->setUseTextLabels(true);
 
 #if defined(VBOX_WS_MAC) && (defined(RT_ARCH_ARM64) || defined(RT_ARCH_ARM32))
-                        /* Branding stuff for macOS ARM platform: */
-                        if (UIVersionInfo::showBetaLabel())
+                        /* Check whether we should show Dev Preview tag: */
+                        bool fShowDevPreviewTag = false;
+                        const CVirtualBox comVBox = gpGlobalSession->virtualBox();
+                        if (comVBox.isNotNull())
                         {
-                            /* Check whether we should show Dev Preview tag: */
-                            bool fShowDevPreviewTag = false;
-                            const CVirtualBox comVBox = gpGlobalSession->virtualBox();
-                            if (comVBox.isNotNull())
-                            {
-                                const CSystemProperties comSystemProps = comVBox.GetSystemProperties();
-                                if (comVBox.isOk() && comSystemProps.isNotNull())
-                                    fShowDevPreviewTag =
-                                        comSystemProps.GetSupportedPlatformArchitectures().contains(KPlatformArchitecture_x86);
-                            }
-                            /* Enable Dev Preview tag: */
-                            if (fShowDevPreviewTag)
-                            {
-                                m_pToolBar->emulateMacToolbar();
-                                m_pToolBar->enableBranding(UIIconPool::iconSet(":/explosion_hazard_32px.png"),
-                                                           "Dev Preview", // do we need to make it NLS?
-                                                           QColor(246, 179, 0),
-                                                           74 /* width of BETA label */);
-                            }
+                            const CSystemProperties comSystemProps = comVBox.GetSystemProperties();
+                            if (comVBox.isOk() && comSystemProps.isNotNull())
+                                fShowDevPreviewTag =
+                                    comSystemProps.GetSupportedPlatformArchitectures().contains(KPlatformArchitecture_x86);
+                        }
+                        /* Enable Dev Preview tag: */
+                        if (fShowDevPreviewTag)
+                        {
+                            m_pToolBar->emulateMacToolbar();
+                            m_pToolBar->enableBranding(UIIconPool::iconSet(":/explosion_hazard_32px.png"),
+                                                       "Dev Preview", // do we need to make it NLS?
+                                                       QColor(246, 179, 0),
+                                                       74 /* width of BETA label */);
                         }
 #endif /* VBOX_WS_MAC && (RT_ARCH_ARM64 || RT_ARCH_ARM32) */
 
