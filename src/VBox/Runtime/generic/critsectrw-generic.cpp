@@ -1,4 +1,4 @@
-/* $Id: critsectrw-generic.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: critsectrw-generic.cpp 106020 2024-09-12 09:23:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Read/Write Critical Section, Generic.
  */
@@ -94,6 +94,13 @@ RTDECL(int) RTCritSectRwInit(PRTCRITSECTRW pThis)
     return RTCritSectRwInitEx(pThis, 0, NIL_RTLOCKVALCLASS, RTLOCKVAL_SUB_CLASS_NONE, "RTCritSectRw");
 }
 RT_EXPORT_SYMBOL(RTCritSectRwInit);
+
+
+RTDECL(int) RTCritSectRwInitNamed(PRTCRITSECTRW pThis, const char *pszName)
+{
+    return RTCritSectRwInitEx(pThis, 0, NIL_RTLOCKVALCLASS, RTLOCKVAL_SUB_CLASS_NONE, "%s", pszName);
+}
+RT_EXPORT_SYMBOL(RTCritSectRwInitNamed);
 
 
 RTDECL(int) RTCritSectRwInitEx(PRTCRITSECTRW pThis, uint32_t fFlags,

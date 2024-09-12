@@ -1,4 +1,4 @@
-/* $Id: critsect-generic.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: critsect-generic.cpp 106020 2024-09-12 09:23:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Critical Section, Generic.
  */
@@ -74,6 +74,13 @@ RTDECL(int) RTCritSectInit(PRTCRITSECT pCritSect)
     return RTCritSectInitEx(pCritSect, 0, NIL_RTLOCKVALCLASS, RTLOCKVAL_SUB_CLASS_NONE, "RTCritSect");
 }
 RT_EXPORT_SYMBOL(RTCritSectInit);
+
+
+RTDECL(int) RTCritSectInitNamed(PRTCRITSECT pCritSect, const char *pszName)
+{
+    return RTCritSectInitEx(pCritSect, 0, NIL_RTLOCKVALCLASS, RTLOCKVAL_SUB_CLASS_NONE, "%s", pszName);
+}
+RT_EXPORT_SYMBOL(RTCritSectInitNamed);
 
 
 RTDECL(int) RTCritSectInitEx(PRTCRITSECT pCritSect, uint32_t fFlags, RTLOCKVALCLASS hClass, uint32_t uSubClass,
