@@ -1,4 +1,4 @@
-; $Id: VMMR3.def 102092 2023-11-14 23:53:15Z knut.osmundsen@oracle.com $
+; $Id: VMMR3.def 106022 2024-09-12 09:44:36Z knut.osmundsen@oracle.com $
 ;; @file
 ; VMM Ring-3 Context DLL - Definition file.
 
@@ -280,6 +280,7 @@ EXPORTS
     PDMR3DeviceDetach
     PDMR3DriverAttach
     PDMR3DriverDetach
+    PDMR3DriverEnumInstances
     PDMR3NsBwGroupSetLimit
     PDMR3QueryDeviceLun
     PDMR3QueryDriverOnLun
