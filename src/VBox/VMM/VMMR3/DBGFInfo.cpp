@@ -1,4 +1,4 @@
-/* $Id: DBGFInfo.cpp 105352 2024-07-16 11:21:19Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFInfo.cpp 106030 2024-09-12 11:40:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Info.
  */
@@ -109,7 +109,7 @@ int dbgfR3InfoInit(PUVM pUVM)
     /*
      * Initialize the crit sect.
      */
-    int rc = RTCritSectRwInit(&pUVM->dbgf.s.CritSect);
+    int rc = RTCritSectRwInitNamed(&pUVM->dbgf.s.CritSect, "DBGF-CritSect-RW");
     AssertRCReturn(rc, rc);
 
     /*
