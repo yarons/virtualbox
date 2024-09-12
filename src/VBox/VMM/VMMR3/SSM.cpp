@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: SSM.cpp 106029 2024-09-12 11:38:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -953,7 +953,7 @@ static int ssmR3LazyInit(PVM pVM)
      * Initialize the cancellation critsect now.
      */
     if (RT_SUCCESS(rc))
-        rc = RTCritSectInit(&pVM->ssm.s.CancelCritSect);
+        rc = RTCritSectInitNamed(&pVM->ssm.s.CancelCritSect, "SSM-CancelCritSect");
     if (RT_SUCCESS(rc))
     {
         STAM_REL_REG_USED(pVM, &pVM->ssm.s.uPass, STAMTYPE_U32, "/SSM/uPass", STAMUNIT_COUNT, "Current pass");

@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 104507 2024-05-03 13:58:16Z knut.osmundsen@oracle.com $ */
+/* $Id: VM.cpp 106029 2024-09-12 11:38:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -488,10 +488,10 @@ static int vmR3CreateUVM(uint32_t cCpus, PCVMM2USERMETHODS pVmm2UserMethods, PUV
         }
         if (RT_SUCCESS(rc))
         {
-            rc = RTCritSectInit(&pUVM->vm.s.AtStateCritSect);
+            rc = RTCritSectInitNamed(&pUVM->vm.s.AtStateCritSect, "VM-AtStateCritSect");
             if (RT_SUCCESS(rc))
             {
-                rc = RTCritSectInit(&pUVM->vm.s.AtErrorCritSect);
+                rc = RTCritSectInitNamed(&pUVM->vm.s.AtErrorCritSect, "VM-AtErrorCritSect");
                 if (RT_SUCCESS(rc))
                 {
                     /*
