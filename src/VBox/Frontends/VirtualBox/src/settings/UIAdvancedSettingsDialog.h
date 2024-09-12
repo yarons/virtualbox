@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialog.h 105780 2024-08-21 16:44:16Z sergey.dubov@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialog.h 106015 2024-09-12 00:20:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class declaration.
  */
@@ -237,6 +237,8 @@ private:
 
     /** Holds whether dialog is polished. */
     bool  m_fPolished;
+    /** Holds whether the first serialization is done. */
+    bool  m_fFirstSerializationDone;
     /** Holds whether the serialization is in progress. */
     bool  m_fSerializationIsInProgress;
     /** Holds whether there were no serialization errors. */
