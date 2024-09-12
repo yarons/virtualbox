@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 104827 2024-05-31 13:56:15Z sergey.dubov@oracle.com $
+# $Id: Makefile.kmk 106031 2024-09-12 12:57:08Z andreas.loeffler@oracle.com $
 ## @file
 # Makefile for the Windows installer.
 #
@@ -78,6 +78,11 @@ ifdef VBOX_INSTALLER_QUICK
  VBOX_WITH_VBOX_IMG             :=
  VBOX_WITH_VBOXSDL              :=
  VBOX_CAB_COMPRESSION_LEVEL     := none
+endif
+
+# Make sure that we show the license page in non-OSE release builds.
+if !defined(VBOX_OSE) && defined(VBOX_RELEASE_EXACT_MATCH) && !defined(VBOX_WITH_LICENSE_DISPLAY)
+ $(error In release mode the non-OSE installer must be built with license agreement being displayed!)
 endif
 
 #
