@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1-asm.S 106004 2024-09-10 11:51:08Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1-asm.S 106018 2024-09-12 07:14:22Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for ARMv8 A64.
  */
@@ -676,8 +676,8 @@ _TestProcA64:
         msr pan,     #0
         ; msr allint,  #1 Not supported by the toolchain
         ; msr allint,  #0 Not supported by the toolchain
-        msr pm,      #1
-        msr pm,      #0
+        ;msr pm,      #1 Not supported by the maca1 toolchain
+        ;msr pm,      #0 Not supported by the maca1 toolchain
         msr ssbs,    #1
         msr ssbs,    #0
         msr dit,     #1
