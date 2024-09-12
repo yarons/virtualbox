@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 105605 2024-08-06 14:00:56Z andreas.loeffler@oracle.com $ */
+/* $Id: SnapshotImpl.cpp 106038 2024-09-12 15:34:59Z brent.paulson@oracle.com $ */
 /** @file
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
  */
@@ -1922,7 +1922,10 @@ void SessionMachine::i_takeSnapshotHandler(TakeSnapshotTask &task)
         // Handle NVRAM file snapshotting
         Utf8Str strNVRAM = mNvramStore->i_getNonVolatileStorageFile();
         Utf8Str strNVRAMSnap = pSnapshotMachine->i_getSnapshotNVRAMFilename();
-        if (strNVRAM.isNotEmpty() && strNVRAMSnap.isNotEmpty() && RTFileExists(strNVRAM.c_str()))
+        if (   strNVRAM.isNotEmpty()
+            && strNVRAMSnap.isNotEmpty()
+            && RTFileExists(strNVRAM.c_str())
+            && mFirmwareSettings->i_getFirmwareType() != FirmwareType_BIOS)
         {
             Utf8Str strNVRAMSnapAbs;
             i_calculateFullPath(strNVRAMSnap, strNVRAMSnapAbs);
