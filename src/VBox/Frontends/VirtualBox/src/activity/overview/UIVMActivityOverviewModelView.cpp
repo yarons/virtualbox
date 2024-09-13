@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewModelView.cpp 105081 2024-07-01 15:38:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMActivityOverviewModelView.cpp 106042 2024-09-13 09:00:05Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewModelView class implementation.
  */
@@ -684,10 +684,12 @@ void UIVMActivityOverviewTableView::mousePressEvent(QMouseEvent *pEvent)
 void UIVMActivityOverviewTableView::resizeHeaders()
 {
     QHeaderView* pHeader = horizontalHeader();
-    if (!pHeader)
+    if (!pHeader || pHeader->count() <= 0)
         return;
     int iSectionCount = pHeader->count();
     int iHiddenSectionCount = pHeader->hiddenSectionCount();
+    if (iSectionCount == iHiddenSectionCount)
+        return;
     int iWidth = width() / (iSectionCount - iHiddenSectionCount);
     for (int i = 0; i < iSectionCount; ++i)
     {
