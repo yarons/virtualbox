@@ -1,4 +1,4 @@
-/* $Id: UIStorageSettingsEditor.h 104371 2024-04-19 07:29:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIStorageSettingsEditor.h 106045 2024-09-13 12:38:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStorageSettingsEditor class declaration.
  */
@@ -482,6 +482,10 @@ private:
         QComboBox        *m_pComboSlot;
         /** Holds the open tool-button instance. */
         QIToolButton     *m_pToolButtonOpen;
+        /** Holds the 1st check-box container instance. */
+        QStackedWidget   *m_pContainerForCheckBoxes1;
+        /** Holds the 2nd check-box container instance. */
+        QStackedWidget   *m_pContainerForCheckBoxes2;
         /** Holds the passthrough check-box instance. */
         QCheckBox        *m_pCheckBoxPassthrough;
         /** Holds the temporary eject check-box instance. */
