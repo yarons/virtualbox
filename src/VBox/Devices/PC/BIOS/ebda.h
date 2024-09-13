@@ -1,4 +1,4 @@
-/* $Id: ebda.h 106027 2024-09-12 11:24:04Z michal.necasek@oracle.com $ */
+/* $Id: ebda.h 106051 2024-09-13 16:03:16Z michal.necasek@oracle.com $ */
 /** @file
  * PC BIOS - EBDA (Extended BIOS Data Area) Definition
  */
@@ -284,7 +284,7 @@ typedef struct {
     /* SATA (AHCI) bus-specific device information. */
     ahci_dev_t  ahcidev[BX_MAX_AHCI_DEVICES];
     uint8_t     ahci_devcnt;        /* Number of SATA devices. */
-    uint16_t    ahci_ofs;           /* Offset (in paragraphs) of AHCI data block within EBDA. */
+    uint16_t    ahci_seg;           /* Segment of AHCI data block. */
 #endif
 
     dpte_t      dpte;               /* Buffer for building a DPTE. */

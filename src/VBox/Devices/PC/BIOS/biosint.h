@@ -1,4 +1,4 @@
-/* $Id: biosint.h 106027 2024-09-12 11:24:04Z michal.necasek@oracle.com $ */
+/* $Id: biosint.h 106051 2024-09-13 16:03:16Z michal.necasek@oracle.com $ */
 /** @file
  * PC BIOS - BIOS internal definitions.
  */
@@ -282,7 +282,7 @@ extern  uint16_t    cdrom_boot(void);
 extern  void        show_logo(void);
 extern  void        delay_boot(uint16_t secs);
 extern  bx_bool     set_enable_a20(bx_bool val);
-extern  uint16_t    ebda_mem_alloc(int n_kb);
+extern uint16_t     conv_mem_alloc(int n_kb, int in_ebda);
 
 #define printf(...)  bios_printf(BIOS_PRINTF_SCREEN, __VA_ARGS__)
 

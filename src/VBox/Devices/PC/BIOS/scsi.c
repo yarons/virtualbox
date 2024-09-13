@@ -1,4 +1,4 @@
-/* $Id: scsi.c 106027 2024-09-12 11:24:04Z michal.necasek@oracle.com $ */
+/* $Id: scsi.c 106051 2024-09-13 16:03:16Z michal.necasek@oracle.com $ */
 /** @file
  * SCSI host adapter driver to boot from SCSI disks
  */
@@ -522,7 +522,7 @@ void BIOSCALL scsi_init(void)
             int rc;
             uint8_t  u8Bus, u8DevFn;
             uint16_t hba_seg;
-            uint16_t hba_ofs = ebda_mem_alloc(1/*KB*/);
+            uint16_t hba_ofs = conv_mem_alloc(1/*KB*/, 1/*in_ebda*/);
             if (hba_ofs == 0) /* No point in trying the rest if we are out of memory. */
                 break;
 
