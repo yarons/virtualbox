@@ -1,10 +1,10 @@
-/* $Id: VBoxNetFltRt-win.cpp 104337 2024-04-17 11:48:57Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetFltRt-win.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxNetFltRt-win.cpp - Bridged Networking Driver, Windows Specific Runtime Code.
  */
 
 /*
- * Copyright (C) 2011-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

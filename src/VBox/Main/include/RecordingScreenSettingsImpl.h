@@ -1,4 +1,4 @@
-/* $Id: RecordingScreenSettingsImpl.h 105605 2024-08-06 14:00:56Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingScreenSettingsImpl.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 
 /** @file
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2018-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2018-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

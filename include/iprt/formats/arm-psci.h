@@ -1,4 +1,4 @@
-/* $Id: arm-psci.h 105694 2024-08-15 13:11:31Z alexander.eichner@oracle.com $ */
+/* $Id: arm-psci.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT, ARM PSCI (Power State Coordination Interface) common definitions (this is actually a protocol and not a format).
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2023 Oracle and/or its affiliates.
+ * Copyright (C) 2023-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

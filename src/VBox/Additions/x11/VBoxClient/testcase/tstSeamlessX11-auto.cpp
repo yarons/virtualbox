@@ -1,11 +1,11 @@
-/* $Id: tstSeamlessX11-auto.cpp 99601 2023-05-04 10:43:08Z andreas.loeffler@oracle.com $ */
+/* $Id: tstSeamlessX11-auto.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * Automated test of the X11 seamless Additions code.
  * @todo Better separate test data from implementation details!
  */
 
 /*
- * Copyright (C) 2007-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2007-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

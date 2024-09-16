@@ -1,10 +1,10 @@
-/* $Id: DevVGA-SVGA3d-dx-shader.h 99535 2023-04-26 16:52:49Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx-shader.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevVGA - VMWare SVGA device - VGPU10+ (DX) shader utilities.
  */
 
 /*
- * Copyright (C) 2020-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2020-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

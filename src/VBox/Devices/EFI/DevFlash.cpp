@@ -1,4 +1,4 @@
-/* $Id: DevFlash.cpp 99533 2023-04-26 06:41:23Z alexander.eichner@oracle.com $ */
+/* $Id: DevFlash.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevFlash - A simple Flash device
  *
@@ -10,7 +10,7 @@
  */
 
 /*
- * Copyright (C) 2018-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2018-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: VBoxGuestR0LibInit.cpp 100360 2023-07-04 07:09:24Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxGuestR0LibInit.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestLibR0 - Library initialization.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

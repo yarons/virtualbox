@@ -1,10 +1,10 @@
-/* $Id: wayland.cpp 102039 2023-11-09 15:14:57Z vadim.galitsyn@oracle.com $ */
+/* $Id: wayland.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * Guest Additions - Wayland Desktop Environment assistant.
  */
 
 /*
- * Copyright (C) 2017-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2017-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

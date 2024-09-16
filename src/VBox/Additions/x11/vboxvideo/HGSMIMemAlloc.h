@@ -1,6 +1,6 @@
-/* $Id: HGSMIMemAlloc.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: HGSMIMemAlloc.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /*
- * Copyright (C) 2017-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2017-2024 Oracle and/or its affiliates.
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

@@ -1,10 +1,10 @@
-/* $Id: VirtualBoxImpl.h 101593 2023-10-25 15:37:09Z brent.paulson@oracle.com $ */
+/* $Id: VirtualBoxImpl.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

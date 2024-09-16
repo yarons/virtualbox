@@ -1,10 +1,10 @@
-/* $Id: TestExecService.cpp 104623 2024-05-14 11:41:26Z andreas.loeffler@oracle.com $ */
+/* $Id: TestExecService.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service.
  */
 
 /*
- * Copyright (C) 2010-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -3777,7 +3777,7 @@ static RTEXITCODE txsParseArgv(int argc, char **argv, bool *pfExit)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 104623 $\n");
+                RTPrintf("$Revision: 106061 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 

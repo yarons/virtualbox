@@ -1,10 +1,10 @@
-/* $Id: UINetworkManager.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
+/* $Id: UINetworkManager.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkManager class implementation.
  */
 
 /*
- * Copyright (C) 2009-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: VBoxRTDeps.cpp 104319 2024-04-12 14:42:45Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxRTDeps.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - VBoxRT.dll/so dependencies.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

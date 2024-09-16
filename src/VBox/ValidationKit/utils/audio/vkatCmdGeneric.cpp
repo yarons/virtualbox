@@ -1,10 +1,10 @@
-/* $Id: vkatCmdGeneric.cpp 104622 2024-05-14 11:21:57Z andreas.loeffler@oracle.com $ */
+/* $Id: vkatCmdGeneric.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
 
 /*
- * Copyright (C) 2021-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2021-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

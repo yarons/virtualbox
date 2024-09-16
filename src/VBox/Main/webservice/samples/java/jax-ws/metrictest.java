@@ -1,4 +1,4 @@
-/* $Id: metrictest.java 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: metrictest.java 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /*!file
  * Sample of performance API usage, written in Java.
  *
@@ -9,7 +9,7 @@
  */
 
 /*
- * Copyright (C) 2008-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2008-2024 Oracle and/or its affiliates.
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

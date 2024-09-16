@@ -1,10 +1,10 @@
-/* $Id: proxy.c 104603 2024-05-13 15:19:03Z alexander.eichner@oracle.com $ */
+/* $Id: proxy.c 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * NAT Network - proxy setup and utilities.
  */
 
 /*
- * Copyright (C) 2013-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

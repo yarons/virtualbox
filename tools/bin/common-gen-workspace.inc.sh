@@ -1,11 +1,11 @@
 #!/usr/bin/env kmk_ash
-# $Id: common-gen-workspace.inc.sh 104698 2024-05-17 08:19:34Z andreas.loeffler@oracle.com $
+# $Id: common-gen-workspace.inc.sh 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
 
 #
-# Copyright (C) 2009-2023 Oracle and/or its affiliates.
+# Copyright (C) 2009-2024 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.

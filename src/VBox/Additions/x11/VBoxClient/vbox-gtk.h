@@ -1,10 +1,10 @@
-/* $Id: vbox-gtk.h 101688 2023-10-31 12:52:55Z vadim.galitsyn@oracle.com $ */
+/* $Id: vbox-gtk.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * Guest Additions - Definitions from Gtk 3.24.38 and Glib 2.17 libraries.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

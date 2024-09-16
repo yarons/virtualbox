@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 104254 2024-04-09 14:36:12Z alexander.eichner@oracle.com $ */
+/* $Id: DevAHCI.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

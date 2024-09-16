@@ -1,10 +1,10 @@
-; $Id: HMR0A.asm 101524 2023-10-20 14:47:42Z knut.osmundsen@oracle.com $
+; $Id: HMR0A.asm 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
 ;; @file
 ; HM - Ring-0 VMX, SVM world-switch and helper routines.
 ;
 
 ;
-; Copyright (C) 2006-2023 Oracle and/or its affiliates.
+; Copyright (C) 2006-2024 Oracle and/or its affiliates.
 ;
 ; This file is part of VirtualBox base platform packages, as
 ; available from https://www.virtualbox.org.

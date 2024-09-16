@@ -1,10 +1,10 @@
-/*  $Id: vbox_drv.c 104925 2024-06-14 15:43:17Z vadim.galitsyn@oracle.com $ */
+/*  $Id: vbox_drv.c 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
 
 /*
- * Copyright (C) 2013-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2024 Oracle and/or its affiliates.
  * This file is based on ast_drv.c
  * Copyright 2012 Red Hat Inc.
  *

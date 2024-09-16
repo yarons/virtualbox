@@ -1,10 +1,10 @@
-/* $Id: VBoxBs2Linker.cpp 104619 2024-05-14 06:54:38Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxBs2Linker.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 2 "linker".
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -110,7 +110,7 @@ int main(int argc, char **argv)
                     }
 
                     case 'V':
-                        printf("%s\n", "$Revision: 104619 $");
+                        printf("%s\n", "$Revision: 106061 $");
                         free(papszInputs);
                         return 0;
 

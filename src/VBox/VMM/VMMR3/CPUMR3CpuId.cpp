@@ -1,10 +1,10 @@
-/* $Id: CPUMR3CpuId.cpp 105367 2024-07-17 08:29:14Z alexander.eichner@oracle.com $ */
+/* $Id: CPUMR3CpuId.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU ID part.
  */
 
 /*
- * Copyright (C) 2013-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

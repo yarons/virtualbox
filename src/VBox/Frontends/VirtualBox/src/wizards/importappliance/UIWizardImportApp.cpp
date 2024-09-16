@@ -1,10 +1,10 @@
-/* $Id: UIWizardImportApp.cpp 105363 2024-07-16 18:12:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardImportApp.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardImportApp class implementation.
  */
 
 /*
- * Copyright (C) 2009-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

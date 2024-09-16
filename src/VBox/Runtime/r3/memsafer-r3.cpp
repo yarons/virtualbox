@@ -1,10 +1,10 @@
-/* $Id: memsafer-r3.cpp 105643 2024-08-09 21:38:35Z knut.osmundsen@oracle.com $ */
+/* $Id: memsafer-r3.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Memory Allocate for Sensitive Data, generic heap-based implementation.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

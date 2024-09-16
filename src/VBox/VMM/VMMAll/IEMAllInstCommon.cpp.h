@@ -1,10 +1,10 @@
-/* $Id: IEMAllInstCommon.cpp.h 104732 2024-05-20 17:06:05Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllInstCommon.cpp.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, Common Bits.
  */
 
 /*
- * Copyright (C) 2011-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

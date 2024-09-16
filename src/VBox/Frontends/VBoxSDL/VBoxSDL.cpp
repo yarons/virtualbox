@@ -1,11 +1,11 @@
-/* $Id: VBoxSDL.cpp 103402 2024-02-16 15:46:53Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxSDL.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
  * Main code
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

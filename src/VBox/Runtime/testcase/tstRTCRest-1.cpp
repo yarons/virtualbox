@@ -1,10 +1,10 @@
-/* $Id: tstRTCRest-1.cpp 99801 2023-05-15 22:58:23Z brent.paulson@oracle.com $ */
+/* $Id: tstRTCRest-1.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - REST C++ classes.
  */
 
 /*
- * Copyright (C) 2018-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2018-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 105822 2024-08-22 15:47:24Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the Linux installer.
 #
 
 #
-# Copyright (C) 2006-2023 Oracle and/or its affiliates.
+# Copyright (C) 2006-2024 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-# $Id: Config.kmk 105160 2024-07-05 12:02:04Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
 ## @file
 # kBuild Configuration file for the VirtualBox Validation Kit.
 #
 
 #
-# Copyright (C) 2010-2023 Oracle and/or its affiliates.
+# Copyright (C) 2010-2024 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-; $Id: bs3-cpu-instr-4-asm.asm 104649 2024-05-16 08:52:06Z ramshankar.venkataraman@oracle.com $
+; $Id: bs3-cpu-instr-4-asm.asm 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - bs3-cpu-instr-4 - SSE, AVX FPU instructions.
 ;
 
 ;
-; Copyright (C) 2023 Oracle and/or its affiliates.
+; Copyright (C) 2023-2024 Oracle and/or its affiliates.
 ;
 ; This file is part of VirtualBox base platform packages, as
 ; available from https://www.virtualbox.org.

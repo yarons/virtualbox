@@ -1,10 +1,10 @@
-/* $Id: system-page-size-posix.cpp 100307 2023-06-28 10:17:34Z alexander.eichner@oracle.com $ */
+/* $Id: system-page-size-posix.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTSystemGetPageSize(), RTSystemGetPageShift(), RTSystemGetPageOffsetMask() and RTSystemPageAlignSize(), Posix ring-3.
  */
 
 /*
- * Copyright (C) 2023 Oracle and/or its affiliates.
+ * Copyright (C) 2023-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

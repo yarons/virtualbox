@@ -1,10 +1,10 @@
-/* $Id: MachineImplMoveVM.cpp 98352 2023-01-30 19:44:51Z klaus.espenlaub@oracle.com $ */
+/* $Id: MachineImplMoveVM.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * Implementation of MachineMoveVM
  */
 
 /*
- * Copyright (C) 2011-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,4 +1,4 @@
-/* $Id: VBoxSDL.h 99494 2023-04-20 19:52:23Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxSDL.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

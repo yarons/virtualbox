@@ -1,4 +1,4 @@
-/* $Id: QED.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
+/* $Id: QED.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * QED - QED Disk image.
  *
@@ -11,7 +11,7 @@
  */
 
 /*
- * Copyright (C) 2011-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,12 +1,12 @@
 
-/* $Id: vboximgOpts.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ $Revision: 98103 $ $Date: 2023-01-17 15:15:46 +0100 (Tue, 17 Jan 2023) $ $Author: knut.osmundsen@oracle.com $ */
+/* $Id: vboximgOpts.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ $Revision: 106061 $ $Date: 2024-09-16 16:03:52 +0200 (Mon, 16 Sep 2024) $ $Author: knut.osmundsen@oracle.com $ */
 
 /** @file
  * vboximgOpts.h
  */
 
 /*
- * Copyright (C) 2008-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2008-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

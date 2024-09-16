@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxcon.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: vboxcon.py 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
 
 """
 VirtualBox Constants.
@@ -9,7 +9,7 @@ See VBoxConstantWrappingHack for details.
 
 __copyright__ = \
 """
-Copyright (C) 2010-2023 Oracle and/or its affiliates.
+Copyright (C) 2010-2024 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -38,7 +38,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98103 $"
+__version__ = "$Revision: 106061 $"
 
 
 # Standard Python imports.

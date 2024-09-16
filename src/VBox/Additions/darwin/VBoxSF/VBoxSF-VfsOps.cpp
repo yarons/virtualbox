@@ -1,10 +1,10 @@
-/* $Id: VBoxSF-VfsOps.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxSF-VfsOps.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxFS - Darwin Shared Folders, Virtual File System Operations.
  */
 
 /*
- * Copyright (C) 2013-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

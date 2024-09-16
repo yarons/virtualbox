@@ -1,10 +1,10 @@
-/* $Id: memobj-r0drv-solaris.c 104869 2024-06-07 13:10:12Z knut.osmundsen@oracle.com $ */
+/* $Id: memobj-r0drv-solaris.c 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Solaris.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

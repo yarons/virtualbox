@@ -1,10 +1,10 @@
-/* $Id: UIConverter.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIConverter.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIConverter declaration.
  */
 
 /*
- * Copyright (C) 2012-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

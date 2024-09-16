@@ -1,9 +1,9 @@
-/* $Id: VBoxNetLwf-win.cpp 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetLwf-win.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxNetLwf-win.cpp - NDIS6 Bridged Networking Driver, Windows-specific code.
  */
 /*
- * Copyright (C) 2014-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2014-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

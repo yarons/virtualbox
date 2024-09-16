@@ -1,10 +1,10 @@
-/* $Id: CUE.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: CUE.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * CUE - CUE/BIN Disk image, Core Code.
  */
 
 /*
- * Copyright (C) 2017-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2017-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

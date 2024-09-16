@@ -1,10 +1,10 @@
-/* $Id: HMR0.cpp 102987 2024-01-22 10:07:42Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMR0.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

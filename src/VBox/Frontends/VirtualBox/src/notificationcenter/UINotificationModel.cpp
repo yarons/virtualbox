@@ -1,10 +1,10 @@
-/* $Id: UINotificationModel.cpp 98928 2023-03-13 10:37:02Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationModel.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationModel class implementation.
  */
 
 /*
- * Copyright (C) 2021-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2021-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

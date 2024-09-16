@@ -1,11 +1,11 @@
 @echo off
-rem $Id: Combined-1-Prepare.cmd 104863 2024-06-06 14:29:21Z sergey.dubov@oracle.com $
+rem $Id: Combined-1-Prepare.cmd 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
 rem rem @file
 rem Windows NT batch script for preparing both amd64 and x86 for signing submission.
 rem
 
 rem
-rem Copyright (C) 2018-2023 Oracle and/or its affiliates.
+rem Copyright (C) 2018-2024 Oracle and/or its affiliates.
 rem
 rem This file is part of VirtualBox base platform packages, as
 rem available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: tstRTNoCrt-4.cpp 98483 2023-02-07 10:39:52Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTNoCrt-4.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - Testcases for the No-CRT vector bits.
  */
 
 /*
- * Copyright (C) 2023 Oracle and/or its affiliates.
+ * Copyright (C) 2023-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

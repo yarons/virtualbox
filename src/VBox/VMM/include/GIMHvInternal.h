@@ -1,10 +1,10 @@
-/* $Id: GIMHvInternal.h 104911 2024-06-13 10:33:27Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GIMHvInternal.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * GIM - Hyper-V, Internal header file.
  */
 
 /*
- * Copyright (C) 2014-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2014-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

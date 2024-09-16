@@ -1,10 +1,10 @@
-/* $Id: mime-type-converter.h 101674 2023-10-31 10:30:36Z vadim.galitsyn@oracle.com $ */
+/* $Id: mime-type-converter.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * Mime-type converter for Shared Clipboard and Drag-and-Drop code.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

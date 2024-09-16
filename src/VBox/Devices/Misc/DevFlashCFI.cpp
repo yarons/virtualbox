@@ -1,4 +1,4 @@
-/* $Id: DevFlashCFI.cpp 104602 2024-05-13 15:18:26Z alexander.eichner@oracle.com $ */
+/* $Id: DevFlashCFI.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevFlashCFI - A simple Flash device implementing the Common Flash Interface
  * using the sepc from https://ia803103.us.archive.org/30/items/m30l0r7000t0/m30l0r7000t0.pdf
@@ -8,7 +8,7 @@
  */
 
 /*
- * Copyright (C) 2023 Oracle and/or its affiliates.
+ * Copyright (C) 2023-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

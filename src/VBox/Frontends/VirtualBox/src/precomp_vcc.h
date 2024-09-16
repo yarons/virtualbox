@@ -1,10 +1,10 @@
-/* $Id: precomp_vcc.h 104601 2024-05-13 14:26:57Z sergey.dubov@oracle.com $*/
+/* $Id: precomp_vcc.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $*/
 /** @file
  * VBox Qt GUI - Precompiled header for Visual C++.
  */
 
 /*
- * Copyright (C) 2016-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2016-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 99822 2023-05-17 07:51:49Z alexander.eichner@oracle.com $ */
+/* $Id: tstDeviceStructSize.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and RC uses the same
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: DBGCGdbRemoteStub.cpp 104617 2024-05-13 17:55:32Z alexander.eichner@oracle.com $ */
+/* $Id: DBGCGdbRemoteStub.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, GDB Remote Stub.
  */
 
 /*
- * Copyright (C) 2010-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

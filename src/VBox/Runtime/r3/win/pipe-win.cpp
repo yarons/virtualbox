@@ -1,10 +1,10 @@
-/* $Id: pipe-win.cpp 104476 2024-05-02 11:22:33Z alexander.eichner@oracle.com $ */
+/* $Id: pipe-win.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Anonymous Pipes, Windows Implementation.
  */
 
 /*
- * Copyright (C) 2010-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

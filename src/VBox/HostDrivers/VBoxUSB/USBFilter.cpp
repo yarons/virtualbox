@@ -1,10 +1,10 @@
-/* $Id: USBFilter.cpp 100772 2023-08-01 17:34:48Z brent.paulson@oracle.com $ */
+/* $Id: USBFilter.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox USB filter abstraction.
  */
 
 /*
- * Copyright (C) 2007-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2007-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

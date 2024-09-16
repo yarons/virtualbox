@@ -1,11 +1,11 @@
-/* $Id: VBoxBFE.cpp 99908 2023-05-22 16:59:46Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxBFE.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxBFE - The basic VirtualBox frontend for running VMs without using Main/COM/XPCOM.
  * Mainly serves as a playground for the ARMv8 VMM bringup for now.
  */
 
 /*
- * Copyright (C) 2023 Oracle and/or its affiliates.
+ * Copyright (C) 2023-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

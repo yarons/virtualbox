@@ -1,4 +1,4 @@
-' $Id: configure.vbs 101256 2023-09-25 16:45:59Z klaus.espenlaub@oracle.com $
+' $Id: configure.vbs 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
 '' @file
 ' The purpose of this script is to check for all external tools, headers, and
 ' libraries VBox OSE depends on.
@@ -9,7 +9,7 @@
 '
 
 '
-' Copyright (C) 2006-2023 Oracle and/or its affiliates.
+' Copyright (C) 2006-2024 Oracle and/or its affiliates.
 '
 ' This file is part of VirtualBox base platform packages, as
 ' available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: QITableWidget.cpp 102125 2023-11-16 16:40:24Z sergey.dubov@oracle.com $ */
+/* $Id: QITableWidget.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITableWidget class implementation.
  */
 
 /*
- * Copyright (C) 2008-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2008-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

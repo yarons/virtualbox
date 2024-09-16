@@ -1,10 +1,10 @@
-/* $Id: VirtualBoxBase.h 105654 2024-08-12 17:25:27Z klaus.espenlaub@oracle.com $ */
+/* $Id: VirtualBoxBase.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM base classes definition
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: parseshell.h 100904 2023-08-18 07:55:29Z knut.osmundsen@oracle.com $ */
+/* $Id: parseshell.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Parser, Bourne-like Shell.
  */
 
 /*
- * Copyright (C) 2022 Oracle and/or its affiliates.
+ * Copyright (C) 2022-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

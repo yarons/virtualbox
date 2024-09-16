@@ -1,10 +1,10 @@
-/* $Id: tstRTPipe.cpp 98619 2023-02-17 12:40:38Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTPipe.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - RTPipe.
  */
 
 /*
- * Copyright (C) 2010-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

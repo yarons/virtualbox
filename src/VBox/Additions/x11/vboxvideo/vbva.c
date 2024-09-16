@@ -1,10 +1,10 @@
-/* $Id: vbva.c 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: vbva.c 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox X11 Additions graphics driver 2D acceleration functions
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

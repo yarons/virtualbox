@@ -1,10 +1,10 @@
-# $Id: .scm-settings 101688 2023-10-31 12:52:55Z vadim.galitsyn@oracle.com $
+# $Id: .scm-settings 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
 ## @file
 # Source code massager settings for the x11 guest addition components.
 #
 
 #
-# Copyright (C) 2010-2023 Oracle and/or its affiliates.
+# Copyright (C) 2010-2024 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: display.cpp 98594 2023-02-15 16:48:37Z vadim.galitsyn@oracle.com $ */
+/* $Id: display.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * X11 guest client - display management.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

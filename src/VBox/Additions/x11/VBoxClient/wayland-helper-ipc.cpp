@@ -1,10 +1,10 @@
-/* $Id: wayland-helper-ipc.cpp 102064 2023-11-10 14:15:11Z vadim.galitsyn@oracle.com $ */
+/* $Id: wayland-helper-ipc.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * Guest Additions - IPC between VBoxClient and vboxwl tool.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

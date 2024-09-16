@@ -1,10 +1,10 @@
-/** $Id: draganddrop.h 99599 2023-05-04 10:09:59Z andreas.loeffler@oracle.com $ */
+/** $Id: draganddrop.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * Guest Additions - VBoxClient drag'n drop - Main header.
  */
 
 /*
- * Copyright (C) 2023 Oracle and/or its affiliates.
+ * Copyright (C) 2023-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 105640 2024-08-09 17:54:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: Global.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM global definitions
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2008-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2008-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

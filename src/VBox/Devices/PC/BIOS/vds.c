@@ -1,10 +1,10 @@
-/* $Id: vds.c 100995 2023-08-31 15:23:50Z michal.necasek@oracle.com $ */
+/* $Id: vds.c 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * Utility routines for calling the Virtual DMA Services.
  */
 
 /*
- * Copyright (C) 2011-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

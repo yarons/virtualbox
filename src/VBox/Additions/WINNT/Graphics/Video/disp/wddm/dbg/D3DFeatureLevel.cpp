@@ -1,10 +1,10 @@
-/* $Id: D3DFeatureLevel.cpp 98141 2023-01-19 14:25:46Z knut.osmundsen@oracle.com $ */
+/* $Id: D3DFeatureLevel.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * ????
  */
 
 /*
- * Copyright (C) 2015-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2015-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

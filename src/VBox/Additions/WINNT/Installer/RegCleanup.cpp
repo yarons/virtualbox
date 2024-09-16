@@ -1,4 +1,4 @@
-/* $Id: RegCleanup.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: RegCleanup.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * RegCleanup - Remove "InvalidDisplay" and "NewDisplay" keys on NT4,
  *              run via HKLM/.../Windows/CurrentVersion/RunOnce.
@@ -13,7 +13,7 @@
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

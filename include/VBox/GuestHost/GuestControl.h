@@ -1,4 +1,4 @@
-/* $Id: GuestControl.h 105876 2024-08-27 15:54:44Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestControl.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * Guest Control - Common Guest and Host Code.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2016-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2016-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

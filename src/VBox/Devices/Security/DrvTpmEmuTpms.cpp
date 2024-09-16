@@ -1,10 +1,10 @@
-/* $Id: DrvTpmEmuTpms.cpp 105623 2024-08-08 12:33:42Z alexander.eichner@oracle.com $ */
+/* $Id: DrvTpmEmuTpms.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * TPM emulation driver based on libtpms.
  */
 
 /*
- * Copyright (C) 2021-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2021-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

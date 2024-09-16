@@ -1,10 +1,10 @@
-/* $Id: PGMAllGst.h 104939 2024-06-15 11:10:19Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMAllGst.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: VBoxGuest-os2.cpp 100274 2023-06-23 18:44:41Z brent.paulson@oracle.com $ */
+/* $Id: VBoxGuest-os2.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuest - OS/2 specifics.
  */
 
 /*
- * Copyright (C) 2007-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2007-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: tstClipboardServiceImpl.cpp 105635 2024-08-09 09:38:27Z andreas.loeffler@oracle.com $ */
+/* $Id: tstClipboardServiceImpl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * Shared Clipboard host service implementation (backend) test case.
  */
 
 /*
- * Copyright (C) 2020-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2020-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

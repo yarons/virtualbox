@@ -1,10 +1,10 @@
-/* $Id: DevVGA-SVGA3d-internal.h 104890 2024-06-12 12:28:21Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-internal.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part, internal header.
  */
 
 /*
- * Copyright (C) 2013-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: UIImageTools.h 101396 2023-10-10 05:46:03Z sergey.dubov@oracle.com $ */
+/* $Id: UIImageTools.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for image manipulation.
  */
 
 /*
- * Copyright (C) 2010-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

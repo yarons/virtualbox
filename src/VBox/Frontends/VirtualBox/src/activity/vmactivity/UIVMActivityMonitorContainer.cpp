@@ -1,10 +1,10 @@
-/* $Id: UIVMActivityMonitorContainer.cpp 104463 2024-04-30 12:37:49Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitorContainer.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
 
 /*
- * Copyright (C) 2010-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

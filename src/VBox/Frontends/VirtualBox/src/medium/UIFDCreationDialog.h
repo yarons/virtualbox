@@ -1,10 +1,10 @@
-/* $Id: UIFDCreationDialog.h 104226 2024-04-08 12:07:43Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFDCreationDialog.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFDCreationDialog class declaration.
  */
 
 /*
- * Copyright (C) 2008-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2008-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

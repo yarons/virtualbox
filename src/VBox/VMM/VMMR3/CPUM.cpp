@@ -1,10 +1,10 @@
-/* $Id: CPUM.cpp 105020 2024-06-25 12:39:37Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUM.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

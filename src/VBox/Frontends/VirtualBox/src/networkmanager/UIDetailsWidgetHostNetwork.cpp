@@ -1,10 +1,10 @@
-/* $Id: UIDetailsWidgetHostNetwork.cpp 104223 2024-04-08 10:30:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIDetailsWidgetHostNetwork.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsWidgetHostNetwork class implementation.
  */
 
 /*
- * Copyright (C) 2009-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

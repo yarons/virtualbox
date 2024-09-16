@@ -1,10 +1,10 @@
-/* $Id: DisplayServerType.h 102021 2023-11-09 11:36:54Z vadim.galitsyn@oracle.com $ */
+/* $Id: DisplayServerType.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * Guest / Host common code - Display server type detection + handling.
  */
 
 /*
- * Copyright (C) 2023 Oracle and/or its affiliates.
+ * Copyright (C) 2023-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

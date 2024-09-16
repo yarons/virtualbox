@@ -1,10 +1,10 @@
-/* $Id: GICInternal.h 105687 2024-08-15 12:45:46Z alexander.eichner@oracle.com $ */
+/* $Id: GICInternal.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GICv3).
  */
 
 /*
- * Copyright (C) 2023 Oracle and/or its affiliates.
+ * Copyright (C) 2023-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

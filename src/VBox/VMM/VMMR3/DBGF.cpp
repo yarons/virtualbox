@@ -1,10 +1,10 @@
-/* $Id: DBGF.cpp 103515 2024-02-22 03:51:37Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGF.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

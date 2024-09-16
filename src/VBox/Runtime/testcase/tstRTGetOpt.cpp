@@ -1,10 +1,10 @@
-/* $Id: tstRTGetOpt.cpp 99246 2023-03-31 08:48:57Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTGetOpt.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - RTGetOpt
  */
 
 /*
- * Copyright (C) 2007-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2007-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

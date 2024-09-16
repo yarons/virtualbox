@@ -1,10 +1,10 @@
-/* $Id: scriptlex.cpp 105848 2024-08-23 16:05:23Z alexander.eichner@oracle.com $ */
+/* $Id: scriptlex.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTScript* lexer API.
  */
 
 /*
- * Copyright (C) 2022-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2022-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

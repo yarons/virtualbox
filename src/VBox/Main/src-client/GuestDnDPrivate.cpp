@@ -1,10 +1,10 @@
-/* $Id: GuestDnDPrivate.cpp 104635 2024-05-15 09:29:32Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestDnDPrivate.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget + GuestDnDSource.
  */
 
 /*
- * Copyright (C) 2011-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

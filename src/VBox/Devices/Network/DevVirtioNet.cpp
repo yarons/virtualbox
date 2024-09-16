@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 106001 2024-09-10 11:15:32Z brent.paulson@oracle.com $ $Revision: 106001 $ $Date: 2024-09-10 13:15:32 +0200 (Tue, 10 Sep 2024) $ $Author: brent.paulson@oracle.com $ */
+/* $Id: DevVirtioNet.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ $Revision: 106061 $ $Date: 2024-09-16 16:03:52 +0200 (Mon, 16 Sep 2024) $ $Author: knut.osmundsen@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -12,7 +12,7 @@
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

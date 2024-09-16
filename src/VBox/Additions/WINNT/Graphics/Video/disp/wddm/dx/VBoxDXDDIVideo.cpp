@@ -1,10 +1,10 @@
-/* $Id: VBoxDXDDIVideo.cpp 102505 2023-12-06 14:48:31Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxDXDDIVideo.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox D3D11 user mode DDI interface for video.
  */
 
 /*
- * Copyright (C) 2023 Oracle and/or its affiliates.
+ * Copyright (C) 2023-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

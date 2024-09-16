@@ -1,10 +1,10 @@
-/* $Id: display-svga-xf86cvt.h 97961 2023-01-03 19:42:28Z knut.osmundsen@oracle.com $ */
+/* $Id: display-svga-xf86cvt.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * Guest Additions - Header for display-svga-xf86ctv.cpp.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

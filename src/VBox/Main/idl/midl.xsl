@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
-<!-- $Id: midl.xsl 101372 2023-10-06 02:00:10Z knut.osmundsen@oracle.com $ -->
+<!-- $Id: midl.xsl 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ -->
 
 <!--
  *  A template to generate a MS IDL compatible interface definition file
  *  from the generic interface definition expressed in XML.
 -->
 <!--
-    Copyright (C) 2006-2023 Oracle and/or its affiliates.
+    Copyright (C) 2006-2024 Oracle and/or its affiliates.
 
     This file is part of VirtualBox base platform packages, as
     available from https://www.virtualbox.org.

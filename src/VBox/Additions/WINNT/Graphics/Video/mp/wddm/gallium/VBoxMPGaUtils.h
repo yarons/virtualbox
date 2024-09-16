@@ -1,10 +1,10 @@
-/* $Id: VBoxMPGaUtils.h 99833 2023-05-18 08:12:01Z dmitrii.grigorev@oracle.com $ */
+/* $Id: VBoxMPGaUtils.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver miscellaneous helpers and common includes.
  */
 
 /*
- * Copyright (C) 2017-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2017-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

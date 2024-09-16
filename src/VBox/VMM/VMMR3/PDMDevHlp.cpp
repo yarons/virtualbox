@@ -1,10 +1,10 @@
-/* $Id: PDMDevHlp.cpp 106022 2024-09-12 09:44:36Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMDevHlp.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

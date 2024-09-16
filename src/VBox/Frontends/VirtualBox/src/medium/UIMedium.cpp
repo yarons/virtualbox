@@ -1,10 +1,10 @@
-/* $Id: UIMedium.cpp 105521 2024-07-26 11:57:29Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMedium.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMedium class implementation.
  */
 
 /*
- * Copyright (C) 2009-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

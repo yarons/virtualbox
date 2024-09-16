@@ -1,4 +1,4 @@
-/* $Id: clienttest.java 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: clienttest.java 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /*!file
  * Sample client for the VirtualBox web service, written in Java (object-oriented bindings).
  *
@@ -9,7 +9,7 @@
  */
 
 /*
- * Copyright (C) 2008-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2008-2024 Oracle and/or its affiliates.
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

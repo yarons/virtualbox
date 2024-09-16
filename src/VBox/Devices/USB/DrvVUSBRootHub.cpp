@@ -1,10 +1,10 @@
-/* $Id: DrvVUSBRootHub.cpp 104804 2024-05-28 13:04:36Z brent.paulson@oracle.com $ */
+/* $Id: DrvVUSBRootHub.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * Virtual USB - Root Hub Driver.
  */
 
 /*
- * Copyright (C) 2005-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2005-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

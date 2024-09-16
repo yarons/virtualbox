@@ -1,10 +1,10 @@
-/* $Id: IEMAllMemRWTmpl.cpp.h 104956 2024-06-18 11:44:59Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllMemRWTmpl.cpp.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - R/W Memory Functions Template.
  */
 
 /*
- * Copyright (C) 2011-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

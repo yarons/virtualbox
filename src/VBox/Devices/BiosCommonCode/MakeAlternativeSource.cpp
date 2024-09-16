@@ -1,10 +1,10 @@
-/* $Id: MakeAlternativeSource.cpp 105724 2024-08-19 13:27:44Z alexander.eichner@oracle.com $ */
+/* $Id: MakeAlternativeSource.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * MakeAlternative - Generate an Alternative BIOS Source that requires less tools.
  */
 
 /*
- * Copyright (C) 2012-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -208,7 +208,7 @@ static bool disError(const char *pszFormat, ...)
 static bool disFileHeader(void)
 {
     bool fRc;
-    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 105724 2024-08-19 13:27:44Z alexander.eichner@oracle.com $ \n"
+    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ \n"
                        ";; @file\n"
                        "; Auto Generated source file. Do not edit.\n"
                        ";\n"
@@ -2158,7 +2158,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                char szRev[] = "$Revision: 105724 $";
+                char szRev[] = "$Revision: 106061 $";
                 char *psz = szRev;
                 while (*psz && !RT_C_IS_DIGIT(*psz))
                     psz++;

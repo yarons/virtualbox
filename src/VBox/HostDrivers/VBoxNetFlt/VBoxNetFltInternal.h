@@ -1,10 +1,10 @@
-/* $Id: VBoxNetFltInternal.h 105163 2024-07-05 14:26:46Z aleksey.ilyushin@oracle.com $ */
+/* $Id: VBoxNetFltInternal.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
 
 /*
- * Copyright (C) 2008-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2008-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

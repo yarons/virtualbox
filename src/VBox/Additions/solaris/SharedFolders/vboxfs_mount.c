@@ -1,4 +1,4 @@
-/* $Id: vboxfs_mount.c 104954 2024-06-18 11:14:14Z brent.paulson@oracle.com $ */
+/* $Id: vboxfs_mount.c 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox File System Mount Helper, Solaris host.
  * Userspace mount wrapper that parses mount (or user-specified) options
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2009-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

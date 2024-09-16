@@ -1,10 +1,10 @@
-/* $Id: TRPM.cpp 103194 2024-02-05 07:23:40Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: TRPM.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

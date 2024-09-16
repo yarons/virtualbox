@@ -1,10 +1,10 @@
-/* $Id: SvgaFifo.cpp 100067 2023-06-04 14:06:58Z vitali.pelenjow@oracle.com $ */
+/* $Id: SvgaFifo.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA FIFO.
  */
 
 /*
- * Copyright (C) 2016-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2016-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: VBoxUtils-nix.h 99863 2023-05-19 17:34:53Z ksenia.s.stepanova@oracle.com $ */
+/* $Id: VBoxUtils-nix.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling X11 specific tasks.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: scmrw-kmk.cpp 99039 2023-03-18 21:03:37Z knut.osmundsen@oracle.com $ */
+/* $Id: scmrw-kmk.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager, Makefile.kmk/kup.
  */
 
 /*
- * Copyright (C) 2010-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

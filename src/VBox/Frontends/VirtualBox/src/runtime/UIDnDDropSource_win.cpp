@@ -1,11 +1,11 @@
-/* $Id: UIDnDDropSource_win.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDnDDropSource_win.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDnDDropSource class implementation for Windows. This implements
  * the IDropSource interface.
  */
 
 /*
- * Copyright (C) 2014-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2014-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

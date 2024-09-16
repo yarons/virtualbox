@@ -1,10 +1,10 @@
-/* $Id: wayland-helper.cpp 101880 2023-11-06 15:49:29Z vadim.galitsyn@oracle.com $ */
+/* $Id: wayland-helper.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * Guest Additions - Common code for Wayland Desktop Environment helpers.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

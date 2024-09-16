@@ -1,10 +1,10 @@
-/* $Id: VBoxGuestR0LibHGCMInternal.cpp 105751 2024-08-21 09:51:08Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestR0LibHGCMInternal.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestLib - Host-Guest Communication Manager internal functions, implemented by VBoxGuest
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

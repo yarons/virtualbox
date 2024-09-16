@@ -1,10 +1,10 @@
-/* $Id: UIDesktopServices_nix.cpp 101571 2023-10-24 00:48:20Z sergey.dubov@oracle.com $ */
+/* $Id: UIDesktopServices_nix.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt GUI - Utility Classes and Functions specific to X11..
  */
 
 /*
- * Copyright (C) 2010-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: DBGFR3Bp.cpp 103408 2024-02-18 17:46:49Z alexander.eichner@oracle.com $ */
+/* $Id: DBGFR3Bp.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Breakpoint Management.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

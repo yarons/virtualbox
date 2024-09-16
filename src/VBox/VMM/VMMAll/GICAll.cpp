@@ -1,10 +1,10 @@
-/* $Id: GICAll.cpp 105697 2024-08-15 18:28:56Z alexander.eichner@oracle.com $ */
+/* $Id: GICAll.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GICv3) - All Contexts.
  */
 
 /*
- * Copyright (C) 2023 Oracle and/or its affiliates.
+ * Copyright (C) 2023-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

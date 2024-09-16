@@ -1,10 +1,10 @@
-/* $Id: UIMediumDetailsWidget.cpp 105164 2024-07-05 15:08:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumDetailsWidget.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumDetailsWidget class implementation.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

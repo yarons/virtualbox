@@ -1,10 +1,10 @@
-/* $Id: vbsfpath.cpp 105087 2024-07-01 23:27:59Z brent.paulson@oracle.com $ */
+/* $Id: vbsfpath.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * Shared Folders Service - guest/host path convertion and verification.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

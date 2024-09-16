@@ -1,10 +1,10 @@
-/* $Id: UIWizardNewVM.h 105851 2024-08-23 16:31:38Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVM.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

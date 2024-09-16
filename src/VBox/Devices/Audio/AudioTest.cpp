@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 103566 2024-02-26 12:53:01Z andreas.loeffler@oracle.com $ */
+/* $Id: AudioTest.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * Audio testing routines.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2021-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2021-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

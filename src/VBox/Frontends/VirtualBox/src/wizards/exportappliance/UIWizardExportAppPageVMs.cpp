@@ -1,10 +1,10 @@
-/* $Id: UIWizardExportAppPageVMs.cpp 104711 2024-05-17 13:28:07Z andreas.loeffler@oracle.com $ */
+/* $Id: UIWizardExportAppPageVMs.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageVMs class implementation.
  */
 
 /*
- * Copyright (C) 2009-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

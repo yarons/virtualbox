@@ -1,4 +1,4 @@
-# $Id: stdsoap2.sed 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: stdsoap2.sed 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
 ## @file
 # WebService - SED script for inserting a iprt/win/windows.h include
 #              before stdsoap2.h in soapStub.h.  This prevents hacking
@@ -6,7 +6,7 @@
 #
 
 #
-# Copyright (C) 2016-2023 Oracle and/or its affiliates.
+# Copyright (C) 2016-2024 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.

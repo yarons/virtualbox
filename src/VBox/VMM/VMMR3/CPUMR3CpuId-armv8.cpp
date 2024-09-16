@@ -1,10 +1,10 @@
-/* $Id: CPUMR3CpuId-armv8.cpp 101267 2023-09-26 12:20:33Z alexander.eichner@oracle.com $ */
+/* $Id: CPUMR3CpuId-armv8.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU ID part for ARMv8 hypervisor.
  */
 
 /*
- * Copyright (C) 2023 Oracle and/or its affiliates.
+ * Copyright (C) 2023-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

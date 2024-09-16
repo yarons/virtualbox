@@ -1,11 +1,11 @@
-/* $Id: vboxfs_vnode.c 105679 2024-08-14 20:31:27Z brent.paulson@oracle.com $ */
+/* $Id: vboxfs_vnode.c 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox File System for Solaris Guests, vnode implementation.
  * Portions contributed by: Ronald.
  */
 
 /*
- * Copyright (C) 2009-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

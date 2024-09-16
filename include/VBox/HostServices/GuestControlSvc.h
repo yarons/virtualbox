@@ -1,10 +1,10 @@
-/* $Id: GuestControlSvc.h 103165 2024-02-01 16:17:38Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestControlSvc.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * Guest control service - Common header for host service and guest clients.
  */
 
 /*
- * Copyright (C) 2011-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

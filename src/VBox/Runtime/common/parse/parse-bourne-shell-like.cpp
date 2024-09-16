@@ -1,10 +1,10 @@
-/* $Id: parse-bourne-shell-like.cpp 100903 2023-08-18 00:35:10Z knut.osmundsen@oracle.com $ */
+/* $Id: parse-bourne-shell-like.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTParseShell - Bourne-like Shell Parser.
  */
 
 /*
- * Copyright (C) 2022 Oracle and/or its affiliates.
+ * Copyright (C) 2022-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

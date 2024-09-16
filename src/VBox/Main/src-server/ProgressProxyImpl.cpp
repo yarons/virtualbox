@@ -1,10 +1,10 @@
-/* $Id: ProgressProxyImpl.cpp 98292 2023-01-25 01:14:53Z knut.osmundsen@oracle.com $ */
+/* $Id: ProgressProxyImpl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IProgress implementation for Machine::openRemoteSession in VBoxSVC.
  */
 
 /*
- * Copyright (C) 2010-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

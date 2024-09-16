@@ -1,10 +1,10 @@
-/* $Id: PlatformBase.h 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformBase.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Abstract base platform, used by the specific platform implementations (x86, ARM).
  */
 
 /*
- * Copyright (C) 2023 Oracle and/or its affiliates.
+ * Copyright (C) 2023-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: alloc-r0drv-linux.c 100321 2023-06-28 10:55:34Z alexander.eichner@oracle.com $ */
+/* $Id: alloc-r0drv-linux.c 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, Linux.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

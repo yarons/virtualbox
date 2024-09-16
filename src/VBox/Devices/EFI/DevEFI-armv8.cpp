@@ -1,10 +1,10 @@
-/* $Id: DevEFI-armv8.cpp 100116 2023-06-08 12:38:00Z alexander.eichner@oracle.com $ */
+/* $Id: DevEFI-armv8.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
 
 /*
- * Copyright (C) 2023 Oracle and/or its affiliates.
+ * Copyright (C) 2023-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

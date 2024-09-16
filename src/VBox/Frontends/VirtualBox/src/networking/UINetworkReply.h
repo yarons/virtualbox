@@ -1,10 +1,10 @@
-/* $Id: UINetworkReply.h 100818 2023-08-07 22:28:09Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkReply.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkReply stuff declaration.
  */
 
 /*
- * Copyright (C) 2012-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

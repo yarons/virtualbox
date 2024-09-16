@@ -1,4 +1,4 @@
-/* $Id: darwin-pasteboard.cpp 104773 2024-05-24 12:56:32Z vadim.galitsyn@oracle.com $ */
+/* $Id: darwin-pasteboard.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host implementation.
  */
@@ -6,7 +6,7 @@
 /*
  * Includes contributions from François Revol
  *
- * Copyright (C) 2008-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2008-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

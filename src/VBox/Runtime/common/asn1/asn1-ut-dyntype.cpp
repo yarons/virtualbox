@@ -1,10 +1,10 @@
-/* $Id: asn1-ut-dyntype.cpp 100490 2023-07-10 22:04:25Z knut.osmundsen@oracle.com $ */
+/* $Id: asn1-ut-dyntype.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ASN.1, Basic Operations.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

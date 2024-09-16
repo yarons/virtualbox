@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.h 99415 2023-04-17 08:36:39Z andreas.loeffler@oracle.com $ */
+/* $Id: AudioMixer.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox audio - Mixing routines.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2014-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2014-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

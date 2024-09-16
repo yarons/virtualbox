@@ -1,10 +1,10 @@
-/* $Id: VBoxManageUSB.cpp 100785 2023-08-03 13:02:17Z brent.paulson@oracle.com $ */
+/* $Id: VBoxManageUSB.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: GraphicsAdapterImpl.h 105865 2024-08-26 20:37:09Z andreas.loeffler@oracle.com $ */
+/* $Id: GraphicsAdapterImpl.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * Implementation of IGraphicsAdapter in VBoxSVC - Header.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

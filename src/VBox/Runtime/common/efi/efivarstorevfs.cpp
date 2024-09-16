@@ -1,10 +1,10 @@
-/* $Id: efivarstorevfs.cpp 103412 2024-02-19 07:13:29Z alexander.eichner@oracle.com $ */
+/* $Id: efivarstorevfs.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Expose a EFI variable store as a Virtual Filesystem.
  */
 
 /*
- * Copyright (C) 2021-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2021-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

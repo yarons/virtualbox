@@ -1,4 +1,4 @@
-/* $Id: VBoxProxyStub.c 104154 2024-04-04 10:14:12Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxProxyStub.c 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxProxyStub - Proxy Stub and Typelib, COM DLL exports and DLL init/term.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

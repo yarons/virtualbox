@@ -1,10 +1,10 @@
-/* $Id: VSCSISense.cpp 103902 2024-03-18 17:11:22Z michal.necasek@oracle.com $ */
+/* $Id: VSCSISense.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * Virtual SCSI driver: Sense handling
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

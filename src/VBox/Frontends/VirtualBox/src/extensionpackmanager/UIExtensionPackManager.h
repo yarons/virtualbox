@@ -1,10 +1,10 @@
-/* $Id: UIExtensionPackManager.h 104245 2024-04-09 08:03:20Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIExtensionPackManager.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtensionPackManager class declaration.
  */
 
 /*
- * Copyright (C) 2009-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

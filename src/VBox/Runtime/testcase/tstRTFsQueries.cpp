@@ -1,10 +1,10 @@
-/* $Id: tstRTFsQueries.cpp 103141 2024-01-31 15:03:29Z alexander.eichner@oracle.com $ */
+/* $Id: tstRTFsQueries.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - RTFs Queries..
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

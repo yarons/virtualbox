@@ -1,10 +1,10 @@
-/* $Id: VBoxSmcUtil-darwin.cpp 101223 2023-09-21 14:54:27Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxSmcUtil-darwin.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxSmcUtil - Quick hack for viewing SMC data on a mac.
  */
 
 /*
- * Copyright (C) 2013-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

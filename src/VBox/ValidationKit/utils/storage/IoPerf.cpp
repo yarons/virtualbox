@@ -1,10 +1,10 @@
-/* $Id: IoPerf.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: IoPerf.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IoPerf - Storage I/O Performance Benchmark.
  */
 
 /*
- * Copyright (C) 2019-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2019-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -1352,7 +1352,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 99739 $";
+                char szRev[] = "$Revision: 106061 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;

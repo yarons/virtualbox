@@ -1,10 +1,10 @@
-/* $Id: DBGCRemoteKd.cpp 104612 2024-05-13 16:10:11Z alexander.eichner@oracle.com $ */
+/* $Id: DBGCRemoteKd.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, Windows Kd Remote Stub.
  */
 
 /*
- * Copyright (C) 2020-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2020-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

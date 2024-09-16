@@ -1,10 +1,10 @@
-/* $Id: VBoxNetAdp-linux.c 103789 2024-03-11 17:53:04Z vadim.galitsyn@oracle.com $ */
+/* $Id: VBoxNetAdp-linux.c 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Linux Specific Code.
  */
 
 /*
- * Copyright (C) 2009-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

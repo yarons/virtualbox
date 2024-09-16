@@ -1,11 +1,11 @@
-/* $Id: UsbTest.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: UsbTest.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * UsbTest - User frontend for the Linux usbtest USB test and benchmarking module.
  *           Integrates with our test framework for nice outputs.
  */
 
 /*
- * Copyright (C) 2014-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2014-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,4 +1,4 @@
-/* $Id: wayland-helper-gtk.cpp 102025 2023-11-09 12:00:24Z vadim.galitsyn@oracle.com $ */
+/* $Id: wayland-helper-gtk.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * Guest Additions - Gtk helper for Wayland.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: bs3-cpu-basic-3-high-lea64.py 102278 2023-11-23 15:44:17Z knut.osmundsen@oracle.com $
+# $Id: bs3-cpu-basic-3-high-lea64.py 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -15,7 +15,7 @@ from __future__ import print_function;
 
 __copyright__ = \
 """
-Copyright (C) 2023 Oracle and/or its affiliates.
+Copyright (C) 2023-2024 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -44,7 +44,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 102278 $"
+__version__ = "$Revision: 106061 $"
 
 # Standard python imports.
 import random;

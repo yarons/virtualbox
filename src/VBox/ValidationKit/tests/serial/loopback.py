@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: loopback.py 98652 2023-02-20 13:13:05Z knut.osmundsen@oracle.com $
+# $Id: loopback.py 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
 
 """
 VirtualBox Validation Kit - Serial loopback module.
@@ -7,7 +7,7 @@ VirtualBox Validation Kit - Serial loopback module.
 
 __copyright__ = \
 """
-Copyright (C) 2018-2023 Oracle and/or its affiliates.
+Copyright (C) 2018-2024 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98652 $"
+__version__ = "$Revision: 106061 $"
 
 # Standard Python imports.
 #import os;

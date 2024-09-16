@@ -1,10 +1,10 @@
-/* $Id: ASMMemFill32-generic.cpp 104686 2024-05-16 12:37:37Z alexander.eichner@oracle.com $ */
+/* $Id: ASMMemFill32-generic.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ASMMemZeroPage - generic C implementation.
  */
 
 /*
- * Copyright (C) 2021-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2021-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

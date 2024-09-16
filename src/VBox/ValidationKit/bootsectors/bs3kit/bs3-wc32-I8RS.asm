@@ -1,10 +1,10 @@
-; $Id: bs3-wc32-I8RS.asm 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+; $Id: bs3-wc32-I8RS.asm 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - 32-bit Watcom C/C++, 64-bit signed integer right shift.
 ;
 
 ;
-; Copyright (C) 2007-2023 Oracle and/or its affiliates.
+; Copyright (C) 2007-2024 Oracle and/or its affiliates.
 ;
 ; This file is part of VirtualBox base platform packages, as
 ; available from https://www.virtualbox.org.

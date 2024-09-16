@@ -1,10 +1,10 @@
-/* $Id: vfsmemory.cpp 105100 2024-07-02 13:10:46Z alexander.eichner@oracle.com $ */
+/* $Id: vfsmemory.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Virtual File System, Memory Backed VFS.
  */
 
 /*
- * Copyright (C) 2010-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

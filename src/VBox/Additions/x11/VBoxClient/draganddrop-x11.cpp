@@ -1,10 +1,10 @@
-/* $Id: draganddrop-x11.cpp 99595 2023-05-04 08:58:54Z andreas.loeffler@oracle.com $ */
+/* $Id: draganddrop-x11.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * Guest Additions - VBoxClient X11 drag'n drop implementation.
  */
 
 /*
- * Copyright (C) 2011-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

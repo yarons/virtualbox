@@ -1,10 +1,10 @@
-/* $Id: tstRTInlineAsm.cpp 104795 2024-05-27 20:08:37Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTInlineAsm.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - inline assembly.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: GMMR0.cpp 104772 2024-05-24 11:01:54Z knut.osmundsen@oracle.com $ */
+/* $Id: GMMR0.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * GMM - Global Memory Manager.
  */
 
 /*
- * Copyright (C) 2007-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2007-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

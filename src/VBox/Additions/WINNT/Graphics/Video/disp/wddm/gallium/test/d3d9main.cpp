@@ -1,10 +1,10 @@
-/* $Id: d3d9main.cpp 98909 2023-03-10 16:49:13Z vitali.pelenjow@oracle.com $ */
+/* $Id: d3d9main.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * Gallium D3D testcase. Win32 application to run Gallium D3D9 tests.
  */
 
 /*
- * Copyright (C) 2017-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2017-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

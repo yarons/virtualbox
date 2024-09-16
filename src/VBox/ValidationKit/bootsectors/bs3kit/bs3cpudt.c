@@ -1,10 +1,10 @@
-/* $Id: bs3cpudt.c 103582 2024-02-27 07:12:56Z alexander.eichner@oracle.com $ */
+/* $Id: bs3cpudt.c 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Tests Bs3CpuDetect_rm.
  */
 
 /*
- * Copyright (C) 2007-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2007-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
