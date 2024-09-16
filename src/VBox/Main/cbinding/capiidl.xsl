@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: capiidl.xsl 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ -->
+<!-- $Id: capiidl.xsl 106065 2024-09-16 21:42:41Z knut.osmundsen@oracle.com $ -->
 
 <!--
  *  A template to generate a C header file for all relevant XPCOM interfaces
@@ -34,6 +34,8 @@
 
 <xsl:strip-space elements="*"/>
 
+<!-- Global parameters. -->
+<xsl:param name="g_uVBoxCopyrightYear">2024</xsl:param>
 
 <xsl:include href="../idl/typemap-shared.inc.xsl"/>
 
@@ -83,7 +85,7 @@
  */
 
 /*
- * Copyright (C) 2008-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2008-</xsl:text><xsl:value-of select="$g_uVBoxCopyrightYear"/><xsl:text> Oracle and/or its affiliates.
  *
  * This file is part of a free software library; you can redistribute
  * it and/or modify it under the terms of the GNU Lesser General

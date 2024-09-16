@@ -1,4 +1,4 @@
-# /# $Id: Makefile.kmk 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# /# $Id: Makefile.kmk 106065 2024-09-16 21:42:41Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the VirtualBox User Manual, SDK reference and other manuals.
 #
@@ -1208,7 +1208,8 @@ if defined(VBOX_WITH_DOCS) && (!defined(VBOX_ONLY_BUILD) || defined(VBOX_ONLY_DO
  #
  dhcpoptions: $(PATH_ROOT)/doc/manual/en_US/man_VBoxManage-dhcpserver-dhcpoptions.xsl \
  		$(PATH_ROOT)/src/VBox/Main/idl/VirtualBox.xidl
-	$(call VBOX_XSLTPROC) --output "$(PATH_ROOT)/doc/manual/en_US/man_VBoxManage-dhcpserver-dhcpoptions.xml" $^
+	$(call VBOX_XSLTPROC) --stringparam g_uVBoxCopyrightYear "$(VBOX_C_YEAR)" \
+		--output "$(PATH_ROOT)/doc/manual/en_US/man_VBoxManage-dhcpserver-dhcpoptions.xml" $^
 
 
  #

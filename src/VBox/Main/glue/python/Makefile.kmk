@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 106065 2024-09-16 21:42:41Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the VBox Python glue.
 #
@@ -70,6 +70,7 @@ if defined(VBOX_WITH_PYTHON) && !defined(VBOX_ONLY_EXTPACKS)
 		$(PATH_ROOT)/include/VBox/err.h
 	$(QUIET)$(VBOX_XSLTPROC) -o $@ \
 		--stringparam "g_sErrHFile" "$(VBox-python-vboxapi_0_OUTDIR)/VirtualBox_constants_err_h_1.txt" \
+		--stringparam g_uVBoxCopyrightYear "$(VBOX_C_YEAR)" \
 		$(VBOX_PATH_PYTHON_GLUE_SRC)/constants-python.xsl $(VBOX_XIDL_FILE)
 
  #

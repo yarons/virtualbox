@@ -1,4 +1,4 @@
-/* $Id: USBIdDatabaseGenerator.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: USBIdDatabaseGenerator.cpp 106065 2024-09-16 21:42:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * USB device vendor and product ID database - generator.
  */
@@ -35,6 +35,8 @@
 #include <map>
 #include <iprt/sanitized/string>
 #include <vector>
+
+#include <VBox/version.h>
 
 #include <iprt/err.h>
 #include <iprt/initterm.h>
@@ -257,7 +259,7 @@ static void WriteSourceFile(FILE *pOut, const char *argv0, PBLDPROGSTRTAB pStrTa
             " */\n"
             "\n"
             "/*\n"
-            " * Copyright (C) 2015-2023 Oracle and/or its affiliates.\n"
+            " * Copyright (C) 2015-" VBOX_C_YEAR " Oracle and/or its affiliates.\n"
             " *\n"
             " * This file is part of VirtualBox base platform packages, as\n"
             " * available from https://www.virtualbox.org.\n"
