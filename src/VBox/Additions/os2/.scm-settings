@@ -1,4 +1,4 @@
-# $Id: .scm-settings 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 106067 2024-09-16 22:04:01Z knut.osmundsen@oracle.com $
 ## @file
 # Source code massager settings for the OS/2 guest additions.
 #
@@ -40,7 +40,6 @@
 
 /VBoxGrext/*.c:   --external-copyright
 /VBoxGrext/*.h:   --external-copyright --no-fix-header-guards
-/VBoxGrext/*.def: --external-copyright
 
 /VBoxMouse/*.c:   --external-copyright --no-convert-tabs
 /VBoxMouse/*.asm: --external-copyright --no-convert-tabs
