@@ -1,4 +1,4 @@
-﻿/* $Id: UIAdvancedSettingsDialog.cpp 106063 2024-09-16 17:16:03Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIAdvancedSettingsDialog.cpp 106064 2024-09-16 17:26:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class implementation.
  */
@@ -936,6 +936,49 @@ bool UIAdvancedSettingsDialog::eventFilter(QObject *pObject, QEvent *pEvent)
             /* Check if redirected event was really handled, otherwise give it back: */
             if (QCoreApplication::sendEvent(m_pScrollViewport, pEvent))
                 return true;
+        }
+    }
+
+    /* Handle key-press events: */
+    if (pEvent->type() == QEvent::KeyPress)
+    {
+        /* Convert to key-press event and acquire the key: */
+        QKeyEvent *pKeyEvent = static_cast<QKeyEvent*>(pEvent);
+        const int iKey = pKeyEvent->key();
+        /* Handle Alt+<NUMERIC> menemonics: */
+        if (   pKeyEvent->modifiers() & Qt::AltModifier
+            && iKey >= Qt::Key_1
+            && iKey <= Qt::Key_9)
+        {
+            /* Stop further event handling anyway: */
+            pEvent->accept();
+
+            /* Acquire current page: */
+            const int iCurrentId = m_pSelector->currentId();
+            QWidget *pPage = m_pSelector->idToPage(iCurrentId);
+            if (pPage)
+            {
+                /* Look the page for a suitable tab-widget: */
+                const QList<QTabWidget*> tabWidgets = pPage->findChildren<QTabWidget*>();
+                if (!tabWidgets.isEmpty())
+                {
+                    /* Look for a proper tab offset: */
+                    const int iShift = iKey - Qt::Key_1;
+                    QTabWidget *pTabWidget = tabWidgets.first();
+                    int iVisibleTabNumber = 0;
+                    for (int i = 0; i < pTabWidget->count(); ++i)
+                        if (pTabWidget->isTabVisible(i))
+                        {
+                            if (iVisibleTabNumber == iShift)
+                            {
+                                /* Activate proper tab and leave: */
+                                pTabWidget->setCurrentIndex(iVisibleTabNumber);
+                                break;
+                            }
+                            ++iVisibleTabNumber;
+                        }
+                }
+            }
         }
     }
 
