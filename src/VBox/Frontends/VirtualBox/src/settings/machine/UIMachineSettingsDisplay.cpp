@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 105864 2024-08-26 18:45:15Z andreas.loeffler@oracle.com $ */
+/* $Id: UIMachineSettingsDisplay.cpp 106074 2024-09-17 16:46:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -1103,6 +1103,14 @@ bool UIMachineSettingsDisplay::saveScreenData()
         CGraphicsAdapter comGraphics = m_machine.GetGraphicsAdapter();
         fSuccess = m_machine.isOk() && comGraphics.isNotNull();
 
+        /* Get machine ID for further activities: */
+        QUuid uMachineId;
+        if (fSuccess)
+        {
+            uMachineId = m_machine.GetId();
+            fSuccess = m_machine.isOk();
+        }
+
         /* Show error message if necessary: */
         if (!fSuccess)
             notifyOperationProgressError(UIErrorString::formatErrorInfo(m_machine));
@@ -1134,17 +1142,10 @@ bool UIMachineSettingsDisplay::saveScreenData()
                 fSuccess = comGraphics.isOk();
             }
 #endif
-            /* Get machine ID for further activities: */
-            QUuid uMachineId;
-            if (fSuccess)
-            {
-                uMachineId = m_machine.GetId();
-                fSuccess = m_machine.isOk();
-            }
 
             /* Show error message if necessary: */
             if (!fSuccess)
-                notifyOperationProgressError(UIErrorString::formatErrorInfo(m_machine));
+                notifyOperationProgressError(UIErrorString::formatErrorInfo(comGraphics));
 
             /* Save guest-screen scale-factor: */
             if (fSuccess && newDisplayData.m_scaleFactors != oldDisplayData.m_scaleFactors)
