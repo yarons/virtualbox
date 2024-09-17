@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 106078 2024-09-17 19:41:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -10014,7 +10014,7 @@ l_profile_again:
             if (pfnLiveness)
                 pfnLiveness(pCallEntry, &paLivenessEntries[idxCall], &paLivenessEntries[idxCall - 1]);
             else
-                IEM_LIVENESS_RAW_INIT_WITH_XCPT_OR_CALL(&paLivenessEntries[idxCall - 1], &paLivenessEntries[idxCall]);
+                IEM_LIVENESS_RAW_INIT_WITH_CALL_AND_POTENTIAL_CALL(&paLivenessEntries[idxCall - 1], &paLivenessEntries[idxCall]);
             pCallEntry--;
             idxCall--;
         }
