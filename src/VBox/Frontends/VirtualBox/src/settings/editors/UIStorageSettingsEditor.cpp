@@ -1,4 +1,4 @@
-/* $Id: UIStorageSettingsEditor.cpp 106075 2024-09-17 17:33:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIStorageSettingsEditor.cpp 106076 2024-09-17 18:27:43Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStorageSettingsEditor class implementation.
  */
@@ -4798,7 +4798,10 @@ void UIStorageSettingsEditor::prepareAttachmentWidget()
                 /* Prepare slot combo: */
                 m_pComboSlot = new QComboBox(pWidgetAttachment);
                 if (m_pComboSlot)
+                {
+                    m_pComboSlot->setSizePolicy(QSizePolicy(QSizePolicy::Ignored, QSizePolicy::Minimum));
                     pLayoutContainer->addWidget(m_pComboSlot);
+                }
 
                 /* Prepare slot combo: */
                 m_pToolButtonOpen = new QIToolButton(pWidgetAttachment);
