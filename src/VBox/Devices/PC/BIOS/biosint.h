@@ -1,4 +1,4 @@
-/* $Id: biosint.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: biosint.h 106071 2024-09-17 12:08:24Z michal.necasek@oracle.com $ */
 /** @file
  * PC BIOS - BIOS internal definitions.
  */
@@ -304,13 +304,6 @@ extern uint16_t     conv_mem_alloc(int n_kb, int in_ebda);
 #define BX_PANIC(...)   bios_printf(BIOS_PRINTF_DEBHALT, __VA_ARGS__)
 
 uint16_t pci16_find_device(uint32_t search_item, uint16_t index, int search_class, int ignore_if);
-
-/* Because we don't tell the recompiler when guest physical memory
- * is written, it can incorrectly cache guest code overwritten by
- * DMA (bus master or not). We just re-write the memory block to flush
- * any of its caches. This is not exactly efficient, but works!
- */
-#define DMA_WORKAROUND      1
 
 /* Random hardware-related definitions. */
 

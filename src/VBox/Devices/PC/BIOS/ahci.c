@@ -1,4 +1,4 @@
-/* $Id: ahci.c 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: ahci.c 106071 2024-09-17 12:08:24Z michal.necasek@oracle.com $ */
 /** @file
  * AHCI host adapter driver to boot from SATA disks.
  */
@@ -538,9 +538,6 @@ int ahci_read_sectors(bio_dsk_t __far *bios_dsk)
     rc = ahci_cmd_data(bios_dsk, AHCI_CMD_READ_DMA_EXT);
     DBG_AHCI("%s: transferred %lu bytes\n", __func__, ((ahci_t __far *)(bios_dsk->ahci_seg :> 0))->aCmdHdr[1]);
     bios_dsk->drqp.trsfsectors = bios_dsk->drqp.nsect;
-#ifdef DMA_WORKAROUND
-    rep_movsw(bios_dsk->drqp.buffer, bios_dsk->drqp.buffer, bios_dsk->drqp.nsect * 512 / 2);
-#endif
     high_bits_restore(bios_dsk->ahci_seg :> 0);
     return rc;
 }
@@ -620,9 +617,6 @@ uint16_t ahci_cmd_packet(uint16_t device_id, uint8_t cmdlen, char __far *cmdbuf,
     ahci_cmd_data(bios_dsk, ATA_CMD_PACKET);
     DBG_AHCI("%s: transferred %lu bytes\n", __func__, ahci->aCmdHdr[1]);
     bios_dsk->drqp.trsfbytes = ahci->aCmdHdr[1];
-#ifdef DMA_WORKAROUND
-    rep_movsw(bios_dsk->drqp.buffer, bios_dsk->drqp.buffer, bios_dsk->drqp.trsfbytes / 2);
-#endif
     high_bits_restore(ahci);
 
     return ahci->aCmdHdr[1] == 0 ? 4 : 0;
