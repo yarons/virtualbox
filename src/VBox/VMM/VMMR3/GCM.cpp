@@ -1,4 +1,4 @@
-/* $Id: GCM.cpp 106054 2024-09-13 20:11:59Z knut.osmundsen@oracle.com $ */
+/* $Id: GCM.cpp 106072 2024-09-17 12:47:24Z knut.osmundsen@oracle.com $ */
 /** @file
  * GCM - Guest Compatibility Manager.
  */
@@ -304,7 +304,7 @@ static DECLCALLBACK(int) gcmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, 
     /*
      * Check if we can reconfigure to the loaded fixer set.
      */
-    bool     fSuccess     = false;
+    bool     fSuccess     = true;
     uint32_t fNewFixerSet = fFixerSet;
     uint32_t fDiffSet     = fFixerSet ^ pVM->gcm.s.fFixerSet;
     while (fDiffSet)
