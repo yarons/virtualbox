@@ -1,4 +1,4 @@
-/* $Id: UIStorageSettingsEditor.h 106048 2024-09-13 13:38:09Z sergey.dubov@oracle.com $ */
+/* $Id: UIStorageSettingsEditor.h 106075 2024-09-17 17:33:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStorageSettingsEditor class declaration.
  */
@@ -500,6 +500,8 @@ private:
 
         /** Holds the right pane attachment widget separator instance. */
         QILabelSeparator *m_pLabelSeparatorInformation;
+        /** Holds the information container instance. */
+        QStackedWidget   *m_pContainerInformation;
         /** Holds the HD format label instance. */
         QLabel           *m_pLabelHDFormat;
         /** Holds the HD format field instance. */
