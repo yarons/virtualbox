@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxTranslator.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtualBoxTranslator.cpp 106077 2024-09-17 19:36:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Translator class.
  */
@@ -146,7 +146,7 @@ static int vboxGetDefaultUserLanguage(char *pszName, size_t cbName)
 }
 
 VirtualBoxTranslator::VirtualBoxTranslator()
-    : util::RWLockHandle(util::LOCKCLASS_TRANSLATOR)
+    : util::RWLockHandle(util::LOCKCLASS_TRANSLATOR, "VirtualBoxTranslator")
     , m_cInstanceRefs(0)
     , m_pDefaultComponent(NULL)
     , m_strLanguage("C")

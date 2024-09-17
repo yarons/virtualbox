@@ -1,4 +1,4 @@
-/* $Id: AutoLock.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: AutoLock.cpp 106077 2024-09-17 19:36:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * Automatic locks, implementation.
  */
@@ -167,26 +167,30 @@ struct RWLockHandle::Data
 #endif
 };
 
-RWLockHandle::RWLockHandle(VBoxLockingClass lockClass)
+RWLockHandle::RWLockHandle(VBoxLockingClass lockClass, const char *pszName /*= NULL*/)
 {
+    Assert(!pszName || (!strchr(pszName, '%') && *pszName));
     m = new Data();
 
     m->lockClass = lockClass;
 #ifdef VBOX_WITH_MAIN_LOCK_VALIDATION
-    m->strDescription.printf("r/w %RCv", this);
+    if (pszName)
+        m->strDescription.printf("r/w %RCv %s", this, pszName);
+    else
+        m->strDescription.printf("r/w %RCv", this);
 #endif
 
 #ifdef GLUE_USE_CRITSECTRW
 # ifdef VBOX_WITH_MAIN_LOCK_VALIDATION
-    int vrc = RTCritSectRwInitEx(&m->CritSect, 0 /*fFlags*/, g_mapLockValidationClasses[lockClass], RTLOCKVAL_SUB_CLASS_ANY, NULL);
+    int vrc = RTCritSectRwInitEx(&m->CritSect, 0 /*fFlags*/, g_mapLockValidationClasses[lockClass], RTLOCKVAL_SUB_CLASS_ANY, pszName);
 # else
-    int vrc = RTCritSectRwInitEx(&m->CritSect, 0 /*fFlags*/, NIL_RTLOCKVALCLASS, RTLOCKVAL_SUB_CLASS_ANY, NULL);
+    int vrc = RTCritSectRwInitEx(&m->CritSect, 0 /*fFlags*/, NIL_RTLOCKVALCLASS, RTLOCKVAL_SUB_CLASS_ANY, pszName);
 # endif
 #else
 # ifdef VBOX_WITH_MAIN_LOCK_VALIDATION
-    int vrc = RTSemRWCreateEx(&m->sem, 0 /*fFlags*/, g_mapLockValidationClasses[lockClass], RTLOCKVAL_SUB_CLASS_ANY, NULL);
+    int vrc = RTSemRWCreateEx(&m->sem, 0 /*fFlags*/, g_mapLockValidationClasses[lockClass], RTLOCKVAL_SUB_CLASS_ANY, pszName);
 # else
-    int vrc = RTSemRWCreateEx(&m->sem, 0 /*fFlags*/, NIL_RTLOCKVALCLASS, RTLOCKVAL_SUB_CLASS_ANY, NULL);
+    int vrc = RTSemRWCreateEx(&m->sem, 0 /*fFlags*/, NIL_RTLOCKVALCLASS, RTLOCKVAL_SUB_CLASS_ANY, pszName);
 # endif
 #endif
     AssertRC(vrc);

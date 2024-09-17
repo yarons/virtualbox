@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: MediumImpl.cpp 106077 2024-09-17 19:36:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -177,7 +177,7 @@ struct Medium::Data
           size(0),
           readers(0),
           preLockState(MediumState_NotCreated),
-          queryInfoSem(LOCKCLASS_MEDIUMQUERY),
+          queryInfoSem(LOCKCLASS_MEDIUMQUERY, "queryInfoSem"),
           queryInfoRunning(false),
           type(MediumType_Normal),
           devType(DeviceType_HardDisk),

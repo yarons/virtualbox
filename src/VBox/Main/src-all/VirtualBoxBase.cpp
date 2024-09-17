@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtualBoxBase.cpp 106077 2024-09-17 19:36:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM base classes implementation
  */
@@ -194,7 +194,8 @@ RWLockHandle *VirtualBoxBase::lockHandle() const
 
     // getLockingClass() is overridden by many subclasses to return
     // one of the locking classes listed at the top of AutoLock.h
-    RWLockHandle *objLock = new RWLockHandle(getLockingClass());
+    // getComponentName() returns the class name by default.
+    RWLockHandle *objLock = new RWLockHandle(getLockingClass(), getComponentName());
     if (!ASMAtomicCmpXchgPtr(&mObjectLock, objLock, NULL))
     {
         delete objLock;

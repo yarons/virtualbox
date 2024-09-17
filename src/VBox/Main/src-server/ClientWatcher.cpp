@@ -1,4 +1,4 @@
-/* $Id: ClientWatcher.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: ClientWatcher.cpp 106077 2024-09-17 19:36:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox API client session crash watcher
  */
@@ -54,7 +54,7 @@ static const RTMSINTERVAL s_aUpdateTimeoutSteps[] = { 500, 200, 100, 50, 20, 10,
 
 
 VirtualBox::ClientWatcher::ClientWatcher() :
-    mLock(LOCKCLASS_OBJECTSTATE)
+    mLock(LOCKCLASS_OBJECTSTATE, "ClientWatcher")
 {
     AssertReleaseFailed();
 }
@@ -91,7 +91,7 @@ VirtualBox::ClientWatcher::ClientWatcher(const ComObjPtr<VirtualBox> &pVirtualBo
     mVirtualBox(pVirtualBox),
     mThread(NIL_RTTHREAD),
     mUpdateReq(CWUPDATEREQARG),
-    mLock(LOCKCLASS_OBJECTSTATE)
+    mLock(LOCKCLASS_OBJECTSTATE, "ClientWatcher")
 {
 #if defined(RT_OS_WINDOWS)
     /* Misc state. */

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 106077 2024-09-17 19:36:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -430,7 +430,7 @@ Console::Console()
     , mUsbCardReader(NULL)
 #endif
     , mBusMgr(NULL)
-    , mLedLock(LOCKCLASS_LISTOFOTHEROBJECTS /* must be higher than LOCKCLASS_OTHEROBJECT */)
+    , mLedLock(LOCKCLASS_LISTOFOTHEROBJECTS /* must be higher than LOCKCLASS_OTHEROBJECT */, "LedLock")
     , muLedGen(0)
     , muLedTypeGen(0)
     , mcLedSets(0)
