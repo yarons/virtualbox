@@ -1,4 +1,4 @@
-/* $Id: GraphicsAdapterImpl.cpp 106080 2024-09-18 12:38:27Z andreas.loeffler@oracle.com $ */
+/* $Id: GraphicsAdapterImpl.cpp 106081 2024-09-18 13:02:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * Implementation of IGraphicsAdapter in VBoxSVC.
  */
@@ -503,19 +503,19 @@ void GraphicsAdapter::i_updateFeatures()
         GraphicsFeature_T enmFeature;
     };
 
-    static FEATUREMEMBER2ENUM s_aFeatures[] =
+    FEATUREMEMBER2ENUM aFeatures[] =
     {
         { &mData->fAccelerate2DVideo, GraphicsFeature_Acceleration2DVideo },
         { &mData->fAccelerate3D,      GraphicsFeature_Acceleration3D },
     };
 
-    for (size_t i = 0; i < RT_ELEMENTS(s_aFeatures); i++)
+    for (size_t i = 0; i < RT_ELEMENTS(aFeatures); i++)
     {
-        if (*s_aFeatures[i].pfFeatureMember)
-            *s_aFeatures[i].pfFeatureMember
+        if (*aFeatures[i].pfFeatureMember)
+            *aFeatures[i].pfFeatureMember
                 = PlatformProperties::s_isGraphicsControllerFeatureSupported(mParent->i_getPlatform()->i_getArchitecture(),
                                                                              mData->graphicsControllerType,
-                                                                             s_aFeatures[i].enmFeature);
+                                                                             aFeatures[i].enmFeature);
     }
 }
 
