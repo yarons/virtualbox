@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.h 105742 2024-08-20 18:18:33Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVMEditors.h 106079 2024-09-18 12:17:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMEditors class declaration.
  */
@@ -123,7 +123,7 @@ class UIAdditionalUnattendedOptions : public QGroupBox
 signals:
 
     void sigHostnameDomainNameChanged(const QString &strHostnameDomainName, bool fIsComplete);
-    void sigProductKeyChanged(const QString &strHostnameDomainName);
+    void sigProductKeyChanged(const QString &strProductKey);
     void sigStartHeadlessChanged(bool fChecked);
 
 public:
@@ -151,8 +151,8 @@ private:
 
     void prepare();
 
-    QLabel *m_pProductKeyLabel;
-    QILineEdit *m_pProductKeyLineEdit;
+
+
     UIHostnameDomainNameEditor *m_pHostnameDomainNameEditor;
     QCheckBox *m_pStartHeadlessCheckBox;
     QGridLayout *m_pMainLayout;
