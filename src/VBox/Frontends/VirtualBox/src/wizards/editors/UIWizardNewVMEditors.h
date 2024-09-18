@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.h 106079 2024-09-18 12:17:40Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMEditors.h 106084 2024-09-18 18:20:15Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMEditors class declaration.
  */
@@ -37,7 +37,7 @@
 
 /* Forward declarations: */
 class QCheckBox;
-class QGridLayout;
+class QHBoxLayout;
 class QLabel;
 class QILineEdit;
 class UIBaseMemoryEditor;
@@ -151,11 +151,8 @@ private:
 
     void prepare();
 
-
-
     UIHostnameDomainNameEditor *m_pHostnameDomainNameEditor;
-    QCheckBox *m_pStartHeadlessCheckBox;
-    QGridLayout *m_pMainLayout;
+    QHBoxLayout *m_pMainLayout;
 };
 
 
