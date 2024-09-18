@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.cpp 106079 2024-09-18 12:17:40Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMEditors.cpp 106083 2024-09-18 17:29:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -64,7 +64,6 @@ void UIUserNamePasswordGroupBox::prepare()
     m_pUserNamePasswordEditor = new UIUserNamePasswordEditor;
     AssertReturnVoid(m_pUserNamePasswordEditor);
     m_pUserNamePasswordEditor->setLabelsVisible(true);
-    m_pUserNamePasswordEditor->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
     pUserNameContainerLayout->addWidget(m_pUserNamePasswordEditor);
 
     connect(m_pUserNamePasswordEditor, &UIUserNamePasswordEditor::sigPasswordChanged,
