@@ -1,4 +1,4 @@
-/* $Id: GraphicsAdapterImpl.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: GraphicsAdapterImpl.h 106080 2024-09-18 12:38:27Z andreas.loeffler@oracle.com $ */
 /** @file
  * Implementation of IGraphicsAdapter in VBoxSVC - Header.
  */
@@ -61,9 +61,11 @@ public:
     HRESULT i_loadSettings(const settings::GraphicsAdapter &data);
     HRESULT i_saveSettings(settings::GraphicsAdapter &data);
 
-    void i_rollback();
-    void i_commit();
-    void i_copyFrom(GraphicsAdapter *aThat);
+    void  i_rollback();
+    void  i_commit();
+    void  i_copyFrom(GraphicsAdapter *aThat);
+    bool *i_getFeatureMemberBool(GraphicsFeature_T aFeature);
+    void  i_updateFeatures();
 
 private:
 

@@ -1,4 +1,4 @@
-/* $Id: PlatformPropertiesImpl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: PlatformPropertiesImpl.cpp 106080 2024-09-18 12:38:27Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform properties.
  */
@@ -847,6 +847,8 @@ int PlatformProperties::s_getSupportedGraphicsControllerFeatures(PlatformArchite
             switch (enmController)
             {
 #ifdef VBOX_WITH_VMSVGA
+                case GraphicsControllerType_VMSVGA:
+                    RT_FALL_THROUGH();
                 case GraphicsControllerType_VBoxSVGA:
                 {
 #if defined(VBOX_WITH_VIDEOHWACCEL) || defined(VBOX_WITH_3D_ACCELERATION) /* Work around zero-sized arrays. */
