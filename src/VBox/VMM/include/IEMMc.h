@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc.h 106097 2024-09-19 14:27:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX.
  */
@@ -3330,6 +3330,13 @@ AssertCompile(X86_CR4_FSGSBASE > UINT8_MAX);
 #define IEM_MC_LIVENESS_XREG_CLOBBER(a_iXReg)           ((void)0)
 /** Recompiler liveness info: modified SSE register (i.e. input & output)  */
 #define IEM_MC_LIVENESS_XREG_MODIFY(a_iXReg)            ((void)0)
+
+/** Recompiler liveness info: input MXCSR */
+#define IEM_MC_LIVENESS_MXCSR_INPUT()                   ((void)0)
+/** Recompiler liveness info: clobbered MXCSR */
+#define IEM_MC_LIVENESS_MXCSR_CLOBBER()                 ((void)0)
+/** Recompiler liveness info: modified MXCSR (i.e. input & output)  */
+#define IEM_MC_LIVENESS_MXCSR_MODIFY()                  ((void)0)
 
 /** @todo add more as needed. */
 

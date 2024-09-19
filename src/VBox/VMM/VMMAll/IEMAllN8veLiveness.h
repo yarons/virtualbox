@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veLiveness.h 106090 2024-09-19 09:13:54Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veLiveness.h 106097 2024-09-19 14:27:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Liveness Analysis, Common Header.
  */
@@ -1249,4 +1249,8 @@ AssertCompile(IEMLIVENESS_STATE_INPUT == IEMLIVENESS_STATE_MASK);
 #define IEM_MC_LIVENESS_XREG_INPUT(a_iXReg)             NOP()
 #define IEM_MC_LIVENESS_XREG_CLOBBER(a_iXReg)           NOP()
 #define IEM_MC_LIVENESS_XREG_MODIFY(a_iXReg)            NOP()
+
+#define IEM_MC_LIVENESS_MXCSR_INPUT()                   IEM_LIVENESS_MXCSR_INPUT()
+#define IEM_MC_LIVENESS_MXCSR_CLOBBER()                 IEM_LIVENESS_MXCSR_CLOBBER()
+#define IEM_MC_LIVENESS_MXCSR_MODIFY()                  IEM_LIVENESS_MXCSR_MODIFY()
 

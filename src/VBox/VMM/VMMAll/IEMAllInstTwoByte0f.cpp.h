@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstTwoByte0f.cpp.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstTwoByte0f.cpp.h 106097 2024-09-19 14:27:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -767,6 +767,7 @@ FNIEMOP_DEF_1(iemOpCommonSseFp_FullFull_To_Full, PFNIEMAIMPLFPSSEF2U128, pfnU128
             IEM_MC_MAYBE_RAISE_SSE_RELATED_XCPT(); \
             IEM_MC_PREPARE_SSE_USAGE(); \
             IEM_MC_NATIVE_IF(a_fRegNativeArchs) { \
+                IEM_MC_LIVENESS_MXCSR_MODIFY(); \
                 IEM_MC_NATIVE_EMIT_2_EX(RT_CONCAT3(iemNativeEmit_,a_Ins,_rr_u128), IEM_GET_MODRM_REG(pVCpu, bRm), IEM_GET_MODRM_RM(pVCpu, bRm)); \
             } IEM_MC_NATIVE_ELSE() { \
                 IEM_MC_LOCAL(X86XMMREG,             SseRes); \
@@ -795,6 +796,7 @@ FNIEMOP_DEF_1(iemOpCommonSseFp_FullFull_To_Full, PFNIEMAIMPLFPSSEF2U128, pfnU128
             IEM_MC_FETCH_MEM_XMM_ALIGN_SSE(uSrc2, pVCpu->iem.s.iEffSeg, GCPtrEffSrc); \
             IEM_MC_PREPARE_SSE_USAGE(); \
             IEM_MC_NATIVE_IF(a_fRegNativeArchs) { \
+                IEM_MC_LIVENESS_MXCSR_MODIFY(); \
                 IEM_MC_NATIVE_EMIT_2_EX(RT_CONCAT3(iemNativeEmit_,a_Ins,_rv_u128), IEM_GET_MODRM_REG(pVCpu, bRm), uSrc2); \
             } IEM_MC_NATIVE_ELSE() { \
                 IEM_MC_LOCAL(X86XMMREG,             SseRes); \

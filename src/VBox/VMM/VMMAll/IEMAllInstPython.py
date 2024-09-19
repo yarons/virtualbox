@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 106097 2024-09-19 14:27:50Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 106061 $"
+__version__ = "$Revision: 106097 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -3212,6 +3212,9 @@ g_dMcStmtParsers = {
     'IEM_MC_LIVENESS_XREG_INPUT':                                (McBlock.parseMcGeneric,           False, False, True,  ),
     'IEM_MC_LIVENESS_XREG_CLOBBER':                              (McBlock.parseMcGeneric,           False, False, True,  ),
     'IEM_MC_LIVENESS_XREG_MODIFY':                               (McBlock.parseMcGeneric,           False, False, True,  ),
+    'IEM_MC_LIVENESS_MXCSR_INPUT':                               (McBlock.parseMcGeneric,           False, False, True,  ),
+    'IEM_MC_LIVENESS_MXCSR_CLOBBER':                             (McBlock.parseMcGeneric,           False, False, True,  ),
+    'IEM_MC_LIVENESS_MXCSR_MODIFY':                              (McBlock.parseMcGeneric,           False, False, True,  ),
     'IEM_MC_LOCAL':                                              (McBlock.parseMcLocal,             False, False, True,  ),
     'IEM_MC_LOCAL_ASSIGN':                                       (McBlock.parseMcLocalAssign,       False, False, True,  ),
     'IEM_MC_LOCAL_CONST':                                        (McBlock.parseMcLocalConst,        False, False, True,  ),

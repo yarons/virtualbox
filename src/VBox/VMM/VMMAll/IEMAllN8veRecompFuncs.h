@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompFuncs.h 106090 2024-09-19 09:13:54Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompFuncs.h 106097 2024-09-19 14:27:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler - Inlined Bits.
  */
@@ -265,6 +265,9 @@ iemNativeRegFlushPendingSpecificWrite(PIEMRECOMPILERSTATE pReNative, uint32_t of
 #define IEM_MC_LIVENESS_XREG_CLOBBER(a_iXReg)   ((void)0)
 #define IEM_MC_LIVENESS_XREG_MODIFY(a_iXReg)    ((void)0)
 
+#define IEM_MC_LIVENESS_MXCSR_INPUT()           ((void)0)
+#define IEM_MC_LIVENESS_MXCSR_CLOBBER()         ((void)0)
+#define IEM_MC_LIVENESS_MXCSR_MODIFY()          ((void)0)
 
 
 /*********************************************************************************************************************************

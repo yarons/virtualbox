@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: tstIEMCheckMc.cpp 106097 2024-09-19 14:27:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -1162,6 +1162,10 @@ typedef VBOXSTRICTRC (* PFNIEMOPRM)(PVMCPU pVCpu, uint8_t bRm);
 #define IEM_MC_LIVENESS_XREG_INPUT(a_iXReg)                             ((void)a_iXReg)
 #define IEM_MC_LIVENESS_XREG_CLOBBER(a_iXReg)                           ((void)a_iXReg)
 #define IEM_MC_LIVENESS_XREG_MODIFY(a_iXReg)                            ((void)a_iXReg)
+
+#define IEM_MC_LIVENESS_MXCSR_INPUT()                                   ((void)0)
+#define IEM_MC_LIVENESS_MXCSR_CLOBBER()                                 ((void)0)
+#define IEM_MC_LIVENESS_MXCSR_MODIFY()                                  ((void)0)
 
 /** @}  */
 
