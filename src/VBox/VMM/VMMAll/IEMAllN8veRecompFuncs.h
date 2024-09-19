@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompFuncs.h 106078 2024-09-17 19:41:52Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompFuncs.h 106090 2024-09-19 09:13:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler - Inlined Bits.
  */
@@ -5811,6 +5811,7 @@ DECLINLINE(void) iemNativeEFlagsOptimizationStats(PIEMRECOMPILERSTATE pReNative,
         IEMLIVENESSBIT const     LivenessDelayable =
         {
               pLivenessEntry->aBits[IEMLIVENESS_BIT_POTENTIAL_CALL].bm64
+            & pLivenessEntry->aBits[IEMLIVENESS_BIT_WRITE].bm64
             & ~(  pLivenessEntry->aBits[IEMLIVENESS_BIT_READ].bm64
                 | pLivenessEntry->aBits[IEMLIVENESS_BIT_CALL].bm64)
         };
