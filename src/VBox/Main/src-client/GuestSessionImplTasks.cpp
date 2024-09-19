@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestSessionImplTasks.cpp 106093 2024-09-19 10:59:59Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -2544,13 +2544,6 @@ int UpdateAdditionsProcess::onOutputCallback(uint32_t uHandle, const BYTE *pbDat
             LogRel(("Guest Additions Update: %s\n", pstrLine->c_str()));
             pstrLine->setNull();
             cch++;
-        }
-
-        while (cbData)
-        {
-            pstrLine->append(*cch);
-            cch++;
-            cbData--;
         }
     }
 
