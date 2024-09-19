@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.h 106084 2024-09-18 18:20:15Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMEditors.h 106094 2024-09-19 11:23:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMEditors class declaration.
  */
@@ -152,7 +152,6 @@ private:
     void prepare();
 
     UIHostnameDomainNameEditor *m_pHostnameDomainNameEditor;
-    QHBoxLayout *m_pMainLayout;
 };
 
 

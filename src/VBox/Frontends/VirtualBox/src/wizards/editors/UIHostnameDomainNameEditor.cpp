@@ -1,4 +1,4 @@
-/* $Id: UIHostnameDomainNameEditor.cpp 106084 2024-09-18 18:20:15Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHostnameDomainNameEditor.cpp 106094 2024-09-19 11:23:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHostnameDomainNameEditor class implementation.
  */
@@ -163,6 +163,7 @@ void UIHostnameDomainNameEditor::prepare()
     if (!m_pMainLayout)
         return;
     setLayout(m_pMainLayout);
+    m_pMainLayout->setContentsMargins(0, 0, 0, 0);
     int iRow = 0;
 
     addLineEdit(iRow, m_pProductKeyLabel, m_pProductKeyLineEdit, m_pMainLayout);
