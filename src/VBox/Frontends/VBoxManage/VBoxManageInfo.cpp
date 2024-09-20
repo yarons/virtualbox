@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageInfo.cpp 106109 2024-09-20 09:33:33Z brent.paulson@oracle.com $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1438,8 +1438,9 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
         || firmwareType == FirmwareType_EFI64 || firmwareType == FirmwareType_EFIDUAL)
     {
         ComPtr<IUefiVariableStore> uefiVarStore;
-        CHECK_ERROR_RET(nvramStore, COMGETTER(UefiVariableStore)(uefiVarStore.asOutParam()), hrc);
-        SHOW_BOOLEAN_PROP(uefiVarStore, SecureBootEnabled, "SecureBoot", Info::tr("UEFI Secure Boot:"));
+        hrc = nvramStore->COMGETTER(UefiVariableStore)(uefiVarStore.asOutParam());
+        if (SUCCEEDED(hrc))
+            SHOW_BOOLEAN_PROP(uefiVarStore, SecureBootEnabled, "SecureBoot", Info::tr("UEFI Secure Boot:"));
     }
     SHOW_BOOLEAN_PROP_EX(platform,   RTCUseUTC, "rtcuseutc", Info::tr("RTC:"), "UTC", Info::tr("local time"));
 
