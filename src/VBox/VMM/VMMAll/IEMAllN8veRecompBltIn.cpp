@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompBltIn.cpp 106090 2024-09-19 09:13:54Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompBltIn.cpp 106113 2024-09-21 00:01:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Emitters for Built-In Threaded Functions.
  */
@@ -208,8 +208,8 @@ template<bool const a_fCheckTimers, bool const a_fCheckIrqs>
 DECL_FORCE_INLINE(uint32_t) iemNativeRecompFunc_BltIn_CheckTimersAndIrqsCommon(PIEMRECOMPILERSTATE pReNative, uint32_t off)
 {
     uint8_t const         idxEflReg  = !a_fCheckIrqs ? UINT8_MAX
-                                     : iemNativeRegAllocTmpForGuestReg(pReNative, &off, kIemNativeGstReg_EFlags,
-                                                                       kIemNativeGstRegUse_ReadOnly);
+                                     : iemNativeRegAllocTmpForGuestEFlags(pReNative, &off, kIemNativeGstRegUse_ReadOnly,
+                                                                          RT_BIT_64(IEMLIVENESSBIT_IDX_EFL_OTHER));
     uint8_t const         idxTmpReg1 = iemNativeRegAllocTmp(pReNative, &off);
     uint8_t const         idxTmpReg2 = a_fCheckIrqs ? iemNativeRegAllocTmp(pReNative, &off) : UINT8_MAX;
     PIEMNATIVEINSTR const pCodeBuf   = iemNativeInstrBufEnsure(pReNative, off, RT_ARCH_VAL == RT_ARCH_VAL_AMD64 ? 72 : 32);
