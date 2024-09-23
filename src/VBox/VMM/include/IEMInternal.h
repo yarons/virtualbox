@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 106123 2024-09-23 22:04:30Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 106125 2024-09-23 22:42:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -6933,7 +6933,7 @@ DECLHIDDEN(void)    iemExecMemAllocatorReadyForUse(PVMCPUCC pVCpu, void *pv, siz
 void                iemExecMemAllocatorFree(PVMCPU pVCpu, void *pv, size_t cb) RT_NOEXCEPT;
 DECLASM(DECL_NO_RETURN(void)) iemNativeTbLongJmp(void *pvFramePointer, int rc) RT_NOEXCEPT;
 DECLHIDDEN(struct IEMNATIVEPERCHUNKCTX const *) iemExecMemGetTbChunkCtx(PVMCPU pVCpu, PCIEMTB pTb);
-DECLHIDDEN(struct IEMNATIVEPERCHUNKCTX const *) iemNativeRecompileAttachExecMemChunkCtx(PVMCPU pVCpu, uint32_t idxChunk);
+DECLHIDDEN(int) iemNativeRecompileAttachExecMemChunkCtx(PVMCPU pVCpu, uint32_t idxChunk, struct IEMNATIVEPERCHUNKCTX const **ppCtx);
 
 /** Packed 32-bit argument for iemCImpl_vpgather_worker_xx. */
 typedef union IEMGATHERARGS

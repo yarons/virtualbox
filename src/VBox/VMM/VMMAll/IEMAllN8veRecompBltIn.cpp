@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompBltIn.cpp 106113 2024-09-21 00:01:43Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompBltIn.cpp 106125 2024-09-23 22:42:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Emitters for Built-In Threaded Functions.
  */
@@ -724,11 +724,7 @@ iemNativeEmitBltInCheckOpcodes(PIEMRECOMPILERSTATE pReNative, uint32_t off, PCIE
             pbCodeBuf[off++] = RT_BYTE1(offPage); \
         } while (0)
 
-# ifdef IEMNATIVE_WITH_RECOMPILER_PER_CHUNK_TAIL_CODE
-#  define NEAR_JMP_SIZE 5
-# else
-#  define NEAR_JMP_SIZE 6
-# endif
+# define NEAR_JMP_SIZE 5
 
 # define CHECK_OPCODES_CMP_JMP() /* cost: 7 bytes first time, then 2 bytes */ do { \
             if (offConsolidatedJump != UINT32_MAX) \
