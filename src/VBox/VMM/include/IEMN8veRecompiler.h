@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 106123 2024-09-23 22:04:30Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 106124 2024-09-23 22:37:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -1060,7 +1060,7 @@ AssertCompile(IEMLIVENESS_STATE_UNUSED == 1 && IEMLIVENESS_STATE_XCPT_OR_CALL ==
 /** @def IEMNATIVE_ASSERT_EFLAGS_POSTPONING_ONLY
  * Debug assertion that the required flags are available and not incorrectly postponed.
  */
-#ifdef IEMNATIVE_WITH_EFLAGS_SKIPPING
+#ifdef IEMNATIVE_WITH_EFLAGS_POSTPONING
 # define IEMNATIVE_ASSERT_EFLAGS_POSTPONING_ONLY(a_pReNative, a_fEflNeeded) \
     AssertMsg(!((a_pReNative)->fPostponingEFlags & (a_fEflNeeded)), \
               ("%#x & %#x -> %#x\n", (a_pReNative)->fPostponingEFlags, \
