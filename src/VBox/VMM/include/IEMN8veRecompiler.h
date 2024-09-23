@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 106126 2024-09-23 22:45:45Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 106127 2024-09-23 22:50:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -77,7 +77,7 @@
  * flag will be clobbered.  Useful for TlbMiss scenarios and sequences of memory
  * based instructions clobbering status flags. */
 #if defined(IEMNATIVE_WITH_LIVENESS_ANALYSIS) || defined(DOXYGEN_RUNNING)
-# if 0
+# if 0 || defined(DOXYGEN_RUNNING)
 #  define IEMNATIVE_WITH_EFLAGS_POSTPONING
 # endif
 #endif
