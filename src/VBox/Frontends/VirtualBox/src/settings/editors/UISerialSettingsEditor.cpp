@@ -1,4 +1,4 @@
-/* $Id: UISerialSettingsEditor.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UISerialSettingsEditor.cpp 106122 2024-09-23 17:42:12Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISerialSettingsEditor class implementation.
  */
@@ -265,8 +265,12 @@ void UISerialSettingsEditor::sltHandleStandardPortOptionActivated(const QString 
     /* Update availability: */
     ulong uIRQ, uIOAddress;
     bool fStd = UITranslator::toCOMPortNumbers(strText, uIRQ, uIOAddress);
+    if (m_pLabelIRQ)
+        m_pLabelIRQ->setEnabled(!fStd);
     if (m_pLineEditIRQ)
         m_pLineEditIRQ->setEnabled(!fStd);
+    if (m_pLabelIOAddress)
+        m_pLabelIOAddress->setEnabled(!fStd);
     if (m_pLineEditIOAddress)
         m_pLineEditIOAddress->setEnabled(!fStd);
     if (fStd)
