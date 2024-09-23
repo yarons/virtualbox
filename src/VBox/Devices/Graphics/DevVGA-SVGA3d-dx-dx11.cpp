@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 106100 2024-09-19 20:56:04Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 106116 2024-09-23 10:11:46Z dmitrii.grigorev@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -859,6 +859,7 @@ static int dxFormatAllowMultisample(DXGI_FORMAT dxgiFormat)
         case DXGI_FORMAT_X32_TYPELESS_G8X24_UINT:
         case DXGI_FORMAT_R24_UNORM_X8_TYPELESS:
         case DXGI_FORMAT_X24_TYPELESS_G8_UINT:
+        case DXGI_FORMAT_R32G32B32_FLOAT:
             return false;
         default: break;
     }
