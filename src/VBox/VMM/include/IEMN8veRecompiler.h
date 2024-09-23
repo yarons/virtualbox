@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 106125 2024-09-23 22:42:27Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 106126 2024-09-23 22:45:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -92,12 +92,6 @@
 #ifdef VBOX_WITH_STATISTICS
 /** Always count instructions for now. */
 # define IEMNATIVE_WITH_INSTRUCTION_COUNTING
-#endif
-
-/** @def IEMNATIVE_WITH_RECOMPILER_PROLOGUE_SINGLETON
- * Enables having only a single prologue for native TBs. */
-#if 1 || defined(DOXYGEN_RUNNING)
-# define IEMNATIVE_WITH_RECOMPILER_PROLOGUE_SINGLETON
 #endif
 
 
@@ -2820,14 +2814,12 @@ DECL_INLINE_THROW(uint32_t) iemNativeEmitPcWriteback(PIEMRECOMPILERSTATE pReNati
 #endif /* IEMNATIVE_WITH_DELAYED_PC_UPDATING  */
 
 
-#ifdef IEMNATIVE_WITH_RECOMPILER_PROLOGUE_SINGLETON
 /** @note iemNativeTbEntry returns VBOXSTRICTRC, but we don't declare it as
  *        it saves us the trouble of a hidden parameter on MSC/amd64. */
-# ifdef RT_ARCH_AMD64
+#ifdef RT_ARCH_AMD64
 extern "C" IEM_DECL_NATIVE_HLP_DEF(int, iemNativeTbEntry, (PVMCPUCC pVCpu, uintptr_t pfnTbBody));
-# elif defined(RT_ARCH_ARM64)
+#elif defined(RT_ARCH_ARM64)
 extern "C" IEM_DECL_NATIVE_HLP_DEF(int, iemNativeTbEntry, (PVMCPUCC pVCpu, PCPUMCTX pCpumCtx, uintptr_t pfnTbBody));
-# endif
 #endif
 
 #ifdef IEMNATIVE_WITH_SIMD_FP_NATIVE_EMITTERS
