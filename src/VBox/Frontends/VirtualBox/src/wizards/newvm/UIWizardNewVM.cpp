@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 105851 2024-08-23 16:31:38Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVM.cpp 106143 2024-09-24 19:53:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -341,7 +341,7 @@ bool UIWizardNewVM::attachDefaultDevices()
     if (!success)
     {
         /* Unregister VM on failure: */
-        const QVector<CMedium> media = m_machine.Unregister(KCleanupMode_DetachAllReturnHardDisksOnly);
+        const QVector<CMedium> media = m_machine.Unregister(KCleanupMode_DetachAllReturnHardDisksAndVMRemovable);
         if (!m_machine.isOk())
             UINotificationMessage::cannotRemoveMachine(m_machine, notificationCenter());
         else

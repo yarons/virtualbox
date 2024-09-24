@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIChooserModel.cpp 106143 2024-09-24 19:53:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -1920,7 +1920,7 @@ void UIChooserModel::unregisterLocalMachines(const QList<CMachine> &machines)
         if (iResultCode == AlertButton_Choice1)
         {
             /* Unregister machine first: */
-            CMediumVector media = comMachine.Unregister(KCleanupMode_DetachAllReturnHardDisksOnly);
+            CMediumVector media = comMachine.Unregister(KCleanupMode_DetachAllReturnHardDisksAndVMRemovable);
             if (!comMachine.isOk())
             {
                 UINotificationMessage::cannotRemoveMachine(comMachine);
@@ -1933,7 +1933,7 @@ void UIChooserModel::unregisterLocalMachines(const QList<CMachine> &machines)
         else if (iResultCode == AlertButton_Choice2 || iResultCode == AlertButton_Ok)
         {
             /* Unregister machine first: */
-            CMediumVector media = comMachine.Unregister(KCleanupMode_DetachAllReturnHardDisksOnly);
+            CMediumVector media = comMachine.Unregister(KCleanupMode_DetachAllReturnHardDisksAndVMRemovable);
             if (!comMachine.isOk())
             {
                 UINotificationMessage::cannotRemoveMachine(comMachine);
