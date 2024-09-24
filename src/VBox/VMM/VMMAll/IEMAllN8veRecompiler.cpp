@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 106126 2024-09-23 22:45:45Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 106134 2024-09-24 09:24:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -9751,7 +9751,8 @@ DECLHIDDEN(int) iemNativeRecompileAttachExecMemChunkCtx(PVMCPU pVCpu, uint32_t i
     uint32_t const        cbCode              = off * sizeof(IEMNATIVEINSTR);
     PIEMNATIVEINSTR       paFinalCommonCodeRx = NULL;
     pCtx = (PIEMNATIVEPERCHUNKCTX)iemExecMemAllocatorAllocFromChunk(pVCpu, idxChunk, cbCtx + cbCode, &paFinalCommonCodeRx);
-    AssertLogRelMsgReturn(pCtx, ("cbCtx=%#x cbCode=%#x idxChunk=%#x\n", cbCtx, cbCode, idxChunk), NULL);
+    AssertLogRelMsgReturnStmt(pCtx, ("cbCtx=%#x cbCode=%#x idxChunk=%#x\n", cbCtx, cbCode, idxChunk),
+                              iemNativeTerm(pReNative), VERR_OUT_OF_RESOURCES);
 
     /*
      * Copy over the generated code.
