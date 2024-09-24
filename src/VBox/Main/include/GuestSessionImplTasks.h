@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestSessionImplTasks.h 106142 2024-09-24 15:51:42Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks header.
  */
@@ -458,7 +458,7 @@ protected:
     HRESULT setUpdateErrorMsg(HRESULT hrc, const Utf8Str &strMsg, const GuestErrorInfo &guestErrorInfo);
 
     int checkGuestAdditionsStatus(GuestSession *pSession, eOSType osType);
-    int waitForGuestSession(ComObjPtr<Guest> pGuest, eOSType osType);
+    int waitForGuestSession(ComObjPtr<Guest> pGuest, eOSType osType, ComObjPtr<GuestSession> &pNewSession);
 
     /** Files to handle. */
     std::vector<ISOFile>        mFiles;
