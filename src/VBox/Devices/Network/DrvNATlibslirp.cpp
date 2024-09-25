@@ -1,4 +1,4 @@
-/* $Id: DrvNATlibslirp.cpp 106129 2024-09-23 23:46:42Z jack.doherty@oracle.com $ */
+/* $Id: DrvNATlibslirp.cpp 106150 2024-09-25 16:45:59Z jack.doherty@oracle.com $ */
 /** @file
  * DrvNATlibslirp - NATlibslirp network transport driver.
  */
@@ -1052,7 +1052,11 @@ static DECLCALLBACK(void) drvNATNotifyDnsChanged(PPDMINETWORKNATCONFIG pInterfac
     AssertReturnVoid(pNATState);
     AssertReturnVoid(pNATState->pSlirp);
 
-    slirp_set_vdomainname(pNATState->pSlirp, pDnsConf->szDomainName);
+    if (pDnsConf->szDomainName[0] == '\0')
+        slirp_set_vdomainname(pNATState->pSlirp, NULL);
+    else
+        slirp_set_vdomainname(pNATState->pSlirp, pDnsConf->szDomainName);
+
     slirp_set_vdnssearch(pNATState->pSlirp, pDnsConf->papszSearchDomains);
     /** @todo Convert the papszNameServers entries to IP address and tell about
      *        the first IPv4 and IPv6 ones. */
