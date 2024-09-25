@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DevVGA-SVGA3d.cpp 106154 2024-09-25 18:36:09Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common core code.
  */
@@ -102,9 +102,9 @@ int vmsvga3dSurfaceDefine(PVGASTATECC pThisCC, uint32_t sid, SVGA3dSurfaceAllFla
     PVMSVGA3DSTATE   pState = pThisCC->svga.p3dState;
     AssertReturn(pState, VERR_INVALID_STATE);
 
-    LogFunc(("sid=%u surfaceFlags=0x%RX64 format=%s (%#x) multiSampleCount=%d autogenFilter=%d, numMipLevels=%d size=(%dx%dx%d)\n",
+    LogFunc(("sid=%u surfaceFlags=0x%RX64 format=%s (%#x) multiSampleCount=%d autogenFilter=%d, numMipLevels=%d size=%dx%dx%d, arraySize=%u\n",
              sid, surfaceFlags, vmsvgaLookupEnum((int)format, &g_SVGA3dSurfaceFormat2String), format, multisampleCount, autogenFilter,
-             numMipLevels, pMipLevel0Size->width, pMipLevel0Size->height, pMipLevel0Size->depth));
+             numMipLevels, pMipLevel0Size->width, pMipLevel0Size->height, pMipLevel0Size->depth, arraySize));
 
     ASSERT_GUEST_RETURN(sid < SVGA3D_MAX_SURFACE_IDS, VERR_INVALID_PARAMETER);
     ASSERT_GUEST_RETURN(numMipLevels >= 1 && numMipLevels <= SVGA3D_MAX_MIP_LEVELS, VERR_INVALID_PARAMETER);
