@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.h 106142 2024-09-24 15:51:42Z vadim.galitsyn@oracle.com $ */
+/* $Id: GuestSessionImplTasks.h 106159 2024-09-26 09:26:30Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks header.
  */
@@ -382,8 +382,9 @@ public:
 
     UpdateAdditionsStartupInfo(void)
     {
-        /* We want to have stdout / stderr handled by default for update processes. */
-        mFlags = ProcessCreateFlag_WaitForStdOut | ProcessCreateFlag_WaitForStdErr;
+        /* We want to have stdout / stderr handled by default for update processes
+         * (disabled as a workaround for #10776). */
+        mFlags = ProcessCreateFlag_None;
     }
 };
 
