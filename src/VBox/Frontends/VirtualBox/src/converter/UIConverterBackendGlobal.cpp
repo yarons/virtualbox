@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 106149 2024-09-25 16:32:45Z sergey.dubov@oracle.com $ */
+/* $Id: UIConverterBackendGlobal.cpp 106163 2024-09-26 10:33:53Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendGlobal implementation.
  */
@@ -2929,7 +2929,7 @@ template<> SHARED_LIBRARY_STUFF QString UIConverter::toInternalString(const UIVR
     QString strResult;
     switch (enmSecurityMethod)
     {
-        case UIVRDESecurityMethod_TLS:       strResult = QString(); break;
+        case UIVRDESecurityMethod_TLS:       strResult = QString("TLS"); break;
         case UIVRDESecurityMethod_RDP:       strResult = QString("RDP"); break;
         case UIVRDESecurityMethod_Negotiate: strResult = QString("NEGOTIATE"); break;
         default:
