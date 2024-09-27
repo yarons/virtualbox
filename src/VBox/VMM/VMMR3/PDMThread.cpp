@@ -1,4 +1,4 @@
-/* $Id: PDMThread.cpp 106168 2024-09-27 14:13:17Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMThread.cpp 106171 2024-09-27 22:17:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM Thread - VM Thread Management.
  */
@@ -682,7 +682,7 @@ VMMR3DECL(int) PDMR3ThreadIAmSuspending(PPDMTHREAD pThread)
         }
     }
 
-    AssertLogRelMsgFailed(("rc=%d enmState=%d\n", rc, pThread->enmState));
+    AssertLogRelMsgFailed(("rc=%d enmState=%d thread=%s\n", rc, pThread->enmState, RTThreadGetName(pThread->Thread)));
     pdmR3ThreadBailMeOut(pThread);
     return rc;
 }
@@ -718,7 +718,7 @@ VMMR3DECL(int) PDMR3ThreadIAmRunning(PPDMTHREAD pThread)
             return rc;
     }
 
-    AssertLogRelMsgFailed(("rc=%d enmState=%d\n", rc, pThread->enmState));
+    AssertLogRelMsgFailed(("rc=%d enmState=%d thread=%s\n", rc, pThread->enmState, RTThreadGetName(pThread->Thread)));
     pdmR3ThreadBailMeOut(pThread);
     return rc;
 }
