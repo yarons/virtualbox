@@ -1,4 +1,4 @@
-/* $Id: vbsf.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: vbsf.cpp 106172 2024-09-27 23:12:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver initialization and generic routines
  */
@@ -30,6 +30,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include "vbsf.h"
+#include <iprt/buildconfig.h>
 #include <iprt/initterm.h>
 #include <iprt/dbg.h>
 
@@ -1681,8 +1682,8 @@ extern "C" NTSTATUS NTAPI DriverEntry(IN PDRIVER_OBJECT DriverObject, IN PUNICOD
                     g_fHostFeatures = 0;
                 }
                 VbglR0SfHostReqQueryFeaturesSimple(&g_fSfFeatures, &g_uSfLastFunction);
-                LogRel(("VBoxSF: g_fHostFeatures=%#x g_fSfFeatures=%#RX64 g_uSfLastFunction=%u\n",
-                        g_fHostFeatures, g_fSfFeatures, g_uSfLastFunction));
+                LogRel(("VBoxSF: %s r%s g_fHostFeatures=%#x g_fSfFeatures=%#RX64 g_uSfLastFunction=%u\n",
+                        RTBldCfgVersion(), RTBldCfgRevisionStr(), g_fHostFeatures, g_fSfFeatures, g_uSfLastFunction));
 
                 if (VbglR0CanUsePhysPageList())
                 {
@@ -1823,15 +1824,16 @@ extern "C" NTSTATUS NTAPI DriverEntry(IN PDRIVER_OBJECT DriverObject, IN PUNICOD
                 VbglR0SfDisconnect(&g_SfClient);
             }
             else
-                LogRel(("VBOXSF: DriverEntry: Failed to connect to the host: %Rrc!\n", vrc));
+                LogRel(("VBOXSF: DriverEntry: Failed to connect to the host: %Rrc! (%s r%s)\n",
+                        vrc, RTBldCfgVersion(), RTBldCfgRevisionStr()));
             VbglR0SfTerm();
         }
         else
-            LogRel(("VBOXSF: DriverEntry: VbglR0SfInit! %Rrc!\n", vrc));
+            LogRel(("VBOXSF: DriverEntry: VbglR0SfInit! %Rrc! (%s r%s)\n", vrc, RTBldCfgVersion(), RTBldCfgRevisionStr()));
         RTR0Term();
     }
     else
-        RTLogRelPrintf("VBOXSF: DriverEntry: RTR0Init failed! %Rrc!\n", vrc);
+        RTLogRelPrintf("VBOXSF: DriverEntry: RTR0Init failed! %Rrc! (%s r%s)\n", vrc, RTBldCfgVersion(), RTBldCfgRevisionStr());
     return rcNt;
 }
 
