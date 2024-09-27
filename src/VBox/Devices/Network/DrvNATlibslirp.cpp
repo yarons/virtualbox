@@ -1,4 +1,4 @@
-/* $Id: DrvNATlibslirp.cpp 106150 2024-09-25 16:45:59Z jack.doherty@oracle.com $ */
+/* $Id: DrvNATlibslirp.cpp 106167 2024-09-27 13:52:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * DrvNATlibslirp - NATlibslirp network transport driver.
  */
@@ -465,8 +465,8 @@ static DECLCALLBACK(int) drvNATNetworkUp_AllocBuf(PPDMINETWORKUP pInterface, siz
      */
     if (pThis->pSlirpThread->enmState != PDMTHREADSTATE_RUNNING)
     {
-        Log(("drvNATNetowrkUp_AllocBuf: returns VERR_NET_NO_NETWORK\n"));
-        return VERR_NET_NO_NETWORK;
+        Log(("drvNATNetowrkUp_AllocBuf: returns VERR_NET_DOWN\n"));
+        return VERR_NET_DOWN;
     }
 
     /*

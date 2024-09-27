@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvNAT.cpp 106167 2024-09-27 13:52:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -512,8 +512,8 @@ static DECLCALLBACK(int) drvNATNetworkUp_AllocBuf(PPDMINETWORKUP pInterface, siz
      */
     if (pThis->pSlirpThread->enmState != PDMTHREADSTATE_RUNNING)
     {
-        Log(("drvNATNetowrkUp_AllocBuf: returns VERR_NET_NO_NETWORK\n"));
-        return VERR_NET_NO_NETWORK;
+        Log(("drvNATNetowrkUp_AllocBuf: returns VERR_NET_DOWN\n"));
+        return VERR_NET_DOWN;
     }
 
     /*
