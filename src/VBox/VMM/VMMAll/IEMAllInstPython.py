@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 106179 2024-09-29 01:14:19Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 106180 2024-09-30 13:51:48Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 106179 $"
+__version__ = "$Revision: 106180 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -2943,6 +2943,9 @@ class McBlock(object):
         sRet = self.checkForFetchAfterRef(aoStmts, {});
         if sRet:
             asRet.append(sRet);
+
+        ## @todo Check that IEM_MC_REF_EFLAGS isn't used before memory fetches and does
+        # not have any stores or conditional raises afterwards.
 
         return asRet;
 
