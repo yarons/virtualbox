@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 106192 2024-10-01 12:57:32Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 106199 2024-10-01 23:08:47Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -351,6 +351,15 @@ typedef IEMINSTRSTATS *PIEMINSTRSTATS;
 #else
 # define IEM_SELECT_HOST_OR_FALLBACK(a_fCpumFeatureMember, a_pfnNative, a_pfnFallback) (a_pfnFallback)
 #endif
+
+/** @name Helpers for passing C++ template arguments to an
+ *        IEM_MC_NATIVE_EMIT_3/4/5 style macro.
+ * @{
+ */
+#define IEM_TEMPL_ARG_1(a1)             <a1>
+#define IEM_TEMPL_ARG_2(a1, a2)         <a1,a2>
+#define IEM_TEMPL_ARG_3(a1, a2, a3)     <a1,a2,a3>
+/** @} */
 
 
 /**
