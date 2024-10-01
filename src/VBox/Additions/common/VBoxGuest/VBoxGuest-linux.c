@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-linux.c 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuest-linux.c 106193 2024-10-01 13:29:16Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBoxGuest - Linux specifics.
  *
@@ -199,7 +199,9 @@ static struct file_operations   g_FileOps =
     fasync:         vgdrvLinuxFAsync,
     read:           vgdrvLinuxRead,
     poll:           vgdrvLinuxPoll,
+#if RTLNX_VER_MAX(6,12,0)
     llseek:         no_llseek,
+#endif
 };
 
 /** The miscdevice structure. */
