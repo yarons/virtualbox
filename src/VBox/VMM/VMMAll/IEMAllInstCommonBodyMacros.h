@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstCommonBodyMacros.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstCommonBodyMacros.h 106200 2024-10-01 23:37:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, Common Body Macros.
  *
@@ -55,7 +55,7 @@
                     IEM_MC_LOCAL(uint16_t,  u16Dst); \
                     IEM_MC_FETCH_GREG_U16(u16Dst, IEM_GET_MODRM_REG(pVCpu, bRm)); \
                     IEM_MC_LOCAL_EFLAGS(uEFlags); \
-                    IEM_MC_NATIVE_EMIT_4(RT_CONCAT3(iemNativeEmit_,a_EmitterBasename,_r_r_efl), u16Dst, u16Src, uEFlags, 16); \
+                    IEM_MC_NATIVE_EMIT_3(RT_CONCAT3(iemNativeEmit_,a_EmitterBasename,_r_r_efl)<16>, u16Dst, u16Src, uEFlags); \
                     IEM_MC_STORE_GREG_U16(IEM_GET_MODRM_REG(pVCpu, bRm), u16Dst); \
                     IEM_MC_COMMIT_EFLAGS_OPT(uEFlags); \
                 } IEM_MC_NATIVE_ELSE() { \
@@ -78,7 +78,7 @@
                     IEM_MC_LOCAL(uint32_t,  u32Dst); \
                     IEM_MC_FETCH_GREG_U32(u32Dst, IEM_GET_MODRM_REG(pVCpu, bRm)); \
                     IEM_MC_LOCAL_EFLAGS(uEFlags); \
-                    IEM_MC_NATIVE_EMIT_4(RT_CONCAT3(iemNativeEmit_,a_EmitterBasename,_r_r_efl), u32Dst, u32Src, uEFlags, 32); \
+                    IEM_MC_NATIVE_EMIT_3(RT_CONCAT3(iemNativeEmit_,a_EmitterBasename,_r_r_efl)<32>, u32Dst, u32Src, uEFlags); \
                     IEM_MC_STORE_GREG_U32(IEM_GET_MODRM_REG(pVCpu, bRm), u32Dst); \
                     IEM_MC_COMMIT_EFLAGS_OPT(uEFlags); \
                 } IEM_MC_NATIVE_ELSE() { \
@@ -102,7 +102,7 @@
                     IEM_MC_LOCAL(uint64_t,  u64Dst); \
                     IEM_MC_FETCH_GREG_U64(u64Dst, IEM_GET_MODRM_REG(pVCpu, bRm)); \
                     IEM_MC_LOCAL_EFLAGS(uEFlags); \
-                    IEM_MC_NATIVE_EMIT_4(RT_CONCAT3(iemNativeEmit_,a_EmitterBasename,_r_r_efl), u64Dst, u64Src, uEFlags, 64); \
+                    IEM_MC_NATIVE_EMIT_3(RT_CONCAT3(iemNativeEmit_,a_EmitterBasename,_r_r_efl)<64>, u64Dst, u64Src, uEFlags); \
                     IEM_MC_STORE_GREG_U64(IEM_GET_MODRM_REG(pVCpu, bRm), u64Dst); \
                     IEM_MC_COMMIT_EFLAGS_OPT(uEFlags); \
                 } IEM_MC_NATIVE_ELSE() { \
@@ -137,7 +137,7 @@
                     IEM_MC_LOCAL(uint16_t,  u16Dst); \
                     IEM_MC_FETCH_GREG_U16(u16Dst, IEM_GET_MODRM_REG(pVCpu, bRm)); \
                     IEM_MC_LOCAL_EFLAGS(uEFlags); \
-                    IEM_MC_NATIVE_EMIT_4(RT_CONCAT3(iemNativeEmit_,a_EmitterBasename,_r_r_efl), u16Dst, u16Src, uEFlags, 16); \
+                    IEM_MC_NATIVE_EMIT_3(RT_CONCAT3(iemNativeEmit_,a_EmitterBasename,_r_r_efl)<16>, u16Dst, u16Src, uEFlags); \
                     IEM_MC_STORE_GREG_U16(IEM_GET_MODRM_REG(pVCpu, bRm), u16Dst); \
                     IEM_MC_COMMIT_EFLAGS_OPT(uEFlags); \
                 } IEM_MC_NATIVE_ELSE() { \
@@ -162,7 +162,7 @@
                     IEM_MC_LOCAL(uint32_t,  u32Dst); \
                     IEM_MC_FETCH_GREG_U32(u32Dst, IEM_GET_MODRM_REG(pVCpu, bRm)); \
                     IEM_MC_LOCAL_EFLAGS(uEFlags); \
-                    IEM_MC_NATIVE_EMIT_4(RT_CONCAT3(iemNativeEmit_,a_EmitterBasename,_r_r_efl), u32Dst, u32Src, uEFlags, 32); \
+                    IEM_MC_NATIVE_EMIT_3(RT_CONCAT3(iemNativeEmit_,a_EmitterBasename,_r_r_efl)<32>, u32Dst, u32Src, uEFlags); \
                     IEM_MC_STORE_GREG_U32(IEM_GET_MODRM_REG(pVCpu, bRm), u32Dst); \
                     IEM_MC_COMMIT_EFLAGS_OPT(uEFlags); \
                 } IEM_MC_NATIVE_ELSE() { \
@@ -188,7 +188,7 @@
                     IEM_MC_LOCAL(uint64_t,  u64Dst); \
                     IEM_MC_FETCH_GREG_U64(u64Dst, IEM_GET_MODRM_REG(pVCpu, bRm)); \
                     IEM_MC_LOCAL_EFLAGS(uEFlags); \
-                    IEM_MC_NATIVE_EMIT_4(RT_CONCAT3(iemNativeEmit_,a_EmitterBasename,_r_r_efl), u64Dst, u64Src, uEFlags, 64); \
+                    IEM_MC_NATIVE_EMIT_3(RT_CONCAT3(iemNativeEmit_,a_EmitterBasename,_r_r_efl)<64>, u64Dst, u64Src, uEFlags); \
                     IEM_MC_STORE_GREG_U64(IEM_GET_MODRM_REG(pVCpu, bRm), u64Dst); \
                     IEM_MC_COMMIT_EFLAGS_OPT(uEFlags); \
                 } IEM_MC_NATIVE_ELSE() { \
@@ -231,7 +231,7 @@
                     IEM_MC_LOCAL(uint16_t,  u16Dst); \
                     IEM_MC_FETCH_GREG_U16(u16Dst, IEM_GET_MODRM_REG(pVCpu, bRm)); \
                     IEM_MC_LOCAL_EFLAGS(uEFlags); \
-                    IEM_MC_NATIVE_EMIT_4(RT_CONCAT3(iemNativeEmit_,a_EmitterBasename,_r_r_efl), u16Dst, u16Src, uEFlags, 16); \
+                    IEM_MC_NATIVE_EMIT_3(RT_CONCAT3(iemNativeEmit_,a_EmitterBasename,_r_r_efl)<16>, u16Dst, u16Src, uEFlags); \
                     IEM_MC_STORE_GREG_U16(IEM_GET_MODRM_REG(pVCpu, bRm), u16Dst); \
                     IEM_MC_COMMIT_EFLAGS_OPT(uEFlags); \
                 } IEM_MC_NATIVE_ELSE() { \
@@ -254,7 +254,7 @@
                     IEM_MC_LOCAL(uint32_t,  u32Dst); \
                     IEM_MC_FETCH_GREG_U32(u32Dst, IEM_GET_MODRM_REG(pVCpu, bRm)); \
                     IEM_MC_LOCAL_EFLAGS(uEFlags); \
-                    IEM_MC_NATIVE_EMIT_4(RT_CONCAT3(iemNativeEmit_,a_EmitterBasename,_r_r_efl), u32Dst, u32Src, uEFlags, 32); \
+                    IEM_MC_NATIVE_EMIT_3(RT_CONCAT3(iemNativeEmit_,a_EmitterBasename,_r_r_efl)<32>, u32Dst, u32Src, uEFlags); \
                     IEM_MC_STORE_GREG_U32(IEM_GET_MODRM_REG(pVCpu, bRm), u32Dst); \
                     IEM_MC_COMMIT_EFLAGS_OPT(uEFlags); \
                 } IEM_MC_NATIVE_ELSE() { \
@@ -278,7 +278,7 @@
                     IEM_MC_LOCAL(uint64_t,  u64Dst); \
                     IEM_MC_FETCH_GREG_U64(u64Dst, IEM_GET_MODRM_REG(pVCpu, bRm)); \
                     IEM_MC_LOCAL_EFLAGS(uEFlags); \
-                    IEM_MC_NATIVE_EMIT_4(RT_CONCAT3(iemNativeEmit_,a_EmitterBasename,_r_r_efl), u64Dst, u64Src, uEFlags, 64); \
+                    IEM_MC_NATIVE_EMIT_3(RT_CONCAT3(iemNativeEmit_,a_EmitterBasename,_r_r_efl)<64>, u64Dst, u64Src, uEFlags); \
                     IEM_MC_STORE_GREG_U64(IEM_GET_MODRM_REG(pVCpu, bRm), u64Dst); \
                     IEM_MC_COMMIT_EFLAGS_OPT(uEFlags); \
                 } IEM_MC_NATIVE_ELSE() { \
@@ -313,7 +313,7 @@
                     IEM_MC_LOCAL(uint16_t,  u16Dst); \
                     IEM_MC_FETCH_GREG_U16(u16Dst, IEM_GET_MODRM_REG(pVCpu, bRm)); \
                     IEM_MC_LOCAL_EFLAGS(uEFlags); \
-                    IEM_MC_NATIVE_EMIT_4(RT_CONCAT3(iemNativeEmit_,a_EmitterBasename,_r_r_efl), u16Dst, u16Src, uEFlags, 16); \
+                    IEM_MC_NATIVE_EMIT_3(RT_CONCAT3(iemNativeEmit_,a_EmitterBasename,_r_r_efl)<16>, u16Dst, u16Src, uEFlags); \
                     IEM_MC_STORE_GREG_U16(IEM_GET_MODRM_REG(pVCpu, bRm), u16Dst); \
                     IEM_MC_COMMIT_EFLAGS_OPT(uEFlags); \
                 } IEM_MC_NATIVE_ELSE() { \
@@ -338,7 +338,7 @@
                     IEM_MC_LOCAL(uint32_t,  u32Dst); \
                     IEM_MC_FETCH_GREG_U32(u32Dst, IEM_GET_MODRM_REG(pVCpu, bRm)); \
                     IEM_MC_LOCAL_EFLAGS(uEFlags); \
-                    IEM_MC_NATIVE_EMIT_4(RT_CONCAT3(iemNativeEmit_,a_EmitterBasename,_r_r_efl), u32Dst, u32Src, uEFlags, 32); \
+                    IEM_MC_NATIVE_EMIT_3(RT_CONCAT3(iemNativeEmit_,a_EmitterBasename,_r_r_efl)<32>, u32Dst, u32Src, uEFlags); \
                     IEM_MC_STORE_GREG_U32(IEM_GET_MODRM_REG(pVCpu, bRm), u32Dst); \
                     IEM_MC_COMMIT_EFLAGS_OPT(uEFlags); \
                 } IEM_MC_NATIVE_ELSE() { \
@@ -364,7 +364,7 @@
                     IEM_MC_LOCAL(uint64_t,  u64Dst); \
                     IEM_MC_FETCH_GREG_U64(u64Dst, IEM_GET_MODRM_REG(pVCpu, bRm)); \
                     IEM_MC_LOCAL_EFLAGS(uEFlags); \
-                    IEM_MC_NATIVE_EMIT_4(RT_CONCAT3(iemNativeEmit_,a_EmitterBasename,_r_r_efl), u64Dst, u64Src, uEFlags, 64); \
+                    IEM_MC_NATIVE_EMIT_3(RT_CONCAT3(iemNativeEmit_,a_EmitterBasename,_r_r_efl)<64>, u64Dst, u64Src, uEFlags); \
                     IEM_MC_STORE_GREG_U64(IEM_GET_MODRM_REG(pVCpu, bRm), u64Dst); \
                     IEM_MC_COMMIT_EFLAGS_OPT(uEFlags); \
                 } IEM_MC_NATIVE_ELSE() { \
