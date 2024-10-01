@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veEmit-x86.h 106200 2024-10-01 23:37:05Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veEmit-x86.h 106201 2024-10-01 23:48:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, x86 Target - Code Emitters.
  */
@@ -496,7 +496,7 @@ static uint32_t iemNativeDoPostponedEFlagsInternal(PIEMRECOMPILERSTATE pReNative
     off = iemNativeEmitBrkEx(pCodeBuf, off, 0x3330);
     iemNativeFixupFixedJump(pReNative, offFixup1, off);
     /* Check that X86_EFL_RAZ_LO_MASK is zero. */
-    off = iemNativeEmitTestAnyBitsInGpr32Ex(pCodeBuf, off, idxRegEfl, X86_EFL_RAZ_LO_MASK);
+    off = iemNativeEmitTestAnyBitsInGpr32Ex(pCodeBuf, off, idxRegEfl, X86_EFL_RAZ_LO_MASK, idxRegTmp);
     uint32_t const offFixup2 = off;
     off = iemNativeEmitJccToFixedEx(pCodeBuf, off, off, kIemNativeInstrCond_e);
     off = iemNativeEmitBrkEx(pCodeBuf, off, 0x3331);
