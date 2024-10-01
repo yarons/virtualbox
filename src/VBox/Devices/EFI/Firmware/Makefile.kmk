@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 106186 2024-10-01 08:35:10Z alexander.eichner@oracle.com $
 ## @file
 # Toplevel sub-makefile for the EFI firmwares.
 #
@@ -284,6 +284,7 @@ VBOX_EFI_BUILD_CMD += \
 	$(if $(VBOX_WITH_EFI_SECURE_BOOT),-D "SECURE_BOOT_ENABLE=1") \
 	$(if $(VBOX_WITH_EFI_TPM),-D "TPM_ENABLE=1" -D "TPM1_ENABLE" -D "TPM2_ENABLE") \
 	$(if $(VBOX_WITH_EFI_TPM),-D "TPM_CONFIG_ENABLE=1") \
+	$(if $(VBOX_WITH_LSILOGIC),-D "MPT_SCSI_ENABLE=1") \
 	-D BUILD_NEW_SHELL=1 \
 	-D VBOX_REV=$(VBOX_SVN_REV) \
 	-D "VBOX_OUTPUT_BASE_DIR=$(VBoxEfiFirmware_0_OUTDIR)" \
