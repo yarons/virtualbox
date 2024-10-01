@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veEmit-x86.h 106187 2024-10-01 09:05:44Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veEmit-x86.h 106192 2024-10-01 12:57:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, x86 Target - Code Emitters.
  */
@@ -254,6 +254,10 @@ DECL_FORCE_INLINE(void) iemNativeClearPostponedEFlags(PIEMRECOMPILERSTATE pReNat
             iemNativeRegFreeTmp(pReNative, pReNative->PostponedEfl.idxReg2);
         pReNative->PostponedEfl.idxReg1 = UINT8_MAX;
         pReNative->PostponedEfl.idxReg2 = UINT8_MAX;
+#if defined(VBOX_WITH_STATISTICS) || defined(IEMNATIVE_WITH_TB_DEBUG_INFO)
+        STAM_PROFILE_ADD_PERIOD(&pReNative->pVCpu->iem.s.StatNativeEflPostponedEmits, pReNative->PostponedEfl.cEmits);
+        pReNative->PostponedEfl.cEmits = 0;
+#endif
     }
 }
 
@@ -361,6 +365,11 @@ template<uint32_t const a_bmInputRegs, bool const a_fTlbMiss = false>
 static uint32_t iemNativeDoPostponedEFlagsInternal(PIEMRECOMPILERSTATE pReNative, uint32_t off, PIEMNATIVEINSTR pCodeBuf,
                                                    uint32_t bmExtraTlbMissRegs = 0)
 {
+#ifdef IEMNATIVE_WITH_TB_DEBUG_INFO
+    iemNativeDbgInfoAddPostponedEFlagsCalc(pReNative, off, pReNative->PostponedEfl.enmOp, pReNative->PostponedEfl.cOpBits,
+                                           pReNative->PostponedEfl.cEmits);
+#endif
+
     /*
      * In the TB exit code path we cannot do regular register allocation.  Nor
      * can we when we're in the TLB miss code, unless we're skipping the TLB
@@ -458,6 +467,9 @@ static uint32_t iemNativeDoPostponedEFlagsInternal(PIEMRECOMPILERSTATE pReNative
     off = iemNativeEmitStoreGprToVCpuU32Ex(pCodeBuf, off, idxRegEfl, RT_UOFFSETOF(VMCPU, cpum.GstCtx.eflags));
     IEMNATIVE_ASSERT_INSTR_BUF_ENSURE(pReNative, off);
 
+#if defined(VBOX_WITH_STATISTICS) || defined(IEMNATIVE_WITH_TB_DEBUG_INFO)
+    pReNative->PostponedEfl.cEmits++;
+#endif
     return off;
 }
 

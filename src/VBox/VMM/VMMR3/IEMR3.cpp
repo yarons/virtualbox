@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 106180 2024-09-30 13:51:48Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMR3.cpp 106192 2024-10-01 12:57:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -754,6 +754,9 @@ VMMR3DECL(int)      IEMR3Init(PVM pVM)
         REG_NATIVE_EFL_GROUP(logical,    Logical);
         REG_NATIVE_EFL_GROUP(shift,      Shift);
 #   undef REG_NATIVE_EFL_GROUP
+
+        STAMR3RegisterF(pVM, &pVCpu->iem.s.StatNativeEflPostponedEmits, STAMTYPE_PROFILE, STAMVISIBILITY_ALWAYS, STAMUNIT_NONE,
+                        "Postponed EFLAGS calculation emits", "/IEM/CPU%u/re/NativeEFlags/ZZEmits", idCpu);
 
         STAMR3RegisterF(pVM, &pVCpu->iem.s.StatNativeLivenessEflCfSkippable,    STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT, "Skippable EFLAGS.CF updating",       "/IEM/CPU%u/re/NativeLivenessEFlags/CfSkippable", idCpu);
         STAMR3RegisterF(pVM, &pVCpu->iem.s.StatNativeLivenessEflPfSkippable,    STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT, "Skippable EFLAGS.PF updating",       "/IEM/CPU%u/re/NativeLivenessEFlags/PfSkippable", idCpu);
