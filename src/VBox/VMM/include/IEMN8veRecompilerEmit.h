@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerEmit.h 106187 2024-10-01 09:05:44Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompilerEmit.h 106202 2024-10-01 23:52:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Inlined Emitters.
  */
@@ -7249,14 +7249,21 @@ DECL_INLINE_THROW(void) iemNativeFixupFixedJump(PIEMRECOMPILERSTATE pReNative, u
         pu32CodeBuf[offFixup] = (pu32CodeBuf[offFixup] & UINT32_C(0xfc000000))
                               | ((uint32_t)offDisp     & UINT32_C(0x03ffffff));
     }
-    else
+    else if ((pu32CodeBuf[offFixup] & UINT32_C(0x7e000000)) == UINT32_C(0x34000000))
     {
         /* CBZ / CBNZ reg, imm19 */
         Assert((pu32CodeBuf[offFixup] & UINT32_C(0x7e000000)) == UINT32_C(0x34000000));
         Assert(offDisp >= -1048576 && offDisp < 1048576);
         pu32CodeBuf[offFixup] = (pu32CodeBuf[offFixup]    & UINT32_C(0xff00001f))
                               | (((uint32_t)offDisp << 5) & UINT32_C(0x00ffffe0));
-
+    }
+    else
+    {
+        /* TBZ / TBNZ reg, bit5, imm14 */
+        Assert((pu32CodeBuf[offFixup] & UINT32_C(0x7e000000)) == UINT32_C(0x36000000));
+        Assert(offDisp >= -8192 && offDisp < 8192);
+        pu32CodeBuf[offFixup] = (pu32CodeBuf[offFixup]    & UINT32_C(0xfff8001f))
+                              | (((uint32_t)offDisp << 5) & UINT32_C(0x0007ffe0));
     }
 
 #else
