@@ -1,4 +1,4 @@
-; $Id: VBoxGuest.inf 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+; $Id: VBoxGuest.inf 106208 2024-10-02 15:33:29Z knut.osmundsen@oracle.com $
 ;; @file
 ; INF file for installing the VirtualBox Windows guest driver, XP and later.
 ;
@@ -66,11 +66,11 @@ CopyFiles = VBoxGuest_CopyFiles, VBoxTray_CopyFiles
 AddReg = VBoxTray_Add_Reg
 
 [VBoxGuest_CopyFiles]
-VBoxGuest.sys
+VBoxGuest.sys,,,0x4000          ; COPYFLG_IN_USE_TRY_RENAME
 
 [VBoxTray_CopyFiles]
-VBoxTray.exe
-VBoxControl.exe
+VBoxTray.exe,,,0x4000           ; COPYFLG_IN_USE_TRY_RENAME
+VBoxControl.exe,,,0x4000        ; COPYFLG_IN_USE_TRY_RENAME
 
 [VBoxGuest_Install.Services]
 AddService = VBoxGuest, 0x00000002, VBoxGuest_ServiceInstallSection
