@@ -1,4 +1,4 @@
-/* $Id: UIDetailsModel.h 106206 2024-10-02 12:13:37Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsModel.h 106207 2024-10-02 12:16:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsModel class declaration.
  */
@@ -190,6 +190,9 @@ protected:
     virtual bool eventFilter(QObject *pObject, QEvent *pEvent) RT_OVERRIDE;
 
 private slots:
+
+    /** Handles command to detach COM. */
+    void sltDetachCOM();
 
     /** Handles sigal about details element of certain @a enmType toggling finished, making element @a fToggled. */
     void sltToggleAnimationFinished(DetailsElementType type, bool fToggled);
