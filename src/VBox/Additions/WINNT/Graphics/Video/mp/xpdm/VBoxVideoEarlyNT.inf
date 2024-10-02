@@ -1,4 +1,4 @@
-; $Id: VBoxVideoEarlyNT.inf 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+; $Id: VBoxVideoEarlyNT.inf 106210 2024-10-02 21:21:10Z knut.osmundsen@oracle.com $
 ;; @file
 ; VirtualBox Video miniport driver, Windows 2000 and NT4 edition.
 ;
@@ -55,7 +55,7 @@ VBoxVideo.Display  = 11 ; system32
 CopyFiles = VBoxVideo.Miniport, VBoxVideo.Display
 
 [VBoxVideo.Miniport]
-VBoxVideo.sys,,,0x100
+VBoxVideo.sys,,,0x100      ; COPYFLG_PROTECTED_WINDOWS_DRIVER_FILE
 
 [VBoxVideo.Display]
 VBoxDisp.dll,,,0x00004000  ; COPYFLG_IN_USE_TRY_RENAME
