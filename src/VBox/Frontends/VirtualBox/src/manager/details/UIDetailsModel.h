@@ -1,4 +1,4 @@
-/* $Id: UIDetailsModel.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDetailsModel.h 106206 2024-10-02 12:13:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsModel class declaration.
  */
@@ -200,26 +200,13 @@ private:
       * @{ */
         /** Prepares all. */
         void prepare();
-        /** Prepares scene. */
-        void prepareScene();
-        /** Prepares root. */
-        void prepareRoot();
-        /** Prepares context-menu. */
-        void prepareContextMenu();
-        /** Loads settings. */
-        void loadSettings();
+
         /** Loads details categories. */
         void loadDetailsCategories();
         /** Loads details options for certain category @a enmType.
           * @note enmType equal to DetailsElementType_Invalid means load everything. */
         void loadDetailsOptions(DetailsElementType enmType = DetailsElementType_Invalid);
 
-        /** Cleanups context-menu. */
-        void cleanupContextMenu();
-        /** Cleanups root. */
-        void cleanupRoot();
-        /** Cleanups scene. */
-        void cleanupScene();
         /** Cleanups all. */
         void cleanup();
     /** @} */
