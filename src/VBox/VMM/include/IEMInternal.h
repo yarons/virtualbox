@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 106199 2024-10-01 23:08:47Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 106212 2024-10-03 02:42:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -142,6 +142,15 @@ RT_C_DECLS_BEGIN
  * Enable this to use native emitters for certain SIMD FP operations. */
 #if 1 || defined(DOXYGEN_RUNNING)
 # define IEMNATIVE_WITH_SIMD_FP_NATIVE_EMITTERS
+#endif
+
+/** @def VBOX_WITH_SAVE_THREADED_TBS_FOR_PROFILING
+ * Enable this to create a saved state file with the threaded translation
+ * blocks fed to the native recompiler on VCPU \#0.  The resulting file can
+ * then be fed into the native recompiler for code profiling purposes.
+ * This is not a feature that should be normally be enabled! */
+#if 0 || defined(DOXYGEN_RUNNING)
+# define VBOX_WITH_SAVE_THREADED_TBS_FOR_PROFILING
 #endif
 
 /** @def VBOX_WITH_IEM_NATIVE_RECOMPILER_LONGJMP
@@ -2107,6 +2116,9 @@ typedef struct IEMCPU
      * didn't do delayed PC updating.  When CPUMCTX::rip is finally updated,
      * the result is compared with this value. */
     uint64_t                uPcUpdatingDebug;
+#elif defined(VBOX_WITH_SAVE_THREADED_TBS_FOR_PROFILING)
+    /** The SSM handle used for saving threaded TBs for recompiler profiling. */
+    R3PTRTYPE(PSSMHANDLE)   pSsmThreadedTbsForProfiling;
 #else
     uint64_t                u64Placeholder;
 #endif
@@ -6686,6 +6698,9 @@ void                iemTbAllocatorProcessDelayedFrees(PVMCPUCC pVCpu, PIEMTBALLO
 void                iemTbAllocatorFreeupNativeSpace(PVMCPUCC pVCpu, uint32_t cNeededInstrs);
 DECLHIDDEN(const char *) iemTbFlagsToString(uint32_t fFlags, char *pszBuf, size_t cbBuf) RT_NOEXCEPT;
 DECLHIDDEN(void)    iemThreadedDisassembleTb(PCIEMTB pTb, PCDBGFINFOHLP pHlp) RT_NOEXCEPT;
+#if defined(VBOX_WITH_IEM_NATIVE_RECOMPILER) && defined(VBOX_WITH_SAVE_THREADED_TBS_FOR_PROFILING)
+DECLHIDDEN(void)    iemThreadedSaveTbForProfilingCleanup(PVMCPU pVCpu);
+#endif
 
 
 /** @todo FNIEMTHREADEDFUNC and friends may need more work... */

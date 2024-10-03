@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 106192 2024-10-01 12:57:32Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMR3.cpp 106212 2024-10-03 02:42:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -1088,6 +1088,10 @@ VMMR3DECL(int)      IEMR3Term(PVM pVM)
         RTMemPageFree(pVCpu->iem.s.paTlbTraceEntries,
                       RT_BIT_Z(pVCpu->iem.s.cTlbTraceEntriesShift) * sizeof(*pVCpu->iem.s.paTlbTraceEntries));
     }
+#endif
+#if defined(VBOX_WITH_IEM_NATIVE_RECOMPILER) && defined(VBOX_WITH_SAVE_THREADED_TBS_FOR_PROFILING)
+    for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
+        iemThreadedSaveTbForProfilingCleanup(pVM->apCpusR3[idCpu]);
 #endif
     return VINF_SUCCESS;
 }
