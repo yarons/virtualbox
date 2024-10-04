@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA-cmd.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DevVGA-SVGA-cmd.cpp 106221 2024-10-04 19:51:37Z dmitrii.grigorev@oracle.com $ */
 /** @file
  * VMware SVGA device - implementation of VMSVGA commands.
  */
@@ -8357,6 +8357,28 @@ int vmsvgaR3GmrTransfer(PVGASTATE pThis, PVGASTATECC pThisCC, const SVGA3dTransf
             cbSrcPitch = cbGstPitch;
             pbDst      = pbHst;
             cbDstPitch = cbHstPitch;
+        }
+
+        if (pbDst > pbSrc)
+        {
+            if (pbDst - pbSrc < cbSrcPitch * cHeight)
+            {
+                LogRelMax(4, ("Src buffer 0x%p overlaps Dst buffer 0x%p\n", pbSrc, pbDst));
+                return VERR_INVALID_PARAMETER;
+            }
+        }
+        else if (pbSrc > pbDst)
+        {
+            if (pbSrc - pbDst < cbDstPitch * cHeight)
+            {
+                LogRelMax(4, ("Dst buffer 0x%p overlaps Src buffer 0x%p\n", pbDst, pbSrc));
+                return VERR_INVALID_PARAMETER;
+            }
+        }
+        else
+        {
+            LogRelMax(4, ("Dst and Src buffers are both start at 0x%p\n", pbDst));
+            return VERR_INVALID_PARAMETER;
         }
 
         if (   cbWidth == (uint32_t)cbGstPitch
