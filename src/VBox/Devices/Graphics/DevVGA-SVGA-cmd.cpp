@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA-cmd.cpp 106221 2024-10-04 19:51:37Z dmitrii.grigorev@oracle.com $ */
+/* $Id: DevVGA-SVGA-cmd.cpp 106224 2024-10-07 10:07:57Z dmitrii.grigorev@oracle.com $ */
 /** @file
  * VMware SVGA device - implementation of VMSVGA commands.
  */
@@ -8363,35 +8363,35 @@ int vmsvgaR3GmrTransfer(PVGASTATE pThis, PVGASTATECC pThisCC, const SVGA3dTransf
         {
             if (pbDst - pbSrc < cbSrcPitch * cHeight)
             {
-                LogRelMax(4, ("Src buffer 0x%p overlaps Dst buffer 0x%p\n", pbSrc, pbDst));
-                return VERR_INVALID_PARAMETER;
+                LogRelMax(8, ("Src buffer 0x%p overlaps Dst buffer 0x%p, cbSrcPitch %d, cbDstPitch %d, cbWidth %u, cHeight %u\n",
+                    pbSrc, pbDst, cbSrcPitch, cbDstPitch, cbWidth, cHeight));
             }
         }
         else if (pbSrc > pbDst)
         {
             if (pbSrc - pbDst < cbDstPitch * cHeight)
             {
-                LogRelMax(4, ("Dst buffer 0x%p overlaps Src buffer 0x%p\n", pbDst, pbSrc));
-                return VERR_INVALID_PARAMETER;
+                LogRelMax(8, ("Dst buffer 0x%p overlaps Src buffer 0x%p, cbSrcPitch %d, cbDstPitch %d, cbWidth %u, cHeight %u\n",
+                    pbDst, pbSrc, cbSrcPitch, cbDstPitch, cbWidth, cHeight));
             }
         }
         else
         {
-            LogRelMax(4, ("Dst and Src buffers are both start at 0x%p\n", pbDst));
-            return VERR_INVALID_PARAMETER;
+            LogRelMax(8, ("Src and Dst buffers are both start at 0x%p, cbSrcPitch %d, cbDstPitch %d, cbWidth %u, cHeight %u\n",
+                pbSrc, cbSrcPitch, cbDstPitch, cbWidth, cHeight));
         }
 
         if (   cbWidth == (uint32_t)cbGstPitch
             && cbGstPitch == cbHstPitch)
         {
             /* Entire scanlines, positive pitch. */
-            memcpy(pbDst, pbSrc, cbWidth * cHeight);
+            memmove(pbDst, pbSrc, cbWidth * cHeight);
         }
         else
         {
             for (uint32_t i = 0; i < cHeight; ++i)
             {
-                memcpy(pbDst, pbSrc, cbWidth);
+                memmove(pbDst, pbSrc, cbWidth);
 
                 pbDst += cbDstPitch;
                 pbSrc += cbSrcPitch;
