@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialog.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialog.h 106227 2024-10-07 14:54:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class declaration.
  */
@@ -228,6 +228,10 @@ private:
         /** Cleanups all. */
         void cleanup();
     /** @} */
+
+    /** Adjusts visibility for disabled state.
+      * @param  pWidget   Brings the widget to adjust visibility for. */
+    static void adjustVisibilityForDisabledState(QWidget *pWidget);
 
     /** Holds configuration access level. */
     ConfigurationAccessLevel  m_enmConfigurationAccessLevel;
