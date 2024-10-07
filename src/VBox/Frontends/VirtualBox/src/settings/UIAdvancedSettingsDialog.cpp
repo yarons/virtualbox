@@ -1,4 +1,4 @@
-﻿/* $Id: UIAdvancedSettingsDialog.cpp 106121 2024-09-23 17:39:34Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIAdvancedSettingsDialog.cpp 106226 2024-10-07 14:47:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class implementation.
  */
@@ -573,7 +573,6 @@ void UIFilterEditor::prepare()
                                     margin: 3px 0px 3px 10px;\
                                     }");
 #endif
-        m_pLineEdit->installEventFilter(this);
         connect(m_pLineEdit, &QILineEdit::textChanged,
                 this, &UIFilterEditor::sltHandleEditorTextChanged);
     }
@@ -1051,25 +1050,10 @@ void UIAdvancedSettingsDialog::polishEvent()
         }
     }
 
-    /* Install event-filters for all the required children.
-     * These children can be added together with pages. */
+    /* Install event-filters for all the widget children: */
     foreach (QWidget *pChild, findChildren<QWidget*>())
-    {
-        if (   qobject_cast<QAbstractButton*>(pChild)
-            || qobject_cast<QAbstractScrollArea*>(pChild)
-            || qobject_cast<QAbstractScrollArea*>(pChild->parent())
-            || qobject_cast<QAbstractSpinBox*>(pChild)
-            || qobject_cast<QAbstractSpinBox*>(pChild->parent())
-            || qobject_cast<QCheckBox*>(pChild)
-            || qobject_cast<QComboBox*>(pChild)
-            || qobject_cast<QLabel*>(pChild)
-            || qobject_cast<QLineEdit*>(pChild)
-            || qobject_cast<QSlider*>(pChild)
-            || qobject_cast<QSpinBox*>(pChild)
-            || qobject_cast<QTabWidget*>(pChild)
-            || qobject_cast<QTabWidget*>(pChild->parent()))
+        if (qobject_cast<QWidget*>(pChild))
             pChild->installEventFilter(this);
-    }
 
     /* Choose page/tab finally: */
     choosePageAndTab();
