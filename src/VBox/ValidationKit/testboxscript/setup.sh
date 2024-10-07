@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# $Id: setup.sh 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: setup.sh 106225 2024-10-07 13:38:48Z klaus.espenlaub@oracle.com $
 ## @file
 # VirtualBox Validation Kit - TestBoxScript Service Setup on Unixy platforms.
 #
@@ -562,7 +562,7 @@ TESTBOXSCRIPT_DEFAULT_TEST_MANAGER=""
 TESTBOXSCRIPT_DEFAULT_SCRATCH_ROOT=""
 TESTBOXSCRIPT_DEFAULT_BUILDS_PATH=""
 TESTBOXSCRIPT_DEFAULT_BUILDS_TYPE="cifs"
-TESTBOXSCRIPT_DEFAULT_BUILDS_NAME="vboxstor.de.oracle.com"
+TESTBOXSCRIPT_DEFAULT_BUILDS_NAME="10.165.98.144"
 TESTBOXSCRIPT_DEFAULT_BUILDS_SHARE="builds"
 TESTBOXSCRIPT_DEFAULT_BUILDS_USER="guestr"
 TESTBOXSCRIPT_DEFAULT_BUILDS_PASSWD="guestr"
@@ -600,7 +600,7 @@ fi;
 TESTBOXSCRIPT_DIR=`dirname "${DIR}"`
 
 # Storage server replacement trick.
-if [ "${TESTBOXSCRIPT_BUILDS_NAME}" = "solserv.de.oracle.com" ]; then
+if [ "${TESTBOXSCRIPT_BUILDS_NAME}" = "vboxstor.de.oracle.com" ]; then
     TESTBOXSCRIPT_BUILDS_NAME=${TESTBOXSCRIPT_DEFAULT_BUILDS_NAME}
 fi
 if [ "${TESTBOXSCRIPT_TESTRSRC_NAME}" = "solserv.de.oracle.com" ]; then
@@ -624,7 +624,7 @@ do
             exit 0;
             ;;
         -V|--version)
-            echo '$Revision: 106061 $'
+            echo '$Revision: 106225 $'
             exit 0;
             ;;
 

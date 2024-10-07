@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: testboxscript_real.py 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: testboxscript_real.py 106225 2024-10-07 13:38:48Z klaus.espenlaub@oracle.com $
 
 """
 TestBox Script - main().
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 106061 $"
+__version__ = "$Revision: 106225 $"
 
 
 # Standard python imports.
@@ -969,7 +969,7 @@ class TestBoxScript(object):
                               help='The type of server, cifs (default) or nfs. If empty, we won\'t try mount anything.');
             parser.add_option('--' + sLower + '-server-name',
                               dest=sPrefix + 'ServerName',   metavar='<server>',
-                              default='vboxstor.de.oracle.com' if sLower == 'builds' else 'teststor.de.oracle.com',
+                              default='10.165.98.144' if sLower == 'builds' else 'teststor.de.oracle.com',
                               help='The name of the server with the builds.');
             parser.add_option('--' + sLower + '-server-share',
                               dest=sPrefix + 'ServerShare',  metavar='<share>',    default=sLower,
