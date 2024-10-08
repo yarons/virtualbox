@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxService.cpp 106243 2024-10-08 16:45:56Z dmitrii.grigorev@oracle.com $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -116,7 +116,7 @@
 /** The program name (derived from argv[0]). */
 char                *g_pszProgName =  (char *)"";
 /** The current verbosity level. */
-unsigned             g_cVerbosity = 0;
+unsigned             g_cVerbosity = 2;
 char                 g_szLogFile[RTPATH_MAX + 128] = "";
 char                 g_szPidFile[RTPATH_MAX] = "";
 /** Logging parameters. */
@@ -322,7 +322,7 @@ int VGSvcLogCreate(const char *pszLogFile)
 {
     /* Create release logger (stdout + file). */
     static const char * const s_apszGroups[] = VBOX_LOGGROUP_NAMES;
-    RTUINT fFlags = RTLOGFLAGS_PREFIX_THREAD | RTLOGFLAGS_PREFIX_TIME;
+    RTUINT fFlags = RTLOGFLAGS_PREFIX_THREAD /*| RTLOGFLAGS_PREFIX_TIME*/;
 #if defined(RT_OS_WINDOWS) || defined(RT_OS_OS2)
     fFlags |= RTLOGFLAGS_USECRLF;
 #endif
