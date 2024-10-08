@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialog.h 106244 2024-10-08 17:08:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialog.h 106245 2024-10-08 17:24:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class declaration.
  */
@@ -236,6 +236,8 @@ private:
     /** Adjusts look&feel for disabled widget.
       * @param  pWidget   Brings the widget to adjust look&feel for. */
     static void adjustLookAndFeelForDisabledWidget(QWidget *pWidget);
+    /** Returns whether one of @a pWidget parents in hierarchy has mask assigned. */
+    static bool isOneOfWidgetParentsHasMask(QWidget *pWidget);
 
     /** Holds configuration access level. */
     ConfigurationAccessLevel  m_enmConfigurationAccessLevel;
