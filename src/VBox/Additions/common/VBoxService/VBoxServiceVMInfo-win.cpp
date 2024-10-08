@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 106243 2024-10-08 16:45:56Z dmitrii.grigorev@oracle.com $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 106246 2024-10-08 17:50:15Z dmitrii.grigorev@oracle.com $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -579,15 +579,15 @@ static int vgsvcVMInfoWinProcessesEnumerate(PVBOXSERVICEVMINFOPROC *ppaProcs, PD
                 paProcs[i].pSid = NULL;
 
                 int rc2 = vgsvcVMInfoWinProcessesGetTokenInfo(&paProcs[i], TokenUser);
-                if (RT_FAILURE(rc2) && g_cVerbosity > 2)
+                if (RT_FAILURE(rc2) && g_cVerbosity)
                     VGSvcError("Get token class 'user' for process %u failed, rc=%Rrc\n", paProcs[i].id, rc2);
 
                 rc2 = vgsvcVMInfoWinProcessesGetTokenInfo(&paProcs[i], TokenGroups);
-                if (RT_FAILURE(rc2) && g_cVerbosity > 2)
+                if (RT_FAILURE(rc2) && g_cVerbosity)
                     VGSvcError("Get token class 'groups' for process %u failed, rc=%Rrc\n", paProcs[i].id, rc2);
 
                 rc2 = vgsvcVMInfoWinProcessesGetTokenInfo(&paProcs[i], TokenStatistics);
-                if (RT_FAILURE(rc2) && g_cVerbosity > 2)
+                if (RT_FAILURE(rc2) && g_cVerbosity)
                     VGSvcError("Get token class 'statistics' for process %u failed, rc=%Rrc\n", paProcs[i].id, rc2);
             }
 
