@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: testboxscript_real.py 106225 2024-10-07 13:38:48Z klaus.espenlaub@oracle.com $
+# $Id: testboxscript_real.py 106236 2024-10-08 12:38:35Z alex.hasani@oracle.com $
 
 """
 TestBox Script - main().
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 106225 $"
+__version__ = "$Revision: 106236 $"
 
 
 # Standard python imports.
@@ -314,7 +314,7 @@ class TestBoxScript(object):
                                                 + ',sec=ntlmv2'
                                                 + ',uid=' + str(os.getuid()) # pylint: disable=no-member
                                                 + ',gid=' + str(os.getgid()) # pylint: disable=no-member
-                                                + ',nounix,file_mode=0555,dir_mode=0555,soft,ro'
+                                                + ',vers=3.0,nounix,file_mode=0555,dir_mode=0555,soft,ro'
                                                 + sMountOpt,
                                                 '//%s/%s' % (sServer, sShare),
                                                 sMountPoint]);
