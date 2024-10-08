@@ -1,4 +1,4 @@
-/* $Id: tstSharedFolderService.cpp 106237 2024-10-08 14:08:34Z brent.paulson@oracle.com $ */
+/* $Id: tstSharedFolderService.cpp 106238 2024-10-08 14:16:19Z brent.paulson@oracle.com $ */
 /** @file
  * Testcase for the shared folder service vbsf API.
  *
@@ -1141,7 +1141,6 @@ void testCopyFileReadWrite(RTTEST hTest)
     VBOXHGCMSVCHELPERS  svcHelpers;
     SHFLROOT Root;
     const RTFILE hFile = (RTFILE) 0x10000;
-    SHFLCREATERESULT Result;
     int rc;
 
     RTTestSub(hTest, "Test copying files (RTFileCopy()) to a writable share");
@@ -1165,7 +1164,6 @@ void testCopyFileReadOnly(RTTEST hTest)
     VBOXHGCMSVCFNTABLE  svcTable;
     VBOXHGCMSVCHELPERS  svcHelpers;
     SHFLROOT Root;
-    SHFLCREATERESULT Result;
     int rc;
 
     RTTestSub(hTest, "Test copying files (RTFileCopy()) to a read-only share");
@@ -1274,7 +1272,6 @@ void testSymlinkReadOnlyCreation(RTTEST hTest)
     VBOXHGCMSVCFNTABLE  svcTable;
     VBOXHGCMSVCHELPERS  svcHelpers;
     SHFLROOT Root;
-    SHFLCREATERESULT Result;
     int rc;
 
     RTTestSub(hTest, "Test creating symlink in a read-only share");
