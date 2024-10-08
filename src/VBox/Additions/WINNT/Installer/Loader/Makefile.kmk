@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 106239 2024-10-08 14:47:35Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the Guest Additions loader.
 #
@@ -66,6 +66,41 @@ $$(VBoxWindowsAdditions_0_OUTDIR)/VBoxWindowsAdditions-icon.rc: \
 		$(VBOX_WINDOWS_ADDITIONS_ICON_FILE) $(MAKEFILE_CURRENT) | $$(dir $$@)
 	$(RM) -f $@
 	$(APPEND) $@ 'IDI_VIRTUALBOX ICON DISCARDABLE "$(subst /,\\,$(VBOX_WINDOWS_ADDITIONS_ICON_FILE))"'
+
+
+# Signing certificate.
+ifdef VBOX_SIGNING_MODE
+ if1of ($(VBOX_SIGNING_MODE), test)
+  # If signing the installer, the loader stub must be signed as well.
+  # Hack alert! Using POST_CMDS.win to place the signing after VBoxPeSetVersion.
+  VBoxWindowsAdditions_POST_CMDS.win = $(call VBOX_SIGN_IMAGE_FN,$(out),,2)
+  VBoxWindowsAdditions_ORDERDEPS     = $(VBOX_SIGN_IMAGE_ORDERDEPS)
+ endif
+ VBoxWindowsAdditions_DEFS         += VBOX_SIGNING_MODE
+ VBoxWindowsAdditions_INCS         += $(VBoxWindowsAdditions_0_OUTDIR)
+ VBoxWindowsAdditions_INTERMEDIATES = $(VBoxWindowsAdditions_0_OUTDIR)/BuildCert.h
+
+ # Dummy signed program that we can extract the signature from.
+ BLDPROGS += bldAddSignedDummy
+ bldAddSignedDummy_TEMPLATE := VBoxBldProg
+ bldAddSignedDummy_SOURCES  := bldAddSignedDummy.cpp
+ bldAddSignedDummy_ORDERDEPS = $(VBOX_SIGN_IMAGE_ORDERDEPS)
+ bldAddSignedDummy_POST_CMDS = $(call VBOX_SIGN_IMAGE_FN,$(out),,2)
+
+ # The certificate include file.
+ $$(VBoxWindowsAdditions_0_OUTDIR)/BuildCert.h: \
+		$(VBOX_BIN2C) \
+		$(VBOX_RTSIGNTOOL) \
+		$$(bldAddSignedDummy_1_TARGET) \
+		| $$(dir $$@)
+	$(QUIET)$(RM) -f -- "$@" "$@.cer"
+	$(VBOX_RTSIGNTOOL) extract-exe-signer-cert --exe "$(bldAddSignedDummy_1_TARGET)" --output "$@.cer" --der
+	$(VBOX_BIN2C) -ascii --append BuildCert "$@.cer" "$@"
+	$(QUIET)$(RM) -f -- $@.cer
+
+ OTHER_CLEAN += $(VBOX_SUP_WIN_CERTS_FILE)
+
+endif # VBOX_SIGNING_MODE
 
 
 include $(FILE_KBUILD_SUB_FOOTER)
