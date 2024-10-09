@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.h 106159 2024-09-26 09:26:30Z vadim.galitsyn@oracle.com $ */
+/* $Id: GuestSessionImplTasks.h 106262 2024-10-09 18:57:43Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks header.
  */
@@ -460,6 +460,8 @@ protected:
 
     int checkGuestAdditionsStatus(GuestSession *pSession, eOSType osType);
     int waitForGuestSession(ComObjPtr<Guest> pGuest, eOSType osType, ComObjPtr<GuestSession> &pNewSession);
+
+    PlatformArchitecture_T getPlatformArch(void);
 
     /** Files to handle. */
     std::vector<ISOFile>        mFiles;
