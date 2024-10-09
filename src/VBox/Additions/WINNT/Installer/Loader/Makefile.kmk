@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106265 2024-10-09 20:52:03Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 106266 2024-10-09 21:05:23Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the Guest Additions loader.
 #
@@ -79,10 +79,10 @@ ifdef VBOX_SIGNING_MODE
  VBoxWindowsAdditions_DEFS          += VBOX_SIGNING_MODE
  VBoxWindowsAdditions_INCS          += $(VBoxWindowsAdditions_0_OUTDIR)
  VBoxWindowsAdditions_INTERMEDIATES += \
- 	$(VBoxWindowsAdditions_0_OUTDIR)/BuildCerts.h  \
+ 	$(VBoxWindowsAdditions_0_OUTDIR)/BuildCerts.h \
  	$(VBoxWindowsAdditions_0_OUTDIR)/TimestampRootCerts.h
  VBoxWindowsAdditions_CLEAN         += \
- 	$(VBoxWindowsAdditions_0_OUTDIR)/BuildCerts.h  \
+ 	$(VBoxWindowsAdditions_0_OUTDIR)/BuildCerts.h \
  	$(VBoxWindowsAdditions_0_OUTDIR)/TimestampRootCerts.h
 
  # Dummy signed program that we can extract the signature from.

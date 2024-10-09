@@ -1,4 +1,4 @@
-/* $Id: VBoxWindowsAdditions.cpp 106265 2024-10-09 20:52:03Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxWindowsAdditions.cpp 106266 2024-10-09 21:05:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxWindowsAdditions - The Windows Guest Additions Loader.
  *
@@ -1096,7 +1096,7 @@ int main()
         return rcExit;
 
 #ifdef VBOX_SIGNING_MODE
-# if 1 /* Use the IPRT code as it it will work on all windows versions without trouble. 
+# if 1 /* Use the IPRT code as it it will work on all windows versions without trouble.
           Added some 800KB to the executable, but so what. */
     rcExit = CheckFileSignatureIprt(wszExePath);
 # else
