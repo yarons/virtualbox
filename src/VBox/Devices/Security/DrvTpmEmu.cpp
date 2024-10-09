@@ -1,4 +1,4 @@
-/* $Id: DrvTpmEmu.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvTpmEmu.cpp 106259 2024-10-09 16:09:15Z alexander.eichner@oracle.com $ */
 /** @file
  * TPM emulator using a TCP/socket interface to talk to swtpm (https://github.com/stefanberger/swtpm).
  */
@@ -291,6 +291,8 @@ typedef struct DRVTPMEMU
     PDMITPMCONNECTOR    ITpmConnector;
     /** Pointer to the driver instance. */
     PPDMDRVINS          pDrvIns;
+    /** Pointer to the TPM port interface above. */
+    PPDMITPMPORT        pTpmPort;
 
     /** Socket handle for the control connection. */
     RTSOCKET            hSockCtrl;
@@ -853,6 +855,17 @@ static DECLCALLBACK(int) drvTpmEmuConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, 
     pThis->ITpmConnector.pfnCmdCancel               = drvTpmEmuCmdCancel;
 
     /*
+     * Query the TPM port interface of the device above.
+     */
+    pThis->pTpmPort = PDMIBASE_QUERY_INTERFACE(pDrvIns->pUpBase, PDMITPMPORT);
+    if (!pThis->pTpmPort)
+    {
+        AssertMsgFailed(("Configuration error: the above device/driver didn't export the TPM port interface!\n"));
+        return PDMDRV_SET_ERROR(pDrvIns, VERR_PDM_MISSING_INTERFACE_ABOVE,
+                                N_("No TPM port interface above"));
+    }
+
+    /*
      * Validate and read the configuration.
      */
     PDMDRV_VALIDATE_CONFIG_RETURN(pDrvIns, "Location|BufferSize", "");
@@ -945,6 +958,9 @@ static DECLCALLBACK(int) drvTpmEmuConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, 
     if (RT_FAILURE(rc))
         return PDMDrvHlpVMSetError(pDrvIns, rc, RT_SRC_POS,
                                    N_("Configuration error: querying \"BufferSize\" resulted in %Rrc"), rc);
+
+    /* Limit to the maximum buffer size of the device above. */
+    pThis->cbBuffer = RT_MIN(pThis->cbBuffer, pThis->pTpmPort->pfnGetMaxBufferSize(pThis->pTpmPort));
 
     /* Set the buffer size. */
     rc = drvTpmEmuSetBufferSz(pThis, pThis->cbBuffer);
