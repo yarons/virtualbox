@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106239 2024-10-08 14:47:35Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 106255 2024-10-09 09:31:18Z ksenia.s.stepanova@oracle.com $
 ## @file
 # Sub-Makefile for the Guest Additions loader.
 #
@@ -89,10 +89,10 @@ ifdef VBOX_SIGNING_MODE
 
  # The certificate include file.
  $$(VBoxWindowsAdditions_0_OUTDIR)/BuildCert.h: \
-		$(VBOX_BIN2C) \
-		$(VBOX_RTSIGNTOOL) \
-		$$(bldAddSignedDummy_1_TARGET) \
-		| $$(dir $$@)
+ 		$(VBOX_BIN2C) \
+ 		$(VBOX_RTSIGNTOOL) \
+ 		$$(bldAddSignedDummy_1_TARGET) \
+ 		| $$(dir $$@)
 	$(QUIET)$(RM) -f -- "$@" "$@.cer"
 	$(VBOX_RTSIGNTOOL) extract-exe-signer-cert --exe "$(bldAddSignedDummy_1_TARGET)" --output "$@.cer" --der
 	$(VBOX_BIN2C) -ascii --append BuildCert "$@.cer" "$@"

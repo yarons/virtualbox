@@ -1,4 +1,4 @@
-/* $Id: VBoxWindowsAdditions.cpp 106249 2024-10-08 21:50:23Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxWindowsAdditions.cpp 106255 2024-10-09 09:31:18Z ksenia.s.stepanova@oracle.com $ */
 /** @file
  * VBoxWindowsAdditions - The Windows Guest Additions Loader.
  *
@@ -409,7 +409,7 @@ static int CheckThatFileIsRelated(wchar_t const *pwszExePath, wchar_t const *pws
                  || memcmp(pvExeInfoItem, pvSelfInfoItem, cbSelfInfoItem) != 0)
             rcExit = ErrorMsgRcSWS(27 + i*3, s_aIdenticalItems[i].pszCompareErrorMsg1, pwszExePath, "' does not match");
     }
-                  
+
     HeapFree(hHeap, 0, pvExeVerInfo);
 
     /*
