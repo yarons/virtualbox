@@ -1,4 +1,4 @@
-# $Id: Config.kmk 106257 2024-10-09 15:50:32Z sergey.dubov@oracle.com $
+# $Id: Config.kmk 106258 2024-10-09 15:54:41Z sergey.dubov@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -7949,11 +7949,14 @@ if defined(VBOX_WITH_QTGUI) || defined(VBOX_WITH_NLS)
    VBOX_QT_MOD += Qt6Core Qt6Gui Qt6Widgets Qt6PrintSupport Qt6StateMachine
    VBOX_QT_MOD += Qt6DBus Qt6Xml Qt6XcbQpa Qt6Help Qt6Network Qt6Sql
    VBOX_QT_PLUGINS = \
-   	plugins/platforms/libqxcbVBox.so \
-   	plugins/platformthemes/libqgtk2VBox.so \
-   	plugins/platformthemes/libqgtk3VBox.so \
-   	plugins/sqldrivers/libqsqliteVBox.so \
-   	plugins/styles/libqgtk2styleVBox.so
+   	plugins/platforms/libqxcb$(VBOX_QT_POSTFIX).so \
+    plugins/platformthemes/libqgtk3$(VBOX_QT_POSTFIX).so \
+    plugins/sqldrivers/libqsqlite$(VBOX_QT_POSTFIX).so
+   ifdef VBOX_WITH_ORACLE_QT
+    VBOX_QT_PLUGINS += \
+     plugins/platformthemes/libqgtk2$(VBOX_QT_POSTFIX).so \
+     plugins/styles/libqgtk2style$(VBOX_QT_POSTFIX).so
+   endif
   else ifeq ($(KBUILD_TARGET),win)
    VBOX_QT_MOD += Qt6Core Qt6Gui Qt6Widgets Qt6PrintSupport Qt6StateMachine Qt6Help Qt6Network Qt6Sql
   endif # win
@@ -9283,7 +9286,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 106257 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 106258 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
