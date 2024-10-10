@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 106262 2024-10-09 18:57:43Z vadim.galitsyn@oracle.com $ */
+/* $Id: GuestSessionImplTasks.cpp 106291 2024-10-10 13:37:53Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -3430,8 +3430,10 @@ int GuestSessionTaskUpdateAdditions::Run(void)
                         }
                     }
 
-                    /* Remove temporary update files on the guest side before reporting completion. */
-                    if (!pSession->i_isTerminated())
+                    /* Remove temporary update files on the guest side before reporting completion.
+                     * Only enabled for Linux guest for now. Windows has issues w/ deletting temporary
+                      * installation directory. */
+                    if ((osType == eOSType_Linux) && !pSession->i_isTerminated())
                     {
                         hrc = pSession->i_directoryRemove(strUpdateDir, DIRREMOVEREC_FLAG_RECURSIVE | DIRREMOVEREC_FLAG_CONTENT_AND_DIR, &vrc);
                         LogRel(("Cleanup Guest Additions update directory '%s', hrc=%Rrc, vrc=%Rrc\n",
