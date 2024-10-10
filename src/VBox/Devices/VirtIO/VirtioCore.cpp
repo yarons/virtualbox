@@ -1,4 +1,4 @@
-/* $Id: VirtioCore.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtioCore.cpp 106294 2024-10-10 17:42:05Z aleksey.ilyushin@oracle.com $ */
 
 /** @file
  * VirtioCore - Virtio Core (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
@@ -633,10 +633,9 @@ DECLINLINE(void) virtioCoreR3DescInfo(PCDBGFINFOHLP pHlp, PVIRTQ_DESC_T pDesc, u
 }
 
 /** API Fuunction: See header file */
-DECLHIDDEN(void) virtioCoreR3VirtqInfo(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, const char *pszArgs, int uVirtq)
+DECLHIDDEN(void) virtioCoreR3VirtqInfo(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, PVIRTIOCORE pVirtio, const char *pszArgs, int uVirtq)
 {
     RT_NOREF(pszArgs);
-    PVIRTIOCORE pVirtio = PDMDEVINS_2_DATA(pDevIns, PVIRTIOCORE);
     PVIRTQUEUE pVirtq = &pVirtio->aVirtqueues[uVirtq];
 
     /** @todo add ability to dump physical contents described by any descriptor (using existing VirtIO core API function) */

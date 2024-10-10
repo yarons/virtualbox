@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ $Revision: 106061 $ $Date: 2024-09-16 16:03:52 +0200 (Mon, 16 Sep 2024) $ $Author: knut.osmundsen@oracle.com $ */
+/* $Id: DevVirtioNet.cpp 106294 2024-10-10 17:42:05Z aleksey.ilyushin@oracle.com $ $Revision: 106294 $ $Date: 2024-10-10 19:42:05 +0200 (Thu, 10 Oct 2024) $ $Author: aleksey.ilyushin@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -863,7 +863,7 @@ static DECLCALLBACK(void) virtioNetR3Info(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp
                     pVirtq->fAttachedToVirtioCore  ? "" : "not attached to virtio core");
             }
             pHlp->pfnPrintf(pHlp, "\n");
-            virtioCoreR3VirtqInfo(pDevIns, pHlp, pszArgs, uVirtqNbr);
+            virtioCoreR3VirtqInfo(pDevIns, pHlp, &pThis->Virtio, pszArgs, uVirtqNbr);
             pHlp->pfnPrintf(pHlp, "    ---------------------------------------------------------------------\n");
             pHlp->pfnPrintf(pHlp, "\n");
         }
@@ -3635,7 +3635,8 @@ static DECLCALLBACK(int) virtioNetR3Construct(PPDMDEVINS pDevIns, int iInstance,
      * Register the debugger info callback (ignore errors).
      */
     char szTmp[128];
-    rc = PDMDevHlpDBGFInfoRegister(pDevIns, "virtionet", "Display virtionet info (help, net, features, state, pointers, queues, all)", virtioNetR3Info);
+    RTStrPrintf(szTmp, sizeof(szTmp), "virtionet%d", iInstance);
+    rc = PDMDevHlpDBGFInfoRegister(pDevIns, szTmp, "Display virtionet info (help, net, features, state, pointers, queues, all)", virtioNetR3Info);
     if (RT_FAILURE(rc))
         LogRel(("Failed to register DBGF info for device %s\n", szTmp));
     return rc;

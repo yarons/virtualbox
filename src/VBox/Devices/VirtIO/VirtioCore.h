@@ -1,4 +1,4 @@
-/* $Id: VirtioCore.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtioCore.h 106294 2024-10-10 17:42:05Z aleksey.ilyushin@oracle.com $ */
 
 /** @file
  * VirtioCore.h - Virtio Declarations
@@ -768,9 +768,10 @@ DECLHIDDEN(void) virtioCorePrintDeviceFeatures(VIRTIOCORE *pVirtio, PCDBGFINFOHL
  *
  * @param   pDevIns     The device instance.
  * @param   pHlp        Pointer to the debug info hlp struct
+ * @param   pVirtio     Pointer to the virtio core embedded into the calling device
  * @param   pszArgs     Arguments to function
  */
-DECLHIDDEN(void) virtioCoreR3VirtqInfo(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, const char *pszArgs, int uVirtqNbr);
+DECLHIDDEN(void) virtioCoreR3VirtqInfo(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, PVIRTIOCORE pVirtio, const char *pszArgs, int uVirtqNbr);
 
 /**
  * Returns the number of avail bufs in the virtq.
