@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 106188 2024-10-01 09:52:02Z dmitrii.grigorev@oracle.com $ */
+/* $Id: DevVGA-SVGA.cpp 106287 2024-10-10 10:58:09Z dmitrii.grigorev@oracle.com $ */
 /** @file
  * VMware SVGA device.
  *
@@ -6791,8 +6791,7 @@ static void vmsvgaR3GetCaps(PVGASTATE pThis, PVGASTATECC pThisCC, uint32_t *pu32
     }
 
 # ifdef VBOX_WITH_VMSVGA3D
-//  if (pThisCC->svga.pSvgaR3State->pFuncs3D)
-    if (pThis->svga.f3DEnabled)
+  if (pThisCC->svga.pSvgaR3State->pFuncs3D)
         *pu32DeviceCaps |= SVGA_CAP_3D;
 # endif
 
