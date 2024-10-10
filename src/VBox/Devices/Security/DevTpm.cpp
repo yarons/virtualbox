@@ -1,4 +1,4 @@
-/* $Id: DevTpm.cpp 106259 2024-10-09 16:09:15Z alexander.eichner@oracle.com $ */
+/* $Id: DevTpm.cpp 106271 2024-10-10 07:36:47Z alexander.eichner@oracle.com $ */
 /** @file
  * DevTpm - Trusted Platform Module emulation.
  *
@@ -1640,7 +1640,7 @@ static DECLCALLBACK(void *) tpmR3QueryInterface(PPDMIBASE pInterface, const char
  */
 static DECLCALLBACK(uint32_t) tpmR3TpmPortGetMaxBufferSize(PPDMITPMPORT pInterface)
 {
-	RT_NOREF(pInterface);
+    RT_NOREF(pInterface);
     return TPM_DATA_BUFFER_SIZE_MAX;
 }
 
