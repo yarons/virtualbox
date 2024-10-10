@@ -1,4 +1,4 @@
-/* $Id: DrvNATlibslirp.cpp 106272 2024-10-10 08:01:24Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvNATlibslirp.cpp 106273 2024-10-10 08:02:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * DrvNATlibslirp - NATlibslirp network transport driver.
  */
@@ -790,7 +790,7 @@ static DECLCALLBACK(int) drvNATAsyncIoThread(PPDMDRVINS pDrvIns, PPDMTHREAD pThr
         if (vrc != VINF_SUCCESS)
         {
             if (vrc != VERR_TIMEOUT)
-                LogRel(("NAT: WSAPoll returned vrc=%Rrc (cChangedFDs=%d)\n", vrc, cChangedFDs));
+                LogRel(("NAT: RTWinPoll returned vrc=%Rrc (cChangedFDs=%d)\n", vrc, cChangedFDs));
             Log4(("NAT: NSOCK = %d\n", pThis->pNATState->nsock));
         }
 
