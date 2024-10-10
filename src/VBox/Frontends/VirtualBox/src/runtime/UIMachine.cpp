@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachine.cpp 106292 2024-10-10 15:15:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -1177,7 +1177,7 @@ void UIMachine::sltChangeVisualState(UIVisualStateType visualState)
 void UIMachine::sltHandleAdditionsActualChange()
 {
     updateStateAdditionsActions();
-    emit sigAdditionsStateChange();
+    emit sigAdditionsStateActualChange();
 }
 
 void UIMachine::sltHandleAudioAdapterChange()
