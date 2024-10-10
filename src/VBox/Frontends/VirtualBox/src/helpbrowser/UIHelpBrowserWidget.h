@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIHelpBrowserWidget.h 106282 2024-10-10 09:24:23Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -32,11 +32,10 @@
 #endif
 
 /* Qt includes: */
-#include <QPair>
 #include <QWidget>
 
 /* GUI includes: */
-#include "QIManagerDialog.h"
+#include "QIManagerDialog.h" /* for EmbedTo */
 
 /* Forward declarations: */
 class QHBoxLayout;

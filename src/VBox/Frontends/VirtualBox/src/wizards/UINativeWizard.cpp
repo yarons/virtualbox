@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.cpp 105586 2024-08-05 14:28:46Z sergey.dubov@oracle.com $ */
+/* $Id: UINativeWizard.cpp 106282 2024-10-10 09:24:23Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class implementation.
  */
@@ -28,6 +28,7 @@
 /* Qt includes: */
 #include <QApplication>
 #include <QHBoxLayout>
+#include <QKeyEvent>
 #include <QLabel>
 #include <QPainter>
 #include <QPushButton>

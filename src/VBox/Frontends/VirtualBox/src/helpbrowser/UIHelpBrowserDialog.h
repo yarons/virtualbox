@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserDialog.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIHelpBrowserDialog.h 106282 2024-10-10 09:24:23Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserDialog class declaration.
  */
@@ -32,6 +32,7 @@
 #endif
 
 /* Qt includes: */
+#include <QMainWindow>
 #include <QPointer>
 
 /* GUI includes: */
