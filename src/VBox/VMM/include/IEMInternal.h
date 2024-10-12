@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 106212 2024-10-03 02:42:55Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 106297 2024-10-12 01:07:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -2122,6 +2122,13 @@ typedef struct IEMCPU
 #else
     uint64_t                u64Placeholder;
 #endif
+    /**
+     *  Whether we should use the host instruction invalidation APIs of the
+     *  host OS or our own version of it (macOS).  */
+    uint8_t                 fHostICacheInvalidation;
+#define IEMNATIVE_ICACHE_F_USE_HOST_API     UINT8_C(0x01) /**< Use the host API (macOS) instead of our code. */
+#define IEMNATIVE_ICACHE_F_END_WITH_ISH     UINT8_C(0x02) /**< Whether to end with a ISH barrier (arm). */
+    bool                    afRecompilerStuff2[7];
     /** @} */
 
     /** Dummy TLB entry used for accesses to pages with databreakpoints. */
@@ -2394,9 +2401,9 @@ typedef struct IEMCPU
     /** @} */
 
 #ifdef IEM_WITH_TLB_TRACE
-    uint64_t                au64Padding[1];
+    /*uint64_t                au64Padding[0];*/
 #else
-    uint64_t                au64Padding[3];
+    uint64_t                au64Padding[2];
 #endif
 
 #ifdef IEM_WITH_TLB_TRACE

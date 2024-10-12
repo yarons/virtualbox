@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 106212 2024-10-03 02:42:55Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMR3.cpp 106297 2024-10-12 01:07:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -196,6 +196,23 @@ VMMR3DECL(int)      IEMR3Init(PVM pVM)
     rc = CFGMR3QueryU32Def(pIem, "NativeRecompileAtUsedCount", &uTbNativeRecompileAtUsedCount, 16);
     AssertLogRelRCReturn(rc, rc);
 
+    /** @cfgm{/IEM/HostICacheInvalidationViaHostAPI, bool, false}
+     * Whether to use any available host OS API for flushing the instruction cache
+     * after completing an translation block. */
+    bool fFlag = false;
+    rc = CFGMR3QueryBoolDef(pIem, "HostICacheInvalidationViaHostAPI", &fFlag, false);
+    AssertLogRelRCReturn(rc, rc);
+    uint8_t fHostICacheInvalidation = fFlag ? IEMNATIVE_ICACHE_F_USE_HOST_API : 0;
+
+    /** @cfgm{/IEM/HostICacheInvalidationEndWithIsb, bool, false}
+     * Whether to include an ISB in the instruction cache invalidation sequence
+     * after completing an translation block. */
+    fFlag = false;
+    rc = CFGMR3QueryBoolDef(pIem, "HostICacheInvalidationEndWithIsb", &fFlag, false);
+    AssertLogRelRCReturn(rc, rc);
+    if (fFlag)
+        fHostICacheInvalidation |= IEMNATIVE_ICACHE_F_END_WITH_ISH;
+
 #endif /* VBOX_WITH_IEM_RECOMPILER*/
 
     /*
@@ -300,6 +317,7 @@ VMMR3DECL(int)      IEMR3Init(PVM pVM)
          */
         pVCpu->iem.s.uRegFpCtrl                    = IEMNATIVE_SIMD_FP_CTRL_REG_NOT_MODIFIED;
         pVCpu->iem.s.uTbNativeRecompileAtUsedCount = uTbNativeRecompileAtUsedCount;
+        pVCpu->iem.s.fHostICacheInvalidation       = fHostICacheInvalidation;
 #endif
 
 #ifdef IEM_WITH_TLB_TRACE
