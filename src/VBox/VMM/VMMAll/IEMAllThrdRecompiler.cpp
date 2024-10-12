@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdRecompiler.cpp 106212 2024-10-03 02:42:55Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdRecompiler.cpp 106296 2024-10-12 01:07:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation.
  *
@@ -115,6 +115,14 @@
 
 #if defined(IEMNATIVE_WITH_SIMD_FP_NATIVE_EMITTERS) && !defined(IEMNATIVE_WITH_SIMD_REG_ALLOCATOR)
 # error "IEMNATIVE_WITH_SIMD_FP_NATIVE_EMITTERS requires IEMNATIVE_WITH_SIMD_REG_ALLOCATOR"
+#endif
+
+
+/*********************************************************************************************************************************
+*   Internal Functions                                                                                                           *
+*********************************************************************************************************************************/
+#if defined(VBOX_WITH_IEM_NATIVE_RECOMPILER) && defined(VBOX_WITH_SAVE_THREADED_TBS_FOR_PROFILING)
+static void iemThreadedSaveTbForProfiling(PVMCPU pVCpu, PCIEMTB pTb);
 #endif
 
 
@@ -3106,7 +3114,7 @@ VMMR3DECL(int) IEMR3ThreadedProfileRecompilingSavedTbs(PVM pVM, const char *pszF
                     AssertStmt(pTb->Thrd.cCalls      > 0 && pTb->Thrd.cCalls      <= _8K, rc = VERR_SSM_DATA_UNIT_FORMAT_CHANGED);
                     AssertStmt(pTb->cbOpcodes        > 0 && pTb->cbOpcodes        <= _8K, rc = VERR_SSM_DATA_UNIT_FORMAT_CHANGED);
                     AssertStmt(pTb->cRanges          > 0 && pTb->cRanges <= RT_ELEMENTS(pTb->aRanges), rc = VERR_SSM_DATA_UNIT_FORMAT_CHANGED);
-                    AssertStmt(pTb->cTbLookupEntries > 0 && pTb->cTbLookupEntries <= _1K, rc = VERR_SSM_DATA_UNIT_FORMAT_CHANGED);
+                    AssertStmt(pTb->cTbLookupEntries > 0 && pTb->cTbLookupEntries <= 136, rc = VERR_SSM_DATA_UNIT_FORMAT_CHANGED);
 
                     if (RT_SUCCESS(rc))
                         for (uint32_t iRange = 0; iRange < pTb->cRanges; iRange++)
