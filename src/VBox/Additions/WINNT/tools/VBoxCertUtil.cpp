@@ -1,4 +1,4 @@
-/* $Id: VBoxCertUtil.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxCertUtil.cpp 106302 2024-10-14 09:15:17Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxCertUtil - VBox Certificate Utility - Windows Only.
  */
@@ -44,6 +44,11 @@
 #include <iprt/string.h>
 #include <iprt/time.h>
 #include <iprt/utf16.h>
+
+#include <package-generated.h>
+#include "product-generated.h"
+
+#include <VBox/version.h>
 
 
 /*********************************************************************************************************************************
@@ -994,6 +999,18 @@ static RTEXITCODE cmdAddTrustedPublisher(int argc, char **argv)
 
 
 /**
+ * Shows the logo.
+ *
+ * @param   pStream             Output stream to show logo on.
+ */
+static void showLogo(PRTSTREAM pStream)
+{
+    RTStrmPrintf(pStream, VBOX_PRODUCT " VBoxCertUtil Version " VBOX_VERSION_STRING " - r%s\n"
+                 "Copyright (C) " VBOX_C_YEAR " " VBOX_VENDOR "\n\n", RTBldCfgRevisionStr());
+}
+
+
+/**
  * Displays the usage info.
  */
 static void showUsage(void)
@@ -1043,6 +1060,8 @@ int main(int argc, char **argv)
         { "display-all",                VCUACTION_DISPLAY_ALL,              RTGETOPT_REQ_NOTHING },
         VCU_COMMON_OPTION_DEFINITIONS(),
     };
+
+    showLogo(g_pStdOut);
 
     RTGETOPTUNION   ValueUnion;
     RTGETOPTSTATE   GetState;
