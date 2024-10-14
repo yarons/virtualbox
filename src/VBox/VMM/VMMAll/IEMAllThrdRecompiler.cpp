@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdRecompiler.cpp 106296 2024-10-12 01:07:25Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdRecompiler.cpp 106313 2024-10-14 22:45:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation.
  *
@@ -3190,7 +3190,7 @@ VMMR3DECL(int) IEMR3ThreadedProfileRecompilingSavedTbs(PVM pVM, const char *pszF
                          cTbs < cMinTbs && pTbAllocator->cInUseTbs + 2 <= pTbAllocator->cMaxTbs;
                          pTb = pTb->pNext)
                     {
-                        PIEMTB pTbCopy = iemThreadedTbDuplicate(pVM, pVCpu, pTbHead);
+                        PIEMTB pTbCopy = iemThreadedTbDuplicate(pVM, pVCpu, pTb);
                         if (!pTbCopy)
                             break;
                         *ppTbTail = pTbCopy;
