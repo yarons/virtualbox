@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: prerm-common.sh 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: prerm-common.sh 106303 2024-10-14 09:18:20Z andreas.loeffler@oracle.com $
 ## @file
 # Oracle VirtualBox
 # VirtualBox Linux pre-uninstaller common portions
@@ -47,7 +47,7 @@ MY_PATH="${TARGET%/[!/]*}"
 cd "${MY_PATH}"
 . "./routines.sh"
 
-# Stop the ballon control service
+# Stop the balloon control service
 stop_init_script vboxballoonctrl-service >/dev/null 2>&1
 # Stop the autostart service
 stop_init_script vboxautostart-service >/dev/null 2>&1
