@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UINotificationObjects.cpp 106312 2024-10-14 16:38:55Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -1121,15 +1121,6 @@ void UINotificationMessage::cannotChangeKeyboardParameter(const CKeyboard &comKe
         QApplication::translate("UIMessageCenter", "Keyboard failure ..."),
         QApplication::translate("UIMessageCenter", "Failed to change keyboard parameter.") +
         UIErrorString::formatErrorInfo(comKeyboard));
-}
-
-/* static */
-void UINotificationMessage::cannotChangeMouseParameter(const CMouse &comMouse)
-{
-    createMessage(
-        QApplication::translate("UIMessageCenter", "Mouse failure ..."),
-        QApplication::translate("UIMessageCenter", "Failed to change mouse parameter.") +
-        UIErrorString::formatErrorInfo(comMouse));
 }
 
 /* static */
