@@ -1,4 +1,4 @@
-/* $Id: VBoxCommon.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxCommon.h 106322 2024-10-15 13:06:30Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxCommon - Misc helper routines for install helper.
  */
@@ -35,10 +35,12 @@
 int swprintf_s(WCHAR *buffer, size_t cbBuffer, const WCHAR *format, ...);
 #endif
 
-UINT VBoxGetMsiProp(MSIHANDLE hMsi, const WCHAR *pwszName, WCHAR *pwszValueBuf, DWORD cwcValueBuf);
-int  VBoxGetMsiPropUtf8(MSIHANDLE hMsi, const char *pcszName, char **ppszValue);
-UINT VBoxSetMsiProp(MSIHANDLE hMsi, const WCHAR *pwszName, const WCHAR *pwszValue);
-UINT VBoxSetMsiPropDWORD(MSIHANDLE hMsi, const WCHAR *pwszName, DWORD dwVal);
+int  VBoxMsiQueryProp(MSIHANDLE hMsi, const WCHAR *pwszName, WCHAR *pwszVal, DWORD cwVal);
+int  VBoxMsiQueryPropEx(MSIHANDLE hMsi, const WCHAR *pwszName, WCHAR *pwszVal, DWORD *pcwVal);
+int  VBoxMsiQueryPropUtf8(MSIHANDLE hMsi, const char *pszName, char **ppszValue);
+int  VBoxMsiQueryPropInt32(MSIHANDLE hMsi, const char *pszName, DWORD *pdwValue);
+UINT VBoxMsiSetProp(MSIHANDLE hMsi, const WCHAR *pwszName, const WCHAR *pwszValue);
+UINT VBoxMsiSetPropDWORD(MSIHANDLE hMsi, const WCHAR *pwszName, DWORD dwVal);
 
 #endif /* !VBOX_INCLUDED_SRC_InstallHelper_VBoxCommon_h */
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env kmk_ash
-# $Id: common-gen-workspace.inc.sh 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: common-gen-workspace.inc.sh 106322 2024-10-15 13:06:30Z andreas.loeffler@oracle.com $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
@@ -337,6 +337,7 @@ my_generate_all_projects()
         my_generate_project "DragAndDrop-GH" "src/VBox/GuestHost/DragAndDrop"   --begin-incs "include"                                          --end-includes "src/VBox/GuestHost/DragAndDrop"
     fi
     my_generate_project "ShClip-GH"     "src/VBox/GuestHost/SharedClipboard"    --begin-incs "include"                                          --end-includes "src/VBox/GuestHost/SharedClipboard"
+    my_generate_project "Install-GH"    "src/VBox/GuestHost/installation"       --begin-incs "include"                                          --end-includes "src/VBox/GuestHost/installation"
 
     # src/VBox/HostDrivers
     my_generate_project "SUP"           "src/VBox/HostDrivers/Support"          --begin-incs "include" "src/VBox/HostDrivers/Support"           --end-includes "src/VBox/HostDrivers/Support" "include/VBox/sup.h" "include/VBox/sup.mac"
