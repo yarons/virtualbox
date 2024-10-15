@@ -1,4 +1,4 @@
-/* $Id: VBoxWinDrvCommon.h 106322 2024-10-15 13:06:30Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxWinDrvCommon.h 106326 2024-10-15 13:27:19Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxWinDrvCommon - Common Windows driver functions.
  */
@@ -25,6 +25,12 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+#ifndef VBOX_INCLUDED_SRC_installation_VBoxWinDrvCommon_h
+#define VBOX_INCLUDED_SRC_installation_VBoxWinDrvCommon_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
+
 #if defined(RT_ARCH_AMD64)
 # define VBOXWINDRVINF_NATIVE_ARCH_STR     "AMD64"
 #elif defined(RT_ARCH_X86)
@@ -45,4 +51,6 @@ int VBoxWinDrvInfQueryFirstModel(HINF hInf, PRTUTF16 *ppwszModel);
 int VBoxWinDrvInfQueryFirstPnPId(HINF hInf, PRTUTF16 pwszModel, PRTUTF16 *ppwszPnPId);
 int VBoxWinDrvInfQueryKeyValue(PINFCONTEXT pCtx, DWORD iValue, PRTUTF16 *ppwszValue, PDWORD pcwcValue);
 int VBoxWinDrvInfQueryModelsSectionName(HINF hInf, PRTUTF16 *ppwszValue, PDWORD pcwcValue);
+
+#endif /* !VBOX_INCLUDED_SRC_installation_VBoxWinDrvCommon_h */
 
