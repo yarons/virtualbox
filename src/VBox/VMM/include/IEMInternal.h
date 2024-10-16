@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 106402 2024-10-16 20:56:01Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 106407 2024-10-16 22:30:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -2399,6 +2399,9 @@ typedef struct IEMCPU
     STAMPROFILE             StatTimerPollFactorDivision;
     STAMPROFILE             StatTimerPollFactorMultiplication;
     /** @} */
+
+
+    STAMCOUNTER             aStatAdHoc[8];
 
 #ifdef IEM_WITH_TLB_TRACE
     /*uint64_t                au64Padding[0];*/
