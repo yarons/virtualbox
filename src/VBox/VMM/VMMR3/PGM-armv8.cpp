@@ -1,4 +1,4 @@
-/* $Id: PGM-armv8.cpp 106383 2024-10-16 13:53:23Z alexander.eichner@oracle.com $ */
+/* $Id: PGM-armv8.cpp 106390 2024-10-16 14:23:01Z alexander.eichner@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, ARMv8 variant. (Mixing stuff here, not good?)
  */
@@ -742,6 +742,7 @@ VMMDECL(PGMMODE) PGMGetShadowMode(PVMCPU pVCpu)
 }
 
 
+#ifdef DEBUG_aeichner
 DECLINLINE(int) pgmGstWalkReturnNotPresent(PVMCPUCC pVCpu, PPGMPTWALK pWalk, uint8_t uLevel)
 {
     NOREF(pVCpu);
@@ -772,6 +773,7 @@ DECLINLINE(int) pgmGstWalkReturnRsvdError(PVMCPUCC pVCpu, PPGMPTWALK pWalk, uint
                            | ((uint32_t)uLevel << PGM_WALKFAIL_LEVEL_SHIFT);
     return VERR_PAGE_TABLE_NOT_PRESENT;
 }
+#endif
 
 
 VMMDECL(int) PGMGstGetPage(PVMCPUCC pVCpu, RTGCPTR GCPtr, PPGMPTWALK pWalk)
