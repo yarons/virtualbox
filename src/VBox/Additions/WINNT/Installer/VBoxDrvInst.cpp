@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvInst.cpp 106322 2024-10-15 13:06:30Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxDrvInst.cpp 106348 2024-10-16 09:19:14Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxDrvInst - Driver and service installation helper for Windows guests.
  */
@@ -491,7 +491,6 @@ static DECLCALLBACK(void) vboxWinDrvInstLogCallback(VBOXWINDRIVERLOGTYPE enmType
 /**
  * Writes the driver log file header.
  *
- * @returns VBox status code.
  * @param   hLog                Handle to log file.
  * @param   pwszInfFile         INF file this log belongs to.
  */
