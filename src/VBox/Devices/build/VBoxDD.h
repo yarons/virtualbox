@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDD.h 106346 2024-10-16 09:11:47Z alexander.eichner@oracle.com $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -204,6 +204,7 @@ extern const PDMUSBREG g_UsbMsd;
 extern const PDMUSBREG g_UsbHid;
 extern const PDMUSBREG g_UsbHidKbd;
 extern const PDMUSBREG g_UsbHidMou;
+extern const PDMUSBREG g_UsbEth;
 #endif
 #ifdef VBOX_WITH_USB_VIDEO_IMPL
 extern const PDMUSBREG g_DevWebcam;

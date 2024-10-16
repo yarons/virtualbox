@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106131 2024-09-24 00:11:18Z jack.doherty@oracle.com $
+# $Id: Makefile.kmk 106346 2024-10-16 09:11:47Z alexander.eichner@oracle.com $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -217,6 +217,7 @@ if !defined(VBOX_ONLY_EXTPACKS) && "$(intersects $(KBUILD_TARGET_ARCH),$(VBOX_SU
  	Network/DevPCNet.cpp \
  	Network/DevDP8390.cpp \
  	Network/Dev3C501.cpp \
+ 	Network/UsbEth.cpp \
  	PC/DevDMA.cpp \
  	PC/DevHPET.cpp \
  	PC/DevIoApic.cpp \
