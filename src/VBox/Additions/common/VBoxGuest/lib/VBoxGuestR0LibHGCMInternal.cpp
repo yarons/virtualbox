@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibHGCMInternal.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestR0LibHGCMInternal.cpp 106386 2024-10-16 14:09:03Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBoxGuestLib - Host-Guest Communication Manager internal functions, implemented by VBoxGuest
  */
@@ -640,8 +640,9 @@ static void vbglR0HGCMInternalInitCall(VMMDevHGCMCall *pHGCMCall, PCVBGLIOCHGCMC
                         pDstPgLst->cPages           = (uint16_t)cPages; Assert(pDstPgLst->cPages == cPages);
                         for (iPage = 0; iPage < cPages; iPage++)
                         {
-                            pDstPgLst->aPages[iPage] = RTR0MemObjGetPagePhysAddr(hObj, iPage);
-                            Assert(pDstPgLst->aPages[iPage] != NIL_RTHCPHYS);
+                            RTGCPHYS64 * paPages = pDstPgLst->aPages;
+                            paPages[iPage] = RTR0MemObjGetPagePhysAddr(hObj, iPage);
+                            Assert(paPages[iPage] != NIL_RTHCPHYS);
                         }
 
                         offExtra += RT_UOFFSETOF_DYN(HGCMPageListInfo, aPages[cPages]);
