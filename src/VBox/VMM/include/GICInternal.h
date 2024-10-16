@@ -1,4 +1,4 @@
-/* $Id: GICInternal.h 106375 2024-10-16 13:41:01Z alexander.eichner@oracle.com $ */
+/* $Id: GICInternal.h 106401 2024-10-16 20:55:48Z alexander.eichner@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GICv3).
  */
@@ -102,8 +102,10 @@ typedef struct GIC
 {
     /** The ring-3 device instance. */
     PPDMDEVINSR3                pDevInsR3;
-    /** Flag whether the GIC provided by NEM is used. */
+#if defined(RT_OS_LINUX) || defined(RT_OS_WINDOWS)
+    /** Flag whether the in-kernel (KVM/Hyper-V) GIC of the NEM backend is used. */
     bool                        fNemGic;
+#endif
 } GIC;
 /** Pointer to GIC VM instance data. */
 typedef GIC *PGIC;
