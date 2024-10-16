@@ -1,4 +1,4 @@
-/* $Id: DBGFReg.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFReg.cpp 106366 2024-10-16 13:11:39Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Register Methods.
  */
@@ -441,7 +441,8 @@ static int dbgfR3RegRegisterCommon(PUVM pUVM, PCDBGFREGDESC paRegisters, DBGFREG
             }
 
             /* Advance to the next alias. */
-            pCurAlias = pNextAlias++;
+            if (pNextAlias)
+                pCurAlias = pNextAlias++;
             if (!pCurAlias)
                 break;
             pszRegName = pCurAlias->pszName;
@@ -904,9 +905,15 @@ static DECLCALLBACK(int) dbgfR3RegCpuQueryWorkerOnCpu(PUVM pUVM, VMCPUID idCpu, 
         /*
          * Look up the register and get the register value.
          */
+#ifndef VBOX_VMM_TARGET_ARMV8
         if (RT_LIKELY(pSet->cDescs > (size_t)enmReg))
         {
             PCDBGFREGDESC pDesc = &pSet->paDescs[enmReg];
+#else
+        if (RT_LIKELY(pSet->cDescs > (size_t)(enmReg - DBGFREG_ARMV8_FIRST)))
+        {
+            PCDBGFREGDESC pDesc = &pSet->paDescs[enmReg - DBGFREG_ARMV8_FIRST];
+#endif
 
             pValue->au64[0] = pValue->au64[1] = 0;
             rc = pDesc->pfnGet(pSet->uUserArg.pv, pDesc, pValue);
