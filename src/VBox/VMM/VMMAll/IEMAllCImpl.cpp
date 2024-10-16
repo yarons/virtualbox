@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImpl.cpp 106363 2024-10-16 13:08:09Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -2776,7 +2776,7 @@ IEM_CIMPL_DEF_2(iemCImpl_int, uint8_t, u8Int, IEMINT, enmInt)
     if (u8Int == 3)
     {
         PVMCC pVM = pVCpu->CTX_SUFF(pVM);
-        if (pVM->dbgf.ro.cEnabledInt3Breakpoints == 0)
+        if (pVM->dbgf.ro.cEnabledSwBreakpoints == 0)
         { /* likely: No vbox debugger breakpoints */ }
         else
         {

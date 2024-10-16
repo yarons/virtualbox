@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGCEmulateCodeView.cpp 106363 2024-10-16 13:08:09Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -1018,8 +1018,8 @@ static DECLCALLBACK(int) dbgcEnumBreakpointsCallback(PUVM pUVM, void *pvUser, DB
     bool fHasAddress = false;
     switch (DBGF_BP_PUB_GET_TYPE(pBp))
     {
-        case DBGFBPTYPE_INT3:
-            DBGCCmdHlpPrintf(&pDbgc->CmdHlp, " p %RGv", pBp->u.Int3.GCPtr);
+        case DBGFBPTYPE_SOFTWARE:
+            DBGCCmdHlpPrintf(&pDbgc->CmdHlp, " p %RGv", pBp->u.Sw.GCPtr);
             fHasAddress = true;
             break;
         case DBGFBPTYPE_REG:
@@ -1484,7 +1484,11 @@ static DECLCALLBACK(int) dbgcCmdUnassemble(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, 
                 return rc2;
             if (cTries-- > 0)
                 return DBGCCmdHlpFailRc(pCmdHlp, pCmd, rc, "Too many disassembly failures. Giving up");
+#if defined(VBOX_VMM_TARGET_ARMV8)
+            cbInstr = sizeof(uint32_t);
+#else
             cbInstr = 1;
+#endif
         }
 
         /* advance */

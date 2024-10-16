@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMR3Native-darwin.cpp 106363 2024-10-16 13:08:09Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework.
  *
@@ -4116,7 +4116,7 @@ VBOXSTRICTRC nemR3NativeRunGC(PVM pVM, PVMCPU pVCpu)
     if (   !pVCpu->nem.s.fUseDebugLoop
         && !nemR3DarwinAnyExpensiveProbesEnabled()
         && !DBGFIsStepping(pVCpu)
-        && !pVCpu->CTX_SUFF(pVM)->dbgf.ro.cEnabledInt3Breakpoints)
+        && !pVCpu->CTX_SUFF(pVM)->dbgf.ro.cEnabledSwBreakpoints)
         rcStrict = nemR3DarwinRunGuestNormal(pVM, pVCpu);
     else
         rcStrict = nemR3DarwinRunGuestDebug(pVM, pVCpu);

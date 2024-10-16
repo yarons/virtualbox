@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VMXAllTemplate.cpp.h 106363 2024-10-16 13:08:09Z alexander.eichner@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -11374,7 +11374,7 @@ static void vmxHCPreRunGuestDebugStateUpdate(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxT
     /*
      * INT3 breakpoints - triggered by #BP exceptions.
      */
-    if (pVM->dbgf.ro.cEnabledInt3Breakpoints > 0)
+    if (pVM->dbgf.ro.cEnabledSwBreakpoints > 0)
         pDbgState->bmXcptExtra |= RT_BIT_32(X86_XCPT_BP);
 
     /*

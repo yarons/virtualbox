@@ -1,4 +1,4 @@
-/* $Id: DBGFAll.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFAll.cpp 106363 2024-10-16 13:08:09Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, All Context Code.
  */
@@ -167,7 +167,7 @@ VMM_INT_DECL(bool) DBGFBpIsInt3Armed(PVM pVM)
 {
     /** @todo There was a todo here and returning false when I (bird) removed
      *        VBOX_WITH_LOTS_OF_DBGF_BPS, so this might not be correct. */
-    return pVM->dbgf.s.cEnabledInt3Breakpoints > 0;
+    return pVM->dbgf.s.cEnabledSwBreakpoints > 0;
 }
 
 
