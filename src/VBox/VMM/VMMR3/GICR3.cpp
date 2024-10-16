@@ -1,4 +1,4 @@
-/* $Id: GICR3.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: GICR3.cpp 106371 2024-10-16 13:25:07Z alexander.eichner@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GICv3).
  */
@@ -111,6 +111,10 @@ static DECLCALLBACK(void) gicR3InfoDist(PVM pVM, PCDBGFINFOHLP pHlp, const char 
     pHlp->pfnPrintf(pHlp, " Interrupt priorities:\n");
     for (uint32_t i = 0; i < RT_ELEMENTS(pGicDev->abIntPriority); i++)
         pHlp->pfnPrintf(pHlp, "     INTID %u    = %u\n", GIC_INTID_RANGE_SPI_START + i, pGicDev->abIntPriority[i]);
+
+    pHlp->pfnPrintf(pHlp, " Interrupt routing:\n");
+    for (uint32_t i = 0; i < RT_ELEMENTS(pGicDev->au32IntRouting); i++)
+        pHlp->pfnPrintf(pHlp, "     INTID %u    = %u\n", GIC_INTID_RANGE_SPI_START + i, pGicDev->au32IntRouting[i]);
 
     pHlp->pfnPrintf(pHlp, "  fIrqGrp0Enabled    = %RTbool\n", pGicDev->fIrqGrp0Enabled);
     pHlp->pfnPrintf(pHlp, "  fIrqGrp1Enabled    = %RTbool\n", pGicDev->fIrqGrp1Enabled);
