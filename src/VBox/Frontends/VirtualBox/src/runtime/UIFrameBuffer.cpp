@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIFrameBuffer.cpp 106350 2024-10-16 10:03:28Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -455,7 +455,7 @@ void UIFrameBufferPrivate::setView(UIMachineView *pMachineView)
     m_iWinId = (m_pMachineView && m_pMachineView->viewport()) ? (LONG64)m_pMachineView->viewport()->winId() : 0;
 
 #ifdef VBOX_WS_NIX
-    if (uiCommon().X11ServerAvailable())
+    if (NativeWindowSubsystem::displayServerType() == VBGHDISPLAYSERVERTYPE_X11)
         /* Resync Qt and X11 Server (see xTracker #7547). */
         XSync(NativeWindowSubsystem::X11GetDisplay(), false);
 #endif

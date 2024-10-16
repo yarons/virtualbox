@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineWindow.cpp 106350 2024-10-16 10:03:28Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -153,9 +153,9 @@ void UIMachineWindow::prepare()
     if (gEDataManager->distinguishMachineWindowGroups(uiCommon().managedVMUuid()))
         strWindowName = QString("VirtualBox Machine UUID: %1").arg(uiCommon().managedVMUuid().toString());
     /* Assign WM_CLASS property: */
-    NativeWindowSubsystem::setWMClass(uiCommon().X11ServerAvailable(), this, strWindowName, strWindowClass);
+    NativeWindowSubsystem::setWMClass(this, strWindowName, strWindowClass);
     /* Tell the WM we are well behaved wrt Xwayland keyboard-grabs: */
-    NativeWindowSubsystem::setXwaylandMayGrabKeyboardFlag(uiCommon().X11ServerAvailable(), this);
+    NativeWindowSubsystem::setXwaylandMayGrabKeyboardFlag(this);
 #endif
 }
 

@@ -1,4 +1,4 @@
-/* $Id: UIHostComboEditor.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIHostComboEditor.cpp 106350 2024-10-16 10:03:28Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHostComboEditor class implementation.
  */
@@ -569,7 +569,7 @@ UIHostComboEditorPrivate::UIHostComboEditorPrivate()
     m_pAltGrMonitor = new WinAltGrMonitor;
 #elif defined(VBOX_WS_NIX)
     /* Initialize the X keyboard subsystem: */
-    if (uiCommon().X11ServerAvailable())
+    if (NativeWindowSubsystem::displayServerType() == VBGHDISPLAYSERVERTYPE_X11)
         initMappedX11Keyboard(NativeWindowSubsystem::X11GetDisplay(), gEDataManager->remappedScanCodes());
 #endif /* VBOX_WS_NIX */
 }
@@ -739,7 +739,7 @@ bool UIHostComboEditorPrivate::nativeEvent(const QByteArray &eventType, void *pM
     }
 
 # elif defined(VBOX_WS_NIX)
-    if (uiCommon().X11ServerAvailable())
+    if (NativeWindowSubsystem::displayServerType() == VBGHDISPLAYSERVERTYPE_X11)
     {
         /* Make sure it's generic XCB event: */
         if (eventType != "xcb_generic_event_t")

@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineView.cpp 106350 2024-10-16 10:03:28Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -614,8 +614,7 @@ bool UIMachineView::nativeEventPreprocessor(const QByteArray &eventType, void *p
     }
 
 # elif defined(VBOX_WS_NIX)
-
-    if (uiCommon().X11ServerAvailable())
+    if (NativeWindowSubsystem::displayServerType() == VBGHDISPLAYSERVERTYPE_X11)
     {
         /* Make sure it's generic XCB event: */
         if (eventType != "xcb_generic_event_t")
@@ -2021,14 +2020,14 @@ void UIMachineView::focusOutEvent(QFocusEvent *pEvent)
 #ifdef VBOX_WS_NIX
 void UIMachineView::keyPressEvent(QKeyEvent *pEvent)
 {
-    if (uiCommon().displayServerType() == VBGHDISPLAYSERVERTYPE_PURE_WAYLAND)
+    if (NativeWindowSubsystem::displayServerType() == VBGHDISPLAYSERVERTYPE_PURE_WAYLAND)
         uimachine()->putScancode(pEvent->nativeScanCode() - 8);
     QAbstractScrollArea::keyPressEvent(pEvent);
 }
 
 void UIMachineView::keyReleaseEvent(QKeyEvent *pEvent)
 {
-    if (uiCommon().displayServerType() == VBGHDISPLAYSERVERTYPE_PURE_WAYLAND)
+    if (NativeWindowSubsystem::displayServerType() == VBGHDISPLAYSERVERTYPE_PURE_WAYLAND)
         uimachine()->putScancode((pEvent->nativeScanCode() - 8) | 0x80);
     QAbstractScrollArea::keyReleaseEvent(pEvent);
 }

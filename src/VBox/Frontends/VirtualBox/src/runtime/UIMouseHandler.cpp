@@ -1,4 +1,4 @@
-﻿/* $Id: UIMouseHandler.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+﻿/* $Id: UIMouseHandler.cpp 106350 2024-10-16 10:03:28Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class implementation.
  */
@@ -322,8 +322,7 @@ bool UIMouseHandler::nativeEventFilter(void *pMessage, ulong uScreenId)
     RT_NOREF(pMessage, uScreenId);
 
 # elif defined(VBOX_WS_NIX)
-
-    if (uiCommon().X11ServerAvailable())
+    if (NativeWindowSubsystem::displayServerType() == VBGHDISPLAYSERVERTYPE_X11)
     {
         /* Cast to XCB event: */
         xcb_generic_event_t *pEvent = static_cast<xcb_generic_event_t*>(pMessage);
