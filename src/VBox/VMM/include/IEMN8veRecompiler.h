@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 106319 2024-10-15 08:50:24Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 106402 2024-10-16 20:56:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -2148,7 +2148,8 @@ typedef FNIEMNATIVERECOMPFUNC *PFNIEMNATIVERECOMPFUNC;
 /** Defines a native recompiler worker for a threaded function.
  * @see FNIEMNATIVERECOMPFUNC  */
 #define IEM_DECL_IEMNATIVERECOMPFUNC_DEF(a_Name) \
-    uint32_t VBOXCALL a_Name(PIEMRECOMPILERSTATE pReNative, uint32_t off, PCIEMTHRDEDCALLENTRY pCallEntry)
+    IEM_DECL_MSC_GUARD_IGNORE uint32_t VBOXCALL \
+    a_Name(PIEMRECOMPILERSTATE pReNative, uint32_t off, PCIEMTHRDEDCALLENTRY pCallEntry)
 
 /** Prototypes a native recompiler function for a threaded function.
  * @see FNIEMNATIVERECOMPFUNC  */
@@ -2170,7 +2171,8 @@ typedef FNIEMNATIVELIVENESSFUNC *PFNIEMNATIVELIVENESSFUNC;
 /** Defines a native recompiler liveness analysis worker for a threaded function.
  * @see FNIEMNATIVELIVENESSFUNC  */
 #define IEM_DECL_IEMNATIVELIVENESSFUNC_DEF(a_Name) \
-    DECLCALLBACK(void) a_Name(PCIEMTHRDEDCALLENTRY pCallEntry, PCIEMLIVENESSENTRY pIncoming, PIEMLIVENESSENTRY pOutgoing)
+    IEM_DECL_MSC_GUARD_IGNORE DECLCALLBACK(void) \
+    a_Name(PCIEMTHRDEDCALLENTRY pCallEntry, PCIEMLIVENESSENTRY pIncoming, PIEMLIVENESSENTRY pOutgoing)
 
 /** Prototypes a native recompiler liveness analysis function for a threaded function.
  * @see FNIEMNATIVELIVENESSFUNC  */

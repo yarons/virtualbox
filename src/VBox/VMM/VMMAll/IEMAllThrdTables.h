@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdTables.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdTables.h 106402 2024-10-16 20:56:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation, Instruction Tables.
  */
@@ -402,7 +402,7 @@ DECL_FORCE_INLINE(int) iemThreadedCompileBackAtFirstInstruction(PVMCPU pVCpu, PI
 #define IEM_MC_DEFER_TO_CIMPL_0_RET(a_fFlags, a_fGstShwFlush, a_pfnCImpl) \
     return iemThreadedRecompilerMcDeferToCImpl0(pVCpu, a_fFlags, a_fGstShwFlush, a_pfnCImpl)
 
-DECLINLINE(VBOXSTRICTRC)
+IEM_DECL_MSC_GUARD_IGNORE  DECLINLINE(VBOXSTRICTRC)
 iemThreadedRecompilerMcDeferToCImpl0(PVMCPUCC pVCpu, uint32_t fFlags, uint64_t fGstShwFlush, PFNIEMCIMPL0 pfnCImpl)
 {
     LogFlow(("CImpl0: %04x:%08RX64 LB %#x: %#x %#RX64 %p\n",
