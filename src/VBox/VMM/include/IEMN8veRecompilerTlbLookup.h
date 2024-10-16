@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerTlbLookup.h 106286 2024-10-10 10:48:48Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompilerTlbLookup.h 106408 2024-10-16 22:30:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler TLB Lookup Code Emitter.
  */
@@ -119,8 +119,8 @@ typedef struct IEMNATIVEEMITTLBSTATE
         ,       idxRegPtr(      a_pReNative->Core.aVars[IEMNATIVE_VAR_IDX_UNPACK(a_idxVarGCPtrMem)].enmKind
                              != kIemNativeVarKind_Immediate
                           && !fSkip
-                          ? iemNativeVarRegisterAcquire(a_pReNative, a_idxVarGCPtrMem, a_poff,
-                                                        true /*fInitialized*/, IEMNATIVE_CALL_ARG2_GREG)
+                          ? iemNativeVarRegisterAcquireInitedWithPref(a_pReNative, a_idxVarGCPtrMem, a_poff,
+                                                                      IEMNATIVE_CALL_ARG2_GREG)
                           : idxRegPtrHlp)
         ,   idxRegSegBase(a_iSegReg == UINT8_MAX || fSkip
                           ? UINT8_MAX
