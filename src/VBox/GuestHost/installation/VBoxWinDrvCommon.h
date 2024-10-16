@@ -1,4 +1,4 @@
-/* $Id: VBoxWinDrvCommon.h 106396 2024-10-16 16:27:03Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxWinDrvCommon.h 106398 2024-10-16 16:35:38Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxWinDrvCommon - Common Windows driver functions.
  */
@@ -36,7 +36,7 @@
 
 #include <iprt/utf16.h>
 
-#include <VBox/GuestHost/VBoxWinDrvCommon.h>
+#include <VBox/GuestHost/VBoxWinDrvDefs.h>
 
 int VBoxWinDrvInfOpenEx(PCRTUTF16 pwszInfFile, PRTUTF16 pwszClassName, HINF *phInf);
 int VBoxWinDrvInfOpen(PCRTUTF16 pwszInfFile, HINF *phInf);
