@@ -1,4 +1,4 @@
-/* $Id: VBoxWinDrvCommon.h 106393 2024-10-16 15:26:41Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxWinDrvCommon.h 106395 2024-10-16 15:36:45Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxWinDrvCommon - Common Windows driver functions.
  */
@@ -42,6 +42,8 @@
 
 #include <iprt/win/windows.h>
 #include <iprt/win/setupapi.h>
+
+#include <iprt/utf16.h>
 
 #if defined(RT_ARCH_AMD64)
 # define VBOXWINDRVINF_NATIVE_ARCH_STR     "AMD64"
