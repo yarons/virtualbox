@@ -1,4 +1,4 @@
-/* $Id: SystemTableBuilder.cpp 106359 2024-10-16 12:20:58Z alexander.eichner@oracle.com $ */
+/* $Id: SystemTableBuilder.cpp 106360 2024-10-16 12:29:32Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox bus slots assignment manager
  */
@@ -39,7 +39,7 @@
 #include <iprt/asm.h>
 #include <iprt/string.h>
 
-‚
+
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
 *********************************************************************************************************************************/
