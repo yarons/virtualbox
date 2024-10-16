@@ -1,4 +1,4 @@
-/* $Id: ASMBitNextSet-generic.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: ASMBitNextSet-generic.cpp 106404 2024-10-16 20:58:15Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - ASMBitNextSet - generic C implementation.
  */
@@ -44,7 +44,7 @@
 #include <iprt/assert.h>
 
 
-RTDECL(int) ASMBitNextSet(const volatile void RT_FAR *pvBitmap, uint32_t cBits, uint32_t iBitPrev) RT_NOTHROW_DEF
+DECLASM(int) ASMBitNextSet(const volatile void RT_FAR *pvBitmap, uint32_t cBits, uint32_t iBitPrev) RT_NOTHROW_DEF
 {
     const volatile uint32_t RT_FAR *pau32Bitmap = (const volatile uint32_t RT_FAR *)pvBitmap;
     int                             iBit = ++iBitPrev & 31;
