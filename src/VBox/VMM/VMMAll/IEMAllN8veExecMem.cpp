@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veExecMem.cpp 106379 2024-10-16 13:43:43Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veExecMem.cpp 106406 2024-10-16 21:24:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Executable Memory Allocator.
  */
@@ -415,7 +415,8 @@ static void iemExecMemAllocatorPrune(PVMCPU pVCpu, PIEMEXECMEMALLOCATOR pExecMem
         idxChunk = 0;
     }
 
-    uint32_t const offPruneEnd = RT_MIN(offChunk + cbToPrune, cbChunk);
+    uint32_t const offPruneStart = offChunk;
+    uint32_t const offPruneEnd   = RT_MIN(offChunk + cbToPrune, cbChunk);
 
     /*
      * Do the pruning.  The current approach is the sever kind.
@@ -479,7 +480,7 @@ static void iemExecMemAllocatorPrune(PVMCPU pVCpu, PIEMEXECMEMALLOCATOR pExecMem
 
     /* Set the hint to the start of the pruned region. */
     pExecMemAllocator->idxChunkHint  = idxChunk;
-    pExecMemAllocator->aChunks[idxChunk].idxFreeHint = offChunk / IEMEXECMEM_ALT_SUB_ALLOC_UNIT_SIZE;
+    pExecMemAllocator->aChunks[idxChunk].idxFreeHint = offPruneStart / IEMEXECMEM_ALT_SUB_ALLOC_UNIT_SIZE;
 
     STAM_REL_PROFILE_STOP(&pExecMemAllocator->StatPruneProf, a);
 }
