@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdRecompiler.cpp 106402 2024-10-16 20:56:01Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdRecompiler.cpp 106403 2024-10-16 20:56:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation.
  *
@@ -1353,6 +1353,7 @@ DECL_FORCE_INLINE(PIEMTB) iemTbAllocatorAlloc(PVMCPUCC pVCpu, bool fThreaded)
 }
 
 
+#if 0 /*def VBOX_WITH_IEM_NATIVE_RECOMPILER*/
 /**
  * This is called when we're out of space for native TBs.
  *
@@ -1440,6 +1441,7 @@ void iemTbAllocatorFreeupNativeSpace(PVMCPUCC pVCpu, uint32_t cNeededInstrs)
 
     STAM_REL_PROFILE_STOP(&pTbAllocator->StatPruneNative, a);
 }
+#endif /* unused / VBOX_WITH_IEM_NATIVE_RECOMPILER */
 
 
 /*********************************************************************************************************************************
