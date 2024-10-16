@@ -1,4 +1,4 @@
-/* $Id: VBoxWinDrvStore.h 106323 2024-10-15 13:10:43Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxWinDrvStore.h 106337 2024-10-16 05:19:44Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxWinDrvInst - Header for Windows driver store handling.
  */
@@ -86,6 +86,7 @@ typedef struct _VBOXWINDRVSTOREENTRY
 typedef VBOXWINDRVSTOREENTRY *PVBOXWINDRVSTOREENTRY;
 
 struct _VBOXWINDRVSTORE;
+/** Pointer to Windows driver store instance data. */
 typedef struct _VBOXWINDRVSTORE *PVBOXWINDRVSTORE;
 
 /**
@@ -166,8 +167,6 @@ typedef struct _VBOXWINDRVSTORE
     /** The backend this driver store uses. */
     VBOXWINDRVSTOREBACKEND Backend;
 } VBOXWINDRVSTORE;
-/** Pointer to Windows driver store instance data. */
-typedef VBOXWINDRVSTORE *PVBOXWINDRVSTORE;
 
 int VBoxWinDrvStoreCreate(PVBOXWINDRVSTORE *ppDrvStore);
 void VBoxWinDrvStoreDestroy(PVBOXWINDRVSTORE pDrvStore);
