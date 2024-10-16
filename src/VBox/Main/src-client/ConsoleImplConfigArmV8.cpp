@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigArmV8.cpp 106362 2024-10-16 13:01:54Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImplConfigArmV8.cpp 106385 2024-10-16 13:58:41Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits for ARMv8.
  */
@@ -151,6 +151,10 @@ int Console::i_configConstructorArmV8(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
                                      Global::stringifyPlatformArchitecture(platformArchMachine),
                                      Global::stringifyPlatformArchitecture(platformArchHost));
 #endif
+
+    /* Get the ARM platform object. */
+    ComPtr<IPlatformARM> platformARM;
+    hrc = platform->COMGETTER(ARM)(platformARM.asOutParam());                               H();
 
     ComPtr<IPlatformProperties> pPlatformProperties;
     hrc = platform->COMGETTER(Properties)(pPlatformProperties.asOutParam());                H();
@@ -363,6 +367,11 @@ int Console::i_configConstructorArmV8(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
          */
         PCFGMNODE pCpum;
         InsertConfigNode(pRoot, "CPUM", &pCpum);
+
+        /* Nested Virtualization. */
+        BOOL fNestedHWVirt = FALSE;
+        hrc = platformARM->GetCPUProperty(CPUPropertyTypeARM_HWVirt, &fNestedHWVirt); H();
+        InsertConfigInteger(pCpum, "NestedHWVirt", fNestedHWVirt ? true : false);
 
 
         /*

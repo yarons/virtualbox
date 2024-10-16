@@ -1,4 +1,4 @@
-/* $Id: PlatformPropertiesImpl.cpp 106139 2024-09-24 12:52:06Z knut.osmundsen@oracle.com $ */
+/* $Id: PlatformPropertiesImpl.cpp 106385 2024-10-16 13:58:41Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform properties.
  */
@@ -1276,7 +1276,8 @@ HRESULT PlatformProperties::getSupportedTpmTypes(std::vector<TpmType_T> &aSuppor
         {
             static const TpmType_T aTpmTypes[] =
             {
-                TpmType_None
+                TpmType_None,
+                TpmType_v2_0
             };
             aSupportedTpmTypes.assign(aTpmTypes,
                                       aTpmTypes + RT_ELEMENTS(aTpmTypes));

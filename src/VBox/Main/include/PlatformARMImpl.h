@@ -1,4 +1,4 @@
-/* $Id: PlatformARMImpl.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: PlatformARMImpl.h 106385 2024-10-16 13:58:41Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - ARM platform settings.
  */
@@ -67,6 +67,12 @@ public:
     HRESULT i_loadSettings(const settings::PlatformARM &data);
     HRESULT i_saveSettings(settings::PlatformARM &data);
     HRESULT i_applyDefaults(GuestOSType *aOsType);
+
+private:
+
+    // wrapped IPlatformARM methods
+    HRESULT getCPUProperty(CPUPropertyTypeARM_T aProperty, BOOL *aValue);
+    HRESULT setCPUProperty(CPUPropertyTypeARM_T aProperty, BOOL aValue);
 };
 #endif /* !MAIN_INCLUDED_PlatformARMImpl_h */
 
