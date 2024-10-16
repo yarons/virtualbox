@@ -1,4 +1,4 @@
-/* $Id: VBoxArmPlatformLib.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxArmPlatformLib.h 106353 2024-10-16 11:36:33Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxArmPlatformLib.h - Helpers for the virtual ARM platform of VirtualBox.
  */
@@ -141,6 +141,38 @@ EFI_PHYSICAL_ADDRESS EFIAPI VBoxArmPlatformMmio32StartGetPhysAddr(VOID);
  * @returns Size of the MMIO32 region.
  */
 UINTN EFIAPI VBoxArmPlatformMmio32SizeGet(VOID);
+
+
+/**
+ * Returns the physical address of the start of the ACPI XSDP.
+ *
+ * @returns Physical address of the ACPI XSDP table.
+ */
+EFI_PHYSICAL_ADDRESS EFIAPI VBoxArmPlatformAcpiXsdpStartGetPhysAddr(VOID);
+
+
+/**
+ * Returns the size of the ACPI XSDP.
+ *
+ * @returns Size of the ACPI XSDP in bytes.
+ */
+UINTN EFIAPI VBoxArmPlatformAcpiXsdpSizeGet(VOID);
+
+
+/**
+ * Returns the physical address of the start of the ACPI tables.
+ *
+ * @returns Physical address of the ACPI table region start.
+ */
+EFI_PHYSICAL_ADDRESS EFIAPI VBoxArmPlatformAcpiStartGetPhysAddr(VOID);
+
+
+/**
+ * Returns the physical address of the start of the ACPI tables.
+ *
+ * @returns Size of the ACPI region in bytes.
+ */
+UINTN EFIAPI VBoxArmPlatformAcpiSizeGet(VOID);
 
 #endif
 

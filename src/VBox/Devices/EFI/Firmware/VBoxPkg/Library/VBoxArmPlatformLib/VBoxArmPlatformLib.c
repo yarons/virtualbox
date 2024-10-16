@@ -1,4 +1,4 @@
-/* $Id: VBoxArmPlatformLib.c 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxArmPlatformLib.c 106353 2024-10-16 11:36:33Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxArmPlatformLib.c - Helpers for the VirtualBox virtual platform descriptor parsing.
  */
@@ -167,4 +167,46 @@ UINTN EFIAPI VBoxArmPlatformMmio32SizeGet(VOID)
     ASSERT(pDesc->u32Magic == VBOXPLATFORMARMV8_MAGIC);
 
     return pDesc->cbMmio32;
+}
+
+
+EFI_PHYSICAL_ADDRESS EFIAPI VBoxArmPlatformAcpiXsdpStartGetPhysAddr(VOID)
+{
+    PCVBOXPLATFORMARMV8 pDesc = (PCVBOXPLATFORMARMV8)VBoxArmPlatformDescGet();
+    ASSERT(pDesc->u32Magic == VBOXPLATFORMARMV8_MAGIC);
+
+    if (!pDesc->cbAcpiXsdp)
+        return 0;
+
+    return (EFI_PHYSICAL_ADDRESS)((UINTN)pDesc + pDesc->i64OffAcpiXsdp);
+}
+
+
+UINTN EFIAPI VBoxArmPlatformAcpiXsdpSizeGet(VOID)
+{
+    PCVBOXPLATFORMARMV8 pDesc = (PCVBOXPLATFORMARMV8)VBoxArmPlatformDescGet();
+    ASSERT(pDesc->u32Magic == VBOXPLATFORMARMV8_MAGIC);
+
+    return pDesc->cbAcpiXsdp;
+}
+
+
+EFI_PHYSICAL_ADDRESS EFIAPI VBoxArmPlatformAcpiStartGetPhysAddr(VOID)
+{
+    PCVBOXPLATFORMARMV8 pDesc = (PCVBOXPLATFORMARMV8)VBoxArmPlatformDescGet();
+    ASSERT(pDesc->u32Magic == VBOXPLATFORMARMV8_MAGIC);
+
+    if (!pDesc->cbAcpi)
+        return 0;
+
+    return (EFI_PHYSICAL_ADDRESS)((UINTN)pDesc + pDesc->i64OffAcpi);
+}
+
+
+UINTN EFIAPI VBoxArmPlatformAcpiSizeGet(VOID)
+{
+    PCVBOXPLATFORMARMV8 pDesc = (PCVBOXPLATFORMARMV8)VBoxArmPlatformDescGet();
+    ASSERT(pDesc->u32Magic == VBOXPLATFORMARMV8_MAGIC);
+
+    return pDesc->cbAcpi;
 }
