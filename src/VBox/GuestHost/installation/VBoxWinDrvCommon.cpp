@@ -1,4 +1,4 @@
-/* $Id: VBoxWinDrvCommon.cpp 106394 2024-10-16 15:28:46Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxWinDrvCommon.cpp 106396 2024-10-16 16:27:03Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxWinDrvCommon - Common Windows driver functions.
  */
@@ -50,7 +50,7 @@
 # include <iprt/stream.h>
 #endif
 
-#include <VBox/GuestHost/VBoxWinDrvCommon.h>
+#include "VBoxWinDrvCommon.h"
 
 
 /*********************************************************************************************************************************

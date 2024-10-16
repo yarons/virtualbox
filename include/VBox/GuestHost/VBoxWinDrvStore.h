@@ -1,4 +1,4 @@
-/* $Id: VBoxWinDrvStore.h 106393 2024-10-16 15:26:41Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxWinDrvStore.h 106396 2024-10-16 16:27:03Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxWinDrvInst - Header for Windows driver store handling.
  */
@@ -44,7 +44,7 @@
 #include <iprt/path.h>
 #include <iprt/utf16.h>
 
-#include <VBox/GuestHost/VBoxWinDrvCommon.h>
+#include <VBox/GuestHost/VBoxWinDrvDefs.h>
 
 /** Maximum model PnP ID length (in characters). */
 #define VBOXWINDRVSTORE_MAX_PNP_ID          255
