@@ -1,4 +1,4 @@
-/* $Id: VBoxEditCoffLib.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxEditCoffLib.cpp 106399 2024-10-16 20:53:42Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxEditCoffLib - Simple COFF editor for library files.
  */
@@ -332,7 +332,9 @@ static int RedefineSymbol(const char *pszOldEqualNew)
     if (sizeof(*pHdr) >= g_cbMember)
         return error("member too small for COFF\n");
     if (   pHdr->Machine != IMAGE_FILE_MACHINE_AMD64
-        && pHdr->Machine != IMAGE_FILE_MACHINE_I386)
+        && pHdr->Machine != IMAGE_FILE_MACHINE_I386
+        && pHdr->Machine != IMAGE_FILE_MACHINE_ARM64
+        && pHdr->Machine != IMAGE_FILE_MACHINE_ARM)
         return error("Unsupported COFF machine: %#x\n", pHdr->Machine);
     if (   pHdr->PointerToSymbolTable >= g_cbMember
         || pHdr->PointerToSymbolTable < sizeof(*pHdr))
