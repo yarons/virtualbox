@@ -1,4 +1,4 @@
-/* $Id: GICInternal.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: GICInternal.h 106375 2024-10-16 13:41:01Z alexander.eichner@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GICv3).
  */
@@ -79,6 +79,8 @@ typedef struct GICDEV
     volatile uint32_t           bmIntActive;
     /** The interrupt priority for each of the SGI/PPIs */
     volatile uint8_t            abIntPriority[GIC_SPI_MAX];
+    /** The interrupt routing information. */
+    volatile uint32_t           au32IntRouting[GIC_SPI_MAX];
 
     /** Flag whether group 0 interrupts are currently enabled. */
     volatile bool               fIrqGrp0Enabled;
