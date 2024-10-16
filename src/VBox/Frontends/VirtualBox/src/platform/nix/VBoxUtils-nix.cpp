@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-nix.cpp 106350 2024-10-16 10:03:28Z serkan.bayraktar@oracle.com $ */
+/* $Id: VBoxUtils-nix.cpp 106355 2024-10-16 11:40:22Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling X11 specific tasks.
  */
@@ -64,9 +64,14 @@ VBGHDISPLAYSERVERTYPE NativeWindowSubsystem::displayServerType()
     QNativeInterface::QX11Application *pX11App = qApp->nativeInterface<QNativeInterface::QX11Application>();
     if (pX11App)
         return VBGHDISPLAYSERVERTYPE_X11;
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
     QNativeInterface::QWaylandApplication *pWaylandApp = qApp->nativeInterface<QNativeInterface::QWaylandApplication>();
     if (pWaylandApp)
         return VBGHDISPLAYSERVERTYPE_PURE_WAYLAND;
+#else
+    if (QGuiApplication::platformName().contains("wayland", Qt::CaseInsensitive))
+        return VBGHDISPLAYSERVERTYPE_PURE_WAYLAND;
+#endif
     return VBGHDISPLAYSERVERTYPE_NONE;
 }
 
@@ -90,12 +95,14 @@ bool NativeWindowSubsystem::X11IsCompositingManagerRunning()
 
 bool NativeWindowSubsystem::WaylandIsCompositingManagerRunning()
 {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
     QNativeInterface::QWaylandApplication *pWaylandApp = qApp->nativeInterface<QNativeInterface::QWaylandApplication>();
     if (pWaylandApp)
     {
         if (pWaylandApp->compositor())
             return true;
     }
+#endif
     return false;
 }
 
