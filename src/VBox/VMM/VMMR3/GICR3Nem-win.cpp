@@ -1,4 +1,4 @@
-/* $Id: GICR3Nem-win.cpp 106400 2024-10-16 20:55:11Z alexander.eichner@oracle.com $ */
+/* $Id: GICR3Nem-win.cpp 106405 2024-10-16 21:00:19Z alexander.eichner@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GICv3) - Hyper-V interface.
  */
@@ -108,7 +108,7 @@ static CPUMSYSREGRANGE const g_aSysRegRanges_GICv3[] =
  * @returns VBox status code.
  * @param   pDevIns     The PDM KVM GIC device instance.
  * @param   idCpu       The CPU ID for which the interrupt is updated (only valid for PPIs).
- * @param   u32IrqType  The actual IRQ type (PPI or SPI).
+ * @param   fPpi        Flag whether this is a PPI or SPI.
  * @param   uIntId      The interrupt ID to update.
  * @param   fAsserted   Flag whether the interrupt is asserted (true) or not (false).
  */
