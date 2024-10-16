@@ -1,4 +1,4 @@
-/* $Id: acpi.cpp 106342 2024-10-16 08:24:59Z alexander.eichner@oracle.com $ */
+/* $Id: acpi.cpp 106343 2024-10-16 08:28:03Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Advanced Configuration and Power Interface (ACPI) Table generation API.
  */
@@ -398,7 +398,7 @@ DECLINLINE(void) rtAcpiTblAppendByte(PRTACPITBLINT pThis, uint8_t bData)
  * @param pvData                The data to append.
  * @param cbData                Size of the data in bytes.
  */
-DECLINLINE(void) rtAcpiTblAppendData(PRTACPITBLINT pThis, const void *pvData, size_t cbData)
+DECLINLINE(void) rtAcpiTblAppendData(PRTACPITBLINT pThis, const void *pvData, uint32_t cbData)
 {
     uint8_t *pb = rtAcpiTblBufEnsureSpace(pThis, cbData);
     if (pb)
