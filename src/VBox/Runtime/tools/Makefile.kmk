@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106422 2024-10-17 10:05:32Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 106426 2024-10-17 10:22:21Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT tools.
 #
@@ -246,12 +246,12 @@ if !defined(VBOX_ONLY_BUILD)
  RTDbgSymCache_TEMPLATE = VBoxR3Tool
  RTDbgSymCache_SOURCES = RTDbgSymCache.cpp
 
-ifdef VBOX_WITH_LIBCURL
+ ifdef VBOX_WITH_LIBCURL
   # RTDbgSymSrv - Symbol cache proxy.
   PROGRAMS += RTDbgSymSrv
   RTDbgSymSrv_TEMPLATE = VBoxR3Tool
   RTDbgSymSrv_SOURCES = RTDbgSymSrv.cpp
-endif
+ endif
 
  # RTSignTool - Signing utility.
  PROGRAMS += RTSignTool
