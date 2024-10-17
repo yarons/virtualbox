@@ -1,4 +1,4 @@
-/* $Id: VBoxWinDrvDefs.h 106396 2024-10-16 16:27:03Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxWinDrvDefs.h 106411 2024-10-17 06:40:13Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxWinDrvDefs - Common definitions for Windows driver functions.
  */
@@ -34,8 +34,8 @@
  * SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
  */
 
-#ifndef VBOX_INCLUDED_GuestHost_VBoxWinDrvCommon_h
-#define VBOX_INCLUDED_GuestHost_VBoxWinDrvCommon_h
+#ifndef VBOX_INCLUDED_GuestHost_VBoxWinDrvDefs_h
+#define VBOX_INCLUDED_GuestHost_VBoxWinDrvDefs_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -77,4 +77,4 @@ typedef struct _VBOXWINDRVINFSEC_VERSION
 /** Pointer to structure for keeping INF Version section information. */
 typedef VBOXWINDRVINFSEC_VERSION *PVBOXWINDRVINFSEC_VERSION;
 
-#endif /* !VBOX_INCLUDED_GuestHost_VBoxWinDrvCommon_h */
+#endif /* !VBOX_INCLUDED_GuestHost_VBoxWinDrvDefs_h */
