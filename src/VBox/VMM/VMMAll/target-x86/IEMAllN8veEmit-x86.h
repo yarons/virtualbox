@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veEmit-x86.h 106408 2024-10-16 22:30:34Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veEmit-x86.h 106454 2024-10-17 13:54:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, x86 Target - Code Emitters.
  */
@@ -2232,7 +2232,6 @@ iemNativeEmit_rcr_r_CL_efl(PIEMRECOMPILERSTATE pReNative, uint32_t off,
 
 
 
-#ifdef IEMNATIVE_WITH_SIMD_REG_ALLOCATOR
 /*********************************************************************************************************************************
 *   SIMD emitters.                                                                                                               *
 *********************************************************************************************************************************/
@@ -3217,6 +3216,5 @@ IEMNATIVE_NATIVE_EMIT_FP_3OP_U128(addps, kArmv8VecInstrFpOp_Add, kArmv8VecInstrF
 IEMNATIVE_NATIVE_EMIT_FP_3OP_U128(addpd, kArmv8VecInstrFpOp_Add, kArmv8VecInstrFpSz_2x_Double, X86_OP_PRF_SIZE_OP, 0x58);
 IEMNATIVE_NATIVE_EMIT_FP_3OP_U128(subps, kArmv8VecInstrFpOp_Sub, kArmv8VecInstrFpSz_4x_Single, 0, 0x5c);
 
-#endif /* IEMNATIVE_WITH_SIMD_REG_ALLOCATOR */
 
 #endif /* !VMM_INCLUDED_SRC_VMMAll_target_x86_IEMAllN8veEmit_x86_h */
