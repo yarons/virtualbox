@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veLiveness.h 106191 2024-10-01 12:56:17Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veLiveness.h 106428 2024-10-17 10:59:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Liveness Analysis, Common Header.
  */
@@ -386,12 +386,12 @@ AssertCompile(IEMLIVENESS_STATE_INPUT == IEMLIVENESS_STATE_MASK);
 #define IEM_MC_IND_CALL_U64_AND_FINISH_THREADED_PC64(a_u32NewRIP, a_cbInstr)                do { IEM_LIVENESS_PC64_JMP_NO_FLAGS();   IEM_LIVENESS_STACK(); } while (0)
 #define IEM_MC_IND_CALL_U64_AND_FINISH_THREADED_PC64_WITH_FLAGS(a_u32NewRIP, a_cbInstr)     do { IEM_LIVENESS_PC64_JMP_WITH_FLAGS(); IEM_LIVENESS_STACK(); } while (0)
 
-#define IEM_MC_RETN_AND_FINISH_THREADED_PC16(a_i16, a_cbInstr)                              do { IEM_LIVENESS_PC16_JMP_NO_FLAGS();   IEM_LIVENESS_STACK(); } while (0)
-#define IEM_MC_RETN_AND_FINISH_THREADED_PC32(a_i16, a_cbInstr, a_enmEffOpSize)              do { IEM_LIVENESS_PC32_JMP_NO_FLAGS();   IEM_LIVENESS_STACK(); } while (0)
-#define IEM_MC_RETN_AND_FINISH_THREADED_PC64(a_i16, a_cbInstr, a_enmEffOpSize)              do { IEM_LIVENESS_PC64_JMP_NO_FLAGS();   IEM_LIVENESS_STACK(); } while (0)
-#define IEM_MC_RETN_AND_FINISH_THREADED_PC16_WITH_FLAGS(a_i16, a_cbInstr)                   do { IEM_LIVENESS_PC16_JMP_WITH_FLAGS(); IEM_LIVENESS_STACK(); } while (0)
-#define IEM_MC_RETN_AND_FINISH_THREADED_PC32_WITH_FLAGS(a_i16, a_cbInstr, a_enmEffOpSize)   do { IEM_LIVENESS_PC32_JMP_WITH_FLAGS(); IEM_LIVENESS_STACK(); } while (0)
-#define IEM_MC_RETN_AND_FINISH_THREADED_PC64_WITH_FLAGS(a_i16, a_cbInstr, a_enmEffOpSize)   do { IEM_LIVENESS_PC64_JMP_WITH_FLAGS(); IEM_LIVENESS_STACK(); } while (0)
+#define IEM_MC_RETN_AND_FINISH_THREADED_PC16(a_cbPopArgs, a_cbInstr)                            do { IEM_LIVENESS_PC16_JMP_NO_FLAGS();   IEM_LIVENESS_STACK(); } while (0)
+#define IEM_MC_RETN_AND_FINISH_THREADED_PC32(a_cbPopArgs, a_cbInstr, a_enmEffOpSize)            do { IEM_LIVENESS_PC32_JMP_NO_FLAGS();   IEM_LIVENESS_STACK(); } while (0)
+#define IEM_MC_RETN_AND_FINISH_THREADED_PC64(a_cbPopArgs, a_cbInstr, a_enmEffOpSize)            do { IEM_LIVENESS_PC64_JMP_NO_FLAGS();   IEM_LIVENESS_STACK(); } while (0)
+#define IEM_MC_RETN_AND_FINISH_THREADED_PC16_WITH_FLAGS(a_cbPopArgs, a_cbInstr)                 do { IEM_LIVENESS_PC16_JMP_WITH_FLAGS(); IEM_LIVENESS_STACK(); } while (0)
+#define IEM_MC_RETN_AND_FINISH_THREADED_PC32_WITH_FLAGS(a_cbPopArgs, a_cbInstr, a_enmEffOpSize) do { IEM_LIVENESS_PC32_JMP_WITH_FLAGS(); IEM_LIVENESS_STACK(); } while (0)
+#define IEM_MC_RETN_AND_FINISH_THREADED_PC64_WITH_FLAGS(a_cbPopArgs, a_cbInstr, a_enmEffOpSize) do { IEM_LIVENESS_PC64_JMP_WITH_FLAGS(); IEM_LIVENESS_STACK(); } while (0)
 
 /* Effective address stuff is rather complicated... */
 #define IEM_MC_CALC_RM_EFF_ADDR_THREADED_16(a_GCPtrEff, a_bRm, a_u16Disp) do { \
