@@ -1,4 +1,4 @@
-/* $Id: RTPathGlob.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: RTPathGlob.cpp 106429 2024-10-17 10:59:22Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - RTPathGlob
  */
@@ -441,6 +441,9 @@ RTPATHMATCHVAR_SIMPLE_ENVVAR(WinCommonProgramFiles,         "CommonProgramFiles"
 # if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
 RTPATHMATCHVAR_SIMPLE_ENVVAR(WinOtherProgramFiles,          "ProgramFiles(x86)",        RTPATH_MAX);
 RTPATHMATCHVAR_SIMPLE_ENVVAR(WinOtherCommonProgramFiles,    "CommonProgramFiles(x86)",  RTPATH_MAX);
+# elif defined(RT_ARCH_ARM64) || defined(RT_ARCH_ARM32)
+RTPATHMATCHVAR_SIMPLE_ENVVAR(WinOtherProgramFiles,       "ProgramFiles(Arm)",        RTPATH_MAX);
+RTPATHMATCHVAR_SIMPLE_ENVVAR(WinOtherCommonProgramFiles, "CommonProgramFiles(Arm)",  RTPATH_MAX);
 # else
 #  error "Port ME!"
 # endif
@@ -449,6 +452,9 @@ static const char * const a_apszWinProgramFilesVars[] =
     "ProgramFiles",
 # ifdef RT_ARCH_AMD64
     "ProgramFiles(x86)",
+# elif defined(RT_ARCH_ARM64) || defined(RT_ARCH_ARM32)
+    "ProgramFiles(x86)",
+    "ProgramFiles(Arm)",
 # endif
 };
 RTPATHMATCHVAR_MULTIPLE_ENVVARS(WinAllProgramFiles, a_apszWinProgramFilesVars, RTPATH_MAX);
@@ -457,6 +463,9 @@ static const char * const a_apszWinCommonProgramFilesVars[] =
     "CommonProgramFiles",
 # ifdef RT_ARCH_AMD64
     "CommonProgramFiles(x86)",
+# elif defined(RT_ARCH_ARM64) || defined(RT_ARCH_ARM32)
+    "CommonProgramFiles(x86)",
+    "CommonProgramFiles(Arm)",
 # endif
 };
 RTPATHMATCHVAR_MULTIPLE_ENVVARS(WinAllCommonProgramFiles, a_apszWinCommonProgramFilesVars, RTPATH_MAX);
