@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceControl.cpp 106413 2024-10-17 07:45:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -608,7 +608,7 @@ static DECLCALLBACK(void) vgsvcGstCtrlTerm(void)
 
 
 /**
- * The 'vminfo' service description.
+ * The 'control' service description.
  */
 VBOXSERVICE g_Control =
 {
