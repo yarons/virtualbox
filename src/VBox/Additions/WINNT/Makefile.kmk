@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 106437 2024-10-17 11:44:48Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the Windows NT++ Guest Additions.
 #
@@ -30,7 +30,9 @@ include $(KBUILD_PATH)/subheader.kmk
 
 # Include Sub-Makefiles.
 include $(PATH_SUB_CURRENT)/Graphics/Makefile.kmk
-include $(PATH_SUB_CURRENT)/Mouse/Makefile.kmk
+if1of ($(KBUILD_TARGET_ARCH),amd64 x86)
+ include $(PATH_SUB_CURRENT)/Mouse/Makefile.kmk
+endif
 include $(PATH_SUB_CURRENT)/VBoxTray/Makefile.kmk
 include $(PATH_SUB_CURRENT)/VBoxGINA/Makefile.kmk
 include $(PATH_SUB_CURRENT)/VBoxCredProv/Makefile.kmk
