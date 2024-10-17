@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106415 2024-10-17 08:49:43Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 106416 2024-10-17 08:53:55Z andreas.loeffler@oracle.com $
 ## @file
 # Sub-Makefile for zlib.
 #
@@ -80,7 +80,7 @@ if defined(VBOX_WITH_ADDITIONS) || !defined(VBOX_WITHOUT_ADDITIONS)
  nsis-zlib-dll_NAME     = zlib1
  nsis-zlib-dll_DEFINES += ZLIB_DLL
  nsis-zlib-dll_INSTTYPE = stage
- nsis-zlib-dll_INST	   = $(INST_DEBUG)nsis-zlib/
+ nsis-zlib-dll_INST     = $(INST_DEBUG)nsis-zlib/
 
  INSTALLS.win += nsis-zlib-lib
  nsis-zlib-lib_TEMPLATE := DUMMY
