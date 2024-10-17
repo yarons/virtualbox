@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106435 2024-10-17 11:40:55Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 106439 2024-10-17 11:50:20Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the Windows Guest Additions Installer Helper DLL.
 #
@@ -38,7 +38,7 @@ include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
 #
 DLLS += VBoxGuestInstallHelper
 VBoxGuestInstallHelper_TEMPLATE        := VBoxGuestR3Dll
-if1of ($(KBUILD_TARGET_ARCH),amd64)
+if1of ($(KBUILD_TARGET_ARCH), amd64)
  VBoxGuestInstallHelper_BLD_TRG_ARCH    := x86
 endif
 VBoxGuestInstallHelper_INST            := repackadd/resources/VBoxGuestInstallHelper/
