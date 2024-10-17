@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 106435 2024-10-17 11:40:55Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the Shared OpenGL Host Service testcases.
 #
@@ -42,6 +42,7 @@ ifdef VBOX_WITH_TESTCASES
  tstHook_LIBS    = $(PATH_STAGE_LIB)/VBoxHook.lib
  tstHook_VBOX_IMPORT_CHECKER.win.x86  = $(NO_SUCH_VARIABLE)
  tstHook_VBOX_IMPORT_CHECKER.win.amd64 = $(NO_SUCH_VARIABLE)
+ tstHook_VBOX_IMPORT_CHECKER.win.arm64 = $(NO_SUCH_VARIABLE)
 
 endif # VBOX_WITH_TESTCASES
 
