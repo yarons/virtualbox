@@ -1,4 +1,4 @@
-/* $Id: thread2-win.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: thread2-win.cpp 106427 2024-10-17 10:57:54Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Threads part 2, Windows.
  */
@@ -44,7 +44,11 @@
 #include <iprt/thread.h>
 #include "internal/iprt.h"
 
-#include <iprt/asm-amd64-x86.h>
+#if defined(RT_ARCH_X86) || defined(RT_ARCH_AMD64)
+# include <iprt/asm-amd64-x86.h>
+#elif defined(RT_ARCH_ARM64) || defined(RT_ARCH_ARM32)
+# include <iprt/asm-arm.h>
+#endif
 #include <iprt/errcore.h>
 #include <iprt/log.h>
 #include "internal/thread.h"
