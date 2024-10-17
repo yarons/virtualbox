@@ -1,4 +1,4 @@
-/* $Id: ASMMemFirstNonZero-generic.cpp 106404 2024-10-16 20:58:15Z alexander.eichner@oracle.com $ */
+/* $Id: ASMMemFirstNonZero-generic.cpp 106425 2024-10-17 10:11:01Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - ASMMemZeroPage - generic C implementation.
  */
@@ -42,7 +42,7 @@
 #include "internal/iprt.h"
 
 
-DECLASM(void RT_FAR *) ASMMemFirstNonZero(void const RT_FAR *pv, size_t cb) RT_NOTHROW_DEF
+RTDECL(void RT_FAR *) ASMMemFirstNonZero(void const RT_FAR *pv, size_t cb) RT_NOTHROW_DEF
 {
     uint8_t const *pb = (uint8_t const RT_FAR *)pv;
 

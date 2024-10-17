@@ -1,4 +1,4 @@
-/* $Id: ASMMemZero32-generic.cpp 106404 2024-10-16 20:58:15Z alexander.eichner@oracle.com $ */
+/* $Id: ASMMemZero32-generic.cpp 106425 2024-10-17 10:11:01Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - ASMMemZero32 - generic C implementation.
  */
@@ -44,7 +44,7 @@
 #include <iprt/string.h>
 
 
-DECLASM(void) ASMMemZero32(volatile void RT_FAR *pv, size_t cb) RT_NOTHROW_DEF
+RTDECL(void) ASMMemZero32(volatile void RT_FAR *pv, size_t cb) RT_NOTHROW_DEF
 {
     memset((void *)pv, 0, cb);
 }
