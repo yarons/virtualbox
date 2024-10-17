@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106442 2024-10-17 11:57:19Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 106455 2024-10-17 13:59:36Z alexander.eichner@oracle.com $
 ## @file
 # Makefile for the Windows guest miniport driver.
 #
@@ -193,8 +193,10 @@ endif # VBOX_WITH_WDDM
 # Signing requires both miniport and display drivers so it'll be dealt with in the parent makefile.
 #
 if defined(VBOX_SIGNING_MODE) && defined(VBOX_SIGN_ADDITIONS)
- VBoxVideo_INSTTYPE            = none
- VBoxVideo_DEBUG_INSTTYPE      = both
+ ifdef VBOX_WITH_XPDM
+  VBoxVideo_INSTTYPE            = none
+  VBoxVideo_DEBUG_INSTTYPE      = both
+ endif
  ifdef VBOX_WITH_WDDM
   VBoxWddm_INSTTYPE            = none
   VBoxWddm_DEBUG_INSTTYPE      = both
