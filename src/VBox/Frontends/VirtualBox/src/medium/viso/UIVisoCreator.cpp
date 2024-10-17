@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 106440 2024-10-17 11:50:35Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.cpp 106459 2024-10-17 14:15:17Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes implementation.
  */
@@ -984,8 +984,7 @@ bool UIVisoCreatorDialog::saveVISOFile()
 
         QTextStream stream(&file);
         stream << QString("%1 %2").arg("--iprt-iso-maker-file-marker-bourne-sh").arg(QUuid::createUuid().toString()) << "\n";
-        /* Note: Quote the volume ID, as we might use the VM name as a default, which in turn can contain spaces. */
-        stream<< "--volume-id=\"" << strVisoName << "\"\n";
+        stream<< "--volume-id=" << strVisoName << "\n";
         if (!strImportedISOPath.isEmpty())
             stream << "--import-iso=" << strImportedISOPath << "\n";
         stream << VisoEntryList.join("\n");

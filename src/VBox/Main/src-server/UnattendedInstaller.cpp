@@ -1,4 +1,4 @@
-/* $Id: UnattendedInstaller.cpp 106440 2024-10-17 11:50:35Z serkan.bayraktar@oracle.com $ */
+/* $Id: UnattendedInstaller.cpp 106459 2024-10-17 14:15:17Z serkan.bayraktar@oracle.com $ */
 /** @file
  * UnattendedInstaller class and it's descendants implementation
  */
@@ -1505,7 +1505,7 @@ HRESULT UnattendedRhelInstaller::addFilesToAuxVisoVectors(RTCList<RTCString> &rV
         /** @todo Maybe we should just remaster the ISO for redhat derivatives too?
          *        One less CDROM to mount. */
         /* Name the ISO. */
-        rVecArgs.append() = "--volume-id=\"VBox Unattended Boot\"";
+        rVecArgs.append() = "--volume-id=VBox Unattended Boot";
 
         /* Copy the isolinux directory from the original install ISO. */
         rVecArgs.append().append("--push-iso=").append(mpParent->i_getIsoPath());
