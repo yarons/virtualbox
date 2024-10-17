@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDnD.h 106412 2024-10-17 07:44:43Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxDnD.h - Windows-specific bits of the drag'n drop service.
  */
@@ -275,7 +275,7 @@ typedef struct VBOXDNDEVENT
 typedef struct VBOXDNDCONTEXT
 {
     /** Pointer to the service environment. */
-    const VBOXSERVICEENV      *pEnv;
+    const VBOXTRAYSVCENV      *pEnv;
     /** Started indicator. */
     bool                       fStarted;
     /** Shutdown indicator. */
