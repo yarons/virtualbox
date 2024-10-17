@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVisoContentBrowser.cpp 106440 2024-10-17 11:50:35Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -428,7 +428,12 @@ QStringList UIVisoContentBrowser::entryList()
     {
         if (iterator.value().isEmpty())
             continue;
-        QString strEntry = QString("%1=%2").arg(iterator.key()).arg(iterator.value());
+        QString strSource = iterator.key();
+        strSource.replace("\"", "\\\"");
+        QString strTarget = iterator.value();
+        strTarget.replace("\"", "\\\"");
+        /* We must quote %1 and %2 here, as those might contain spaces as part of a path or file name. */
+        QString strEntry = QString("\"%1\"=\"%2\"").arg(strSource).arg(strTarget);
         entryList << strEntry;
     }
     return entryList;
