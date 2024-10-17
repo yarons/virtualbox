@@ -1,4 +1,4 @@
-/* $Id: nt.h 106419 2024-10-17 09:51:18Z alexander.eichner@oracle.com $ */
+/* $Id: nt.h 106421 2024-10-17 10:02:54Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -2441,7 +2441,7 @@ typedef struct _FILE_STAT_LX_INFORMATION
 } FILE_STAT_LX_INFORMATION;
 typedef FILE_STAT_LX_INFORMATION *PFILE_STAT_LX_INFORMATION;
 # endif
-# ifndef FILE_CS_FLAG_CASE_SENSITIVE_DIR
+# if !defined(IPRT_NT_USE_WINTERNL) || !defined(NTDDI_WIN11_GE) || (WDK_NTDDI_VERSION < NTDDI_WIN11_GE) /* Available since at least SDK 10.0.26100.0 (didn't bother to check for earlier version). */
 typedef struct _FILE_CASE_SENSITIVE_INFORMATION
 {
     ULONG           Flags;
