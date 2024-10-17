@@ -1,4 +1,4 @@
-/* $Id: VBoxSeamless.cpp 106412 2024-10-17 07:44:43Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSeamless.cpp 106450 2024-10-17 12:41:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxSeamless - Seamless windows
  */
@@ -82,7 +82,7 @@ static void vboxSeamlessSetSupported(BOOL fSupported);
 
 
 /**
- * @interface_method_impl{VBOXSERVICEDESC,pfnPreInit}
+ * @interface_method_impl{VBOXTRAYSVCDESC,pfnPreInit}
  */
 static DECLCALLBACK(int) vbtrSeamlessPreInit(void)
 {
@@ -90,7 +90,7 @@ static DECLCALLBACK(int) vbtrSeamlessPreInit(void)
 }
 
 /**
- * @interface_method_impl{VBOXSERVICEDESC,pfnOption}
+ * @interface_method_impl{VBOXTRAYSVCDESC,pfnOption}
  */
 static DECLCALLBACK(int) vbtrSeamlessOption(const char **ppszShort, int argc, char **argv, int *pi)
 {
@@ -100,7 +100,7 @@ static DECLCALLBACK(int) vbtrSeamlessOption(const char **ppszShort, int argc, ch
 }
 
 /**
- * @interface_method_impl{VBOXSERVICEDESC,pfnInit}
+ * @interface_method_impl{VBOXTRAYSVCDESC,pfnInit}
  */
 static DECLCALLBACK(int) vbtrSeamlessInit(const PVBOXTRAYSVCENV pEnv, void **ppInstance)
 {
@@ -156,7 +156,7 @@ static DECLCALLBACK(int) vbtrSeamlessInit(const PVBOXTRAYSVCENV pEnv, void **ppI
 }
 
 /**
- * @interface_method_impl{VBOXSERVICEDESC,pfnDestroy}
+ * @interface_method_impl{VBOXTRAYSVCDESC,pfnDestroy}
  */
 static DECLCALLBACK(void) VBoxSeamlessDestroy(void *pInstance)
 {
@@ -417,7 +417,7 @@ void VBoxSeamlessCheckWindows(bool fForce)
 }
 
 /**
- * @interface_method_impl{VBOXSERVICEDESC,pfnWorker}
+ * @interface_method_impl{VBOXTRAYSVCDESC,pfnWorker}
  */
 static DECLCALLBACK(int) vbtrSeamlessWorker(void *pvInstance, bool volatile *pfShutdown)
 {
