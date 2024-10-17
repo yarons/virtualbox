@@ -1,4 +1,4 @@
-/* $Id: VBoxDispKmt.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDispKmt.h 106453 2024-10-17 13:45:57Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -147,8 +147,8 @@ typedef struct VBOXDISPKMT_CONTEXT
 HRESULT vboxDispKmtCallbacksInit(PVBOXDISPKMT_CALLBACKS pCallbacks);
 HRESULT vboxDispKmtCallbacksTerm(PVBOXDISPKMT_CALLBACKS pCallbacks);
 
-HRESULT vboxDispKmtOpenAdapter(const VBOXDISPKMT_CALLBACKS *pCallbacks, PVBOXDISPKMT_ADAPTER pAdapter);
-HRESULT vboxDispKmtCloseAdapter(PVBOXDISPKMT_ADAPTER pAdapter);
+HRESULT VBoxWddmKmtOpenAdapter(const VBOXDISPKMT_CALLBACKS *pCallbacks, PVBOXDISPKMT_ADAPTER pAdapter);
+HRESULT VBoxWddmKmtCloseAdapter(PVBOXDISPKMT_ADAPTER pAdapter);
 HRESULT vboxDispKmtCreateDevice(PVBOXDISPKMT_ADAPTER pAdapter, PVBOXDISPKMT_DEVICE pDevice);
 HRESULT vboxDispKmtDestroyDevice(PVBOXDISPKMT_DEVICE pDevice);
 HRESULT vboxDispKmtCreateContext(PVBOXDISPKMT_DEVICE pDevice, PVBOXDISPKMT_CONTEXT pContext,

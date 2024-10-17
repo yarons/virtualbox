@@ -1,4 +1,4 @@
-/* $Id: GaDrvEnvKMT.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: GaDrvEnvKMT.cpp 106453 2024-10-17 13:45:57Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface to the WDDM miniport driver using Kernel Mode Thunks.
  */
@@ -1273,7 +1273,7 @@ HRESULT GaDrvEnvKmt::Init(void)
     mKmtCallbacks.d3dkmt = D3DKMTFunctions();
 
     /* Figure out which adapter to use. */
-    NTSTATUS Status = vboxDispKmtOpenAdapter2(&mKmtCallbacks.hAdapter, &mKmtCallbacks.AdapterLuid);
+    NTSTATUS Status = VBoxWddmKmtOpenAdapter2(&mKmtCallbacks.hAdapter, &mKmtCallbacks.AdapterLuid);
     Assert(Status == STATUS_SUCCESS);
     if (Status == STATUS_SUCCESS)
     {
@@ -1297,7 +1297,7 @@ HRESULT GaDrvEnvKmt::Init(void)
             vboxDdiDeviceDestroy(&mKmtCallbacks, mKmtCallbacks.hDevice);
         }
 
-        vboxDispKmtCloseAdapter(mKmtCallbacks.hAdapter);
+        VBoxWddmKmtCloseAdapter(mKmtCallbacks.hAdapter);
     }
 
     return E_FAIL;

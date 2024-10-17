@@ -1,4 +1,4 @@
-/* $Id: VBoxMpLogger.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxMpLogger.cpp 106453 2024-10-17 13:45:57Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox WDDM Display logger implementation
  *
@@ -52,7 +52,7 @@ static void VBoxDispMpLoggerLogN(const char *pchString, size_t cchString)
         return;
 
     D3DKMT_HANDLE hAdapter;
-    NTSTATUS Status = vboxDispKmtOpenAdapter(&hAdapter);
+    NTSTATUS Status = VBoxWddmKmtOpenAdapter(&hAdapter);
     Assert(Status == STATUS_SUCCESS);
     if (Status == 0)
     {
@@ -83,7 +83,7 @@ static void VBoxDispMpLoggerLogN(const char *pchString, size_t cchString)
             free(pCmd);
         }
 
-        Status = vboxDispKmtCloseAdapter(hAdapter);
+        Status = VBoxWddmKmtCloseAdapter(hAdapter);
         Assert(Status == STATUS_SUCCESS);
     }
 }
