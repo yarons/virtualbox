@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuest.cpp 106462 2024-10-17 14:57:44Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -4446,6 +4446,7 @@ bool VGDrvCommonISR(PVBOXGUESTDEVEXT pDevExt)
                 fEvents = ASMInU32(pDevExt->IOPortBase + VMMDEV_PORT_OFF_REQUEST_FAST);
 #elif defined(RT_ARCH_ARM64) || defined(RT_ARCH_ARM32)
                 AssertReleaseFailed(); /* No port I/O on ARM. */
+                fEvents = 0;
 #else
 # error "I have no memory of this architecture"
 #endif
