@@ -1,4 +1,4 @@
-/* $Id: mp-win.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: mp-win.cpp 106445 2024-10-17 12:29:34Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Multiprocessor, Windows.
  */
@@ -54,7 +54,7 @@
 #if defined(RT_ARCH_X86) || defined(RT_ARCH_AMD64)
 # include <iprt/asm-amd64-x86.h>
 #endif
-#if defined(VBOX) && !defined(IN_GUEST) && !defined(IN_RT_STATIC)
+#if defined(VBOX) && !defined(IN_GUEST) && !defined(IN_RT_STATIC) && !defined(RT_ARCH_ARM64) && !defined(RT_ARCH_ARM32)
 # include <VBox/sup.h>
 # define IPRT_WITH_GIP_MP_INFO
 #else
@@ -639,6 +639,8 @@ RTDECL(RTCPUID) RTMpCpuId(void)
     {
 #if defined(RT_ARCH_X86) || defined(RT_ARCH_AMD64)
         ProcNum.Number = ASMGetApicId();
+#elif defined(RT_ARCH_ARM64) || defined(RT_ARCH_ARM32)
+        return NIL_RTCPUID; /* Not supported. */
 #else
 # error "Not ported to this architecture."
         return NIL_RTCPUID;
