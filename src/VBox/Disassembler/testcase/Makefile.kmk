@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 106436 2024-10-17 11:42:35Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the VBox Disassembler.
 #
@@ -60,7 +60,7 @@ ifdef VBOX_WITH_TESTCASES
  	$(LIB_RUNTIME)
 
 
- ifeq ($(KBUILD_TARGET_ARCH),arm64)
+ ifeq ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH),darwin.arm64)
   #
   # tstDisasmArmv8-1 assembly files -> .cpp
   #
