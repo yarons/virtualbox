@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompFuncs.h 106432 2024-10-17 11:29:08Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompFuncs.h 106433 2024-10-17 11:30:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler - Inlined Bits.
  */
@@ -1576,6 +1576,9 @@ DECL_INLINE_THROW(uint32_t)
 iemNativeEmitStackPushRip(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t const idxRegPc,
                           uintptr_t pfnFunction, uint8_t idxInstr)
 {
+    AssertCompile(a_cBitsVar == 16 || a_cBitsVar  == 32 || a_cBitsVar  == 64);
+    AssertCompile(a_cBitsFlat == 0 || a_cBitsFlat == 32 || a_cBitsFlat == 64);
+
     /*
      * Assert sanity.
      */
