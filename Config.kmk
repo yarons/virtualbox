@@ -1,4 +1,4 @@
-# $Id: Config.kmk 106443 2024-10-17 11:59:36Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 106477 2024-10-18 12:37:05Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4186,6 +4186,9 @@ ifn1of ($(VBOX_VCC_TOOL_STEM), VCC100 VCC110 VCC120)
  # as the VCC100 CRT typically ends up with its internal code page not being
  # CP_UTF8 but the default codepage for the locale.
  #
+ # This has also been hijacked for opting in on the new segmented heap in
+ # Windows 10.
+ #
  # @param 1 the output filename.
  # @param 2 the architecture (required for xp rtm)
  #
@@ -4197,6 +4200,7 @@ ifn1of ($(VBOX_VCC_TOOL_STEM), VCC100 VCC110 VCC120)
  	' <asmv3:application>' \
  	'  <asmv3:windowsSettings>' \
  	'   <activeCodePage xmlns="http://schemas.microsoft.com/SMI/2019/WindowsSettings">UTF-8</activeCodePage>' \
+       '   <heapType       xmlns="http://schemas.microsoft.com/SMI/2020/WindowsSettings">SegmentHeap</heapType>' \
  	'  </asmv3:windowsSettings>' \
  	' </asmv3:application>' \
  	'</assembly>' \
@@ -9346,7 +9350,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 106443 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 106477 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
