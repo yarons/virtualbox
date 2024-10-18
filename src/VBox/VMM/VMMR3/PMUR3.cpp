@@ -1,4 +1,4 @@
-/* $Id: PMUR3.cpp 106479 2024-10-18 12:57:36Z alexander.eichner@oracle.com $ */
+/* $Id: PMUR3.cpp 106482 2024-10-18 13:26:55Z alexander.eichner@oracle.com $ */
 /** @file
  * PMU - Performance Monitoring Unit.
  */
@@ -82,6 +82,7 @@ DECLCALLBACK(void) pmuR3Reset(PPDMDEVINS pDevIns)
 
     LogFlow(("PMU: pmuR3Reset\n"));
 
+    RT_NOREF(pVM);
 #if 0
     for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
     {
