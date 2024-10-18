@@ -1,4 +1,4 @@
-/* $Id: PMUAll.cpp 106479 2024-10-18 12:57:36Z alexander.eichner@oracle.com $ */
+/* $Id: PMUAll.cpp 106480 2024-10-18 13:15:51Z alexander.eichner@oracle.com $ */
 /** @file
  * PMU - Performance Monitoring Unit. - All Contexts.
  */
@@ -127,6 +127,7 @@ VMM_INT_DECL(VBOXSTRICTRC) PMUWriteSysReg(PVMCPUCC pVCpu, uint32_t u32Reg, uint6
         case ARMV8_AARCH64_SYSREG_PMCNTENSET_EL0:
         case ARMV8_AARCH64_SYSREG_PMUSERENR_EL0:
         case ARMV8_AARCH64_SYSREG_PMCCNTR_EL0:
+            RT_NOREF(u64Value);
             break;
         default:
             AssertReleaseFailed();
