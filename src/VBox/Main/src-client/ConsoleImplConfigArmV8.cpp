@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigArmV8.cpp 106389 2024-10-16 14:16:39Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImplConfigArmV8.cpp 106479 2024-10-18 12:57:36Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits for ARMv8.
  */
@@ -497,6 +497,17 @@ int Console::i_configConstructorArmV8(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
 #endif
 
         vrc = RTFdtNodeFinalize(hFdt);                                                      VRC();
+
+        /*
+         * Configure the perofrmance monitoring unit.
+         */
+        /** @todo Make this configurable and enable as default for Windows VMs because they assume a working PMU
+         * (which is not available in hardware on AppleSilicon).
+         */
+        InsertConfigNode(pDevices, "pmu",                &pDev);
+        InsertConfigNode(pDev,     "0",                  &pInst);
+        InsertConfigInteger(pInst, "Trusted",            1);
+        InsertConfigNode(pInst,    "Config",             &pCfg);
 
         RTGCPHYS GCPhysMmioStart;
         RTGCPHYS cbMmio;
