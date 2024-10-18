@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 106454 2024-10-17 13:54:35Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 106467 2024-10-18 00:27:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -6034,7 +6034,7 @@ DECL_HIDDEN_THROW(uint32_t) iemNativeEmitPcWritebackSlow(PIEMRECOMPILERSTATE pRe
 
     /* Perform the addition and store the result. */
     off = iemNativeEmitAddGprImm(pReNative, off, idxPcReg, pReNative->Core.offPc);
-    off = iemNativeEmitStoreGprToVCpuU64(pReNative, off, idxPcReg, RT_UOFFSETOF(VMCPU, cpum.GstCtx.rip));
+    off = iemNativeEmitStoreGprToGstRegT<kIemNativeGstReg_Pc>(pReNative, off, idxPcReg);
 # ifdef IEMNATIVE_WITH_DELAYED_PC_UPDATING_DEBUG
     off = iemNativeEmitPcDebugCheckWithReg(pReNative, off, idxPcReg);
 # endif

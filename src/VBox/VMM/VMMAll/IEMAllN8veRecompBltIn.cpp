@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompBltIn.cpp 106444 2024-10-17 12:02:12Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompBltIn.cpp 106467 2024-10-18 00:27:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Emitters for Built-In Threaded Functions.
  */
@@ -1305,7 +1305,7 @@ iemNativeEmitBltInCheckPcAfterBranch(PIEMRECOMPILERSTATE pReNative, uint32_t off
     /* Assert(pVCpu->cpum.GstCtx.cs.u64Base == 0 || !IEM_F_MODE_X86_IS_FLAT(pReNative->fExec)); */
     if (IEM_F_MODE_X86_IS_FLAT(pReNative->fExec))
     {
-        off = iemNativeEmitLoadGprFromVCpuU64(pReNative, off, idxRegTmp, RT_UOFFSETOF(VMCPUCC, cpum.GstCtx.cs.u64Base));
+        off = iemNativeEmitLoadGprWithGstRegT<kIemNativeGstReg_CsBase>(pReNative, off, idxRegTmp);
 # ifdef RT_ARCH_ARM64
         uint32_t * const pu32CodeBuf = iemNativeInstrBufEnsure(pReNative, off, 2);
         pu32CodeBuf[off++] = Armv8A64MkInstrCbzCbnz(false /*fJmpIfNotZero*/, 2, idxRegTmp);
@@ -1618,7 +1618,7 @@ iemNativeEmitBltLoadTlbAfterBranch(PIEMRECOMPILERSTATE pReNative, uint32_t off, 
     /* Assert(pVCpu->cpum.GstCtx.cs.u64Base == 0 || !IEM_F_MODE_X86_IS_FLAT(pReNative->fExec)); */
     if (IEM_F_MODE_X86_IS_FLAT(pReNative->fExec))
     {
-        off = iemNativeEmitLoadGprFromVCpuU64(pReNative, off, idxRegTmp, RT_UOFFSETOF(VMCPUCC, cpum.GstCtx.cs.u64Base));
+        off = iemNativeEmitLoadGprWithGstRegT<kIemNativeGstReg_CsBase>(pReNative, off, idxRegTmp);
 # ifdef RT_ARCH_ARM64
         uint32_t * const pu32CodeBuf = iemNativeInstrBufEnsure(pReNative, off, 2);
         pu32CodeBuf[off++] = Armv8A64MkInstrCbzCbnz(false /*fJmpIfNotZero*/, 2, idxRegTmp);

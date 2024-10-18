@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veExecMem.cpp 106406 2024-10-16 21:24:15Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veExecMem.cpp 106467 2024-10-18 00:27:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Executable Memory Allocator.
  */
@@ -322,6 +322,7 @@ typedef IEMEXECMEMALLOCATOR *PIEMEXECMEMALLOCATOR;
  */
 typedef struct IEMEXECMEMALLOCHDR
 {
+    RT_GCC_EXTENSION
     union
     {
         struct
