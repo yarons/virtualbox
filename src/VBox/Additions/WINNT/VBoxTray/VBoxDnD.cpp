@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.cpp 106468 2024-10-18 07:03:23Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxDnD.cpp 106470 2024-10-18 07:50:26Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxDnD.cpp - Windows-specific bits of the drag and drop service.
  */
@@ -1892,7 +1892,7 @@ DECLCALLBACK(int) vbtrDnDStop(void *pvInstance)
 }
 
 /**
- * @interface_method_impl{VBOXTRAYSVCDESC,pfnInit}
+ * @interface_method_impl{VBOXTRAYSVCDESC,pfnDestroy}
  */
 DECLCALLBACK(void) vbtrDnDDestroy(void *pvInstance)
 {

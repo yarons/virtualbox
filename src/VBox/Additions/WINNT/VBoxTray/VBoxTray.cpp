@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 106468 2024-10-18 07:03:23Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxTray.cpp 106470 2024-10-18 07:50:26Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -204,8 +204,6 @@ static int vboxTrayCreateTrayIcon(void)
 
 /**
  * Removes VBoxTray's tray icon.
- *
- * @returns VBox status code.
  */
 static void vboxTrayRemoveTrayIcon(void)
 {
