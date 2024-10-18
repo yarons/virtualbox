@@ -1,4 +1,4 @@
-; $Id: VBoxSup.inf 106322 2024-10-15 13:06:30Z andreas.loeffler@oracle.com $
+; $Id: VBoxSup.inf 106486 2024-10-18 15:33:46Z andreas.loeffler@oracle.com $
 ;; @file
 ; VirtualBox Support Driver - Windows Driver INF file.
 ;
@@ -61,18 +61,6 @@ LegacyUninstall=1
 [DefaultUninstall@DOT-NT-ARCH@.Services]
 DelService=VBoxSup,0x00000200
 LegacyUninstall=1
-
-[Manufacturer]
-%ORACLE%=VBoxSup@COMMA-NT-ARCH@
-
-[VBoxSup@DOT-NT-ARCH@]
-%VBoxSup.DRVDESC%=VBoxSup_Install
-
-[VBoxSup_Install@DOT-NT-ARCH@]
-CopyFiles=VBoxSup_CopyFiles
-
-[VBoxSup_Install@DOT-NT-ARCH@.Services]
-AddService=VBoxSup,0x00000002,VBoxSup_Service
 
 [SourceDisksFiles]
 VBoxSup.sys=1
