@@ -1,4 +1,4 @@
-/* $Id: acpi.cpp 106345 2024-10-16 09:06:04Z alexander.eichner@oracle.com $ */
+/* $Id: acpi.cpp 106489 2024-10-18 16:42:19Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Advanced Configuration and Power Interface (ACPI) Table generation API.
  */
@@ -40,6 +40,7 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP RTLOGGROUP_ACPI
 #include <iprt/acpi.h>
+#include <iprt/asm.h>
 #include <iprt/file.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
