@@ -1,4 +1,4 @@
-/* $Id: VBoxIPC.h 106412 2024-10-17 07:44:43Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxIPC.h 106468 2024-10-18 07:03:23Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxIPC - IPC thread, acts as a (purely) local IPC server.
  *           Multiple sessions are supported, whereas every session
@@ -33,9 +33,9 @@
 # pragma once
 #endif
 
-int                vbtrIPCInit    (const VBOXTRAYSVCENV *pEnv, void **ppInstance, bool *pfStartThread);
-unsigned __stdcall vbtrIPCWorker  (void *pInstance);
-void               VBoxIPCStop    (const VBOXTRAYSVCENV *pEnv, void *pInstance);
-void               vbtrIPCDestroy (const VBOXTRAYSVCENV *pEnv, void *pInstance);
+int                vbtrIPCInit    (const VBOXTRAYSVCENV *pEnv, void **ppvInstance, bool *pfStartThread);
+unsigned __stdcall vbtrIPCWorker  (void *pvInstance);
+void               VBoxIPCStop    (const VBOXTRAYSVCENV *pEnv, void *pvInstance);
+void               vbtrIPCDestroy (const VBOXTRAYSVCENV *pEnv, void *pvInstance);
 
 #endif /* !GA_INCLUDED_SRC_WINNT_VBoxTray_VBoxIPC_h */
