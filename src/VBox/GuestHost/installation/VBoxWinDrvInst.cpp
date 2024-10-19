@@ -1,4 +1,4 @@
-/* $Id: VBoxWinDrvInst.cpp 106506 2024-10-19 03:20:22Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxWinDrvInst.cpp 106512 2024-10-19 07:41:58Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxWinDrvInst - Windows driver installation handling.
  */
@@ -769,8 +769,9 @@ static int vboxWinDrvTryInfSection(PVBOXWINDRVINSTINTERNAL pCtx, PCRTUTF16 pwszI
     {
         /* The more specific (using decorations), the better. Try these first. Might be NULL. */
         pwszSection,
-        /* Applies to primitive (and legacy) drivers. */
-        L"DefaultUninstall"
+        /* The Default[Un]Install sections apply to primitive (and legacy) drivers. */
+           pCtx->Parms.enmMode == VBOXWINDRVINSTMODE_INSTALL
+        ?  L"DefaultInstall" : L"DefaultUninstall"
     };
 
     PCRTUTF16 apwszTryInstallDecorations[] =
@@ -808,13 +809,13 @@ static int vboxWinDrvTryInfSection(PVBOXWINDRVINSTINTERNAL pCtx, PCRTUTF16 pwszI
             }
 
             if (rc != VERR_NOT_FOUND)
-                vboxWinDrvInstLogError(pCtx, "Uninstalling INF section failed with %Rrc", rc);
+                vboxWinDrvInstLogError(pCtx, "Trying INF section failed with %Rrc", rc);
         }
     }
 
     if (rc == VERR_NOT_FOUND)
     {
-        vboxWinDrvInstLogWarn(pCtx, "No matching uninstallation section found -- buggy driver?");
+        vboxWinDrvInstLogWarn(pCtx, "No matching section to try found -- buggy driver?");
         rc = VINF_SUCCESS;
     }
 
