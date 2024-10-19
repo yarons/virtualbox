@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: scm.cpp 106502 2024-10-19 03:13:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -1408,6 +1408,9 @@ static int scmSettingsBaseHandleOpt(PSCMSETTINGSBASE pSettings, int rc, PRTGETOP
                 pszSrc += cchPattern + 1;
             }
             /* not reached */
+#if RT_MSC_PREREQ(RT_MSC_VER_VS2022) /* VS 2022 complains about fall thru, other compilers complains about unreachable code. */
+           break;
+#endif
         }
 
         case SCMOPT_TREAT_AS:
@@ -3146,7 +3149,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 106061 $";
+                static const char s_szRev[] = "$Revision: 106502 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;
