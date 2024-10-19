@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DBase.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDispD3DBase.h 106511 2024-10-19 03:28:04Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxVideo Display D3D Base Include
  */
@@ -40,7 +40,7 @@
 #include <d3d9types.h>
 //#include <d3dtypes.h>
 #include <D3dumddi.h>
-#include <d3dhal.h>
+#include <iprt/win/d3dhal.h>
 
 #endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_wddm_VBoxDispD3DBase_h */
 
