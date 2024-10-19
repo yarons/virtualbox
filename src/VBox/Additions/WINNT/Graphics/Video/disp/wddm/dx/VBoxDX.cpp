@@ -1,4 +1,4 @@
-/* $Id: VBoxDX.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDX.cpp 106509 2024-10-19 03:26:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox D3D user mode driver.
  */
@@ -67,7 +67,7 @@ static uint32_t vboxDXGetSubresourceSize(PVBOXDX_RESOURCE pResource, UINT Subres
     baseLevelSize.depth  = pResource->AllocationDesc.surfaceInfo.size.depth;
 
     uint32_t const numMipLevels = pResource->AllocationDesc.surfaceInfo.numMipLevels;
-    uint32_t const face = Subresource / numMipLevels;
+    /*uint32_t const face = Subresource / numMipLevels; - unused */
     uint32_t const mip = Subresource % numMipLevels;
 
     const struct svga3d_surface_desc *desc = svga3dsurface_get_desc(pResource->AllocationDesc.surfaceInfo.format);
@@ -87,7 +87,7 @@ static void vboxDXGetSubresourcePitch(PVBOXDX_RESOURCE pResource, UINT Subresour
     }
 
     uint32_t const numMipLevels = pResource->AllocationDesc.surfaceInfo.numMipLevels;
-    uint32_t const face = Subresource / numMipLevels;
+    /* uint32_t const face = Subresource / numMipLevels; - unused */
     uint32_t const mip = Subresource % numMipLevels;
 
     surf_size_struct baseLevelSize;
