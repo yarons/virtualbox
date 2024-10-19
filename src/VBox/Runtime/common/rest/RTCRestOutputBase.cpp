@@ -1,4 +1,4 @@
-/* $Id: RTCRestOutputBase.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: RTCRestOutputBase.cpp 106501 2024-10-19 03:12:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - C++ REST, RTCRestOutputBase implementation.
  */
@@ -53,6 +53,19 @@ RTCRestOutputBase::RTCRestOutputBase() RT_NOEXCEPT
 
 RTCRestOutputBase::~RTCRestOutputBase()
 {
+}
+
+
+RTCRestOutputBase::RTCRestOutputBase(RTCRestOutputBase const &a_rThat) RT_NOEXCEPT
+    : m_uState(a_rThat.m_uState)
+{
+}
+
+
+RTCRestOutputBase &RTCRestOutputBase::operator=(RTCRestOutputBase const &a_rThat) RT_NOEXCEPT
+{
+    m_uState = a_rThat.m_uState;
+    return *this;
 }
 
 
