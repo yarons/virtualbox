@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 106470 2024-10-18 07:50:26Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxTray.cpp 106505 2024-10-19 03:15:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -1406,7 +1406,7 @@ static LRESULT CALLBACK vboxToolWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPA
 
         case WM_DISPLAYCHANGE:
             ASMAtomicUoWriteU32(&g_fGuestDisplaysChanged, 1);
-            // No break or return is intentional here.
+            RT_FALL_THROUGH();
         case WM_VBOX_SEAMLESS_UPDATE:
         {
             if (VBoxCapsEntryIsEnabled(VBOXCAPS_ENTRY_IDX_SEAMLESS))
