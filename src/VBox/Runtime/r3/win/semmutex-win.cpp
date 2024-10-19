@@ -1,4 +1,4 @@
-/* $Id: semmutex-win.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: semmutex-win.cpp 106500 2024-10-19 03:11:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Mutex Semaphores, Windows.
  */
@@ -255,6 +255,7 @@ DECL_FORCE_INLINE(int) rtSemMutexRequestNoResume(RTSEMMUTEX hMutexSem, RTMSINTER
         case WAIT_ABANDONED:        return VERR_SEM_OWNER_DIED;
         default:
             AssertMsgFailed(("%u\n",  rc));
+            RT_FALL_THRU();
         case WAIT_FAILED:
         {
             int rc2 = RTErrConvertFromWin32(GetLastError());

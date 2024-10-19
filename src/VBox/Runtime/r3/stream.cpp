@@ -1,4 +1,4 @@
-/* $Id: stream.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: stream.cpp 106500 2024-10-19 03:11:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - I/O Stream.
  */
@@ -1683,6 +1683,7 @@ RTR3DECL(RTFOFF) RTStrmTell(PRTSTREAM pStream)
                         break;
                     default:
                         AssertFailed();
+                        RT_FALL_THROUGH();
                     case RTSTREAMBUFDIR_NONE:
                         break;
                 }

@@ -1,4 +1,4 @@
-/* $Id: timer-win.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: timer-win.cpp 106500 2024-10-19 03:11:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Timer.
  */
@@ -404,7 +404,7 @@ RTR3DECL(int)     RTTimerDestroy(PRTTIMER pTimer)
      */
     if (!pTimer->fSuspended)
     {
-        LARGE_INTEGER ll = {0};
+        LARGE_INTEGER ll = {{0,0}};
         ll.LowPart = 100;
         rc = SetWaitableTimer(pTimer->hTimer, &ll, 0, NULL, NULL, FALSE);
         AssertMsg(rc, ("CancelWaitableTimer lasterr=%d\n", GetLastError()));
@@ -498,7 +498,7 @@ RTDECL(int) RTTimerStop(PRTTIMER pTimer)
     int rc = VINF_SUCCESS;
     if (RTThreadSelf() != pTimer->Thread)
     {
-        LARGE_INTEGER ll = {0};
+        LARGE_INTEGER ll = {{0,0}};
         ll.LowPart = 100;
         rc = SetWaitableTimer(pTimer->hTimer, &ll, 0, NULL, NULL, FALSE);
         AssertMsg(rc, ("SetWaitableTimer lasterr=%d\n", GetLastError()));

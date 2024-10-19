@@ -1,4 +1,4 @@
-/* $Id: direnum-r3-nt.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: direnum-r3-nt.cpp 106500 2024-10-19 03:11:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Directory Enumeration, Native NT.
  */
@@ -711,6 +711,7 @@ RTDECL(int) RTDirRead(RTDIR hDir, PRTDIRENTRY pDirEntry, size_t *pcbDirEntry)
         {
             default:
                 AssertFailed();
+                RT_FALL_THRU();
             case 0:
                 pDirEntry->enmType = RTDIRENTRYTYPE_FILE;
                 break;

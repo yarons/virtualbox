@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryOSInfo-win.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: RTSystemQueryOSInfo-win.cpp 106500 2024-10-19 03:11:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTSystemQueryOSInfo, generic stub.
  */
@@ -249,6 +249,7 @@ static int rtSystemWinQueryOSVersion(RTSYSOSINFO enmInfo, char *pszInfo, size_t 
 
                 default:
                     AssertFailed();
+                    RT_FALL_THROUGH();
                 case kRTWinOSType_UNKNOWN:
                     RTStrPrintf(szTmp, sizeof(szTmp), "Unknown %d v%u.%u",
                                 g_WinOsInfoEx.dwPlatformId, g_WinOsInfoEx.dwMajorVersion, g_WinOsInfoEx.dwMinorVersion);
