@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.cpp 106470 2024-10-18 07:50:26Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxDnD.cpp 106504 2024-10-19 03:14:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDnD.cpp - Windows-specific bits of the drag and drop service.
  */
@@ -628,6 +628,8 @@ LRESULT CALLBACK VBoxDnDWnd::WndProc(HWND a_hWnd, UINT a_uMsg, WPARAM a_wParam, 
                 {
                     VBoxTrayInfo("DnD: Received quit message, shutting down ...\n");
                     PostQuitMessage(0);
+                    rc = VINF_SUCCESS;
+                    break;
                 }
 
 #ifdef VBOX_WITH_DRAG_AND_DROP_GH
