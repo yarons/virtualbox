@@ -1,4 +1,4 @@
-/* $Id: GaDdi.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: GaDdi.cpp 106510 2024-10-19 03:27:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * WDDM D3DDDI callbacks implemented for the Gallium based driver.
  */
@@ -2280,6 +2280,7 @@ HRESULT APIENTRY GaDdiOpenResource(HANDLE hDevice, D3DDDIARG_OPENRESOURCE *pReso
                 {
                     case VBOXWDDM_ALLOC_TYPE_STD_SHAREDPRIMARYSURFACE:
                         pRc->RcDesc.fFlags.Primary = 1;
+                        RT_FALL_THROUGH();
                     case VBOXWDDM_ALLOC_TYPE_STD_SHADOWSURFACE:
                     case VBOXWDDM_ALLOC_TYPE_STD_STAGINGSURFACE:
                         pRc->RcDesc.enmFormat      = pWddmAllocInfo->SurfDesc.format;
@@ -2289,6 +2290,7 @@ HRESULT APIENTRY GaDdiOpenResource(HANDLE hDevice, D3DDDIARG_OPENRESOURCE *pReso
                     default:
                         AssertFailed();
                         hr = E_INVALIDARG;
+                        break;
                 }
             }
 #ifdef VBOX_WITH_VMSVGA3D_DX9
