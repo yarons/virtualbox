@@ -1,4 +1,4 @@
-/* $Id: USBFilter.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: USBFilter.cpp 106503 2024-10-19 03:14:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox USB filter abstraction.
  */
@@ -544,6 +544,7 @@ DECLINLINE(const char *) usbfilterGetString(PCUSBFILTER pFilter, USBFILTERIDX en
 
             default:
                 AssertMsgFailed(("%d\n", pFilter->aFields[enmFieldIdx].enmMatch));
+                RT_FALL_THROUGH();
             case USBFILTERMATCH_IGNORE:
             case USBFILTERMATCH_PRESENT:
             case USBFILTERMATCH_NUM_EXACT:
@@ -576,6 +577,7 @@ DECLINLINE(int) usbfilterGetNum(PCUSBFILTER pFilter, USBFILTERIDX enmFieldIdx)
 
             default:
                 AssertMsgFailed(("%d\n", pFilter->aFields[enmFieldIdx].enmMatch));
+                RT_FALL_THROUGH();
             case USBFILTERMATCH_IGNORE:
             case USBFILTERMATCH_PRESENT:
             case USBFILTERMATCH_NUM_EXPRESSION:
