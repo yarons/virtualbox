@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 106346 2024-10-16 09:11:47Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxDD.h 106524 2024-10-20 02:31:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -217,9 +217,7 @@ extern const PDMDRVREG g_DrvSCSI;
 extern const PDMDRVREG g_DrvIfTrace;
 #ifdef VBOX_WITH_TPM
 extern const PDMDRVREG g_DrvTpmEmu;
-# ifdef RT_OS_LINUX
 extern const PDMDRVREG g_DrvTpmHost;
-# endif
 # ifdef VBOX_WITH_LIBTPMS
 extern const PDMDRVREG g_DrvTpmEmuTpms;
 # endif
