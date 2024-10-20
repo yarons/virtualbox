@@ -1,4 +1,4 @@
-/* $Id: UISpecialControls.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UISpecialControls.cpp 106529 2024-10-20 02:49:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISpecialControls implementation.
  */
@@ -99,11 +99,13 @@ UIMiniCancelButton::UIMiniCancelButton(QWidget *pParent /* = 0 */)
 *   Class UIHelpButton implementation.                                                                                           *
 *********************************************************************************************************************************/
 
+# ifdef VBOX_WS_MAC
 /* From: src/gui/styles/qmacstyle_mac.cpp */
 static const int PushButtonLeftOffset = 6;
 static const int PushButtonTopOffset = 4;
 static const int PushButtonRightOffset = 12;
 static const int PushButtonBottomOffset = 4;
+# endif
 
 UIHelpButton::UIHelpButton(QWidget *pParent /* = 0 */)
     : QPushButton(pParent)
