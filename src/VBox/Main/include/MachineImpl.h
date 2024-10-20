@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: MachineImpl.h 106519 2024-10-20 02:01:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -298,6 +298,10 @@ public:
 
         HWData();
         ~HWData();
+#if RT_CPLUSPLUS_PREREQ(201100) /* VC2022: Excplit default copy constructor and copy assignment operator to avoid warnings. */
+        HWData(HWData const &) = default;
+        HWData &operator=(HWData const &) = default;
+#endif
 
         Bstr                mHWVersion;
         Guid                mHardwareUUID;  /**< If Null, use mData.mUuid. */

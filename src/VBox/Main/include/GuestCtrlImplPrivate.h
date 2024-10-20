@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestCtrlImplPrivate.h 106519 2024-10-20 02:01:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1060,8 +1060,12 @@ class GuestToolboxStreamBlock
 public:
 
     GuestToolboxStreamBlock(void);
-
     virtual ~GuestToolboxStreamBlock(void);
+
+#if RT_CPLUSPLUS_PREREQ(201100) /* VC2022: Excplit default copy constructor and copy assignment operator to avoid warnings. */
+    GuestToolboxStreamBlock(GuestToolboxStreamBlock const &) = default;
+    GuestToolboxStreamBlock &operator=(GuestToolboxStreamBlock const &) = default;
+#endif
 
 public:
 
