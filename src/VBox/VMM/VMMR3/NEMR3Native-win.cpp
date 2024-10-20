@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMR3Native-win.cpp 106523 2024-10-20 02:30:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -246,8 +246,10 @@ static const HV_X64_INTERCEPT_MESSAGE_HEADER *g_pX64MsgHdr;
 
 #endif
 
+#if 0 /* unused */
 /** WHV_MEMORY_ACCESS_TYPE names */
 static const char * const g_apszWHvMemAccesstypes[4] = { "read", "write", "exec", "!undefined!" };
+#endif
 
 
 /*********************************************************************************************************************************
