@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase-win.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostBase-win.cpp 106526 2024-10-20 02:33:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * DrvHostBase - Host base drive access driver, Windows specifics.
  */
@@ -314,8 +314,8 @@ DECLHIDDEN(int) drvHostBaseGetMediaSizeOs(PDRVHOSTBASE pThis, uint64_t *pcb)
     else
     {
         /* use NT api, retry a few times if the media is being verified. */
-        IO_STATUS_BLOCK             IoStatusBlock = {0};
-        FILE_FS_SIZE_INFORMATION    FsSize = {{0}};
+        IO_STATUS_BLOCK             IoStatusBlock = { {0}, 0 };
+        FILE_FS_SIZE_INFORMATION    FsSize = { {{0,0}}, {{0,0}}, 0, 0 };
         NTSTATUS rcNt = NtQueryVolumeInformationFile((HANDLE)RTFileToNative(pThis->Os.hFileDevice),  &IoStatusBlock,
                                                      &FsSize, sizeof(FsSize), FileFsSizeInformation);
         int cRetries = 5;
