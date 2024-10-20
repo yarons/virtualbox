@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106322 2024-10-15 13:06:30Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 106534 2024-10-20 16:06:26Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the Windows installer.
 #
@@ -1071,6 +1071,7 @@ $(foreach lang,$(filter-out en_US, $(VBOX_INSTALLER_LANGUAGES)), \
 
 # Create WISUMINFO argument.
 VBOX_INS_PROD_ARCH.amd64 = x64
+VBOX_INS_PROD_ARCH.arm64 = arm64
 VBOX_INS_PROD_ARCH.x86   = Intel
 VBOX_INS_PROD_ARCH := $(VBOX_INS_PROD_ARCH.$(KBUILD_TARGET_ARCH))
 ifeq ($(VBOX_INS_PROD_ARCH),)
