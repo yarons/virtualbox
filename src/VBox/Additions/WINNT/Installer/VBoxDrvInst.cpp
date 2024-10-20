@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvInst.cpp 106348 2024-10-16 09:19:14Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxDrvInst.cpp 106532 2024-10-20 14:43:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrvInst - Driver and service installation helper for Windows guests.
  */
@@ -377,7 +377,6 @@ static int InstallWinVerifyTrustInterceptorInSetupApi(void)
             /*
              * Scan the symbol names.
              */
-            uint32_t const    cbHdrs      = pNtHdrs->OptionalHeader.SizeOfHeaders;
             uint32_t * const  pauNameRvas = (uint32_t  *)&pchRva2Ptr[paEntries[iImp].ImportNameTableRVA];
             uintptr_t * const paIat       = (uintptr_t *)&pchRva2Ptr[paEntries[iImp].ImportAddressTableRVA];
             for (uint32_t iSym = 0; pauNameRvas[iSym] != NULL; iSym++)
