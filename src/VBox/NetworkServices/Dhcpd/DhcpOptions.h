@@ -1,6 +1,9 @@
-/* $Id: DhcpOptions.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DhcpOptions.h 106520 2024-10-20 02:27:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * DHCP server - DHCP options
+ *
+ * @note This file is also used by Main!
+ * @todo r=bird: Move to global include directory.
  */
 
 /*
@@ -68,6 +71,11 @@ public:
 
     virtual ~DhcpOption()
     {}
+
+#if RT_CPLUSPLUS_PREREQ(201100) /* VC2022: Excplit default copy constructor and copy assignment operator to avoid warnings. */
+    DhcpOption(DhcpOption const &) = default;
+    DhcpOption &operator=(DhcpOption const &) = default;
+#endif
 
 public:
     static DhcpOption *parse(uint8_t aOptCode, int aEnc, const char *pcszValue, int *prc = NULL);
