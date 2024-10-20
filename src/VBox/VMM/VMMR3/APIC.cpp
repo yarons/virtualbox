@@ -1,4 +1,4 @@
-/* $Id: APIC.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: APIC.cpp 106521 2024-10-20 02:27:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -1439,6 +1439,7 @@ DECLCALLBACK(int) apicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE p
     {
         case PDMAPICMODE_NONE:
             LogRel(("APIC: APIC maximum mode configured as 'None', effectively disabled/not-present!\n"));
+            RT_FALL_THROUGH();
         case PDMAPICMODE_APIC:
         case PDMAPICMODE_X2APIC:
             break;
