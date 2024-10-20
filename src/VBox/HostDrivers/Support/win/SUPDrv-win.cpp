@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrv-win.cpp 106530 2024-10-20 02:50:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -419,7 +419,7 @@ struct
     ULONG                           fOptForceAsyncTsc;
     /** Padding. */
     uint64_t                        au64Padding[2];
-}                                   g_Options = { FALSE, 0, 0 };
+}                                   g_Options = { FALSE, { 0, 0 } };
 /** Registry query table for RtlQueryRegistryValues. */
 static RTL_QUERY_REGISTRY_TABLE     g_aRegValues[] =
 {
@@ -2683,9 +2683,10 @@ int  VBOXCALL   supdrvOSLdrLoad(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, c
             }
 
             /* Exclude the security cookie if present. */
-            uint32_t const cbCfg  = pNtHdrsIprt->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_LOAD_CONFIG].Size;
+            /*uint32_t const cbCfg  = pNtHdrsIprt->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_LOAD_CONFIG].Size; */
             uint32_t const offCfg = pNtHdrsIprt->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_LOAD_CONFIG].VirtualAddress;
             IMAGE_LOAD_CONFIG_DIRECTORY const * const pCfg = (IMAGE_LOAD_CONFIG_DIRECTORY const *)&pbImageBits[offCfg];
+            /** @todo validate offsets/sizes better here!   */
             if (   pCfg->Size >= RT_UOFFSET_AFTER(IMAGE_LOAD_CONFIG_DIRECTORY, SecurityCookie)
                 && pCfg->SecurityCookie != NULL)
                 supdrvNtAddExclRegion(&ExcludeRegions, (uintptr_t)pCfg->SecurityCookie - (uintptr_t)pImage->pvImage, sizeof(void *));
