@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostart-win.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxAutostart-win.cpp 106527 2024-10-20 02:34:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Autostart Service - Windows Specific Code.
  */
@@ -845,20 +845,19 @@ static bool autostartSvcWinSetServiceStatus(DWORD dwStatus, int iWaitHint, DWORD
             SvcStatus.dwControlsAccepted = 0;
             break;
         default:
-            SvcStatus.dwControlsAccepted
-                = SERVICE_ACCEPT_STOP
-                | SERVICE_ACCEPT_SHUTDOWN;
+            SvcStatus.dwControlsAccepted = SERVICE_ACCEPT_STOP | SERVICE_ACCEPT_SHUTDOWN;
             break;
     }
 
-    static DWORD dwCheckPoint = 0;
+    static DWORD s_dwCheckPoint = 0;
     switch (dwStatus)
     {
         case SERVICE_RUNNING:
         case SERVICE_STOPPED:
-            SvcStatus.dwCheckPoint       = 0;
+            SvcStatus.dwCheckPoint = 0;
+            break;
         default:
-            SvcStatus.dwCheckPoint       = ++dwCheckPoint;
+            SvcStatus.dwCheckPoint = ++s_dwCheckPoint;
             break;
     }
     return SetServiceStatus(g_hSupSvcWinCtrlHandler, &SvcStatus) != FALSE;
