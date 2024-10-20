@@ -1,4 +1,4 @@
-/* $Id: ovfreader.h 106518 2024-10-20 02:00:07Z knut.osmundsen@oracle.com $ */
+/* $Id: ovfreader.h 106531 2024-10-20 13:53:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Main - OVF reader declarations.
  *
@@ -565,6 +565,7 @@ public:
         : std::vector<VirtualHardwareItem *>()
     {
         Assert(a_rThat.begin() == a_rThat.end());
+        RT_NOREF(a_rThat);
     }
 
 private:
