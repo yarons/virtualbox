@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 106557 2024-10-21 11:11:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.h 106559 2024-10-21 11:20:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -107,8 +107,8 @@ public:
     /** Send machine-window(s) size-hint(s) to the guest. */
     virtual void sendMachineWindowsSizeHints();
 
-    /* Wrapper to open Machine settings / Network page: */
-    void openNetworkSettingsDialog() { sltOpenSettingsDialogNetwork(); }
+    /** Opens Machine settings / Network page the modal way. */
+    void openNetworkSettingsDialogTheModalWay();
 
 #ifdef VBOX_WS_MAC
     void updateDockIcon();
@@ -358,14 +358,16 @@ private:
       * @param  strControl   Brings the name of control to choose.
       * @param  fAppModal    Brings whether dialog should be app modal. */
     void openPreferencesDialog(const QString &strCategory = QString(),
-                               const QString &strControl = QString());
+                               const QString &strControl = QString(),
+                               bool fAppModal = false);
 
     /** Opens VM settings dialog.
       * @param  strCategory  Brings the category to open.
       * @param  strControl   Brings the name of control to choose.
       * @param  fAppModal    Brings whether dialog should be app modal. */
     void openSettingsDialog(const QString &strCategory = QString(),
-                            const QString &strControl = QString());
+                            const QString &strControl = QString(),
+                            bool fAppModal = false);
 
     /* Helpers: */
     void takeScreenshot(const QString &strFile, const QString &strFormat /* = "png" */) const;

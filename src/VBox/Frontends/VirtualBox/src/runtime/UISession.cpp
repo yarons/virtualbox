@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 106312 2024-10-14 16:38:55Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 106559 2024-10-21 11:20:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -2800,7 +2800,7 @@ bool UISession::preprocessInitialization()
         if (!failedInterfaceNames.isEmpty())
         {
             if (msgCenter().warnAboutNetworkInterfaceNotFound(machineName(), failedInterfaceNames.join(", ")))
-                machineLogic()->openNetworkSettingsDialog();
+                machineLogic()->openNetworkSettingsDialogTheModalWay();
             else
             {
                 LogRel(("GUI: Aborting startup due to preprocess initialization issue detected...\n"));
