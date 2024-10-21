@@ -1,4 +1,4 @@
-# $Id: Config.kmk 106535 2024-10-20 23:44:58Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 106539 2024-10-21 00:34:37Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1847,7 +1847,7 @@ endif
 # List of OSes and architectures we may possibly try build on/for.
 # This is used for the complicated assembler setup among other things.
 #
-VBOX_TARGET_OSES   := freebsd haiku linux netbsd openbsd solaris darwin os2 win
+VBOX_TARGET_OSES   := freebsd darwin haiku linux netbsd openbsd solaris darwin os2 win
 VBOX_TARGET_ARCHES := amd64 x86 arm64 sparc32 sparc64
 
 #
@@ -9325,7 +9325,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 106535 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 106539 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
