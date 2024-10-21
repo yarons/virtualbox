@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win-armv8.cpp 106523 2024-10-20 02:30:08Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMR3Native-win-armv8.cpp 106551 2024-10-21 09:09:41Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -100,6 +100,7 @@ static decltype(WHvRunVirtualProcessor) *           g_pfnWHvRunVirtualProcessor;
 static decltype(WHvCancelRunVirtualProcessor) *     g_pfnWHvCancelRunVirtualProcessor;
 static decltype(WHvGetVirtualProcessorRegisters) *  g_pfnWHvGetVirtualProcessorRegisters;
 static decltype(WHvSetVirtualProcessorRegisters) *  g_pfnWHvSetVirtualProcessorRegisters;
+decltype(WHvRequestInterrupt) *                     g_pfnWHvRequestInterrupt;
 /** @} */
 
 /** The Windows build number. */
@@ -135,6 +136,7 @@ static const struct
     NEM_WIN_IMPORT(0, false, WHvCancelRunVirtualProcessor),
     NEM_WIN_IMPORT(0, false, WHvGetVirtualProcessorRegisters),
     NEM_WIN_IMPORT(0, false, WHvSetVirtualProcessorRegisters),
+    NEM_WIN_IMPORT(0, false, WHvRequestInterrupt),
 #undef NEM_WIN_IMPORT
 };
 
@@ -160,6 +162,7 @@ static const struct
 # define WHvCancelRunVirtualProcessor               g_pfnWHvCancelRunVirtualProcessor
 # define WHvGetVirtualProcessorRegisters            g_pfnWHvGetVirtualProcessorRegisters
 # define WHvSetVirtualProcessorRegisters            g_pfnWHvSetVirtualProcessorRegisters
+# define WHvRequestInterrupt                        g_pfnWHvRequestInterrupt
 
 # define VidMessageSlotHandleAndGetNext             g_pfnVidMessageSlotHandleAndGetNext
 # define VidStartVirtualProcessor                   g_pfnVidStartVirtualProcessor
