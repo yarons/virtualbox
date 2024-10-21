@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-nt.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: mp-r0drv-nt.cpp 106567 2024-10-21 12:34:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NT.
  */
@@ -41,6 +41,7 @@
 #include "the-nt-kernel.h"
 
 #include <iprt/mp.h>
+#include <iprt/alloca.h>
 #include <iprt/cpuset.h>
 #include <iprt/err.h>
 #include <iprt/asm.h>
