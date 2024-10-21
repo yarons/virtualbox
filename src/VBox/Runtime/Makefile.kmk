@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106451 2024-10-17 12:51:20Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 106561 2024-10-21 11:31:16Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2863,7 +2863,7 @@ RuntimeGuestR3Shared_TEMPLATE           := VBoxGuestR3Dll
 RuntimeGuestR3Shared_EXTENDS            := RuntimeGuestR3
 RuntimeGuestR3Shared_INST                = $(INST_ADDITIONS_LIB)
 ifdef VBOX_WITH_NOCRT_STATIC
- if1of ($(KBUILD_TARGET), win)
+ if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), win.x86 win.amd64)
   RuntimeGuestR3Shared_SDKS              = $(filter-out VBoxSoftFloatR3Shared,$(RuntimeGuestR3_SDKS)) VBoxSoftFloatGuestR3Shared
   RuntimeGuestR3Shared_SOURCES           = $(RuntimeGuestR3_SOURCES) \
   	common/math/fma.cpp \

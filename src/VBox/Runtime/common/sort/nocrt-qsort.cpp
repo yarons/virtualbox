@@ -1,4 +1,4 @@
-/* $Id: nocrt-qsort.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: nocrt-qsort.cpp 106561 2024-10-21 11:31:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - No-CRT - qsort().
  */
@@ -48,7 +48,7 @@
  && !defined(RT_ARCH_X86)   /* ASSUMING __cdecl, won't work for __stdcall or __fastcall. */
 # define NEED_COMPARE_WRAPPER
 /** @callback_method_impl{FNRTSORTCMP} */
-static int DECLCALLBACK(int) CompareWrapper(void const *pvElement1, void const *pvElement2, void *pvUser))
+static DECLCALLBACK(int) CompareWrapper(void const *pvElement1, void const *pvElement2, void *pvUser)
 {
     int (*pfnCompare)(const void *pv1, const void *pv2) = (int (*)(const void *pv1, const void *pv2))(uintptr_t)pvUser;
     return pfnCompare(pvElement1, pvElement2);
