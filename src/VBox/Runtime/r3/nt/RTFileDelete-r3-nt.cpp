@@ -1,4 +1,4 @@
-/* $Id: RTFileDelete-r3-nt.cpp 104285 2024-04-11 00:06:14Z knut.osmundsen@oracle.com $ */
+/* $Id: RTFileDelete-r3-nt.cpp 106576 2024-10-21 17:03:01Z vadim.galitsyn@oracle.com $ */
 /** @file
  * IPRT - RTFileDelete, Native NT.
  */
@@ -170,6 +170,8 @@ RTDECL(int) RTFileDelete(const char *pszFilename)
 
         if (NT_SUCCESS(rcNt))
         {
+            NTSTATUS rcNt2;
+
             /*
              * Recheck that this is a file and not a directory or a reparse point we
              * don't approve of.
@@ -201,7 +203,10 @@ RTDECL(int) RTFileDelete(const char *pszFilename)
             else
                 rc = RTErrConvertFromNtStatus(rcNt);
 
-            rcNt = NtClose(hPath);
+            rcNt2 = NtClose(hPath);
+            if (NT_SUCCESS(rcNt))
+                rcNt = rcNt2;
+
             if (!NT_SUCCESS(rcNt) && RT_SUCCESS_NP(rc))
                 rc = RTErrConvertFromNtStatus(rcNt);
         }
