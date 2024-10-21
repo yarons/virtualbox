@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineLogic.h 106557 2024-10-21 11:11:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -227,14 +227,12 @@ private slots:
     void sltHandleMenuPrepare(int iIndex, QMenu *pMenu);
 
     /* "Application" menu functionality: */
-    void sltOpenPreferencesDialog(const QString &strCategory = QString(), const QString &strControl = QString());
-    void sltOpenPreferencesDialogDefault() { sltOpenPreferencesDialog(); }
+    void sltOpenPreferencesDialogDefault() { openPreferencesDialog(); }
     void sltClosePreferencesDialog();
     void sltClose();
 
     /* "Machine" menu functionality: */
-    void sltOpenSettingsDialog(const QString &strCategory = QString(), const QString &strControl = QString());
-    void sltOpenSettingsDialogDefault() { sltOpenSettingsDialog(); }
+    void sltOpenSettingsDialogDefault() { openSettingsDialog(); }
     void sltCloseSettingsDialog();
     void sltTakeSnapshot();
     void sltShowInformationDialog();
@@ -354,6 +352,20 @@ private:
 
     /** Asks user for the disks encryption passwords. */
     void askUserForTheDiskEncryptionPasswords();
+
+    /** Opens Global preferences dialog.
+      * @param  strCategory  Brings the category to open.
+      * @param  strControl   Brings the name of control to choose.
+      * @param  fAppModal    Brings whether dialog should be app modal. */
+    void openPreferencesDialog(const QString &strCategory = QString(),
+                               const QString &strControl = QString());
+
+    /** Opens VM settings dialog.
+      * @param  strCategory  Brings the category to open.
+      * @param  strControl   Brings the name of control to choose.
+      * @param  fAppModal    Brings whether dialog should be app modal. */
+    void openSettingsDialog(const QString &strCategory = QString(),
+                            const QString &strControl = QString());
 
     /* Helpers: */
     void takeScreenshot(const QString &strFile, const QString &strFormat /* = "png" */) const;
