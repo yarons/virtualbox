@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-nt.cpp 106547 2024-10-21 07:48:53Z alexander.eichner@oracle.com $ */
+/* $Id: initterm-r0drv-nt.cpp 106555 2024-10-21 10:33:37Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, NT.
  */
@@ -363,7 +363,7 @@ DECLHIDDEN(int) rtR0InitNative(void)
 #if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
     GET_SYSTEM_ROUTINE(MmMapLockedPagesSpecifyCache);
 #else
-    /* MmMapLockedPagesSpecifyCache is a pre processor macro on arm64. */ 
+    /* MmMapLockedPagesSpecifyCache is a pre processor macro on arm64. */
     g_pfnrtMmMapLockedPagesSpecifyCache = (decltype(MmMapLockedPagesSpecifyCache) *)RTR0DbgKrnlInfoGetSymbol(hKrnlInfo, NULL, "MmMapLockedPagesSpecifyCache");
 #endif
     GET_SYSTEM_ROUTINE(MmAllocateContiguousMemorySpecifyCache);
