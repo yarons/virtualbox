@@ -1,4 +1,4 @@
-/* $Id: UIVideoMemoryEditor.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVideoMemoryEditor.h 106570 2024-10-21 15:00:09Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVideoMemoryEditor class declaration.
  */
@@ -129,10 +129,6 @@ private:
         int  m_iMinVRAM;
         /** Holds the maximum upper limit of VRAM (MiB). */
         int  m_iMaxVRAM;
-        /** Holds the upper limit of VRAM (MiB) for this dialog.
-          * @note This value is lower than m_iMaxVRAM to save
-          *       careless users from setting useless big values. */
-        int  m_iMaxVRAMVisible;
     /** @} */
 
     /** @name Widgets
