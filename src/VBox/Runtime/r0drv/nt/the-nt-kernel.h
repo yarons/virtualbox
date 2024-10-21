@@ -1,4 +1,4 @@
-/* $Id: the-nt-kernel.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: the-nt-kernel.h 106566 2024-10-21 12:33:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Include all necessary headers for the NT kernel.
  */
@@ -47,18 +47,12 @@
 #endif
 #if (_MSC_VER >= 1400) && !defined(VBOX_WITH_PATCHED_DDK)
 # include <iprt/asm.h>
-# define _InterlockedExchange           _InterlockedExchange_StupidDDKVsCompilerCrap
-# define _InterlockedExchangeAdd        _InterlockedExchangeAdd_StupidDDKVsCompilerCrap
-# define _InterlockedCompareExchange    _InterlockedCompareExchange_StupidDDKVsCompilerCrap
 # define _InterlockedAddLargeStatistic  _InterlockedAddLargeStatistic_StupidDDKVsCompilerCrap
 # pragma warning(disable : 4163)
 RT_C_DECLS_BEGIN
 # include <iprt/nt/nt.h>
 RT_C_DECLS_END
 # pragma warning(default : 4163)
-# undef  _InterlockedExchange
-# undef  _InterlockedExchangeAdd
-# undef  _InterlockedCompareExchange
 # undef  _InterlockedAddLargeStatistic
 #else
 RT_C_DECLS_BEGIN
