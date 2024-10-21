@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMR3CpuId.cpp 106578 2024-10-21 20:33:41Z klaus.espenlaub@oracle.com $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -2851,6 +2851,8 @@ static int cpumR3CpuIdReadConfig(PVM pVM, PCPUMCPUIDCONFIG pConfig, PCFGMNODE pC
                                   "|PCID"
                                   "|INVPCID"
                                   "|FlushCmdMsr"
+                                  "|MdsClear"
+                                  "|ArchCapMsr"
                                   "|FMA"
                                   "|F16C"
                                   "|ABM"
