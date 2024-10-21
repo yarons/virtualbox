@@ -1,4 +1,4 @@
-/* $Id: ASMMultU64ByU32DivByU32-generic.cpp 106425 2024-10-17 10:11:01Z alexander.eichner@oracle.com $ */
+/* $Id: ASMMultU64ByU32DivByU32-generic.cpp 106562 2024-10-21 12:08:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ASMMultU64ByU32DivByU32 - generic C implementation.
  */
@@ -43,7 +43,7 @@
 
 
 
-RTDECL(uint64_t) ASMMultU64ByU32DivByU32(uint64_t u64A, uint32_t u32B, uint32_t u32C)
+RT_DECL_ASM(uint64_t) ASMMultU64ByU32DivByU32(uint64_t u64A, uint32_t u32B, uint32_t u32C)
 {
     RTUINT64U   u;
     uint64_t    u64Lo = (uint64_t)(u64A & 0xffffffff) * u32B;

@@ -1,4 +1,4 @@
-/* $Id: ASMBitFirstClear-generic.cpp 106425 2024-10-17 10:11:01Z alexander.eichner@oracle.com $ */
+/* $Id: ASMBitFirstClear-generic.cpp 106562 2024-10-21 12:08:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ASMBitFirstClear - generic C implementation.
  */
@@ -44,7 +44,7 @@
 #include <iprt/assert.h>
 
 
-RTDECL(int32_t) ASMBitFirstClear(const volatile void RT_FAR *pvBitmap, uint32_t cBits) RT_NOTHROW_DEF
+RT_DECL_ASM(int32_t) ASMBitFirstClear(const volatile void RT_FAR *pvBitmap, uint32_t cBits) RT_NOTHROW_DEF
 {
     const volatile size_t RT_FAR *pu = (const volatile size_t RT_FAR *)pvBitmap;
     Assert(!(cBits & 31));
