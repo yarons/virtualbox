@@ -1,4 +1,4 @@
-# $Id: Config.kmk 106546 2024-10-21 07:47:36Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 106568 2024-10-21 13:21:05Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4264,7 +4264,7 @@ ifdef VBOX_SIGNING_MODE
    endif
   endif
 
-  VBOX_SIGNTOOL                ?= $(VBOX_RETRY) "$(VBOX_PATH_SIGN_TOOLS)/signtool.exe"
+  VBOX_SIGNTOOL                ?= $(VBOX_RETRY) $(requote sh,$(VBOX_PATH_SIGN_TOOLS)/signtool.exe)
   VBOX_SIGNTOOL_SHA1           ?= $(VBOX_SIGNTOOL)
   VBOX_SIGNTOOL_SHA1_ORDERDEPS ?=
   VBOX_SIGNTOOL_SHA2           ?= $(VBOX_SIGNTOOL)
@@ -9325,7 +9325,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 106546 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 106568 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
