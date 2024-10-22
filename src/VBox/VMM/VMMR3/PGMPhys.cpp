@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMPhys.cpp 106594 2024-10-22 23:56:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2725,11 +2725,13 @@ static int pgmR3PhysMmioMapLocked(PVM pVM, PVMCPU pVCpu, RTGCPHYS const GCPhys, 
                 return VINF_SUCCESS;
             }
 
+#ifdef VBOX_WITH_NATIVE_NEM
             /*
              * Failed, so revert it all as best as we can (the memory content in
              * the overlapping case is gone).
              */
             PGMHandlerPhysicalDeregister(pVM, GCPhys);
+#endif
         }
     }
 
