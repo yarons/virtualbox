@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDDrawVHWA.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDispDDrawVHWA.cpp 106588 2024-10-22 22:17:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox XPDM Display driver, DirectDraw callbacks VHWA related
  */
@@ -25,6 +25,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+#define INITGUID /* Needed since SDK 10.26100 */
 #include "VBoxDisp.h"
 #include "VBoxDispDDraw.h"
 #include <iprt/asm.h>
