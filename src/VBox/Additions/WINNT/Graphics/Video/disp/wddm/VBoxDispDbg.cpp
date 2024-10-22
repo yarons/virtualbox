@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDbg.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDispDbg.cpp 106586 2024-10-22 22:00:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -28,7 +28,7 @@
 #include "VBoxDispD3DCmn.h"
 
 #ifdef VBOXWDDMDISP_DEBUG_VEHANDLER
-# include <Psapi.h>
+# include <iprt/win/psapi.h>
 #endif
 
 #include <iprt/asm.h>

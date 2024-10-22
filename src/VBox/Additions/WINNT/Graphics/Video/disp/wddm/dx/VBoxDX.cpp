@@ -1,4 +1,4 @@
-/* $Id: VBoxDX.cpp 106509 2024-10-19 03:26:44Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDX.cpp 106586 2024-10-22 22:00:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox D3D user mode driver.
  */
@@ -520,6 +520,9 @@ SVGA3dSurfaceFormat vboxDXDxgiToSvgaFormat(DXGI_FORMAT enmDxgiFormat)
         case DXGI_FORMAT_V408:
         case DXGI_FORMAT_SAMPLER_FEEDBACK_MIN_MIP_OPAQUE:
         case DXGI_FORMAT_SAMPLER_FEEDBACK_MIP_REGION_USED_OPAQUE:
+#ifdef NTDDI_WIN11_GE
+        case DXGI_FORMAT_A4B4G4R4_UNORM: /* Added in SDK w11/26100 or thereabouts. */
+#endif
         case DXGI_FORMAT_FORCE_UINT: /* warning */
             break;
     }

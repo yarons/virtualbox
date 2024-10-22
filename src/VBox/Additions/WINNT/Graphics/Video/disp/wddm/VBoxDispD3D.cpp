@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDispD3D.cpp 106586 2024-10-22 22:00:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -38,7 +38,7 @@
 #include "VBoxDispD3D.h"
 #include "VBoxDispDbg.h"
 
-#include <Psapi.h>
+#include <iprt/win/psapi.h>
 
 #define VBOXDISP_IS_MODULE_FUNC(_pvModule, _cbModule, _pfn) ( \
            (((uintptr_t)(_pfn)) >= ((uintptr_t)(_pvModule))) \

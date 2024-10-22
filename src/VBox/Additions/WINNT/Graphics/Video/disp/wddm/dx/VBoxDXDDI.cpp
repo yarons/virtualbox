@@ -1,4 +1,4 @@
-/* $Id: VBoxDXDDI.cpp 106085 2024-09-18 20:31:48Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxDXDDI.cpp 106586 2024-10-22 22:00:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox D3D11 user mode DDI interface.
  */
@@ -36,7 +36,7 @@
 #include <iprt/win/d3dkmthk.h>
 
 #include <d3d10umddi.h>
-#include <Psapi.h>
+#include <iprt/win/psapi.h>
 
 #include "VBoxDX.h"
 
