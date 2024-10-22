@@ -1,4 +1,4 @@
-# $Id: Config.kmk 106589 2024-10-22 22:17:51Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 106591 2024-10-22 22:39:41Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2194,6 +2194,10 @@ USES.win += vboximportchecker vboxsetpeversion
 #       set up to the Windows 7 WDK as it ships Vista libraries with some
 #       compatibility helpers and stuff (copysup.lib).
 #       (WLH = windows longhorn, the codenamefor Vista).
+#
+# Note! WDK 10.0.26100.0 (Windows 11 24h2) no longer ships x86 kernel mode
+#       libraries.  So, for building 32-bit drivers, we must use an older
+#       WDK version (like 10.0.22621.0, or 10.0.22000.0).
 #
 ifdef VBOX_WITH_NEW_WINDOWS_DDK
  VBOX_WINDDK         ?= WINSDK10-KM
@@ -9342,7 +9346,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 106589 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 106591 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
