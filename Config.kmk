@@ -1,4 +1,4 @@
-# $Id: Config.kmk 106585 2024-10-22 11:47:09Z sergey.dubov@oracle.com $
+# $Id: Config.kmk 106589 2024-10-22 22:17:51Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1863,7 +1863,7 @@ ifndef VBOX_GCC_TOOL
   else ifeq ($(KBUILD_TARGET_ARCH),amd64)
    VBOX_GCC_TOOL := MINGWW64
   else ifeq ($(KBUILD_TARGET_ARCH),arm64)
-   VBOX_GCC_TOOL := CLANGVCC143ARM64
+   VBOX_GCC_TOOL := VCC143-CLANGXX
   endif
  else ifeq ($(KBUILD_TARGET),os2)
   VBOX_GCC_TOOL := GXX3OMF
@@ -2190,13 +2190,18 @@ USES.win += vboximportchecker vboxsetpeversion
 #
 # Decide which Windows DDK to use by default.
 #
+# Note! For the VBoxSF.sys to build correctly, VBOX_WINDDK_GST_WLH must be
+#       set up to the Windows 7 WDK as it ships Vista libraries with some
+#       compatibility helpers and stuff (copysup.lib).
+#       (WLH = windows longhorn, the codenamefor Vista).
+#
 ifdef VBOX_WITH_NEW_WINDOWS_DDK
  VBOX_WINDDK         ?= WINSDK10-KM
  VBOX_WINDDK_WLH     ?= $(VBOX_WINDDK)
  if1of ($(KBUILD_TARGET_ARCH), x86 amd64)
-  VBOX_WINDDK_GST_W8  ?= WINSDK10-KM-W8
+  VBOX_WINDDK_GST_W8 ?= WINSDK10-KM-W8
  else
-  VBOX_WINDDK_GST_W8  ?= $(VBOX_WINDDK)
+  VBOX_WINDDK_GST_W8 ?= $(VBOX_WINDDK)
  endif
  VBOX_WINDDK_GST_W7  ?= WINSDK10-KM-W7
  if1of ($(KBUILD_TARGET_ARCH), arm32 arm64)
@@ -9337,7 +9342,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 106585 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 106589 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
