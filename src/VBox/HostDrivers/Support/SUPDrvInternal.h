@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrvInternal.h 106631 2024-10-23 15:45:04Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -351,7 +351,9 @@
  * By default, only enabled in DEBUG builds as it's a sensitive feature.
  */
 #if defined(DEBUG) && !defined(SUPDRV_WITH_MSR_PROBER) && !defined(SUPDRV_WITHOUT_MSR_PROBER)
-# define SUPDRV_WITH_MSR_PROBER
+# if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
+#  define SUPDRV_WITH_MSR_PROBER
+# endif
 #endif
 
 /** @def SUPDRV_WITHOUT_MSR_PROBER

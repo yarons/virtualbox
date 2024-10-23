@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 106530 2024-10-20 02:50:32Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrv-win.cpp 106631 2024-10-23 15:45:04Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -62,7 +62,13 @@
 #include <VBox/log.h>
 #include <VBox/err.h>
 
-#include <iprt/asm-amd64-x86.h>
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
+# include <iprt/asm-amd64-x86.h>
+#elif defined(RT_ARCH_ARM64) || defined(RT_ARCH_ARM32)
+# include <iprt/asm-arm.h>
+#else
+# error "Port me!"
+#endif
 
 #ifdef VBOX_WITH_HARDENING
 # include "SUPHardenedVerify-win.h"
