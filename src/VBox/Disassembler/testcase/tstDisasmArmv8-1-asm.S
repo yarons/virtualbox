@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1-asm.S 106637 2024-10-23 17:45:19Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1-asm.S 106638 2024-10-23 19:15:01Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for ARMv8 A64.
  */
@@ -37,6 +37,32 @@ _TestProcA64:
         sevl
         dgh
         xpaclri
+
+        pacia1716
+        pacib1716
+        autia1716
+        autib1716
+        esb
+        ;psb csync - Requires FEAT_SPE
+        tsb csync
+        gcsb dsync
+        csdb
+        clrbhb
+        paciaz
+        paciasp
+        pacibz
+        pacibsp
+        autiaz
+        autiasp
+        autibz
+        autibsp
+
+        bti
+        bti j
+        bti c
+        bti jc
+
+        chkfeat x16
 
         ; Control flow instructions
         svc #0xfefe
