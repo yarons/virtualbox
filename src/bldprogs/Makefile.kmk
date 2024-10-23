@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 106610 2024-10-23 01:27:57Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for various generic build tools (there is currently only one of them).
 #
@@ -94,6 +94,7 @@ ifneq ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH),solaris.sparc64)
  BLDPROGS += VBoxDef2LazyLoad
 endif
 VBoxDef2LazyLoad_TEMPLATE = VBoxBldProg
+VBoxDef2LazyLoad_DEFS     = TARGET_$(toupper $(KBUILD_TARGET_ARCH))
 VBoxDef2LazyLoad_SOURCES  = VBoxDef2LazyLoad.cpp
 
 ifeq ($(KBUILD_TARGET),win)
