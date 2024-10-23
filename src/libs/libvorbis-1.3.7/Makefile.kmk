@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 106611 2024-10-23 02:19:35Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for libvorbis.
 #
@@ -37,6 +37,7 @@ VBox-libvorbis_TEMPLATE   := VBoxR3DllNonPedanticFast
 ifn1of ($(KBUILD_TARGET), win) # Include our own config.h. Not required on Windows.
  VBox-libvorbis_DEFS      := HAVE_CONFIG_H
 endif
+VBox-libvorbis_CFLAGS.win.arm64 := -wd4101 # vorbisfile.c(1987): warning C4101: 'fpu': unreferenced local variable
 VBox-libvorbis_INCS       := \
 	. \
 	include \
