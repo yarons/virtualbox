@@ -1,4 +1,4 @@
-/* $Id: SystemTableBuilder.cpp 106360 2024-10-16 12:29:32Z alexander.eichner@oracle.com $ */
+/* $Id: SystemTableBuilder.cpp 106603 2024-10-23 00:53:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox bus slots assignment manager
  */
@@ -455,8 +455,8 @@ int SystemTableBuilderAcpi::dumpTables(const char *pszFilename)
 
 int SystemTableBuilderAcpi::buildMadt(RTVFSIOSTREAM hVfsIos, size_t *pcbMadt)
 {
-    uint8_t abMadt[_4K];
-    size_t cbMadt = 0;
+    uint8_t  abMadt[_4K];
+    uint32_t cbMadt = 0;
 
     RT_ZERO(abMadt);
 
