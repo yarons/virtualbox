@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 106623 2024-10-23 11:52:05Z sergey.dubov@oracle.com $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -535,7 +535,8 @@ BLDDIRS += $(foreach d, \
 			archive/plugins/platforms \
 			archive/plugins/platformthemes \
 			archive/plugins/sqldrivers \
-			archive/plugins/styles,) \
+			archive/plugins/styles \
+			archive/plugins/wayland-shell-integration,) \
 		$(if $(VBOX_WITH_PYTHON), \
 			archive/sdk/installer \
 			archive/sdk/installer/python \
