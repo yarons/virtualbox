@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatArmV8.cpp 106004 2024-09-10 11:51:08Z alexander.eichner@oracle.com $ */
+/* $Id: DisasmFormatArmV8.cpp 106622 2024-10-23 10:41:19Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Disassembler - ARMv8 Style Formatter.
  */
@@ -399,6 +399,11 @@ DECLINLINE(const char *) disasmFormatArmV8Reg(PCDISSTATE pDis, PCDISOPPARAMARMV8
             const char *psz = g_aszArmV8RegSimdScalar128Bit[pReg->idReg];
             *pcchReg = 2 + !!psz[2];
             return psz;
+        }
+        case kDisOpParamArmV8RegType_Sp:
+        {
+            *pcchReg = 2;
+            return "sp";
         }
         default:
             AssertFailed();
