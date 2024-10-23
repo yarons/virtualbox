@@ -1,4 +1,4 @@
-/* $Id: SUPDrvTracerA-arm64.S 106631 2024-10-23 15:45:04Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrvTracerA-arm64.S 106642 2024-10-23 21:59:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Driver - Tracer Interface, Assembly bits, ARM64.
  */
@@ -47,12 +47,14 @@
 BEGINCODE
 
 /** Dummy stub function that just returns. */
+ALIGNCODE(32)
 BEGINPROC supdrvTracerProbeFireStub
         ret
 ENDPROC   supdrvTracerProbeFireStub
 
 
 /** Tail jump function. */
+ALIGNCODE(32)
 BEGINPROC_EXPORTED SUPR0TracerFireProbe
         adrp    x8, PAGE(NAME(g_pfnSupdrvProbeFireKernel))
         ldr     x8, [x8, PAGEOFF(NAME(g_pfnSupdrvProbeFireKernel))]
