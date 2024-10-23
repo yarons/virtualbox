@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 106481 2024-10-18 13:20:19Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 106628 2024-10-23 13:33:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -1562,6 +1562,7 @@ typedef enum IEMNATIVEVARKIND : uint8_t
 /** Variable or argument. */
 typedef struct IEMNATIVEVAR
 {
+    RT_GCC_EXTENSION
     union
     {
         struct
@@ -1580,6 +1581,7 @@ typedef struct IEMNATIVEVAR
         uint32_t        u32Init0;   /**< Init optimzation - cbVar is set, the other are initialized with zeros. */
     };
 
+    RT_GCC_EXTENSION
     union
     {
         struct

@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 106540 2024-10-21 00:36:12Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 106628 2024-10-23 13:33:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -3035,8 +3035,8 @@ iemNativeRegFlushPendingWriteEx(PIEMRECOMPILERSTATE pReNative, uint32_t off, PIE
 {
     uint8_t const idxHstReg = pCore->aidxGstRegShadows[enmGstReg];
 
-    Assert(   (   enmGstReg >= kIemNativeGstReg_GprFirst
-               && enmGstReg <= kIemNativeGstReg_GprLast)
+    AssertCompile(kIemNativeGstReg_GprFirst == 0);
+    Assert(   enmGstReg <= kIemNativeGstReg_GprLast
            || enmGstReg == kIemNativeGstReg_MxCsr);
     Assert(   idxHstReg != UINT8_MAX
            && pCore->bmGstRegShadowDirty & RT_BIT_64(enmGstReg));
@@ -3063,8 +3063,8 @@ iemNativeRegFlushPendingWrite(PIEMRECOMPILERSTATE pReNative, uint32_t off, IEMNA
 {
     uint8_t const idxHstReg = pReNative->Core.aidxGstRegShadows[enmGstReg];
 
-    Assert(   (   enmGstReg >= kIemNativeGstReg_GprFirst
-               && enmGstReg <= kIemNativeGstReg_GprLast)
+    AssertCompile(kIemNativeGstReg_GprFirst == 0);
+    Assert(   enmGstReg <= kIemNativeGstReg_GprLast
            || enmGstReg == kIemNativeGstReg_MxCsr);
     Assert(   idxHstReg != UINT8_MAX
            && pReNative->Core.bmGstRegShadowDirty & RT_BIT_64(enmGstReg));
@@ -7811,7 +7811,8 @@ iemNativeVarRegisterAcquireForGuestReg(PIEMRECOMPILERSTATE pReNative, uint8_t id
     if (idxReg < RT_ELEMENTS(pReNative->Core.aHstRegs))
     {
 #ifdef IEMNATIVE_WITH_DELAYED_REGISTER_WRITEBACK
-        if (enmGstReg >= kIemNativeGstReg_GprFirst && enmGstReg <= kIemNativeGstReg_GprLast)
+        AssertCompile(kIemNativeGstReg_GprFirst == 0);
+        if (enmGstReg <= kIemNativeGstReg_GprLast)
         {
 # ifdef IEMNATIVE_WITH_TB_DEBUG_INFO
             iemNativeDbgInfoAddNativeOffset(pReNative, *poff);
