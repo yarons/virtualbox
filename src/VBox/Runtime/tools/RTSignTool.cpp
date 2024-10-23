@@ -1,4 +1,4 @@
-/* $Id: RTSignTool.cpp 106264 2024-10-09 20:50:12Z knut.osmundsen@oracle.com $ */
+/* $Id: RTSignTool.cpp 106607 2024-10-23 01:01:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Signing Tool.
  */
@@ -1771,6 +1771,7 @@ static RTEXITCODE SignToolPkcs7Exe_WriteSignatureToFile(PSIGNTOOLPKCS7EXE pThis,
             switch (enmLdrArch)
             {
                 case RTLDRARCH_AMD64:
+                case RTLDRARCH_ARM64:
                     cbNtHdrs = sizeof(IMAGE_NT_HEADERS64);
                     break;
                 case RTLDRARCH_X86_32:

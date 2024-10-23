@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 106248 2024-10-08 21:50:22Z knut.osmundsen@oracle.com $ */
+/* $Id: ldrPE.cpp 106607 2024-10-23 01:01:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -5150,10 +5150,10 @@ DECLHIDDEN(int) rtldrPEOpen(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH enm
                                         ? RTLDRTYPE_SHARED_LIBRARY_FIXED
                                         : RTLDRTYPE_SHARED_LIBRARY_RELOCATABLE;
                 pModPe->Core.enmEndian= RTLDRENDIAN_LITTLE;
-                pModPe->Core.enmArch  = FileHdr.Machine == IMAGE_FILE_MACHINE_I386
-                                      ? RTLDRARCH_X86_32
-                                      : FileHdr.Machine == IMAGE_FILE_MACHINE_AMD64
-                                      ? RTLDRARCH_AMD64
+                pModPe->Core.enmArch  = FileHdr.Machine == IMAGE_FILE_MACHINE_I386  ? RTLDRARCH_X86_32
+                                      : FileHdr.Machine == IMAGE_FILE_MACHINE_AMD64 ? RTLDRARCH_AMD64
+                                      : FileHdr.Machine == IMAGE_FILE_MACHINE_ARM64 ? RTLDRARCH_ARM64
+                                      : FileHdr.Machine == IMAGE_FILE_MACHINE_ARM   ? RTLDRARCH_ARM32
                                       : RTLDRARCH_WHATEVER;
                 pModPe->pvBits        = NULL;
                 pModPe->offNtHdrs     = offNtHdrs;
