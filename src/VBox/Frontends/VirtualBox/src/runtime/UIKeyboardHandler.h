@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIKeyboardHandler.h 106616 2024-10-23 07:50:23Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class declaration.
  */
@@ -119,6 +119,10 @@ public:
     /** Called whenever host key press/release scan codes are inserted to the guest.
       * @a bPressed is true for press and false for release inserts. */
     void setHostKeyComboPressedFlag(bool bPressed);
+
+#ifdef VBOX_WS_NIX
+    void handleKeyEvent(quint32 nativeScanCode, bool fRelease);
+#endif
 
 protected slots:
 
