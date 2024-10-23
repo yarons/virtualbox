@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1-asm.S 106632 2024-10-23 16:54:39Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1-asm.S 106633 2024-10-23 17:03:43Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for ARMv8 A64.
  */
@@ -1270,6 +1270,9 @@ _TestProcA64:
 
         ;subps x0, x1, x3 - Requires FEAT_MTE
         ;subps x0, sp, sp - Requires FEAT_MTE
+
+        ;subp  x0, x1, x3 - Requires FEAT_MTE
+        ;subp  x0, sp, sp - Requires FEAT_MTE
 
         udiv w0, w1, wzr
         udiv x0, x1, xzr
