@@ -1,4 +1,4 @@
-# $Id: Config.kmk 106645 2024-10-24 00:21:56Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 106661 2024-10-24 12:01:04Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -8671,7 +8671,7 @@ ifeq ($(KBUILD_TARGET),win)
  TEMPLATE_VBoxGuestR3ExeBase_USES.win                      = $(TEMPLATE_VBoxR3StaticBase_USES.win) vboximportchecker vboxsetpeversion
  TEMPLATE_VBoxGuestR3ExeBase_VBOX_IMPORT_CHECKER.win.x86   = nt31
  TEMPLATE_VBoxGuestR3ExeBase_VBOX_IMPORT_CHECKER.win.amd64 = xp64
- TEMPLATE_VBoxGuestR3ExeBase_VBOX_IMPORT_CHECKER.win.arm64 = w10
+ TEMPLATE_VBoxGuestR3ExeBase_VBOX_IMPORT_CHECKER.win.arm64 = w10-1709
  TEMPLATE_VBoxGuestR3ExeBase_VBOX_SET_PE_VERSION.win.x86   = default
  TEMPLATE_VBoxGuestR3ExeBase_VBOX_SET_PE_VERSION.win.amd64 = default
  TEMPLATE_VBoxGuestR3ExeBase_VBOX_SET_PE_VERSION.win.arm64 = default
@@ -8844,7 +8844,7 @@ TEMPLATE_VBoxGuestR3DllMinVista = VBox Guest User Dynamic Libraries w/ IPRT and 
 TEMPLATE_VBoxGuestR3DllMinVista_EXTENDS  = VBoxGuestR3Dll
 TEMPLATE_VBoxGuestR3DllMinVista_VBOX_IMPORT_CHECKER.win.x86   = vista
 TEMPLATE_VBoxGuestR3DllMinVista_VBOX_IMPORT_CHECKER.win.amd64 = vista
-TEMPLATE_VBoxGuestR3DllMinVista_VBOX_IMPORT_CHECKER.win.arm64 = w10
+TEMPLATE_VBoxGuestR3DllMinVista_VBOX_IMPORT_CHECKER.win.arm64 = w10-1709
 TEMPLATE_VBoxGuestR3DllMinVista_VBOX_SET_PE_VERSION.win.x86   = vista
 TEMPLATE_VBoxGuestR3DllMinVista_VBOX_SET_PE_VERSION.win.amd64 = vista
 TEMPLATE_VBoxGuestR3DllMinVista_VBOX_SET_PE_VERSION.win.arm64 = w10
@@ -9339,7 +9339,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 106645 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 106661 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
