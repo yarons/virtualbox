@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 106640 2024-10-23 20:33:54Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrv.cpp 106646 2024-10-24 00:31:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -2579,7 +2579,7 @@ static int supdrvIOCtlInnerUnrestricted(uintptr_t uIOCtl, PSUPDRVDEVEXT pDevExt,
             return 0;
         }
 
-#endif /* !defined(RT_ARCH_AMD64) && !defined(RT_ARCH_X86) */
+#endif /* defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86) */
 
         default:
             Log(("Unknown IOCTL %#lx\n", (long)uIOCtl));
@@ -2666,7 +2666,7 @@ static int supdrvIOCtlInnerRestricted(uintptr_t uIOCtl, PSUPDRVDEVEXT pDevExt, P
                 pReq->Hdr.cbOut = sizeof(pReq->Hdr);
             return 0;
         }
-#endif /* !defined(RT_ARCH_AMD64) && !defined(RT_ARCH_X86) */
+#endif /* defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86) */
 
         default:
             Log(("Unknown IOCTL %#lx\n", (long)uIOCtl));
@@ -4226,9 +4226,13 @@ SUPR0DECL(SUPPAGINGMODE) SUPR0GetPagingMode(void)
         }
     }
     return enmMode;
-#else
+
+#elif defined(RT_ARCH_ARM64)
     /** @todo portme? */
     return SUPPAGINGMODE_INVALID;
+
+#else
+# error "port me"
 #endif
 }
 SUPR0_EXPORT_SYMBOL(SUPR0GetPagingMode);
@@ -4806,7 +4810,7 @@ SUPR0DECL(int) SUPR0GetHwvirtMsrs(PSUPHWVIRTMSRS pMsrs, uint32_t fCaps, bool fFo
 {
     int rc;
     RTTHREADPREEMPTSTATE PreemptState = RTTHREADPREEMPTSTATE_INITIALIZER;
-    NOREF(fForce);
+    RT_NOREF_PV(fForce);
 
     /*
      * Input validation.
@@ -4897,7 +4901,7 @@ SUPR0DECL(int) SUPR0GetHwvirtMsrs(PSUPHWVIRTMSRS pMsrs, uint32_t fCaps, bool fFo
 }
 SUPR0_EXPORT_SYMBOL(SUPR0GetHwvirtMsrs);
 
-#endif /* !defined(RT_ARCH_AMD64) && !defined(RT_ARCH_X86) */
+#endif /* defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86) */
 
 
 /**

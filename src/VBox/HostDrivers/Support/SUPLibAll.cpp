@@ -1,4 +1,4 @@
-/* $Id: SUPLibAll.cpp 106641 2024-10-23 21:30:37Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPLibAll.cpp 106646 2024-10-24 00:31:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Library - All Contexts Code.
  */
@@ -100,7 +100,7 @@ SUPDECL(uint64_t) SUPReadTscWithDelta(PSUPGLOBALINFOPAGE pGip)
         uint32_t cTries = 0;
         for (;;)
         {
-            uint16_t cbLim = ASMGetIdtrLimit();
+            uint16_t const cbLim = ASMGetIdtrLimit();
             uTsc = ASMReadTSC();
             if (RT_LIKELY(ASMGetIdtrLimit() == cbLim))
             {
@@ -123,7 +123,7 @@ SUPDECL(uint64_t) SUPReadTscWithDelta(PSUPGLOBALINFOPAGE pGip)
         uint32_t cTries = 0;
         for (;;)
         {
-            uint32_t idApic = ASMGetApicIdExt0B();
+            uint32_t const idApic = ASMGetApicIdExt0B();
             uTsc = ASMReadTSC();
             if (RT_LIKELY(ASMGetApicIdExt0B() == idApic))
             {
@@ -144,7 +144,7 @@ SUPDECL(uint64_t) SUPReadTscWithDelta(PSUPGLOBALINFOPAGE pGip)
         uint32_t cTries = 0;
         for (;;)
         {
-            uint32_t idApic = ASMGetApicIdExt8000001E();
+            uint32_t const idApic = ASMGetApicIdExt8000001E();
             uTsc = ASMReadTSC();
             if (RT_LIKELY(ASMGetApicIdExt8000001E() == idApic))
             {
