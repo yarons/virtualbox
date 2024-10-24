@@ -1,4 +1,4 @@
-/* $Id: VBoxICD.c 106665 2024-10-24 12:43:36Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxICD.c 106683 2024-10-24 21:31:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - OpenGL driver loader.
  */
@@ -45,7 +45,7 @@ static const char *g_pszChromiumDll =
 #endif
 ;
 
-extern struct VBOXWDDMDLLPROC aIcdProcs[];
+extern struct VBOXWDDMDLLPROC g_aIcdProcs[];
 
 HMODULE volatile g_hmodICD = NULL;
 
@@ -103,7 +103,7 @@ void VBoxLoadICD(void)
                 g_hmodICD = VBoxWddmLoadSystemDll(pszDll);
                 if (g_hmodICD)
                 {
-                    VBoxWddmLoadAdresses(g_hmodICD, aIcdProcs);
+                    VBoxWddmLoadAdresses(g_hmodICD, g_aIcdProcs);
                 }
             }
         }

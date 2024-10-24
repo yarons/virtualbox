@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 106683 2024-10-24 21:31:30Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for OpenGL ICD loader.
 #
@@ -61,7 +61,7 @@ VBoxICD_LIBS     = \
 $$(VBoxICD_0_OUTDIR)/forwarders.asm: \
 		$(PATH_SUB_CURRENT)/icd_forwarders.py $(VBOX_GL_ICD_DEF_FILE) | $$(dir $$@)
 	$(call MSG_GENERATE,python,$@,$(VBOX_GL_ICD_DEF_FILE))
-	$(QUIET)$(VBOX_BLD_PYTHON) $< $(VBOX_GL_ICD_DEF_FILE) $@
+	$(QUIET)$(VBOX_BLD_PYTHON) $< $(VBOX_GL_ICD_DEF_FILE) $@ "$(KBUILD_TARGET_ARCH)"
 $$(VBoxICD_0_OUTDIR)/pfns.c: \
 		$(PATH_SUB_CURRENT)/icd_pfns.py $(VBOX_GL_ICD_DEF_FILE) | $$(dir $$@)
 	$(call MSG_GENERATE,python,$@,$(VBOX_GL_ICD_DEF_FILE))
