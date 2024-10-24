@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 106670 2024-10-24 13:51:27Z vadim.galitsyn@oracle.com $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 106671 2024-10-24 14:06:28Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -817,7 +817,7 @@ static int vbglR3DnDHGRecvDataLoop(PVBGLR3GUESTDNDCMDCTX pCtx, PVBOXDNDSNDDATAHD
     if (pDataHdr->cbMeta)
     {
         uint64_t cbDataTmp = 0;
-        void    *pvDataTmp = RTMemAlloc(pDataHdr->cbMeta);
+        void    *pvDataTmp = RTMemAllocZ(pDataHdr->cbMeta);
         if (!pvDataTmp)
             rc = VERR_NO_MEMORY;
 
