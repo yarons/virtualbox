@@ -1,4 +1,4 @@
-/* $Id: ObjectsTracker.cpp 106648 2024-10-24 00:37:06Z knut.osmundsen@oracle.com $ */
+/* $Id: ObjectsTracker.cpp 106677 2024-10-24 17:03:30Z alexander.rudnev@oracle.com $ */
 /** @file
  * VirtualBox Object tracker implementation
  */
@@ -150,7 +150,7 @@ unsigned long TrackedObjectData::i_checkRefCount(const Guid& aIID)
 
 /////////////////////////////////////////////////////////////////////////////
 // TrackedObjectsCollector
-///////////////////////////////////////////////////////////////////////////// 
+/////////////////////////////////////////////////////////////////////////////
 class TrackedObjectsCollector;
 extern TrackedObjectsCollector gTrackedObjectsCollector;
 
@@ -763,7 +763,7 @@ DECLCALLBACK(int) ObjectTracker::objectTrackerTask(RTTHREAD ThreadSelf, void *pv
                             /*
                              * Special case for the objects with lifeTime == 0.
                              * It's intended for such objects like Mediums or Machines or others.
-                             * The objects which live from the beginning but may be deleted by user manually. 
+                             * The objects which live from the beginning but may be deleted by user manually.
                              * for this object the idle time starts when user deletes it.
                              */
                             if (lifeTime == 0)
