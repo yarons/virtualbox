@@ -1,4 +1,4 @@
-/* $Id: TestBoxHelper.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: TestBoxHelper.cpp 106656 2024-10-24 09:32:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Validation Kit - Testbox C Helper Utility.
  */
@@ -743,7 +743,8 @@ static RTEXITCODE handlerCpuRevision(int argc, char **argv)
     /** @todo There is no way to access MIDR_EL1 from userspace except for parsing the various
      * OS dependent ways (/proc/cpuinfo, sysctl, ...). Just fake it for now to get it running. */
     int cch = RTPrintf("%#x\n", 1);
-    return cch > 0 ? RTEXITCODE_SUCCESS : RTEXITCODE_FAILURE;
+    if (cch > 0)
+        return RTEXITCODE_SUCCESS;
 #endif
     return RTEXITCODE_FAILURE;
 }

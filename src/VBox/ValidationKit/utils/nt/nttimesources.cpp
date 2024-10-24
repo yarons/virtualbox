@@ -1,4 +1,4 @@
-/* $Id: nttimesources.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: nttimesources.cpp 106656 2024-10-24 09:32:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * Check the various time sources on Windows NT.
  */
@@ -41,7 +41,11 @@
 #include <iprt/win/windows.h>
 
 #include <iprt/asm.h>
-#include <iprt/asm-amd64-x86.h>
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
+# include <iprt/asm-amd64-x86.h>
+#else
+# include <iprt/asm-arm.h>
+#endif
 #include <iprt/errcore.h>
 #include <iprt/string.h>
 #include <iprt/test.h>
