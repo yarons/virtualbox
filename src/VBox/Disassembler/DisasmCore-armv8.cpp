@@ -1,4 +1,4 @@
-/* $Id: DisasmCore-armv8.cpp 106655 2024-10-24 09:28:23Z alexander.eichner@oracle.com $ */
+/* $Id: DisasmCore-armv8.cpp 106659 2024-10-24 11:50:02Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Disassembler - Core Components.
  */
@@ -398,7 +398,7 @@ static int disArmV8ParseAddrGprSp(PDISSTATE pDis, uint32_t u32Insn, PCDISARMV8OP
 
 static int disArmV8ParseRegFixed31(PDISSTATE pDis, uint32_t u32Insn, PCDISARMV8OPCODE pOp, PCDISARMV8INSNCLASS pInsnClass, PDISOPPARAM pParam, PCDISARMV8INSNPARAM pInsnParm, bool *pf64Bit)
 {
-    RT_NOREF(pDis, pOp, pInsnClass, pf64Bit);
+    RT_NOREF(pDis, pOp, pInsnClass, pParam, pf64Bit);
     Assert(pParam->armv8.enmType == kDisArmv8OpParmNone);
 
     if (disArmV8ExtractBitVecFromInsn(u32Insn, pInsnParm->idxBitStart, pInsnParm->cBits) != 31)
