@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1-asm.S 106655 2024-10-24 09:28:23Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1-asm.S 106664 2024-10-24 12:42:39Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for ARMv8 A64.
  */
@@ -568,6 +568,79 @@ _TestProcA64:
         ldrsw x0, [sp]
         ldrsw x0, [sp, #4]
         ldrsw x0, [sp, #16380]
+
+        ldrb w0, [x28, #0]!
+        ldrb w0, [x28, #-256]!
+        ldrb w0, [x28, #255]!
+
+        ldrb w0, [sp, #0]!
+        ldrb w0, [sp, #-256]!
+        ldrb w0, [sp, #255]!
+
+        ldrsb w0, [x28, #0]!
+        ldrsb w0, [x28, #-256]!
+        ldrsb w0, [x28, #255]!
+
+        ldrsb w0, [sp, #0]!
+        ldrsb w0, [sp, #-256]!
+        ldrsb w0, [sp, #255]!
+
+        ldrsb x0, [x28, #0]!
+        ldrsb x0, [x28, #-256]!
+        ldrsb x0, [x28, #255]!
+
+        ldrsb x0, [sp, #0]!
+        ldrsb x0, [sp, #-256]!
+        ldrsb x0, [sp, #255]!
+
+        ldrh w0, [x28, #0]!
+        ldrh w0, [x28, #-256]!
+        ldrh w0, [x28, #255]!
+
+        ldrh w0, [sp, #0]!
+        ldrh w0, [sp, #-256]!
+        ldrh w0, [sp, #255]!
+
+        ldrsh w0, [x28, #0]!
+        ldrsh w0, [x28, #-256]!
+        ldrsh w0, [x28, #255]!
+
+        ldrsh w0, [sp, #0]!
+        ldrsh w0, [sp, #-256]!
+        ldrsh w0, [sp, #255]!
+
+        ldrsh x0, [x28, #0]!
+        ldrsh x0, [x28, #-256]!
+        ldrsh x0, [x28, #255]!
+
+        ldrsh x0, [sp, #0]!
+        ldrsh x0, [sp, #-256]!
+        ldrsh x0, [sp, #255]!
+
+        ldr x0, [x28, #0]!
+        ldr x0, [x28, #-256]!
+        ldr x0, [x28, #255]!
+
+        ldr x0, [sp, #0]!
+        ldr x0, [sp, #-256]!
+        ldr x0, [sp, #255]!
+
+        ldr w0, [x28, #0]!
+        ldr w0, [x28, #-256]!
+        ldr w0, [x28, #255]!
+
+        ldr w0, [sp, #0]!
+        ldr w0, [sp, #-256]!
+        ldr w0, [sp, #255]!
+
+        ldrsw x0, [x28, #0]!
+        ldrsw x0, [x28, #-256]!
+        ldrsw x0, [x28, #255]!
+
+        ldrsw x0, [sp, #0]!
+        ldrsw x0, [sp, #-256]!
+        ldrsw x0, [sp, #255]!
+
 
         ldurb w0, [x28]
         ldurb w0, [x28, #-256]
