@@ -1,4 +1,4 @@
-/* $Id: DisasmCore-armv8.cpp 106659 2024-10-24 11:50:02Z alexander.eichner@oracle.com $ */
+/* $Id: DisasmCore-armv8.cpp 106669 2024-10-24 13:44:22Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Disassembler - Core Components.
  */
@@ -1173,7 +1173,8 @@ DECLHIDDEN(int) disInstrWorkerArmV8(PDISSTATE pDis, PCDISOPCODE paOneByteMap, ui
 
     if (pDis->uCpuMode == DISCPUMODE_ARMV8_A64)
     {
-        *pcbInstr = sizeof(uint32_t);
+        if (pcbInstr)
+            *pcbInstr = sizeof(uint32_t);
 
         /* Instructions are always little endian and 4 bytes. */
         uint32_t u32Insn = disReadDWord(pDis, 0 /*offInstr*/);
