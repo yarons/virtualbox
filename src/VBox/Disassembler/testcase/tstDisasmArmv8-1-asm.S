@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1-asm.S 106666 2024-10-24 12:55:19Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1-asm.S 106676 2024-10-24 16:50:04Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for ARMv8 A64.
  */
@@ -45,9 +45,9 @@ _TestProcA64:
         esb
         ;psb csync - Requires FEAT_SPE
         tsb csync
-        gcsb dsync
+        ;gcsb dsync - Not supported by buildbox toolchain
         csdb
-        clrbhb
+        ;clrbhb - Not supported by buildbox toolchain
         paciaz
         paciasp
         pacibz
@@ -62,7 +62,7 @@ _TestProcA64:
         bti c
         bti jc
 
-        chkfeat x16
+        ;chkfeat x16 - Not supported by buildbox toolchain
 
         ; Control flow instructions
         svc #0xfefe
