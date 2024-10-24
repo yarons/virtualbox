@@ -1,4 +1,4 @@
-# $Id: Config.kmk 106680 2024-10-24 20:53:02Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 106682 2024-10-24 20:55:41Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4285,10 +4285,10 @@ ifdef VBOX_SIGNING_MODE
   VBOX_SIGNTOOL_ORDERDEPS      ?= $(VBOX_SIGNTOOL_SHA1_ORDERDEPS) $(VBOX_SIGNTOOL_SHA2_ORDERDEPS)
   ifndef VBOX_INF2CAT # Inf2Cat.exe is only found in the bin/*/x86 directory in WINSDK10. Arm64 requires a W10+ one.
    VBOX_INF2CAT = $(requote sh,$(firstfile $(qwildcard , $(qaddsuffix ,/[Ii][Nn][Ff]2[Cc][Aa][Tt].[Ee][Xx][Ee], \
-      $(PATH_SDK_WINSDK10_BIN.x86)  \
-      $(PATH_SDK_WINSDK10_BIN) \
-      $(if-expr defined(PATH_SDK_WINSDK10_BASE_BIN) && defined(SDK_WINSDK10_VERSION),$(PATH_SDK_WINSDK10_BASE_BIN)/$(SDK_WINSDK10_VERSION)/x86) \
-      )) $(VBOX_PATH_SELFSIGN)/Inf2Cat.exe ))
+   					$(PATH_SDK_WINSDK10_BIN.x86) \
+   					$(PATH_SDK_WINSDK10_BIN) \
+   					$(if-expr defined(PATH_SDK_WINSDK10_BASE_BIN) && defined(SDK_WINSDK10_VERSION),$(PATH_SDK_WINSDK10_BASE_BIN)/$(SDK_WINSDK10_VERSION)/x86) \
+   			)) $(VBOX_PATH_SELFSIGN)/Inf2Cat.exe ))
   endif
 
   ifeq ($(VBOX_SIGNING_MODE),test)
@@ -9339,7 +9339,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 106680 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 106682 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
