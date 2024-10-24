@@ -1,4 +1,4 @@
-/* $Id: VBoxICD.c 106453 2024-10-17 13:45:57Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxICD.c 106665 2024-10-24 12:43:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - OpenGL driver loader.
  */
@@ -119,6 +119,9 @@ void VBoxLoadICD(void)
  *
  * However it turned out that loading the real ICD from DLL_PROCESS_ATTACH works,
  * and loading it in a lazy way fails for unknown reason on 64 bit Windows.
+ *
+ * Update 2024-10-24 / bird: It fails on AMD64 because you trash the parameter registers
+ *                           when making the call. duh.
  *
  * So just call VBoxLoadICD from DLL_PROCESS_ATTACH.
  */
