@@ -1,4 +1,4 @@
-# $Id: Config.kmk 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 106695 2024-10-25 10:28:28Z knut.osmundsen@oracle.com $
 ## @file
 # kBuild Configuration file for the OS/2 Guest Additions.
 #
@@ -82,7 +82,7 @@ TEMPLATE_VBoxOs2Vac308_INCS = \
 	$(PATH_DDKVIDEO)/rel/os2c/include/base/os2 \
 	$(PATH_DDKVIDEO)/rel/os2c/include/base/os2/16bit
 
-TEMPLATE_VBoxOs2Vac308_LIBS = \
+TEMPLATE_VBoxOs2Vac308_LATE_LIBS = \
 	$(PATH_DDKVIDEO)/rel/os2c/lib/os2/os2386.lib \
 	$(PATH_TOOL_VAC308_LIB)/cppon30.lib
 

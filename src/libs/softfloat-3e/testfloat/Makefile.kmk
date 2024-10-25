@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 106695 2024-10-25 10:28:28Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for TestFloat-3e.
 #
@@ -61,11 +61,11 @@ TEMPLATE_VBoxTestFloat_CFLAGS.win = $(TEMPLATE_VBoxR3DllNonPedantic_CFLAGS) -wd4
 # For linking test executables.
 #
 TEMPLATE_VBoxTestFloatExe = Template for building SoftFloat-3e programs.
-TEMPLATE_VBoxTestFloatExe_EXTENDS = VBoxTestFloat
-TEMPLATE_VBoxTestFloatExe_INST    = $(INST_TESTCASE)
-TEMPLATE_VBoxTestFloatExe_LIBS    = \
+TEMPLATE_VBoxTestFloatExe_EXTENDS   = VBoxTestFloat
+TEMPLATE_VBoxTestFloatExe_INST      = $(INST_TESTCASE)
+TEMPLATE_VBoxTestFloatExe_LATE_LIBS = \
 	$(VBox-TestFloat_1_TARGET) \
-	$(TEMPLATE_VBoxTestFloat_LIBS)
+	$(TEMPLATE_VBoxTestFloat_LATE_LIBS)
 
 # -wd4098: testfloat.c(438): warning C4098: 'subjFunction_az_extF80_rx': 'void' function returning a value
 # -wd4102: testfloat.c(767): warning C4102: 'test_abz_f16': unreferenced label
