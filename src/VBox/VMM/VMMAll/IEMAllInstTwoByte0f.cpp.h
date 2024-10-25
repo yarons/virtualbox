@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstTwoByte0f.cpp.h 106704 2024-10-25 12:27:42Z bela.lubkin@oracle.com $ */
+/* $Id: IEMAllInstTwoByte0f.cpp.h 106707 2024-10-25 12:57:34Z bela.lubkin@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -3631,7 +3631,6 @@ FNIEMOP_DEF(iemOp_cvtpi2ps_Vps_Qpi)
         IEM_MC_STORE_XREG_XMM(IEM_GET_MODRM_REG(pVCpu, bRm), Dst);
 
         IEM_MC_ADVANCE_RIP_AND_FINISH();
-        IEM_MC_FPU_TO_MMX_MODE();
         IEM_MC_END();
     }
 }
