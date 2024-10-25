@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106435 2024-10-17 11:40:55Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 106714 2024-10-25 14:56:57Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for VBoxCredProv.
 #
@@ -61,7 +61,6 @@ VBoxCredProv_LIBS    += \
 	$(PATH_SDK_$(VBOX_WINPSDK_GST_WLH)_LIB)/NetAPI32.Lib
 VBoxCredProv_VBOX_IMPORT_CHECKER.win.x86   := vista
 VBoxCredProv_VBOX_IMPORT_CHECKER.win.amd64 := vista
-VBoxCredProv_VBOX_IMPORT_CHECKER.win.arm64 := vista
 
 include $(FILE_KBUILD_SUB_FOOTER)
 
