@@ -1,4 +1,4 @@
-/* $Id: ObjectsTracker.h 106647 2024-10-24 00:37:00Z knut.osmundsen@oracle.com $ */
+/* $Id: ObjectsTracker.h 106702 2024-10-25 11:40:21Z alexander.rudnev@oracle.com $ */
 /** @file
  * VirtualBox Object tracker definitions
  */
@@ -206,4 +206,4 @@ private:
     bool i_checkObj(const com::Utf8Str& aObjId) const;
     int i_clear();
 };
-#endif //MAIN_INCLUDED_ObjectsTracker_h
+#endif /* MAIN_INCLUDED_ObjectsTracker_h */
