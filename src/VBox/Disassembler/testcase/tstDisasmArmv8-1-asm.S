@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1-asm.S 106691 2024-10-25 08:55:05Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1-asm.S 106692 2024-10-25 09:18:06Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for ARMv8 A64.
  */
@@ -495,6 +495,12 @@ _TestProcA64:
         bics xzr, xzr, xzr, ASR #63
         bics xzr, xzr, xzr, ROR #1
         bics xzr, xzr, xzr, ROR #63
+
+        extr wzr, w0, w1, #0
+        extr wzr, w0, w1, #31
+
+        extr xzr, x0, x1, #0
+        extr xzr, x0, x1, #63
 
         ; Memory loads
         ldrb w0, [x28]
