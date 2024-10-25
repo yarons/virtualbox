@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1-asm.S 106717 2024-10-25 15:08:49Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1-asm.S 106718 2024-10-25 15:43:05Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for ARMv8 A64.
  */
@@ -513,6 +513,21 @@ _TestProcA64:
 
         csneg xzr, x1, x2, eq
         csneg wzr, w1, w2, eq
+
+        madd wzr, w0, w1, w2
+        madd xzr, x0, x1, x2
+
+        msub wzr, w0, w1, w2
+        msub xzr, x0, x1, x2
+
+        smaddl xzr, w0, w1, x2
+        smsubl xzr, w0, w1, x2
+        umaddl xzr, w0, w1, x2
+        umsubl xzr, w0, w1, x2
+
+        smulh  xzr, x1, x2
+        umulh  xzr, x1, x2
+
 
         ; Memory loads
         ldrb w0, [x28]
