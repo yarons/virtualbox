@@ -1,4 +1,4 @@
-/* $Id: VBoxWindowsAdditions.cpp 106266 2024-10-09 21:05:23Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxWindowsAdditions.cpp 106696 2024-10-25 10:29:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxWindowsAdditions - The Windows Guest Additions Loader.
  *
@@ -979,7 +979,7 @@ int main()
     * Strip the extension off the module name and construct the arch specific
     * one of the real installer program.
     */
-    DWORD off = cwcExePath - 1;
+    size_t off = cwcExePath - 1;
     while (   off > 0
            && (   wszExePath[off] != '/'
                && wszExePath[off] != '\\'
