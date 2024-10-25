@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 106462 2024-10-17 14:57:44Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxGuest.cpp 106708 2024-10-25 13:54:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -1080,7 +1080,7 @@ int VGDrvCommonInitDevExtFundament(PVBOXGUESTDEVEXT pDevExt)
 void VGDrvCommonDeleteDevExtFundament(PVBOXGUESTDEVEXT pDevExt)
 {
     int rc2;
-    AssertMsgReturnVoid(pDevExt->uInitState == VBOXGUESTDEVEXT_INIT_STATE_FUNDAMENT, ("uInitState=%#x\n", pDevExt->uInitState));
+    AssertLogRelMsgReturnVoid(pDevExt->uInitState == VBOXGUESTDEVEXT_INIT_STATE_FUNDAMENT, ("uInitState=%#x\n", pDevExt->uInitState));
     pDevExt->uInitState = VBOXGUESTDEVEXT_INIT_STATE_DELETED;
 
     rc2 = RTSemFastMutexDestroy(pDevExt->MemBalloon.hMtx); AssertRC(rc2);
@@ -1115,8 +1115,8 @@ int VGDrvCommonInitDevExtResources(PVBOXGUESTDEVEXT pDevExt, uint16_t IOPortBase
                                    VBOXOSTYPE enmOSType, uint32_t fFixedEvents)
 {
     int rc;
-    AssertMsgReturn(pDevExt->uInitState == VBOXGUESTDEVEXT_INIT_STATE_FUNDAMENT, ("uInitState=%#x\n", pDevExt->uInitState),
-                    VERR_INVALID_STATE);
+    AssertLogRelMsgReturn(pDevExt->uInitState == VBOXGUESTDEVEXT_INIT_STATE_FUNDAMENT, ("uInitState=%#x\n", pDevExt->uInitState),
+                          VERR_INVALID_STATE);
 
     /*
      * If there is an MMIO region validate the version and size.
@@ -1249,7 +1249,7 @@ static void vgdrvDeleteWaitList(PRTLISTNODE pList)
 void VGDrvCommonDeleteDevExtResources(PVBOXGUESTDEVEXT pDevExt)
 {
     Log(("VGDrvCommonDeleteDevExtResources:\n"));
-    AssertMsgReturnVoid(pDevExt->uInitState == VBOXGUESTDEVEXT_INIT_STATE_RESOURCES, ("uInitState=%#x\n", pDevExt->uInitState));
+    AssertLogRelMsgReturnVoid(pDevExt->uInitState == VBOXGUESTDEVEXT_INIT_STATE_RESOURCES, ("uInitState=%#x\n", pDevExt->uInitState));
     pDevExt->uInitState = VBOXGUESTDEVEXT_INIT_STATE_FUNDAMENT;
 
     /*

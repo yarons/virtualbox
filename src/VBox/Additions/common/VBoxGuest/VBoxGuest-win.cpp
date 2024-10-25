@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.cpp 106462 2024-10-17 14:57:44Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxGuest-win.cpp 106708 2024-10-25 13:54:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -1275,7 +1275,7 @@ static NTSTATUS vgdrvNtSetupDevice(PVBOXGUESTDEVEXTWIN pDevExt, PDEVICE_OBJECT p
             LogFunc(("Could not map physical address of VMMDev, rcNt=%#x\n", rcNt));
     }
 
-    LogFunc(("Returned with rcNt=%#x\n", rcNt));
+    LogRelFunc(("Returned with rcNt=%#x\n", rcNt));
     return rcNt;
 }
 
