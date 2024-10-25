@@ -1,4 +1,4 @@
-# $Id: Config.kmk 106700 2024-10-25 11:09:46Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 106701 2024-10-25 11:25:40Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -8940,7 +8940,7 @@ TEMPLATE_VBoxGuestR3NoCrtExe_LATE_LIBS       = \
 	$(PATH_STAGE_LIB)/RuntimeR3NoCrt$(VBOX_SUFF_LIB)
 ifeq ($(KBUILD_TARGET),win)
  TEMPLATE_VBoxGuestR3NoCrtExe_LATE_LIBS.x86  = $(NO_SUCH_VARIABLE)
- TEMPLATE_VBoxGuestR3NoCrtExe_LATE_LIBS.amd64= $(NO_SUCH_VARIABLE)
+ TEMPLATE_VBoxGuestR3NoCrtExe_LATE_LIBS.amd64 = $(NO_SUCH_VARIABLE)
  TEMPLATE_VBoxGuestR3NoCrtExe_LATE_LIBS.win  = $(NO_SUCH_VARIABLE)
  TEMPLATE_VBoxGuestR3NoCrtExe_LATE_LIBS.win.x86 = \
  	$(PATH_TOOL_$(TEMPLATE_VBoxGuestR3NoCrtExe_TOOL.win.x86)_LIB)/chkstk.obj
@@ -9342,7 +9342,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 106700 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 106701 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
