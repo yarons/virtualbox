@@ -1,4 +1,4 @@
-/* $Id: UINewVersionChecker.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UINewVersionChecker.cpp 106720 2024-10-25 18:02:29Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINewVersionChecker class implementation.
  */
@@ -139,17 +139,17 @@ QString UINewVersionChecker::platformInfo()
     /* Prepare platform report: */
     QString strPlatform;
 
-#if defined (Q_OS_WIN)
+#if defined (RT_OS_WINDOWS)
     strPlatform = "win";
-#elif defined (Q_OS_LINUX)
+#elif defined (RT_OS_LINUX)
     strPlatform = "linux";
-#elif defined (Q_OS_MACX)
+#elif defined (RT_OS_DARWIN)
     strPlatform = "macosx";
-#elif defined (Q_OS_OS2)
+#elif defined (RT_OS_OS2)
     strPlatform = "os2";
-#elif defined (Q_OS_FREEBSD)
+#elif defined (RT_OS_FREEBSD)
     strPlatform = "freebsd";
-#elif defined (Q_OS_SOLARIS)
+#elif defined (RT_OS_SOLARIS)
     strPlatform = "solaris";
 #else
     strPlatform = "unknown";
