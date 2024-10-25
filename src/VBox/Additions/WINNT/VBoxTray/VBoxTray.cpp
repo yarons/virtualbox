@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 106505 2024-10-19 03:15:26Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxTray.cpp 106697 2024-10-25 10:34:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -81,8 +81,8 @@ static int vboxTrayGlMsgTaskbarCreated(WPARAM lParam, LPARAM wParam);
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
 *********************************************************************************************************************************/
-typedef BOOL (WINAPI *PFNALLOCCONSOLE)(VOID);
-typedef BOOL (WINAPI *PFNATTACHCONSOLE)(DWORD);
+typedef BOOL (WINAPI *PFNALLOCCONSOLE)(VOID)   RT_NOEXCEPT;
+typedef BOOL (WINAPI *PFNATTACHCONSOLE)(DWORD) RT_NOEXCEPT;
 
 
 /*********************************************************************************************************************************
