@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106461 2024-10-17 14:28:36Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 106725 2024-10-25 23:45:33Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the Windows guest display driver.
 #
@@ -81,7 +81,6 @@ ifdef VBOX_WITH_XPDM
   	xpdm/VBoxDispVHWA.cpp \
   	xpdm/VBoxDispDDrawVHWA.cpp
  endif
-
 
  VBoxDisp_LIBS = \
  	$(VBOX_LIB_IPRT_GUEST_R0_NT4) \
