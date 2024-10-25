@@ -1,4 +1,4 @@
-/* $Id: vdkeystoremgr.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: vdkeystoremgr.cpp 106699 2024-10-25 11:08:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * Keystore utility for debugging.
  */
@@ -182,6 +182,7 @@ static DECLCALLBACK(int) handleCreate(HandlerArg *pArgs)
 
 static DECLCALLBACK(int) handleDump(HandlerArg *pArgs)
 {
+    RT_NOREF_PV(pArgs);
     return VERR_NOT_IMPLEMENTED;
 }
 
