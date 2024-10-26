@@ -1,4 +1,4 @@
-# $Id: Config.kmk 106716 2024-10-25 15:08:12Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 106729 2024-10-26 00:54:40Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -663,7 +663,9 @@ if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), win.x86 win.amd64)
  VBOX_WITH_XPDM = 1
 endif
 # Enable Wddm Video driver for Vista+ guests.
-VBOX_WITH_WDDM = 1
+ifn1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), win.arm64) ## @todo win.arm64: port the WDDM + VGA device to arm64.
+ VBOX_WITH_WDDM = 1
+endif
 # Lazy developer!!
 VBOXWDDM_WITH_VBVA = 1
 # Lazy developer!!
@@ -8719,7 +8721,7 @@ TEMPLATE_VBoxGuestR3ExeBase_LDFLAGS.linux    += $(VBOX_LD_hash_style_sysv)
 # Template for building normal R3 programs for the guest additions, strict.
 #
 TEMPLATE_VBoxGuestR3Exe = VBox Guest Program w/ IPRT and VBGL.
-TEMPLATE_VBoxGuestR3Exe_EXTENDS  = VBoxGuestR3ExeBase
+TEMPLATE_VBoxGuestR3Exe_EXTENDS := VBoxGuestR3ExeBase
 ifeq ($(KBUILD_TARGET),win)
  TEMPLATE_VBoxGuestR3Exe_CFLAGS        = $(TEMPLATE_VBoxGuestR3ExeBase_CFLAGS) $(VBOX_VCC_WERR)
  TEMPLATE_VBoxGuestR3Exe_CXXFLAGS      = $(TEMPLATE_VBoxGuestR3ExeBase_CXXFLAGS) $(VBOX_VCC_WERR)
@@ -9322,7 +9324,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 106716 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 106729 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
