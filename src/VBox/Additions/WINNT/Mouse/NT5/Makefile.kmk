@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106724 2024-10-25 23:41:49Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 106732 2024-10-26 01:36:14Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the Windows NT5+ Guest Additions Mouse Filter Driver
 #
@@ -59,7 +59,7 @@ ifneq ($(VBOX_VCC_CC_GUARD_CF),)
  	$(PATH_SDK_$(VBOX_WINDDK_GST)_LIB)/BufferOverflowK.lib
 endif
 VBoxMouse_LATE_LIBS.arm64 = \
- 	$(PATH_SDK_$(VBOX_WINDDK_GST)_LIB)/BufferOverflowFastFailK.lib
+	$(PATH_SDK_$(VBOX_WINDDK_GST)_LIB)/BufferOverflowFastFailK.lib
 VBoxMouse_USES.win += vboximportchecker
 VBoxMouse_VBOX_IMPORT_CHECKER.win.x86 = w2k/r0
 VBoxMouse_VBOX_IMPORT_CHECKER.win.amd64 = xp64/r0
