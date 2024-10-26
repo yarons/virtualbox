@@ -1,4 +1,4 @@
-/* $Id: VBoxWindowsAdditions.cpp 106696 2024-10-25 10:29:11Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxWindowsAdditions.cpp 106726 2024-10-26 00:28:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxWindowsAdditions - The Windows Guest Additions Loader.
  *
@@ -968,7 +968,7 @@ int main()
 
     SetLastError(NO_ERROR);
     WCHAR wszExePath[MAX_PATH] = { 0 };
-    DWORD cwcExePath = GetModuleFileNameW(NULL, wszExePath, sizeof(wszExePath));
+    size_t cwcExePath = GetModuleFileNameW(NULL, wszExePath, sizeof(wszExePath));
     if (cwcExePath == 0 || cwcExePath >= sizeof(wszExePath))
         return ErrorMsgRcLastErrSUR(13, "GetModuleFileNameW failed: ", cwcExePath);
 
