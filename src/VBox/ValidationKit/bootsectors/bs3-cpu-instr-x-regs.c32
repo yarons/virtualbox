@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-instr-x-regs.c32 106704 2024-10-25 12:27:42Z bela.lubkin@oracle.com $ */
+/* $Id: bs3-cpu-instr-x-regs.c32 106734 2024-10-26 03:47:35Z bela.lubkin@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-instr-x - register reference constants & functions.
  */
@@ -491,7 +491,7 @@ static bool Bs3ExtCtxSetReg(PBS3EXTCTX pExtCtx, uint16_t uReg, void * pValue, vo
                 return true;
             case BS3_REGISTER_FAMILY_OTHER:
                 if (BS3_REGISTER_IS_MMX(uReg))
-                    return Bs3ExtCtxSetMm(pExtCtx, uRegNum, *((uint64_t *)pValue), BS3EXTCTXTOPMM_AS_IS);
+                    return Bs3ExtCtxSetMm(pExtCtx, uRegNum, *((uint64_t *)pValue), BS3EXTCTXTOPMM_SET);
                 break;
             case BS3_REGISTER_FAMILY_8BIT_L:
             case BS3_REGISTER_FAMILY_ZMM:
