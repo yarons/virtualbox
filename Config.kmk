@@ -1,4 +1,4 @@
-# $Id: Config.kmk 106732 2024-10-26 01:36:14Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 106735 2024-10-26 09:48:31Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3533,7 +3533,7 @@ ifndef VBOX_NOINC_DYNAMIC_CONFIG_KMK
 	$(QUIET)$(APPEND) '$@' 'VBOX_GCC32_PATH_CXX                      ?= $(which $(TOOL_$(VBOX_GCC32_TOOL)_CXX))'
 	$(QUIET)$(APPEND) '$@' 'VBOX_GCC32_VERSION_CC                    ?= $(call VBOX_GCC_VERSION,$(TOOL_$(VBOX_GCC32_TOOL)_CC))'
 	$(QUIET)$(APPEND) '$@' 'VBOX_GCC32_VERSION_CXX                   ?= $(call VBOX_GCC_VERSION,$(TOOL_$(VBOX_GCC32_TOOL)_CXX))'
-	$(QUIET)$(APPEND) '$@' 'VBOX_GCC32_LIBGCC                        ?= $(shell "$(TOOL_$(VBOX_GCC32_TOOL)_CC)" -print-libgcc-file-name)'
+	$(QUIET)$(APPEND) '$@' 'VBOX_GCC32_LIBGCC                        ?= $(shell $(TOOL_$(VBOX_GCC32_TOOL)_CC) -print-libgcc-file-name)'
 	$(QUIET)$(APPEND) '$@' 'VBOX_GCC32_Wno-variadic-macros           ?= $(call VBOX_GCC32_CHECK_CXX,-Wno-variadic-macros,)'
   endif
   # darwin no_compact_linkedit starting at Xcode 3.2
@@ -9280,7 +9280,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 106732 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 106735 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
