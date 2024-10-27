@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 106628 2024-10-23 13:33:38Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 106737 2024-10-27 01:07:47Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -6712,7 +6712,7 @@ iemNativeEmitCImplCall(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t idxI
     /*
      * Load the parameters.
      */
-#if defined(RT_OS_WINDOWS) && defined(VBOXSTRICTRC_STRICT_ENABLED)
+#if defined(RT_OS_WINDOWS) && defined(VBOXSTRICTRC_STRICT_ENABLED) && defined(RT_ARCH_AMD64)
     /* Special code the hidden VBOXSTRICTRC pointer. */
     off = iemNativeEmitLoadGprFromGpr(  pReNative, off, IEMNATIVE_CALL_ARG1_GREG, IEMNATIVE_REG_FIXED_PVMCPU);
     off = iemNativeEmitLoadGprImm64(    pReNative, off, IEMNATIVE_CALL_ARG2_GREG, cbInstr); /** @todo 8-bit reg load opt for amd64 */
