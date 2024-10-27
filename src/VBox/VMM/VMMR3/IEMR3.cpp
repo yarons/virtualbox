@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 106454 2024-10-17 13:54:35Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMR3.cpp 106744 2024-10-27 22:12:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -100,6 +100,10 @@ static const char *iemGetTargetCpuName(uint32_t enmTargetCpu)
 }
 #endif
 
+
+#if defined(RT_ARCH_ARM64) && defined(_MSC_VER)
+# pragma warning(disable:4883) /* profile build: IEMR3.cpp(114) : warning C4883: 'IEMR3Init': function size suppresses optimizations*/
+#endif
 
 /**
  * Initializes the interpreted execution manager.
