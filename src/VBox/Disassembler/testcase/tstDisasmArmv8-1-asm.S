@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1-asm.S 106748 2024-10-28 08:05:43Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1-asm.S 106750 2024-10-28 08:41:27Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for ARMv8 A64.
  */
@@ -1358,6 +1358,33 @@ _TestProcA64:
         strh w0, [sp, w2, SXTW #0x0]
         strh w0, [sp, w2, UXTW #1]
         strh w0, [sp, w2, SXTW #1]
+
+
+        ; Add/subtract with carry
+
+        adc w0, w1, wzr
+        adc x0, x1, xzr
+
+        adcs w0, w1, wzr
+        adcs x0, x1, xzr
+
+        sbc w0, w1, wzr
+        sbc x0, x1, xzr
+
+        sbcs w0, w1, wzr
+        sbcs x0, x1, xzr
+
+
+        rmif x0,  #0,  #0
+        rmif xzr, #63, #0xf
+
+
+        setf8 w0
+        setf8 wzr
+
+        setf16 w0
+        setf16 wzr
+
 
         ; Conditional compare
         ccmp x0, x1, #0x3, eq
