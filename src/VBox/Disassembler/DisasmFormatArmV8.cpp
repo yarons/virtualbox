@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatArmV8.cpp 106759 2024-10-28 13:14:22Z alexander.eichner@oracle.com $ */
+/* $Id: DisasmFormatArmV8.cpp 106773 2024-10-28 18:00:32Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Disassembler - ARMv8 Style Formatter.
  */
@@ -918,6 +918,30 @@ DISDECL(size_t) DISFormatArmV8Ex(PCDISSTATE pDis, char *pszBuf, size_t cchBuf, u
                         break;
                     case kDisArmv8OpParmExtendRor:
                         PUT_SZ("ROR #");
+                        break;
+                    case kDisArmv8OpParmExtendUxtB:
+                        PUT_SZ("UXTB #");
+                        break;
+                    case kDisArmv8OpParmExtendUxtH:
+                        PUT_SZ("UXTH #");
+                        break;
+                    case kDisArmv8OpParmExtendUxtW:
+                        PUT_SZ("UXTW #");
+                        break;
+                    case kDisArmv8OpParmExtendUxtX:
+                        PUT_SZ("UXTX #");
+                        break;
+                    case kDisArmv8OpParmExtendSxtB:
+                        PUT_SZ("SXTB #");
+                        break;
+                    case kDisArmv8OpParmExtendSxtH:
+                        PUT_SZ("SXTH #");
+                        break;
+                    case kDisArmv8OpParmExtendSxtW:
+                        PUT_SZ("SXTW #");
+                        break;
+                    case kDisArmv8OpParmExtendSxtX:
+                        PUT_SZ("SXTX #");
                         break;
                     default:
                         AssertFailed();
