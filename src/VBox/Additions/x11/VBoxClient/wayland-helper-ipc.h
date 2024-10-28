@@ -1,4 +1,4 @@
-/* $Id: wayland-helper-ipc.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: wayland-helper-ipc.h 106754 2024-10-28 11:11:23Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - Definitions for IPC between VBoxClient and vboxwl tool.
  */
@@ -54,9 +54,11 @@
 
 /** Path to Gtk helper tool which raises popup window and gets
  * access to Wayland clipboard. */
-#define VBOXWL_PATH                     "/usr/bin/vboxwl"
+#ifndef VBOXWL_PATH
+# define VBOXWL_PATH                    "/usr/bin/vboxwl"
+#endif
 /** Limit maximum log verbosity level for popup tool. */
-#define VBOXWL_VERBOSITY_MAX    (5)
+#define VBOXWL_VERBOSITY_MAX            (5)
 
 /** Arguments to vboxwl tool. */
 #define VBOXWL_ARG_CLIP_HG_COPY         "--clip-hg-copy"
