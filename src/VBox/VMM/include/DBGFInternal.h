@@ -1,4 +1,4 @@
-/* $Id: DBGFInternal.h 106363 2024-10-16 13:08:09Z alexander.eichner@oracle.com $ */
+/* $Id: DBGFInternal.h 106756 2024-10-28 11:43:04Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGF - Internal header file.
  */
@@ -1509,6 +1509,16 @@ typedef struct DBGFDISSTATE
     DISOPPARAM      Param2;
     DISOPPARAM      Param3;
     DISOPPARAM      Param4;
+    /** Architecture specific state. */
+    RT_GCC_EXTENSION union
+    {
+        /** x86/AMD64 specific state. */
+        DIS_STATE_X86_T     x86;
+#if defined(VBOX_DIS_WITH_ARMV8)
+        /** ARMv8 specific state. */
+        DIS_STATE_ARMV8_T   armv8;
+#endif
+    };
 } DBGFDISSTATE;
 /** Pointer to a DBGF disassembler state. */
 typedef DBGFDISSTATE *PDBGFDISSTATE;

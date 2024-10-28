@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin-armv8.cpp 106675 2024-10-24 16:45:40Z alexander.eichner@oracle.com $ */
+/* $Id: NEMR3Native-darwin-armv8.cpp 106756 2024-10-28 11:43:04Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework, ARMv8 variant.
  *
@@ -35,8 +35,6 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_NEM
 #define VMCPU_INCL_CPUM_GST_CTX
-#define VBOX_DIS_WITH_ARMV8
-
 #include <VBox/vmm/nem.h>
 #include <VBox/vmm/iem.h>
 #include <VBox/vmm/em.h>

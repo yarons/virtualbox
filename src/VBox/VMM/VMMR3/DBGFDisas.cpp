@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFDisas.cpp 106756 2024-10-28 11:43:04Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Disassembler.
  */
@@ -650,6 +650,11 @@ dbgfR3DisasInstrExOnVCpu(PVM pVM, PVMCPU pVCpu, RTSEL Sel, PRTGCPTR pGCPtr, uint
         pDisState->Param2    = State.Dis.aParams[1];
         pDisState->Param3    = State.Dis.aParams[2];
         pDisState->Param4    = State.Dis.aParams[3];
+#if defined(VBOX_VMM_TARGET_ARMV8)
+        memcpy(&pDisState->armv8, &State.Dis.armv8, sizeof(State.Dis.armv8));
+#else
+        memcpy(&pDisState->x86, &State.Dis.x86, sizeof(State.Dis.x86));
+#endif
     }
 
     dbgfR3DisasInstrDone(&State);
