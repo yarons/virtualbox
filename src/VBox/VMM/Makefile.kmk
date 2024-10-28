@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106740 2024-10-27 21:39:17Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 106753 2024-10-28 10:26:13Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -727,7 +727,7 @@ ifdef VBOX_WITH_IEM_RECOMPILER
   endif
 
   # Set up the dependencies.
-  $(VBoxVMM_0_OUTDIR)/VMMAll/IEMAllN8veHlpA-arm64.o:   $(VBoxVMM_0_OUTDIR)/CommonGenIncs/IEMAssemblyOffsets.h
+  $(VBoxVMM_0_OUTDIR)/VMMAll/IEMAllN8veHlpA-arm64.o: $(VBoxVMM_0_OUTDIR)/CommonGenIncs/IEMAssemblyOffsets.h
   $(VBoxVMM_0_OUTDIR)/VMMAll/IEMAllN8veHlpA-arm64.obj: $(VBoxVMM_0_OUTDIR)/CommonGenIncs/IEMAssemblyOffsets.h
  endif
 

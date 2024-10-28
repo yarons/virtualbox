@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veExecMem.cpp 106737 2024-10-27 01:07:47Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veExecMem.cpp 106753 2024-10-28 10:26:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Executable Memory Allocator.
  */
@@ -1363,9 +1363,9 @@ iemExecMemAllocatorInitAndRegisterUnwindInfoForChunk(PVMCPUCC pVCpu, PIEMEXECMEM
 
 #  elif defined(RT_ARCH_ARM64)
     /*
-     * The ARM64 unwind codes. 
-     *  
-     * See https://learn.microsoft.com/en-us/cpp/build/arm64-exception-handling?view=msvc-170 
+     * The ARM64 unwind codes.
+     *
+     * See https://learn.microsoft.com/en-us/cpp/build/arm64-exception-handling?view=msvc-170
      */
     static const uint8_t s_abOpcodes[] =
     {

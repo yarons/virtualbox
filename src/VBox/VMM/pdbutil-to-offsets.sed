@@ -1,8 +1,8 @@
-# $Id: pdbutil-to-offsets.sed 106738 2024-10-27 21:02:31Z knut.osmundsen@oracle.com $
+# $Id: pdbutil-to-offsets.sed 106753 2024-10-28 10:26:13Z knut.osmundsen@oracle.com $
 ## @file
 # For defining member offsets for selected struct so the ARM64 assembler can use them.
 #
-# This script uses the 'pretty' command in the llvm-pdbutil.exe utility to do 
+# This script uses the 'pretty' command in the llvm-pdbutil.exe utility to do
 # the dumping from IEMAllN8veRecompiler-obj.pdb.  The script ASSUMES a specific
 # output format and indentation system to work.
 #
