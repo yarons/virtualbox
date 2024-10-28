@@ -1,4 +1,4 @@
-/* $Id: DisasmTables-armv8-a64-ld-st.cpp.h 106770 2024-10-28 14:59:05Z alexander.eichner@oracle.com $ */
+/* $Id: DisasmTables-armv8-a64-ld-st.cpp.h 106771 2024-10-28 15:54:21Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for ARMv8 A64 - Lods & Stores.
  */
@@ -169,6 +169,20 @@ DIS_ARMV8_DECODE_MAP_DEFINE_BEGIN(LdStRegOff)
 DIS_ARMV8_DECODE_MAP_DEFINE_END(LdStRegOff, RT_BIT_32(26), 26);
 
 
+/* LDRAA/LDRAB */
+DIS_ARMV8_DECODE_INSN_CLASS_DEFINE_DECODER(LdStRegPac)
+    DIS_ARMV8_INSN_DECODE(kDisParmParseGprZr,          0,  5, 0 /*idxParam*/),
+    DIS_ARMV8_INSN_DECODE(kDisParmParseAddrGprSp,      5,  5, 1 /*idxParam*/),
+    DIS_ARMV8_INSN_DECODE(kDisParmParseLdrPacImm,      0,  0, 1 /*idxParam*/), /* Hardcoded */
+    DIS_ARMV8_INSN_DECODE(kDisParmParseLdrPacW,       11,  1, 1 /*idxParam*/),
+DIS_ARMV8_DECODE_INSN_CLASS_DEFINE_BEGIN(LdStRegPac)
+    DIS_ARMV8_OP(0xf8200400, "ldraa",           OP_ARMV8_A64_LDRAA,     DISOPTYPE_HARMLESS),
+    DIS_ARMV8_OP(0xf8a00400, "ldrab",           OP_ARMV8_A64_LDRAB,     DISOPTYPE_HARMLESS),
+DIS_ARMV8_DECODE_INSN_CLASS_DEFINE_END(LdStRegPac, 0xffa00400 /*fFixedInsn*/,
+                                       kDisArmV8OpcDecodeNop,
+                                       RT_BIT_32(23), 23);
+
+
 /*
  * C4.1.94 - Loads and Stores - Load/Store register variants
  *
@@ -183,9 +197,9 @@ DIS_ARMV8_DECODE_MAP_DEFINE_END(LdStRegOff, RT_BIT_32(26), 26);
  */
 DIS_ARMV8_DECODE_MAP_DEFINE_BEGIN(LdStRegOp2_11_1)
     DIS_ARMV8_DECODE_MAP_INVALID_ENTRY,         /** @todo */
-    DIS_ARMV8_DECODE_MAP_INVALID_ENTRY,         /** @todo */
+    DIS_ARMV8_DECODE_MAP_ENTRY(LdStRegPac),
     DIS_ARMV8_DECODE_MAP_ENTRY(LdStRegOff),
-    DIS_ARMV8_DECODE_MAP_INVALID_ENTRY,         /** @todo */
+    DIS_ARMV8_DECODE_MAP_ENTRY(LdStRegPac),
 DIS_ARMV8_DECODE_MAP_DEFINE_END(LdStRegOp2_11_1, RT_BIT_32(10) | RT_BIT_32(11), 10);
 
 
