@@ -1,4 +1,4 @@
-/* $Id: scmrw-kmk.cpp 106760 2024-10-28 13:55:40Z knut.osmundsen@oracle.com $ */
+/* $Id: scmrw-kmk.cpp 106762 2024-10-28 13:57:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager, Makefile.kmk/kup.
  */
@@ -786,7 +786,8 @@ static bool scmKmkHandleIfParentheses(KMKPARSER *pParser, size_t offToken, KMKTO
         {
             if (pchLine[offSrc] == '\\' && offSrc + 1 == cchLine)
             {
-                *pszDst++ = ' ';
+                if (pszDst[-1] != ' ')
+                    *pszDst++ = ' ';
                 *pszDst++ = '\\';
                 *pszDst   = '\0';
                 ScmStreamPutLine(pParser->pOut, pParser->szBuf, pszDst - pParser->szBuf, pParser->enmEol);
