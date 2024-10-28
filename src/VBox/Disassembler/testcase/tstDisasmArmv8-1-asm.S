@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1-asm.S 106769 2024-10-28 14:55:43Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1-asm.S 106770 2024-10-28 14:59:05Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for ARMv8 A64.
  */
@@ -1602,6 +1602,47 @@ _TestProcA64:
         ldr q31, [sp], #255
 
 
+        ldr b0, [x28, #0]!
+        ldr b0, [x28, #-256]!
+        ldr b0, [x28, #255]!
+
+        ldr b31, [sp, #0]!
+        ldr b31, [sp, #-256]!
+        ldr b31, [sp, #255]!
+
+        ldr h0, [x28, #0]!
+        ldr h0, [x28, #-256]!
+        ldr h0, [x28, #255]!
+
+        ldr h31, [sp, #0]!
+        ldr h31, [sp, #-256]!
+        ldr h31, [sp, #255]!
+
+        ldr s0, [x28, #0]!
+        ldr s0, [x28, #-256]!
+        ldr s0, [x28, #255]!
+
+        ldr s31, [sp, #0]!
+        ldr s31, [sp, #-256]!
+        ldr s31, [sp, #255]!
+
+        ldr d0, [x28, #0]!
+        ldr d0, [x28, #-256]!
+        ldr d0, [x28, #255]!
+
+        ldr d31, [sp, #0]!
+        ldr d31, [sp, #-256]!
+        ldr d31, [sp, #255]!
+
+        ldr q0, [x28, #0]!
+        ldr q0, [x28, #-256]!
+        ldr q0, [x28, #255]!
+
+        ldr q31, [sp, #0]!
+        ldr q31, [sp, #-256]!
+        ldr q31, [sp, #255]!
+
+
         ; SIMD memory stores
         str b0, [x0]
         str b0, [x0, #4095]
@@ -1832,6 +1873,47 @@ _TestProcA64:
         str q31, [sp], #0
         str q31, [sp], #-256
         str q31, [sp], #255
+
+
+        str b0, [x28, #0]!
+        str b0, [x28, #-256]!
+        str b0, [x28, #255]!
+
+        str b31, [sp, #0]!
+        str b31, [sp, #-256]!
+        str b31, [sp, #255]!
+
+        str h0, [x28, #0]!
+        str h0, [x28, #-256]!
+        str h0, [x28, #255]!
+
+        str h31, [sp, #0]!
+        str h31, [sp, #-256]!
+        str h31, [sp, #255]!
+
+        str s0, [x28, #0]!
+        str s0, [x28, #-256]!
+        str s0, [x28, #255]!
+
+        str s31, [sp, #0]!
+        str s31, [sp, #-256]!
+        str s31, [sp, #255]!
+
+        str d0, [x28, #0]!
+        str d0, [x28, #-256]!
+        str d0, [x28, #255]!
+
+        str d31, [sp, #0]!
+        str d31, [sp, #-256]!
+        str d31, [sp, #255]!
+
+        str q0, [x28, #0]!
+        str q0, [x28, #-256]!
+        str q0, [x28, #255]!
+
+        str q31, [sp, #0]!
+        str q31, [sp, #-256]!
+        str q31, [sp, #255]!
 
 
         ; Add/subtract with carry
