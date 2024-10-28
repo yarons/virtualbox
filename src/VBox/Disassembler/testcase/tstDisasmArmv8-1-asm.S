@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1-asm.S 106750 2024-10-28 08:41:27Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1-asm.S 106752 2024-10-28 09:38:32Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for ARMv8 A64.
  */
@@ -63,6 +63,16 @@ _TestProcA64:
         bti jc
 
         ;chkfeat x16 - Not supported by buildbox toolchain
+
+        ; Barrier instructions
+
+        isb #0
+        isb #8
+        isb #15
+
+        sb
+
+        ;tcommit - Requires FEAT_TME
 
         ; Control flow instructions
         svc #0xfefe
@@ -1521,6 +1531,14 @@ _TestProcA64:
         ; msr svcrza,  #0 Not supported by the toolchain
         ; msr svcrsma, #1 Not supported by the toolchain
         ; msr svcrsma, #0 Not supported by the toolchain
+
+        ; Add/subtract immediate with tags
+
+        ;addg x0, x1, #0, #0       - Requires FEAT_MTE
+        ;addg sp, sp, #1008, #0x0f - Requires FEAT_MTE
+
+        ;subg x0, x1, #0, #0       - Requires FEAT_MTE
+        ;subg sp, sp, #1008, #0x0f - Requires FEAT_MTE
 
         ; Floating Point instructions.
         fmadd  s0, s1, s3, s31
