@@ -1,4 +1,4 @@
-/* $Id: DisasmCore-armv8.cpp 106759 2024-10-28 13:14:22Z alexander.eichner@oracle.com $ */
+/* $Id: DisasmCore-armv8.cpp 106764 2024-10-28 14:00:52Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Disassembler - Core Components.
  */
@@ -749,7 +749,7 @@ static int disArmV8ParseS(PDISSTATE pDis, uint32_t u32Insn, PCDISARMV8OPCODE pOp
 
     Assert(   pParam->armv8.enmExtend != kDisArmv8OpParmExtendNone
            && pDis->armv8.cbOperand > 0
-           && pDis->armv8.cbOperand <= 8);
+           && pDis->armv8.cbOperand <= 16);
     if (fS)
     {
         switch (pDis->armv8.cbOperand)
@@ -758,6 +758,7 @@ static int disArmV8ParseS(PDISSTATE pDis, uint32_t u32Insn, PCDISARMV8OPCODE pOp
             case sizeof(uint16_t): pParam->armv8.u.cExtend = 1; break;
             case sizeof(uint32_t): pParam->armv8.u.cExtend = 2; break;
             case sizeof(uint64_t): pParam->armv8.u.cExtend = 3; break;
+            case 16:               pParam->armv8.u.cExtend = 4; break;
             default:
                 AssertReleaseFailed();
         }
