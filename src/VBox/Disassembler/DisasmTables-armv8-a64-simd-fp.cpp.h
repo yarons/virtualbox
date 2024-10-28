@@ -1,4 +1,4 @@
-/* $Id: DisasmTables-armv8-a64-simd-fp.cpp.h 106655 2024-10-24 09:28:23Z alexander.eichner@oracle.com $ */
+/* $Id: DisasmTables-armv8-a64-simd-fp.cpp.h 106759 2024-10-28 13:14:22Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for ARMv8 A64 - SIMD & FP.
  */
@@ -471,6 +471,7 @@ DIS_ARMV8_DECODE_MAP_DEFINE_END_SINGLE_BIT(DataProcSimdFpBit28_1_30_0, 24);
  * Note: The U,opcode bitfields are concatenated to form an index.
  */
 DIS_ARMV8_DECODE_INSN_CLASS_DEFINE_DECODER(DataProcSimdScalarShiftByImm)
+    DIS_ARMV8_INSN_DECODE(kDisParmParseSimdRegSize64,   0,  0, DIS_ARMV8_INSN_PARAM_UNSET),
     DIS_ARMV8_INSN_DECODE(kDisParmParseSimdRegScalar,   0,  5, 0 /*idxParam*/),
     DIS_ARMV8_INSN_DECODE(kDisParmParseSimdRegScalar,   5,  5, 1 /*idxParam*/),
     DIS_ARMV8_INSN_DECODE(kDisParmParseImmHImmB,       16,  7, 2 /*idxParam*/),

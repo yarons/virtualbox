@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1-asm.S 106752 2024-10-28 09:38:32Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1-asm.S 106759 2024-10-28 13:14:22Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for ARMv8 A64.
  */
@@ -1368,6 +1368,70 @@ _TestProcA64:
         strh w0, [sp, w2, SXTW #0x0]
         strh w0, [sp, w2, UXTW #1]
         strh w0, [sp, w2, SXTW #1]
+
+
+        ; SIMD memory loads
+        ldr b0, [x0]
+        ldr b0, [x0, #4095]
+
+        ldr b31, [sp]
+        ldr b31, [sp, #4095]
+
+        ldr h0, [x0]
+        ldr h0, [x0, #8190]
+
+        ldr h31, [sp]
+        ldr h31, [sp, #8190]
+
+        ldr s0, [x0]
+        ldr s0, [x0, #16380]
+
+        ldr s31, [sp]
+        ldr s31, [sp, #16380]
+
+        ldr d0, [x0]
+        ldr d0, [x0, #32760]
+
+        ldr d31, [sp]
+        ldr d31, [sp, #32760]
+
+        ldr q0, [x0]
+        ldr q0, [x0, #65520]
+
+        ldr q31, [sp]
+        ldr q31, [sp, #65520]
+
+
+        ; SIMD memory stores
+        str b0, [x0]
+        str b0, [x0, #4095]
+
+        str b31, [sp]
+        str b31, [sp, #4095]
+
+        str h0, [x0]
+        str h0, [x0, #8190]
+
+        str h31, [sp]
+        str h31, [sp, #8190]
+
+        str s0, [x0]
+        str s0, [x0, #16380]
+
+        str s31, [sp]
+        str s31, [sp, #16380]
+
+        str d0, [x0]
+        str d0, [x0, #32760]
+
+        str d31, [sp]
+        str d31, [sp, #32760]
+
+        str q0, [x0]
+        str q0, [x0, #65520]
+
+        str q31, [sp]
+        str q31, [sp, #65520]
 
 
         ; Add/subtract with carry
