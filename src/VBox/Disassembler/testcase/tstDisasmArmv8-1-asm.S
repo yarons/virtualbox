@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1-asm.S 106783 2024-10-29 13:09:50Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1-asm.S 106785 2024-10-29 14:07:47Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for ARMv8 A64.
  */
@@ -27,6 +27,8 @@
 
 .private_extern _TestProcA64
 _TestProcA64:
+
+        casb  w0,  w1, [x0]
 
         ; Miscellaneous instructions without a parameter
         nop
@@ -3704,6 +3706,58 @@ _TestProcA64:
         ;stz2g sp, [sp, #0]!
         ;stz2g sp, [sp, #-4096]!
         ;stz2g sp, [sp, #4080]!
+
+        ;
+        ; Compare and swap
+        ;
+
+        casb  w0,  w1, [x0]
+        casb wzr, wzr, [sp]
+
+        caslb  w0,  w1, [x0]
+        caslb wzr, wzr, [sp]
+
+        casab  w0,  w1, [x0]
+        casab wzr, wzr, [sp]
+
+        casalb  w0,  w1, [x0]
+        casalb wzr, wzr, [sp]
+
+        cash  w0,  w1, [x0]
+        cash wzr, wzr, [sp]
+
+        caslh  w0,  w1, [x0]
+        caslh wzr, wzr, [sp]
+
+        casah  w0,  w1, [x0]
+        casah wzr, wzr, [sp]
+
+        casalh  w0,  w1, [x0]
+        casalh wzr, wzr, [sp]
+
+        cas  w0,  w1, [x0]
+        cas wzr, wzr, [sp]
+
+        casl  w0,  w1, [x0]
+        casl wzr, wzr, [sp]
+
+        casa  w0,  w1, [x0]
+        casa wzr, wzr, [sp]
+
+        casal  w0,  w1, [x0]
+        casal wzr, wzr, [sp]
+
+        cas  x0,  x1, [x0]
+        cas xzr, xzr, [sp]
+
+        casl  x0,  x1, [x0]
+        casl xzr, xzr, [sp]
+
+        casa  x0,  x1, [x0]
+        casa xzr, xzr, [sp]
+
+        casal  x0,  x1, [x0]
+        casal xzr, xzr, [sp]
 
         ;
         ; Keep last so the testcase can catch errors in
