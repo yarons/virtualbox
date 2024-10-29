@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1-asm.S 106785 2024-10-29 14:07:47Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1-asm.S 106787 2024-10-29 14:08:34Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for ARMv8 A64.
  */
@@ -27,8 +27,6 @@
 
 .private_extern _TestProcA64
 _TestProcA64:
-
-        casb  w0,  w1, [x0]
 
         ; Miscellaneous instructions without a parameter
         nop
