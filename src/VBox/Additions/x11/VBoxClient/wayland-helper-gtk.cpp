@@ -1,4 +1,4 @@
-/* $Id: wayland-helper-gtk.cpp 106768 2024-10-28 14:37:18Z vadim.galitsyn@oracle.com $ */
+/* $Id: wayland-helper-gtk.cpp 106778 2024-10-29 09:37:10Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - Gtk helper for Wayland.
  *
@@ -388,7 +388,7 @@ static DECLCALLBACK(int) vbcl_wayland_hlp_gtk_worker(RTTHREAD hThreadSelf, void 
 }
 
 /**
- * @interface_method_impl{VBCLWAYLANDHELPER_CLIPBOARD,pfnProbe}
+ * @interface_method_impl{VBCLWAYLANDHELPER,pfnProbe}
  */
 static DECLCALLBACK(int) vbcl_wayland_hlp_gtk_probe(void)
 {

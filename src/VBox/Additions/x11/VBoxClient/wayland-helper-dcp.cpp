@@ -1,4 +1,4 @@
-/* $Id: wayland-helper-dcp.cpp 106768 2024-10-28 14:37:18Z vadim.galitsyn@oracle.com $ */
+/* $Id: wayland-helper-dcp.cpp 106778 2024-10-29 09:37:10Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - Data Control Protocol (DCP) helper for Wayland.
  *
@@ -1243,7 +1243,7 @@ static DECLCALLBACK(int) vbcl_wayland_hlp_dcp_event_loop(RTTHREAD hThreadSelf, v
 }
 
 /**
- * @interface_method_impl{VBCLWAYLANDHELPER_CLIPBOARD,pfnProbe}
+ * @interface_method_impl{VBCLWAYLANDHELPER,pfnProbe}
  */
 static DECLCALLBACK(int) vbcl_wayland_hlp_dcp_probe(void)
 {
