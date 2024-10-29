@@ -1,4 +1,4 @@
-/* $Id: DisasmTables-armv8-a64-ld-st.cpp.h 106785 2024-10-29 14:07:47Z alexander.eichner@oracle.com $ */
+/* $Id: DisasmTables-armv8-a64-ld-st.cpp.h 106786 2024-10-29 14:08:13Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for ARMv8 A64 - Lods & Stores.
  */
@@ -1115,7 +1115,7 @@ DIS_ARMV8_DECODE_MAP_DEFINE_END_SINGLE_BIT(LdStBit28_1_Bit29_0_Bit24_1, 21);
 
 
 /**
- * C4.1.94 - Loads and Stores - Compare and swap
+ * C4.1.94 - Loads and Stores
  *
  * Differentiate between Load register (literal) and the other classes based on op2<14> (bit 24).
  */
