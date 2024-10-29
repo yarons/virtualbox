@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: vbox.py 106788 2024-10-29 14:13:49Z knut.osmundsen@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 106061 $"
+__version__ = "$Revision: 106788 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -642,8 +642,9 @@ class EventHandlerBase(object):
                     oListener = oEventSrc.createListener();
                     dArgsCopy['oListener'] = oListener;
                     oRet = oSubClass(dArgsCopy);
-            except:
-                reporter.errorXcpt('%s::eventSource.createListener(%s) failed%s' % (sSrcParentNm, oListener, sLogSuffix));
+            except Exception as oXcpt:
+                reporter.errorXcpt('%s::eventSource.createListener(%s, %s) failed: %s%s'
+                                   % (sSrcParentNm, oSubClass, dArgsCopy, oXcpt, sLogSuffix));
             else:
                 try:
                     oEventSrc.registerListener(oListener, aenmEvents, not fPassive);
