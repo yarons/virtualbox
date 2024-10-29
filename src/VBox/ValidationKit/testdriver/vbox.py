@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 106788 2024-10-29 14:13:49Z knut.osmundsen@oracle.com $
+# $Id: vbox.py 106789 2024-10-29 14:17:50Z knut.osmundsen@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 106788 $"
+__version__ = "$Revision: 106789 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -603,7 +603,7 @@ class EventHandlerBase(object):
         return None;
 
     @staticmethod
-    def registerDerivedEventHandler(oVBoxMgr, fpApiVer, oSubClass, dArgsCopy, # pylint: disable=too-many-arguments
+    def registerDerivedEventHandlerf(oVBoxMgr, fpApiVer, oSubClass, dArgsCopy, # pylint: disable=too-many-arguments
                                     oSrcParent, sSrcParentNm, sICallbackNm,
                                     fMustSucceed = True, sLogSuffix = '', aenmEvents = None):
         """
@@ -643,8 +643,8 @@ class EventHandlerBase(object):
                     dArgsCopy['oListener'] = oListener;
                     oRet = oSubClass(dArgsCopy);
             except Exception as oXcpt:
-                reporter.errorXcpt('%s::eventSource.createListener(%s, %s) failed: %s%s'
-                                   % (sSrcParentNm, oSubClass, dArgsCopy, oXcpt, sLogSuffix));
+                reporter.errorXcpt('%s::eventSource.createListener(%s, %s) failed: %s; fPassive=%s%s'
+                                   % (sSrcParentNm, oSubClass, dArgsCopy, oXcpt, fPassive, sLogSuffix));
             else:
                 try:
                     oEventSrc.registerListener(oListener, aenmEvents, not fPassive);
