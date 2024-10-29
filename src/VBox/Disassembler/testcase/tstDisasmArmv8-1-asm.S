@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1-asm.S 106780 2024-10-29 09:48:34Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1-asm.S 106781 2024-10-29 11:16:24Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for ARMv8 A64.
  */
@@ -3570,6 +3570,34 @@ _TestProcA64:
         swpal wzr, wzr, [sp]
         swpal x1,  x2,  [x0]
         swpal xzr, xzr, [sp]
+
+        ;
+        ; LDR literal variants
+        ;
+
+        ldr w0, #0
+        ldr wzr, #0xffffc
+        ldr wzr, #-0xffffc
+
+        ldr x0, #0
+        ldr xzr, #0xffffc
+        ldr xzr, #-0xffffc
+
+        ldrsw x0, #0
+        ldrsw xzr, #0xffffc
+        ldrsw xzr, #-0xffffc
+
+        ldr s0, #0
+        ldr s31, #0xffffc
+        ldr s31, #-0xffffc
+
+        ldr d0, #0
+        ldr d31, #0xffffc
+        ldr d31, #-0xffffc
+
+        ldr q0, #0
+        ldr q31, #0xffffc
+        ldr q31, #-0xffffc
 
         ;
         ; Keep last so the testcase can catch errors in
