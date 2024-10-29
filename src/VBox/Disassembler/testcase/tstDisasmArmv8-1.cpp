@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1.cpp 106003 2024-09-10 11:46:42Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1.cpp 106783 2024-10-29 13:09:50Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Testcase for ARMv8 A64
  */
@@ -89,6 +89,8 @@ static const RTSCRIPTLEXTOKMATCH s_aMatches[] =
 {
     /* Begin of stuff which will get ignored in the semantic matching. */
     { RT_STR_TUPLE(".private_extern"),          RTSCRIPTLEXTOKTYPE_KEYWORD,    true,  0 },
+    { RT_STR_TUPLE(".cpu"),                     RTSCRIPTLEXTOKTYPE_KEYWORD,    true,  0 },
+    { RT_STR_TUPLE("generic+mte"),              RTSCRIPTLEXTOKTYPE_KEYWORD,    true,  0 },
     { RT_STR_TUPLE("_testproca64"),             RTSCRIPTLEXTOKTYPE_KEYWORD,    true,  0 },
     { RT_STR_TUPLE("_testproca64_endproc"),     RTSCRIPTLEXTOKTYPE_KEYWORD,    true,  0 },
     { RT_STR_TUPLE(":"),                        RTSCRIPTLEXTOKTYPE_KEYWORD,    true,  0 },
