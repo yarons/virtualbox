@@ -1,4 +1,4 @@
-/* $Id: mime-type-converter.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: mime-type-converter.h 106779 2024-10-29 09:40:57Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Mime-type converter for Shared Clipboard and Drag-and-Drop code.
  */
@@ -91,9 +91,10 @@ extern RTDECL(SHCLFORMAT) VBoxMimeConvGetIdByMime(const char *pcszMimeType);
  *
  * @returns IPRT status code.
  * @param   pcszMimeType    Mime-type in string representation.
- * @param   pvBufIn         Input buffer which contains image data in VBox format.
+ * @param   pvBufIn         Input buffer which contains data in VBox format.
  * @param   cbBufIn         Size of input buffer in bytes.
- * @param   ppvBufOut       Newly allocated output buffer which will contain BMP image data (must be freed by caller).
+ * @param   ppvBufOut       Newly allocated output buffer which will contain data
+ *                          in specified mime-type format (must be freed by caller).
  * @param   pcbBufOut       Size of output buffer.
  */
 extern RTDECL(int) VBoxMimeConvVBoxToNative(const char *pcszMimeType, void *pvBufIn, int cbBufIn,
@@ -104,9 +105,10 @@ extern RTDECL(int) VBoxMimeConvVBoxToNative(const char *pcszMimeType, void *pvBu
  *
  * @returns IPRT status code.
  * @param   pcszMimeType    Mime-type in string representation.
- * @param   pvBufIn         Input buffer which contains image data in VBox format.
+ * @param   pvBufIn         Input buffer which contains data in specified mime-type format.
  * @param   cbBufIn         Size of input buffer in bytes.
- * @param   ppvBufOut       Newly allocated output buffer which will contain BMP image data (must be freed by caller).
+ * @param   ppvBufOut       Newly allocated output buffer which will contain image data
+ *                          in VBox internal representation format (must be freed by caller).
  * @param   pcbBufOut       Size of output buffer.
  */
 extern RTDECL(int) VBoxMimeConvNativeToVBox(const char *pcszMimeType, void *pvBufIn, int cbBufIn,
