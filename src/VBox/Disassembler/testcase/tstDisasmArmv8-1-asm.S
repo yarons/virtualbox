@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1-asm.S 106795 2024-10-30 08:44:32Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1-asm.S 106796 2024-10-30 09:10:18Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for ARMv8 A64.
  */
@@ -3840,6 +3840,58 @@ _TestProcA64:
         ldaxp wzr, wzr, [sp]
         ldaxp  x1,  x2, [x0]
         ldaxp xzr, xzr, [sp]
+
+        ;
+        ; Load/store ordered
+        ;
+
+        stllrb w0,  [x1]
+        stllrb wzr, [sp]
+
+        stlrb w0,  [x1]
+        stlrb wzr, [sp]
+
+        ldlarb w0,  [x1]
+        ldlarb wzr, [sp]
+
+        ldarb w0,  [x1]
+        ldarb wzr, [sp]
+
+        stllrh w0,  [x1]
+        stllrh wzr, [sp]
+
+        stlrh w0,  [x1]
+        stlrh wzr, [sp]
+
+        ldlarh w0,  [x1]
+        ldlarh wzr, [sp]
+
+        ldarh w0,  [x1]
+        ldarh wzr, [sp]
+
+        stllr w0,  [x1]
+        stllr wzr, [sp]
+
+        stlr w0,  [x1]
+        stlr wzr, [sp]
+
+        ldlar w0,  [x1]
+        ldlar wzr, [sp]
+
+        ldar w0,  [x1]
+        ldar wzr, [sp]
+
+        stllr x0,  [x1]
+        stllr xzr, [sp]
+
+        stlr x0,  [x1]
+        stlr xzr, [sp]
+
+        ldlar x0,  [x1]
+        ldlar xzr, [sp]
+
+        ldar x0,  [x1]
+        ldar xzr, [sp]
 
         ;
         ; Keep last so the testcase can catch errors in
