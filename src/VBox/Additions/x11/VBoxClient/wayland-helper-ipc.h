@@ -1,4 +1,4 @@
-/* $Id: wayland-helper-ipc.h 106754 2024-10-28 11:11:23Z vadim.galitsyn@oracle.com $ */
+/* $Id: wayland-helper-ipc.h 106801 2024-10-30 12:04:20Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - Definitions for IPC between VBoxClient and vboxwl tool.
  */
@@ -157,7 +157,7 @@ namespace vbcl
          */
         int packet_write(RTLOCALIPCSESSION hSession, vbcl::ipc::packet_t *pPacket);
 
-        namespace clipboard
+        namespace data
         {
             /** Payload for IPC commands CLIP_FORMATS and CLIP_FORMAT. */
             typedef struct
@@ -218,14 +218,14 @@ namespace vbcl
                 { CMD_MAX,      false }
             };
 
-            class ClipboardIpc
+            class DataIpc
             {
                 public:
 
 #ifdef RT_NEED_NEW_AND_DELETE
                     RTMEM_IMPLEMENT_NEW_AND_DELETE();
 #endif
-                    ClipboardIpc()
+                    DataIpc()
                     {}
 
                     /**
