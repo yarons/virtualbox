@@ -1,4 +1,4 @@
-/* $Id: DisasmCore-armv8.cpp 106783 2024-10-29 13:09:50Z alexander.eichner@oracle.com $ */
+/* $Id: DisasmCore-armv8.cpp 106795 2024-10-30 08:44:32Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Disassembler - Core Components.
  */
@@ -1003,8 +1003,8 @@ static int disArmV8ParseSf(PDISSTATE pDis, uint32_t u32Insn, PCDISARMV8OPCODE pO
     RT_NOREF(pDis, pOp, pInsnClass, pParam, pInsnParm);
 
     Assert(pInsnParm->cBits == 1);
-    Assert(pInsnParm->idxBitStart == 31);
-    *pf64Bit = RT_BOOL(u32Insn & RT_BIT_32(31));
+    Assert(pInsnParm->idxBitStart == 31 || pInsnParm->idxBitStart == 30);
+    *pf64Bit = RT_BOOL(u32Insn & RT_BIT_32(pInsnParm->idxBitStart));
     return VINF_SUCCESS;
 }
 
