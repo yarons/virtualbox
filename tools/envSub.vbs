@@ -1,4 +1,4 @@
-' $Id: envSub.vbs 106791 2024-10-29 16:06:22Z knut.osmundsen@oracle.com $
+' $Id: envSub.vbs 106806 2024-10-30 14:58:06Z knut.osmundsen@oracle.com $
 ''  @file
 ' VBScript worker for env.cmd
 '
@@ -125,6 +125,15 @@ function Main()
    strAltHostArch = ""
    if strHostArch = "arm64" then
       strAltHostArch = "amd64"
+   end if
+
+   ' Where to look for host related tools.
+   dim arrArchToolsSuffixes : arrArchToolsSuffixes = Array("", strHostArch & ".")
+   if strAltHostArch <> "" then
+      arrArchToolsSuffixes = ArrayAppend(arrArchToolsSuffixes, strAltHostArch & ".")
+   end if
+   if strHostArch <> "x86" and strAltHostArch <> "x86" then
+      arrArchToolsSuffixes = ArrayAppend(arrArchToolsSuffixes, ".x86")
    end if
 
    '
@@ -280,8 +289,8 @@ function Main()
       ' Add the newest debugger we can find to the front of the path.
       dim strDir, blnStop
       bldExitLoop = false
-      for each str1 in arrArchitectures
-         strDir = strPathDevTools & "\win." & str1 & "\sdk"
+      for each str1 in arrArchToolsSuffixes
+         strDir = strPathDevTools & "\win" & str1 & "\sdk"
          for each strSubDir in GetSubdirsStartingWithRVerSorted(strDir, "v")
             if FileExists(strDir & "\" & strSubDir & "\Debuggers\" & XlateArchitectureToWin(strHostArch) & "\windbg.exe") then
                EnvPrependPathItem "Path", DosSlashes(strDir & "\" & strSubDir & "\Debuggers\" & XlateArchitectureToWin(strHostArch)), ";"
