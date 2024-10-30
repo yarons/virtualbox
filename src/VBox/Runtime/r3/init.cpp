@@ -1,4 +1,4 @@
-/* $Id: init.cpp 106792 2024-10-29 22:10:06Z knut.osmundsen@oracle.com $ */
+/* $Id: init.cpp 106800 2024-10-30 11:44:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Init Ring-3.
  */
@@ -47,10 +47,10 @@
 # include <unistd.h>
 # ifndef RT_OS_OS2
 #  include <pthread.h>
-#  include <signal.h>
 #  include <errno.h>
 #  define IPRT_USE_SIG_CHILD_DUMMY
 # endif
+# include <signal.h>
 #endif
 #ifdef RT_OS_OS2
 # include <InnoTekLIBC/fork.h>
