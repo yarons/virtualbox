@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1.cpp 106783 2024-10-29 13:09:50Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1.cpp 106804 2024-10-30 13:59:23Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Testcase for ARMv8 A64
  */
@@ -101,6 +101,8 @@ static const RTSCRIPTLEXTOKMATCH s_aMatches[] =
     { RT_STR_TUPLE("["),                        RTSCRIPTLEXTOKTYPE_PUNCTUATOR, false, 0 },
     { RT_STR_TUPLE("]"),                        RTSCRIPTLEXTOKTYPE_PUNCTUATOR, false, 0 },
     { RT_STR_TUPLE("!"),                        RTSCRIPTLEXTOKTYPE_PUNCTUATOR, false, 0 },
+    { RT_STR_TUPLE("{"),                        RTSCRIPTLEXTOKTYPE_PUNCTUATOR, false, 0 },
+    { RT_STR_TUPLE("}"),                        RTSCRIPTLEXTOKTYPE_PUNCTUATOR, false, 0 },
     { NULL, 0,                                  RTSCRIPTLEXTOKTYPE_INVALID,    false, 0 }
 };
 
