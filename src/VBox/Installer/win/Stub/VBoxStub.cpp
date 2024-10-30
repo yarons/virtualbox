@@ -1,4 +1,4 @@
-/* $Id: VBoxStub.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxStub.cpp 106811 2024-10-30 23:54:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxStub - VirtualBox's Windows installer stub.
  */
@@ -432,16 +432,16 @@ static int ExtractFile(const char *pszResourceName, const char *pszTempFile, RTF
 
 
     /* Check the content. */
-    uint32_t off = 0;
+    size_t off = 0;
     while (off < cbData)
     {
         uint8_t abBuf[_64K];
         size_t  cbToRead = RT_MIN(cbData - off, sizeof(abBuf));
         rc = RTFileRead(hFile, abBuf, cbToRead, NULL);
-        AssertRCReturn(rc, LogErrorRc(rc, "#%u: RTFileRead failed on '%s' at offset %#RX32: %Rrc",
+        AssertRCReturn(rc, LogErrorRc(rc, "#%u: RTFileRead failed on '%s' at offset %#zx: %Rrc",
                                       idxPackage, pszTempFile, off, rc));
         AssertReturn(memcmp(abBuf, &pbData[off], cbToRead) == 0,
-                     LogErrorRc(VERR_STATE_CHANGED, "#%u: File '%s' has change (mismatch in %#zx byte block at %#RX32)",
+                     LogErrorRc(VERR_STATE_CHANGED, "#%u: File '%s' has change (mismatch in %#zx byte block at %#zx)",
                                 idxPackage, pszTempFile, cbToRead, off));
         off += cbToRead;
     }
