@@ -1,4 +1,4 @@
-/* $Id: DBGFR3Flow.cpp 106758 2024-10-28 12:07:28Z alexander.eichner@oracle.com $ */
+/* $Id: DBGFR3Flow.cpp 106797 2024-10-30 10:07:21Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Control Flow Graph Interface (CFG).
  */
@@ -779,7 +779,12 @@ static int dbgfR3FlowQueryDirectBranchTarget(PUVM pUVM, VMCPUID idCpu, PDISOPPAR
 
     /* Relative jumps are always from the beginning of the next instruction. */
     *pAddrJmpTarget = *pAddrInstr;
+#ifdef VBOX_VMM_TARGET_ARMV8
+    /* On ARM relative jumps are always from the beginning of the curent instruction (b #0 will jump to itself for instance). */
+    RT_NOREF(cbInstr);
+#else
     DBGFR3AddrAdd(pAddrJmpTarget, cbInstr);
+#endif
 
     if (fRelJmp)
     {
