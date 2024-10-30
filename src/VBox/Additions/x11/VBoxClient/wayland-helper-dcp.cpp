@@ -1,4 +1,4 @@
-/* $Id: wayland-helper-dcp.cpp 106784 2024-10-29 13:38:58Z vadim.galitsyn@oracle.com $ */
+/* $Id: wayland-helper-dcp.cpp 106799 2024-10-30 11:33:02Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - Data Control Protocol (DCP) helper for Wayland.
  *
@@ -1274,7 +1274,7 @@ RTDECL(int) vbcl_wayland_hlp_dcp_clip_init(void)
     vbcl_wayland_hlp_dcp_reset_ctx(&g_DcpCtx, false /* fShutdown */);
     vbcl_wayland_session_init(&g_DcpCtx.Session.Base);
 
-    return VBClClipboardThreadStart(&g_DcpCtx.Thread, vbcl_wayland_hlp_dcp_event_loop, "wl-dcp", &g_DcpCtx);
+    return vbcl_wayland_thread_start(&g_DcpCtx.Thread, vbcl_wayland_hlp_dcp_event_loop, "wl-dcp", &g_DcpCtx);
 }
 
 /**

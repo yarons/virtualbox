@@ -1,4 +1,4 @@
-/* $Id: wayland-helper-gtk.cpp 106784 2024-10-29 13:38:58Z vadim.galitsyn@oracle.com $ */
+/* $Id: wayland-helper-gtk.cpp 106799 2024-10-30 11:33:02Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - Gtk helper for Wayland.
  *
@@ -409,7 +409,7 @@ RTDECL(int) vbcl_wayland_hlp_gtk_clip_init(void)
 
     RT_ZERO(g_GtkCtx);
 
-    return VBClClipboardThreadStart(&g_GtkCtx.Thread, vbcl_wayland_hlp_gtk_worker, "wl-gtk-ipc", &g_GtkCtx);
+    return vbcl_wayland_thread_start(&g_GtkCtx.Thread, vbcl_wayland_hlp_gtk_worker, "wl-gtk-ipc", &g_GtkCtx);
 }
 
 /**

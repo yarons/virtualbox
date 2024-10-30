@@ -1,4 +1,4 @@
-/* $Id: wayland-helper.h 106766 2024-10-28 14:23:51Z vadim.galitsyn@oracle.com $ */
+/* $Id: wayland-helper.h 106799 2024-10-30 11:33:02Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - Definitions for Wayland helpers.
  */
@@ -397,6 +397,17 @@ RTDECL(int) vbcl_wayland_session_end(vbcl_wl_session_t *pSession,
  * @param   pSession    Session object.
  */
 RTDECL(bool) vbcl_wayland_session_is_started(vbcl_wl_session_t *pSession);
+
+/**
+ * Create thread and wait until it started.
+ *
+ * @returns IPRT status code.
+ * @param   pThread     Pointer to thread data.
+ * @param   pfnThread   Pointer to thread main loop function.
+ * @param   pszName     Thread name.
+ * @param   pvUser      User data.
+ */
+RTDECL(int) vbcl_wayland_thread_start(PRTTHREAD pThread, PFNRTTHREAD pfnThread, const char *pszName, void *pvUser);
 
 /** Wayland helper which uses GTK library. */
 extern const VBCLWAYLANDHELPER g_WaylandHelperGtk;

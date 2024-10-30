@@ -1,4 +1,4 @@
-/** $Id: clipboard.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/** $Id: clipboard.h 106799 2024-10-30 11:33:02Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard - Main header.
  */
@@ -81,17 +81,6 @@ struct SHCLCONTEXT
 /** Shared Clipboard context.
  *  Only one context is supported at a time for now. */
 extern SHCLCONTEXT g_Ctx;
-
-/**
- * Create thread and wait until it started.
- *
- * @returns IPRT status code.
- * @param   pThread     Pointer to thread data.
- * @param   pfnThread   Pointer to thread main loop function.
- * @param   pszName     Thread name.
- * @param   pvUser      User data.
- */
-RTDECL(int) VBClClipboardThreadStart(PRTTHREAD pThread, PFNRTTHREAD pfnThread, const char *pszName, void *pvUser);
 
 /**
  * Read and process one event from the host clipboard service.

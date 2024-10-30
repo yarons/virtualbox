@@ -1,4 +1,4 @@
-/* $Id: vboxwl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: vboxwl.cpp 106799 2024-10-30 11:33:02Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - Helper tool for grabbing input focus and perform
  * drag-n-drop and clipboard sharing in Wayland.
@@ -572,7 +572,7 @@ static int vboxwl_run_command(void)
 
     RTLOCALIPCSESSION hIpcSession;
 
-    rc = VBClClipboardThreadStart(&g_AppThread, vboxwl_gtk_worker, "gtk-app", NULL);
+    rc = vbcl_wayland_thread_start(&g_AppThread, vboxwl_gtk_worker, "gtk-app", NULL);
     if (RT_SUCCESS(rc))
     {
         rc = vboxwl_connect_ipc(&hIpcSession);
