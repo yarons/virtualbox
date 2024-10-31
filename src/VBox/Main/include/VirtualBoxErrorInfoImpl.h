@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxErrorInfoImpl.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtualBoxErrorInfoImpl.h 106822 2024-10-31 14:37:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBoxErrorInfo COM class definition.
  */
@@ -88,7 +88,9 @@ public:
     STDMETHOD(GetHelpContext)(DWORD *pdwHelpContext);
 
     // IDispatch forwarding - 3am hack.
-    typedef IDispatchImpl<IVirtualBoxErrorInfo, &IID_IVirtualBoxErrorInfo, &LIBID_VirtualBox, kTypeLibraryMajorVersion, kTypeLibraryMinorVersion> idi;
+    // 2024-10-31 bird: Match com/defs.h __uuidof() workaround for IID_IEventSource conflict with Uuid.lib.
+    typedef IDispatchImpl<IVirtualBoxErrorInfo, /*&IID_IVirtualBoxErrorInfo*/ &__uuidof(IVirtualBoxErrorInfo),
+                          &LIBID_VirtualBox, kTypeLibraryMajorVersion, kTypeLibraryMinorVersion> idi;
 
     STDMETHOD(GetTypeInfoCount)(UINT *pcInfo)
     {
