@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 106823 2024-10-31 14:41:09Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsDisplay.cpp 106824 2024-10-31 14:54:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -52,6 +52,7 @@
 /* COM includes: */
 #include "CExtPackManager.h"
 #include "CGraphicsAdapter.h"
+#include "CPlatformProperties.h"
 #include "CProgress.h" /* For starting recording. */
 #include "CRecordingScreenSettings.h"
 #include "CRecordingSettings.h"
@@ -639,6 +640,18 @@ bool UIMachineSettingsDisplay::validate(QList<UIValidationMessage> &messages)
 #ifdef VBOX_WITH_3D_ACCELERATION
     /* Check whether WDDM mode supported by the guest OS type: */
     m_f3DAccelerationSupported = UIGuestOSTypeHelpers::isWddmCompatibleOsType(m_strGuestOSTypeId);
+
+    /* Additionally make sure 3D acceleration is one of the features for current graphical controller: */
+    if (m_f3DAccelerationSupported)
+    {
+        const KPlatformArchitecture enmArch = optionalFlags().contains("arch")
+                                            ? optionalFlags().value("arch").value<KPlatformArchitecture>()
+                                            : KPlatformArchitecture_x86;
+        CPlatformProperties comPlatformProperties = gpGlobalSession->virtualBox().GetPlatformProperties(enmArch);
+        const QVector<KGraphicsFeature> features =
+            comPlatformProperties.GetSupportedGfxFeaturesForType(graphicsControllerTypeCurrent());
+        m_f3DAccelerationSupported &= features.contains(KGraphicsFeature_Acceleration3D);
+    }
 
     /* Pass whether 3D acceleration is supported into Video Memory Editor: */
     m_pEditorVideoMemorySize->set3DAccelerationSupported(m_f3DAccelerationSupported);
