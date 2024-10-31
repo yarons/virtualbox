@@ -1,4 +1,4 @@
-/* $Id: vboxwl.cpp 106803 2024-10-30 13:21:47Z vadim.galitsyn@oracle.com $ */
+/* $Id: vboxwl.cpp 106821 2024-10-31 14:20:11Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - Helper tool for grabbing input focus and perform
  * drag-n-drop and clipboard sharing in Wayland.
@@ -533,6 +533,32 @@ static int vboxwl_ipc_flow(RTLOCALIPCSESSION hIpcSession)
 }
 
 /**
+ * Get IPC server socket name prefix depending on session type.
+ *
+ * @returns Prefix name or NULL if session type is unknown.
+ */
+static const char *vboxwl_ipc_srv_name_prefix(void)
+{
+    const char *pcszPrefix;
+
+    switch (g_enmSessionType)
+    {
+        case VBCL_WL_CLIPBOARD_SESSION_TYPE_COPY_TO_GUEST:
+        case VBCL_WL_CLIPBOARD_SESSION_TYPE_ANNOUNCE_TO_HOST:
+        case VBCL_WL_CLIPBOARD_SESSION_TYPE_COPY_TO_HOST:
+        {
+            pcszPrefix = VBOXWL_SRV_NAME_PREFIX_CLIP;
+            break;
+        }
+
+        default:
+            pcszPrefix = NULL;
+    }
+
+    return pcszPrefix;
+}
+
+/**
  * Connect to VBoxClient service.
  *
  * @returns IPRT status code.
@@ -542,10 +568,12 @@ static int vboxwl_connect_ipc(PRTLOCALIPCSESSION phIpcSession)
 {
     int rc;
     char szIpcServerName[128];
+    const char *pcszPrefix = vboxwl_ipc_srv_name_prefix();
 
     AssertPtrReturn(phIpcSession, VERR_INVALID_PARAMETER);
+    AssertPtrReturn(pcszPrefix, VERR_INVALID_POINTER);
 
-    rc = vbcl_wayland_hlp_gtk_ipc_srv_name(szIpcServerName, sizeof(szIpcServerName));
+    rc = vbcl_wayland_hlp_gtk_ipc_srv_name(pcszPrefix, szIpcServerName, sizeof(szIpcServerName));
     if (RT_SUCCESS(rc))
         rc = RTLocalIpcSessionConnect(phIpcSession, szIpcServerName, 0);
 

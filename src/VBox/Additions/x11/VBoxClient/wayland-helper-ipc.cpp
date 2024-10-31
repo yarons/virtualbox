@@ -1,4 +1,4 @@
-/* $Id: wayland-helper-ipc.cpp 106803 2024-10-30 13:21:47Z vadim.galitsyn@oracle.com $ */
+/* $Id: wayland-helper-ipc.cpp 106821 2024-10-31 14:20:11Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - IPC between VBoxClient and vboxwl tool.
  */
@@ -44,7 +44,7 @@
 #include "VBoxClient.h"
 #include "wayland-helper-ipc.h"
 
-RTDECL(int) vbcl_wayland_hlp_gtk_ipc_srv_name(char *szBuf, size_t cbBuf)
+RTDECL(int) vbcl_wayland_hlp_gtk_ipc_srv_name(const char *szNamePrefix, char *szBuf, size_t cbBuf)
 {
     int rc;
 
@@ -52,13 +52,18 @@ RTDECL(int) vbcl_wayland_hlp_gtk_ipc_srv_name(char *szBuf, size_t cbBuf)
     size_t cchRead;
     struct passwd *pwd;
 
-    AssertReturn(RT_VALID_PTR(szBuf), VERR_INVALID_PARAMETER);
+    AssertPtrReturn(szNamePrefix, VERR_INVALID_POINTER);
+    AssertPtrReturn(szBuf, VERR_INVALID_POINTER);
     AssertReturn(cbBuf > 0, VERR_INVALID_PARAMETER);
 
     RT_BZERO(szBuf, cbBuf);
     RT_ZERO(pszActiveTTY);
 
     rc = RTStrCat(szBuf, cbBuf, "GtkHlpIpcServer-");
+    if (RT_SUCCESS(rc))
+        rc = RTStrCat(szBuf, cbBuf, szNamePrefix);
+    if (RT_SUCCESS(rc))
+        rc = RTStrCat(szBuf, cbBuf, "-");
     if (RT_SUCCESS(rc))
         rc = RTLinuxSysFsReadStrFile(pszActiveTTY, sizeof(pszActiveTTY) - 1 /* reserve last byte for string termination */,
                                      &cchRead, "class/tty/tty0/active");
