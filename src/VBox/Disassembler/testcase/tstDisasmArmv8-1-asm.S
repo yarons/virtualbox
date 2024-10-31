@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1-asm.S 106804 2024-10-30 13:59:23Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1-asm.S 106818 2024-10-31 10:54:16Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for ARMv8 A64.
  */
@@ -4148,6 +4148,63 @@ _TestProcA64:
 
         ld1 { v0.2D,  v1.2D }, [x0]
         ld1 { v31.2D, v0.2D }, [sp]
+
+        ;
+        ; RCW compare and swap
+        ;
+        ;.cpu generic+the+d128
+
+        ;rcwcas x0,   x1, [x3] - Requires FEAT_THE
+        ;rcwcas xzr, xzr, [sp] - Requires FEAT_THE
+
+        ;rcwcasl x0,   x1, [x3] - Requires FEAT_THE
+        ;rcwcasl xzr, xzr, [sp] - Requires FEAT_THE
+
+        ;rcwcasa x0,   x1, [x3] - Requires FEAT_THE
+        ;rcwcasa xzr, xzr, [sp] - Requires FEAT_THE
+
+        ;rcwcasal x0,   x1, [x3] - Requires FEAT_THE
+        ;rcwcasal xzr, xzr, [sp] - Requires FEAT_THE
+
+        ;rcwscas x0,   x1, [x3] - Requires FEAT_THE
+        ;rcwscas xzr, xzr, [sp] - Requires FEAT_THE
+
+        ;rcwscasl x0,   x1, [x3] - Requires FEAT_THE
+        ;rcwscasl xzr, xzr, [sp] - Requires FEAT_THE
+
+        ;rcwscasa x0,   x1, [x3] - Requires FEAT_THE
+        ;rcwscasa xzr, xzr, [sp] - Requires FEAT_THE
+
+        ;rcwscasal x0,   x1, [x3] - Requires FEAT_THE
+        ;rcwscasal xzr, xzr, [sp] - Requires FEAT_THE
+
+        ;
+        ; RCW compare and swap pair
+        ;
+
+        ;rcwcasp x0, x1, x2, x3, [x4] - Requires FEAT_THE && FEAT_D128
+        ;rcwcasp x0, x1, x2, x3, [sp] - Requires FEAT_THE && FEAT_D128
+
+        ;rcwcaspl x0, x1, x2, x3, [x4] - Requires FEAT_THE && FEAT_D128
+        ;rcwcaspl x0, x1, x2, x3, [sp] - Requires FEAT_THE && FEAT_D128
+
+        ;rcwcaspa x0, x1, x2, x3, [x3] - Requires FEAT_THE && FEAT_D128
+        ;rcwcaspa x0, x1, x2, x3, [sp] - Requires FEAT_THE && FEAT_D128
+
+        ;rcwcaspal x0, x1, x2, x3, [x3] - Requires FEAT_THE && FEAT_D128
+        ;rcwcaspal x0, x1, x2, x3, [sp] - Requires FEAT_THE && FEAT_D128
+
+        ;rcwscasp x0, x1, x2, x3, [x3] - Requires FEAT_THE && FEAT_D128
+        ;rcwscasp x0, x1, x2, x3, [sp] - Requires FEAT_THE && FEAT_D128
+
+        ;rcwscaspl x0, x1, x2, x3, [x3] - Requires FEAT_THE && FEAT_D128
+        ;rcwscaspl x0, x1, x2, x3, [sp] - Requires FEAT_THE && FEAT_D128
+
+        ;rcwscaspa x0, x1, x2, x3, [x3] - Requires FEAT_THE && FEAT_D128
+        ;rcwscaspa x0, x1, x2, x3, [sp] - Requires FEAT_THE && FEAT_D128
+
+        ;rcwscaspal x0, x1, x2, x3, [x3] - Requires FEAT_THE && FEAT_D128
+        ;rcwscaspal x0, x1, x2, x3, [sp] - Requires FEAT_THE && FEAT_D128
 
         ;
         ; Keep last so the testcase can catch errors in

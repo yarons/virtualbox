@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1.cpp 106804 2024-10-30 13:59:23Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1.cpp 106818 2024-10-31 10:54:16Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Testcase for ARMv8 A64
  */
@@ -91,6 +91,7 @@ static const RTSCRIPTLEXTOKMATCH s_aMatches[] =
     { RT_STR_TUPLE(".private_extern"),          RTSCRIPTLEXTOKTYPE_KEYWORD,    true,  0 },
     { RT_STR_TUPLE(".cpu"),                     RTSCRIPTLEXTOKTYPE_KEYWORD,    true,  0 },
     { RT_STR_TUPLE("generic+mte"),              RTSCRIPTLEXTOKTYPE_KEYWORD,    true,  0 },
+    { RT_STR_TUPLE("generic+the+d128"),         RTSCRIPTLEXTOKTYPE_KEYWORD,    true,  0 },
     { RT_STR_TUPLE("_testproca64"),             RTSCRIPTLEXTOKTYPE_KEYWORD,    true,  0 },
     { RT_STR_TUPLE("_testproca64_endproc"),     RTSCRIPTLEXTOKTYPE_KEYWORD,    true,  0 },
     { RT_STR_TUPLE(":"),                        RTSCRIPTLEXTOKTYPE_KEYWORD,    true,  0 },
