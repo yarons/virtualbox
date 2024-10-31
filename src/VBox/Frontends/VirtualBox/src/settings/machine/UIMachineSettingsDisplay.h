@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineSettingsDisplay.h 106823 2024-10-31 14:41:09Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class declaration.
  */
@@ -155,10 +155,10 @@ private:
     void updateMinimumLayoutHint();
 
     /** Holds the guest OS type. */
-    QString m_strGuestOSTypeId;
+    QString                  m_strGuestOSTypeId;
 #ifdef VBOX_WITH_3D_ACCELERATION
-    /** Holds whether the guest OS supports WDDM. */
-    bool          m_fWddmModeSupported;
+    /** Holds whether 3D acceleration supported. */
+    bool                     m_f3DAccelerationSupported;
 #endif
     /** Holds recommended graphics controller type. */
     KGraphicsControllerType  m_enmGraphicsControllerTypeRecommended;
