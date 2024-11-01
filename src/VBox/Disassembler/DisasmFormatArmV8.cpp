@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatArmV8.cpp 106818 2024-10-31 10:54:16Z alexander.eichner@oracle.com $ */
+/* $Id: DisasmFormatArmV8.cpp 106829 2024-11-01 09:24:29Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Disassembler - ARMv8 Style Formatter.
  */
@@ -923,9 +923,6 @@ DISDECL(size_t) DISFormatArmV8Ex(PCDISSTATE pDis, char *pszBuf, size_t cchBuf, u
                 {
                     Assert(   (pParam->fUse & (DISUSE_PRE_INDEXED | DISUSE_POST_INDEXED))
                            != (DISUSE_PRE_INDEXED | DISUSE_POST_INDEXED));
-                    Assert(   (   RT_BOOL(pParam->fUse & (DISUSE_PRE_INDEXED | DISUSE_POST_INDEXED))
-                               != RT_BOOL(pParam->fUse & DISUSE_INDEX))
-                           || !(pParam->fUse & (DISUSE_PRE_INDEXED | DISUSE_POST_INDEXED | DISUSE_INDEX)));
 
                     PUT_C('[');
 
@@ -937,8 +934,25 @@ DISDECL(size_t) DISFormatArmV8Ex(PCDISSTATE pDis, char *pszBuf, size_t cchBuf, u
                     if (pParam->fUse & DISUSE_POST_INDEXED)
                     {
                         Assert(pParam->armv8.enmExtend == kDisArmv8OpParmExtendNone);
-                        PUT_SZ("], #");
-                        PUT_NUM_S16(pParam->armv8.u.offBase);
+                        PUT_C(']');
+                        if (pParam->fUse & DISUSE_INDEX)
+                        {
+                            PUT_SZ(", ");
+
+                            pszReg = disasmFormatArmV8Reg(pDis, pParam->armv8.GprIndex.enmRegType,
+                                                          pParam->armv8.GprIndex.idReg, &cchReg);
+                            PUT_STR(pszReg, cchReg);
+                        }
+                        else if (   pParam->armv8.u.offBase
+                                 || (pParam->fUse & (DISUSE_POST_INDEXED | DISUSE_PRE_INDEXED)))
+                        {
+                            PUT_SZ(", #");
+                            if (   pParam->armv8.u.offBase >= INT16_MIN
+                                && pParam->armv8.u.offBase <= INT16_MAX)
+                                PUT_NUM_S16(pParam->armv8.u.offBase);
+                            else
+                                PUT_NUM_S32(pParam->armv8.u.offBase);
+                        }
                     }
                     else
                     {
