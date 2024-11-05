@@ -1,5 +1,5 @@
 @echo off
-rem $Id: load.cmd 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+rem $Id: load.cmd 106850 2024-11-05 12:28:16Z knut.osmundsen@oracle.com $
 rem rem @file
 rem Windows NT batch script for loading the support driver.
 rem
@@ -51,10 +51,17 @@ goto end
 
 :dir_okay
 rem
-rem We don't use the driver files directly any more because of win10 keeping the open,
-rem so create an alternative directory for the binaries.
+rem We don't use the driver files directly any more because of win10 keeping them 
+rem open, so create an alternative directory for the binaries.  Another reason is
+rem loading drivers via network shares, in which case we just use temp.
 rem
 set MY_ALTDIR=%MY_DIR%\..\LoadedDrivers
+if not "%MY_ALTDIR:~1:1" == ":" goto alt_dir_remote
+net use "%MY_ALTDIR:~0:1" > nul 2>nul && goto alt_dir_remote
+goto alt_dir_done
+:alt_dir_remote
+set MY_ALTDIR=%TMP%\VBoxLoadedDrivers
+:alt_dir_done
 if not exist "%MY_ALTDIR%" mkdir "%MY_ALTDIR%"
 
 rem
