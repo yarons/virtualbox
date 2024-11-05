@@ -40,7 +40,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 106840 $"
+__version__ = "$Revision: 106841 $"
 
 
 # Standard Python imports.
@@ -915,7 +915,7 @@ class VBoxInstallerTestDriver(TestDriverBase):
         """
         Tries deleting the Setup API host logs.
         """
-        for sFile, _ in self.kasSetupApiLogFiles:
+        for sFile, _, _ in self.kasSetupApiLogFiles:
             sFile = os.path.expandvars(sFile);
             try:
                 os.remove(sFile);
