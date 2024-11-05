@@ -1,5 +1,5 @@
 @echo off
-rem $Id: load.cmd 106850 2024-11-05 12:28:16Z knut.osmundsen@oracle.com $
+rem $Id: load.cmd 106854 2024-11-05 13:11:53Z knut.osmundsen@oracle.com $
 rem rem @file
 rem Windows NT batch script for loading the support driver.
 rem
@@ -51,7 +51,7 @@ goto end
 
 :dir_okay
 rem
-rem We don't use the driver files directly any more because of win10 keeping them 
+rem We don't use the driver files directly any more because of win10 keeping them
 rem open, so create an alternative directory for the binaries.  Another reason is
 rem loading drivers via network shares, in which case we just use temp.
 rem
