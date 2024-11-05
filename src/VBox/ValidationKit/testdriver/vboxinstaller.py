@@ -40,7 +40,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 106843 $"
+__version__ = "$Revision: 106844 $"
 
 
 # Standard Python imports.
@@ -537,13 +537,14 @@ class VBoxInstallerTestDriver(TestDriverBase):
         #
         # Go to system specific installation code.
         #
-        sHost = utils.getHostOs()
+        sHost = utils.getHostOs();
         if   sHost == 'darwin':     fRc = self._installVBoxOnDarwin();
         elif sHost == 'linux':      fRc = self._installVBoxOnLinux();
         elif sHost == 'solaris':    fRc = self._installVBoxOnSolaris();
         elif sHost == 'win':        fRc = self._installVBoxOnWindows();
         else:
             reporter.error('Unsupported host "%s".' % (sHost,));
+            fRc = False;
         if fRc is False:
             reporter.testFailure('Installation error.');
         elif fRc is not True:
@@ -573,13 +574,14 @@ class VBoxInstallerTestDriver(TestDriverBase):
         """
         reporter.testStart('Uninstalling VirtualBox');
 
-        sHost = utils.getHostOs()
+        sHost = utils.getHostOs();
         if   sHost == 'darwin':     fRc = self._uninstallVBoxOnDarwin();
         elif sHost == 'linux':      fRc = self._uninstallVBoxOnLinux();
         elif sHost == 'solaris':    fRc = self._uninstallVBoxOnSolaris(True);
         elif sHost == 'win':        fRc = self._uninstallVBoxOnWindows('uninstall');
         else:
             reporter.error('Unsupported host "%s".' % (sHost,));
+            fRc = None; # To make pylint happy.
         if fRc is False and not fIgnoreError:
             reporter.testFailure('Uninstallation failed.');
 
