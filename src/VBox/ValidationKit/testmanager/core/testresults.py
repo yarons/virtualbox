@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 106851 2024-11-05 12:53:33Z andreas.loeffler@oracle.com $
+# $Id: testresults.py 106852 2024-11-05 13:02:57Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 ## @todo Rename this file to testresult.py!
@@ -39,7 +39,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 106851 $"
+__version__ = "$Revision: 106852 $"
 
 
 # Standard python imports.
@@ -436,7 +436,6 @@ class TestResultFileData(ModelDataBase):
     ksKind_LogInstaller             = 'log/installer';
     ksKind_LogUninstaller           = 'log/uninstaller';
     ksKind_LogGuestKernel           = 'log/guest/kernel';
-    ksKind_LogWinSetupApi           = 'log/win/setupapi';
     ksKind_ProcessReportVm          = 'process/report/vm';
     ksKind_CrashReportVm            = 'crash/report/vm';
     ksKind_CrashDumpVm              = 'crash/dump/vm';
@@ -463,7 +462,6 @@ class TestResultFileData(ModelDataBase):
         ksKind_LogInstaller,
         ksKind_LogUninstaller,
         ksKind_LogGuestKernel,
-        ksKind_LogWinSetupApi,
         ksKind_ProcessReportVm,
         ksKind_CrashReportVm,
         ksKind_CrashDumpVm,
