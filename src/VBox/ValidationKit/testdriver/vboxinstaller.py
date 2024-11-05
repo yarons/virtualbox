@@ -40,7 +40,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 106842 $"
+__version__ = "$Revision: 106843 $"
 
 
 # Standard Python imports.
@@ -906,12 +906,15 @@ class VBoxInstallerTestDriver(TestDriverBase):
 
     ## Windows SetupAPI log files we handle.
     kasSetupApiLogFiles = [
-        ( '%WINDIR%/setupapi.log',             'log/setupapi-log',     'SetupAPI (setupapi.log)', ),         # Windows XP and later.
+        # Windows XP and later.
+        ( '%WINDIR%/setupapi.log',             'log/setupapi-log',     'SetupAPI (setupapi.log)', ),
         ( '%WINDIR%/setupact.log',             'log/setupapi-act',     'SetupAPI (setupact.log)', ),
         ( '%WINDIR%/setuperr.log',             'log/setupapi-err',     'SetupAPI (setuperr.log)', ),
-        ( '%WINDIR%/INF/setupapi.app.log',     'log/setupapi-app',     'SetupAPI (setupapi.app.log)', ),     # Windows 7 and later.
+        # Windows 7 and later.
+        ( '%WINDIR%/INF/setupapi.app.log',     'log/setupapi-app',     'SetupAPI (setupapi.app.log)', ),
         ( '%WINDIR%/INF/setupapi.dev.log',     'log/setupapi-dev',     'SetupAPI (setupapi.dev.log)', ),
-        ( '%WINDIR%/INF/setupapi.upgrade.log', 'log/setupapi-upgrade', 'SetupAPI (setupapi.upgrade.log)', ), # Windows 10 and later.
+        # Windows 10 and later.
+        ( '%WINDIR%/INF/setupapi.upgrade.log', 'log/setupapi-upgrade', 'SetupAPI (setupapi.upgrade.log)', ),
         ( '%WINDIR%/INF/setupact.log',         'log/setupapi-act',     'SetupAPI (setupact.log)', ),
         ( '%WINDIR%/INF/setuperr.log',         'log/setupapi-err',     'SetupAPI (setuperr.log)', ),
     ];
