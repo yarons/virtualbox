@@ -1,4 +1,4 @@
-/* $Id: SUPDrvGip.cpp 106646 2024-10-24 00:31:41Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrvGip.cpp 106858 2024-11-05 21:33:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code for GIP.
  */
@@ -501,6 +501,7 @@ static DECLCALLBACK(void) supdrvGipDetectGetGipCpuCallback(RTCPUID idCpu, void *
     }
 
 #else  /* !defined(RT_ARCH_AMD64) && !defined(RT_ARCH_X86) */
+    fSupported |= SUPGIPGETCPU_TPIDRRO_EL0;
     idApic = supdrvGipGetApicIdSlow();
 #endif /* !defined(RT_ARCH_AMD64) && !defined(RT_ARCH_X86) */
 
