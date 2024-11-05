@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvInst.cpp 106532 2024-10-20 14:43:14Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDrvInst.cpp 106856 2024-11-05 17:22:30Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxDrvInst - Driver and service installation helper for Windows guests.
  */
@@ -616,8 +616,8 @@ static int handleDriverInstall(unsigned cArgs, wchar_t **papwszArgs)
             rc = VBoxWinDrvInstCreateEx(&hWinDrvInst, 4 /* Verbosity */, &vboxWinDrvInstLogCallback, hLog /* pvUser */);
             if (RT_SUCCESS(rc))
             {
-                rc = VBoxWinDrvInstInstall(hWinDrvInst, pszInfFile, pszPnpId,
-                                           VBOX_WIN_DRIVERINSTALL_F_SILENT | VBOX_WIN_DRIVERINSTALL_F_FORCE);
+                rc = VBoxWinDrvInstInstallEx(hWinDrvInst, pszInfFile, NULL /* pszModel */, pszPnpId,
+                                             VBOX_WIN_DRIVERINSTALL_F_SILENT | VBOX_WIN_DRIVERINSTALL_F_FORCE);
 
                 VBoxWinDrvInstDestroy(hWinDrvInst);
             }

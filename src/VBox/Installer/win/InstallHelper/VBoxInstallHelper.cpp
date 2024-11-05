@@ -1,4 +1,4 @@
-/* $Id: VBoxInstallHelper.cpp 106839 2024-11-04 18:41:18Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxInstallHelper.cpp 106856 2024-11-05 17:22:30Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxInstallHelper - Various helper routines for Windows host installer.
  */
@@ -1471,34 +1471,42 @@ UINT __stdcall DriverInstall(MSIHANDLE hModule)
         if (   RT_SUCCESS(rc)
             || rc == VERR_NOT_FOUND) /* VBoxDrvInstInfSection is optional. */
         {
-            char *pszPnpId = NULL;
-            rc = VBoxMsiQueryPropUtf8(hModule, "VBoxDrvInstPnpId", &pszPnpId);
+            char *pszModel = NULL;
+            rc = VBoxMsiQueryPropUtf8(hModule, "VBoxDrvInstModel", &pszModel);
             if (   RT_SUCCESS(rc)
-                || rc == VERR_NOT_FOUND) /* VBoxDrvInstHwId is optional. */
+                || rc == VERR_NOT_FOUND) /* VBoxDrvInstModel is optional. */
             {
-                uint32_t fFlags = VBOX_WIN_DRIVERINSTALL_F_NONE;
-
-                DWORD dwVal;
-                rc = VBoxMsiQueryPropInt32(hModule, "VBoxDrvInstFlagForce", &dwVal);
-                if (RT_SUCCESS(rc))
-                    fFlags |= VBOX_WIN_DRIVERINSTALL_F_FORCE;
-                rc = VBoxMsiQueryPropInt32(hModule, "VBoxDrvInstFlagSilent", &dwVal);
-                if (RT_SUCCESS(rc))
-                    fFlags |= VBOX_WIN_DRIVERINSTALL_F_SILENT;
-
-                VBOXWINDRVINST hWinDrvInst;
-                rc = VBoxWinDrvInstCreateEx(&hWinDrvInst, 1 /* uVerbostiy */, &vboxWinDrvInstLogCallback, &hModule /* pvUser */);
-                if (RT_SUCCESS(rc))
+                char *pszPnpId = NULL;
+                rc = VBoxMsiQueryPropUtf8(hModule, "VBoxDrvInstPnpId", &pszPnpId);
+                if (   RT_SUCCESS(rc)
+                    || rc == VERR_NOT_FOUND) /* VBoxDrvInstPnpId is optional. */
                 {
-                    if (pszInfSection && *pszInfSection)
-                        rc = VBoxWinDrvInstInstallExecuteInf(hWinDrvInst, pszInfFile, pszInfSection, fFlags);
-                    else
-                        rc = VBoxWinDrvInstInstall(hWinDrvInst, pszInfFile, pszPnpId, fFlags);
+                    uint32_t fFlags = VBOX_WIN_DRIVERINSTALL_F_NONE;
 
-                    VBoxWinDrvInstDestroy(hWinDrvInst);
+                    DWORD dwVal;
+                    rc = VBoxMsiQueryPropInt32(hModule, "VBoxDrvInstFlagForce", &dwVal);
+                    if (RT_SUCCESS(rc))
+                        fFlags |= VBOX_WIN_DRIVERINSTALL_F_FORCE;
+                    rc = VBoxMsiQueryPropInt32(hModule, "VBoxDrvInstFlagSilent", &dwVal);
+                    if (RT_SUCCESS(rc))
+                        fFlags |= VBOX_WIN_DRIVERINSTALL_F_SILENT;
+
+                    VBOXWINDRVINST hWinDrvInst;
+                    rc = VBoxWinDrvInstCreateEx(&hWinDrvInst, 1 /* uVerbostiy */, &vboxWinDrvInstLogCallback, &hModule /* pvUser */);
+                    if (RT_SUCCESS(rc))
+                    {
+                        if (pszInfSection && *pszInfSection)
+                            rc = VBoxWinDrvInstInstallExecuteInf(hWinDrvInst, pszInfFile, pszInfSection, fFlags);
+                        else
+                            rc = VBoxWinDrvInstInstallEx(hWinDrvInst, pszInfFile, pszModel, pszPnpId, fFlags);
+
+                        VBoxWinDrvInstDestroy(hWinDrvInst);
+                    }
+
+                    RTStrFree(pszPnpId);
                 }
 
-                RTStrFree(pszPnpId);
+                RTStrFree(pszModel);
             }
 
             RTStrFree(pszInfSection);
