@@ -1,4 +1,4 @@
-/* $Id: VBoxWinDrvInst.cpp 106512 2024-10-19 07:41:58Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxWinDrvInst.cpp 106845 2024-11-05 09:50:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxWinDrvInst - Windows driver installation handling.
  */
@@ -1067,7 +1067,7 @@ static int vboxWinDrvInstallPerform(PVBOXWINDRVINSTINTERNAL pCtx, PVBOXWINDRVINS
             BOOL fReboot = FALSE;
 
             if (pParms->u.UnInstall.pwszPnpId)
-                vboxWinDrvInstLogInfo(pCtx, "Using hardware ID \"%ls\"", pParms->u.UnInstall.pwszPnpId);
+                vboxWinDrvInstLogInfo(pCtx, "Using PnP ID \"%ls\"", pParms->u.UnInstall.pwszPnpId);
 
             uint64_t const uNtVer = RTSystemGetNtVersion();
 
