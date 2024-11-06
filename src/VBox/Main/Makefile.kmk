@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106807 2024-10-30 15:08:57Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 106868 2024-11-06 09:45:41Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -295,7 +295,7 @@ $(PATH_TARGET)/VirtualBox.idl: \
 		$(VBOX_PATH_MAIN_SRC)/idl/doxygen.xsl \
 		| $(PATH_TARGET)/
 	$(call MSG_TOOL,xsltproc,,$<,$@)
-	$(QUIET)$(VBOX_XSLTPROC) --path ".:$(PATH_ROOT)/doc/manual" \
+	$(QUIET)$(VBOX_XSLTPROC) --path "." --path "$(PATH_ROOT)/doc/manual" \
 		-o "$@.tmp" $(VBOX_PATH_MAIN_SRC)/idl/doxygen.xsl $(VBOX_XIDL_FILE_SRC)
 	$(QUIET)$(SED) \
 		-e 's,@SLASH-ASTERISK@,<b></b>*,g' \
