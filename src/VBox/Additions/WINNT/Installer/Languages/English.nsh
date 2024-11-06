@@ -1,4 +1,4 @@
-; $Id: English.nsh 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+; $Id: English.nsh 106864 2024-11-06 02:21:06Z knut.osmundsen@oracle.com $
 ;; @file
 ; NLS for English language.
 ;
@@ -29,8 +29,9 @@ LangString VBOX_TEST ${LANG_ENGLISH}                                "This is a t
 
 LangString VBOX_NOADMIN ${LANG_ENGLISH}                             "You need administrator rights to install or uninstall the $(^Name).$\r$\nThis application will exit now."
 
-LangString VBOX_NOTICE_ARCH_X86 ${LANG_ENGLISH}                     "This application only runs on 32-bit Windows systems. Please install the 64-bit version of $(^Name)!"
-LangString VBOX_NOTICE_ARCH_AMD64 ${LANG_ENGLISH}                   "This application only runs on 64-bit Windows systems. Please install the 32-bit version of $(^Name)!"
+LangString VBOX_NOTICE_ARCH_X86 ${LANG_ENGLISH}                     "This application only runs on 32-bit Windows systems. Please pick the variant of the $(^Name) installer matching your guest OS!"
+LangString VBOX_NOTICE_ARCH_AMD64 ${LANG_ENGLISH}                   "This application only runs on 64-bit Windows systems. Please pick the variant of the $(^Name) installer matching your guest OS!"
+LangString VBOX_NOTICE_ARCH_ARM64 ${LANG_ENGLISH}                   "This application only runs on Windows ARM64 systems. Please pick the variant of the $(^Name) installer matching your guest OS!"
 LangString VBOX_NT4_NO_SP6 ${LANG_ENGLISH}                          "You do not seem to have Service Pack 6 for Windows NT4 installed.$\r$\nWe recommend that you install it first. Do you wish to continue anyway?"
 
 LangString VBOX_PLATFORM_UNSUPPORTED ${LANG_ENGLISH}                "The VirtualBox Guest Additions cannot be installed on this version of Windows"
