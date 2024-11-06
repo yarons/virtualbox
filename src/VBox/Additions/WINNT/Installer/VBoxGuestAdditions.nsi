@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 106864 2024-11-06 02:21:06Z knut.osmundsen@oracle.com $
+; $Id: VBoxGuestAdditions.nsi 106865 2024-11-06 03:07:27Z knut.osmundsen@oracle.com $
 ; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -1067,18 +1067,22 @@ Function .onInit
   ${EndIf}
 
   ; Check for correct architecture
-  Call CheckArchitecture
-  Pop $0
-  ${If} $0 <> 0 ; Wrong architecture? Tell the world
   !if $%KBUILD_TARGET_ARCH% == "amd64"
-    MessageBox MB_ICONSTOP $(VBOX_NOTICE_ARCH_AMD64) /SD IDOK
+    ${IfNot} ${IsNativeAMD64}
+      MessageBox MB_ICONSTOP $(VBOX_NOTICE_ARCH_AMD64) /SD IDOK
+      Abort "$(VBOX_NOTICE_ARCH_AMD64)"
+    ${EndIf}
   !else if $%KBUILD_TARGET_ARCH% == "arm64"
-    MessageBox MB_ICONSTOP $(VBOX_NOTICE_ARCH_ARM64) /SD IDOK
+    ${IfNot} ${IsNativeARM64}
+      MessageBox MB_ICONSTOP $(VBOX_NOTICE_ARCH_ARM64) /SD IDOK
+      Abort "$(VBOX_NOTICE_ARCH_ARM64)"
+    ${EndIf}
   !else
-    MessageBox MB_ICONSTOP $(VBOX_NOTICE_ARCH_X86) /SD IDOK
+    ${IfNot} ${IsNativeIA32}
+      MessageBox MB_ICONSTOP $(VBOX_NOTICE_ARCH_X86) /SD IDOK
+      Abort "$(VBOX_NOTICE_ARCH_X86)"
+    ${EndIf}
   !endif
-    Abort "$(VBOX_NOTICE_ARCH_AMD64)"
-  ${EndIf}
 
   ; Has the user who calls us admin rights?
   UserInfo::GetAccountType
