@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsCommon.nsh 106865 2024-11-06 03:07:27Z knut.osmundsen@oracle.com $
+; $Id: VBoxGuestAdditionsCommon.nsh 106867 2024-11-06 09:15:37Z knut.osmundsen@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsCommon.nsh - Common / shared utility functions.
 ;
@@ -78,7 +78,7 @@ Function Common_CopyFiles
   ${EndIf}
   !endif
 !endif
-!endif ; $%KBUILD_TARGET_ARCH% != "arm64" 
+!endif ; $%KBUILD_TARGET_ARCH% != "arm64"
 
 FunctionEnd
 
@@ -125,7 +125,7 @@ Function ExtractFiles
   !endif
 !endif
   FILE "$%PATH_OUT%\bin\additions\VBoxDisp.dll"
-!endif ; $%KBUILD_TARGET_ARCH% != "arm64" 
+!endif ; $%KBUILD_TARGET_ARCH% != "arm64"
 
 !if $%VBOX_WITH_WDDM% == "1"
   ; WDDM Video driver
