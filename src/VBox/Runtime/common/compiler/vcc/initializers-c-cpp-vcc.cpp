@@ -1,4 +1,4 @@
-/* $Id: initializers-c-cpp-vcc.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: initializers-c-cpp-vcc.cpp 106860 2024-11-06 01:47:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Visual C++ Compiler - C & C++ Initializers and Terminators.
  */
@@ -89,7 +89,7 @@ __declspec(allocate(".CRT$XCZ"))    PFNVCINITTERM       g_apfnRTVccInitializers_
  *
  * @returns 0 on success, non-zero return from C initalizer on failure.
  */
-int rtVccInitializersRunInit(void)
+int rtVccInitializersRunInit(void) RT_NOEXCEPT
 {
     /*
      * Run the C initializers first.
@@ -128,7 +128,7 @@ int rtVccInitializersRunInit(void)
 /**
  * Runs the C terminator callbacks.
  */
-void rtVccInitializersRunTerm(void)
+void rtVccInitializersRunTerm(void) RT_NOEXCEPT
 {
     /*
      * First the early terminators.

@@ -1,4 +1,4 @@
-; $Id: vcc-fakes-kernel32-A.asm 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+; $Id: vcc-fakes-kernel32-A.asm 106860 2024-11-06 01:47:55Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - Wrappers for kernel32 APIs missing in NT4 and earlier.
 ;
@@ -49,6 +49,8 @@ GLOBALNAME vcc100_kernel32_fakes_asm
 %elifdef VCC_FAKES_TARGET_VCC141
  %include "vcc-fakes-kernel32-141.h"
 %elifdef VCC_FAKES_TARGET_VCC142
+ %include "vcc-fakes-kernel32-141.h"
+%elifdef VCC_FAKES_TARGET_VCC143
  %include "vcc-fakes-kernel32-141.h"
 %else
  %error "PORT ME!"

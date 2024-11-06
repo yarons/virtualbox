@@ -1,4 +1,4 @@
-/* $Id: vcc-fakes-kernel32.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: vcc-fakes-kernel32.cpp 106860 2024-11-06 01:47:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Tricks to make the Visual C++ 2010 CRT work on NT4, W2K and XP.
  */
@@ -89,6 +89,8 @@ static volatile bool g_fInitialized = false;
 #elif defined(VCC_FAKES_TARGET_VCC141)
 # include "vcc-fakes-kernel32-141.h"
 #elif defined(VCC_FAKES_TARGET_VCC142)
+# include "vcc-fakes-kernel32-141.h"
+#elif defined(VCC_FAKES_TARGET_VCC143)
 # include "vcc-fakes-kernel32-141.h"
 #else
 # error "Port me!"
@@ -481,7 +483,7 @@ DECL_KERNEL32(BOOL) Fake_SetFilePointerEx(HANDLE hFile, LARGE_INTEGER offDistanc
 
         case FILE_END:
         {
-            FILE_STANDARD_INFO StdInfo = {{0}};
+            FILE_STANDARD_INFO StdInfo = { {{0}}, {{0}}, 0, 0, 0 };
             rcNt = NtQueryInformationFile(hFile, &Ios, &StdInfo, sizeof(StdInfo), FileStandardInformation);
             if (NT_SUCCESS(rcNt))
             {
@@ -513,7 +515,7 @@ DECL_KERNEL32(BOOL) Fake_SetFilePointerEx(HANDLE hFile, LARGE_INTEGER offDistanc
 DECL_KERNEL32(BOOL) Fake_GetFileSizeEx(HANDLE hFile, PLARGE_INTEGER pcbFile)
 {
     IO_STATUS_BLOCK    Ios     = RTNT_IO_STATUS_BLOCK_INITIALIZER;
-    FILE_STANDARD_INFO StdInfo = {{0}};
+    FILE_STANDARD_INFO StdInfo = { {{0}}, {{0}}, 0, 0, 0 };
     NTSTATUS rcNt = NtQueryInformationFile(hFile, &Ios, &StdInfo, sizeof(StdInfo), FileStandardInformation);
     if (NT_SUCCESS(rcNt))
     {
@@ -873,6 +875,8 @@ DECLASM(void) FakeResolve_kernel32(void)
 #elif defined(VCC_FAKES_TARGET_VCC141)
 # include "vcc-fakes-kernel32-141.h"
 #elif defined(VCC_FAKES_TARGET_VCC142)
+# include "vcc-fakes-kernel32-141.h"
+#elif defined(VCC_FAKES_TARGET_VCC143)
 # include "vcc-fakes-kernel32-141.h"
 #else
 # error "Port me!"
