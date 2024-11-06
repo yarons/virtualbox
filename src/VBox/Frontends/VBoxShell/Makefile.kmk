@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 106871 2024-11-06 11:50:38Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the shell frontend.
 #
@@ -43,7 +43,7 @@ VBoxShell_SOURCES = \
 if defined(VBOX_WITH_PYLINT) && !defined(VBOX_WITHOUT_AUTO_PYLINT)
  OTHERS      += $(PATH_TARGET)/pylintVBoxShell.run
  OTHER_CLEAN += $(PATH_TARGET)/pylintVBoxShell.run
- $(PATH_TARGET)/pylintVBoxShell.run: vboxshell.py
+ $(PATH_TARGET)/pylintVBoxShell.run: $(PATH_SUB_CURRENT)/vboxshell.py
 	$(QUIET)$(APPEND) -t "$@"
 endif
 
