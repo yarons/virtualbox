@@ -1,4 +1,4 @@
-# $Id: Config.kmk 106847 2024-11-05 10:38:45Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 106869 2024-11-06 11:49:44Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2197,10 +2197,13 @@ USES.win += vboximportchecker vboxsetpeversion
 #       (WLH = windows longhorn, the codenamefor Vista).
 #
 # Note! WDK 10.0.26100.0 (Windows 11 24h2) no longer ships x86 kernel mode
-#       libraries.  So, for building 32-bit drivers, we must use an older
-#       WDK version (like 10.0.22621.0, or 10.0.22000.0).
+#       libraries.  Nor does it ship any win7, win8 or win6.3 (8.1) kernel
+#       mode libraries for amd64.  So, for building x86 and amd64 drivers, we
+#       must use an older WDK version (like 10.0.22621.0, or 10.0.22000.0).
+#       (It is possible we could use the w10/11 km libs for the x64 GA, but
+#       that needs somewhat careful checking.)
 #
-if "$(KBUILD_TARGET_ARCH)" == "x86" && (defined(VBOX_WITH_ADDITIONS) || defined(VBOX_ONLY_ADDITIONS))
+if1of ($(KBUILD_TARGET_ARCH), x86 amd64)
  SDK_WINSDK10_MAX_VERSION = 10.0.22621.0
 endif
 VBOX_WINDDK            ?= WINSDK10-KM
@@ -9284,7 +9287,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 106847 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 106869 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
