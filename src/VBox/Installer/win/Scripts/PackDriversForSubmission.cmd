@@ -1,5 +1,5 @@
 @echo off
-rem $Id: PackDriversForSubmission.cmd 106872 2024-11-06 14:40:10Z knut.osmundsen@oracle.com $
+rem $Id: PackDriversForSubmission.cmd 106874 2024-11-06 15:12:55Z knut.osmundsen@oracle.com $
 rem rem @file
 rem Windows NT batch script for preparing for signing submission.
 rem
@@ -298,6 +298,8 @@ echo %_MY_OPT_GADIR%\VBoxTray.exe>>                                             
 echo %_MY_OPT_GADIR%\VBoxControl.exe>>                                                  "%_MY_OPT_DDF_FILE%"
 echo %_MY_OPT_GADIR%\VBoxMouse.inf>>                                                    "%_MY_OPT_DDF_FILE%"
 echo %_MY_OPT_GADIR%\VBoxMouse.sys>>                                                    "%_MY_OPT_DDF_FILE%"
+rem rem @todo win.arm64: Temporarily skipping video drivers as they're not building.
+if "%_MY_OPT_ARCH%" == "arm64" goto skip_video_files
 rem VBoxVideo files are excluded from attestation signing.
 rem echo %_MY_OPT_GADIR%\VBoxVideo.inf>>                                                    "%_MY_OPT_DDF_FILE%"
 rem echo %_MY_OPT_GADIR%\VBoxVideo.sys>>                                                    "%_MY_OPT_DDF_FILE%"
@@ -309,6 +311,7 @@ echo %_MY_OPT_GADIR%\VBoxDispD3D.dll>>                                          
 echo %_MY_OPT_GADIR%\VBoxNine.dll>>                                                     "%_MY_OPT_DDF_FILE%"
 echo %_MY_OPT_GADIR%\VBoxSVGA.dll>>                                                     "%_MY_OPT_DDF_FILE%"
 echo %_MY_OPT_GADIR%\VBoxGL.dll>>                                                       "%_MY_OPT_DDF_FILE%"
+:skip_video_files
 echo %_MY_OPT_GADIR%\VBoxMRXNP.dll>>                                                    "%_MY_OPT_DDF_FILE%"
 echo %_MY_OPT_GADIR%\VBoxSF.sys>>                                                       "%_MY_OPT_DDF_FILE%"
 if not ".%_MY_OPT_ARCH%" == ".amd64" goto skip_amd64_files
