@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 106880 2024-11-07 03:21:36Z knut.osmundsen@oracle.com $
 ## @file
 # VirtualBox Validation Kit - Audio Utilities.
 #
@@ -75,13 +75,10 @@ endif
 #
 # Utility to play sine wave to Default Audio Device.
 #
-if 0 # Disabled for now; does not work without WinMM.dll import validator files.
- PROGRAMS.win += ntPlayToneWaveX
- ntPlayToneWaveX_TEMPLATE = VBoxValidationKitR3
- ntPlayToneWaveX_SOURCES  = ntPlayToneWaveX.cpp
- ntPlayToneWaveX_LIBS    += \
- 	WinMM.Lib
-endif
+PROGRAMS.win += ntPlayToneWaveX
+ntPlayToneWaveX_TEMPLATE := VBoxValidationKitR3
+ntPlayToneWaveX_SOURCES  := ntPlayToneWaveX.cpp
+ntPlayToneWaveX_LIBS     := WinMM.lib
 
 
 #
