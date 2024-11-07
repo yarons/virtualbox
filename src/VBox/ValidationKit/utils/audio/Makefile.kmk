@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106880 2024-11-07 03:21:36Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 106883 2024-11-07 08:00:50Z knut.osmundsen@oracle.com $
 ## @file
 # VirtualBox Validation Kit - Audio Utilities.
 #
@@ -75,10 +75,12 @@ endif
 #
 # Utility to play sine wave to Default Audio Device.
 #
-PROGRAMS.win += ntPlayToneWaveX
-ntPlayToneWaveX_TEMPLATE := VBoxValidationKitR3
-ntPlayToneWaveX_SOURCES  := ntPlayToneWaveX.cpp
-ntPlayToneWaveX_LIBS     := WinMM.lib
+if defined(VBOX_ONLY_VALIDATIONKIT) || !defined(VBOX_ONLY_BUILD)
+ PROGRAMS.win += ntPlayToneWaveX
+ ntPlayToneWaveX_TEMPLATE := VBoxValidationKitR3
+ ntPlayToneWaveX_SOURCES  := ntPlayToneWaveX.cpp
+ ntPlayToneWaveX_LIBS     := WinMM.lib
+endif
 
 
 #
