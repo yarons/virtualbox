@@ -1,4 +1,4 @@
-/* $Id: ObjectsTracker.h 106918 2024-11-08 22:45:15Z knut.osmundsen@oracle.com $ */
+/* $Id: ObjectsTracker.h 106919 2024-11-08 23:39:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Object tracker definitions
  */
@@ -154,7 +154,7 @@ private:
  *       should use com::Utf8Str where possible. In this case, though, it's a
  *       com::Guid which would have much more efficient storage compared
  *       to both the string variants... */
-#if 1
+#if 0 /* The solaris VM seems to have trouble with this or something related to it. */
 typedef std::string ObjIdString_T;
 #else
 typedef com::Utf8Str ObjIdString_T;
