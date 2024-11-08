@@ -1,4 +1,4 @@
-/* $Id: EMR3Dbg.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: EMR3Dbg.cpp 106913 2024-11-08 15:54:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - Execution Monitor / Manager, Debugger Related Bits.
  */
@@ -40,6 +40,8 @@
 #include <iprt/string.h>
 #include <iprt/ctype.h>
 
+
+#ifdef VBOX_WITH_DEBUGGER
 
 /**
  * Common worker for the  '.alliem' and '.iemrecompiled' commands.
@@ -103,6 +105,8 @@ static DBGCCMD const g_aCmds[] =
         "Enables or disables recompiled ALL-in-IEM execution, if no arguments are given it displays the current status."
     },
 };
+
+#endif /* VBOX_WITH_DEBUGGER */
 
 
 /**
