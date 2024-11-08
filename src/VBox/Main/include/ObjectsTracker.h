@@ -1,4 +1,4 @@
-/* $Id: ObjectsTracker.h 106703 2024-10-25 11:43:47Z alexander.rudnev@oracle.com $ */
+/* $Id: ObjectsTracker.h 106909 2024-11-08 15:30:44Z valery.portnyagin@oracle.com $ */
 /** @file
  * VirtualBox Object tracker definitions
  */
@@ -85,6 +85,8 @@ public:
                       uint64_t aLifeTime,
                       uint64_t aIdleTime,
                       IUnknown* aPtr);
+
+    TrackedObjectData(const TrackedObjectData & that);
 
     ~TrackedObjectData();
     TrackedObjectData& operator =(const TrackedObjectData &that);

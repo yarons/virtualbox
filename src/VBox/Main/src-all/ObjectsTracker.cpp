@@ -1,4 +1,4 @@
-/* $Id: ObjectsTracker.cpp 106900 2024-11-08 08:54:51Z valery.portnyagin@oracle.com $ */
+/* $Id: ObjectsTracker.cpp 106909 2024-11-08 15:30:44Z valery.portnyagin@oracle.com $ */
 /** @file
  * VirtualBox Object tracker implementation
  */
@@ -68,6 +68,25 @@ TrackedObjectData::TrackedObjectData(const com::Guid &aObjId,
     m_lastAccessTime = m_creationTime;
     m_State = TrackedObjectData::Valid;
     Log2(("%s constructor \n", __FUNCTION__));
+}
+
+TrackedObjectData::TrackedObjectData(const TrackedObjectData & that)
+{
+    LogFlowFuncEnter();
+    if (this != &that)
+    {
+        m_objId = that.m_objId;
+        m_classIID = that.m_classIID;
+        m_componentName = that.m_componentName;
+        m_lifeTime = that.m_lifeTime;
+        m_idleTime = that.m_idleTime;
+        m_pIface = that.m_pIface;
+        m_creationTime = that.m_creationTime;
+        m_lastAccessTime = that.m_lastAccessTime;
+        m_idleTimeStart = that.m_idleTimeStart;
+        m_fIdleTimeStart = that.m_fIdleTimeStart;
+        m_State = that.m_State;
+    }
 }
 
 TrackedObjectData::~TrackedObjectData()
