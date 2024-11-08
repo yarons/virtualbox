@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 106865 2024-11-06 03:07:27Z knut.osmundsen@oracle.com $
+; $Id: VBoxGuestAdditions.nsi 106917 2024-11-08 21:31:41Z andreas.loeffler@oracle.com $
 ; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -78,7 +78,7 @@ VIAddVersionKey "InternalName"      "${PRODUCT_OUTPUT}"
 ; If we have our guest install helper DLL, add the plugin path so that NSIS can
 ; find it when compiling the installer
 !if $%VBOX_WITH_GUEST_INSTALL_HELPER% == "1"
-  !addplugindir "$%PATH_TARGET%\VBoxGuestInstallHelper"
+  !addplugindir "$%PATH_TARGET%\VBoxGuestInstallHelperDll"
 !endif
 
 !include "LogicLib.nsh"
