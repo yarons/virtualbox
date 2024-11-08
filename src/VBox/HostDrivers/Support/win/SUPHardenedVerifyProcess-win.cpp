@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyProcess-win.cpp 106267 2024-10-09 23:59:02Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPHardenedVerifyProcess-win.cpp 106911 2024-11-08 15:54:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Process Verification, Windows.
  */
@@ -63,6 +63,16 @@
 # include "SUPLibInternal.h"
 #endif
 #include "win/SUPHardenedVerify-win.h"
+
+
+/*********************************************************************************************************************************
+*   Defined Constants And Macros                                                                                                 *
+*********************************************************************************************************************************/
+#if defined(RT_ARCH_ARM64)
+AssertCompile(PAGE_SIZE == _4K);
+# define g_abRTZeroPage     g_abRTZero4K
+#endif
+
 
 
 /*********************************************************************************************************************************
@@ -769,12 +779,22 @@ static int supHardNtVpVerifyImageMemoryCompare(PSUPHNTVPSTATE pThis, PSUPHNTVPIM
      * Do basic header validation.
      */
 #ifdef RT_ARCH_AMD64
-    if (pNtHdrs->FileHeader.Machine != IMAGE_FILE_MACHINE_AMD64 && !pImage->f32bitResourceDll)
+    const uint16_t uExpectedMachine = IMAGE_FILE_MACHINE_AMD64;
+#elif defined(RT_ARCH_ARM64)
+    const uint16_t uExpectedMachine = IMAGE_FILE_MACHINE_ARM64;
+#elif defined(RT_ARCH_X86)
+    const uint16_t uExpectedMachine = IMAGE_FILE_MACHINE_I386;
 #else
-    if (pNtHdrs->FileHeader.Machine != IMAGE_FILE_MACHINE_I386)
+# error "port me"
+#endif
+#if ARCH_BITS == 64
+    if (pNtHdrs->FileHeader.Machine != uExpectedMachine && !pImage->f32bitResourceDll)
+#elif defined
+    if (pNtHdrs->FileHeader.Machine != uExpectedMachine)
 #endif
         return supHardNtVpSetInfo2(pThis, VERR_SUP_VP_UNEXPECTED_IMAGE_MACHINE,
-                                   "%s: Unexpected machine: %#x", pImage->pszName, pNtHdrs->FileHeader.Machine);
+                                   "%s: Unexpected machine: %#x (expected %#x)",
+                                   pImage->pszName, pNtHdrs->FileHeader.Machine, uExpectedMachine);
     bool const fIs32Bit = pNtHdrs->FileHeader.Machine == IMAGE_FILE_MACHINE_I386;
 
     if (pNtHdrs->FileHeader.SizeOfOptionalHeader != (fIs32Bit ? sizeof(IMAGE_OPTIONAL_HEADER32) : sizeof(IMAGE_OPTIONAL_HEADER64)))
