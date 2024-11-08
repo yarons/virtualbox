@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 106898 2024-11-08 08:36:27Z valery.portnyagin@oracle.com $ */
+/* $Id: VirtualBoxImpl.cpp 106901 2024-11-08 09:09:47Z valery.portnyagin@oracle.com $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -578,7 +578,7 @@ HRESULT VirtualBox::init()
             {
                 m->objectTrackerTask = new ObjectTracker();
                 if (!m->objectTrackerTask->init()) // some init procedure
-                    vrc = E_FAIL;
+                    vrc = VERR_INVALID_STATE;
                 else
                     vrc = m->objectTrackerTask->createThread();
             }
@@ -590,7 +590,7 @@ HRESULT VirtualBox::init()
                     delete m->objectTrackerTask;
                     m->objectTrackerTask = NULL;
                 }
-                vrc = E_FAIL;
+                vrc = VERR_INVALID_STATE;
             }
         }
 
