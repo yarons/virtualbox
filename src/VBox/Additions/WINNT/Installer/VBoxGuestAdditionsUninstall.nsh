@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsUninstall.nsh 106322 2024-10-15 13:06:30Z andreas.loeffler@oracle.com $
+; $Id: VBoxGuestAdditionsUninstall.nsh 106914 2024-11-08 16:39:19Z andreas.loeffler@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsUninstall.nsh - Guest Additions uninstallation.
 ;
@@ -33,7 +33,7 @@ Function ${un}UninstallCommon
   Delete /REBOOTOK "$INSTDIR\${PRODUCT_NAME}.url"
 
   ; Remove common files
-  Delete /REBOOTOK "$INSTDIR\VBoxDrvInst.exe"
+  Delete /REBOOTOK "$INSTDIR\VBoxGuestInstallHelper.exe"
 
   Delete /REBOOTOK "$INSTDIR\VBoxVideo.inf"
 !ifdef VBOX_SIGN_ADDITIONS
