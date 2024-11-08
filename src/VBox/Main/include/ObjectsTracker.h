@@ -1,4 +1,4 @@
-/* $Id: ObjectsTracker.h 106919 2024-11-08 23:39:18Z knut.osmundsen@oracle.com $ */
+/* $Id: ObjectsTracker.h 106920 2024-11-08 23:42:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Object tracker definitions
  */
@@ -150,10 +150,10 @@ private:
 };
 
 /** The string representation for object IDs in the internal map.
- * @todo r=bird: Why are you using std::string here? We use 
- *       should use com::Utf8Str where possible. In this case, though, it's a
- *       com::Guid which would have much more efficient storage compared
- *       to both the string variants... */
+ * @todo r=bird: Why are you using std::string here? We use should use
+ *       com::Utf8Str where possible. In this case, though, it's a com::Guid
+ *       which would have much more efficient storage compared to both the
+ *       string variants... */
 #if 0 /* The solaris VM seems to have trouble with this or something related to it. */
 typedef std::string ObjIdString_T;
 #else
