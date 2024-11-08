@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.cpp 106708 2024-10-25 13:54:03Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuest-win.cpp 106906 2024-11-08 13:39:52Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -1009,8 +1009,8 @@ static void vgdrvNtUnmapVMMDevMmioReq(PVBOXGUESTDEVEXTWIN pDevExt)
 static NTSTATUS vgdrvNtMapVMMDevMemory(PVBOXGUESTDEVEXTWIN pDevExt, PHYSICAL_ADDRESS PhysAddr, ULONG cbToMap,
                                        void **ppvMMIOBase, uint32_t *pcbMMIO)
 {
-    AssertPtrReturn(pDevExt, VERR_INVALID_POINTER);
-    AssertPtrReturn(ppvMMIOBase, VERR_INVALID_POINTER);
+    AssertPtrReturn(pDevExt, STATUS_INVALID_PARAMETER);
+    AssertPtrReturn(ppvMMIOBase, STATUS_INVALID_PARAMETER);
     /* pcbMMIO is optional. */
 
     NTSTATUS rc = STATUS_SUCCESS;
@@ -1061,8 +1061,8 @@ static NTSTATUS vgdrvNtMapVMMDevMemory(PVBOXGUESTDEVEXTWIN pDevExt, PHYSICAL_ADD
 static NTSTATUS vgdrvNtMapVMMDevMmioReq(PVBOXGUESTDEVEXTWIN pDevExt, PHYSICAL_ADDRESS GCPhysMmioReq, ULONG cbToMap,
                                         void **ppvMmioReq)
 {
-    AssertPtrReturn(pDevExt, VERR_INVALID_POINTER);
-    AssertPtrReturn(ppvMmioReq, VERR_INVALID_POINTER);
+    AssertPtrReturn(pDevExt, STATUS_INVALID_PARAMETER);
+    AssertPtrReturn(ppvMmioReq, STATUS_INVALID_PARAMETER);
 
     NTSTATUS rc = STATUS_SUCCESS;
     if (GCPhysMmioReq.QuadPart != 0)
