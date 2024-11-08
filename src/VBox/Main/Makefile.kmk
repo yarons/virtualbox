@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106868 2024-11-06 09:45:41Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 106895 2024-11-08 08:12:14Z valery.portnyagin@oracle.com $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -621,6 +621,7 @@ if !defined(VBOX_ONLY_SDK) && !defined(VBOX_ONLY_EXTPACKS) # Note this goes on f
  	src-all/HashedPw.cpp \
  	src-all/Logging.cpp \
  	src-all/NvramStoreImpl.cpp \
+ 	src-all/ObjectsTracker.cpp \
  	src-all/PCIDeviceAttachmentImpl.cpp \
  	src-all/PlatformPropertiesImpl.cpp \
  	src-all/ProgressImpl.cpp \
@@ -1153,6 +1154,7 @@ if !defined(VBOX_ONLY_SDK) && !defined(VBOX_ONLY_EXTPACKS) # Note this goes on f
  	src-all/HashedPw.cpp \
  	src-all/Logging.cpp \
  	src-all/NvramStoreImpl.cpp \
+	src-all/ObjectsTracker.cpp \
  	src-all/PCIDeviceAttachmentImpl.cpp \
  	src-all/PlatformPropertiesImpl.cpp \
  	src-all/ProgressImpl.cpp \
@@ -1332,6 +1334,7 @@ if !defined(VBOX_ONLY_SDK) && !defined(VBOX_ONLY_EXTPACKS) # Note this goes on f
   	src-all/Global.cpp \
   	src-all/GlobalStatusConversion.cpp \
   	src-all/AutoCaller.cpp \
+	src-all/ObjectsTracker.cpp \
   	src-all/ThreadTask.cpp \
   	src-all/VirtualBoxBase.cpp \
   	src-all/VirtualBoxErrorInfoImpl.cpp \
