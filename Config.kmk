@@ -1,4 +1,4 @@
-# $Id: Config.kmk 106869 2024-11-06 11:49:44Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 106923 2024-11-09 01:43:34Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3598,7 +3598,6 @@ ifndef VBOX_NOINC_DYNAMIC_CONFIG_KMK
  endif
 	$(QUIET)$(APPEND) '$@' 'VBOX_HAVE_FLEX                           ?= $(firstfile $(TOOL_FLEX_LEX) $(which flex))'
 	$(QUIET)$(APPEND) '$@' 'VBOX_HAVE_BISON                          ?= $(firstfile $(TOOL_BISON_YACC) $(which bison))'
-	$(QUIET)$(APPEND) '$@' 'VBOX_HAVE_XMLLINT                        ?= $(which xmllint)'
  if "$(KBUILD_HOST)" == "solaris" && $(KBUILD_HOST_VERSION_MAJOR) == 5 && $(KBUILD_HOST_VERSION_MINOR) == 11
   # BRANCH_VERSION format on S11 - S11.3:
   #   <trunk_id>.<update>.<sru>.<reserved>.<buildid>.<nightly_id>
@@ -3956,10 +3955,11 @@ endif
 # libxml XML linter.
 ifeq ($(VBOX_XMLLINT),)
  ifeq ($(KBUILD_HOST),win)
-  VBOX_XMLLINT := $(wildcard $(KBUILD_DEVTOOLS)/$(KBUILD_HOST).$(KBUILD_HOST_ARCH)/libxslt/10128/bin/xmllint.exe)
+  VBOX_XMLLINT := $(firstfile \
+  	$(rversortfiles $(qwildcard ,$(KBUILD_DEVTOOLS)/$(KBUILD_HOST).$(KBUILD_HOST_ARCH)/libxslt/*/bin/xmllint.exe)))
  endif
  ifeq ($(VBOX_XMLLINT),)
-  VBOX_XMLLINT := $(VBOX_HAVE_XMLLINT)
+  VBOX_XMLLINT := $(which xmllint)
  endif
  ifneq ($(VBOX_XMLLINT),)
   VBOX_HAVE_XMLLINT := 1
@@ -9287,7 +9287,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 106869 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 106923 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
