@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInstallHelper.cpp 106926 2024-11-09 01:46:17Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestInstallHelper.cpp 106928 2024-11-09 02:07:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestInstallHelper - Driver and service installation helper for Windows guests.
  */
@@ -759,7 +759,7 @@ static int InstallNt4VideoDriverInner(WCHAR const * const pwszDriverDir, HDEVINF
      *          - SP_BACKUP_QUEUE_PARAMS_W
      *          - SP_INF_SIGNER_INFO_W,
      *       but we only make use of SP_DRVINFO_DATA_W.
-     * 
+     *
      *       The newer SP_DRVINFO_DATA_W version was introduced with Windows
      *       2000, so this only affects x86.
      */
