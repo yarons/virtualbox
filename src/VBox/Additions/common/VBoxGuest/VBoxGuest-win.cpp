@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.cpp 106907 2024-11-08 14:22:45Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxGuest-win.cpp 106927 2024-11-09 01:48:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -151,10 +151,10 @@ typedef struct VBOXGUESTDEVEXTWIN
     /** Length of VMMDev memory.   */
     ULONG                   cbVmmDevMemory;
 
-    /** Physical address and length of the optional VMMDev MMIO request interface. */
-    PHYSICAL_ADDRESS        GCPhysMmioReq;
     /** Length of the optional VMMDev MMIO request interface.   */
     ULONG                   cbMmioReq;
+    /** Physical address and length of the optional VMMDev MMIO request interface. */
+    PHYSICAL_ADDRESS        GCPhysMmioReq;
 
     /** Device state. */
     VGDRVNTDEVSTATE volatile enmDevState;
