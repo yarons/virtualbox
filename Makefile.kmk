@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106924 2024-11-09 01:43:36Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 106937 2024-11-10 13:14:06Z knut.osmundsen@oracle.com $
 ## @file
 # Top level makefile.
 #
@@ -1836,7 +1836,7 @@ else
 endif
 
 extpacks-packing:
-	+ $(KMK) VBOX_WITH_EXTPACK_OS_ARCHS="darwin.amd64 darwin.arm64 linux.amd64 solaris.amd64 win.amd64" \
+	+ $(KMK) VBOX_WITH_EXTPACK_OS_ARCHS="darwin.amd64 darwin.arm64 linux.amd64 solaris.amd64 win.amd64 win.arm64" \
 		VBOX_ONLY_EXTPACKS=1 packing
 # +++ freebsd.amd64 ^^^
 
