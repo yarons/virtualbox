@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106935 2024-11-10 02:26:41Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 106936 2024-11-10 12:42:55Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -325,7 +325,7 @@ if1of ($(KBUILD_TARGET_ARCH), amd64 x86)
  	common/string/strlen.asm
 else if1of ($(KBUILD_TARGET_ARCH), arm64)
  RuntimeNoCrt_SOURCES = \
-  	common/string/bzero.cpp \
+ 	common/string/bzero.cpp \
  	common/string/memchr.cpp \
  	common/string/memcmp.cpp \
  	common/string/memcpy.cpp \
