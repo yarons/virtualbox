@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA-cmd.cpp 106263 2024-10-09 19:07:30Z dmitrii.grigorev@oracle.com $ */
+/* $Id: DevVGA-SVGA-cmd.cpp 106944 2024-11-11 12:07:14Z dmitrii.grigorev@oracle.com $ */
 /** @file
  * VMware SVGA device - implementation of VMSVGA commands.
  */
@@ -5015,7 +5015,7 @@ int vmsvgaR3Process3dCmd(PVGASTATE pThis, PVGASTATECC pThisCC, uint32_t idDXCont
         STAM_REL_COUNTER_INC(&pSvgaR3State->StatR3Cmd3dSurfaceCopy);
 
         uint32_t const cCopyBoxes = (cbCmd - sizeof(pCmd)) / sizeof(SVGA3dCopyBox);
-        vmsvga3dSurfaceCopy(pThisCC, pCmd->dest, pCmd->src, cCopyBoxes, (SVGA3dCopyBox *)(pCmd + 1));
+        vmsvga3dSurfaceCopy(pThisCC, pCmd->dest, pCmd->src, cCopyBoxes, (SVGA3dCopyBox *)(pCmd + 1), pThis->svga.fVMSVGA2dGBO);
         break;
     }
 
