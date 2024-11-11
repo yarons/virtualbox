@@ -1,4 +1,4 @@
-; $Id: VMMR0.def 106939 2024-11-11 09:51:28Z knut.osmundsen@oracle.com $
+; $Id: VMMR0.def 106940 2024-11-11 10:11:59Z knut.osmundsen@oracle.com $
 ;; @file
 ; VMM Ring 0 DLL - Definition file.
 
@@ -99,6 +99,7 @@ EXPORTS
     RTTimeNanoTSLFenceAsync                 ; not-arm64    
     RTTimeSystemNanoTS
     RTTimeNanoTS
+    ASMMultU64ByU32DivByU32                 ; not-arm64
     ASMAtomicXchgU8                         ; not-arm64
     ASMAtomicXchgU16                        ; not-arm64
     ASMBitFirstSet                          ; not-arm64
