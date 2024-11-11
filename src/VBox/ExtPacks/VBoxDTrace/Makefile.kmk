@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 106939 2024-11-11 09:51:28Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-makefile for VBoxDTrace.
 #
@@ -265,8 +265,13 @@ if defined(VBOX_WITH_EXTPACK_VBOXDTRACE) && defined(VBOX_WITH_EXTPACK)
  	$(VBOXDT_PATH_UTS)/common
  VBoxDTraceR0_SOURCES = \
  	VBoxDTraceR0.cpp \
- 	VBoxDTraceR0A.asm \
  	$(VBOXDT_PATH_UTS)/common/dtrace/dtrace.c
+ VBoxDTraceR0_SOURCES.amd64 = \
+ 	VBoxDTraceR0A.asm
+ VBoxDTraceR0_SOURCES.x86 = \
+ 	VBoxDTraceR0A.asm
+ VBoxDTraceR0_SOURCES.arm64 = \
+ 	VBoxDTraceR0A-arm64.S
  VBoxDTraceR0_LIBS = \
  	$(PATH_STAGE_LIB)/RuntimeR0$(VBOX_SUFF_LIB) \
  	$(VBOX_LIB_SUPR0)

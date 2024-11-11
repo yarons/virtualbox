@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106936 2024-11-10 12:42:55Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 106939 2024-11-11 09:51:28Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -3538,7 +3538,8 @@ RuntimeR0_SOURCES.arm32 += \
 	common/string/RTStrEnd.cpp
 RuntimeR0_SOURCES.arm64 += \
 	common/string/RTStrEnd.cpp \
-	common/asm/ASMMemFirstNonZero-generic.cpp
+	common/asm/ASMMemFirstNonZero-generic.cpp \
+	common/asm/ASMBitFirstClear-generic.cpp
 RuntimeR0_SOURCES.sparc32 += \
 	common/string/RTStrEnd.cpp
 RuntimeR0_SOURCES.sparc64 += \

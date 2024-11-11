@@ -1,5 +1,5 @@
 
-/* $Id: VBoxDTraceTypes.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDTraceTypes.h 106939 2024-11-11 09:51:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDTraceTypes.h - Fake a bunch of Solaris types.
  *
@@ -129,6 +129,14 @@ typedef char                       *caddr_t;
 #  define _LP64                     1
 # endif
 # if !defined(_LITTLE_ENDIAN) || (!defined(RT_OS_SOLARIS) && !defined(RT_OS_FREEBSD))
+#  define _LITTLE_ENDIAN            1
+# endif
+
+#elif defined(RT_ARCH_ARM64)
+# ifndef _LP64
+#  define _LP64                     1
+# endif
+# if !defined(_LITTLE_ENDIAN)
 #  define _LITTLE_ENDIAN            1
 # endif
 

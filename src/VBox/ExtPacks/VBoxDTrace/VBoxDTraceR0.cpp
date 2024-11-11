@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceR0.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDTraceR0.cpp 106939 2024-11-11 09:51:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDTraceR0.
  *
@@ -25,7 +25,9 @@
 #include <VBox/sup.h>
 #include <VBox/log.h>
 
-#include <iprt/asm-amd64-x86.h>
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
+# include <iprt/asm-amd64-x86.h>
+#endif
 #include <iprt/assert.h>
 #include <iprt/ctype.h>
 #include <iprt/err.h>
