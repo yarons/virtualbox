@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106956 2024-11-11 17:54:56Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 106957 2024-11-11 17:55:50Z andreas.loeffler@oracle.com $
 ## @file
 # Makefile for common Windows installation code.
 #
@@ -34,7 +34,8 @@ VBoxDrvInst_SOURCES     = \
 	VBoxWinDrvCommon.cpp \
 	VBoxWinDrvInst.cpp \
 	VBoxWinDrvStore.cpp \
-	VBoxDrvInst.cpp
+	VBoxDrvInst.cpp \
+	VBoxDrvInst.rc
 
 
 ifndef VBOX_ONLY_ADDITIONS
