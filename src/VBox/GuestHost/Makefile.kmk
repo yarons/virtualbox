@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 106954 2024-11-11 17:42:05Z andreas.loeffler@oracle.com $
 ## @file
 # Sub-Makefile for the VirtualBox Guest/Host part
 #
@@ -41,5 +41,8 @@ ifdef VBOX_WITH_HGCM
  include $(PATH_SUB_CURRENT)/SharedClipboard/Makefile.kmk
 endif
 
-include $(FILE_KBUILD_SUB_FOOTER)
+ifndef VBOX_ONLY_SDK
+ include $(PATH_SUB_CURRENT)/installation/Makefile.kmk
+endif
 
+include $(FILE_KBUILD_SUB_FOOTER)
