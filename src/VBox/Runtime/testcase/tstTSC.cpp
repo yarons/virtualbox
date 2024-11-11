@@ -1,4 +1,4 @@
-/* $Id: tstTSC.cpp 106942 2024-11-11 11:57:12Z knut.osmundsen@oracle.com $ */
+/* $Id: tstTSC.cpp 106945 2024-11-11 15:17:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - SMP TSC testcase.
  */
@@ -109,9 +109,11 @@ static DECLCALLBACK(int) ThreadFunction(RTTHREAD Thread, void *pvUser);
 /** Wrapper around RTMpCpuId/ASMGetStuff. */
 static RTCPUID MyGetCpuId(void)
 {
+#if (!defined(RT_OS_LINUX) && !defined(RT_OS_DARWIN)) || defined(RT_ARCH_ARM64) || defined(RT_ARCH_ARM32)
     RTCPUID idCpu = RTMpCpuId();
     if (idCpu != NIL_RTCPUID)
         return idCpu;
+#endif
 #if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
     return ASMGetApicId();
 #elif defined(RT_ARCH_ARM64)
@@ -474,7 +476,7 @@ int main(int argc, char **argv)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 106942 $\n");
+                RTPrintf("$Revision: 106945 $\n");
                 return 0;
 
             default:
