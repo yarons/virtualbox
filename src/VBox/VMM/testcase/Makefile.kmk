@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106212 2024-10-03 02:42:55Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 106938 2024-11-11 01:09:38Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -38,9 +38,11 @@ endif
 #
 # Target lists.
 #
-PROGRAMS   += tstVMStructSize tstAsmStructs
+PROGRAMS        += tstVMStructSize
+PROGRAMS.amd64  += tstAsmStructs
 ifdef VBOX_WITH_RAW_MODE
- PROGRAMS  += tstVMStructRC tstAsmStructsRC
+ PROGRAMS       += tstVMStructRC
+ PROGRAMS.amd64 += tstAsmStructsRC
 endif
 if   !defined(VBOX_ONLY_EXTPACKS) \
   && (   defined(VBOX_WITH_DTRACE_R3) \
@@ -122,18 +124,14 @@ BLDDIRS += $(VBOX_VMM_TESTCASE_OUT_DIR)
 # We setup two 'other' targets for executing the two structure & alignment
 # validation testcases. Perhaps a bit hackish, but extremely useful.
 #
-ifeq ($(KBUILD_TARGET),$(KBUILD_HOST))
- ifeq ($(filter-out x86.x86 amd64.amd64 x86.amd64, $(KBUILD_TARGET_ARCH).$(KBUILD_HOST_ARCH)),)
-  OTHERS += \
-  	$(VBOX_VMM_TESTCASE_OUT_DIR)/tstAsmStructs.run \
-  	$(VBOX_VMM_TESTCASE_OUT_DIR)/tstVMStructSize.run
- endif
+ifeq ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH),$(KBUILD_HOST).$(KBUILD_HOST_ARCH))
+ OTHERS       += $(VBOX_VMM_TESTCASE_OUT_DIR)/tstVMStructSize.run
+ OTHERS.amd64 += $(VBOX_VMM_TESTCASE_OUT_DIR)/tstAsmStructs.run
 endif
 
 # The normal testing pass.
-TESTING += \
-	$(VBOX_VMM_TESTCASE_OUT_DIR)/tstAsmStructs.run \
-	$(VBOX_VMM_TESTCASE_OUT_DIR)/tstVMStructSize.run
+TESTING       += $(VBOX_VMM_TESTCASE_OUT_DIR)/tstVMStructSize.run
+TESTING.amd64 += $(VBOX_VMM_TESTCASE_OUT_DIR)/tstAsmStructs.run
 
 OTHER_CLEAN += \
 	$(VBOX_VMM_TESTCASE_OUT_DIR)/tstAsmStructs.run \

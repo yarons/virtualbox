@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVMStructSize.cpp 106938 2024-11-11 01:09:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -385,7 +385,9 @@ int main()
     CHECK_PADDING_UVMCPU(32, vm);
 
     CHECK_PADDING_GVM(4, gvmm);
+#ifndef VBOX_WITH_MINIMAL_R0
     CHECK_PADDING_GVM(4, gmm);
+#endif
     CHECK_PADDING_GVMCPU(4, gvmm);
 
     /*

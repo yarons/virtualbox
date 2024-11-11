@@ -1,4 +1,4 @@
-/* $Id: VMMRZ.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VMMRZ.cpp 106938 2024-11-11 01:09:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM - Virtual Machine Monitor, Raw-mode and ring-0 context code.
  */
@@ -35,7 +35,6 @@
 #include <VBox/vmm/vmcc.h>
 
 #include <iprt/assert.h>
-#include <iprt/asm-amd64-x86.h>
 #include <iprt/errcore.h>
 #include <iprt/string.h>
 
