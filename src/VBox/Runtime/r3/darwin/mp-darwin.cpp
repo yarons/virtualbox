@@ -1,4 +1,4 @@
-/* $Id: mp-darwin.cpp 106946 2024-11-11 15:18:06Z knut.osmundsen@oracle.com $ */
+/* $Id: mp-darwin.cpp 106949 2024-11-11 16:07:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Multiprocessor, Darwin.
  */
@@ -143,7 +143,7 @@ RTDECL(RTCPUID) RTMpCpuId(void)
 {
     /* xnu-7195.50.7.100.1/osfmk/arm64/start.s and machine_routines.c sets TPIDRRO_EL0
        to the cpu_data_t::cpu_id value. */
-/** @todo r=bird: set_thread_register() in cswitch.s OTOH, applies MACHDEP_CPUNUM_MASK to 
+/** @todo r=bird: set_thread_register() in cswitch.s OTOH, applies MACHDEP_CPUNUM_MASK to
  * the value before taking it as the CPU number.  In libsyscall/os/tsd.h it is masked by
  * the same value in _os_cpu_number(). */
     uint64_t u64Ret;
