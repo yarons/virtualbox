@@ -1,4 +1,4 @@
-/* $Id: SystemTableBuilder.h 106357 2024-10-16 11:44:53Z alexander.eichner@oracle.com $ */
+/* $Id: SystemTableBuilder.h 106974 2024-11-12 10:24:48Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox system tables builder.
  */
@@ -109,6 +109,7 @@ private:
     RTGCPHYS m_cbMmioIntcReDist;
 
     RTGCPHYS m_GCPhysPciMmioEcam;
+    uint8_t  m_bPciBusMax;
 
     bool m_fTpm20;
     bool m_fCrb;
