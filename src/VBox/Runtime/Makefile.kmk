@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106939 2024-11-11 09:51:28Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 106963 2024-11-12 02:41:36Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -3934,6 +3934,9 @@ RuntimeR0Drv_SOURCES.win.x86   := $(RuntimeWin32ASM_SOURCES) \
 	r0drv/nt/alloca-x86-r0drv-nt.asm \
 	r0drv/nt/toxic-chkstk-r0drv-nt.asm
 
+RuntimeR0Drv_SOURCES.win.arm64 := \
+	common/asm/ASMMemFirstNonZero-generic.cpp \
+	common/misc/zero.cpp
 
 RuntimeR0Drv_SOURCES.darwin = \
 	common/ldr/ldr.cpp \

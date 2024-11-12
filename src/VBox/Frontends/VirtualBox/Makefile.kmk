@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106807 2024-10-30 15:08:57Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 106963 2024-11-12 02:41:36Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -166,7 +166,7 @@ endif
 #
 # VirtualBox Virtual Machine Application
 #
-VirtualBoxVM_TEMPLATE       := $(if $(VBOX_WITH_HARDENING),VBoxQtGuiDll,VBoxQtGuiExe)
+VirtualBoxVM_TEMPLATE       := $(if $(VBOX_WITH_HARDENING),VBoxQtGuiDll,VBoxQtGuiSignedExe)
 VirtualBoxVM_NAME           = VirtualBoxVM
 ifndef VBOX_WITH_HARDENING
  VirtualBoxVM_INST.darwin   = $(INST_VIRTUALBOX)Contents/Resources/VirtualBoxVM.app/Contents/MacOS/
