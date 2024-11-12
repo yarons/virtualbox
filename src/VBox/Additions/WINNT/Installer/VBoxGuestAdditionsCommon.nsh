@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsCommon.nsh 106980 2024-11-12 14:44:38Z andreas.loeffler@oracle.com $
+; $Id: VBoxGuestAdditionsCommon.nsh 106982 2024-11-12 15:33:37Z andreas.loeffler@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsCommon.nsh - Common / shared utility functions.
 ;
@@ -241,11 +241,6 @@ Function ExtractFiles
   FILE "$%PATH_OUT%\bin\additions\VBoxGuestInstallHelper.exe"
 !ifdef VBOX_WITH_ADDITIONS_SHIPPING_AUDIO_TEST
   FILE "$%PATH_OUT%\bin\additions\VBoxAudioTest.exe"
-!endif
-
-!if $%KBUILD_TARGET_ARCH% == "x86"
-  SetOutPath "$0\Tools\NT4"
-  FILE "$%PATH_OUT%\bin\additions\RegCleanup.exe"
 !endif
 
   Pop $0
