@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsCommon.nsh 106914 2024-11-08 16:39:19Z andreas.loeffler@oracle.com $
+; $Id: VBoxGuestAdditionsCommon.nsh 106980 2024-11-12 14:44:38Z andreas.loeffler@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsCommon.nsh - Common / shared utility functions.
 ;
@@ -55,6 +55,7 @@ Function Common_CopyFiles
   FILE "/oname=${LICENSE_FILE_RTF}" "$%VBOX_BRAND_LICENSE_RTF%"
 !endif
 
+  FILE "$%PATH_OUT%\bin\additions\VBoxDrvInst.exe"
   FILE "$%PATH_OUT%\bin\additions\VBoxGuestInstallHelper.exe"
 
 !if $%KBUILD_TARGET_ARCH% != "arm64" ;; @todo win.arm64: Make VBoxVideo and friends build on arm.
@@ -236,6 +237,7 @@ Function ExtractFiles
 
   ; Misc tools
   SetOutPath "$0\Tools"
+  FILE "$%PATH_OUT%\bin\additions\VBoxDrvInst.exe"
   FILE "$%PATH_OUT%\bin\additions\VBoxGuestInstallHelper.exe"
 !ifdef VBOX_WITH_ADDITIONS_SHIPPING_AUDIO_TEST
   FILE "$%PATH_OUT%\bin\additions\VBoxAudioTest.exe"
