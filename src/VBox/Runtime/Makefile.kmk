@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106963 2024-11-12 02:41:36Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 106967 2024-11-12 09:23:10Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -155,9 +155,7 @@ endif
 
 
 # Always build the ntdll import libraries on windows.
-if1of (amd64 x86, $(KBUILD_TARGET_ARCH) $(KBUILD_HOST_ARCH))
- LIBRARIES.win += RuntimeR3NtDll-x86
-endif
+LIBRARIES.win += RuntimeR3NtDll-x86
 if1of (amd64, $(KBUILD_TARGET_ARCH) $(KBUILD_HOST_ARCH))
  LIBRARIES.win += RuntimeR3NtDll-amd64
 endif
