@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImpl.h 106978 2024-11-12 13:49:12Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -877,6 +877,10 @@ private:
     int i_configNetworkCtrls(ComPtr<IMachine> pMachine, ComPtr<IPlatformProperties> pPlatformProperties,
                              ChipsetType_T enmChipset, BusAssignmentManager *pBusMgr, PCVMMR3VTABLE pVMM, PUVM pUVM,
                              PCFGMNODE pDevices, std::list<BootNic> &llBootNics);
+#if defined(VBOX_WITH_TPM)
+    int i_configTpm(ComPtr<ITrustedPlatformModule> pTpm, TpmType_T enmTpmType, PCFGMNODE pDevices,
+                    RTGCPHYS GCPhysTpmMmio, uint32_t uIrq, RTGCPHYS GCPhysTpmPpi, bool fCrb = false);
+#endif
 
     static DECLCALLBACK(void) i_vmstateChangeCallback(PUVM pUVM, PCVMMR3VTABLE pVMM, VMSTATE enmState,
                                                       VMSTATE enmOldState, void *pvUser);
