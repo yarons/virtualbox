@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceR0A-arm64.S 106939 2024-11-11 09:51:28Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDTraceR0A-arm64.S 106964 2024-11-12 02:42:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDTraceR0.
  *
@@ -25,5 +25,4 @@ BEGINCODE
 BEGINPROC dtrace_probe6
         b       NAME(dtrace_probe)
 ENDPROC   dtrace_probe6
-
 
