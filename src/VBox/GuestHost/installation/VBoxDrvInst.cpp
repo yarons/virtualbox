@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvInst.cpp 106955 2024-11-11 17:43:22Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxDrvInst.cpp 106966 2024-11-12 06:25:27Z andreas.loeffler@oracle.com $ */
 /** @file
  * Driver installation utility for Windows hosts and guests.
  */
@@ -117,17 +117,6 @@ enum
 {
     VBOXDRVINST_LIST_OPT_MODEL = 900,
     VBOXDRVINST_LIST_OPT_PNPID
-};
-
-/**
- * Command line parameters for the 'list' command.
- */
-static const RTGETOPTDEF g_aCmdListOptions[] =
-{
-    { "--model",  VBOXDRVINST_LIST_OPT_MODEL, RTGETOPT_REQ_STRING  },
-    { "--pnp",    VBOXDRVINST_LIST_OPT_PNPID, RTGETOPT_REQ_STRING  },
-    { "--pnpid" , VBOXDRVINST_LIST_OPT_PNPID, RTGETOPT_REQ_STRING  },
-    { "--pnp-id", VBOXDRVINST_LIST_OPT_PNPID, RTGETOPT_REQ_STRING  }
 };
 
 /**
