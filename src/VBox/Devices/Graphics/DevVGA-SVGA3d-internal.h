@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-internal.h 106944 2024-11-11 12:07:14Z dmitrii.grigorev@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-internal.h 106971 2024-11-12 09:53:05Z dmitrii.grigorev@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part, internal header.
  */
@@ -1075,6 +1075,8 @@ typedef struct VMSVGA3DSTATE
     PVMSVGA3DCONTEXT       *papContexts;
     /** Surfaces indexed by ID.  Grown as needed. */
     PVMSVGA3DSURFACE       *papSurfaces;
+
+    bool fVMSVGA2dGBO;
 #ifdef VMSVGA3D_DX
     /** DX contexts indexed by ID.  Grown as needed. */
     PVMSVGA3DDXCONTEXT     *papDXContexts;
