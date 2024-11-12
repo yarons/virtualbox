@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedVerify.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPR3HardenedVerify.cpp 106986 2024-11-12 16:35:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Verification of Hardened Installation.
  */
@@ -1874,7 +1874,9 @@ DECLHIDDEN(int) supR3HardenedVerifyFile(const char *pszFilename, RTHCUINTPTR hNa
     if (hVerify != INVALID_HANDLE_VALUE)
     {
 # ifdef VBOX_WITH_HARDENING
-        uint32_t fFlags = SUPHNTVI_F_REQUIRE_KERNEL_CODE_SIGNING;
+        /** @todo do we need to validate the fMaybe3rdParty claim here? I.e. only
+         *        apply it if 'ExtensionPacks' is part of the path. */
+        uint32_t fFlags = SUPHNTVI_F_REQUIRE_CODE_SIGNING;
         if (!fMaybe3rdParty)
             fFlags = SUPHNTVI_F_REQUIRE_BUILD_CERT;
         const char *pszSuffix = RTPathSuffix(pszFilename);
