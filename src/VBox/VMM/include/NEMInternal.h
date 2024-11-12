@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMInternal.h 106970 2024-11-12 09:51:44Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -314,6 +314,10 @@ typedef struct NEM
         uint64_t                cPagesAvailable;
         uint64_t                cPagesInUse;
     } R0Stats;
+
+# if defined(VBOX_VMM_TARGET_ARMV8)
+    RTGCPHYS                    GCPhysMmioBaseReDist;
+# endif
 
 #elif defined(RT_OS_DARWIN)
     /** Set if we've created the EMTs. */
