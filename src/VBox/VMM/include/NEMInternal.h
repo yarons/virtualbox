@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 106970 2024-11-12 09:51:44Z alexander.eichner@oracle.com $ */
+/* $Id: NEMInternal.h 107001 2024-11-13 12:12:30Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -316,7 +316,12 @@ typedef struct NEM
     } R0Stats;
 
 # if defined(VBOX_VMM_TARGET_ARMV8)
+    /** Re-distributor memory region for all vCPUs. */
     RTGCPHYS                    GCPhysMmioBaseReDist;
+    /** Number of breakpoints supported (for syncing registers). */
+    uint32_t                    cBreakpoints;
+    /** Number of watchpoints supported (for syncing registers). */
+    uint32_t                    cWatchpoints;
 # endif
 
 #elif defined(RT_OS_DARWIN)
