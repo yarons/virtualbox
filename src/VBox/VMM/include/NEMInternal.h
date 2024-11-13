@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 107001 2024-11-13 12:12:30Z alexander.eichner@oracle.com $ */
+/* $Id: NEMInternal.h 107007 2024-11-13 15:01:58Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -490,11 +490,7 @@ typedef struct NEMCPU
 
 
 #elif defined(RT_OS_WINDOWS)
-# ifdef VBOX_VMM_TARGET_ARMV8
-    /** Flag whether the ID registers were synced to the guest context
-     * (for first guest exec call on the EMT after loading the saved state). */
-    bool                        fIdRegsSynced;
-# else
+# ifndef VBOX_VMM_TARGET_ARMV8
     /** The current state of the interrupt windows (NEM_WIN_INTW_F_XXX). */
     uint8_t                     fCurrentInterruptWindows;
     /** The desired state of the interrupt windows (NEM_WIN_INTW_F_XXX). */
