@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 106991 2024-11-12 21:22:39Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPR3HardenedMain-win.cpp 107000 2024-11-13 10:14:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -3670,7 +3670,6 @@ static int supR3HardNtDisableThreadCreationEx(HANDLE hProcess, void *pvLdrInitTh
                                               SUPR3HARDNTPATCH *pBackup, PRTERRINFO pErrInfo)
 {
     SUP_DPRINTF(("supR3HardNtDisableThreadCreation: pvLdrInitThunk=%p pvNtTerminateThread=%p\n", pvLdrInitThunk, pvNtTerminateThread));
-    SUPR3HARDENED_ASSERT(pBackup->cb >= 5);
     SUPR3HARDENED_ASSERT(RT_ABS((intptr_t)pvLdrInitThunk - (intptr_t)pvNtTerminateThread) < 16*_1M);
 
     /*
