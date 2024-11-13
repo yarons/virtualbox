@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106986 2024-11-12 16:35:48Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 107004 2024-11-13 13:11:06Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -56,7 +56,7 @@ if   defined(VBOX_WITH_HARDENING) \
  LIBRARIES += SUPR3HardenedStatic
 endif
 ifndef VBOX_ONLY_BUILD
- ifn1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), win.arm64)
+ ifdef VBOX_WITH_HARDENING
   DLLS.win += VBoxSupLib
  endif
 endif
