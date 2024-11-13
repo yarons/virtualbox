@@ -1,4 +1,4 @@
-/* $Id: VBoxStubBld.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxStubBld.h 107003 2024-11-13 12:54:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxStubBld - VirtualBox's Windows installer stub builder.
  */
@@ -62,7 +62,9 @@ typedef enum VBOXSTUBPKGARCH
     /** Extract on x86 hosts. */
     VBOXSTUBPKGARCH_X86,
     /** Extract on AMD64 hosts. */
-    VBOXSTUBPKGARCH_AMD64
+    VBOXSTUBPKGARCH_AMD64,
+    /** Extract on ARM64 hosts. */
+    VBOXSTUBPKGARCH_ARM64
 } VBOXSTUBPKGARCH;
 
 /**
