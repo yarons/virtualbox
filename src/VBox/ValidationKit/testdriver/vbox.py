@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 106798 2024-10-30 11:08:35Z knut.osmundsen@oracle.com $
+# $Id: vbox.py 106999 2024-11-13 10:05:05Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 106798 $"
+__version__ = "$Revision: 106999 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2502,13 +2502,17 @@ class TestDriver(base.TestDriver):                                              
 
         reporter.log("  Serial ports:");
         for iSlot in range(0, 8):
-            try:    oPort = oVM.getSerialPort(iSlot)
+            try:    oPort = oVM.getSerialPort(iSlot);
             except: break;
             if oPort is not None and oPort.enabled:
                 enmHostMode = oPort.hostMode;
-                reporter.log("    slot #%d: hostMode: %s (%s)  I/O port: %s  IRQ: %s  server: %s  path: %s" %
+                if self.fpApiVer >= 7.1:
+                    sIOAddressOrBase = oPort.IOAddress;
+                else:
+                    sIOAddressOrBase = oPort.IOBase;
+                reporter.log("    slot #%d: hostMode: %s (%s)  I/O address: %s  IRQ: %s  server: %s  path: %s" %
                              (iSlot,  self.oVBoxMgr.getEnumValueName('PortMode', enmHostMode),                                    # pylint: disable=not-callable
-                              enmHostMode, oPort.IOBase, oPort.IRQ, oPort.server, oPort.path,) );
+                              enmHostMode, sIOAddressOrBase, oPort.IRQ, oPort.server, oPort.path,) );
                 self.processPendingEvents();
 
         return True;
