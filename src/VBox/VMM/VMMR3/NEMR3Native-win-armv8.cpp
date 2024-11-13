@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win-armv8.cpp 107011 2024-11-13 16:19:17Z alexander.eichner@oracle.com $ */
+/* $Id: NEMR3Native-win-armv8.cpp 107015 2024-11-13 21:50:08Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -2493,10 +2493,6 @@ VBOXSTRICTRC nemR3NativeRunGC(PVM pVM, PVMCPU pVCpu)
     VBOXSTRICTRC    rcStrict            = VINF_SUCCESS;
     for (unsigned iLoop = 0;; iLoop++)
     {
-        /* Ensure that Hyper-V has the whole state. */
-        int rc2 = nemHCWinCopyStateToHyperV(pVM, pVCpu);
-        AssertRCReturn(rc2, rc2);
-
         /*
          * Poll timers and run for a bit.
          *
@@ -2513,6 +2509,10 @@ VBOXSTRICTRC nemR3NativeRunGC(PVM pVM, PVMCPU pVCpu)
         {
             if (VMCPU_CMPXCHG_STATE(pVCpu, VMCPUSTATE_STARTED_EXEC_NEM_WAIT, VMCPUSTATE_STARTED_EXEC_NEM))
             {
+                /* Ensure that Hyper-V has the whole state. */
+                int rc2 = nemHCWinCopyStateToHyperV(pVM, pVCpu);
+                AssertRCReturn(rc2, rc2);
+
 #ifdef LOG_ENABLED
                 if (LogIsFlowEnabled())
                 {
