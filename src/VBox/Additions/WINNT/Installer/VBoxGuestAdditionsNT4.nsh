@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsNT4.nsh 106982 2024-11-12 15:33:37Z andreas.loeffler@oracle.com $
+; $Id: VBoxGuestAdditionsNT4.nsh 106995 2024-11-13 09:03:13Z andreas.loeffler@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsNT4.nsh - Guest Additions installation for NT4.
 ;
@@ -122,8 +122,8 @@ Function NT4_CopyFiles
   ${LogVerbose} "Copying files for NT4 ..."
 
   SetOutPath "$INSTDIR"
-  FILE "$%PATH_OUT%\bin\additions\GuestInstallHelper.exe"
-  AccessControl::SetOnFile "$INSTDIR\GuestInstallHelper.exe" "(BU)" "GenericRead"
+  FILE "$%PATH_OUT%\bin\additions\VBoxGuestInstallHelper.exe"
+  AccessControl::SetOnFile "$INSTDIR\VBoxGuestInstallHelper.exe" "(BU)" "GenericRead"
 !ifdef VBOX_WITH_ADDITIONS_SHIPPING_AUDIO_TEST
   FILE "$%PATH_OUT%\bin\additions\VBoxAudioTest.exe"
 !endif
