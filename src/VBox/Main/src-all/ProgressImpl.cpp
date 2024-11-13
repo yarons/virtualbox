@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: ProgressImpl.cpp 106994 2024-11-13 08:52:53Z valery.portnyagin@oracle.com $ */
 /** @file
  * VirtualBox Progress COM class implementation
  */
@@ -88,6 +88,8 @@ HRESULT Progress::FinalConstruct()
 
     mCompletedSem = NIL_RTSEMEVENTMULTI;
     mWaitersCount = 0;
+
+    setTracked(18000, 7200);//5 hour, 2 hours
 
     return Progress::BaseFinalConstruct();
 }
