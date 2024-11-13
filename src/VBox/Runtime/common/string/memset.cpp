@@ -1,4 +1,4 @@
-/* $Id: memset.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: memset.cpp 107013 2024-11-13 16:43:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - CRT Strings, memset().
  */
@@ -77,9 +77,20 @@ void *RT_NOCRT(memset)(void *pvDst, int ch, size_t cb)
         *u.pu32++ = u32;
 
     /* Remaining byte moves. */
-    c = cb & 3;
-    while (c-- > 0)
-        *u.pu8++ = (uint8_t)u32;
+    switch (cb & 3)
+    {
+        case 0:
+            break;
+        case 3:
+            *u.pu8++ = (uint8_t)u32;
+            RT_FALL_THRU();
+        case 2:
+            *u.pu8++ = (uint8_t)u32;
+            RT_FALL_THRU();
+        case 1:
+            *u.pu8++ = (uint8_t)u32;
+            break;
+    }
 
     return pvDst;
 }
