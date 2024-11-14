@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMHardwarePage.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardNewVMHardwarePage.cpp 107022 2024-11-14 13:56:24Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMHardwarePage class implementation.
  */
@@ -39,8 +39,9 @@
 #include "UIWizardNewVMHardwarePage.h"
 
 
-UIWizardNewVMHardwarePage::UIWizardNewVMHardwarePage()
-    : m_pLabel(0)
+UIWizardNewVMHardwarePage::UIWizardNewVMHardwarePage(const QString strHelpKeyword /* = QString() */)
+    : UINativeWizardPage(strHelpKeyword)
+    , m_pLabel(0)
     , m_pHardwareWidgetContainer(0)
 {
     prepare();

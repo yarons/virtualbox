@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMSummaryPage.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardNewVMSummaryPage.h 107022 2024-11-14 13:56:24Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMSummaryPage class declaration.
  */
@@ -45,7 +45,7 @@ class UIWizardNewVMSummaryPage : public UINativeWizardPage
 
 public:
 
-    UIWizardNewVMSummaryPage();
+    UIWizardNewVMSummaryPage(const QString strHelpKeyword = QString());
 
 private slots:
 

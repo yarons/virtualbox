@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPage.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardNewVMDiskPage.cpp 107022 2024-11-14 13:56:24Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPage class implementation.
  */
@@ -66,8 +66,9 @@ QUuid UIWizardNewVMDiskCommon::getWithFileOpenDialog(const QString &strOSTypeID,
     return uMediumId;
 }
 
-UIWizardNewVMDiskPage::UIWizardNewVMDiskPage(UIActionPool *pActionPool)
-    : m_pDiskSourceButtonGroup(0)
+UIWizardNewVMDiskPage::UIWizardNewVMDiskPage(UIActionPool *pActionPool, const QString strHelpKeyword /* = QString() */)
+    : UINativeWizardPage(strHelpKeyword)
+    , m_pDiskSourceButtonGroup(0)
     , m_pDiskEmpty(0)
     , m_pDiskNew(0)
     , m_pDiskExisting(0)

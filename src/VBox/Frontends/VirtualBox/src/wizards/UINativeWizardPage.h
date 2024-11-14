@@ -1,4 +1,4 @@
-/* $Id: UINativeWizardPage.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UINativeWizardPage.h 107022 2024-11-14 13:56:24Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINativeWizardPage class declaration.
  */
@@ -53,7 +53,7 @@ signals:
 public:
 
     /** Constructs wizard page. */
-    UINativeWizardPage();
+    UINativeWizardPage(const QString strHelpKeyword = QString());
 
     /** Redirects the translation call to actual handler. */
     void retranslate() { sltRetranslateUI(); }

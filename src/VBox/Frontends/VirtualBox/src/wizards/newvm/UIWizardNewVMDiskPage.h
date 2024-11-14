@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPage.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardNewVMDiskPage.h 107022 2024-11-14 13:56:24Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPage class declaration.
  */
@@ -66,7 +66,7 @@ class UIWizardNewVMDiskPage : public UINativeWizardPage
 
 public:
 
-    UIWizardNewVMDiskPage(UIActionPool *pActionPool);
+    UIWizardNewVMDiskPage(UIActionPool *pActionPool, const QString strHelpKeyword = QString());
 
 protected:
 

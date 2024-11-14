@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.cpp 106282 2024-10-10 09:24:23Z sergey.dubov@oracle.com $ */
+/* $Id: UINativeWizard.cpp 107022 2024-11-14 13:56:24Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class implementation.
  */
@@ -316,6 +316,11 @@ void UINativeWizard::sltCurrentIndexChanged(int iIndex /* = -1 */)
     m_pLabelPageTitle->setText(pPage->title());
     if (iIndex > m_iLastIndex)
         pPage->initializePage();
+
+    /* If there is a help keyword assigned to this page, use it as help keyword of this wizard. */
+    QString strPageHelpKeyword = uiCommon().helpKeyword(pPage);
+    if (!strPageHelpKeyword.isEmpty())
+        uiCommon().setHelpKeyword(this, strPageHelpKeyword);
 
     /* Disable/enable Next button: */
     QPushButton *pButtonNext = wizardButton(WizardButtonType_Next);

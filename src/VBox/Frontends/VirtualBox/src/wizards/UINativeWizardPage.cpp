@@ -1,4 +1,4 @@
-/* $Id: UINativeWizardPage.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UINativeWizardPage.cpp 107022 2024-11-14 13:56:24Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINativeWizardPage class implementation.
  */
@@ -26,14 +26,17 @@
  */
 
 /* GUI includes: */
+#include "UICommon.h"
 #include "UINativeWizard.h"
 #include "UINativeWizardPage.h"
 #include "UITranslationEventListener.h"
 
-UINativeWizardPage::UINativeWizardPage()
+UINativeWizardPage::UINativeWizardPage(const QString strHelpKeyword /* = QString() */)
 {
     connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
             this, &UINativeWizardPage::sltRetranslateUI);
+    if (!strHelpKeyword.isEmpty())
+        uiCommon().setHelpKeyword(this, strHelpKeyword);
 }
 
 void UINativeWizardPage::setTitle(const QString &strTitle)

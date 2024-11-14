@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMUnattendedPage.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardNewVMUnattendedPage.cpp 107022 2024-11-14 13:56:24Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMUnattendedPage class implementation.
  */
@@ -45,8 +45,9 @@ bool UIWizardNewVMUnattendedCommon::checkGAISOFile(const QString &strPath)
     return true;
 }
 
-UIWizardNewVMUnattendedPage::UIWizardNewVMUnattendedPage()
-    : m_pLabel(0)
+UIWizardNewVMUnattendedPage::UIWizardNewVMUnattendedPage(const QString strHelpKeyword /* = QString() */)
+    : UINativeWizardPage(strHelpKeyword)
+    , m_pLabel(0)
     , m_pAdditionalOptionsContainer(0)
     , m_pGAInstallationISOContainer(0)
     , m_pUserNamePasswordGroupBox(0)

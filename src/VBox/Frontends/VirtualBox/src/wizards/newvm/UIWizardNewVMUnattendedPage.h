@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMUnattendedPage.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardNewVMUnattendedPage.h 107022 2024-11-14 13:56:24Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMUnattendedPage class declaration.
  */
@@ -56,7 +56,7 @@ class UIWizardNewVMUnattendedPage : public UINativeWizardPage
 
 public:
 
-    UIWizardNewVMUnattendedPage();
+    UIWizardNewVMUnattendedPage(const QString strHelpKeyword = QString());
 
 private slots:
 

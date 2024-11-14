@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMHardwarePage.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardNewVMHardwarePage.h 107022 2024-11-14 13:56:24Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMHardwarePage class declaration.
  */
@@ -47,7 +47,7 @@ class UIWizardNewVMHardwarePage : public UINativeWizardPage
 
 public:
 
-    UIWizardNewVMHardwarePage();
+    UIWizardNewVMHardwarePage(const QString strHelpKeyword = QString());
 
 private slots:
 

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMSummaryPage.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardNewVMSummaryPage.cpp 107022 2024-11-14 13:56:24Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMSummaryPage class implementation.
  */
@@ -418,8 +418,9 @@ void UIWizardNewVMSummaryModel::populateData(UIWizardNewVM *pWizard)
 *   UIWizardNewVMSummaryPage implementation.                                                                                     *
 *********************************************************************************************************************************/
 
-UIWizardNewVMSummaryPage::UIWizardNewVMSummaryPage()
-    : m_pLabel(0)
+UIWizardNewVMSummaryPage::UIWizardNewVMSummaryPage(const QString strHelpKeyword /* = QString() */)
+    : UINativeWizardPage(strHelpKeyword)
+    , m_pLabel(0)
     , m_pTree(0)
 {
     prepare();
