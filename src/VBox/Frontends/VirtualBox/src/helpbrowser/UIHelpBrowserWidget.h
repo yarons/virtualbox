@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 106282 2024-10-10 09:24:23Z sergey.dubov@oracle.com $ */
+/* $Id: UIHelpBrowserWidget.h 107020 2024-11-14 11:50:32Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -120,6 +120,7 @@ private slots:
     void sltLinkHighlighted(const QUrl &url);
     void sltMouseOverImage(const QString &strImageName);
     void sltRetranslateUI();
+    void sltCommitDataSignalReceived();
 
 private:
 
@@ -208,6 +209,7 @@ private:
     /* This is set t true when handling QHelpContentModel::contentsCreated signal. */
     bool                 m_fModelContentCreated;
     bool                 m_fIndexingFinished;
+    bool                 m_fCommitDataSignalReceived;
     /** This queue is used in unlikely case where possibly several keywords are requested to be shown
       *  but indexing is not yet finished. In that case we queue the keywords and process them after
       * after indexing is finished. */
