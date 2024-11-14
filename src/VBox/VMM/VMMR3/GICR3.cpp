@@ -1,4 +1,4 @@
-/* $Id: GICR3.cpp 106371 2024-10-16 13:25:07Z alexander.eichner@oracle.com $ */
+/* $Id: GICR3.cpp 107018 2024-11-14 08:39:32Z alexander.eichner@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GICv3).
  */
@@ -409,7 +409,7 @@ DECLCALLBACK(int) gicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pC
     /*
      * Validate GIC settings.
      */
-    PDMDEV_VALIDATE_CONFIG_RETURN(pDevIns, "DistributorMmioBase|RedistributorMmioBase", "");
+    PDMDEV_VALIDATE_CONFIG_RETURN(pDevIns, "DistributorMmioBase|RedistributorMmioBase|ItsMmioBase", "");
 
 #if 0
     /*
