@@ -1,4 +1,4 @@
-/* $Id: PlatformPropertiesImpl.cpp 106385 2024-10-16 13:58:41Z alexander.eichner@oracle.com $ */
+/* $Id: PlatformPropertiesImpl.cpp 107037 2024-11-15 15:07:41Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform properties.
  */
@@ -173,8 +173,22 @@ HRESULT PlatformProperties::getSerialPortCount(ULONG *count)
 
 HRESULT PlatformProperties::getParallelPortCount(ULONG *count)
 {
-    /* no need to lock, this is const */
-    *count = SchemaDefs::ParallelPortCount;
+    switch (mPlatformArchitecture)
+    {
+        case PlatformArchitecture_x86:
+        {
+            /* no need to lock, this is const */
+            *count = SchemaDefs::ParallelPortCount;
+            break;
+        }
+
+        case PlatformArchitecture_ARM:
+        default:
+        {
+            *count = 0; /* Not supported. */
+            break;
+        }
+    }
 
     return S_OK;
 }
