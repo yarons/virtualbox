@@ -1,4 +1,4 @@
-/* $Id: tstCAPIGlue.c 107032 2024-11-15 09:35:45Z andreas.loeffler@oracle.com $ */
+/* $Id: tstCAPIGlue.c 107033 2024-11-15 09:44:28Z andreas.loeffler@oracle.com $ */
 /** @file tstCAPIGlue.c
  * Demonstrator program to illustrate use of C bindings of Main API.
  *
@@ -48,6 +48,10 @@
 # include <signal.h>
 # include <unistd.h>
 # include <sys/poll.h>
+# include <strings.h> /* For strcasecmp */
+# ifndef stricmp
+#  define stricmp strcasecmp
+# endif
 #endif
 #ifdef IPRT_INCLUDED_cdefs_h
 # error "not supposed to involve any IPRT or VBox headers here."
