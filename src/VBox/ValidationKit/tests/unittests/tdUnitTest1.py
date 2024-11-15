@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: tdUnitTest1.py 107034 2024-11-15 10:00:46Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 106061 $"
+__version__ = "$Revision: 107034 $"
 
 
 # Standard Python imports.
@@ -212,7 +212,8 @@ class tdUnitTest1(vbox.TestDriver):
         'tstXptLink': '',                               # parameters required
         'tstXPCOMCGlue': '',                            # user interaction required
         'testcase/tstXPCOMCGlue': '',                   # user interaction required
-        'testcase/tstCAPIGlue': '',                     # user interaction required
+        'testcase/tstCAPIGlue': '',                     # user interaction required (for <= 7.1)
+        'testcase/tstCAPIGlue-x86': '',                 # user interaction required (for <= 7.1)
         'testcase/tstTestCallTemplates': '',            # some strange xpcom18a4 test, segfaults
         'tstTestCallTemplates': '',                     # some strange xpcom18a4 test, segfaults
         'testcase/tstRTFilesystem': '',                 # parameters required
