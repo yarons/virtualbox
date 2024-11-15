@@ -1,4 +1,4 @@
-; $Id: VMMR0.inf 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+; $Id: VMMR0.inf 107030 2024-11-15 02:10:14Z knut.osmundsen@oracle.com $
 ;; @file
 ; VMMR0.inf - VirtualBox VMM drivers.
 ;
@@ -58,7 +58,7 @@ AddService=,2   ; Dummy service using the NULL driver.
 
 [VBoxVMM_CopyFiles]
 VMMR0.r0,,,2
-VBoxDDR0.r0,,,2
+;amd64 VBoxDDR0.r0,,,2
 
 [Strings]
 ORACLE = "Oracle Corporation"
