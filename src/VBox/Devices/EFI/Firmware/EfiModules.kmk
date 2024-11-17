@@ -1,4 +1,4 @@
-# $Id: EfiModules.kmk 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: EfiModules.kmk 107040 2024-11-17 02:21:36Z knut.osmundsen@oracle.com $
 ## @file
 # kBuild EFI module list shared with the root makefile.
 #
@@ -41,7 +41,7 @@ ifndef VBOX_EFI_FIRMWARE_EFI_MODULES_KMK_INCLUDED
  # The name of the subdirectory which the .pdb, .efi and other output files ends
  # up in, apparently.  In the generated makefiles, DEBUG_DIR points to them.
  #
- if1of ($(VBOX_EFI_TOOL_CHAIN), VS2017) ## @todo figure why/how this happens.
+ if1of ($(VBOX_EFI_TOOL_CHAIN), VS2017 VS2019 VS2022) ## @todo figure why/how this happens.
   VBOX_EFI_DEBUG_DIR = OUTPUT
  else
   VBOX_EFI_DEBUG_DIR = DEBUG
