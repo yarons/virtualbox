@@ -1,4 +1,4 @@
-/* $Id: DBGFR3Bp.cpp 106363 2024-10-16 13:08:09Z alexander.eichner@oracle.com $ */
+/* $Id: DBGFR3Bp.cpp 107049 2024-11-18 14:57:10Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Breakpoint Management.
  */
@@ -472,8 +472,8 @@ static DECLCALLBACK(VBOXSTRICTRC) dbgfR3BpOwnerInitEmtWorker(PVM pVM, PVMCPU pVC
             {
                 /* Driverless: Do dbgfR0BpOwnerInitWorker here, ring-3 style. */
                 uint32_t const cbBpOwnerR3 = RT_ALIGN_32(DBGF_BP_OWNER_COUNT_MAX * sizeof(DBGFBPOWNERINT), HOST_PAGE_SIZE);
-                pUVM->dbgf.s.paBpLocPortIoR3 = (uint32_t *)RTMemPageAllocZ(cbBpOwnerR3);
-                if (pUVM->dbgf.s.paBpLocPortIoR3)
+                pUVM->dbgf.s.paBpOwnersR3 = (PDBGFBPOWNERINT)RTMemPageAllocZ(cbBpOwnerR3);
+                if (pUVM->dbgf.s.paBpOwnersR3)
                     return VINF_SUCCESS;
                 AssertLogRelMsgFailed(("cbBpOwnerR3=%#x\n", cbBpOwnerR3));
                 rc = VERR_NO_PAGE_MEMORY;
