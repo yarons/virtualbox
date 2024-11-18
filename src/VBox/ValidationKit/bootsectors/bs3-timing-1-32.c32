@@ -1,4 +1,4 @@
-/* $Id: bs3-timing-1-32.c32 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-timing-1-32.c32 107044 2024-11-18 08:29:42Z bela.lubkin@oracle.com $ */
 /** @file
  * BS3Kit - bs3-timinig-1, 32-bit C code.
  */
@@ -41,7 +41,7 @@
 #ifndef STANDALONE_EXECUTABLE
 # include <bs3kit.h>
 #endif
-#if defined(RT_ARcH_ARM) || defined(RT_ARCH_ARM64)
+#if defined(RT_ARCH_ARM) || defined(RT_ARCH_ARM64)
 # include <iprt/asm-arm.h>
 #else
 # include <iprt/asm-amd64-x86.h>
