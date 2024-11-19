@@ -1,4 +1,4 @@
-/* $Id: SystemTableBuilder.cpp 106973 2024-11-12 10:24:17Z alexander.eichner@oracle.com $ */
+/* $Id: SystemTableBuilder.cpp 107058 2024-11-19 10:07:33Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox bus slots assignment manager
  */
@@ -701,6 +701,199 @@ int SystemTableBuilderAcpi::configureTpm2(bool fCrb, RTGCPHYS GCPhysMmioStart, R
     RTAcpiTblMethodStart(m_hAcpiDsdt, "_STA", 0, RTACPI_METHOD_F_NOT_SERIALIZED, 0 /*uSyncLvl*/);
     RTAcpiTblStmtSimpleAppend(m_hAcpiDsdt, kAcpiStmt_Return);
     RTAcpiTblIntegerAppend(m_hAcpiDsdt, 0x0f);
+    RTAcpiTblMethodFinalize(m_hAcpiDsdt);
+
+    /* Build the PPI interface. */
+    RTAcpiTblMethodStart(m_hAcpiDsdt, "_DSM", 4, RTACPI_METHOD_F_SERIALIZED, 0 /*uSyncLvl*/);
+
+    /*
+     * Check that the UUID in Arg0 contains the Physical Presence Interface Specification UUID.
+     */
+    RTAcpiTblIfStart(m_hAcpiDsdt);
+
+    /* Predicate (LEqual(Arg0, ToUUID("3dddfaa6-361b-4eb4-a424-8d10089d1653")))*/
+    RTAcpiTblBinaryOpAppend(m_hAcpiDsdt, kAcpiBinaryOp_LEqual);
+    RTAcpiTblArgOpAppend(m_hAcpiDsdt, 0);
+    RTAcpiTblUuidAppendFromStr(m_hAcpiDsdt, "3dddfaa6-361b-4eb4-a424-8d10089d1653");
+
+        /* Standard _DSM query function. */
+        RTAcpiTblIfStart(m_hAcpiDsdt);
+
+            /* LEqual(Arg2, Zero). */
+            RTAcpiTblBinaryOpAppend(m_hAcpiDsdt, kAcpiBinaryOp_LEqual);
+            RTAcpiTblArgOpAppend(m_hAcpiDsdt, 2);
+            RTAcpiTblIntegerAppend(m_hAcpiDsdt, 0);
+
+            RTAcpiTblStmtSimpleAppend(m_hAcpiDsdt, kAcpiStmt_Return);
+            uint8_t abDsmQuery[2] = { 0xff, 0x01 };
+            RTAcpiTblBufferAppend(m_hAcpiDsdt, &abDsmQuery[0], sizeof(abDsmQuery));
+
+        RTAcpiTblIfFinalize(m_hAcpiDsdt);
+
+        /* Query supported PPI revision . */
+        RTAcpiTblIfStart(m_hAcpiDsdt);
+
+            /* LEqual(Arg2, Zero). */
+            RTAcpiTblBinaryOpAppend(m_hAcpiDsdt, kAcpiBinaryOp_LEqual);
+            RTAcpiTblArgOpAppend(m_hAcpiDsdt, 2);
+            RTAcpiTblIntegerAppend(m_hAcpiDsdt, 1);
+
+            RTAcpiTblStmtSimpleAppend(m_hAcpiDsdt, kAcpiStmt_Return);
+            RTAcpiTblStringAppend(m_hAcpiDsdt, "1.3");
+
+        RTAcpiTblIfFinalize(m_hAcpiDsdt);
+
+
+        /* Submit TPM Operation Requested to pre-OS environment. */
+        RTAcpiTblIfStart(m_hAcpiDsdt);
+
+            /* LEqual(Arg2, Zero). */
+            RTAcpiTblBinaryOpAppend(m_hAcpiDsdt, kAcpiBinaryOp_LEqual);
+            RTAcpiTblArgOpAppend(m_hAcpiDsdt, 2);
+            RTAcpiTblIntegerAppend(m_hAcpiDsdt, 2);
+
+            /** @todo */
+
+        RTAcpiTblIfFinalize(m_hAcpiDsdt);
+
+
+        /* Get Pending TPM Operation Requested by the OS. */
+        RTAcpiTblIfStart(m_hAcpiDsdt);
+
+            /* LEqual(Arg2, Zero). */
+            RTAcpiTblBinaryOpAppend(m_hAcpiDsdt, kAcpiBinaryOp_LEqual);
+            RTAcpiTblArgOpAppend(m_hAcpiDsdt, 2);
+            RTAcpiTblIntegerAppend(m_hAcpiDsdt, 3);
+
+            /** @todo */
+
+        RTAcpiTblIfFinalize(m_hAcpiDsdt);
+
+
+        /* Get Platform-specific Action to Transition to Pre-OS Environment. */
+        RTAcpiTblIfStart(m_hAcpiDsdt);
+
+            /* LEqual(Arg2, Zero). */
+            RTAcpiTblBinaryOpAppend(m_hAcpiDsdt, kAcpiBinaryOp_LEqual);
+            RTAcpiTblArgOpAppend(m_hAcpiDsdt, 2);
+            RTAcpiTblIntegerAppend(m_hAcpiDsdt, 4);
+
+            RTAcpiTblStmtSimpleAppend(m_hAcpiDsdt, kAcpiStmt_Return);
+            RTAcpiTblIntegerAppend(m_hAcpiDsdt, 2); /* Reboot */
+
+        RTAcpiTblIfFinalize(m_hAcpiDsdt);
+
+
+        /* Return TPM Operation Response to OS Environment. */
+        RTAcpiTblIfStart(m_hAcpiDsdt);
+
+            /* LEqual(Arg2, Zero). */
+            RTAcpiTblBinaryOpAppend(m_hAcpiDsdt, kAcpiBinaryOp_LEqual);
+            RTAcpiTblArgOpAppend(m_hAcpiDsdt, 2);
+            RTAcpiTblIntegerAppend(m_hAcpiDsdt, 5);
+
+            /** @todo */
+
+        RTAcpiTblIfFinalize(m_hAcpiDsdt);
+
+
+        /* Submit Preferred user language - deprecated. */
+        RTAcpiTblIfStart(m_hAcpiDsdt);
+
+            /* LEqual(Arg2, Zero). */
+            RTAcpiTblBinaryOpAppend(m_hAcpiDsdt, kAcpiBinaryOp_LEqual);
+            RTAcpiTblArgOpAppend(m_hAcpiDsdt, 2);
+            RTAcpiTblIntegerAppend(m_hAcpiDsdt, 6);
+
+            RTAcpiTblStmtSimpleAppend(m_hAcpiDsdt, kAcpiStmt_Return);
+            RTAcpiTblIntegerAppend(m_hAcpiDsdt, 3); /* Not implemented */
+
+        RTAcpiTblIfFinalize(m_hAcpiDsdt);
+
+
+        /* Submit TPM Operation Request to Pre-OS Environment 2. */
+        RTAcpiTblIfStart(m_hAcpiDsdt);
+
+            /* LEqual(Arg2, Zero). */
+            RTAcpiTblBinaryOpAppend(m_hAcpiDsdt, kAcpiBinaryOp_LEqual);
+            RTAcpiTblArgOpAppend(m_hAcpiDsdt, 2);
+            RTAcpiTblIntegerAppend(m_hAcpiDsdt, 7);
+
+            /** @todo */
+
+        RTAcpiTblIfFinalize(m_hAcpiDsdt);
+
+
+        /* Get User Confirmation Status for Operation. */
+        RTAcpiTblIfStart(m_hAcpiDsdt);
+
+            /* LEqual(Arg2, Zero). */
+            RTAcpiTblBinaryOpAppend(m_hAcpiDsdt, kAcpiBinaryOp_LEqual);
+            RTAcpiTblArgOpAppend(m_hAcpiDsdt, 2);
+            RTAcpiTblIntegerAppend(m_hAcpiDsdt, 8);
+
+            /** @todo */
+
+        RTAcpiTblIfFinalize(m_hAcpiDsdt);
+
+
+        /* Return Unknown function. */
+        uint8_t bUnkFunc = 0x00;
+        RTAcpiTblStmtSimpleAppend(m_hAcpiDsdt, kAcpiStmt_Return);
+        RTAcpiTblBufferAppend(m_hAcpiDsdt, &bUnkFunc, sizeof(bUnkFunc));
+
+    RTAcpiTblIfFinalize(m_hAcpiDsdt);
+
+
+    /*
+     * TCG Platform Reset Attack Mitigation Specification interface.
+     */
+    RTAcpiTblIfStart(m_hAcpiDsdt);
+
+    /* Predicate (LEqual(Arg0, ToUUID("376054ed-cc13-4675-901c-4756d7f2d45d")))*/
+    RTAcpiTblBinaryOpAppend(m_hAcpiDsdt, kAcpiBinaryOp_LEqual);
+    RTAcpiTblArgOpAppend(m_hAcpiDsdt, 0);
+    RTAcpiTblUuidAppendFromStr(m_hAcpiDsdt, "376054ed-cc13-4675-901c-4756d7f2d45d");
+
+        /* Standard _DSM query function. */
+        RTAcpiTblIfStart(m_hAcpiDsdt);
+
+            /* LEqual(Arg2, Zero). */
+            RTAcpiTblBinaryOpAppend(m_hAcpiDsdt, kAcpiBinaryOp_LEqual);
+            RTAcpiTblArgOpAppend(m_hAcpiDsdt, 2);
+            RTAcpiTblIntegerAppend(m_hAcpiDsdt, 0);
+
+            RTAcpiTblStmtSimpleAppend(m_hAcpiDsdt, kAcpiStmt_Return);
+            uint8_t bBuf = 0x03;
+            RTAcpiTblBufferAppend(m_hAcpiDsdt, &bBuf, sizeof(bBuf));
+
+        RTAcpiTblIfFinalize(m_hAcpiDsdt);
+
+        /* Set Memory Overwrite Request (MOR) bit to specified value. */
+        RTAcpiTblIfStart(m_hAcpiDsdt);
+
+            /* LEqual(Arg2, Zero). */
+            RTAcpiTblBinaryOpAppend(m_hAcpiDsdt, kAcpiBinaryOp_LEqual);
+            RTAcpiTblArgOpAppend(m_hAcpiDsdt, 2);
+            RTAcpiTblIntegerAppend(m_hAcpiDsdt, 1);
+
+            RTAcpiTblStmtSimpleAppend(m_hAcpiDsdt, kAcpiStmt_Return);
+            RTAcpiTblIntegerAppend(m_hAcpiDsdt, 0); /* Memory always zeroed on reset. */
+
+        RTAcpiTblIfFinalize(m_hAcpiDsdt);
+
+        /* Return Unknown function. */
+        bUnkFunc = 0x00;
+        RTAcpiTblStmtSimpleAppend(m_hAcpiDsdt, kAcpiStmt_Return);
+        RTAcpiTblBufferAppend(m_hAcpiDsdt, &bUnkFunc, sizeof(bUnkFunc));
+
+    RTAcpiTblIfFinalize(m_hAcpiDsdt);
+
+    /* Return Unknown function. */
+    bUnkFunc = 0x00;
+    RTAcpiTblStmtSimpleAppend(m_hAcpiDsdt, kAcpiStmt_Return);
+    RTAcpiTblBufferAppend(m_hAcpiDsdt, &bUnkFunc, sizeof(bUnkFunc));
+
     RTAcpiTblMethodFinalize(m_hAcpiDsdt);
 
     return RTAcpiTblDeviceFinalize(m_hAcpiDsdt);
