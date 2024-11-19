@@ -1,4 +1,4 @@
-; $Id: ftol2-vcc.nasm 107040 2024-11-17 02:21:36Z knut.osmundsen@oracle.com $
+; $Id: VBox-ftol2-vcc.nasm 107061 2024-11-19 11:02:44Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - Floating Point to Integer related Visual C++ support routines.
 ;
