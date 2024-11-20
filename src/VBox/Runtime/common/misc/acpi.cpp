@@ -1,4 +1,4 @@
-/* $Id: acpi.cpp 107057 2024-11-19 10:05:28Z alexander.eichner@oracle.com $ */
+/* $Id: acpi.cpp 107081 2024-11-20 11:39:11Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Advanced Configuration and Power Interface (ACPI) Table generation API.
  */
@@ -863,7 +863,7 @@ RTDECL(int) RTAcpiTblBinaryOpAppend(RTACPITBL hAcpiTbl, RTACPIBINARYOP enmBinary
         case kAcpiBinaryOp_LGreater:        bOp = ACPI_AML_BYTE_CODE_OP_LGREATER; break;
         case kAcpiBinaryOp_LLess:           bOp = ACPI_AML_BYTE_CODE_OP_LLESS;    break;
         case kAcpiBinaryOp_LGreaterEqual:
-        case kAcpiBinaryOp_LLessEqual:    
+        case kAcpiBinaryOp_LLessEqual:
         case kAcpiBinaryOp_LNotEqual:
             bOp = ACPI_AML_BYTE_CODE_OP_LNOT;
             break;
