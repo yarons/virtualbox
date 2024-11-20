@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvInst.cpp 106981 2024-11-12 14:58:12Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxDrvInst.cpp 107072 2024-11-20 09:19:15Z andreas.loeffler@oracle.com $ */
 /** @file
  * Driver installation utility for Windows hosts and guests.
  */
@@ -496,6 +496,8 @@ static DECLCALLBACK(RTEXITCODE) vboxDrvInstCmdInstallMain(PRTGETOPTSTATE pGetSta
         }
         else
             rcExit = RTEXITCODE_FAILURE;
+
+        VBoxWinDrvInstDestroy(hWinDrvInst);
     }
 
     RTStrFree(pszInfFile);
@@ -601,6 +603,8 @@ static DECLCALLBACK(RTEXITCODE) vboxDrvInstCmdUninstallMain(PRTGETOPTSTATE pGetS
         }
         else
             rcExit = RTEXITCODE_FAILURE;
+
+        VBoxWinDrvInstDestroy(hWinDrvInst);
     }
 
     RTStrFree(pszInfFile);
