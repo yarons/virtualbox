@@ -1,4 +1,4 @@
-/* $Id: VBoxWinDrvInst.h 107082 2024-11-20 13:50:22Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxWinDrvInst.h 107084 2024-11-20 16:09:39Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxWinDrvInst - Header for Windows driver installation handling.
  */
@@ -86,8 +86,11 @@ typedef FNVBOXWINDRIVERLOGMSG *PFNVBOXWINDRIVERLOGMSG;
 #define VBOX_WIN_DRIVERINSTALL_F_FORCE      RT_BIT(1)
 /** Run in dry mode (no real (un)installation performed). */
 #define VBOX_WIN_DRIVERINSTALL_F_DRYRUN     RT_BIT(2)
+/** Do not destroy internal data for later inspection.
+ *  Only used by testcases and should be avoided in general. */
+#define VBOX_WIN_DRIVERINSTALL_F_NO_DESTROY RT_BIT(3)
 /** Validation mask. */
-#define VBOX_WIN_DRIVERINSTALL_F_VALID_MASK 0x7
+#define VBOX_WIN_DRIVERINSTALL_F_VALID_MASK 0xf
 
 int VBoxWinDrvInstCreate(PVBOXWINDRVINST hDrvInst);
 int VBoxWinDrvInstCreateEx(PVBOXWINDRVINST phDrvInst, unsigned uVerbosity, PFNVBOXWINDRIVERLOGMSG pfnLog, void *pvUser);
