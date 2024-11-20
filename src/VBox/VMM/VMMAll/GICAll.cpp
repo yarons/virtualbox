@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 106371 2024-10-16 13:25:07Z alexander.eichner@oracle.com $ */
+/* $Id: GICAll.cpp 107079 2024-11-20 11:32:10Z alexander.eichner@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GICv3) - All Contexts.
  */
@@ -623,7 +623,10 @@ DECLINLINE(VBOXSTRICTRC) gicDistRegisterWrite(PPDMDEVINS pDevIns, PVMCPUCC pVCpu
                  * timer.
                  */
                 if ((uValue & 0xff) == 0)
+                {
+                    uValue >>= 8;
                     continue;
+                }
 #endif
                 pThis->abIntPriority[i] = (uint8_t)(uValue & 0xff);
                 uValue >>= 8;
