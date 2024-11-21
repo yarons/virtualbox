@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyProcess-win.cpp 106963 2024-11-12 02:41:36Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPHardenedVerifyProcess-win.cpp 107120 2024-11-21 23:36:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Process Verification, Windows.
  */
@@ -126,7 +126,11 @@ typedef struct SUPHNTVPIMAGE
     /** The number of mapping regions. */
     uint32_t        cRegions;
     /** Mapping regions. */
+#ifdef VBOX_WITH_MINIMAL_HARDENING /* 2024-11-21: Qt6Gui.dll has 19 regions, .data is split up quite a bit. */
+    SUPHNTVPREGION  aRegions[40];
+#else
     SUPHNTVPREGION  aRegions[16];
+#endif
 
     /** The image characteristics from the FileHeader. */
     uint16_t        fImageCharecteristics;
