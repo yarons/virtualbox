@@ -1,4 +1,4 @@
-/* $Id: VBoxWindowsAdditions.cpp 106726 2024-10-26 00:28:53Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxWindowsAdditions.cpp 107106 2024-11-21 11:36:16Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxWindowsAdditions - The Windows Guest Additions Loader.
  *
@@ -994,7 +994,14 @@ int main()
         off--;
     }
 
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
     WCHAR const  *pwszSuff = IsWow64() ? L"-amd64.exe" : L"-x86.exe";
+#elif defined(RT_ARCH_ARM64)
+    WCHAR const  *pwszSuff = L"-arm64.exe";
+#else
+# error "Port me!"
+#endif
+
     int rc = RTUtf16Copy(&wszExePath[cwcExePath], RT_ELEMENTS(wszExePath) - cwcExePath, pwszSuff);
     if (RT_FAILURE(rc))
         return ErrorMsgRc(14, "Real installer name is too long!");
