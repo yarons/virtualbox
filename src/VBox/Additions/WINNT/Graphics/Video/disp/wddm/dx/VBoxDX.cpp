@@ -1,4 +1,4 @@
-/* $Id: VBoxDX.cpp 106586 2024-10-22 22:00:15Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDX.cpp 107109 2024-11-21 14:03:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox D3D user mode driver.
  */
@@ -29,6 +29,7 @@
 #include <iprt/errcore.h>
 #include <iprt/thread.h>
 #include <VBox/log.h>
+#include <VBox/cdefs.h> /* VBOX_STRICT */
 
 #include <iprt/win/windows.h>
 #include <iprt/win/d3dkmthk.h>
@@ -2024,7 +2025,7 @@ static VMSVGAQUERYINFO const *getQueryInfo(D3D10DDI_QUERY Query)
 }
 
 
-#ifdef DEBUG
+#ifdef VBOX_STRICT
 static bool isBeginDisabled(D3D10DDI_QUERY q)
 {
     return q == D3D10DDI_QUERY_EVENT

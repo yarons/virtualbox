@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 107109 2024-11-21 14:03:37Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the VirtualBox Windows Guest Shared Folders Network Provider.
 #
@@ -52,7 +52,8 @@ VBoxMRXNP-x86_EXTENDS = VBoxMRXNP
 VBoxMRXNP-x86_BLD_TRG_ARCH = x86
 VBoxMRXNP-x86_LIBS = \
 	$(VBOX_LIB_IPRT_GUEST_R3_SHARED_X86) \
-	$(VBOX_LIB_VBGL_R3_SHARED_X86)
+	$(VBOX_LIB_VBGL_R3_SHARED_X86) \
+	$(VBOX_LIB_IPRT_GUEST_R3_SHARED_X86)
 VBoxMRXNP-x86_DEFS = $(VBoxMRXNP_DEFS) VBOX_WOW64
 
 include $(FILE_KBUILD_SUB_FOOTER)
