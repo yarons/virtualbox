@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 105741 2024-08-20 18:17:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsSystem.cpp 107115 2024-11-21 16:39:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class implementation.
  */
@@ -642,8 +642,6 @@ void UIMachineSettingsSystem::handleFilterChange()
     {
         if (m_pEditorChipset)
             m_pEditorChipset->hide();
-        if (m_pEditorTpm)
-            m_pEditorTpm->hide();
         if (m_pEditorProcessorFeatures)
             m_pEditorProcessorFeatures->hide();
     }
