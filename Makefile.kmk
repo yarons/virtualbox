@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 107092 2024-11-21 01:54:50Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 107093 2024-11-21 01:57:55Z knut.osmundsen@oracle.com $
 ## @file
 # Top level makefile.
 #
@@ -472,7 +472,7 @@ if   !defined(VBOX_ONLY_ADDITIONS) \
 	$(QUIET)$(TOOL_ZIP_UNPACK) $(TOOL_ZIP_UNPACKFLAGS) -o $< -d $(buildserver-efifw_0_OUTDIR)
 	$(MKDIR) -p -- $(dir $@)/amd64 $(dir $@)/x86
 	$(foreach file, \
-		$(foreach arch, x86 amd64, $(foreach mod, $(VBOX_EFI_MODULES_FLAT.$(arch)), $$(buildserver-efifw_0_OUTDIR)/$(arch)/$(mod).pdb)) \
+		$(foreach arch, x86 amd64, $(foreach mod, $(VBOX_EFI_MODULES_FLAT.$(arch)), $(buildserver-efifw_0_OUTDIR)/$(arch)/$(mod).pdb)) \
 		,$(NLTAB) $(QUIET)$(TEST) '!' -f $(file) -- $(TOUCH_EXT) $(file) )
 	$(TOUCH) -c -- \
 		$(buildserver-efifw_0_OUTDIR)/VBoxEFI32.fd \
