@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardNewVM.h 107113 2024-11-21 15:44:25Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -42,6 +42,7 @@
 
 /* Forward declarations: */
 class UIActionPool;
+class CStorageController;
 
 enum SelectedDiskSource
 {
@@ -187,6 +188,7 @@ private:
     void setUnattendedPageVisible(bool fVisible);
     void deleteVirtualDisk();
     bool checkUnattendedInstallError(const CUnattended &comUnattended) const;
+    LONG portNumberForDevice(CStorageController &comController);
     /** @name Variables
      * @{ */
        CMedium m_virtualDisk;

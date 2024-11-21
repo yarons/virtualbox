@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 106719 2024-10-25 16:18:51Z serkan.bayraktar@oracle.com $ */
+/* $Id: UINotificationObjects.cpp 107113 2024-11-21 15:44:25Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -692,6 +692,15 @@ void UINotificationMessage::cannotAcquireStorageControllerParameter(const CStora
     createMessage(
         QApplication::translate("UIMessageCenter", "Storage controller failure ..."),
         QApplication::translate("UIMessageCenter", "Failed to acquire storage controller parameter.") +
+        UIErrorString::formatErrorInfo(comStorageController));
+}
+
+/* static */
+void UINotificationMessage::cannotChangeStorageControllerParameter(const CStorageController &comStorageController)
+{
+    createMessage(
+        QApplication::translate("UIMessageCenter", "Storage controller failure ..."),
+        QApplication::translate("UIMessageCenter", "Failed to change storage controller parameter.") +
         UIErrorString::formatErrorInfo(comStorageController));
 }
 

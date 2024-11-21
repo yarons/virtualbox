@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 106312 2024-10-14 16:38:55Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.h 107113 2024-11-21 15:44:25Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -306,6 +306,9 @@ public:
         /** Notifies about inability to acquire IStorageController parameter.
           * @param  comStorageController  Brings the object parameter get acquired from. */
         static void cannotAcquireStorageControllerParameter(const CStorageController &comStorageController);
+        /** Notifies about inability to change IStorageController parameter.
+          * @param  comStorageController  Brings the object parameter being changed for. */
+        static void cannotChangeStorageControllerParameter(const CStorageController &comStorageController);
         /** Notifies about inability to acquire IMediumAttachment parameter.
           * @param  comMediumAttachment  Brings the object parameter get acquired from. */
         static void cannotAcquireMediumAttachmentParameter(const CMediumAttachment &comMediumAttachment);
