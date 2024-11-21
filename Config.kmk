@@ -1,4 +1,4 @@
-# $Id: Config.kmk 107109 2024-11-21 14:03:37Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 107118 2024-11-21 23:25:19Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2026,7 +2026,7 @@ ifdef VBOX_GCC_TOOL
  VBOX_$(VBOX_GCC_TOOL)_ASFLAGS.macho.arm64 := -DASM_FORMAT_MACHO
  VBOX_$(VBOX_GCC_TOOL)_ASFLAGS.pe.x86      := -DASM_FORMAT_PE
  VBOX_$(VBOX_GCC_TOOL)_ASFLAGS.pe.amd64    := -DASM_FORMAT_PE
- VBOX_$(VBOX_GCC_TOOL)_ASFLAGS.pe.arm64    := -DASM_FORMAT_PE
+ VBOX_$(VBOX_GCC_TOOL)_ASFLAGS.pe.arm64    := -DASM_FORMAT_PE -g0 # ELF debug info causes driver blocking; -gcodeview doesn't work.
  $(foreach os,$(VBOX_TARGET_OSES),$(foreach arch,$(VBOX_TARGET_ARCHES) \
  ,$(eval VBOX_$(VBOX_GCC_TOOL)_ASFLAGS.$(os).$(arch) = $$(VBOX_$(VBOX_GCC_TOOL)_ASFLAGS.$(VBOX_LDR_FMT.$(os).$(arch)).$(arch)))))
 endif
@@ -9372,7 +9372,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 107109 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 107118 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
