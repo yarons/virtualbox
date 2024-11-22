@@ -1,4 +1,4 @@
-# $Id: Config.kmk 107138 2024-11-22 10:58:27Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 107140 2024-11-22 11:16:37Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -571,6 +571,11 @@ VBOX_WITH_DBGF_FLOW_TRACING = 1
 if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), darwin.arm64 linux.arm64 win.arm64)
  VBOX_WITH_VIRT_ARMV8 = 1
 endif
+# Makes x86 emulation on ARM hosts available in the GUI.
+if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), )
+ VBOX_WITH_X86_ON_ARM_ENABLED = 1
+endif
+
 if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), linux.amd64)
  ifdef VBOX_WITH_R0_MODULES
   # Enable IBT branch protection for the R0 modules.
@@ -9384,7 +9389,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 107138 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 107140 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 106077 2024-09-17 19:36:17Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 107140 2024-11-22 11:16:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -564,7 +564,7 @@ HRESULT Console::initWithMachine(IMachine *aMachine, IInternalMachineControl *aC
         switch (platformArch)
         {
             case PlatformArchitecture_x86:
-#ifdef VBOX_WITH_VIRT_ARMV8
+#if !defined(RT_ARCH_AMD64) && !defined(VBOX_WITH_X86_ON_ARM_ENABLED)
                 {
                     ComPtr<IVirtualBox> pVirtualBox;
                     hrc = mMachine->COMGETTER(Parent)(pVirtualBox.asOutParam());
