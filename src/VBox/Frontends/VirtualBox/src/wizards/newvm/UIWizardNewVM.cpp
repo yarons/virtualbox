@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 107113 2024-11-21 15:44:25Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVM.cpp 107132 2024-11-22 09:39:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
