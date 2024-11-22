@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: NEMR3Native-darwin.cpp 107139 2024-11-22 11:09:17Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework.
  *
@@ -3707,7 +3707,7 @@ static hv_return_t nemR3DarwinRunGuest(PVM pVM, PVMCPU pVCpu, PVMXTRANSIENT pVmx
 
         if (pVmxTransient->u8GuestTpr != (uint8_t)u64Tpr)
         {
-            int rc = APICSetTpr(pVCpu, (uint8_t)u64Tpr);
+            int rc = PDMApicSetTpr(pVCpu, (uint8_t)u64Tpr);
             AssertRC(rc);
             ASMAtomicUoOrU64(&pVCpu->nem.s.fCtxChanged, HM_CHANGED_GUEST_APIC_TPR);
         }
