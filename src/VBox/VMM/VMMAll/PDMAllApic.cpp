@@ -1,4 +1,4 @@
-/* $Id: PDMAllApic.cpp 107141 2024-11-22 11:17:47Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: PDMAllApic.cpp 107142 2024-11-22 11:32:14Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * PDM - APIC (Advanced Programmable Interrupt Controller) Interface.
  */
@@ -260,11 +260,11 @@ VMM_INT_DECL(int) PDMApicGetInterrupt(PVMCPUCC pVCpu, uint8_t *pu8Vector, uint32
  * @param   uSrcTag         The interrupt source tag (debugging).
  */
 VMM_INT_DECL(int) PDMApicBusDeliver(PVMCC pVM, uint8_t uDest, uint8_t uDestMode, uint8_t uDeliveryMode, uint8_t uVector,
-                                    uint8_t uPolarity, uint8_t uTriggerMode, uint32_t uTagSrc)
+                                    uint8_t uPolarity, uint8_t uTriggerMode, uint32_t uSrcTag)
 {
     AssertReturn(PDM_TO_APICBACKEND(pVM)->pfnBusDeliver, VERR_INVALID_POINTER);
     return PDM_TO_APICBACKEND(pVM)->pfnBusDeliver(pVM, uDest, uDestMode, uDeliveryMode, uVector, uPolarity, uTriggerMode,
-                                                  uTagSrc);
+                                                  uSrcTag);
 }
 
 
