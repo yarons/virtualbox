@@ -1,4 +1,4 @@
-/* $Id: ldrELFRelocatable.cpp.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: ldrELFRelocatable.cpp.h 107144 2024-11-22 14:09:33Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Binary Image Loader, Template for ELF Relocatable Images.
  */
@@ -1982,6 +1982,9 @@ static int RTLDRELF_NAME(ValidateElfHeader)(const Elf_Ehdr *pEhdr, uint64_t cbRa
 #elif ELF_MODE == 64
         case EM_X86_64:
             *penmArch = RTLDRARCH_AMD64;
+            break;
+        case EM_AARCH64:
+            *penmArch = RTLDRARCH_ARM64;
             break;
 #endif
         default:
