@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin-armv8.cpp 107046 2024-11-18 14:21:58Z alexander.eichner@oracle.com $ */
+/* $Id: NEMR3Native-darwin-armv8.cpp 107130 2024-11-22 09:15:49Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework, ARMv8 variant.
  *
@@ -2390,7 +2390,7 @@ static VBOXSTRICTRC nemR3DarwinRunGuestDebug(PVM pVM, PVMCPU pVCpu)
     }
 
     /* Restore debug exceptions trapping. */
-    hrc != hv_vcpu_set_trap_debug_exceptions(pVCpu->nem.s.hVCpu, false);
+    hrc |= hv_vcpu_set_trap_debug_exceptions(pVCpu->nem.s.hVCpu, false);
     if (hrc != HV_SUCCESS)
         return VMSetError(pVM, VERR_NEM_SET_REGISTERS_FAILED, RT_SRC_POS,
                           "Clearing trapping of debug exceptions on vCPU %u failed: %#x (%Rrc)", pVCpu->idCpu, hrc, nemR3DarwinHvSts2Rc(hrc));
