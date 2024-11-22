@@ -1,4 +1,4 @@
-/* $Id: VBoxVirtMemInfoLib.c 106353 2024-10-16 11:36:33Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxVirtMemInfoLib.c 107148 2024-11-22 15:47:28Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxVirtMemInfoLib.c - Providing the address map for setting up the MMU based on the platform settings.
  */
@@ -110,11 +110,14 @@ ArmVirtGetMemoryMap (
   idxMemDesc++;
 
   // Memory mapped peripherals
-  VirtualMemoryTable[idxMemDesc].PhysicalBase = VBoxArmPlatformMmioStartGetPhysAddr();
-  VirtualMemoryTable[idxMemDesc].VirtualBase  = VirtualMemoryTable[idxMemDesc].PhysicalBase;
-  VirtualMemoryTable[idxMemDesc].Length       = VBoxArmPlatformMmioSizeGet();
-  VirtualMemoryTable[idxMemDesc].Attributes   = ARM_MEMORY_REGION_ATTRIBUTE_DEVICE;
-  idxMemDesc++;
+  if (VBoxArmPlatformMmioSizeGet() != 0)
+  {
+    VirtualMemoryTable[idxMemDesc].PhysicalBase = VBoxArmPlatformMmioStartGetPhysAddr();
+    VirtualMemoryTable[idxMemDesc].VirtualBase  = VirtualMemoryTable[idxMemDesc].PhysicalBase;
+    VirtualMemoryTable[idxMemDesc].Length       = VBoxArmPlatformMmioSizeGet();
+    VirtualMemoryTable[idxMemDesc].Attributes   = ARM_MEMORY_REGION_ATTRIBUTE_DEVICE;
+    idxMemDesc++;
+  }
 
   // Map the FV region as normal executable memory
   VirtualMemoryTable[idxMemDesc].PhysicalBase = VBoxArmPlatformUefiRomStartGetPhysAddr();
