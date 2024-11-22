@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedVerify.cpp 106986 2024-11-12 16:35:48Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPR3HardenedVerify.cpp 107149 2024-11-22 15:56:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Verification of Hardened Installation.
  */
@@ -1033,7 +1033,7 @@ DECLHIDDEN(int) supR3HardenedVerifyAll(bool fFatal, const char *pszProgName, con
      */
     int rc2 = supR3HardenedVerifyProgram(pszProgName, pszExePath, fFatal, fLeaveOpen, fMainFlags);
     if (RT_FAILURE(rc2) && RT_SUCCESS(rc))
-        rc2 = rc;
+        rc = rc2;
 
     return rc;
 }
