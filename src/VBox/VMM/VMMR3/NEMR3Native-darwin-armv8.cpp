@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin-armv8.cpp 107130 2024-11-22 09:15:49Z alexander.eichner@oracle.com $ */
+/* $Id: NEMR3Native-darwin-armv8.cpp 107136 2024-11-22 10:11:58Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework, ARMv8 variant.
  *
@@ -1296,6 +1296,7 @@ int nemR3NativeInit(PVM pVM, bool fFallback, bool fForced)
         {
             /* Ensure nested virt is not set. */
             rc = CFGMR3RemoveValue(pCfgCpum, "NestedHWVirt");
+            AssertLogRelRC(rc);
 
             LogRel(("NEM: The host doesn't supported nested virtualization! (hrc=%#x fHvEl2Supported=%RTbool)\n",
                     hrc, fHvEl2Supported));
@@ -1305,6 +1306,8 @@ int nemR3NativeInit(PVM pVM, bool fFallback, bool fForced)
     {
         /* Ensure nested virt is not set. */
         rc = CFGMR3RemoveValue(pCfgCpum, "NestedHWVirt");
+        AssertLogRelRC(rc);
+
         LogRel(("NEM: Hypervisor.framework doesn't supported nested virtualization!\n"));
     }
 
@@ -1896,13 +1899,13 @@ static VBOXSTRICTRC nemR3DarwinHandleExitExceptionTrappedHvcInsn(PVM pVM, PVMCPU
                     if (RT_SUCCESS(rc) && fHaltOnReset)
                     {
                         Log(("nemR3DarwinHandleExitExceptionTrappedHvcInsn: Halt On Reset!\n"));
-                        rc = VINF_EM_HALT;
+                        rcStrict = VINF_EM_HALT;
                     }
                     else
                     {
                         /** @todo pVM->pdm.s.fResetFlags = fFlags; */
                         VM_FF_SET(pVM, VM_FF_RESET);
-                        rc = VINF_EM_RESET;
+                        rcStrict = VINF_EM_RESET;
                     }
                     break;
                 }
