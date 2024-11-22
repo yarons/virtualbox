@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: APICAll.cpp 107141 2024-11-22 11:17:47Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -416,7 +416,7 @@ APICMODE apicGetMode(uint64_t uApicBaseMsr)
 
 
 /**
- * @interface_method_impl{PDMAPICBACKEND,pfnisEnabled}
+ * @interface_method_impl{PDMAPICBACKEND,pfnIsEnabled}
  */
 static DECLCALLBACK(bool) apicIsEnabled(PCVMCPUCC pVCpu)
 {
@@ -456,7 +456,7 @@ static int apicGetHighestSetBitInReg(volatile const XAPIC256BITREG *pReg, int rc
  * Reads a 32-bit register at a specified offset.
  *
  * @returns The value at the specified offset.
- * @param   pXApicPage      The xAPIC page.
+ * @param   pVCpu           The cross context virtual CPU structure.
  * @param   offReg          The offset of the register being read.
  */
 static DECLCALLBACK(uint32_t) apicReadRaw32(PCVMCPUCC pVCpu, uint16_t offReg)
@@ -3336,7 +3336,7 @@ static DECLCALLBACK(void) apicUpdatePendingInterrupts(PVMCPUCC pVCpu)
 
 #ifdef IN_RING0
 /**
- * @interface_method_impl{PDMAPICBACKEND,pfnGetApicPageForCpu}
+ * @interface_method_impl{PDMAPICBACKENDR0,pfnGetApicPageForCpu}
  */
 static DECLCALLBACK(int) apicR0VBoxGetApicPageForCpu(PCVMCPUCC pVCpu, PRTHCPHYS pHCPhys, PRTR0PTR pR0Ptr, PRTR3PTR pR3Ptr)
 {
