@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 107126 2024-11-22 07:57:01Z bela.lubkin@oracle.com $
 ## @file
 # VirtualBox Validation Kit - Bootsector Kit v3
 #
@@ -72,6 +72,7 @@ bs3-bootsector-63MB_SOURCES  = bs3-bootsector.asm
 VBOX_BS3KIT_COMMON_SOURCES = \
 	bs3-cmn-A20Disable.asm \
 	bs3-cmn-A20Enable.asm \
+	bs3-cmn-Assert.c \
 	bs3-cmn-GetCpuVendor.c \
 	bs3-cmn-GetModeName.c \
 	bs3-cmn-GetModeNameShortLower.c \
