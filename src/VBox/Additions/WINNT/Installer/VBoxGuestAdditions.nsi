@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 107105 2024-11-21 11:28:47Z andreas.loeffler@oracle.com $
+; $Id: VBoxGuestAdditions.nsi 107135 2024-11-22 10:02:13Z sergey.dubov@oracle.com $
 ; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -116,7 +116,7 @@ VIAddVersionKey "InternalName"      "${PRODUCT_OUTPUT}"
   !define MUI_ABORTWARNING
   !define MUI_WELCOMEPAGE_TITLE_3LINES ; Add a bit of vertical space for the following text
   !define MUI_WELCOMEPAGE_TITLE "$(VBOX_INST_WELCOME_TITLE)"
- 
+
   ; API defines
   !define SM_CLEANBOOT 67
 
