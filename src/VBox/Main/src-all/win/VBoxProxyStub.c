@@ -1,4 +1,4 @@
-/* $Id: VBoxProxyStub.c 107121 2024-11-22 00:28:19Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxProxyStub.c 107122 2024-11-22 00:29:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxProxyStub - Proxy Stub and Typelib, COM DLL exports and DLL init/term.
  *
@@ -2344,6 +2344,9 @@ static void vbpsUpdateWindowsService(VBPSREGSTATE *pState, const WCHAR *pwszVBox
 
     /*
      * Output warning if the service module isn't on a local drive.
+     *
+     * This will not work because the LocalSystem account cannot access it (it
+     * is a different user and is unlikely to share the network mappings with you).
      */
     hVBoxDir = CreateFileW(pwszVBoxDir, GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE,
                            NULL, OPEN_EXISTING, FILE_ATTRIBUTE_DIRECTORY | FILE_FLAG_BACKUP_SEMANTICS, NULL);
