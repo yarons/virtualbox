@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigX86.cpp 106978 2024-11-12 13:49:12Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImplConfigX86.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -77,7 +77,7 @@
 #include <VBox/settings.h> /* For MachineConfigFile::getHostDefaultAudioDriver(). */
 #include <VBox/vmm/pdmapi.h> /* For PDMR3DriverAttach/PDMR3DriverDetach. */
 #include <VBox/vmm/pdmusb.h> /* For PDMR3UsbCreateEmulatedDevice. */
-#include <VBox/vmm/pdmdev.h> /* For PDMAPICMODE enum. */
+#include <VBox/vmm/pdmapic.h> /* For PDMAPICMODE enum. */
 #include <VBox/vmm/pdmstorageifs.h>
 #include <VBox/version.h>
 

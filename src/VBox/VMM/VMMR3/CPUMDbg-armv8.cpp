@@ -1,4 +1,4 @@
-/* $Id: CPUMDbg-armv8.cpp 106366 2024-10-16 13:11:39Z alexander.eichner@oracle.com $ */
+/* $Id: CPUMDbg-armv8.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager, Debugger & Debugging APIs.
  */
@@ -32,7 +32,7 @@
 #define LOG_GROUP LOG_GROUP_DBGF
 #include <VBox/vmm/cpum.h>
 #include <VBox/vmm/dbgf.h>
-#include <VBox/vmm/apic.h>
+#include <VBox/vmm/pdmapic.h>
 #include "CPUMInternal-armv8.h"
 #include <VBox/vmm/vm.h>
 #include <VBox/param.h>

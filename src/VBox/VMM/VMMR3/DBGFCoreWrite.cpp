@@ -1,4 +1,4 @@
-/* $Id: DBGFCoreWrite.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFCoreWrite.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Guest Core Dump.
  */
@@ -68,7 +68,7 @@
 
 #include <VBox/vmm/cpum.h>
 #include <VBox/vmm/pgm.h>
-#include <VBox/vmm/apic.h>
+#include <VBox/vmm/pdmapic.h>
 #include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/dbgfcorefmt.h>
 #include <VBox/vmm/mm.h>
@@ -389,7 +389,7 @@ static void dbgfR3GetCoreCpu(PVMCPU pVCpu, PDBGFCORECPU pDbgfCpu)
     pDbgfCpu->msrCSTAR        = pCtx->msrCSTAR;
     pDbgfCpu->msrSFMASK       = pCtx->msrSFMASK;
     pDbgfCpu->msrKernelGSBase = pCtx->msrKERNELGSBASE;
-    pDbgfCpu->msrApicBase     = APICGetBaseMsrNoCheck(pVCpu);
+    pDbgfCpu->msrApicBase     = PDMApicGetBaseMsrNoCheck(pVCpu);
     pDbgfCpu->msrTscAux       = CPUMGetGuestTscAux(pVCpu);
     pDbgfCpu->aXcr[0]         = pCtx->aXcr[0];
     pDbgfCpu->aXcr[1]         = pCtx->aXcr[1];

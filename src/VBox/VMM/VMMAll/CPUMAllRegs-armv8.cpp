@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs-armv8.cpp 106382 2024-10-16 13:50:09Z alexander.eichner@oracle.com $ */
+/* $Id: CPUMAllRegs-armv8.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters, ARMv8 variant.
  */
@@ -32,7 +32,7 @@
 #define LOG_GROUP LOG_GROUP_CPUM
 #include <VBox/vmm/cpum.h>
 #include <VBox/vmm/dbgf.h>
-#include <VBox/vmm/apic.h>
+#include <VBox/vmm/pdmapic.h>
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/mm.h>
 #include <VBox/vmm/em.h>

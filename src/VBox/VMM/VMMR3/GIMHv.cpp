@@ -1,4 +1,4 @@
-/* $Id: GIMHv.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: GIMHv.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIM - Guest Interface Manager, Hyper-V implementation.
  */
@@ -30,7 +30,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_GIM
-#include <VBox/vmm/apic.h>
+#include <VBox/vmm/pdmapic.h>
 #include <VBox/vmm/gim.h>
 #include <VBox/vmm/cpum.h>
 #include <VBox/vmm/mm.h>
@@ -597,7 +597,7 @@ VMMR3_INT_DECL(int) gimR3HvInitCompleted(PVM pVM)
      * has finished inserting/removing the x2APIC MSR range.
      */
     if (pHv->uHyperHints & GIM_HV_HINT_X2APIC_MSRS)
-        APICR3HvSetCompatMode(pVM, true);
+        PDMR3ApicHvSetCompatMode(pVM, true);
 
     return rc;
 }
@@ -1120,7 +1120,7 @@ static DECLCALLBACK(void) gimR3HvTimerCallback(PVM pVM, TMTIMERHANDLE hTimer, vo
         {
             uint8_t const uVector  = MSR_GIM_HV_SINT_GET_VECTOR(uSint);
             bool const    fAutoEoi = MSR_GIM_HV_SINT_IS_AUTOEOI(uSint);
-            APICHvSendInterrupt(pVCpu, uVector, fAutoEoi, XAPICTRIGGERMODE_EDGE);
+            PDMApicHvSendInterrupt(pVCpu, uVector, fAutoEoi, XAPICTRIGGERMODE_EDGE);
         }
     }
 

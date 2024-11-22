@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VM.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -68,7 +68,7 @@
 #include <VBox/vmm/em.h>
 #include <VBox/vmm/iem.h>
 #include <VBox/vmm/nem.h>
-#include <VBox/vmm/apic.h>
+#include <VBox/vmm/pdmapic.h>
 #include <VBox/vmm/tm.h>
 #include <VBox/vmm/stam.h>
 #include <VBox/vmm/iom.h>

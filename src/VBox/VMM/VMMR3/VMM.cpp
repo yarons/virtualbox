@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VMM.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -132,7 +132,7 @@
 #if defined(VBOX_VMM_TARGET_ARMV8)
 # include <VBox/vmm/gic.h>
 #else
-# include <VBox/vmm/apic.h>
+# include <VBox/vmm/pdmapic.h>
 #endif
 #include <VBox/vmm/ssm.h>
 #include <VBox/vmm/tm.h>
@@ -1434,7 +1434,7 @@ static DECLCALLBACK(int) vmmR3SendInitIpi(PVM pVM, VMCPUID idCpu)
     PGMR3ResetCpu(pVM, pVCpu);
     PDMR3ResetCpu(pVCpu);   /* Only clears pending interrupts force flags */
 # if !defined(VBOX_VMM_TARGET_ARMV8)
-    APICR3InitIpi(pVCpu);
+    PDMR3ApicInitIpi(pVCpu);
 # endif
     TRPMR3ResetCpu(pVCpu);
     CPUMR3ResetCpu(pVM, pVCpu);

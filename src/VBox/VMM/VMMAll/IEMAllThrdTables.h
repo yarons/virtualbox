@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdTables.h 106402 2024-10-16 20:56:01Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdTables.h 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation, Instruction Tables.
  */
@@ -42,7 +42,7 @@
 #define VMCPU_INCL_CPUM_GST_CTX
 #include <VBox/vmm/iem.h>
 #include <VBox/vmm/cpum.h>
-#include <VBox/vmm/apic.h>
+#include <VBox/vmm/pdmapic.h>
 #include <VBox/vmm/pdm.h>
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/iom.h>

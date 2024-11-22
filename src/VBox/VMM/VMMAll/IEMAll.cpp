@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -123,7 +123,7 @@
 #define VMCPU_INCL_CPUM_GST_CTX
 #include <VBox/vmm/iem.h>
 #include <VBox/vmm/cpum.h>
-#include <VBox/vmm/apic.h>
+#include <VBox/vmm/pdmapic.h>
 #include <VBox/vmm/pdm.h>
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/iom.h>

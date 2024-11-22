@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-linux.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMR3Native-linux.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Linux backend.
  */
@@ -34,7 +34,7 @@
 #include <VBox/vmm/nem.h>
 #include <VBox/vmm/iem.h>
 #include <VBox/vmm/em.h>
-#include <VBox/vmm/apic.h>
+#include <VBox/vmm/pdmapic.h>
 #include <VBox/vmm/pdm.h>
 #include <VBox/vmm/trpm.h>
 #include "NEMInternal.h"
@@ -703,7 +703,7 @@ static int nemHCLnxExportState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, struct kvm_
      * The APIC base register updating is a little suboptimal... But at least
      * VBox always has the right base register value, so it's one directional.
      */
-    uint64_t const uApicBase = APICGetBaseMsrNoCheck(pVCpu);
+    uint64_t const uApicBase = PDMApicGetBaseMsrNoCheck(pVCpu);
     if (   (fExtrn & (  CPUMCTX_EXTRN_SREG_MASK | CPUMCTX_EXTRN_TABLE_MASK | CPUMCTX_EXTRN_CR_MASK
                       | CPUMCTX_EXTRN_EFER      | CPUMCTX_EXTRN_APIC_TPR))
         || uApicBase != pVCpu->nem.s.uKvmApicBase)
@@ -1081,7 +1081,7 @@ static VBOXSTRICTRC nemHCLnxHandleInterruptFF(PVM pVM, PVMCPU pVCpu, struct kvm_
      */
     if (VMCPU_FF_TEST_AND_CLEAR(pVCpu, VMCPU_FF_UPDATE_APIC))
     {
-        APICUpdatePendingInterrupts(pVCpu);
+        PDMApicUpdatePendingInterrupts(pVCpu);
         if (!VMCPU_FF_IS_ANY_SET(pVCpu, VMCPU_FF_INTERRUPT_APIC | VMCPU_FF_INTERRUPT_PIC
                                       | VMCPU_FF_INTERRUPT_NMI  | VMCPU_FF_INTERRUPT_SMI))
             return VINF_SUCCESS;
@@ -1156,7 +1156,7 @@ static VBOXSTRICTRC nemHCLnxHandleInterruptFF(PVM pVM, PVMCPU pVCpu, struct kvm_
                  * work correctly.
                  */
                 if (pVCpu->cpum.GstCtx.fExtrn & CPUMCTX_EXTRN_APIC_TPR)
-                    APICSetTpr(pVCpu, (uint8_t)pRun->cr8 << 4);
+                    PDMApicSetTpr(pVCpu, (uint8_t)pRun->cr8 << 4);
 
                 uint8_t bInterrupt;
                 int rc = PDMGetInterrupt(pVCpu, &bInterrupt);

@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin.cpp 106363 2024-10-16 13:08:09Z alexander.eichner@oracle.com $ */
+/* $Id: NEMR3Native-darwin.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework.
  *
@@ -39,7 +39,7 @@
 #include <VBox/vmm/nem.h>
 #include <VBox/vmm/iem.h>
 #include <VBox/vmm/em.h>
-#include <VBox/vmm/apic.h>
+#include <VBox/vmm/pdmapic.h>
 #include <VBox/vmm/pdm.h>
 #include <VBox/vmm/hm.h>
 #include <VBox/vmm/hm_vmx.h>
@@ -1858,7 +1858,7 @@ static int nemR3DarwinExportGuestState(PVMCC pVM, PVMCPUCC pVCpu, PVMXTRANSIENT 
         Assert(pVCpu->nem.s.fCtxChanged & HM_CHANGED_GUEST_APIC_TPR);
         vmxHCExportGuestApicTpr(pVCpu, pVmxTransient);
 
-        rc = APICGetTpr(pVCpu, &pVmxTransient->u8GuestTpr, NULL /*pfPending*/, NULL /*pu8PendingIntr*/);
+        rc = PDMApicGetTpr(pVCpu, &pVmxTransient->u8GuestTpr, NULL /*pfPending*/, NULL /*pu8PendingIntr*/);
         AssertRC(rc);
 
         WRITE_GREG(HV_X86_TPR, pVmxTransient->u8GuestTpr);

@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMR0Device.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -33,7 +33,7 @@
 #define PDMPCIDEV_INCLUDE_PRIVATE  /* Hack to get pdmpcidevint.h included at the right point. */
 #include "PDMInternal.h"
 #include <VBox/vmm/pdm.h>
-#include <VBox/vmm/apic.h>
+#include <VBox/vmm/pdmapic.h>
 #include <VBox/vmm/mm.h>
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/gvm.h>

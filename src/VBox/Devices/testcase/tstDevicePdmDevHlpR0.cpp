@@ -1,4 +1,4 @@
-/* $Id: tstDevicePdmDevHlpR0.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: tstDevicePdmDevHlpR0.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * tstDevice - Test framework for PDM devices/drivers, PDM fake R0 helper implementation.
  */
@@ -1235,19 +1235,19 @@ static DECLCALLBACK(int) pdmR0DevHlp_ApicSetUpContext(PPDMDEVINS pDevIns)
     VM_ASSERT_EMT0_RETURN(pGVM, VERR_VM_THREAD_NOT_EMT);
 
     /* Check that it's the same device as made the ring-3 registrations: */
-    AssertLogRelMsgReturn(pGVM->pdm.s.Apic.pDevInsR3 == pDevIns->pDevInsForR3,
-                          ("%p vs %p\n", pGVM->pdm.s.Apic.pDevInsR3, pDevIns->pDevInsForR3), VERR_NOT_OWNER);
+    AssertLogRelMsgReturn(pGVM->pdm.s.Ic.pDevInsR3 == pDevIns->pDevInsForR3,
+                          ("%p vs %p\n", pGVM->pdm.s.Ic.pDevInsR3, pDevIns->pDevInsForR3), VERR_NOT_OWNER);
 
     /* Check that it isn't already registered in ring-0: */
-    AssertLogRelMsgReturn(pGVM->pdm.s.Apic.pDevInsR0 == NULL, ("%p (caller pDevIns=%p)\n", pGVM->pdm.s.Apic.pDevInsR0, pDevIns),
+    AssertLogRelMsgReturn(pGVM->pdm.s.Ic.pDevInsR0 == NULL, ("%p (caller pDevIns=%p)\n", pGVM->pdm.s.Ic.pDevInsR0, pDevIns),
                           VERR_ALREADY_EXISTS);
 
     /*
      * Take down the instance.
      */
-    pGVM->pdm.s.Apic.pDevInsR0 = pDevIns;
+    pGVM->pdm.s.Ic.pDevInsR0 = pDevIns;
 #endif
-    Log(("PDM: Registered APIC device '%s'/%d pDevIns=%p\n", pDevIns->pReg->szName, pDevIns->iInstance, pDevIns));
+    Log(("PDM: Registered IC device '%s'/%d pDevIns=%p\n", pDevIns->pReg->szName, pDevIns->iInstance, pDevIns));
 
     /* set the helper pointer and return. */
     LogFlow(("pdmR0DevHlp_ApicSetUpContext: caller='%s'/%d: returns %Rrc\n", pDevIns->pReg->szName, pDevIns->iInstance, VINF_SUCCESS));

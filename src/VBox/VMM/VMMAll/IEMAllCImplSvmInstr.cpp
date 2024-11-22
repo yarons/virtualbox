@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImplSvmInstr.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -32,7 +32,7 @@
 #define LOG_GROUP   LOG_GROUP_IEM_SVM
 #define VMCPU_INCL_CPUM_GST_CTX
 #include <VBox/vmm/iem.h>
-#include <VBox/vmm/apic.h>
+#include <VBox/vmm/pdmapic.h>
 #include <VBox/vmm/cpum.h>
 #include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/em.h>

@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdRecompiler.cpp 106454 2024-10-17 13:54:35Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdRecompiler.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation.
  *
@@ -51,7 +51,7 @@
 #define VMCPU_INCL_CPUM_GST_CTX
 #include <VBox/vmm/iem.h>
 #include <VBox/vmm/cpum.h>
-#include <VBox/vmm/apic.h>
+#include <VBox/vmm/pdmapic.h>
 #include <VBox/vmm/pdm.h>
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/iom.h>

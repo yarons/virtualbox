@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUM.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -121,7 +121,7 @@
 #include <VBox/vmm/cpumdis.h>
 #include <VBox/vmm/cpumctx-v1_6.h>
 #include <VBox/vmm/pgm.h>
-#include <VBox/vmm/apic.h>
+#include <VBox/vmm/pdmapic.h>
 #include <VBox/vmm/mm.h>
 #include <VBox/vmm/em.h>
 #include <VBox/vmm/iem.h>

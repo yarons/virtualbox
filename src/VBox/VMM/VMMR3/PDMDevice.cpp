@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 106479 2024-10-18 12:57:36Z alexander.eichner@oracle.com $ */
+/* $Id: PDMDevice.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -37,7 +37,7 @@
 # include <VBox/vmm/gic.h>
 # include <VBox/vmm/pmu.h>
 #else
-# include <VBox/vmm/apic.h>
+# include <VBox/vmm/pdmapic.h>
 #endif
 #include <VBox/vmm/cfgm.h>
 #include <VBox/vmm/dbgf.h>

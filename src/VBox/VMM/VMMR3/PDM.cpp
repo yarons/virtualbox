@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: PDM.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -604,8 +604,8 @@ VMMR3_INT_DECL(void) PDMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
     /*
      * The registered APIC.
      */
-    if (pVM->pdm.s.Apic.pDevInsRC)
-        pVM->pdm.s.Apic.pDevInsRC           += offDelta;
+    if (pVM->pdm.s.Ic.pDevInsRC)
+        pVM->pdm.s.Ic.pDevInsRC             += offDelta;
 
     /*
      * The registered I/O APIC.

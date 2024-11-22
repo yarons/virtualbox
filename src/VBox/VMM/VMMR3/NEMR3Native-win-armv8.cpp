@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win-armv8.cpp 107053 2024-11-18 15:28:18Z alexander.eichner@oracle.com $ */
+/* $Id: NEMR3Native-win-armv8.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -57,7 +57,7 @@
 #include <VBox/vmm/nem.h>
 #include <VBox/vmm/iem.h>
 #include <VBox/vmm/em.h>
-#include <VBox/vmm/apic.h>
+#include <VBox/vmm/pdmapic.h>
 #include <VBox/vmm/pdm.h>
 #include <VBox/vmm/dbgftrace.h>
 #include "NEMInternal.h"

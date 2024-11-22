@@ -1,4 +1,4 @@
-/* $Id: CPUMDbg.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMDbg.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager, Debugger & Debugging APIs.
  */
@@ -32,7 +32,7 @@
 #define LOG_GROUP LOG_GROUP_DBGF
 #include <VBox/vmm/cpum.h>
 #include <VBox/vmm/dbgf.h>
-#include <VBox/vmm/apic.h>
+#include <VBox/vmm/pdmapic.h>
 #include "CPUMInternal.h"
 #include <VBox/vmm/vm.h>
 #include <VBox/param.h>
@@ -500,7 +500,7 @@ static DECLCALLBACK(int) cpumR3RegGstSet_crX(void *pvUser, PCDBGFREGDESC pDesc, 
         case 2: rc = CPUMSetGuestCR2(pVCpu, u64Value); break;
         case 3: rc = CPUMSetGuestCR3(pVCpu, u64Value); break;
         case 4: rc = CPUMSetGuestCR4(pVCpu, u64Value); break;
-        case 8: rc = APICSetTpr(pVCpu, (uint8_t)(u64Value << 4)); break;
+        case 8: rc = PDMApicSetTpr(pVCpu, (uint8_t)(u64Value << 4)); break;
         default:
             AssertFailedReturn(VERR_IPE_NOT_REACHED_DEFAULT_CASE);
     }

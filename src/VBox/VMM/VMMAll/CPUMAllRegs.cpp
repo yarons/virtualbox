@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMAllRegs.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -32,7 +32,7 @@
 #define LOG_GROUP LOG_GROUP_CPUM
 #include <VBox/vmm/cpum.h>
 #include <VBox/vmm/dbgf.h>
-#include <VBox/vmm/apic.h>
+#include <VBox/vmm/pdmapic.h>
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/mm.h>
 #include <VBox/vmm/em.h>
@@ -715,7 +715,7 @@ VMMDECL(int) CPUMGetGuestCRx(PCVMCPUCC pVCpu, unsigned iReg, uint64_t *pValue)
         {
             CPUM_INT_ASSERT_NOT_EXTRN(pVCpu, CPUMCTX_EXTRN_APIC_TPR);
             uint8_t u8Tpr;
-            int rc = APICGetTpr(pVCpu, &u8Tpr, NULL /* pfPending */, NULL /* pu8PendingIrq */);
+            int rc = PDMApicGetTpr(pVCpu, &u8Tpr, NULL /* pfPending */, NULL /* pu8PendingIrq */);
             if (RT_FAILURE(rc))
             {
                 AssertMsg(rc == VERR_PDM_NO_APIC_INSTANCE, ("%Rrc\n", rc));
