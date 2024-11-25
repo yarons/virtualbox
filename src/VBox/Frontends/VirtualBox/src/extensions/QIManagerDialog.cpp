@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: QIManagerDialog.cpp 107159 2024-11-25 16:17:23Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIManagerDialog class implementation.
  */
@@ -193,10 +193,6 @@ void QIManagerDialog::prepareButtonBox()
         m_buttons[ButtonType_Embed] = m_pButtonBox->button(QDialogButtonBox::Cancel);
         m_buttons[ButtonType_Close] = m_pButtonBox->button(QDialogButtonBox::Close);
         m_buttons[ButtonType_Help] = m_pButtonBox->button(QDialogButtonBox::Help);
-
-        /* Assign shortcuts: */
-        button(ButtonType_Close)->setShortcut(Qt::Key_Escape);
-        button(ButtonType_Help)->setShortcut(UIShortcutPool::standardSequence(QKeySequence::HelpContents));
 
         /* Hide some of buttons initially: */
         button(ButtonType_Reset)->hide();

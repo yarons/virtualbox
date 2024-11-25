@@ -1,4 +1,4 @@
-/* $Id: UICloudConsoleManager.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UICloudConsoleManager.cpp 107159 2024-11-25 16:17:23Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudConsoleManager class implementation.
  */
@@ -46,6 +46,7 @@
 #include "UICloudConsoleDetailsWidget.h"
 #include "UICloudConsoleManager.h"
 #include "UIMessageCenter.h"
+#include "UIShortcutPool.h"
 #include "UITranslationEventListener.h"
 #include "QIToolBar.h"
 
@@ -1192,6 +1193,7 @@ void UICloudConsoleManager::sltRetranslateUI()
     button(ButtonType_Reset)->setShortcut(QString("Ctrl+Backspace"));
     button(ButtonType_Apply)->setShortcut(QString("Ctrl+Return"));
     button(ButtonType_Close)->setShortcut(Qt::Key_Escape);
+    button(ButtonType_Help)->setShortcut(UIShortcutPool::standardSequence(QKeySequence::HelpContents));
     button(ButtonType_Reset)->setToolTip(tr("Reset Changes (%1)").arg(button(ButtonType_Reset)->shortcut().toString()));
     button(ButtonType_Apply)->setToolTip(tr("Apply Changes (%1)").arg(button(ButtonType_Apply)->shortcut().toString()));
     button(ButtonType_Close)->setToolTip(tr("Close Window (%1)").arg(button(ButtonType_Close)->shortcut().toString()));
