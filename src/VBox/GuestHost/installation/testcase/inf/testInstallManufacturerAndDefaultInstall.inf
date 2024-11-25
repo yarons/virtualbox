@@ -1,4 +1,4 @@
-; $Id: testInstallManufacturerAndDefaultInstall.inf 107154 2024-11-25 14:06:16Z andreas.loeffler@oracle.com $
+; $Id: testInstallManufacturerAndDefaultInstall.inf 107161 2024-11-25 16:53:43Z alexander.rudnev@oracle.com $
 ;; @file
 ; VirtualBox Windows Driver Installation - Test INF file.
 ;
