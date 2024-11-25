@@ -1,4 +1,4 @@
-/* $Id: UIMotherboardFeaturesEditor.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMotherboardFeaturesEditor.h 107155 2024-11-25 14:07:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMotherboardFeaturesEditor class declaration.
  */
@@ -89,6 +89,11 @@ public:
     /** Defines minimum layout @a iIndent. */
     void setMinimumLayoutIndent(int iIndent);
 
+protected:
+
+    /** Handles filter change. */
+    virtual void handleFilterChange() RT_OVERRIDE;
+
 private slots:
 
     /** Handles translation event. */
@@ -106,6 +111,8 @@ private:
 
     /** Prepares all. */
     void prepare();
+    /** Rebuilds layout. */
+    void rebuildLayout();
 
     /** @name Values
      * @{ */
