@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 107174 2024-11-26 10:33:37Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 107179 2024-11-26 14:39:44Z knut.osmundsen@oracle.com $
 ## @file
 # Top level makefile.
 #
@@ -2141,8 +2141,7 @@ efi-build: $(VBOX_VERSION_HEADER)
 	+ $(KMK) -C src/VBox/Devices/EFI/Firmware$(VBOX_EFI_FIRMWARE_SUFFIX) --output-sync=recurse
 
 efi-packing:
-	+ $(KMK) -C src/VBox/Devices/EFI/Firmware$(VBOX_EFI_FIRMWARE_SUFFIX) $(PATH_STAGE)/VBoxEfiFirmware.zip  \
-		$(if-expr defined(VBOX_WITH_VIRT_ARMV8) && "$(KBUILD_HOST)" == "linux",$(PATH_STAGE)/VBoxEfiFirmware-armv8.zip,)
+	+ $(KMK) -C src/VBox/Devices/EFI/Firmware$(VBOX_EFI_FIRMWARE_SUFFIX) $(PATH_STAGE)/VBoxEfiFirmware.zip
 
 
 
