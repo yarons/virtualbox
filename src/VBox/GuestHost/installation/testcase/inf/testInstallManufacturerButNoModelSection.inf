@@ -1,4 +1,4 @@
-; $Id: testInstallManufacturerButNoModelSection.inf 107162 2024-11-25 17:47:33Z andreas.loeffler@oracle.com $
+; $Id: testInstallManufacturerButNoModelSection.inf 107163 2024-11-26 07:11:50Z andreas.loeffler@oracle.com $
 ;; @file
 ; VirtualBox Windows Driver Installation - Test INF file.
 ;
