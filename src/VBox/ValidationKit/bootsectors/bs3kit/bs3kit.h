@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 107126 2024-11-22 07:57:01Z bela.lubkin@oracle.com $ */
+/* $Id: bs3kit.h 107175 2024-11-26 10:36:12Z bela.lubkin@oracle.com $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -1599,7 +1599,6 @@ DECLINLINE(void BS3_FAR *) Bs3XptrFlatToCurrent(RTCCUINTXREG uFlatPtr)
  * by using a simpler ASSERT() inside more a complicated `if'.
  */
 BS3_CMN_PROTO_STUB(DECL_NO_RETURN(void), Bs3Assert,(const char BS3_FAR *pszExpr, const char BS3_FAR *pszFileOrFunc, const unsigned uLine));
-#define BS3_ASSERT_IGNORE
 #if defined(BS3_ASSERT_IGNORE)
 # define BS3_ASSERT(a_Expr) do { } while (0)
 #elif defined(BS3_ASSERT_FILE)
