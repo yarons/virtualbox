@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106623 2024-10-23 11:52:05Z sergey.dubov@oracle.com $
+# $Id: Makefile.kmk 107168 2024-11-26 10:19:37Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -357,8 +357,8 @@ endif
 # EFI firmware
 ifdef VBOX_WITH_EFIFW_PACKING
  VBOX_LNX_NO_STRIP += \
- 	VBoxEFI32.fd \
- 	VBoxEFI64.fd
+ 	VBoxEFI-x86.fd \
+ 	VBoxEFI-amd64.fd
 endif
 
 # DTrace library and scripts.

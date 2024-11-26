@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigX86.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: ConsoleImplConfigX86.cpp 107168 2024-11-26 10:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1560,8 +1560,8 @@ int Console::i_configConstructorX86(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Auto
             Assert(eFwType == FirmwareType_EFI64 || eFwType == FirmwareType_EFI32 || eFwType == FirmwareType_EFIDUAL);
 #ifdef VBOX_WITH_EFI_IN_DD2
             const char *pszEfiRomFile = eFwType == FirmwareType_EFIDUAL ? "VBoxEFIDual.fd"
-                                      : eFwType == FirmwareType_EFI32   ? "VBoxEFI32.fd"
-                                      :                                   "VBoxEFI64.fd";
+                                      : eFwType == FirmwareType_EFI32   ? "VBoxEFI-x86.fd"
+                                      :                                   "VBoxEFI-amd64.fd";
 #else
             Utf8Str efiRomFile;
             vrc = findEfiRom(virtualBox, PlatformArchitecture_x86, eFwType, &efiRomFile);

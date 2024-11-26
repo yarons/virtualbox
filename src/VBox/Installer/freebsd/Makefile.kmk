@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 107168 2024-11-26 10:19:37Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the FreeBSD installer.
 #
@@ -133,8 +133,8 @@ VBOX_FBSD_NO_STRIP = \
 # EFI firmware
 ifdef VBOX_WITH_EFIFW_PACKING
  VBOX_FBSD_NO_STRIP += \
- 	VBoxEFI32.fd \
- 	VBoxEFI64.fd
+ 	VBoxEFI-x86.fd \
+ 	VBoxEFI-amd64.fd
 endif
 
 # Symlinks residing in bin/

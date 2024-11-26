@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 107168 2024-11-26 10:19:37Z knut.osmundsen@oracle.com $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
@@ -578,8 +578,8 @@ ifdef VBOX_WITH_ADDITIONS_PACKING
 endif
 ifdef VBOX_WITH_EFIFW_PACKING
  VBOX_DI_VBAPP_MISC_FILES += \
- 	MacOS/VBoxEFI32.fd \
- 	MacOS/VBoxEFI64.fd
+ 	MacOS/VBoxEFI-x86.fd \
+ 	MacOS/VBoxEFI-amd64.fd
 endif
 VBOX_DI_VBAPP_SYMLINKS =
 ifdef VBOX_WITH_QTGUI

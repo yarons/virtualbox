@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106902 2024-11-08 09:14:51Z valery.portnyagin@oracle.com $
+# $Id: Makefile.kmk 107168 2024-11-26 10:19:37Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -210,6 +210,9 @@ ifdef VBOX_WITH_GSTCTL_TOOLBOX_SUPPORT
 endif
 ifdef VBOX_WITH_GSTCTL_TOOLBOX_AS_CMDS
  VBOX_MAIN_DEFS += VBOX_WITH_GSTCTL_TOOLBOX_AS_CMDS
+endif
+ifdef VBOX_WITH_X86_ON_ARM_ENABLED
+ VBOX_MAIN_DEFS += VBOX_WITH_X86_ON_ARM_ENABLED
 endif
 # Unconditionally enable the new semaphore key generation code
 VBOX_MAIN_DEFS += VBOX_WITH_NEW_SYS_V_KEYGEN
