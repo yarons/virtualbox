@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialogSpecific.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialogSpecific.cpp 107178 2024-11-26 14:00:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialogSpecific class implementation.
  */
@@ -46,9 +46,6 @@
 #include "UIGlobalSettingsGeneral.h"
 #include "UIGlobalSettingsInput.h"
 #include "UIGlobalSettingsLanguage.h"
-#ifdef VBOX_WS_WIN
-# include "UIGlobalSettingsInterface.h"
-#endif
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
 # include "UIGlobalSettingsProxy.h"
 # include "UIGlobalSettingsUpdate.h"
@@ -110,11 +107,6 @@ void UIAdvancedSettingsDialogGlobal::sltRetranslateUI()
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
     /* Proxy page: */
     m_pSelector->setItemText(GlobalSettingsPageType_Proxy, tr("Proxy"));
-#endif
-
-#ifdef VBOX_WS_WIN
-    /* Interface page: */
-    m_pSelector->setItemText(GlobalSettingsPageType_Interface, tr("Interface"));
 #endif
 
     /* Polish the selector: */
@@ -257,17 +249,6 @@ void UIAdvancedSettingsDialogGlobal::prepare()
                     break;
                 }
 #endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
-#ifdef VBOX_WS_WIN
-                /* Interface page: */
-                case GlobalSettingsPageType_Interface:
-                {
-                    pSettingsPage = new UIGlobalSettingsInterface;
-                    addItem(":/interface_32px.png", ":/interface_24px.png", ":/interface_16px.png",
-                            iPageIndex, "#userInterface", pSettingsPage);
-                    addPageHelpKeyword(iPageIndex, "preferences");
-                    break;
-                }
-#endif /* VBOX_WS_WIN */
                 default:
                     break;
             }

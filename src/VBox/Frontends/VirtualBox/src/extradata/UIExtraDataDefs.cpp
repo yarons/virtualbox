@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIExtraDataDefs.cpp 107178 2024-11-26 14:00:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -31,7 +31,6 @@
 
 /* General: */
 const char *UIExtraDataDefs::GUI_RestrictedDialogs = "GUI/RestrictedDialogs";
-const char *UIExtraDataDefs::GUI_ColorTheme = "GUI/ColorTheme";
 
 
 /* Messaging: */

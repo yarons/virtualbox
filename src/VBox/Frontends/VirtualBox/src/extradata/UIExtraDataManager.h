@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 106001 2024-09-10 11:15:32Z brent.paulson@oracle.com $ */
+/* $Id: UIExtraDataManager.h 107178 2024-11-26 14:00:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -189,11 +189,6 @@ public:
         UIExtraDataMetaDefs::DialogType restrictedDialogTypes(const QUuid &uID);
         /** Defines a list of restricted dialogs. */
         void setRestrictedDialogTypes(UIExtraDataMetaDefs::DialogType enmTypes, const QUuid &uID);
-
-        /** Returns color theme type. */
-        UIColorThemeType colorTheme();
-        /** Defines color theme @a enmType. */
-        void setColorTheme(const UIColorThemeType &enmType);
     /** @} */
 
     /** @name Messaging
