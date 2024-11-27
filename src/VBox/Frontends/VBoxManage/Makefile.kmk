@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 107196 2024-11-27 10:37:39Z valery.portnyagin@oracle.com $
+# $Id: Makefile.kmk 107197 2024-11-27 10:40:57Z valery.portnyagin@oracle.com $
 ## @file
 # Sub-Makefile for VBoxManage (the CLI frontend).
 #
@@ -100,7 +100,7 @@ ifndef VBOX_ONLY_DOCS
  	VBoxManageMisc.cpp \
  	VBoxManageModifyVM.cpp \
  	VBoxManageModifyNvram.cpp \
-	$(if $(VBOX_WITH_OBJ_TRACKER),VBoxManageObjectTracker.cpp) \
+	VBoxManageObjectTracker.cpp) \
  	VBoxManageSnapshot.cpp \
  	VBoxManageStorageController.cpp \
  	$(if $(VBOX_WITH_UPDATE_AGENT),VBoxManageUpdateCheck.cpp) \
