@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManage.h 107198 2024-11-27 10:44:32Z valery.portnyagin@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -315,5 +315,8 @@ RTEXITCODE handleUpdateCheck(HandlerArg *a);
 
 /* VBoxManageModifyNvram.cpp */
 RTEXITCODE handleModifyNvram(HandlerArg *a);
+
+/* VBoxManageObjectTracker.cpp */
+RTEXITCODE handleTrackedObjects(HandlerArg *a);
 
 #endif /* !VBOX_INCLUDED_SRC_VBoxManage_VBoxManage_h */

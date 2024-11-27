@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 107124 2024-11-22 02:22:42Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManage.cpp 107198 2024-11-27 10:44:32Z valery.portnyagin@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -271,6 +271,7 @@ static const VBMGCMD g_aCommands[] =
     { "updatecheck",        HELP_CMD_UPDATECHECK,       handleUpdateCheck,          0 },
 #endif
     { "modifynvram",        HELP_CMD_MODIFYNVRAM,       handleModifyNvram,          0 },
+    { "objtracker",         HELP_CMD_OBJTRACKER,        handleTrackedObjects,       0 },
 };
 
 /**
