@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigArmV8.cpp 107189 2024-11-27 09:25:42Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImplConfigArmV8.cpp 107199 2024-11-27 10:47:18Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits for ARMv8.
  */
@@ -479,8 +479,8 @@ int Console::i_configConstructorArmV8(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
         FirmwareType_T eFwType =  FirmwareType_EFI64;
 #ifdef VBOX_WITH_EFI_IN_DD2
         const char *pszEfiRomFile = eFwType == FirmwareType_EFIDUAL ? "<INVALID>"
-                                  : eFwType == FirmwareType_EFI32   ? "VBoxEFI-amr32.fd"
-                                  :                                   "VBoxEFI-amr64.fd";
+                                  : eFwType == FirmwareType_EFI32   ? "VBoxEFI-arm32.fd"
+                                  :                                   "VBoxEFI-arm64.fd";
         const char *pszKey = "ResourceId";
 #else
         Utf8Str efiRomFile;
