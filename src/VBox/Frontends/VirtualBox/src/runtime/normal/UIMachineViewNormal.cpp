@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineViewNormal.cpp 107206 2024-11-27 17:53:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineViewNormal class implementation.
  */
@@ -186,6 +186,15 @@ void UIMachineViewNormal::resendSizeHint()
 
 void UIMachineViewNormal::adjustGuestScreenSize()
 {
+    /* Step 0: Is machine running or paused? */
+    if (!uimachine()->isRunning() && !uimachine()->isPaused())
+    {
+        LogRel(("GUI: UIMachineViewNormal::adjustGuestScreenSize: "
+                "Guest-screen #%d display is not initialized, adjustment is not possible.\n",
+                screenId()));
+        return;
+    }
+
     LogRel(("GUI: UIMachineViewNormal::adjustGuestScreenSize: Adjust guest-screen size if necessary\n"));
 
     /* Acquire requested guest-screen size-hint or at least actual frame-buffer size: */
