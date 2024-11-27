@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.h 106616 2024-10-23 07:50:23Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIKeyboardHandler.h 107190 2024-11-27 09:45:17Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class declaration.
  */
@@ -121,7 +121,7 @@ public:
     void setHostKeyComboPressedFlag(bool bPressed);
 
 #ifdef VBOX_WS_NIX
-    void handleKeyEvent(quint32 nativeScanCode, bool fRelease);
+    void handleKeyEvent(quint32 uEvDevCode, bool fRelease);
 #endif
 
 protected slots:

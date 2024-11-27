@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 106616 2024-10-23 07:50:23Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineView.cpp 107190 2024-11-27 09:45:17Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -95,6 +95,8 @@
 #ifdef VBOX_WS_NIX
 #  include <xcb/xcb.h>
 #endif
+
+#include <xkbcommon/xkbcommon.h>
 
 #ifdef DEBUG_andy
 /* Macro for debugging drag and drop actions which usually would
@@ -2020,13 +2022,17 @@ void UIMachineView::focusOutEvent(QFocusEvent *pEvent)
 #ifdef VBOX_WS_NIX
 void UIMachineView::keyPressEvent(QKeyEvent *pEvent)
 {
-    machineLogic()->keyboardHandler()->handleKeyEvent(pEvent->nativeScanCode(), false /* is release*/);
+    /* It looks like that QKeyEvent::nativeScanCode returns evdev codes with an offset of 8: */
+    quint32 uEvDevCode = pEvent->nativeScanCode() - 8;
+    machineLogic()->keyboardHandler()->handleKeyEvent(uEvDevCode, false /* is release*/);
     QAbstractScrollArea::keyPressEvent(pEvent);
 }
 
 void UIMachineView::keyReleaseEvent(QKeyEvent *pEvent)
 {
-    machineLogic()->keyboardHandler()->handleKeyEvent(pEvent->nativeScanCode(), true /* is release*/);
+    /* It looks like that QKeyEvent::nativeScanCode returns evdev codes with an offset of 8: */
+    quint32 uEvDevCode = pEvent->nativeScanCode() - 8;
+    machineLogic()->keyboardHandler()->handleKeyEvent(uEvDevCode, true /* is release*/);
     QAbstractScrollArea::keyReleaseEvent(pEvent);
 }
 #endif
