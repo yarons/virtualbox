@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigArmV8.cpp 107199 2024-11-27 10:47:18Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImplConfigArmV8.cpp 107205 2024-11-27 14:46:49Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits for ARMv8.
  */
@@ -931,6 +931,11 @@ int Console::i_configConstructorArmV8(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
         bool fAudioEnabled = false;
         vrc = i_configAudioCtrl(virtualBox, pMachine, pBusMgr, pDevices,
                                 false /*fOsXGuest*/, &fAudioEnabled);                            VRC();
+
+        /*
+         * Configure DBGF (Debug(ger) Facility) and DBGC (Debugger Console).
+         */
+        vrc = i_configGuestDbg(virtualBox, pMachine, pRoot);                                     VRC();
     }
     catch (ConfigError &x)
     {
