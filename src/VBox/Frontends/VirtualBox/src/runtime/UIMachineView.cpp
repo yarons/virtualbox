@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 107190 2024-11-27 09:45:17Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineView.cpp 107195 2024-11-27 10:37:17Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -95,8 +95,6 @@
 #ifdef VBOX_WS_NIX
 #  include <xcb/xcb.h>
 #endif
-
-#include <xkbcommon/xkbcommon.h>
 
 #ifdef DEBUG_andy
 /* Macro for debugging drag and drop actions which usually would
