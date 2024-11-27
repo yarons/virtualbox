@@ -1,4 +1,4 @@
-# $Id: Config.kmk 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 107194 2024-11-27 10:34:39Z valery.portnyagin@oracle.com $
 ## @file
 # kBuild Configuration file for the manual.
 #
@@ -104,7 +104,8 @@ ifndef VBOX_DOC_MANUAL_CONFIG_KMK_INCLUDED
  	man_VBoxManage-metrics.xml \
  	man_VBoxManage-natnetwork.xml \
  	man_VBoxManage-hostonlyif.xml \
- 	man_VBoxManage-usbdevsource.xml
+ 	man_VBoxManage-usbdevsource.xml \
+ 	man_VBoxManage-objtracker.xml
 
  ## List of user manual XML files common for all languages.
  VBOX_MANUAL_XML_FILES_COMMON = \
