@@ -1,4 +1,4 @@
-/* $Id: VUSBDevice.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VUSBDevice.cpp 107204 2024-11-27 14:42:30Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * Virtual USB - Device.
  */
@@ -927,7 +927,7 @@ static bool vusbDevStdReqGetDescriptor(PVUSBDEV pDev, int EndPt, PVUSBSETUP pSet
 
             case VUSB_DT_STRING:
             {
-                if (pSetup->wIndex == 0)
+                if ((pSetup->wValue & 0xff) == 0)
                 {
                     ReadCachedLangIdDesc(pDev->pDescCache->paLanguages, pDev->pDescCache->cLanguages, pbBuf, pcbBuf);
                     LogFlow(("vusbDevStdReqGetDescriptor: %s: %u bytes of language ID (string) descriptors\n", pDev->pUsbIns->pszName, *pcbBuf));
