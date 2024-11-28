@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMInline.h 107208 2024-11-28 10:38:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -898,6 +898,7 @@ DECLINLINE(PEPTPML4) pgmGstGetEptPML4Ptr(PVMCPUCC pVCpu)
 # endif
 #endif /* VBOX_WITH_NESTED_HWVIRT_VMX_EPT */
 
+#ifndef VBOX_WITH_ONLY_PGM_NEM_MODE
 
 /**
  * Gets the shadow page directory, 32-bit.
@@ -1077,6 +1078,7 @@ DECLINLINE(PX86PML4E) pgmShwGetLongModePML4EPtr(PVMCPUCC pVCpu, unsigned int iPm
     return NULL;
 }
 
+# endif /* !VBOX_WITH_ONLY_PGM_NEM_MODE */
 #endif /* !VBOX_VMM_TARGET_ARMV8 */
 
 /**

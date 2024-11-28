@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMSavedState.cpp 107208 2024-11-28 10:38:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -3221,6 +3221,7 @@ static int pgmR3LoadFinalLocked(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion)
     else
         rc = pgmR3LoadMemoryOld(pVM, pSSM, uVersion);
 
+#if defined(VBOX_WITH_R0_MODULES) && !defined(VBOX_WITH_MINIMAL_R0)
     /* Refresh balloon accounting. */
     if (pVM->pgm.s.cBalloonedPages)
     {
@@ -3228,6 +3229,7 @@ static int pgmR3LoadFinalLocked(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion)
         rc = GMMR3BalloonedPages(pVM, GMMBALLOONACTION_INFLATE, pVM->pgm.s.cBalloonedPages);
         AssertRCReturn(rc, rc);
     }
+#endif
     return rc;
 }
 
