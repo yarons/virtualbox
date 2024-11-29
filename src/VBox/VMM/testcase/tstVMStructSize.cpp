@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 106938 2024-11-11 01:09:38Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVMStructSize.cpp 107215 2024-11-29 07:51:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -424,12 +424,24 @@ int main()
     PGM_PAGE_CLEAR(&Page);
     CHECK_EXPR(PGM_PAGE_GET_HCPHYS_NA(&Page) == 0);
     PGM_PAGE_SET_HCPHYS(NULL, &Page, UINT64_C(0x0000fffeff1ff000));
+#ifndef VBOX_WITH_ONLY_PGM_NEM_MODE
     CHECK_EXPR(PGM_PAGE_GET_HCPHYS_NA(&Page) == UINT64_C(0x0000fffeff1ff000));
+#else
+    CHECK_EXPR(PGM_PAGE_GET_HCPHYS_NA(&Page) == 0);
+#endif
     PGM_PAGE_SET_HCPHYS(NULL, &Page, UINT64_C(0x0000000000001000));
+#ifndef VBOX_WITH_ONLY_PGM_NEM_MODE
     CHECK_EXPR(PGM_PAGE_GET_HCPHYS_NA(&Page) == UINT64_C(0x0000000000001000));
+#else
+    CHECK_EXPR(PGM_PAGE_GET_HCPHYS_NA(&Page) == 0);
+#endif
 
     PGM_PAGE_INIT(&Page, UINT64_C(0x0000feedfacef000), UINT32_C(0x12345678), PGMPAGETYPE_RAM, PGM_PAGE_STATE_ALLOCATED);
+#ifndef VBOX_WITH_ONLY_PGM_NEM_MODE
     CHECK_EXPR(PGM_PAGE_GET_HCPHYS_NA(&Page) == UINT64_C(0x0000feedfacef000));
+#else
+    CHECK_EXPR(PGM_PAGE_GET_HCPHYS_NA(&Page) == 0);
+#endif
     CHECK_EXPR(PGM_PAGE_GET_PAGEID(&Page) == UINT32_C(0x12345678));
     CHECK_EXPR(PGM_PAGE_GET_TYPE_NA(&Page)   == PGMPAGETYPE_RAM);
     CHECK_EXPR(PGM_PAGE_GET_STATE_NA(&Page)  == PGM_PAGE_STATE_ALLOCATED);
