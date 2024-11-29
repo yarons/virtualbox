@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyImage-win.cpp 107217 2024-11-29 12:52:12Z andreas.loeffler@oracle.com $ */
+/* $Id: SUPHardenedVerifyImage-win.cpp 107218 2024-11-29 12:53:27Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Image Verification, Windows.
  */
@@ -3004,7 +3004,7 @@ DECLHIDDEN(int) supHardenedWinVerifyImageTrust(HANDLE hFile, PCRTUTF16 pwszName,
             else
                 fNoRecursion = ASMAtomicCmpXchgU32(&g_idActiveThread, idCurrentThread, UINT32_MAX);
 
-            if (fNoRecursion && !fOwnsLoaderLock)
+            if (fNoRecursion)
             {
                 /* We can call WinVerifyTrust. */
                 if (pfWinVerifyTrust)
