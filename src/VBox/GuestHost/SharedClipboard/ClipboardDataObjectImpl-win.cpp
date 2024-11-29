@@ -1,4 +1,4 @@
-/* $Id: ClipboardDataObjectImpl-win.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: ClipboardDataObjectImpl-win.cpp 107222 2024-11-29 13:09:26Z andreas.loeffler@oracle.com $ */
 /** @file
  * ClipboardDataObjectImpl-win.cpp - Shared Clipboard IDataObject implementation.
  */
@@ -502,6 +502,7 @@ DECLCALLBACK(int) ShClWinDataObject::readThread(PSHCLTRANSFER pTransfer, void *p
         for (uint32_t i = 0; i < cRoots; i++)
         {
             PCSHCLLISTENTRY pRootEntry = ShClTransferRootsEntryGet(pTransfer, i);
+            AssertPtrBreakStmt(pRootEntry, rc = VERR_INVALID_POINTER);
 
             AssertBreakStmt(pRootEntry->cbInfo == sizeof(SHCLFSOBJINFO), rc = VERR_INVALID_PARAMETER);
             PSHCLFSOBJINFO const pFsObjInfo = (PSHCLFSOBJINFO)pRootEntry->pvInfo;
