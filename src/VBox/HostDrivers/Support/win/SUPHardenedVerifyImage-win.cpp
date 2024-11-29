@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyImage-win.cpp 107017 2024-11-14 01:14:23Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPHardenedVerifyImage-win.cpp 107217 2024-11-29 12:52:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Image Verification, Windows.
  */
@@ -2802,7 +2802,7 @@ l_fresh_context:
                                 }
                                 ULONG ulErr = RtlGetLastWin32Error();
                                 fNoSignedCatalogFound = ulErr == ERROR_NOT_FOUND && fNoSignedCatalogFound != 0;
-                                if (iCat == 0)
+                                if (ulErr == ERROR_NOT_FOUND)
                                     SUP_DPRINTF(("supR3HardNtViCallWinVerifyTrustCatFile: CryptCATAdminEnumCatalogFromHash failed ERROR_NOT_FOUND (%u)\n", ulErr));
                                 else if (iCat == 0)
                                     SUP_DPRINTF(("supR3HardNtViCallWinVerifyTrustCatFile: CryptCATAdminEnumCatalogFromHash failed %u\n", ulErr));
