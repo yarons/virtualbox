@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerTlbLookup.h 106446 2024-10-17 12:31:32Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompilerTlbLookup.h 107237 2024-11-29 22:15:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler TLB Lookup Code Emitter.
  */
@@ -711,7 +711,8 @@ iemNativeEmitTlbLookup(PIEMRECOMPILERSTATE pReNative, uint32_t off, IEMNATIVEEMI
             if RT_CONSTEXPR_IF(a_cbMem == 2)
             {
                 /* tbnz regflatptr, #0, tlbmiss */
-                pCodeBuf[off++] = Armv8A64MkInstrTbnz((int32_t)offMisalignedAccess - (int32_t)off, idxRegFlatPtr, 0);
+                pCodeBuf[off] = Armv8A64MkInstrTbnz((int32_t)offMisalignedAccess - (int32_t)off, idxRegFlatPtr, 0);
+                off++;
             }
             else
 #endif
