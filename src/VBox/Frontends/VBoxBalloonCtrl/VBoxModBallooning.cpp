@@ -1,4 +1,4 @@
-/* $Id: VBoxModBallooning.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxModBallooning.cpp 107221 2024-11-29 13:06:06Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxModBallooning - Module for handling the automatic ballooning of VMs.
  */
@@ -421,6 +421,7 @@ static int balloonMachineSetup(const Bstr& strUuid)
  * capable and ready for ballooning.
  *
  * @return  IPRT status code.
+ * @retval  VERR_NOT_FOUND if requested machine payload has not been found.
  * @param   pMachine                Pointer to the machine's internal structure.
  */
 static int balloonMachineUpdate(PVBOXWATCHDOG_MACHINE pMachine)
@@ -452,7 +453,7 @@ static int balloonMachineUpdate(PVBOXWATCHDOG_MACHINE pMachine)
 
         PVBOXWATCHDOG_BALLOONCTRL_PAYLOAD pData;
         pData = (PVBOXWATCHDOG_BALLOONCTRL_PAYLOAD)payloadFrom(pMachine, VBOX_MOD_BALLOONING_NAME);
-        AssertPtr(pData);
+        AssertPtrReturn(pData, VERR_NOT_FOUND);
 
         /* Determine if ballooning is enabled or disabled. */
         bool fEnabled = balloonIsEnabled(pMachine);
