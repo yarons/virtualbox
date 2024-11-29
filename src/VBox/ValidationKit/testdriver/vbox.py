@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 106999 2024-11-13 10:05:05Z andreas.loeffler@oracle.com $
+# $Id: vbox.py 107233 2024-11-29 15:42:15Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 106999 $"
+__version__ = "$Revision: 107233 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -1846,6 +1846,20 @@ class TestDriver(base.TestDriver):                                              
         except:
             if not fIgnoreErrors:
                 reporter.errorXcpt('Getting the Guest Additions version failed');
+        return None;
+
+    def getGuestAdditionsRevision(self, oSession, fIgnoreErrors = False):
+        """
+        Returns the installed Guest Additions (SVN) revision.
+
+        Returns revision as a string (e.g. "123456"), or None if not found / on error.
+        """
+        assert oSession is not None;
+        try:
+            return oSession.o.console.guest.getAdditionsRevision;
+        except:
+            if not fIgnoreErrors:
+                reporter.errorXcpt('Getting the Guest Additions revision failed');
         return None;
 
     #
