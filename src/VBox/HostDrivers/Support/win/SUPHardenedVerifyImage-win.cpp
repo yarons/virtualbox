@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyImage-win.cpp 107218 2024-11-29 12:53:27Z andreas.loeffler@oracle.com $ */
+/* $Id: SUPHardenedVerifyImage-win.cpp 107219 2024-11-29 12:56:25Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Image Verification, Windows.
  */
@@ -2282,7 +2282,7 @@ DECLHIDDEN(HMODULE) supR3HardenedWinLoadSystem32Dll(const char *pszName, bool fM
  */
 static void supR3HardenedWinRetrieveTrustedRootCAs(void)
 {
-    uint32_t cAdded = 0;
+    uint32_t cAdded = 0; RT_NOREF(cAdded); /* Shut up Parfait. */
 
     /*
      * Load crypt32.dll and resolve the APIs we need.
