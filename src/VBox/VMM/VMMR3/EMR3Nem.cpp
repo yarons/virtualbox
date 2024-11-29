@@ -1,4 +1,4 @@
-/* $Id: EMR3Nem.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: EMR3Nem.cpp 107231 2024-11-29 14:47:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - Execution Monitor / Manager - NEM interface.
  */
@@ -328,6 +328,7 @@ static int emR3NemForcedActions(PVM pVM, PVMCPU pVCpu)
         VMCPU_FF_CLEAR_MASK(pVCpu, VMCPU_FF_PGM_SYNC_CR3 | VMCPU_FF_PGM_SYNC_CR3_NON_GLOBAL);
     }
 
+#ifndef VBOX_WITH_ONLY_PGM_NEM_MODE
     /*
      * Allocate handy pages (just in case the above actions have consumed some pages).
      */
@@ -337,6 +338,7 @@ static int emR3NemForcedActions(PVM pVM, PVMCPU pVCpu)
         if (RT_FAILURE(rc))
             return rc;
     }
+#endif
 
     /*
      * Check whether we're out of memory now.

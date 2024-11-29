@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VM.cpp 107231 2024-11-29 14:47:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -575,6 +575,7 @@ static DECLCALLBACK(int) vmR3CreateU(PUVM pUVM, uint32_t cCpus, PFNCFGMCONSTRUCT
 #endif
 
 
+#ifdef VBOX_WITH_R0_MODULES
     /*
      * Load the VMMR0.r0 module so that we can call GVMMR0CreateVM.
      */
@@ -590,6 +591,7 @@ static DECLCALLBACK(int) vmR3CreateU(PUVM pUVM, uint32_t cCpus, PFNCFGMCONSTRUCT
             return vmR3SetErrorU(pUVM, rc, RT_SRC_POS, N_("Failed to load VMMR0.r0"));
         }
     }
+#endif
 
     /*
      * Request GVMM to create a new VM for us.

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $
+# $Id: Makefile.kmk 107231 2024-11-29 14:47:06Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -136,7 +136,7 @@ VBoxVMM_SOURCES  = \
 	VMMR3/DBGFR3Type.cpp \
 	VMMR3/EM.cpp \
 	VMMR3/EMR3Dbg.cpp \
-	VMMR3/EMHM.cpp \
+	$(if-expr defined(VBOX_WITH_HWVIRT),VMMR3/EMHM.cpp,) \
 	VMMR3/EMR3Nem.cpp \
 	VMMR3/GCM.cpp \
 	VMMR3/GIM.cpp \

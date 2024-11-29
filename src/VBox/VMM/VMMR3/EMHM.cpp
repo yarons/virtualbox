@@ -1,4 +1,4 @@
-/* $Id: EMHM.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: EMHM.cpp 107231 2024-11-29 14:47:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - Execution Monitor / Manager - hardware virtualization
  */
@@ -58,6 +58,10 @@
 #include <iprt/asm.h>
 
 #include "EMInline.h"
+
+#ifndef VBOX_WITH_HWVIRT
+# error "VBOX_WITH_HWVIRT misconfig!"
+#endif
 
 
 /*********************************************************************************************************************************

@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: IOM.cpp 107231 2024-11-29 14:47:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -218,6 +218,7 @@ VMMR3_INT_DECL(int) IOMR3InitCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
 #ifdef VBOX_WITH_STATISTICS
     if (enmWhat == VMINITCOMPLETED_RING0)
     {
+# if defined(VBOX_WITH_R0_MODULES) && !defined(VBOX_WITH_MINIMAL_R0)
         /*
          * Synchronize the ring-3 I/O port and MMIO statistics indices into the
          * ring-0 tables to simplify ring-0 code.  This also make sure that any
@@ -228,6 +229,7 @@ VMMR3_INT_DECL(int) IOMR3InitCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
             int rc = VMMR3CallR0Emt(pVM, pVM->apCpusR3[0], VMMR0_DO_IOM_SYNC_STATS_INDICES, 0, NULL);
             AssertLogRelRCReturn(rc, rc);
         }
+# endif
 
         /*
          * Register I/O port and MMIO stats now that we're done registering MMIO
