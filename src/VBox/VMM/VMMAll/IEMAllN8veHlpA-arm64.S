@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veHlpA-arm64.S 105490 2024-07-24 14:49:29Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veHlpA-arm64.S 107238 2024-11-29 22:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler Assembly Helpers, ARM64 variant.
  */
@@ -80,7 +80,7 @@ BEGINPROC_HIDDEN iemNativeTbEntry
         /* Set BP to point to the old BP stack address */
         add     x29, sp, #(IEMNATIVE_FRAME_SAVE_REG_SIZE - 16)
         /* Allocate the variable area from SP. */
-        sub     sp, sp, #IEMNATIVE_FRAME_VAR_SIZE
+        sub     sp, sp, #(IEMNATIVE_FRAME_VAR_SIZE + IEMNATIVE_FRAME_ALIGN_SIZE)
         /* Load the fixed register values from parameters. */
         mov     IEMNATIVE_REG_FIXED_PVMCPU_ASM,   x0
         mov     IEMNATIVE_REG_FIXED_PCPUMCTX_ASM, x1
