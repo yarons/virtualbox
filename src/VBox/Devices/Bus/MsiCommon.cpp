@@ -1,4 +1,4 @@
-/* $Id: MsiCommon.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: MsiCommon.cpp 107228 2024-11-29 13:47:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * MSI support routines
  *
@@ -309,7 +309,7 @@ void MsiNotify(PPDMDEVINS pDevIns, PCPDMPCIHLP pPciHlp, PPDMPCIDEV pDev, int iVe
     if (puPending)
     {
         uint32_t *puMask = msiGetMaskBits(pDev);
-        AssertPtr(puMask);
+        AssertPtrReturnVoid(puMask);
         uMask = *puMask;
         LogFlow(("MsiNotify: %d pending=%x mask=%x\n", iVector, *puPending, uMask));
     }
