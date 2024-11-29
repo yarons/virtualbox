@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 107208 2024-11-28 10:38:10Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMAllPhys.cpp 107216 2024-11-29 11:23:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -5130,6 +5130,7 @@ DECL_FORCE_INLINE(int)
 pgmPhyIemGCphys2PtrNoLockReturnReadOnly(PVMCC pVM, PVMCPUCC pVCpu, uint64_t uTlbPhysRev, RTGCPHYS GCPhys, PCPGMPAGE pPageCopy,
                                         PPGMRAMRANGE pRam, PPGMPAGE pPage, R3R0PTRTYPE(uint8_t *) *ppb, uint64_t *pfTlb)
 {
+    RT_NOREF(GCPhys);
     if (!PGM_PAGE_IS_CODE_PAGE(pPageCopy))
         *pfTlb |= uTlbPhysRev | PGMIEMGCPHYS2PTR_F_NO_WRITE;
     else
@@ -5171,7 +5172,7 @@ pgmPhyIemGCphys2PtrNoLockReturnReadWrite(PVMCC pVM, PVMCPUCC pVCpu, uint64_t uTl
                                          PPGMRAMRANGE pRam, PPGMPAGE pPage, R3R0PTRTYPE(uint8_t *) *ppb, uint64_t *pfTlb)
 {
     Assert(!PGM_PAGE_IS_CODE_PAGE(pPageCopy));
-    RT_NOREF(pPageCopy);
+    RT_NOREF(pPageCopy, GCPhys);
     *pfTlb |= uTlbPhysRev;
 
 #ifdef IN_RING3
