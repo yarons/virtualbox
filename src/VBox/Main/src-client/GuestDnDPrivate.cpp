@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestDnDPrivate.cpp 107226 2024-11-29 13:31:32Z andreas.loeffler@oracle.com $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget + GuestDnDSource.
  */
@@ -820,6 +820,7 @@ GuestDnD* GuestDnD::s_pInstance = NULL;
 
 GuestDnD::GuestDnD(const ComObjPtr<Guest> &pGuest)
     : m_pGuest(pGuest)
+    , m_pState(NULL)
     , m_cTransfersPending(0)
 {
     LogFlowFuncEnter();
