@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageAppliance.cpp 107235 2024-11-29 17:56:15Z brent.paulson@oracle.com $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -168,6 +168,7 @@ static bool isStorageControllerType(VirtualSystemDescriptionType_T avsdType)
     switch (avsdType)
     {
         case VirtualSystemDescriptionType_HardDiskControllerIDE:
+        case VirtualSystemDescriptionType_HardDiskControllerNVMe:
         case VirtualSystemDescriptionType_HardDiskControllerSATA:
         case VirtualSystemDescriptionType_HardDiskControllerSCSI:
         case VirtualSystemDescriptionType_HardDiskControllerSAS:
@@ -1027,6 +1028,9 @@ RTEXITCODE handleImportAppliance(HandlerArg *arg)
                                             break;
                                         case VirtualSystemDescriptionType_HardDiskControllerVirtioSCSI:
                                             enmStorageBus = StorageBus_VirtioSCSI;
+                                            break;
+                                        case VirtualSystemDescriptionType_HardDiskControllerNVMe:
+                                            enmStorageBus = StorageBus_PCIe;
                                             break;
                                         default:  // Not reached since vsdControllerType validated above but silence gcc.
                                             break;
