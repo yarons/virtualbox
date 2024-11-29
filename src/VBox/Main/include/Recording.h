@@ -1,4 +1,4 @@
-/* $Id: Recording.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: Recording.h 107225 2024-11-29 13:28:35Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording code header.
  */
@@ -223,7 +223,7 @@ protected:
     RTSEMEVENT                   m_WaitEvent;
     /** Current operation of progress. Set to 0 if not started yet, >= 1 if started. */
     ULONG                        m_ulCurOp;
-    /** Number of progress operations. Always >= 1. */
+    /** Number of progress operations. Always >= 1 (if initialized). */
     ULONG                        m_cOps;
     /** The progress object assigned to this context.
      *  Might be NULL if not being used. */
