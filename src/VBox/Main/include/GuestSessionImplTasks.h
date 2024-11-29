@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.h 106262 2024-10-09 18:57:43Z vadim.galitsyn@oracle.com $ */
+/* $Id: GuestSessionImplTasks.h 107223 2024-11-29 13:23:05Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks header.
  */
@@ -57,7 +57,9 @@ struct GuestSessionFsSourceSpec
     GuestSessionFsSourceSpec()
         : enmType(FsObjType_Unknown)
         , enmPathStyle(PathStyle_Unknown)
-        , fDryRun(false) { RT_ZERO(Type); }
+        , fDryRun(false)
+        , fDirCopyFlags(DirectoryCopyFlag_None)
+        , fFileCopyFlags(FileCopyFlag_None) { RT_ZERO(Type); }
 
     /** The (absolute) path to the source to use. */
     Utf8Str     strSource;
