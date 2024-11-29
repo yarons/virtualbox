@@ -1,4 +1,4 @@
-/* $Id: timesupref.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: timesupref.h 107229 2024-11-29 14:42:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Time using SUPLib, the C Code Template.
  */
@@ -137,6 +137,9 @@ RTDECL(uint64_t) rtTimeNanoTSInternalRef(PRTTIMENANOTSDATA pData, PRTITMENANOTSE
 # elif TMPL_GET_CPU_METHOD == SUPGIPGETCPU_IDTR_LIMIT_MASK_MAX_SET_CPUS
             uint16_t const  cbLim    = ASMGetIdtrLimit();
             uint16_t const  iCpuSet  = (cbLim - 256 * (ARCH_BITS == 64 ? 16 : 8)) & (RTCPUSET_MAX_CPUS - 1);
+            uint16_t const  iGipCpu  = pGip->aiCpuFromCpuSetIdx[iCpuSet];
+# elif TMPL_GET_CPU_METHOD == SUPGIPGETCPU_TPIDRRO_EL0
+            uint32_t const  iCpuSet  = ASMGetThreadIdRoEL0() & (RTCPUSET_MAX_CPUS - 1);
             uint16_t const  iGipCpu  = pGip->aiCpuFromCpuSetIdx[iCpuSet];
 # else
 #  error "What?"
