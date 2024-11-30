@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veEmit-x86.h 106736 2024-10-27 01:07:28Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veEmit-x86.h 107239 2024-11-30 00:55:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, x86 Target - Code Emitters.
  */
@@ -228,9 +228,9 @@ DECL_INLINE_THROW(uint32_t) iemNativeEmitLoadGprWithGstRegExT(PIEMNATIVEINSTR pC
 
     /* 32-bit registers:   */
     else if RT_CONSTEXPR_IF(a_enmGstReg == kIemNativeGstReg_EFlags)
-        return iemNativeEmitLoadGprFromVCpuU64Ex(pCodeBuf, off, idxHstReg, RT_UOFFSETOF(VMCPU, cpum.GstCtx.eflags));
+        return iemNativeEmitLoadGprFromVCpuU32Ex(pCodeBuf, off, idxHstReg, RT_UOFFSETOF(VMCPU, cpum.GstCtx.eflags));
     else if RT_CONSTEXPR_IF(a_enmGstReg == kIemNativeGstReg_MxCsr)
-        return iemNativeEmitLoadGprFromVCpuU64Ex(pCodeBuf, off, idxHstReg, RT_UOFFSETOF(VMCPU, cpum.GstCtx.XState.x87.MXCSR));
+        return iemNativeEmitLoadGprFromVCpuU32Ex(pCodeBuf, off, idxHstReg, RT_UOFFSETOF(VMCPU, cpum.GstCtx.XState.x87.MXCSR));
 
     /* 16-bit registers */
     else if RT_CONSTEXPR_IF(a_enmGstReg == kIemNativeGstReg_FpuFcw)
