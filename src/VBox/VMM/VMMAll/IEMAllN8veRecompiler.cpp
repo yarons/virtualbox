@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 107245 2024-12-02 08:02:10Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 107247 2024-12-02 10:36:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -9281,7 +9281,7 @@ iemNativeDisasmAppendAnnotation(char *pszDisBuf, size_t cbDisBuf, PCDISSTATE pDi
     /* The memory operand is always number two on arm. */
     if (   pDis->aParams[1].armv8.enmType == kDisArmv8OpParmAddrInGpr
         && !(pDis->aParams[1].fUse & (DISUSE_INDEX | DISUSE_PRE_INDEXED | DISUSE_POST_INDEXED))
-        /* @todo DISUSE_REG_GEN64 is not set: && (pDis->aParams[1].fUse & DISUSE_REG_GEN64) */
+        /** @todo DISUSE_REG_GEN64 is not set: && (pDis->aParams[1].fUse & DISUSE_REG_GEN64) */
         && pDis->aParams[1].armv8.Op.Reg.enmRegType == kDisOpParamArmV8RegType_Gpr_64Bit)
     {
         if (pDis->aParams[1].armv8.Op.Reg.idReg == IEMNATIVE_REG_FIXED_PVMCPU)
