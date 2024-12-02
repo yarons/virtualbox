@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veExecMem.cpp 106753 2024-10-28 10:26:13Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veExecMem.cpp 107244 2024-12-02 08:01:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Executable Memory Allocator.
  */
@@ -1314,7 +1314,7 @@ iemExecMemAllocatorInitAndRegisterUnwindInfoForChunk(PVMCPUCC pVCpu, PIEMEXECMEM
 {
     RT_NOREF(pVCpu);
 
-#  ifdef RT_AMD64
+#  ifdef RT_ARCH_AMD64
     /*
      * The AMD64 unwind opcodes.
      *
@@ -1410,7 +1410,7 @@ iemExecMemAllocatorInitAndRegisterUnwindInfoForChunk(PVMCPUCC pVCpu, PIEMEXECMEM
     /*
      * Initialize the structures.
      */
-#  ifdef RT_AMD64
+#  ifdef RT_ARCH_AMD64
     PIMAGE_UNWIND_INFO const pInfo = (PIMAGE_UNWIND_INFO)&paFunctions[cFunctionEntries];
 
     paFunctions[0].BeginAddress         = 0;
