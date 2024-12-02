@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 107233 2024-11-29 15:42:15Z andreas.loeffler@oracle.com $
+# $Id: vbox.py 107243 2024-12-02 06:38:20Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 107233 $"
+__version__ = "$Revision: 107243 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -1856,7 +1856,7 @@ class TestDriver(base.TestDriver):                                              
         """
         assert oSession is not None;
         try:
-            return oSession.o.console.guest.getAdditionsRevision;
+            return oSession.o.console.guest.additionsRevision;
         except:
             if not fIgnoreErrors:
                 reporter.errorXcpt('Getting the Guest Additions revision failed');
