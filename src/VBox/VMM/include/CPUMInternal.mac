@@ -1,4 +1,4 @@
-; $Id: CPUMInternal.mac 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+; $Id: CPUMInternal.mac 107258 2024-12-03 09:46:18Z knut.osmundsen@oracle.com $
 ;; @file
 ; CPUM - Internal header file (asm).
 ;
@@ -80,9 +80,6 @@ struc CPUM
     ;...
     .fHostUseFlags              resd    1
 
-    ; CR4 masks
-    .CR4.AndMask                resd    1
-    .CR4.OrMask                 resd    1
     .u8PortableCpuIdLevel       resb    1
     .fPendingRestore            resb    1
     .fMtrrRead                  resb    1

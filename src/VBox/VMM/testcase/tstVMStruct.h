@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVMStruct.h 107258 2024-12-03 09:46:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -37,7 +37,6 @@
 
     GEN_CHECK_SIZE(CPUM);    // has .mac
     GEN_CHECK_OFF(CPUM, fHostUseFlags);
-    GEN_CHECK_OFF(CPUM, CR4);
 #ifndef VBOX_FOR_DTRACE_LIB
     GEN_CHECK_OFF(CPUM, u8PortableCpuIdLevel);
     GEN_CHECK_OFF(CPUM, fPendingRestore);
