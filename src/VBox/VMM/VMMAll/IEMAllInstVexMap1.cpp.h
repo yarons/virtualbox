@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstVexMap1.cpp.h 107209 2024-11-28 12:22:18Z bela.lubkin@oracle.com $ */
+/* $Id: IEMAllInstVexMap1.cpp.h 107256 2024-12-03 09:33:07Z bela.lubkin@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -5780,7 +5780,7 @@ FNIEMOP_DEF(iemOp_VGrp15)
             IEM_MC_ARG_LOCAL_REF(PX86YMMREG,            puDst,         uDst,    0); \
             IEM_MC_ARG_LOCAL_REF(PCIEMMEDIAF2YMMSRC,    puSrc,         uSrc,    1); \
             IEM_MC_ARG_CONST(uint8_t,                   bImmArg, /*=*/ bImm,    2); \
-            IEM_MC_FETCH_MEM_YMM_ALIGN_AVX_AND_YREG_YMM(uSrc, IEM_GET_EFFECTIVE_VVVV(pVCpu), pVCpu->iem.s.iEffSeg, GCPtrEffSrc); \
+            IEM_MC_FETCH_MEM_YMM_NO_AC_AND_YREG_YMM(uSrc, IEM_GET_EFFECTIVE_VVVV(pVCpu), pVCpu->iem.s.iEffSeg, GCPtrEffSrc); \
             IEM_MC_CALL_AVX_AIMPL_3(IEM_SELECT_HOST_OR_FALLBACK(fAvx, \
                                                                 RT_CONCAT3(iemAImpl_,a_Instr,_u256), \
                                                                 RT_CONCAT3(iemAImpl_,a_Instr,_u256_fallback)), \
@@ -5803,7 +5803,7 @@ FNIEMOP_DEF(iemOp_VGrp15)
             IEM_MC_ARG_LOCAL_REF(PX86XMMREG,            puDst,         uDst,    0); \
             IEM_MC_ARG_LOCAL_REF(PCIEMMEDIAF2XMMSRC,    puSrc,         uSrc,    1); \
             IEM_MC_ARG_CONST(uint8_t,                   bImmArg, /*=*/ bImm,    2); \
-            IEM_MC_FETCH_MEM_XMM_ALIGN_SSE_AND_XREG_XMM(uSrc, IEM_GET_EFFECTIVE_VVVV(pVCpu), pVCpu->iem.s.iEffSeg, GCPtrEffSrc); \
+            IEM_MC_FETCH_MEM_XMM_NO_AC_AND_XREG_XMM(uSrc, IEM_GET_EFFECTIVE_VVVV(pVCpu), pVCpu->iem.s.iEffSeg, GCPtrEffSrc); \
             IEM_MC_CALL_AVX_AIMPL_3(IEM_SELECT_HOST_OR_FALLBACK(fAvx, \
                                                                 RT_CONCAT3(iemAImpl_,a_Instr,_u128), \
                                                                 RT_CONCAT3(iemAImpl_,a_Instr,_u128_fallback)), \

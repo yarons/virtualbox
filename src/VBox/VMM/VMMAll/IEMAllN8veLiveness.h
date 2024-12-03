@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veLiveness.h 106428 2024-10-17 10:59:12Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veLiveness.h 107256 2024-12-03 09:33:07Z bela.lubkin@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Liveness Analysis, Common Header.
  */
@@ -888,7 +888,9 @@ AssertCompile(IEMLIVENESS_STATE_INPUT == IEMLIVENESS_STATE_MASK);
 #define IEM_MC_FETCH_MEM_FLAT_U128_AND_XREG_U128(a_Dst, a_iXReg1, a_GCPtrMem2)                  IEM_LIVENESS_MEM_FLAT()
 
 #define IEM_MC_FETCH_MEM_XMM_ALIGN_SSE_AND_XREG_XMM(a_Dst, a_iXReg1, a_iSeg2, a_GCPtrMem2)      IEM_LIVENESS_MEM(a_iSeg)
+#define IEM_MC_FETCH_MEM_XMM_NO_AC_AND_XREG_XMM(a_Dst, a_iXReg1, a_iSeg2, a_GCPtrMem2)          IEM_LIVENESS_MEM(a_iSeg)
 #define IEM_MC_FETCH_MEM_FLAT_XMM_ALIGN_SSE_AND_XREG_XMM(a_Dst, a_iXReg1, a_GCPtrMem2)          IEM_LIVENESS_MEM_FLAT()
+#define IEM_MC_FETCH_MEM_FLAT_XMM_NO_AC_AND_XREG_XMM(a_Dst, a_iXReg1, a_GCPtrMem2)              IEM_LIVENESS_MEM_FLAT()
 #define IEM_MC_FETCH_MEM_XMM_U32_AND_XREG_XMM(a_Dst, a_iXReg1, a_iDWord2, a_iSeg2, a_GCPtrMem2) IEM_LIVENESS_MEM(a_iSeg)
 #define IEM_MC_FETCH_MEM_FLAT_XMM_U32_AND_XREG_XMM(a_Dst, a_iXReg1, a_iDWord2, a_GCPtrMem2)     IEM_LIVENESS_MEM_FLAT()
 #define IEM_MC_FETCH_MEM_XMM_U64_AND_XREG_XMM(a_Dst, a_iXReg1, a_iQWord2, a_iSeg2, a_GCPtrMem2) IEM_LIVENESS_MEM(a_iSeg)

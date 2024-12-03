@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 106181 2024-09-30 15:24:34Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 107256 2024-12-03 09:33:07Z bela.lubkin@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 106181 $"
+__version__ = "$Revision: 107256 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -3164,12 +3164,13 @@ g_dMcStmtParsers = {
     'IEM_MC_FETCH_MEM_XMM_ALIGN_SSE':                            (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
     'IEM_MC_FETCH_MEM_XMM_NO_AC':                                (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
     'IEM_MC_FETCH_MEM_XMM_ALIGN_SSE_AND_XREG_XMM':               (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_FETCH_MEM_XMM_NO_AC_AND_XREG_XMM':                   (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_FETCH_MEM_XMM_U32_AND_XREG_XMM':                     (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_FETCH_MEM_XMM_U64_AND_XREG_XMM':                     (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_FETCH_MEM_YMM':                                      (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_FETCH_MEM_YMM_ALIGN_AVX':                            (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_FETCH_MEM_YMM_NO_AC':                                (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
-    'IEM_MC_FETCH_MEM_YMM_ALIGN_AVX_AND_YREG_YMM':               (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_FETCH_MEM_YMM_NO_AC_AND_YREG_YMM':                   (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_FETCH_MEM16_U8':                                     (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_FETCH_MEM32_U8':                                     (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_FETCH_MREG_U8':                                      (McBlock.parseMcGeneric,           False, False, False, ),
