@@ -1,4 +1,4 @@
-/* $Id: APIC.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: APIC.cpp 107255 2024-12-03 08:01:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -37,7 +37,9 @@
 #include <VBox/vmm/mm.h>
 #include <VBox/vmm/pdmdev.h>
 #include <VBox/vmm/ssm.h>
-#include <VBox/vmm/vm.h>
+#ifndef VBOX_DEVICE_STRUCT_TESTCASE
+# include <VBox/vmm/vm.h>
+#endif
 
 
 #ifndef VBOX_DEVICE_STRUCT_TESTCASE
