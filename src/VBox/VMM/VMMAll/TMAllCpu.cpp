@@ -1,4 +1,4 @@
-/* $Id: TMAllCpu.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: TMAllCpu.cpp 107265 2024-12-04 15:20:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * TM - Timeout Manager, CPU Time, All Contexts.
  */
@@ -660,7 +660,8 @@ VMM_INT_DECL(bool) TMCpuTickIsTicking(PVMCPUCC pVCpu)
 }
 
 
-#if defined(VBOX_VMM_TARGET_ARMV8)
+#ifdef VBOX_VMM_TARGET_ARMV8
+
 /**
  * Sets the number of nanoseconds from now when the vTiemr is supposed to expire next.
  *
@@ -687,4 +688,5 @@ VMM_INT_DECL(uint64_t) TMCpuGetVTimerActivationNano(PVMCPUCC pVCpu)
 {
     return pVCpu->cNsVTimerActivate;
 }
-#endif
+
+#endif /* VBOX_VMM_TARGET_ARMV8 */

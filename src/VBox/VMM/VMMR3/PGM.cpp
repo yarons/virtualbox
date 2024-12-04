@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 107231 2024-11-29 14:47:06Z knut.osmundsen@oracle.com $ */
+/* $Id: PGM.cpp 107265 2024-12-04 15:20:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1999,7 +1999,7 @@ VMMR3_INT_DECL(void) PGMR3Reset(PVM pVM)
         VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_PGM_SYNC_CR3);
         VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_PGM_SYNC_CR3_NON_GLOBAL);
 
-#if !defined(VBOX_VMM_TARGET_ARMV8)
+#ifdef VBOX_VMM_TARGET_X86
         if (!pVCpu->pgm.s.fA20Enabled)
         {
             pVCpu->pgm.s.fA20Enabled = true;

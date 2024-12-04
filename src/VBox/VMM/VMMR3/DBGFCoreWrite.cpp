@@ -1,4 +1,4 @@
-/* $Id: DBGFCoreWrite.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: DBGFCoreWrite.cpp 107265 2024-12-04 15:20:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Guest Core Dump.
  */
@@ -328,7 +328,10 @@ static uint32_t dbgfR3GetRamRangeCount(PVM pVM)
  */
 static void dbgfR3GetCoreCpu(PVMCPU pVCpu, PDBGFCORECPU pDbgfCpu)
 {
-#define DBGFCOPYSEL(a_dbgfsel, a_cpumselreg) \
+    PCCPUMCTX const pCtx = CPUMQueryGuestCtxPtr(pVCpu);
+
+#ifdef VBOX_VMM_TARGET_X86
+# define DBGFCOPYSEL(a_dbgfsel, a_cpumselreg) \
     do { \
         (a_dbgfsel).uBase  = (a_cpumselreg).u64Base; \
         (a_dbgfsel).uLimit = (a_cpumselreg).u32Limit; \
@@ -336,12 +339,6 @@ static void dbgfR3GetCoreCpu(PVMCPU pVCpu, PDBGFCORECPU pDbgfCpu)
         (a_dbgfsel).uSel   = (a_cpumselreg).Sel; \
     } while (0)
 
-#if defined(VBOX_VMM_TARGET_ARMV8)
-    AssertReleaseFailed();
-    RT_NOREF(pVCpu, pDbgfCpu);
-#else
-    PVM       pVM  = pVCpu->CTX_SUFF(pVM);
-    PCCPUMCTX pCtx = CPUMQueryGuestCtxPtr(pVCpu);
     pDbgfCpu->rax             = pCtx->rax;
     pDbgfCpu->rbx             = pCtx->rbx;
     pDbgfCpu->rcx             = pCtx->rcx;
@@ -394,12 +391,21 @@ static void dbgfR3GetCoreCpu(PVMCPU pVCpu, PDBGFCORECPU pDbgfCpu)
     pDbgfCpu->aXcr[0]         = pCtx->aXcr[0];
     pDbgfCpu->aXcr[1]         = pCtx->aXcr[1];
     AssertCompile(sizeof(pDbgfCpu->ext) == sizeof(pCtx->XState));
+
+    PVM const pVM  = pVCpu->CTX_SUFF(pVM);
     pDbgfCpu->cbExt = pVM->cpum.ro.GuestFeatures.cbMaxExtendedState;
     if (RT_LIKELY(pDbgfCpu->cbExt))
         memcpy(&pDbgfCpu->ext, &pCtx->XState, pDbgfCpu->cbExt);
-#endif
 
-#undef DBGFCOPYSEL
+# undef DBGFCOPYSEL
+
+#elif defined(VBOX_VMM_TARGET_ARMV8)
+    RT_NOREF(pCtx, pDbgfCpu);
+    AssertReleaseFailed();
+
+#else
+# error "port me"
+#endif
 }
 
 

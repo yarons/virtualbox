@@ -1,4 +1,4 @@
-/* $Id: tstInt.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: tstInt.cpp 107265 2024-12-04 15:20:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * SUP Testcase - Test the interrupt gate feature of the support library.
  */
@@ -105,7 +105,7 @@ int main(int argc, char **argv)
             rc = SUPR3CallVMMR0Ex(NIL_RTR0PTR, NIL_VMCPUID, VMMR0_DO_GVMM_CREATE_VM, 0, &CreateVMReq.Hdr);
             if (RT_SUCCESS(rc))
             {
-                PVM pVM = CreateVMReq.pVMR3;
+                PVM const pVM = CreateVMReq.pVMR3;
                 AssertRelease(RT_VALID_PTR(pVM));
                 AssertRelease(pVM->pVMR0ForCall == CreateVMReq.pVMR0);
                 AssertRelease(pVM->pSession == pSession);

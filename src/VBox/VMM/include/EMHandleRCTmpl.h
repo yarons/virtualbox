@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: EMHandleRCTmpl.h 107265 2024-12-04 15:20:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - emR3[Raw|Hm|Nem]HandleRC template.
  */
@@ -111,7 +111,7 @@ int emR3NemHandleRC(PVM pVM, PVMCPU pVCpu, int rc)
             rc = emR3ExecuteIOInstruction(pVM, pVCpu);
             break;
 
-#if !defined(VBOX_VMM_TARGET_ARMV8)
+#ifdef VBOX_VMM_TARGET_X86
         /*
          * Execute pending I/O Port access.
          */
@@ -167,7 +167,7 @@ int emR3NemHandleRC(PVM pVM, PVMCPU pVCpu, int rc)
                 rc = emR3ExecuteInstruction(pVM, pVCpu, "EVENT: ");
             break;
 
-#if !defined(VBOX_VMM_TARGET_ARMV8)
+#ifdef VBOX_VMM_TARGET_X86
         case VINF_EM_EMULATE_SPLIT_LOCK:
             rc = VBOXSTRICTRC_TODO(emR3ExecuteSplitLockInstruction(pVM, pVCpu));
             break;

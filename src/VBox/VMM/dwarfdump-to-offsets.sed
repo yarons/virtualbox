@@ -1,4 +1,4 @@
-# $Id: dwarfdump-to-offsets.sed 104367 2024-04-18 22:38:19Z knut.osmundsen@oracle.com $
+# $Id: dwarfdump-to-offsets.sed 107265 2024-12-04 15:20:14Z knut.osmundsen@oracle.com $
 ## @file
 # For defining member offsets for selected struct so the ARM64 assembler can use them.
 #
@@ -74,13 +74,22 @@
         s/["][)][[:space:]]*$//
         x
         H
-        x
-        s/\(_OFF_.*\)[\n]\(.*\)$/#define \2\1 \\/
-        p
     }
     /DW_AT_data_member_location/ {
-        s/^[[:space:]]*DW_AT_data_member_location[[:space:]]*/                /
-        p
+        s/^[[:space:]]*DW_AT_data_member_location[[:space:]]*//
+        s/[[:space:]]//g
+        x
+        H
+        x
+        s/\([(]0x[0-9a-zA-F]*[)]\)[\n]\(_OFF_.*\)[\n]\(.*\)$/#define \3\2 \1/p
+    }
+    # cleanup hold space.
+    /^[[:space:]]*$/ {
+        x
+        s/\([(]0x[0-9a-zA-F]*[)]\)[\n]\(_OFF_.*\)[\n]\(.*\)$/\3/
+        s/\(_OFF_.*\)[\n]\(.*\)$/\2/
+        x
+        d
     }
 }
 

@@ -1,4 +1,4 @@
-/* $Id: NEMR3.cpp 106969 2024-11-12 09:46:29Z alexander.eichner@oracle.com $ */
+/* $Id: NEMR3.cpp 107265 2024-12-04 15:20:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * NEM - Native execution manager.
  */
@@ -102,7 +102,7 @@ VMMR3_INT_DECL(int) NEMR3InitConfig(PVM pVM)
                                   "|VmxPleWindow"
                                   "|VmxLbr"
 #endif
-#if defined(VBOX_VMM_TARGET_ARMV8)
+#ifdef VBOX_VMM_TARGET_ARMV8
                                   "|VTimerInterrupt"
 #endif
                                   ,
@@ -139,7 +139,7 @@ VMMR3_INT_DECL(int) NEMR3InitConfig(PVM pVM)
         pVCpu->nem.s.fTrapXcptGpForLovelyMesaDrv = f;
     }
 
-#if defined(VBOX_VMM_TARGET_ARMV8)
+#ifdef VBOX_VMM_TARGET_ARMV8
     /** @cfgm{/NEM/VTimerInterrupt, uint32_t}
      * Specifies the interrupt identifier for the VTimer. */
     rc = CFGMR3QueryU32(pCfgNem, "VTimerInterrupt", &pVM->nem.s.u32GicPpiVTimer);
@@ -181,8 +181,7 @@ VMMR3_INT_DECL(int) NEMR3Init(PVM pVM, bool fFallback, bool fForced)
         {
             if (pVM->bMainExecutionEngine == VM_EXEC_ENGINE_NATIVE_API)
             {
-#ifndef VBOX_VMM_TARGET_ARMV8 /* NEM is the only option on ARM for now, so calling it turtle and snail mode
-                               * is a bit unfair as long as we don't have a native hypervisor to compare against :). */
+#ifndef VBOX_WITH_HWVIRT /* Don't complain if there are no other alternatives. */
 # ifdef RT_OS_WINDOWS /* The WHv* API is extremely slow at handling VM exits. The AppleHv and
                          KVM APIs are much faster, thus the different mode name. :-) */
                 LogRel(("NEM:\n"
