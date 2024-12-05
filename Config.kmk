@@ -1,4 +1,4 @@
-# $Id: Config.kmk 107246 2024-12-02 10:20:19Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 107275 2024-12-05 11:39:12Z serkan.bayraktar@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -8052,7 +8052,8 @@ if defined(VBOX_WITH_QTGUI) || defined(VBOX_WITH_NLS)
    ifeq ($(KBUILD_TARGET),linux)
     VBOX_QT_PLUGINS += \
     	plugins/platforms/libqwayland-generic$(VBOX_QT_POSTFIX).so \
-    	plugins/wayland-shell-integration/libxdg-shell$(VBOX_QT_POSTFIX).so
+    	plugins/wayland-shell-integration/libxdg-shell$(VBOX_QT_POSTFIX).so \
+    	plugins/wayland-decoration-client/libbradient$(VBOX_QT_POSTFIX).so
    endif
   else ifeq ($(KBUILD_TARGET),win)
    VBOX_QT_MOD += Qt6Core Qt6Gui Qt6Widgets Qt6PrintSupport Qt6StateMachine Qt6Help Qt6Network Qt6Sql
@@ -9388,7 +9389,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 107246 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 107275 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
