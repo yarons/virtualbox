@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsCommon.nsh 106982 2024-11-12 15:33:37Z andreas.loeffler@oracle.com $
+; $Id: VBoxGuestAdditionsCommon.nsh 107272 2024-12-05 09:55:14Z andreas.loeffler@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsCommon.nsh - Common / shared utility functions.
 ;
@@ -55,7 +55,9 @@ Function Common_CopyFiles
   FILE "/oname=${LICENSE_FILE_RTF}" "$%VBOX_BRAND_LICENSE_RTF%"
 !endif
 
+${If} $g_strWinVersion != "NT4" ; VBoxDrvInst only works with > NT4.
   FILE "$%PATH_OUT%\bin\additions\VBoxDrvInst.exe"
+${EndIf}
   FILE "$%PATH_OUT%\bin\additions\VBoxGuestInstallHelper.exe"
 
 !if $%KBUILD_TARGET_ARCH% != "arm64" ;; @todo win.arm64: Make VBoxVideo and friends build on arm.
