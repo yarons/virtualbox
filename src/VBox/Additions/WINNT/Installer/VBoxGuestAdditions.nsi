@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 107135 2024-11-22 10:02:13Z sergey.dubov@oracle.com $
+; $Id: VBoxGuestAdditions.nsi 107270 2024-12-05 08:01:23Z andreas.loeffler@oracle.com $
 ; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -24,6 +24,15 @@
 ;
 ; SPDX-License-Identifier: GPL-3.0-only
 ;
+
+;
+; !!! HACK ALERT !!!
+; We disable the installer's CRC check because we have to use VBoxPeSetVersion in order
+; to make the installer run on NT4 guests with our self-built NSIS binaries.
+; Needs to be fixed properly.
+; !!! HACK ALERT !!!
+;
+CRCCheck off
 
 !if $%KBUILD_TYPE% == "debug"
   !define _DEBUG     ; Turn this on to get extra output
