@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsNT4.nsh 106995 2024-11-13 09:03:13Z andreas.loeffler@oracle.com $
+; $Id: VBoxGuestAdditionsNT4.nsh 107273 2024-12-05 10:01:46Z andreas.loeffler@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsNT4.nsh - Guest Additions installation for NT4.
 ;
@@ -221,9 +221,7 @@ FunctionEnd
 !macro NT4_UninstallInstDir un
 Function ${un}NT4_UninstallInstDir
 
-  ; Delete remaining files
-  Delete /REBOOTOK "$INSTDIR\VBoxGuestDrvInst.exe"
-  Delete /REBOOTOK "$INSTDIR\RegCleanup.exe"
+  ; Nothing to do here.
 
 FunctionEnd
 !macroend

@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsUninstall.nsh 106980 2024-11-12 14:44:38Z andreas.loeffler@oracle.com $
+; $Id: VBoxGuestAdditionsUninstall.nsh 107273 2024-12-05 10:01:46Z andreas.loeffler@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsUninstall.nsh - Guest Additions uninstallation.
 ;
@@ -33,7 +33,8 @@ Function ${un}UninstallCommon
   Delete /REBOOTOK "$INSTDIR\${PRODUCT_NAME}.url"
 
   ; Remove common files
-  Delete /REBOOTOK "$INSTDIR\VBoxDrvInst.exe"
+  Delete /REBOOTOK "$INSTDIR\VBoxDrvInst.exe" ; Does not exist on NT4, but try to remove it anyway.
+  Delete /REBOOTOK "$INSTDIR\RegCleanup.exe" ; Obsolete since r165894 (see #10799).
   Delete /REBOOTOK "$INSTDIR\VBoxGuestInstallHelper.exe"
 
   Delete /REBOOTOK "$INSTDIR\VBoxVideo.inf"
