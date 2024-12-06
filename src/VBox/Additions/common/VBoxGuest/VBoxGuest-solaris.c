@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-solaris.c 107294 2024-12-06 23:31:06Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuest-solaris.c 107295 2024-12-06 23:56:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Guest Additions Driver for Solaris.
  */
@@ -39,7 +39,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #ifdef VBOX_WITH_PARFAIT
-# include <iprt/stdint.h> /* HACK ALERT! Contains workaround for int_fast16_t & uint_fast16_t clash. */
+# include <iprt/types.h> /* HACK ALERT! Contains workaround for int_fast16_t & uint_fast16_t clash. */
 #endif
 #include <sys/conf.h>
 #include <sys/modctl.h>
