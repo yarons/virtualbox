@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 107270 2024-12-05 08:01:23Z andreas.loeffler@oracle.com $
+; $Id: VBoxGuestAdditions.nsi 107288 2024-12-06 17:47:19Z andreas.loeffler@oracle.com $
 ; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -62,7 +62,7 @@ CRCCheck off
 !define PRODUCT_PUBLISHER           "$%VBOX_VENDOR%"
 !define PRODUCT_COPYRIGHT           "(C) $%VBOX_C_YEAR% $%VBOX_VENDOR%"
 !define PRODUCT_OUTPUT              "VBoxWindowsAdditions-$%KBUILD_TARGET_ARCH%.exe"
-!define PRODUCT_WEB_SITE            "http://www.virtualbox.org"
+!define PRODUCT_WEB_SITE            "https://www.virtualbox.org"
 !define PRODUCT_INSTALL_KEY         "${VENDOR_ROOT_KEY}\VirtualBox Guest Additions"
 !define PRODUCT_UNINST_KEY          "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 !define PRODUCT_UNINST_ROOT_KEY     "HKLM"
