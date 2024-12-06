@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 106898 2024-11-08 08:36:27Z valery.portnyagin@oracle.com $ */
+/* $Id: VirtualBoxImpl.h 107281 2024-12-06 09:55:20Z valery.portnyagin@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -443,8 +443,11 @@ private:
                                  BOOL *aResult);
     HRESULT findProgressById(const com::Guid &aId,
                              ComPtr<IProgress> &aProgressObject);
-    HRESULT getTrackedObject(const com::Utf8Str& aTrObjId,
-                             ComPtr<IUnknown> &aPIface);
+    HRESULT getTrackedObject(const com::Utf8Str &aTrObjId,
+                             ComPtr<IUnknown> &aPIface,
+                             TrackedObjectState_T *aState,
+                             LONG64 *aCreationTime,
+                             LONG64 *aDeletionTime);
     HRESULT getTrackedObjectIds (const com::Utf8Str& aName,
                                  std::vector<com::Utf8Str> &aObjIdsList);
 
