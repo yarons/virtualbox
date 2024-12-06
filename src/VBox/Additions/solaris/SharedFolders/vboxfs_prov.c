@@ -1,4 +1,4 @@
-/* $Id: vboxfs_prov.c 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: vboxfs_prov.c 107294 2024-12-06 23:31:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox File System for Solaris Guests, provider implementation.
  * Portions contributed by: Ronald.
@@ -39,6 +39,9 @@
  * Provider interfaces for shared folder file system.
  */
 
+#ifdef VBOX_WITH_PARFAIT
+# include <iprt/stdint.h> /* HACK ALERT! Contains workaround for int_fast16_t & uint_fast16_t clash. */
+#endif
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/mntent.h>
