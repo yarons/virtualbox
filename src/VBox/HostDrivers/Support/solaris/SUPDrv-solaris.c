@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 107294 2024-12-06 23:31:06Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrv-solaris.c 107296 2024-12-06 23:58:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -40,7 +40,7 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_SUP_DRV
 #ifdef VBOX_WITH_PARFAIT
-# include <iprt/stdint.h> /* HACK ALERT! Contains workaround for int_fast16_t & uint_fast16_t clash. */
+# include <iprt/types.h> /* HACK ALERT! Contains workaround for int_fast16_t & uint_fast16_t clash. */
 #endif
 #include <sys/types.h>
 #include <sys/param.h>
