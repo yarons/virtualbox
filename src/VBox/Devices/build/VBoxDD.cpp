@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 106346 2024-10-16 09:11:47Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxDD.cpp 107284 2024-12-06 14:11:11Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -533,7 +533,7 @@ extern "C" DECLEXPORT(int) VBoxUsbRegister(PCPDMUSBREGCB pCallbacks, uint32_t u3
     rc = pCallbacks->pfnRegister(pCallbacks, &g_UsbHidMou);
     if (RT_FAILURE(rc))
         return rc;
-    rc = pCallbacks->pfnRegister(pCallbacks, &g_UsbEth);
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_UsbNet);
     if (RT_FAILURE(rc))
         return rc;
 #endif
