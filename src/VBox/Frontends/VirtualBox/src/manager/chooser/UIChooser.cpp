@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIChooser.cpp 107307 2024-12-09 16:05:53Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -32,11 +32,13 @@
 #include "UIChooser.h"
 #include "UIChooserModel.h"
 #include "UIChooserView.h"
+#include "UIVirtualBoxManagerWidget.h"
 #include "UIVirtualMachineItem.h"
 
 
-UIChooser::UIChooser(QWidget *pParent, UIActionPool *pActionPool)
+UIChooser::UIChooser(UIVirtualBoxManagerWidget *pParent, UIActionPool *pActionPool)
     : QWidget(pParent)
+    , m_pParent(pParent)
     , m_pActionPool(pActionPool)
     , m_pChooserModel(0)
     , m_pChooserView(0)
@@ -277,6 +279,10 @@ void UIChooser::prepareConnections()
     AssertPtrReturnVoid(model());
     AssertPtrReturnVoid(view());
 
+    /* Parent connections: */
+    connect(m_pParent, &UIVirtualBoxManagerWidget::sigToolBarHeightChange,
+            this, &UIChooser::setGlobalItemHeightHint);
+
     /* Abstract Chooser-model connections: */
     connect(model(), &UIChooserModel::sigGroupSavingStateChanged,
             this, &UIChooser::sigGroupSavingStateChanged);
@@ -358,6 +364,10 @@ void UIChooser::cleanupConnections()
                model(), &UIChooserModel::sltHandleViewResized);
     disconnect(view(), &UIChooserView::sigSearchWidgetVisibilityChanged,
                this, &UIChooser::sigMachineSearchWidgetVisibilityChanged);
+
+    /* Parent connections: */
+    disconnect(m_pParent, &UIVirtualBoxManagerWidget::sigToolBarHeightChange,
+               this, &UIChooser::setGlobalItemHeightHint);
 }
 
 void UIChooser::cleanup()

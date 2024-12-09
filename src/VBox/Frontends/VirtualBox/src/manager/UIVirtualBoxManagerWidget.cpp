@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 107307 2024-12-09 16:05:53Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -829,8 +829,6 @@ void UIVirtualBoxManagerWidget::prepareConnections()
             this, &UIVirtualBoxManagerWidget::sltHandleToolBarResize);
 
     /* Chooser-pane connections: */
-    connect(this, &UIVirtualBoxManagerWidget::sigToolBarHeightChange,
-            m_pPaneChooser, &UIChooser::setGlobalItemHeightHint);
     connect(m_pPaneChooser, &UIChooser::sigSelectionChanged,
             this, &UIVirtualBoxManagerWidget::sltHandleChooserPaneIndexChange);
     connect(m_pPaneChooser, &UIChooser::sigSelectionInvalidated,
@@ -1086,8 +1084,6 @@ void UIVirtualBoxManagerWidget::cleanupConnections()
                this, &UIVirtualBoxManagerWidget::sltHandleToolBarResize);
 
     /* Chooser-pane connections: */
-    disconnect(this, &UIVirtualBoxManagerWidget::sigToolBarHeightChange,
-               m_pPaneChooser, &UIChooser::setGlobalItemHeightHint);
     disconnect(m_pPaneChooser, &UIChooser::sigSelectionChanged,
                this, &UIVirtualBoxManagerWidget::sltHandleChooserPaneIndexChange);
     disconnect(m_pPaneChooser, &UIChooser::sigSelectionInvalidated,
