@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 107267 2024-12-04 21:01:51Z brent.paulson@oracle.com $ */
+/* $Id: MediumImpl.cpp 107306 2024-12-09 15:22:48Z valery.portnyagin@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -985,7 +985,7 @@ HRESULT Medium::FinalConstruct()
     vrc = VDIfTcpNetInstDefaultCreate(&m->hTcpNetInst, &m->vdImageIfaces);
     AssertRCReturn(vrc, E_FAIL);
 
-    setTracked(0, 60);//infinite, 1 minute
+    setTracked(0, 7200);//infinite, 2 hours
 
     return BaseFinalConstruct();
 }

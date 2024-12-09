@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 106994 2024-11-13 08:52:53Z valery.portnyagin@oracle.com $ */
+/* $Id: MachineImpl.cpp 107306 2024-12-09 15:22:48Z valery.portnyagin@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -298,7 +298,7 @@ Machine::~Machine()
 HRESULT Machine::FinalConstruct()
 {
     LogFlowThisFunc(("\n"));
-    setTracked(0, 60);//infinite, 1 minute
+    setTracked(0, 7200);//infinite, 2 hours
     return BaseFinalConstruct();
 }
 
