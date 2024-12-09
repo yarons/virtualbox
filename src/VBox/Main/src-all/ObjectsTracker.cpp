@@ -1,4 +1,4 @@
-/* $Id: ObjectsTracker.cpp 107301 2024-12-09 13:17:33Z valery.portnyagin@oracle.com $ */
+/* $Id: ObjectsTracker.cpp 107302 2024-12-09 13:18:57Z valery.portnyagin@oracle.com $ */
 /** @file
  * VirtualBox Object tracker implementation
  */
@@ -590,8 +590,7 @@ int TrackedObjectsCollector::i_getObjIdsByClassIID(const Guid &aIId, std::vector
          Iter != m_trackedObjectsData.end();
          ++Iter)
     {
-        /* IID found and the object is valid */
-        if (Iter->second.classIID() == aIId && !m_trackedInvalidObjectIds.count(Iter->first))
+        if (Iter->second.classIID() == aIId)
             aObjIdMap.push_back(Iter->first);
     }
 
