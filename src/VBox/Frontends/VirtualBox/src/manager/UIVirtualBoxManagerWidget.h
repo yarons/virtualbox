@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.h 107308 2024-12-09 16:18:08Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -36,9 +36,8 @@
 #include <QWidget>
 
 /* GUI includes: */
+#include "UIExtraDataDefs.h"
 #include "UISlidingAnimation.h"
-#include "UIToolPaneGlobal.h"
-#include "UIToolPaneMachine.h"
 
 /* Forward declarations: */
 class QStackedWidget;
@@ -48,6 +47,8 @@ class QIToolBar;
 class UIActionPool;
 class UIChooser;
 class UITabBar;
+class UIToolPaneGlobal;
+class UIToolPaneMachine;
 class UITools;
 class UIVirtualBoxManager;
 class UIVirtualMachineItem;
