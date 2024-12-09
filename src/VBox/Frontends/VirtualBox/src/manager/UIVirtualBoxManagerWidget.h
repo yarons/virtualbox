@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 107309 2024-12-09 16:31:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.h 107310 2024-12-09 16:52:53Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -46,7 +46,6 @@ class QIToolBar;
 class UIActionPool;
 class UIChooser;
 class UISlidingAnimation;
-class UITabBar;
 class UIToolPaneGlobal;
 class UIToolPaneMachine;
 class UITools;
@@ -140,6 +139,12 @@ public:
       * @{ */
         /** Returns the action-pool instance. */
         UIActionPool *actionPool() const { return m_pActionPool; }
+    /** @} */
+
+    /** @name Tool-bar stuff.
+      * @{ */
+        /** Updates tool-bar menu buttons. */
+        void updateToolBarMenuButtons(bool fSeparateMenuSection);
     /** @} */
 
     /** @name Chooser pane stuff.
@@ -238,12 +243,6 @@ public:
 
         /** Returns currently selected snapshot ID if any. */
         QUuid currentSnapshotId();
-    /** @} */
-
-    /** @name Tool-bar stuff.
-      * @{ */
-        /** Updates tool-bar menu buttons. */
-        void updateToolBarMenuButtons(bool fSeparateMenuSection);
     /** @} */
 
     /** @name Help browser stuff.

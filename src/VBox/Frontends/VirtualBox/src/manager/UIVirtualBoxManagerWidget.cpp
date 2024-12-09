@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 107309 2024-12-09 16:31:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 107310 2024-12-09 16:52:53Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -92,6 +92,13 @@ UIVirtualBoxManagerWidget::UIVirtualBoxManagerWidget(UIVirtualBoxManager *pParen
 UIVirtualBoxManagerWidget::~UIVirtualBoxManagerWidget()
 {
     cleanup();
+}
+
+void UIVirtualBoxManagerWidget::updateToolBarMenuButtons(bool fSeparateMenuSection)
+{
+    QToolButton *pButton = qobject_cast<QToolButton*>(m_pToolBar->widgetForAction(actionPool()->action(UIActionIndexMN_M_Machine_M_StartOrShow)));
+    if (pButton)
+        pButton->setPopupMode(fSeparateMenuSection ? QToolButton::MenuButtonPopup : QToolButton::DelayedPopup);
 }
 
 UIVirtualMachineItem *UIVirtualBoxManagerWidget::currentItem() const
@@ -308,13 +315,6 @@ bool UIVirtualBoxManagerWidget::isCurrentStateItemSelected() const
 QUuid UIVirtualBoxManagerWidget::currentSnapshotId()
 {
     return m_pPaneToolsMachine->currentSnapshotId();
-}
-
-void UIVirtualBoxManagerWidget::updateToolBarMenuButtons(bool fSeparateMenuSection)
-{
-    QToolButton *pButton = qobject_cast<QToolButton*>(m_pToolBar->widgetForAction(actionPool()->action(UIActionIndexMN_M_Machine_M_StartOrShow)));
-    if (pButton)
-        pButton->setPopupMode(fSeparateMenuSection ? QToolButton::MenuButtonPopup : QToolButton::DelayedPopup);
 }
 
 QString UIVirtualBoxManagerWidget::currentHelpKeyword() const
@@ -1050,9 +1050,9 @@ void UIVirtualBoxManagerWidget::updateToolbar()
             }
             case UIToolType_FileManager:
             {
-                m_pToolBar->addAction(m_pActionPool->action(UIActionIndex_M_FileManager_T_Preferences));
-                m_pToolBar->addAction(m_pActionPool->action(UIActionIndex_M_FileManager_T_Operations));
-                m_pToolBar->addAction(m_pActionPool->action(UIActionIndex_M_FileManager_T_Log));
+                m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_FileManager_T_Preferences));
+                m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_FileManager_T_Operations));
+                m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_FileManager_T_Log));
                 m_pToolBar->addSeparator();
                 m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Settings));
                 m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Discard));
