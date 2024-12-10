@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstTwoByte0f.cpp.h 106827 2024-11-01 02:01:09Z bela.lubkin@oracle.com $ */
+/* $Id: IEMAllInstTwoByte0f.cpp.h 107322 2024-12-10 12:54:07Z bela.lubkin@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -13435,7 +13435,8 @@ FNIEMOP_DEF(iemOp_cvttpd2dq_Vx_Wpd)
 FNIEMOP_DEF(iemOp_cvtdq2pd_Vx_Wpd)
 {
     IEMOP_MNEMONIC2(RM, CVTDQ2PD, cvtdq2pd, Vx, Wpd, DISOPTYPE_HARMLESS | DISOPTYPE_X86_SSE, 0);
-    return FNIEMOP_CALL_1(iemOpCommonSse2Fp_FullFull_To_Full, iemAImpl_cvtdq2pd_u128);
+    /** @todo changing iemAImpl_cvtdq2pd_u128's type provokes a cascade of other changes */
+    return FNIEMOP_CALL_1(iemOpCommonSse2Fp_FullR64_To_Full, (PFNIEMAIMPLFPSSEF2U128R64)iemAImpl_cvtdq2pd_u128);
 }
 
 
