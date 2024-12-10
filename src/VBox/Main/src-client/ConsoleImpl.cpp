@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 107311 2024-12-10 07:37:35Z aleksey.ilyushin@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 107312 2024-12-10 07:51:34Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -4359,7 +4359,6 @@ HRESULT Console::i_onNetworkAdapterChange(INetworkAdapter *aNetworkAdapter, BOOL
                         vrc = ptrVM.vtable()->pfnPDMR3UsbQueryLun(ptrVM.rawUVM(), pszAdapterName, ulInstance, 0, &pBase);
                     else
                         vrc = ptrVM.vtable()->pfnPDMR3QueryDeviceLun(ptrVM.rawUVM(), pszAdapterName, ulInstance, 0, &pBase);
-                    if (RT_FAILURE(vrc))
                     if (RT_SUCCESS(vrc))
                     {
                         Assert(pBase);
