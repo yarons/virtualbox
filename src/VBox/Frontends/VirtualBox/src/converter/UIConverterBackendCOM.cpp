@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendCOM.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIConverterBackendCOM.cpp 107311 2024-12-10 07:37:35Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendCOM implementation.
  */
@@ -431,6 +431,7 @@ template<> SHARED_LIBRARY_STUFF QString UIConverter::toString(const KNetworkAdap
         case KNetworkAdapterType_WD8003:     return QApplication::translate("UICommon", "WD EtherCard Plus (WD8013E)", "NetworkAdapterType");
         case KNetworkAdapterType_ELNK2:      return QApplication::translate("UICommon", "3Com EtherLink II (3C503)", "NetworkAdapterType");
         case KNetworkAdapterType_ELNK1:      return QApplication::translate("UICommon", "3Com EtherLink (3C501)", "NetworkAdapterType");
+        case KNetworkAdapterType_UsbNet:     return QApplication::translate("UICommon", "Ethernet over USB (usbnet)", "NetworkAdapterType");
         default: AssertMsgFailed(("No text for %d", type)); break;
     }
     return QString();

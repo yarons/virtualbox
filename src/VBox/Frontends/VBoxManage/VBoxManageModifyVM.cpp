@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 106385 2024-10-16 13:58:41Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxManageModifyVM.cpp 107311 2024-12-10 07:37:35Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -1738,6 +1738,10 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
                 else if (!RTStrICmp(ValueUnion.psz, "3C501"))
                 {
                     CHECK_ERROR(nic, COMSETTER(AdapterType)(NetworkAdapterType_ELNK1));
+                }
+                else if (!RTStrICmp(ValueUnion.psz, "usbnet"))
+                {
+                    CHECK_ERROR(nic, COMSETTER(AdapterType)(NetworkAdapterType_UsbNet));
                 }
                 else
                 {

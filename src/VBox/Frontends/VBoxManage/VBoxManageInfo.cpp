@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 106209 2024-10-02 21:05:12Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxManageInfo.cpp 107311 2024-12-10 07:37:35Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1951,6 +1951,7 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
                     case NetworkAdapterType_WD8013:     pszNICType = "WD8013";      break;
                     case NetworkAdapterType_ELNK2:      pszNICType = "3C503";       break;
                     case NetworkAdapterType_ELNK1:      pszNICType = "3C501";       break;
+                    case NetworkAdapterType_UsbNet:     pszNICType = "usbnet";      break;
                     default:
                         AssertFailed();
                         if (details == VMINFO_MACHINEREADABLE)

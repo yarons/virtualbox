@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigArmV8.cpp 107205 2024-11-27 14:46:49Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImplConfigArmV8.cpp 107311 2024-12-10 07:37:35Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits for ARMv8.
  */
@@ -918,7 +918,7 @@ int Console::i_configConstructorArmV8(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
          */
         std::list<BootNic> llBootNics;
         vrc = i_configNetworkCtrls(pMachine, pPlatformProperties, chipsetType, pBusMgr,
-                                   pVMM, pUVM, pDevices, llBootNics);                            VRC();
+                                   pVMM, pUVM, pDevices, pUsbDevices, llBootNics);               VRC();
 
         /*
          * The VMM device.

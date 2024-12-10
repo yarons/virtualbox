@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigX86.cpp 107168 2024-11-26 10:19:37Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImplConfigX86.cpp 107311 2024-12-10 07:37:35Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1693,7 +1693,7 @@ int Console::i_configConstructorX86(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Auto
          */
         std::list<BootNic> llBootNics;
         vrc = i_configNetworkCtrls(pMachine, platformProperties, chipsetType, pBusMgr,
-                                   pVMM, pUVM, pDevices, llBootNics);                        VRC();
+                                   pVMM, pUVM, pDevices, pUsbDevices, llBootNics);           VRC();
 
         /*
          * Build network boot information and transfer it to the BIOS.

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 107140 2024-11-22 11:16:37Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 107311 2024-12-10 07:37:35Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -1697,6 +1697,8 @@ inline static const char *networkAdapterTypeToName(NetworkAdapterType_T adapterT
             return "dp8390";
         case NetworkAdapterType_ELNK1:
             return "3c501";
+        case NetworkAdapterType_UsbNet:
+            return "usbnet";
         default:
             AssertFailed();
             return "unknown";
@@ -4352,7 +4354,12 @@ HRESULT Console::i_onNetworkAdapterChange(INetworkAdapter *aNetworkAdapter, BOOL
                     alock.release();
 
                     PPDMIBASE pBase = NULL;
-                    int vrc = ptrVM.vtable()->pfnPDMR3QueryDeviceLun(ptrVM.rawUVM(), pszAdapterName, ulInstance, 0, &pBase);
+                    int vrc = VINF_SUCCESS;
+                    if (adapterType == NetworkAdapterType_UsbNet)
+                        vrc = ptrVM.vtable()->pfnPDMR3UsbQueryLun(ptrVM.rawUVM(), pszAdapterName, ulInstance, 0, &pBase);
+                    else
+                        vrc = ptrVM.vtable()->pfnPDMR3QueryDeviceLun(ptrVM.rawUVM(), pszAdapterName, ulInstance, 0, &pBase);
+                    if (RT_FAILURE(vrc))
                     if (RT_SUCCESS(vrc))
                     {
                         Assert(pBase);

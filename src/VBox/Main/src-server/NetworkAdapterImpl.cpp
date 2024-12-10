@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: NetworkAdapterImpl.cpp 107311 2024-12-10 07:37:35Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * Implementation of INetworkAdapter in VBoxSVC.
  */
@@ -267,6 +267,7 @@ HRESULT NetworkAdapter::setAdapterType(NetworkAdapterType_T aAdapterType)
         case NetworkAdapterType_WD8013:
         case NetworkAdapterType_ELNK2:
         case NetworkAdapterType_ELNK1:
+        case NetworkAdapterType_UsbNet:
             break;
         default:
             return setError(E_FAIL,
