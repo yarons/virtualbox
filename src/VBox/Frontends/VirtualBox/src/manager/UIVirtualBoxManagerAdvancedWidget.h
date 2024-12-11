@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerAdvancedWidget.h 107334 2024-12-11 13:01:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerAdvancedWidget.h 107336 2024-12-11 13:34:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerAdvancedWidget class declaration.
  */
@@ -45,7 +45,6 @@ class QISplitter;
 class QIToolBar;
 class UIActionPool;
 class UIChooser;
-class UISlidingAnimation;
 class UIToolPaneGlobal;
 class UIToolPaneMachine;
 class UITools;
@@ -311,9 +310,6 @@ private slots:
         /** Handles signal about Chooser-pane selection invalidated. */
         void sltHandleChooserPaneSelectionInvalidated() { recacheCurrentMachineItemInformation(true /* fDontRaiseErrorPane */); }
 
-        /** Handles @a fForward sliding animation complete signal. */
-        void sltHandleSlidingAnimationComplete(bool fForward);
-
         /** Handles state change for cloud profile with certain @a strProviderShortName and @a strProfileName. */
         void sltHandleCloudProfileStateChange(const QString &strProviderShortName,
                                               const QString &strProfileName);
@@ -395,8 +391,6 @@ private:
     UIToolPaneGlobal   *m_pPaneToolsGlobal;
     /** Holds the Machine Tools-pane instance. */
     UIToolPaneMachine  *m_pPaneToolsMachine;
-    /** Holds the sliding-animation widget instance. */
-    UISlidingAnimation *m_pSlidingAnimation;
     /** Holds the Global Tools-menu instance. */
     UITools            *m_pMenuToolsGlobal;
     /** Holds the Machine Tools-menu instance. */
