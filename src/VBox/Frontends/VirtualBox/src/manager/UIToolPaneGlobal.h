@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.h 107338 2024-12-11 16:34:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolPaneGlobal.h 107339 2024-12-11 16:36:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class declaration.
  */
@@ -38,10 +38,8 @@
 #include "UIExtraDataDefs.h"
 
 /* Forward declarations: */
-class QHBoxLayout;
 class QStackedLayout;
 class QUuid;
-class QVBoxLayout;
 class UIActionPool;
 class UICloudProfileManagerWidget;
 class UIExtensionPackManagerWidget;
@@ -50,7 +48,6 @@ class UINetworkManagerWidget;
 class UIVMActivityOverviewWidget;
 class UIVirtualMachineItemCloud;
 class UIWelcomePane;
-class CMachine;
 
 
 /** QWidget subclass representing container for tool panes. */
