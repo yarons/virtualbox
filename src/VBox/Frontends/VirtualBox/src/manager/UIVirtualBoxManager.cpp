@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 107323 2024-12-10 14:59:20Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 107334 2024-12-11 13:01:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -79,7 +79,11 @@
 #include "UIQObjectStuff.h"
 #include "UITranslationEventListener.h"
 #include "UIVirtualBoxManager.h"
-#include "UIVirtualBoxManagerWidget.h"
+#ifndef VBOX_GUI_WITH_ADVANCED_WIDGETS
+# include "UIVirtualBoxManagerWidget.h"
+#else
+# include "UIVirtualBoxManagerAdvancedWidget.h"
+#endif
 #include "UIVirtualMachineItemCloud.h"
 #include "UIVirtualMachineItemLocal.h"
 #include "UIVirtualBoxEventHandler.h"

@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 107307 2024-12-09 16:05:53Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooser.cpp 107334 2024-12-11 13:01:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -32,7 +32,11 @@
 #include "UIChooser.h"
 #include "UIChooserModel.h"
 #include "UIChooserView.h"
-#include "UIVirtualBoxManagerWidget.h"
+#ifndef VBOX_GUI_WITH_ADVANCED_WIDGETS
+# include "UIVirtualBoxManagerWidget.h"
+#else
+# include "UIVirtualBoxManagerAdvancedWidget.h"
+#endif
 #include "UIVirtualMachineItem.h"
 
 

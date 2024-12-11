@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 107321 2024-12-10 12:49:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.h 107334 2024-12-11 13:01:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -42,7 +42,7 @@
 #include "UICloudMachineSettingsDialog.h"
 #include "UIDefs.h"
 #include "UIExtraDataDefs.h"
-#include "UIAdvancedSettingsDialog.h"
+#include "UIManagerDefs.h"
 
 /* Forward declarations: */
 class QMenu;

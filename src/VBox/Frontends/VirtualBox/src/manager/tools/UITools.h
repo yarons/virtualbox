@@ -1,4 +1,4 @@
-/* $Id: UITools.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UITools.h 107334 2024-12-11 13:01:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITools class declaration.
  */
@@ -36,6 +36,7 @@
 
 /* GUI icludes: */
 #include "UIExtraDataDefs.h"
+#include "UIManagerDefs.h"
 
 /* Forward declarations: */
 class QVBoxLayout;

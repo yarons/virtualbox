@@ -1,4 +1,4 @@
-/* $Id: UIManagerDefs.h 107333 2024-12-11 12:55:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIManagerDefs.h 107334 2024-12-11 13:01:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager definitions.
  */
@@ -34,6 +34,9 @@
 
 /** Force the GUI to use advanced widgets. */
 //#define VBOX_GUI_WITH_ADVANCED_WIDGETS
+#ifdef VBOX_GUI_WITH_ADVANCED_WIDGETS
+# define UIVirtualBoxManagerWidget UIVirtualBoxManagerAdvancedWidget
+#endif
 
 
 /** Virtual machine item types. */

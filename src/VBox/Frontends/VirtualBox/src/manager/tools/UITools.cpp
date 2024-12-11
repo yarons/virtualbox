@@ -1,4 +1,4 @@
-/* $Id: UITools.cpp 107308 2024-12-09 16:18:08Z sergey.dubov@oracle.com $ */
+/* $Id: UITools.cpp 107334 2024-12-11 13:01:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITools class implementation.
  */
@@ -32,7 +32,11 @@
 #include "UITools.h"
 #include "UIToolsModel.h"
 #include "UIToolsView.h"
-#include "UIVirtualBoxManagerWidget.h"
+#ifndef VBOX_GUI_WITH_ADVANCED_WIDGETS
+# include "UIVirtualBoxManagerWidget.h"
+#else
+# include "UIVirtualBoxManagerAdvancedWidget.h"
+#endif
 
 /* Other VBox includes: */
 #include "iprt/assert.h"
