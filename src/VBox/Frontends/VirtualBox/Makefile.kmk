@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 107178 2024-11-26 14:00:36Z sergey.dubov@oracle.com $
+# $Id: Makefile.kmk 107333 2024-12-11 12:55:06Z sergey.dubov@oracle.com $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -87,6 +87,12 @@ SAVED_TEMPLATE :=
 LANGUAGE       :=
 IMAGES         :=
 # FORMS and TRANSLATIONS are reset further down.
+
+
+#
+# Build GUI with advanced widgets.
+#
+#VBOX_GUI_WITH_ADVANCED_WIDGETS := 1
 
 
 #
