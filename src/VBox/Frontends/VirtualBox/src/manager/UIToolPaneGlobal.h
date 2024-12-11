@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIToolPaneGlobal.h 107338 2024-12-11 16:34:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class declaration.
  */
@@ -122,7 +122,7 @@ private:
     /** Holds the Cloud Profile Manager instance. */
     UICloudProfileManagerWidget  *m_pPaneCloud;
     /** Holds the VM Activity Overview instance. */
-    UIVMActivityOverviewWidget   *m_pPaneVMActivityOverview;
+    UIVMActivityOverviewWidget   *m_pPaneActivities;
 
     /** Holds whether this pane is active. */
     bool  m_fActive;
