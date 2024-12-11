@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.cpp 107339 2024-12-11 16:36:52Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolPaneGlobal.cpp 107340 2024-12-11 17:05:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class implementation.
  */
@@ -275,7 +275,6 @@ void UIToolPaneGlobal::closeTool(UIToolType enmType)
 QString UIToolPaneGlobal::currentHelpKeyword() const
 {
     QWidget *pCurrentToolWidget = 0;
-    //UIToolType currentTool() const;
     switch (currentTool())
     {
         case UIToolType_Welcome:
@@ -307,7 +306,7 @@ void UIToolPaneGlobal::setCloudMachineItems(const QList<UIVirtualMachineItemClou
     /* Cache passed value: */
     m_cloudItems = cloudItems;
 
-    /* Update activity overview pane if open: */
+    /* Update activity overview pane if it is open: */
     if (isToolOpened(UIToolType_Activities))
     {
         AssertPtrReturnVoid(m_pPaneActivities);
