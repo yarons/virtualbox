@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 107334 2024-12-11 13:01:28Z sergey.dubov@oracle.com $
+# $Id: Makefile.kmk 107335 2024-12-11 13:11:30Z sergey.dubov@oracle.com $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -701,11 +701,11 @@ VirtualBox_QT_MOCHDRS = \
 	src/wizards/importappliance/UIWizardImportAppPageSource.h
 
 ifndef VBOX_GUI_WITH_ADVANCED_WIDGETS
-VirtualBox_QT_MOCHDRS += \
-	src/manager/UIVirtualBoxManagerWidget.h
+ VirtualBox_QT_MOCHDRS += \
+ 	src/manager/UIVirtualBoxManagerWidget.h
 else
-VirtualBox_QT_MOCHDRS += \
-	src/manager/UIVirtualBoxManagerAdvancedWidget.h
+ VirtualBox_QT_MOCHDRS += \
+ 	src/manager/UIVirtualBoxManagerAdvancedWidget.h
 endif
 
 
@@ -1235,11 +1235,11 @@ VirtualBox_SOURCES = \
 	src/wizards/importappliance/UIWizardImportAppPageSource.cpp
 
 ifndef VBOX_GUI_WITH_ADVANCED_WIDGETS
-VirtualBox_SOURCES += \
-	src/manager/UIVirtualBoxManagerWidget.cpp
+ VirtualBox_SOURCES += \
+ 	src/manager/UIVirtualBoxManagerWidget.cpp
 else
-VirtualBox_SOURCES += \
-	src/manager/UIVirtualBoxManagerAdvancedWidget.cpp
+ VirtualBox_SOURCES += \
+ 	src/manager/UIVirtualBoxManagerAdvancedWidget.cpp
 endif
 
 VirtualBox_SOURCES.darwin += \
