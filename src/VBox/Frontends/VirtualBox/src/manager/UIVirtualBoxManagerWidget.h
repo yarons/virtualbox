@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 107323 2024-12-10 14:59:20Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.h 107332 2024-12-11 11:06:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -280,7 +280,7 @@ private slots:
     /** @name CVirtualBox event handling stuff.
       * @{ */
         /** Handles CVirtualBox event about state change for machine with @a uId. */
-        void sltHandleStateChange(const QUuid &uId);
+        void sltHandleMachineStateChange(const QUuid &uId);
     /** @} */
 
     /** @name CVirtualBox extra-data event handling stuff.
@@ -363,15 +363,12 @@ private:
         void cleanup();
     /** @} */
 
-    /** @name Common stuff.
+    /** @name Tools stuff.
       * @{ */
         /** Recaches current machine item information.
           * @param  fDontRaiseErrorPane  Brings whether we should not raise error-pane. */
         void recacheCurrentMachineItemInformation(bool fDontRaiseErrorPane = false);
-    /** @} */
 
-    /** @name Tools stuff.
-      * @{ */
         /** Updates Global tools menu. */
         void updateToolsMenuGlobal();
         /** Updates Machine tools menu for @a pItem specified. */
