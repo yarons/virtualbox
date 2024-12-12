@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.h 107340 2024-12-11 17:05:44Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolPaneGlobal.h 107349 2024-12-12 14:09:17Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class declaration.
  */
@@ -70,6 +70,9 @@ public:
     UIToolPaneGlobal(UIActionPool *pActionPool, QWidget *pParent = 0);
     /** Destructs tools pane. */
     virtual ~UIToolPaneGlobal() RT_OVERRIDE;
+
+    /** Returns the action-pool reference. */
+    UIActionPool *actionPool() const { return m_pActionPool; }
 
     /** Defines whether this pane is @a fActive. */
     void setActive(bool fActive);

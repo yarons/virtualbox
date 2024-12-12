@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.h 107341 2024-12-11 17:06:46Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolPaneMachine.h 107349 2024-12-12 14:09:17Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class declaration.
  */
@@ -78,6 +78,9 @@ public:
     UIToolPaneMachine(UIActionPool *pActionPool, QWidget *pParent = 0);
     /** Destructs tools pane. */
     virtual ~UIToolPaneMachine() RT_OVERRIDE;
+
+    /** Returns the action-pool reference. */
+    UIActionPool *actionPool() const { return m_pActionPool; }
 
     /** Defines whether this pane is @a fActive. */
     void setActive(bool fActive);
