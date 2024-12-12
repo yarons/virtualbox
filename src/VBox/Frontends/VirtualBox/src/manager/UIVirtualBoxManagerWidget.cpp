@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 107337 2024-12-11 16:29:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 107348 2024-12-12 14:02:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -803,9 +803,9 @@ void UIVirtualBoxManagerWidget::prepareWidgets()
         }
 
         /* Create Global Tools-menu: */
-        m_pMenuToolsGlobal = new UITools(UIToolClass_Global, this);
+        m_pMenuToolsGlobal = new UITools(this, UIToolClass_Global, actionPool());
         /* Create Machine Tools-menu: */
-        m_pMenuToolsMachine = new UITools(UIToolClass_Machine, this);
+        m_pMenuToolsMachine = new UITools(this, UIToolClass_Machine, actionPool());
     }
 
     /* Create notification-center: */
@@ -865,6 +865,8 @@ void UIVirtualBoxManagerWidget::prepareConnections()
             this, &UIVirtualBoxManagerWidget::sigStartOrShowRequest);
     connect(m_pPaneChooser, &UIChooser::sigMachineSearchWidgetVisibilityChanged,
             this, &UIVirtualBoxManagerWidget::sigMachineSearchWidgetVisibilityChanged);
+    connect(this, &UIVirtualBoxManagerWidget::sigToolBarHeightChange,
+            m_pPaneChooser, &UIChooser::setGlobalItemHeightHint);
 
     /* Details-pane connections: */
     connect(m_pPaneToolsMachine, &UIToolPaneMachine::sigLinkClicked,
@@ -1120,6 +1122,8 @@ void UIVirtualBoxManagerWidget::cleanupConnections()
                this, &UIVirtualBoxManagerWidget::sigStartOrShowRequest);
     disconnect(m_pPaneChooser, &UIChooser::sigMachineSearchWidgetVisibilityChanged,
                this, &UIVirtualBoxManagerWidget::sigMachineSearchWidgetVisibilityChanged);
+    disconnect(this, &UIVirtualBoxManagerWidget::sigToolBarHeightChange,
+               m_pPaneChooser, &UIChooser::setGlobalItemHeightHint);
 
     /* Details-pane connections: */
     disconnect(m_pPaneToolsMachine, &UIToolPaneMachine::sigLinkClicked,

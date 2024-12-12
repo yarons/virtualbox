@@ -1,4 +1,4 @@
-/* $Id: UIChooser.h 107334 2024-12-11 13:01:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooser.h 107348 2024-12-12 14:02:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooser class declaration.
  */
@@ -36,14 +36,12 @@
 
 /* GUI includes: */
 #include "UIExtraDataDefs.h"
-#include "UIManagerDefs.h"
 
 /* Forward declarations: */
 class UIActionPool;
 class UIChooserModel;
 class UIChooserView;
 class UIVirtualMachineItem;
-class UIVirtualBoxManagerWidget;
 class UIVirtualMachineItemCloud;
 
 /** QWidget extension used as VM Chooser-pane. */
@@ -105,7 +103,7 @@ public:
 
     /** Constructs Chooser-pane passing @a pParent to the base-class.
       * @param  pActionPool  Brings the action-pool reference.  */
-    UIChooser(UIVirtualBoxManagerWidget *pParent, UIActionPool *pActionPool);
+    UIChooser(QWidget *pParent, UIActionPool *pActionPool);
     /** Destructs Chooser-pane. */
     virtual ~UIChooser() RT_OVERRIDE;
 
@@ -238,9 +236,6 @@ private:
 
     /** @name General stuff.
       * @{ */
-        /** Holds the parent reference. */
-        UIVirtualBoxManagerWidget *m_pParent;
-
         /** Holds the action-pool reference. */
         UIActionPool *m_pActionPool;
 
