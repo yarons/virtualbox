@@ -1,4 +1,4 @@
-/* $Id: UIMachineManagerWidget.h 107350 2024-12-12 14:24:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineManagerWidget.h 107351 2024-12-12 14:50:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineManagerWidget class declaration.
  */
@@ -43,6 +43,7 @@ class QTimer;
 class QISplitter;
 class UIActionPool;
 class UIChooser;
+class UIToolPaneGlobal;
 class UIToolPaneMachine;
 class UITools;
 class UIVirtualMachineItem;
@@ -121,8 +122,9 @@ signals:
 
 public:
 
-    /** Constructs Virtual Machine Manager widget. */
-    UIMachineManagerWidget(UIToolPaneMachine *pParent);
+    /** Constructs Virtual Machine Manager widget passing @a pParent to the base-class.
+      * @param  pActionPool  Brings the action-pool reference. */
+    UIMachineManagerWidget(UIToolPaneGlobal *pParent, UIActionPool *pActionPool);
     /** Destructs Virtual Machine Manager widget. */
     virtual ~UIMachineManagerWidget() RT_OVERRIDE;
 
