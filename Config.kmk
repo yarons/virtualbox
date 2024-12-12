@@ -1,4 +1,4 @@
-# $Id: Config.kmk 107275 2024-12-05 11:39:12Z serkan.bayraktar@oracle.com $
+# $Id: Config.kmk 107344 2024-12-12 11:07:22Z andreas.loeffler@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3735,8 +3735,7 @@ endif
 #      -wd4571: Informational: catch(...) semantics changed since Visual C++ 7.1; structured exceptions (SEH) are no longer caught
 #      -wd4611: interaction between '_setjmp' and C++ object destruction is non-portable
 #      -wd4324: '_TDI_PNP_CONTEXT_XP' : structure was padded due to __declspec(align())
-#      -wd4505: VBoxNetFltNobj.h(45) : warning C4505: 'VBoxNetFltNobj::Release' : unreferenced local function has been removed
-#               Probably related to http://stackoverflow.com/questions/3051992/compiler-warning-at-c-template-base-class
+#      -wd4505: tstSupSemInterruptibleSRE': unreferenced function with internal linkage has been removed
 #      -wd4263: 'int VRDPChannelClipboard::SendPacket(const void *,uint32_t)' : member function does not override any base class virtual member function
 #               Probably useful, but impractical, just like the next one.
 #      -wd4264: 'int VRDPOutputCtx::SendPacket(void)' : no override available for virtual member function from base 'VRDPOutputCtx'; function is hidden
@@ -9389,7 +9388,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 107275 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 107344 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)

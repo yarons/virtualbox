@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpInstall.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetAdpInstall.cpp 107344 2024-12-12 11:07:22Z andreas.loeffler@oracle.com $ */
 /** @file
  * NetAdpInstall - VBoxNetAdp installer command line tool.
  */
@@ -54,11 +54,7 @@
 #define VBOX_NETADP_APP_NAME L"NetAdpInstall"
 
 #define VBOX_NETADP_HWID L"sun_VBoxNetAdp"
-#ifdef NDIS60
-# define VBOX_NETADP_INF L"VBoxNetAdp6.inf"
-#else
-# define VBOX_NETADP_INF L"VBoxNetAdp.inf"
-#endif
+#define VBOX_NETADP_INF  L"VBoxNetAdp6.inf"
 
 
 static DECLCALLBACK(void) winNetCfgLogger(const char *pszString)

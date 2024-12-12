@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: HostImpl.cpp 107344 2024-12-12 11:07:22Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -932,11 +932,6 @@ HRESULT Host::getNetworkInterfaces(std::vector<ComPtr<IHostNetworkInterface> > &
 #    else
         /* for the filter-based approach we get all miniports our filter (oracle_VBoxNetLwf)is bound to */
         hrc = pNc->FindComponent(L"oracle_VBoxNetLwf", &pTcpIpNcc);
-        if (hrc != S_OK)
-        {
-            /* fall back to NDIS5 miniport lookup (sun_VBoxNetFlt) */
-            hrc = pNc->FindComponent(L"sun_VBoxNetFlt", &pTcpIpNcc);
-        }
 #     ifndef VBOX_WITH_HARDENING
         if (hrc != S_OK)
         {
