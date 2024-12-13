@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-instr-3.c32 107173 2024-11-26 10:32:33Z bela.lubkin@oracle.com $ */
+/* $Id: bs3-cpu-instr-3.c32 107356 2024-12-13 07:01:59Z bela.lubkin@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-instr-3 - MMX, SSE and AVX instructions, C code template.
  */
@@ -347,7 +347,7 @@ static bool bs3CpuInstr3ConfigReconfigure(PBS3CPUINSTR3_CONFIG_SAVED_T pSavedCfg
         pCtx->cr4.u32 |= X86_CR4_OSFXSR;
     else
         pCtx->cr4.u32 &= ~X86_CR4_OSFXSR;
-    /** @todo X86_CR4_OSXMMEEXCPT? */
+
     if (pConfig->fCr4OsXSave)
         pCtx->cr4.u32 |= X86_CR4_OSXSAVE;
     else
