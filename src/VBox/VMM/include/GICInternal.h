@@ -1,4 +1,4 @@
-/* $Id: GICInternal.h 107363 2024-12-13 09:02:22Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICInternal.h 107364 2024-12-13 09:08:26Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GICv3).
  */
@@ -53,6 +53,7 @@ extern const PDMGICBACKEND g_GicHvfBackend;
 /** The Hyper-V GIC backend. */
 extern const PDMGICBACKEND g_GicHvBackend;
 # endif
+#endif
 
 #define VMCPU_TO_GICCPU(a_pVCpu)             (&(a_pVCpu)->gic.s)
 #define VM_TO_GIC(a_pVM)                     (&(a_pVM)->gic.s)
