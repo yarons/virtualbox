@@ -1,4 +1,4 @@
-/* $Id: GICR3Nem-win.cpp 107360 2024-12-13 08:40:53Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICR3Nem-win.cpp 107362 2024-12-13 08:54:06Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GICv3) - Hyper-V interface.
  */
@@ -333,9 +333,9 @@ const PDMDEVREG g_DeviceGICNem =
 };
 
 /**
- * The Hypervisor.Framework GIC backend.
+ * The Hyper-V GIC backend.
  */
-const PDMGICBACKEND g_GicHvfBackend =
+const PDMGICBACKEND g_GicHvBackend =
 {
     /* .pfnReadSysReg = */  NULL,
     /* .pfnWriteSysReg = */ NULL,
