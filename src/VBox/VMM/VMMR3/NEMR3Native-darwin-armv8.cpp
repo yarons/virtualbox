@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin-armv8.cpp 107357 2024-12-13 08:09:39Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: NEMR3Native-darwin-armv8.cpp 107365 2024-12-13 09:14:27Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework, ARMv8 variant.
  *
@@ -1250,7 +1250,7 @@ VMM_INT_DECL(VBOXSTRICTRC) NEMR3GicWriteSysReg(PVMCPUCC pVCpu, uint32_t u32Reg, 
  * @returns VBox status code.
  * @param   pVCpu       The cross context virtual CPU structure.
  * @param   u32Reg      The ICC register.
- * @param   u64Value    Where to store value.
+ * @param   pu64Value   Where to store value.
  */
 VMM_INT_DECL(VBOXSTRICTRC) NEMR3GicReadSysReg(PVMCPUCC pVCpu, uint32_t u32Reg, uint64_t *pu64Value)
 {
