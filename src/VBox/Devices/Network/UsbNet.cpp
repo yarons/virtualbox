@@ -1,4 +1,4 @@
-/* $Id: UsbNet.cpp 107358 2024-12-13 08:13:55Z aleksey.ilyushin@oracle.com $ */
+/* $Id: UsbNet.cpp 107361 2024-12-13 08:46:50Z michal.necasek@oracle.com $ */
 /** @file
  * UsbNet - USB NCM Ethernet Device Emulation.
  */
@@ -1384,7 +1384,7 @@ static DECLCALLBACK(void) usbNetTimerLinkUp(PPDMUSBINS pUsbIns, TMTIMERHANDLE hT
 
     LogFlowFunc(("#%d\n", pUsbIns->iInstance));
 
-    /* @todo: Do we really care for potential races with link state? */
+    /** @todo Do we really care for potential races with link state? */
     pThis->fLinkTempDown = false;
     if (!pThis->fLinkUp)
         usbNetLinkStateNotify(pThis, PDMNETWORKLINKSTATE_UP);
