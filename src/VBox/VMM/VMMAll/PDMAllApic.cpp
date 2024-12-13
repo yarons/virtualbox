@@ -1,4 +1,4 @@
-/* $Id: PDMAllApic.cpp 107142 2024-11-22 11:32:14Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: PDMAllApic.cpp 107357 2024-12-13 08:09:39Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * PDM - APIC (Advanced Programmable Interrupt Controller) Interface.
  */
@@ -463,11 +463,11 @@ VMM_INT_DECL(int) PDMApicRegisterBackend(PVMCC pVM, PDMAPICBACKENDTYPE enmBacken
     /*
      * Register the backend.
      */
-    pVM->pdm.s.Ic.enmKind = enmBackendType;
+    pVM->pdm.s.Ic.u.x86.enmKind = enmBackendType;
 #ifdef IN_RING3
-    pVM->pdm.s.Ic.ApicBackend = *pBackend;
+    pVM->pdm.s.Ic.u.x86.ApicBackend = *pBackend;
 #else
-    pVM->pdmr0.s.Ic.ApicBackend = *pBackend;
+    pVM->pdmr0.s.Ic.u.x86.ApicBackend = *pBackend;
 #endif
 
 #ifdef IN_RING3

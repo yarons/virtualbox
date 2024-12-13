@@ -1,5 +1,5 @@
 
-/* $Id: PDMDevHlp.cpp 107253 2024-12-03 07:58:35Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMDevHlp.cpp 107357 2024-12-13 08:09:39Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -4185,8 +4185,8 @@ static DECLCALLBACK(int) pdmR3DevHlp_PICRegister(PPDMDEVINS pDevIns, PPDMPICREG 
 }
 
 
-/** @interface_method_impl{PDMDEVHLPR3,pfnApicRegister} */
-static DECLCALLBACK(int) pdmR3DevHlp_ApicRegister(PPDMDEVINS pDevIns)
+/** @interface_method_impl{PDMDEVHLPR3,pfnIcRegister} */
+static DECLCALLBACK(int) pdmR3DevHlp_IcRegister(PPDMDEVINS pDevIns)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
 
@@ -4220,7 +4220,7 @@ static DECLCALLBACK(int) pdmR3DevHlp_ApicRegister(PPDMDEVINS pDevIns)
 
     RTCritSectRwLeaveExcl(&pVM->pdm.s.CoreListCritSectRw);
 
-    LogFlow(("pdmR3DevHlp_ApicRegister: caller='%s'/%d: returns %Rrc\n", pDevIns->pReg->szName, pDevIns->iInstance, VINF_SUCCESS));
+    LogFlow(("pdmR3DevHlp_IcRegister: caller='%s'/%d: returns %Rrc\n", pDevIns->pReg->szName, pDevIns->iInstance, VINF_SUCCESS));
     return VINF_SUCCESS;
 }
 
@@ -5274,7 +5274,7 @@ const PDMDEVHLPR3 g_pdmR3DevHlpTrusted =
     pdmR3DevHlp_PCIBusRegister,
     pdmR3DevHlp_IommuRegister,
     pdmR3DevHlp_PICRegister,
-    pdmR3DevHlp_ApicRegister,
+    pdmR3DevHlp_IcRegister,
     pdmR3DevHlp_IoApicRegister,
     pdmR3DevHlp_HpetRegister,
     pdmR3DevHlp_PciRawRegister,
@@ -5675,7 +5675,7 @@ const PDMDEVHLPR3 g_pdmR3DevHlpTracing =
     pdmR3DevHlp_PCIBusRegister,
     pdmR3DevHlp_IommuRegister,
     pdmR3DevHlp_PICRegister,
-    pdmR3DevHlp_ApicRegister,
+    pdmR3DevHlp_IcRegister,
     pdmR3DevHlp_IoApicRegister,
     pdmR3DevHlp_HpetRegister,
     pdmR3DevHlp_PciRawRegister,
@@ -6404,7 +6404,7 @@ const PDMDEVHLPR3 g_pdmR3DevHlpUnTrusted =
     pdmR3DevHlp_PCIBusRegister,
     pdmR3DevHlp_IommuRegister,
     pdmR3DevHlp_PICRegister,
-    pdmR3DevHlp_ApicRegister,
+    pdmR3DevHlp_IcRegister,
     pdmR3DevHlp_IoApicRegister,
     pdmR3DevHlp_HpetRegister,
     pdmR3DevHlp_PciRawRegister,

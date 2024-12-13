@@ -1,4 +1,4 @@
-/* $Id: GICR3.cpp 107018 2024-11-14 08:39:32Z alexander.eichner@oracle.com $ */
+/* $Id: GICR3.cpp 107357 2024-12-13 08:09:39Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GICv3).
  */
@@ -32,7 +32,7 @@
 #define LOG_GROUP LOG_GROUP_DEV_APIC
 #include <VBox/log.h>
 #include "GICInternal.h"
-#include <VBox/vmm/gic.h>
+#include <VBox/vmm/pdmgic.h>
 #include <VBox/vmm/cpum.h>
 #include <VBox/vmm/hm.h>
 #include <VBox/vmm/mm.h>
@@ -424,7 +424,10 @@ DECLCALLBACK(int) gicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pC
     /*
      * Register the GIC with PDM.
      */
-    rc = PDMDevHlpApicRegister(pDevIns);
+    rc = PDMDevHlpIcRegister(pDevIns);
+    AssertLogRelRCReturn(rc, rc);
+
+    rc = PDMGicRegisterBackend(pVM, PDMGICBACKENDTYPE_VBOX, &g_GicBackend);
     AssertLogRelRCReturn(rc, rc);
 
     /*

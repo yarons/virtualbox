@@ -1,4 +1,4 @@
-/* $Id: APIC.cpp 107255 2024-12-03 08:01:55Z knut.osmundsen@oracle.com $ */
+/* $Id: APIC.cpp 107357 2024-12-13 08:09:39Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -1447,7 +1447,7 @@ DECLCALLBACK(int) apicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE p
     /*
      * Register the APIC with PDM.
      */
-    rc = PDMDevHlpApicRegister(pDevIns);
+    rc = PDMDevHlpIcRegister(pDevIns);
     AssertLogRelRCReturn(rc, rc);
 
     rc = PDMApicRegisterBackend(pVM, PDMAPICBACKENDTYPE_VBOX, &g_ApicBackend);

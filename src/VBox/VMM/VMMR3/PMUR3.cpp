@@ -1,4 +1,4 @@
-/* $Id: PMUR3.cpp 106482 2024-10-18 13:26:55Z alexander.eichner@oracle.com $ */
+/* $Id: PMUR3.cpp 107357 2024-12-13 08:09:39Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * PMU - Performance Monitoring Unit.
  */
@@ -32,7 +32,7 @@
 #define LOG_GROUP LOG_GROUP_DEV_PMU
 #include <VBox/log.h>
 #include "PMUInternal.h"
-#include <VBox/vmm/gic.h>
+#include <VBox/vmm/pdmgic.h>
 #include <VBox/vmm/cpum.h>
 #include <VBox/vmm/hm.h>
 #include <VBox/vmm/mm.h>

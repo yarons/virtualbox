@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 107265 2024-12-04 15:20:14Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMInternal.h 107357 2024-12-13 08:09:39Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -708,6 +708,12 @@ void    nemR3NativeResetCpu(PVMCPU pVCpu, bool fInitIpi);
 VBOXSTRICTRC    nemR3NativeRunGC(PVM pVM, PVMCPU pVCpu);
 bool            nemR3NativeCanExecuteGuest(PVM pVM, PVMCPU pVCpu);
 bool            nemR3NativeSetSingleInstruction(PVM pVM, PVMCPU pVCpu, bool fEnable);
+
+/** GIC API is currently implemented in NEM rather than in GIC. */
+VMM_INT_DECL(int)          NEMR3GicSetSpi(PVMCC pVM, uint32_t uIntId, bool fAsserted);
+VMM_INT_DECL(int)          NEMR3GicSetPpi(PVMCPUCC pVCpu, uint32_t uIntId, bool fAsserted);
+VMM_INT_DECL(VBOXSTRICTRC) NEMR3GicReadSysReg(PVMCPUCC pVCpu, uint32_t u32Reg, uint64_t *pu64Value);
+VMM_INT_DECL(VBOXSTRICTRC) NEMR3GicWriteSysReg(PVMCPUCC pVCpu, uint32_t u32Reg, uint64_t u64Value);
 
 /**
  * Forced flag notification call from VMEmt.h.

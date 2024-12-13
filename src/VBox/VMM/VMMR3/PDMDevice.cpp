@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 107265 2024-12-04 15:20:14Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMDevice.cpp 107357 2024-12-13 08:09:39Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -34,7 +34,7 @@
 #include "PDMInternal.h"
 #include <VBox/vmm/pdm.h>
 #ifdef VBOX_VMM_TARGET_ARMV8
-# include <VBox/vmm/gic.h>
+# include <VBox/vmm/pdmgic.h>
 # include <VBox/vmm/pmu.h>
 #elif defined(VBOX_VMM_TARGET_X86)
 # include <VBox/vmm/pdmapic.h>

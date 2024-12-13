@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 107265 2024-12-04 15:20:14Z knut.osmundsen@oracle.com $ */
+/* $Id: VMM.cpp 107357 2024-12-13 08:09:39Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -130,7 +130,7 @@
 #include <VBox/sup.h>
 #include <VBox/vmm/dbgf.h>
 #ifdef VBOX_VMM_TARGET_ARMV8
-# include <VBox/vmm/gic.h>
+# include <VBox/vmm/pdmgic.h>
 #elif defined(VBOX_VMM_TARGET_X86)
 # include <VBox/vmm/pdmapic.h>
 #endif

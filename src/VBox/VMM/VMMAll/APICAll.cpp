@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 107141 2024-11-22 11:17:47Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: APICAll.cpp 107357 2024-12-13 08:09:39Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -3371,7 +3371,7 @@ static DECLCALLBACK(int) apicRZConstruct(PPDMDEVINS pDevIns)
     int rc = PDMDevHlpSetDeviceCritSect(pDevIns, PDMDevHlpCritSectGetNop(pDevIns));
     AssertRCReturn(rc, rc);
 
-    rc = PDMDevHlpApicSetUpContext(pDevIns);
+    rc = PDMDevHlpIcSetUpContext(pDevIns);
     AssertRCReturn(rc, rc);
 
     rc = PDMApicRegisterBackend(pVM, PDMAPICBACKENDTYPE_VBOX, &g_ApicBackend);
