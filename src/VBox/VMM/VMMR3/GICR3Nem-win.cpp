@@ -1,4 +1,4 @@
-/* $Id: GICR3Nem-win.cpp 107357 2024-12-13 08:09:39Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICR3Nem-win.cpp 107360 2024-12-13 08:40:53Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GICv3) - Hyper-V interface.
  */
@@ -240,7 +240,6 @@ DECLCALLBACK(int) gicR3HvConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE 
      * Init the data.
      */
     pGic->pDevInsR3   = pDevIns;
-    pGic->fNemGic     = true;
     pThis->pDevIns    = pDevIns;
     pThis->hPartition = pVM->nem.s.hPartition;
 
