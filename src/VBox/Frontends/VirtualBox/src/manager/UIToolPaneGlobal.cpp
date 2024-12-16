@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.cpp 107380 2024-12-16 12:50:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolPaneGlobal.cpp 107386 2024-12-16 17:40:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class implementation.
  */
@@ -349,6 +349,13 @@ void UIToolPaneGlobal::setCloudMachineItems(const QList<UIVirtualMachineItemClou
         m_pPaneActivities->setCloudMachineItems(m_cloudItems);
     }
 }
+
+#ifdef VBOX_GUI_WITH_ADVANCED_WIDGETS
+UIMachineManagerWidget *UIToolPaneGlobal::machineManager() const
+{
+    return m_pPaneMachines;
+}
+#endif
 
 void UIToolPaneGlobal::prepare()
 {

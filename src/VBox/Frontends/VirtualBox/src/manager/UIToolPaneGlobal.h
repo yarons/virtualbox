@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.h 107380 2024-12-16 12:50:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolPaneGlobal.h 107386 2024-12-16 17:40:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class declaration.
  */
@@ -98,6 +98,11 @@ public:
     /** Defines the @a cloudItems. */
     void setCloudMachineItems(const QList<UIVirtualMachineItemCloud*> &cloudItems);
 
+#ifdef VBOX_GUI_WITH_ADVANCED_WIDGETS
+    /** Holds the Machine Manager instance. */
+    UIMachineManagerWidget *machineManager() const;
+#endif
+    
 private:
 
     /** Prepares all. */
