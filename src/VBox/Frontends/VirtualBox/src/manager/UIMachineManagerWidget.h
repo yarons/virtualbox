@@ -1,4 +1,4 @@
-/* $Id: UIMachineManagerWidget.h 107381 2024-12-16 13:23:16Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineManagerWidget.h 107382 2024-12-16 17:29:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineManagerWidget class declaration.
  */
@@ -107,6 +107,9 @@ public:
 
     /** @name Chooser pane stuff.
       * @{ */
+        /** Returns Chooser-pane instance. */
+        UIChooser *chooser() const;
+
         /** Returns current-item. */
         UIVirtualMachineItem *currentItem() const;
         /** Returns a list of current-items. */
@@ -168,6 +171,9 @@ public:
 
     /** @name Tools pane stuff.
       * @{ */
+        /** Returns Tool-pane instance. */
+        UIToolPaneMachine *toolPane() const;
+
         /** Returns menu tool type. */
         UIToolType menuToolType() const;
         /** Defines menu tool @a enmType. */

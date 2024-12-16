@@ -1,4 +1,4 @@
-/* $Id: UIMachineManagerWidget.cpp 107381 2024-12-16 13:23:16Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineManagerWidget.cpp 107382 2024-12-16 17:29:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineManagerWidget class implementation.
  */
@@ -70,6 +70,11 @@ UIMachineManagerWidget::~UIMachineManagerWidget()
 void UIMachineManagerWidget::setActive(bool fActive)
 {
     m_pPaneTools->setActive(fActive);
+}
+
+UIChooser *UIMachineManagerWidget::chooser() const
+{
+    return m_pPaneChooser;
 }
 
 UIVirtualMachineItem *UIMachineManagerWidget::currentItem() const
@@ -205,6 +210,11 @@ void UIMachineManagerWidget::sortGroup()
 void UIMachineManagerWidget::setMachineSearchWidgetVisibility(bool fVisible)
 {
     m_pPaneChooser->setMachineSearchWidgetVisibility(fVisible);
+}
+
+UIToolPaneMachine *UIMachineManagerWidget::toolPane() const
+{
+    return m_pPaneTools;
 }
 
 UIToolType UIMachineManagerWidget::menuToolType() const
