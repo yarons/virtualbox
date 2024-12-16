@@ -1,4 +1,4 @@
-/* $Id: UIMachineManagerWidget.h 107382 2024-12-16 17:29:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineManagerWidget.h 107383 2024-12-16 17:31:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineManagerWidget class declaration.
  */
@@ -187,9 +187,6 @@ public:
         void switchToolTo(UIToolType enmType);
         /** Closes pane tool of passed @a enmType. */
         void closeTool(UIToolType enmType);
-
-        /** Switches to VM Activity pane of machine with @a uMachineId. */
-        void switchToVMActivityPane(const QUuid &uMachineId);
     /** @} */
 
     /** @name Tools / Snapshot pane stuff.
@@ -258,6 +255,9 @@ private slots:
         /** Handles signal about Tools-menu index change.
           * @param  enmType  Brings current tool type. */
         void sltHandleToolsMenuIndexChange(UIToolType enmType) { switchToolTo(enmType); }
+
+        /** Switches to VM Activity pane of machine with @a uMachineId. */
+        void sltSwitchToVMActivityPane(const QUuid &uMachineId);
     /** @} */
 
 private:
