@@ -1,4 +1,4 @@
-/* $Id: UIMachineManagerWidget.cpp 107383 2024-12-16 17:31:41Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineManagerWidget.cpp 107384 2024-12-16 17:34:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineManagerWidget class implementation.
  */
@@ -50,6 +50,7 @@
 
 UIMachineManagerWidget::UIMachineManagerWidget(UIToolPaneGlobal *pParent, UIActionPool *pActionPool)
     : QWidget(pParent)
+    , m_pParent(pParent)
     , m_pActionPool(pActionPool)
     , m_pSplitter(0)
     , m_pPaneChooser(0)

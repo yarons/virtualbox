@@ -1,4 +1,4 @@
-/* $Id: UIMachineManagerWidget.h 107383 2024-12-16 17:31:41Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineManagerWidget.h 107384 2024-12-16 17:34:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineManagerWidget class declaration.
  */
@@ -291,8 +291,10 @@ private:
         void updateToolsMenu(UIVirtualMachineItem *pItem);
     /** @} */
 
+    /** Holds the parent reference. */
+    UIToolPaneGlobal *m_pParent;
     /** Holds the action-pool reference. */
-    UIActionPool *m_pActionPool;
+    UIActionPool     *m_pActionPool;
 
     /** Holds the central splitter instance. */
     QISplitter        *m_pSplitter;
