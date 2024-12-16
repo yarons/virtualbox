@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 107337 2024-12-11 16:29:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataDefs.h 107380 2024-12-16 12:50:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -954,6 +954,7 @@ enum UIToolType
     UIToolType_Cloud,
     UIToolType_CloudConsole,
     UIToolType_Activities,
+    UIToolType_Machines,
     /* Machine types: */
     UIToolType_Error,
     UIToolType_Details,
