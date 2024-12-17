@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsManagerWidget.h 107387 2024-12-16 17:43:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsManagerWidget.h 107388 2024-12-17 10:11:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsManagerWidget class declaration.
  */
@@ -142,8 +142,6 @@ private:
 
         /** Cleanups connections. */
         void cleanupConnections();
-        /** Cleanups widgets. */
-        void cleanupWidgets();
         /** Cleanups all. */
         void cleanup();
     /** @} */
@@ -161,8 +159,8 @@ private:
         /** Returns Machine Manager's Tool-pane instance. */
         UIToolPaneMachine *toolPaneMachine() const;
 
-        /** Updates Global tools menu. */
-        void updateToolsMenuGlobal();
+        /** Updates tools menu. */
+        void updateToolsMenu();
     /** @} */
 
     /** Holds the action-pool instance. */
