@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsManagerWidget.h 107388 2024-12-17 10:11:13Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsManagerWidget.h 107389 2024-12-17 10:26:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsManagerWidget class declaration.
  */
@@ -166,9 +166,9 @@ private:
     /** Holds the action-pool instance. */
     UIActionPool *m_pActionPool;
 
-    /** Holds the Global Tools-menu instance. */
+    /** Holds the Tools-menu instance. */
     UITools          *m_pMenu;
-    /** Holds the Global Tools-pane instance. */
+    /** Holds the Tools-pane instance. */
     UIToolPaneGlobal *m_pPane;
 };
 
