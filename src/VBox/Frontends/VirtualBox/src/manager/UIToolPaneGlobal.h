@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.h 107386 2024-12-16 17:40:45Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolPaneGlobal.h 107390 2024-12-17 10:29:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class declaration.
  */
@@ -102,7 +102,7 @@ public:
     /** Holds the Machine Manager instance. */
     UIMachineManagerWidget *machineManager() const;
 #endif
-    
+
 private:
 
     /** Prepares all. */
