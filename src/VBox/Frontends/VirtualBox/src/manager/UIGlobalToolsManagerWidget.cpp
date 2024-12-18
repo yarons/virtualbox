@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsManagerWidget.cpp 107393 2024-12-17 15:41:29Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsManagerWidget.cpp 107401 2024-12-18 11:15:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsManagerWidget class implementation.
  */
@@ -61,6 +61,11 @@ UIGlobalToolsManagerWidget::~UIGlobalToolsManagerWidget()
 UIToolPaneGlobal *UIGlobalToolsManagerWidget::toolPane() const
 {
     return m_pPane;
+}
+
+UIMachineManagerWidget *UIGlobalToolsManagerWidget::machineManager() const
+{
+    return toolPane()->machineManager();
 }
 
 UIToolType UIGlobalToolsManagerWidget::menuToolType() const
@@ -151,6 +156,12 @@ void UIGlobalToolsManagerWidget::closeTool(UIToolType enmType)
 
 QString UIGlobalToolsManagerWidget::currentHelpKeyword() const
 {
+    if (toolType() == UIToolType_Machines)
+    {
+        AssertPtrReturn(machineManager(), QString());
+        return machineManager()->currentHelpKeyword();
+    }
+
     AssertPtrReturn(toolPane(), QString());
     return toolPane()->currentHelpKeyword();
 }
@@ -236,7 +247,7 @@ void UIGlobalToolsManagerWidget::prepareConnections()
     connect(&uiCommon(), &UICommon::sigAskToCommitData,
             this, &UIGlobalToolsManagerWidget::sltHandleCommitData);
 
-    /* Global VBox extra-data event handlers: */
+    /* Global COM event handlers: */
     connect(gEDataManager, &UIExtraDataManager::sigSettingsExpertModeChange,
             this, &UIGlobalToolsManagerWidget::sltHandleSettingsExpertModeChange);
 
@@ -261,7 +272,7 @@ void UIGlobalToolsManagerWidget::loadSettings()
 
 void UIGlobalToolsManagerWidget::cleanupConnections()
 {
-    /* Global VBox extra-data event handlers: */
+    /* Global COM event handlers: */
     disconnect(gEDataManager, &UIExtraDataManager::sigSettingsExpertModeChange,
                this, &UIGlobalToolsManagerWidget::sltHandleSettingsExpertModeChange);
 
@@ -287,11 +298,6 @@ void UIGlobalToolsManagerWidget::cleanup()
 UITools *UIGlobalToolsManagerWidget::toolMenu() const
 {
     return m_pMenu;
-}
-
-UIMachineManagerWidget *UIGlobalToolsManagerWidget::machineManager() const
-{
-    return toolPane()->machineManager();
 }
 
 UIChooser *UIGlobalToolsManagerWidget::chooser() const
