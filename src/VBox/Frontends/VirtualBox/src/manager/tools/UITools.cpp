@@ -1,4 +1,4 @@
-/* $Id: UITools.cpp 107410 2024-12-18 13:56:18Z sergey.dubov@oracle.com $ */
+/* $Id: UITools.cpp 107413 2024-12-18 14:04:29Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITools class implementation.
  */
@@ -95,7 +95,7 @@ UIToolsItem *UITools::currentItem() const
 void UITools::sltClose()
 {
     /* Close the widget in popup mode only: */
-    if (windowFlags() == Qt::Popup)
+    if (isPopup())
         close();
 }
 
