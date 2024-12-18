@@ -1,4 +1,4 @@
-/* $Id: UITools.cpp 107404 2024-12-18 12:59:12Z sergey.dubov@oracle.com $ */
+/* $Id: UITools.cpp 107410 2024-12-18 13:56:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITools class implementation.
  */
@@ -44,6 +44,7 @@ UITools::UITools(QWidget *pParent,
     : QWidget(pParent, theFlags)
     , m_enmClass(enmClass)
     , m_pActionPool(pActionPool)
+    , m_fPopup(theFlags == Qt::Popup)
     , m_pMainLayout(0)
     , m_pToolsModel(0)
     , m_pToolsView(0)

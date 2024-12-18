@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIToolsView.cpp 107410 2024-12-18 13:56:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class implementation.
  */
@@ -181,6 +181,10 @@ void UIToolsView::prepare()
 {
     /* Install Tools-view accessibility interface factory: */
     QAccessible::installFactory(UIAccessibilityInterfaceForUIToolsView::pFactory);
+
+    /* No minimum size-hint for widget mode: */
+    if (!tools()->isPopup())
+        setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
 
     /* Prepare palette: */
     preparePalette();

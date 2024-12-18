@@ -1,4 +1,4 @@
-/* $Id: UITools.h 107404 2024-12-18 12:59:12Z sergey.dubov@oracle.com $ */
+/* $Id: UITools.h 107410 2024-12-18 13:56:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITools class declaration.
  */
@@ -79,6 +79,9 @@ public:
         /** Returns the action-pool reference. */
         UIActionPool *actionPool() const;
 
+        /** Returns whether tools represented as popup. */
+        bool isPopup() const { return m_fPopup; }
+
         /** Return the Tools-model instance. */
         UIToolsModel *model() const { return m_pToolsModel; }
         /** Return the Tools-view instance. */
@@ -139,6 +142,9 @@ private:
 
         /** Holds the action-pool reference. */
         UIActionPool *m_pActionPool;
+
+        /** Holds whether tools represented as popup. */
+        const bool  m_fPopup;
 
         /** Holds the main layout instance. */
         QVBoxLayout  *m_pMainLayout;
