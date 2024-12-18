@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 107408 2024-12-18 13:13:22Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPoolManager.cpp 107409 2024-12-18 13:16:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -406,7 +406,7 @@ public:
     {
         setProperty("UIToolType", QVariant::fromValue(UIToolType_Machines));
         /// @todo use icons with check-boxes
-        setIcon(UIIconPool::iconSetFull(":/machine_24px.png", ":/machine_16px.png""));
+        setIcon(UIIconPool::iconSetFull(":/machine_24px.png", ":/machine_16px.png"));
     }
 
 protected:
