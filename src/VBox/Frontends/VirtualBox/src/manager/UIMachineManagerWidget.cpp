@@ -1,4 +1,4 @@
-/* $Id: UIMachineManagerWidget.cpp 107405 2024-12-18 13:02:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineManagerWidget.cpp 107406 2024-12-18 13:03:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineManagerWidget class implementation.
  */
@@ -475,10 +475,6 @@ void UIMachineManagerWidget::prepareConnections()
     connect(chooser(), &UIChooser::sigToggleFinished,
             toolPane(), &UIToolPaneMachine::sigToggleFinished);
 
-    /* Tools-pane connections: */
-    connect(toolPane(), &UIToolPaneMachine::sigLinkClicked,
-            this, &UIMachineManagerWidget::sigMachineSettingsLinkClicked);
-
     /* Tools-menu connections: */
     connect(toolMenu(), &UITools::sigSelectionChanged,
             this, &UIMachineManagerWidget::sltHandleToolsMenuIndexChange);
@@ -531,10 +527,6 @@ void UIMachineManagerWidget::cleanupConnections()
                toolPane(), &UIToolPaneMachine::sigToggleStarted);
     disconnect(chooser(), &UIChooser::sigToggleFinished,
                toolPane(), &UIToolPaneMachine::sigToggleFinished);
-
-    /* Tools-pane connections: */
-    disconnect(toolPane(), &UIToolPaneMachine::sigLinkClicked,
-               this, &UIMachineManagerWidget::sigMachineSettingsLinkClicked);
 
     /* Tools-menu connections: */
     disconnect(toolMenu(), &UITools::sigSelectionChanged,

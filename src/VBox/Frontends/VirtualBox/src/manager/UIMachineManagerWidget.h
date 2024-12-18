@@ -1,4 +1,4 @@
-/* $Id: UIMachineManagerWidget.h 107405 2024-12-18 13:02:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineManagerWidget.h 107406 2024-12-18 13:03:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineManagerWidget class declaration.
  */
@@ -80,12 +80,6 @@ signals:
       * @{ */
         /** Notifies about Tool type change. */
         void sigToolTypeChange();
-    /** @} */
-
-    /** @name Tools / Details pane stuff.
-      * @{ */
-        /** Notifies aboud Details-pane link clicked. */
-        void sigMachineSettingsLinkClicked(const QString &strCategory, const QString &strControl, const QUuid &uId);
     /** @} */
 
 public:
