@@ -1,4 +1,4 @@
-/* $Id: UIMachineManagerWidget.cpp 107400 2024-12-18 11:13:46Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineManagerWidget.cpp 107405 2024-12-18 13:02:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineManagerWidget class implementation.
  */
@@ -58,11 +58,6 @@ UIMachineManagerWidget::UIMachineManagerWidget(UIToolPaneGlobal *pParent, UIActi
     , m_pSplitterSettingsSaveTimer(0)
 {
     prepare();
-}
-
-UIMachineManagerWidget::~UIMachineManagerWidget()
-{
-    cleanup();
 }
 
 UIChooser *UIMachineManagerWidget::chooser() const
@@ -214,9 +209,6 @@ void UIMachineManagerWidget::sltRetranslateUI()
 
 void UIMachineManagerWidget::sltHandleCommitData()
 {
-    // WORKAROUND:
-    // This will be fixed proper way during session management cleanup for Qt6.
-    // But for now we will just cleanup connections which is Ok anyway.
     cleanupConnections();
 }
 
@@ -547,12 +539,6 @@ void UIMachineManagerWidget::cleanupConnections()
     /* Tools-menu connections: */
     disconnect(toolMenu(), &UITools::sigSelectionChanged,
                this, &UIMachineManagerWidget::sltHandleToolsMenuIndexChange);
-}
-
-void UIMachineManagerWidget::cleanup()
-{
-    /* Ask sub-dialogs to commit data: */
-    sltHandleCommitData();
 }
 
 UITools *UIMachineManagerWidget::toolMenu() const
