@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.cpp 107386 2024-12-16 17:40:45Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolPaneGlobal.cpp 107407 2024-12-18 13:05:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class implementation.
  */
@@ -364,6 +364,10 @@ void UIToolPaneGlobal::prepare()
 
     /* Create desktop pane: */
     openTool(UIToolType_Welcome);
+#ifdef VBOX_GUI_WITH_ADVANCED_WIDGETS
+    /* Create machines pane: */
+    openTool(UIToolType_Machines);
+#endif
 }
 
 void UIToolPaneGlobal::cleanup()
