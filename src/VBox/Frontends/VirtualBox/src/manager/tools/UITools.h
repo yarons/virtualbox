@@ -1,4 +1,4 @@
-/* $Id: UITools.h 107348 2024-12-12 14:02:39Z sergey.dubov@oracle.com $ */
+/* $Id: UITools.h 107404 2024-12-18 12:59:12Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITools class declaration.
  */
@@ -67,8 +67,12 @@ public:
 
     /** Constructs Tools-pane passing @a pParent to the base-class.
       * @param  enmClass     Brings the tools class, it will be fixed one.
-      * @param  pActionPool  Brings the action-pool reference. */
-    UITools(QWidget *pParent, UIToolClass enmClass, UIActionPool *pActionPool);
+      * @param  pActionPool  Brings the action-pool reference.
+      * @param  theFlags     Brings the widget flags. */
+    UITools(QWidget *pParent,
+            UIToolClass enmClass,
+            UIActionPool *pActionPool,
+            Qt::WindowFlags theFlags = Qt::Popup);
 
     /** @name General stuff.
       * @{ */
@@ -100,6 +104,14 @@ public:
       * @{ */
         /** Returns current item. */
         UIToolsItem *currentItem() const;
+    /** @} */
+
+private slots:
+
+    /** @name General stuff.
+      * @{ */
+        /** Handles the close request. */
+        void sltClose();
     /** @} */
 
 private:
