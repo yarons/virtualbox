@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIToolsModel.h 107408 2024-12-18 13:13:22Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -38,6 +38,7 @@
 #include <QTransform>
 
 /* GUI includes: */
+#include "UIManagerDefs.h"
 #include "UIToolsItem.h"
 
 /* COM includes: */

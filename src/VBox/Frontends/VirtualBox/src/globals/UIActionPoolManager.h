@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIActionPoolManager.h 107408 2024-12-18 13:13:22Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class declaration.
  */
@@ -55,6 +55,7 @@ enum UIActionIndexMN
     UIActionIndexMN_M_File_M_Tools_T_NetworkManager,
     UIActionIndexMN_M_File_M_Tools_T_CloudProfileManager,
     UIActionIndexMN_M_File_M_Tools_T_VMActivityOverview,
+    UIActionIndexMN_M_File_M_Tools_T_MachineManager,
 #ifdef VBOX_GUI_WITH_EXTRADATA_MANAGER_UI
     UIActionIndexMN_M_File_S_ShowExtraDataManager,
 #endif
