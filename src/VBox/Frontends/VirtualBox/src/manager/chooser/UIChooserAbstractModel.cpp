@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIChooserAbstractModel.cpp 107411 2024-12-18 13:56:53Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -404,11 +404,13 @@ void UIChooserAbstractModel::init()
         /* Link root to this model: */
         invisibleRoot()->setModel(this);
 
+#ifndef VBOX_GUI_WITH_ADVANCED_WIDGETS
         /* Create global node: */
         new UIChooserNodeGlobal(invisibleRoot() /* parent */,
                                 0 /* position */,
                                 shouldGlobalNodeBeFavorite(invisibleRoot()),
                                 QString() /* tip */);
+#endif
 
         /* Reload local tree: */
         reloadLocalTree();
