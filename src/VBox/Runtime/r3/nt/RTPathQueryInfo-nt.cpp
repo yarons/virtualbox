@@ -1,4 +1,4 @@
-/* $Id: RTPathQueryInfo-nt.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: RTPathQueryInfo-nt.cpp 107436 2024-12-19 13:55:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTPathQueryInfo[Ex], Native NT.
  */
@@ -482,7 +482,10 @@ DECLHIDDEN(int) rtPathNtQueryInfoWorker(HANDLE hRootDir, UNICODE_STRING *pNtName
         }
         if (NT_SUCCESS(rcNt))
         {
-            /* Query tag information first in order to try re-open non-symlink reparse points. */
+            /* Query tag information first in order to try re-open non-symlink reparse points.
+               Note! On NT4 the value later used for FileAttributeTagInformation was
+                     called FileObjectIdInformation, but fortunately that could only
+                     be set and will fail with STATUS_INVALID_INFO_CLASS when queried. */
             FILE_ATTRIBUTE_TAG_INFORMATION TagInfo;
             rcNt = NtQueryInformationFile(hFile, &Ios, &TagInfo, sizeof(TagInfo), FileAttributeTagInformation);
             if (!NT_SUCCESS(rcNt))
