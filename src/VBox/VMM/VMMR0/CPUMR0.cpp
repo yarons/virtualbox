@@ -1,6 +1,6 @@
-/* $Id: CPUMR0.cpp 106635 2024-10-23 17:30:46Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: CPUMR0.cpp 107444 2024-12-19 15:55:08Z knut.osmundsen@oracle.com $ */
 /** @file
- * CPUM - Host Context Ring 0.
+ * CPUM - Host Context Ring 0, only targeting x86.
  */
 
 /*
@@ -30,6 +30,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_CPUM
+#define VBOX_VMM_TARGET_X86
 #define CPUM_WITH_NONCONST_HOST_FEATURES
 #include <VBox/vmm/cpum.h>
 #include <VBox/vmm/hm.h>
