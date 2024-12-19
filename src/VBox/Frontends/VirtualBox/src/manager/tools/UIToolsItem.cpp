@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.cpp 107410 2024-12-18 13:56:18Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsItem.cpp 107443 2024-12-19 15:15:22Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class definition.
  */
@@ -35,6 +35,7 @@
 #include <QStateMachine>
 #include <QStyle>
 #include <QStyleOptionGraphicsItem>
+#include <QToolTip>
 #include <QWindow>
 
 /* GUI includes: */
@@ -410,6 +411,14 @@ void UIToolsItem::hoverMoveEvent(QGraphicsSceneHoverEvent *)
         m_fHovered = true;
         emit sigHoverEnter();
         update();
+
+        /* Show text at the right of item: */
+        if (!model()->tools()->isPopup())
+        {
+            const QPointF posAtScene = mapToScene(rect().topRight() + QPoint(3, -3));
+            const QPoint posAtScreen = model()->tools()->mapToGlobal(posAtScene.toPoint());
+            QToolTip::showText(posAtScreen, name());
+        }
     }
 }
 
@@ -420,6 +429,10 @@ void UIToolsItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *)
         m_fHovered = false;
         emit sigHoverLeave();
         update();
+
+        /* Hide text for good: */
+        if (!model()->tools()->isPopup())
+            QToolTip::hideText();
     }
 }
 
