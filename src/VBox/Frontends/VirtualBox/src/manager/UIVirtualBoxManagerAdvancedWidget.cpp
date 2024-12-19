@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerAdvancedWidget.cpp 107412 2024-12-18 13:58:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerAdvancedWidget.cpp 107440 2024-12-19 14:45:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerAdvancedWidget class implementation.
  */
@@ -45,6 +45,7 @@
 #include "UIVirtualBoxManager.h"
 #include "UIVirtualBoxManagerAdvancedWidget.h"
 #if defined(VBOX_WS_MAC) && (defined(RT_ARCH_ARM64) || defined(RT_ARCH_ARM32))
+# include "UIGlobalSession.h"
 # include "UIIconPool.h"
 # include "UIVersion.h"
 #endif /* VBOX_WS_MAC && (RT_ARCH_ARM64 || RT_ARCH_ARM32) */
