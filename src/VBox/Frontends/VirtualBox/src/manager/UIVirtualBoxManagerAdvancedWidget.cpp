@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerAdvancedWidget.cpp 107440 2024-12-19 14:45:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerAdvancedWidget.cpp 107441 2024-12-19 14:49:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerAdvancedWidget class implementation.
  */
@@ -360,6 +360,14 @@ void UIVirtualBoxManagerAdvancedWidget::prepareWidgets()
         /* Configure layout: */
         pLayout->setContentsMargins(0, 0, 0, 0);
 
+        /* Create Global Tool Manager: */
+        m_pGlobalToolManager = new UIGlobalToolsManagerWidget(this, actionPool());
+        if (globalToolManager())
+        {
+            /* Add into layout: */
+            pLayout->addWidget(globalToolManager());
+        }
+
         /* Create Main toolbar: */
         m_pToolBar = new QIToolBar(this);
         if (m_pToolBar)
@@ -394,15 +402,7 @@ void UIVirtualBoxManagerAdvancedWidget::prepareWidgets()
 #endif /* VBOX_WS_MAC && (RT_ARCH_ARM64 || RT_ARCH_ARM32) */
 
             /* Add toolbar into layout: */
-            pLayout->addWidget(m_pToolBar);
-        }
-
-        /* Create Global Tool Manager: */
-        m_pGlobalToolManager = new UIGlobalToolsManagerWidget(this, actionPool());
-        if (globalToolManager())
-        {
-            /* Add into layout: */
-            pLayout->addWidget(globalToolManager());
+            m_pGlobalToolManager->addToolBar(m_pToolBar);
         }
     }
 
