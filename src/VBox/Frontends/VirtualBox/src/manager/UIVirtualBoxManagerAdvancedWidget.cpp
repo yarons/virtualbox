@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerAdvancedWidget.cpp 107441 2024-12-19 14:49:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerAdvancedWidget.cpp 107442 2024-12-19 14:53:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerAdvancedWidget class implementation.
  */
@@ -359,6 +359,9 @@ void UIVirtualBoxManagerAdvancedWidget::prepareWidgets()
     {
         /* Configure layout: */
         pLayout->setContentsMargins(0, 0, 0, 0);
+#ifdef VBOX_WS_MAC
+        pLayout->setSpacing(0);
+#endif
 
         /* Create Global Tool Manager: */
         m_pGlobalToolManager = new UIGlobalToolsManagerWidget(this, actionPool());
