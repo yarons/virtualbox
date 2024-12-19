@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-startvm" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2024-09-16 16:03:52 +0200 (Mon, 16 Sep 2024) $</pubdate>
+    <pubdate>$Date: 2024-12-19 19:29:28 +0100 (Thu, 19 Dec 2024) $</pubdate>
     <title>VBoxManage startvm</title>
   </refentryinfo>
 
@@ -166,7 +166,7 @@
     <title>Смотрите также</title>
     <para>
 <!--<xref linkend="vboxmanage-vboxheadless" />-->
-      <xref linkend="vboxheadless" />,
+      <!-- <xref linkend="vboxheadless" />, -->
       <xref linkend="vboxmanage-setproperty" />,
       <xref linkend="vboxmanage-modifyvm" />.
     </para>
