@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxapi.py 107457 2024-12-24 11:16:56Z valery.portnyagin@oracle.com $
+# $Id: vboxapi.py 107458 2024-12-24 11:23:18Z valery.portnyagin@oracle.com $
 # pylint: disable=import-error -- for cross-platform Win32 imports
 # pylint: disable=unused-import
 # pylint: disable=protected-access -- for XPCOM _xpcom member
@@ -38,7 +38,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 107457 $"
+__version__ = "$Revision: 107458 $"
 
 
 # Note! To set Python bitness on OSX use 'export VERSIONER_PYTHON_PREFER_32_BIT=yes'
@@ -1271,5 +1271,3 @@ class VirtualBoxManager(object):
         if sRet is None:
             sRet = self.xcptToString(oXcpt)
         return sRet
-
-
