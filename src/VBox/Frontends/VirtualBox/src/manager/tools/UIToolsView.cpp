@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.cpp 107410 2024-12-18 13:56:18Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsView.cpp 107460 2024-12-24 11:30:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class implementation.
  */
@@ -31,6 +31,7 @@
 #include <QScrollBar>
 
 /* GUI includes: */
+#include "UICommon.h"
 #include "UITools.h"
 #include "UIToolsItem.h"
 #include "UIToolsModel.h"
@@ -210,7 +211,12 @@ void UIToolsView::preparePalette()
 {
     /* Setup palette: */
     QPalette pal = qApp->palette();
-    pal.setColor(QPalette::Active, QPalette::Base, pal.color(QPalette::Active, QPalette::Window));
+    QColor backgroundColor = pal.color(QPalette::Active, QPalette::Window);
+    if (!tools()->isPopup())
+        backgroundColor = uiCommon().isInDarkMode()
+                        ? backgroundColor.lighter(120)
+                        : backgroundColor.darker(120);
+    pal.setColor(QPalette::Active, QPalette::Base, backgroundColor);
     setPalette(pal);
 }
 
