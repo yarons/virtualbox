@@ -1,4 +1,4 @@
-# /# $Id: Makefile.kmk 107445 2024-12-19 18:29:28Z serkan.bayraktar@oracle.com $
+# /# $Id: Makefile.kmk 107463 2024-12-25 15:18:07Z ksenia.s.stepanova@oracle.com $
 ## @file
 # Sub-Makefile for the VirtualBox User Manual, SDK reference and other manuals.
 #
@@ -178,7 +178,7 @@ if defined(VBOX_WITH_DOCS) && (!defined(VBOX_ONLY_BUILD) || defined(VBOX_ONLY_DO
  BLDDIRS += \
  	$(VBOX_PATH_MANUAL_OUTBASE)/en_US/dita \
  	$(VBOX_PATH_MANUAL_OUTBASE)/en_US/dita/topics \
-	$(VBOX_PATH_MANUAL_OUTBASE)/en_US/dita/cli_topics \
+ 	$(VBOX_PATH_MANUAL_OUTBASE)/en_US/dita/cli_topics \
  	$(VBOX_PATH_MANUAL_OUTBASE)/en_US/dita/topics/images \
  	$(VBOX_PATH_MANUAL_OUTBASE)/en_US/dita/topics/licensing \
  	$(VBOX_PATH_MANUAL_OUTBASE)/en_US/dita/topics/licensing/vbox-base \
