@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVMActivityMonitor.cpp 107464 2024-12-30 12:56:50Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class implementation.
  */
@@ -1400,6 +1400,10 @@ void UIVMActivityMonitorLocal::obtainDataAndUpdate()
         UIMonitorCommon::getVMMExitCount(m_comMachineDebugger, cTotalVMExits);
         updateVMExitMetric(cTotalVMExits);
     }
+    /* In case of Manager UI we don't get addition state chage event, since it needs a new session etc.
+    * thus we check explicitly: */
+    if (uiCommon().uiType() == UIType_ManagerUI && m_iTimeStep % 5 == 0)
+        guestAdditionsStateChange();
 }
 
 void UIVMActivityMonitorLocal::sltMachineStateChange(const QUuid &uId)
@@ -1548,12 +1552,14 @@ void UIVMActivityMonitorLocal::configureCOMPerformanceCollector()
                 if (strName.contains("RAM", Qt::CaseInsensitive) && strName.contains("Free", Qt::CaseInsensitive))
                 {
                     if (m_metrics.contains(Metric_Type_RAM))
+                    {
                         m_metrics[Metric_Type_RAM].setUnit(metrics[i].GetUnit());
+                        m_fCOMPerformanceCollectorConfigured = true;
+                    }
                 }
             }
         }
     }
-    m_fCOMPerformanceCollectorConfigured = true;
 }
 
 void UIVMActivityMonitorLocal::prepareMetrics()
