@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVMActivityMonitor.h 107465 2024-12-30 16:41:28Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class declaration.
  */
@@ -281,7 +281,7 @@ private:
     void prepareMetrics();
     bool guestAdditionsAvailable(const char *pszMinimumVersion);
     void enableDisableGuestAdditionDependedWidgets(bool fEnable);
-    void updateCPUChart(quint64 iLoadPercentage, ULONG iOtherPercentage);
+    void updateCPUChart(ULONG iLoadPercentage, ULONG iOtherPercentage);
     void updateRAMGraphsAndMetric(quint64 iTotalRAM, quint64 iFreeRAM);
     void updateNetworkChart(quint64 uReceiveTotal, quint64 uTransmitTotal);
     void updateDiskIOChart(quint64 uDiskIOTotalWritten, quint64 uDiskIOTotalRead);
