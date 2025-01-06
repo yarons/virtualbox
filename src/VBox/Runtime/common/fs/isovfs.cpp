@@ -1,4 +1,4 @@
-/* $Id: isovfs.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: isovfs.cpp 107488 2025-01-06 17:15:13Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - ISO 9660 and UDF Virtual Filesystem (read only).
  */
@@ -3649,8 +3649,8 @@ static int rtFsIsoDir_FindEntryUdf(PRTFSISODIRSHRD pThis, const char *pszEntry, 
         }
         else if (*pbName == 8)
         {
-            if (   cb8Bit == pFid->cbName
-                && cb8Bit != UINT16_MAX)
+            if (   pFid->cbName != UINT16_MAX
+                && cb8Bit       == pFid->cbName)
             {
                 if (fSimple)
                 {
