@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineView.h 107479 2025-01-06 16:01:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -382,8 +382,8 @@ protected:
     /** Scales passed size backward. */
     QSize scaledBackward(QSize size) const;
 
-    /** Updates mouse pointer @a pixmap, @a uXHot and @a uYHot according to scaling attributes. */
-    void updateMousePointerPixmapScaling(QPixmap &pixmap, uint &uXHot, uint &uYHot);
+    /** Updates mouse pointer @a pixmap, @a iXHot and @a iYHot according to scaling attributes. */
+    void updateMousePointerPixmapScaling(QPixmap &pixmap, int &iXHot, int &iYHot);
 
     /* Protected members: */
     UIMachineWindow *m_pMachineWindow;
