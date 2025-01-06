@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: ExtPackManagerImpl.cpp 107495 2025-01-06 18:05:59Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -943,7 +943,7 @@ HRESULT ExtPack::i_callUninstallHookAndClose(IVirtualBox *a_pVirtualBox, bool a_
     if (   m != NULL
         && m->hMainMod != NIL_RTLDRMOD)
     {
-        if (m->pReg->pfnUninstall && !a_fForcedRemoval)
+        if (m->pReg->pfnUninstall)
         {
             int vrc = m->pReg->pfnUninstall(m->pReg, a_pVirtualBox);
             if (RT_FAILURE(vrc))
