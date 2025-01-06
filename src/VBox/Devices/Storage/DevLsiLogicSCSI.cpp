@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DevLsiLogicSCSI.cpp 107499 2025-01-06 18:43:39Z alexander.eichner@oracle.com $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -3148,14 +3148,12 @@ static int lsilogicR3ProcessConfigurationRequest(PPDMDEVINS pDevIns, PLSILOGICSC
     uint8_t                            *pbPageData     = NULL;
     PMptConfigurationPageHeader         pPageHeader    = NULL;
     PMptExtendedConfigurationPageHeader pExtPageHeader = NULL;
-    uint8_t                             u8PageType;
-    uint8_t                             u8PageAttribute;
     size_t                              cbPage = 0;
 
     LogFlowFunc(("pThis=%#p\n", pThis));
 
-    u8PageType = MPT_CONFIGURATION_PAGE_TYPE_GET(pConfigurationReq->u8PageType);
-    u8PageAttribute = MPT_CONFIGURATION_PAGE_ATTRIBUTE_GET(pConfigurationReq->u8PageType);
+    uint8_t u8PageType = MPT_CONFIGURATION_PAGE_TYPE_GET(pConfigurationReq->u8PageType);
+    /*uint8_t u8PageAttribute = MPT_CONFIGURATION_PAGE_ATTRIBUTE_GET(pConfigurationReq->u8PageType);*/
 
     Log(("GuestRequest:\n"));
     Log(("u8Action=%#x\n", pConfigurationReq->u8Action));
