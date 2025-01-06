@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 106423 2024-10-17 10:07:16Z michal.necasek@oracle.com $ */
+/* $Id: DevAHCI.cpp 107497 2025-01-06 18:41:08Z alexander.eichner@oracle.com $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -1415,7 +1415,7 @@ static VBOXSTRICTRC PortCmd_w(PPDMDEVINS pDevIns, PAHCI pThis, PAHCIPORT pAhciPo
 #endif
         }
     }
-    else if (!(u32Value & AHCI_PORT_CMD_FRE))
+    else
     {
         ahciLog(("%s: FIS receive disabled\n", __FUNCTION__));
         u32Value &= ~AHCI_PORT_CMD_FR;
