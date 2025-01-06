@@ -1,4 +1,4 @@
-/* $Id: ISCSI.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: ISCSI.cpp 107483 2025-01-06 16:35:28Z alexander.eichner@oracle.com $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -1902,7 +1902,7 @@ static int iscsiCommand(PISCSIIMAGE pImage, PSCSIREQ pRequest)
     /* If not in normal state, then the transport connection was dropped. Try
      * to reestablish by logging in, the target might be responsive again. */
     if (pImage->state == ISCSISTATE_FREE)
-        rc = iscsiAttach(pImage);
+        iscsiAttach(pImage);
 
     /* If still not in normal state, then the underlying transport connection
      * cannot be established. Get out before bad things happen (and make
