@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 107311 2024-12-10 07:37:35Z aleksey.ilyushin@oracle.com $ */
+/* $Id: VBoxManageModifyVM.cpp 107493 2025-01-06 17:47:29Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -806,8 +806,8 @@ static HRESULT handleModifyVM_x86(PRTGETOPTSTATE pGetOptState, int c, PRTGETOPTU
 
         case MODIFYVM_X86_SETCPUID:
         {
-            uint32_t const idx    = c == MODIFYVM_X86_SETCPUID ?  pValueUnion->PairU32.uFirst  : pValueUnion->u32;
-            uint32_t const idxSub = c == MODIFYVM_X86_SETCPUID ?  pValueUnion->PairU32.uSecond : UINT32_MAX;
+            uint32_t const idx    = pValueUnion->PairU32.uFirst;
+            uint32_t const idxSub = pValueUnion->PairU32.uSecond;
             uint32_t aValue[4];
             for (unsigned i = 0; i < 4; i++)
             {
