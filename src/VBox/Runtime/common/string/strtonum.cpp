@@ -1,4 +1,4 @@
-/* $Id: strtonum.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: strtonum.cpp 107487 2025-01-06 17:08:14Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - String To Number Conversion.
  */
@@ -452,8 +452,7 @@ RTDECL(int) RTStrToInt64Ex(const char *pszValue, char **ppszNext, unsigned uBase
         uBase = 10;
         if (psz[0] == '0')
         {
-            if (   psz[0] == '0'
-                && cchMax > 1
+           if (    cchMax > 1
                 && (psz[1] == 'x' || psz[1] == 'X')
                 && g_auchDigits[(unsigned char)psz[2]] < 16)
             {
