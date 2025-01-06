@@ -1,4 +1,4 @@
-/* $Id: mappings.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: mappings.cpp 107471 2025-01-06 12:13:18Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Folders Service - Mappings support.
  */
@@ -229,18 +229,13 @@ void vbsfMappingLoadingDone(void)
         }
 }
 
-
 MAPPING *vbsfMappingGetByRoot(SHFLROOT root)
 {
     if (root < RT_ELEMENTS(g_aIndexFromRoot))
     {
         SHFLROOT iMapping = g_aIndexFromRoot[root];
-
-        if (   iMapping != SHFL_ROOT_NIL
-            && iMapping < RT_ELEMENTS(g_FolderMapping))
-        {
+        if (iMapping != SHFL_ROOT_NIL)
             return &g_FolderMapping[iMapping];
-        }
     }
 
     return NULL;
