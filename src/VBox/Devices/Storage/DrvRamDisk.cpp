@@ -1,4 +1,4 @@
-/* $Id: DrvRamDisk.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvRamDisk.cpp 107503 2025-01-06 18:51:46Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox storage devices: RAM disk driver.
  */
@@ -348,7 +348,6 @@ static int drvramdiskReadWorker(PDRVRAMDISK pThis, PRTSGBUF pSgBuf,
     {
         PDRVDISKSEGMENT pSeg = (PDRVDISKSEGMENT)RTAvlrFileOffsetRangeGet(pThis->pTreeSegments, offCurr);
         size_t cbRange  = 0;
-        bool fCmp       = false;
         unsigned offSeg = 0;
 
         if (!pSeg)
@@ -366,7 +365,6 @@ static int drvramdiskReadWorker(PDRVRAMDISK pThis, PRTSGBUF pSgBuf,
         }
         else
         {
-            fCmp    = true;
             offSeg  = offCurr - pSeg->Core.Key;
             cbRange = RT_MIN(cbLeft, (size_t)(pSeg->Core.KeyLast + 1 - offCurr));
 
@@ -1078,7 +1076,7 @@ DECLINLINE(void) drvramdiskMediaExIoReqBufFree(PDRVRAMDISK pThis, PPDMMEDIAEXIOR
                         drvramdiskMediaExIoReqCompleteWorker(pThis, pIoReqCur, VERR_PDM_MEDIAEX_IOREQ_CANCELED, true /* fUpNotify */);
                     }
                     ASMAtomicIncU32(&pThis->cIoReqsActive);
-                    rc = drvramdiskMediaExIoReqReadWriteProcess(pThis, pIoReqCur, true /* fUpNotify */);
+                    drvramdiskMediaExIoReqReadWriteProcess(pThis, pIoReqCur, true /* fUpNotify */);
                 }
                 else
                 {
