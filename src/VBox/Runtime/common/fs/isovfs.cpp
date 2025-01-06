@@ -1,4 +1,4 @@
-/* $Id: isovfs.cpp 107489 2025-01-06 17:25:03Z andreas.loeffler@oracle.com $ */
+/* $Id: isovfs.cpp 107490 2025-01-06 17:32:41Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - ISO 9660 and UDF Virtual Filesystem (read only).
  */
@@ -2240,7 +2240,6 @@ static DECLCALLBACK(int) rtFsIsoFile_PollOne(void *pvThis, uint32_t fEvents, RTM
         do
             rc = RTThreadSleep(cMillies);
         while (   rc == VERR_INTERRUPTED
-               && !fIntr
                && RTTimeMilliTS() - uMsStart < cMillies);
         if (rc == VERR_INTERRUPTED)
             rc = VERR_TIMEOUT;
