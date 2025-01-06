@@ -1,4 +1,4 @@
-/* $Id: ISCSI.cpp 107483 2025-01-06 16:35:28Z alexander.eichner@oracle.com $ */
+/* $Id: ISCSI.cpp 107484 2025-01-06 16:36:34Z alexander.eichner@oracle.com $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -1531,7 +1531,6 @@ static int iscsiLogin(PISCSIIMAGE pImage)
                                     /* Authentication offered, but none required.  Skip to operational parameters. */
                                     csg = 1;
                                     nsg = 1;
-                                    transit = true;
                                     substate = 0;
                                     break;
                                 }
@@ -1591,7 +1590,6 @@ static int iscsiLogin(PISCSIIMAGE pImage)
                                 if (RT_FAILURE(rc))
                                     break;
                                 substate++;
-                                transit = true;
                                 break;
                             }
                             case 0x0002:    /* security negotiation, step 2: check authentication success. */
