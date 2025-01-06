@@ -1,4 +1,4 @@
-/* $Id: DrvHostDVD.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostDVD.cpp 107501 2025-01-06 18:48:08Z alexander.eichner@oracle.com $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
@@ -272,8 +272,9 @@ static DECLCALLBACK(int) drvHostDvdIoReqSendScsiCmd(PPDMIMEDIAEX pInterface, PDM
                     LogRelMax(10, ("HostDVD#%u: CD-ROM passthrough split error\n", pThis->Core.pDrvIns->iInstance));
                     *pu8ScsiSts = drvHostDvdCmdErrorSimple(pThis, SCSI_SENSE_ILLEGAL_REQUEST, SCSI_ASC_ILLEGAL_OPCODE);
                     rc = drvHostBaseBufferRelease(&pThis->Core, pReq, cbBuf, enmXferDir == PDMMEDIATXDIR_TO_DEVICE, pvBuf);
+                    AssertRC(rc);
                     RTCritSectLeave(&pThis->Core.CritSect);
-                    return VINF_SUCCESS;
+                    return rc;
             }
             memcpy(aATAPICmd, pbCdb, RT_MIN(cbCdb, ATAPI_PACKET_SIZE));
             uint32_t cReqSectors = 0;
