@@ -1,4 +1,4 @@
-/* $Id: DBGCDumpImage.cpp 107429 2024-12-19 01:21:50Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGCDumpImage.cpp 107473 2025-01-06 14:06:22Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, Native Commands.
  */
@@ -1308,7 +1308,7 @@ public:
         if (ExpDir.MajorVersion || ExpDir.MinorVersion)
             myPrintf("          Version: %u.%u\n", ExpDir.MajorVersion, ExpDir.MinorVersion);
 
-        uint32_t const cExports = ExpDir.NumberOfNames;
+        uint32_t const cExports = ExpDir.NumberOfFunctions;
         if (cExports > _16K)
         {
             myPrintf("  Exports: Too many addresses! (%#x)\n", cExports);
