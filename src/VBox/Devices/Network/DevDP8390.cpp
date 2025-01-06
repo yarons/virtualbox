@@ -1,4 +1,4 @@
-/* $Id: DevDP8390.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DevDP8390.cpp 107494 2025-01-06 17:55:02Z andreas.loeffler@oracle.com $ */
 /** @file
  * DevDP8390 - National Semiconductor DP8390-based Ethernet Adapter Emulation.
  */
@@ -2935,7 +2935,7 @@ static uint32_t wdIoRead(PDPNICSTATE pThis, uint32_t addr)
                 val = pThis->CTRL1;
                 break;
             case WDR_ATDET:
-                val = pThis->uDevType == DEV_WD8013 ? 1 : 0;
+                val = 1 /* Always 1 for DEV_WD8013. */;
                 break;
             case WDR_IOBASE:
                 val = pThis->aPROM[WDR_IOBASE]; //val = pThis->IOPortBase >> 5;
