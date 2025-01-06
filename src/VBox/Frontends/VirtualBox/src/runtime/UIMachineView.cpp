@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 107469 2025-01-06 12:00:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.cpp 107478 2025-01-06 15:57:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -297,7 +297,7 @@ void UIMachineView::applyMachineViewScaleFactor()
         return;
 
     /* Acquire selected scale-factor: */
-    double dScaleFactor = gEDataManager->scaleFactor(uiCommon().managedVMUuid(), m_uScreenId);
+    double dScaleFactor = gEDataManager->scaleFactor(uiCommon().managedVMUuid(), (int)m_uScreenId);
 
     /* Take the device-pixel-ratio into account: */
     frameBuffer()->setDevicePixelRatio(UIDesktopWidgetWatchdog::devicePixelRatio(machineWindow()));
@@ -1060,7 +1060,7 @@ void UIMachineView::sltHandleScaleFactorChange(const QUuid &uMachineID)
         return;
 
     /* Acquire selected scale-factor: */
-    double dScaleFactor = gEDataManager->scaleFactor(uiCommon().managedVMUuid(), m_uScreenId);
+    double dScaleFactor = gEDataManager->scaleFactor(uiCommon().managedVMUuid(), (int)m_uScreenId);
 
     /* Take the device-pixel-ratio into account: */
     const double dDevicePixelRatioActual = frameBuffer()->devicePixelRatioActual();

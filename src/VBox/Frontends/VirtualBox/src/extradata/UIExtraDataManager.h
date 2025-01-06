@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 107178 2024-11-26 14:00:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.h 107478 2025-01-06 15:57:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -712,12 +712,12 @@ public:
         bool hidLedsSyncState(const QUuid &uID);
 
         /** Returns the scale-factor. */
-        double scaleFactor(const QUuid &uID, const int uScreenIndex);
+        double scaleFactor(const QUuid &uID, int iScreenIndex);
         QList<double> scaleFactors(const QUuid &uID);
         /** Saves the @a dScaleFactor for the monitor with @a uScreenIndex. If the existing scale factor
           * list (from extra data) does not have scale factors for the screens with ids in [0, uScreenIndex)
           * the this function appends a default scale factor for said screens.*/
-        void setScaleFactor(double dScaleFactor, const QUuid &uID, const int uScreenIndex);
+        void setScaleFactor(double dScaleFactor, const QUuid &uID, int iScreenIndex);
         /** Replaces the scale factor list of the machine with @a uID with @a scaleFactors. */
         void setScaleFactors(const QList<double> &scaleFactors, const QUuid &uID);
 
