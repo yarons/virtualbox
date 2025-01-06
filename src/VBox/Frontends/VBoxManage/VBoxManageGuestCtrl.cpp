@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 107394 2024-12-17 17:41:21Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 107491 2025-01-06 17:34:54Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1803,7 +1803,7 @@ static RTEXITCODE gctlHandleCopy(PGCTLCMDCTX pCtx, int argc, char **argv, bool f
             strCopyFlags += "Update,";
         if (fNoReplace) /* Do not overwrite files. */
             strCopyFlags += "NoReplace,";
-        else if (!fNoReplace && fIsDir)
+        else if (fIsDir)
             strCopyFlags += "CopyIntoExisting,"; /* Only copy into existing directories if "--no-replace" isn't specified. */
        aCopyFlags.push_back(Bstr(strCopyFlags).raw());
     }
