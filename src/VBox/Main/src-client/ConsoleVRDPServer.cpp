@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleVRDPServer.cpp 107477 2025-01-06 14:58:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console VRDP helper class.
  */
@@ -3032,10 +3032,8 @@ void ConsoleVRDPServer::Stop(void)
             }
         }
 
-        if (mpEntryPoints && hServer)
-        {
+        if (mpEntryPoints)
             mpEntryPoints->VRDEDestroy(hServer);
-        }
     }
 
 #ifndef VBOX_WITH_VRDEAUTH_IN_VBOXSVC
