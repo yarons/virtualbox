@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: NATNetworkImpl.cpp 107498 2025-01-06 18:43:28Z andreas.loeffler@oracle.com $ */
 /** @file
  * INATNetwork implementation.
  */
@@ -1081,21 +1081,13 @@ int NATNetwork::i_findFirstAvailableOffset(ADDRESSLOOKUPTYPE addrType, uint32_t 
     uint32_t off;
     for (off = 1; off < ~netmask.u; ++off)
     {
-        bool skip = false;
         for (settings::NATLoopbackOffsetList::iterator it = m->s.llHostLoopbackOffsetList.begin();
              it != m->s.llHostLoopbackOffsetList.end();
              ++it)
         {
             if ((*it).u32Offset == off)
-            {
-                skip = true;
-                break;
-            }
-
+                continue;
         }
-
-        if (skip)
-            continue;
 
         if (off == m->offGateway)
         {
@@ -1104,16 +1096,14 @@ int NATNetwork::i_findFirstAvailableOffset(ADDRESSLOOKUPTYPE addrType, uint32_t 
             else
                 continue;
         }
-
-        if (off == m->offDhcp)
+        else if (off == m->offDhcp)
         {
             if (addrType == ADDR_DHCP)
                 break;
             else
                 continue;
         }
-
-        if (!skip)
+        else
             break;
     }
 
