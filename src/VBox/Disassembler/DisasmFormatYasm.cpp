@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatYasm.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DisasmFormatYasm.cpp 107476 2025-01-06 14:14:46Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Disassembler - Yasm(/Nasm) Style Formatter.
  */
@@ -1310,8 +1310,7 @@ DISDECL(size_t) DISFormatYasmEx(PCDISSTATE pDis, char *pszBuf, size_t cchBuf, ui
         PUT_STR(g_szSpaces, cchPadding);
 
         /* comment? */
-        if (fFlags & (DIS_FMT_FLAGS_BYTES_RIGHT | DIS_FMT_FLAGS_ADDR_RIGHT))
-            PUT_SZ(";");
+        PUT_SZ(";");
 
         /*
          * The address?

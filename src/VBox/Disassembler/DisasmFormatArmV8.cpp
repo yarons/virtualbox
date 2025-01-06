@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatArmV8.cpp 106829 2024-11-01 09:24:29Z alexander.eichner@oracle.com $ */
+/* $Id: DisasmFormatArmV8.cpp 107476 2025-01-06 14:14:46Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Disassembler - ARMv8 Style Formatter.
  */
@@ -1084,8 +1084,7 @@ DISDECL(size_t) DISFormatArmV8Ex(PCDISSTATE pDis, char *pszBuf, size_t cchBuf, u
         PUT_STR(g_szSpaces, cchPadding);
 
         /* comment? */
-        if (fFlags & (DIS_FMT_FLAGS_BYTES_RIGHT | DIS_FMT_FLAGS_ADDR_RIGHT))
-            PUT_SZ(";");
+        PUT_SZ(";");
 
         /*
          * The address?
