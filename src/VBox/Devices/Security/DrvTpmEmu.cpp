@@ -1,4 +1,4 @@
-/* $Id: DrvTpmEmu.cpp 106259 2024-10-09 16:09:15Z alexander.eichner@oracle.com $ */
+/* $Id: DrvTpmEmu.cpp 107486 2025-01-06 17:01:30Z alexander.eichner@oracle.com $ */
 /** @file
  * TPM emulator using a TCP/socket interface to talk to swtpm (https://github.com/stefanberger/swtpm).
  */
@@ -960,7 +960,8 @@ static DECLCALLBACK(int) drvTpmEmuConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, 
                                    N_("Configuration error: querying \"BufferSize\" resulted in %Rrc"), rc);
 
     /* Limit to the maximum buffer size of the device above. */
-    pThis->cbBuffer = RT_MIN(pThis->cbBuffer, pThis->pTpmPort->pfnGetMaxBufferSize(pThis->pTpmPort));
+    uint32_t const cbTpmBufferMax = pThis->pTpmPort->pfnGetMaxBufferSize(pThis->pTpmPort);
+    pThis->cbBuffer = RT_MIN(pThis->cbBuffer, cbTpmBufferMax);
 
     /* Set the buffer size. */
     rc = drvTpmEmuSetBufferSz(pThis, pThis->cbBuffer);
