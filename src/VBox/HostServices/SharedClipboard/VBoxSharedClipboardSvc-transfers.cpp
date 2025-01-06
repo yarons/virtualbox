@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-transfers.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-transfers.cpp 107502 2025-01-06 18:51:23Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Internal code for transfer (list) handling.
  */
@@ -130,7 +130,7 @@ int ShClSvcTransferGHRootListReadHdrAsync(PSHCLCLIENT pClient, PSHCLTRANSFER pTr
                 ShClEventRelease(pEvent);
                 pEvent = NULL;
             }
-            else if (ppEvent)
+            else
                 *ppEvent = pEvent;
         }
         else
