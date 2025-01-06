@@ -1,4 +1,4 @@
-/* $Id: DisasmCore-armv8.cpp 107031 2024-11-15 08:39:44Z andreas.loeffler@oracle.com $ */
+/* $Id: DisasmCore-armv8.cpp 107475 2025-01-06 14:14:09Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Disassembler - Core Components.
  */
@@ -1076,7 +1076,7 @@ static int disArmV8ParseImmX16(PDISSTATE pDis, uint32_t u32Insn, PCDISARMV8OPCOD
     Assert(pParam->armv8.enmType == kDisArmv8OpParmNone);
 
     pParam->armv8.enmType = kDisArmv8OpParmImm;
-    pParam->uValue = disArmV8ExtractBitVecFromInsn(u32Insn, pInsnParm->idxBitStart, pInsnParm->cBits) * 16;
+    pParam->uValue = (uint64_t)disArmV8ExtractBitVecFromInsn(u32Insn, pInsnParm->idxBitStart, pInsnParm->cBits) * 16;
     if (pParam->uValue <= UINT8_MAX)
     {
         pParam->armv8.cb = sizeof(uint8_t);
