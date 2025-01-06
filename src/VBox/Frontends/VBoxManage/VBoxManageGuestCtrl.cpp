@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 107491 2025-01-06 17:34:54Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 107492 2025-01-06 17:41:07Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -2385,18 +2385,12 @@ static DECLCALLBACK(RTEXITCODE) gctlHandleMkTemp(PGCTLCMDCTX pCtx, int argc, cha
      */
     if (pCtx->cVerbose)
     {
-        if (fDirectory && !strTempDir.isEmpty())
-            RTPrintf(GuestCtrl::tr("Creating temporary directory from template '%s' in directory '%s' ...\n"),
-                     strTemplate.c_str(), strTempDir.c_str());
-        else if (fDirectory)
-            RTPrintf(GuestCtrl::tr("Creating temporary directory from template '%s' in default temporary directory ...\n"),
-                     strTemplate.c_str());
-        else if (!fDirectory && !strTempDir.isEmpty())
-            RTPrintf(GuestCtrl::tr("Creating temporary file from template '%s' in directory '%s' ...\n"),
-                     strTemplate.c_str(), strTempDir.c_str());
-        else if (!fDirectory)
-            RTPrintf(GuestCtrl::tr("Creating temporary file from template '%s' in default temporary directory ...\n"),
-                     strTemplate.c_str());
+        if (!strTempDir.isEmpty())
+            RTPrintf(GuestCtrl::tr("Creating temporary %s from template '%s' in directory '%s' ...\n"),
+                     fDirectory ? GuestCtrl::tr("directory") : GuestCtrl::tr("file"), strTemplate.c_str(), strTempDir.c_str());
+        else
+            RTPrintf(GuestCtrl::tr("Creating temporary %s from template '%s' in default temporary directory ...\n"),
+                     fDirectory ? GuestCtrl::tr("directory") : GuestCtrl::tr("file"),  strTemplate.c_str());
     }
 
     HRESULT hrc = S_OK;
