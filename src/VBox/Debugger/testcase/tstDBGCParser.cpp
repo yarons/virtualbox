@@ -1,4 +1,4 @@
-/* $Id: tstDBGCParser.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: tstDBGCParser.cpp 107474 2025-01-06 14:11:18Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGC Testcase - Command Parser.
  */
@@ -195,7 +195,7 @@ static void tstCompleteOutput(void)
  * @param   pVar1               .
  * @param   pVar2               .
  */
-bool DBGCVarAreIdentical(PCDBGCVAR pVar1, PCDBGCVAR pVar2)
+static bool dbgcVarAreIdentical(PCDBGCVAR pVar1, PCDBGCVAR pVar2)
 {
     if (!pVar1)
         return false;
@@ -332,7 +332,7 @@ static void tstTryExV(PDBGC pDbgc, const char *pszCmds, int rcCmd, bool fNoExecu
                         break;
             }
 
-            if (!DBGCVarAreIdentical(&ExpectedArg, &paArgs[iArg]))
+            if (!dbgcVarAreIdentical(&ExpectedArg, &paArgs[iArg]))
                 RTTestFailed(g_hTest,
                              "Arg #%u\n"
                              "actual:   enmType=%u u64=%#RX64 enmRangeType=%u u64Range=%#RX64\n"
