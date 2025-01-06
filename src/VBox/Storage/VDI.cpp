@@ -1,4 +1,4 @@
-/* $Id: VDI.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VDI.cpp 107480 2025-01-06 16:25:42Z alexander.eichner@oracle.com $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code.
  */
@@ -1182,9 +1182,9 @@ static int vdiFlushImageIoCtx(PVDIIMAGEDESC pImage, PVDIOCTX pIoCtx)
     {
         /* Save header. */
         rc = vdiUpdateHeaderAsync(pImage, pIoCtx);
-        AssertMsg(RT_SUCCESS(rc) || rc == VERR_VD_ASYNC_IO_IN_PROGRESS,
-                  ("vdiUpdateHeaderAsync() failed, filename=\"%s\", rc=%Rrc\n",
-                  pImage->pszFilename, rc));
+        AssertMsgReturn(RT_SUCCESS(rc) || rc == VERR_VD_ASYNC_IO_IN_PROGRESS,
+                        ("vdiUpdateHeaderAsync() failed, filename=\"%s\", rc=%Rrc\n",
+                        pImage->pszFilename, rc), rc);
         rc = vdIfIoIntFileFlush(pImage->pIfIo, pImage->pStorage, pIoCtx, NULL, NULL);
         AssertMsg(RT_SUCCESS(rc) || rc == VERR_VD_ASYNC_IO_IN_PROGRESS,
                   ("Flushing data to disk failed rc=%Rrc\n", rc));
