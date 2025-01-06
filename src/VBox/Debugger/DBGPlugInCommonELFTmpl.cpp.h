@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInCommonELFTmpl.cpp.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGPlugInCommonELFTmpl.cpp.h 107472 2025-01-06 14:05:49Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGPlugInCommonELF - Code Template for dealing with one kind of ELF.
  */
@@ -131,8 +131,6 @@ int DBGDiggerCommonParseElfMod(PUVM pUVM, PCVMMR3VTABLE pVMM, const char *pszMod
         return VERR_BAD_EXE_FORMAT;
     if (    pEhdr->e_phentsize != sizeof(Elf_Phdr)
         &&  pEhdr->e_phentsize) //??
-        return VERR_BAD_EXE_FORMAT;
-    if (pEhdr->e_shentsize != sizeof(Elf_Shdr))
         return VERR_BAD_EXE_FORMAT;
     if (pEhdr->e_shentsize != sizeof(Elf_Shdr))
         return VERR_BAD_EXE_FORMAT;
