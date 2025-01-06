@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostBase.cpp 107500 2025-01-06 18:46:35Z alexander.eichner@oracle.com $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -1440,6 +1440,10 @@ DECLHIDDEN(int) DRVHostBaseInit(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, const char *
     /* Define whether attach failure is an error (default) or not. */
     bool fAttachFailError = true;
     rc = pHlp->pfnCFGMQueryBoolDef(pCfg, "AttachFailError", &fAttachFailError, true);
+    if (RT_FAILURE(rc))
+        return PDMDRV_SET_ERROR(pDrvIns, rc,
+                                N_("DrvHostBase: Configuration error: Querying \"AttachFailError\" as boolean failed"));
+
     pThis->fAttachFailError = fAttachFailError;
 
     /* log config summary */
