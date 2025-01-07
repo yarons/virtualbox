@@ -1,4 +1,4 @@
-/* $Id: ResourceAssignmentManager.cpp 107147 2024-11-22 15:46:26Z alexander.eichner@oracle.com $ */
+/* $Id: ResourceAssignmentManager.cpp 107521 2025-01-07 11:12:21Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox bus slots assignment manager
  */
@@ -345,7 +345,8 @@ void ResourceAssignmentManager::State::dumpToReleaseLog(void)
 
 
 ResourceAssignmentManager::ResourceAssignmentManager()
-    : m_pState(NULL)
+    : m_pState(NULL),
+      m_GCPhysMmioHint(RTGCPHYS_MAX)
 {
     m_pState = new State();
     Assert(m_pState);
