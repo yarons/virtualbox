@@ -1,4 +1,4 @@
-/* $Id: fdt.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: fdt.cpp 107512 2025-01-07 10:13:53Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Flattened Devicetree parser and generator API.
  */
@@ -952,11 +952,6 @@ static int rtFdtDumpRootAsDts(PRTFDTINT pThis, RTVFSIOSTREAM hVfsIos, PRTERRINFO
         if (u32Token == DTB_FDT_TOKEN_END)
             Log3(("rtFdtDumpAsDtsRoot: END token at offset %#zx\n", rtFdtStructsGetOffset(pThis, &Dump)));
     }
-
-    /* Need to end on an END token. */
-    if (u32Token != DTB_FDT_TOKEN_END)
-        return RTErrInfoSetF(pErrInfo, VERR_FDT_DTB_STRUCTS_BLOCK_TOKEN_INVALID, "The structs block doesn't end with an END token (got %#RX32, expected %#RX32)",
-                             RT_BE2H_U32(u32Token), DTB_FDT_TOKEN_END);
 
     return VINF_SUCCESS;
 }
