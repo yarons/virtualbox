@@ -1,4 +1,4 @@
-/* $Id: uri.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: uri.cpp 107513 2025-01-07 10:16:43Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Uniform Resource Identifier handling.
  */
@@ -101,7 +101,8 @@ static char *rtUriPercentEncodeN(const char *pszString, size_t cchMax)
 
     int rc = VINF_SUCCESS;
 
-    size_t cbLen = RT_MIN(strlen(pszString), cchMax);
+    size_t const cchStr = strlen(pszString);
+    size_t cbLen = RT_MIN(cchStr, cchMax);
     /* The new string can be max 3 times in size of the original string. */
     char *pszNew = RTStrAlloc(cbLen * 3 + 1);
     if (!pszNew)
