@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: Performance.cpp 107533 2025-01-07 15:45:02Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Performance Classes implementation.
  */
@@ -241,7 +241,7 @@ void CGRQAbort::debugPrint(void *aObject, const char *aFunction, const char *aTe
 }
 
 CollectorGuest::CollectorGuest(Machine *machine, RTPROCESS process) :
-    mUnregistered(false), mEnabled(false), mValid(false), mMachine(machine), mProcess(process),
+    mManager(NULL), mUnregistered(false), mEnabled(false), mValid(false), mMachine(machine), mProcess(process),
     mCpuUser(0), mCpuKernel(0), mCpuIdle(0),
     mMemTotal(0), mMemFree(0), mMemBalloon(0), mMemShared(0), mMemCache(0), mPageTotal(0),
     mAllocVMM(0), mFreeVMM(0), mBalloonedVMM(0), mSharedVMM(0), mVmNetRx(0), mVmNetTx(0)
