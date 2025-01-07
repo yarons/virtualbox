@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsDisplay.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIGlobalSettingsDisplay.cpp 107532 2025-01-07 15:41:08Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsDisplay class implementation.
  */
@@ -43,7 +43,8 @@ struct UIDataSettingsGlobalDisplay
 {
     /** Constructs data. */
     UIDataSettingsGlobalDisplay()
-        : m_fActivateHoveredMachineWindow(false)
+        : m_iFontScalingFactor(0)
+        , m_fActivateHoveredMachineWindow(false)
         , m_fDisableHostScreenSaver(false)
     {}
 
