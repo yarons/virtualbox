@@ -1,4 +1,4 @@
-/* $Id: pkcs7-core.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: pkcs7-core.cpp 107522 2025-01-07 11:14:52Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Crypto - PKCS \#7, Core APIs.
  */
@@ -198,7 +198,7 @@ RTDECL(PCRTASN1TIME) RTCrPkcs7SignerInfo_GetMsTimestamp(PCRTCRPKCS7SIGNERINFO pT
                     }
                 }
 
-                pContentInfo++;
+                ppContentInfo++;
             }
         }
         ppAttr++;
