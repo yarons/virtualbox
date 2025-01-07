@@ -1,4 +1,4 @@
-/* $Id: tarvfswriter.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: tarvfswriter.cpp 107514 2025-01-07 10:20:24Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - TAR Virtual Filesystem, Writer.
  */
@@ -706,7 +706,8 @@ static DECLCALLBACK(int) rtZipTarWriterPush_QueryInfo(void *pvThis, PRTFSOBJINFO
     /* Basic info (w/ additional unix attribs). */
     *pObjInfo = pPush->ObjInfo;
     pObjInfo->cbObject = pPush->cbCurrent;
-    pObjInfo->cbAllocated = RT_ALIGN_64(pPush->cbCurrent, rtZipTarFssWrite_GetBlockSize(pPush->pParent));
+    size_t const cbBlock = rtZipTarFssWrite_GetBlockSize(pPush->pParent);
+    pObjInfo->cbAllocated = RT_ALIGN_64(pPush->cbCurrent, cbBlock);
 
     /* Additional info. */
     switch (enmAddAttr)
