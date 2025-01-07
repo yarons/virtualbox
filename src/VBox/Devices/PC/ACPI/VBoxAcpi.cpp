@@ -1,4 +1,4 @@
-/* $Id: VBoxAcpi.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxAcpi.cpp 107515 2025-01-07 10:50:27Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxAcpi - VirtualBox ACPI manipulation functionality.
  */
@@ -208,7 +208,9 @@ static int patchAmlCpuHotPlug(PPDMDEVINS pDevIns, uint8_t *pabAml, size_t cbAml)
             uint8_t *pabAmlDevName = &pabAmlPkgLength[cLengthBytesFollow+1];
             uint8_t *pabAmlCpu     = &pabAmlDevName[4];
             bool fCpuConfigured = false;
+#ifdef RT_STRICT
             bool fCpuFound      = false;
+#endif
 
             if ((pabAmlDevName[0] != 'S') || (pabAmlDevName[1] != 'C') || (pabAmlDevName[2] != 'K'))
             {
@@ -235,7 +237,9 @@ static int patchAmlCpuHotPlug(PPDMDEVINS pDevIns, uint8_t *pabAml, size_t cbAml)
                         /* false alarm, not named starting CP */
                         continue;
 
+#ifdef RT_STRICT
                     fCpuFound = true;
+#endif
 
                     /* Processor ID */
                     uint8_t const idAmlCpu = pabAmlCpu[idxAmlCpu + 8];
