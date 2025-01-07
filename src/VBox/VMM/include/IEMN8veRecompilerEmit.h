@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerEmit.h 106467 2024-10-18 00:27:52Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompilerEmit.h 107508 2025-01-07 09:55:39Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Inlined Emitters.
  */
@@ -7354,7 +7354,8 @@ iemNativeEmitTestBitInGprAndJmpToFixedIfCcEx(PIEMNATIVEINSTR pCodeBuf, uint32_t 
     /* Just use the TBNZ instruction here. */
     if (poffFixup)
         *poffFixup = off;
-    pCodeBuf[off++] = Armv8A64MkInstrTbzTbnz(fJmpIfSet, off - offTarget, iGprSrc, iBitNo);
+    pCodeBuf[off] = Armv8A64MkInstrTbzTbnz(fJmpIfSet, off - offTarget, iGprSrc, iBitNo);
+    off++;
 
 #else
 # error "Port me!"
