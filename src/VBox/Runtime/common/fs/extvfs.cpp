@@ -1,4 +1,4 @@
-/* $Id: extvfs.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: extvfs.cpp 107510 2025-01-07 10:04:06Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Ext2/3/4 Virtual Filesystem.
  */
@@ -2009,7 +2009,9 @@ static int rtFsExtDir_Lookup(PRTFSEXTVOL pThis, PRTFSEXTINODE pInode, const char
 {
     uint64_t offEntry = 0;
     int rc = VERR_FILE_NOT_FOUND;
+#ifdef LOG_ENABLED
     uint32_t idxDirEntry = 0;
+#endif
     size_t cchEntry = strlen(pszEntry);
 
     if (cchEntry > 255)
@@ -2024,6 +2026,7 @@ static int rtFsExtDir_Lookup(PRTFSEXTVOL pThis, PRTFSEXTINODE pInode, const char
         {
 #ifdef LOG_ENABLED
             rtFsExtDirEntry_Log(pThis, idxDirEntry, &DirEntry);
+            idxDirEntry++;
 #endif
 
             uint16_t cbName =   pThis->fFeaturesIncompat & EXT_SB_FEAT_INCOMPAT_DIR_FILETYPE
@@ -2038,7 +2041,6 @@ static int rtFsExtDir_Lookup(PRTFSEXTVOL pThis, PRTFSEXTINODE pInode, const char
             }
 
             offEntry += RT_LE2H_U16(DirEntry.Core.cbRecord);
-            idxDirEntry++;
         }
         else
         {
