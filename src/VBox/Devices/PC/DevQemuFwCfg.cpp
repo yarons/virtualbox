@@ -1,4 +1,4 @@
-/* $Id: DevQemuFwCfg.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DevQemuFwCfg.cpp 107518 2025-01-07 11:01:07Z alexander.eichner@oracle.com $ */
 /** @file
  * DevQemuFwCfg - QEMU firmware configuration compatible device.
  */
@@ -1377,6 +1377,9 @@ static int qemuFwCfgInitrdArchiveDirSub(RTVFSFSSTREAM hVfsFss,
                 break;
             }
         }
+
+        if (RT_FAILURE(rc))
+            break;
     }
 
     if (rc == VERR_NO_MORE_FILES)
