@@ -1,4 +1,4 @@
-/* $Id: ResourceStoreImpl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: ResourceStoreImpl.cpp 107520 2025-01-07 11:11:10Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM resource store class implementation
  */
@@ -84,7 +84,8 @@ struct BackupableResourceStoreData
 struct ResourceStore::Data
 {
     Data()
-        : pParent(NULL)
+        : pParent(NULL),
+          cRefs(0)
     { }
 
     /** The Console owning this resource store. */
