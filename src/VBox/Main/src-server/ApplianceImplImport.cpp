@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 107496 2025-01-06 18:25:57Z andreas.loeffler@oracle.com $ */
+/* $Id: ApplianceImplImport.cpp 107505 2025-01-07 08:42:50Z alexander.eichner@oracle.com $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1835,7 +1835,9 @@ HRESULT Appliance::i_importCloudImpl(TaskCloud *pTask)
                     if (aVBoxValues.size() != 0)
                     {
                         vsdData = aVBoxValues[0];
-                        memoryInBytes = RT_MIN((uint64_t)(RT_MAX(vsdData.toUInt64(), (uint64_t)MM_RAM_MIN)), MM_RAM_MAX);
+
+                        uint64_t cbRam = vsdData.toUInt64();
+                        memoryInBytes = RT_CLAMP(cbRam, (uint64_t)MM_RAM_MIN, (uint64_t)MM_RAM_MAX);
                     }
                     //and set in ovf::VirtualSystem in bytes
                     vsys.ullMemorySize = memoryInBytes;
