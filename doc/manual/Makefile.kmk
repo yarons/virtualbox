@@ -1,4 +1,4 @@
-# /# $Id: Makefile.kmk 107463 2024-12-25 15:18:07Z ksenia.s.stepanova@oracle.com $
+# /# $Id: Makefile.kmk 107528 2025-01-07 14:54:53Z klaus.espenlaub@oracle.com $
 ## @file
 # Sub-Makefile for the VirtualBox User Manual, SDK reference and other manuals.
 #
@@ -805,7 +805,7 @@ if defined(VBOX_WITH_DOCS) && (!defined(VBOX_ONLY_BUILD) || defined(VBOX_ONLY_DO
 	$$(QUIET)$$(RM) -f -- "$$@" "$$@.files.xml"
 	$$(APPEND) -tn "$$@.files.xml" '<?xml version="1.0"?>' '<files>'
 	$$(SED) -n \
-		-e 's/^.*topicref .*topics\man_VBoxManage-\([^.]*\)\.ditamap.*$$(DOLLAR)/<file>vboxmanage-\1-synopsis.dita<\/file>/p' \
+		-e 's/^.*topicref .*cli_topics\/man_VBoxManage-\([^.]*\)\.ditamap.*$$(DOLLAR)/<file>vboxmanage-\1-synopsis.dita<\/file>/p' \
 		--append "$$@.files.xml" \
 		$(VBOX_PATH_MANUAL_SRC)/$(1)/dita/UserManual.ditamap
 	$$(APPEND) -n "$$@.files.xml" '</files>'
