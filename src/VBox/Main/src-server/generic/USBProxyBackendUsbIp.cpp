@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendUsbIp.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: USBProxyBackendUsbIp.cpp 107519 2025-01-07 11:10:02Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox USB Proxy Backend, USB/IP.
  */
@@ -207,8 +207,11 @@ struct USBProxyBackendUsbIp::Data
           cbResidualRecv(0),
           pbRecvBuf(NULL),
           cDevicesLeft(0),
+          cInterfacesLeft(0),
           pHead(NULL),
-          ppNext(&pHead)
+          ppNext(&pHead),
+          cDevicesCur(0),
+          tsConnectSuccessLast(0)
     { }
 
     /** Socket handle to the server. */
