@@ -1,4 +1,4 @@
-/* $Id: WebMWriter.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: WebMWriter.cpp 107564 2025-01-08 13:03:21Z andreas.loeffler@oracle.com $ */
 /** @file
  * WebMWriter.cpp - WebM container handling.
  */
@@ -44,12 +44,13 @@
 
 
 WebMWriter::WebMWriter(void)
+    : m_enmAudioCodec(RecordingAudioCodec_None)
+    , m_enmVideoCodec(RecordingVideoCodec_None)
+    , m_fInTracksSection(false)
 {
     /* Size (in bytes) of time code to write. We use 2 bytes (16 bit) by default. */
     m_cbTimecode   = 2;
     m_uTimecodeMax = UINT16_MAX;
-
-    m_fInTracksSection = false;
 }
 
 WebMWriter::~WebMWriter(void)
