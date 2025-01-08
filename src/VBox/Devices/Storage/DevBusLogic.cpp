@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 106274 2024-10-10 08:07:33Z michal.necasek@oracle.com $ */
+/* $Id: DevBusLogic.cpp 107545 2025-01-08 09:23:37Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -2080,11 +2080,11 @@ static int buslogicProcessCommand(PPDMDEVINS pDevIns, PBUSLOGIC pThis)
             }
             else
             {
-                PESCMD      pCmd;
-
                 /* Second pass - process received data. */
                 Log(("Execute SCSI cmd: received %u bytes\n", pThis->aCommandBuffer[0]));
-                pCmd = (PESCMD)pThis->aCommandBuffer;
+#ifdef LOG_ENABLED
+                PESCMD pCmd = (PESCMD)pThis->aCommandBuffer;
+#endif
                 Log(("Addr %08X, cbData %08X, cbCDB=%u\n", pCmd->u32PhysAddrData, pCmd->cbData, pCmd->cbCDB));
 
                 if (!ASMAtomicXchgBool(&pThis->fBiosReqPending, true))
