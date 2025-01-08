@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 107556 2025-01-08 11:00:34Z andreas.loeffler@oracle.com $ */
+/* $Id: ConsoleImpl.h 107558 2025-01-08 12:48:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -972,7 +972,7 @@ private:
 
     volatile uint32_t mcVRDPClients;
     uint32_t mu32SingleRDPClientId; /* The id of a connected client in the single connection mode. */
-    volatile  bool mcGuestCredentialsProvided;
+    volatile  bool mfGuestCredentialsProvided;
 
     static const char *sSSMConsoleUnit;
 
