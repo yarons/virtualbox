@@ -1,4 +1,4 @@
-/* $Id: SecretKeyStore.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: SecretKeyStore.cpp 107548 2025-01-08 10:07:34Z alexander.eichner@oracle.com $ */
 /** @file
  * Main - Secret key interface.
  */
@@ -49,7 +49,8 @@ SecretKey::SecretKey(const uint8_t *pbKey, size_t cbKey, bool fKeyBufNonPageable
         /* Scramble content to make retrieving the key more difficult. */
         vrc = RTMemSaferScramble(this->m_pbKey, cbKey);
     }
-    else
+
+    if (RT_FAILURE(vrc))
         throw vrc;
 }
 
