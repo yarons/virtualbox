@@ -1,4 +1,4 @@
-/* $Id: ClipboardEnumFormatEtcImpl-win.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: ClipboardEnumFormatEtcImpl-win.cpp 107601 2025-01-08 16:39:54Z andreas.loeffler@oracle.com $ */
 /** @file
  * ClipboardEnumFormatEtcImpl-win.cpp - Shared Clipboard IEnumFORMATETC ("Format et cetera") implementation.
  */
@@ -57,7 +57,9 @@
 
 ShClWinEnumFormatEtc::ShClWinEnumFormatEtc(void)
     : m_lRefCount(1),
-      m_nIndex(0)
+      m_nIndex(0),
+      m_nNumFormats(0),
+      m_pFormatEtc(NULL)
 {
 #ifdef VBOX_SHARED_CLIPBOARD_DEBUG_OBJECT_COUNTS
     g_cDbgEnumFmtObj++;
