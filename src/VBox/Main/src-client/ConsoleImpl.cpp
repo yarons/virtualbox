@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 107524 2025-01-07 12:32:38Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 107556 2025-01-08 11:00:34Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -542,7 +542,6 @@ HRESULT Console::initWithMachine(IMachine *aMachine, IInternalMachineControl *aC
     hrc = mEventSource->init();
     AssertComRCReturnRC(hrc);
 
-    mcAudioRefs = 0;
     mcVRDPClients = 0;
     mu32SingleRDPClientId = 0;
     mcGuestCredentialsProvided = false;

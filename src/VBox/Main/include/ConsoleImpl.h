@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 107311 2024-12-10 07:37:35Z aleksey.ilyushin@oracle.com $ */
+/* $Id: ConsoleImpl.h 107556 2025-01-08 11:00:34Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -970,7 +970,6 @@ private:
 
     static DECLCALLBACK(int)    i_pdmIfSecKeyHlp_KeyMissingNotify(PPDMISECKEYHLP pInterface);
 
-    int mcAudioRefs;
     volatile uint32_t mcVRDPClients;
     uint32_t mu32SingleRDPClientId; /* The id of a connected client in the single connection mode. */
     volatile  bool mcGuestCredentialsProvided;
