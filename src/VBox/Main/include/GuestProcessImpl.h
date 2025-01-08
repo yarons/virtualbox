@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestProcessImpl.h 107569 2025-01-08 13:50:29Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest process handling implementation.
  */
@@ -177,7 +177,12 @@ private:
          *  returned from the guest side. */
         int                      mLastError;
 
-        Data(void) : mpSessionBaseEnv(NULL)
+        Data(void)
+            : mpSessionBaseEnv(NULL)
+            , mExitCode(0)
+            , mPID(0)
+            , mStatus(ProcessStatus_Undefined)
+            , mLastError(0)
         { }
         ~Data(void)
         {
