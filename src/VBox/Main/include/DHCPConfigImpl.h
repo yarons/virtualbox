@@ -1,4 +1,4 @@
-/* $Id: DHCPConfigImpl.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DHCPConfigImpl.h 107581 2025-01-08 14:49:29Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - IDHCPConfig, IDHCPConfigGlobal, IDHCPConfigGroup, IDHCPConfigIndividual header.
  */
@@ -242,7 +242,8 @@ public:
     /** @name Constructors and destructors.
      * @{ */
     DHCPGroupCondition()
-        : m_enmType(DHCPGroupConditionType_MAC)
+        : m_fInclusive(false)
+        , m_enmType(DHCPGroupConditionType_MAC)
         , m_pParent(NULL)
     {}
     HRESULT FinalConstruct()
