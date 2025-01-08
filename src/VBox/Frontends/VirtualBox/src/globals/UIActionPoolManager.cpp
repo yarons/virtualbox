@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 107409 2024-12-18 13:16:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPoolManager.cpp 107540 2025-01-08 06:03:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -4374,6 +4374,9 @@ void UIActionPoolManager::updateMenuMediumWrapper(UIMenu *pMenu)
 
     /* 'Refresh' action: */
     fSeparator = addAction(pMenu, action(UIActionIndexMN_M_Medium_S_Refresh)) || fSeparator;;
+
+    /* Remove if fSeparator is used: */
+    Q_UNUSED(fSeparator);
 }
 
 void UIActionPoolManager::updateMenuNetworkWindow()
@@ -4426,6 +4429,9 @@ void UIActionPoolManager::updateMenuNetworkWrapper(UIMenu *pMenu)
 
 //    /* 'Refresh' action: */
 //    fSeparator = addAction(pMenu, action(UIActionIndexMN_M_Network_S_Refresh)) || fSeparator;;
+
+    /* Remove if fSeparator is used: */
+    Q_UNUSED(fSeparator);
 }
 
 void UIActionPoolManager::updateMenuCloudWindow()
@@ -4482,6 +4488,9 @@ void UIActionPoolManager::updateMenuCloudWrapper(UIMenu *pMenu)
     fSeparator = addAction(pMenu, action(UIActionIndexMN_M_Cloud_S_TryPage)) || fSeparator;
     /* 'Help' action: */
     fSeparator = addAction(pMenu, action(UIActionIndexMN_M_Cloud_S_Help)) || fSeparator;
+
+    /* Remove if fSeparator is used: */
+    Q_UNUSED(fSeparator);
 }
 
 void UIActionPoolManager::updateMenuCloudConsoleWindow()
@@ -4536,6 +4545,9 @@ void UIActionPoolManager::updateMenuCloudConsoleWrapper(UIMenu *pMenu)
 
     /* 'Properties' action: */
     fSeparator = addAction(pMenu, action(UIActionIndexMN_M_CloudConsole_T_Details)) || fSeparator;
+
+    /* Remove if fSeparator is used: */
+    Q_UNUSED(fSeparator);
 }
 
 void UIActionPoolManager::updateMenuVMActivityOverview()
