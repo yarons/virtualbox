@@ -1,4 +1,4 @@
-/* $Id: HGCM.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: HGCM.cpp 107561 2025-01-08 12:56:13Z andreas.loeffler@oracle.com $ */
 /** @file
  * HGCM (Host-Guest Communication Manager)
  */
@@ -549,11 +549,22 @@ class HGCMMsgHeader: public HGCMMsgCore
 class HGCMMsgCall: public HGCMMsgHeader
 {
     public:
-        HGCMMsgCall() : pcCounter(NULL)
+        HGCMMsgCall()
+            : pcCounter(NULL)
+            , u32ClientId(0)
+            , u32Function(0)
+            , cParms(0)
+            , paParms(NULL)
+            , tsArrival(0)
         { }
 
         HGCMMsgCall(HGCMThread *pThread)
             : pcCounter(NULL)
+            , u32ClientId(0)
+            , u32Function(0)
+            , cParms(0)
+            , paParms(NULL)
+            , tsArrival(0)
         {
             InitializeCore(SVC_MSG_GUESTCALL, pThread);
             Initialize();
