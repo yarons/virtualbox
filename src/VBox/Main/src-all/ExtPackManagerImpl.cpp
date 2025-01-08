@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 107573 2025-01-08 14:04:50Z andreas.loeffler@oracle.com $ */
+/* $Id: ExtPackManagerImpl.cpp 107574 2025-01-08 14:07:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -176,8 +176,11 @@ typedef std::list< ComObjPtr<ExtPack> > ExtPackList;
  */
 struct ExtPackManager::Data
 {
-    Data()
-        : enmContext(VBOXEXTPACKCTX_INVALID)
+    Data() :
+#ifndef VBOX_COM_INPROC
+          pVirtualBox(NULL),
+#endif
+          enmContext(VBOXEXTPACKCTX_INVALID)
         , cUpdate(0)
     {}
 
