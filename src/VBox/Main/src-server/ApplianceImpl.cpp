@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 107292 2024-12-06 22:25:21Z brent.paulson@oracle.com $ */
+/* $Id: ApplianceImpl.cpp 107576 2025-01-08 14:33:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -520,6 +520,7 @@ void VirtualSystemDescription::FinalRelease()
 
 Appliance::Appliance()
     : mVirtualBox(NULL)
+    , m(NULL)
 {
 }
 
