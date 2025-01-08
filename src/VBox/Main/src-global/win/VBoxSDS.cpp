@@ -1,4 +1,4 @@
-/* $Id: VBoxSDS.cpp 107597 2025-01-08 16:23:20Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSDS.cpp 107598 2025-01-08 16:24:13Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxSDS - COM global service main entry (System Directory Service)
  */
@@ -151,7 +151,7 @@ public:
         m_Status.dwCheckPoint              = 0;
         m_Status.dwWaitHint                = 3000;
 
-        m_dwThreadID                       = -1;
+        m_dwThreadID                       = 0;
 
         s_pInstance = this;
     }
@@ -287,7 +287,7 @@ protected:
     virtual void onStop() throw()
     {
         setServiceStatus(SERVICE_STOP_PENDING);
-        if (m_dwThreadID != -1)
+        if (m_dwThreadID)
             ::PostThreadMessage(m_dwThreadID, WM_QUIT, 0, 0);
         LogFunc(("Windows Service stopped\n"));
     }
