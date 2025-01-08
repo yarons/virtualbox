@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VMMDevInterface.cpp 107552 2025-01-08 10:46:53Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -93,6 +93,7 @@ typedef struct DRVMAINVMMDEV
 //
 VMMDev::VMMDev(Console *console)
     : mpDrv(NULL)
+    , fSharedFolderActive(false)
     , mParent(console)
 {
     int vrc = RTSemEventCreate(&mCredentialsEvent);
