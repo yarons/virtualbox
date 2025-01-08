@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplPrivate.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: ApplianceImplPrivate.h 107577 2025-01-08 14:38:44Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Appliance private data definitions
  */
@@ -81,6 +81,7 @@ struct Appliance::Data
 {
     enum digest_T {SHA1, SHA256};
 
+    /** @todo r=andy Make up your mind if naming attributes with a m_ prefix or not. */
     Data()
       : state(Appliance::ApplianceIdle)
       , fDigestTypes(0)
@@ -102,12 +103,15 @@ struct Appliance::Data
       , fContentInfoOkay(false)
       , fContentInfoSameCert(false)
       , fContentInfoValidSignature(false)
+      , fContentInfoDoneVerification(false)
+      , fContentInfoVerifiedOkay(false)
       , fExportISOImages(false)
       , pReader(NULL)
       , ulWeightForXmlOperation(0)
       , ulWeightForManifestOperation(0)
       , ulTotalDisksMB(0)
       , cDisks(0)
+      , m_pSecretKeyStore(NULL)
       , m_cPwProvided(0)
     {
         RT_ZERO(SignerCert);
