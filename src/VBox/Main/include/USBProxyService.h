@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: USBProxyService.h 107592 2025-01-08 15:45:00Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -140,6 +140,7 @@ private:
     typedef std::list<ComObjPtr<USBProxyBackend> > USBProxyBackendList;
     /** List of active USB backends. */
     USBProxyBackendList mBackends;
+    /** Last error (IPRT style). Set to VINF_SUCCESS if no last error yet. */
     int                 mLastError;
 };
 

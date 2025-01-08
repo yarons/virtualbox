@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: USBProxyService.cpp 107592 2025-01-08 15:45:00Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -64,7 +64,7 @@ struct USBFilterData
  * Initialize data members.
  */
 USBProxyService::USBProxyService(Host *aHost)
-    : mHost(aHost), mDevices(), mBackends()
+    : mHost(aHost), mDevices(), mBackends(), mLastError(VINF_SUCCESS)
 {
     LogFlowThisFunc(("aHost=%p\n", aHost));
 }
