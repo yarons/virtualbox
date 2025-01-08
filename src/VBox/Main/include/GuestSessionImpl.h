@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestSessionImpl.h 107567 2025-01-08 13:19:31Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -438,7 +438,7 @@ private:
          * Guest Additions < VBox 4.3 have version 1, any newer version will have version 2.
          * Set to 0 if a valid Guest Additions version was not found (yet). */
         uint32_t                    mProtocolVersion;
-        /** Session timeout (in ms). */
+        /** Session timeout (in ms). Not implemented yet and thus 0. */
         uint32_t                    mTimeout;
         /** The last returned session VBox status status returned from the guest side. */
         int                         mVrc;
@@ -446,7 +446,12 @@ private:
         uint64_t                    bmObjectIds[VBOX_GUESTCTRL_MAX_OBJECTS / sizeof(uint64_t) / 8];
 
         Data(void)
-            : mpBaseEnvironment(NULL)
+            : mObjectID(0)
+            , mStatus(GuestSessionStatus_Undefined)
+            , mpBaseEnvironment(NULL)
+            , mProtocolVersion(0)
+            , mTimeout(0)
+            , mVrc(VINF_SUCCESS)
         {
             RT_ZERO(bmObjectIds);
             ASMBitSet(&bmObjectIds, VBOX_GUESTCTRL_MAX_OBJECTS - 1);    /* Reserved for the session itself? */
@@ -455,6 +460,7 @@ private:
         Data(const Data &rThat)
             : mCredentials(rThat.mCredentials)
             , mSession(rThat.mSession)
+            , mObjectID(rThat.mObjectID)
             , mStatus(rThat.mStatus)
             , mEnvironmentChanges(rThat.mEnvironmentChanges)
             , mpBaseEnvironment(NULL)
