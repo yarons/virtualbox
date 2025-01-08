@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.cpp 107226 2024-11-29 13:31:32Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestDnDPrivate.cpp 107559 2025-01-08 12:49:58Z andreas.loeffler@oracle.com $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget + GuestDnDSource.
  */
@@ -1293,6 +1293,7 @@ std::vector<DnDAction_T> GuestDnD::toMainActions(VBOXDNDACTIONLIST dndActionList
 GuestDnDBase::GuestDnDBase(VirtualBoxBase *pBase)
     : m_pBase(pBase)
     , m_fIsPending(false)
+    , m_pState(NULL)
 {
     /* Initialize public attributes. */
     m_lstFmtSupported = GuestDnDInst()->defaultFormats();
