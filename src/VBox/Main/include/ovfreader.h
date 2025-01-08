@@ -1,4 +1,4 @@
-/* $Id: ovfreader.h 107578 2025-01-08 14:40:45Z andreas.loeffler@oracle.com $ */
+/* $Id: ovfreader.h 107580 2025-01-08 14:47:23Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - OVF reader declarations.
  *
@@ -595,7 +595,8 @@ struct HardDiskController
                                                 // false for the next (e.g. IDE secondary ctler)
 
     HardDiskController()
-        : lAddress(0),
+        : system(IDE),
+          lAddress(0),
           fPrimary(true)
     { }
 };
