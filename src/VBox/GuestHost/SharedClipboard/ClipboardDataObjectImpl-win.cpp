@@ -1,4 +1,4 @@
-/* $Id: ClipboardDataObjectImpl-win.cpp 107600 2025-01-08 16:30:15Z andreas.loeffler@oracle.com $ */
+/* $Id: ClipboardDataObjectImpl-win.cpp 107602 2025-01-08 17:06:12Z alexander.eichner@oracle.com $ */
 /** @file
  * ClipboardDataObjectImpl-win.cpp - Shared Clipboard IDataObject implementation.
  */
@@ -68,7 +68,7 @@ ShClWinDataObject::ShClWinDataObject(void)
     , m_lRefCount(0)
     , m_cFormats(0)
     , m_pFormatEtc(NULL)
-    , m_pStgMedium/(NULL)
+    , m_pStgMedium(NULL)
     , m_pTransfer(NULL)
     , m_pStream(NULL)
     , m_uObjIdx(0)
