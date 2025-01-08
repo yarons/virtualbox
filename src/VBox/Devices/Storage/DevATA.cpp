@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DevATA.cpp 107546 2025-01-08 09:40:24Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -4005,9 +4005,10 @@ static void atapiR3ParseCmdPassthrough(PPDMDEVINS pDevIns, PATACONTROLLER pCtl, 
 
 static void atapiR3ParseCmd(PPDMDEVINS pDevIns, PATACONTROLLER pCtl, PATADEVSTATE s, PATADEVSTATER3 pDevR3)
 {
-    const uint8_t *pbPacket;
+#ifdef LOG_ENABLED
+    const uint8_t *pbPacket = s->abATAPICmd;
+#endif
 
-    pbPacket = s->abATAPICmd;
 # ifdef DEBUG
     Log(("%s: LUN#%d DMA=%d CMD=%#04x \"%s\"\n", __FUNCTION__, s->iLUN, s->fDMA, pbPacket[0], SCSICmdText(pbPacket[0])));
 # else /* !DEBUG */
