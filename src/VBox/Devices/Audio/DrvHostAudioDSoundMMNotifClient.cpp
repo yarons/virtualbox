@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDSoundMMNotifClient.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostAudioDSoundMMNotifClient.cpp 107595 2025-01-08 16:15:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * Host audio driver - DSound - Implementation of the IMMNotificationClient interface to detect audio endpoint changes.
  */
@@ -43,6 +43,8 @@ DrvHostAudioDSoundMMNotifClient::DrvHostAudioDSoundMMNotifClient(PPDMIHOSTAUDIOP
     : m_fDefaultIn(fDefaultIn)
     , m_fDefaultOut(fDefaultOut)
     , m_fRegisteredClient(false)
+    , m_pEnum(NULL)
+    , m_pEndpoint(NULL)
     , m_cRef(1)
     , m_pIAudioNotifyFromHost(pInterface)
 {
