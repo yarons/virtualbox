@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineSettingsStorage.cpp 107535 2025-01-08 04:59:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -638,7 +638,7 @@ bool UIMachineSettingsStorage::createStorageController(const UISettingsCacheMach
         else
         {
             /* Save controller type: */
-            if (fSuccess)
+            // if (fSuccess)
             {
                 comController.SetControllerType(newControllerData.m_guiValue.m_enmType);
                 fSuccess = comController.isOk();
@@ -657,7 +657,7 @@ bool UIMachineSettingsStorage::createStorageController(const UISettingsCacheMach
                     || newControllerData.m_guiValue.m_enmBus == KStorageBus_VirtioSCSI))
             {
                 ULONG uNewPortCount = newControllerData.m_guiValue.m_uPortCount;
-                if (fSuccess)
+                // if (fSuccess)
                 {
                     uNewPortCount = qMax(uNewPortCount, comController.GetMinPortCount());
                     fSuccess = comController.isOk();
@@ -717,7 +717,7 @@ bool UIMachineSettingsStorage::updateStorageController(const UISettingsCacheMach
         else
         {
             /* Save controller type: */
-            if (fSuccess && newControllerData.m_guiValue.m_enmType != oldControllerData.m_guiValue.m_enmType)
+            if (/*fSuccess &&*/ newControllerData.m_guiValue.m_enmType != oldControllerData.m_guiValue.m_enmType)
             {
                 comController.SetControllerType(newControllerData.m_guiValue.m_enmType);
                 fSuccess = comController.isOk();
@@ -737,7 +737,7 @@ bool UIMachineSettingsStorage::updateStorageController(const UISettingsCacheMach
                     || newControllerData.m_guiValue.m_enmBus == KStorageBus_VirtioSCSI))
             {
                 ULONG uNewPortCount = newControllerData.m_guiValue.m_uPortCount;
-                if (fSuccess)
+                // if (fSuccess)
                 {
                     uNewPortCount = qMax(uNewPortCount, comController.GetMinPortCount());
                     fSuccess = comController.isOk();
