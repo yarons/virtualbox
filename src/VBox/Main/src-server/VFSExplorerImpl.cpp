@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VFSExplorerImpl.cpp 107594 2025-01-08 16:07:21Z andreas.loeffler@oracle.com $ */
 /** @file
  * IVFSExplorer COM class implementations.
  */
@@ -74,6 +74,7 @@ struct VFSExplorer::Data
 
 VFSExplorer::VFSExplorer()
     : mVirtualBox(NULL)
+    , m(NULL)
 {
 }
 
