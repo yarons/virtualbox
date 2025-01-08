@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxSDSImpl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtualBoxSDSImpl.cpp 107596 2025-01-08 16:19:56Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Global COM Class implementation.
  */
@@ -86,11 +86,14 @@ public:
     RTPROCESS                       m_pidTheChosenOne;
     /** The tick count when the process in Windows session 0 started */
     uint32_t                        m_tickTheChosenOne;
+#ifdef WITH_WATCHER
     /** The current watcher thread index, UINT32_MAX if not watched. */
     uint32_t                        m_iWatcher;
     /** The chosen one revision number.
      * This is used to detect races while waiting for a full watcher queue.  */
     uint32_t volatile               m_iTheChosenOneRevision;
+#endif
+
 private:
     /** Reference count to make destruction safe wrt hung callers.
      * (References are retain while holding the map lock in some form, but
