@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 106291 2024-10-10 13:37:53Z vadim.galitsyn@oracle.com $ */
+/* $Id: GuestSessionImplTasks.cpp 107572 2025-01-08 13:56:35Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -1043,6 +1043,7 @@ int FsList::AddEntryFromHost(const Utf8Str &strFile, PCRTFSOBJINFO pcObjInfo)
 
 FsList::FsList(const GuestSessionTask &Task)
     : mTask(Task)
+    , mcbTotalSize(0)
 {
 }
 
