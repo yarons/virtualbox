@@ -1,4 +1,4 @@
-/* $Id: HostDriveImpl.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: HostDriveImpl.h 107582 2025-01-08 14:51:22Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - IHostDrive implementation, VBoxSVC.
  */
@@ -65,7 +65,8 @@ private:
     /** Data. */
     struct Data
     {
-        Data() : cbSector(0), cbDisk(0)
+        Data()
+            : partitioningType(PartitioningType_MBR), cbSector(0), cbDisk(0)
         {
         }
 
