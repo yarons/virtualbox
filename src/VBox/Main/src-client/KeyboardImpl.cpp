@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: KeyboardImpl.cpp 107554 2025-01-08 10:51:28Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -125,6 +125,8 @@ HRESULT Keyboard::init(Console *aParent)
     unconst(mEventSource).createObject();
     HRESULT hrc = mEventSource->init();
     AssertComRCReturnRC(hrc);
+
+    menmLeds = PDMKEYBLEDS_NONE;
 
     /* Confirm a successful initialization */
     autoInitSpan.setSucceeded();
