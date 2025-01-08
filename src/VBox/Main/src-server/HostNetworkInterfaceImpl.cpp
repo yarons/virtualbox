@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: HostNetworkInterfaceImpl.cpp 107584 2025-01-08 15:03:51Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -47,7 +47,8 @@
 /////////////////////////////////////////////////////////////////////////////
 
 HostNetworkInterface::HostNetworkInterface()
-    : mVirtualBox(NULL)
+    : mIfType(HostNetworkInterfaceType_Invalid)
+    , mVirtualBox(NULL)
 {
 }
 
