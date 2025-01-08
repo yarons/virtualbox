@@ -1,4 +1,4 @@
-/* $Id: Performance.h 107533 2025-01-07 15:45:02Z alexander.eichner@oracle.com $ */
+/* $Id: Performance.h 107588 2025-01-08 15:32:55Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Performance Classes declaration.
  */
@@ -208,7 +208,7 @@ namespace pm
     {
     public:
         CollectorGuestRequest()
-            : mCGuest(0),mDebugName(NULL) {};
+            : mCGuest(NULL), mDebugName(NULL) {};
         virtual ~CollectorGuestRequest() {};
         void setGuest(CollectorGuest *aGuest) { mCGuest = aGuest; };
         CollectorGuest *getGuest() { return mCGuest; };
