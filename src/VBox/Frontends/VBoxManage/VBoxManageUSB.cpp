@@ -1,4 +1,4 @@
-/* $Id: VBoxManageUSB.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageUSB.cpp 107575 2025-01-08 14:22:37Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -121,7 +121,8 @@ class Nullable
 {
 public:
 
-    Nullable() : mIsNull(true) {}
+    Nullable()
+        : mIsNull(true), mValue(0) {}
     Nullable(const T &aValue, bool aIsNull = false)
         : mIsNull(aIsNull), mValue(aValue) {}
 
