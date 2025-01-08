@@ -1,4 +1,4 @@
-/* $Id: DevPIC.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DevPIC.cpp 107541 2025-01-08 09:16:21Z alexander.eichner@oracle.com $ */
 /** @file
  * DevPIC - Intel 8259 Programmable Interrupt Controller (PIC) Device.
  */
@@ -444,7 +444,7 @@ static DECLCALLBACK(int) picGetInterrupt(PPDMDEVINS pDevIns, uint32_t *puTagSrc)
             *puTagSrc = pThis->aPics[0].auTags[irq2];
             pThis->aPics[0].auTags[irq2] = 0;
             Log2(("picGetInterrupt1: %x base=%x irq=%x uTagSrc=%#x\n", intno, pThis->aPics[1].irq_base, irq2, *puTagSrc));
-            irq = irq2 + 8;
+            /*irq = irq2 + 8; unused */
         }
         else
         {
