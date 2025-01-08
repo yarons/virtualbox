@@ -1,4 +1,4 @@
-/* $Id: USBDeviceFilterImpl.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: USBDeviceFilterImpl.h 107591 2025-01-08 15:41:20Z andreas.loeffler@oracle.com $ */
 /** @file
  * Declaration of USBDeviceFilter and HostUSBDeviceFilter.
  */
@@ -147,7 +147,7 @@ private:
 
     Backupable<BackupableUSBDeviceFilterData> bd;
 
-    bool m_fModified;
+    bool m_fModified; /** @todo r=andy Rename to mfModified to match the rest. */
 
     /** Used externally to indicate this filter is in the list
         (not touched by the class itself except that in init()/uninit()) */

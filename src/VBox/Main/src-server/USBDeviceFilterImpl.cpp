@@ -1,4 +1,4 @@
-/* $Id: USBDeviceFilterImpl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: USBDeviceFilterImpl.cpp 107591 2025-01-08 15:41:20Z andreas.loeffler@oracle.com $ */
 /** @file
  * Implementation of VirtualBox COM components: USBDeviceFilter and HostUSBDeviceFilter
  */
@@ -184,8 +184,10 @@ const char* USBDeviceFilter::i_describeUSBFilterIdx(USBFILTERIDX aIdx)
 ////////////////////////////////////////////////////////////////////////////////
 
 USBDeviceFilter::USBDeviceFilter()
-    : mParent(NULL),
-      mPeer(NULL)
+    : mParent(NULL)
+    , mPeer(NULL)
+    , m_fModified(false)
+    , mInList(false)
 {
 }
 
