@@ -1,4 +1,4 @@
-/* $Id: PlatformImpl.cpp 106516 2024-10-20 01:55:43Z knut.osmundsen@oracle.com $ */
+/* $Id: PlatformImpl.cpp 107590 2025-01-08 15:37:57Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform settings.
  */
@@ -58,6 +58,7 @@ struct Platform::Data
  */
 Platform::Platform()
     : mParent(NULL)
+    , m(NULL)
 {
 }
 
