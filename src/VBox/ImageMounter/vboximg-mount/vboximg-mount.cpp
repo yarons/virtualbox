@@ -1,4 +1,4 @@
-/* $Id: vboximg-mount.cpp 104692 2024-05-16 15:51:25Z sergey.dubov@oracle.com $ */
+/* $Id: vboximg-mount.cpp 107566 2025-01-08 13:14:48Z alexander.eichner@oracle.com $ */
 /** @file
  * vboximg-mount - Disk Image Flattening FUSE Program.
  */
@@ -381,8 +381,6 @@ static int vboxImgMntVfsObjQueryFromPath(const char *pszPath, PRTVFSOBJ phVfsObj
             }
             else
                 rc = VERR_NOT_FOUND;
-
-            rc = VINF_SUCCESS;
         }
         else
             rc = VERR_NOT_FOUND;
@@ -1199,6 +1197,9 @@ static int vboxImgMntImageSetup(struct fuse_args *args)
         g_VDIfThreadSync.pfnFinishWrite = vboximgThreadFinishWrite;
         vrc = VDInterfaceAdd(&g_VDIfThreadSync.Core, "vboximg_ThreadSync", VDINTERFACETYPE_THREADSYNC,
                              &g_vdioLock, sizeof(VDINTERFACETHREADSYNC), &g_pVdIfs);
+        if (RT_FAILURE(vrc))
+            return RTMsgErrorExitFailure("ERROR: Failed to create thread synchronization interface "
+                                         "for virtual disk I/O, rc=%Rrc\n", vrc);
     }
     else
         return RTMsgErrorExitFailure("ERROR: Failed to create critsects "

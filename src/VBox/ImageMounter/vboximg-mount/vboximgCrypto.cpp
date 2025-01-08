@@ -1,4 +1,4 @@
-/* $Id: vboximgCrypto.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ $Revision: 106061 $ */
+/* $Id: vboximgCrypto.cpp 107566 2025-01-08 13:14:48Z alexander.eichner@oracle.com $ $Revision: 107566 $ */
 
 /** @file
  * vboximgCypto.cpp - Disk Image Flattening FUSE Program.
@@ -57,7 +57,8 @@ SecretKey::SecretKey(const uint8_t *pbKey, size_t cbKey, bool fKeyBufNonPageable
         /* Scramble content to make retrieving the key more difficult. */
         rc = RTMemSaferScramble(this->m_pbKey, cbKey);
     }
-    else
+
+    if (RT_FAILURE(rc))
         throw rc;
 }
 
