@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: MediumImpl.h 107587 2025-01-08 15:28:11Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -447,7 +447,8 @@ struct MediumCryptoFilterSettings
           pbDek(NULL),
           cbDek(0),
           pszCipher(NULL),
-          pszCipherReturned(NULL)
+          pszCipherReturned(NULL),
+          vdFilterIfaces(NULL)
     { }
 
     bool              fCreateKeyStore;
