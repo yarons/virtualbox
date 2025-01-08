@@ -1,4 +1,4 @@
-/* $Id: DevPit-i8254.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DevPit-i8254.cpp 107543 2025-01-08 09:18:22Z alexander.eichner@oracle.com $ */
 /** @file
  * DevPIT-i8254 - Intel 8254 Programmable Interval Timer (PIT) And Dummy Speaker Device.
  */
@@ -1120,7 +1120,7 @@ static DECLCALLBACK(int) pitR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint
     pHlp->pfnSSMGetS32(pSSM, &u32Dummy);
 # endif
     if (uVersion > PIT_SAVED_STATE_VERSION_VBOX_31)
-        rc = pHlp->pfnSSMGetBool(pSSM, &pThis->fDisabledByHpet);
+        pHlp->pfnSSMGetBool(pSSM, &pThis->fDisabledByHpet);
 
     return VINF_SUCCESS;
 }
