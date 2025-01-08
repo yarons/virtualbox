@@ -1,4 +1,4 @@
-/* $Id: WebMWriter.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: WebMWriter.h 107560 2025-01-08 12:51:13Z andreas.loeffler@oracle.com $ */
 /** @file
  * WebMWriter.h - WebM container handling.
  */
@@ -357,6 +357,7 @@ public:
             , offStart(0)
             , fOpen(false)
             , tcAbsStartMs(0)
+            , tcAbsLastWrittenMs(0)
             , cBlocks(0) { }
 
         /** This cluster's ID. */
