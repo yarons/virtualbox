@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 106519 2024-10-20 02:01:39Z knut.osmundsen@oracle.com $ */
+/* $Id: MachineImpl.h 107586 2025-01-08 15:24:26Z andreas.loeffler@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -217,16 +217,17 @@ public:
         std::list<Utf8Str>  llFilesToDelete;
 
 #ifdef VBOX_WITH_FULL_VM_ENCRYPTION
-        /* Store for secret keys. */
-        SecretKeyStore      *mpKeyStore;
+        /** Store for secret keys. */
+        SecretKeyStore     *mpKeyStore;
+        /** @todo r=andy Document me ... what is encrypted? Rename to mfEncrypted. */
         BOOL                fEncrypted;
-        /* KeyId of the password encrypting the DEK */
+        /** KeyId of the password encrypting the DEK */
         com::Utf8Str        mstrKeyId;
-        /* Store containing the DEK used for encrypting the VM */
+        /** Store containing the DEK used for encrypting the VM */
         com::Utf8Str        mstrKeyStore;
-        /* KeyId of the password encrypting the DEK for log files */
+        /** KeyId of the password encrypting the DEK for log files */
         com::Utf8Str        mstrLogKeyId;
-        /* Store containing the DEK used for encrypting the VM's log files */
+        /** Store containing the DEK used for encrypting the VM's log files */
         com::Utf8Str        mstrLogKeyStore;
 #endif
     };
