@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsAudio.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineSettingsAudio.cpp 107537 2025-01-08 05:14:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsAudio class implementation.
  */
@@ -275,7 +275,7 @@ bool UIMachineSettingsAudio::saveData()
         else
         {
             /* Save whether audio is enabled: */
-            if (fSuccess && isMachineOffline() && newAudioData.m_fAudioEnabled != oldAudioData.m_fAudioEnabled)
+            if (/*fSuccess &&*/ isMachineOffline() && newAudioData.m_fAudioEnabled != oldAudioData.m_fAudioEnabled)
             {
                 comAdapter.SetEnabled(newAudioData.m_fAudioEnabled);
                 fSuccess = comAdapter.isOk();

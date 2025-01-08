@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSerial.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineSettingsSerial.cpp 107537 2025-01-08 05:14:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSerial class implementation.
  */
@@ -626,7 +626,7 @@ bool UIMachineSettingsSerial::savePortData(int iSlot)
             // If the requested host mode is changed to disconnected we should do it first.
             // That allows to automatically fulfill the requirements for some of the settings below.
             /* Save port host mode: */
-            if (   fSuccess && isMachineOffline()
+            if (   /*fSuccess &&*/ isMachineOffline()
                 && newPortData.m_hostMode != oldPortData.m_hostMode
                 && newPortData.m_hostMode == KPortMode_Disconnected)
             {

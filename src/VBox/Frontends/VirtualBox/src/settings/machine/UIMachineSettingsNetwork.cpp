@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineSettingsNetwork.cpp 107537 2025-01-08 05:14:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class implementation.
  */
@@ -997,7 +997,7 @@ bool UIMachineSettingsNetwork::saveAdapterData(int iSlot)
         else
         {
             /* Save whether the adapter is enabled: */
-            if (fSuccess && isMachineOffline() && newAdapterData.m_fAdapterEnabled != oldAdapterData.m_fAdapterEnabled)
+            if (/*fSuccess &&*/ isMachineOffline() && newAdapterData.m_fAdapterEnabled != oldAdapterData.m_fAdapterEnabled)
             {
                 comAdapter.SetEnabled(newAdapterData.m_fAdapterEnabled);
                 fSuccess = comAdapter.isOk();

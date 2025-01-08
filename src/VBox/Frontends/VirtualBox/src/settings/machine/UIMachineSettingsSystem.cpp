@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 107115 2024-11-21 16:39:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsSystem.cpp 107537 2025-01-08 05:14:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class implementation.
  */
@@ -1096,7 +1096,7 @@ bool UIMachineSettingsSystem::saveProcessorData()
                     CPlatformX86 comPlatformX86 = comPlatform.GetX86();
 
                     /* Save whether PAE is enabled: */
-                    if (fSuccess && isMachineOffline() && newSystemData.m_fEnabledPAE != oldSystemData.m_fEnabledPAE)
+                    if (/*fSuccess &&*/ isMachineOffline() && newSystemData.m_fEnabledPAE != oldSystemData.m_fEnabledPAE)
                     {
                         comPlatformX86.SetCPUProperty(KCPUPropertyTypeX86_PAE, newSystemData.m_fEnabledPAE);
                         fSuccess = comPlatformX86.isOk();
@@ -1172,7 +1172,7 @@ bool UIMachineSettingsSystem::saveAccelerationData()
                     CPlatformX86 comPlatformX86 = comPlatform.GetX86();
 
                     /* Save whether the nested paging is enabled: */
-                    if (fSuccess && isMachineOffline() && newSystemData.m_fEnabledNestedPaging != oldSystemData.m_fEnabledNestedPaging)
+                    if (/*fSuccess &&*/ isMachineOffline() && newSystemData.m_fEnabledNestedPaging != oldSystemData.m_fEnabledNestedPaging)
                     {
                         comPlatformX86.SetHWVirtExProperty(KHWVirtExPropertyType_NestedPaging, newSystemData.m_fEnabledNestedPaging);
                         fSuccess = comPlatformX86.isOk();
