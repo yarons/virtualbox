@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: PerformanceImpl.h 107589 2025-01-08 15:36:08Z andreas.loeffler@oracle.com $ */
 
 /** @file
  *
@@ -190,7 +190,8 @@ private:
 
     struct Data
     {
-        Data() : hal(0) {};
+        Data()
+            : sampler(NIL_RTTIMERLR), hal(NULL), gm(NULL) {};
 
         BaseMetricList             baseMetrics;
         MetricList                 metrics;
