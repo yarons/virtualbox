@@ -1,4 +1,4 @@
-/* $Id: ovfreader.h 106531 2024-10-20 13:53:33Z knut.osmundsen@oracle.com $ */
+/* $Id: ovfreader.h 107578 2025-01-08 14:40:45Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - OVF reader declarations.
  *
@@ -390,6 +390,7 @@ public:
         , fResourceRequired(false)
         , fAutomaticAllocation(false)
         , fAutomaticDeallocation(false)
+        , lAddress(0)
         , ullVirtualQuantity(0)
         , ullReservation(0)
         , ullLimit(0)
