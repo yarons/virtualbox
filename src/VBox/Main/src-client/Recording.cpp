@@ -1,4 +1,4 @@
-/* $Id: Recording.cpp 107225 2024-11-29 13:28:35Z andreas.loeffler@oracle.com $ */
+/* $Id: Recording.cpp 107555 2025-01-08 10:57:35Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording context code.
  *
@@ -184,9 +184,11 @@ int RecordingCursorState::Move(int32_t iX, int32_t iY)
 RecordingContext::RecordingContext(void)
     : m_pConsole(NULL)
     , m_enmState(RECORDINGSTS_UNINITIALIZED)
+    , m_WaitEvent(NIL_RTSEMEVENT)
     , m_ulCurOp(0)
     , m_cOps(0)
     , m_fShutdown(false)
+    , m_Thread(NIL_RTTHREAD)
     , m_cStreamsEnabled(0)
     , m_tsStartMs(0)
 {
