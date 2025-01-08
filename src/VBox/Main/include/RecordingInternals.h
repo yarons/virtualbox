@@ -1,4 +1,4 @@
-/* $Id: RecordingInternals.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: RecordingInternals.h 107563 2025-01-08 12:59:45Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording internals header.
  */
@@ -558,6 +558,7 @@ struct RecordingBlock
     RecordingBlock()
         : cRefs(0)
         , uFlags(RECORDINGCODEC_ENC_F_NONE)
+        , msTimestamp(0)
         , pvData(NULL)
         , cbData(0) { }
 
