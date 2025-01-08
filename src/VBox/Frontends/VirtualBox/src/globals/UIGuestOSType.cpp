@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSType.cpp 106570 2024-10-21 15:00:09Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestOSType.cpp 107603 2025-01-08 17:22:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSType class implementation.
  */
@@ -45,6 +45,15 @@
 *********************************************************************************************************************************/
 
 #ifdef VBOX_WITH_3D_ACCELERATION
+bool UIGuestOSTypeHelpers::isXpdmCompatibleOsType(const QString &strGuestOSTypeId)
+{
+    return    strGuestOSTypeId.startsWith(GUEST_OS_ID_STR_PARTIAL("WindowsXP"))
+           || strGuestOSTypeId.startsWith(GUEST_OS_ID_STR_PARTIAL("WindowsVista"))
+           || strGuestOSTypeId.startsWith(GUEST_OS_ID_STR_PARTIAL("Windows7"))
+           || strGuestOSTypeId.startsWith(GUEST_OS_ID_STR_PARTIAL("WindowsNT4"))
+           || strGuestOSTypeId.startsWith(GUEST_OS_ID_STR_PARTIAL("Windows2000"));
+}
+
 bool UIGuestOSTypeHelpers::isWddmCompatibleOsType(const QString &strGuestOSTypeId)
 {
     return    strGuestOSTypeId.startsWith(GUEST_OS_ID_STR_PARTIAL("WindowsVista"))

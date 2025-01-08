@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 107536 2025-01-08 05:03:18Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsDisplay.cpp 107603 2025-01-08 17:22:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -638,8 +638,36 @@ bool UIMachineSettingsDisplay::validate(QList<UIValidationMessage> &messages)
 
     /* Validation prerequisites: */
 #ifdef VBOX_WITH_3D_ACCELERATION
-    /* Check whether WDDM mode supported by the guest OS type: */
-    m_f3DAccelerationSupported = UIGuestOSTypeHelpers::isWddmCompatibleOsType(m_strGuestOSTypeId);
+    /* Special handling for Windows guests: */
+    if (m_strGuestOSTypeId.startsWith("Windows"))
+    {
+        switch (graphicsControllerTypeCurrent())
+        {
+            case KGraphicsControllerType_VBoxVGA:
+                m_f3DAccelerationSupported = UIGuestOSTypeHelpers::isXpdmCompatibleOsType(m_strGuestOSTypeId);
+                break;
+            case KGraphicsControllerType_VBoxSVGA:
+                m_f3DAccelerationSupported = UIGuestOSTypeHelpers::isWddmCompatibleOsType(m_strGuestOSTypeId);
+                break;
+            default:
+                break;
+        }
+    }
+    /* For the rest of guests we are using VBoxVGA (old Linuxes) or VMSVGA,
+     * it's difficult to draw the line between various guest OS types, enabling 3D always: */
+    else
+    {
+        switch (graphicsControllerTypeCurrent())
+        {
+            case KGraphicsControllerType_VBoxVGA:
+            case KGraphicsControllerType_VMSVGA:
+                m_f3DAccelerationSupported = true;
+                break;
+            default:
+                m_f3DAccelerationSupported = false;
+                break;
+        }
+    }
 
     /* Additionally make sure 3D acceleration is one of the features for current graphical controller: */
     if (m_f3DAccelerationSupported)

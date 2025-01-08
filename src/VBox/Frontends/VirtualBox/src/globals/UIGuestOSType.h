@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSType.h 105518 2024-07-26 10:11:10Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestOSType.h 107603 2025-01-08 17:22:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSType class declaration.
  */
@@ -43,6 +43,8 @@
 namespace UIGuestOSTypeHelpers
 {
 #ifdef VBOX_WITH_3D_ACCELERATION
+    /** Returns whether guest OS type with passed @a strGuestOSTypeId is XPDM compatible. */
+    SHARED_LIBRARY_STUFF bool isXpdmCompatibleOsType(const QString &strGuestOSTypeId);
     /** Returns whether guest OS type with passed @a strGuestOSTypeId is WDDM compatible. */
     SHARED_LIBRARY_STUFF bool isWddmCompatibleOsType(const QString &strGuestOSTypeId);
 #endif
