@@ -1,4 +1,4 @@
-/* $Id: UISettingsSelector.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UISettingsSelector.cpp 107538 2025-01-08 05:46:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsSelector class implementation.
  */
@@ -573,9 +573,8 @@ QModelIndex UISelectorModel::index(int iRow, int iColumn, const QModelIndex &par
     if (!hasIndex(iRow, iColumn, parentIndex))
         return QModelIndex();
 
-    UISelectorTreeViewItem *pItem = !parentIndex.isValid()
-                                  ? m_pRootItem
-                                  : indexToItem(parentIndex)->childItem(iRow);
+    UISelectorTreeViewItem *pParentItem = indexToItem(parentIndex);
+    UISelectorTreeViewItem *pItem = pParentItem ? pParentItem->childItem(iRow) : m_pRootItem;
 
     return pItem ? createIndex(iRow, iColumn, pItem) : QModelIndex();
 }
