@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 107311 2024-12-10 07:37:35Z aleksey.ilyushin@oracle.com $ */
+/* $Id: Settings.cpp 107562 2025-01-08 12:58:22Z andreas.loeffler@oracle.com $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -175,7 +175,8 @@ using namespace settings;
 struct ConfigFileBase::Data
 {
     Data()
-        : pDoc(NULL),
+        : fFileExists(false),
+          pDoc(NULL),
           pelmRoot(NULL),
           sv(SettingsVersion_Null),
           svRead(SettingsVersion_Null)
