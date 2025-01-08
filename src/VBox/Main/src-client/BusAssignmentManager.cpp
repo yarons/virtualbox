@@ -1,4 +1,4 @@
-/* $Id: BusAssignmentManager.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: BusAssignmentManager.cpp 107550 2025-01-08 10:09:53Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox bus slots assignment manager
  */
@@ -496,7 +496,11 @@ struct BusAssignmentManager::State
     PCVMMR3VTABLE    mpVMM;
 
     State()
-        : cRefCnt(1), mChipsetType(ChipsetType_Null), mpszBridgeName("unknownbridge"), mpVMM(NULL)
+        : cRefCnt(1)
+        , mChipsetType(ChipsetType_Null)
+        , mpszBridgeName("unknownbridge")
+        , mIommuType(IommuType_None)
+        , mpVMM(NULL)
     {}
     ~State()
     {}
