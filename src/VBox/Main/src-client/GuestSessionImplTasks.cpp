@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 107645 2025-01-09 10:15:43Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImplTasks.cpp 107648 2025-01-09 10:23:37Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -3461,16 +3461,12 @@ int GuestSessionTaskUpdateAdditions::Run(void)
         if (vrc == VERR_CANCELLED)
         {
             LogRel(("Guest Additions Update: Automatic update was canceled\n"));
-
-            hrc = setUpdateErrorMsg(E_ABORT,
-                                    Utf8StrFmt(tr("Operation was canceled")));
+            setUpdateErrorMsg(E_ABORT, Utf8StrFmt(tr("Operation was canceled")));
         }
         else if (vrc == VERR_TIMEOUT)
         {
             LogRel(("Guest Additions Update: Automatic update has timed out\n"));
-
-            hrc = setUpdateErrorMsg(E_FAIL,
-                                    Utf8StrFmt(tr("Operation has timed out")));
+            setUpdateErrorMsg(E_FAIL, Utf8StrFmt(tr("Operation has timed out")));
         }
         else
         {
