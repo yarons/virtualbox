@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceDarwin.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: HostDnsServiceDarwin.cpp 107676 2025-01-09 19:42:37Z alexander.eichner@oracle.com $ */
 /** @file
  * Darwin specific DNS information fetching.
  */
@@ -214,7 +214,7 @@ int HostDnsServiceDarwin::updateInfo(void)
         for (CFIndex i = 0; i < cItems; ++i)
         {
             CFStringRef serverAddressRef = (CFStringRef)CFArrayGetValueAtIndex(serverArrayRef, i);
-            if (!serverArrayRef)
+            if (!serverAddressRef)
                 continue;
 
             /** @todo r=bird: This code is messed up as CFStringGetCStringPtr is documented
@@ -238,7 +238,7 @@ int HostDnsServiceDarwin::updateInfo(void)
         for (CFIndex i = 0; i < cItems; ++i)
         {
             CFStringRef searchStringRef = (CFStringRef)CFArrayGetValueAtIndex(searchArrayRef, i);
-            if (!searchArrayRef)
+            if (!searchStringRef)
                 continue;
 
             /** @todo r=bird: This code is messed up as CFStringGetCStringPtr is documented
