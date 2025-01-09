@@ -1,4 +1,4 @@
-/* $Id: CloudGateway.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: CloudGateway.cpp 107643 2025-01-09 10:11:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * Implementation of local and cloud gateway management.
  */
@@ -189,11 +189,14 @@ HRESULT startCloudGateway(ComPtr<IVirtualBox> virtualBox, ComPtr<ICloudNetwork> 
 {
     HRESULT hrc = S_OK;
 
-    try {
+    try
+    {
         hrc = network->COMGETTER(Provider)(gateway.mCloudProvider.asOutParam());
+        AssertComRCBreakRC(hrc);
         hrc = network->COMGETTER(Profile)(gateway.mCloudProfile.asOutParam());
+        AssertComRCBreakRC(hrc);
         CloudClient client(virtualBox, gateway.mCloudProvider, gateway.mCloudProfile);
-        client.startCloudGateway(network, gateway);
+        client.startCloudGateway(network, gateway); /* Throws CloudError on failure. */
     }
     catch (CloudError e)
     {
