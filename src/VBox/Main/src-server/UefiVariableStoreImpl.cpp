@@ -1,4 +1,4 @@
-/* $Id: UefiVariableStoreImpl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UefiVariableStoreImpl.cpp 107615 2025-01-09 08:37:51Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM NVRAM store class implementation
  */
@@ -373,23 +373,26 @@ HRESULT UefiVariableStore::queryVariables(std::vector<com::Utf8Str> &aNames,
         RTDIRENTRYEX DirEntry;
 
         vrc = RTVfsDirReadEx(hVfsDir, &DirEntry, NULL, RTFSOBJATTRADD_NOTHING);
-        for (;;)
+        if (RT_SUCCESS(vrc))
         {
-            RTUUID OwnerUuid;
-            vrc = i_uefiVarStoreQueryVarOwnerUuid(DirEntry.szName, &OwnerUuid);
-            if (RT_FAILURE(vrc))
-                break;
+            for (;;)
+            {
+                RTUUID OwnerUuid;
+                vrc = i_uefiVarStoreQueryVarOwnerUuid(DirEntry.szName, &OwnerUuid);
+                if (RT_FAILURE(vrc))
+                    break;
 
-            aNames.push_back(Utf8Str(DirEntry.szName));
-            aOwnerUuids.push_back(com::Guid(OwnerUuid));
+                aNames.push_back(Utf8Str(DirEntry.szName));
+                aOwnerUuids.push_back(com::Guid(OwnerUuid));
 
-            vrc = RTVfsDirReadEx(hVfsDir, &DirEntry, NULL, RTFSOBJATTRADD_NOTHING);
-            if (RT_FAILURE(vrc))
-                break;
+                vrc = RTVfsDirReadEx(hVfsDir, &DirEntry, NULL, RTFSOBJATTRADD_NOTHING);
+                if (RT_FAILURE(vrc))
+                    break;
+            }
+
+            if (vrc == VERR_NO_MORE_FILES)
+                vrc = VINF_SUCCESS;
         }
-
-        if (vrc == VERR_NO_MORE_FILES)
-            vrc = VINF_SUCCESS;
 
         RTVfsDirRelease(hVfsDir);
     }
