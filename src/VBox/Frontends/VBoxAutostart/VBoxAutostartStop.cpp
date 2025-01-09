@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostartStop.cpp 107630 2025-01-09 09:18:34Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxAutostartStop.cpp 107631 2025-01-09 09:21:29Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service, stop machines during system shutdown.
  */
@@ -217,7 +217,7 @@ DECLHIDDEN(int) autostartStopMain(PCFGAST pCfgAst)
                         {
                             CHECK_ERROR_BREAK(console, PowerDown(progress.asOutParam()));
 
-                            hrc = showProgress(progress);
+                            showProgress(progress);
                             CHECK_PROGRESS_ERROR(progress, ("Failed to powering off machine '%ls'", strName.raw()));
                             if (FAILED(hrc))
                                 autostartSvcLogError("Powering off machine '%ls' failed with %Rhrc\n", strName.raw(), hrc);
@@ -254,6 +254,8 @@ DECLHIDDEN(int) autostartStopMain(PCFGAST pCfgAst)
                                 autostartSvcLogWarning("The guest of machine '%ls' does not support ACPI shutdown or is currently paused, saving state...\n",
                                                        strName.raw());
                                 hrc = autostartSaveVMState(console);
+                                if (FAILED(hrc))
+                                    autostartSvcLogError("Saving VM state for machine '%ls' failed with %Rhrc\n", strName.raw(), hrc);
                             }
                             break;
                         }
