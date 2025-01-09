@@ -1,4 +1,4 @@
-/* $Id: MakeAlternativeSource.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: MakeAlternativeSource.cpp 107629 2025-01-09 09:12:52Z andreas.loeffler@oracle.com $ */
 /** @file
  * MakeAlternative - Generate an Alternative BIOS Source that requires less tools.
  */
@@ -208,7 +208,7 @@ static bool disError(const char *pszFormat, ...)
 static bool disFileHeader(void)
 {
     bool fRc;
-    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ \n"
+    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 107629 2025-01-09 09:12:52Z andreas.loeffler@oracle.com $ \n"
                        ";; @file\n"
                        "; Auto Generated source file. Do not edit.\n"
                        ";\n"
@@ -1578,7 +1578,7 @@ static bool mapParseAddress(char **ppszCursor, PRTFAR16 pAddr)
         if (RT_C_IS_XDIGIT(szWord[cchAddr]))
             return false;
         szWord[cchAddr] = '\0';
-        cchWord = cchAddr;
+        /* unused: cchWord = cchAddr; */
     }
 
     /* Convert it. */
@@ -2158,7 +2158,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                char szRev[] = "$Revision: 106061 $";
+                char szRev[] = "$Revision: 107629 $";
                 char *psz = szRev;
                 while (*psz && !RT_C_IS_DIGIT(*psz))
                     psz++;
