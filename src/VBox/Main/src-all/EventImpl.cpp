@@ -1,4 +1,4 @@
-/* $Id: EventImpl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: EventImpl.cpp 107635 2025-01-09 09:27:35Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
@@ -1594,9 +1594,10 @@ STDMETHODIMP EventSourceAggregator::UnregisterListener(IEventListener *aListener
          ++it)
     {
         ComPtr<IEventSource> es = *it;
-        hrc = es->UnregisterListener(proxy);
+        es->UnregisterListener(proxy);
     }
-    hrc = mSource->UnregisterListener(aListener);
+
+    mSource->UnregisterListener(aListener);
 
     return removeProxyListener(aListener);
 
