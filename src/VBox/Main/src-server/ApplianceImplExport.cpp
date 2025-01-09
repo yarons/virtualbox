@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 107346 2024-12-12 12:01:08Z brent.paulson@oracle.com $ */
+/* $Id: ApplianceImplExport.cpp 107669 2025-01-09 16:54:30Z andreas.loeffler@oracle.com $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -2776,7 +2776,6 @@ HRESULT Appliance::i_writeFSImpl(TaskOVF *pTask, AutoWriteLockBase &writeLock, R
             Bstr uuidSource;
             hrc = pSourceDisk->COMGETTER(Id)(uuidSource.asOutParam());
             if (FAILED(hrc)) throw hrc;
-            Guid guidSource(uuidSource);
 
             // output filename
             const Utf8Str &strTargetFileNameOnly = pDiskEntry->strOvf;
