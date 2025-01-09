@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: AudioMixer.cpp 107652 2025-01-09 11:16:11Z andreas.loeffler@oracle.com $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  */
@@ -2597,19 +2597,20 @@ static int audioMixerStreamUpdateStatus(PAUDMIXSTREAM pMixStream)
             enmState = pConn->pfnStreamGetState(pConn, pStream);
             LogFunc(("[%s] re-init returns %Rrc and %s.\n", pMixStream->pszName, rc, PDMAudioStreamStateGetName(enmState)));
 
-            PAUDMIXSINK const pSink = pMixStream->pSink;
-            AssertPtr(pSink);
-            if (pSink->enmDir == PDMAUDIODIR_OUT)
+            if (RT_SUCCESS(rc))
             {
-                rc = AudioMixBufInitPeekState(&pSink->MixBuf, &pMixStream->PeekState, &pStream->Cfg.Props);
-                /** @todo we need to remember this, don't we? */
-                AssertLogRelRCReturn(rc, VINF_SUCCESS);
-            }
-            else
-            {
-                rc = AudioMixBufInitWriteState(&pSink->MixBuf, &pMixStream->WriteState, &pStream->Cfg.Props);
-                /** @todo we need to remember this, don't we? */
-                AssertLogRelRCReturn(rc, VINF_SUCCESS);
+                PAUDMIXSINK const pSink = pMixStream->pSink;
+                AssertPtr(pSink);
+                if (pSink->enmDir == PDMAUDIODIR_OUT)
+                {
+                    rc = AudioMixBufInitPeekState(&pSink->MixBuf, &pMixStream->PeekState, &pStream->Cfg.Props);
+                    AssertLogRelRCReturnStmt(rc, enmState = PDMAUDIOSTREAMSTATE_NOT_WORKING, VINF_SUCCESS);
+                }
+                else
+                {
+                    rc = AudioMixBufInitWriteState(&pSink->MixBuf, &pMixStream->WriteState, &pStream->Cfg.Props);
+                    AssertLogRelRCReturnStmt(rc, enmState = PDMAUDIOSTREAMSTATE_NOT_WORKING, VINF_SUCCESS);
+                }
             }
         }
 
