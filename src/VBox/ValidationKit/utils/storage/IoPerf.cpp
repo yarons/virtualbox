@@ -1,4 +1,4 @@
-/* $Id: IoPerf.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: IoPerf.cpp 107619 2025-01-09 08:43:45Z andreas.loeffler@oracle.com $ */
 /** @file
  * IoPerf - Storage I/O Performance Benchmark.
  */
@@ -1230,8 +1230,8 @@ int main(int argc, char *argv[])
      * Init IPRT and globals.
      */
     int rc = RTTestInitAndCreate("IoPerf", &g_hTest);
-    if (rc)
-        return rc;
+    if (RT_FAILURE(rc))
+        return RTEXITCODE_FAILURE;
 
     /*
      * Default values.
@@ -1352,7 +1352,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 106061 $";
+                char szRev[] = "$Revision: 107619 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
@@ -1397,10 +1397,14 @@ int main(int argc, char *argv[])
             else
                 rc = ioPerfDoTestMulti();
 
-            g_szDir[g_cchDir] = '\0';
-            rc = RTDirRemoveRecursive(g_szDir, RTDIRRMREC_F_CONTENT_AND_DIR | (g_fRelativeDir ? RTDIRRMREC_F_NO_ABS_PATH : 0));
             if (RT_FAILURE(rc))
-                RTTestFailed(g_hTest, "RTDirRemoveRecursive(%s,) -> %Rrc\n", g_szDir, rc);
+                RTTestFailed(g_hTest, "ioPerfDoTestXXX -> %Rrc\n", rc);
+
+            g_szDir[g_cchDir] = '\0';
+            int rc2 = RTDirRemoveRecursive(g_szDir,
+                                           RTDIRRMREC_F_CONTENT_AND_DIR | (g_fRelativeDir ? RTDIRRMREC_F_NO_ABS_PATH : 0));
+            if (RT_FAILURE(rc2))
+                RTTestFailed(g_hTest, "RTDirRemoveRecursive(%s,) -> %Rrc\n", g_szDir, rc2);
         }
         else
             RTTestFailed(g_hTest, "RTDirCreate(%s) -> %Rrc\n", g_szDir, rc);
