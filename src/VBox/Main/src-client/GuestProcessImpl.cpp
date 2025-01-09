@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestProcessImpl.cpp 107637 2025-01-09 09:37:34Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -2136,9 +2136,7 @@ HRESULT GuestProcess::terminate()
         /* Remove process from guest session list. Now only API clients
          * still can hold references to it. */
         AssertPtr(mSession);
-        int vrc2 = mSession->i_processUnregister(this);
-        if (RT_SUCCESS(vrc))
-            vrc = vrc2;
+        mSession->i_processUnregister(this);
     }
 
     LogFlowFuncLeaveRC(vrc);
