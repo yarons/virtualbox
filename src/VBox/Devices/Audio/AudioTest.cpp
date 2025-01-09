@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: AudioTest.cpp 107653 2025-01-09 11:23:44Z andreas.loeffler@oracle.com $ */
 /** @file
  * Audio testing routines.
  *
@@ -2808,8 +2808,9 @@ static int audioTestVerifyTestToneData(PAUDIOTESTVERIFYJOB pVerJob, PAUDIOTESTOB
     if (pVerJob->Opts.fNormalize)
     {
         rc = audioTestObjFileNormalize(pVerJob, &ObjA, &pVerJob->PCMProps);
-        if (RT_SUCCESS(rc))
-            rc = audioTestObjFileNormalize(pVerJob, &ObjB, &pVerJob->PCMProps);
+        CHECK_RC_MSG_MAYBE_RET(rc, pVerJob, "Normalizing object A failed");
+        rc = audioTestObjFileNormalize(pVerJob, &ObjB, &pVerJob->PCMProps);
+        CHECK_RC_MSG_MAYBE_RET(rc, pVerJob, "Normalizing object B failed");
     }
 
     /** @todo For now we only support comparison of data which do have identical PCM properties! */
