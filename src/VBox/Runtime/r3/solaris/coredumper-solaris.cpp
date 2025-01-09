@@ -1,4 +1,4 @@
-/* $Id: coredumper-solaris.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: coredumper-solaris.cpp 107613 2025-01-09 07:23:56Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IPRT - Custom Core Dumper, Solaris.
  */
@@ -1323,9 +1323,7 @@ static int rtCoreDumperSuspendThreads(PRTSOLCORE pSolCore)
     uint16_t cTries = 0;
     uint64_t aThreads[4];
     RT_ZERO(aThreads);
-    int rc = VERR_GENERAL_FAILURE;
-    void *pv = NULL;
-    size_t cb = 0;
+    int rc;
     for (cTries = 0; cTries < RT_ELEMENTS(aThreads); cTries++)
     {
         rc = rtCoreDumperForEachThread(pSolCore, &aThreads[cTries], suspendThread);
