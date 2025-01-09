@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.h 106899 2024-11-08 08:38:40Z valery.portnyagin@oracle.com $ */
+/* $Id: VirtualBoxClientImpl.h 107651 2025-01-09 11:04:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * Header file for the VirtualBoxClient (IVirtualBoxClient) class, VBoxC.
  */
@@ -34,7 +34,9 @@
 #include "VirtualBoxClientWrap.h"
 #include "EventImpl.h"
 #include "VirtualBoxTranslator.h"
-#include "ObjectsTracker.h"
+#ifdef VBOX_WITH_MAIN_OBJECT_TRACKER
+# include "ObjectsTracker.h"
+#endif
 
 #ifdef RT_OS_WINDOWS
 # include "win/resource.h"
@@ -100,7 +102,9 @@ private:
             , m_pVBoxTranslator(NULL)
             , m_pTrComponent(NULL)
 #endif
+#ifdef VBOX_WITH_MAIN_OBJECT_TRACKER
             , m_objectTrackerTask(NULL)
+#endif
         {}
 
         ~Data()
@@ -126,7 +130,9 @@ private:
         PTRCOMPONENT          m_pTrComponent;
 #endif
 
+#ifdef VBOX_WITH_MAIN_OBJECT_TRACKER
         ObjectTracker *m_objectTrackerTask;
+#endif
     };
 
     Data mData;

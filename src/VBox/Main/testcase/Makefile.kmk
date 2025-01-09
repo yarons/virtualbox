@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106895 2024-11-08 08:12:14Z valery.portnyagin@oracle.com $
+# $Id: Makefile.kmk 107651 2025-01-09 11:04:40Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the VBox API testcases.
 #
@@ -364,7 +364,6 @@ tstUnattendedScript_INCS     = \
 tstUnattendedScript_SOURCES  = \
 	tstUnattendedScript.cpp \
 	../src-server/UnattendedScript.cpp \
-	../src-all/ObjectsTracker.cpp \
 	../src-all/TextScript.cpp \
 	../src-all/VirtualBoxBase.cpp \
 	../src-all/VirtualBoxErrorInfoImpl.cpp \
