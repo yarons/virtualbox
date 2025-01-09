@@ -1,4 +1,4 @@
-/* $Id: uniread.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: uniread.cpp 107627 2025-01-09 09:10:21Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - Unicode Specification Reader.
  */
@@ -1316,21 +1316,21 @@ int main(int argc, char **argv)
      */
     rc = Stream1Init("unidata-flags.cpp");
     if (!rc)
-        rc = PrintHeader(argv[0], pszBaseDir);
+        PrintHeader(argv[0], pszBaseDir);
     if (!rc)
-        rc = PrintFlags();
+        PrintFlags();
 
     rc = Stream1Init("unidata-upper.cpp");
     if (!rc)
-        rc = PrintHeader(argv[0], pszBaseDir);
+        PrintHeader(argv[0], pszBaseDir);
     if (!rc)
-        rc = PrintUpper();
+        PrintUpper();
 
     rc = Stream1Init("unidata-lower.cpp");
     if (!rc)
-        rc = PrintHeader(argv[0], pszBaseDir);
+        PrintHeader(argv[0], pszBaseDir);
     if (!rc)
-        rc = PrintLower();
+        PrintLower();
     if (!rc)
         rc = Stream1Close();
 
