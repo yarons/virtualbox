@@ -1,4 +1,4 @@
-/* $Id: HostUSBDeviceImpl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: HostUSBDeviceImpl.cpp 107614 2025-01-09 08:35:20Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox IHostUSBDevice COM interface implementation.
  */
@@ -2023,7 +2023,7 @@ bool HostUSBDevice::i_setState(HostUSBDeviceState aNewState,
          * The final state.
          */
         case kHostUSBDeviceState_PhysDetached:
-            switch (mUniState)
+            switch (aNewState)
             {
                 case kHostUSBDeviceState_Unsupported:
                 case kHostUSBDeviceState_UsedByHost:
