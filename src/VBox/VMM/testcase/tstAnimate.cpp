@@ -1,4 +1,4 @@
-/* $Id: tstAnimate.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: tstAnimate.cpp 107677 2025-01-09 19:48:44Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Animation Testcase / Tool.
  */
@@ -882,8 +882,8 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
                     {
                         rc = EMR3SetExecutionPolicy(pUVM, EMEXECPOLICY_IEM_ALL, true); AssertReleaseRC(rc);
                         DBGFR3Info(pUVM, "cpumguest", "verbose", NULL);
-                        if (fPowerOn)
-                            rc = VMR3PowerOn(pUVM);
+
+                        rc = VMR3PowerOn(pUVM);
                         if (RT_SUCCESS(rc))
                         {
                             RTPrintf("info: VM is running\n");
