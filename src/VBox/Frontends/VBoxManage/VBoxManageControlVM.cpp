@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageControlVM.cpp 107675 2025-01-09 19:31:32Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -692,15 +692,12 @@ RTEXITCODE handleControlVM(HandlerArg *a)
                 aShutdownFlags.push_back(GuestShutdownFlag_Force);
 
             CHECK_ERROR(pGuest, Shutdown(ComSafeArrayAsInParam(aShutdownFlags)));
-            if (FAILED(hrc))
+            if (hrc == VBOX_E_NOT_SUPPORTED)
             {
-                if (hrc == VBOX_E_NOT_SUPPORTED)
-                {
-                    if (fReboot)
-                        RTMsgError(ControlVM::tr("Current installed Guest Additions don't support rebooting the guest."));
-                    else
-                        RTMsgError(ControlVM::tr("Current installed Guest Additions don't support shutting down the guest."));
-                }
+                if (fReboot)
+                    RTMsgError(ControlVM::tr("Current installed Guest Additions don't support rebooting the guest."));
+                else
+                    RTMsgError(ControlVM::tr("Current installed Guest Additions don't support shutting down the guest."));
             }
         }
 #endif
