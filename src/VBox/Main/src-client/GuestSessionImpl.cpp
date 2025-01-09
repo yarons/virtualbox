@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestSessionImpl.cpp 107636 2025-01-09 09:31:03Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -2567,7 +2567,9 @@ int GuestSession::i_onFsNotify(PVBOXGUESTCTRLHOSTCBCTX pCbCtx, PVBOXGUESTCTRLHOS
     try
     {
         GuestWaitEventPayload evPayload(dataCb.uType, &dataCb, sizeof(dataCb));
-        vrc = signalWaitEventInternal(pCbCtx, dataCb.rc, &evPayload);
+        int const vrc2 = signalWaitEventInternal(pCbCtx, dataCb.rc, &evPayload);
+        if (RT_SUCCESS(vrc))
+            vrc = vrc2;
     }
     catch (int vrcEx) /* Thrown by GuestWaitEventPayload constructor. */
     {
