@@ -1,4 +1,4 @@
-/* $Id: CPUMAllMsrs.cpp 107632 2025-01-09 09:22:03Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMAllMsrs.cpp 107633 2025-01-09 09:23:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU MSR Registers.
  */
@@ -283,7 +283,11 @@ static DECLCALLBACK(VBOXSTRICTRC) cpumMsrRd_Ia32BiosSignId(PVMCPUCC pVCpu, uint3
 {
     RT_NOREF_PV(pVCpu); RT_NOREF_PV(idMsr);
     /** @todo fake microcode update. */
-    *puValue = pRange->uValue;
+    PVM const pVM = pVCpu->CTX_SUFF(pVM);
+    if (pVM->cpum.s.GuestInfo.uMicrocodeRevision != UINT32_MAX)
+        *puValue = RT_MAKE_U64(RT_LO_U32(pRange->uValue), pVM->cpum.s.GuestInfo.uMicrocodeRevision);
+    else
+        *puValue = pRange->uValue;
     return VINF_SUCCESS;
 }
 
@@ -4378,7 +4382,11 @@ static DECLCALLBACK(VBOXSTRICTRC) cpumMsrRd_AmdK8PatchLevel(PVMCPUCC pVCpu, uint
 {
     RT_NOREF_PV(pVCpu); RT_NOREF_PV(idMsr);
     /** @todo Fake AMD microcode patching.  */
-    *puValue = pRange->uValue;
+    PVM const pVM = pVCpu->CTX_SUFF(pVM);
+    if (pVM->cpum.s.GuestInfo.uMicrocodeRevision != UINT32_MAX)
+        *puValue = RT_MAKE_U64(pVM->cpum.s.GuestInfo.uMicrocodeRevision, RT_HI_U32(pRange->uValue));
+    else
+        *puValue = pRange->uValue;
     return VINF_SUCCESS;
 }
 
