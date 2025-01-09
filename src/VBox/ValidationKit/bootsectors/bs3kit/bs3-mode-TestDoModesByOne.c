@@ -1,4 +1,4 @@
-/* $Id: bs3-mode-TestDoModesByOne.c 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-mode-TestDoModesByOne.c 107671 2025-01-09 16:57:46Z andreas.loeffler@oracle.com $ */
 /** @file
  * BS3Kit - Bs3TestDoModesByOne
  */
@@ -111,7 +111,7 @@ BS3_MODE_DEF(void, Bs3TestDoModesByOne,(PCBS3TESTMODEBYONEENTRY paEntries, size_
     {
         const char *pszFmtStr   = "Error #%u (%#x) in %s!\n";
         bool        fSkipped    = true;
-        bool const  fOnlyPaging = RT_BOOL((paEntries[i].fFlags | fFlags) & BS3TESTMODEBYONEENTRY_F_ONLY_PAGING);
+        /* Unused: bool const  fOnlyPaging = RT_BOOL((paEntries[i].fFlags | fFlags) & BS3TESTMODEBYONEENTRY_F_ONLY_PAGING); */
         bool const  fMinimal    = RT_BOOL((paEntries[i].fFlags | fFlags) & BS3TESTMODEBYONEENTRY_F_MINIMAL);
         bool const  fSkipV8086  = RT_BOOL((paEntries[i].fFlags | fFlags) & BS3TESTMODEBYONEENTRY_F_SKIP_V8086);
         bool const  fCurDoV86Modes      = fDoV86Modes && !fMinimal && !fSkipV8086;
