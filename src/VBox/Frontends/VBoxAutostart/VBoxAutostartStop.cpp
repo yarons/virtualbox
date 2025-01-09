@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostartStop.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxAutostartStop.cpp 107630 2025-01-09 09:18:34Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service, stop machines during system shutdown.
  */
@@ -209,6 +209,8 @@ DECLHIDDEN(int) autostartStopMain(PCFGAST pCfgAst)
                         case AutostopType_SaveState:
                         {
                             hrc = autostartSaveVMState(console);
+                            if (FAILED(hrc))
+                                autostartSvcLogError("Saving VM state for machine '%ls' failed with %Rhrc\n", strName.raw(), hrc);
                             break;
                         }
                         case AutostopType_PowerOff:
