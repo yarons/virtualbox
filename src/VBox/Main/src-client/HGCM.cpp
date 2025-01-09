@@ -1,4 +1,4 @@
-/* $Id: HGCM.cpp 107561 2025-01-08 12:56:13Z andreas.loeffler@oracle.com $ */
+/* $Id: HGCM.cpp 107640 2025-01-09 09:50:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * HGCM (Host-Guest Communication Manager)
  */
@@ -2657,14 +2657,13 @@ int HGCMHostRegisterServiceExtension(HGCMSVCEXTHANDLE *pHandle,
     return vrc;
 }
 
-void HGCMHostUnregisterServiceExtension(HGCMSVCEXTHANDLE handle)
+int HGCMHostUnregisterServiceExtension(HGCMSVCEXTHANDLE handle)
 {
     LogFlowFunc(("handle = %p\n", handle));
 
     /* Forward the request to the main hgcm thread. */
     HGCMMsgCore *pCoreMsg;
     int vrc = hgcmMsgAlloc(g_pHgcmThread, &pCoreMsg, HGCM_MSG_UNREGEXT, hgcmMainMessageAlloc);
-
     if (RT_SUCCESS(vrc))
     {
         /* Initialize the message. */
@@ -2676,7 +2675,7 @@ void HGCMHostUnregisterServiceExtension(HGCMSVCEXTHANDLE handle)
     }
 
     LogFlowFunc(("vrc = %Rrc\n", vrc));
-    return;
+    return vrc;
 }
 
 /* Find a service and inform it about a client connection, create a client handle.

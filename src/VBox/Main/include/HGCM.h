@@ -1,4 +1,4 @@
-/* $Id: HGCM.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: HGCM.h 107640 2025-01-09 09:50:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * HGCM - Host-Guest Communication Manager.
  */
@@ -49,7 +49,7 @@ int HGCMHostLoad(const char *pszServiceLibrary, const char *pszServiceName,
                  PUVM pUVM, PCVMMR3VTABLE pVMM, PPDMIHGCMPORT pHgcmPort);
 
 int HGCMHostRegisterServiceExtension(HGCMSVCEXTHANDLE *pHandle, const char *pszServiceName, PFNHGCMSVCEXT pfnExtension, void *pvExtension);
-void HGCMHostUnregisterServiceExtension(HGCMSVCEXTHANDLE handle);
+int HGCMHostUnregisterServiceExtension(HGCMSVCEXTHANDLE handle);
 
 int HGCMGuestConnect(PPDMIHGCMPORT pHGCMPort, PVBOXHGCMCMD pCmdPtr, const char *pszServiceName, uint32_t *pClientID);
 int HGCMGuestDisconnect(PPDMIHGCMPORT pHGCMPort, PVBOXHGCMCMD pCmdPtr, uint32_t clientID);
