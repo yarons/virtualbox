@@ -1,4 +1,4 @@
-/* $Id: CloudGateway.cpp 107643 2025-01-09 10:11:24Z andreas.loeffler@oracle.com $ */
+/* $Id: CloudGateway.cpp 107644 2025-01-09 10:11:53Z andreas.loeffler@oracle.com $ */
 /** @file
  * Implementation of local and cloud gateway management.
  */
@@ -187,7 +187,7 @@ void CloudClient::stopCloudGateway(const GatewayInfo& gateway)
 
 HRESULT startCloudGateway(ComPtr<IVirtualBox> virtualBox, ComPtr<ICloudNetwork> network, GatewayInfo& gateway)
 {
-    HRESULT hrc = S_OK;
+    HRESULT hrc;
 
     try
     {
