@@ -1,4 +1,4 @@
-/* $Id: localipc-win.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: localipc-win.cpp 107668 2025-01-09 16:52:56Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - Local IPC, Windows Implementation Using Named Pipes.
  *
@@ -208,8 +208,7 @@ static int rtLocalIpcWinCreateSession(PRTLOCALIPCSESSIONINT *ppSession, HANDLE h
         SDDL_ACE_BEGIN SDDL_ACCESS_ALLOWED L";;" L"0x0012019b"   L";;;" SDDL_EVERYONE SDDL_ACE_END
 static NTSTATUS rtLocalIpcBuildDacl(PACL pDacl, bool fServer)
 {
-    static SID_IDENTIFIER_AUTHORITY s_NtAuth    = SECURITY_NT_AUTHORITY;
-    static SID_IDENTIFIER_AUTHORITY s_WorldAuth = SECURITY_WORLD_SID_AUTHORITY;
+    static SID_IDENTIFIER_AUTHORITY s_NtAuth = SECURITY_NT_AUTHORITY;
     union
     {
         SID     Sid;
