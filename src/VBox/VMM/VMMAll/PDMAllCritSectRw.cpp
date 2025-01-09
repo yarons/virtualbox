@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSectRw.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMAllCritSectRw.cpp 107678 2025-01-09 20:19:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Read/Write Critical Section, Generic.
  */
@@ -1395,8 +1395,7 @@ static int pdmCritSectRwEnterExcl(PVMCC pVM, PPDMCRITSECTRW pThis, int rcBusy, b
 
     for (;;)
     {
-        if (   (u64State & RTCSRW_DIR_MASK) == (RTCSRW_DIR_WRITE << RTCSRW_DIR_SHIFT)
-            || (u64State & (RTCSRW_CNT_RD_MASK | RTCSRW_CNT_WR_MASK)) != 0)
+        if ((u64State & RTCSRW_DIR_MASK) == (RTCSRW_DIR_WRITE << RTCSRW_DIR_SHIFT))
         {
             /* It flows in the right direction, try follow it before it changes. */
             uint64_t c = (u64State & RTCSRW_CNT_WR_MASK) >> RTCSRW_CNT_WR_SHIFT;
