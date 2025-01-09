@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DevIchAc97.cpp 107654 2025-01-09 11:27:02Z andreas.loeffler@oracle.com $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -3191,8 +3191,8 @@ static int ichac97R3MixerSetGain(PAC97STATE pThis, PAC97STATER3 pThisCC, int ind
     LogFunc(("index=0x%x, uVal=%RU32, enmMixerCtl=%RU32\n", index, uVal, enmMixerCtl));
     LogFunc(("uCtlGainLeft=%RU8, uCtlGainRight=%RU8 ", uCtlGainLeft, uCtlGainRight));
 
-    uint8_t lVol = PDMAUDIO_VOLUME_MAX + uCtlGainLeft  * AC97_DB_FACTOR;
-    uint8_t rVol = PDMAUDIO_VOLUME_MAX + uCtlGainRight * AC97_DB_FACTOR;
+    uint8_t lVol;
+    uint8_t rVol;
 
     /* We do not currently support gain. Since AC'97 does not support attenuation
      * for the recording input, the best we can do is set the maximum volume.
@@ -3203,6 +3203,9 @@ static int ichac97R3MixerSetGain(PAC97STATE pThis, PAC97STATER3 pThisCC, int ind
      * maximum volume.
      */
     lVol = rVol = PDMAUDIO_VOLUME_MAX;
+# else
+    lVol = PDMAUDIO_VOLUME_MAX + uCtlGainLeft  * AC97_DB_FACTOR;
+    rVol = PDMAUDIO_VOLUME_MAX + uCtlGainRight * AC97_DB_FACTOR;
 # endif
 
     Log(("-> fMuted=%RTbool, lVol=%RU8, rVol=%RU8\n", fCtlMuted, lVol, rVol));
