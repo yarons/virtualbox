@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 107599 2025-01-08 16:26:57Z andreas.loeffler@oracle.com $ */
+/* $Id: VirtualBoxImpl.cpp 107616 2025-01-09 08:40:43Z alexander.eichner@oracle.com $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -2637,9 +2637,11 @@ HRESULT VirtualBox::createMedium(const com::Utf8Str &aFormat,
             if (format.isEmpty())
                 return setError(E_INVALIDARG, tr("Format must be Valid Type%s"), format.c_str());
 
+#if 0 /* unused */
             // enforce read-only for DVDs even if caller specified ReadWrite
             if (aDeviceType == DeviceType_DVD)
                 aAccessMode = AccessMode_ReadOnly;
+#endif
 
              hrc = medium->init(this,
                                 format,
@@ -5209,6 +5211,7 @@ HRESULT VirtualBox::i_saveSettings()
                 // save actual machine registry entry
                 settings::MachineRegistryEntry mre;
                 hrc = pMachine->i_saveRegistryEntry(mre);
+                if (FAILED(hrc)) throw hrc;
                 m->pMainConfigFile->llMachines.push_back(mre);
             }
         }
