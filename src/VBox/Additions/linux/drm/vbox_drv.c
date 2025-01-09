@@ -1,4 +1,4 @@
-/*  $Id: vbox_drv.c 107250 2024-12-02 11:38:33Z vadim.galitsyn@oracle.com $ */
+/*  $Id: vbox_drv.c 107628 2025-01-09 09:10:59Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -294,6 +294,9 @@ static const struct file_operations vbox_fops = {
 	.compat_ioctl = drm_compat_ioctl,
 #endif
 	.read = drm_read,
+#if RTLNX_VER_MIN(6,12,0)
+	.fop_flags = FOP_UNSIGNED_OFFSET,
+#endif
 };
 
 #if RTLNX_VER_MIN(5,9,0) || RTLNX_RHEL_MIN(8,4) || RTLNX_SUSE_MAJ_PREREQ(15,3)
