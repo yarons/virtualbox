@@ -1,4 +1,4 @@
-/* $Id: VBoxCPP.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxCPP.cpp 107650 2025-01-09 10:57:25Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Build Tool - A mini C Preprocessor.
  *
@@ -2134,6 +2134,8 @@ static RTEXITCODE vbcppMacroExpandValueWithArguments(PVBCPP pThis, PVBCPPMACROEX
                     break;
                 }
             }
+            if (rcExit != RTEXITCODE_SUCCESS)
+                break;
             rcExit = vbcppStrBufAppendN(pStrBuf, pszSrcSeq, pszSrc - pszSrcSeq);
         }
         else if (RT_C_IS_DIGIT(ch))
@@ -5747,7 +5749,7 @@ static RTEXITCODE vbcppParseOptions(PVBCPP pThis, int argc, char **argv, bool *p
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 106061 $";
+                static const char s_szRev[] = "$Revision: 107650 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 *pfExit = true;
