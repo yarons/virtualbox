@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: StorageControllerImpl.cpp 107618 2025-01-09 08:42:38Z alexander.eichner@oracle.com $ */
 /** @file
  * Implementation of IStorageController.
  */
@@ -328,6 +328,11 @@ HRESULT StorageController::setName(const com::Utf8Str &aName)
 
         Machine::MediumAttachmentList atts;
         hrc = m->pParent->i_getMediumAttachmentsOfController(m->bd->strName, atts);
+        if (FAILED(hrc))
+            return setError(hrc,
+                            tr("Querying attachments of storage controller named '%s' failed"),
+                            m->bd->strName.c_str());
+
         for (Machine::MediumAttachmentList::const_iterator
              it = atts.begin();
              it != atts.end();
