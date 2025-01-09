@@ -1,4 +1,4 @@
-/* $Id: USBTest.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: USBTest.cpp 107617 2025-01-09 08:41:09Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox host drivers - USB drivers - Filter & driver installation
  */
@@ -345,14 +345,13 @@ int usbMonitorTerm()
 
 int __cdecl main(int argc, char **argv)
 {
-    int rc;
-    int c;
-    RT_NOREF2(argc, argv);
+    RT_NOREF(argc, argv);
 
     RTPrintf("USB test\n");
 
-    rc = usbMonitorInit();
-    AssertRC(rc);
+    int rc = usbMonitorInit();
+    if (RT_FAILURE(rc))
+        return RTEXITCODE_FAILURE;
 
     void *pId1, *pId2, *pId3;
 
@@ -361,7 +360,7 @@ int __cdecl main(int argc, char **argv)
     usbMonInsertFilter(0x80EE, 0x0030, 0x0110, &pId3);
 
     RTPrintf("Waiting to capture devices... enter 'r' to run filters\n");
-    c = RTStrmGetCh(g_pStdIn);
+    int const c = RTStrmGetCh(g_pStdIn);
     if (c == 'r')
     {
         usbMonRunFilters();
@@ -377,8 +376,7 @@ int __cdecl main(int argc, char **argv)
     usbMonRemoveFilter(pId2);
     usbMonRemoveFilter(pId3);
 
-    rc = usbMonitorTerm();
-
-    return 0;
+    usbMonitorTerm();
+    return RTEXITCODE_SUCCESS;
 }
 
