@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 107572 2025-01-08 13:56:35Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImplTasks.cpp 107645 2025-01-09 10:15:43Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -1237,6 +1237,9 @@ int FsList::AddDirFromGuest(const Utf8Str &strPath, const Utf8Str &strSubDir /* 
                 default:
                     break;
             }
+
+            if (RT_FAILURE(vrc))
+                break;
         }
 
         if (   vrc      == VERR_GSTCTL_GUEST_ERROR
