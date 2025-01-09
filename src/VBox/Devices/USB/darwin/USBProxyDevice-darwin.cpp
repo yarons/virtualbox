@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-darwin.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: USBProxyDevice-darwin.cpp 107656 2025-01-09 11:43:15Z alexander.eichner@oracle.com $ */
 /** @file
  * USB device proxy - the Darwin backend.
  */
@@ -1317,10 +1317,10 @@ static DECLCALLBACK(int) usbProxyDarwinOpen(PUSBPROXYDEV pProxyDev, const char *
                              * Determine the active configuration.
                              * Can cause hangs, so drop it for now.
                              */
-                            /** @todo test Palm. */
+                            /** @todo r=aeichner Revisit this. */
                             //uint8_t u8Cfg;
                             //irc = (*ppDevI)->GetConfiguration(ppDevI, &u8Cfg);
-                            if (irc != kIOReturnNoDevice)
+                            //if (irc != kIOReturnNoDevice)
                             {
                                 CFRunLoopSourceContext CtxRunLoopSource;
                                 CtxRunLoopSource.version = 0;
@@ -1350,8 +1350,8 @@ static DECLCALLBACK(int) usbProxyDarwinOpen(PUSBPROXYDEV pProxyDev, const char *
                                     vrc = VERR_NO_MEMORY;
                                 }
                             }
-                            else
-                                vrc = VERR_VUSB_DEVICE_NOT_ATTACHED;
+                            //else
+                            //    vrc = VERR_VUSB_DEVICE_NOT_ATTACHED;
                         }
                         else
                             vrc = RTErrConvertFromDarwin(irc);
