@@ -1,4 +1,4 @@
-/* $Id: VBoxBs3ObjConverter.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxBs3ObjConverter.cpp 107634 2025-01-09 09:25:11Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 object file convert.
  */
@@ -4922,11 +4922,7 @@ static bool convertOmfWriteDebugData(POMFWRITER pThis, POMFDETAILS pOmfStuff)
             uint32_t cbSectionCovered = 0;
             uint32_t j = pSegLines->cFiles;
             while (j-- > 0)
-            {
-                uint32_t offLast = pSegLines->paFiles[j].paPairs[pSegLines->paFiles[j].cPairs - 1].offSection;
-                if (offLast > cbSectionCovered)
-                    offLast = cbSectionCovered;
-            }
+                pSegLines->paFiles[j].paPairs[pSegLines->paFiles[j].cPairs - 1].offSection;
 
             /* For simplicity and debuggability, just split the LEDATA here. */
             if (   !omfWriter_LEDataSplit(pThis)
@@ -5503,7 +5499,7 @@ int main(int argc, char **argv)
                         break;
 
                     case 'V':
-                        printf("%s\n", "$Revision: 106061 $");
+                        printf("%s\n", "$Revision: 107634 $");
                         return 0;
 
                     case '?':
