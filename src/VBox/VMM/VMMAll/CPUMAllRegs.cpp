@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: CPUMAllRegs.cpp 107721 2025-01-10 13:42:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1074,7 +1074,7 @@ VMMDECL(bool) CPUMSetGuestCpuIdPerCpuApicFeature(PVMCPU pVCpu, bool fVisible)
  */
 VMMDECL(CPUMCPUVENDOR) CPUMGetHostCpuVendor(PVM pVM)
 {
-    return (CPUMCPUVENDOR)pVM->cpum.s.HostFeatures.enmCpuVendor;
+    return (CPUMCPUVENDOR)pVM->cpum.s.HostFeatures.Common.enmCpuVendor;
 }
 
 
@@ -1086,7 +1086,7 @@ VMMDECL(CPUMCPUVENDOR) CPUMGetHostCpuVendor(PVM pVM)
  */
 VMMDECL(CPUMMICROARCH) CPUMGetHostMicroarch(PCVM pVM)
 {
-    return pVM->cpum.s.HostFeatures.enmMicroarch;
+    return pVM->cpum.s.HostFeatures.Common.enmMicroarch;
 }
 
 
@@ -1630,19 +1630,6 @@ VMM_INT_DECL(bool) CPUMIsGuestIn64BitCodeSlow(PCCPUMCTX pCtx)
 VMMDECL(void) CPUMSetChangedFlags(PVMCPU pVCpu, uint32_t fChangedAdd)
 {
     pVCpu->cpum.s.fChanged |= fChangedAdd;
-}
-
-
-/**
- * Checks if the CPU supports the XSAVE and XRSTOR instruction.
- *
- * @returns true if supported.
- * @returns false if not supported.
- * @param   pVM     The cross context VM structure.
- */
-VMMDECL(bool) CPUMSupportsXSave(PVM pVM)
-{
-    return pVM->cpum.s.HostFeatures.fXSaveRstor != 0;
 }
 
 

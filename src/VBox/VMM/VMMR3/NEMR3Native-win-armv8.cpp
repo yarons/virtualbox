@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win-armv8.cpp 107231 2024-11-29 14:47:06Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMR3Native-win-armv8.cpp 107721 2025-01-10 13:42:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -830,7 +830,7 @@ static int nemR3NativeInitSetupVm(PVM pVM)
              * Need to query the ID registers and populate CPUM,
              * these are partition wide registers and need to be queried/set with WHV_ANY_VP.
              */
-            CPUMIDREGS IdRegs; RT_ZERO(IdRegs);
+            CPUMARMV8IDREGS IdRegs; RT_ZERO(IdRegs);
 
             WHV_REGISTER_NAME  aenmNames[10];
             WHV_REGISTER_VALUE aValues[10];
@@ -869,7 +869,7 @@ static int nemR3NativeInitSetupVm(PVM pVM)
                 return rc;
 
             /* Apply any overrides to the partition. */
-            PCCPUMIDREGS pIdRegsGst = NULL;
+            PCCPUMARMV8IDREGS pIdRegsGst = NULL;
             rc = CPUMR3QueryGuestIdRegs(pVM, &pIdRegsGst);
             AssertRCReturn(rc, rc);
 

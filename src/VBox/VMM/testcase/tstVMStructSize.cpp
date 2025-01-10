@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 107215 2024-11-29 07:51:29Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVMStructSize.cpp 107721 2025-01-10 13:42:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -282,7 +282,9 @@ int main()
     }
 #endif
     CHECK_SIZE_ALIGNMENT(CPUMCTX, 64);
+#ifdef RT_ARCH_AMD64
     CHECK_SIZE_ALIGNMENT(CPUMHOSTCTX, 64);
+#endif
     CHECK_SIZE_ALIGNMENT(CPUMCTXMSRS, 64);
 
     /* pdm */

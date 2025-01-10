@@ -1,4 +1,4 @@
-/* $Id: VBoxCpuReport.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxCpuReport.cpp 107721 2025-01-10 13:42:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxCpuReport - Produces the basis for a CPU DB entry.
  */
@@ -4532,7 +4532,7 @@ static int produceCpuIdArray(const char *pszNameC, const char *pszCpuDesc)
      */
     PCPUMCPUIDLEAF  paLeaves;
     uint32_t        cLeaves;
-    int rc = CPUMCpuIdCollectLeavesX86(&paLeaves, &cLeaves);
+    int rc = CPUMCpuIdCollectLeavesFromX86Host(&paLeaves, &cLeaves);
     if (RT_FAILURE(rc))
         return RTMsgErrorRc(rc, "CPUMR3CollectCpuIdInfo failed: %Rrc\n", rc);
 

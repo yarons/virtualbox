@@ -1,4 +1,4 @@
-/* $Id: CPUMDbg.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: CPUMDbg.cpp 107721 2025-01-10 13:42:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager, Debugger & Debugging APIs.
  */
@@ -1275,7 +1275,7 @@ static DBGFREGDESC const g_aCpumRegGstDescs[] =
  * @returns VBox status code.
  * @param   pVM                 The cross context VM structure.
  */
-int cpumR3DbgInit(PVM pVM)
+DECLHIDDEN(int) cpumR3DbgInit(PVM pVM)
 {
     for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
     {

@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 107258 2024-12-03 09:46:18Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVMStruct.h 107721 2025-01-10 13:42:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -56,7 +56,6 @@
     GEN_CHECK_OFF(CPUMCPU, GuestMsrs);
     GEN_CHECK_OFF(CPUMCPU, fUseFlags);
     GEN_CHECK_OFF(CPUMCPU, fChanged);
-    GEN_CHECK_OFF(CPUMCPU, u32RetCode);
     GEN_CHECK_OFF(CPUMCPU, fCpuIdApicFeatureVisible);
 
     GEN_CHECK_SIZE(CPUMHOSTCTX);

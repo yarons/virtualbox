@@ -1,4 +1,4 @@
-/* $Id: CPUMR3Db.cpp 106636 2024-10-23 17:32:45Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: CPUMR3Db.cpp 107721 2025-01-10 13:42:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU database part.
  */
@@ -900,7 +900,7 @@ int cpumR3DbGetCpuInfo(const char *pszName, PCPUMINFO pInfo)
         rc = CPUMR3CpuIdDetectUnknownLeafMethod(&pInfo->enmUnknownCpuIdMethod, &pInfo->DefCpuId);
         if (RT_FAILURE(rc))
             return rc;
-        rc = CPUMCpuIdCollectLeavesX86(&pInfo->paCpuIdLeavesR3, &pInfo->cCpuIdLeaves);
+        rc = CPUMCpuIdCollectLeavesFromX86Host(&pInfo->paCpuIdLeavesR3, &pInfo->cCpuIdLeaves);
         if (RT_FAILURE(rc))
             return rc;
         pInfo->fMxCsrMask = CPUMR3DeterminHostMxCsrMask();
