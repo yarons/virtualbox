@@ -1,4 +1,4 @@
-/* $Id: UIInformationConfiguration.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIInformationConfiguration.cpp 107750 2025-01-10 16:11:12Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIInformationConfiguration class implementation.
  */
@@ -279,11 +279,11 @@ QString UIInformationConfiguration::tableData() const
         QITableWidgetItem *pItem = static_cast<QITableWidgetItem*>(m_pTableWidget->item(i, 1));
         if (!pItem)
             continue;
-        QString strColumn1 = pItem ? pItem->text() : QString();
+        const QString strColumn1 = pItem->text();
         pItem = static_cast<QITableWidgetItem*>(m_pTableWidget->item(i, 2));
         if (!pItem)
             continue;
-        QString strColumn2 = pItem ? pItem->text() : QString();
+        const QString strColumn2 = pItem->text();
         if (strColumn2.isEmpty())
             data << strColumn1;
         else
