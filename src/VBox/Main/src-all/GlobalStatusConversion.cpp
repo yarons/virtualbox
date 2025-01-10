@@ -1,4 +1,4 @@
-/* $Id: GlobalStatusConversion.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: GlobalStatusConversion.cpp 107697 2025-01-10 10:25:34Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM global definitions - status code conversion.
  *
@@ -128,10 +128,8 @@ Global::vboxStatusCodeToCOM(int aVBoxStatus)
                 return S_OK;
 
             /* try categorize it */
-            if (   aVBoxStatus < 0
-                && (   aVBoxStatus > -1000
-                    || (aVBoxStatus < -22000 && aVBoxStatus > -32766) )
-               )
+            if (   aVBoxStatus > -1000
+                || (aVBoxStatus < -22000 && aVBoxStatus > -32766))
                 return VBOX_E_IPRT_ERROR;
             if (    aVBoxStatus <  VERR_PDM_NO_SUCH_LUN / 100 * 10
                 &&  aVBoxStatus >  VERR_PDM_NO_SUCH_LUN / 100 * 10 - 100)
