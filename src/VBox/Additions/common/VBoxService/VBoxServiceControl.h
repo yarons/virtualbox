@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceControl.h 107718 2025-01-10 13:20:55Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxServiceControl.h - Internal guest control definitions.
  */
@@ -323,7 +323,7 @@ extern PVBOXSERVICECTRLPROCESS  VGSvcGstCtrlSessionRetainProcess(PVBOXSERVICECTR
 extern int                      VGSvcGstCtrlSessionClose(PVBOXSERVICECTRLSESSION pSession);
 extern int                      VGSvcGstCtrlSessionDestroy(PVBOXSERVICECTRLSESSION pSession);
 extern int                      VGSvcGstCtrlSessionInit(PVBOXSERVICECTRLSESSION pSession, uint32_t uFlags);
-extern int                      VGSvcGstCtrlSessionHandler(PVBOXSERVICECTRLSESSION pSession, uint32_t uMsg, PVBGLR3GUESTCTRLCMDCTX pHostCtx, void *pvScratchBuf, size_t cbScratchBuf, volatile bool *pfShutdown);
+extern int                      VGSvcGstCtrlSessionHandler(PVBOXSERVICECTRLSESSION pSession, uint32_t uMsg, PVBGLR3GUESTCTRLCMDCTX pHostCtx, void **ppvScratchBuf, uint32_t *pcbScratchBuf, volatile bool *pfShutdown);
 extern int                      VGSvcGstCtrlSessionProcessAdd(PVBOXSERVICECTRLSESSION pSession, PVBOXSERVICECTRLPROCESS pProcess);
 extern int                      VGSvcGstCtrlSessionProcessRemove(PVBOXSERVICECTRLSESSION pSession, PVBOXSERVICECTRLPROCESS pProcess);
 extern int                      VGSvcGstCtrlSessionProcessStartAllowed(const PVBOXSERVICECTRLSESSION pSession, bool *pfAllowed);
