@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 107537 2025-01-08 05:14:33Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsGeneral.cpp 107753 2025-01-10 16:16:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -960,7 +960,7 @@ bool UIMachineSettingsGeneral::saveEncryptionData()
 
                     /* Get medium id for further activities: */
                     QUuid uMediumId;
-                    if (fSuccess)
+                    // if (fSuccess)
                     {
                         uMediumId = comMedium.GetId();
                         fSuccess = comMedium.isOk();
