@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVMLogPage.cpp 107761 2025-01-10 16:43:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -214,6 +214,7 @@ QTextDocument* UIVMLogPage::document()
 void UIVMLogPage::cleanup()
 {
     delete m_pBookmarkManager;
+    m_pBookmarkManager = 0;
 }
 
 void UIVMLogPage::setLogContent(const QString &strLogContent, bool fError)
