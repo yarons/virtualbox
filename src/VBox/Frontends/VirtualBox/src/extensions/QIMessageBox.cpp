@@ -1,4 +1,4 @@
-/* $Id: QIMessageBox.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: QIMessageBox.cpp 107709 2025-01-10 12:38:23Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIMessageBox class implementation.
  */
@@ -413,7 +413,7 @@ QString QIMessageBox::compressLongWords(QString strText)
         QString strNewText = strText;
         const QString strFound = mt.captured();
         strNewText.replace(iPosition, strFound.size(), strFound.left(50) + "..." + strFound.right(50));
-        fChangeAllowed = fChangeAllowed && strText != strNewText;
+        fChangeAllowed = strText != strNewText;
         strText = strNewText;
         mt = re.match(strText);
         iPosition = mt.capturedStart();
