@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceToolBox.cpp 107756 2025-01-10 16:29:28Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -906,7 +906,6 @@ static RTEXITCODE vgsvcToolboxLs(int argc, char **argv)
                           1 /*iFirst*/, RTGETOPTINIT_FLAGS_OPTS_FIRST);
     AssertRCReturn(rc, RTEXITCODE_INIT);
 
-    bool     fVerbose     = false;
     uint32_t fFlags       = VBOXSERVICETOOLBOXLSFLAG_NONE;
     uint32_t fOutputFlags = VBOXSERVICETOOLBOXOUTPUTFLAG_NONE;
 
@@ -937,7 +936,7 @@ static RTEXITCODE vgsvcToolboxLs(int argc, char **argv)
                 break;
 
             case VBOXSERVICETOOLBOXOPT_VERBOSE:
-                fVerbose = true;
+                /* Not implemented, ignore. */
                 break;
 
             case 'V':
