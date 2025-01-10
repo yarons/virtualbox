@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIFileManagerTable.cpp 107741 2025-01-10 15:31:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -810,8 +810,6 @@ void UIFileManagerTable::sltDelete()
     if (!m_pView || !m_pModel)
         return;
 
-    if (!m_pView || !m_pModel)
-        return;
     QItemSelectionModel *selectionModel =  m_pView->selectionModel();
     if (!selectionModel)
         return;
