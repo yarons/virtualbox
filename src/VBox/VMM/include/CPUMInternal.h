@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 107721 2025-01-10 13:42:28Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMInternal.h 107771 2025-01-10 20:02:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -527,7 +527,7 @@ typedef struct CPUMCPU
      *  (?) bits are visible or not.  (The APIC is responsible for setting this
      *  when loading state, so we won't save it.) */
     bool                    fCpuIdApicFeatureVisible;
-    uint8_t                 abPadding[7];
+    uint8_t                 abPadding[7+8];
 
     /** Old hypervisor context, only used for combined DRx values now.
      * Must be aligned on a 64-byte boundary. */
