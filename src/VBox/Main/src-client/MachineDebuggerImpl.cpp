@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 107565 2025-01-08 13:09:10Z andreas.loeffler@oracle.com $ */
+/* $Id: MachineDebuggerImpl.cpp 107680 2025-01-10 09:41:10Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox IMachineDebugger COM class implementation (VBoxC).
  */
@@ -58,6 +58,7 @@ MachineDebugger::MachineDebugger()
     , mLogEnabledQueued(-1)
     , mVirtualTimeRateQueued(UINT32_MAX)
     , mFlushMode(false)
+    , m_hSampleReport(NULL)
 {
 }
 
