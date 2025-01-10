@@ -1,4 +1,4 @@
-/* $Id: ldrELFRelocatable.cpp.h 107144 2024-11-22 14:09:33Z alexander.eichner@oracle.com $ */
+/* $Id: ldrELFRelocatable.cpp.h 107739 2025-01-10 15:26:53Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Binary Image Loader, Template for ELF Relocatable Images.
  */
@@ -1428,7 +1428,6 @@ static DECLCALLBACK(int) RTLDRELF_NAME(EnumSegments)(PRTLDRMODINTERNAL pMod, PFN
      * Do the enumeration.
      */
     char            szName[32];
-    Elf_Addr        uPrevMappedRva = 0;
     const Elf_Shdr *paShdrs    = pModElf->paShdrs;
     const Elf_Shdr *paOrgShdrs = pModElf->paOrgShdrs;
     for (unsigned iShdr = pModElf->iFirstSect; iShdr < pModElf->Ehdr.e_shnum; iShdr++)
@@ -1468,7 +1467,6 @@ static DECLCALLBACK(int) RTLDRELF_NAME(EnumSegments)(PRTLDRMODINTERNAL pMod, PFN
                 Seg.cbMapped = pShdr2->sh_addr - paShdrs[iShdr].sh_addr;
             else
                 Seg.cbMapped = pModElf->cbImage - paShdrs[iShdr].sh_addr;
-            uPrevMappedRva = Seg.RVA;
         }
         else
         {
