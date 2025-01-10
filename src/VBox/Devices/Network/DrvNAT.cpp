@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 107688 2025-01-10 09:56:02Z alexander.eichner@oracle.com $ */
+/* $Id: DrvNAT.cpp 107689 2025-01-10 09:57:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -1607,7 +1607,7 @@ static DECLCALLBACK(int) drvNATConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
 //#ifdef VBOX_WITH_DNSMAPPING_IN_HOSTRESOLVER
                                   "|HostResolverMappings"
 //#endif
-                                  "|ForwardBroadcast"
+                                  "|ForwardBroadcast" /* Not used, for the libslirp variant. */
                                   , "PortForwarding");
 
     /*
