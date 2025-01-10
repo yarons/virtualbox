@@ -1,4 +1,4 @@
-/* $Id: PlatformBase.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: PlatformBase.h 107685 2025-01-10 09:49:18Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Abstract base platform, used by the specific platform implementations (x86, ARM).
  */
@@ -46,6 +46,7 @@ public:
     PlatformBase()
         : mParent(NULL)
         , mMachine(NULL)
+        , m(NULL)
     {
 
     }
