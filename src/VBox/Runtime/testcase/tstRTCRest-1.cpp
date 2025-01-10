@@ -1,4 +1,4 @@
-/* $Id: tstRTCRest-1.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTCRest-1.cpp 107766 2025-01-10 17:15:07Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT Testcase - REST C++ classes.
  */
@@ -1830,8 +1830,6 @@ static void verifyMap(RTCRestStringMap<MyRestInt16> const &rMap, int iLine, unsi
                                   iLine, pszKey, pObj->m_iValue, iValue);
                 fFound |= RT_BIT_64(i);
                 fFoundIt = true;
-                va_end(va);
-                return;
             }
         }
         va_end(va);
