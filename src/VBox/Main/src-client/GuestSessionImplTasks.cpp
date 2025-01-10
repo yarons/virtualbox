@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 107735 2025-01-10 15:20:08Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImplTasks.cpp 107737 2025-01-10 15:21:51Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -3450,7 +3450,7 @@ int GuestSessionTaskUpdateAdditions::Run(void)
                     if (RT_SUCCESS(vrc))
                     {
                         LogRel(("Guest Additions Update: Automatic update succeeded\n"));
-                        hrc = setProgressSuccess();
+                        vrc = setProgressSuccess();
                     }
                 }
             }
