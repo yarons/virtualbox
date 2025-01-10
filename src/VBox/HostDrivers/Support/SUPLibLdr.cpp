@@ -1,4 +1,4 @@
-/* $Id: SUPLibLdr.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPLibLdr.cpp 107746 2025-01-10 15:51:54Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Loader related bits.
  */
@@ -479,7 +479,6 @@ static DECLCALLBACK(int) supLoadModuleCompileSegmentsCB(RTLDRMOD hLdrMod, PCRTLD
             uint32_t const cbCommon = PAGE_SIZE - (uRvaSeg & PAGE_OFFSET_MASK);
             if (cbCommon >= cbMapped)
             {
-                fProt |= pArgs->fProt;
                 pArgs->uEndRva = uRvaSeg + cbMapped;
                 return VINF_SUCCESS; /* New segment was smaller than a page. */
             }
