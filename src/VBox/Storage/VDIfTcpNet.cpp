@@ -1,4 +1,4 @@
-/* $Id: VDIfTcpNet.cpp 107760 2025-01-10 16:41:32Z alexander.eichner@oracle.com $ */
+/* $Id: VDIfTcpNet.cpp 107764 2025-01-10 16:48:11Z alexander.eichner@oracle.com $ */
 /** @file
  * VD - Virtual disk container implementation, Default TCP/IP interface implementation.
  */
@@ -548,7 +548,7 @@ static DECLCALLBACK(int) vdIfTcpNetPoke(VDSOCKET hVdSock)
     if (ASMAtomicReadBool(&pSockInt->fWaiting))
     {
         int rc = RTPipeWrite(pSockInt->hPipeW, "", 1, &cbWritten);
-        Assert(RT_SUCCESS(rc) || cbWritten == 0);
+        Assert(RT_SUCCESS(rc) || cbWritten == 0); RT_NOREF(rc);
     }
 
     return VINF_SUCCESS;
