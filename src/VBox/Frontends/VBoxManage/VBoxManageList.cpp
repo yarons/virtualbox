@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageList.cpp 107696 2025-01-10 10:13:33Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -399,6 +399,8 @@ static HRESULT listMedia(const ComPtr<IVirtualBox> pVirtualBox,
         ComPtr<IMedium> pMedium = aMedia[i];
 
         hrc = showMediumInfo(pVirtualBox, pMedium, pszParentUUIDStr, fOptLong);
+        if (FAILED(hrc)) /* Error message should be shown already */
+            break;
 
         RTPrintf("\n");
 
