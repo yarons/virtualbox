@@ -1,4 +1,4 @@
-/* $Id: tarcmd.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: tarcmd.cpp 107700 2025-01-10 10:41:11Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - A mini TAR Command.
  */
@@ -493,6 +493,9 @@ static RTEXITCODE rtZipTarCmdArchiveDirSub(PRTZIPTARCMDOPS pOpts, RTVFSFSSTREAM 
                 break;
             }
         }
+
+        if (RT_FAILURE(rc))
+            break;
     }
 
     RTVfsDirRelease(hVfsIoDir);
