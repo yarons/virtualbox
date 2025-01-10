@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 107743 2025-01-10 15:41:35Z alexander.eichner@oracle.com $ */
+/* $Id: VMDK.cpp 107744 2025-01-10 15:45:10Z alexander.eichner@oracle.com $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -857,6 +857,8 @@ DECLINLINE(int) vmdkFileInflateSync(PVMDKIMAGE pImage, PVMDKEXTENT pExtent,
                                           + RT_UOFFSETOF(VMDKMARKER, uType),
                                           512)
                                - RT_UOFFSETOF(VMDKMARKER, uType));
+    if (RT_FAILURE(rc))
+        return vdIfError(pImage->pIfError, rc, RT_SRC_POS, N_("VMDK: Failed to read data from compressed image '%s'"), pExtent->pszFullname);
 
     if (puLBA)
         *puLBA = RT_LE2H_U64(pMarker->uSector);
