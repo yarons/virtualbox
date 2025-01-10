@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMediumManager.cpp 107706 2025-01-10 11:27:46Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -312,6 +312,7 @@ void UIMediumManagerWidget::sltApplyMediumDetailsChanges()
     {
         /* Assign new medium size: */
         UINotificationProgressMediumResize *pNotification = new UINotificationProgressMediumResize(comMedium,
+                                                                                                   oldData.m_options.m_uLogicalSize,
                                                                                                    newData.m_options.m_uLogicalSize);
         connect(pNotification, &UINotificationProgressMediumResize::sigProgressFinished,
                 this, &UIMediumManagerWidget::sltHandleResizeProgressFinished);

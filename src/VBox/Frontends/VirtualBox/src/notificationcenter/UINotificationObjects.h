@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 107113 2024-11-21 15:44:25Z serkan.bayraktar@oracle.com $ */
+/* $Id: UINotificationObjects.h 107706 2025-01-10 11:27:46Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -902,9 +902,11 @@ public:
 
     /** Constructs medium resize notification-progress.
       * @param  comMedium  Brings the medium being resized.
-      * @param  uSize      Brings the desired size. */
+      * @param  uOldSize   Brings previous medium size.
+      * @param  uNewSize   Brings desired medium size. */
     UINotificationProgressMediumResize(const CMedium &comMedium,
-                                       qulonglong uSize);
+                                       qulonglong uOldSize,
+                                       qulonglong uNewSize);
 
 protected:
 

@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 107113 2024-11-21 15:44:25Z serkan.bayraktar@oracle.com $ */
+/* $Id: UINotificationObjects.cpp 107706 2025-01-10 11:27:46Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -2040,9 +2040,11 @@ CProgress UINotificationProgressMediumMove::createProgress(COMResult &comResult)
 *********************************************************************************************************************************/
 
 UINotificationProgressMediumResize::UINotificationProgressMediumResize(const CMedium &comMedium,
-                                                                       qulonglong uSize)
+                                                                       qulonglong uOldSize,
+                                                                       qulonglong uNewSize)
     : m_comMedium(comMedium)
-    , m_uTo(uSize)
+    , m_uFrom(uOldSize)
+    , m_uTo(uNewSize)
 {
 }
 
