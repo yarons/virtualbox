@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 107265 2024-12-04 15:20:14Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMPhys.cpp 107694 2025-01-10 10:06:36Z alexander.eichner@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -4208,7 +4208,7 @@ VMMR3_INT_DECL(RTGCPHYS) PGMR3PhysMmio2GetMappingAddress(PVM pVM, PPDMDEVINS pDe
         GCPhysRet = pVM->pgm.s.aMmio2Ranges[idxFirst].GCPhys;
 
     PGM_UNLOCK(pVM);
-    return NIL_RTGCPHYS;
+    return GCPhysRet;
 }
 
 
