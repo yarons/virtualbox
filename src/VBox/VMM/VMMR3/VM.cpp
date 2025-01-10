@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 107265 2024-12-04 15:20:14Z knut.osmundsen@oracle.com $ */
+/* $Id: VM.cpp 107732 2025-01-10 14:50:40Z alexander.eichner@oracle.com $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -3807,7 +3807,6 @@ DECLCALLBACK(void) vmR3SetErrorUV(PUVM pUVM, int rc, RT_SRC_POS_DECL, const char
     /*
      * Call the at error callbacks.
      */
-    bool fCalledSomeone = false;
     RTCritSectEnter(&pUVM->vm.s.AtErrorCritSect);
     ASMAtomicIncU32(&pUVM->vm.s.cErrors);
     for (PVMATERROR pCur = pUVM->vm.s.pAtError; pCur; pCur = pCur->pNext)
@@ -3816,7 +3815,6 @@ DECLCALLBACK(void) vmR3SetErrorUV(PUVM pUVM, int rc, RT_SRC_POS_DECL, const char
         va_copy(va2, *pArgs);
         pCur->pfnAtError(pUVM, pCur->pvUser, rc, RT_SRC_POS_ARGS, pszFormat, va2);
         va_end(va2);
-        fCalledSomeone = true;
     }
     RTCritSectLeave(&pUVM->vm.s.AtErrorCritSect);
 }
