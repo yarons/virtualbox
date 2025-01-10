@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: clipboard-transfers.cpp 107693 2025-01-10 10:05:50Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Common clipboard transfer handling code.
  */
@@ -2603,7 +2603,8 @@ int ShClTransferWaitForStatus(PSHCLTRANSFER pTransfer, RTMSINTERVAL msTimeout, S
         if (enmCurStatus == enmStatus)
             break;
 
-        msLeft -= RT_MIN(msLeft, RTTimeMilliTS() - tsStartMs);
+        uint64_t const msElapsed = RTTimeMilliTS() - tsStartMs;
+        msLeft -= RT_MIN(msLeft, msElapsed);
         if (msLeft == 0)
         {
             rc = VERR_TIMEOUT;
