@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 107726 2025-01-10 13:58:47Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceControlSession.cpp 107727 2025-01-10 13:59:58Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -3201,7 +3201,7 @@ int VGSvcGstCtrlSessionProcessAdd(PVBOXSERVICECTRLSESSION pSession, PVBOXSERVICE
             rc = rc2;
     }
 
-    return VINF_SUCCESS;
+    return rc;
 }
 
 /**
