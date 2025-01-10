@@ -1,4 +1,4 @@
-/* $Id: VBoxBs3ObjConverter.cpp 107634 2025-01-09 09:25:11Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxBs3ObjConverter.cpp 107686 2025-01-10 09:53:05Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 object file convert.
  */
@@ -4640,7 +4640,6 @@ static bool omfDetails_AddSegDefIfNeeded(POMFDETAILS pOmfStuff, uint8_t bSegAttr
         {
             if (   pSegDef->bSegAttr   != bSegAttr
                 || pSegDef->f32bitRec  != fRec32
-                || pSegDef->idxName    != idxSegName
                 || pSegDef->idxClass   != idxSegClass
                 || pSegDef->idxOverlay != idxOverlay)
                 return error(pOmfStuff->pszFile,
@@ -5499,7 +5498,7 @@ int main(int argc, char **argv)
                         break;
 
                     case 'V':
-                        printf("%s\n", "$Revision: 107634 $");
+                        printf("%s\n", "$Revision: 107686 $");
                         return 0;
 
                     case '?':
