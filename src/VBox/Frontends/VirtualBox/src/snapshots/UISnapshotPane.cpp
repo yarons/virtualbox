@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UISnapshotPane.cpp 107759 2025-01-10 16:38:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -1626,7 +1626,6 @@ void UISnapshotPane::updateActionStates()
         && m_operationAllowed.value(pSnapshotItem->machineID())
         && fCanTakeDeleteSnapshot
         && m_currentSnapshotItems.value(pSnapshotItem->machineID())
-        && pSnapshotItem
         && !pSnapshotItem->isCurrentStateItem()
     );
 
