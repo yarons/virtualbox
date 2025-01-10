@@ -1,4 +1,4 @@
-/* $Id: dir.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: dir.cpp 107687 2025-01-10 09:55:06Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - Directory Manipulation, Part 1.
  */
@@ -102,7 +102,7 @@ RTDECL(int) RTDirCreateFullPathEx(const char *pszPath, RTFMODE fMode, uint32_t f
         char *psz2 = strchr(psz, '/');
         psz = strchr(psz, RTPATH_SLASH);
         if (psz2 && (!psz || (uintptr_t)psz2 < (uintptr_t)psz))
-            psz = psz;
+            psz = psz2;
 #else
         psz = strchr(psz, RTPATH_SLASH);
 #endif
