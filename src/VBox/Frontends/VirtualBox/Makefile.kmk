@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 107387 2024-12-16 17:43:57Z sergey.dubov@oracle.com $
+# $Id: Makefile.kmk 107769 2025-01-10 17:34:15Z sergey.dubov@oracle.com $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -958,7 +958,6 @@ UICommon_QT_MOCHDRS = \
 	src/widgets/UIMediumSizeEditor.h \
 	src/widgets/UIMenuBar.h \
 	src/widgets/UIPaneContainer.h \
-	src/widgets/UIPopupBox.h \
 	src/widgets/UIPopupPane.h \
 	src/widgets/UIPopupPaneButtonPane.h \
 	src/widgets/UIPopupPaneMessage.h \
@@ -1551,7 +1550,6 @@ UICommon_SOURCES = \
 	src/widgets/UIMediumSizeEditor.cpp \
 	src/widgets/UIMenuBar.cpp \
 	src/widgets/UIPaneContainer.cpp \
-	src/widgets/UIPopupBox.cpp \
 	src/widgets/UIPopupPane.cpp \
 	src/widgets/UIPopupPaneButtonPane.cpp \
 	src/widgets/UIPopupPaneMessage.cpp \
