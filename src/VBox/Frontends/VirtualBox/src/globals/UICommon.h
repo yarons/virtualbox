@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 106350 2024-10-16 10:03:28Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICommon.h 107770 2025-01-10 17:35:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -464,8 +464,10 @@ private:
 
     /** @name Font scaling related variables.
      * @{ */
-       int iOriginalFontPixelSize;
-       int iOriginalFontPointSize;
+        /** Holds the original font pixel size. */
+        int  m_iOriginalFontPixelSize;
+        /** Holds the original font point size. */
+        int  m_iOriginalFontPointSize;
     /** @} */
 
     /** Allows for shortcut access. */
