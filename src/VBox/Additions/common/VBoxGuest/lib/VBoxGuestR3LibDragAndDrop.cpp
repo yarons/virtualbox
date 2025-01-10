@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 106671 2024-10-24 14:06:28Z vadim.galitsyn@oracle.com $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 107768 2025-01-10 17:30:05Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -650,8 +650,7 @@ static int vbglR3DnDHGRecvURIData(PVBGLR3GUESTDNDCMDCTX pCtx, PVBOXDNDSNDDATAHDR
         rc = VINF_SUCCESS;
 
     /* Delete temp buffer again. */
-    if (pvChunk)
-        RTMemFree(pvChunk);
+    RTMemFree(pvChunk);
 
     /* Cleanup on failure or if the user has canceled the operation or
      * something else went wrong. */
