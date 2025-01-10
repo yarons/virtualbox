@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceControlSession.cpp 107723 2025-01-10 13:44:14Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -1356,7 +1356,7 @@ static int vgsvcGstCtrlSessionHandleDirCreate(const PVBOXSERVICECTRLSESSION pSes
         if (!(fCreate & ~GSTCTL_CREATEDIRECTORY_F_VALID_MASK))
         {
             /* Translate flags. */
-            int fCreateRuntime = 0; /* RTDIRCREATE_FLAGS_XXX */
+            uint32_t fCreateRuntime = 0; /* RTDIRCREATE_FLAGS_XXX */
             if (fCreate & GSTCTL_CREATEDIRECTORY_F_NO_SYMLINKS)
                 fCreateRuntime |= RTDIRCREATE_FLAGS_NO_SYMLINKS;
             if (fCreate & GSTCTL_CREATEDIRECTORY_F_IGNORE_UMASK)
