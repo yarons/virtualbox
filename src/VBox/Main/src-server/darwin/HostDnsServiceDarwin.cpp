@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceDarwin.cpp 107676 2025-01-09 19:42:37Z alexander.eichner@oracle.com $ */
+/* $Id: HostDnsServiceDarwin.cpp 107684 2025-01-10 09:48:08Z alexander.eichner@oracle.com $ */
 /** @file
  * Darwin specific DNS information fetching.
  */
@@ -45,7 +45,12 @@
 struct HostDnsServiceDarwin::Data
 {
     Data()
-        : m_fStop(false) { }
+        : m_store(NULL)
+        , m_DnsWatcher(NULL)
+        , m_RunLoopRef(NULL)
+        , m_SourceStop(NULL)
+        , m_fStop(false) 
+        , m_evtStop(NIL_RTSEMEVENT) { }
 
     SCDynamicStoreRef m_store;
     CFRunLoopSourceRef m_DnsWatcher;
