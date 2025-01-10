@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxInternalManage.cpp 107728 2025-01-10 14:02:06Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -1592,7 +1592,6 @@ static RTEXITCODE CmdConvertToRaw(int argc, char **argv, ComPtr<IVirtualBox> aVi
     }
     else
     {
-        vrc = VERR_NO_MEMORY;
         VDCloseAll(pDisk);
         if (!fWriteToStdOut)
         {
