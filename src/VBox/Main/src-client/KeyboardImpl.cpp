@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 107554 2025-01-08 10:51:28Z andreas.loeffler@oracle.com $ */
+/* $Id: KeyboardImpl.cpp 107681 2025-01-10 09:42:48Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -80,7 +80,8 @@ typedef struct DRVMAINKEYBOARD
 ////////////////////////////////////////////////////////////////////////////////
 
 Keyboard::Keyboard()
-    : mParent(NULL)
+    : mParent(NULL),
+    , menmLeds(PDMKEYBLEDS_NONE)
 {
 }
 
@@ -91,7 +92,6 @@ Keyboard::~Keyboard()
 HRESULT Keyboard::FinalConstruct()
 {
     RT_ZERO(mpDrv);
-    menmLeds = PDMKEYBLEDS_NONE;
     return BaseFinalConstruct();
 }
 
