@@ -1,4 +1,4 @@
-/* $Id: pxdns.c 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: pxdns.c 107698 2025-01-10 10:30:42Z alexander.eichner@oracle.com $ */
 /** @file
  * NAT Network - DNS proxy.
  */
@@ -405,9 +405,8 @@ pxdns_create_resolver_sockaddrs(struct pxdns *pxdns, const char **nameservers)
     }
 
     if (nresolvers == 0) {
-        if (resolvers != NULL) {
-            free(resolvers);
-        }
+        Assert(resolvers);
+        free(resolvers);
         resolvers = NULL;
     }
 
