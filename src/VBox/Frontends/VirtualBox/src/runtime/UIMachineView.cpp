@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 107529 2025-01-07 15:10:02Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.cpp 107712 2025-01-10 13:08:38Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -1236,9 +1236,12 @@ UIMachineView::UIMachineView(UIMachineWindow *pMachineWindow, ulong uScreenId)
     , m_iHostScreenNumber(0)
     , m_enmMaximumGuestScreenSizePolicy(MaximumGuestScreenSizePolicy_Automatic)
     , m_u64MaximumGuestSize(0)
-#ifdef VBOX_WITH_DRAG_AND_DROP_GH
+#ifdef VBOX_WITH_DRAG_AND_DROP
+    , m_pDnDHandler(NULL)
+# ifdef VBOX_WITH_DRAG_AND_DROP_GH
     , m_fIsDraggingFromGuest(false)
-#endif
+# endif
+#endif /* VBOX_WITH_DRAG_AND_DROP */
     , m_pNativeEventFilter(0)
 {
     /* Install Machine-view accessibility interface factory: */
