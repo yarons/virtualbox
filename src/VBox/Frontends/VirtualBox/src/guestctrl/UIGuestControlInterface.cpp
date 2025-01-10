@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlInterface.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIGuestControlInterface.cpp 107713 2025-01-10 13:10:28Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestControlInterface class implementation.
  */
@@ -154,7 +154,8 @@ class CommandData
 {
 public:
     CommandData()
-        : m_bSessionIdGiven(false)
+        : m_uSessionId(0)
+        , m_bSessionIdGiven(false)
         , m_bSessionNameGiven(false)
         , m_bCreateParentDirectories(false){}
     QString m_strUserName;
