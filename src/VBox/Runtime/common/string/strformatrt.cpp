@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: strformatrt.cpp 107720 2025-01-10 13:38:02Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions.
  */
@@ -1579,6 +1579,8 @@ DECLHIDDEN(size_t) rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, co
 
                     while (--cchWidth >= cchStr)
                         cchOutput += pfnOutput(pvArgOutput, "%20", 3);
+
+                    return cchOutput;
                 }
                 else
                     AssertMsgFailed(("Invalid IPRT format type '%.10s'!\n", pszFormatOrg));
