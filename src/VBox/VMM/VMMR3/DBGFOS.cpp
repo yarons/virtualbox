@@ -1,4 +1,4 @@
-/* $Id: DBGFOS.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFOS.cpp 107692 2025-01-10 10:03:51Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Guest OS Diggers.
  */
@@ -305,7 +305,7 @@ static DECLCALLBACK(int) dbgfR3OSDeregister(PUVM pUVM, PDBGFOSREG pReg)
     if (pOS->pReg->pfnDestruct)
         pOS->pReg->pfnDestruct(pUVM, VMMR3GetVTable(), pOS->abData);
 
-    PDBGFOSEMTWRAPPER pFree = pOS->pWrapperHead;
+    PDBGFOSEMTWRAPPER pFree;
     while ((pFree = pOS->pWrapperHead) != NULL)
     {
         pOS->pWrapperHead = pFree->pNext;
