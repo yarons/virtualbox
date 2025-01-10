@@ -1,4 +1,4 @@
-/* $Id: RecordingCodec.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: RecordingCodec.cpp 107717 2025-01-10 13:18:16Z alexander.eichner@oracle.com $ */
 /** @file
  * Recording codec wrapper.
  */
@@ -701,7 +701,9 @@ static DECLCALLBACK(int) recordingCodecVorbisEncode(PRECORDINGCODEC pCodec,
         return VERR_RECORDING_ENCODING_FAILED;
     }
 
+#ifdef LOG_ENABLED
     size_t cBlocksEncoded = 0;
+#endif
     size_t cBytesEncoded  = 0;
 
     uint8_t *puDst = (uint8_t *)pCodec->pvScratch;
@@ -734,7 +736,9 @@ static DECLCALLBACK(int) recordingCodecVorbisEncode(PRECORDINGCODEC pCodec,
         {
             cBytesEncoded += op.bytes;
             AssertBreakStmt(cBytesEncoded <= pCodec->cbScratch, vrc = VERR_BUFFER_OVERFLOW);
+#ifdef LOG_ENABLED
             cBlocksEncoded++;
+#endif
 
             vrc = pCodec->Callbacks.pfnWriteData(pCodec, op.packet, (size_t)op.bytes, pCodec->State.tsLastWrittenMs,
                                                  RECORDINGCODEC_ENC_F_BLOCK_IS_KEY /* Every Vorbis frame is a key frame */,
