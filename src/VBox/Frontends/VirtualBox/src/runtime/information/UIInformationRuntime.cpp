@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIInformationRuntime.cpp 107751 2025-01-10 16:13:16Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class implementation.
  */
@@ -475,11 +475,11 @@ QString UIRuntimeInfoWidget::tableData() const
         QITableWidgetItem *pItem = static_cast<QITableWidgetItem*>(item(i, 1));
         if (!pItem)
             continue;
-        QString strColumn1 = pItem ? pItem->text() : QString();
+        const QString strColumn1 = pItem->text();
         pItem = static_cast<QITableWidgetItem*>(item(i, 2));
         if (!pItem)
             continue;
-        QString strColumn2 = pItem ? pItem->text() : QString();
+        const QString strColumn2 = pItem->text();
         if (strColumn2.isEmpty())
             data << strColumn1;
         else
