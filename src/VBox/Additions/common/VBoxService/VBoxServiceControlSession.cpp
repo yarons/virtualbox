@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 107727 2025-01-10 13:59:58Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceControlSession.cpp 107729 2025-01-10 14:02:11Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -544,7 +544,7 @@ static int vgsvcGstCtrlSessionHandleFileClose(const PVBOXSERVICECTRLSESSION pSes
         PVBOXSERVICECTRLFILE pFile = vgsvcGstCtrlSessionFileAcquire(pSession, uHandle);
         if (pFile)
         {
-            VGSvcVerbose(2, "[File %s] Closing (handle=%RU32)\n", pFile ? pFile->pszName : "<Not found>", uHandle);
+            VGSvcVerbose(2, "[File %s] Closing (handle=%RU32)\n", pFile->pszName : "<Not found>", uHandle);
             rc = vgsvcGstCtrlSessionFileFree(pFile);
         }
         else
@@ -1147,7 +1147,7 @@ static int vgsvcGstCtrlSessionHandleDirClose(const PVBOXSERVICECTRLSESSION pSess
         PVBOXSERVICECTRLDIR pDir = vgsvcGstCtrlSessionDirAcquire(pSession, uHandle);
         if (pDir)
         {
-            VGSvcVerbose(2, "[Dir %s] Closing (handle=%RU32)\n", pDir ? pDir->pszPathAbs : "<Not found>", uHandle);
+            VGSvcVerbose(2, "[Dir %s] Closing (handle=%RU32)\n", pDir->pszPathAbs : "<Not found>", uHandle);
             rc = vgsvcGstCtrlSessionDirFree(pDir);
         }
         else
@@ -1307,7 +1307,7 @@ static int vgsvcGstCtrlSessionHandleDirRewind(const PVBOXSERVICECTRLSESSION pSes
         PVBOXSERVICECTRLDIR pDir = vgsvcGstCtrlSessionDirAcquire(pSession, uHandle);
         if (pDir)
         {
-            VGSvcVerbose(2, "[Dir %s] Rewinding (handle=%RU32)\n", pDir ? pDir->pszPathAbs : "<Not found>", uHandle);
+            VGSvcVerbose(2, "[Dir %s] Rewinding (handle=%RU32)\n", pDir->pszPathAbs : "<Not found>", uHandle);
 
             rc = RTDirRewind(pDir->hDir);
 
