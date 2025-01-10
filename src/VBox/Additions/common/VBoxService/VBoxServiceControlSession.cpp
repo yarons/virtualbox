@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 107723 2025-01-10 13:44:14Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceControlSession.cpp 107726 2025-01-10 13:58:47Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -668,7 +668,7 @@ static int vgsvcGstCtrlSessionHandleFileReadAt(const PVBOXSERVICECTRLSESSION pSe
             rc = RTFileReadAt(pFile->hFile, (RTFOFF)offReadAt, *ppvScratchBuf, RT_MIN(cbToRead, *pcbScratchBuf), &cbRead);
             if (RT_SUCCESS(rc))
             {
-                offNew = offReadAt + cbRead;
+                offNew = (int64_t)(offReadAt + cbRead);
                 RTFileSeek(pFile->hFile, offNew, RTFILE_SEEK_BEGIN, NULL); /* RTFileReadAt does not always change position. */
             }
             else
