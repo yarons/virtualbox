@@ -1,4 +1,4 @@
-/* $Id: DevHdaStream.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DevHdaStream.cpp 107691 2025-01-10 10:03:16Z andreas.loeffler@oracle.com $ */
 /** @file
  * Intel HD Audio Controller Emulation - Streams.
  */
@@ -746,7 +746,8 @@ int hdaR3StreamSetUp(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTREAM pStreamShar
         cbMaxPeriod = RT_MAX(cbMaxPeriod, pStreamShared->State.aSchedule[i].cbPeriod);
 
     AssertLogRelReturn(cPeriods > 0, VERR_INTERNAL_ERROR_3);
-    uint64_t const cbTransferPerSec  = RT_MAX(PDMAudioPropsFramesToBytes(&pCfg->Props, pCfg->Props.uHz),
+    uint32_t const cbFramesPerSec    = PDMAudioPropsFramesToBytes(&pCfg->Props, pCfg->Props.uHz);
+    uint64_t const cbTransferPerSec  = RT_MAX(cbFramesPerSec,
                                               4096 /* zero div prevention: min is 6kHz, picked 4k in case I'm mistaken */);
     unsigned uTransferHz = cbTransferPerSec * 1000 / cbMaxPeriod;
     LogRel2(("HDA: Stream #%RU8 needs a %u.%03u Hz timer rate (period: %u..%u host bytes)\n",
