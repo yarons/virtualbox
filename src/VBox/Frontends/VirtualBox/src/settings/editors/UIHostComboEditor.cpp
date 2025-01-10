@@ -1,4 +1,4 @@
-/* $Id: UIHostComboEditor.cpp 106350 2024-10-16 10:03:28Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHostComboEditor.cpp 107749 2025-01-10 16:08:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHostComboEditor class implementation.
  */
@@ -437,8 +437,7 @@ QList<unsigned> UIHostCombo::modifiersToScanCodes(const QString &strKeyCombo)
     QList<unsigned> scanCodeList;
     for (int i = 0; i < encodedKeyList.size(); ++i)
         if (unsigned idxScanCode = UINativeHotKey::modifierToSet1ScanCode(encodedKeyList[i].toInt()))
-            if (idxScanCode != 0)
-                scanCodeList << idxScanCode;
+            scanCodeList << idxScanCode;
     return scanCodeList;
 }
 
