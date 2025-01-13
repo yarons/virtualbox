@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceVMInfo.cpp 107789 2025-01-13 18:17:23Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -1849,7 +1849,7 @@ static DECLCALLBACK(int) vbsvcVMInfoWorker(bool volatile *pfShutdown)
             /* Reset event semaphore if it got triggered. */
             rc2 = RTSemEventMultiReset(g_hVMInfoEvent);
             if (RT_FAILURE(rc2))
-                rc2 = VGSvcError("RTSemEventMultiReset failed; rc2=%Rrc\n", rc2);
+                VGSvcError("RTSemEventMultiReset failed; rc2=%Rrc\n", rc2);
         }
     }
 
@@ -1891,7 +1891,7 @@ static DECLCALLBACK(void) vbsvcVMInfoTerm(void)
          *        since it remembers what we've written. */
         /* Delete the "../Net" branch. */
         const char *apszPat[1] = { "/VirtualBox/GuestInfo/Net/*" };
-        int rc = VbglR3GuestPropDelSet(g_uVMInfoGuestPropSvcClientID, &apszPat[0], RT_ELEMENTS(apszPat));
+        VbglR3GuestPropDelSet(g_uVMInfoGuestPropSvcClientID, &apszPat[0], RT_ELEMENTS(apszPat));
 
         /* Destroy LA client info. */
         vgsvcFreeLAClientInfo(&g_LAClientInfo);
@@ -1900,9 +1900,7 @@ static DECLCALLBACK(void) vbsvcVMInfoTerm(void)
         VGSvcPropCacheDestroy(&g_VMInfoPropCache);
 
         /* Disconnect from guest properties service. */
-        rc = VbglR3GuestPropDisconnect(g_uVMInfoGuestPropSvcClientID);
-        if (RT_FAILURE(rc))
-            VGSvcError("Failed to disconnect from guest property service! Error: %Rrc\n", rc);
+        VbglR3GuestPropDisconnect(g_uVMInfoGuestPropSvcClientID);
         g_uVMInfoGuestPropSvcClientID = 0;
 
         RTSemEventMultiDestroy(g_hVMInfoEvent);
