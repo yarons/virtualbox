@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin.cpp 107774 2025-01-11 22:55:53Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMR3Native-darwin.cpp 107777 2025-01-13 12:16:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework.
  *
@@ -2123,7 +2123,7 @@ static int nemR3DarwinLoadHv(bool fForced, PRTERRINFO pErrInfo)
  *
  * @returns VBox status code.
  */
-static int nemR3DarwinCapsInit(void)
+static int nemR3DarwinCapsInit(PVM pVM)
 {
     RT_ZERO(g_HmMsrs);
 
@@ -3142,7 +3142,7 @@ static DECLCALLBACK(int) nemR3DarwinNativeInitVCpuOnEmt(PVM pVM, PVMCPU pVCpu, V
     if (idCpu == 0)
     {
         /* First call initializs the MSR structure holding the capabilities of the host CPU. */
-        int rc = nemR3DarwinCapsInit();
+        int rc = nemR3DarwinCapsInit(pVM);
         AssertRCReturn(rc, rc);
 
         if (hv_vmx_vcpu_get_cap_write_vmcs)
