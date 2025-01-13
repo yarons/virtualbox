@@ -1,4 +1,4 @@
-/* $Id: VBoxDef2LazyLoad.cpp 106809 2024-10-30 23:49:39Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDef2LazyLoad.cpp 107782 2025-01-13 16:05:09Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxDef2LazyLoad - Lazy Library Loader Generator.
  *
@@ -265,7 +265,7 @@ static RTEXITCODE parseInputInner(FILE *pInput, const char *pszInput)
             unsigned cchStdcall = 0;
             if (cchName > 3 && *pchName == '_' && isdigit(pchName[cchName - 1]))
             {
-                if (cchName > 3 && pchName[cchName - 2] == '@')
+                if (pchName[cchName - 2] == '@')
                     cchStdcall = 2;
                 else if (cchName > 4 && pchName[cchName - 3] == '@' && isdigit(pchName[cchName - 2]))
                     cchStdcall = 3;
@@ -1772,7 +1772,7 @@ int main(int argc, char **argv)
             else if (   !strcmp(psz, "--version")
                      || !strcmp(psz, "-V"))
             {
-                printf("$Revision: 106809 $\n");
+                printf("$Revision: 107782 $\n");
                 return RTEXITCODE_SUCCESS;
             }
             else
