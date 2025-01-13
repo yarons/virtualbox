@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VHD.cpp 107796 2025-01-13 20:20:36Z alexander.eichner@oracle.com $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -1597,7 +1597,7 @@ static DECLCALLBACK(int) vhdRead(void *pBackendData, uint64_t uOffset, size_t cb
                         cSectors++;
                     }
 
-                    cbToRead = cSectors * VHD_SECTOR_SIZE;
+                    cbToRead = (size_t)cSectors * VHD_SECTOR_SIZE;
 
                     LogFlowFunc(("uVhdOffset=%llu cbToRead=%u\n", uVhdOffset, cbToRead));
                     rc = vdIfIoIntFileReadUser(pImage->pIfIo, pImage->pStorage,
@@ -1623,7 +1623,7 @@ static DECLCALLBACK(int) vhdRead(void *pBackendData, uint64_t uOffset, size_t cb
                         cSectors++;
                     }
 
-                    cbToRead = cSectors * VHD_SECTOR_SIZE;
+                    cbToRead = (size_t)cSectors * VHD_SECTOR_SIZE;
                     LogFunc(("Sectors free: uVhdOffset=%llu cbToRead=%u\n", uVhdOffset, cbToRead));
                     rc = VERR_VD_BLOCK_FREE;
                 }
@@ -1690,7 +1690,7 @@ static DECLCALLBACK(int) vhdWrite(void *pBackendData, uint64_t uOffset, size_t c
             if (   (fWrite & VD_WRITE_NO_ALLOC)
                 || (cbToWrite != pImage->cbDataBlock))
             {
-                *pcbPreRead = cBATEntryIndex * VHD_SECTOR_SIZE;
+                *pcbPreRead = (size_t)cBATEntryIndex * VHD_SECTOR_SIZE;
                 *pcbPostRead = pImage->cSectorsPerDataBlock * VHD_SECTOR_SIZE - cbToWrite - *pcbPreRead;
 
                 if (pcbWriteProcess)
