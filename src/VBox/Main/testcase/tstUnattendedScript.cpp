@@ -1,4 +1,4 @@
-/* $Id: tstUnattendedScript.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: tstUnattendedScript.cpp 107780 2025-01-13 15:51:34Z alexander.eichner@oracle.com $ */
 /** @file
  * tstUnattendedScript - testcases for UnattendedScript.
  */
@@ -54,8 +54,21 @@ using namespace std;
 *   Unattended Stub Implementation                                                                                               *
 *********************************************************************************************************************************/
 Unattended::Unattended()
-    : mhThreadReconfigureVM(NIL_RTNATIVETHREAD), mfRtcUseUtc(false), mfGuestOs64Bit(false)
-    , mpInstaller(NULL), mpTimeZoneInfo(NULL), mfIsDefaultAuxiliaryBasePath(true), mfDoneDetectIsoOS(false)
+    : mhThreadReconfigureVM(NIL_RTNATIVETHREAD)
+    , mfRtcUseUtc(false)
+    , mfGuestOs64Bit(false)
+    , menmFirmwareType(FirmwareType_BIOS)
+    , mpInstaller(NULL)
+    , mfInstallGuestAdditions(false)
+    , mfInstallTestExecService(false)
+    , mfInstallUserPayload(false)
+    , mpTimeZoneInfo(NULL)
+    , mfIsDefaultAuxiliaryBasePath(true)
+    , midxImage(0)
+    , mfDoneDetectIsoOS(false)
+    , mEnmOsType(VBOXOSTYPE_Unknown)
+    , mfAvoidUpdatesOverNetwork(false)
+    , mfDoneSupportedGuestOSList(false)
 {
     mStrUser                            = "vboxuser";
     mStrUserPassword                    = "changeme";
