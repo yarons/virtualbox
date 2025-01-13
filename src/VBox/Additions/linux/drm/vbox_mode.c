@@ -1,4 +1,4 @@
-/* $Id: vbox_mode.c 107786 2025-01-13 16:49:13Z vadim.galitsyn@oracle.com $ */
+/* $Id: vbox_mode.c 107788 2025-01-13 17:04:58Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -359,7 +359,7 @@ static void vbox_crtc_reset(struct drm_crtc *crtc)
 {
 }
 
-#if RTLNX_VER_MIN(5,0,0)
+#if RTLNX_VER_MIN(4,12,0)
 static int vbox_crtc_gamma_set(struct drm_crtc *crtc, u16 *r, u16 *g, u16 *b,
                         uint32_t size, struct drm_modeset_acquire_ctx *ctx)
 {
