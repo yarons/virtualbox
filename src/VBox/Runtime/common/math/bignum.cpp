@@ -1,4 +1,4 @@
-/* $Id: bignum.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: bignum.cpp 107784 2025-01-13 16:33:35Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Big Integer Numbers.
  */
@@ -395,8 +395,7 @@ static int rtBigNumGrow(PRTBIGNUM pBigNum, uint32_t cNewUsed, uint32_t cMinEleme
             pvNew = RTMemRealloc(pBigNum->pauElements, cbNew);
         if (RT_LIKELY(pvNew))
         {
-            if (cbNew > cbOld)
-                RT_BZERO((char *)pvNew + cbOld, cbNew - cbOld);
+            RT_BZERO((char *)pvNew + cbOld, cbNew - cbOld);
             if (pBigNum->cUsed > cNewUsed)
                 RT_BZERO((RTBIGNUMELEMENT *)pvNew + cNewUsed, (pBigNum->cUsed - cNewUsed) * RTBIGNUM_ELEMENT_SIZE);
 
