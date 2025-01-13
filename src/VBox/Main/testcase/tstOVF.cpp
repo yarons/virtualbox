@@ -1,4 +1,4 @@
-/* $Id: tstOVF.cpp 107620 2025-01-09 08:47:20Z andreas.loeffler@oracle.com $ */
+/* $Id: tstOVF.cpp 107787 2025-01-13 16:51:14Z alexander.eichner@oracle.com $ */
 /** @file
  *
  * tstOVF - testcases for OVF import and export
@@ -117,6 +117,8 @@ static void importOVF(const char *pcszPrefix,
 
     com::SafeIfaceArray<IVirtualSystemDescription> aDescriptions;
     hrc = pAppl->COMGETTER(VirtualSystemDescriptions)(ComSafeArrayAsOutParam(aDescriptions));
+    if (FAILED(hrc)) throw MyError(hrc, "Appliance::GetVirtualSystemDescriptions() failed\n");
+
     for (uint32_t u = 0;
          u < aDescriptions.size();
          ++u)
