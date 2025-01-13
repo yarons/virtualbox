@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 107574 2025-01-08 14:07:12Z andreas.loeffler@oracle.com $ */
+/* $Id: ExtPackManagerImpl.cpp 107798 2025-01-13 20:45:29Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -2754,6 +2754,7 @@ HRESULT ExtPackManager::i_runSetUidToRootHelper(Utf8Str const *a_pstrDisplayInfo
     if (RT_SUCCESS(vrc))
     {
         vrc = RTPipeClose(hStdErrPipe.u.hPipe);
+        AssertRC(vrc);
         hStdErrPipe.u.hPipe = NIL_RTPIPE;
 
         /*
