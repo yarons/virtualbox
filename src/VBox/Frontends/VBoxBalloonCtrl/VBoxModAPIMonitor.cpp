@@ -1,4 +1,4 @@
-/* $Id: VBoxModAPIMonitor.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxModAPIMonitor.cpp 107781 2025-01-13 15:58:01Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxModAPIMonitor - API monitor module for detecting host isolation.
  */
@@ -256,7 +256,6 @@ static int apimonMachineControl(const Bstr &strUuid, PVBOXWATCHDOG_MACHINE pMach
                                            strUuid.raw()));
 
                         /* First pause so we don't trigger a live save which needs more time/resources. */
-                        bool fPaused = false;
                         hrc = console->Pause();
                         if (FAILED(hrc))
                         {
@@ -273,10 +272,7 @@ static int apimonMachineControl(const Bstr &strUuid, PVBOXWATCHDOG_MACHINE pMach
                                                strUuid.raw(), machineState, apimonMachineStateToName(machineState, false));
                                 }
                                 else
-                                {
                                     fError = false;
-                                    fPaused = true;
-                                }
                             }
                             if (fError)
                                 break;
