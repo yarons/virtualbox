@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 107020 2024-11-14 11:50:32Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpBrowserWidget.cpp 107779 2025-01-13 15:23:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -1755,7 +1755,7 @@ QUrl UIHelpBrowserWidget::findIndexHtml() const
     int iIndex = -1;
     for (int i = 0; i < files.size(); ++i)
     {
-        if (files[i].toString().contains("index.html", Qt::CaseInsensitive))
+        if (QString::compare(files[i].fileName(), "preface.html", Qt::CaseInsensitive) == 0)
         {
             iIndex = i;
             break;
