@@ -1,4 +1,4 @@
-/* $Id: tstAnimate.cpp 107677 2025-01-09 19:48:44Z alexander.eichner@oracle.com $ */
+/* $Id: tstAnimate.cpp 107823 2025-01-14 10:37:20Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Animation Testcase / Tool.
  */
@@ -427,7 +427,7 @@ static DECLCALLBACK(int) cfgmR3CreateDefault(PUVM pUVM, PVM pVM, PCVMMR3VTABLE p
     UPDATERC();
     rc = CFGMR3InsertString(pCfg,   "HardDiskDevice",       "piix3ide");
     UPDATERC();
-    rc = CFGMR3InsertString(pCfg,   "FloppyDevice",         "i82078");
+    rc = CFGMR3InsertString(pCfg,   "FloppyDevice",         "i82078");          UPDATERC();
     rc = CFGMR3InsertInteger(pCfg,  "IOAPIC", fIOAPIC);                         UPDATERC();
     RTUUID Uuid;
     RTUuidClear(&Uuid);
@@ -556,7 +556,7 @@ static DECLCALLBACK(int) cfgmR3CreateDefault(PUVM pUVM, PVM pVM, PCVMMR3VTABLE p
     rc = CFGMR3InsertInteger(pInst, "PCIFunctionNo",        0);                     UPDATERC();
     rc = CFGMR3InsertNode(pInst,    "Config", &pCfg);                               UPDATERC();
     rc = CFGMR3InsertInteger(pCfg,  "VRamSize",             8 * _1M);               UPDATERC();
-    rc = CFGMR3InsertInteger(pCfg,  "CustomVideoModes",     0);
+    rc = CFGMR3InsertInteger(pCfg,  "CustomVideoModes",     0);                     UPDATERC();
     rc = CFGMR3InsertInteger(pCfg,  "HeightReduction",      0);                     UPDATERC();
     //rc = CFGMR3InsertInteger(pCfg,  "MonitorCount",         1);                     UPDATERC();
 
