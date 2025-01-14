@@ -1,4 +1,4 @@
-/* $Id: AudioAdapterImpl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: AudioAdapterImpl.cpp 107829 2025-01-14 13:16:05Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -555,6 +555,7 @@ HRESULT AudioAdapter::getProperty(const com::Utf8Str &aKey, com::Utf8Str &aValue
     if (cit != m->bd->properties.end())
         aValue = cit->second;
 
+    /** @todo r=andy Shouldn't we return an error here if not found? */
     return S_OK;
 }
 
