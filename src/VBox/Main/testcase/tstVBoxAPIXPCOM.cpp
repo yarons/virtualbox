@@ -1,4 +1,4 @@
-/* $Id: tstVBoxAPIXPCOM.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVBoxAPIXPCOM.cpp 107817 2025-01-14 09:56:21Z andreas.loeffler@oracle.com $ */
 /** @file
  *
  * tstVBoxAPIXPCOM - sample program to illustrate the VirtualBox
@@ -216,7 +216,18 @@ static void createVM(IVirtualBox *virtualBox)
      */
     /* alternative to illustrate the use of string classes */
     rc = machine->SetName(NS_ConvertUTF8toUTF16("A new name").get());
+    if (NS_FAILED(rc))
+    {
+        printf("Error: could not set name for machine! rc=%#x\n", rc);
+        return;
+    }
+
     rc = machine->SetMemorySize(128);
+    if (NS_FAILED(rc))
+    {
+        printf("Error: could not set memory size for machine! rc=%#x\n", rc);
+        return;
+    }
 
     /*
      * Now a more advanced property -- the guest OS type. This is
