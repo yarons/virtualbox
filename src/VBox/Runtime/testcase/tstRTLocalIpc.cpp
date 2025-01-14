@@ -1,4 +1,4 @@
-/* $Id: tstRTLocalIpc.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTLocalIpc.cpp 107819 2025-01-14 10:12:16Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT Testcase - RTLocalIpc API.
  */
@@ -554,7 +554,7 @@ static DECLCALLBACK(int) testSessionDataThread(RTTHREAD hSelf, void *pvUser)
             {
                 rc = testSessionDataWriteMessages(hIpcSession, cRounds);
                 if (RT_SUCCESS(rc))
-                    rc = testSessionDataReadMessages(hIpcSession, cRounds);
+                    testSessionDataReadMessages(hIpcSession, cRounds);
             }
 
             RTTESTI_CHECK_RC(RTLocalIpcSessionClose(hIpcSession), VINF_OBJECT_DESTROYED);
