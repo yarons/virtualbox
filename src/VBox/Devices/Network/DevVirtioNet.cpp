@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 106294 2024-10-10 17:42:05Z aleksey.ilyushin@oracle.com $ $Revision: 106294 $ $Date: 2024-10-10 19:42:05 +0200 (Thu, 10 Oct 2024) $ $Author: aleksey.ilyushin@oracle.com $ */
+/* $Id: DevVirtioNet.cpp 107820 2025-01-14 10:19:22Z alexander.eichner@oracle.com $ $Revision: 107820 $ $Date: 2025-01-14 11:19:22 +0100 (Tue, 14 Jan 2025) $ $Author: alexander.eichner@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -3568,6 +3568,8 @@ static DECLCALLBACK(int) virtioNetR3Construct(PPDMDEVINS pDevIns, int iInstance,
     rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_VIRTUAL, virtioNetR3LinkUpTimer, NULL,
                               TMTIMER_FLAGS_NO_CRIT_SECT | TMTIMER_FLAGS_NO_RING0,
                               "VirtioNet Link Up", &pThisCC->hLinkUpTimer);
+    AssertRCReturn(rc, rc);
+
     /*
      * Attach network driver instance
      */
