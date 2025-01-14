@@ -1,4 +1,4 @@
-/* $Id: tstCompressionBenchmark.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: tstCompressionBenchmark.cpp 107824 2025-01-14 10:38:41Z alexander.eichner@oracle.com $ */
 /** @file
  * Compression Benchmark for SSM and PGM.
  */
@@ -511,14 +511,12 @@ int main(int argc, char **argv)
             if (aTests[j].fBlock)
             {
                 uint8_t const  *pbSrcBlock = g_pabCompr;
-                size_t          cbLeft     = g_cbCompr;
                 uint8_t        *pbDstBlock = g_pabDecompr;
                 for (size_t iBlock = 0; iBlock < g_cBlocks; iBlock += cBlocksAtATime)
                 {
                     size_t   cbDst = RT_MIN(g_cBlocks - iBlock, cBlocksAtATime) * MY_BLOCK_SIZE;
                     size_t   cbSrc = *(uint32_t *)pbSrcBlock;
                     pbSrcBlock    += sizeof(uint32_t);
-                    cbLeft        -= sizeof(uint32_t);
                     rc = RTZipBlockDecompress(aTests[j].enmType, 0 /*fFlags*/,
                                               pbSrcBlock, cbSrc, &cbSrc,
                                               pbDstBlock, cbDst, &cbDst);
@@ -529,7 +527,6 @@ int main(int argc, char **argv)
                         break;
                     }
                     pbDstBlock += cbDst;
-                    cbLeft     -= cbSrc;
                     pbSrcBlock += cbSrc;
                 }
                 if (RT_FAILURE(rc))
