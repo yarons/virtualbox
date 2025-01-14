@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 107832 2025-01-14 15:36:23Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpBrowserWidget.cpp 107833 2025-01-14 15:37:48Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -1732,7 +1732,7 @@ void UIHelpBrowserWidget::saveOptions()
     }
 }
 
-QUrl UIHelpBrowserWidget::findIndexHtml() const
+QUrl UIHelpBrowserWidget::findHomeUrl() const
 {
     if (m_pHelpEngine && m_pHelpEngine->contentModel())
     {
@@ -1898,7 +1898,7 @@ void UIHelpBrowserWidget::sltFindPreviousInPage()
 
 void UIHelpBrowserWidget::sltGoHome()
 {
-    QUrl homeUrl = findIndexHtml();
+    QUrl homeUrl = findHomeUrl();
     if (homeUrl.isValid() && m_pTabManager)
         m_pTabManager->setSource(homeUrl);
 }

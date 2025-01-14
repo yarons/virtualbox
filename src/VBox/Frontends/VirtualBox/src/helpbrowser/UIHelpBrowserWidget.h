@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 107832 2025-01-14 15:36:23Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpBrowserWidget.h 107833 2025-01-14 15:37:48Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -139,7 +139,7 @@ private:
     void saveBookmarks();
     void saveOptions();
     void cleanup();
-    QUrl findIndexHtml() const;
+    QUrl findHomeUrl() const;
     /* Returns the url of the item with @p itemIndex. */
     QUrl contentWidgetUrl(const QModelIndex &itemIndex) const;
     void openLinkSlotHandler(QObject *pSenderObject, bool fOpenInNewTab);
