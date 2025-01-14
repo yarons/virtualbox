@@ -1,4 +1,4 @@
-/* $Id: tstVBoxAPIPerf.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVBoxAPIPerf.cpp 107821 2025-01-14 10:24:35Z alexander.eichner@oracle.com $ */
 /** @file
  * tstVBoxAPIPerf - Checks the performance of the COM / XPOM API.
  */
@@ -147,6 +147,11 @@ static void tstApiPrf3(IVirtualBox *pVBox)
        Note! VBoxSVC is not creating and destroying Host().  */
     pHost = NULL;
     hrc = pVBox->COMGETTER(Host)(&pHost);
+    if (FAILED(hrc))
+    {
+        tstComExpr(hrc, "IVirtualBox::Host", __LINE__);
+        return;
+    }
 
     uint32_t const cCalls2  = 16384;
     cLeft    = cCalls2;
