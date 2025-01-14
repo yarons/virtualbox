@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 107791 2025-01-13 18:52:47Z andreas.loeffler@oracle.com $ */
+/* $Id: DrvAudio.cpp 107808 2025-01-14 09:11:17Z andreas.loeffler@oracle.com $ */
 /** @file
  * Intermediate audio driver - Connects the audio device emulation with the host backend.
  */
@@ -1426,7 +1426,7 @@ static DECLCALLBACK(void) drvAudioStreamInitAsync(PDRVAUDIO pThis, PDRVAUDIOSTRE
          */
         pStreamEx->fStatus |= PDMAUDIOSTREAM_STS_BACKEND_READY; /* before the backend control call! */
 
-        rc = drvAudioStreamUpdateBackendOnStatus(pThis, pStreamEx, "asynchronous initialization completed");
+        drvAudioStreamUpdateBackendOnStatus(pThis, pStreamEx, "asynchronous initialization completed");
 
         /*
          * Modify the play state if output stream.
