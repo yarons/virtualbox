@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 107492 2025-01-06 17:41:07Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 107828 2025-01-14 13:10:55Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1660,7 +1660,6 @@ static RTEXITCODE gctlHandleCopy(PGCTLCMDCTX pCtx, int argc, char **argv, bool f
     RTGETOPTSTATE GetState;
     RTGetOptInit(&GetState, argc, argv, s_aOptions, RT_ELEMENTS(s_aOptions), 1, RTGETOPTINIT_FLAGS_OPTS_FIRST);
 
-    bool fDstMustBeDir = false;
     const char *pszDst = NULL;
     bool fFollow = false;
     bool fRecursive = false;
@@ -1692,7 +1691,6 @@ static RTEXITCODE gctlHandleCopy(PGCTLCMDCTX pCtx, int argc, char **argv, bool f
 
             case 't':
                 pszDst = ValueUnion.psz;
-                fDstMustBeDir = true;
                 break;
 
             case 'u':
