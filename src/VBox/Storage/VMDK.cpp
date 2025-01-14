@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 107809 2025-01-14 09:11:31Z alexander.eichner@oracle.com $ */
+/* $Id: VMDK.cpp 107811 2025-01-14 09:28:52Z alexander.eichner@oracle.com $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -8672,7 +8672,7 @@ static int vmdkResizeSparseMeta(PVMDKIMAGE pImage, PVMDKEXTENT pExtent,
         uint32_t uGTTail = uGTStart + (pExtent->cGDEntries * VMDK_GRAIN_TABLE_SIZE) - VMDK_GRAIN_TABLE_SIZE;
         uint32_t cbGTOff = RT_ALIGN_Z(VMDK_SECTOR2BYTE(cDirSectorDiff + cTableSectorDiff + cDirSectorDiff), 512);
 
-        /** @todo r=aeichner An error here doesn't make the whole operation fail, it just breaks out of the loop. */ 
+        /** @todo r=aeichner An error here doesn't make the whole operation fail, it just breaks out of the loop. */
         for (int i = pExtent->cGDEntries - 1; i >= 0; i--)
         {
             rc = vdIfIoIntFileReadSync(pImage->pIfIo, pExtent->pFile->pStorage,
