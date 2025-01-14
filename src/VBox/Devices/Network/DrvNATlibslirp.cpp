@@ -1,4 +1,4 @@
-/* $Id: DrvNATlibslirp.cpp 107802 2025-01-13 22:34:52Z jack.doherty@oracle.com $ */
+/* $Id: DrvNATlibslirp.cpp 107804 2025-01-14 00:16:46Z jack.doherty@oracle.com $ */
 /** @file
  * DrvNATlibslirp - NATlibslirp network transport driver.
  */
@@ -64,7 +64,7 @@
 #include <iprt/critsect.h>
 #include <iprt/cidr.h>
 #include <iprt/file.h>
-#include <iprt/nocrt/limits.h>
+#include <limits.h>
 #include <iprt/mem.h>
 #include <iprt/net.h>
 #include <iprt/pipe.h>
