@@ -1,4 +1,4 @@
-/* $Id: tstRTDvm.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTDvm.cpp 107826 2025-01-14 11:46:03Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT Testcase - IPRT Disk Volume Management (DVM)
  */
@@ -144,6 +144,8 @@ static int tstRTDvmVolume(RTTEST hTest, RTVFSFILE hVfsDisk, unsigned cNesting)
         if (RT_SUCCESS(rc))
         {
             rc = tstRTDvmVolume(hTest, hVfsVol, cNesting + 1);
+            RTTESTI_CHECK(rc == VINF_SUCCESS);
+
             RTVfsFileRelease(hVfsVol);
         }
         else
