@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 107655 2025-01-09 11:31:47Z andreas.loeffler@oracle.com $ */
+/* $Id: DevIchAc97.cpp 107807 2025-01-14 09:02:28Z andreas.loeffler@oracle.com $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -4597,10 +4597,6 @@ static DECLCALLBACK(int) ichac97R3Construct(PPDMDEVINS pDevIns, int iInstance, P
         }
         AssertLogRelMsgReturn(RT_SUCCESS(rc),  ("LUN#%u: rc=%Rrc\n", iLun, rc), rc);
     }
-
-    uint32_t fMixer = AUDMIXER_FLAGS_NONE;
-    if (pThisCC->Dbg.fEnabled)
-        fMixer |= AUDMIXER_FLAGS_DEBUG;
 
     rc = AudioMixerCreate("AC'97 Mixer", 0 /* uFlags */, &pThisCC->pMixer);
     AssertRCReturn(rc, rc);
