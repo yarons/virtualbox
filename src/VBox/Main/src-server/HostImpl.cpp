@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 107747 2025-01-10 15:57:47Z alexander.eichner@oracle.com $ */
+/* $Id: HostImpl.cpp 107882 2025-01-15 21:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -3709,6 +3709,10 @@ HRESULT Host::i_updateNetIfList()
         return E_FAIL;
     }
 
+    /* Take the parent (VirtualBox) lock first to avoid lock order issues, when
+       HostNetworkInterface::i_setVirtualBox calls VirtualBox::getExtraData. */
+    AssertReturn(m->pParent, E_FAIL);
+    AutoReadLock alockParent(m->pParent COMMA_LOCKVAL_SRC_POS);
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     AssertReturn(m->pParent, E_FAIL);
