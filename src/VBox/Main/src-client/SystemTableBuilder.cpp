@@ -1,4 +1,4 @@
-/* $Id: SystemTableBuilder.cpp 107088 2024-11-20 20:22:49Z alexander.eichner@oracle.com $ */
+/* $Id: SystemTableBuilder.cpp 107854 2025-01-15 12:36:12Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox bus slots assignment manager
  */
@@ -405,6 +405,7 @@ int SystemTableBuilderAcpi::configurePcieRootBus(const char *pszVBoxName, uint32
         if (RT_SUCCESS(vrc))
             vrc = RTAcpiTblResourceAppend(m_hAcpiDsdt, m_hAcpiRes);
     }
+    AssertRCReturn(vrc, vrc);
 
     /* For the ECAM base we need to define a new device with a new resource template inside the PCI device. */
     RTAcpiTblDeviceStart(m_hAcpiDsdt, "RES0");
@@ -423,6 +424,7 @@ int SystemTableBuilderAcpi::configurePcieRootBus(const char *pszVBoxName, uint32
         if (RT_SUCCESS(vrc))
             vrc = RTAcpiTblResourceAppend(m_hAcpiDsdt, m_hAcpiRes);
     }
+    AssertRCReturn(vrc, vrc);
 
     /* Finish RES0 device. */
     vrc = RTAcpiTblDeviceFinalize(m_hAcpiDsdt);
