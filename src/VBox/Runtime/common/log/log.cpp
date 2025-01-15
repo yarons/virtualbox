@@ -1,4 +1,4 @@
-/* $Id: log.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: log.cpp 107869 2025-01-15 15:24:54Z alexander.eichner@oracle.com $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -2761,7 +2761,7 @@ RTDECL(int) RTLogQueryDestinations(PRTLOGGER pLogger, char *pszBuf, size_t cchBu
         }
         if (RT_FAILURE(rc))
             return rc;
-        fNotFirst = true;
+        /*fNotFirst = true; unused right now */
     }
 
     return VINF_SUCCESS;
