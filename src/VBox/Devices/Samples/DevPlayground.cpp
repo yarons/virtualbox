@@ -1,4 +1,4 @@
-/* $Id: DevPlayground.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DevPlayground.cpp 107859 2025-01-15 13:03:17Z alexander.eichner@oracle.com $ */
 /** @file
  * DevPlayground - Device for making PDM/PCI/... experiments.
  *
@@ -275,7 +275,7 @@ static DECLCALLBACK(int) devPlaygroundConstruct(PPDMDEVINS pDevIns, int iInstanc
             return PDMDEV_SET_ERROR(pDevIns, rc, N_("Configuration error: Failed to query integer value \"BigBAR0MB\""));
         if (uBigBAR0MB < 1 || uBigBAR0MB > 4095)
             return PDMDEV_SET_ERROR(pDevIns, rc, N_("Configuration error: Invalid \"BigBAR0MB\" value (must be between 1 and 4095)"));
-        cbFirstBAR = uBigBAR0MB * _1M;
+        cbFirstBAR = uBigBAR0MB * _1M64;
     }
 
     RTGCPHYS cbSecondBAR;
@@ -296,7 +296,7 @@ static DECLCALLBACK(int) devPlaygroundConstruct(PPDMDEVINS pDevIns, int iInstanc
             return PDMDEV_SET_ERROR(pDevIns, rc, N_("Configuration error: Failed to query integer value \"BigBAR2MB\""));
         if (uBigBAR2MB < 1 || uBigBAR2MB > 4095)
             return PDMDEV_SET_ERROR(pDevIns, rc, N_("Configuration error: Invalid \"BigBAR2MB\" value (must be between 1 and 4095)"));
-        cbSecondBAR = uBigBAR2MB * _1M;
+        cbSecondBAR = uBigBAR2MB * _1M64;
     }
 
 
