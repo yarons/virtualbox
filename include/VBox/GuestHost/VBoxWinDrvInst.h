@@ -1,4 +1,4 @@
-/* $Id: VBoxWinDrvInst.h 107084 2024-11-20 16:09:39Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxWinDrvInst.h 107842 2025-01-15 09:57:00Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxWinDrvInst - Header for Windows driver installation handling.
  */
@@ -97,6 +97,7 @@ int VBoxWinDrvInstCreateEx(PVBOXWINDRVINST phDrvInst, unsigned uVerbosity, PFNVB
 int VBoxWinDrvInstDestroy(VBOXWINDRVINST hDrvInst);
 unsigned VBoxWinDrvInstGetWarnings(VBOXWINDRVINST hDrvInst);
 unsigned VBoxWinDrvInstGetErrors(VBOXWINDRVINST hDrvInst);
+void VBoxWinDrvInstSetOsVersion(VBOXWINDRVINST hDrvInst, uint64_t uOsVer);
 unsigned VBoxWinDrvInstSetVerbosity(VBOXWINDRVINST hDrvInst, uint8_t uVerbosity);
 void VBoxWinDrvInstSetLogCallback(VBOXWINDRVINST hDrvInst, PFNVBOXWINDRIVERLOGMSG pfnLog, void *pvUser);
 int VBoxWinDrvInstInstallEx(VBOXWINDRVINST hDrvInst, const char *pszInfFile, const char *pszModel, const char *pszPnpId, uint32_t fFlags);
