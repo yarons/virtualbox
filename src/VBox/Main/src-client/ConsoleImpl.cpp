@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 107558 2025-01-08 12:48:08Z andreas.loeffler@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 107857 2025-01-15 12:45:28Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -7608,7 +7608,7 @@ HRESULT Console::i_saveState(Reason_T aReason, const ComPtr<IProgress> &aProgres
     }
 
     LogFlowFuncLeave();
-    return S_OK;
+    return hrc;
 }
 
 /**
