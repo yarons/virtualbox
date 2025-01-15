@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 107265 2024-12-04 15:20:14Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGF.cpp 107863 2025-01-15 13:10:20Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -1770,7 +1770,7 @@ static bool dbgfStepAreWeThereYet(PVM pVM, PVMCPU pVCpu)
                                 if (pVM->dbgf.s.SteppingFilter.fFlags & DBGF_STEP_F_STOP_AFTER_RET)
                                     pVM->dbgf.s.SteppingFilter.cMaxSteps = pVM->dbgf.s.SteppingFilter.cSteps + 1;
                             }
-                            else if (pVM->dbgf.s.SteppingFilter.uCallDepth > 0)
+                            else /*if (pVM->dbgf.s.SteppingFilter.uCallDepth > 0)*/
                                 pVM->dbgf.s.SteppingFilter.uCallDepth--;
                             break;
                     }
