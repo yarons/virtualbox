@@ -1,4 +1,4 @@
-/* $Id: UsbNet.cpp 107366 2024-12-13 13:21:33Z aleksey.ilyushin@oracle.com $ */
+/* $Id: UsbNet.cpp 107876 2025-01-15 16:09:45Z alexander.eichner@oracle.com $ */
 /** @file
  * UsbNet - USB NCM Ethernet Device Emulation.
  */
@@ -2239,6 +2239,7 @@ static DECLCALLBACK(int) usbNetConstruct(PPDMUSBINS pUsbIns, int iInstance, PCFG
     rc = PDMUsbHlpTimerCreate(pUsbIns, TMCLOCK_VIRTUAL, usbNetTimerLinkUp, pThis,
                               TMTIMER_FLAGS_DEFAULT_CRIT_SECT,
                               "Link Up", &pThis->hTimerLinkUp);
+    AssertRCReturn(rc, rc);
 
     /*
      * Build the USB descriptors.
