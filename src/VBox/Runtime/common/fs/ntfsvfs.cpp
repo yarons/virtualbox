@@ -1,4 +1,4 @@
-/* $Id: ntfsvfs.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: ntfsvfs.cpp 107868 2025-01-15 15:19:08Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - NTFS Virtual Filesystem, currently only for reading allocation bitmap.
  */
@@ -1259,7 +1259,7 @@ static int rtFsNtfsVol_ParseMft(PRTFSNTFSVOL pThis, PRTFSNTFSMFTREC pRec, PRTERR
             if (cbMin >= NTFSATTRIBHDR_SIZE_NONRES_COMPRESSED)
             {
                 int64_t const cbCompressed = RT_LE2H_U64(pAttrHdr->u.NonRes.cbCompressed);
-                if (cbAllocated < 0)
+                if (cbCompressed < 0)
                     return RTERRINFO_LOG_REL_SET_F(pErrInfo, VERR_VFS_BOGUS_FORMAT,
                                                    "Bad MFT record %#RX64: Attribute (@%#x): cbCompressed (%#RX64) is negative",
                                                    pRec->TreeNode.Key, offRec, cbCompressed);
