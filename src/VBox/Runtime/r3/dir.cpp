@@ -1,4 +1,4 @@
-/* $Id: dir.cpp 107687 2025-01-10 09:55:06Z andreas.loeffler@oracle.com $ */
+/* $Id: dir.cpp 107873 2025-01-15 15:38:06Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Directory Manipulation, Part 1.
  */
@@ -501,8 +501,7 @@ static PFNRTDIRFILTER rtDirFilterWinNtInit(PRTDIRINTERNAL pDir)
         {
             fHaveWildcards = true;
             /* remove extra stars. */
-            RTUNICP uc2;
-            while ((uc2 = pDir->puszFilter[iRead + 1]) == '*')
+            while (pDir->puszFilter[iRead + 1] == '*')
                 iRead++;
         }
         else if (uc == '?' || uc == '>' || uc == '<' || uc == '"')
