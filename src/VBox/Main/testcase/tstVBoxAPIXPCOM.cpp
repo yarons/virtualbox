@@ -1,4 +1,4 @@
-/* $Id: tstVBoxAPIXPCOM.cpp 107817 2025-01-14 09:56:21Z andreas.loeffler@oracle.com $ */
+/* $Id: tstVBoxAPIXPCOM.cpp 107852 2025-01-15 12:17:44Z alexander.eichner@oracle.com $ */
 /** @file
  *
  * tstVBoxAPIXPCOM - sample program to illustrate the VirtualBox
@@ -490,7 +490,7 @@ int main(int argc, char **argv)
     char szTmp[8192];
     if (!getenv("VBOX_XPCOM_HOME"))
     {
-        strcpy(szTmp, argv[0]);
+        strncpy(szTmp, argv[0], sizeof(szTmp));
         *strrchr(szTmp, '/') = '\0';
         strcat(szTmp, "/..");
         fprintf(stderr, "tstVBoxAPIXPCOM: VBOX_XPCOM_HOME is not set, using '%s' instead\n", szTmp);
