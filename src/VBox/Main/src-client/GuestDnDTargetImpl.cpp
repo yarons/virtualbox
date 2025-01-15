@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestDnDTargetImpl.cpp 107856 2025-01-15 12:40:57Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -742,7 +742,7 @@ HRESULT GuestDnDTarget::sendData(ULONG aScreenId, const com::Utf8Str &aFormat, c
         {
             delete pTask;
             LogRel(("DnD: Could not create SendDataTask object\n"));
-            throw hr = E_FAIL;
+            throw E_FAIL;
         }
 
         /* This function delete pTask in case of exceptions,
