@@ -1,4 +1,4 @@
-/* $Id: CPUMR3Db-armv8.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMR3Db-armv8.cpp 107861 2025-01-15 13:07:41Z alexander.eichner@oracle.com $ */
 /** @file
  * CPUM - CPU database part - ARMv8 specifics.
  */
@@ -305,8 +305,8 @@ static int cpumR3SysRegRangesInsert(PVM pVM, PCPUMSYSREGRANGE *ppaSysRegRanges, 
             paSysRegRanges = cpumR3SysRegRangesEnsureSpace(pVM, ppaSysRegRanges, cSysRegRanges, 2);
             if (!paSysRegRanges)
                 return VERR_NO_MEMORY;
-            if (i < cSysRegRanges)
-                memmove(&paSysRegRanges[i + 2], &paSysRegRanges[i], (cSysRegRanges - i) * sizeof(paSysRegRanges[0]));
+            Assert(i < cSysRegRanges);
+            memmove(&paSysRegRanges[i + 2], &paSysRegRanges[i], (cSysRegRanges - i) * sizeof(paSysRegRanges[0]));
             paSysRegRanges[i + 1] = *pNewRange;
             paSysRegRanges[i + 2] = paSysRegRanges[i];
             paSysRegRanges[i    ].uLast  = pNewRange->uFirst - 1;
