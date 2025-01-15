@@ -1,4 +1,4 @@
-/* $Id: tarcmd.cpp 107700 2025-01-10 10:41:11Z alexander.eichner@oracle.com $ */
+/* $Id: tarcmd.cpp 107871 2025-01-15 15:33:12Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - A mini TAR Command.
  */
@@ -1229,6 +1229,7 @@ static RTEXITCODE rtZipTarCmdExtractHardlink(PRTZIPTARCMDOPS pOpts, RTEXITCODE r
                 {
                     rcExit = RTMsgErrorExitFailure("%s: Failed copying hardlinked file '%s': %Rrc", pszDst, szFullTarget, rc);
                     rc = RTFileClose(hDstFile);
+                    AssertRC(rc);
                     RTFileDelete(pszDst);
                 }
             }
