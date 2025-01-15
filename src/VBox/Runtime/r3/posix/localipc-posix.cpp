@@ -1,4 +1,4 @@
-/* $Id: localipc-posix.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: localipc-posix.cpp 107867 2025-01-15 14:54:32Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Local IPC Server & Client, Posix.
  */
@@ -500,7 +500,10 @@ RTDECL(int) RTLocalIpcServerListen(RTLOCALIPCSERVER hServer, PRTLOCALIPCSESSION 
                             RTMemFree(pSession);
                         }
                         else
+                        {
                             rc = VERR_NO_MEMORY;
+                            break;
+                        }
                     }
                     else if (   rc != VERR_INTERRUPTED
                              && rc != VERR_TRY_AGAIN)
