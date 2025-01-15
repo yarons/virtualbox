@@ -1,4 +1,4 @@
-/* $Id: fileio.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: fileio.cpp 107874 2025-01-15 15:40:05Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - File I/O.
  */
@@ -174,6 +174,7 @@ int rtFileRecalcAndValidateFlags(uint64_t *pfOpen)
             break;
         case RTFILE_O_OPEN:
             AssertMsgReturn(!(RTFILE_O_NOT_CONTENT_INDEXED & fOpen), ("%#llx\n", fOpen), VERR_INVALID_PARAMETER);
+            RT_FALL_THROUGH();
         case RTFILE_O_OPEN_CREATE:
         case RTFILE_O_CREATE:
         case RTFILE_O_CREATE_REPLACE:
