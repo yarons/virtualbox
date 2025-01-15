@@ -1,4 +1,4 @@
-/* $Id: NetIf-generic.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: NetIf-generic.cpp 107855 2025-01-15 12:39:05Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox Main - Generic NetIf implementation.
  */
@@ -294,7 +294,7 @@ int NetIfCreateHostOnlyNetworkInterface(VirtualBox *pVirtualBox,
                         }
                         RTMemFree(pInfo);
                     }
-                    if ((vrc = pclose(fp)) != 0)
+                    if (pclose(fp) != 0)
                     {
                         progress->i_notifyComplete(E_FAIL,
                                                    COM_IIDOF(IHostNetworkInterface),
