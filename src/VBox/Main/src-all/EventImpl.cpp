@@ -1,4 +1,4 @@
-/* $Id: EventImpl.cpp 107635 2025-01-09 09:27:35Z andreas.loeffler@oracle.com $ */
+/* $Id: EventImpl.cpp 107853 2025-01-15 12:30:13Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
@@ -1568,9 +1568,11 @@ STDMETHODIMP EventSourceAggregator::RegisterListener(IEventListener *aListener,
         ComPtr<IEventSource> es = *it;
         /* Register active proxy listener on real event source */
         hrc = es->RegisterListener(proxy, ComSafeArrayInArg(aInterested), TRUE);
+        AssertComRC(hrc);
     }
     /* And add real listener on our event source */
     hrc = mSource->RegisterListener(aListener, ComSafeArrayInArg(aInterested), aActive);
+    AssertComRC(hrc);
 
     return S_OK;
 }
