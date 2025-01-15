@@ -1,4 +1,4 @@
-/* $Id: allocex.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: allocex.cpp 107872 2025-01-15 15:36:22Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Memory Allocation, Extended Alloc and Free Functions for Ring-3, posix.
  */
@@ -67,7 +67,7 @@ RTDECL(int) RTMemAllocExTag(size_t cb, size_t cbAlignment, uint32_t fFlags, cons
     /*
      * Align the request.
      */
-    size_t cbAligned = cb;
+    size_t cbAligned;
     if (cbAlignment)
         cbAligned = RT_ALIGN_Z(cb, cbAlignment);
     else
