@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DevE1000.cpp 107877 2025-01-15 16:15:30Z alexander.eichner@oracle.com $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -4220,8 +4220,10 @@ static void e1kTransmitFrame(PPDMDEVINS pDevIns, PE1KSTATE pThis, PE1KSTATECC pT
 #endif /* E1K_INT_STATS */
 
     /* Add VLAN tag */
-    if (cbFrame > 12 && pThis->fVTag && pSg->cbUsed + 4 <= pSg->cbAvailable)
+    if (pThis->fVTag && pSg->cbUsed + 4 <= pSg->cbAvailable)
     {
+        Assert(cbFrame > 12);
+
         E1kLog3(("%s Inserting VLAN tag %08x\n",
             pThis->szPrf, RT_BE2H_U16((uint16_t)VET) | (RT_BE2H_U16(pThis->u16VTagTCI) << 16)));
         memmove((uint8_t*)pSg->aSegs[0].pvSeg + 16, (uint8_t*)pSg->aSegs[0].pvSeg + 12, cbFrame - 12);
