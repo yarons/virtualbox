@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestDnDSourceImpl.cpp 107858 2025-01-15 12:48:23Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag and drop source.
  */
@@ -457,7 +457,7 @@ HRESULT GuestDnDSource::drop(const com::Utf8Str &aFormat, DnDAction_T aAction, C
         {
             delete pTask;
             LogRel2(("DnD: Receive data task failed to initialize\n"));
-            throw hrc = E_FAIL;
+            throw hrc;
         }
 
         /* Drop write lock before creating thread. */
