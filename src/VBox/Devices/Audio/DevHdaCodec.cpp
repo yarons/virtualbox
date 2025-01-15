@@ -1,4 +1,4 @@
-/* $Id: DevHdaCodec.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DevHdaCodec.cpp 107878 2025-01-15 16:16:58Z alexander.eichner@oracle.com $ */
 /** @file
  * Intel HD Audio Controller Emulation - Codec, Sigmatel/IDT STAC9220.
  *
@@ -2198,7 +2198,6 @@ static DECLCALLBACK(int) vrbProcR3SetStreamId(PHDACODECR3 pThis, uint32_t uCmd, 
     }
     else
     {
-        enmDir = PDMAUDIODIR_UNKNOWN;
         LogRel2(("HDA: Warning: Unhandled set stream ID command for NID0x%02x: 0x%x\n", CODEC_NID(uCmd), uCmd));
         return VINF_SUCCESS;
     }
