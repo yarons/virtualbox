@@ -1,4 +1,4 @@
-/* $Id: DrvNATlibslirp.cpp 107804 2025-01-14 00:16:46Z jack.doherty@oracle.com $ */
+/* $Id: DrvNATlibslirp.cpp 107908 2025-01-16 14:37:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * DrvNATlibslirp - NATlibslirp network transport driver.
  */
@@ -1688,7 +1688,7 @@ static DECLCALLBACK(int) drvNATConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
 
     slirpCfg.vdnssearch = NULL;
     slirpCfg.vdomainname = NULL;
-    slirpCfg.disable_host_loopback = fLocalhostReachable;
+    slirpCfg.disable_host_loopback = !fLocalhostReachable;
     slirpCfg.fForwardBroadcast = fForwardBroadcast;
     slirpCfg.iSoMaxConn = i32SoMaxConn;
 
