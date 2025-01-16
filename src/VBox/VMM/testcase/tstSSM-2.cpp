@@ -1,4 +1,4 @@
-/* $Id: tstSSM-2.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: tstSSM-2.cpp 107897 2025-01-16 10:35:41Z alexander.eichner@oracle.com $ */
 /** @file
  * Saved State Manager Testcase: Extract the content of a saved state.
  */
@@ -64,6 +64,9 @@ static RTEXITCODE extractUnit(const char *pszFilename, const char *pszUnitname, 
                         break;
                     size_t cbWritten;
                     rc = RTFileWrite(hFile, &u8, sizeof(u8), &cbWritten);
+                    if (RT_FAILURE(rc))
+                        RTPrintf("Writing unit '%s' to '%s' failed with %Rrc\n",
+                                 pszUnitname, pszOutputFilename, rc);
                     cbUnit++;
                 }
                 RTPrintf("Unit size %zu bytes, version %d\n", cbUnit, version);
