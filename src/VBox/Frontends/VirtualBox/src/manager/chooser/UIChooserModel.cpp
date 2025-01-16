@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 106143 2024-09-24 19:53:49Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.cpp 107907 2025-01-16 13:55:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -1285,7 +1285,8 @@ void UIChooserModel::sltHandleCloudProfileManagerCumulativeChange()
 
 void UIChooserModel::sltMakeSureCurrentItemVisible()
 {
-    root()->toGroupItem()->makeSureItemIsVisible(currentItem());
+    if (currentItem())
+        root()->toGroupItem()->makeSureItemIsVisible(currentItem());
 }
 
 void UIChooserModel::sltCurrentItemDestroyed()
