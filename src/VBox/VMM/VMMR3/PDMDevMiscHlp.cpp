@@ -1,4 +1,4 @@
-/* $Id: PDMDevMiscHlp.cpp 107265 2024-12-04 15:20:14Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMDevMiscHlp.cpp 107899 2025-01-16 10:42:42Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Misc. Device Helpers.
  */
@@ -68,7 +68,10 @@ static DECLCALLBACK(void) pdmR3PicHlp_SetInterruptFF(PPDMDEVINS pDevIns)
 
 #ifdef VBOX_VMM_TARGET_X86
     PVMCPU pVCpu = pVM->apCpusR3[0];  /* for PIC we always deliver to CPU 0, SMP uses APIC */
-    PDMApicSetLocalInterrupt(pVCpu, 0 /* u8Pin */, 1 /* u8Level */, VINF_SUCCESS /* rcRZ */);
+    if (pVM->pdm.s.Ic.pDevInsR3)
+        PDMApicSetLocalInterrupt(pVCpu, 0 /* u8Pin */, 1 /* u8Level */, VINF_SUCCESS /* rcRZ */);
+    else
+        VMCPU_FF_SET(pVCpu, VMCPU_FF_INTERRUPT_PIC);
 #else
     AssertReleaseFailed();
     RT_NOREF(pVM);
@@ -87,7 +90,10 @@ static DECLCALLBACK(void) pdmR3PicHlp_ClearInterruptFF(PPDMDEVINS pDevIns)
 
 #ifdef VBOX_VMM_TARGET_X86
     PVMCPU pVCpu = pVM->apCpusR3[0];  /* for PIC we always deliver to CPU 0, SMP uses APIC */
-    PDMApicSetLocalInterrupt(pVCpu, 0 /* u8Pin */,  0 /* u8Level */, VINF_SUCCESS /* rcRZ */);
+    if (pVM->pdm.s.Ic.pDevInsR3)
+        PDMApicSetLocalInterrupt(pVCpu, 0 /* u8Pin */,  0 /* u8Level */, VINF_SUCCESS /* rcRZ */);
+    else
+        VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_INTERRUPT_PIC);
 #else
     AssertReleaseFailed();
     RT_NOREF(pVM);
