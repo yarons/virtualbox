@@ -1,4 +1,4 @@
-/* $Id: SUPLibInternal.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPLibInternal.h 107886 2025-01-16 00:21:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
@@ -380,6 +380,7 @@ DECLHIDDEN(int)     suplibOsIOCtlFast(PSUPLIBDATA pThis, uintptr_t uFunction, ui
 DECLHIDDEN(int)     suplibOsPageAlloc(PSUPLIBDATA pThis, size_t cPages, uint32_t fFlags, void **ppvPages);
 DECLHIDDEN(int)     suplibOsPageFree(PSUPLIBDATA pThis, void *pvPages, size_t cPages);
 DECLHIDDEN(int)     suplibOsQueryVTxSupported(const char **ppszWhy);
+DECLHIDDEN(int)     suplibOsQueryMicrocodeRev(uint32_t *puMicrocodeRev);
 DECLHIDDEN(bool)    suplibOsIsNemSupportedWhenNoVtxOrAmdV(void);
 
 
