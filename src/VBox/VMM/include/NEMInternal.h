@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 107887 2025-01-16 00:23:19Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMInternal.h 107890 2025-01-16 00:32:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -423,7 +423,7 @@ typedef struct NEMCPU
     bool                        fUsingHyperDR7 : 1;
     /** Whether \#DE needs to be intercepted for GIM. */
     bool                        fGCMTrapXcptDE : 1;
-#ifdef VBOX_VMM_TARGET_X86
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
     /** Set if indirect branch prediction barrier on VM exit. */
     bool                        fIbpbOnVmExit : 1;
     /** Set if indirect branch prediction barrier on VM entry. */
