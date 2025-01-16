@@ -1,4 +1,4 @@
-/* $Id: VBoxWinDrvInst.cpp 107851 2025-01-15 11:55:29Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxWinDrvInst.cpp 107915 2025-01-16 15:09:22Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxWinDrvInst - Windows driver installation handling.
  */
@@ -1686,6 +1686,7 @@ static int vboxWinDrvUninstallFromDriverStore(PVBOXWINDRVINSTINTERNAL pCtx,
         if (g_pfnDiUninstallDriverW)
         {
             vboxWinDrvInstLogVerbose(pCtx, 1, "Using DiUninstallDriverW()");
+
             BOOL fReboot = FALSE;
             if (!(pParms->fFlags & VBOX_WIN_DRIVERINSTALL_F_DRYRUN))
                 fRc = g_pfnDiUninstallDriverW(NULL /* hWndParent */, pCur->wszInfFile, 0 /* Flags */, &fReboot);
@@ -1707,14 +1708,15 @@ static int vboxWinDrvUninstallFromDriverStore(PVBOXWINDRVINSTINTERNAL pCtx,
         {
             vboxWinDrvInstLogVerbose(pCtx, 1, "Using SetupUninstallOEMInfW()");
 
-            DWORD dwUninstallFlags = 0;
-            if (pParms->fFlags & VBOX_WIN_DRIVERINSTALL_F_FORCE)
-                dwUninstallFlags |= SUOI_FORCEDELETE;
-
             if (!(pParms->fFlags & VBOX_WIN_DRIVERINSTALL_F_DRYRUN))
+            {
+                DWORD dwUninstallFlags = 0;
+                if (pParms->fFlags & VBOX_WIN_DRIVERINSTALL_F_FORCE)
+                    dwUninstallFlags |= SUOI_FORCEDELETE;
+
+                /* Takes the oemXXX.inf file (without a path), as found in the Windows INF directory. */
                 fRc = g_pfnSetupUninstallOEMInfW(pCur->wszInfFile, dwUninstallFlags, NULL /* pReserved */);
-            else
-                fRc = FALSE;
+            }
         }
 
         int rc2 = VINF_SUCCESS;
