@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 107895 2025-01-16 10:28:22Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: CPUM.cpp 107896 2025-01-16 10:32:43Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -3958,7 +3958,7 @@ static int cpumR3MapMtrrs(PVM pVM)
         Assert(MtrrMap.idxMtrr == cMtrrsMappable);
         Assert(MtrrMap.idxMtrr == MtrrMap.cMtrrs);
         uint64_t const cbLost = cbRam - MtrrMap.cbMapped;
-        LogRel(("CPUM: WARNING! Could not map %\Rhcb (%RU64 bytes) of RAM using %u variable-range MTRRs\n", cbLost, cbLost,
+        LogRel(("CPUM: WARNING! Could not map %Rhcb (%RU64 bytes) of RAM using %u variable-range MTRRs\n", cbLost, cbLost,
                 MtrrMap.cMtrrs));
     }
 
