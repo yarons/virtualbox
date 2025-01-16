@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: HM.cpp 107887 2025-01-16 00:23:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -757,7 +757,7 @@ static int hmR3InitFinalizeR3(PVM pVM)
         pVCpu->hm.s.fGCMTrapXcptDE = GCMIsInterceptingXcptDE(pVCpu); /* Is safe to call now since GCMR3Init() has completed. */
     }
 
-#if defined(RT_ARCH_AMD64) ||defined(RT_ARCH_X86)
+#if defined(RT_ARCH_AMD64) ||defined(RT_ARCH_X86) /* This section is duplicated in nemR3InitFinalizeSpecCtrl. */
     /*
      * Check if L1D flush is needed/possible.
      */
