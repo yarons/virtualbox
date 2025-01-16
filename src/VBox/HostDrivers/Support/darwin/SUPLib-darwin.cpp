@@ -1,4 +1,4 @@
-/* $Id: SUPLib-darwin.cpp 107918 2025-01-16 15:29:32Z klaus.espenlaub@oracle.com $ */
+/* $Id: SUPLib-darwin.cpp 107924 2025-01-16 17:46:23Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Darwin specific parts.
  */
@@ -69,7 +69,6 @@
 #include <stdlib.h>
 #include <mach/mach_port.h>
 #include <IOKit/IOKitLib.h>
-#include <sys/sysctl.h> /* sysctlbyname() */
 
 
 /*********************************************************************************************************************************
