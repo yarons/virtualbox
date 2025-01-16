@@ -1,4 +1,4 @@
-/* $Id: DevEHCI.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DevEHCI.cpp 107900 2025-01-16 11:42:21Z alexander.eichner@oracle.com $ */
 /** @file
  * DevEHCI - Enhanced Host Controller Interface for USB.
  */
@@ -2077,7 +2077,7 @@ static bool ehciR3ItdHasUrbBeenCanceled(PEHCICC pThisCC, PVUSBURB pUrb, PEHCI_IT
     }
 
     /* Check buffer pointers */
-    for (unsigned i = 0; i < RT_ELEMENTS(pItd->Buffer.Buffer); i++)
+    for (unsigned i = 0; i < RT_ELEMENTS(pItdCopy->Buffer.Buffer); i++)
     {
         if (pItd->Buffer.Buffer[i].Pointer  != pItdCopy->Buffer.Buffer[i].Pointer)
         {
