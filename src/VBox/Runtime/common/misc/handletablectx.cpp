@@ -1,4 +1,4 @@
-/* $Id: handletablectx.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: handletablectx.cpp 107935 2025-01-17 10:05:33Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Handle Tables.
  */
@@ -130,7 +130,6 @@ RTDECL(int)     RTHandleTableAllocWithCtx(RTHANDLETABLE hHandleTable, void *pvOb
             /*
              * Do the allocation(s).
              */
-            rc = VERR_TRY_AGAIN;
             papvLevel1 = NULL;
             if (cLevel1)
             {
