@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 107857 2025-01-15 12:45:28Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 107944 2025-01-17 10:48:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -2883,6 +2883,8 @@ HRESULT Console::getGuestEnteredACPIMode(BOOL *aEntered)
                     vrc = VERR_PDM_MISSING_INTERFACE;
             }
         }
+
+        /** @todo r=andy Communicate (some of the) vrc errors to hrc (+ set error). */
     }
 
     LogFlowThisFuncLeave();
