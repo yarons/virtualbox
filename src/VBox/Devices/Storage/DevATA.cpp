@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 107546 2025-01-08 09:40:24Z alexander.eichner@oracle.com $ */
+/* $Id: DevATA.cpp 107952 2025-01-17 16:54:11Z michal.necasek@oracle.com $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -1662,20 +1662,20 @@ static void ataR3SetSector(PATADEVSTATE s, uint64_t iLBA)
         if (s->fLBA48)
         {
             /* LBA48 */
-            s->uATARegHCylHOB = iLBA >> 40;
-            s->uATARegLCylHOB = iLBA >> 32;
-            s->uATARegSectorHOB = iLBA >> 24;
-            s->uATARegHCyl = iLBA >> 16;
-            s->uATARegLCyl = iLBA >> 8;
-            s->uATARegSector = iLBA;
+            s->uATARegHCylHOB   = RT_BYTE6(iLBA);
+            s->uATARegLCylHOB   = RT_BYTE5(iLBA);
+            s->uATARegSectorHOB = RT_BYTE4(iLBA);
+            s->uATARegHCyl      = RT_BYTE3(iLBA);
+            s->uATARegLCyl      = RT_BYTE2(iLBA);
+            s->uATARegSector    = RT_BYTE1(iLBA);
         }
         else
         {
             /* LBA */
             s->uATARegSelect = (s->uATARegSelect & 0xf0) | (iLBA >> 24);
-            s->uATARegHCyl = (iLBA >> 16);
-            s->uATARegLCyl = (iLBA >> 8);
-            s->uATARegSector = (iLBA);
+            s->uATARegHCyl   = RT_BYTE3(iLBA);
+            s->uATARegLCyl   = RT_BYTE2(iLBA);
+            s->uATARegSector = RT_BYTE1(iLBA);
         }
     }
     else
