@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-info.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-info.cpp 107947 2025-01-17 13:49:03Z andreas.loeffler@oracle.com $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Introspection and debugging.
  */
@@ -1477,9 +1477,9 @@ static void vmsvga3dInfoContextWorkerOne(PCDBGFINFOHLP pHlp, PVMSVGA3DCONTEXT pC
                             FLOAT_FMT_ARGS(pContext->state.aLightData[i].data.phi));
         }
 
-    for (uint32_t i = 0; i < RT_ELEMENTS(pContext->state.aRenderTargets); i++)
+    for (size_t i = 0; i < RT_ELEMENTS(pContext->state.aRenderTargets); i++)
         if (pContext->state.aRenderTargets[i] != SVGA3D_INVALID_ID)
-            pHlp->pfnPrintf(pHlp, "aRenderTargets[%s/%u] = %#x (%d)\n",
+            pHlp->pfnPrintf(pHlp, "aRenderTargets[%s/%zu] = %#x (%d)\n",
                             i < RT_ELEMENTS(g_apszRenderTargets) ? g_apszRenderTargets[i] : "UNKNOWN", i,
                             pContext->state.aRenderTargets[i], pContext->state.aRenderTargets[i]);
 
