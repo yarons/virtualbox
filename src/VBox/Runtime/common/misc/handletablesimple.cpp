@@ -1,4 +1,4 @@
-/* $Id: handletablesimple.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: handletablesimple.cpp 107934 2025-01-17 10:05:06Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Handle Tables.
  */
@@ -122,7 +122,6 @@ RTDECL(int)     RTHandleTableAlloc(RTHANDLETABLE hHandleTable, void *pvObj, uint
             /*
              * Do the allocation(s).
              */
-            rc = VERR_TRY_AGAIN;
             void **papvLevel1 = NULL;
             if (cLevel1)
             {
