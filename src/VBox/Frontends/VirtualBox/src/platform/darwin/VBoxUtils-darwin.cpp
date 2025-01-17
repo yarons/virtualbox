@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxUtils-darwin.cpp 107943 2025-01-17 10:38:38Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -536,11 +536,11 @@ void darwinCreateContextMenuEvent(void *pvUser, int x, int y)
 
 QString darwinResolveAlias(const QString &strFile)
 {
-    OSErr err = noErr;
     FSRef fileRef;
     QString strTarget;
     do
     {
+        OSErr err;
         Boolean fDir;
         if ((err = FSPathMakeRef((const UInt8*)strFile.toUtf8().constData(), &fileRef, &fDir)) != noErr)
             break;
