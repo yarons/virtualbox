@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHostonly.cpp 107939 2025-01-17 10:31:14Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageHostonly.cpp 107940 2025-01-17 10:33:29Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of hostonlyif command.
  */
@@ -410,7 +410,7 @@ static RTEXITCODE handleNetAdd(HandlerArg *a)
 {
     HOSTONLYNETOPT options;
     RTEXITCODE const rcExitcode = createUpdateHostOnlyNetworkParse(a, options);
-    AssertRCReturn(rcExitcode, rcExitcode);
+    AssertReturn(rcExitcode == RTEXITCODE_SUCCESS, rcExitcode);
 
     ComPtr<IVirtualBox> pVirtualBox = a->virtualBox;
     ComPtr<IHostOnlyNetwork> hostOnlyNetwork;
@@ -435,7 +435,7 @@ static RTEXITCODE handleNetModify(HandlerArg *a)
 {
     HOSTONLYNETOPT options;
     RTEXITCODE const rcExitcode = createUpdateHostOnlyNetworkParse(a, options);
-    AssertRCReturn(rcExitcode, rcExitcode);
+    AssertReturn(rcExitcode == RTEXITCODE_SUCCESS, rcExitcode);
 
     ComPtr<IVirtualBox> pVirtualBox = a->virtualBox;
     ComPtr<IHostOnlyNetwork> hostOnlyNetwork;
