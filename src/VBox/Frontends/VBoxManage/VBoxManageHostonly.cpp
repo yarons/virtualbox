@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHostonly.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageHostonly.cpp 107939 2025-01-17 10:31:14Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of hostonlyif command.
  */
@@ -408,10 +408,9 @@ static RTEXITCODE createUpdateHostOnlyNetworkCommon(ComPtr<IHostOnlyNetwork> hos
 
 static RTEXITCODE handleNetAdd(HandlerArg *a)
 {
-    HRESULT hrc = S_OK;
-
     HOSTONLYNETOPT options;
-    hrc = createUpdateHostOnlyNetworkParse(a, options);
+    RTEXITCODE const rcExitcode = createUpdateHostOnlyNetworkParse(a, options);
+    AssertRCReturn(rcExitcode, rcExitcode);
 
     ComPtr<IVirtualBox> pVirtualBox = a->virtualBox;
     ComPtr<IHostOnlyNetwork> hostOnlyNetwork;
@@ -425,6 +424,7 @@ static RTEXITCODE handleNetAdd(HandlerArg *a)
     if (options.bstrUpperIp.isEmpty())
         return errorArgument(HostOnly::tr("The --upper-ip parameter must be specified"));
 
+    HRESULT hrc;
     CHECK_ERROR2_RET(hrc, pVirtualBox,
                      CreateHostOnlyNetwork(options.bstrNetworkName.raw(), hostOnlyNetwork.asOutParam()),
                      RTEXITCODE_FAILURE);
@@ -433,14 +433,14 @@ static RTEXITCODE handleNetAdd(HandlerArg *a)
 
 static RTEXITCODE handleNetModify(HandlerArg *a)
 {
-    HRESULT hrc = S_OK;
-
     HOSTONLYNETOPT options;
-    hrc = createUpdateHostOnlyNetworkParse(a, options);
+    RTEXITCODE const rcExitcode = createUpdateHostOnlyNetworkParse(a, options);
+    AssertRCReturn(rcExitcode, rcExitcode);
 
     ComPtr<IVirtualBox> pVirtualBox = a->virtualBox;
     ComPtr<IHostOnlyNetwork> hostOnlyNetwork;
 
+    HRESULT hrc;
     if (options.bstrNetworkName.isNotEmpty())
     {
         CHECK_ERROR2_RET(hrc, pVirtualBox,
