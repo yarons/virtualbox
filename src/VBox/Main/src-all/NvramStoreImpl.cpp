@@ -1,4 +1,4 @@
-/* $Id: NvramStoreImpl.cpp 107638 2025-01-09 09:41:12Z andreas.loeffler@oracle.com $ */
+/* $Id: NvramStoreImpl.cpp 107951 2025-01-17 15:09:27Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM NVRAM store class implementation
  */
@@ -484,7 +484,8 @@ HRESULT NvramStore::initUefiVariableStore(ULONG aSize)
             if (RT_SUCCESS(vrc))
             {
                 /** @todo The size is hardcoded to match what the firmware image uses right now which is a gross hack... */
-                vrc = RTVfsFileSetSize(hVfsUefiVarStore, 540672, RTVFSFILE_SIZE_F_NORMAL);
+                uint64_t cbUefi = m->pParent->i_getPlatform()->i_getArchitecture() == PlatformArchitecture_ARM ? 786432 : 540672;
+                vrc = RTVfsFileSetSize(hVfsUefiVarStore, cbUefi, RTVFSFILE_SIZE_F_NORMAL);
                 if (RT_SUCCESS(vrc))
                     m->mapNvram["efi/nvram"] = hVfsUefiVarStore;
                 else
