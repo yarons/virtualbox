@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 107396 2024-12-17 22:31:46Z brent.paulson@oracle.com $ */
+/* $Id: Global.cpp 107949 2025-01-17 14:34:30Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM global definitions
  *
@@ -220,7 +220,7 @@ const Global::OSType Global::sOSTypes[] =
       StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, IommuType_None, AudioControllerType_HDA, AudioCodecType_STAC9221  },
 
     { "Windows", "Microsoft Windows", "",               GUEST_OS_ID_STR_A64("Windows11"),       "Windows 11 on ARM (64-bit)", VBOX_GUEST_ADDITIONS_NAME_WIN_A64, VBOX_OSTYPE_ARM64(Win11), VBOXOSHINT_64BIT | VBOXOSHINT_EFI | VBOXOSHINT_USBTABLET | VBOXOSHINT_USB3 | VBOXOSHINT_EFI_SECUREBOOT | VBOXOSHINT_TPM2 | VBOXOSHINT_RTCUTC | VBOXOSHINT_USBHID,
-      2, 4096, 128, 80 * _1G64, GraphicsControllerType_QemuRamFB, NetworkAdapterType_UsbNet, 0, StorageControllerType_VirtioSCSI, StorageBus_VirtioSCSI,
+      2, 4096, 128, 80 * _1G64, GraphicsControllerType_QemuRamFB, NetworkAdapterType_UsbNet, 0, StorageControllerType_IntelAhci, StorageBus_SATA,
       StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_ARMv8Virtual, IommuType_None, AudioControllerType_HDA, AudioCodecType_STAC9221  },
 
     { "Windows", "Microsoft Windows", "",               GUEST_OS_ID_STR_X64("Windows2022"),     "Windows Server 2022 (64-bit)", VBOX_GUEST_ADDITIONS_NAME_WIN,
