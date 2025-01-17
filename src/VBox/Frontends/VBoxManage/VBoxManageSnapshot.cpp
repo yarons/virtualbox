@@ -1,4 +1,4 @@
-/* $Id: VBoxManageSnapshot.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageSnapshot.cpp 107941 2025-01-17 10:36:07Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - The 'snapshot' command.
  */
@@ -560,7 +560,7 @@ RTEXITCODE handleSnapshot(HandlerArg *a)
                 CHECK_ERROR_BREAK(sessionMachine, RestoreSnapshot(pSnapshot, pProgress.asOutParam()));
             }
 
-            hrc = showProgress(pProgress);
+            showProgress(pProgress);
             CHECK_PROGRESS_ERROR(pProgress, (Snapshot::tr("Snapshot operation failed")));
         }
         else if (!strcmp(a->argv[1], "edit"))
