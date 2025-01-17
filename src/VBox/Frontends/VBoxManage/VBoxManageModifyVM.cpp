@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 107910 2025-01-16 14:43:26Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageModifyVM.cpp 107931 2025-01-17 09:14:29Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -957,7 +957,7 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
                     break;
                 }
                 SafeArray<BYTE> icon((size_t)cbSize);
-                hrc = RTFileRead(iconFile, icon.raw(), (size_t)cbSize, NULL);
+                vrc = RTFileRead(iconFile, icon.raw(), (size_t)cbSize, NULL);
                 if (RT_FAILURE(vrc))
                 {
                     RTMsgError(ModifyVM::tr("Cannot read contents of file \"%s\": %Rrc"), ValueUnion.psz, vrc);
