@@ -1,4 +1,4 @@
-/* $Id: ovfreader.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: ovfreader.cpp 107937 2025-01-17 10:22:41Z alexander.eichner@oracle.com $ */
 /** @file
  * OVF reader declarations.
  *
@@ -1059,12 +1059,6 @@ void StorageItem::_checkConsistencyAndCompliance() RT_THROW(OVFLogicError)
 void EthernetPortItem::fillItem(const xml::ElementNode *item)
 {
     VirtualHardwareItem::fillItem(item);
-
-    xml::NodesLoop loopItemChildren(*item);// all child elements
-    const xml::ElementNode *pelmItemChild;
-    while ((pelmItemChild = loopItemChildren.forAllNodes()))
-    {
-    }
 }
 
 void EthernetPortItem::_checkConsistencyAndCompliance() RT_THROW(OVFLogicError)
