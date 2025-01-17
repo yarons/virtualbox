@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestCtrl.cpp 107724 2025-01-10 13:45:03Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxGuestR3LibGuestCtrl.cpp 107946 2025-01-17 11:21:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest control.
  */
@@ -2382,7 +2382,7 @@ VBGLR3DECL(int) VbglR3GuestCtrlProcGetWaitFor(PVBGLR3GUESTCTRLCMDCTX pCtx,
 {
     AssertPtrReturn(pCtx, VERR_INVALID_POINTER);
 
-    AssertReturn(pCtx->uNumParms == 5, VERR_INVALID_PARAMETER);
+    AssertReturn(pCtx->uNumParms == 4, VERR_INVALID_PARAMETER);
     AssertPtrReturn(puPID, VERR_INVALID_POINTER);
 
     int rc;
