@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMSVMR0.cpp 107956 2025-01-18 23:59:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -691,18 +691,27 @@ static void hmR0SvmUpdateVmRunFunction(PVMCPUCC pVCpu)
 {
     static const struct CLANGWORKAROUND { PFNHMSVMVMRUN pfn; } s_aHmR0SvmVmRunFunctions[] =
     {
-        { hmR0SvmVmRun_SansXcr0_SansIbpbEntry_SansIbpbExit },
-        { hmR0SvmVmRun_WithXcr0_SansIbpbEntry_SansIbpbExit },
-        { hmR0SvmVmRun_SansXcr0_WithIbpbEntry_SansIbpbExit },
-        { hmR0SvmVmRun_WithXcr0_WithIbpbEntry_SansIbpbExit },
-        { hmR0SvmVmRun_SansXcr0_SansIbpbEntry_WithIbpbExit },
-        { hmR0SvmVmRun_WithXcr0_SansIbpbEntry_WithIbpbExit },
-        { hmR0SvmVmRun_SansXcr0_WithIbpbEntry_WithIbpbExit },
-        { hmR0SvmVmRun_WithXcr0_WithIbpbEntry_WithIbpbExit },
+        { hmR0SvmVmRun_SansXcr0_SansIbpbEntry_SansIbpbExit_SansSpecCtrl },
+        { hmR0SvmVmRun_WithXcr0_SansIbpbEntry_SansIbpbExit_SansSpecCtrl },
+        { hmR0SvmVmRun_SansXcr0_WithIbpbEntry_SansIbpbExit_SansSpecCtrl },
+        { hmR0SvmVmRun_WithXcr0_WithIbpbEntry_SansIbpbExit_SansSpecCtrl },
+        { hmR0SvmVmRun_SansXcr0_SansIbpbEntry_WithIbpbExit_SansSpecCtrl },
+        { hmR0SvmVmRun_WithXcr0_SansIbpbEntry_WithIbpbExit_SansSpecCtrl },
+        { hmR0SvmVmRun_SansXcr0_WithIbpbEntry_WithIbpbExit_SansSpecCtrl },
+        { hmR0SvmVmRun_WithXcr0_WithIbpbEntry_WithIbpbExit_SansSpecCtrl },
+        { hmR0SvmVmRun_SansXcr0_SansIbpbEntry_SansIbpbExit_WithSpecCtrl },
+        { hmR0SvmVmRun_WithXcr0_SansIbpbEntry_SansIbpbExit_WithSpecCtrl },
+        { hmR0SvmVmRun_SansXcr0_WithIbpbEntry_SansIbpbExit_WithSpecCtrl },
+        { hmR0SvmVmRun_WithXcr0_WithIbpbEntry_SansIbpbExit_WithSpecCtrl },
+        { hmR0SvmVmRun_SansXcr0_SansIbpbEntry_WithIbpbExit_WithSpecCtrl },
+        { hmR0SvmVmRun_WithXcr0_SansIbpbEntry_WithIbpbExit_WithSpecCtrl },
+        { hmR0SvmVmRun_SansXcr0_WithIbpbEntry_WithIbpbExit_WithSpecCtrl },
+        { hmR0SvmVmRun_WithXcr0_WithIbpbEntry_WithIbpbExit_WithSpecCtrl },
     };
     uintptr_t const idx = (pVCpu->hmr0.s.fLoadSaveGuestXcr0                 ? 1 : 0)
                         | (pVCpu->hmr0.s.fWorldSwitcher & HM_WSF_IBPB_ENTRY ? 2 : 0)
-                        | (pVCpu->hmr0.s.fWorldSwitcher & HM_WSF_IBPB_EXIT  ? 4 : 0);
+                        | (pVCpu->hmr0.s.fWorldSwitcher & HM_WSF_IBPB_EXIT  ? 4 : 0)
+                        | (pVCpu->hmr0.s.fWorldSwitcher & HM_WSF_SPEC_CTRL  ? 8 : 0);
     PFNHMSVMVMRUN const pfnVMRun = s_aHmR0SvmVmRunFunctions[idx].pfn;
     if (pVCpu->hmr0.s.svm.pfnVMRun != pfnVMRun)
         pVCpu->hmr0.s.svm.pfnVMRun = pfnVMRun;
