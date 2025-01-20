@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 107958 2025-01-20 13:12:06Z michal.necasek@oracle.com $ */
+/* $Id: DevATA.cpp 107961 2025-01-20 15:55:13Z michal.necasek@oracle.com $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -1440,8 +1440,8 @@ static bool ataR3IdentifySS(PPDMDEVINS pDevIns, PATACONTROLLER pCtl, PATADEVSTAT
         p[59] = RT_H2LE_U16(0x100 | s->cMultSectors);
     if (s->cTotalSectors <= (1 << 28) - 1)
     {
-        p[60] = RT_H2LE_U16(RT_LO_U16(s->cTotalSectors));
-        p[61] = RT_H2LE_U16(RT_HI_U16(s->cTotalSectors));
+        p[60] = RT_H2LE_U16(RT_LO_U16(RT_LO_U32(s->cTotalSectors)));
+        p[61] = RT_H2LE_U16(RT_HI_U16(RT_LO_U32(s->cTotalSectors)));
     }
     else
     {
