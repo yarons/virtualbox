@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 107890 2025-01-16 00:32:22Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMInternal.h 107967 2025-01-20 20:15:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -262,6 +262,8 @@ typedef struct NEM
     bool                        fExtendedCpuIdExit : 1;
     /** WHvRunVpExitReasonException is supported. */
     bool                        fExtendedXcptExit : 1;
+    /** Copy of WHV_CAPABILITY_FEATURES::SpeculationControl. */
+    bool                        fSpeculationControl : 1;
 #  ifdef NEM_WIN_WITH_A20
     /** Set if we've started more than one CPU and cannot mess with A20. */
     bool                        fA20Fixed : 1;
