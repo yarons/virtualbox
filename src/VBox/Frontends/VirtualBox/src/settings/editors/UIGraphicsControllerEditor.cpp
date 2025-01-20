@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsControllerEditor.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIGraphicsControllerEditor.cpp 107959 2025-01-20 15:19:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGraphicsControllerEditor class implementation.
  */
@@ -99,7 +99,7 @@ void UIGraphicsControllerEditor::handleFilterChange()
 
 void UIGraphicsControllerEditor::sltHandleCurrentIndexChanged()
 {
-    if (m_pCombo)
+    if (m_pCombo && m_pCombo->count())
         emit sigValueChanged(m_pCombo->itemData(m_pCombo->currentIndex()).value<KGraphicsControllerType>());
 }
 
