@@ -1,4 +1,4 @@
-/* $Id: tstUnattendedScript.cpp 107780 2025-01-13 15:51:34Z alexander.eichner@oracle.com $ */
+/* $Id: tstUnattendedScript.cpp 107978 2025-01-21 08:29:09Z alexander.eichner@oracle.com $ */
 /** @file
  * tstUnattendedScript - testcases for UnattendedScript.
  */
@@ -57,7 +57,7 @@ Unattended::Unattended()
     : mhThreadReconfigureVM(NIL_RTNATIVETHREAD)
     , mfRtcUseUtc(false)
     , mfGuestOs64Bit(false)
-    , menmFirmwareType(FirmwareType_BIOS)
+    , menmFirmwareType(FirmwareType_EFI)
     , mpInstaller(NULL)
     , mfInstallGuestAdditions(false)
     , mfInstallTestExecService(false)
