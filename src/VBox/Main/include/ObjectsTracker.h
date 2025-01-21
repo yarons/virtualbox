@@ -1,4 +1,4 @@
-/* $Id: ObjectsTracker.h 107298 2024-12-09 13:09:34Z valery.portnyagin@oracle.com $ */
+/* $Id: ObjectsTracker.h 107975 2025-01-21 06:29:59Z valery.portnyagin@oracle.com $ */
 /** @file
  * VirtualBox Object tracker definitions
  */
@@ -154,8 +154,8 @@ public:
         return m_fLifeTimeExpired;
     }
 
-    com::Utf8Str updateLastAccessTime();
-    com::Utf8Str initIdleTime();
+    RTTIMESPEC updateLastAccessTime();
+    RTTIMESPEC initIdleTime();
     com::Utf8Str creationTimeStr() const;
     TrackedObjectState_T deletionTime(PRTTIMESPEC aTime) const;
     TrackedObjectState_T updateState(TrackedObjectState_T aNewState);
