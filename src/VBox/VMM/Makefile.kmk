@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 107721 2025-01-10 13:42:28Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 107987 2025-01-21 15:46:55Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -464,6 +464,7 @@ ifdef VBOX_WITH_VIRT_ARMV8
  	VMMR3/PDMQueue.cpp \
  	VMMR3/PDMR3Task.cpp \
  	VMMR3/PDMThread.cpp \
+ 	VMMR3/PGM.cpp \
  	VMMR3/PGM-armv8.cpp \
  	VMMR3/PGMDbg.cpp \
  	VMMR3/PGMHandler.cpp \

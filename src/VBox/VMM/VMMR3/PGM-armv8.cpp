@@ -1,4 +1,4 @@
-/* $Id: PGM-armv8.cpp 107231 2024-11-29 14:47:06Z knut.osmundsen@oracle.com $ */
+/* $Id: PGM-armv8.cpp 107987 2025-01-21 15:46:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, ARMv8 variant. (Mixing stuff here, not good?)
  */
@@ -68,6 +68,9 @@
 #include <iprt/rand.h>
 #include <iprt/string.h>
 #include <iprt/thread.h>
+
+
+#if 0 /* now in taken from PGM.cpp where it came from */
 
 
 /*********************************************************************************************************************************
@@ -520,6 +523,7 @@ VMMR3DECL(int) PGMR3CheckIntegrity(PVM pVM)
     return VINF_SUCCESS;
 }
 
+#endif
 
 VMMDECL(bool) PGMHasDirtyPages(PVM pVM)
 {
