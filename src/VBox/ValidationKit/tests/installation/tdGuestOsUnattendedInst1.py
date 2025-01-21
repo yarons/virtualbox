@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsUnattendedInst1.py 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: tdGuestOsUnattendedInst1.py 107990 2025-01-21 21:56:47Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Guest OS unattended installation tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 106061 $"
+__version__ = "$Revision: 107990 $"
 
 
 # Standard Python imports.
@@ -180,6 +180,11 @@ class UnattendedVm(vboxtestvms.BaseTestVm):
         # Associate oVM with the installer:
         try:
             oIUnattended.machine = oVM;
+            if oTestDrv.fpApiVer >= 7.1:
+                oIUnattended.userPassword  = 'changeme';
+                oIUnattended.adminPassword = 'changeme';
+            else:
+                oIUnattended.password = 'changeme';
         except:
             return reporter.errorXcpt();
         oTestDrv.processPendingEvents();
