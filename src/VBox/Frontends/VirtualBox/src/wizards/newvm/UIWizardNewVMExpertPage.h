@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardNewVMExpertPage.h 108000 2025-01-22 11:31:39Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class declaration.
  */
@@ -144,7 +144,7 @@ private:
         UIDiskFormatsComboBox *m_pFormatComboBox;
         UIMediumSizeAndPathGroupBox *m_pSizeAndLocationGroup;
         UINameAndSystemEditor *m_pNameAndSystemEditor;
-        QCheckBox *m_pSkipUnattendedCheckBox;
+        QCheckBox *m_pUnattendedCheckBox;
         QGridLayout *m_pNameAndSystemLayout;
         UINewVMHardwareContainer *m_pHardwareWidgetContainer;
         UIAdditionalUnattendedOptions *m_pAdditionalOptionsContainer;
