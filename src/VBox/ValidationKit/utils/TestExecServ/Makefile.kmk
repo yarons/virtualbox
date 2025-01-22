@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 107992 2025-01-22 10:17:47Z andreas.loeffler@oracle.com $
 ## @file
 # VirtualBox Validation Kit - The Basic Remote Execution Service.
 #
@@ -37,6 +37,10 @@
 SUB_DEPTH = ../../../../..
 include $(KBUILD_PATH)/subheader.kmk
 
+#
+# Include sub-makefiles.
+#
+include $(PATH_SUB_CURRENT)/txsshell/Makefile.kmk
 
 PROGRAMS += TestExecService
 TestExecService_TEMPLATE = VBoxValidationKitR3
@@ -86,4 +90,3 @@ TestExecServiceFiles_EXEC_SOURCES.win     := \
 
 
 include $(FILE_KBUILD_SUB_FOOTER)
-
