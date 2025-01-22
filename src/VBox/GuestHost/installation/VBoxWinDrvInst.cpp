@@ -1,4 +1,4 @@
-/* $Id: VBoxWinDrvInst.cpp 107998 2025-01-22 11:02:17Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxWinDrvInst.cpp 108004 2025-01-22 13:02:48Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxWinDrvInst - Windows driver installation handling.
  */
@@ -282,7 +282,7 @@ DECLINLINE(void) vboxWinDrvInstLogErrorExV(PVBOXWINDRVINSTINTERNAL pCtx, bool fI
         pCtx->cErrors++;
 }
 
-#if 0 /* Unused */
+#ifdef RT_ARCH_X86
 /**
  * Logs an error message but ignores (skips) the error count.
  *
@@ -317,7 +317,7 @@ DECLINLINE(int) vboxWinDrvInstLogErrorRetIgn(PVBOXWINDRVINSTINTERNAL pCtx, int r
 
     return rc;
 }
-#endif /* Unused */
+#endif /* RT_ARCH_X86 */
 
 /**
  * Logs an error message.
