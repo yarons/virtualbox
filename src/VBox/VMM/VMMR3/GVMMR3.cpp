@@ -1,4 +1,4 @@
-/* $Id: GVMMR3.cpp 108008 2025-01-22 15:31:45Z knut.osmundsen@oracle.com $ */
+/* $Id: GVMMR3.cpp 108016 2025-01-22 20:04:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * GVMM - Global VM Manager, ring-3 request wrappers.
  */
@@ -71,7 +71,7 @@ VMMR3_INT_DECL(int) GVMMR3CreateVM(PUVM pUVM, VMTARGET enmTarget, uint32_t cCpus
         CreateVMReq.cCpus           = cCpus;
         CreateVMReq.cbVM            = sizeof(VM);
         CreateVMReq.cbVCpu          = sizeof(VMCPU);
-        CreateVMReq.uStructVersion  = 1;
+        CreateVMReq.uStructVersion  = VM_STRUCT_VERSION;
         CreateVMReq.uSvnRevision    = VMMGetSvnRev();
         CreateVMReq.pVMR0           = NIL_RTR0PTR;
         CreateVMReq.pVMR3           = NULL;
@@ -108,7 +108,7 @@ VMMR3_INT_DECL(int) GVMMR3CreateVM(PUVM pUVM, VMTARGET enmTarget, uint32_t cCpus
         pVM->uCpuExecutionCap     = 100;
         pVM->cbSelf               = sizeof(VM);
         pVM->cbVCpu               = sizeof(VMCPU);
-        pVM->uStructVersion       = 1;
+        pVM->uStructVersion       = VM_STRUCT_VERSION;
         pVM->enmTarget            = enmTarget;
 
         /* CPUs: */
