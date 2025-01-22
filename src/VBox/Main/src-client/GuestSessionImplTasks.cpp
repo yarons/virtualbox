@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 107752 2025-01-10 16:14:43Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImplTasks.cpp 107991 2025-01-22 08:01:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -1744,7 +1744,7 @@ int GuestSessionTaskCopyFrom::Run(void)
         /* Create the root directory. */
         if (pList->mSourceSpec.enmType == FsObjType_Directory)
         {
-            LogFlowFunc(("Directory: fDirCopyFlags=%#x, fCopyIntoExisting=%RTbool, fFollowSymlinks=%RTbool -> fDstExist=%RTbool (%s)\n",
+            LogFlowFunc(("Directory: fDirCopyFlags=%#x, fCopyIntoExisting=%RTbool -> fDstExist=%RTbool (%s)\n",
                          pList->mSourceSpec.fDirCopyFlags, fCopyIntoExisting,
                          fDstExists, GuestBase::fsObjTypeToStr(GuestBase::fileModeToFsObjType(dstFsObjInfo.Attr.fMode))));
 
@@ -1862,7 +1862,7 @@ int GuestSessionTaskCopyFrom::Run(void)
         }
         else if (pList->mSourceSpec.enmType == FsObjType_File)
         {
-            LogFlowFunc(("File: fFileCopyFlags=%#x, fCopyIntoExisting=%RTbool, fFollowSymlinks=%RTbool -> fDstExist=%RTbool (%s)\n",
+            LogFlowFunc(("File: fFileCopyFlags=%#x, fCopyIntoExisting=%RTbool -> fDstExist=%RTbool (%s)\n",
                          pList->mSourceSpec.fFileCopyFlags, fCopyIntoExisting,
                          fDstExists, GuestBase::fsObjTypeToStr(GuestBase::fileModeToFsObjType(dstFsObjInfo.Attr.fMode))));
 
