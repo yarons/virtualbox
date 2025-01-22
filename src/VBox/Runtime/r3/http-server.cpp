@@ -1,4 +1,4 @@
-/* $Id: http-server.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: http-server.cpp 107993 2025-01-22 10:34:43Z andreas.loeffler@oracle.com $ */
 /** @file
  * Simple HTTP server (RFC 7231) implementation.
  *
@@ -1310,9 +1310,6 @@ static int rtHttpServerClientMain(PRTHTTPSERVERCLIENT pClient, RTMSINTERVAL msTi
         }
 
         LogFlowFunc(("Reading client request ...\n"));
-
-        tsLastReadMs = RTTimeMilliTS();
-        cWaitMs      = 200;  /* All consequtive waits do busy waiting for now. */
 
         char  *pszReq      = szReq;
         size_t cbRead;
