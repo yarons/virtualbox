@@ -1,4 +1,4 @@
-/* $Id: tstAudioClient3.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: tstAudioClient3.cpp 108011 2025-01-22 16:11:32Z andreas.loeffler@oracle.com $ */
 /** @file
  * Audio testcase - Tests for the IAudioClient3 interface.
  */
@@ -51,7 +51,7 @@ int main(int argc, char **argv)
      * Initialize IPRT and create the test.
      */
     RTTEST hTest;
-    int rc = RTTestInitAndCreate("tstAudioMixBuffer", &hTest);
+    int rc = RTTestInitAndCreate("tstAudioClient3", &hTest);
     if (rc)
         return rc;
     RTTestBanner(hTest);
