@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePage.cpp 108000 2025-01-22 11:31:39Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMNameOSTypePage.cpp 108001 2025-01-22 12:10:15Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameOSStype class implementation.
  */
@@ -823,5 +823,5 @@ void  UIWizardNewVMNameOSTypePage::setEditionSelectorEnabled()
     if (!m_pNameAndSystemEditor || !m_pUnattendedCheckBox)
         return;
     m_pNameAndSystemEditor->setEditionSelectorEnabled(   !m_pNameAndSystemEditor->isEditionsSelectorEmpty()
-                                                      && !m_pUnattendedCheckBox->isChecked());
+                                                      && m_pUnattendedCheckBox->isChecked());
 }
