@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 107987 2025-01-21 15:46:55Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 108008 2025-01-22 15:31:45Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -1120,7 +1120,7 @@ endif
 
 
 #
-# For vmmGetSvnRev.
+# For VMMGetSvnRev.
 #
 VMMAll/VMMAll.cpp_DEFS = VBOX_SVN_REV=$(VBOX_SVN_REV)
 
