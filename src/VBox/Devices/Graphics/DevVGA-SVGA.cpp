@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 107462 2024-12-24 17:00:55Z dmitrii.grigorev@oracle.com $ */
+/* $Id: DevVGA-SVGA.cpp 107999 2025-01-22 11:10:01Z dmitrii.grigorev@oracle.com $ */
 /** @file
  * VMware SVGA device.
  *
@@ -4760,8 +4760,11 @@ static void vmsvgaR3FifoPendingActions(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGA
     {
         vmsvgaR3ChangeMode(pThis, pThisCC);
 # ifdef VBOX_WITH_VMSVGA3D
-        if (pThisCC->svga.p3dState != NULL)
+        if (pThis->svga.f3DEnabled && pThisCC->svga.p3dState != NULL)
+        {
+            /** @todo Implement !f3DEnabled and fVMSVGA2dGBO cases to prevent an occasional blank screens on VM startup */
             vmsvga3dChangeMode(pThisCC);
+        }
 # endif
     }
 }
