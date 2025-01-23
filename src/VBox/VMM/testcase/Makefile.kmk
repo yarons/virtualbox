@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 107711 2025-01-10 13:05:31Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 108029 2025-01-23 14:18:38Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -79,6 +79,7 @@ ifndef VBOX_ONLY_EXTPACKS_USE_IMPLIBS
   endif
   PROGRAMS += \
   	tstCompressionBenchmark \
+	tstInt \
   	tstIEMCheckMc \
   	tstIEMAImpl \
   	tstPDMQueue \
@@ -239,6 +240,15 @@ else
 endif
 tstGlobalConfig_SOURCES  = tstGlobalConfig.cpp
 tstGlobalConfig_LIBS     = $(LIB_RUNTIME)
+
+
+#
+# Testcase for bencharmking
+#
+tstInt_TEMPLATE       = VBoxR3SignedExe
+tstInt_DEFS           = VBOX_VMM_TARGET_AGNOSTIC $(VMM_COMMON_DEFS) VBOX_SVN_REV=$(VBOX_SVN_REV)
+tstInt_SOURCES        = tstInt.cpp
+tstInt_LIBS           = $(LIB_RUNTIME)
 
 
 #
