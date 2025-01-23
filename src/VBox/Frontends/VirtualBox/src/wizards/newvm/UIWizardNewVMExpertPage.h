@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.h 108000 2025-01-22 11:31:39Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMExpertPage.h 108034 2025-01-23 15:16:27Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class declaration.
  */
@@ -121,7 +121,7 @@ private:
     bool validatePage() RT_OVERRIDE;
 
     bool isProductKeyWidgetEnabled() const;
-    void disableEnableUnattendedRelatedWidgets(bool fEnabled);
+    void disableEnableUnattendedRelatedWidgets();
     void markWidgets() const;
     QWidget *createUnattendedWidgets();
     QWidget *createNewDiskWidgets();
