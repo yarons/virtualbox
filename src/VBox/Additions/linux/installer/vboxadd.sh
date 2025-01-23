@@ -1,7 +1,7 @@
 #! /bin/sh
-# $Id: vboxadd.sh 108032 2025-01-23 14:28:04Z vadim.galitsyn@oracle.com $
+# $Id: vboxadd.sh 108037 2025-01-23 16:03:29Z vadim.galitsyn@oracle.com $
 ## @file
-# Linux Additions kernel module init script ($Revision: 108032 $)
+# Linux Additions kernel module init script ($Revision: 108037 $)
 #
 
 #
@@ -174,14 +174,6 @@ VBOX_REVISION="r`"$VBOXCONTROL" --version | cut -d r -f2`"
 running_vboxguest()
 {
     lsmod | grep -q "vboxguest[^_-]"
-}
-
-# Returns if the vboxadd module is running or not.
-#
-# Returns true if vboxadd module is running, false if not.
-running_vboxadd()
-{
-    lsmod | grep -q "vboxadd[^_-]"
 }
 
 # Returns if the vboxsf module is running or not.
@@ -896,7 +888,7 @@ Please install them and execute
     # Create user group which will have permissive access to DRP IPC server socket.
     groupadd -r -f vboxdrmipc >/dev/null 2>&1
 
-    if  running_vboxguest || running_vboxadd; then
+    if  running_vboxguest; then
         # Only warn user if currently loaded modules version do not match Guest Additions Installation.
         check_running_module_version "vboxguest" || info "Running kernel modules will not be replaced until the system is restarted or 'rcvboxadd reload' triggered"
     fi
