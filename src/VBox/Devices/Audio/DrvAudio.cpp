@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 107808 2025-01-14 09:11:17Z andreas.loeffler@oracle.com $ */
+/* $Id: DrvAudio.cpp 108044 2025-01-23 17:19:50Z andreas.loeffler@oracle.com $ */
 /** @file
  * Intermediate audio driver - Connects the audio device emulation with the host backend.
  */
@@ -4776,6 +4776,7 @@ static DECLCALLBACK(int) drvAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, u
                                   "DriverName|"
                                   "InputEnabled|"
                                   "OutputEnabled|"
+                                  "CacheEnabled|"
                                   "DebugEnabled|"
                                   "DebugPathOut|"
                                   /* Deprecated: */

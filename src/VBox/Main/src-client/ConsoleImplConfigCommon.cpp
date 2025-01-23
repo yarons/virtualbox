@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigCommon.cpp 107911 2025-01-16 14:44:45Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImplConfigCommon.cpp 108044 2025-01-23 17:19:50Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -648,6 +648,17 @@ void Console::i_configAudioDriver(IVirtualBox *pVirtualBox, IMachine *pMachine, 
         Bstr bstrTmp;
         HRESULT hrc = pMachine->COMGETTER(Name)(bstrTmp.asOutParam());                          H();
         InsertConfigString(pCfg, "VmName", bstrTmp);
+    }
+
+    /* Disabling caching code only is available for the HostAudioWas backend. */
+    if (strcmp(pszDrvName, "HostAudioWas") == 0)
+    {
+        GetExtraDataBoth(pVirtualBox, pMachine, "VBoxInternal2/Audio/CacheEnabled", &strTmp); /* Since VBox > 7.1.16. */
+        if (strTmp.isNotEmpty()) /* If value is not found, just skip. */
+        {
+            uint64_t const fCacheEnabled = strTmp.equalsIgnoreCase("true") || strTmp.equalsIgnoreCase("1");
+            InsertConfigInteger(pCfg, "CacheEnabled", fCacheEnabled);
+        }
     }
 #endif
 
