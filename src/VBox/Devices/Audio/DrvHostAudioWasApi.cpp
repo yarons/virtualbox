@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioWasApi.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostAudioWasApi.cpp 108030 2025-01-23 14:18:54Z andreas.loeffler@oracle.com $ */
 /** @file
  * Host audio driver - Windows Audio Session API.
  */
@@ -545,13 +545,17 @@ public:
         IMMDeviceEnumerator *pIEnumerator = NULL;
         RTCritSectEnter(&m_CritSect);
         if (    m_pDrvWas != NULL
-            && (   (enmFlow == eRender  && enmRole == eMultimedia && !m_pDrvWas->pwszOutputDevId)
-                || (enmFlow == eCapture && enmRole == eMultimedia && !m_pDrvWas->pwszInputDevId)))
+            && (   (enmFlow == eRender  && !m_pDrvWas->pwszOutputDevId)
+                || (enmFlow == eCapture && !m_pDrvWas->pwszInputDevId)))
         {
             pIEnumerator = m_pDrvWas->pIEnumerator;
             if (pIEnumerator /* paranoia */)
                 pIEnumerator->AddRef();
         }
+
+        LogRelMax2(64, ("WasAPI: Default %s device changed (role=%#x, id='%ls')\n",
+                        enmFlow == eRender ? "output" : "input", enmRole, pwszDefaultDeviceId ? pwszDefaultDeviceId : L"<None>"));
+
         RTCritSectLeave(&m_CritSect);
         if (pIEnumerator)
         {
