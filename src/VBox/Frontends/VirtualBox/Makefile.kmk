@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 107769 2025-01-10 17:34:15Z sergey.dubov@oracle.com $
+# $Id: Makefile.kmk 108033 2025-01-23 15:04:44Z sergey.dubov@oracle.com $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -636,7 +636,6 @@ VirtualBox_QT_MOCHDRS = \
 	src/manager/tools/UIToolsModel.h \
 	src/manager/tools/UIToolsView.h \
 	src/manager/tools/UIToolsHandlerMouse.h \
-	src/manager/tools/UIToolsHandlerKeyboard.h \
 	src/manager/tools/UIToolsItem.h \
 	src/medium/UIMediumDetailsWidget.h \
 	src/medium/UIMediumManager.h \
@@ -1170,7 +1169,6 @@ VirtualBox_SOURCES = \
 	src/manager/tools/UIToolsModel.cpp \
 	src/manager/tools/UIToolsView.cpp \
 	src/manager/tools/UIToolsHandlerMouse.cpp \
-	src/manager/tools/UIToolsHandlerKeyboard.cpp \
 	src/manager/tools/UIToolsItem.cpp \
 	src/medium/UIMediumDetailsWidget.cpp \
 	src/medium/UIMediumManager.cpp \

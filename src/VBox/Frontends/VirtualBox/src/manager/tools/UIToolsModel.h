@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 107408 2024-12-18 13:13:22Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.h 108033 2025-01-23 15:04:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -53,7 +53,6 @@ class QTimer;
 class UIActionPool;
 class UITools;
 class UIToolsHandlerMouse;
-class UIToolsHandlerKeyboard;
 
 /** QObject extension used as VM Tools-pane model: */
 class UIToolsModel : public QObject
@@ -264,9 +263,7 @@ private:
         QGraphicsScene *m_pScene;
 
         /** Holds the mouse handler instance. */
-        UIToolsHandlerMouse    *m_pMouseHandler;
-        /** Holds the keyboard handler instance. */
-        UIToolsHandlerKeyboard *m_pKeyboardHandler;
+        UIToolsHandlerMouse *m_pMouseHandler;
 
         /** Holds whether items enabled. */
         bool  m_fItemsEnabled;
