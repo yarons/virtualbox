@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: txsshell.py 108014 2025-01-22 17:46:13Z klaus.espenlaub@oracle.com $
+# $Id: txsshell.py 108023 2025-01-23 10:02:59Z knut.osmundsen@oracle.com $
 
 """
 Test eXecution Service Shell.
@@ -35,17 +35,14 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = '$Revision: 108014 $'
+__version__ = '$Revision: 108023 $'
 
 import code;
 import os;
 import sys;
 import time;
 
-# Make sure that the ModuleNotFoundError exception is found by Python 2.x.
-try:
-    ModuleNotFoundError
-except NameError:
+if sys.version_info[0] < 3 or (sys.version_info[0] == 3 and sys.version_info[1] < 6): # since 3.6
     ModuleNotFoundError = ImportError # pylint: disable=redefined-builtin
 
 try:    __file__                      # pylint: disable=used-before-assignment
