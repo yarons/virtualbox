@@ -1,7 +1,7 @@
 #! /bin/sh
-# $Id: vboxadd.sh 108037 2025-01-23 16:03:29Z vadim.galitsyn@oracle.com $
+# $Id: vboxadd.sh 108038 2025-01-23 16:06:43Z vadim.galitsyn@oracle.com $
 ## @file
-# Linux Additions kernel module init script ($Revision: 108037 $)
+# Linux Additions kernel module init script ($Revision: 108038 $)
 #
 
 #
@@ -182,14 +182,6 @@ running_vboxguest()
 running_vboxsf()
 {
     lsmod | grep -q "vboxsf[^_-]"
-}
-
-# Returns if the vboxvideo module is running or not.
-#
-# Returns true if vboxvideo module is running, false if not.
-running_vboxvideo()
-{
-    lsmod | grep -q "vboxvideo[^_-]"
 }
 
 # Returns if a specific module is running or not.
