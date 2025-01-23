@@ -1,7 +1,7 @@
 #! /bin/sh
-# $Id: vboxadd.sh 108040 2025-01-23 16:22:11Z vadim.galitsyn@oracle.com $
+# $Id: vboxadd.sh 108042 2025-01-23 16:24:51Z vadim.galitsyn@oracle.com $
 ## @file
-# Linux Additions kernel module init script ($Revision: 108040 $)
+# Linux Additions kernel module init script ($Revision: 108042 $)
 #
 
 #
@@ -176,7 +176,7 @@ VBOX_REVISION="r`"$VBOXCONTROL" --version | cut -d r -f2`"
 running_module()
 {
     mod="$1"
-    [ -d "/sys/module/"$mod ]
+    [ -d "/sys/module/$mod" ]
 }
 
 # Returns the version string of a currently running kernel module.
@@ -187,7 +187,7 @@ running_module()
 running_module_version()
 {
     mod="$1"
-    version_string_path="/sys/module/"$mod"/version"
+    version_string_path="/sys/module/$mod/version"
 
     [ -n "$mod" ] || return
     if [ -r "$version_string_path" ]; then
