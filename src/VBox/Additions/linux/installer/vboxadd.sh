@@ -1,7 +1,7 @@
 #! /bin/sh
-# $Id: vboxadd.sh 108027 2025-01-23 13:48:56Z vadim.galitsyn@oracle.com $
+# $Id: vboxadd.sh 108032 2025-01-23 14:28:04Z vadim.galitsyn@oracle.com $
 ## @file
-# Linux Additions kernel module init script ($Revision: 108027 $)
+# Linux Additions kernel module init script ($Revision: 108032 $)
 #
 
 #
@@ -1266,7 +1266,7 @@ reload)
     check_root
     # reload() we will call modprobe(8) in order to reload kernel
     # modules. This operation is asynchronous and requires some time for
-    # modules to be loaded in most of the cases. By setting this variable, we 
+    # modules to be loaded in most of the cases. By setting this variable, we
     # ask check_status_kernel() to wait a bit before making a decision
     # whether modules were loaded or not.
     vbox_add_wait=1
