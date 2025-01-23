@@ -1,4 +1,4 @@
-/* $Id: json.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: json.cpp 108047 2025-01-23 19:56:21Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT JSON parser API (JSON).
  */
@@ -1884,7 +1884,7 @@ RTDECL(int) RTJsonIteratorNext(RTJSONIT hJsonIt)
         if (pIt->idxCur < pThis->Type.Array.cItems)
             pIt->idxCur++;
 
-        if (pIt->idxCur == pThis->Type.Object.cMembers)
+        if (pIt->idxCur == pThis->Type.Array.cItems)
             rc = VERR_JSON_ITERATOR_END;
     }
     else
