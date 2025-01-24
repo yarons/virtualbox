@@ -1,6 +1,6 @@
-/* $Id: GICR3Nem-linux.cpp 107357 2024-12-13 08:09:39Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICR3Nem-linux.cpp 108051 2025-01-24 09:43:16Z ramshankar.venkataraman@oracle.com $ */
 /** @file
- * GIC - Generic Interrupt Controller Architecture (GICv3) - KVM in kernel interface.
+ * GIC - Generic Interrupt Controller Architecture (GIC) - KVM in kernel interface.
  */
 
 /*
@@ -86,9 +86,9 @@ typedef GICKVMDEV const *PCGICKVMDEV;
 *********************************************************************************************************************************/
 #if 0
 /**
- * System register ranges for the GICv3.
+ * System register ranges for the GIC.
  */
-static CPUMSYSREGRANGE const g_aSysRegRanges_GICv3[] =
+static CPUMSYSREGRANGE const g_aSysRegRanges_GIC[] =
 {
     GIC_SYSREGRANGE(ARMV8_AARCH64_SYSREG_ICC_PMR_EL1,   ARMV8_AARCH64_SYSREG_ICC_PMR_EL1,     "ICC_PMR_EL1"),
     GIC_SYSREGRANGE(ARMV8_AARCH64_SYSREG_ICC_IAR0_EL1,  ARMV8_AARCH64_SYSREG_ICC_AP0R3_EL1,   "ICC_IAR0_EL1 - ICC_AP0R3_EL1"),

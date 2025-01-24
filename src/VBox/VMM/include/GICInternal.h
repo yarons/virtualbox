@@ -1,6 +1,6 @@
-/* $Id: GICInternal.h 107364 2024-12-13 09:08:26Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICInternal.h 108051 2025-01-24 09:43:16Z ramshankar.venkataraman@oracle.com $ */
 /** @file
- * GIC - Generic Interrupt Controller Architecture (GICv3).
+ * GIC - Generic Interrupt Controller Architecture (GIC).
  */
 
 /*
@@ -102,6 +102,11 @@ typedef struct GICDEV
     volatile bool               fIrqGrp1Enabled;
     /** @} */
 
+    /** @name Configurables.
+     * @{ */
+    /** The GICD_TYPER.ItsLinesNumber bits. */
+    uint16_t                    uItLinesNumber;
+    /** @} */
 } GICDEV;
 /** Pointer to a GIC device. */
 typedef GICDEV *PGICDEV;
@@ -130,6 +135,7 @@ typedef struct GICCPU
 {
     /** @name The per vCPU redistributor data is kept here.
      * @{ */
+    /** @} */
 
     /** @name Physical LPI register state.
      * @{ */

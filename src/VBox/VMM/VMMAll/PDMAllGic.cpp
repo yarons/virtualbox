@@ -1,6 +1,6 @@
-/* $Id: PDMAllGic.cpp 107357 2024-12-13 08:09:39Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: PDMAllGic.cpp 108051 2025-01-24 09:43:16Z ramshankar.venkataraman@oracle.com $ */
 /** @file
- * PDM - GICv3 (Generic Interrupt Controller) Interface.
+ * PDM - Generic Interrupt Controller (GIC) Interface.
  */
 
 /*
