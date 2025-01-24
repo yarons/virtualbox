@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 107931 2025-01-17 09:14:29Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxManageModifyVM.cpp 108052 2025-01-24 09:43:35Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -2766,10 +2766,6 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
                 else if (!RTStrICmp(ValueUnion.psz, "default"))
                     CHECK_ERROR(audioAdapter, COMSETTER(AudioDriver)(AudioDriverType_Default));
 #ifdef RT_OS_WINDOWS
-# ifdef VBOX_WITH_WINMM
-                else if (!RTStrICmp(ValueUnion.psz, "winmm"))
-                    CHECK_ERROR(audioAdapter, COMSETTER(AudioDriver)(AudioDriverType_WinMM));
-# endif
                 else if (!RTStrICmp(ValueUnion.psz, "dsound"))
                     CHECK_ERROR(audioAdapter, COMSETTER(AudioDriver)(AudioDriverType_DirectSound));
                 else if (!RTStrICmp(ValueUnion.psz, "was"))

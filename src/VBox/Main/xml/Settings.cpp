@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 107785 2025-01-13 16:41:52Z alexander.eichner@oracle.com $ */
+/* $Id: Settings.cpp 108052 2025-01-24 09:43:35Z andreas.loeffler@oracle.com $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -5096,7 +5096,11 @@ void MachineConfigFile::readAudioAdapter(const xml::ElementNode &elmAudioAdapter
         else if (strTemp == "WAS")
             aa.driverType = AudioDriverType_WAS;
         else if (strTemp == "WINMM")
-            aa.driverType = AudioDriverType_WinMM;
+        {
+            /* Deprecated; not (ever) supported; leave this in for backwards compatibility.
+             * We default to WAS (Windows Audio Session) now. See @bugref{10845} */
+            aa.driverType = AudioDriverType_WAS;
+        }
         else if ( (strTemp == "DIRECTSOUND") || (strTemp == "DSOUND") )
             aa.driverType = AudioDriverType_DirectSound;
         else if (strTemp == "SOLAUDIO") /* Deprecated -- Solaris will use OSS by default now. */
@@ -8336,7 +8340,8 @@ void MachineConfigFile::buildHardwareXML(xml::ElementNode &elmParent,
         switch (driverType)
         {
             case AudioDriverType_Default: /* Handled above. */                  break;
-            case AudioDriverType_WinMM:             pcszDriver = "WinMM";       break;
+            /* Deprecated; not (ever) supported; leave this in for backwards compatibility. See @bugref{10845} */
+            case AudioDriverType_WinMM:             pcszDriver = "WAS";         break;
             case AudioDriverType_DirectSound:       pcszDriver = "DirectSound"; break;
             case AudioDriverType_WAS:               pcszDriver = "WAS";         break;
             case AudioDriverType_ALSA:              pcszDriver = "ALSA";        break;

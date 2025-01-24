@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 107994 2025-01-22 10:39:34Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageList.cpp 108052 2025-01-24 09:43:35Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -1066,6 +1066,7 @@ static HRESULT listSystemProperties(const ComPtr<IVirtualBox> &pVirtualBox)
         case AudioDriverType_OSS:           psz = "OSS";                   break;
         case AudioDriverType_ALSA:          psz = "ALSA";                  break;
         case AudioDriverType_Pulse:         psz = "PulseAudio";            break;
+        /* Deprecated; not (ever) supported; leave this in for backwards compatibility. See @bugref{10845} */
         case AudioDriverType_WinMM:         psz = "WinMM";                 break;
         case AudioDriverType_DirectSound:   psz = "DirectSound";           break;
         case AudioDriverType_WAS:           psz = "Windows Audio Session"; break;

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 107884 2025-01-15 22:57:10Z brent.paulson@oracle.com $ */
+/* $Id: VBoxManageInfo.cpp 108052 2025-01-24 09:43:35Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -2278,6 +2278,7 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
                             pszDrv = "PulseAudio";
                         break;
                     case AudioDriverType_WinMM:
+                        /* Deprecated; not (ever) supported; leave this in for backwards compatibility. See @bugref{10845} */
                         if (details == VMINFO_MACHINEREADABLE)
                             pszDrv = "winmm";
                         else
