@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win.cpp 107969 2025-01-20 22:01:18Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMR3Native-win.cpp 108053 2025-01-24 10:00:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -1538,6 +1538,13 @@ int nemR3NativeInitAfterCPUM(PVM pVM)
     AssertReturn(!pVM->nem.s.hPartitionDevice, VERR_WRONG_ORDER);
     AssertReturn(!pVM->nem.s.fCreatedEmts, VERR_WRONG_ORDER);
     AssertReturn(pVM->bMainExecutionEngine == VM_EXEC_ENGINE_NATIVE_API, VERR_WRONG_ORDER);
+
+    /*
+     * Determine whether we can and should export/import IA32_SPEC_CTRL.
+     */
+    pVM->nem.s.fDoIa32SpecCtrl = pVM->nem.s.fSpeculationControl
+                              && g_CpumHostFeatures.s.fSpecCtrlMsr
+                              && pVM->cpum.ro.GuestFeatures.fSpecCtrlMsr;
 
     /*
      * Continue setting up the partition now that we've got most of the CPUID feature stuff.
