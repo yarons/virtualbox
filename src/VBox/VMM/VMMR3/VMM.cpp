@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 107357 2024-12-13 08:09:39Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VMM.cpp 108057 2025-01-24 11:22:16Z alexander.eichner@oracle.com $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1279,8 +1279,8 @@ static DECLCALLBACK(int) vmmR3CpuOn(PVM pVM, VMCPUID idCpu, RTGCPHYS GCPhysExecA
 
     PCPUMCTX pCtx = CPUMQueryGuestCtxPtr(pVCpu);
 
-    pCtx->aGRegs[ARMV8_AARCH64_REG_X0].x = u64CtxId;
-    pCtx->Pc.u64                         = GCPhysExecAddr;
+    pCtx->aGRegs[ARMV8_A64_REG_X0].x = u64CtxId;
+    pCtx->Pc.u64                     = GCPhysExecAddr;
 
     Log(("vmmR3CpuOn for VCPU %d with GCPhysExecAddr=%RGp u64CtxId=%#RX64\n", idCpu, GCPhysExecAddr, u64CtxId));
 
