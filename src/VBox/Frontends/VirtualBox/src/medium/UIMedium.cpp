@@ -1,4 +1,4 @@
-/* $Id: UIMedium.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMedium.cpp 108068 2025-01-27 12:25:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMedium class implementation.
  */
@@ -620,13 +620,13 @@ bool UIMedium::isMediumAttachedToHiddenMachinesOnly(const UIMedium &medium)
 UIMedium UIMedium::root() const
 {
     /* Redirect call to UICommon: */
-    return gpMediumEnumerator->medium(m_uRootId);
+    return UIMediumEnumerator::exists() ? gpMediumEnumerator->medium(m_uRootId) : UIMedium();
 }
 
 UIMedium UIMedium::parent() const
 {
     /* Redirect call to UICommon: */
-    return gpMediumEnumerator->medium(m_uParentId);
+    return UIMediumEnumerator::exists() ? gpMediumEnumerator->medium(m_uParentId) : UIMedium();
 }
 
 void UIMedium::checkNoDiffs(bool fNoDiffs)
