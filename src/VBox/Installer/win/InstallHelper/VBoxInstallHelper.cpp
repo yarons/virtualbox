@@ -1,4 +1,4 @@
-/* $Id: VBoxInstallHelper.cpp 108076 2025-01-27 16:57:39Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxInstallHelper.cpp 108077 2025-01-27 16:58:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxInstallHelper - Various helper routines for Windows host installer.
  */
@@ -1594,8 +1594,6 @@ UINT __stdcall DriverUninstall(MSIHANDLE hModule)
 UINT __stdcall GetPlatformArchitecture(MSIHANDLE hModule)
 {
     const char *pszArch;
-
-RT_BREAKPOINT();
 
     /* Only add supported platforms here. */
     uint32_t const uNativeArch = RTSystemGetNativeArch();
