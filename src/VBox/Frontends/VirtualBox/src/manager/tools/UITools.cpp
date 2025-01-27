@@ -1,4 +1,4 @@
-/* $Id: UITools.cpp 108072 2025-01-27 16:04:30Z sergey.dubov@oracle.com $ */
+/* $Id: UITools.cpp 108073 2025-01-27 16:06:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITools class implementation.
  */
@@ -50,11 +50,6 @@ UITools::UITools(QWidget *pParent,
     , m_pToolsView(0)
 {
     prepare();
-}
-
-UIActionPool *UITools::actionPool() const
-{
-    return m_pActionPool;
 }
 
 void UITools::setToolsType(UIToolType enmType)

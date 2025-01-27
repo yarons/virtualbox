@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIToolsView.h 108073 2025-01-27 16:06:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class declaration.
  */
@@ -116,9 +116,9 @@ private:
     /** @name Layout stuff.
       * @{ */
         /** Holds the minimum width hint. */
-        int m_iMinimumWidthHint;
+        int  m_iMinimumWidthHint;
         /** Holds the minimum height hint. */
-        int m_iMinimumHeightHint;
+        int  m_iMinimumHeightHint;
     /** @} */
 };
 

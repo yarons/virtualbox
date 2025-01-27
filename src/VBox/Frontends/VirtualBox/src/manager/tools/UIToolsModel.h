@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 108072 2025-01-27 16:04:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.h 108073 2025-01-27 16:06:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -32,7 +32,6 @@
 #endif
 
 /* Qt includes: */
-#include <QMap>
 #include <QObject>
 #include <QPointer>
 #include <QTransform>
@@ -41,15 +40,10 @@
 #include "UIManagerDefs.h"
 #include "UIToolsItem.h"
 
-/* COM includes: */
-
 /* Forward declaration: */
 class QGraphicsItem;
 class QGraphicsScene;
-class QGraphicsSceneContextMenuEvent;
-class QMenu;
 class QPaintDevice;
-class QTimer;
 class UIActionPool;
 class UITools;
 
