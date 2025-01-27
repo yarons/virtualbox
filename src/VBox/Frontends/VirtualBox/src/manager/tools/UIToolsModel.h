@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 108071 2025-01-27 15:59:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.h 108072 2025-01-27 16:04:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -73,11 +73,6 @@ signals:
         void sigSelectionChanged(UIToolType enmType);
         /** Notifies about focus changed. */
         void sigFocusChanged();
-
-        /** Notifies about group expanding started. */
-        void sigExpandingStarted();
-        /** Notifies about group expanding finished. */
-        void sigExpandingFinished();
     /** @} */
 
     /** @name Layout stuff.

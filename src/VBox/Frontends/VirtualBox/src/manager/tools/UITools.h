@@ -1,4 +1,4 @@
-/* $Id: UITools.h 107410 2024-12-18 13:56:18Z sergey.dubov@oracle.com $ */
+/* $Id: UITools.h 108072 2025-01-27 16:04:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITools class declaration.
  */
@@ -56,11 +56,6 @@ signals:
         /** Notifies listeners about selection changed.
           * @param  enmType  Brings current tool type. */
         void sigSelectionChanged(UIToolType enmType);
-
-        /** Notifies listeners about expanding started. */
-        void sigExpandingStarted();
-        /** Notifies listeners about expanding finished. */
-        void sigExpandingFinished();
     /** @} */
 
 public:
