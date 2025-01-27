@@ -1,4 +1,4 @@
-/* $Id: VBoxCommon.cpp 108076 2025-01-27 16:57:39Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxCommon.cpp 108078 2025-01-27 17:15:34Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxCommon - Misc helper routines for install helper.
  *
@@ -129,17 +129,12 @@ int VBoxMsiQueryPropInt32(MSIHANDLE hMsi, const char *pszName, DWORD *pdwValue)
    AssertPtrReturn(pszName, VERR_INVALID_POINTER);
    AssertPtrReturn(pdwValue, VERR_INVALID_POINTER);
 
-    PRTUTF16 pwszName;
-    int rc = RTStrToUtf16(pszName, &pwszName);
+    char *pszTemp;
+    int rc = VBoxMsiQueryPropUtf8(hMsi, pszName, &pszTemp);
     if (RT_SUCCESS(rc))
     {
-        char *pszTemp;
-        rc = VBoxMsiQueryPropUtf8(hMsi, pszName, &pszTemp);
-        if (RT_SUCCESS(rc))
-        {
-            *pdwValue = RTStrToInt32(pszTemp);
-            RTStrFree(pszTemp);
-        }
+        *pdwValue = RTStrToInt32(pszTemp);
+        RTStrFree(pszTemp);
     }
 
     return rc;
