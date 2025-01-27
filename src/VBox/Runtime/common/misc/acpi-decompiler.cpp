@@ -1,4 +1,4 @@
-/* $Id: acpi-decompiler.cpp 108082 2025-01-27 19:06:11Z alexander.eichner@oracle.com $ */
+/* $Id: acpi-decompiler.cpp 108083 2025-01-27 19:21:55Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Advanced Configuration and Power Interface (ACPI) Table generation API.
  */
@@ -404,7 +404,7 @@ static int rtAcpiTblAmlDecodeFormat(PRTACPITBLAMLDECODE pThis, RTVFSIOSTREAM hVf
 
 static int rtAcpiTblAmlDecodePkgLength(PRTACPITBLAMLDECODE pThis, size_t *pcbPkg, size_t *pcbPkgLength, PRTERRINFO pErrInfo)
 {
-    uint8_t bTmp;
+    uint8_t bTmp = 0; /* shut up gcc */
     int rc = rtAcpiTblAmlDecodeReadU8(pThis, &bTmp, pErrInfo);
     if (RT_FAILURE(rc))
         return rc;
@@ -1094,7 +1094,7 @@ static int rtAcpiTblAmlDecode(PRTACPITBLAMLDECODE pThis, PCRTACPIAMLOPC pAmlOpc,
                 {
                     case kAcpiAmlOpcType_Byte:
                     {
-                        uint8_t bVal;
+                        uint8_t bVal = 0; /* shut up gcc */
                         rc = rtAcpiTblAmlDecodeReadU8(pThis, &bVal, pErrInfo);
                         if (RT_FAILURE(rc)) return rc;
 
