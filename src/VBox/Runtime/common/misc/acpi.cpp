@@ -1,4 +1,4 @@
-/* $Id: acpi.cpp 107087 2024-11-20 20:21:23Z alexander.eichner@oracle.com $ */
+/* $Id: acpi.cpp 108079 2025-01-27 18:44:43Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Advanced Configuration and Power Interface (ACPI) Table generation API.
  */
@@ -456,7 +456,7 @@ DECLINLINE(int) rtAcpiTblEncodePkgLength(PRTACPITBLINT pThis, uint64_t u64Length
     else if (u64Length < RT_BIT_32(20))
     {
         uint8_t abData[3];
-        abData[0] = (1 << 6) | (u64Length & 0xf);
+        abData[0] = (2 << 6) | (u64Length & 0xf);
         abData[1] = (u64Length >> 4)  & 0xff;
         abData[2] = (u64Length >> 12) & 0xff;
         rtAcpiTblAppendData(pThis, &abData[0], sizeof(abData));
@@ -464,7 +464,7 @@ DECLINLINE(int) rtAcpiTblEncodePkgLength(PRTACPITBLINT pThis, uint64_t u64Length
     else if (u64Length < RT_BIT_32(28))
     {
         uint8_t abData[4];
-        abData[0] = (1 << 6) | (u64Length & 0xf);
+        abData[0] = (3 << 6) | (u64Length & 0xf);
         abData[1] = (u64Length >> 4)  & 0xff;
         abData[2] = (u64Length >> 12) & 0xff;
         abData[3] = (u64Length >> 20) & 0xff;
