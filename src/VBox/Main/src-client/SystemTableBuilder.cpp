@@ -1,4 +1,4 @@
-/* $Id: SystemTableBuilder.cpp 107854 2025-01-15 12:36:12Z alexander.eichner@oracle.com $ */
+/* $Id: SystemTableBuilder.cpp 108080 2025-01-27 18:55:47Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox bus slots assignment manager
  */
@@ -169,7 +169,7 @@ int SystemTableBuilderAcpi::finishTables(RTGCPHYS GCPhysTblsStart, RTVFSIOSTREAM
     Assert(cbAcpiTbls);
 
     /* Write the DSDT. */
-    vrc = RTAcpiTblDumpToVfsIoStrm(m_hAcpiDsdt, hVfsIos);
+    vrc = RTAcpiTblDumpToVfsIoStrm(m_hAcpiDsdt, RTACPITBLTYPE_AML, hVfsIos);
     AssertRCReturn(vrc, vrc);
 
     GCPhysTblsStart += cbAcpiTbls;
@@ -464,7 +464,7 @@ int SystemTableBuilderAcpi::configurePcieRootBus(const char *pszVBoxName, uint32
 
 int SystemTableBuilderAcpi::dumpTables(const char *pszFilename)
 {
-    return RTAcpiTblDumpToFile(m_hAcpiDsdt, pszFilename);
+    return RTAcpiTblDumpToFile(m_hAcpiDsdt, RTACPITBLTYPE_AML, pszFilename);
 }
 
 

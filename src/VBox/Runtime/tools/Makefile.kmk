@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106426 2024-10-17 10:22:21Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 108080 2025-01-27 18:55:47Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT tools.
 #
@@ -297,6 +297,11 @@ if !defined(VBOX_ONLY_BUILD)
  PROGRAMS += RTDtc
  RTDtc_TEMPLATE = VBoxR3Tool
  RTDtc_SOURCES = RTDtc.cpp
+
+ # RTIasl - ACPI source language compiler/decompiler.
+ PROGRAMS += RTIasl
+ RTIasl_TEMPLATE = VBoxR3Tool
+ RTIasl_SOURCES = RTIasl.cpp
 
 endif # !VBOX_ONLY_BUILD
 

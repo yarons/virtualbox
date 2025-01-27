@@ -1,4 +1,4 @@
-/* $Id: acpi.cpp 108079 2025-01-27 18:44:43Z alexander.eichner@oracle.com $ */
+/* $Id: acpi.cpp 108080 2025-01-27 18:55:47Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Advanced Configuration and Power Interface (ACPI) Table generation API.
  */
@@ -604,18 +604,19 @@ RTDECL(uint32_t) RTAcpiTblGetSize(RTACPITBL hAcpiTbl)
 }
 
 
-RTDECL(int) RTAcpiTblDumpToVfsIoStrm(RTACPITBL hAcpiTbl, RTVFSIOSTREAM hVfsIos)
+RTDECL(int) RTAcpiTblDumpToVfsIoStrm(RTACPITBL hAcpiTbl, RTACPITBLTYPE enmOutType, RTVFSIOSTREAM hVfsIos)
 {
     PRTACPITBLINT pThis = hAcpiTbl;
     AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
     AssertRCReturn(pThis->rcErr, 0);
+    AssertReturn(enmOutType == RTACPITBLTYPE_AML, VERR_NOT_SUPPORTED);
 
     return RTVfsIoStrmWrite(hVfsIos, pThis->pbTblBuf, pThis->paPkgStack[0].cbPkg,
                             true /*fBlocking*/, NULL /*pcbWritten*/);
 }
 
 
-RTDECL(int) RTAcpiTblDumpToFile(RTACPITBL hAcpiTbl, const char *pszFilename)
+RTDECL(int) RTAcpiTblDumpToFile(RTACPITBL hAcpiTbl, RTACPITBLTYPE enmOutType, const char *pszFilename)
 {
     RTVFSIOSTREAM hVfsIos = NIL_RTVFSIOSTREAM;
     int rc = RTVfsChainOpenIoStream(pszFilename, RTFILE_O_WRITE | RTFILE_O_CREATE | RTFILE_O_DENY_NONE,
@@ -623,7 +624,7 @@ RTDECL(int) RTAcpiTblDumpToFile(RTACPITBL hAcpiTbl, const char *pszFilename)
     if (RT_FAILURE(rc))
         return rc;
 
-    rc = RTAcpiTblDumpToVfsIoStrm(hAcpiTbl, hVfsIos);
+    rc = RTAcpiTblDumpToVfsIoStrm(hAcpiTbl, enmOutType, hVfsIos);
     RTVfsIoStrmRelease(hVfsIos);
     return rc;
 }
