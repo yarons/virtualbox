@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.h 108034 2025-01-23 15:16:27Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMExpertPage.h 108092 2025-01-28 10:59:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class declaration.
  */
@@ -77,7 +77,7 @@ private slots:
     void sltGAISOPathChanged(const QString &strPath);
     void sltOSFamilyTypeChanged(const QString &strGuestOSFamilyType);
     void sltInstallGACheckBoxToggle(bool fEnabled);
-    void sltSkipUnattendedCheckBoxChecked(bool fSkip);
+    void sltUnattendedCheckBoxChecked(bool fSkip);
     void sltMediumFormatChanged();
     void sltMediumSizeChanged(qulonglong uSize);
     void sltMediumPathChanged(const QString &strPath);
@@ -131,7 +131,7 @@ private:
     void updateDiskWidgetsAfterMediumFormatChange();
     void updateHostnameDomainNameFromMachineName();
     void setEnableNewDiskWidgets(bool fEnable);
-    void setSkipCheckBoxEnable();
+    void setUnattendedCheckBoxEnable();
     bool isUnattendedEnabled() const;
     bool isUnattendedInstallSupported() const;
     void setEnableDiskSelectionWidgets(bool fEnabled);

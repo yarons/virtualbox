@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePage.h 108034 2025-01-23 15:16:27Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMNameOSTypePage.h 108092 2025-01-28 10:59:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMNameOSTypePage class declaration.
  */
@@ -83,7 +83,7 @@ private slots:
     void sltOsTypeChanged();
     void sltISOPathChanged(const QString &strPath);
     void sltGuestOSFamilyChanged(const QString &strGuestOSFamilyId);
-    void sltSkipUnattendedInstallChanged(bool fSkip);
+    void sltUnattendedInstallEnableChanged(bool fSkip);
     void sltSelectedEditionChanged(ulong uEditionIndex);
     /** Translation stuff. */
     virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
@@ -96,7 +96,7 @@ private:
     void initializePage() RT_OVERRIDE;
     QWidget *createNameOSTypeWidgets();
     void markWidgets() const;
-    void setSkipCheckBoxEnable();
+    void setUnattendedCheckBoxEnable();
     bool isUnattendedEnabled() const;
     bool isUnattendedInstallSupported() const;
     void setEditionAndOSTypeSelectorsEnabled();
