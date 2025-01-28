@@ -1,4 +1,4 @@
-/* $Id: VBoxTrayMsg.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxTrayMsg.h 108108 2025-01-28 17:10:46Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxTrayMsg - Globally registered messages (RPC) to/from VBoxTray.
  */
@@ -36,7 +36,9 @@
 #define VBOXTRAY_IPC_PIPE_PREFIX        "\\\\.\\pipe\\VBoxTrayIPC-"
 /** The IPC header's magic. */
 #define VBOXTRAY_IPC_HDR_MAGIC          0x19840804
-/** IPC header version number. */
+/** IPC header version number.
+ *  Note: This has been changed in VBox 6.0 (r153295) to be 1.
+ *        For VBox < 6.0 the value was 0. */
 #define VBOXTRAY_IPC_HDR_VERSION        1
 /** The max payload size accepted by VBoxTray.  Clients trying to send more
  *  will be disconnected. */
