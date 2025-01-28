@@ -1,4 +1,4 @@
-/* $Id: VBoxStub.cpp 108066 2025-01-27 11:46:51Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxStub.cpp 108084 2025-01-28 06:26:18Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxStub - VirtualBox's Windows installer stub.
  */
@@ -1470,7 +1470,7 @@ int main(int argc, char **argv)
     VBOXSTUBPKGARCH const enmPkgArch = GetNativePackageArch();
 
     if (g_iVerbosity)
-    {        
+    {
         RTPrintf("Host architecture        : %s\n",      GetPackageArchStr(enmPkgArch));
         RTPrintf("Extraction path          : %s\n",      szExtractPath);
         RTPrintf("Silent installation      : %RTbool\n", g_fSilent);
