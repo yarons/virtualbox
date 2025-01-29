@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.h 108114 2025-01-29 11:27:13Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsItem.h 108115 2025-01-29 11:38:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class declaration.
  */
@@ -99,9 +99,6 @@ public:
         /** Returns model reference. */
         UIToolsModel *model() const;
 
-        /** Reconfigures item with new @a enmClass, @a enmType, @a icon and @a strName. */
-        void reconfigure(UIToolClass enmClass, UIToolType enmType,
-                         const QIcon &icon, const QString &strName);
         /** Reconfigures item with @a strName. */
         void reconfigure(const QString &strName);
 

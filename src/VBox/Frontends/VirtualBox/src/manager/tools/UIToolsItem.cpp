@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.cpp 108114 2025-01-29 11:27:13Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsItem.cpp 108115 2025-01-29 11:38:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class definition.
  */
@@ -225,31 +225,6 @@ UIToolsModel *UIToolsItem::model() const
     UIToolsModel *pModel = qobject_cast<UIToolsModel*>(QIGraphicsWidget::scene()->parent());
     AssertMsg(pModel, ("Incorrect graphics scene parent set!"));
     return pModel;
-}
-
-void UIToolsItem::reconfigure(UIToolClass enmClass, UIToolType enmType,
-                              const QIcon &icon, const QString &strName)
-{
-    /* If class is changed: */
-    if (m_enmClass != enmClass)
-    {
-        /* Update linked values: */
-        m_enmClass = enmClass;
-    }
-
-    /* If type is changed: */
-    if (m_enmType != enmType)
-    {
-        /* Update linked values: */
-        m_enmType = enmType;
-    }
-
-    /* Update linked values: */
-    m_icon = icon;
-    updatePixmap();
-
-    /* Update name finally: */
-    reconfigure(strName);
 }
 
 void UIToolsItem::reconfigure(const QString &strName)
