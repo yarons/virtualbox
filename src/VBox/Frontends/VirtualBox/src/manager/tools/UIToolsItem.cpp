@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.cpp 108117 2025-01-29 12:00:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsItem.cpp 108118 2025-01-29 12:25:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class definition.
  */
@@ -187,9 +187,9 @@ private:
 UIToolsItem::UIToolsItem(QGraphicsScene *pScene, const QIcon &icon,
                          UIToolClass enmClass, UIToolType enmType)
     : m_pScene(pScene)
+    , m_icon(icon)
     , m_enmClass(enmClass)
     , m_enmType(enmType)
-    , m_icon(icon)
     , m_fHovered(false)
     , m_pHoveringMachine(0)
     , m_pHoveringAnimationForward(0)
