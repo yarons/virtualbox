@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.cpp 108026 2025-01-23 13:05:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsItem.cpp 108114 2025-01-29 11:27:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class definition.
  */
@@ -185,8 +185,8 @@ private:
 *********************************************************************************************************************************/
 
 UIToolsItem::UIToolsItem(QGraphicsScene *pScene,
-                         UIToolClass enmClass, UIToolType enmType,
-                         const QString &strName, const QIcon &icon)
+                         const QString &strName, const QIcon &icon,
+                         UIToolClass enmClass, UIToolType enmType)
     : m_pScene(pScene)
     , m_enmClass(enmClass)
     , m_enmType(enmType)
