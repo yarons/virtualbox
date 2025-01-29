@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineLogicFullscreen.cpp 108112 2025-01-29 10:06:23Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -471,10 +471,6 @@ void UIMachineLogicFullscreen::prepareMachineWindows()
                                                                       UIMachineLogicFullscreen::nativeHandlerForApplicationActivation);
     UICocoaApplication::instance()->registerToNotificationOfWorkspace("NSWorkspaceActiveSpaceDidChangeNotification", this,
                                                                       UIMachineLogicFullscreen::nativeHandlerForActiveSpaceChange);
-
-    /* We have to make sure that we are getting the front most process.
-     * This is necessary for Qt versions > 4.3.3: */
-    darwinSetFrontMostProcess();
 #endif /* VBOX_WS_MAC */
 
     /* Update the multi-screen layout: */

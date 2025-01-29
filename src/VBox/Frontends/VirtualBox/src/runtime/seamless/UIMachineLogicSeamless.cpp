@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineLogicSeamless.cpp 108112 2025-01-29 10:06:23Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class implementation.
  */
@@ -259,12 +259,6 @@ void UIMachineLogicSeamless::prepareMachineWindows()
     /* Do not create machine-window(s) if they created already: */
     if (isMachineWindowsCreated())
         return;
-
-#ifdef VBOX_WS_MAC
-    /* We have to make sure that we are getting the front most process.
-     * This is necessary for Qt versions > 4.3.3: */
-    darwinSetFrontMostProcess();
-#endif /* VBOX_WS_MAC */
 
     /* Update the multi-screen layout: */
     m_pScreenLayout->update();
