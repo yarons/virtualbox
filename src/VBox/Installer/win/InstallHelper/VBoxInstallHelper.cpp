@@ -1,4 +1,4 @@
-/* $Id: VBoxInstallHelper.cpp 108128 2025-01-30 12:29:09Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxInstallHelper.cpp 108133 2025-01-30 16:01:32Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxInstallHelper - Various helper routines for Windows host installer.
  */
@@ -1649,7 +1649,7 @@ UINT __stdcall ServiceControl(MSIHANDLE hModule)
                     if (RT_SUCCESS(rc))
                     {
                         rc = VBoxWinDrvInstControlServiceEx(hWinDrvInst, pszSvcCtlName, enmFn,
-                                                            msTimeout ? VBOXWINDRVSVCFN_F_WAIT : VBOXWINDRVSVCFN_F_NONE,
+                                                            msTimeout == 0 ? VBOXWINDRVSVCFN_F_NONE : VBOXWINDRVSVCFN_F_WAIT,
                                                             msTimeout);
                         VBoxWinDrvInstDestroy(hWinDrvInst);
                     }
