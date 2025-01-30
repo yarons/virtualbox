@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 108117 2025-01-29 12:00:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.cpp 108129 2025-01-30 14:07:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -417,7 +417,9 @@ bool UIToolsModel::eventFilter(QObject *pWatched, QEvent *pEvent)
                         if (pClickedItem && pClickedItem->isEnabled())
                         {
                             setCurrentItem(pClickedItem);
-                            close();
+                            /* Close the widget in popup mode only: */
+                            if (tools()->isPopup())
+                                close();
                             return true;
                         }
                         break;

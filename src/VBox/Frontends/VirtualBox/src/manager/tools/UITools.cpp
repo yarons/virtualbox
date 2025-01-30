@@ -1,4 +1,4 @@
-/* $Id: UITools.cpp 108073 2025-01-27 16:06:13Z sergey.dubov@oracle.com $ */
+/* $Id: UITools.cpp 108129 2025-01-30 14:07:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITools class implementation.
  */
@@ -87,13 +87,6 @@ UIToolsItem *UITools::currentItem() const
     return m_pToolsModel->currentItem();
 }
 
-void UITools::sltClose()
-{
-    /* Close the widget in popup mode only: */
-    if (isPopup())
-        close();
-}
-
 void UITools::prepare()
 {
     /* Prepare everything: */
@@ -151,7 +144,7 @@ void UITools::prepareConnections()
 {
     /* Model connections: */
     connect(m_pToolsModel, &UIToolsModel::sigClose,
-            this, &UITools::sltClose);
+            this, &UITools::close);
     connect(m_pToolsModel, &UIToolsModel::sigSelectionChanged,
             this, &UITools::sigSelectionChanged);
     connect(m_pToolsModel, &UIToolsModel::sigItemMinimumWidthHintChanged,
