@@ -1,4 +1,4 @@
-/* $Id: GICInternal.h 108085 2025-01-28 08:38:40Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICInternal.h 108122 2025-01-30 06:43:18Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -104,12 +104,18 @@ typedef struct GICDEV
 
     /** @name Configurables.
      * @{ */
-    /** The maximum SPI supported (GICD_TYPER.ItsLinesNumber). */
-    uint16_t                    uItLinesNumber;
     /** The GIC architecture (GICD_PIDR2.ArchRev and GICR_PIDR2.ArchRev). */
     uint8_t                     uArchRev;
+    /** Extended PPIs supported (GICR_TYPER.PpiNum). */
+    uint8_t                     fPpiNum;
+    /** Whether extended SPIs are supported (GICD_TYPER.ESPI). */
+    bool                        fExtSpi;
     /** Whether NMIs are supported (GICD_TYPER.NMI). */
     bool                        fNmi;
+    /** The maximum SPI supported (GICD_TYPER.ItsLinesNumber). */
+    uint16_t                    uMaxSpi;
+    /** Maximum extended SPI supported (GICR_TYPER.ESPI_range).  */
+    uint16_t                    uMaxExtSpi;
     /** @} */
 } GICDEV;
 /** Pointer to a GIC device. */

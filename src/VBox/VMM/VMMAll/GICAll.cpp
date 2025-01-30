@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 108085 2025-01-28 08:38:40Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICAll.cpp 108122 2025-01-30 06:43:18Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - All Contexts.
  */
@@ -406,7 +406,8 @@ DECLINLINE(VBOXSTRICTRC) gicDistRegisterRead(PPDMDEVINS pDevIns, PVMCPUCC pVCpu,
                        | GIC_DIST_REG_CTRL_ARE_S;
             break;
         case GIC_DIST_REG_TYPER_OFF:
-            *puValue =   GIC_DIST_REG_TYPER_NUM_ITLINES_SET(pThis->uItLinesNumber)
+            Assert(pThis->uMaxSpi > 0 && pThis->uMaxSpi < GIC_DIST_REG_TYPER_NUM_ITLINES);
+            *puValue =   GIC_DIST_REG_TYPER_NUM_ITLINES_SET(pThis->uMaxSpi)
                        | GIC_DIST_REG_TYPER_NUM_PES_SET(0)      /* 1 PE */ /** @todo r=ramshankar: Should this be pVCpu->cCpus? Currently it means 'ARE' must always be used? */
                        /*| GIC_DIST_REG_TYPER_ESPI*/            /** @todo */
                        /*| GIC_DIST_REG_TYPER_NMI*/             /** @todo Non-maskable interrupts */
