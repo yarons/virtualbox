@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.cpp 108073 2025-01-27 16:06:13Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsView.cpp 108138 2025-01-30 17:37:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class implementation.
  */
@@ -215,6 +215,7 @@ void UIToolsView::preparePalette()
                         ? backgroundColor.lighter(120)
                         : backgroundColor.darker(120);
     pal.setColor(QPalette::Active, QPalette::Base, backgroundColor);
+    pal.setColor(QPalette::Inactive, QPalette::Base, backgroundColor);
     setPalette(pal);
 }
 
