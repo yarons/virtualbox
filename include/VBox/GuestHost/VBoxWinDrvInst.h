@@ -1,4 +1,4 @@
-/* $Id: VBoxWinDrvInst.h 108123 2025-01-30 10:01:07Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxWinDrvInst.h 108126 2025-01-30 12:14:47Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxWinDrvInst - Header for Windows driver installation handling.
  */
@@ -143,8 +143,7 @@ int VBoxWinDrvInstInstall(VBOXWINDRVINST hDrvInst, const char *pszInfFile, uint3
 int VBoxWinDrvInstInstallExecuteInf(VBOXWINDRVINST hDrvInst, const char *pszInfFile, const char *pszSection, uint32_t fFlags);
 int VBoxWinDrvInstUninstall(VBOXWINDRVINST hDrvInst, const char *pszInfFile, const char *pszModel, const char *pszPnPId, uint32_t fFlags);
 int VBoxWinDrvInstUninstallExecuteInf(VBOXWINDRVINST hDrvInst, const char *pszInfFile, const char *pszSection, uint32_t fFlags);
-int VBoxWinDrvInstControlServiceEx(VBOXWINDRVINST hDrvInst, const char *pszService, VBOXWINDRVSVCFN enmFn, uint32_t fFlags);
-int VBooxWinDrvInstControlServiceEx(VBOXWINDRVINST hDrvInst, const char *pszService, VBOXWINDRVSVCFN enmFn, uint32_t fFlags, RTMSINTERVAL msTimeout);
+int VBoxWinDrvInstControlServiceEx(VBOXWINDRVINST hDrvInst, const char *pszService, VBOXWINDRVSVCFN enmFn, uint32_t fFlags, RTMSINTERVAL msTimeout);
 RT_C_DECLS_END
 
 #endif /* !VBOX_INCLUDED_GuestHost_VBoxWinDrvInst_h */

@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvInst.cpp 108124 2025-01-30 10:12:53Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxDrvInst.cpp 108126 2025-01-30 12:14:47Z andreas.loeffler@oracle.com $ */
 /** @file
  * Driver installation utility for Windows hosts and guests.
  */
@@ -797,7 +797,7 @@ static DECLCALLBACK(RTEXITCODE) vboxDrvInstCmdServiceMain(PRTGETOPTSTATE pGetSta
     int rc = VBoxWinDrvInstCreateEx(&hWinDrvInst, g_uVerbosity, &vboxDrvInstLogCallback, NULL /* pvUser */);
     if (RT_SUCCESS(rc))
     {
-        rc = VBooxWinDrvInstControlServiceEx(hWinDrvInst, pszService, enmFn, fFlags, msTimeout);
+        rc = VBoxWinDrvInstControlServiceEx(hWinDrvInst, pszService, enmFn, fFlags, msTimeout);
         VBoxWinDrvInstDestroy(hWinDrvInst);
     }
 
