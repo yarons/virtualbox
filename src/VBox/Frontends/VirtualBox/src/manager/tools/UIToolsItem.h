@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.h 108145 2025-01-31 11:58:03Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsItem.h 108150 2025-01-31 20:46:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class declaration.
  */
@@ -111,6 +111,9 @@ public:
         UIToolClass itemClass() const { return m_enmClass; }
         /** Returns item type. */
         UIToolType itemType() const { return m_enmType; }
+
+        /** Returns whether item should have extra-button. */
+        bool hasExtraButton() const { return m_fExtraButton; }
 
         /** Defines whether item is @a fEnabled. */
         void setEnabled(bool fEnabled);
