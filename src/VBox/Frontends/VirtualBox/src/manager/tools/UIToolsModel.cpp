@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 108146 2025-01-31 12:07:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.cpp 108149 2025-01-31 20:45:02Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -433,14 +433,17 @@ bool UIToolsModel::eventFilter(QObject *pWatched, QEvent *pEvent)
                     {
                         /* Which item we just clicked? */
                         UIToolsItem *pClickedItem = qgraphicsitem_cast<UIToolsItem*>(pItemUnderMouse);
-                        /* Make clicked item the current one: */
-                        if (pClickedItem && pClickedItem->isEnabled())
+                        if (pClickedItem)
                         {
-                            setCurrentItem(pClickedItem);
-                            /* Close the widget in popup mode only: */
-                            if (tools()->isPopup())
-                                close();
-                            return true;
+                            /* Make clicked item the current one: */
+                            if (pClickedItem->isEnabled())
+                            {
+                                setCurrentItem(pClickedItem);
+                                /* Close the widget in popup mode only: */
+                                if (tools()->isPopup())
+                                    close();
+                                return true;
+                            }
                         }
                         break;
                     }
@@ -688,7 +691,7 @@ QVariant UIToolsModel::data(int iKey) const
         /* Layout hints: */
         case ToolsModelData_Margin: return 0;
         case ToolsModelData_Spacing: return 1;
-        case ToolsModelData_MajorSpacing: return 20;
+        case ToolsModelData_MajorSpacing: return 0;
 
         /* Default: */
         default: break;
