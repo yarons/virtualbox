@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 108120 2025-01-29 13:17:09Z valery.portnyagin@oracle.com $ */
+/* $Id: VBoxManage.cpp 108147 2025-01-31 14:05:57Z valery.portnyagin@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -485,7 +485,7 @@ HRESULT showProgress(ComPtr<IProgress> progress, uint32_t fFlags)
     }
 
     /* complete the line. */
-    LONG iRc = E_FAIL;
+    LONG iRc = (LONG)E_FAIL;
     hrc = progress->COMGETTER(ResultCode)(&iRc);
     if (SUCCEEDED(hrc))
     {
@@ -509,7 +509,7 @@ HRESULT showProgress(ComPtr<IProgress> progress, uint32_t fFlags)
             else if (fFlags != SHOW_PROGRESS_NONE)
                 RTStrmPrintf(g_pStdErr, "%Rhrc\n", iRc);
         }
-        hrc = iRc;
+        hrc = (HRESULT)iRc;
     }
     else
     {

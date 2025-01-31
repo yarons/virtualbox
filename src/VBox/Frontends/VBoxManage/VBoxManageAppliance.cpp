@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 107235 2024-11-29 17:56:15Z brent.paulson@oracle.com $ */
+/* $Id: VBoxManageAppliance.cpp 108147 2025-01-31 14:05:57Z valery.portnyagin@oracle.com $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -105,7 +105,7 @@ static int parseImportOptions(const char *psz, com::SafeArray<ImportOptions_T> *
         size_t len;
         const char *pszComma = strchr(psz, ',');
         if (pszComma)
-            len = pszComma - psz;
+            len = (size_t)(pszComma - psz);
         else
             len = strlen(psz);
         if (len > 0)
@@ -1463,7 +1463,7 @@ static int parseExportOptions(const char *psz, com::SafeArray<ExportOptions_T> *
         size_t len;
         const char *pszComma = strchr(psz, ',');
         if (pszComma)
-            len = pszComma - psz;
+            len = (size_t)(pszComma - psz);
         else
             len = strlen(psz);
         if (len > 0)

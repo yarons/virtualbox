@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 107997 2025-01-22 10:55:54Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageMisc.cpp 108147 2025-01-31 14:05:57Z valery.portnyagin@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -594,7 +594,7 @@ static int parseCloneOptions(const char *psz, com::SafeArray<CloneOptions_T> *op
         size_t len;
         const char *pszComma = strchr(psz, ',');
         if (pszComma)
-            len = pszComma - psz;
+            len = (size_t)(pszComma - psz);
         else
             len = strlen(psz);
         if (len > 0)
@@ -942,7 +942,7 @@ RTEXITCODE handleStartVM(HandlerArg *a)
                                     ProgressErrorInfo info(progress);
                                     com::GluePrintErrorInfo(info);
                                 }
-                                hrc = iRc;
+                                hrc = (HRESULT)iRc;
                             }
                         }
                     }
@@ -2707,7 +2707,7 @@ static RTEXITCODE handleUnattendedInstall(HandlerArg *a)
                             ProgressErrorInfo info(ptrProgress);
                             com::GluePrintErrorInfo(info);
                         }
-                        hrc = iRc;
+                        hrc = (HRESULT)iRc;
                     }
                 }
             }

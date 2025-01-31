@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 107675 2025-01-09 19:31:32Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxManageControlVM.cpp 108147 2025-01-31 14:05:57Z valery.portnyagin@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -1556,8 +1556,8 @@ RTEXITCODE handleControlVM(HandlerArg *a)
                     }
 
                     aChangeOrigin = TRUE;
-                    aOriginX      = RTStrToUInt32(argv[2]);
-                    aOriginY      = RTStrToUInt32(argv[3]);
+                    aOriginX      = (LONG)RTStrToUInt32(argv[2]);/* Explicit conversion */
+                    aOriginY      = (LONG)RTStrToUInt32(argv[3]);/* Explicit conversion */
                     aWidth        = RTStrToUInt32(argv[4]);
                     aHeight       = RTStrToUInt32(argv[5]);
                     aBitsPerPixel = RTStrToUInt32(argv[6]);

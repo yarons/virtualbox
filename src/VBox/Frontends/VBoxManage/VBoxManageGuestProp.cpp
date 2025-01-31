@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestProp.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageGuestProp.cpp 108147 2025-01-31 14:05:57Z valery.portnyagin@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestproperty command.
  */
@@ -511,7 +511,7 @@ static RTEXITCODE handleWaitGuestProperty(HandlerArg *a)
         }
 
         ComPtr<IEvent> ev;
-        hrc = es->GetEvent(listener, cMsWait, ev.asOutParam());
+        hrc = es->GetEvent(listener, (LONG)cMsWait, ev.asOutParam());
         if (ev) /** @todo r=andy Why not using SUCCEEDED(hrc) here? */
         {
             VBoxEventType_T aType;

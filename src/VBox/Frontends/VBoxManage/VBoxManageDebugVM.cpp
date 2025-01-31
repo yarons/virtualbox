@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDebugVM.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageDebugVM.cpp 108147 2025-01-31 14:05:57Z valery.portnyagin@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of the debugvm command.
  */
@@ -461,7 +461,7 @@ static RTEXITCODE handleDebugVM_SetRegisters(HandlerArg *pArgs, IMachineDebugger
                                        ValueUnion.psz);
                 try
                 {
-                    com::Bstr bstrName(ValueUnion.psz, pszEqual - ValueUnion.psz);
+                    com::Bstr bstrName(ValueUnion.psz, (size_t)(pszEqual - ValueUnion.psz));
                     com::Bstr bstrValue(pszEqual + 1);
                     if (   !aBstrNames.push_back(bstrName.raw())
                         || !aBstrValues.push_back(bstrValue.raw()))
@@ -850,7 +850,7 @@ static RTEXITCODE handleDebugVM_GuestSample(HandlerArg *pArgs, IMachineDebugger 
      */
     ComPtr<IProgress> ptrProgress;
     com::Bstr bstrFilename(pszFilename);
-    CHECK_ERROR2I_RET(pDebugger, TakeGuestSample(bstrFilename.raw(), cSampleIntervalUs, cSampleTimeUs, ptrProgress.asOutParam()), RTEXITCODE_FAILURE);
+    CHECK_ERROR2I_RET(pDebugger, TakeGuestSample(bstrFilename.raw(), cSampleIntervalUs, (LONG64)cSampleTimeUs, ptrProgress.asOutParam()), RTEXITCODE_FAILURE);
     showProgress(ptrProgress);
 
     return RTEXITCODE_SUCCESS;
