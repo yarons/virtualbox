@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 108144 2025-01-31 11:53:45Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.h 108146 2025-01-31 12:07:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -128,6 +128,9 @@ public:
 
         /** Returns the item of passed @a enmType. */
         UIToolsItem *item(UIToolType enmType) const;
+
+        /** Returns whether at least one item hovered: */
+        bool isAtLeastOneItemHovered() const;
     /** @} */
 
     /** @name Selection stuff.
@@ -184,6 +187,12 @@ protected:
     /** @} */
 
 private slots:
+
+    /** @name Children stuff.
+      * @{ */
+       /** Handles signal about one of items was [un]hovered. */
+       void sltHandleItemHoverChange();
+    /** @} */
 
     /** @name Selection stuff.
       * @{ */

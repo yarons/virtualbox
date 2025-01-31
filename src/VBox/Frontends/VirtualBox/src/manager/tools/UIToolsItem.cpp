@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.cpp 108145 2025-01-31 11:58:03Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsItem.cpp 108146 2025-01-31 12:07:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class definition.
  */
@@ -382,7 +382,8 @@ void UIToolsItem::paint(QPainter *pPainter, const QStyleOptionGraphicsItem *pOpt
     /* Paint tool info: */
     paintToolInfo(pPainter, rectangle);
     /* Paint extra-button if requested: */
-    if (m_fExtraButton)
+    if (   m_fExtraButton
+        && model()->isAtLeastOneItemHovered())
         paintExtraButton(pPainter, rectangle);
 }
 
