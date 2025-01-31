@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 108130 2025-01-30 14:42:59Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.cpp 108144 2025-01-31 11:53:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -482,14 +482,13 @@ void UIToolsModel::sltFocusItemDestroyed()
 
 void UIToolsModel::prepare()
 {
-    /* Prepare scene: */
+    /* Prepare everything: */
     prepareScene();
-    /* Prepare items: */
     prepareItems();
+    prepareConnections();
+
     /* Apply language settings: */
     sltRetranslateUI();
-    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
-            this, &UIToolsModel::sltRetranslateUI);
 }
 
 void UIToolsModel::prepareScene()
@@ -577,6 +576,13 @@ void UIToolsModel::prepareItems()
         default:
             break;
     }
+}
+
+void UIToolsModel::prepareConnections()
+{
+    /* Translation stuff: */
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIToolsModel::sltRetranslateUI);
 }
 
 void UIToolsModel::loadSettings()

@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 108130 2025-01-30 14:42:59Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.h 108144 2025-01-31 11:53:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -216,6 +216,8 @@ private:
         void prepareScene();
         /** Prepares items. */
         void prepareItems();
+        /** Prepare connections. */
+        void prepareConnections();
         /** Loads settings. */
         void loadSettings();
 
