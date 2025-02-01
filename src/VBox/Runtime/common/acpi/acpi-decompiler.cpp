@@ -1,4 +1,4 @@
-/* $Id: acpi-decompiler.cpp 108159 2025-02-01 19:21:10Z alexander.eichner@oracle.com $ */
+/* $Id: acpi-decompiler.cpp 108163 2025-02-01 19:31:42Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Advanced Configuration and Power Interface (ACPI) Table generation API.
  */
@@ -811,7 +811,7 @@ static DECLCALLBACK(int) rtAcpiTblAmlDecodeMethod(PRTACPITBLAMLDECODE pThis, RTV
 
     cbPkgConsumed += cchName;
 
-    uint8_t bMethod;
+    uint8_t bMethod = 0; /* shut up gcc */
     rc = rtAcpiTblAmlDecodeReadU8(pThis, &bMethod, pErrInfo);
     if (RT_FAILURE(rc))
         return rc;
