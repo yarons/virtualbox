@@ -1,4 +1,4 @@
-/* $Id: acpi-compiler.cpp 108161 2025-02-01 19:22:49Z alexander.eichner@oracle.com $ */
+/* $Id: acpi-compiler.cpp 108162 2025-02-01 19:24:44Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Advanced Configuration and Power Interface (ACPI) Table generation API.
  */
@@ -153,7 +153,7 @@ typedef enum RTACPIASLTERMINAL
     RTACPIASLTERMINAL_PUNCTUATOR_OPEN_BRACKET,
     RTACPIASLTERMINAL_PUNCTUATOR_CLOSE_BRACKET,
     RTACPIASLTERMINAL_PUNCTUATOR_OPEN_CURLY_BRACKET,
-    RTACPIASLTERMINAL_PUNCTUATOR_CLOSE_CURLY_BRACKET,
+    RTACPIASLTERMINAL_PUNCTUATOR_CLOSE_CURLY_BRACKET
 
 } RTACPIASLTERMINAL;
 
@@ -391,7 +391,7 @@ static int rtAcpiAslLexerConsumeIfKeyword(PCRTACPIASLCU pThis, RTACPIASLTERMINAL
         return RTErrInfoSetF(pThis->pErrInfo, rc, "Lexer: Failed to query keyword token with %Rrc", rc);
 
     if (   pTok->enmType == RTSCRIPTLEXTOKTYPE_KEYWORD
-        && pTok->Type.Keyword.pKeyword->u64Val == enmTerm)
+        && pTok->Type.Keyword.pKeyword->u64Val == (uint64_t)enmTerm)
     {
         RTScriptLexConsumeToken(pThis->hLexSource);
         *pfConsumed = true;
@@ -411,7 +411,7 @@ static int rtAcpiAslLexerConsumeIfPunctuator(PCRTACPIASLCU pThis, RTACPIASLTERMI
         return RTErrInfoSetF(pThis->pErrInfo, rc, "Lexer: Failed to query punctuator token with %Rrc", rc);
 
     if (   pTok->enmType == RTSCRIPTLEXTOKTYPE_PUNCTUATOR
-        && pTok->Type.Keyword.pKeyword->u64Val == enmTerm)
+        && pTok->Type.Keyword.pKeyword->u64Val == (uint64_t)enmTerm)
     {
         RTScriptLexConsumeToken(pThis->hLexSource);
         *pfConsumed = true;
