@@ -1,4 +1,4 @@
-/* $Id: acpi-compiler.cpp 108164 2025-02-01 19:54:50Z alexander.eichner@oracle.com $ */
+/* $Id: acpi-compiler.cpp 108165 2025-02-01 20:08:26Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Advanced Configuration and Power Interface (ACPI) Table generation API.
  */
@@ -236,7 +236,7 @@ static int rtAcpiAslLexerParseNameSeg(RTSCRIPTLEX hScriptLex, PRTSCRIPTLEXTOKEN 
             return VINF_SUCCESS;
         RTScriptLexConsumeCh(hScriptLex);
         pachNameSeg[i] = ch;
-    } 
+    }
 
     return VINF_SUCCESS;
 }
@@ -263,7 +263,7 @@ static DECLCALLBACK(int) rtAcpiAslLexerParseNameString(RTSCRIPTLEX hScriptLex, c
 
         if (idx == sizeof(aszIde) - 1)
             return RTScriptLexProduceTokError(hScriptLex, pTok, VERR_BUFFER_OVERFLOW, "Lexer: PrefixPath exceeds the allowed length");
-    } 
+    }
 
     /* Now there is only a sequence of NameSeg allowed (separated by the . separator). */
     while (idx < sizeof(aszIde) - 1 - 4)
