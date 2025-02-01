@@ -1,4 +1,4 @@
-/* $Id: string.h 108155 2025-02-01 02:18:28Z knut.osmundsen@oracle.com $ */
+/* $Id: string.h 108157 2025-02-01 02:21:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Smart string classes declaration.
  */
@@ -1287,6 +1287,13 @@ public:
     RTCString &assign(const RTCString &a_rSrc, size_t a_offSrc, size_t a_cchSrc = npos)
     {
         RTCString::assign(a_rSrc, a_offSrc, a_cchSrc);
+        return *this;
+    }
+
+    /** Resolve compiler confusion. */
+    RTCString &assign(size_t a_cTimes, char a_ch)
+    {
+        RTCString::assign(a_cTimes, a_ch);
         return *this;
     }
 
