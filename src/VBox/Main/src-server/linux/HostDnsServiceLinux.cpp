@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceLinux.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: HostDnsServiceLinux.cpp 108156 2025-02-01 02:19:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * Linux specific DNS information fetching.
  */
@@ -44,6 +44,7 @@
 #include <poll.h>
 #include <string.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 #include <fcntl.h>
 
