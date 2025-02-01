@@ -1,4 +1,4 @@
-/* $Id: script.h 105760 2024-08-21 12:15:14Z alexander.eichner@oracle.com $ */
+/* $Id: script.h 108158 2025-02-01 19:20:09Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - RTScript, Script language support in IPRT.
  */
@@ -601,6 +601,30 @@ RTDECL(int) RTScriptLexScanStringLiteralC(RTSCRIPTLEX hScriptLex, char ch, PRTSC
  */
 RTDECL(int) RTScriptLexScanStringLiteralPascal(RTSCRIPTLEX hScriptLex, char ch, PRTSCRIPTLEXTOKEN pTok, void *pvUser);
 
+
+/**
+ * Produces an error token with the given message, used for custom lexer rule implementations.
+ *
+ * @returns IPRT status code.
+ * @param   hScriptLex             The lexer handle.
+ * @param   pTok                   The token to fill.
+ * @param   rc                     The status code to use in the message.
+ * @param   pszMsg                 The format string for the error message.
+ * @param   ...                    Arguments to the format string.
+ */
+RTDECL(int) RTScriptLexProduceTokError(RTSCRIPTLEX hScriptLex, PRTSCRIPTLEXTOKEN pTok, int rc, const char *pszMsg, ...);
+
+
+/**
+ * Produces an identifier token with the given identifier, used for custom lexer rule implementations.
+ *
+ * @returns IPRT status code.
+ * @param   hScriptLex             The lexer handle.
+ * @param   pTok                   The token to fill.
+ * @param   pszIde                 The identifier to add.
+ * @param   cchIde                 Number of characters in the identifier.
+ */
+RTDECL(int) RTScriptLexProduceTokIde(RTSCRIPTLEX hScriptLex, PRTSCRIPTLEXTOKEN pTok, const char *pszIde, size_t cchIde);
 /** @} */
 
 /** @} */
