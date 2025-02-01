@@ -1,4 +1,4 @@
-/* $Id: RTIasl.cpp 108080 2025-01-27 18:55:47Z alexander.eichner@oracle.com $ */
+/* $Id: RTIasl.cpp 108160 2025-02-01 19:21:46Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - iasl (acpica) like utility.
  */
@@ -207,8 +207,8 @@ static RTEXITCODE RTCmdIasl(unsigned cArgs, char **papszArgs)
     };
 
     RTCMDIASLOPTS Opts;
-    Opts.enmInType              = RTACPITBLTYPE_INVALID;
-    Opts.enmOutType             = RTACPITBLTYPE_INVALID;
+    Opts.enmInType              = RTACPITBLTYPE_ASL;
+    Opts.enmOutType             = RTACPITBLTYPE_AML;
 
     RTEXITCODE      rcExit      = RTEXITCODE_SUCCESS;
     RTGETOPTSTATE GetState;
