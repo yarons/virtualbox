@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 107439 2024-12-19 14:40:27Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 108171 2025-02-03 15:04:28Z andreas.loeffler@oracle.com $
 ## @file
 # Makefile for the Windows installer.
 #
@@ -126,10 +126,10 @@ VBOX_SIGN_CAB_FN ?= $(VBOX_SIGN_FILE_FN)
 ifndef VBOX_INSTALLER_MERGE_MODULES
  VBOX_INSTALLER_MERGE_MODULES = App
  ifdef VBOX_WITH_NETADP
-  VBOX_INSTALLER_MERGE_MODULES += NetAdp NetAdp6
+  VBOX_INSTALLER_MERGE_MODULES += NetAdp6
  endif
  ifdef VBOX_WITH_NETFLT
-  VBOX_INSTALLER_MERGE_MODULES += NetLwf NetFlt
+  VBOX_INSTALLER_MERGE_MODULES += NetLwf
  endif
  ifdef VBOX_WITH_USB
   VBOX_INSTALLER_MERGE_MODULES += USB
