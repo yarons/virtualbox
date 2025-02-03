@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 108149 2025-01-31 20:45:02Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.h 108181 2025-02-03 17:40:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -128,6 +128,9 @@ public:
 
         /** Returns the item of passed @a enmType. */
         UIToolsItem *item(UIToolType enmType) const;
+
+        /** Returns whether we should show item names. */
+        bool showItemNames() const;
 
         /** Returns whether at least one item hovered. */
         bool isAtLeastOneItemHovered() const;
@@ -269,6 +272,9 @@ private:
       * @{ */
         /** Holds the root stack. */
         QList<UIToolsItem*>  m_items;
+
+        /** Holds whether children should show names. */
+        bool  m_fShowItemNames;
     /** @} */
 
     /** @name Selection stuff.
