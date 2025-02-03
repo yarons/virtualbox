@@ -1,4 +1,4 @@
-/* $Id: vbox-gtk.h 108167 2025-02-03 13:21:17Z vadim.galitsyn@oracle.com $ */
+/* $Id: vbox-gtk.h 108168 2025-02-03 13:26:59Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - Definitions from Gtk 3.24.38 and Glib 2.17 libraries.
  */
@@ -23,15 +23,6 @@
  * along with this program; if not, see <https://www.gnu.org/licenses>.
  *
  * SPDX-License-Identifier: GPL-3.0-only
- */
-
-/*
- * Oracle LGPL Disclaimer: For the avoidance of doubt, except that if any license choice
- * other than GPL or LGPL is available it will apply instead, Oracle elects to use only
- * the Lesser General Public License version 2.1 (LGPLv2) at this time for any software where
- * a choice of LGPL license versions is made available with the language indicating
- * that LGPLv2 or any later version may be used, or where a choice of which version
- * of the LGPL is applied is otherwise unspecified.
  */
 
 /* GTK - The GIMP Toolkit
@@ -82,6 +73,15 @@
  * file for a list of people on the GLib Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
  * GLib at ftp://ftp.gtk.org/pub/gtk/.
+ */
+
+/*
+ * Oracle LGPL Disclaimer: For the avoidance of doubt, except that if any license choice
+ * other than GPL or LGPL is available it will apply instead, Oracle elects to use only
+ * the Lesser General Public License version 2.1 (LGPLv2) at this time for any software where
+ * a choice of LGPL license versions is made available with the language indicating
+ * that LGPLv2 or any later version may be used, or where a choice of which version
+ * of the LGPL is applied is otherwise unspecified.
  */
 
 #ifndef GA_INCLUDED_SRC_x11_VBoxClient_vbox_gtk_h
