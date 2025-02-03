@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.cpp 108183 2025-02-03 17:49:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsItem.cpp 108185 2025-02-03 17:54:22Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class definition.
  */
@@ -347,7 +347,8 @@ void UIToolsItem::hoverMoveEvent(QGraphicsSceneHoverEvent *)
         update();
 
         /* Show tooltip at the right of item for widget mode: */
-        if (!model()->tools()->isPopup())
+        if (   !model()->tools()->isPopup()
+            && !model()->showItemNames())
         {
             const QPointF posAtScene = mapToScene(rect().topRight() + QPoint(3, -3));
             const QPoint posAtScreen = model()->tools()->mapToGlobal(posAtScene.toPoint());
