@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.cpp 108177 2025-02-03 17:30:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsItem.cpp 108178 2025-02-03 17:32:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class definition.
  */
@@ -820,12 +820,10 @@ void UIToolsItem::paintToolInfo(QPainter *pPainter, const QRect &rectangle) cons
     const int iSpacing = data(ToolsItemData_Spacing).toInt();
     const QPalette pal = QApplication::palette();
 
-    /* Selected or hovered item foreground: */
-    if (model()->currentItem() == this || isHovered())
+    /* Selected or hovered item foreground for popup mode: */
+    if (   model()->tools()->isPopup()
+        && (model()->currentItem() == this || isHovered()))
     {
-        /* Prepare palette: */
-        const QPalette pal = QApplication::palette();
-
         /* Get background color: */
         const QColor highlight = pal.color(QPalette::Active, QPalette::Highlight);
         const QColor background = model()->currentItem() == this
@@ -839,10 +837,10 @@ void UIToolsItem::paintToolInfo(QPainter *pPainter, const QRect &rectangle) cons
     /* Default item foreground: */
     else
     {
-        const QColor textColor = isEnabled()
-                               ? pal.color(QPalette::Active, QPalette::Text)
-                               : pal.color(QPalette::Disabled, QPalette::Text);
-        pPainter->setPen(textColor);
+        const QColor foreground = isEnabled()
+                                ? pal.color(QPalette::Active, QPalette::Text)
+                                : pal.color(QPalette::Disabled, QPalette::Text);
+        pPainter->setPen(foreground);
     }
 
     /* Paint left column: */
