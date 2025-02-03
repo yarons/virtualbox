@@ -1,4 +1,4 @@
-/* $Id: acpi-compiler.cpp 108173 2025-02-03 15:58:01Z alexander.eichner@oracle.com $ */
+/* $Id: acpi-compiler.cpp 108174 2025-02-03 16:01:02Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Advanced Configuration and Power Interface (ACPI) Table generation API.
  */
@@ -699,14 +699,14 @@ static int rtAcpiTblAslParseTerminal(PRTACPIASLCU pThis, RTACPIASLTERMINAL enmTe
         RTACPIASL_PARSE_PUNCTUATOR(RTACPIASLTERMINAL_PUNCTUATOR_OPEN_BRACKET, '(');
 
         /* Process any required arguments. */
-        for (uint32_t i = 0; i < pAslKeyword->cArgsReq; i++)
+        for (uint8_t i = 0; i < pAslKeyword->cArgsReq; i++)
         {
             rc = rtAcpiTblAslParseArgument(pThis, pAslKeyword->pszOpc, i, pAslKeyword->aenmTypes[i], &pAstNd->aArgs[i]);
             if (RT_FAILURE(rc))
                 return rc;
 
             /* There must be a "," between required arguments, not counting the last required argument because it can be closed with ")". */
-            if (i < pAslKeyword->cArgsReq - 1)
+            if (i < (uint8_t)(pAslKeyword->cArgsReq - 1))
                 RTACPIASL_PARSE_PUNCTUATOR(RTACPIASLTERMINAL_PUNCTUATOR_COMMA, ',');
         }
 
