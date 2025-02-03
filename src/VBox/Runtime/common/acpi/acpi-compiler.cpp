@@ -1,4 +1,4 @@
-/* $Id: acpi-compiler.cpp 108174 2025-02-03 16:01:02Z alexander.eichner@oracle.com $ */
+/* $Id: acpi-compiler.cpp 108175 2025-02-03 16:04:14Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Advanced Configuration and Power Interface (ACPI) Table generation API.
  */
@@ -683,7 +683,7 @@ static int rtAcpiTblAslParseTerminal(PRTACPIASLCU pThis, RTACPIASLTERMINAL enmTe
 {
     int rc = VINF_SUCCESS;
 
-    AssertReturn(enmTerminal > RTACPIASLTERMINAL_INVALID && enmTerminal < RT_ELEMENTS(g_aAslKeywords), VERR_INTERNAL_ERROR);
+    AssertReturn(enmTerminal > RTACPIASLTERMINAL_INVALID && (unsigned)enmTerminal < RT_ELEMENTS(g_aAslKeywords), VERR_INTERNAL_ERROR);
 
     *ppAstNd = NULL;
 
