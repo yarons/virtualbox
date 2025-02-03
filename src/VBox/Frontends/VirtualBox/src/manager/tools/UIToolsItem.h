@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.h 108177 2025-02-03 17:30:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsItem.h 108183 2025-02-03 17:49:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class declaration.
  */
@@ -173,6 +173,7 @@ private:
         ToolsItemData_Margin,
         ToolsItemData_Spacing,
         ToolsItemData_Padding,
+        ToolsItemData_ExtraButtonWidth,
     };
 
     /** @name Prepare/cleanup cascade.
