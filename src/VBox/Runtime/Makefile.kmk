@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 108159 2025-02-01 19:21:10Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 108173 2025-02-03 15:58:01Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -395,6 +395,7 @@ RuntimeBaseR3_INCS          = \
 
 RuntimeBaseR3_SOURCES      := \
 	common/acpi/acpi.cpp \
+	common/acpi/acpi-ast.cpp \
 	common/acpi/acpi-compiler.cpp \
 	common/acpi/acpi-decompiler.cpp \
 	common/alloc/alloc.cpp \
