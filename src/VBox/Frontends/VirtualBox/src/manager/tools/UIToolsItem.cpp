@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.cpp 108179 2025-02-03 17:33:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsItem.cpp 108180 2025-02-03 17:36:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class definition.
  */
@@ -864,8 +864,7 @@ void UIToolsItem::paintToolInfo(QPainter *pPainter, const QRect &rectangle) cons
                                                        : 2 * iMargin + m_pixmapSize.width() + iSpacing;
         const int iNameY = (iFullHeight - m_nameSize.height()) / 2;
         /* Paint name (always for popup mode, if requested otherwise): */
-        if (   model()->tools()->isPopup()
-            || model()->showItemNames())
+        if (model()->tools()->isPopup())
             paintText(/* Painter: */
                       pPainter,
                       /* Point to paint in: */
