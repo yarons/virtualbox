@@ -1,4 +1,4 @@
-/* $Id: script.h 108158 2025-02-01 19:20:09Z alexander.eichner@oracle.com $ */
+/* $Id: script.h 108193 2025-02-04 06:01:30Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - RTScript, Script language support in IPRT.
  */
@@ -308,10 +308,13 @@ typedef RTSCRIPTLEXCFG *PRTSCRIPTLEXCFG;
 typedef const RTSCRIPTLEXCFG *PCRTSCRIPTLEXCFG;
 
 /** Default lexer config flags. */
-#define RTSCRIPT_LEX_CFG_F_DEFAULT          0
+#define RTSCRIPT_LEX_CFG_F_DEFAULT                0
 /** Case insensitive lexing, keywords and so on must be used lowercase to match
  * as the lexer will convert everything to lowercase internally. */
-#define RTSCRIPT_LEX_CFG_F_CASE_INSENSITIVE RT_BIT(0)
+#define RTSCRIPT_LEX_CFG_F_CASE_INSENSITIVE_LOWER RT_BIT(0)
+/** Case insensitive lexing, keywords and so on must be used uppercase to match
+ * as the lexer will convert everything to uppercase internally. */
+#define RTSCRIPT_LEX_CFG_F_CASE_INSENSITIVE_UPPER RT_BIT(1)
 
 
 /** Default character conversions (converting to lower case when the case insensitive flag is set). */

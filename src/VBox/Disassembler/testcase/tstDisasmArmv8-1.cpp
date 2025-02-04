@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1.cpp 106818 2024-10-31 10:54:16Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1.cpp 108193 2025-02-04 06:01:30Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Testcase for ARMv8 A64
  */
@@ -126,7 +126,7 @@ static const RTSCRIPTLEXCFG s_LexCfg =
     /** pszDesc */
     "ARMv8 disassembler lexer",
     /** fFlags */
-    RTSCRIPT_LEX_CFG_F_CASE_INSENSITIVE,
+    RTSCRIPT_LEX_CFG_F_CASE_INSENSITIVE_LOWER,
     /** pszWhitespace */
     NULL,
     /** pszNewline */
