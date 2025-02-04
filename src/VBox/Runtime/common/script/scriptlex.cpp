@@ -1,4 +1,4 @@
-/* $Id: scriptlex.cpp 108193 2025-02-04 06:01:30Z alexander.eichner@oracle.com $ */
+/* $Id: scriptlex.cpp 108195 2025-02-04 06:15:25Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - RTScript* lexer API.
  */
@@ -945,7 +945,7 @@ RTDECL(int) RTScriptLexScanNumber(RTSCRIPTLEX hScriptLex, uint8_t uBase, bool fA
     for (;;)
     {
         if (   (ch < '0' || ch > '9')
-            && (   (   !(ch >= 'a' && ch <= 'f') 
+            && (   (   !(ch >= 'a' && ch <= 'f')
                     && !(ch >= 'A' && ch <= 'F'))
                 || uBase == 10))
         {
