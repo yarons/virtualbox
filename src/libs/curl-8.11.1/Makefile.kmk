@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 108192 2025-02-04 05:56:23Z alexander.rudnev@oracle.com $
+# $Id: Makefile.kmk 108199 2025-02-04 07:48:40Z alexander.rudnev@oracle.com $
 ## @file
 # Sub-Makefile for the libcurl library.
 #
@@ -149,6 +149,7 @@ VBox-libcurl_SOURCES        = \
 	lib/vtls/openssl.c \
 	lib/vtls/vtls.c \
 	lib/warnless.c \
+	lib/ws.c \
 	lib/version.c \
 	lib/vauth/digest.c \
 	lib/vauth/vauth.c \
