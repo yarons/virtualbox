@@ -1,4 +1,4 @@
-/* $Id: UISharedFolderDetailsEditor.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UISharedFolderDetailsEditor.h 108190 2025-02-04 05:24:54Z samantha.scholz@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISharedFolderDetailsEditor class declaration.
  */
@@ -94,10 +94,17 @@ public:
     /** Returns whether folder is permanent. */
     bool isPermanent() const;
 
+    /** Defines whether folder is @a fGlobal. */
+    void setGlobal(bool fGlobal);
+    /** Returns whether folder is global. */
+    bool isGlobal() const;
+
 private slots:
 
     /** Handles translation event. */
     void sltRetranslateUI();
+    /** Handles global/machine folder button visibility. */
+    void sltGlobalToggled();
     /** Holds signal about folder path selected. */
     void sltSelectPath();
     /** Checks editor validness. */
@@ -142,6 +149,8 @@ private:
         QCheckBox          *m_pCheckBoxAutoMount;
         /** Holds the permanent check-box instance. */
         QCheckBox          *m_pCheckBoxPermanent;
+        /** Holds the global check-box instance. */
+        QCheckBox          *m_pCheckBoxGlobal;
         /** Holds the button-box instance. */
         QIDialogButtonBox  *m_pButtonBox;
     /** @} */

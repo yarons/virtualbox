@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 107662 2025-01-09 13:24:52Z alexander.eichner@oracle.com $ */
+/* $Id: MachineImpl.cpp 108190 2025-02-04 05:24:54Z samantha.scholz@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -5052,7 +5052,7 @@ HRESULT Machine::createSharedFolder(const com::Utf8Str &aName, const com::Utf8St
 
     /* inform the direct session if any */
     alock.release();
-    i_onSharedFolderChange();
+    i_onSharedFolderChange(FALSE);
 
     return S_OK;
 }
@@ -5074,7 +5074,7 @@ HRESULT Machine::removeSharedFolder(const com::Utf8Str &aName)
 
     /* inform the direct session if any */
     alock.release();
-    i_onSharedFolderChange();
+    i_onSharedFolderChange(FALSE);
 
     return S_OK;
 }
@@ -11785,7 +11785,7 @@ void Machine::i_rollback(bool aNotify)
         alock.release();
 
         if (flModifications & IsModified_SharedFolders)
-            that->i_onSharedFolderChange();
+            that->i_onSharedFolderChange(FALSE);
 
         if (flModifications & IsModified_VRDEServer)
             that->i_onVRDEServerChange(/* aRestart */ TRUE);
@@ -14330,7 +14330,7 @@ HRESULT SessionMachine::i_onUSBControllerChange()
 /**
  *  @note Locks this object for reading.
  */
-HRESULT SessionMachine::i_onSharedFolderChange()
+HRESULT SessionMachine::i_onSharedFolderChange(BOOL aGlobal)
 {
     LogFlowThisFunc(("\n"));
 
@@ -14348,7 +14348,7 @@ HRESULT SessionMachine::i_onSharedFolderChange()
     if (!directControl)
         return S_OK;
 
-    return directControl->OnSharedFolderChange(FALSE /* aGlobal */);
+    return directControl->OnSharedFolderChange(aGlobal);
 }
 
 /**

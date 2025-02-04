@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 107586 2025-01-08 15:24:26Z andreas.loeffler@oracle.com $ */
+/* $Id: MachineImpl.h 108190 2025-02-04 05:24:54Z samantha.scholz@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -565,7 +565,7 @@ public:
     virtual HRESULT i_onCPUChange(ULONG /* aCPU */, BOOL /* aRemove */) { return S_OK; }
     virtual HRESULT i_onCPUExecutionCapChange(ULONG /* aExecutionCap */) { return S_OK; }
     virtual HRESULT i_onMediumChange(IMediumAttachment * /* mediumAttachment */, BOOL /* force */) { return S_OK; }
-    virtual HRESULT i_onSharedFolderChange() { return S_OK; }
+    virtual HRESULT i_onSharedFolderChange(BOOL /* aGlobal */) { return S_OK; }
     virtual HRESULT i_onVMProcessPriorityChange(VMProcPriority_T /* aPriority */) { return S_OK; }
     virtual HRESULT i_onClipboardModeChange(ClipboardMode_T /* aClipboardMode */) { return S_OK; }
     virtual HRESULT i_onClipboardFileTransferModeChange(BOOL /* aEnable */) { return S_OK; }
@@ -1407,7 +1407,7 @@ public:
                                 const com::Utf8Str &aCaptureFilename);
     HRESULT i_onUSBDeviceDetach(IN_BSTR aId,
                                 IVirtualBoxErrorInfo *aError);
-    HRESULT i_onSharedFolderChange() RT_OVERRIDE;
+    HRESULT i_onSharedFolderChange(BOOL aGlobal) RT_OVERRIDE;
     HRESULT i_onClipboardModeChange(ClipboardMode_T aClipboardMode) RT_OVERRIDE;
     HRESULT i_onClipboardFileTransferModeChange(BOOL aEnable) RT_OVERRIDE;
     HRESULT i_onDnDModeChange(DnDMode_T aDnDMode) RT_OVERRIDE;

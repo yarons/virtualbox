@@ -1,4 +1,4 @@
-/* $Id: ConsoleSharedFolderImpl.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleSharedFolderImpl.h 108190 2025-02-04 05:24:54Z samantha.scholz@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -52,8 +52,8 @@ public:
 //    HRESULT initCopy(Machine *aMachine, SharedFolder *aThat);
     HRESULT init(Console *aConsole, const com::Utf8Str &aName, const com::Utf8Str &aHostPath,
                  bool aWritable, bool aAutoMount, const com::Utf8Str &aAutoMountPoint, bool fFailOnError);
-//     HRESULT init(VirtualBox *aVirtualBox, const Utf8Str &aName, const Utf8Str &aHostPath,
-//                  bool aWritable, const com::Utf8Str &aAutoMountPoint, bool aAutoMount, bool fFailOnError);
+//  HRESULT init(VirtualBox *aVirtualBox, const Utf8Str &aName, const Utf8Str &aHostPath,
+//               bool aWritable, bool aAutoMount, const com::Utf8Str &aAutoMountPoint, bool fFailOnError);
     void uninit();
 
     // public methods for internal purposes only

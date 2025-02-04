@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 108147 2025-01-31 14:05:57Z valery.portnyagin@oracle.com $ */
+/* $Id: VBoxManageInfo.cpp 108190 2025-02-04 05:24:54Z samantha.scholz@oracle.com $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -2792,19 +2792,17 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
     if (details != VMINFO_MACHINEREADABLE)
         RTPrintf("%-28s ", Info::tr("Shared folders:"));
     uint32_t numSharedFolders = 0;
-#if 0 // not yet implemented
     /* globally shared folders first */
     {
-        SafeIfaceArray <ISharedFolder> sfColl;
-        CHECK_ERROR_RET(pVirtualBox, COMGETTER(SharedFolders)(ComSafeArrayAsOutParam(sfColl)), rc);
-        for (size_t i = 0; i < sfColl.size(); ++i)
+        com::SafeIfaceArray <ISharedFolder> folders;
+        CHECK_ERROR_RET(pVirtualBox, COMGETTER(SharedFolders)(ComSafeArrayAsOutParam(folders)), hrc);
+        for (size_t i = 0; i < folders.size(); ++i)
         {
-            ComPtr<ISharedFolder> sf = sfColl[i];
+            ComPtr<ISharedFolder> sf = folders[i];
             showSharedFolder(sf, details, Info::tr("global mapping"), "GlobalMapping", i + 1, numSharedFolders == 0);
             ++numSharedFolders;
         }
     }
-#endif
     /* now VM mappings */
     {
         com::SafeIfaceArray <ISharedFolder> folders;

@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDetailsGenerator.cpp 108190 2025-02-04 05:24:54Z samantha.scholz@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -1410,6 +1410,8 @@ void UIDetailsGenerator::acquireSharedFoldersStatusInfo(CMachine &comMachine, CC
 {
     /* Enumerate all the folders: */
     QMap<QString, QString> folders;
+    foreach (const CSharedFolder &comGlobalFolder, gpGlobalSession->virtualBox().GetSharedFolders())
+        folders.insert(comGlobalFolder.GetName(), comGlobalFolder.GetHostPath());
     foreach (const CSharedFolder &comPermanentFolder, comMachine.GetSharedFolders())
         folders.insert(comPermanentFolder.GetName(), comPermanentFolder.GetHostPath());
     foreach (const CSharedFolder &comTemporaryFolder, comConsole.GetSharedFolders())

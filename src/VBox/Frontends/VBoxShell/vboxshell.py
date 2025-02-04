@@ -3,7 +3,7 @@
 # pylint: disable=line-too-long
 # pylint: disable=too-many-statements
 # pylint: disable=deprecated-module
-# $Id: vboxshell.py 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: vboxshell.py 108190 2025-02-04 05:24:54Z samantha.scholz@oracle.com $
 
 # The following checks for the right (i.e. most recent) Python binary available
 # and re-starts the script using that binary (like a shell wrapper).
@@ -63,7 +63,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 106061 $"
+__version__ = "$Revision: 108190 $"
 
 
 import gc
@@ -1618,9 +1618,9 @@ def hostCmd(ctx, _args):
     props = vbox.systemProperties
     print("Machines: %s" % (colPath(ctx, props.defaultMachineFolder)))
 
-    #print("Global shared folders:")
-    #for ud in ctx['global'].getArray(vbox, 'sharedFolders'):
-    #    printSf(ctx, sf)
+    print("Global shared folders:")
+    for sf in ctx['global'].getArray(vbox, 'sharedFolders'):
+        printSf(ctx, sf)
     host = vbox.host
     cnt = host.processorCount
     print(colCat(ctx, "Processors:"))
@@ -2647,9 +2647,10 @@ def shareFolderCmd(ctx, args):
         print("usage: shareFolder <vmname|uuid> <path> <name> <writable|persistent>")
         return 0
 
-    mach = argsToMach(ctx, args)
-    if mach is None:
-        return 0
+    if args[1] != 'global':
+        mach = argsToMach(ctx, args)
+        if mach is None:
+            return 0
     path = args[2]
     name = args[3]
     writable = False
@@ -2660,7 +2661,9 @@ def shareFolderCmd(ctx, args):
                 writable = True
             if cur_arg == 'persistent':
                 persistent = True
-    if persistent:
+    if args[1] == 'global':
+        ctx['vb'].createSharedFolder(name, path, writable)
+    elif persistent:
         cmdClosedVm(ctx, mach, lambda ctx, mach, args: mach.createSharedFolder(name, path, writable), [])
     else:
         cmdExistingVm(ctx, mach, 'guestlambda', [lambda ctx, mach, console, args: console.createSharedFolder(name, path, writable)])
@@ -2671,18 +2674,26 @@ def unshareFolderCmd(ctx, args):
         print("usage: unshareFolder <vmname|uuid> <name>")
         return 0
 
-    mach = argsToMach(ctx, args)
-    if mach is None:
-        return 0
+    if args[1] != 'global':
+        mach = argsToMach(ctx, args)
+        if mach is None:
+            return 0
     name = args[2]
     found = False
-    for sharedfolder in ctx['global'].getArray(mach, 'sharedFolders'):
-        if sharedfolder.name == name:
-            cmdClosedVm(ctx, mach, lambda ctx, mach, args: mach.removeSharedFolder(name), [])
-            found = True
-            break
-    if not found:
-        cmdExistingVm(ctx, mach, 'guestlambda', [lambda ctx, mach, console, args: console.removeSharedFolder(name)])
+    if args[1] == 'global':
+        for sharedfolder in ctx['global'].getArray(ctx['vb'], 'sharedFolders'):
+            if sharedfolder.name == name:
+                ctx['vb'].removeSharedFolder(name)
+                found = True
+                break
+    else:
+        for sharedfolder in ctx['global'].getArray(mach, 'sharedFolders'):
+            if sharedfolder.name == name:
+                cmdClosedVm(ctx, mach, lambda ctx, mach, args: mach.removeSharedFolder(name), [])
+                found = True
+                break
+        if not found:
+            cmdExistingVm(ctx, mach, 'guestlambda', [lambda ctx, mach, console, args: console.removeSharedFolder(name)])
     return 0
 
 

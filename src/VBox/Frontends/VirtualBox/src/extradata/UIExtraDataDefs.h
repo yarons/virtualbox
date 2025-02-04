@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 107380 2024-12-16 12:50:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataDefs.h 108190 2025-02-04 05:24:54Z samantha.scholz@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -895,6 +895,7 @@ Q_DECLARE_METATYPE(MachineSettingsPageType);
 /** Common UI: Shared Folder types. */
 enum UISharedFolderType
 {
+    UISharedFolderType_Global,
     UISharedFolderType_Machine,
     UISharedFolderType_Console
 };
