@@ -1,4 +1,4 @@
-/* $Id: VBoxCommon.h 108076 2025-01-27 16:57:39Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxCommon.h 108221 2025-02-05 14:14:02Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxCommon - Misc helper routines for install helper.
  */
@@ -42,6 +42,8 @@ int  VBoxMsiQueryPropInt32(MSIHANDLE hMsi, const char *pszName, DWORD *pdwValue)
 UINT VBoxMsiSetProp(MSIHANDLE hMsi, const WCHAR *pwszName, const WCHAR *pwszValue);
 int VBoxMsiSetPropUtf8(MSIHANDLE hMsi, const char *pszName, const char *pszValue);
 UINT VBoxMsiSetPropDWORD(MSIHANDLE hMsi, const WCHAR *pwszName, DWORD dwVal);
+int VBoxMsiRegQueryDWORDW(MSIHANDLE hMsi, HKEY hKey, LPCWSTR pwszName, DWORD *pdwValue);
+int VBoxMsiRegQueryDWORD(MSIHANDLE hMsi, HKEY hKey, const char *pszName, DWORD *pdwValue);
 
 #endif /* !VBOX_INCLUDED_SRC_InstallHelper_VBoxCommon_h */
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxWinDrvCommon.h 108017 2025-01-22 22:21:48Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxWinDrvCommon.h 108221 2025-02-05 14:14:02Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxWinDrvCommon - Common Windows driver functions.
  */
@@ -73,6 +73,9 @@ int VBoxWinDrvInfQuerySectionVer(HINF hInf, PVBOXWINDRVINFSECVERSION pVer);
 const char *VBoxWinDrvSetupApiErrToStr(const DWORD dwErr);
 const char *VBoxWinDrvWinErrToStr(const DWORD dwErr);
 int VBoxWinDrvInstErrorFromWin32(unsigned uNativeCode);
+
+int VBoxWinDrvRegQueryDWORDW(HKEY hKey, LPCWSTR pwszName, DWORD *pdwValue);
+int VBoxWinDrvRegQueryDWORD(HKEY hKey, const char *pszName, DWORD *pdwValue);
 
 #endif /* !VBOX_INCLUDED_SRC_installation_VBoxWinDrvCommon_h */
 
