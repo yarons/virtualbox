@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialog.h 106245 2024-10-08 17:24:14Z sergey.dubov@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialog.h 108230 2025-02-05 16:08:19Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class declaration.
  */
@@ -93,8 +93,6 @@ protected slots:
 
     /** Hides the modal dialog and sets the result code to Accepted. */
     virtual void accept();
-    /** Hides the modal dialog and sets the result code to Rejected. */
-    virtual void reject();
 
     /** Handles category change to @a cId. */
     virtual void sltCategoryChanged(int cId);
