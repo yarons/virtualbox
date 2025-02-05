@@ -1,4 +1,4 @@
-; $Id: VBoxInstallHelper.def 108128 2025-01-30 12:29:09Z andreas.loeffler@oracle.com $
+; $Id: VBoxInstallHelper.def 108224 2025-02-05 15:06:51Z andreas.loeffler@oracle.com $
 ;; @file
 ; VBoxInstallHelper - Defines the exports the MSI engine uses.
 ;
@@ -32,7 +32,7 @@ EXPORTS
     CheckTargetDir
     IsMSCRTInstalled
     IsPythonInstalled
-    IsWindows10
+    IsWindowsSupported
     GetPlatformArchitecture
     ArePythonAPIDepsInstalled
     InstallPythonAPI
