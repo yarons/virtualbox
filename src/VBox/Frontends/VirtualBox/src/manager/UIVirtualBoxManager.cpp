@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 108112 2025-01-29 10:06:23Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 108234 2025-02-05 17:49:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1003,7 +1003,7 @@ void UIVirtualBoxManager::sltOpenManagerWindow(UIToolType enmType /* = UIToolTyp
     /* First check if instance of widget opened the embedded way: */
     if (m_pWidget->isGlobalToolOpened(enmType))
     {
-        m_pWidget->setToolsTypeGlobal(UIToolType_Welcome);
+        m_pWidget->setToolsTypeGlobal(UIToolType_Home);
         m_pWidget->closeGlobalTool(enmType);
     }
     if (m_pWidget->isMachineToolOpened(enmType))

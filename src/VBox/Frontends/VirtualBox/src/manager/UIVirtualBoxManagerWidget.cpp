@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 107348 2024-12-12 14:02:39Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 108234 2025-02-05 17:49:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -918,7 +918,7 @@ void UIVirtualBoxManagerWidget::updateToolbar()
     {
         switch (currentGlobalTool())
         {
-            case UIToolType_Welcome:
+            case UIToolType_Home:
             {
                 m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_Application_S_Preferences));
                 m_pToolBar->addSeparator();
@@ -1192,7 +1192,7 @@ void UIVirtualBoxManagerWidget::updateToolsMenuGlobal()
         restrictedTypes << UIToolType_Media
                         << UIToolType_Network;
     if (restrictedTypes.contains(m_pMenuToolsGlobal->toolsType()))
-        m_pMenuToolsGlobal->setToolsType(UIToolType_Welcome);
+        m_pMenuToolsGlobal->setToolsType(UIToolType_Home);
     const QList restrictions(restrictedTypes.begin(), restrictedTypes.end());
     m_pMenuToolsGlobal->setRestrictedToolTypes(restrictions);
 

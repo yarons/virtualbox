@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 108190 2025-02-04 05:24:54Z samantha.scholz@oracle.com $ */
+/* $Id: UIExtraDataDefs.h 108234 2025-02-05 17:49:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -948,7 +948,7 @@ enum UIToolType
 {
     UIToolType_Invalid,
     /* Global types: */
-    UIToolType_Welcome,
+    UIToolType_Home,
     UIToolType_Extensions,
     UIToolType_Media,
     UIToolType_Network,

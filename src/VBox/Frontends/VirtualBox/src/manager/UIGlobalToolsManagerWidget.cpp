@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsManagerWidget.cpp 107442 2024-12-19 14:53:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsManagerWidget.cpp 108234 2025-02-05 17:49:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsManagerWidget class implementation.
  */
@@ -316,7 +316,7 @@ void UIGlobalToolsManagerWidget::updateToolsMenu()
         restrictedTypes << UIToolType_Media
                         << UIToolType_Network;
     if (restrictedTypes.contains(toolMenu()->toolsType()))
-        setMenuToolType(UIToolType_Welcome);
+        setMenuToolType(UIToolType_Home);
     const QList restrictions(restrictedTypes.begin(), restrictedTypes.end());
     toolMenu()->setRestrictedToolTypes(restrictions);
 

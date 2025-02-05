@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 107540 2025-01-08 06:03:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPoolManager.cpp 108234 2025-02-05 17:49:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -171,7 +171,7 @@ protected:
     }
 };
 
-/** Simple action extension, used as 'Show Welcome Screen' action class. */
+/** Simple action extension, used as 'Show Home Screen' action class. */
 class UIActionToggleManagerToolsGlobalShowWelcomeScreen : public UIActionToggle
 {
     Q_OBJECT;
@@ -182,7 +182,7 @@ public:
     UIActionToggleManagerToolsGlobalShowWelcomeScreen(UIActionPool *pParent)
         : UIActionToggle(pParent)
     {
-        setProperty("UIToolType", QVariant::fromValue(UIToolType_Welcome));
+        setProperty("UIToolType", QVariant::fromValue(UIToolType_Home));
         /// @todo use icons with check-boxes
         setIcon(UIIconPool::iconSetFull(":/welcome_screen_24px.png", ":/welcome_screen_24px.png",
                                         ":/welcome_screen_24px.png", ":/welcome_screen_24px.png"));
