@@ -1,4 +1,4 @@
-﻿/* $Id: UIAdvancedSettingsDialog.cpp 107160 2024-11-25 16:38:52Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIAdvancedSettingsDialog.cpp 108229 2025-02-05 15:53:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class implementation.
  */
@@ -811,8 +811,10 @@ void UIAdvancedSettingsDialog::accept()
     /* Save data: */
     save();
 
-    /* Close if there is no ongoing serialization: */
-    if (!isSerializationInProgress())
+    /* Close if there is no ongoing serialization
+     * and previous try was successful: */
+    if (   !isSerializationInProgress()
+        && m_fSerializationClean)
         sltClose();
 }
 
@@ -1573,7 +1575,7 @@ void UIAdvancedSettingsDialog::prepareButtonBox()
         m_pButtonBox->button(QDialogButtonBox::Help)->setShortcut(UIShortcutPool::standardSequence(QKeySequence::HelpContents));
         m_pButtonBox->button(QDialogButtonBox::Ok)->setShortcut(Qt::Key_Return);
         m_pButtonBox->button(QDialogButtonBox::Cancel)->setShortcut(Qt::Key_Escape);
-        connect(m_pButtonBox, &QIDialogButtonBox::rejected, this, &UIAdvancedSettingsDialog::sltClose);
+        connect(m_pButtonBox, &QIDialogButtonBox::rejected, this, &UIAdvancedSettingsDialog::reject);
         connect(m_pButtonBox, &QIDialogButtonBox::accepted, this, &UIAdvancedSettingsDialog::accept);
         connect(m_pButtonBox->button(QDialogButtonBox::Help), &QAbstractButton::pressed,
                 m_pButtonBox, &QIDialogButtonBox::sltHandleHelpRequest);
