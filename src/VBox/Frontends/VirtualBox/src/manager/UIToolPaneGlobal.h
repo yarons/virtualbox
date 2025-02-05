@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.h 107390 2024-12-17 10:29:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolPaneGlobal.h 108237 2025-02-05 18:07:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class declaration.
  */
@@ -48,7 +48,7 @@ class UIMediumManagerWidget;
 class UINetworkManagerWidget;
 class UIVMActivityOverviewWidget;
 class UIVirtualMachineItemCloud;
-class UIWelcomePane;
+class UIHomePane;
 #ifdef VBOX_GUI_WITH_ADVANCED_WIDGETS
 class UIMachineManagerWidget;
 #endif
@@ -120,8 +120,8 @@ private:
 
     /** Holds the stacked-layout instance. */
     QStackedLayout               *m_pLayout;
-    /** Holds the Welcome pane instance. */
-    UIWelcomePane                *m_pPaneWelcome;
+    /** Holds the Home pane instance. */
+    UIHomePane                   *m_pPaneHome;
     /** Holds the Extension Pack Manager instance. */
     UIExtensionPackManagerWidget *m_pPaneExtensions;
     /** Holds the Virtual Media Manager instance. */
