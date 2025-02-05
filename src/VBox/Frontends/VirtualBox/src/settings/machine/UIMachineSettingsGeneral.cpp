@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 107753 2025-01-10 16:16:54Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsGeneral.cpp 108233 2025-02-05 17:37:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -785,8 +785,11 @@ bool UIMachineSettingsGeneral::saveBasicData()
                         CPlatformX86 comPlatformX86 = comPlatform.GetX86();
                         const CGuestOSType comNewType = gpGlobalSession->virtualBox().GetGuestOSType(newGeneralData.m_strGuestOsTypeId);
                         comPlatformX86.SetCPUProperty(KCPUPropertyTypeX86_LongMode, comNewType.GetIs64Bit());
-                        fSuccess = comPlatformX86.isOk();
-                        /// @todo convey error info ..
+                        if (!comPlatformX86.isOk())
+                        {
+                            notifyOperationProgressError(UIErrorString::formatErrorInfo(comPlatformX86));
+                            return false;
+                        }
                         break;
                     }
                     default:
