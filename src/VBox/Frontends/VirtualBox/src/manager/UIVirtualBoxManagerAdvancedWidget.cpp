@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerAdvancedWidget.cpp 108234 2025-02-05 17:49:59Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerAdvancedWidget.cpp 108235 2025-02-05 17:59:02Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerAdvancedWidget class implementation.
  */
@@ -500,8 +500,8 @@ void UIVirtualBoxManagerAdvancedWidget::updateToolbar()
             m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_File_S_ImportAppliance));
             m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_File_S_ExportAppliance));
             m_pToolBar->addSeparator();
-            m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Welcome_S_New));
-            m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Welcome_S_Add));
+            m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Home_S_New));
+            m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Home_S_Add));
             break;
         }
         case UIToolType_Extensions:

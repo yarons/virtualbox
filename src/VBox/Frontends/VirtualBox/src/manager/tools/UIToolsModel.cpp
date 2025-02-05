@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 108234 2025-02-05 17:49:59Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.cpp 108235 2025-02-05 17:59:02Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -224,7 +224,7 @@ void UIToolsModel::setCurrentItem(UIToolsItem *pItem)
     /* Adjust corrresponding actions finally: */
     const UIToolType enmType = currentItem() ? currentItem()->itemType() : UIToolType_Home;
     QMap<UIToolType, UIAction*> actions;
-    actions[UIToolType_Home] = actionPool()->action(UIActionIndexMN_M_File_M_Tools_T_WelcomeScreen);
+    actions[UIToolType_Home] = actionPool()->action(UIActionIndexMN_M_File_M_Tools_T_HomeScreen);
     actions[UIToolType_Extensions] = actionPool()->action(UIActionIndexMN_M_File_M_Tools_T_ExtensionPackManager);
     actions[UIToolType_Media] = actionPool()->action(UIActionIndexMN_M_File_M_Tools_T_VirtualMediaManager);
     actions[UIToolType_Network] = actionPool()->action(UIActionIndexMN_M_File_M_Tools_T_NetworkManager);
@@ -352,7 +352,7 @@ void UIToolsModel::updateLayout()
         if (!pItem->isVisible())
             continue;
 
-        /* In widget mode we should add spacing after Welcome item: */
+        /* In widget mode we should add spacing after Home item: */
         if (   !tools()->isPopup()
             && enmLastType == UIToolType_Home)
             iVerticalIndent += iMajorSpacing;
