@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialog.h 108230 2025-02-05 16:08:19Z sergey.dubov@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialog.h 108231 2025-02-05 17:22:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class declaration.
  */
@@ -141,6 +141,11 @@ protected:
     UISettingsSerializer *serializeProcess() const { return m_pSerializeProcess; }
     /** Returns whether the serialization is in progress. */
     bool isSerializationInProgress() const { return m_fSerializationIsInProgress; }
+
+    /** Holds whether there were no serialization errors. */
+    bool isSerializationClean() const { return m_fSerializationClean; }
+    /** Resets whether there were no serialization errors. */
+    void resetSerializationClean() { m_fSerializationClean = true; }
 
     /** Returns dialog optional flags. */
     QMap<QString, QVariant> optionalFlags() const { return m_flags; }
