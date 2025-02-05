@@ -1,7 +1,7 @@
 #! /bin/sh
-# $Id: vboxadd-x11.sh 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: vboxadd-x11.sh 108211 2025-02-05 11:35:39Z vadim.galitsyn@oracle.com $
 ## @file
-# Linux Additions X11 setup init script ($Revision: 106061 $)
+# Linux Additions X11 setup init script ($Revision: 108211 $)
 #
 
 #
@@ -261,6 +261,18 @@ setup()
         ps -Af | grep -q '[X]org' || ${MODPROBE} -q vboxvideo
     fi
 
+    # Our logging code generates some glue code on 32-bit systems.  At least F10
+    # needs a rule to allow this.  Send all output to /dev/null in case this is
+    # completely irrelevant on the target system.
+    # chcon is needed on old Fedora/Redhat systems.  No one remembers which.
+    chcon -t unconfined_execmem_exec_t '/usr/bin/VBoxClient' > /dev/null 2>&1
+    semanage fcontext -a -t unconfined_execmem_exec_t '/usr/bin/VBoxClient' > /dev/null 2>&1
+
+    # And set up VBoxClient to start when the X session does
+    install_x11_startup_app "${lib_dir}/98vboxadd-xclient" "${lib_dir}/vboxclient.desktop" VBoxClient VBoxClient-all ||
+        fail "Failed to set up VBoxClient to start automatically."
+    ln -s "${lib_dir}/98vboxadd-xclient" /usr/bin/VBoxClient-all 2>/dev/null
+
     test -z "$x_version" -o -z "$modules_dir" &&
         {
             echo "Could not find the X.Org or XFree86 Window System, skipping." >&2
@@ -479,22 +491,9 @@ EOF
             ;;
     esac
 
-    # Our logging code generates some glue code on 32-bit systems.  At least F10
-    # needs a rule to allow this.  Send all output to /dev/null in case this is
-    # completely irrelevant on the target system.
-    # chcon is needed on old Fedora/Redhat systems.  No one remembers which.
-    chcon -t unconfined_execmem_exec_t '/usr/bin/VBoxClient' > /dev/null 2>&1
-    semanage fcontext -a -t unconfined_execmem_exec_t '/usr/bin/VBoxClient' > /dev/null 2>&1
-
-    # And set up VBoxClient to start when the X session does
-    install_x11_startup_app "${lib_dir}/98vboxadd-xclient" "${lib_dir}/vboxclient.desktop" VBoxClient VBoxClient-all ||
-        fail "Failed to set up VBoxClient to start automatically."
-    ln -s "${lib_dir}/98vboxadd-xclient" /usr/bin/VBoxClient-all 2>/dev/null
     case "${x_version}" in 4.* | 6.* | 7.* | 1.?.* | 1.1* )
         setup_opengl
     esac
-    # Try enabling VMSVGA drm device resizing.
-    #VBoxClient --vmsvga
 }
 
 cleanup()
