@@ -1,4 +1,4 @@
-/* $Id: acpi-compiler.cpp 108210 2025-02-05 11:33:27Z alexander.eichner@oracle.com $ */
+/* $Id: acpi-compiler.cpp 108214 2025-02-05 11:47:10Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Advanced Configuration and Power Interface (ACPI) Table generation API.
  */
@@ -1118,7 +1118,7 @@ static DECLCALLBACK(int) rtAcpiTblAslParseField(PRTACPIASLCU pThis, PCRTACPIASLK
     {
         case RTACPIASLTERMINAL_KEYWORD_PRESERVE:        pAstNd->aArgs[2].u.enmFieldUpdate = kAcpiFieldUpdate_Preserve;      break;
         case RTACPIASLTERMINAL_KEYWORD_WRITE_AS_ONES:   pAstNd->aArgs[2].u.enmFieldUpdate = kAcpiFieldUpdate_WriteAsOnes;   break;
-        case RTACPIASLTERMINAL_KEYWORD_WRITE_AS_ZEROES: pAstNd->aArgs[2].u.enmFieldUpdate = kAcpiFieldUpdate_WriteAsZeroes; break;  
+        case RTACPIASLTERMINAL_KEYWORD_WRITE_AS_ZEROES: pAstNd->aArgs[2].u.enmFieldUpdate = kAcpiFieldUpdate_WriteAsZeroes; break;
         default:
             AssertFailedReturn(VERR_INTERNAL_ERROR);
     }
