@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.cpp 108250 2025-02-06 15:01:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsView.cpp 108251 2025-02-06 15:04:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class implementation.
  */
@@ -228,6 +228,12 @@ void UIToolsView::preparePalette()
 
     /* Assing changed palette: */
     setPalette(pal);
+#ifdef VBOX_WS_WIN
+    // WORKAROUND:
+    // New Windows Modern look&feel style have different palettes for view
+    // and viewport, so we are assigning viewport palette as well.
+    viewport()->setPalette(pal);
+#endif
 }
 
 void UIToolsView::resizeEvent(QResizeEvent *pEvent)
