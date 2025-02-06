@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106652 2024-10-24 09:10:13Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 108257 2025-02-06 16:59:10Z andreas.loeffler@oracle.com $
 ## @file
 # Sub-Makefile for the Network Adapter Driver (VBoxNetAdp).
 #
@@ -155,10 +155,6 @@ ifeq ($(KBUILD_TARGET),win)
    VBoxNetAdp6-inf_SOURCES += \
    	$(PATH_TARGET)/VBoxNetAdp6Cat.dir/VBoxNetAdp6.sys \
    	$(PATH_TARGET)/VBoxNetAdp6Cat.dir/VBoxNetAdp6.cat
-   VBoxNetAdp6-inf_SOURCES.win.x86 += \
-   	$(PATH_TARGET)/VBoxNetAdp6Cat.dir/VBoxNetAdp6.cat=>VBoxNetAdp6-PreW10.cat
-   VBoxNetAdp6-inf_SOURCES.win.amd64 += \
-   	$(PATH_TARGET)/VBoxNetAdp6Cat.dir/VBoxNetAdp6.cat=>VBoxNetAdp6-PreW10.cat
 
    $(PATH_TARGET)/VBoxNetAdp6Cat.dir/VBoxNetAdp6.sys: $$(VBoxNetAdp6_1_TARGET) | $$(dir $$@)
 	$(INSTALL) -m 644 $< $(@D)
