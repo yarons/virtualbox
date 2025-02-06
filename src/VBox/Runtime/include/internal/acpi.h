@@ -1,4 +1,4 @@
-/* $Id: acpi.h 108238 2025-02-05 18:38:43Z alexander.eichner@oracle.com $ */
+/* $Id: acpi.h 108239 2025-02-06 08:48:47Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Internal RTAcpi header.
  */
@@ -164,6 +164,7 @@ typedef enum RTACPIASTNODEOP
     kAcpiAstNodeOp_Or,
     kAcpiAstNodeOp_Xor,
     kAcpiAstNodeOp_Not,
+    kAcpiAstNodeOp_Notify,
     kAcpiAstNodeOp_32Bit_Hack = 0x7fffffff
 } RTACPIASTNODEOP;
 
