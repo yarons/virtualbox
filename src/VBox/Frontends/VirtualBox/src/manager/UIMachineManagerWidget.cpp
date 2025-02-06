@@ -1,4 +1,4 @@
-/* $Id: UIMachineManagerWidget.cpp 107406 2024-12-18 13:03:59Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineManagerWidget.cpp 108254 2025-02-06 15:19:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineManagerWidget class implementation.
  */
@@ -399,8 +399,8 @@ void UIMachineManagerWidget::prepareWidgets()
     if (pLayout)
     {
         /* Configure layout: */
-        pLayout->setSpacing(0);
         pLayout->setContentsMargins(0, 0, 0, 0);
+        pLayout->setSpacing(0);
 
         /* Create splitter: */
         m_pSplitter = new QISplitter;
