@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.cpp 108148 2025-01-31 20:42:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsView.cpp 108250 2025-02-06 15:01:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class implementation.
  */
@@ -209,13 +209,24 @@ void UIToolsView::preparePalette()
 {
     /* Setup palette: */
     QPalette pal = qApp->palette();
-    QColor backgroundColor = pal.color(QPalette::Active, QPalette::Window);
+
+    /* We are just taking the [in]active Window colors and
+     * making them a bit darker/lighter according to theme: */
+    QColor backgroundColorActive = pal.color(QPalette::Active, QPalette::Window);
+    QColor backgroundColorInactive = pal.color(QPalette::Inactive, QPalette::Window);
     if (!tools()->isPopup())
-        backgroundColor = uiCommon().isInDarkMode()
-                        ? backgroundColor.lighter(130)
-                        : backgroundColor.darker(110);
-    pal.setColor(QPalette::Active, QPalette::Base, backgroundColor);
-    pal.setColor(QPalette::Inactive, QPalette::Base, backgroundColor);
+    {
+        backgroundColorActive = uiCommon().isInDarkMode()
+                              ? backgroundColorActive.lighter(120)
+                              : backgroundColorActive.darker(108);
+        backgroundColorInactive = uiCommon().isInDarkMode()
+                                ? backgroundColorInactive.lighter(120)
+                                : backgroundColorInactive.darker(108);
+    }
+    pal.setColor(QPalette::Active, QPalette::Base, backgroundColorActive);
+    pal.setColor(QPalette::Inactive, QPalette::Base, backgroundColorInactive);
+
+    /* Assing changed palette: */
     setPalette(pal);
 }
 
