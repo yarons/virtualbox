@@ -1,4 +1,4 @@
-/* $Id: acpi.cpp 108239 2025-02-06 08:48:47Z alexander.eichner@oracle.com $ */
+/* $Id: acpi.cpp 108242 2025-02-06 08:52:13Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Advanced Configuration and Power Interface (ACPI) Table generation API.
  */
@@ -504,7 +504,7 @@ static void rtAcpiTblAppendNameString(PRTACPITBLINT pThis, const char *pszName)
             cSegments++;
     }
 
-    size_t cbReq = cSegments * 4 * sizeof(uint8_t);
+    uint32_t cbReq = cSegments * 4 * sizeof(uint8_t);
     if (cSegments == 2)
         cbReq++; /* DualName Prefix */
     else if (cSegments != 1)
