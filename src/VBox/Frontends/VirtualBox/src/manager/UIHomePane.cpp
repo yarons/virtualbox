@@ -1,4 +1,4 @@
-/* $Id: UIHomePane.cpp 108237 2025-02-05 18:07:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIHomePane.cpp 108246 2025-02-06 09:32:25Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHomePane class implementation.
  */
@@ -48,7 +48,7 @@
 
 
 /*********************************************************************************************************************************
-*   Class UIHomePane implementation.                                                                                          *
+*   Class UIHomePane implementation.                                                                                             *
 *********************************************************************************************************************************/
 
 UIHomePane::UIHomePane(QWidget *pParent /* = 0 */)
