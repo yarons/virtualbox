@@ -1,4 +1,4 @@
-/* $Id: acpi.h 108239 2025-02-06 08:48:47Z alexander.eichner@oracle.com $ */
+/* $Id: acpi.h 108248 2025-02-06 10:49:06Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Internal RTAcpi header.
  */
@@ -165,6 +165,12 @@ typedef enum RTACPIASTNODEOP
     kAcpiAstNodeOp_Xor,
     kAcpiAstNodeOp_Not,
     kAcpiAstNodeOp_Notify,
+    kAcpiAstNodeOp_SizeOf,
+    kAcpiAstNodeOp_While,
+    kAcpiAstNodeOp_Increment,
+    kAcpiAstNodeOp_Decrement,
+    kAcpiAstNodeOp_CondRefOf,
+    kAcpiAstNodeOp_IndexField,
     kAcpiAstNodeOp_32Bit_Hack = 0x7fffffff
 } RTACPIASTNODEOP;
 
