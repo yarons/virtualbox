@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHostonly.cpp 107940 2025-01-17 10:33:29Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageHostonly.cpp 108264 2025-02-07 13:12:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of hostonlyif command.
  */
@@ -53,12 +53,12 @@ DECLARE_TRANSLATION_CONTEXT(HostOnly);
 
 using namespace com;
 
+#if defined(VBOX_WITH_NETFLT) && !defined(RT_OS_SOLARIS)
 static const RTGETOPTDEF g_aHostOnlyCreateOptions[] =
 {
     { "--machinereadable",  'M', RTGETOPT_REQ_NOTHING },
 };
 
-#if defined(VBOX_WITH_NETFLT) && !defined(RT_OS_SOLARIS)
 static RTEXITCODE handleCreate(HandlerArg *a)
 {
     /*
