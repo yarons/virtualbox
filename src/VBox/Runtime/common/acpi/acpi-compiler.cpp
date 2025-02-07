@@ -1,4 +1,4 @@
-/* $Id: acpi-compiler.cpp 108248 2025-02-06 10:49:06Z alexander.eichner@oracle.com $ */
+/* $Id: acpi-compiler.cpp 108267 2025-02-07 14:04:49Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Advanced Configuration and Power Interface (ACPI) Table generation API.
  */
@@ -981,7 +981,7 @@ static DECLCALLBACK(int) rtAcpiTblAslParseMethod(PRTACPIASLCU pThis, PCRTACPIASL
                     if (u64 >= 16)
                         return RTErrInfoSetF(pThis->pErrInfo, VERR_INVALID_PARAMETER,
                                              "SyncLevel value is out of range [0..15]: %u", u64);
-                    pAstNd->aArgs[1].u.u8 = (uint8_t)u64;
+                    pAstNd->aArgs[3].u.u8 = (uint8_t)u64;
                 }
 
                 if (rtAcpiAslLexerIsPunctuator(pThis, RTACPIASLTERMINAL_PUNCTUATOR_COMMA))
