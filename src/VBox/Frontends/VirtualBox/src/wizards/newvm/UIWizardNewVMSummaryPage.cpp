@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMSummaryPage.cpp 107022 2024-11-14 13:56:24Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMSummaryPage.cpp 108266 2025-02-07 13:20:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMSummaryPage class implementation.
  */
@@ -367,7 +367,7 @@ void UIWizardNewVMSummaryModel::populateData(UIWizardNewVM *pWizard)
 
     const QString &ISOPath = pWizard->ISOFilePath();
     if (!ISOPath.isNull() && !ISOPath.isEmpty())
-        pNameRoot->addChild(UIWizardNewVM::tr("Skip Unattended Install"), pWizard->skipUnattendedInstall());
+        pNameRoot->addChild(UIWizardNewVM::tr("Proceed with Unattended Install"), pWizard->skipUnattendedInstall());
 
     /* Unattended install related info: */
     if (pWizard->isUnattendedEnabled())
@@ -376,9 +376,9 @@ void UIWizardNewVMSummaryModel::populateData(UIWizardNewVM *pWizard)
                                                                           UIIconPool::iconSet(":/extension_pack_install_16px.png"));
         pUnattendedRoot->setIsSectionTitle(true);
 
-        pUnattendedRoot->addChild(UIWizardNewVM::tr("Username"), pWizard->userName());
+        pUnattendedRoot->addChild(UIWizardNewVM::tr("User Name"), pWizard->userName());
         pUnattendedRoot->addChild(UIWizardNewVM::tr("Product Key"), pWizard->installGuestAdditions());
-        pUnattendedRoot->addChild(UIWizardNewVM::tr("Hostname/Domain Name"), pWizard->hostnameDomainName());
+        pUnattendedRoot->addChild(UIWizardNewVM::tr("Host Name/Domain Name"), pWizard->hostnameDomainName());
         pUnattendedRoot->addChild(UIWizardNewVM::tr("Install in Background"), pWizard->startHeadless());
         pUnattendedRoot->addChild(UIWizardNewVM::tr("Install Guest Additions"), pWizard->installGuestAdditions());
         if (pWizard->installGuestAdditions())

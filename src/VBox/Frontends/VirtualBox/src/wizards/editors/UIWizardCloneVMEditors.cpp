@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMEditors.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardCloneVMEditors.cpp 108266 2025-02-07 13:20:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -368,7 +368,7 @@ void UICloneVMAdditionalOptionsEditor::sltRetranslateUI()
     }
 
     if (m_pAdditionalOptionsLabel)
-        m_pAdditionalOptionsLabel->setText(UIWizardCloneVM::tr("Additional Options:"));
+        m_pAdditionalOptionsLabel->setText(UIWizardCloneVM::tr("OS Installation Options:"));
     if (m_pKeepDiskNamesCheckBox)
     {
         m_pKeepDiskNamesCheckBox->setToolTip(UIWizardCloneVM::tr("When checked, disk names will be preserved during cloning."));

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMExpertPage.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardCloneVMExpertPage.cpp 108266 2025-02-07 13:20:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMExpertPage class implementation.
  */
@@ -105,7 +105,7 @@ void UIWizardCloneVMExpertPage::sltRetranslateUI()
     if (m_pCloneModeGroupBox)
         m_pCloneModeGroupBox->setTitle(UIWizardCloneVM::tr("Snapshots"));
     if (m_pAdditionalOptionsGroupBox)
-        m_pAdditionalOptionsGroupBox->setTitle(UIWizardCloneVM::tr("Additional Options"));
+        m_pAdditionalOptionsGroupBox->setTitle(UIWizardCloneVM::tr("OS Installation Options"));
 }
 
 void UIWizardCloneVMExpertPage::initializePage()

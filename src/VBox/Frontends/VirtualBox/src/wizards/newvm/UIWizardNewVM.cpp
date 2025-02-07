@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 107143 2024-11-22 13:04:52Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVM.cpp 108266 2025-02-07 13:20:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -390,7 +390,7 @@ bool UIWizardNewVM::attachDefaultDevices()
 void UIWizardNewVM::sltRetranslateUI()
 {
     UINativeWizard::sltRetranslateUI();
-    setWindowTitle(tr("Create Virtual Machine"));
+    setWindowTitle(tr("New Virtual Machine"));
 }
 
 QString UIWizardNewVM::getNextControllerName(KStorageBus type)
