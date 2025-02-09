@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.cpp 108280 2025-02-09 19:11:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsItem.cpp 108281 2025-02-09 19:34:17Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class definition.
  */
@@ -287,9 +287,9 @@ int UIToolsItem::minimumWidthHint() const
     /* Add 2 margins by default: */
     iProposedWidth += 2 * iMargin;
 #ifdef VBOX_WS_MAC
-    /* Additional 3 margins for widget mode: */
+    /* Additional 2 margins for widget mode: */
     if (!model()->tools()->isPopup())
-        iProposedWidth += 3 * iMargin;
+        iProposedWidth += 2 * iMargin;
 #else
     /* Additional 1 margin for widget mode: */
     if (!model()->tools()->isPopup())
@@ -774,7 +774,7 @@ void UIToolsItem::paintBackground(QPainter *pPainter, const QRect &rectangle) co
             subRect.setHeight(m_pixmap.height() / m_pixmap.devicePixelRatio() + iPadding * 2);
             subRect.setWidth(subRect.height());
 #ifdef VBOX_WS_MAC
-            subRect.moveTopLeft(rectangle.topLeft() + QPoint(2.5 * iMargin - iPadding, iMargin - iPadding));
+            subRect.moveTopLeft(rectangle.topLeft() + QPoint(2 * iMargin - iPadding, iMargin - iPadding));
 #else
             subRect.moveTopLeft(rectangle.topLeft() + QPoint(1.5 * iMargin - iPadding, iMargin - iPadding));
 #endif
@@ -886,7 +886,7 @@ void UIToolsItem::paintToolInfo(QPainter *pPainter, const QRect &rectangle) cons
     {
         /* Prepare variables: */
 #ifdef VBOX_WS_MAC
-        const int iPixmapX = model()->tools()->isPopup() ? iMargin : 2.5 * iMargin;
+        const int iPixmapX = model()->tools()->isPopup() ? iMargin : 2 * iMargin;
 #else
         const int iPixmapX = model()->tools()->isPopup() ? iMargin : 1.5 * iMargin;
 #endif
@@ -905,7 +905,7 @@ void UIToolsItem::paintToolInfo(QPainter *pPainter, const QRect &rectangle) cons
         /* Prepare variables: */
 #ifdef VBOX_WS_MAC
         const int iNameX = model()->tools()->isPopup() ? iMargin + m_pixmapSize.width() + iSpacing
-                                                       : 2.5 * iMargin + m_pixmapSize.width() + 2 * iSpacing;
+                                                       : 2 * iMargin + m_pixmapSize.width() + 2 * iSpacing;
 #else
         const int iNameX = model()->tools()->isPopup() ? iMargin + m_pixmapSize.width() + iSpacing
                                                        : 1.5 * iMargin + m_pixmapSize.width() + 2 * iSpacing;
