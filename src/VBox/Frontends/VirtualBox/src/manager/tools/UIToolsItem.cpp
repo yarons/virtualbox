@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.cpp 108259 2025-02-06 17:20:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsItem.cpp 108277 2025-02-09 17:51:31Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class definition.
  */
@@ -286,16 +286,28 @@ int UIToolsItem::minimumWidthHint() const
     /* Calculating proposed width: */
     int iProposedWidth = 0;
 
-    /* Two margins: */
+    /* Add 2 margins by default: */
     iProposedWidth += 2 * iMargin;
+    /* Additional 3 margins for widget mode: */
     if (!model()->tools()->isPopup())
         iProposedWidth += 3 * iMargin;
-    /* And Tools-item content to take into account: */
-    int iToolsItemWidth = m_pixmapSize.width();
+
+    /* Add pixmap size by default: */
+    iProposedWidth += m_pixmapSize.width();
+
+    /* Add text size for popup mode or
+     * if it's requested for widget mode: */
     if (   model()->tools()->isPopup()
         || model()->showItemNames())
-        iToolsItemWidth += iSpacing + m_nameSize.width();
-    iProposedWidth += iToolsItemWidth;
+    {
+        iProposedWidth += m_nameSize.width();
+
+        /* Add 1 spacing by default: */
+        iProposedWidth += iSpacing;
+        /* Additional 1 spacing for widget mode: */
+        if (!model()->tools()->isPopup())
+            iProposedWidth += iSpacing;
+    }
 
     /* Return result: */
     return iProposedWidth;
@@ -885,7 +897,7 @@ void UIToolsItem::paintToolInfo(QPainter *pPainter, const QRect &rectangle) cons
     {
         /* Prepare variables: */
         const int iNameX = model()->tools()->isPopup() ? iMargin + m_pixmapSize.width() + iSpacing
-                                                       : 2.5 * iMargin + m_pixmapSize.width() + iSpacing;
+                                                       : 2.5 * iMargin + m_pixmapSize.width() + 2 * iSpacing;
         const int iNameY = (iFullHeight - m_nameSize.height()) / 2;
         /* Paint name (always for popup mode, if requested otherwise): */
         if (   model()->tools()->isPopup()
