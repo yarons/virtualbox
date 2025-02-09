@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.cpp 108279 2025-02-09 18:03:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsItem.cpp 108280 2025-02-09 19:11:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class definition.
  */
@@ -731,11 +731,11 @@ void UIToolsItem::paintBackground(QPainter *pPainter, const QRect &rectangle) co
                                         ? pal.color(QPalette::Active, QPalette::Highlight)
                                         : pal.color(QPalette::Disabled, QPalette::Highlight);
             const QColor highlightColor1 = uiCommon().isInDarkMode()
-                                         ? highlightColor.lighter(m_iHighlightLightnessStart + 20)
-                                         : highlightColor.darker(m_iHighlightLightnessStart + 20);
+                                         ? highlightColor.lighter(130)
+                                         : highlightColor.darker(130);
             const QColor highlightColor2 = uiCommon().isInDarkMode()
-                                         ? highlightColor.lighter(m_iHighlightLightnessFinal + 20)
-                                         : highlightColor.darker(m_iHighlightLightnessFinal + 20);
+                                         ? highlightColor.lighter(110)
+                                         : highlightColor.darker(110);
 
             /* Prepare token sub-rect: */
             QRect tokenRect(rectangle.topLeft() + QPoint(0, 4),
