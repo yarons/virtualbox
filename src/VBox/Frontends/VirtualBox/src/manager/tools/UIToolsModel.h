@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 108181 2025-02-03 17:40:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.h 108274 2025-02-09 17:12:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -217,7 +217,6 @@ private:
         /* Layout hints: */
         ToolsModelData_Margin,
         ToolsModelData_Spacing,
-        ToolsModelData_MajorSpacing
     };
 
     /** @name Prepare/Cleanup cascade.
