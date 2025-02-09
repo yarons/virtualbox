@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 108234 2025-02-05 17:49:59Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataDefs.h 108276 2025-02-09 17:34:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -938,6 +938,7 @@ enum WizardMode
 enum UIToolClass
 {
     UIToolClass_Invalid,
+    UIToolClass_Aux,
     UIToolClass_Global,
     UIToolClass_Machine
 };
@@ -947,6 +948,8 @@ enum UIToolClass
 enum UIToolType
 {
     UIToolType_Invalid,
+    /* Aux types: */
+    UIToolType_Toggle,
     /* Global types: */
     UIToolType_Home,
     UIToolType_Extensions,

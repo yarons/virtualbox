@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 108234 2025-02-05 17:49:59Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataDefs.cpp 108276 2025-02-09 17:34:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -285,6 +285,17 @@ bool UIToolStuff::isTypeOfClass(UIToolType enmType, UIToolClass enmClass)
 {
     switch (enmClass)
     {
+        case UIToolClass_Aux:
+        {
+            switch (enmType)
+            {
+                case UIToolType_Toggle:
+                    return true;
+                default:
+                    break;
+            }
+            break;
+        }
         case UIToolClass_Global:
         {
             switch (enmType)
