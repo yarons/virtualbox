@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 108276 2025-02-09 17:34:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.cpp 108279 2025-02-09 18:03:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -324,14 +324,6 @@ bool UIToolsModel::showItemNames() const
     return m_fShowItemNames;
 }
 
-bool UIToolsModel::isAtLeastOneItemHovered() const
-{
-    foreach (UIToolsItem *pItem, items())
-        if (pItem->isHovered())
-            return true;
-    return false;
-}
-
 void UIToolsModel::updateLayout()
 {
     /* Prepare variables: */
@@ -502,13 +494,6 @@ bool UIToolsModel::eventFilter(QObject *pWatched, QEvent *pEvent)
     return QObject::eventFilter(pWatched, pEvent);
 }
 
-void UIToolsModel::sltHandleItemHoverChange()
-{
-    /* Just update all the items: */
-    foreach (UIToolsItem *pItem, items())
-        pItem->update();
-}
-
 void UIToolsModel::sltFocusItemDestroyed()
 {
     AssertMsgFailed(("Focus item destroyed!"));
@@ -650,15 +635,6 @@ void UIToolsModel::prepareConnections()
     /* Translation stuff: */
     connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
             this, &UIToolsModel::sltRetranslateUI);
-
-    /* Connect item hover listeners: */
-    foreach (UIToolsItem *pItem, m_items)
-    {
-        connect(pItem, &UIToolsItem::sigHoverEnter,
-                this, &UIToolsModel::sltHandleItemHoverChange);
-        connect(pItem, &UIToolsItem::sigHoverLeave,
-                this, &UIToolsModel::sltHandleItemHoverChange);
-    }
 }
 
 void UIToolsModel::loadSettings()

@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 108274 2025-02-09 17:12:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.h 108279 2025-02-09 18:03:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -131,9 +131,6 @@ public:
 
         /** Returns whether we should show item names. */
         bool showItemNames() const;
-
-        /** Returns whether at least one item hovered. */
-        bool isAtLeastOneItemHovered() const;
     /** @} */
 
     /** @name Selection stuff.
@@ -190,12 +187,6 @@ protected:
     /** @} */
 
 private slots:
-
-    /** @name Children stuff.
-      * @{ */
-       /** Handles signal about one of items was [un]hovered. */
-       void sltHandleItemHoverChange();
-    /** @} */
 
     /** @name Selection stuff.
       * @{ */
