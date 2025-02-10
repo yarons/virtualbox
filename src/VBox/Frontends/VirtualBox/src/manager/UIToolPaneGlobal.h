@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.h 108237 2025-02-05 18:07:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolPaneGlobal.h 108292 2025-02-10 12:57:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class declaration.
  */
@@ -122,6 +122,10 @@ private:
     QStackedLayout               *m_pLayout;
     /** Holds the Home pane instance. */
     UIHomePane                   *m_pPaneHome;
+#ifdef VBOX_GUI_WITH_ADVANCED_WIDGETS
+    /** Holds the Machine Manager instance. */
+    UIMachineManagerWidget       *m_pPaneMachines;
+#endif
     /** Holds the Extension Pack Manager instance. */
     UIExtensionPackManagerWidget *m_pPaneExtensions;
     /** Holds the Virtual Media Manager instance. */
@@ -132,10 +136,6 @@ private:
     UICloudProfileManagerWidget  *m_pPaneCloud;
     /** Holds the VM Activity Overview instance. */
     UIVMActivityOverviewWidget   *m_pPaneActivities;
-#ifdef VBOX_GUI_WITH_ADVANCED_WIDGETS
-    /** Holds the Machine Manager instance. */
-    UIMachineManagerWidget       *m_pPaneMachines;
-#endif
 
     /** Holds whether this pane is active. */
     bool  m_fActive;
