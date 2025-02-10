@@ -1,4 +1,4 @@
-' $Id: configure.vbs 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+' $Id: configure.vbs 108291 2025-02-10 12:47:06Z klaus.espenlaub@oracle.com $
 '' @file
 ' The purpose of this script is to check for all external tools, headers, and
 ' libraries VBox OSE depends on.
@@ -637,7 +637,7 @@ sub CheckForkBuild(strOptkBuild)
    end if
 
    '
-   ' Determin the location of the kBuild binaries.
+   ' Determine the location of the kBuild binaries.
    '
    if g_strPathkBuildBin = "" then
       g_strPathkBuildBin = g_strPathkBuild & "/bin/win." & g_strHostArch
