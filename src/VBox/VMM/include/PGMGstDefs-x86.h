@@ -1,4 +1,4 @@
-/* $Id: PGMGstDefs.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMGstDefs-x86.h 108297 2025-02-10 14:38:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */

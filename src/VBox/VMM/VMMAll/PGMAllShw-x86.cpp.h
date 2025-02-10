@@ -1,4 +1,4 @@
-/* $Id: PGMAllShw.h 107208 2024-11-28 10:38:10Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMAllShw-x86.cpp.h 108297 2025-02-10 14:38:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox - Page Manager, Shadow Paging Template - All context code.
  */
