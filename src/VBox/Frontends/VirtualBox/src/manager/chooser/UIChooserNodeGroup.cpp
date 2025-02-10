@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGroup.cpp 108293 2025-02-10 13:08:20Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserNodeGroup.cpp 108304 2025-02-10 17:54:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGroup class implementation.
  */
@@ -42,7 +42,7 @@ UIChooserNodeGroup::UIChooserNodeGroup(UIChooserNode *pParent,
                                        const QString &strName,
                                        UIChooserNodeGroupType enmGroupType,
                                        bool fOpened)
-    : UIChooserNode(pParent, false /* favorite */)
+    : UIChooserNode(pParent)
     , m_uId(uId)
     , m_strName(strName)
     , m_enmGroupType(enmGroupType)
@@ -61,7 +61,7 @@ UIChooserNodeGroup::UIChooserNodeGroup(UIChooserNode *pParent,
 UIChooserNodeGroup::UIChooserNodeGroup(UIChooserNode *pParent,
                                        int iPosition,
                                        UIChooserNodeGroup *pCopyFrom)
-    : UIChooserNode(pParent, false /* favorite */)
+    : UIChooserNode(pParent)
     , m_uId(pCopyFrom->id())
     , m_strName(pCopyFrom->name())
     , m_enmGroupType(pCopyFrom->groupType())

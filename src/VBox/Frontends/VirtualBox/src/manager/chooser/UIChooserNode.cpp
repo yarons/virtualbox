@@ -1,4 +1,4 @@
-/* $Id: UIChooserNode.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIChooserNode.cpp 108304 2025-02-10 17:54:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserNode class definition.
  */
@@ -35,10 +35,9 @@
 #include "iprt/cpp/utils.h"
 
 
-UIChooserNode::UIChooserNode(UIChooserNode *pParent /* = 0 */, bool fFavorite /* = false */)
+UIChooserNode::UIChooserNode(UIChooserNode *pParent /* = 0 */)
     : QObject(pParent)
     , m_pParent(pParent)
-    , m_fFavorite(fFavorite)
     , m_pModel(0)
     , m_fDisabled(false)
 {

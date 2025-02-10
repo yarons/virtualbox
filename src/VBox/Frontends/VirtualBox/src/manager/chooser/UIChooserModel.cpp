@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 108293 2025-02-10 13:08:20Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.cpp 108304 2025-02-10 17:54:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -126,18 +126,6 @@ void UIChooserModel::handleToolButtonClick(UIChooserItem *pItem)
 {
     emit sigToolMenuRequested(pItem->mapToScene(QPointF(pItem->size().width(), 0)).toPoint(),
                               pItem->type() == UIChooserNodeType_Machine ? pItem->toMachineItem()->cache() : 0);
-}
-
-void UIChooserModel::handlePinButtonClick(UIChooserItem *pItem)
-{
-    switch (pItem->type())
-    {
-        case UIChooserNodeType_Global:
-            pItem->setFavorite(!pItem->isFavorite());
-            break;
-        default:
-            break;
-    }
 }
 
 void UIChooserModel::setSelectedItems(const QList<UIChooserItem*> &items)

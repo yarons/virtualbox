@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIChooserItem.h 108304 2025-02-10 17:54:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class declaration.
  */
@@ -135,11 +135,6 @@ public:
         /** Returns item definition. */
         QString definition() const;
 
-        /** Returns whether item is favorite. */
-        bool isFavorite() const;
-        /** Defines whether item is @a fFavorite. */
-        virtual void setFavorite(bool fFavorite);
-
         /** Returns item position. */
         int position() const;
 
@@ -173,8 +168,8 @@ public:
         /** Returns children items of certain @a enmType. */
         virtual QList<UIChooserItem*> items(UIChooserNodeType enmType = UIChooserNodeType_Any) const = 0;
 
-        /** Adds possible @a fFavorite child @a pItem to certain @a iPosition. */
-        virtual void addItem(UIChooserItem *pItem, bool fFavorite, int iPosition) = 0;
+        /** Adds a child @a pItem to certain @a iPosition. */
+        virtual void addItem(UIChooserItem *pItem, int iPosition) = 0;
         /** Removes child @a pItem. */
         virtual void removeItem(UIChooserItem *pItem) = 0;
 

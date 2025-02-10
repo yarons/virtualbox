@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIChooserAbstractModel.h 108304 2025-02-10 17:54:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -312,9 +312,6 @@ private:
         bool shouldGroupNodeBeOpened(UIChooserNode *pParentNode,
                                      UIChooserNodeDataPrefixType enmDataType,
                                      const QString &strName) const;
-        /** Returns whether global node should be favorite,
-          * searching starting from the passed @a pParentNode. */
-        bool shouldGlobalNodeBeFavorite(UIChooserNode *pParentNode) const;
 
         /** Wipes out empty groups starting from @a pParentItem. */
         void wipeOutEmptyGroupsStartingFrom(UIChooserNode *pParentNode);

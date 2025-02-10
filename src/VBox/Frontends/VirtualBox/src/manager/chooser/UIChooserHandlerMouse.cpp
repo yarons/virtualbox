@@ -1,4 +1,4 @@
-/* $Id: UIChooserHandlerMouse.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIChooserHandlerMouse.cpp 108304 2025-02-10 17:54:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserHandlerMouse class implementation.
  */
@@ -89,11 +89,6 @@ bool UIChooserHandlerMouse::handleMousePress(QGraphicsSceneMouseEvent *pEvent) c
                         if (model()->firstSelectedItem() != pGlobalItem)
                             pClickedItem = pGlobalItem;
                     }
-                    else
-                    if (   pGlobalItem->isPinButtonArea(itemCursorPos)
-                        && (   model()->firstSelectedItem() == pGlobalItem
-                            || pGlobalItem->isHovered()))
-                        model()->handlePinButtonClick(pGlobalItem);
                     else
                         pClickedItem = pGlobalItem;
                 }

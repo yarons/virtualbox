@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIChooserItemMachine.cpp 108304 2025-02-10 17:54:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class implementation.
  */
@@ -283,7 +283,7 @@ QList<UIChooserItem*> UIChooserItemMachine::items(UIChooserNodeType) const
     return QList<UIChooserItem*>();
 }
 
-void UIChooserItemMachine::addItem(UIChooserItem*, bool, int)
+void UIChooserItemMachine::addItem(UIChooserItem*, int)
 {
     AssertMsgFailed(("Machine graphics item do NOT support children!"));
 }
@@ -596,7 +596,7 @@ void UIChooserItemMachine::prepare()
 
     /* Add item to the parent: */
     AssertPtrReturnVoid(parentItem());
-    parentItem()->addItem(this, isFavorite(), position());
+    parentItem()->addItem(this, position());
 
     /* Configure connections: */
     connect(gpManager, &UIVirtualBoxManager::sigWindowRemapped,

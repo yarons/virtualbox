@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIChooserItem.cpp 108304 2025-02-10 17:54:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class definition.
  */
@@ -394,18 +394,6 @@ QString UIChooserItem::description() const
 QString UIChooserItem::definition() const
 {
     return node()->definition();
-}
-
-bool UIChooserItem::isFavorite() const
-{
-    return node()->isFavorite();
-}
-
-void UIChooserItem::setFavorite(bool fFavorite)
-{
-    node()->setFavorite(fFavorite);
-    if (m_pParent)
-        m_pParent->toGroupItem()->updateFavorites();
 }
 
 int UIChooserItem::position() const
