@@ -1,4 +1,4 @@
-/* $Id: VBoxAcpi.cpp 108298 2025-02-10 14:44:27Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxAcpi.cpp 108299 2025-02-10 14:54:04Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxAcpi - VirtualBox ACPI manipulation functionality.
  */
@@ -218,7 +218,7 @@ static int acpiCreateCpuHotplugSsdt(PPDMDEVINS pDevIns, uint8_t **ppabAml, size_
                                     RTAcpiTblNameStringAppend(hAcpiTbl, "APIC");
                                     RTAcpiTblIntegerAppend(hAcpiTbl, 4);
                                     RTAcpiTblNullNameAppend(hAcpiTbl);
- 
+
                         RTAcpiTblIfFinalize(hAcpiTbl);
                         RTAcpiTblElseStart(hAcpiTbl);
                         RTAcpiTblElseFinalize(hAcpiTbl);
@@ -502,4 +502,3 @@ int acpiCleanupTpmSsdt(PPDMDEVINS pDevIns, void *pvPtr)
     return VINF_SUCCESS;
 }
 #endif
-
