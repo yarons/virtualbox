@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMR0.cpp 108287 2025-02-10 11:05:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -29,6 +29,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define VBOX_VMM_TARGET_X86
 #define LOG_GROUP LOG_GROUP_PGM
 #define VBOX_WITHOUT_PAGING_BIT_FIELDS /* 64-bit bitfields are just asking for trouble. See @bugref{9841} and others. */
 #include <VBox/rawpci.h>

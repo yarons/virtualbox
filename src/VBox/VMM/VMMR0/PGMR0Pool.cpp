@@ -1,4 +1,4 @@
-/* $Id: PGMR0Pool.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMR0Pool.cpp 108287 2025-02-10 11:05:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool, ring-0 specific bits.
  */
@@ -31,6 +31,7 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_PGM_POOL
 #define VBOX_WITHOUT_PAGING_BIT_FIELDS /* 64-bit bitfields are just asking for trouble. See @bugref{9841} and others. */
+#define VBOX_VMM_TARGET_X86
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/hm.h>
 #include "PGMInternal.h"

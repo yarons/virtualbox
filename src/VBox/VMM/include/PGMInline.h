@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 107208 2024-11-28 10:38:10Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMInline.h 108287 2025-02-10 11:05:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -1161,6 +1161,7 @@ DECLINLINE(PCPGMPHYSHANDLERTYPEINT) pgmHandlerPhysicalTypeHandleToPtr2(PVMCC pVM
     return pType;
 }
 
+#ifndef VBOX_WITH_ONLY_PGM_NEM_MODE
 
 /**
  * Internal worker for finding a 'in-use' shadow page give by it's physical address.
@@ -1189,16 +1190,16 @@ DECLINLINE(void) pgmTrackDerefGCPhys(PPGMPOOL pPool, PPGMPOOLPAGE pPoolPage, PPG
     /*
      * Just deal with the simple case here.
      */
-#ifdef VBOX_STRICT
+# ifdef VBOX_STRICT
     PVMCC pVM = pPool->CTX_SUFF(pVM); NOREF(pVM);
-#endif
-#ifdef LOG_ENABLED
+# endif
+# ifdef LOG_ENABLED
     const unsigned uOrg = PGM_PAGE_GET_TRACKING(pPhysPage);
-#endif
+# endif
     const unsigned cRefs = PGM_PAGE_GET_TD_CREFS(pPhysPage);
     if (cRefs == 1)
     {
-#if 0 /* for more debug info */
+# if 0 /* for more debug info */
         AssertMsg(   pPoolPage->idx == PGM_PAGE_GET_TD_IDX(pPhysPage)
                   && iPte == PGM_PAGE_GET_PTE_INDEX(pPhysPage),
                   ("idx=%#x iPte=%#x enmKind=%d vs pPhysPage=%R[pgmpage] idx=%#x iPte=%#x enmKind=%d [iPte]=%#RX64\n",
@@ -1206,10 +1207,10 @@ DECLINLINE(void) pgmTrackDerefGCPhys(PPGMPOOL pPool, PPGMPOOLPAGE pPoolPage, PPG
                    pPhysPage, PGM_PAGE_GET_TD_IDX(pPhysPage), PGM_PAGE_GET_PTE_INDEX(pPhysPage),
                    pPool->aPages[PGM_PAGE_GET_TD_IDX(pPhysPage)].enmKind,
                    ((uint64_t *)pPoolPage->CTX_SUFF(pvPage))[iPte]));
-#else
+# else
         Assert(pPoolPage->idx == PGM_PAGE_GET_TD_IDX(pPhysPage));
         Assert(iPte == PGM_PAGE_GET_PTE_INDEX(pPhysPage));
-#endif
+# endif
         /* Invalidate the tracking data. */
         PGM_PAGE_SET_TRACKING(pVM, pPhysPage, 0);
     }
@@ -1315,6 +1316,7 @@ DECLINLINE(bool) pgmPoolIsDirtyPage(PVMCC pVM, RTGCPHYS GCPhys)
     return pgmPoolIsDirtyPageSlow(pVM, GCPhys);
 }
 
+#endif /* !VBOX_WITH_ONLY_PGM_NEM_MODE */
 
 /** @} */
 

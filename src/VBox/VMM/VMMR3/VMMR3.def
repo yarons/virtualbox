@@ -1,4 +1,4 @@
-; $Id: VMMR3.def 107320 2024-12-10 12:40:08Z aleksey.ilyushin@oracle.com $
+; $Id: VMMR3.def 108287 2025-02-10 11:05:23Z knut.osmundsen@oracle.com $
 ;; @file
 ; VMM Ring-3 Context DLL - Definition file.
 
@@ -334,7 +334,6 @@ EXPORTS
     PGMPhysSimpleWriteGCPhys
     PGMPhysSimpleWriteGCPtr
     PGMPhysWriteGCPtr
-    PGMShwMakePageWritable
     PGMR3QueryGlobalMemoryStats
     PGMR3QueryMemoryStats
 

@@ -1,4 +1,4 @@
-/* $Id: PGMR0SharedPage.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMR0SharedPage.cpp 108287 2025-02-10 11:05:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Page Sharing, Ring-0.
  */
@@ -31,6 +31,7 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_PGM_SHARED
 #define VBOX_WITHOUT_PAGING_BIT_FIELDS /* 64-bit bitfields are just asking for trouble. See @bugref{9841} and others. */
+#define VBOX_VMM_TARGET_X86
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/iem.h>
 #include <VBox/vmm/gmm.h>
