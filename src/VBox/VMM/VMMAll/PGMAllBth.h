@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 107208 2024-11-28 10:38:10Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMAllBth.h 108289 2025-02-10 11:43:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -4216,9 +4216,11 @@ PGM_BTH_DECL(unsigned, AssertCR3)(PVMCPUCC pVCpu, uint64_t cr3, uint64_t cr4, RT
 #if PGM_TYPE_IS_NESTED_OR_EPT(PGM_SHW_TYPE) || PGM_SHW_TYPE == PGM_TYPE_NONE
     return 0;
 #else
-    unsigned cErrors = 0;
-    PVMCC    pVM     = pVCpu->CTX_SUFF(pVM);
-    PPGMPOOL pPool   = pVM->pgm.s.CTX_SUFF(pPool); NOREF(pPool);
+    unsigned       cErrors = 0;
+    PVMCC const    pVM     = pVCpu->CTX_SUFF(pVM); RT_NOREF(pVM);
+# ifndef VBOX_WITH_ONLY_PGM_NEM_MODE
+    PPGMPOOL const pPool   = pVM->pgm.s.CTX_SUFF(pPool); NOREF(pPool);
+# endif
 
 # if PGM_GST_TYPE == PGM_TYPE_PAE
     /** @todo currently broken; crashes below somewhere */
