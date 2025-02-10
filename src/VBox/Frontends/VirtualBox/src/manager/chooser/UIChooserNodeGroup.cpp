@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGroup.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIChooserNodeGroup.cpp 108293 2025-02-10 13:08:20Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGroup class implementation.
  */
@@ -326,8 +326,10 @@ void UIChooserNodeGroup::copyContents(UIChooserNodeGroup *pCopyFrom)
 {
     foreach (UIChooserNode *pNode, pCopyFrom->nodes(UIChooserNodeType_Group))
         new UIChooserNodeGroup(this, m_nodesGroup.size(), pNode->toGroupNode());
+#ifdef VBOX_GUI_WITH_LEGACY_WIDGETS
     foreach (UIChooserNode *pNode, pCopyFrom->nodes(UIChooserNodeType_Global))
         new UIChooserNodeGlobal(this, m_nodesGlobal.size(), pNode->toGlobalNode());
+#endif
     foreach (UIChooserNode *pNode, pCopyFrom->nodes(UIChooserNodeType_Machine))
         new UIChooserNodeMachine(this, m_nodesMachine.size(), pNode->toMachineNode());
 }

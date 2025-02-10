@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 107907 2025-01-16 13:55:25Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.cpp 108293 2025-02-10 13:08:20Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -53,7 +53,7 @@
 #include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
 #include "UINotificationCenter.h"
-#include "UIVirtualBoxManagerWidget.h"
+#include "UIVirtualBoxManagerAdvancedWidget.h"
 #include "UIVirtualMachineItemCloud.h"
 #include "UIVirtualMachineItemLocal.h"
 

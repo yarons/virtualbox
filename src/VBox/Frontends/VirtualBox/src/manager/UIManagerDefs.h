@@ -1,4 +1,4 @@
-/* $Id: UIManagerDefs.h 107334 2024-12-11 13:01:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIManagerDefs.h 108293 2025-02-10 13:08:20Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager definitions.
  */
@@ -29,13 +29,6 @@
 #define FEQT_INCLUDED_SRC_manager_UIManagerDefs_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
-#endif
-
-
-/** Force the GUI to use advanced widgets. */
-//#define VBOX_GUI_WITH_ADVANCED_WIDGETS
-#ifdef VBOX_GUI_WITH_ADVANCED_WIDGETS
-# define UIVirtualBoxManagerWidget UIVirtualBoxManagerAdvancedWidget
 #endif
 
 

@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 107334 2024-12-11 13:01:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.h 108293 2025-02-10 13:08:20Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -51,7 +51,7 @@ class UIAction;
 class UIActionPool;
 class UINativeWizard;
 struct UIUnattendedInstallData;
-class UIVirtualBoxManagerWidget;
+class UIVirtualBoxManagerAdvancedWidget;
 class UIVirtualMachineItem;
 class CCloudMachine;
 class CUnattended;
@@ -512,7 +512,7 @@ private:
     QMap<WizardType, UINativeWizard*>  m_wizards;
 
     /** Holds the central-widget instance. */
-    UIVirtualBoxManagerWidget *m_pWidget;
+    UIVirtualBoxManagerAdvancedWidget *m_pWidget;
 
     /** Holds the geometry save timer ID. */
     int  m_iGeometrySaveTimerId;
