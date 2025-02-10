@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGlobal.cpp 108304 2025-02-10 17:54:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserNodeGlobal.cpp 108305 2025-02-10 18:03:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGlobal class implementation.
  */
@@ -35,23 +35,7 @@
 
 
 UIChooserNodeGlobal::UIChooserNodeGlobal(UIChooserNode *pParent,
-                                         int iPosition,
-                                         const QString &)
-    : UIChooserNode(pParent)
-{
-    /* Add to parent: */
-    if (parentNode())
-        parentNode()->addNode(this, iPosition);
-
-    /* Apply language settings: */
-    sltRetranslateUI();
-    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
-            this, &UIChooserNodeGlobal::sltRetranslateUI);
-}
-
-UIChooserNodeGlobal::UIChooserNodeGlobal(UIChooserNode *pParent,
-                                         int iPosition,
-                                         UIChooserNodeGlobal *pCopyFrom)
+                                         int iPosition)
     : UIChooserNode(pParent)
 {
     /* Add to parent: */
