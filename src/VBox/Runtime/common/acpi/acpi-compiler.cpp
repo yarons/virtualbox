@@ -1,4 +1,4 @@
-/* $Id: acpi-compiler.cpp 108333 2025-02-11 21:44:43Z alexander.eichner@oracle.com $ */
+/* $Id: acpi-compiler.cpp 108334 2025-02-11 21:45:11Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Advanced Configuration and Power Interface (ACPI) Table generation API.
  */
@@ -1527,10 +1527,10 @@ static int rtAcpiTblParseResourceDma(PRTACPIASLCU pThis, RTACPIRES hAcpiRes, PRT
         RTACPIASL_PARSE_NATURAL(u64DmaChannel);
         if (u64DmaChannel > 7)
             return RTErrInfoSetF(pThis->pErrInfo, VERR_INVALID_PARAMETER,
-                                 "DM channel number %u is out of range [0..7]: %RU64",
+                                 "DM channel number is out of range [0..7]: %RU64",
                                  u64DmaChannel);
         if (bmDmaChannels & RT_BIT(u64DmaChannel))
-            return RTErrInfoSetF(pThis->pErrInfo, VERR_INVALID_PARAMETER, "Duplicate DMA channel %u in list", u64DmaChannel);
+            return RTErrInfoSetF(pThis->pErrInfo, VERR_INVALID_PARAMETER, "Duplicate DMA channel %RU64 in list", u64DmaChannel);
 
         bmDmaChannels |= RT_BIT(u64DmaChannel);
 
