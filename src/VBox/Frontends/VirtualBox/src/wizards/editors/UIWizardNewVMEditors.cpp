@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.cpp 108325 2025-02-11 15:31:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMEditors.cpp 108326 2025-02-11 16:23:34Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -174,11 +174,11 @@ void UIGAInstallationGroupBox::prepare()
 void UIGAInstallationGroupBox::sltRetranslateUI()
 {
     if (m_pGAISOFilePathSelector)
-        m_pGAISOFilePathSelector->setToolTip(UIWizardNewVM::tr("Selects an installation medium (ISO file) for the Guest Additions."));
+        m_pGAISOFilePathSelector->setToolTip(UIWizardNewVM::tr("The ISO file to install the VirtualBox Guest Additions"));
     if (m_pGAISOPathLabel)
-        m_pGAISOPathLabel->setText(UIWizardNewVM::tr("Guest &Additions ISO:"));
+        m_pGAISOPathLabel->setText(UIWizardNewVM::tr("Guest &Additions ISO Image:"));
     setTitle(UIWizardNewVM::tr("Install Gu&est Additions"));
-    setToolTip(UIWizardNewVM::tr("When checked, the guest additions will be installed after the guest OS install."));
+    setToolTip(UIWizardNewVM::tr("When checked, the guest additions will be installed after the guest OS install"));
 }
 
 QString UIGAInstallationGroupBox::path() const

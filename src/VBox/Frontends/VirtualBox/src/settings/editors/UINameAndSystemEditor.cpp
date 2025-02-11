@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 108325 2025-02-11 15:31:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UINameAndSystemEditor.cpp 108326 2025-02-11 16:23:34Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -299,22 +299,22 @@ void UINameAndSystemEditor::sltRetranslateUI()
         m_pLabelType->setText(tr("OS &Version"));
 
     if (m_pEditorName)
-        m_pEditorName->setToolTip(tr("Descriptive name to uniquely identify the virtual machine."));
+        m_pEditorName->setToolTip(tr("Descriptive name to uniquely identify the virtual machine"));
     if (m_pSelectorPath)
-        m_pSelectorPath->setToolTip(tr("Storage location for virtual machine files."));
+        m_pSelectorPath->setToolTip(tr("Storage location for virtual machine files"));
     if (m_pComboEdition)
-        m_pComboEdition->setToolTip(tr("Edition of guest operating system to install."));
+        m_pComboEdition->setToolTip(tr("Edition of guest operating system to install"));
     if (m_pComboFamily)
-        m_pComboFamily->setToolTip(tr("Guest operating system type."));
+        m_pComboFamily->setToolTip(tr("Guest operating system type"));
 
     if (m_pComboDistribution)
-        m_pComboDistribution->setToolTip(tr("Guest operating system variant, if applicable."));
+        m_pComboDistribution->setToolTip(tr("Guest operating system variant, if applicable"));
     if (m_pComboType)
         m_pComboType->setToolTip(tr("Guest operating system version to install"));
 
     if (m_pSelectorImage)
         m_pSelectorImage->setToolTip(tr("ISO image to be attached to the "
-                                        "virtual machine and possibly used in unattended install."));
+                                        "virtual machine and possibly used in unattended install"));
 }
 
 void UINameAndSystemEditor::handleFilterChange()
