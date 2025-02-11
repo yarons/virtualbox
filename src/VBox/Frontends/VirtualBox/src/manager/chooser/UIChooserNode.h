@@ -1,4 +1,4 @@
-/* $Id: UIChooserNode.h 108304 2025-02-10 17:54:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserNode.h 108321 2025-02-11 13:45:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserNode class declaration.
  */
@@ -43,7 +43,6 @@
 /* Forward declaration: */
 class UIChooserAbstractModel;
 class UIChooserNodeGroup;
-class UIChooserNodeGlobal;
 class UIChooserNodeMachine;
 
 
@@ -66,8 +65,6 @@ public:
 
     /** Casts node to group one. */
     UIChooserNodeGroup *toGroupNode();
-    /** Casts node to global one. */
-    UIChooserNodeGlobal *toGlobalNode();
     /** Casts node to machine one. */
     UIChooserNodeMachine *toMachineNode();
 

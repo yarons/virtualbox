@@ -1,4 +1,4 @@
-/* $Id: UIChooserDefs.h 108317 2025-02-11 12:08:22Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserDefs.h 108321 2025-02-11 13:45:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserDefs class declaration.
  */
@@ -43,7 +43,6 @@ enum UIChooserNodeType
 {
     UIChooserNodeType_Any     = QGraphicsItem::UserType,
     UIChooserNodeType_Group,
-    UIChooserNodeType_Global,
     UIChooserNodeType_Machine
 };
 
@@ -61,7 +60,7 @@ enum UIChooserNodeGroupType
 /** UIChooserNode extra-data prefix types. */
 enum UIChooserNodeDataPrefixType
 {
-    UIChooserNodeDataPrefixType_Global,
+    UIChooserNodeDataPrefixType_Invalid,
     UIChooserNodeDataPrefixType_Machine,
     UIChooserNodeDataPrefixType_Local,
     UIChooserNodeDataPrefixType_Provider,

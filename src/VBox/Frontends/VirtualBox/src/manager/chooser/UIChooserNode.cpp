@@ -1,4 +1,4 @@
-/* $Id: UIChooserNode.cpp 108304 2025-02-10 17:54:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserNode.cpp 108321 2025-02-11 13:45:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserNode class definition.
  */
@@ -28,7 +28,6 @@
 /* GUI includes: */
 #include "UIChooserNode.h"
 #include "UIChooserNodeGroup.h"
-#include "UIChooserNodeGlobal.h"
 #include "UIChooserNodeMachine.h"
 
 /* Other VBox includes: */
@@ -52,11 +51,6 @@ UIChooserNode::~UIChooserNode()
 UIChooserNodeGroup *UIChooserNode::toGroupNode()
 {
     return static_cast<UIChooserNodeGroup*>(this);
-}
-
-UIChooserNodeGlobal *UIChooserNode::toGlobalNode()
-{
-    return static_cast<UIChooserNodeGlobal*>(this);
 }
 
 UIChooserNodeMachine *UIChooserNode::toMachineNode()

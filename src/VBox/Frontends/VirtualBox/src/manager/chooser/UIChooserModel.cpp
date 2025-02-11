@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 108320 2025-02-11 13:36:49Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.cpp 108321 2025-02-11 13:45:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -44,7 +44,6 @@
 #include "UIChooserModel.h"
 #include "UIChooserNode.h"
 #include "UIChooserNodeGroup.h"
-#include "UIChooserNodeGlobal.h"
 #include "UIChooserNodeMachine.h"
 #include "UIChooserView.h"
 #include "UICloudNetworkingStuff.h"
