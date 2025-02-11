@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 108304 2025-02-10 17:54:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.h 108315 2025-02-11 11:38:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -150,8 +150,6 @@ public:
 
         /** Returns whether group item is selected. */
         bool isGroupItemSelected() const;
-        /** Returns whether global item is selected. */
-        bool isGlobalItemSelected() const;
         /** Returns whether machine item is selected. */
         bool isMachineItemSelected() const;
         /** Returns whether local machine item is selected. */

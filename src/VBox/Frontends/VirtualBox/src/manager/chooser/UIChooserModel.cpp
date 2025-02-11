@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 108304 2025-02-10 17:54:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.cpp 108315 2025-02-11 11:38:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -284,11 +284,6 @@ QList<UIVirtualMachineItem*> UIChooserModel::selectedMachineItems() const
 bool UIChooserModel::isGroupItemSelected() const
 {
     return firstSelectedItem() && firstSelectedItem()->type() == UIChooserNodeType_Group;
-}
-
-bool UIChooserModel::isGlobalItemSelected() const
-{
-    return firstSelectedItem() && firstSelectedItem()->type() == UIChooserNodeType_Global;
 }
 
 bool UIChooserModel::isMachineItemSelected() const

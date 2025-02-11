@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 107348 2024-12-12 14:02:39Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooser.cpp 108315 2025-02-11 11:38:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -89,12 +89,6 @@ bool UIChooser::isGroupItemSelected() const
 {
     AssertPtrReturn(model(), false);
     return model()->isGroupItemSelected();
-}
-
-bool UIChooser::isGlobalItemSelected() const
-{
-    AssertPtrReturn(model(), false);
-    return model()->isGlobalItemSelected();
 }
 
 bool UIChooser::isMachineItemSelected() const

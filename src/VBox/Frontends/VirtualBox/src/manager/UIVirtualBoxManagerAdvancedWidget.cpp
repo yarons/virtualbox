@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerAdvancedWidget.cpp 108292 2025-02-10 12:57:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerAdvancedWidget.cpp 108315 2025-02-11 11:38:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerAdvancedWidget class implementation.
  */
@@ -94,12 +94,6 @@ bool UIVirtualBoxManagerAdvancedWidget::isGroupItemSelected() const
 {
     AssertPtrReturn(chooser(), false);
     return chooser()->isGroupItemSelected();
-}
-
-bool UIVirtualBoxManagerAdvancedWidget::isGlobalItemSelected() const
-{
-    AssertPtrReturn(chooser(), false);
-    return chooser()->isGlobalItemSelected();
 }
 
 bool UIVirtualBoxManagerAdvancedWidget::isMachineItemSelected() const

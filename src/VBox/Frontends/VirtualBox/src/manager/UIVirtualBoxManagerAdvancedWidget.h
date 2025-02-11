@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerAdvancedWidget.h 107412 2024-12-18 13:58:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerAdvancedWidget.h 108315 2025-02-11 11:38:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerAdvancedWidget class declaration.
  */
@@ -136,8 +136,6 @@ public:
 
         /** Returns whether group item is selected. */
         bool isGroupItemSelected() const;
-        /** Returns whether global item is selected. */
-        bool isGlobalItemSelected() const;
         /** Returns whether machine item is selected. */
         bool isMachineItemSelected() const;
         /** Returns whether local machine item is selected. */
