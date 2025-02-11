@@ -1,4 +1,4 @@
-/* $Id: UIChooserDefs.h 108304 2025-02-10 17:54:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserDefs.h 108313 2025-02-11 11:24:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserDefs class declaration.
  */
@@ -73,13 +73,6 @@ enum UIChooserNodeDataPrefixType
 enum UIChooserNodeDataOptionType
 {
     UIChooserNodeDataOptionType_GroupOpened
-};
-
-
-/** UIChooserNode extra-data value types. */
-enum UIChooserNodeDataValueType
-{
-    UIChooserNodeDataValueType_GlobalDefault
 };
 
 

@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGlobal.cpp 108305 2025-02-10 18:03:41Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserNodeGlobal.cpp 108313 2025-02-11 11:24:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGlobal class implementation.
  */
@@ -76,8 +76,7 @@ QString UIChooserNodeGlobal::description() const
 QString UIChooserNodeGlobal::definition(bool) const
 {
     const QString strNodePrefix = UIChooserAbstractModel::prefixToString(UIChooserNodeDataPrefixType_Global);
-    const QString strNodeValueDefault = UIChooserAbstractModel::valueToString(UIChooserNodeDataValueType_GlobalDefault);
-    return QString("%1=%2").arg(strNodePrefix).arg(strNodeValueDefault);
+    return QString("%1=%2").arg(strNodePrefix).arg(QString());
 }
 
 bool UIChooserNodeGlobal::hasNodes(UIChooserNodeType enmType /* = UIChooserNodeType_Any */) const

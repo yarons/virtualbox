@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 108304 2025-02-10 17:54:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserAbstractModel.h 108313 2025-02-11 11:24:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -141,8 +141,6 @@ public:
         static QString prefixToString(UIChooserNodeDataPrefixType enmType);
         /** Returns node extra-data option of certain @a enmType. */
         static QString optionToString(UIChooserNodeDataOptionType enmType);
-        /** Returns node extra-data value of certain @a enmType. */
-        static QString valueToString(UIChooserNodeDataValueType enmType);
     /** @} */
 
     /** @name Cloud update stuff.

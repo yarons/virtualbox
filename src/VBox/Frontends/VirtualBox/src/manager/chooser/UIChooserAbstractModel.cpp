@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 108304 2025-02-10 17:54:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserAbstractModel.cpp 108313 2025-02-11 11:24:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -588,17 +588,6 @@ QString UIChooserAbstractModel::optionToString(UIChooserNodeDataOptionType enmTy
     {
         /* Group nodes: */
         case UIChooserNodeDataOptionType_GroupOpened: return "o";
-    }
-    return QString();
-}
-
-/* static */
-QString UIChooserAbstractModel::valueToString(UIChooserNodeDataValueType enmType)
-{
-    switch (enmType)
-    {
-        /* Global nodes: */
-        case UIChooserNodeDataValueType_GlobalDefault: return "GLOBAL";
     }
     return QString();
 }
