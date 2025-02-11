@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 108315 2025-02-11 11:38:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooser.cpp 108316 2025-02-11 11:49:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -209,12 +209,6 @@ void UIChooser::setCurrentGlobal()
 {
     AssertPtrReturnVoid(model());
     model()->setCurrentGlobalItem();
-}
-
-void UIChooser::setGlobalItemHeightHint(int iHeight)
-{
-    AssertPtrReturnVoid(model());
-    model()->setGlobalItemHeightHint(iHeight);
 }
 
 void UIChooser::sltToolMenuRequested(const QPoint &position, UIVirtualMachineItem *pItem)

@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 108315 2025-02-11 11:38:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.h 108316 2025-02-11 11:49:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -249,9 +249,6 @@ public:
       * @{ */
         /** Updates layout. */
         void updateLayout();
-
-        /** Defines global item height @a iHint. */
-        void setGlobalItemHeightHint(int iHint);
     /** @} */
 
 public slots:
@@ -428,9 +425,6 @@ private:
         bool processDragMoveEvent(QGraphicsSceneDragDropEvent *pEvent);
         /** Processes drag leave @a pEvent. */
         bool processDragLeaveEvent(QGraphicsSceneDragDropEvent *pEvent);
-
-        /** Applies the global item height hint. */
-        void applyGlobalItemHeightHint();
     /** @} */
 
     /** @name General stuff.
@@ -483,9 +477,6 @@ private:
         int              m_iScrollingTokenSize;
         /** Holds whether drag scrolling is in progress. */
         bool             m_fIsScrollingInProgress;
-
-        /** Holds the global item height hint. */
-        int  m_iGlobalItemHeightHint;
     /** @} */
 
     /** @name Cloud stuff.

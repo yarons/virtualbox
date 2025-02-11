@@ -1,4 +1,4 @@
-/* $Id: UIChooser.h 108315 2025-02-11 11:38:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooser.h 108316 2025-02-11 11:49:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooser class declaration.
  */
@@ -191,14 +191,6 @@ public:
         void setCurrentMachine(const QUuid &uId);
         /** Set global tools to be the current item. */
         void setCurrentGlobal();
-    /** @} */
-
-public slots:
-
-    /** @name Layout stuff.
-      * @{ */
-        /** Defines global item @a iHeight. */
-        void setGlobalItemHeightHint(int iHeight);
     /** @} */
 
 private slots:
