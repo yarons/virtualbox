@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.h 108304 2025-02-10 17:54:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserItemGroup.h 108320 2025-02-11 13:36:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class declaration.
  */
@@ -377,8 +377,6 @@ private:
         /** Holds the machine layout instance. */
         QGraphicsLinearLayout *m_pLayoutMachine;
 
-        /** Holds the global children list. */
-        QList<UIChooserItem*>  m_globalItems;
         /** Holds the group children list. */
         QList<UIChooserItem*>  m_groupItems;
         /** Holds the machine children list. */

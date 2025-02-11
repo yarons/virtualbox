@@ -1,4 +1,4 @@
-/* $Id: UIChooserHandlerKeyboard.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIChooserHandlerKeyboard.cpp 108320 2025-02-11 13:36:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserHandlerKeyboard class implementation.
  */
@@ -111,11 +111,7 @@ bool UIChooserHandlerKeyboard::handleKeyPress(QKeyEvent *pEvent) const
                         for (int i = iPosition - 1; i >= iLimit; --i)
                         {
                             pPossiblePreviousItem = model()->navigationItems().at(i);
-                            if ((      pCurrentItem->type() == UIChooserNodeType_Global
-                                    && pPossiblePreviousItem->type() == UIChooserNodeType_Global)
-                                || (   pCurrentItem->type() != UIChooserNodeType_Global
-                                    && pPossiblePreviousItem->type() != UIChooserNodeType_Global))
-                                pPreviousItem = pPossiblePreviousItem;
+                            pPreviousItem = pPossiblePreviousItem;
                         }
                     }
                 }
@@ -216,11 +212,7 @@ bool UIChooserHandlerKeyboard::handleKeyPress(QKeyEvent *pEvent) const
                         for (int i = iPosition + 1; i <= iLimit; ++i)
                         {
                             pPossibleNextItem = model()->navigationItems().at(i);
-                            if ((      pCurrentItem->type() == UIChooserNodeType_Global
-                                    && pPossibleNextItem->type() == UIChooserNodeType_Global)
-                                || (   pCurrentItem->type() != UIChooserNodeType_Global
-                                    && pPossibleNextItem->type() != UIChooserNodeType_Global))
-                                pNextItem = pPossibleNextItem;
+                            pNextItem = pPossibleNextItem;
                         }
                     }
                 }

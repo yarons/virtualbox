@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.h 108304 2025-02-10 17:54:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserItem.h 108320 2025-02-11 13:36:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class declaration.
  */
@@ -50,7 +50,6 @@ class QPropertyAnimation;
 class QStateMachine;
 class UIActionPool;
 class UIChooserItemGroup;
-class UIChooserItemGlobal;
 class UIChooserItemMachine;
 class UIChooserModel;
 class UIChooserNode;
@@ -115,8 +114,6 @@ public:
 
         /** Casts item to group one. */
         UIChooserItemGroup *toGroupItem();
-        /** Casts item to global one. */
-        UIChooserItemGlobal *toGlobalItem();
         /** Casts item to machine one. */
         UIChooserItemMachine *toMachineItem();
 
