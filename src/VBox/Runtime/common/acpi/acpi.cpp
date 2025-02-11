@@ -1,4 +1,4 @@
-/* $Id: acpi.cpp 108296 2025-02-10 14:25:10Z alexander.eichner@oracle.com $ */
+/* $Id: acpi.cpp 108312 2025-02-11 09:45:04Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Advanced Configuration and Power Interface (ACPI) Table generation API.
  */
@@ -1612,6 +1612,16 @@ RTDECL(void) RTAcpiResourceReset(RTACPIRES hAcpiRes)
     pThis->offResBuf = 0;
     pThis->fSealed   = false;
     pThis->rcErr     = VINF_SUCCESS;
+}
+
+
+RTDECL(uint32_t) RTAcpiResourceGetOffset(RTACPIRES hAcpiRes)
+{
+    PRTACPIRESINT pThis = hAcpiRes;
+    AssertReturn(pThis, UINT32_MAX);
+    AssertRCReturn(pThis->rcErr, UINT32_MAX);
+
+    return pThis->offResBuf;
 }
 
 
