@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPage.h 107022 2024-11-14 13:56:24Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMDiskPage.h 108325 2025-02-11 15:31:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPage class declaration.
  */
@@ -103,7 +103,6 @@ private:
        QRadioButton *m_pDiskExisting;
        UIMediaComboBox *m_pDiskSelector;
        QIToolButton *m_pDiskSelectionButton;
-       QIRichTextLabel *m_pLabel;
        QLabel          *m_pMediumSizeEditorLabel;
        UIMediumSizeEditor *m_pMediumSizeEditor;
        QIRichTextLabel *m_pDescriptionLabel;

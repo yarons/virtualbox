@@ -1,4 +1,4 @@
-/* $Id: UIVirtualCPUEditor.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVirtualCPUEditor.cpp 108325 2025-02-11 15:31:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualCPUEditor class implementation.
  */
@@ -83,10 +83,10 @@ void UIVirtualCPUEditor::setMinimumLayoutIndent(int iIndent)
 void UIVirtualCPUEditor::sltRetranslateUI()
 {
     if (m_pLabelVCPU)
-        m_pLabelVCPU->setText(tr("&Processors:"));
+        m_pLabelVCPU->setText(tr("&Processors"));
 
-    QString strToolTip(tr("Holds the number of virtual CPUs in the virtual machine. You need hardware "
-                          "virtualization support on your host system to use more than one virtual CPU."));
+    QString strToolTip(tr("The number of virtual CPUs in the virtual machine. Do not assign more than half of the total processor threads on the host."));
+
     if (m_pSlider)
         m_pSlider->setToolTip(strToolTip);
     if (m_pSpinBox)

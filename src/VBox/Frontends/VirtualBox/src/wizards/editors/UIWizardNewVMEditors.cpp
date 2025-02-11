@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.cpp 108266 2025-02-07 13:20:40Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMEditors.cpp 108325 2025-02-11 15:31:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -393,10 +393,8 @@ void UINewVMHardwareContainer::sltRetranslateUI()
 {
     if (m_pEFICheckBox)
     {
-        m_pEFICheckBox->setText(UIWizardNewVM::tr("&Enable EFI (special OSes only)"));
-        m_pEFICheckBox->setToolTip(UIWizardNewVM::tr("When checked, the guest will support the Extended Firmware Interface (EFI), "
-                                                     "which is required to boot certain guest OSes. Non-EFI aware OSes will not "
-                                                     "be able to boot if this option is activated."));
+        m_pEFICheckBox->setText(UIWizardNewVM::tr("&Use EFI"));
+        m_pEFICheckBox->setToolTip(UIWizardNewVM::tr("Use Extended Firmware Interface (EFI). This is required to boot some OSs."));
     }
 
     updateMinimumLayoutHint();

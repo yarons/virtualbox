@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDExpertPage.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardNewVDExpertPage.cpp 108325 2025-02-11 15:31:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDExpertPage class implementation.
  */
@@ -144,7 +144,7 @@ void UIWizardNewVDExpertPage::sltSelectLocationButtonClicked()
 void UIWizardNewVDExpertPage::sltRetranslateUI()
 {
     if (m_pFormatVariantGroupBox)
-        m_pFormatVariantGroupBox->setTitle(UIWizardNewVD::tr("Hard Disk File &Type and Variant"));
+        m_pFormatVariantGroupBox->setTitle(UIWizardNewVD::tr("Hard Disk File &Type and Format"));
 }
 
 void UIWizardNewVDExpertPage::initializePage()
