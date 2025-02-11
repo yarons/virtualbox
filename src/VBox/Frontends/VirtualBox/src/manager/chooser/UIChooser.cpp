@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 108316 2025-02-11 11:49:39Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooser.cpp 108317 2025-02-11 12:08:22Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -203,12 +203,6 @@ void UIChooser::setCurrentMachine(const QUuid &uId)
 {
     AssertPtrReturnVoid(model());
     model()->setCurrentMachineItem(uId);
-}
-
-void UIChooser::setCurrentGlobal()
-{
-    AssertPtrReturnVoid(model());
-    model()->setCurrentGlobalItem();
 }
 
 void UIChooser::sltToolMenuRequested(const QPoint &position, UIVirtualMachineItem *pItem)

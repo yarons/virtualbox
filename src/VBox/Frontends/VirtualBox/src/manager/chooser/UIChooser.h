@@ -1,4 +1,4 @@
-/* $Id: UIChooser.h 108316 2025-02-11 11:49:39Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooser.h 108317 2025-02-11 12:08:22Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooser class declaration.
  */
@@ -189,8 +189,6 @@ public:
         void setMachineSearchWidgetVisibility(bool fVisible);
         /** Changes current machine to the one with certain @a uId. */
         void setCurrentMachine(const QUuid &uId);
-        /** Set global tools to be the current item. */
-        void setCurrentGlobal();
     /** @} */
 
 private slots:

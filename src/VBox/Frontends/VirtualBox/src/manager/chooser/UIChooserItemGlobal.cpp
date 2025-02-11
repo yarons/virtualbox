@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.cpp 108304 2025-02-10 17:54:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserItemGlobal.cpp 108317 2025-02-11 12:08:22Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class implementation.
  */
@@ -191,12 +191,8 @@ void UIChooserItemGlobal::removeItem(UIChooserItem *)
     AssertMsgFailed(("Global graphics item do NOT support children!"));
 }
 
-UIChooserItem *UIChooserItemGlobal::searchForItem(const QString &, int iSearchFlags)
+UIChooserItem *UIChooserItemGlobal::searchForItem(const QString &, int)
 {
-    /* Ignore if we are not searching for the global-item: */
-    if (!(iSearchFlags & UIChooserItemSearchFlag_Global))
-        return 0;
-
     /* Returning this: */
     return this;
 }
