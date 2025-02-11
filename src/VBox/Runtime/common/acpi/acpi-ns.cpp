@@ -1,6 +1,6 @@
-/* $Id: acpi-ns.cpp 108312 2025-02-11 09:45:04Z alexander.eichner@oracle.com $ */
+/* $Id: acpi-ns.cpp 108331 2025-02-11 21:22:02Z alexander.eichner@oracle.com $ */
 /** @file
- * IPRT - Advanced Configuration and Power Interface (ACPI) AST handling.
+ * IPRT - Advanced Configuration and Power Interface (ACPI) namespace handling.
  */
 
 /*
@@ -250,6 +250,27 @@ DECLHIDDEN(int) rtAcpiNsAddEntryU64(PRTACPINSROOT pNsRoot, const char *pszNameSt
     }
 
     return rc;
+}
+
+
+DECLHIDDEN(int) rtAcpiNsAddEntryU64F(PRTACPINSROOT pNsRoot, uint64_t u64Val, bool fSwitchTo, const char *pszNameStringFmt, ...)
+{
+    va_list va;
+    va_start(va, pszNameStringFmt);
+    int rc = rtAcpiNsAddEntryU64V(pNsRoot, u64Val, fSwitchTo, pszNameStringFmt, va);
+    va_end(va);
+    return rc;
+}
+
+
+DECLHIDDEN(int) rtAcpiNsAddEntryU64V(PRTACPINSROOT pNsRoot, uint64_t u64Val, bool fSwitchTo, const char *pszNameStringFmt, va_list va)
+{
+    char szName[256];
+    ssize_t cch = RTStrPrintf2V(&szName[0], sizeof(szName), pszNameStringFmt, va);
+    if (cch <= 0)
+        return VERR_BUFFER_OVERFLOW;
+
+    return rtAcpiNsAddEntryU64(pNsRoot, &szName[0], u64Val, fSwitchTo);
 }
 
 
