@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 108321 2025-02-11 13:45:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.cpp 108335 2025-02-11 21:54:46Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -353,7 +353,11 @@ bool UIChooserModel::isAllItemsOfOneGroupSelected() const
 
 QString UIChooserModel::fullGroupName() const
 {
-    return isSingleGroupSelected() ? firstSelectedItem()->fullName() : firstSelectedItem()->parentItem()->fullName();
+    return   !firstSelectedItem()
+           ? QString()
+           : isSingleGroupSelected()
+           ? firstSelectedItem()->fullName()
+           : firstSelectedItem()->parentItem()->fullName();
 }
 
 UIChooserItem *UIChooserModel::findClosestUnselectedItem() const
