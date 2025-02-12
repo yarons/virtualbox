@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.h 105586 2024-08-05 14:28:46Z sergey.dubov@oracle.com $ */
+/* $Id: UINativeWizard.h 108346 2025-02-12 14:22:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class declaration.
  */
@@ -199,9 +199,10 @@ private:
     bool isLastVisiblePage(int iPageIndex) const;
 
     /** Holds the wizard type. */
-    WizardType  m_enmType;
+    const WizardType  m_enmType;
     /** Holds the wizard mode. */
-    WizardMode  m_enmMode;
+    const WizardMode  m_enmMode;
+
     /** Holds the wizard help keyword. */
     QString     m_strHelpKeyword;
     /** Holds the pixmap name. */
