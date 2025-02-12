@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerAdvancedWidget.h 108315 2025-02-11 11:38:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerAdvancedWidget.h 108337 2025-02-12 08:25:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerAdvancedWidget class declaration.
  */
@@ -43,7 +43,7 @@ class QIToolBar;
 class UIActionPool;
 class UIChooser;
 class UIGlobalToolsManagerWidget;
-class UIMachineManagerWidget;
+class UIMachineToolsManagerWidget;
 class UIToolPaneGlobal;
 class UIToolPaneMachine;
 class UIVirtualBoxManager;
@@ -275,7 +275,7 @@ private:
         UIToolPaneGlobal *globalToolPane() const;
 
         /** Returns Machine Tool Manager reference. */
-        UIMachineManagerWidget *machineToolManager() const;
+        UIMachineToolsManagerWidget *machineToolManager() const;
         /** Returns Machine Tool Pane reference. */
         UIToolPaneMachine *machineToolPane() const;
         /** Returns Machine Chooser Pane reference. */
