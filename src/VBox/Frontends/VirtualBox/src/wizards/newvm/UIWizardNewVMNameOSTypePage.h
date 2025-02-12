@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePage.h 108340 2025-02-12 11:39:47Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMNameOSTypePage.h 108343 2025-02-12 13:40:15Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMNameOSTypePage class declaration.
  */
@@ -56,7 +56,9 @@ namespace UIWizardNewVMNameOSTypeCommon
     bool cleanupMachineFolder(UIWizardNewVM *pWizard, bool fWizardCancel = false);
     void composeMachineFilePath(UINameAndSystemEditor *pNameAndSystemEditor, UIWizardNewVM *pWizard);
     /** Return false if ISO path is not empty but points to an missing or unreadable file. */
-    bool checkISOFile(UINameAndSystemEditor *pNameAndSystemEditor);
+    bool checkISOFile(const QString &strPath);
+    void setUnattendedCheckBoxEnable(QCheckBox *pUnattendedCheckBox,
+                                     const QString &strISOPath, bool fIsUnattendedInstallSupported);
 }
 
 /** 1st page of the New Virtual Machine wizard (basic extension). */
@@ -96,7 +98,6 @@ private:
     void initializePage() RT_OVERRIDE;
     QWidget *createNameOSTypeWidgets();
     void markWidgets() const;
-    void setUnattendedCheckBoxEnable();
     bool isUnattendedEnabled() const;
     bool isUnattendedInstallSupported() const;
     void setEditionAndOSTypeSelectorsEnabled();
