@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePage.h 108092 2025-01-28 10:59:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMNameOSTypePage.h 108340 2025-02-12 11:39:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMNameOSTypePage class declaration.
  */
@@ -101,7 +101,7 @@ private:
     bool isUnattendedInstallSupported() const;
     void setEditionAndOSTypeSelectorsEnabled();
     void updateInfoLabel();
-
+    bool isMachineFolderUnique() const;
     /** @name Widgets
      * @{ */
         QGridLayout           *m_pNameAndSystemLayout;

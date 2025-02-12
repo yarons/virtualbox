@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 108266 2025-02-07 13:20:40Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVM.cpp 108340 2025-02-12 11:39:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -524,7 +524,7 @@ const QString &UIWizardNewVM::createdMachineFolder() const
 
 void UIWizardNewVM::setCreatedMachineFolder(const QString &strCreatedMachineFolder)
 {
-    m_strCreatedFolder = strCreatedMachineFolder;
+    m_strCreatedFolder = QDir::cleanPath(strCreatedMachineFolder);
 }
 
 QString UIWizardNewVM::detectedOSTypeId() const
