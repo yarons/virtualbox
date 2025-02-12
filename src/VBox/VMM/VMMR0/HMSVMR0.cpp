@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 107956 2025-01-18 23:59:26Z knut.osmundsen@oracle.com $ */
+/* $Id: HMSVMR0.cpp 108350 2025-02-12 15:35:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -9116,10 +9116,10 @@ HMSVM_EXIT_DECL hmR0SvmExitVmrun(PVMCPUCC pVCpu, PSVMTRANSIENT pSvmTransient)
     }
     else
     {
-        /* We use IEMExecOneBypassEx() here as it suppresses attempt to continue emulating any
+        /* We use IEMExecOneBypass() here as it suppresses attempt to continue emulating any
            instruction(s) when interrupt inhibition is set as part of emulating the VMRUN
            instruction itself, see @bugref{7243#c126} */
-        rcStrict = IEMExecOneBypassEx(pVCpu, NULL /* pcbWritten */);
+        rcStrict = IEMExecOneBypass(pVCpu);
     }
     STAM_PROFILE_ADV_STOP(&pVCpu->hm.s.StatExitVmentry, z);
 

@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 108342 2025-02-12 13:28:13Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 108350 2025-02-12 15:35:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -1937,9 +1937,6 @@ typedef struct IEMCPU
     uint32_t                cInstructions;
     /** The number of potential exits. */
     uint32_t                cPotentialExits;
-    /** The number of bytes data or stack written (mostly for IEMExecOneEx).
-     * This may contain uncommitted writes.  */
-    uint32_t                cbWritten;
     /** Counts the VERR_IEM_INSTR_NOT_IMPLEMENTED returns. */
     uint32_t                cRetInstrNotImplemented;
     /** Counts the VERR_IEM_ASPECT_NOT_IMPLEMENTED returns. */
@@ -1985,7 +1982,7 @@ typedef struct IEMCPU
     /** Counts WRMSR \#GP(0) LogRel(). */
     uint8_t                 cLogRelWrMsr;
     /** Alignment padding. */
-    uint8_t                 abAlignment9[46];
+    uint8_t                 abAlignment9[50];
 
 
     /** @name Recompiled Exection
