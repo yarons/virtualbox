@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 106454 2024-10-17 13:54:35Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 108342 2025-02-12 13:28:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -1643,7 +1643,7 @@ typedef struct IEMTBCACHE
     RT_FLEXIBLE_ARRAY_EXTENSION
     PIEMTB          apHash[RT_FLEXIBLE_ARRAY];
 } IEMTBCACHE;
-/** Pointer to a per-CPU translation block cahce. */
+/** Pointer to a per-CPU translation block cache. */
 typedef IEMTBCACHE *PIEMTBCACHE;
 
 /** Magic value for IEMTBCACHE (Johnny O'Neal). */
@@ -1980,18 +1980,12 @@ typedef struct IEMCPU
     CPUMCPUVENDOR           enmCpuVendor;
     /** @} */
 
-    /** @name Host CPU information.
-     * @{ */
-    /** The CPU vendor. */
-    CPUMCPUVENDOR           enmHostCpuVendor;
-    /** @} */
-
     /** Counts RDMSR \#GP(0) LogRel(). */
     uint8_t                 cLogRelRdMsr;
     /** Counts WRMSR \#GP(0) LogRel(). */
     uint8_t                 cLogRelWrMsr;
     /** Alignment padding. */
-    uint8_t                 abAlignment9[42];
+    uint8_t                 abAlignment9[46];
 
 
     /** @name Recompiled Exection
