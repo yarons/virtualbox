@@ -1,4 +1,4 @@
-/* $Id: acpi-resources.h 108331 2025-02-11 21:22:02Z alexander.eichner@oracle.com $ */
+/* $Id: acpi-resources.h 108348 2025-02-12 15:27:06Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT, ACPI (Advanced Configuration and Power Interface) Resource Data Types format.
  *
@@ -189,6 +189,11 @@
 
 /** @name General flags.
  * @{ */
+/** The device consumes this resource. */
+#define ACPI_RSRCS_ADDR_SPACE_F_CONSUMER                RT_BIT(0)
+/** The device produces and consumes this resource. */
+#define ACPI_RSRCS_ADDR_SPACE_F_PRODUCER                0
+
 /** The bridge subtractively decodes this address. */
 #define ACPI_RSRCS_ADDR_SPACE_F_DECODE_TYPE_SUB         RT_BIT(1)
 /** The bridge positively decodes this address. */
@@ -233,6 +238,11 @@
 #define ACPI_RSRCS_ADDR_SPACE_MEM_F_ATTR_ACPI                       0x10
 /** Memory range is in use by the system and must not be used by the operating system. */
 #define ACPI_RSRCS_ADDR_SPACE_MEM_F_ATTR_NVS                        0x18
+
+/** Memory on the secondary side of the bridge, I/O on the primary side. */
+#define ACPI_RSRCS_ADDR_SPACE_MEM_F_TYPE_TRANSLATION                RT_BIT(5)
+/** Memory on both secondary and primary side of the bridge. */
+#define ACPI_RSRCS_ADDR_SPACE_MEM_F_TYPE_STATIC                     0
 /** @} */
 
 /** @name I/O type specific flags.
