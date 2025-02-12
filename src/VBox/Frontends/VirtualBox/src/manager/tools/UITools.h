@@ -1,4 +1,4 @@
-/* $Id: UITools.h 108129 2025-01-30 14:07:32Z sergey.dubov@oracle.com $ */
+/* $Id: UITools.h 108338 2025-02-12 11:30:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITools class declaration.
  */
@@ -68,6 +68,8 @@ public:
             UIToolClass enmClass,
             UIActionPool *pActionPool,
             Qt::WindowFlags theFlags = Qt::Popup);
+    /** Destructs Tools-pane. */
+    virtual ~UITools();
 
     /** @name General stuff.
       * @{ */
@@ -120,6 +122,11 @@ private:
         void prepareConnections();
         /** Inits model. */
         void initModel();
+
+        /** Cleanups connections. */
+        void cleanupConnections();
+        /** Cleanups all. */
+        void cleanup();
     /** @} */
 
     /** @name General stuff.

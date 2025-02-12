@@ -1,4 +1,4 @@
-/* $Id: UITools.cpp 108129 2025-01-30 14:07:32Z sergey.dubov@oracle.com $ */
+/* $Id: UITools.cpp 108338 2025-02-12 11:30:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITools class implementation.
  */
@@ -50,6 +50,11 @@ UITools::UITools(QWidget *pParent,
     , m_pToolsView(0)
 {
     prepare();
+}
+
+UITools::~UITools()
+{
+    cleanup();
 }
 
 void UITools::setToolsType(UIToolType enmType)
@@ -162,4 +167,29 @@ void UITools::prepareConnections()
 void UITools::initModel()
 {
     m_pToolsModel->init();
+}
+
+void UITools::cleanupConnections()
+{
+    /* Model connections: */
+    disconnect(m_pToolsModel, &UIToolsModel::sigClose,
+               this, &UITools::close);
+    disconnect(m_pToolsModel, &UIToolsModel::sigSelectionChanged,
+               this, &UITools::sigSelectionChanged);
+    disconnect(m_pToolsModel, &UIToolsModel::sigItemMinimumWidthHintChanged,
+               m_pToolsView, &UIToolsView::sltMinimumWidthHintChanged);
+    disconnect(m_pToolsModel, &UIToolsModel::sigItemMinimumHeightHintChanged,
+               m_pToolsView, &UIToolsView::sltMinimumHeightHintChanged);
+    disconnect(m_pToolsModel, &UIToolsModel::sigFocusChanged,
+               m_pToolsView, &UIToolsView::sltFocusChanged);
+
+    /* View connections: */
+    disconnect(m_pToolsView, &UIToolsView::sigResized,
+               m_pToolsModel, &UIToolsModel::sltHandleViewResized);
+}
+
+void UITools::cleanup()
+{
+    /* Cleanup everything: */
+    cleanupConnections();
 }
