@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsManagerWidget.cpp 108337 2025-02-12 08:25:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsManagerWidget.cpp 108339 2025-02-12 11:34:09Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsManagerWidget class implementation.
  */
@@ -269,6 +269,9 @@ void UIGlobalToolsManagerWidget::loadSettings()
 {
     /* Open tool last chosen in tools-menu: */
     switchToolTo(toolMenu()->toolsType());
+
+    /* Update tools restrictions: */
+    updateToolsMenu();
 }
 
 void UIGlobalToolsManagerWidget::cleanupConnections()
@@ -309,6 +312,7 @@ void UIGlobalToolsManagerWidget::updateToolsMenu()
 {
     /* Update global tools restrictions: */
     QSet<UIToolType> restrictedTypes;
+    /* Restrict some types for Basic mode: */
     const bool fExpertMode = gEDataManager->isSettingsInExpertMode();
     if (!fExpertMode)
         restrictedTypes << UIToolType_Media
