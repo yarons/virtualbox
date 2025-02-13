@@ -1,6 +1,6 @@
-; $Id: IEMAllAImpl.asm 107354 2024-12-12 18:50:15Z michal.necasek@oracle.com $
+; $Id: IEMAllAImpl-x86-amd64.asm 108361 2025-02-13 15:18:18Z knut.osmundsen@oracle.com $
 ;; @file
-; IEM - Instruction Implementation in Assembly.
+; IEM - Instruction Implementation in Assembly, x86 target, amd64 host.
 ;
 
 ;

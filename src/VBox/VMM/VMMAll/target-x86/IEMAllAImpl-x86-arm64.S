@@ -1,6 +1,6 @@
-/* $Id: IEMAllAImpl-arm64.S 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllAImpl-x86-arm64.S 108361 2025-02-13 15:18:18Z knut.osmundsen@oracle.com $ */
 /** @file
- * IEM - Instruction Implementation in Assembly, ARM64 variant.
+ * IEM - Instruction Implementation in Assembly, x86 target, ARM64 host.
  */
 
 /*
