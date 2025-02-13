@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.h 108362 2025-02-13 15:25:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsView.h 108367 2025-02-13 16:12:22Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class declaration.
  */
@@ -50,8 +50,9 @@ signals:
 public:
 
     /** Constructs a Tools-view passing @a pParent to the base-class.
-      * @param  pParent  Brings the Tools-container to embed into. */
-    UIToolsView(UITools *pParent);
+      * @param  pParent  Brings the Tools-container to embed into.
+      * @param  fPopup   Brings whether tools represented as popup. */
+    UIToolsView(UITools *pParent, bool fPopup);
 
     /** @name General stuff.
       * @{ */
@@ -97,6 +98,9 @@ private:
 
     /** @name General stuff.
       * @{ */
+        /** Returns whether tools represented as popup. */
+        bool isPopup() const { return m_fPopup; }
+
         /** Updates scene rectangle. */
         void updateSceneRect();
 
@@ -110,6 +114,9 @@ private:
       * @{ */
         /** Holds the Tools-pane reference. */
         UITools *m_pTools;
+
+        /** Holds whether tools represented as popup. */
+        const bool  m_fPopup;
     /** @} */
 
     /** @name Layout stuff.

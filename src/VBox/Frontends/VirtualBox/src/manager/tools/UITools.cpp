@@ -1,4 +1,4 @@
-/* $Id: UITools.cpp 108366 2025-02-13 16:04:21Z sergey.dubov@oracle.com $ */
+/* $Id: UITools.cpp 108367 2025-02-13 16:12:22Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITools class implementation.
  */
@@ -128,7 +128,7 @@ void UITools::prepareView()
     AssertPtrReturnVoid(m_pMainLayout);
 
     /* Prepare view: */
-    m_pToolsView = new UIToolsView(this);
+    m_pToolsView = new UIToolsView(this, isPopup());
     if (m_pToolsView)
     {
         m_pToolsView->setScene(m_pToolsModel->scene());
