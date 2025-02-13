@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 108365 2025-02-13 15:50:33Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.h 108376 2025-02-13 16:55:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -156,12 +156,6 @@ public:
     /** @} */
 
 public slots:
-
-    /** @name General stuff.
-      * @{ */
-        /** Handles Tools-view resize. */
-        void sltHandleViewResized() { updateLayout(); }
-    /** @} */
 
     /** @name Children stuff.
       * @{ */
