@@ -1,4 +1,4 @@
-/* $Id: UITools.h 108366 2025-02-13 16:04:21Z sergey.dubov@oracle.com $ */
+/* $Id: UITools.h 108374 2025-02-13 16:44:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITools class declaration.
  */
@@ -118,6 +118,10 @@ private:
 
         /** Cleanups connections. */
         void cleanupConnections();
+        /** Cleanups view. */
+        void cleanupView();
+        /** Cleanups model. */
+        void cleanupModel();
         /** Cleanups all. */
         void cleanup();
     /** @} */

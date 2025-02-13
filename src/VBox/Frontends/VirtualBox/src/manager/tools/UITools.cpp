@@ -1,4 +1,4 @@
-/* $Id: UITools.cpp 108367 2025-02-13 16:12:22Z sergey.dubov@oracle.com $ */
+/* $Id: UITools.cpp 108374 2025-02-13 16:44:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITools class implementation.
  */
@@ -179,8 +179,22 @@ void UITools::cleanupConnections()
                m_pToolsModel, &UIToolsModel::sltHandleViewResized);
 }
 
+void UITools::cleanupView()
+{
+    delete m_pToolsView;
+    m_pToolsView = 0;
+}
+
+void UITools::cleanupModel()
+{
+    delete m_pToolsModel;
+    m_pToolsModel = 0;
+}
+
 void UITools::cleanup()
 {
     /* Cleanup everything: */
     cleanupConnections();
+    cleanupView();
+    cleanupModel();
 }
