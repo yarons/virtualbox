@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 108365 2025-02-13 15:50:33Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.cpp 108377 2025-02-13 17:02:55Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -59,10 +59,11 @@
 typedef QSet<QString> UIStringSet;
 
 
-UIToolsModel::UIToolsModel(UIToolClass enmClass, UITools *pParent)
+UIToolsModel::UIToolsModel(UIToolClass enmClass, UITools *pParent, bool fPopup)
     : QObject(pParent)
     , m_enmClass(enmClass)
     , m_pTools(pParent)
+    , m_fPopup(fPopup)
     , m_pScene(0)
     , m_fItemsEnabled(true)
     , m_fShowItemNames(gEDataManager->isToolTextVisible())
@@ -424,7 +425,7 @@ bool UIToolsModel::eventFilter(QObject *pWatched, QEvent *pEvent)
                             {
                                 setCurrentItem(pClickedItem);
                                 /* Close the widget in popup mode only: */
-                                if (tools()->isPopup())
+                                if (isPopup())
                                     close();
                                 return true;
                             }
