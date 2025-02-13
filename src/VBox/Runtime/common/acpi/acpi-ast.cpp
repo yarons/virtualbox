@@ -1,4 +1,4 @@
-/* $Id: acpi-ast.cpp 108248 2025-02-06 10:49:06Z alexander.eichner@oracle.com $ */
+/* $Id: acpi-ast.cpp 108381 2025-02-13 18:24:31Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Advanced Configuration and Power Interface (ACPI) AST handling.
  */
@@ -250,16 +250,6 @@ DECLHIDDEN(int) rtAcpiAstDumpToTbl(PCRTACPIASTNODE pAstNd, RTACPITBL hAcpiTbl)
                 if (RT_SUCCESS(rc))
                     rc = RTAcpiTblProcessorFinalize(hAcpiTbl);
             }
-            break;
-        }
-        case kAcpiAstNodeOp_External:
-        {
-            AssertBreakStmt(   pAstNd->cArgs == 3
-                            && pAstNd->aArgs[0].enmType == kAcpiAstArgType_NameString
-                            && pAstNd->aArgs[1].enmType == kAcpiAstArgType_ObjType
-                            && pAstNd->aArgs[2].enmType == kAcpiAstArgType_U8,
-                            rc = VERR_INTERNAL_ERROR);
-            rc = RTAcpiTblExternalAppend(hAcpiTbl, pAstNd->aArgs[0].u.pszNameString, pAstNd->aArgs[1].u.enmObjType, pAstNd->aArgs[2].u.u8);
             break;
         }
         case kAcpiAstNodeOp_Method:
@@ -718,6 +708,7 @@ DECLHIDDEN(int) rtAcpiAstDumpToTbl(PCRTACPIASTNODE pAstNd, RTACPITBL hAcpiTbl)
             }
             break;
         }
+        case kAcpiAstNodeOp_External:
         case kAcpiAstNodeOp_Ones:
         default:
             AssertFailedStmt(rc = VERR_NOT_IMPLEMENTED);

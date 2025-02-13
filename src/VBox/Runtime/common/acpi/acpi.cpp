@@ -1,4 +1,4 @@
-/* $Id: acpi.cpp 108351 2025-02-12 15:38:05Z alexander.eichner@oracle.com $ */
+/* $Id: acpi.cpp 108381 2025-02-13 18:24:31Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Advanced Configuration and Power Interface (ACPI) Table generation API.
  */
@@ -1641,6 +1641,7 @@ RTDECL(int) RTAcpiResourceSeal(RTACPIRES hAcpiRes)
         return VERR_NO_MEMORY;
 
     *pb++ = ACPI_RSRCS_TAG_END;
+#if 1
     /*
      * Generate checksum, we could just write 0 here which will be treated as checksum operation succeeded,
      * but having this might catch some bugs.
@@ -1648,6 +1649,10 @@ RTDECL(int) RTAcpiResourceSeal(RTACPIRES hAcpiRes)
      * Checksum algorithm is the same as with the ACPI tables.
      */
     *pb = RTAcpiChecksumGenerate(pThis->pbResBuf, pThis->offResBuf - 1); /* Exclude the checksum field. */
+#else
+    /* iasl just writes zero for the checksum. */
+    *pb = 0;
+#endif
 
     pThis->fSealed = true;
     return VINF_SUCCESS;
