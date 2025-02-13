@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 108370 2025-02-13 16:26:48Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 108373 2025-02-13 16:36:14Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 108370 $"
+__version__ = "$Revision: 108373 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -6304,7 +6304,7 @@ def __parseFileByName(sSrcFile, sDefaultMap, sHostArch):
         # Locate the file.
         sCommonBodyMacros = os.path.join(os.path.split(sSrcFile)[0], 'IEMAllInstCommonBodyMacros-x86.h');
         if not os.path.isfile(sCommonBodyMacros):
-            sCommonBodyMacros = os.path.join(os.path.split(__file__)[0], 'IEMAllInstCommonBodyMacros-x86.h');
+            sCommonBodyMacros = os.path.join(os.path.split(__file__)[0], 'target-x86', 'IEMAllInstCommonBodyMacros-x86.h');
 
         # Read it.
         try:
@@ -6401,7 +6401,7 @@ def __parseFilesWorker(asFilesAndDefaultMap, sHostArch):
     Returns a list of the parsers on success.
     Raises exception on failure.
     """
-    sSrcDir   = os.path.dirname(os.path.abspath(__file__));
+    sSrcDir   = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'target-x86');
     cErrors   = 0;
     aoParsers = [];
     for sFilename, sDefaultMap in asFilesAndDefaultMap:
