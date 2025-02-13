@@ -1,4 +1,4 @@
-/* $Id: scriptlex.cpp 108209 2025-02-05 11:32:32Z alexander.eichner@oracle.com $ */
+/* $Id: scriptlex.cpp 108359 2025-02-13 14:35:47Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - RTScript* lexer API.
  */
@@ -1028,7 +1028,7 @@ static int rtScriptLexScanStringLiteralChAdd(PRTSCRIPTLEXINT pThis, char ch, uin
     {
         /* Increase memory. */
         size_t cchMaxNew = pThis->cchStrLitMax + 64;
-        char *pszNew = NULL;
+        char *pszNew = pThis->pszStrLit;
         rc = RTStrRealloc(&pszNew, cchMaxNew * sizeof(char));
         if (RT_SUCCESS(rc))
         {
