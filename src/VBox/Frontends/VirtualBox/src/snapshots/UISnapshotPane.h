@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UISnapshotPane.h 108364 2025-02-13 15:42:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class declaration.
  */
@@ -110,6 +110,11 @@ protected:
     /** @} */
 
 private slots:
+
+    /** @name Common signal handlers.
+      * @{ */
+        void sltDetachCOM();
+    /** @} */
 
     /** @name Main event handlers.
       * @{ */
