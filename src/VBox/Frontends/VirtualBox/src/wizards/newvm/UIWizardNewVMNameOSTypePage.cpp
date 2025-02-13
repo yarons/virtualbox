@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePage.cpp 108343 2025-02-12 13:40:15Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMNameOSTypePage.cpp 108355 2025-02-13 10:25:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameOSStype class implementation.
  */
@@ -569,6 +569,7 @@ void UIWizardNewVMNameOSTypePage::sltNameChanged(const QString &strNewName)
 void UIWizardNewVMNameOSTypePage::sltPathChanged(const QString &strNewPath)
 {
     Q_UNUSED(strNewPath);
+    emit completeChanged();
     UIWizardNewVMNameOSTypeCommon::composeMachineFilePath(m_pNameAndSystemEditor, wizardWindow<UIWizardNewVM>());
 }
 
