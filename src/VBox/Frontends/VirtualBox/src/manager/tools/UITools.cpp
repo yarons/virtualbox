@@ -1,4 +1,4 @@
-/* $Id: UITools.cpp 108377 2025-02-13 17:02:55Z sergey.dubov@oracle.com $ */
+/* $Id: UITools.cpp 108378 2025-02-13 17:28:31Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITools class implementation.
  */
@@ -131,7 +131,6 @@ void UITools::prepareView()
     m_pToolsView = new UIToolsView(this, m_pToolsModel, isPopup());
     if (m_pToolsView)
     {
-        m_pToolsView->setScene(m_pToolsModel->scene());
         m_pToolsView->show();
         setFocusProxy(m_pToolsView);
 

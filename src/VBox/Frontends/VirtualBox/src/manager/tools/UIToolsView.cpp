@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.cpp 108376 2025-02-13 16:55:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsView.cpp 108378 2025-02-13 17:28:31Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class implementation.
  */
@@ -185,6 +185,9 @@ void UIToolsView::prepare()
 
 void UIToolsView::prepareThis()
 {
+    /* Exchange information with model: */
+    setScene(model()->scene());
+
     /* No minimum size-hint for widget mode: */
     if (!isPopup())
         setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
