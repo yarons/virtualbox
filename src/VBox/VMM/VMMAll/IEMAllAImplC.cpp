@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 107342 2024-12-12 04:36:19Z bela.lubkin@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 108360 2025-02-13 14:57:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -29,6 +29,9 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#ifdef IN_RING0
+# define VBOX_VMM_TARGET_X86
+#endif
 #include "IEMInternal.h"
 #include <VBox/vmm/vmcc.h>
 #include <iprt/errcore.h>

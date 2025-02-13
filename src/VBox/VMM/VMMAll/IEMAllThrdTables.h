@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdTables.h 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: IEMAllThrdTables.h 108360 2025-02-13 14:57:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation, Instruction Tables.
  */
@@ -40,6 +40,9 @@
 #endif
 #define IEM_WITH_CODE_TLB_AND_OPCODE_BUF  /* A bit hackish, but its all in IEMInline.h. */
 #define VMCPU_INCL_CPUM_GST_CTX
+#ifdef IN_RING0
+# define VBOX_VMM_TARGET_X86
+#endif
 #include <VBox/vmm/iem.h>
 #include <VBox/vmm/cpum.h>
 #include <VBox/vmm/pdmapic.h>

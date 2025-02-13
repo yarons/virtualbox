@@ -1,4 +1,4 @@
-/* $Id: IEMAllIntprTables.h 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: IEMAllIntprTables.h 108360 2025-02-13 14:57:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, Interpreter Tables Common Header.
  */
@@ -39,6 +39,9 @@
 # define LOG_GROUP LOG_GROUP_IEM
 #endif
 #define VMCPU_INCL_CPUM_GST_CTX
+#ifdef IN_RING0
+# define VBOX_VMM_TARGET_X86
+#endif
 #include <VBox/vmm/iem.h>
 #include <VBox/vmm/cpum.h>
 #include <VBox/vmm/pdmapic.h>

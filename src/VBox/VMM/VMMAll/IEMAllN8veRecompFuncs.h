@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompFuncs.h 107238 2024-11-29 22:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompFuncs.h 108360 2025-02-13 14:57:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler - Inlined Bits.
  */
@@ -34,6 +34,9 @@
 #define VMCPU_INCL_CPUM_GST_CTX
 #define VMM_INCLUDED_SRC_include_IEMMc_h /* block IEMMc.h inclusion. */
 #define IEMNATIVE_INCL_TABLE_FUNCTION_PROTOTYPES
+#ifdef IN_RING0
+# define VBOX_VMM_TARGET_X86
+#endif
 #include <VBox/vmm/iem.h>
 #include <VBox/vmm/cpum.h>
 #include <VBox/vmm/dbgf.h>

@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 108350 2025-02-12 15:35:15Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 108360 2025-02-13 14:57:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -121,6 +121,9 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP   LOG_GROUP_IEM
 #define VMCPU_INCL_CPUM_GST_CTX
+#ifdef IN_RING0
+# define VBOX_VMM_TARGET_X86
+#endif
 #include <VBox/vmm/iem.h>
 #include <VBox/vmm/cpum.h>
 #include <VBox/vmm/pdmapic.h>

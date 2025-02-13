@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: IEMAllCImpl.cpp 108360 2025-02-13 14:57:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -32,6 +32,9 @@
 #define LOG_GROUP   LOG_GROUP_IEM
 #define VMCPU_INCL_CPUM_GST_CTX
 #define IEM_WITH_OPAQUE_DECODER_STATE
+#ifdef IN_RING0
+# define VBOX_VMM_TARGET_X86
+#endif
 #include <VBox/vmm/iem.h>
 #include <VBox/vmm/cpum.h>
 #include <VBox/vmm/pdmapic.h>
@@ -92,6 +95,25 @@
 #else
 # define IEM_FLUSH_PREFETCH_HEAVY(a_pVCpu, a_cbInstr) do { } while (0)
 #endif
+
+
+/*********************************************************************************************************************************
+*   Structures and Typedefs                                                                                                      *
+*********************************************************************************************************************************/
+/**
+ * Branch types - iemCImpl_BranchTaskSegment(), iemCImpl_BranchTaskGate(),
+ * iemCImpl_BranchCallGate() and iemCImpl_BranchSysSel().
+ */
+typedef enum IEMBRANCH
+{
+    IEMBRANCH_JUMP = 1,
+    IEMBRANCH_CALL,
+    IEMBRANCH_TRAP,
+    IEMBRANCH_SOFTWARE_INT,
+    IEMBRANCH_HARDWARE_INT
+} IEMBRANCH;
+AssertCompileSize(IEMBRANCH, 4);
+
 
 
 

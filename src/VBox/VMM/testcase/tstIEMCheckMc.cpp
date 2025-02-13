@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 107256 2024-12-03 09:33:07Z bela.lubkin@oracle.com $ */
+/* $Id: tstIEMCheckMc.cpp 108360 2025-02-13 14:57:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -39,7 +39,7 @@
 #include <VBox/log.h>
 #define TST_IEM_CHECK_MC    /**< For hacks.  */
 #define IN_TSTVMSTRUCT 1    /**< Ditto. */
-#include "../include/IEMInternal.h"
+#include "IEMInternal.h"
 #include <VBox/vmm/vm.h>
 
 

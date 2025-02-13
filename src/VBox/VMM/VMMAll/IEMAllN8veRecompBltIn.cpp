@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompBltIn.cpp 107240 2024-11-30 01:00:29Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompBltIn.cpp 108360 2025-02-13 14:57:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Emitters for Built-In Threaded Functions.
  */
@@ -33,6 +33,9 @@
 #define IEM_WITH_OPAQUE_DECODER_STATE
 #define VMCPU_INCL_CPUM_GST_CTX
 #define VMM_INCLUDED_SRC_include_IEMMc_h /* block IEMMc.h inclusion. */
+#ifdef IN_RING0
+# define VBOX_VMM_TARGET_X86
+#endif
 #include <VBox/vmm/iem.h>
 #include <VBox/vmm/cpum.h>
 #include <VBox/vmm/dbgf.h>

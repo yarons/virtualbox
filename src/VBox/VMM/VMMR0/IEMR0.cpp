@@ -1,4 +1,4 @@
-/* $Id: IEMR0.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMR0.cpp 108360 2025-02-13 14:57:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Ring-0.
  */
@@ -31,6 +31,9 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP   LOG_GROUP_IEM
 #define VMCPU_INCL_CPUM_GST_CTX
+#ifdef IN_RING0
+# define VBOX_VMM_TARGET_X86
+#endif
 #include <VBox/vmm/iem.h>
 #include <VBox/vmm/cpum.h>
 #include <VBox/vmm/pgm.h>

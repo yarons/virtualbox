@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veLiveness.h 107256 2024-12-03 09:33:07Z bela.lubkin@oracle.com $ */
+/* $Id: IEMAllN8veLiveness.h 108360 2025-02-13 14:57:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Liveness Analysis, Common Header.
  */
@@ -31,6 +31,9 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_IEM
 #define IEM_WITH_OPAQUE_DECODER_STATE
+#ifdef IN_RING0
+# define VBOX_VMM_TARGET_X86
+#endif
 #include <VBox/vmm/iem.h>
 #include "IEMInternal.h"
 #include <VBox/vmm/vmcc.h>
