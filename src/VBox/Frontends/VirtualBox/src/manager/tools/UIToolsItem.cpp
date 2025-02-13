@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.cpp 108347 2025-02-12 14:45:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsItem.cpp 108365 2025-02-13 15:50:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class definition.
  */
@@ -543,12 +543,6 @@ void UIToolsItem::prepareConnections()
 
 void UIToolsItem::cleanup()
 {
-    /* If that item is focused: */
-    if (model()->focusItem() == this)
-    {
-        /* Unset the focus item: */
-        model()->setFocusItem(0);
-    }
     /* If that item is current: */
     if (model()->currentItem() == this)
     {

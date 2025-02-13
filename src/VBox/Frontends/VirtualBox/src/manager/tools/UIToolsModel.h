@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 108362 2025-02-13 15:25:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.h 108365 2025-02-13 15:50:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -137,11 +137,6 @@ public:
         void setCurrentItem(UIToolsItem *pItem);
         /** Returns current item. */
         UIToolsItem *currentItem() const;
-
-        /** Defines focus @a pItem. */
-        void setFocusItem(UIToolsItem *pItem);
-        /** Returns focus item. */
-        UIToolsItem *focusItem() const;
     /** @} */
 
     /** @name Navigation stuff.
@@ -185,12 +180,6 @@ protected:
     /** @} */
 
 private slots:
-
-    /** @name Selection stuff.
-      * @{ */
-        /** Handles focus item destruction. */
-        void sltFocusItemDestroyed();
-    /** @} */
 
     /** @name Event handling stuff.
      * @{ */
@@ -269,8 +258,6 @@ private:
       * @{ */
         /** Holds the selected item reference. */
         QPointer<UIToolsItem>  m_pCurrentItem;
-        /** Holds the focus item reference. */
-        QPointer<UIToolsItem>  m_pFocusItem;
     /** @} */
 
     /** @name Navigation stuff.
