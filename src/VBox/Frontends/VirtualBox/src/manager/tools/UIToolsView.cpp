@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.cpp 108367 2025-02-13 16:12:22Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsView.cpp 108369 2025-02-13 16:23:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class implementation.
  */
@@ -185,10 +185,11 @@ void UIToolsView::prepare()
     /* Update scene-rect: */
     updateSceneRect();
 
+    /* Prepare connections: */
+    prepareConnections();
+
     /* Apply language settings: */
     sltRetranslateUI();
-    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
-            this, &UIToolsView::sltRetranslateUI);
 }
 
 void UIToolsView::preparePalette()
@@ -256,6 +257,13 @@ void UIToolsView::preparePalette()
     // and viewport, so we are assigning viewport palette as well.
     viewport()->setPalette(pal);
 #endif
+}
+
+void UIToolsView::prepareConnections()
+{
+    /* Translation signal: */
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIToolsView::sltRetranslateUI);
 }
 
 void UIToolsView::resizeEvent(QResizeEvent *pEvent)

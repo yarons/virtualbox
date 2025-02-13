@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.h 108367 2025-02-13 16:12:22Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsView.h 108369 2025-02-13 16:23:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class declaration.
  */
@@ -94,6 +94,8 @@ private:
         void prepare();
         /** Prepares palette. */
         void preparePalette();
+        /** Prepare connections. */
+        void prepareConnections();
     /** @} */
 
     /** @name General stuff.
