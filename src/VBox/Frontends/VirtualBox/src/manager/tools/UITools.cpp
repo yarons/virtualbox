@@ -1,4 +1,4 @@
-/* $Id: UITools.cpp 108338 2025-02-12 11:30:49Z sergey.dubov@oracle.com $ */
+/* $Id: UITools.cpp 108362 2025-02-13 15:25:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITools class implementation.
  */
@@ -156,8 +156,6 @@ void UITools::prepareConnections()
             m_pToolsView, &UIToolsView::sltMinimumWidthHintChanged);
     connect(m_pToolsModel, &UIToolsModel::sigItemMinimumHeightHintChanged,
             m_pToolsView, &UIToolsView::sltMinimumHeightHintChanged);
-    connect(m_pToolsModel, &UIToolsModel::sigFocusChanged,
-            m_pToolsView, &UIToolsView::sltFocusChanged);
 
     /* View connections: */
     connect(m_pToolsView, &UIToolsView::sigResized,
@@ -180,8 +178,6 @@ void UITools::cleanupConnections()
                m_pToolsView, &UIToolsView::sltMinimumWidthHintChanged);
     disconnect(m_pToolsModel, &UIToolsModel::sigItemMinimumHeightHintChanged,
                m_pToolsView, &UIToolsView::sltMinimumHeightHintChanged);
-    disconnect(m_pToolsModel, &UIToolsModel::sigFocusChanged,
-               m_pToolsView, &UIToolsView::sltFocusChanged);
 
     /* View connections: */
     disconnect(m_pToolsView, &UIToolsView::sigResized,

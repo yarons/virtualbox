@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.cpp 108252 2025-02-06 15:06:48Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsView.cpp 108362 2025-02-13 15:25:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class implementation.
  */
@@ -121,21 +121,6 @@ UIToolsView::UIToolsView(UITools *pParent)
     , m_iMinimumHeightHint(0)
 {
     prepare();
-}
-
-void UIToolsView::sltFocusChanged()
-{
-    /* Make sure focus-item set: */
-    const UIToolsItem *pFocusItem = tools() && tools()->model()
-                                  ? tools()->model()->focusItem()
-                                  : 0;
-    if (!pFocusItem)
-        return;
-
-    const QSize viewSize = viewport()->size();
-    QRectF geo = pFocusItem->geometry();
-    geo &= QRectF(geo.topLeft(), viewSize);
-    ensureVisible(geo, 0, 0);
 }
 
 void UIToolsView::sltMinimumWidthHintChanged(int iHint)

@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.h 108252 2025-02-06 15:06:48Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsView.h 108362 2025-02-13 15:25:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class declaration.
  */
@@ -60,12 +60,6 @@ public:
     /** @} */
 
 public slots:
-
-    /** @name General stuff.
-      * @{ */
-        /** Handles focus change to @a pFocusItem. */
-        void sltFocusChanged();
-    /** @} */
 
     /** @name Layout stuff.
       * @{ */
