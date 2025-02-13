@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 107478 2025-01-06 15:57:35Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.cpp 108357 2025-02-13 14:19:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -2922,6 +2922,18 @@ void UIExtraDataManager::setDetachedTools(const QList<UIToolType> &tools)
 
     /* Re-cache corresponding extra-data: */
     setExtraDataStringList(GUI_Tools_Detached, data);
+}
+
+bool UIExtraDataManager::isToolTextVisible()
+{
+    /* 'False' unless feature allowed: */
+    return isFeatureAllowed(GUI_Tools_Text);
+}
+
+void UIExtraDataManager::setToolTextVisible(bool fVisible)
+{
+    /* 'True' if feature allowed, null-string otherwise: */
+    return setExtraDataString(GUI_Tools_Text, toFeatureAllowed(fVisible));
 }
 
 bool UIExtraDataManager::selectorWindowStatusBarVisible()

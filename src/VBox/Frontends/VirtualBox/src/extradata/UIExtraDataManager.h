@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 107478 2025-01-06 15:57:35Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.h 108357 2025-02-13 14:19:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -406,6 +406,11 @@ public:
         QList<UIToolType> detachedTools();
         /** Defines the list of detached @a tools of VirtualBox Manager. */
         void setDetachedTools(const QList<UIToolType> &tools);
+
+        /** Returns whether tools tool-bar text visible. */
+        bool isToolTextVisible();
+        /** Defines whether tools tool-bar text @a fVisible. */
+        void setToolTextVisible(bool fVisible);
 
         /** Returns whether selector-window status-bar visible. */
         bool selectorWindowStatusBarVisible();
