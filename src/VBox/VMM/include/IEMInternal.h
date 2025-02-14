@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 108360 2025-02-13 14:57:25Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 108392 2025-02-14 15:54:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -3159,6 +3159,10 @@ VBOXSTRICTRC            iemExecInjectPendingTrap(PVMCPUCC pVCpu);
 
 /** @name   Memory access.
  * @{ */
+VBOXSTRICTRC    iemMemBounceBufferMapCrossPage(PVMCPUCC pVCpu, int iMemMap, void **ppvMem, uint8_t *pbUnmapInfo,
+                                               size_t cbMem, RTGCPTR GCPtrFirst, uint32_t fAccess) RT_NOEXCEPT;
+VBOXSTRICTRC    iemMemBounceBufferMapPhys(PVMCPUCC pVCpu, unsigned iMemMap, void **ppvMem, uint8_t *pbUnmapInfo, size_t cbMem,
+                                          RTGCPHYS GCPhysFirst, uint32_t fAccess, VBOXSTRICTRC rcMap) RT_NOEXCEPT;
 VBOXSTRICTRC    iemMemCommitAndUnmap(PVMCPUCC pVCpu, uint8_t bUnmapInfo) RT_NOEXCEPT;
 #ifndef IN_RING3
 VBOXSTRICTRC    iemMemCommitAndUnmapPostponeTroubleToR3(PVMCPUCC pVCpu, uint8_t bUnmapInfo) RT_NOEXCEPT;
@@ -3174,6 +3178,8 @@ void            iemMemCommitAndUnmapWoSafeJmp(PVMCPUCC pVCpu, uint8_t bUnmapInfo
 void            iemMemCommitAndUnmapRoSafeJmp(PVMCPUCC pVCpu, uint8_t bUnmapInfo) IEM_NOEXCEPT_MAY_LONGJMP;
 void            iemMemRollbackAndUnmapWoSafe(PVMCPUCC pVCpu, uint8_t bUnmapInfo) RT_NOEXCEPT;
 #endif
+
+void            iemTlbInvalidateAllPhysicalSlow(PVMCPUCC pVCpu) RT_NOEXCEPT;
 /** @} */
 
 /*

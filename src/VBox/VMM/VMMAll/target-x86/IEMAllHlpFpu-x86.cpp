@@ -1,4 +1,4 @@
-/* $Id: IEMAllHlpFpu-x86.cpp 108386 2025-02-14 11:40:20Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllHlpFpu-x86.cpp 108392 2025-02-14 15:54:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - x86 target, FPU helpers.
  */
@@ -44,7 +44,7 @@
 #include "IEMInternal.h"
 #include <VBox/vmm/vmcc.h>
 #include <VBox/log.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>
 #include <iprt/x86.h>
