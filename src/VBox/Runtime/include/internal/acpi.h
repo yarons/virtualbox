@@ -1,4 +1,4 @@
-/* $Id: acpi.h 108387 2025-02-14 12:16:40Z alexander.eichner@oracle.com $ */
+/* $Id: acpi.h 108388 2025-02-14 12:23:23Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Internal RTAcpi header.
  */
@@ -398,8 +398,6 @@ DECLHIDDEN(int) rtAcpiNsAddEntryRsrcField(PRTACPINSROOT pNsRoot, const char *psz
  * @returns IPRT status code.
  * @param   pNsRoot             The namespace root to add the entry to.
  * @param   pszNameString       An ACPI NameString (either segment or path).
- * @param   offBits             Bit offset from the beginning of the resource.
- * @param   cBits               NUmber of bits this resource field has.
  */
 DECLHIDDEN(int) rtAcpiNsAddEntryExternal(PRTACPINSROOT pNsRoot, const char *pszNameString, PCRTACPIASLEXTERNAL pExternal);
 
