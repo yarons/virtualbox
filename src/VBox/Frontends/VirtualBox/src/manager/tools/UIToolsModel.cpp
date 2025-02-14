@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 108390 2025-02-14 14:19:48Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.cpp 108391 2025-02-14 14:34:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -107,14 +107,7 @@ void UIToolsModel::setView(UIToolsView *pView)
 void UIToolsModel::setToolsType(UIToolType enmType)
 {
     if (!currentItem() || currentItem()->itemType() != enmType)
-    {
-        foreach (UIToolsItem *pItem, items())
-            if (pItem->itemType() == enmType)
-            {
-                setCurrentItem(pItem);
-                break;
-            }
-    }
+        setCurrentItem(item(enmType));
 }
 
 UIToolType UIToolsModel::toolsType() const
@@ -144,6 +137,8 @@ void UIToolsModel::setRestrictedToolTypes(const QList<UIToolType> &types)
         m_restrictedToolTypes = types;
         foreach (UIToolsItem *pItem, items())
             pItem->setVisible(!m_restrictedToolTypes.contains(pItem->itemType()));
+
+        /* Update linked values: */
         updateLayout();
         updateNavigation();
         sltItemMinimumWidthHintChanged();
@@ -631,9 +626,8 @@ void UIToolsModel::cleanupScene()
 
 void UIToolsModel::cleanup()
 {
-    /* Cleanup items: */
+    /* Cleanup everything: */
     cleanupItems();
-    /* Cleanup scene: */
     cleanupScene();
 }
 
