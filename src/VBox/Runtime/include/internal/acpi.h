@@ -1,4 +1,4 @@
-/* $Id: acpi.h 108381 2025-02-13 18:24:31Z alexander.eichner@oracle.com $ */
+/* $Id: acpi.h 108387 2025-02-14 12:16:40Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Internal RTAcpi header.
  */
@@ -120,6 +120,7 @@ typedef enum RTACPIASTNODEOP
     kAcpiAstNodeOp_If,
     kAcpiAstNodeOp_Else,
     kAcpiAstNodeOp_LAnd,
+    kAcpiAstNodeOp_LOr,
     kAcpiAstNodeOp_LEqual,
     kAcpiAstNodeOp_LGreater,
     kAcpiAstNodeOp_LGreaterEqual,
@@ -184,6 +185,8 @@ typedef enum RTACPIASTNODEOP
     kAcpiAstNodeOp_CreateDWordField,
     kAcpiAstNodeOp_CreateQWordField,
     kAcpiAstNodeOp_ConcatenateResTemplate,
+    kAcpiAstNodeOp_FindSetLeftBit,
+    kAcpiAstNodeOp_FindSetRightBit,
     kAcpiAstNodeOp_32Bit_Hack = 0x7fffffff
 } RTACPIASTNODEOP;
 
@@ -441,9 +444,10 @@ DECLHIDDEN(PCRTACPINSENTRY) rtAcpiNsLookup(PRTACPINSROOT pNsRoot, const char *ps
  *
  * @returns IPRT status code.
  * @param   pAstNd              The AST node to dump.
+ * @param   pNsRoot             The namespace root this AST belongs to.
  * @param   hAcpiTbl            The ACPI table to dump to.
  */
-DECLHIDDEN(int) rtAcpiAstDumpToTbl(PCRTACPIASTNODE pAstNd, RTACPITBL hAcpiTbl);
+DECLHIDDEN(int) rtAcpiAstDumpToTbl(PCRTACPIASTNODE pAstNd, PRTACPINSROOT pNsRoot, RTACPITBL hAcpiTbl);
 
 
 /**

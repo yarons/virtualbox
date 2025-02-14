@@ -1,4 +1,4 @@
-/* $Id: acpi-ns.cpp 108381 2025-02-13 18:24:31Z alexander.eichner@oracle.com $ */
+/* $Id: acpi-ns.cpp 108387 2025-02-14 12:16:40Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Advanced Configuration and Power Interface (ACPI) namespace handling.
  */
@@ -130,7 +130,7 @@ static PRTACPINSENTRY rtAcpiNsLookupWorker(PRTACPINSROOT pNsRoot, const char *ps
         bool fFound = false;
         RTListForEach(&pNsEntry->LstNsEntries, pIt, RTACPINSENTRY, NdNs)
         {
-            if (!memcmp(&pIt->achNameSeg[0], pszCur, sizeof(pIt->achNameSeg[0])))
+            if (!memcmp(&pIt->achNameSeg[0], pszCur, sizeof(pIt->achNameSeg)))
             {
                 pNsEntry = pIt;
                 fFound = true;
