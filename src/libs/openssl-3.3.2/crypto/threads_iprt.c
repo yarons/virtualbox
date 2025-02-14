@@ -1,4 +1,4 @@
-/* $Id: threads_iprt.c 108372 2025-02-13 16:35:33Z aleksey.ilyushin@oracle.com $ */
+/* $Id: threads_iprt.c 108384 2025-02-14 09:42:27Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * Crypto threading and atomic functions built upon IPRT.
  */
@@ -164,7 +164,8 @@ void ossl_rcu_lock_free(CRYPTO_RCU_LOCK *lock)
     /* make sure we're synchronized */
     ossl_synchronize_rcu(rlock);
 
-    AssertRC(RTSemRWDestroy(rlock->rw_lock));
+    int rc = RTSemRWDestroy(rlock->rw_lock);
+    AssertRC(rc);
     OPENSSL_free(rlock);
 }
 # endif /* VBOX_OPENSSL_WITH_RCU_SUPPORT */
