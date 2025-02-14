@@ -1,6 +1,8 @@
-/* $Id: IEMAllTlbInline-x86.h 108392 2025-02-14 15:54:48Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllTlbInline-x86.h 108399 2025-02-14 21:32:17Z knut.osmundsen@oracle.com $ */
 /** @file
- * IEM - Interpreted Execution Manager - All Contexts.
+ * IEM - Interpreted Execution Manager - x86 target, Inline TLB routines.
+ *
+ * Mainly related to large pages.
  */
 
 /*

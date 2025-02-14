@@ -1,4 +1,4 @@
-/* $Id: IEMAllMem-x86.cpp 108392 2025-02-14 15:54:48Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllMem-x86.cpp 108399 2025-02-14 21:32:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - x86 target, memory.
  */
@@ -268,6 +268,7 @@ static unsigned iemMemMapFindFree(PVMCPUCC pVCpu)
 }
 
 
+#ifdef IEM_WITH_DATA_TLB
 /**
  * Helper for iemMemMap, iemMemMapJmp and iemMemBounceBufferMapCrossPage.
  * @todo duplicated
@@ -280,6 +281,7 @@ iemMemCheckDataBreakpoint(PVMCC pVM, PVMCPUCC pVCpu, RTGCPTR GCPtrMem, size_t cb
         return DBGFBpCheckDataWrite(pVM, pVCpu, GCPtrMem, (uint32_t)cbMem, fSysAccess);
     return DBGFBpCheckDataRead(pVM, pVCpu, GCPtrMem, (uint32_t)cbMem, fSysAccess);
 }
+#endif
 
 
 /**
