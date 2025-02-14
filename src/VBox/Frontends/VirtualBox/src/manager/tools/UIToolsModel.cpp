@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 108380 2025-02-13 17:49:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.cpp 108390 2025-02-14 14:19:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -27,32 +27,21 @@
 
 /* Qt includes: */
 #include <QGraphicsScene>
-#include <QGraphicsSceneContextMenuEvent>
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsView>
 #include <QScrollBar>
 #include <QTimer>
 
 /* GUI includes: */
-#include "QIMessageBox.h"
 #include "UIActionPoolManager.h"
+#include "UIExtraDataManager.h"
 #include "UIIconPool.h"
 #include "UILoggingDefs.h"
 #include "UIToolsModel.h"
 #include "UITranslationEventListener.h"
-#include "UIExtraDataDefs.h"
-#include "UIExtraDataManager.h"
-#include "UIMessageCenter.h"
-#include "UIModalWindowManager.h"
-#include "UIVirtualBoxManagerAdvancedWidget.h"
-#include "UIVirtualBoxEventHandler.h"
 
-/* COM includes: */
-#include "CExtPack.h"
-#include "CExtPackManager.h"
-
-/* Qt includes: */
-#include <QParallelAnimationGroup>
+/* Other VBox includes: */
+#include "iprt/assert.h"
 
 /* Type defs: */
 typedef QSet<QString> UIStringSet;
