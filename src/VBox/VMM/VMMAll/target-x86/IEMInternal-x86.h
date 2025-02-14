@@ -1,4 +1,4 @@
-/* $Id: IEMInternal-x86.h 108360 2025-02-13 14:57:25Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal-x86.h 108386 2025-02-14 11:40:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file, x86 target specifics.
  */
@@ -3103,6 +3103,8 @@ VBOXSTRICTRC    iemMemFetchSysU16(PVMCPUCC pVCpu, uint16_t *pu16Dst, uint8_t iSe
 VBOXSTRICTRC    iemMemFetchSysU32(PVMCPUCC pVCpu, uint32_t *pu32Dst, uint8_t iSegReg, RTGCPTR GCPtrMem) RT_NOEXCEPT;
 VBOXSTRICTRC    iemMemFetchSysU64(PVMCPUCC pVCpu, uint64_t *pu64Dst, uint8_t iSegReg, RTGCPTR GCPtrMem) RT_NOEXCEPT;
 VBOXSTRICTRC    iemMemFetchSelDesc(PVMCPUCC pVCpu, PIEMSELDESC pDesc, uint16_t uSel, uint8_t uXcpt) RT_NOEXCEPT;
+VBOXSTRICTRC    iemMemFetchSelDescWithErr(PVMCPUCC pVCpu, PIEMSELDESC pDesc, uint16_t uSel,
+                                          uint8_t uXcpt, uint16_t uErrorCode) RT_NOEXCEPT;
 
 VBOXSTRICTRC    iemMemStoreDataU8(PVMCPUCC pVCpu, uint8_t iSegReg, RTGCPTR GCPtrMem, uint8_t u8Value) RT_NOEXCEPT;
 VBOXSTRICTRC    iemMemStoreDataU16(PVMCPUCC pVCpu, uint8_t iSegReg, RTGCPTR GCPtrMem, uint16_t u16Value) RT_NOEXCEPT;
