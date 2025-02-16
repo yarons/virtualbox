@@ -1,4 +1,4 @@
-/* $Id: acpi-compiler.cpp 108401 2025-02-16 14:20:28Z alexander.eichner@oracle.com $ */
+/* $Id: acpi-compiler.cpp 108402 2025-02-16 14:24:41Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Advanced Configuration and Power Interface (ACPI) Table generation API.
  */
@@ -3018,7 +3018,6 @@ DECLHIDDEN(int) rtAcpiTblConvertFromAslToAml(RTVFSIOSTREAM hVfsIosOut, RTVFSIOST
 
                     if (RT_SUCCESS(rc))
                     {
-                        pIt;
                         RTListForEach(&pThis->LstStmts, pIt, RTACPIASTNODE, NdAst)
                         {
                             rc = rtAcpiAstDumpToTbl(pIt, pThis->pNs, pThis->hAcpiTbl);
