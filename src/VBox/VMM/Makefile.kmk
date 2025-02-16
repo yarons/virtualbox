@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 108392 2025-02-14 15:54:48Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 108410 2025-02-16 22:34:34Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -196,6 +196,7 @@ VBoxVMM_SOURCES  = \
 	VMMAll/IEMAll.cpp \
 	VMMAll/target-x86/IEMAllExec-x86.cpp \
 	VMMAll/target-x86/IEMAllMem-x86.cpp \
+	VMMAll/target-x86/IEMAllOpHlp-x86.cpp \
 	VMMAll/target-x86/IEMAllXcpt-x86.cpp \
 	VMMAll/target-x86/IEMAllHlpFpu-x86.cpp \
 	VMMAll/target-x86/IEMAllIntprTables1-x86.cpp \
@@ -942,6 +943,7 @@ if defined(VBOX_WITH_R0_MODULES) && !defined(VBOX_ONLY_BUILD)
   	VMMAll/IEMAll.cpp \
   	VMMAll/target-x86/IEMAllExec-x86.cpp \
   	VMMAll/target-x86/IEMAllMem-x86.cpp \
+  	VMMAll/target-x86/IEMAllOpHlp-x86.cpp \
   	VMMAll/target-x86/IEMAllXcpt-x86.cpp \
   	VMMAll/target-x86/IEMAllHlpFpu-x86.cpp \
   	VMMAll/target-x86/IEMAllIntprTables1-x86.cpp \
