@@ -1,4 +1,4 @@
-/* $Id: IEMInternal-x86.h 108386 2025-02-14 11:40:20Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal-x86.h 108411 2025-02-16 22:45:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file, x86 target specifics.
  */
@@ -40,6 +40,8 @@ RT_C_DECLS_BEGIN
  * @internal
  * @{
  */
+
+VBOXSTRICTRC iemOpcodeFetchPrefetch(PVMCPUCC pVCpu) RT_NOEXCEPT;
 
 
 /** @name Prefix constants (IEMCPU::fPrefixes)
