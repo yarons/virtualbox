@@ -1,4 +1,4 @@
-/* $Id: dxvk_video_decoder.h 108394 2025-02-14 17:40:53Z vitali.pelenjow@oracle.com $ */
+/* $Id: dxvk_video_decoder.h 108407 2025-02-16 18:13:38Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBoxDxVk - Video decoder.
  */
@@ -119,7 +119,8 @@ namespace dxvk {
     ~DxvkVideoSessionParametersHandle();
 
     void create(
-      const VkVideoSessionParametersCreateInfoKHR& sessionParametersCreateInfo);
+      const Rc<DxvkVideoSessionHandle>& videoSession,
+      const void *pDecoderSessionParametersCreateInfo);
 
     VkVideoSessionParametersKHR handle() const {
       return m_videoSessionParameters;
@@ -128,6 +129,8 @@ namespace dxvk {
   private:
 
     Rc<DxvkDevice>              m_device;
+    /* Hold a reference because session must be deleted after parameters. */
+    Rc<DxvkVideoSessionHandle>  m_videoSession;
     VkVideoSessionParametersKHR m_videoSessionParameters = VK_NULL_HANDLE;
 
   };
