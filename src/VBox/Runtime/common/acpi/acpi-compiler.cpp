@@ -1,4 +1,4 @@
-/* $Id: acpi-compiler.cpp 108397 2025-02-14 20:49:02Z alexander.eichner@oracle.com $ */
+/* $Id: acpi-compiler.cpp 108401 2025-02-16 14:20:28Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Advanced Configuration and Power Interface (ACPI) Table generation API.
  */
@@ -2988,6 +2988,13 @@ DECLHIDDEN(int) rtAcpiTblConvertFromAslToAml(RTVFSIOSTREAM hVfsIosOut, RTVFSIOST
                 if (RT_SUCCESS(rc))
                 {
                     /* 2. - Optimize AST (constant folding, etc). */
+                    PRTACPIASTNODE pIt;
+                    RTListForEach(&pThis->LstStmts, pIt, RTACPIASTNODE, NdAst)
+                    {
+                        rc = rtAcpiAstNodeTransform(pIt, pThis->pNs, pErrInfo);
+                        if (RT_FAILURE(rc))
+                            break;
+                    }
 
                     /* 3. - Traverse AST and output table. */
 
@@ -3011,13 +3018,9 @@ DECLHIDDEN(int) rtAcpiTblConvertFromAslToAml(RTVFSIOSTREAM hVfsIosOut, RTVFSIOST
 
                     if (RT_SUCCESS(rc))
                     {
-                        PRTACPIASTNODE pIt;
+                        pIt;
                         RTListForEach(&pThis->LstStmts, pIt, RTACPIASTNODE, NdAst)
                         {
-                            rc = rtAcpiAstNodeTransform(pIt, pErrInfo);
-                            if (RT_FAILURE(rc))
-                                break;
-
                             rc = rtAcpiAstDumpToTbl(pIt, pThis->pNs, pThis->hAcpiTbl);
                             if (RT_FAILURE(rc))
                                 break;
