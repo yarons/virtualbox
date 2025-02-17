@@ -1,4 +1,4 @@
-/* $Id: VBoxDef2LazyLoad.cpp 107782 2025-01-13 16:05:09Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxDef2LazyLoad.cpp 108422 2025-02-17 11:02:24Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDef2LazyLoad - Lazy Library Loader Generator.
  *
@@ -423,6 +423,7 @@ static RTEXITCODE generateOutputInnerX86AndAMD64(FILE *pOutput)
             "; Import pointers. Initialized to point to lazy loading stubs.\n"
             ";\n"
             "BEGINDATA\n"
+            "ALIGNDATA(RTCCPTR_CB)\n"
             "g_apfnImports:\n");
     for (PMYEXPORT pExp = g_pExpHead; pExp; pExp = pExp->pNext)
         if (pExp->fData)
@@ -579,6 +580,7 @@ static RTEXITCODE generateOutputInnerX86AndAMD64(FILE *pOutput)
             "; The module handle.\n"
             ";\n"
             "BEGINDATA\n"
+            "ALIGNDATA(RTCCPTR_CB)\n"
             "g_hMod RTCCPTR_DEF 0\n"
             "\n"
             "\n"
@@ -1772,7 +1774,7 @@ int main(int argc, char **argv)
             else if (   !strcmp(psz, "--version")
                      || !strcmp(psz, "-V"))
             {
-                printf("$Revision: 107782 $\n");
+                printf("$Revision: 108422 $\n");
                 return RTEXITCODE_SUCCESS;
             }
             else
