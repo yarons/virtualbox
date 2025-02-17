@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdFuncs-x86.cpp 108427 2025-02-17 15:24:14Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdFuncs-x86.cpp 108435 2025-02-17 21:20:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, Threaded Functions, x86 target.
  */
@@ -81,41 +81,41 @@
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
 
-/** Variant of IEM_MC_ADVANCE_RIP_AND_FINISH with instruction length as param
+/** Variant of IEM_MC_ADVANCE_PC_AND_FINISH with instruction length as param
  *  and only used when we're in 16-bit code on a pre-386 CPU. */
-#define IEM_MC_ADVANCE_RIP_AND_FINISH_THREADED_PC16(a_cbInstr, a_rcNormal) \
+#define IEM_MC_ADVANCE_PC_AND_FINISH_THREADED_PC16(a_cbInstr, a_rcNormal) \
     return iemRegAddToIp16AndFinishingNoFlags(pVCpu, a_cbInstr, a_rcNormal)
 
-/** Variant of IEM_MC_ADVANCE_RIP_AND_FINISH with instruction length as param
+/** Variant of IEM_MC_ADVANCE_PC_AND_FINISH with instruction length as param
  *  and used for 16-bit and 32-bit code on 386 and later CPUs. */
-#define IEM_MC_ADVANCE_RIP_AND_FINISH_THREADED_PC32(a_cbInstr, a_rcNormal) \
+#define IEM_MC_ADVANCE_PC_AND_FINISH_THREADED_PC32(a_cbInstr, a_rcNormal) \
     return iemRegAddToEip32AndFinishingNoFlags(pVCpu, a_cbInstr, a_rcNormal)
 
-/** Variant of IEM_MC_ADVANCE_RIP_AND_FINISH with instruction length as param
+/** Variant of IEM_MC_ADVANCE_PC_AND_FINISH with instruction length as param
  *  and only used when we're in 64-bit code. */
-#define IEM_MC_ADVANCE_RIP_AND_FINISH_THREADED_PC64(a_cbInstr, a_rcNormal) \
+#define IEM_MC_ADVANCE_PC_AND_FINISH_THREADED_PC64(a_cbInstr, a_rcNormal) \
     return iemRegAddToRip64AndFinishingNoFlags(pVCpu, a_cbInstr, a_rcNormal)
 
 
-/** Variant of IEM_MC_ADVANCE_RIP_AND_FINISH with instruction length as param
+/** Variant of IEM_MC_ADVANCE_PC_AND_FINISH with instruction length as param
  *  and only used when we're in 16-bit code on a pre-386 CPU and we need to
  *  check and clear flags. */
-#define IEM_MC_ADVANCE_RIP_AND_FINISH_THREADED_PC16_WITH_FLAGS(a_cbInstr, a_rcNormal) \
+#define IEM_MC_ADVANCE_PC_AND_FINISH_THREADED_PC16_WITH_FLAGS(a_cbInstr, a_rcNormal) \
     return iemRegAddToIp16AndFinishingClearingRF(pVCpu, a_cbInstr, a_rcNormal)
 
-/** Variant of IEM_MC_ADVANCE_RIP_AND_FINISH with instruction length as param
+/** Variant of IEM_MC_ADVANCE_PC_AND_FINISH with instruction length as param
  *  and used for 16-bit and 32-bit code on 386 and later CPUs and we need to
  *  check and clear flags. */
-#define IEM_MC_ADVANCE_RIP_AND_FINISH_THREADED_PC32_WITH_FLAGS(a_cbInstr, a_rcNormal) \
+#define IEM_MC_ADVANCE_PC_AND_FINISH_THREADED_PC32_WITH_FLAGS(a_cbInstr, a_rcNormal) \
     return iemRegAddToEip32AndFinishingClearingRF(pVCpu, a_cbInstr, a_rcNormal)
 
-/** Variant of IEM_MC_ADVANCE_RIP_AND_FINISH with instruction length as param
+/** Variant of IEM_MC_ADVANCE_PC_AND_FINISH with instruction length as param
  *  and only used when we're in 64-bit code and we need to check and clear
  *  flags. */
-#define IEM_MC_ADVANCE_RIP_AND_FINISH_THREADED_PC64_WITH_FLAGS(a_cbInstr, a_rcNormal) \
+#define IEM_MC_ADVANCE_PC_AND_FINISH_THREADED_PC64_WITH_FLAGS(a_cbInstr, a_rcNormal) \
     return iemRegAddToRip64AndFinishingClearingRF(pVCpu, a_cbInstr, a_rcNormal)
 
-#undef  IEM_MC_ADVANCE_RIP_AND_FINISH
+#undef  IEM_MC_ADVANCE_PC_AND_FINISH
 
 
 /** Variant of IEM_MC_REL_JMP_S8_AND_FINISH with instruction length as extra

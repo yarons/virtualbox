@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 107256 2024-12-03 09:33:07Z bela.lubkin@oracle.com $ */
+/* $Id: IEMMc.h 108435 2025-02-17 21:20:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX.
  */
@@ -60,7 +60,7 @@
 
 /** Advances RIP, finishes the instruction and returns.
  * This may include raising debug exceptions and such. */
-#define IEM_MC_ADVANCE_RIP_AND_FINISH()                 return iemRegAddToRipAndFinishingClearingRF(pVCpu, IEM_GET_INSTR_LEN(pVCpu))
+#define IEM_MC_ADVANCE_PC_AND_FINISH()                  return iemRegAddToRipAndFinishingClearingRF(pVCpu, IEM_GET_INSTR_LEN(pVCpu))
 /** Sets RIP (may trigger \#GP), finishes the instruction and returns. */
 #define IEM_MC_REL_JMP_S8_AND_FINISH(a_i8) \
     return iemRegRipRelativeJumpS8AndFinishClearingRF(pVCpu, IEM_GET_INSTR_LEN(pVCpu), (a_i8), pVCpu->iem.s.enmEffOpSize)

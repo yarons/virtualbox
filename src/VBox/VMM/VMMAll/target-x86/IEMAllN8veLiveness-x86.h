@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veLiveness-x86.h 108370 2025-02-13 16:26:48Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veLiveness-x86.h 108435 2025-02-17 21:20:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Liveness Analysis, x86 target, Common Header.
  */
@@ -310,12 +310,12 @@ AssertCompile(IEMLIVENESS_STATE_INPUT == IEMLIVENESS_STATE_MASK);
  */
 
 /* We don't track RIP (PC) liveness. */
-#define IEM_MC_ADVANCE_RIP_AND_FINISH_THREADED_PC16(a_cbInstr, a_rcNormal)              IEM_LIVENESS_PC_NO_FLAGS()
-#define IEM_MC_ADVANCE_RIP_AND_FINISH_THREADED_PC32(a_cbInstr, a_rcNormal)              IEM_LIVENESS_PC_NO_FLAGS()
-#define IEM_MC_ADVANCE_RIP_AND_FINISH_THREADED_PC64(a_cbInstr, a_rcNormal)              IEM_LIVENESS_PC_NO_FLAGS()
-#define IEM_MC_ADVANCE_RIP_AND_FINISH_THREADED_PC16_WITH_FLAGS(a_cbInstr, a_rcNormal)   IEM_LIVENESS_PC_WITH_FLAGS()
-#define IEM_MC_ADVANCE_RIP_AND_FINISH_THREADED_PC32_WITH_FLAGS(a_cbInstr, a_rcNormal)   IEM_LIVENESS_PC_WITH_FLAGS()
-#define IEM_MC_ADVANCE_RIP_AND_FINISH_THREADED_PC64_WITH_FLAGS(a_cbInstr, a_rcNormal)   IEM_LIVENESS_PC_WITH_FLAGS()
+#define IEM_MC_ADVANCE_PC_AND_FINISH_THREADED_PC16(a_cbInstr, a_rcNormal)               IEM_LIVENESS_PC_NO_FLAGS()
+#define IEM_MC_ADVANCE_PC_AND_FINISH_THREADED_PC32(a_cbInstr, a_rcNormal)               IEM_LIVENESS_PC_NO_FLAGS()
+#define IEM_MC_ADVANCE_PC_AND_FINISH_THREADED_PC64(a_cbInstr, a_rcNormal)               IEM_LIVENESS_PC_NO_FLAGS()
+#define IEM_MC_ADVANCE_PC_AND_FINISH_THREADED_PC16_WITH_FLAGS(a_cbInstr, a_rcNormal)    IEM_LIVENESS_PC_WITH_FLAGS()
+#define IEM_MC_ADVANCE_PC_AND_FINISH_THREADED_PC32_WITH_FLAGS(a_cbInstr, a_rcNormal)    IEM_LIVENESS_PC_WITH_FLAGS()
+#define IEM_MC_ADVANCE_PC_AND_FINISH_THREADED_PC64_WITH_FLAGS(a_cbInstr, a_rcNormal)    IEM_LIVENESS_PC_WITH_FLAGS()
 
 #define IEM_MC_REL_JMP_S8_AND_FINISH_THREADED_PC16(a_i8, a_cbInstr, a_rcNormal)                                     IEM_LIVENESS_PC16_JMP_NO_FLAGS()
 #define IEM_MC_REL_JMP_S8_AND_FINISH_THREADED_PC32(a_i8, a_cbInstr, a_enmEffOpSize, a_rcNormal)                     IEM_LIVENESS_PC32_JMP_NO_FLAGS()

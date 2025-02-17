@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompFuncs-x86.h 108370 2025-02-13 16:26:48Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompFuncs-x86.h 108435 2025-02-17 21:20:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler - Inlined Bits, x86 target.
  */
@@ -401,10 +401,10 @@ DECL_INLINE_THROW(uint32_t) iemNativeEmitCImplCall3(PIEMRECOMPILERSTATE pReNativ
 
 
 /*********************************************************************************************************************************
-*   Emitters for advancing PC/RIP/EIP/IP (IEM_MC_ADVANCE_RIP_AND_FINISH_XXX)                                                     *
+*   Emitters for advancing PC/RIP/EIP/IP (IEM_MC_ADVANCE_PC_AND_FINISH_XXX)                                                      *
 *********************************************************************************************************************************/
 
-/** Emits the flags check for IEM_MC_ADVANCE_RIP_AND_FINISH_THREADED_PC64_WITH_FLAGS
+/** Emits the flags check for IEM_MC_ADVANCE_PC_AND_FINISH_THREADED_PC64_WITH_FLAGS
  *  and the other _WITH_FLAGS MCs, see iemRegFinishClearingRF. */
 DECL_INLINE_THROW(uint32_t)
 iemNativeEmitFinishInstructionFlagsCheck(PIEMRECOMPILERSTATE pReNative, uint32_t off)
@@ -569,11 +569,11 @@ iemNativeEmitFinishInstructionWithStatus(PIEMRECOMPILERSTATE pReNative, uint32_t
 }
 
 
-#define IEM_MC_ADVANCE_RIP_AND_FINISH_THREADED_PC64(a_cbInstr, a_rcNormal) \
+#define IEM_MC_ADVANCE_PC_AND_FINISH_THREADED_PC64(a_cbInstr, a_rcNormal) \
     off = iemNativeEmitAddToRip64AndFinishingNoFlags(pReNative, off, (a_cbInstr)); \
     off = iemNativeEmitFinishInstructionWithStatus<a_rcNormal, false /*a_fIsJump*/>(pReNative, off, pCallEntry, 0)
 
-#define IEM_MC_ADVANCE_RIP_AND_FINISH_THREADED_PC64_WITH_FLAGS(a_cbInstr, a_rcNormal) \
+#define IEM_MC_ADVANCE_PC_AND_FINISH_THREADED_PC64_WITH_FLAGS(a_cbInstr, a_rcNormal) \
     off = iemNativeEmitAddToRip64AndFinishingNoFlags(pReNative, off, (a_cbInstr)); \
     off = iemNativeEmitFinishInstructionFlagsCheck(pReNative, off); \
     off = iemNativeEmitFinishInstructionWithStatus<a_rcNormal, false /*a_fIsJump*/>(pReNative, off, pCallEntry, 0)
@@ -615,11 +615,11 @@ iemNativeEmitAddToRip64AndFinishingNoFlags(PIEMRECOMPILERSTATE pReNative, uint32
 }
 
 
-#define IEM_MC_ADVANCE_RIP_AND_FINISH_THREADED_PC32(a_cbInstr, a_rcNormal) \
+#define IEM_MC_ADVANCE_PC_AND_FINISH_THREADED_PC32(a_cbInstr, a_rcNormal) \
     off = iemNativeEmitAddToEip32AndFinishingNoFlags(pReNative, off, (a_cbInstr)); \
     off = iemNativeEmitFinishInstructionWithStatus<a_rcNormal, false /*a_fIsJump*/>(pReNative, off, pCallEntry, 0)
 
-#define IEM_MC_ADVANCE_RIP_AND_FINISH_THREADED_PC32_WITH_FLAGS(a_cbInstr, a_rcNormal) \
+#define IEM_MC_ADVANCE_PC_AND_FINISH_THREADED_PC32_WITH_FLAGS(a_cbInstr, a_rcNormal) \
     off = iemNativeEmitAddToEip32AndFinishingNoFlags(pReNative, off, (a_cbInstr)); \
     off = iemNativeEmitFinishInstructionFlagsCheck(pReNative, off); \
     off = iemNativeEmitFinishInstructionWithStatus<a_rcNormal, false /*a_fIsJump*/>(pReNative, off, pCallEntry, 0)
@@ -661,11 +661,11 @@ iemNativeEmitAddToEip32AndFinishingNoFlags(PIEMRECOMPILERSTATE pReNative, uint32
 }
 
 
-#define IEM_MC_ADVANCE_RIP_AND_FINISH_THREADED_PC16(a_cbInstr, a_rcNormal) \
+#define IEM_MC_ADVANCE_PC_AND_FINISH_THREADED_PC16(a_cbInstr, a_rcNormal) \
     off = iemNativeEmitAddToIp16AndFinishingNoFlags(pReNative, off, (a_cbInstr)); \
     off = iemNativeEmitFinishInstructionWithStatus<a_rcNormal, false /*a_fIsJump*/>(pReNative, off, pCallEntry, 0)
 
-#define IEM_MC_ADVANCE_RIP_AND_FINISH_THREADED_PC16_WITH_FLAGS(a_cbInstr, a_rcNormal) \
+#define IEM_MC_ADVANCE_PC_AND_FINISH_THREADED_PC16_WITH_FLAGS(a_cbInstr, a_rcNormal) \
     off = iemNativeEmitAddToIp16AndFinishingNoFlags(pReNative, off, (a_cbInstr)); \
     off = iemNativeEmitFinishInstructionFlagsCheck(pReNative, off); \
     off = iemNativeEmitFinishInstructionWithStatus<a_rcNormal, false /*a_fIsJump*/>(pReNative, off, pCallEntry, 0)

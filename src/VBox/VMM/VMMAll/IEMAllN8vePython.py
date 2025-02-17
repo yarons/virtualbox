@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllN8vePython.py 107256 2024-12-03 09:33:07Z bela.lubkin@oracle.com $
+# $Id: IEMAllN8vePython.py 108435 2025-02-17 21:20:49Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -34,7 +34,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 107256 $"
+__version__ = "$Revision: 108435 $"
 
 # Standard python imports:
 import copy;
@@ -54,13 +54,13 @@ g_dMcStmtThreaded = {
     'IEM_MC_DEFER_TO_CIMPL_2_RET_THREADED':                              (None, True,  True,  True,  ),
     'IEM_MC_DEFER_TO_CIMPL_3_RET_THREADED':                              (None, True,  True,  True,  ),
 
-    'IEM_MC_ADVANCE_RIP_AND_FINISH_THREADED_PC16':                       (None, True,  True,  True,  ),
-    'IEM_MC_ADVANCE_RIP_AND_FINISH_THREADED_PC32':                       (None, True,  True,  True,  ),
-    'IEM_MC_ADVANCE_RIP_AND_FINISH_THREADED_PC64':                       (None, True,  True,  True,  ),
+    'IEM_MC_ADVANCE_PC_AND_FINISH_THREADED_PC16':                        (None, True,  True,  True,  ),
+    'IEM_MC_ADVANCE_PC_AND_FINISH_THREADED_PC32':                        (None, True,  True,  True,  ),
+    'IEM_MC_ADVANCE_PC_AND_FINISH_THREADED_PC64':                        (None, True,  True,  True,  ),
 
-    'IEM_MC_ADVANCE_RIP_AND_FINISH_THREADED_PC16_WITH_FLAGS':            (None, True,  True,  True,  ),
-    'IEM_MC_ADVANCE_RIP_AND_FINISH_THREADED_PC32_WITH_FLAGS':            (None, True,  True,  True,  ),
-    'IEM_MC_ADVANCE_RIP_AND_FINISH_THREADED_PC64_WITH_FLAGS':            (None, True,  True,  True,  ),
+    'IEM_MC_ADVANCE_PC_AND_FINISH_THREADED_PC16_WITH_FLAGS':             (None, True,  True,  True,  ),
+    'IEM_MC_ADVANCE_PC_AND_FINISH_THREADED_PC32_WITH_FLAGS':             (None, True,  True,  True,  ),
+    'IEM_MC_ADVANCE_PC_AND_FINISH_THREADED_PC64_WITH_FLAGS':             (None, True,  True,  True,  ),
 
     'IEM_MC_REL_JMP_S8_AND_FINISH_THREADED_PC16':                        (None, True,  True,  True,  ),
     'IEM_MC_REL_JMP_S8_AND_FINISH_THREADED_PC32':                        (None, True,  True,  True,  ),
