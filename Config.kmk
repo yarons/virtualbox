@@ -1,4 +1,4 @@
-# $Id: Config.kmk 108409 2025-02-16 20:29:26Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 108424 2025-02-17 12:57:55Z alexander.eichner@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -896,8 +896,6 @@ if1of ($(KBUILD_TARGET), darwin linux solaris)
  # Enable Java<->JAX-WS bridge
  VBOX_WITH_JWS ?= 1
 endif
-# Use XPIDL instead of XSLT stylesheet
-VBOX_WITH_JAVA_SUPPORT_IN_XPIDL ?=
 # Build against multiple Python versions present in the system (only up to 3.2,
 # unless VBOX_WITH_ONLY_PYTHON_LIMITED_API is overridden).
 VBOX_WITH_MULTIVERSION_PYTHON ?= 1
@@ -9397,7 +9395,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 108409 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 108424 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
