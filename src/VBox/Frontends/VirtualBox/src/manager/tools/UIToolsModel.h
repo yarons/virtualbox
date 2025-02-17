@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 108380 2025-02-13 17:49:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.h 108434 2025-02-17 20:11:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -185,8 +185,11 @@ private slots:
 
     /** @name Event handling stuff.
      * @{ */
-       /** Handles translation event. */
-       void sltRetranslateUI();
+        /** Handles request to commit data. */
+        void sltHandleCommitData();
+
+        /** Handles translation event. */
+        void sltRetranslateUI();
     /** @} */
 
 private:
@@ -209,11 +212,11 @@ private:
         void prepareItems();
         /** Prepare connections. */
         void prepareConnections();
-        /** Loads settings. */
-        void loadSettings();
 
-        /** Loads last tool types. */
-        static void loadLastToolTypes(UIToolType &enmTypeGlobal, UIToolType &enmTypeMachine);
+        /** Loads current items from extra-data. */
+        void loadCurrentItems();
+        /** Saves current items to extra-data. */
+        void saveCurrentItems();
 
         /** Cleanups items. */
         void cleanupItems();

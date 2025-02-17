@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 108357 2025-02-13 14:19:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.h 108434 2025-02-17 20:11:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -399,9 +399,9 @@ public:
         void setSelectorWindowToolBarTextVisible(bool fVisible);
 
         /** Returns last selected tool set of VirtualBox Manager. */
-        QList<UIToolType> toolsPaneLastItemsChosen();
+        void toolsPaneLastItemsChosen(UIToolType &enmTypeGlobal, UIToolType &enmTypeMachine);
         /** Defines last selected tool @a set of VirtualBox Manager. */
-        void setToolsPaneLastItemsChosen(const QList<UIToolType> &set);
+        void setToolsPaneLastItemsChosen(UIToolType enmTypeGlobal, UIToolType enmTypeMachine);
         /** Returns the list of detached tools of VirtualBox Manager. */
         QList<UIToolType> detachedTools();
         /** Defines the list of detached @a tools of VirtualBox Manager. */
