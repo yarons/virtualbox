@@ -1,4 +1,4 @@
-/* $Id: IEMAll-x86.cpp 108412 2025-02-17 00:13:38Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll-x86.cpp 108413 2025-02-17 00:18:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - x86 target, miscellaneous.
  */
@@ -40,7 +40,6 @@
 #include "IEMInternal.h"
 #include <VBox/vmm/vmcc.h>
 #include <VBox/log.h>
-#include <VBox/err.h>
 #include <VBox/param.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>

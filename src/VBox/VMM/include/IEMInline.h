@@ -1,4 +1,4 @@
-/* $Id: IEMInline.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInline.h 108413 2025-02-17 00:18:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Inlined Functions.
  */
@@ -31,6 +31,7 @@
 # pragma once
 #endif
 
+#include <VBox/err.h>
 
 
 /**
