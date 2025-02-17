@@ -1,6 +1,6 @@
-/* $Id: IEMAllMemRWTmplInline.cpp.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllMemRWTmplInline-x86.cpp.h 108429 2025-02-17 16:07:45Z knut.osmundsen@oracle.com $ */
 /** @file
- * IEM - Interpreted Execution Manager - Inlined R/W Memory Functions Template.
+ * IEM - Interpreted Execution Manager - Inlined R/W Memory Functions Template, x86 target.
  */
 
 /*
