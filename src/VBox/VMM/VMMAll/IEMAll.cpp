@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 108415 2025-02-17 00:34:56Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 108416 2025-02-17 00:40:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -110,11 +110,6 @@
  *      - Level 3: Linux.
  */
 
-/* Disabled warning C4505: 'iemRaisePageFaultJmp' : unreferenced local function has been removed */
-#ifdef _MSC_VER
-# pragma warning(disable:4505)
-#endif
-
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
@@ -162,20 +157,7 @@
 #include <iprt/x86.h>
 
 #include "IEMInline.h"
-#ifdef VBOX_VMM_TARGET_X86
-# include "target-x86/IEMAllTlbInline-x86.h"
-#endif
 
-
-/*********************************************************************************************************************************
-*   Global Variables                                                                                                             *
-*********************************************************************************************************************************/
-#if defined(IEM_LOG_MEMORY_WRITES)
-/** What IEM just wrote. */
-uint8_t g_abIemWrote[256];
-/** How much IEM just wrote. */
-size_t g_cbIemWrote;
-#endif
 
 
 /**
