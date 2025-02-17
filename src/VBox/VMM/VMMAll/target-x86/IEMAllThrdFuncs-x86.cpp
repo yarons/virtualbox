@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdFuncs-x86.cpp 108370 2025-02-13 16:26:48Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdFuncs-x86.cpp 108427 2025-02-17 15:24:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, Threaded Functions, x86 target.
  */
@@ -70,6 +70,8 @@
 #include <iprt/x86.h>
 
 #include "IEMInline.h"
+#include "IEMInline-x86.h"
+#include "IEMInlineMem-x86.h"
 #include "IEMMc.h"
 
 #include "IEMThreadedFunctions.h"

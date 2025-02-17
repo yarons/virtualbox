@@ -1,4 +1,4 @@
-/* $Id: IEMAllOpcodeFetch-x86.cpp 108413 2025-02-17 00:18:01Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllOpcodeFetch-x86.cpp 108427 2025-02-17 15:24:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -43,13 +43,13 @@
 #include <VBox/log.h>
 #include <VBox/param.h>
 #include <iprt/assert.h>
+#include <iprt/errcore.h>
 #include <iprt/string.h>
 #include <iprt/x86.h>
 
 #include "IEMInline.h"
-#ifdef VBOX_VMM_TARGET_X86
-# include "IEMAllTlbInline-x86.h"
-#endif
+#include "IEMInline-x86.h"
+#include "IEMAllTlbInline-x86.h"
 
 
 #ifndef IEM_WITH_CODE_TLB

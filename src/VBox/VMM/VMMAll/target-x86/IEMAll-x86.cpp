@@ -1,4 +1,4 @@
-/* $Id: IEMAll-x86.cpp 108413 2025-02-17 00:18:01Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll-x86.cpp 108427 2025-02-17 15:24:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - x86 target, miscellaneous.
  */
@@ -42,10 +42,11 @@
 #include <VBox/log.h>
 #include <VBox/param.h>
 #include <iprt/assert.h>
+#include <iprt/errcore.h>
 #include <iprt/string.h>
 #include <iprt/x86.h>
 
-#include "IEMInline.h"
+#include "IEMInline-x86.h" /* iemRegFinishClearingRF */
 
 
 /**

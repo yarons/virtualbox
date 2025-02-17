@@ -1,4 +1,4 @@
-/* $Id: IEMAllMem-x86.cpp 108399 2025-02-14 21:32:17Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllMem-x86.cpp 108427 2025-02-17 15:24:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - x86 target, memory.
  */
@@ -47,6 +47,8 @@
 #include <iprt/x86.h>
 
 #include "IEMInline.h"
+#include "IEMInline-x86.h"
+#include "IEMInlineMem-x86.h"
 #include "IEMAllTlbInline-x86.h"
 
 

@@ -1,4 +1,4 @@
-/* $Id: IEMAllXcpt-x86.cpp 108415 2025-02-17 00:34:56Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllXcpt-x86.cpp 108427 2025-02-17 15:24:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - x86 target, exceptions & interrupts.
  */
@@ -36,17 +36,10 @@
 #endif
 #include <VBox/vmm/iem.h>
 #include <VBox/vmm/cpum.h>
-#include <VBox/vmm/pdmapic.h>
-#include <VBox/vmm/pdm.h>
-#include <VBox/vmm/pgm.h>
-#include <VBox/vmm/iom.h>
 #include <VBox/vmm/em.h>
-#include <VBox/vmm/hm.h>
-#include <VBox/vmm/nem.h>
+#include <VBox/vmm/pdm.h>
 #include <VBox/vmm/gcm.h>
-#include <VBox/vmm/gim.h>
 #ifdef VBOX_WITH_NESTED_HWVIRT_SVM
-# include <VBox/vmm/em.h>
 # include <VBox/vmm/hm_svm.h>
 #endif
 #ifdef VBOX_WITH_NESTED_HWVIRT_VMX
@@ -60,18 +53,11 @@
 #include <VBox/log.h>
 #include <VBox/err.h>
 #include <VBox/param.h>
-#include <VBox/dis.h>
-#include <iprt/asm-math.h>
-#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
-# include <iprt/asm-amd64-x86.h>
-#elif defined(RT_ARCH_ARM64) || defined(RT_ARCH_ARM32)
-# include <iprt/asm-arm.h>
-#endif
 #include <iprt/assert.h>
 #include <iprt/string.h>
 #include <iprt/x86.h>
 
-#include "IEMInline.h"
+#include "IEMInline-x86.h"
 
 
 /*********************************************************************************************************************************

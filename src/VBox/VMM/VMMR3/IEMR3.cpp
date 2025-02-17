@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 108350 2025-02-12 15:35:15Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMR3.cpp 108427 2025-02-17 15:24:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -60,6 +60,9 @@
 # include "IEMN8veRecompiler.h"
 # include "IEMThreadedFunctions.h"
 # include "IEMInline.h"
+# ifdef VBOX_VMM_TARGET_X86
+#  include "VMMAll/target-x86/IEMInline-x86.h"
+# endif
 #endif
 
 

@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl-x86.cpp 108361 2025-02-13 15:18:18Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImpl-x86.cpp 108427 2025-02-17 15:24:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in C/C++, x86 target.
  */
@@ -38,16 +38,11 @@
 #include <VBox/vmm/iem.h>
 #include <VBox/vmm/cpum.h>
 #include <VBox/vmm/pdmapic.h>
-#include <VBox/vmm/pdm.h>
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/iom.h>
 #include <VBox/vmm/em.h>
-#include <VBox/vmm/hm.h>
-#include <VBox/vmm/nem.h>
-#include <VBox/vmm/gim.h>
 #include <VBox/vmm/gcm.h>
 #ifdef VBOX_WITH_NESTED_HWVIRT_SVM
-# include <VBox/vmm/em.h>
 # include <VBox/vmm/hm_svm.h>
 #endif
 #ifdef VBOX_WITH_NESTED_HWVIRT_VMX
@@ -64,13 +59,13 @@
 #include <VBox/log.h>
 #include <VBox/err.h>
 #include <VBox/param.h>
-#include <VBox/dis.h>
-#include <iprt/asm-math.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>
 #include <iprt/x86.h>
 
 #include "IEMInline.h"
+#include "IEMInline-x86.h"
+#include "IEMInlineMem-x86.h"
 
 
 /*********************************************************************************************************************************

@@ -1,4 +1,4 @@
-/* $Id: IEMAllExec-x86.cpp 108386 2025-02-14 11:40:20Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllExec-x86.cpp 108427 2025-02-17 15:24:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - x86 target, decoded instruction execution.
  */
@@ -49,6 +49,7 @@
 #include <iprt/x86.h>
 
 #include "IEMInline.h"
+#include "IEMInline-x86.h"
 
 
 /**

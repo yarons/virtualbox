@@ -1,4 +1,4 @@
-/* $Id: IEMAllIntprTables-x86.h 108371 2025-02-13 16:28:16Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllIntprTables-x86.h 108427 2025-02-17 15:24:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, x86 target, Interpreter Tables Common Header.
  */
@@ -77,6 +77,9 @@
 
 #ifndef TST_IEM_CHECK_MC
 # include "IEMInline.h"
+# include "IEMInline-x86.h"
+# include "IEMInlineDecode-x86.h"
+# include "IEMInlineMem-x86.h"
 # include "IEMOpHlp.h"
 # include "IEMMc.h"
 #endif

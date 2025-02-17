@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdFuncsBltIn.cpp 108360 2025-02-13 14:57:25Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdFuncsBltIn.cpp 108427 2025-02-17 15:24:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, Built-in Threaded Functions.
  *
@@ -70,6 +70,9 @@
 #include <iprt/x86.h>
 
 #include "IEMInline.h"
+#ifdef VBOX_VMM_TARGET_X86
+# include "target-x86/IEMInline-x86.h"
+#endif
 
 
 

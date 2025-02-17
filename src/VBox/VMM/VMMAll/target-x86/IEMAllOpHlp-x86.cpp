@@ -1,4 +1,4 @@
-/* $Id: IEMAllOpHlp-x86.cpp 108410 2025-02-16 22:34:34Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllOpHlp-x86.cpp 108427 2025-02-17 15:24:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - x86 target, opcode decoding helpers.
  */
@@ -45,7 +45,7 @@
 #include <iprt/string.h>
 #include <iprt/x86.h>
 
-#include "IEMInline.h"
+#include "IEMInlineDecode-x86.h"
 
 
 

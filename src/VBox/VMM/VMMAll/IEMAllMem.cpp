@@ -1,4 +1,4 @@
-/* $Id: IEMAllMem.cpp 108417 2025-02-17 01:01:56Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllMem.cpp 108427 2025-02-17 15:24:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Common Memory Routines.
  */
@@ -49,6 +49,7 @@
 
 #include "IEMInline.h"
 #ifdef VBOX_VMM_TARGET_X86
+# include "target-x86/IEMInline-x86.h" /* not really required. sigh. */
 # include "target-x86/IEMAllTlbInline-x86.h"
 #endif
 
