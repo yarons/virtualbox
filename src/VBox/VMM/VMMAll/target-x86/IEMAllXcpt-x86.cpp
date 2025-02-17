@@ -1,4 +1,4 @@
-/* $Id: IEMAllXcpt-x86.cpp 108386 2025-02-14 11:40:20Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllXcpt-x86.cpp 108415 2025-02-17 00:34:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - x86 target, exceptions & interrupts.
  */
@@ -88,16 +88,6 @@ typedef enum IEMXCPTCLASS
     IEMXCPTCLASS_DOUBLE_FAULT
 } IEMXCPTCLASS;
 
-
-/*********************************************************************************************************************************
-*   Global Variables                                                                                                             *
-*********************************************************************************************************************************/
-#if defined(IEM_LOG_MEMORY_WRITES)
-/** What IEM just wrote. */
-uint8_t g_abIemWrote[256];
-/** How much IEM just wrote. */
-size_t g_cbIemWrote;
-#endif
 
 
 /** @name  Misc Worker Functions.
