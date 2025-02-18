@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialog.h 108231 2025-02-05 17:22:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialog.h 108439 2025-02-18 09:55:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class declaration.
  */
@@ -235,6 +235,11 @@ private:
         /** Cleanups all. */
         void cleanup();
     /** @} */
+
+    /** Handles request to close dialog as QWidget, not QWindow.
+      * No need for QWindow destruction functionality.
+      * Parent will handle destruction itself. */
+    void tellListenerToCloseUs();
 
     /** Adjusts look&feel for disabled widget.
       * @param  pWidget   Brings the widget to adjust look&feel for. */

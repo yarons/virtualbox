@@ -1,4 +1,4 @@
-﻿/* $Id: UIAdvancedSettingsDialog.cpp 108230 2025-02-05 16:08:19Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIAdvancedSettingsDialog.cpp 108439 2025-02-18 09:55:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class implementation.
  */
@@ -813,7 +813,7 @@ void UIAdvancedSettingsDialog::accept()
 
     /* Close if last serialization haven't failed: */
     if (m_fSerializationClean)
-        sltClose();
+        tellListenerToCloseUs();
 }
 
 void UIAdvancedSettingsDialog::sltCategoryChanged(int cId)
@@ -1059,8 +1059,7 @@ void UIAdvancedSettingsDialog::closeEvent(QCloseEvent *pEvent)
     /* Ignore event initially: */
     pEvent->ignore();
 
-    /* Use pure QWidget close functionality,
-     * QWindow stuff is kind of overkill here.. */
+    /* Check whether it's safe and then close us: */
     sltClose();
 }
 
@@ -1310,15 +1309,7 @@ void UIAdvancedSettingsDialog::sltClose()
      * or user agreed to forget them after all: */
     if (   !isSettingsChanged()
         || msgCenter().confirmSettingsDiscarding(this))
-    {
-        /* Tell the listener to close us (once): */
-        if (!m_fClosed)
-        {
-            m_fClosed = true;
-            emit sigClose();
-            return;
-        }
-    }
+        tellListenerToCloseUs();
 }
 
 void UIAdvancedSettingsDialog::sltHandleValidityChange(UISettingsPageValidator *pValidator)
@@ -1621,6 +1612,16 @@ void UIAdvancedSettingsDialog::cleanup()
 
     /* Delete selector early! */
     delete m_pSelector;
+}
+
+void UIAdvancedSettingsDialog::tellListenerToCloseUs()
+{
+    /* Tell the listener to close us (once): */
+    if (!m_fClosed)
+    {
+        m_fClosed = true;
+        emit sigClose();
+    }
 }
 
 /* static */
