@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 107247 2024-12-02 10:36:49Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 108447 2025-02-18 15:46:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -92,10 +92,6 @@
 
 #ifndef IEM_WITH_DATA_TLB
 # error The data TLB must be enabled for the recompiler.
-#endif
-
-#ifndef IEM_WITH_SETJMP
-# error The setjmp approach must be enabled for the recompiler.
 #endif
 
 /** @todo eliminate this clang build hack. */

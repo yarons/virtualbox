@@ -1,4 +1,4 @@
-/* $Id: IEMInlineMem-x86.h 108429 2025-02-17 16:07:45Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInlineMem-x86.h 108447 2025-02-18 15:46:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Inlined Memory Functions, x86 target.
  */
@@ -136,7 +136,6 @@ DECLINLINE(VBOXSTRICTRC) iemMemSegCheckReadAccessEx(PVMCPUCC pVCpu, PCCPUMSELREG
 }
 
 
-#ifdef IEM_WITH_SETJMP
 
 /** @todo slim this down   */
 DECL_INLINE_THROW(RTGCPTR) iemMemApplySegmentToReadJmp(PVMCPUCC pVCpu, uint8_t iSegReg,
@@ -277,7 +276,6 @@ DECL_INLINE_THROW(RTGCPTR) iemMemApplySegmentToWriteJmp(PVMCPUCC pVCpu, uint8_t 
     iemRaiseGeneralProtectionFault0Jmp(pVCpu);
 }
 
-#endif /* IEM_WITH_SETJMP */
 
 /**
  * Fakes a long mode stack selector for SS = 0.

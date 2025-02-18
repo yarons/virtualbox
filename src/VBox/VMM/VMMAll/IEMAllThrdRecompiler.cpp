@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdRecompiler.cpp 108427 2025-02-17 15:24:14Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdRecompiler.cpp 108447 2025-02-18 15:46:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation.
  *
@@ -98,11 +98,6 @@
 #ifndef IEM_WITH_DATA_TLB
 # error The data TLB must be enabled for the recompiler.
 #endif
-
-#ifndef IEM_WITH_SETJMP
-# error The setjmp approach must be enabled for the recompiler.
-#endif
-
 
 
 /*********************************************************************************************************************************

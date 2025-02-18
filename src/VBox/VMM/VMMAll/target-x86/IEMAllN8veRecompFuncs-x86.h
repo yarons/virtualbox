@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompFuncs-x86.h 108437 2025-02-18 09:14:21Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompFuncs-x86.h 108447 2025-02-18 15:46:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler - Inlined Bits, x86 target.
  */
@@ -76,10 +76,6 @@
 
 #ifndef IEM_WITH_DATA_TLB
 # error The data TLB must be enabled for the recompiler.
-#endif
-
-#ifndef IEM_WITH_SETJMP
-# error The setjmp approach must be enabled for the recompiler.
 #endif
 
 

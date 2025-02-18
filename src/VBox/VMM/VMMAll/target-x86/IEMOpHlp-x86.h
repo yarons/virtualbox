@@ -1,4 +1,4 @@
-/* $Id: IEMOpHlp-x86.h 108428 2025-02-17 15:51:04Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMOpHlp-x86.h 108447 2025-02-18 15:46:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Opcode Helpers.
  */
@@ -653,12 +653,8 @@
      (   ((pVCpu->cpum.GstCtx.rip + IEM_GET_INSTR_LEN(pVCpu) + (a_offDisp)) >> GUEST_PAGE_SHIFT) \
       == (pVCpu->cpum.GstCtx.rip >> GUEST_PAGE_SHIFT))
 
-VBOXSTRICTRC    iemOpHlpCalcRmEffAddr(PVMCPUCC pVCpu, uint8_t bRm, uint32_t cbImmAndRspOffset, PRTGCPTR pGCPtrEff) RT_NOEXCEPT;
-VBOXSTRICTRC    iemOpHlpCalcRmEffAddrEx(PVMCPUCC pVCpu, uint8_t bRm, uint32_t cbImmAndRspOffset, PRTGCPTR pGCPtrEff, uint64_t *puInfo) RT_NOEXCEPT;
-#ifdef IEM_WITH_SETJMP
-RTGCPTR         iemOpHlpCalcRmEffAddrJmp(PVMCPUCC pVCpu, uint8_t bRm, uint32_t cbImmAndRspOffset) IEM_NOEXCEPT_MAY_LONGJMP;
-RTGCPTR         iemOpHlpCalcRmEffAddrJmpEx(PVMCPUCC pVCpu, uint8_t bRm, uint32_t cbImmAndRspOffset, uint64_t *puInfo) IEM_NOEXCEPT_MAY_LONGJMP;
-#endif
+RTGCPTR iemOpHlpCalcRmEffAddrJmp(PVMCPUCC pVCpu, uint8_t bRm, uint32_t cbImmAndRspOffset) IEM_NOEXCEPT_MAY_LONGJMP;
+RTGCPTR iemOpHlpCalcRmEffAddrJmpEx(PVMCPUCC pVCpu, uint8_t bRm, uint32_t cbImmAndRspOffset, uint64_t *puInfo) IEM_NOEXCEPT_MAY_LONGJMP;
 
 /** @}  */
 

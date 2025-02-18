@@ -1,4 +1,4 @@
-/* $Id: IEMAllMem.cpp 108427 2025-02-17 15:24:14Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllMem.cpp 108447 2025-02-18 15:46:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Common Memory Routines.
  */
@@ -599,7 +599,6 @@ void iemMemRollbackAndUnmap(PVMCPUCC pVCpu, uint8_t bUnmapInfo) RT_NOEXCEPT
     pVCpu->iem.s.cActiveMappings--;
 }
 
-#ifdef IEM_WITH_SETJMP
 
 /**
  * Commits the guest memory if bounce buffered and unmaps it, longjmp on error.
@@ -678,7 +677,6 @@ void iemMemRollbackAndUnmapWoSafe(PVMCPUCC pVCpu, uint8_t bUnmapInfo) RT_NOEXCEP
     iemMemRollbackAndUnmap(pVCpu, bUnmapInfo);
 }
 
-#endif /* IEM_WITH_SETJMP */
 
 #ifndef IN_RING3
 /**
