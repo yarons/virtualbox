@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 108292 2025-02-10 12:57:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPoolManager.cpp 108443 2025-02-18 11:59:31Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -4055,6 +4055,8 @@ void UIActionPoolManager::updateMenuFileTools()
 
     /* Populate 'File' / 'Tools' menu: */
     const bool fExpertMode = gEDataManager->isSettingsInExpertMode();
+    pMenu->addAction(action(UIActionIndexMN_M_File_M_Tools_T_HomeScreen));
+    pMenu->addAction(action(UIActionIndexMN_M_File_M_Tools_T_MachineManager));
     pMenu->addAction(action(UIActionIndexMN_M_File_M_Tools_T_ExtensionPackManager));
     if (fExpertMode)
     {
