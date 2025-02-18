@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsManagerWidget.cpp 108341 2025-02-12 12:15:35Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsManagerWidget.cpp 108441 2025-02-18 10:35:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsManagerWidget class implementation.
  */
@@ -38,6 +38,7 @@
 #include "UIToolPaneGlobal.h"
 #include "UIToolPaneMachine.h"
 #include "UITools.h"
+#include "UIVirtualBoxEventHandler.h"
 #include "UIVirtualBoxManagerAdvancedWidget.h"
 
 /* Other VBox includes: */
@@ -174,6 +175,14 @@ void UIGlobalToolsManagerWidget::sltHandleCommitData()
     cleanupConnections();
 }
 
+void UIGlobalToolsManagerWidget::sltHandleMachineRegistrationChanged(const QUuid &, const bool fRegistered)
+{
+    /* On any VM registered switch from Home to Machines: */
+    AssertPtrReturnVoid(toolMenu());
+    if (fRegistered && toolMenu()->toolsType() == UIToolType_Home)
+        setMenuToolType(UIToolType_Machines);
+}
+
 void UIGlobalToolsManagerWidget::sltHandleSettingsExpertModeChange()
 {
     /* Update tools restrictions: */
@@ -182,6 +191,7 @@ void UIGlobalToolsManagerWidget::sltHandleSettingsExpertModeChange()
 
 void UIGlobalToolsManagerWidget::sltHandleChooserPaneSelectionChange()
 {
+    /* Update tools restrictions: */
     updateToolsMenu();
 }
 
@@ -254,6 +264,8 @@ void UIGlobalToolsManagerWidget::prepareConnections()
             this, &UIGlobalToolsManagerWidget::sltHandleCommitData);
 
     /* Global COM event handlers: */
+    connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigMachineRegistered,
+            this, &UIGlobalToolsManagerWidget::sltHandleMachineRegistrationChanged);
     connect(gEDataManager, &UIExtraDataManager::sigSettingsExpertModeChange,
             this, &UIGlobalToolsManagerWidget::sltHandleSettingsExpertModeChange);
 

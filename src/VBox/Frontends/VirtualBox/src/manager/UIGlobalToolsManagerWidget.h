@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsManagerWidget.h 108341 2025-02-12 12:15:35Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsManagerWidget.h 108441 2025-02-18 10:35:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsManagerWidget class declaration.
  */
@@ -117,6 +117,11 @@ private slots:
 
     /** @name COM event handling stuff.
       * @{ */
+        /** Handles signal about machine registration change.
+          * @param  uId          Brings [un]registered machine id.
+          * @param  fRegistered  Brings whether machine was registered, unregistered otherwise. */
+        void sltHandleMachineRegistrationChanged(const QUuid &uId, const bool fRegistered);
+
         /** Handles signal about settings expert mode change. */
         void sltHandleSettingsExpertModeChange();
     /** @} */
