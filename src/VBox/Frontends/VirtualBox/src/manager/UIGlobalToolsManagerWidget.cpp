@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsManagerWidget.cpp 108441 2025-02-18 10:35:52Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsManagerWidget.cpp 108446 2025-02-18 12:56:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsManagerWidget class implementation.
  */
@@ -75,7 +75,7 @@ UIMachineToolsManagerWidget *UIGlobalToolsManagerWidget::machineToolManager() co
 UIToolType UIGlobalToolsManagerWidget::menuToolType() const
 {
     AssertPtrReturn(toolMenu(), UIToolType_Invalid);
-    return toolMenu()->toolsType();
+    return toolMenu()->toolsType(UIToolClass_Global);
 }
 
 void UIGlobalToolsManagerWidget::setMenuToolType(UIToolType enmType)
@@ -179,7 +179,7 @@ void UIGlobalToolsManagerWidget::sltHandleMachineRegistrationChanged(const QUuid
 {
     /* On any VM registered switch from Home to Machines: */
     AssertPtrReturnVoid(toolMenu());
-    if (fRegistered && toolMenu()->toolsType() == UIToolType_Home)
+    if (fRegistered && toolMenu()->toolsType(UIToolClass_Global) == UIToolType_Home)
         setMenuToolType(UIToolType_Machines);
 }
 
@@ -287,7 +287,7 @@ void UIGlobalToolsManagerWidget::prepareConnections()
 void UIGlobalToolsManagerWidget::loadSettings()
 {
     /* Open tool last chosen in tools-menu: */
-    switchToolTo(toolMenu()->toolsType());
+    switchToolTo(toolMenu()->toolsType(UIToolClass_Global));
 
     /* Update tools restrictions: */
     updateToolsMenu();
@@ -345,7 +345,7 @@ void UIGlobalToolsManagerWidget::updateToolsMenu()
         restrictedTypes << UIToolType_Machines;
 
     /* Make sure no restricted tool is selected: */
-    if (restrictedTypes.contains(toolMenu()->toolsType()))
+    if (restrictedTypes.contains(toolMenu()->toolsType(UIToolClass_Global)))
         setMenuToolType(UIToolType_Home);
 
     /* Hide restricted tools in the menu: */

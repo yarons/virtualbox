@@ -1,4 +1,4 @@
-/* $Id: UITools.h 108380 2025-02-13 17:49:28Z sergey.dubov@oracle.com $ */
+/* $Id: UITools.h 108446 2025-02-18 12:56:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITools class declaration.
  */
@@ -74,8 +74,8 @@ public:
       * @{ */
         /** Defines current tools @a enmType. */
         void setToolsType(UIToolType enmType);
-        /** Returns current tools type. */
-        UIToolType toolsType() const;
+        /** Returns current tools type for the @a enmClass specified. */
+        UIToolType toolsType(UIToolClass enmClass) const;
 
         /** Defines whether tool items @a fEnabled. */
         void setItemsEnabled(bool fEnabled);
