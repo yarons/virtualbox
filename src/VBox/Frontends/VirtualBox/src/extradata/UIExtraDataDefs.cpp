@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 108357 2025-02-13 14:19:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataDefs.cpp 108442 2025-02-18 11:58:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -282,56 +282,35 @@ QMultiMap<QString, QString> UIExtraDataDefs::prepareObsoleteKeysMap()
 QMultiMap<QString, QString> UIExtraDataDefs::g_mapOfObsoleteKeys = UIExtraDataDefs::prepareObsoleteKeysMap();
 
 
-bool UIToolStuff::isTypeOfClass(UIToolType enmType, UIToolClass enmClass)
+UIToolClass UIToolStuff::castTypeToClass(UIToolType enmType)
 {
-    switch (enmClass)
+    switch (enmType)
     {
-        case UIToolClass_Aux:
-        {
-            switch (enmType)
-            {
-                case UIToolType_Toggle:
-                    return true;
-                default:
-                    break;
-            }
-            break;
-        }
-        case UIToolClass_Global:
-        {
-            switch (enmType)
-            {
-                case UIToolType_Home:
-                case UIToolType_Machines:
-                case UIToolType_Extensions:
-                case UIToolType_Media:
-                case UIToolType_Network:
-                case UIToolType_Cloud:
-                case UIToolType_CloudConsole:
-                case UIToolType_Activities:
-                    return true;
-                default:
-                    break;
-            }
-            break;
-        }
-        case UIToolClass_Machine:
-        {
-            switch (enmType)
-            {
-                case UIToolType_Details:
-                case UIToolType_Snapshots:
-                case UIToolType_Logs:
-                case UIToolType_VMActivity:
-                case UIToolType_FileManager:
-                    return true;
-                default:
-                    break;
-            }
-            break;
-        }
+        case UIToolType_Toggle:
+            return UIToolClass_Aux;
+        case UIToolType_Home:
+        case UIToolType_Machines:
+        case UIToolType_Extensions:
+        case UIToolType_Media:
+        case UIToolType_Network:
+        case UIToolType_Cloud:
+        case UIToolType_CloudConsole:
+        case UIToolType_Activities:
+            return UIToolClass_Global;
+        case UIToolType_Error:
+        case UIToolType_Details:
+        case UIToolType_Snapshots:
+        case UIToolType_Logs:
+        case UIToolType_VMActivity:
+        case UIToolType_FileManager:
+            return UIToolClass_Machine;
         default:
             break;
     }
-    return false;
+    return UIToolClass_Invalid;
+}
+
+bool UIToolStuff::isTypeOfClass(UIToolType enmType, UIToolClass enmClass)
+{
+    return castTypeToClass(enmType) == enmClass;
 }

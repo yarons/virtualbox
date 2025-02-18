@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 108357 2025-02-13 14:19:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataDefs.h 108442 2025-02-18 11:58:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -975,6 +975,8 @@ Q_DECLARE_METATYPE(UIToolType);
 /** Contains stuff related to tools handling. */
 namespace UIToolStuff
 {
+    /** Returns @a enmClass for passed @a enmType. */
+    SHARED_LIBRARY_STUFF UIToolClass castTypeToClass(UIToolType enmType);
     /** Returns whether passed @a enmType is of passed @a enmClass. */
     SHARED_LIBRARY_STUFF bool isTypeOfClass(UIToolType enmType, UIToolClass enmClass);
 }
