@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllN8vePython.py 108435 2025-02-17 21:20:49Z knut.osmundsen@oracle.com $
+# $Id: IEMAllN8vePython.py 108437 2025-02-18 09:14:21Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -34,7 +34,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 108435 $"
+__version__ = "$Revision: 108437 $"
 
 # Standard python imports:
 import copy;
@@ -109,23 +109,23 @@ g_dMcStmtThreaded = {
     'IEM_MC_REL_CALL_S64_AND_FINISH_THREADED_PC32_WITH_FLAGS':           (None, True,  True,  False, ), # @todo These should never be called - can't encode this
     'IEM_MC_REL_CALL_S64_AND_FINISH_THREADED_PC64_WITH_FLAGS':           (None, True,  True,  True,  ),
 
-    'IEM_MC_SET_RIP_U16_AND_FINISH_THREADED_PC16':                       (None, True,  True,  True,  ),
-    'IEM_MC_SET_RIP_U16_AND_FINISH_THREADED_PC32':                       (None, True,  True,  True,  ),
-    'IEM_MC_SET_RIP_U16_AND_FINISH_THREADED_PC64':                       (None, True,  True,  True,  ),
-    'IEM_MC_SET_RIP_U32_AND_FINISH_THREADED_PC16':                       (None, True,  True,  True,  ),
-    'IEM_MC_SET_RIP_U32_AND_FINISH_THREADED_PC32':                       (None, True,  True,  True,  ),
-    'IEM_MC_SET_RIP_U32_AND_FINISH_THREADED_PC64':                       (None, True,  True,  True,  ),
-    'IEM_MC_SET_RIP_U64_AND_FINISH_THREADED_PC32':                       (None, True,  True,  True,  ),
-    'IEM_MC_SET_RIP_U64_AND_FINISH_THREADED_PC64':                       (None, True,  True,  True,  ),
+    'IEM_MC_IND_JMP_U16_AND_FINISH_THREADED_PC16':                       (None, True,  True,  True,  ),
+    'IEM_MC_IND_JMP_U16_AND_FINISH_THREADED_PC32':                       (None, True,  True,  True,  ),
+    'IEM_MC_IND_JMP_U16_AND_FINISH_THREADED_PC64':                       (None, True,  True,  True,  ),
+    'IEM_MC_IND_JMP_U32_AND_FINISH_THREADED_PC16':                       (None, True,  True,  True,  ),
+    'IEM_MC_IND_JMP_U32_AND_FINISH_THREADED_PC32':                       (None, True,  True,  True,  ),
+    'IEM_MC_IND_JMP_U32_AND_FINISH_THREADED_PC64':                       (None, True,  True,  True,  ),
+    'IEM_MC_IND_JMP_U64_AND_FINISH_THREADED_PC32':                       (None, True,  True,  True,  ),
+    'IEM_MC_IND_JMP_U64_AND_FINISH_THREADED_PC64':                       (None, True,  True,  True,  ),
 
-    'IEM_MC_SET_RIP_U16_AND_FINISH_THREADED_PC16_WITH_FLAGS':            (None, True,  True,  True,  ),
-    'IEM_MC_SET_RIP_U16_AND_FINISH_THREADED_PC32_WITH_FLAGS':            (None, True,  True,  True,  ),
-    'IEM_MC_SET_RIP_U16_AND_FINISH_THREADED_PC64_WITH_FLAGS':            (None, True,  True,  True,  ),
-    'IEM_MC_SET_RIP_U32_AND_FINISH_THREADED_PC16_WITH_FLAGS':            (None, True,  True,  True,  ),
-    'IEM_MC_SET_RIP_U32_AND_FINISH_THREADED_PC32_WITH_FLAGS':            (None, True,  True,  True,  ),
-    'IEM_MC_SET_RIP_U32_AND_FINISH_THREADED_PC64_WITH_FLAGS':            (None, True,  True,  True,  ),
-    'IEM_MC_SET_RIP_U64_AND_FINISH_THREADED_PC32_WITH_FLAGS':            (None, True,  True,  True,  ),
-    'IEM_MC_SET_RIP_U64_AND_FINISH_THREADED_PC64_WITH_FLAGS':            (None, True,  True,  True,  ),
+    'IEM_MC_IND_JMP_U16_AND_FINISH_THREADED_PC16_WITH_FLAGS':            (None, True,  True,  True,  ),
+    'IEM_MC_IND_JMP_U16_AND_FINISH_THREADED_PC32_WITH_FLAGS':            (None, True,  True,  True,  ),
+    'IEM_MC_IND_JMP_U16_AND_FINISH_THREADED_PC64_WITH_FLAGS':            (None, True,  True,  True,  ),
+    'IEM_MC_IND_JMP_U32_AND_FINISH_THREADED_PC16_WITH_FLAGS':            (None, True,  True,  True,  ),
+    'IEM_MC_IND_JMP_U32_AND_FINISH_THREADED_PC32_WITH_FLAGS':            (None, True,  True,  True,  ),
+    'IEM_MC_IND_JMP_U32_AND_FINISH_THREADED_PC64_WITH_FLAGS':            (None, True,  True,  True,  ),
+    'IEM_MC_IND_JMP_U64_AND_FINISH_THREADED_PC32_WITH_FLAGS':            (None, True,  True,  True,  ),
+    'IEM_MC_IND_JMP_U64_AND_FINISH_THREADED_PC64_WITH_FLAGS':            (None, True,  True,  True,  ),
 
     'IEM_MC_IND_CALL_U16_AND_FINISH_THREADED_PC16':                      (None, True,  True,  True,  ),
     'IEM_MC_IND_CALL_U16_AND_FINISH_THREADED_PC32':                      (None, True,  True,  True,  ),

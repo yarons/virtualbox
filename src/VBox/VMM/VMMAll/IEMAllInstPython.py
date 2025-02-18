@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 108435 2025-02-17 21:20:49Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 108437 2025-02-18 09:14:21Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 108435 $"
+__version__ = "$Revision: 108437 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -3392,9 +3392,9 @@ g_dMcStmtParsers = {
     'IEM_MC_SAR_LOCAL_S64':                                      (McBlock.parseMcGeneric,           False, False, True,  ),
     'IEM_MC_SET_EFL_BIT':                                        (McBlock.parseMcGeneric,           True,  True,  True,  ),
     'IEM_MC_SET_FPU_RESULT':                                     (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_SET_RIP_U16_AND_FINISH':                             (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_SET_RIP_U32_AND_FINISH':                             (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_SET_RIP_U64_AND_FINISH':                             (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_IND_JMP_U16_AND_FINISH':                             (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_IND_JMP_U32_AND_FINISH':                             (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_IND_JMP_U64_AND_FINISH':                             (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_SHL_LOCAL_S16':                                      (McBlock.parseMcGeneric,           False, False, True,  ),
     'IEM_MC_SHL_LOCAL_S32':                                      (McBlock.parseMcGeneric,           False, False, True,  ),
     'IEM_MC_SHL_LOCAL_S64':                                      (McBlock.parseMcGeneric,           False, False, True,  ),
