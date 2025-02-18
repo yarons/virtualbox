@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 108336 2025-02-11 22:17:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 108444 2025-02-18 12:04:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -3605,6 +3605,47 @@ void UIVirtualBoxManager::updateActionsAppearance()
     /* Update action toggle states: */
     if (m_pWidget)
     {
+        switch (m_pWidget->currentGlobalTool())
+        {
+            case UIToolType_Home:
+            {
+                actionPool()->action(UIActionIndexMN_M_File_M_Tools_T_HomeScreen)->setChecked(true);
+                break;
+            }
+            case UIToolType_Machines:
+            {
+                actionPool()->action(UIActionIndexMN_M_File_M_Tools_T_MachineManager)->setChecked(true);
+                break;
+            }
+            case UIToolType_Extensions:
+            {
+                actionPool()->action(UIActionIndexMN_M_File_M_Tools_T_ExtensionPackManager)->setChecked(true);
+                break;
+            }
+            case UIToolType_Media:
+            {
+                actionPool()->action(UIActionIndexMN_M_File_M_Tools_T_VirtualMediaManager)->setChecked(true);
+                break;
+            }
+            case UIToolType_Network:
+            {
+                actionPool()->action(UIActionIndexMN_M_File_M_Tools_T_NetworkManager)->setChecked(true);
+                break;
+            }
+            case UIToolType_Cloud:
+            {
+                actionPool()->action(UIActionIndexMN_M_File_M_Tools_T_CloudProfileManager)->setChecked(true);
+                break;
+            }
+            case UIToolType_Activities:
+            {
+                actionPool()->action(UIActionIndexMN_M_File_M_Tools_T_VMActivityOverview)->setChecked(true);
+                break;
+            }
+            default:
+                break;
+        }
+
         switch (m_pWidget->currentMachineTool())
         {
             case UIToolType_Details:
