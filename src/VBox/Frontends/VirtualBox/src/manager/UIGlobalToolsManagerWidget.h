@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsManagerWidget.h 108441 2025-02-18 10:35:52Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsManagerWidget.h 108462 2025-02-19 13:18:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsManagerWidget class declaration.
  */
@@ -57,6 +57,9 @@ signals:
 
     /** @name Tools pane stuff.
       * @{ */
+        /** Notifies about required tool menu update. */
+        void sigToolMenuUpdate();
+
         /** Notifies about Tool type change. */
         void sigToolTypeChange();
     /** @} */
@@ -138,6 +141,9 @@ private slots:
 
     /** @name Tools pane stuff.
       * @{ */
+        /** Handles request for tools menu update. */
+        void sltHandleToolMenuUpdate();
+
         /** Handles signal about Tools-menu index change.
           * @param  enmType  Brings current tool type. */
         void sltHandleToolsMenuIndexChange(UIToolType enmType);
@@ -171,9 +177,6 @@ private:
         UIChooser *chooser() const;
         /** Returns Machine Tool Manager's Tool-pane instance. */
         UIToolPaneMachine *toolPaneMachine() const;
-
-        /** Updates tools menu. */
-        void updateToolsMenu();
     /** @} */
 
     /** Holds the action-pool instance. */
