@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 108446 2025-02-18 12:56:35Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.cpp 108454 2025-02-19 10:47:16Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -70,7 +70,6 @@ void UIToolsModel::init()
 {
     /* Update linked values: */
     updateLayout();
-    updateNavigation();
     sltItemMinimumWidthHintChanged();
     sltItemMinimumHeightHintChanged();
 
@@ -142,7 +141,6 @@ void UIToolsModel::setRestrictedToolTypes(const QList<UIToolType> &types)
 
         /* Update linked values: */
         updateLayout();
-        updateNavigation();
         sltItemMinimumWidthHintChanged();
         sltItemMinimumHeightHintChanged();
     }
@@ -204,28 +202,6 @@ void UIToolsModel::setCurrentItem(UIToolsItem *pItem)
 UIToolsItem *UIToolsModel::currentItem(UIToolClass enmClass) const
 {
     return m_mapCurrentItems.value(enmClass);
-}
-
-const QList<UIToolsItem*> &UIToolsModel::navigationList() const
-{
-    return m_navigationList;
-}
-
-void UIToolsModel::removeFromNavigationList(UIToolsItem *pItem)
-{
-    AssertMsg(pItem, ("Passed item is invalid!"));
-    m_navigationList.removeAll(pItem);
-}
-
-void UIToolsModel::updateNavigation()
-{
-    /* Clear list initially: */
-    m_navigationList.clear();
-
-    /* Enumerate the children: */
-    foreach (UIToolsItem *pItem, items())
-        if (pItem->isVisible())
-            m_navigationList << pItem;
 }
 
 QList<UIToolsItem*> UIToolsModel::items() const

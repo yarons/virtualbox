@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 108446 2025-02-18 12:56:35Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.h 108454 2025-02-19 10:47:16Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -147,16 +147,6 @@ public:
         UIToolsItem *currentItem(UIToolClass enmClass) const;
     /** @} */
 
-    /** @name Navigation stuff.
-      * @{ */
-        /** Returns navigation item list. */
-        const QList<UIToolsItem*> &navigationList() const;
-        /** Removes @a pItem from navigation list. */
-        void removeFromNavigationList(UIToolsItem *pItem);
-        /** Updates navigation list. */
-        void updateNavigation();
-    /** @} */
-
     /** @name Layout stuff.
       * @{ */
         /** Updates layout. */
@@ -268,12 +258,6 @@ private:
       * @{ */
         /** Holds the selected item map reference. */
         QMap<UIToolClass, QPointer<UIToolsItem> >  m_mapCurrentItems;
-    /** @} */
-
-    /** @name Navigation stuff.
-      * @{ */
-        /** Holds the navigation list. */
-        QList<UIToolsItem*>  m_navigationList;
     /** @} */
 };
 

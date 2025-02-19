@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.cpp 108446 2025-02-18 12:56:35Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsItem.cpp 108454 2025-02-19 10:47:16Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class definition.
  */
@@ -548,12 +548,6 @@ void UIToolsItem::cleanup()
     {
         /* Unset the current item: */
         model()->setCurrentItem(0);
-    }
-    /* If that item is in navigation list: */
-    if (model()->navigationList().contains(this))
-    {
-        /* Remove item from the navigation list: */
-        model()->removeFromNavigationList(this);
     }
 }
 
