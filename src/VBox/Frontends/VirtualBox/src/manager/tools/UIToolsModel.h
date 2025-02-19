@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 108460 2025-02-19 12:41:58Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.h 108466 2025-02-19 14:12:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -239,7 +239,7 @@ private:
         /** Holds whether items enabled. */
         bool  m_fItemsEnabled;
 
-        /** Holds a list of restricted tool types. */
+        /** Holds a map of restricted tool types. */
         QMap<UIToolClass, QList<UIToolType> >  m_mapRestrictedToolTypes;
     /** @} */
 

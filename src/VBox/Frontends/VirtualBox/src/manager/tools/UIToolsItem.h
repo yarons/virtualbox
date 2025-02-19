@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.h 108282 2025-02-09 19:49:08Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsItem.h 108466 2025-02-19 14:12:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class declaration.
  */
@@ -82,6 +82,13 @@ signals:
 
 public:
 
+    /** Hiding reasons. */
+    enum HidingReason
+    {
+        HidingReason_Null       = 0,
+        HidingReason_Restricted = RT_BIT(0),
+    };
+
     /** Constructs item on the basis of passed arguments.
       * @param  pScene        Brings the scene reference to add item to.
       * @param  icon          Brings the item icon.
@@ -112,6 +119,9 @@ public:
 
         /** Defines whether item is @a fEnabled. */
         void setEnabled(bool fEnabled);
+
+        /** Defines whether item is @a fHidden by the @a enmReason. */
+        void setHiddenByReason(bool fHidden, HidingReason enmReason);
 
         /** Returns whether item is hovered. */
         bool isHovered() const { return m_fHovered; }
@@ -261,6 +271,9 @@ private:
         QPixmap  m_pixmap;
         /** Holds the item name font. */
         QFont    m_nameFont;
+
+        /** Holds the hiding reason. */
+        HidingReason  m_enmReason;
 
         /** Holds whether item is hovered. */
         bool                m_fHovered;
