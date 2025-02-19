@@ -1,4 +1,4 @@
-/* $Id: svcmain.cpp 108471 2025-02-19 15:30:47Z andreas.loeffler@oracle.com $ */
+/* $Id: svcmain.cpp 108472 2025-02-19 15:52:39Z andreas.loeffler@oracle.com $ */
 /** @file
  * SVCMAIN - COM out-of-proc server main entry
  */
@@ -953,6 +953,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPSTR /*lpC
         { "--registervbox", 'b',    RTGETOPT_REQ_NOTHING | RTGETOPT_FLAG_ICASE },
         { "-registervbox",  'b',    RTGETOPT_REQ_NOTHING | RTGETOPT_FLAG_ICASE },
         { "/registervbox",  'b',    RTGETOPT_REQ_NOTHING | RTGETOPT_FLAG_ICASE },
+        { "--version",      'V',    RTGETOPT_REQ_NOTHING | RTGETOPT_FLAG_ICASE },
+        { "-version",       'V',    RTGETOPT_REQ_NOTHING | RTGETOPT_FLAG_ICASE },
+        { "/version",       'V',    RTGETOPT_REQ_NOTHING | RTGETOPT_FLAG_ICASE },
     };
 
     bool            fRun = true;
