@@ -1,4 +1,4 @@
-/* $Id: UITools.cpp 108446 2025-02-18 12:56:35Z sergey.dubov@oracle.com $ */
+/* $Id: UITools.cpp 108460 2025-02-19 12:41:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITools class implementation.
  */
@@ -77,14 +77,9 @@ bool UITools::isItemsEnabled() const
     return m_pToolsModel->isItemsEnabled();
 }
 
-void UITools::setRestrictedToolTypes(const QList<UIToolType> &types)
+void UITools::setRestrictedToolTypes(UIToolClass enmClass, const QList<UIToolType> &types)
 {
-    m_pToolsModel->setRestrictedToolTypes(types);
-}
-
-QList<UIToolType> UITools::restrictedToolTypes() const
-{
-    return m_pToolsModel->restrictedToolTypes();
+    m_pToolsModel->setRestrictedToolTypes(enmClass, types);
 }
 
 void UITools::prepare()

@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsManagerWidget.cpp 108446 2025-02-18 12:56:35Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsManagerWidget.cpp 108460 2025-02-19 12:41:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsManagerWidget class implementation.
  */
@@ -350,7 +350,7 @@ void UIGlobalToolsManagerWidget::updateToolsMenu()
 
     /* Hide restricted tools in the menu: */
     const QList restrictions(restrictedTypes.begin(), restrictedTypes.end());
-    toolMenu()->setRestrictedToolTypes(restrictions);
+    toolMenu()->setRestrictedToolTypes(UIToolClass_Global, restrictions);
 
     /* Close all restricted tools (besides the Machines): */
     foreach (const UIToolType &enmRestrictedType, restrictedTypes)
