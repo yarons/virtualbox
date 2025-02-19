@@ -1,4 +1,4 @@
-/* $Id: IEMInternal-x86.h 108447 2025-02-18 15:46:53Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal-x86.h 108469 2025-02-19 15:17:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file, x86 target specifics.
  */
@@ -2382,6 +2382,14 @@ IEM_DECL_IMPL_PROTO(uint32_t, iemAImpl_vcvtpd2dq_u128_u256_fallback,(uint32_t uM
 
 /** @name Misc Helpers
  * @{  */
+
+/** @def IEM_GET_INSTR_LEN
+ * Gets the instruction length. */
+#ifdef IEM_WITH_CODE_TLB
+# define IEM_GET_INSTR_LEN(a_pVCpu)         ((a_pVCpu)->iem.s.offInstrNextByte - (uint32_t)(int32_t)(a_pVCpu)->iem.s.offCurInstrStart)
+#else
+# define IEM_GET_INSTR_LEN(a_pVCpu)         ((a_pVCpu)->iem.s.offOpcode)
+#endif
 
 /**
  * Gets the CPU mode (from fExec) as a IEMMODE value.
