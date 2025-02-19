@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-list" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2024-09-16 16:03:52 +0200 (Mon, 16 Sep 2024) $</pubdate>
+    <pubdate>$Date: 2025-02-19 15:57:02 +0100 (Wed, 19 Feb 2025) $</pubdate>
     <title>VBoxManage list</title>
   </refentryinfo>
 
@@ -213,7 +213,7 @@
       <para>
         Команда <command>VBoxManage list extpacks</command> показывает
         все пакеты расширения &product-name;, установленные в системе
-        на данный момент. Смотрите <xref linkend="intro-installing"/> и
+        на данный момент. Смотрите <xref linkend="install-ext-pack"/> и
         <xref linkend="vboxmanage-extpack"/>.
       </para>
     </refsect2>
