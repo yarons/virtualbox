@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1.cpp 108193 2025-02-04 06:01:30Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1.cpp 108450 2025-02-19 09:28:41Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Testcase for ARMv8 A64
  */
@@ -178,7 +178,7 @@ static void testDisas(const char *pszSub, uint8_t const *pabInstrs, uintptr_t uE
     int rc = RTScriptLexCreateFromReader(&hLexSource, testDisasmLexerRead,
                                          NULL /*pfnDtor*/, &Rdr /*pvUser*/, cbSrc,
                                          NULL /*phStrCacheId*/, NULL /*phStrCacheStringLit*/,
-                                         &s_LexCfg);
+                                         NULL /*phStrCacheComments*/, &s_LexCfg);
     RTTESTI_CHECK_RC(rc, VINF_SUCCESS);
     if (RT_FAILURE(rc))
         return; /* Can't do our work if this fails. */
@@ -232,7 +232,8 @@ static void testDisas(const char *pszSub, uint8_t const *pabInstrs, uintptr_t uE
                 /* Build the lexer and compare that it semantically is equal to the source input. */
                 RTSCRIPTLEX hLexDis = NULL;
                 rc = RTScriptLexCreateFromString(&hLexDis, szOutput, NULL /*phStrCacheId*/,
-                                                 NULL /*phStrCacheStringLit*/, &s_LexCfg);
+                                                 NULL /*phStrCacheStringLit*/, NULL /*phStrCacheComments*/,
+                                                 &s_LexCfg);
                 RTTESTI_CHECK_RC(rc, VINF_SUCCESS);
                 if (RT_SUCCESS(rc))
                 {
@@ -489,13 +490,14 @@ static void testDisasComplianceAgaistCapstone(void)
                 rc = RTScriptLexCreateFromReader(&hLexCapstone, testDisasmLexerRead,
                                                  NULL /*pfnDtor*/, &Rdr /*pvUser*/, 0 /*cchBuf*/,
                                                  NULL /*phStrCacheId*/, NULL /*phStrCacheStringLit*/,
-                                                 &s_LexCfg);
+                                                 NULL /*phStrCacheComments*/, &s_LexCfg);
                 RTTESTI_CHECK_RC(rc, VINF_SUCCESS);
 
                 /* Build the lexer and compare that it semantically is equal to the source input. */
                 RTSCRIPTLEX hLexDis = NULL;
                 rc = RTScriptLexCreateFromString(&hLexDis, szOutput, NULL /*phStrCacheId*/,
-                                                 NULL /*phStrCacheStringLit*/, &s_LexCfg);
+                                                 NULL /*phStrCacheStringLit*/, NULL /*phStrCacheComments*/,
+                                                 &s_LexCfg);
                 RTTESTI_CHECK_RC(rc, VINF_SUCCESS);
                 if (RT_SUCCESS(rc))
                 {

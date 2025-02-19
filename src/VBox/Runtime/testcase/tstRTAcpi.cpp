@@ -1,4 +1,4 @@
-/* $Id: tstRTAcpi.cpp 108268 2025-02-07 14:05:39Z alexander.eichner@oracle.com $ */
+/* $Id: tstRTAcpi.cpp 108450 2025-02-19 09:28:41Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT Testcase - ACPI API.
  */
@@ -163,7 +163,7 @@ static void tstAcpiVerifySemantic(RTTEST hTest, RTVFSFILE hVfsFileAslSrc, RTVFSF
     int rc = RTScriptLexCreateFromReader(&hLexAslSrc, tstRtAcpiAslLexerRead,
                                          NULL /*pfnDtor*/, hVfsFileAslSrc /*pvUser*/, 0 /*cchBuf*/,
                                          NULL /*phStrCacheId*/, NULL /*phStrCacheStringLit*/,
-                                         &s_AslLexCfg);
+                                         NULL /*phStrCacheComments*/, &s_AslLexCfg);
     RTTESTI_CHECK_RC(rc, VINF_SUCCESS);
     if (RT_FAILURE(rc))
         return; /* Can't do our work if this fails. */
@@ -172,7 +172,7 @@ static void tstAcpiVerifySemantic(RTTEST hTest, RTVFSFILE hVfsFileAslSrc, RTVFSF
     rc = RTScriptLexCreateFromReader(&hLexAslOut, tstRtAcpiAslLexerRead,
                                      NULL /*pfnDtor*/, hVfsFileAslOut /*pvUser*/, 0 /*cchBuf*/,
                                      NULL /*phStrCacheId*/, NULL /*phStrCacheStringLit*/,
-                                     &s_AslLexCfg);
+                                     NULL /*phStrCacheComments*/, &s_AslLexCfg);
     RTTESTI_CHECK_RC(rc, VINF_SUCCESS);
     if (RT_FAILURE(rc))
     {

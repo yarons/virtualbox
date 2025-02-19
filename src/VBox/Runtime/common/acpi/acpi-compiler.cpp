@@ -1,4 +1,4 @@
-/* $Id: acpi-compiler.cpp 108402 2025-02-16 14:24:41Z alexander.eichner@oracle.com $ */
+/* $Id: acpi-compiler.cpp 108450 2025-02-19 09:28:41Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Advanced Configuration and Power Interface (ACPI) Table generation API.
  */
@@ -2981,7 +2981,7 @@ DECLHIDDEN(int) rtAcpiTblConvertFromAslToAml(RTVFSIOSTREAM hVfsIosOut, RTVFSIOST
             rc = RTScriptLexCreateFromReader(&pThis->hLexSource, rtAcpiAslLexerRead,
                                              NULL /*pfnDtor*/, pThis /*pvUser*/, 0 /*cchBuf*/,
                                              NULL /*phStrCacheId*/, NULL /*phStrCacheStringLit*/,
-                                             &s_AslLexCfg);
+                                             NULL /*phStrCacheComments*/, &s_AslLexCfg);
             if (RT_SUCCESS(rc))
             {
                 rc = rtAcpiTblAslParserParse(pThis);
