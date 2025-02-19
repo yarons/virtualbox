@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 108447 2025-02-18 15:46:53Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 108458 2025-02-19 11:35:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -8772,7 +8772,7 @@ iemNativeEmitCallCommon(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t cAr
      */
     /** @todo Make the python script check that arguments aren't used after
      *        IEM_MC_CALL_XXXX. */
-    /** @todo There is a special with IEM_MC_MEM_MAP_U16_RW and friends requiring
+    /** @todo There is a special with IEM_MC_MEM_SEG_MAP_U16_RW and friends requiring
      *        a IEM_MC_MEM_COMMIT_AND_UNMAP_RW after a AIMPL call typically with
      *        an argument value.  There is also some FPU stuff. */
     for (uint32_t i = cHiddenArgs; i < cArgs; i++)
