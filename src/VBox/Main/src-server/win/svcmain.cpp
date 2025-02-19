@@ -1,4 +1,4 @@
-/* $Id: svcmain.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: svcmain.cpp 108471 2025-02-19 15:30:47Z andreas.loeffler@oracle.com $ */
 /** @file
  * SVCMAIN - COM out-of-proc server main entry
  */
@@ -931,6 +931,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPSTR /*lpC
         { "--reregserver",  'f',    RTGETOPT_REQ_NOTHING | RTGETOPT_FLAG_ICASE },
         { "-reregserver",   'f',    RTGETOPT_REQ_NOTHING | RTGETOPT_FLAG_ICASE },
         { "/reregserver",   'f',    RTGETOPT_REQ_NOTHING | RTGETOPT_FLAG_ICASE },
+        { "--help",         'h',    RTGETOPT_REQ_NOTHING | RTGETOPT_FLAG_ICASE },
+        { "-help" ,         'h',    RTGETOPT_REQ_NOTHING | RTGETOPT_FLAG_ICASE },
+        { "/help",          'h',    RTGETOPT_REQ_NOTHING | RTGETOPT_FLAG_ICASE },
+        { "/?",             'h',    RTGETOPT_REQ_NOTHING | RTGETOPT_FLAG_ICASE },
         { "--helper",       'H',    RTGETOPT_REQ_STRING | RTGETOPT_FLAG_ICASE },
         { "-helper",        'H',    RTGETOPT_REQ_STRING | RTGETOPT_FLAG_ICASE },
         { "/helper",        'H',    RTGETOPT_REQ_STRING | RTGETOPT_FLAG_ICASE },
