@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 108458 2025-02-19 11:35:43Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 108459 2025-02-19 12:02:33Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 108458 $"
+__version__ = "$Revision: 108459 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -3123,56 +3123,56 @@ g_dMcStmtParsers = {
     'IEM_MC_FETCH_GREG_U8_ZX_U64':                               (McBlock.parseMcGeneric,           False, False, True,  ), # thrd var
     'IEM_MC_FETCH_GREG_PAIR_U32':                                (McBlock.parseMcGeneric,           False, False, False, ),
     'IEM_MC_FETCH_GREG_PAIR_U64':                                (McBlock.parseMcGeneric,           False, False, g_fNativeSimd),
-    'IEM_MC_FETCH_MEM_D80':                                      (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_FETCH_MEM_I16':                                      (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
-    'IEM_MC_FETCH_MEM_I16_DISP':                                 (McBlock.parseMcGeneric,           True,  True,  True,  ),
-    'IEM_MC_FETCH_MEM_I32':                                      (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
-    'IEM_MC_FETCH_MEM_I32_DISP':                                 (McBlock.parseMcGeneric,           True,  True,  True,  ),
-    'IEM_MC_FETCH_MEM_I64':                                      (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
-    'IEM_MC_FETCH_MEM_R32':                                      (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
-    'IEM_MC_FETCH_MEM_R64':                                      (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
-    'IEM_MC_FETCH_MEM_R80':                                      (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_FETCH_MEM_U128':                                     (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
-    'IEM_MC_FETCH_MEM_U128_ALIGN_SSE':                           (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
-    'IEM_MC_FETCH_MEM_U128_NO_AC':                               (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
-    'IEM_MC_FETCH_MEM_U128_AND_XREG_U128':                       (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_FETCH_MEM_U128_AND_XREG_U128_AND_RAX_RDX_U64':       (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_FETCH_MEM_U128_AND_XREG_U128_AND_EAX_EDX_U32_SX_U64':(McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_FETCH_MEM_U16':                                      (McBlock.parseMcGeneric,           True,  True,  True,  ),
-    'IEM_MC_FETCH_MEM_U16_DISP':                                 (McBlock.parseMcGeneric,           True,  True,  True,  ),
-    'IEM_MC_FETCH_MEM_U16_SX_U32':                               (McBlock.parseMcGeneric,           True,  True,  True,  ), # movsx
-    'IEM_MC_FETCH_MEM_U16_SX_U64':                               (McBlock.parseMcGeneric,           True,  True,  True,  ), # movsx
-    'IEM_MC_FETCH_MEM_U16_ZX_U32':                               (McBlock.parseMcGeneric,           True,  True,  True,  ), # movzx
-    'IEM_MC_FETCH_MEM_U16_ZX_U64':                               (McBlock.parseMcGeneric,           True,  True,  True,  ), # movzx
-    'IEM_MC_FETCH_MEM_U256':                                     (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
-    'IEM_MC_FETCH_MEM_U256_ALIGN_AVX':                           (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
-    'IEM_MC_FETCH_MEM_U256_NO_AC':                               (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
-    'IEM_MC_FETCH_MEM_U32':                                      (McBlock.parseMcGeneric,           True,  True,  True,  ),
-    'IEM_MC_FETCH_MEM_U32_DISP':                                 (McBlock.parseMcGeneric,           True,  True,  True,  ), #bounds only
-    'IEM_MC_FETCH_MEM_U32_SX_U64':                               (McBlock.parseMcGeneric,           True,  True,  True,  ), # movsx
-    'IEM_MC_FETCH_MEM_U32_ZX_U64':                               (McBlock.parseMcGeneric,           True,  True,  True,  ), # movzx
-    'IEM_MC_FETCH_MEM_U64':                                      (McBlock.parseMcGeneric,           True,  True,  True,  ),
-    'IEM_MC_FETCH_MEM_U64_ALIGN_U128':                           (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_FETCH_MEM_U8':                                       (McBlock.parseMcGeneric,           True,  True,  True,  ),
-    'IEM_MC_FETCH_MEM_U8_SX_U16':                                (McBlock.parseMcGeneric,           True,  True,  True,  ), # movsx
-    'IEM_MC_FETCH_MEM_U8_SX_U32':                                (McBlock.parseMcGeneric,           True,  True,  True,  ), # movsx
-    'IEM_MC_FETCH_MEM_U8_SX_U64':                                (McBlock.parseMcGeneric,           True,  True,  True,  ), # movsx
-    'IEM_MC_FETCH_MEM_U8_ZX_U16':                                (McBlock.parseMcGeneric,           True,  True,  True,  ), # movzx
-    'IEM_MC_FETCH_MEM_U8_ZX_U32':                                (McBlock.parseMcGeneric,           True,  True,  True,  ), # movzx
-    'IEM_MC_FETCH_MEM_U8_ZX_U64':                                (McBlock.parseMcGeneric,           True,  True,  True,  ), # movzx
-    'IEM_MC_FETCH_MEM_XMM':                                      (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_FETCH_MEM_XMM_ALIGN_SSE':                            (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
-    'IEM_MC_FETCH_MEM_XMM_NO_AC':                                (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
-    'IEM_MC_FETCH_MEM_XMM_ALIGN_SSE_AND_XREG_XMM':               (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_FETCH_MEM_XMM_NO_AC_AND_XREG_XMM':                   (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_FETCH_MEM_XMM_U32_AND_XREG_XMM':                     (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_FETCH_MEM_XMM_U64_AND_XREG_XMM':                     (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_FETCH_MEM_YMM':                                      (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_FETCH_MEM_YMM_ALIGN_AVX':                            (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_FETCH_MEM_YMM_NO_AC':                                (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
-    'IEM_MC_FETCH_MEM_YMM_NO_AC_AND_YREG_YMM':                   (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_FETCH_MEM16_U8':                                     (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_FETCH_MEM32_U8':                                     (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_FETCH_MEM_SEG_D80':                                  (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_FETCH_MEM_SEG_I16':                                  (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
+    'IEM_MC_FETCH_MEM_SEG_I16_DISP':                             (McBlock.parseMcGeneric,           True,  True,  True,  ),
+    'IEM_MC_FETCH_MEM_SEG_I32':                                  (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
+    'IEM_MC_FETCH_MEM_SEG_I32_DISP':                             (McBlock.parseMcGeneric,           True,  True,  True,  ),
+    'IEM_MC_FETCH_MEM_SEG_I64':                                  (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
+    'IEM_MC_FETCH_MEM_SEG_R32':                                  (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
+    'IEM_MC_FETCH_MEM_SEG_R64':                                  (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
+    'IEM_MC_FETCH_MEM_SEG_R80':                                  (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_FETCH_MEM_SEG_U128':                                 (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
+    'IEM_MC_FETCH_MEM_SEG_U128_ALIGN_SSE':                       (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
+    'IEM_MC_FETCH_MEM_SEG_U128_NO_AC':                           (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
+    'IEM_MC_FETCH_MEM_SEG_U128_AND_XREG_U128':                   (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_FETCH_MEM_SEG_U128_AND_XREG_U128_AND_RAX_RDX_U64':   (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_FETCH_MEM_SEG_U128_AND_XREG_U128_AND_EAX_EDX_U32_SX_U64':(McBlock.parseMcGeneric,       True,  True,  False, ),
+    'IEM_MC_FETCH_MEM_SEG_U16':                                  (McBlock.parseMcGeneric,           True,  True,  True,  ),
+    'IEM_MC_FETCH_MEM_SEG_U16_DISP':                             (McBlock.parseMcGeneric,           True,  True,  True,  ),
+    'IEM_MC_FETCH_MEM_SEG_U16_SX_U32':                           (McBlock.parseMcGeneric,           True,  True,  True,  ), # movsx
+    'IEM_MC_FETCH_MEM_SEG_U16_SX_U64':                           (McBlock.parseMcGeneric,           True,  True,  True,  ), # movsx
+    'IEM_MC_FETCH_MEM_SEG_U16_ZX_U32':                           (McBlock.parseMcGeneric,           True,  True,  True,  ), # movzx
+    'IEM_MC_FETCH_MEM_SEG_U16_ZX_U64':                           (McBlock.parseMcGeneric,           True,  True,  True,  ), # movzx
+    'IEM_MC_FETCH_MEM_SEG_U256':                                 (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
+    'IEM_MC_FETCH_MEM_SEG_U256_ALIGN_AVX':                       (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
+    'IEM_MC_FETCH_MEM_SEG_U256_NO_AC':                           (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
+    'IEM_MC_FETCH_MEM_SEG_U32':                                  (McBlock.parseMcGeneric,           True,  True,  True,  ),
+    'IEM_MC_FETCH_MEM_SEG_U32_DISP':                             (McBlock.parseMcGeneric,           True,  True,  True,  ), #bounds only
+    'IEM_MC_FETCH_MEM_SEG_U32_SX_U64':                           (McBlock.parseMcGeneric,           True,  True,  True,  ), # movsx
+    'IEM_MC_FETCH_MEM_SEG_U32_ZX_U64':                           (McBlock.parseMcGeneric,           True,  True,  True,  ), # movzx
+    'IEM_MC_FETCH_MEM_SEG_U64':                                  (McBlock.parseMcGeneric,           True,  True,  True,  ),
+    'IEM_MC_FETCH_MEM_SEG_U64_ALIGN_U128':                       (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_FETCH_MEM_SEG_U8':                                   (McBlock.parseMcGeneric,           True,  True,  True,  ),
+    'IEM_MC_FETCH_MEM_SEG_U8_SX_U16':                            (McBlock.parseMcGeneric,           True,  True,  True,  ), # movsx
+    'IEM_MC_FETCH_MEM_SEG_U8_SX_U32':                            (McBlock.parseMcGeneric,           True,  True,  True,  ), # movsx
+    'IEM_MC_FETCH_MEM_SEG_U8_SX_U64':                            (McBlock.parseMcGeneric,           True,  True,  True,  ), # movsx
+    'IEM_MC_FETCH_MEM_SEG_U8_ZX_U16':                            (McBlock.parseMcGeneric,           True,  True,  True,  ), # movzx
+    'IEM_MC_FETCH_MEM_SEG_U8_ZX_U32':                            (McBlock.parseMcGeneric,           True,  True,  True,  ), # movzx
+    'IEM_MC_FETCH_MEM_SEG_U8_ZX_U64':                            (McBlock.parseMcGeneric,           True,  True,  True,  ), # movzx
+    'IEM_MC_FETCH_MEM_SEG_XMM':                                  (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_FETCH_MEM_SEG_XMM_ALIGN_SSE':                        (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
+    'IEM_MC_FETCH_MEM_SEG_XMM_NO_AC':                            (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
+    'IEM_MC_FETCH_MEM_SEG_XMM_ALIGN_SSE_AND_XREG_XMM':           (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_FETCH_MEM_SEG_XMM_NO_AC_AND_XREG_XMM':               (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_FETCH_MEM_SEG_XMM_U32_AND_XREG_XMM':                 (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_FETCH_MEM_SEG_XMM_U64_AND_XREG_XMM':                 (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_FETCH_MEM_SEG_YMM':                                  (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_FETCH_MEM_SEG_YMM_ALIGN_AVX':                        (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_FETCH_MEM_SEG_YMM_NO_AC':                            (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
+    'IEM_MC_FETCH_MEM_SEG_YMM_NO_AC_AND_YREG_YMM':               (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_FETCH_MEM16_SEG_U8':                                 (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_FETCH_MEM32_SEG_U8':                                 (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_FETCH_MREG_U8':                                      (McBlock.parseMcGeneric,           False, False, False, ),
     'IEM_MC_FETCH_MREG_U16':                                     (McBlock.parseMcGeneric,           False, False, False, ),
     'IEM_MC_FETCH_MREG_U32':                                     (McBlock.parseMcGeneric,           False, False, False, ),
