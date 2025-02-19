@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsManagerWidget.h 108462 2025-02-19 13:18:11Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsManagerWidget.h 108464 2025-02-19 13:48:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsManagerWidget class declaration.
  */
@@ -47,6 +47,7 @@ class UIToolPaneGlobal;
 class UIToolPaneMachine;
 class UITools;
 class UIVirtualBoxManagerAdvancedWidget;
+class UIVirtualMachineItem;
 
 /** QWidget extension used as Global Tools Manager Widget instance. */
 class UIGlobalToolsManagerWidget : public QWidget
@@ -141,8 +142,10 @@ private slots:
 
     /** @name Tools pane stuff.
       * @{ */
-        /** Handles request for tools menu update. */
-        void sltHandleToolMenuUpdate();
+        /** Handles request for Global tools menu update. */
+        void sltHandleGlobalToolMenuUpdate();
+        /** Handles request for Machine tools menu update for the @a pItem specified. */
+        void sltHandleMachineToolMenuUpdate(UIVirtualMachineItem *pItem);
 
         /** Handles signal about Tools-menu index change.
           * @param  enmType  Brings current tool type. */
