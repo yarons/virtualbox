@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 108467 2025-02-19 14:44:11Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc.h 108470 2025-02-19 15:21:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX.
  */
@@ -42,17 +42,6 @@
 
 #define IEM_MC_BEGIN(a_fMcFlags, a_fCImplFlags) {
 #define IEM_MC_END()                            }
-
-/** Internal macro. */
-#define IEM_MC_RETURN_ON_FAILURE(a_Expr) \
-    do \
-    { \
-        VBOXSTRICTRC rcStrict2 = a_Expr; \
-        if (rcStrict2 == VINF_SUCCESS) \
-        { /* likely */ } \
-        else \
-            return rcStrict2; \
-    } while (0)
 
 
 /** Dummy MC that prevents native recompilation. */
