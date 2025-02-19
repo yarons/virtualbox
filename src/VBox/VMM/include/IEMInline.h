@@ -1,4 +1,4 @@
-/* $Id: IEMInline.h 108447 2025-02-18 15:46:53Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInline.h 108461 2025-02-19 13:07:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Inlined Functions, Common.
  */
@@ -36,6 +36,8 @@
 
 /* Documentation and forward declarations for target specific inline functions: */
 
+RT_NO_WARN_UNUSED_INLINE_PROTOTYPE_BEGIN
+
 /**
  * Calculates the the IEM_F_XXX flags.
  *
@@ -55,6 +57,7 @@ DECL_FORCE_INLINE(uint32_t) iemCalcExecFlags(PVMCPUCC pVCpu) RT_NOEXCEPT;
 DECLINLINE(void)            iemInitExecTargetStrict(PVMCPUCC pVCpu) RT_NOEXCEPT;
 #endif
 
+RT_NO_WARN_UNUSED_INLINE_PROTOTYPE_END
 
 
 /**
