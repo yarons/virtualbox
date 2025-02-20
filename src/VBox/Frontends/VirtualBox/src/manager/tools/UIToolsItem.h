@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.h 108479 2025-02-20 11:53:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsItem.h 108480 2025-02-20 12:54:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class declaration.
  */
@@ -270,8 +270,6 @@ private:
 
         /** Holds the item pixmap. */
         QPixmap  m_pixmap;
-        /** Holds the item name font. */
-        QFont    m_nameFont;
 
         /** Holds the hiding reason. */
         HidingReason  m_enmReason;
