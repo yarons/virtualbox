@@ -1,4 +1,4 @@
-/* $Id: xpidl_idl.c 108490 2025-02-20 18:45:24Z alexander.eichner@oracle.com $ */
+/* $Id: xpidl_idl.c 108491 2025-02-20 20:25:23Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox xpidl clone - IDL parsing.
  */
@@ -1048,6 +1048,15 @@ static int xpidlParseInterface(PXPIDLPARSE pThis, PXPIDLINPUT pInput, PXPIDLNODE
         if (fConsumed)
             XPIDL_PARSE_IDENTIFIER_EXT(pszIfInherit);
         XPIDL_PARSE_PUNCTUATOR('{');
+
+        PCXPIDLNODE pNdTypeRef = NULL;
+        if (pszIfInherit)
+        {
+            pNdTypeRef = xpidlParseFindType(pThis, pszIfInherit);
+            if (!pNdTypeRef)
+                return xpidlParseError(pThis, pInput, NULL, VERR_NOT_FOUND, "Unknown referenced type '%s'\n", pszName);
+        }
+
         /* Now for the fun part, parsing the body of the interface. */
         PXPIDLNODE pNode = xpidlNodeCreateWithAttrs(pThis, pParent, pInput, kXpidlNdType_Interface_Def,
                                                     &pThis->aAttrs[0], pThis->cAttrs);
@@ -1055,6 +1064,7 @@ static int xpidlParseInterface(PXPIDLPARSE pThis, PXPIDLINPUT pInput, PXPIDLNODE
         {
             pThis->cAttrs = 0;
 
+            pNode->pNdTypeRef        = pNdTypeRef;
             pNode->u.If.pszIfName    = pszName;
             pNode->u.If.pszIfInherit = pszIfInherit;
             RTListAppend(&pThis->LstNodes, &pNode->NdLst);
