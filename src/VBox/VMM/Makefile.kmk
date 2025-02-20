@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 108415 2025-02-17 00:34:56Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 108485 2025-02-20 15:48:40Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -504,7 +504,7 @@ ifdef VBOX_WITH_VIRT_ARMV8
  	VMMAll/DBGFAll.cpp \
  	VMMAll/DBGFAllBp.cpp \
  	$(if-expr defined(VBOX_WITH_DBGF_TRACING), VMMAll/DBGFAllTracer.cpp,) \
- 	VMMAll/IEMAll-armv8.cpp \
+ 	VMMAll/IEMAllStub.cpp \
  	VMMAll/IOMAll.cpp \
  	VMMAll/IOMAllMmioNew.cpp \
  	VMMAll/MMAll.cpp \
