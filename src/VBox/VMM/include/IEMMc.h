@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 108483 2025-02-20 15:34:57Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc.h 108484 2025-02-20 15:41:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX, common.
  */
@@ -1440,31 +1440,30 @@
  * x86: EFL == RFLAGS/EFLAGS for x86.
  * arm: EFL == NZCV.
  */
-/** @todo s/IEM_MC_IF_EFL_/IEM_MC_IF_FLAGS_/ */
 
 /** @note x86: Not for IOPL or IF testing. */
-#define IEM_MC_IF_EFL_BIT_SET(a_fBit)                   if (pVCpu->cpum.GstCtx.eflags.u & (a_fBit)) {
+#define IEM_MC_IF_FLAGS_BIT_SET(a_fBit)                   if (pVCpu->cpum.GstCtx.eflags.u & (a_fBit)) {
 /** @note x86: Not for IOPL or IF testing. */
-#define IEM_MC_IF_EFL_BIT_NOT_SET(a_fBit)               if (!(pVCpu->cpum.GstCtx.eflags.u & (a_fBit))) {
+#define IEM_MC_IF_FLAGS_BIT_NOT_SET(a_fBit)               if (!(pVCpu->cpum.GstCtx.eflags.u & (a_fBit))) {
 /** @note x86: Not for IOPL or IF testing. */
-#define IEM_MC_IF_EFL_ANY_BITS_SET(a_fBits)             if (pVCpu->cpum.GstCtx.eflags.u & (a_fBits)) {
+#define IEM_MC_IF_FLAGS_ANY_BITS_SET(a_fBits)             if (pVCpu->cpum.GstCtx.eflags.u & (a_fBits)) {
 /** @note x86: Not for IOPL or IF testing. */
-#define IEM_MC_IF_EFL_NO_BITS_SET(a_fBits)              if (!(pVCpu->cpum.GstCtx.eflags.u & (a_fBits))) {
+#define IEM_MC_IF_FLAGS_NO_BITS_SET(a_fBits)              if (!(pVCpu->cpum.GstCtx.eflags.u & (a_fBits))) {
 /** @note x86: Not for IOPL or IF testing. */
-#define IEM_MC_IF_EFL_BITS_NE(a_fBit1, a_fBit2)         \
+#define IEM_MC_IF_FLAGS_BITS_NE(a_fBit1, a_fBit2)         \
     if (   !!(pVCpu->cpum.GstCtx.eflags.u & (a_fBit1)) \
         != !!(pVCpu->cpum.GstCtx.eflags.u & (a_fBit2)) ) {
 /** @note x86: Not for IOPL or IF testing. */
-#define IEM_MC_IF_EFL_BITS_EQ(a_fBit1, a_fBit2)         \
+#define IEM_MC_IF_FLAGS_BITS_EQ(a_fBit1, a_fBit2)         \
     if (   !!(pVCpu->cpum.GstCtx.eflags.u & (a_fBit1)) \
         == !!(pVCpu->cpum.GstCtx.eflags.u & (a_fBit2)) ) {
 /** @note x86: Not for IOPL or IF testing. */
-#define IEM_MC_IF_EFL_BIT_SET_OR_BITS_NE(a_fBit, a_fBit1, a_fBit2) \
+#define IEM_MC_IF_FLAGS_BIT_SET_OR_BITS_NE(a_fBit, a_fBit1, a_fBit2) \
     if (   (pVCpu->cpum.GstCtx.eflags.u & (a_fBit)) \
         ||    !!(pVCpu->cpum.GstCtx.eflags.u & (a_fBit1)) \
            != !!(pVCpu->cpum.GstCtx.eflags.u & (a_fBit2)) ) {
 /** @note x86: Not for IOPL or IF testing. */
-#define IEM_MC_IF_EFL_BIT_NOT_SET_AND_BITS_EQ(a_fBit, a_fBit1, a_fBit2) \
+#define IEM_MC_IF_FLAGS_BIT_NOT_SET_AND_BITS_EQ(a_fBit, a_fBit1, a_fBit2) \
     if (   !(pVCpu->cpum.GstCtx.eflags.u & (a_fBit)) \
         &&    !!(pVCpu->cpum.GstCtx.eflags.u & (a_fBit1)) \
            == !!(pVCpu->cpum.GstCtx.eflags.u & (a_fBit2)) ) {

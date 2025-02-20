@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 108470 2025-02-19 15:21:25Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 108484 2025-02-20 15:41:00Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 108470 $"
+__version__ = "$Revision: 108484 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -3224,14 +3224,14 @@ g_dMcStmtParsers = {
     'IEM_MC_IF_ECX_IS_NOT_ONE':                                  (McBlock.parseMcGenericCond,       True,  False, True,  ),
     'IEM_MC_IF_ECX_IS_NOT_ONE_AND_EFL_BIT_NOT_SET':              (McBlock.parseMcGenericCond,       True,  False, True,  ),
     'IEM_MC_IF_ECX_IS_NOT_ONE_AND_EFL_BIT_SET':                  (McBlock.parseMcGenericCond,       True,  False, True,  ),
-    'IEM_MC_IF_EFL_ANY_BITS_SET':                                (McBlock.parseMcGenericCond,       True,  False, True,  ),
-    'IEM_MC_IF_EFL_BIT_NOT_SET':                                 (McBlock.parseMcGenericCond,       True,  False, True,  ),
-    'IEM_MC_IF_EFL_BIT_NOT_SET_AND_BITS_EQ':                     (McBlock.parseMcGenericCond,       True,  False, True,  ),
-    'IEM_MC_IF_EFL_BIT_SET':                                     (McBlock.parseMcGenericCond,       True,  False, True,  ),
-    'IEM_MC_IF_EFL_BIT_SET_OR_BITS_NE':                          (McBlock.parseMcGenericCond,       True,  False, True,  ),
-    'IEM_MC_IF_EFL_BITS_EQ':                                     (McBlock.parseMcGenericCond,       True,  False, True,  ),
-    'IEM_MC_IF_EFL_BITS_NE':                                     (McBlock.parseMcGenericCond,       True,  False, True,  ),
-    'IEM_MC_IF_EFL_NO_BITS_SET':                                 (McBlock.parseMcGenericCond,       True,  False, True,  ),
+    'IEM_MC_IF_FLAGS_ANY_BITS_SET':                              (McBlock.parseMcGenericCond,       True,  False, True,  ),
+    'IEM_MC_IF_FLAGS_BIT_NOT_SET':                               (McBlock.parseMcGenericCond,       True,  False, True,  ),
+    'IEM_MC_IF_FLAGS_BIT_NOT_SET_AND_BITS_EQ':                   (McBlock.parseMcGenericCond,       True,  False, True,  ),
+    'IEM_MC_IF_FLAGS_BIT_SET':                                   (McBlock.parseMcGenericCond,       True,  False, True,  ),
+    'IEM_MC_IF_FLAGS_BIT_SET_OR_BITS_NE':                        (McBlock.parseMcGenericCond,       True,  False, True,  ),
+    'IEM_MC_IF_FLAGS_BITS_EQ':                                   (McBlock.parseMcGenericCond,       True,  False, True,  ),
+    'IEM_MC_IF_FLAGS_BITS_NE':                                   (McBlock.parseMcGenericCond,       True,  False, True,  ),
+    'IEM_MC_IF_FLAGS_NO_BITS_SET':                               (McBlock.parseMcGenericCond,       True,  False, True,  ),
     'IEM_MC_IF_FCW_IM':                                          (McBlock.parseMcGenericCond,       True,  True,  False, ),
     'IEM_MC_IF_FPUREG_IS_EMPTY':                                 (McBlock.parseMcGenericCond,       True,  True,  False, ),
     'IEM_MC_IF_FPUREG_NOT_EMPTY':                                (McBlock.parseMcGenericCond,       True,  True,  False, ),
