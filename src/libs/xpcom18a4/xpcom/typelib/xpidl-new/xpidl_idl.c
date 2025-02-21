@@ -1,4 +1,4 @@
-/* $Id: xpidl_idl.c 108491 2025-02-20 20:25:23Z alexander.eichner@oracle.com $ */
+/* $Id: xpidl_idl.c 108494 2025-02-21 11:24:09Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox xpidl clone - IDL parsing.
  */
@@ -897,6 +897,7 @@ static int xpidlParseMethodParameters(PXPIDLPARSE pThis, PXPIDLINPUT pInput, PXP
             int rc = xpidlParseTypeSpec(pThis, pInput, &pNdTypeSpec);
             if (RT_FAILURE(rc))
                 return rc;
+            pNdTypeSpec->pParent          = pNdParam;
             pNdParam->u.Param.pNdTypeSpec = pNdTypeSpec;
 
             XPIDL_PARSE_IDENTIFIER(pszName); /* The parameter name is always required. */
