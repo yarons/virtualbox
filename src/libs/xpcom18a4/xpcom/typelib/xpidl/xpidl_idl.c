@@ -1,4 +1,4 @@
-/* $Id: xpidl_idl.c 108503 2025-02-21 14:23:03Z alexander.eichner@oracle.com $ */
+/* $Id: xpidl_idl.c 108506 2025-02-21 15:04:09Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox xpidl clone - IDL parsing.
  */
@@ -24,6 +24,7 @@
  *
  * SPDX-License-Identifier: GPL-3.0-only
  */
+#include <iprt/cdefs.h>
 #include <iprt/errcore.h>
 #include <iprt/file.h>
 #include <iprt/mem.h>
