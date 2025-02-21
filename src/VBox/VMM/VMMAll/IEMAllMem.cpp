@@ -1,4 +1,4 @@
-/* $Id: IEMAllMem.cpp 108447 2025-02-18 15:46:53Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllMem.cpp 108505 2025-02-21 14:45:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Common Memory Routines.
  */
@@ -604,8 +604,7 @@ void iemMemRollbackAndUnmap(PVMCPUCC pVCpu, uint8_t bUnmapInfo) RT_NOEXCEPT
  * Commits the guest memory if bounce buffered and unmaps it, longjmp on error.
  *
  * @param   pVCpu               The cross context virtual CPU structure of the calling thread.
- * @param   pvMem               The mapping.
- * @param   fAccess             The kind of access.
+ * @param   bUnmapInfo          Unmap info set by iemMemMap.
  */
 void iemMemCommitAndUnmapJmp(PVMCPUCC pVCpu, uint8_t bUnmapInfo) IEM_NOEXCEPT_MAY_LONGJMP
 {
