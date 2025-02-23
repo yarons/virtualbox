@@ -1,4 +1,4 @@
-/* $Id: xpidl_idl.c 108508 2025-02-21 15:23:06Z alexander.eichner@oracle.com $ */
+/* $Id: xpidl_idl.c 108510 2025-02-23 20:14:28Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox xpidl clone - IDL parsing.
  */
@@ -239,6 +239,8 @@ static int xpidlCreateLexerFromFilename(const char *pszFilename, PRTLISTANCHOR p
 
 static int xpidlParseError(PXPIDLPARSE pThis, PXPIDLINPUT pInput, PCRTSCRIPTLEXTOKEN pTok, int rc, const char *pszFmt, ...)
 {
+    RT_NOREF(pInput);
+
     va_list Args;
     va_start(Args, pszFmt);
     RT_NOREF(pTok);
@@ -393,7 +395,7 @@ static int xpidlLexerConsumeIfPunctuator(PXPIDLPARSE pThis, PXPIDLINPUT pInput,
         return xpidlParseError(pThis, pInput, NULL, rc, "Lexer: Failed to query punctuator token with %Rrc", rc);
 
     if (   pTok->enmType == RTSCRIPTLEXTOKTYPE_PUNCTUATOR
-        && pTok->Type.Keyword.pKeyword->u64Val == chPunctuator)
+        && (char)pTok->Type.Keyword.pKeyword->u64Val == chPunctuator)
     {
         RTScriptLexConsumeToken(pInput->hIdlLex);
         *pfConsumed = true;
@@ -953,7 +955,7 @@ static int xpidlParseInterfaceBody(PXPIDLPARSE pThis, PXPIDLINPUT pInput, PXPIDL
         if (fRawBlock)
         {
             PCRTSCRIPTLEXTOKEN pTok;
-            int rc = RTScriptLexQueryToken(pInput->hIdlLex, &pTok);
+            rc = RTScriptLexQueryToken(pInput->hIdlLex, &pTok);
             if (RT_FAILURE(rc))
                 return xpidlParseError(pThis, pInput, NULL, rc, "Lexer: Failed to query punctuator token with %Rrc", rc);
 
