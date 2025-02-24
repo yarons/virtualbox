@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDSoundMMNotifClient.cpp 107595 2025-01-08 16:15:40Z andreas.loeffler@oracle.com $ */
+/* $Id: DrvHostAudioDSoundMMNotifClient.cpp 108525 2025-02-24 13:22:00Z andreas.loeffler@oracle.com $ */
 /** @file
  * Host audio driver - DSound - Implementation of the IMMNotificationClient interface to detect audio endpoint changes.
  */
@@ -25,20 +25,25 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-#include "DrvHostAudioDSoundMMNotifClient.h"
 
-#include <iprt/win/windows.h>
-#include <mmdeviceapi.h>
-#include <iprt/win/endpointvolume.h>
-#include <iprt/errcore.h>
-
-#ifdef LOG_GROUP  /** @todo r=bird: wtf? Put it before all other includes like you're supposed to. */
-# undef LOG_GROUP
-#endif
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_DRV_HOST_AUDIO
 #include <VBox/log.h>
 
+#include "DrvHostAudioDSoundMMNotifClient.h"
 
+#include <mmdeviceapi.h>
+
+#include <iprt/win/windows.h>
+#include <iprt/win/endpointvolume.h>
+#include <iprt/errcore.h>
+
+
+/*********************************************************************************************************************************
+*   IMMNotificationClient interface implementation                                                                               *
+*********************************************************************************************************************************/
 DrvHostAudioDSoundMMNotifClient::DrvHostAudioDSoundMMNotifClient(PPDMIHOSTAUDIOPORT pInterface, bool fDefaultIn, bool fDefaultOut)
     : m_fDefaultIn(fDefaultIn)
     , m_fDefaultOut(fDefaultOut)
