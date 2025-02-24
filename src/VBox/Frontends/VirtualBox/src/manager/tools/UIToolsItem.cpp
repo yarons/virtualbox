@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.cpp 108527 2025-02-24 13:23:33Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsItem.cpp 108528 2025-02-24 13:31:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class definition.
  */
@@ -845,10 +845,11 @@ void UIToolsItem::paintBackground(QPainter *pPainter, const QRect &rectangle) co
             /* Prepare icon sub-rect: */
             QRect subRect;
             subRect.setHeight(m_pixmap.height() / m_pixmap.devicePixelRatio() + iPadding * 2);
-            subRect.setWidth(subRect.height());
 #ifdef VBOX_WS_MAC
+            subRect.setWidth(rectangle.width() - iIndent - 4 * iMargin + 2 * iPadding);
             subRect.moveTopLeft(rectangle.topLeft() + QPoint(iIndent + 2 * iMargin - iPadding, iMargin - iPadding));
 #else
+            subRect.setWidth(rectangle.width() - iIndent - 3 * iMargin + 2 * iPadding);
             subRect.moveTopLeft(rectangle.topLeft() + QPoint(iIndent + 1.5 * iMargin - iPadding, iMargin - iPadding));
 #endif
 
