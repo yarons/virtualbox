@@ -1,4 +1,4 @@
-/* $Id: xpidl_idl.c 108510 2025-02-23 20:14:28Z alexander.eichner@oracle.com $ */
+/* $Id: xpidl_idl.c 108514 2025-02-24 08:20:08Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox xpidl clone - IDL parsing.
  */
@@ -1372,7 +1372,7 @@ int xpidl_process_idl(char *filename, PRTLISTANCHOR pLstIncludePaths,
         else
             pFile = stdout;
 
-        rc = mode->dispatch(pFile, pInput, &ParseState);
+        rc = mode->dispatch(pFile, pInput, &ParseState, &ParseState.ErrInfo.Core);
 
         if (pFile != stdout)
             fclose(pFile);
