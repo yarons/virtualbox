@@ -1,4 +1,4 @@
-/* $Id: tstUnattendedScript.cpp 107978 2025-01-21 08:29:09Z alexander.eichner@oracle.com $ */
+/* $Id: tstUnattendedScript.cpp 108538 2025-02-24 19:25:09Z serkan.bayraktar@oracle.com $ */
 /** @file
  * tstUnattendedScript - testcases for UnattendedScript.
  */
@@ -78,6 +78,7 @@ Unattended::Unattended()
     mStrIsoPath                         = "/iso/path/file.iso";
     mStrAdditionsIsoPath                = "/iso/path/addition.iso";
     mfInstallGuestAdditions             = true;
+    mfProductKeyRequired                = false;
     mfInstallTestExecService            = true;
     mStrValidationKitIsoPath            = "/iso/path/valkit.iso";
     mStrTimeZone                        = "cet";
@@ -220,6 +221,12 @@ HRESULT Unattended::setFullUserName(const com::Utf8Str &fullUserName)
 HRESULT Unattended::getProductKey(com::Utf8Str &productKey)
 {
     RT_NOREF(productKey);
+    return E_NOTIMPL;
+}
+
+HRESULT Unattended::getProductKeyRequired(BOOL *productKeyRequired)
+{
+    RT_NOREF(productKeyRequired);
     return E_NOTIMPL;
 }
 
