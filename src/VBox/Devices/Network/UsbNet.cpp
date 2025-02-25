@@ -1,4 +1,4 @@
-/* $Id: UsbNet.cpp 108550 2025-02-25 14:46:05Z aleksey.ilyushin@oracle.com $ */
+/* $Id: UsbNet.cpp 108551 2025-02-25 14:49:37Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * UsbNet - USB NCM Ethernet Device Emulation.
  */
@@ -1251,7 +1251,7 @@ static DECLCALLBACK(int) usbNetNetworkDown_WaitReceiveAvail(PPDMINETWORKDOWN pIn
     PUSBNET pThis = RT_FROM_MEMBER(pInterface, USBNET, Lun0.INetworkDown);
     int rc = VINF_SUCCESS;
     LogFlowFunc(("/#%u/ pInterface=%p cMillies=%u\n", pThis->pUsbIns->iInstance, pInterface, cMillies));
-    
+
     RTCritSectEnter(&pThis->CritSect);
     pThis->fHaveToHostQueueWaiter = usbNetQueueIsEmpty(&pThis->ToHostQueue) && !pThis->fSuspended;
     RTCritSectLeave(&pThis->CritSect);
@@ -1318,7 +1318,7 @@ DECLINLINE(void) usbNetProtocolDump(const uint8_t *cpPacket, uint32_t cb)
     {
         Log4(("\tEthernet: 0x%04x\n", uEthType));
         return;
-    }     
+    }
     switch (protocol)
     {
         case 1: Log4(("\tICMP\n")); break;
