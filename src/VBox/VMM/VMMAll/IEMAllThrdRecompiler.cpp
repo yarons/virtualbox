@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdRecompiler.cpp 108447 2025-02-18 15:46:53Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdRecompiler.cpp 108544 2025-02-25 13:17:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation.
  *
@@ -1587,9 +1587,9 @@ DECLHIDDEN(void) iemThreadedDisassembleTb(PCIEMTB pTb, PCDBGFINFOHLP pHlp) RT_NO
     DISSTATE                    Dis;
     PCIEMTHRDEDCALLENTRY const  paCalls          = pTb->Thrd.paCalls;
     uint32_t const              cCalls           = pTb->Thrd.cCalls;
-    DISCPUMODE                  enmGstCpuMode    = (pTb->fFlags & IEM_F_MODE_CPUMODE_MASK) == IEMMODE_16BIT ? DISCPUMODE_16BIT
-                                                 : (pTb->fFlags & IEM_F_MODE_CPUMODE_MASK) == IEMMODE_32BIT ? DISCPUMODE_32BIT
-                                                 :                                                            DISCPUMODE_64BIT;
+    DISCPUMODE                  enmGstCpuMode    = (pTb->fFlags & IEM_F_MODE_X86_CPUMODE_MASK) == IEMMODE_16BIT ? DISCPUMODE_16BIT
+                                                 : (pTb->fFlags & IEM_F_MODE_X86_CPUMODE_MASK) == IEMMODE_32BIT ? DISCPUMODE_32BIT
+                                                 :                                                                DISCPUMODE_64BIT;
     uint32_t                    fExec            = pTb->fFlags & UINT32_C(0x00ffffff);
     uint8_t                     idxRange         = UINT8_MAX;
     uint8_t const               cRanges          = RT_MIN(pTb->cRanges, RT_ELEMENTS(pTb->aRanges));

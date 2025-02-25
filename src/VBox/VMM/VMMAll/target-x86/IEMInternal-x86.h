@@ -1,4 +1,4 @@
-/* $Id: IEMInternal-x86.h 108469 2025-02-19 15:17:42Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal-x86.h 108544 2025-02-25 13:17:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file, x86 target specifics.
  */
@@ -2397,7 +2397,7 @@ IEM_DECL_IMPL_PROTO(uint32_t, iemAImpl_vcvtpd2dq_u128_u256_fallback,(uint32_t uM
  * @returns IEMMODE
  * @param   a_pVCpu         The cross context virtual CPU structure of the calling thread.
  */
-#define IEM_GET_CPU_MODE(a_pVCpu)           ((a_pVCpu)->iem.s.fExec & IEM_F_MODE_CPUMODE_MASK)
+#define IEM_GET_CPU_MODE(a_pVCpu)           ((a_pVCpu)->iem.s.fExec & IEM_F_MODE_X86_CPUMODE_MASK)
 
 /**
  * Check if we're currently executing in real or virtual 8086 mode.
