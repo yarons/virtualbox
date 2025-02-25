@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 108552 2025-02-25 14:54:58Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 108554 2025-02-25 15:40:32Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -453,6 +453,7 @@ void UIWizardNewVMExpertPage::initializePage()
     {
         m_pGAInstallationISOContainer->blockSignals(true);
         m_pGAInstallationISOContainer->setChecked(pWizard->installGuestAdditions());
+        m_pGAInstallationISOContainer->setPath(pWizard->guestAdditionsISOPath());
         m_pGAInstallationISOContainer->blockSignals(false);
     }
 
