@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompFuncs-x86.h 108544 2025-02-25 13:17:32Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompFuncs-x86.h 108545 2025-02-25 13:23:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler - Inlined Bits, x86 target.
  */
@@ -527,7 +527,7 @@ iemNativeEmitFinishInstructionWithStatus(PIEMRECOMPILERSTATE pReNative, uint32_t
          */
         if (   IEM_F_MODE_X86_IS_FLAT(pReNative->fExec)
 # if 0 /** @todo breaks on IP/EIP/RIP wraparound tests in bs3-cpu-weird-1. See also iemNativeHlpReturnBreakViaLookup. */
-            || !(pTbOrg->fFlags & IEMTB_F_CS_LIM_CHECKS)
+            || !(pTbOrg->fFlags & IEMTB_F_X86_CS_LIM_CHECKS)
 # endif
            )
         {

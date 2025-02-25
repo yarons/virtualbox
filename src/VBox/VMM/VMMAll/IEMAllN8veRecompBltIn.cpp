@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompBltIn.cpp 108360 2025-02-13 14:57:25Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompBltIn.cpp 108545 2025-02-25 13:23:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Emitters for Built-In Threaded Functions.
  */
@@ -652,7 +652,7 @@ iemNativeEmitBltInConsiderLimChecking(PIEMRECOMPILERSTATE pReNative, uint32_t of
      *  int64_t const offFromLim = (int64_t)pVCpu->cpum.GstCtx.cs.u32Limit - (int64_t)pVCpu->cpum.GstCtx.eip;
      *  if (offFromLim >= X86_PAGE_SIZE + 16 - (int32_t)(pVCpu->cpum.GstCtx.cs.u64Base & GUEST_PAGE_OFFSET_MASK))
      *      return fRet;
-     *  return fRet | IEMTB_F_CS_LIM_CHECKS;
+     *  return fRet | IEMTB_F_X86_CS_LIM_CHECKS;
      *
      *
      * We need EIP, CS.LIM and CS.BASE here.
