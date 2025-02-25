@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-win.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetAdp-win.h 108556 2025-02-25 15:46:16Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxNetAdp-win.h - Host-only Miniport Driver, Windows-specific code.
  */
@@ -40,7 +40,7 @@
 #endif
 
 #define VBOXNETADP_VERSION_NDIS_MAJOR        6
-#define VBOXNETADP_VERSION_NDIS_MINOR        0
+#define VBOXNETADP_VERSION_NDIS_MINOR        30
 
 #define VBOXNETADP_VERSION_MAJOR             1
 #define VBOXNETADP_VERSION_MINOR             0

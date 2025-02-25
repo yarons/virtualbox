@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwf-win.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetLwf-win.h 108556 2025-02-25 15:46:16Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxNetLwf-win.h - Bridged Networking Driver, Windows-specific code.
  */
@@ -40,7 +40,7 @@
 #endif
 
 #define VBOXNETLWF_VERSION_NDIS_MAJOR        6
-#define VBOXNETLWF_VERSION_NDIS_MINOR        0
+#define VBOXNETLWF_VERSION_NDIS_MINOR        30
 
 #define VBOXNETLWF_NAME_FRIENDLY             L"VirtualBox NDIS Light-Weight Filter"
 #define VBOXNETLWF_NAME_UNIQUE               L"{7af6b074-048d-4444-bfce-1ecc8bc5cb76}"

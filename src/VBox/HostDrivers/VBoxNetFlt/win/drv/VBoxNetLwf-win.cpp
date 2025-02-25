@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwf-win.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetLwf-win.cpp 108556 2025-02-25 15:46:16Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxNetLwf-win.cpp - NDIS6 Bridged Networking Driver, Windows-specific code.
  */
@@ -2077,11 +2077,11 @@ DECLHIDDEN(NDIS_STATUS) vboxNetLwfWinRegister(PDRIVER_OBJECT pDriverObject, PUNI
     NdisInitUnicodeString(&UniqueName, VBOXNETLWF_NAME_UNIQUE);
     NdisInitUnicodeString(&ServiceName, VBOXNETLWF_NAME_SERVICE);
 
-    NdisZeroMemory(&FChars, sizeof (FChars));
+    NdisZeroMemory(&FChars, sizeof(FChars));
 
-    FChars.Header.Type = NDIS_OBJECT_TYPE_FILTER_DRIVER_CHARACTERISTICS;
-    FChars.Header.Size = sizeof(NDIS_FILTER_DRIVER_CHARACTERISTICS);
-    FChars.Header.Revision = NDIS_FILTER_CHARACTERISTICS_REVISION_1;
+    FChars.Header.Type     = NDIS_OBJECT_TYPE_FILTER_DRIVER_CHARACTERISTICS;
+    FChars.Header.Size     = NDIS_SIZEOF_FILTER_DRIVER_CHARACTERISTICS_REVISION_2;
+    FChars.Header.Revision = NDIS_FILTER_CHARACTERISTICS_REVISION_2;
 
     FChars.MajorNdisVersion = VBOXNETLWF_VERSION_NDIS_MAJOR;
     FChars.MinorNdisVersion = VBOXNETLWF_VERSION_NDIS_MINOR;
