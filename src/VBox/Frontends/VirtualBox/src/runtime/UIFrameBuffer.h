@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.h 107469 2025-01-06 12:00:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIFrameBuffer.h 108543 2025-02-25 11:12:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class declaration.
  */
@@ -107,10 +107,6 @@ public:
     double devicePixelRatio() const;
     /** Defines device-pixel-ratio set for HiDPI frame-buffer. */
     void setDevicePixelRatio(double dDevicePixelRatio);
-    /** Returns actual device-pixel-ratio set for HiDPI frame-buffer. */
-    double devicePixelRatioActual() const;
-    /** Defines actual device-pixel-ratio set for HiDPI frame-buffer. */
-    void setDevicePixelRatioActual(double dDevicePixelRatioActual);
 
     /** Returns whether frame-buffer should use unscaled HiDPI output. */
     bool useUnscaledHiDPIOutput() const;

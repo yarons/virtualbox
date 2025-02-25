@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDesktopWidgetWatchdog.h 108543 2025-02-25 11:12:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class declaration.
  */
@@ -138,11 +138,6 @@ public:
     static double devicePixelRatio(int iHostScreenIndex = -1);
     /** Returns device-pixel-ratio of the host-screen which contains @a pWidget. */
     static double devicePixelRatio(QWidget *pWidget);
-
-    /** Returns actual device-pixel-ratio of the host-screen with @a iHostScreenIndex. */
-    static double devicePixelRatioActual(int iHostScreenIndex = -1);
-    /** Returns actual device-pixel-ratio of the host-screen which contains @a pWidget. */
-    static double devicePixelRatioActual(QWidget *pWidget);
 
     /** Search position for @a rectangle to make sure it is fully
       * contained within @a boundRegion, performing resize if allowed. */
