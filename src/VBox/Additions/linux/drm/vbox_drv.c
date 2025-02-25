@@ -1,4 +1,4 @@
-/*  $Id: vbox_drv.c 108169 2025-02-03 14:09:56Z vadim.galitsyn@oracle.com $ */
+/*  $Id: vbox_drv.c 108553 2025-02-25 15:08:56Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -425,6 +425,11 @@ static int __init vbox_init(void)
 	/* Check if modue loading was disabled. */
 	if (!vbox_mod_should_load())
 		return -EINVAL;
+
+#if RTLNX_VER_MIN(6,0,0)
+	printk(KERN_ERR "vboxvideo: VM is using legacy graphics controller, "
+			"please consider to configure this guest to use VMSVGA instead\n");
+#endif
 
 	printk("vboxvideo: loading version " VBOX_VERSION_STRING " r" __stringify(VBOX_SVN_REV) "\n");
 	if (VBOX_VIDEO_NOMODESET())
