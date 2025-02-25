@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.h 106094 2024-09-19 11:23:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMEditors.h 108552 2025-02-25 14:54:58Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMEditors class declaration.
  */
@@ -130,17 +130,18 @@ public:
 
     UIAdditionalUnattendedOptions(QWidget *pParent = 0);
 
-    /** @name Wrappers for UIFilePathSelector
+    /** @name Wrappers for member editors
       * @{ */
         QString hostname() const;
         void setHostname(const QString &strHostname);
         QString domainName() const;
         void setDomainName(const QString &strDomain);
         QString hostnameDomainName() const;
-        bool isComplete() const;
-        bool isHostnameComplete() const;
-        void mark();
+        bool hostDomainNameComplete() const;
+        void mark(bool fProductKeyRequired);
         void disableEnableProductKeyWidgets(bool fEnabled);
+        QString productKey() const;
+        bool hasProductKeyAcceptableInput() const;
     /** @} */
 
 private slots:

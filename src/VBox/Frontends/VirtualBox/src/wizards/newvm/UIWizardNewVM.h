@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 107113 2024-11-21 15:44:25Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVM.h 108552 2025-02-25 14:54:58Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -67,6 +67,7 @@ public:
     bool isUnattendedEnabled() const;
     bool isUnattendedInstallSupported() const;
     bool isGuestOSTypeWindows() const;
+    bool isProductKeyRequired() const;
 
     bool createVM();
     bool createVirtualDisk();

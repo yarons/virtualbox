@@ -1,4 +1,4 @@
-/* $Id: UIHostnameDomainNameEditor.h 106084 2024-09-18 18:20:15Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHostnameDomainNameEditor.h 108552 2025-02-25 14:54:58Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHostnameDomainNameEditor class declaration.
  */
@@ -65,10 +65,11 @@ public:
 
     QString hostnameDomainName() const;
 
-    bool isComplete() const;
-    void mark();
+    bool hostDomainNameComplete() const;
+    void mark(bool fProductKeyRequired);
 
     void disableEnableProductKeyWidgets(bool fEnabled);
+    bool hasProductKeyAcceptableInput() const;
 
 private slots:
 

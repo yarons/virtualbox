@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 108340 2025-02-12 11:39:47Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVM.cpp 108552 2025-02-25 14:54:58Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -838,6 +838,12 @@ bool UIWizardNewVM::isUnattendedInstallSupported() const
 bool UIWizardNewVM::isGuestOSTypeWindows() const
 {
     return m_strGuestOSFamilyId.contains("windows", Qt::CaseInsensitive);
+}
+
+bool UIWizardNewVM::isProductKeyRequired() const
+{
+    AssertReturn(!m_comUnattended.isNull(), false);
+    return m_comUnattended.GetProductKeyRequired();
 }
 
 void UIWizardNewVM::setUnattendedPageVisible(bool fVisible)
