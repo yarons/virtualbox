@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 108568 2025-02-26 10:49:10Z sergey.dubov@oracle.com $ */
+/* $Id: UIFrameBuffer.cpp 108570 2025-02-26 14:16:46Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -1279,8 +1279,8 @@ void UIFrameBufferPrivate::paintDefault(QPaintEvent *pEvent)
     {
         paintRect.setLeft(findMultipleOfScaleFactor(devicePixelRatio(), paintRect.left(), false));
         paintRect.setTop(findMultipleOfScaleFactor(devicePixelRatio(), paintRect.top(), false));
-        paintRect.setRight(findMultipleOfScaleFactor(devicePixelRatio(), paintRect.right(), true));
-        paintRect.setBottom(findMultipleOfScaleFactor(devicePixelRatio(), paintRect.bottom(), true));
+        paintRect.setWidth(findMultipleOfScaleFactor(devicePixelRatio(), paintRect.width(), true));
+        paintRect.setHeight(findMultipleOfScaleFactor(devicePixelRatio(), paintRect.height(), true));
     }
     QRect paintRectHiDPI = paintRect;
 
