@@ -1,4 +1,4 @@
-/* $Id: VMInternal.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VMInternal.h 108564 2025-02-26 09:14:34Z alexander.eichner@oracle.com $ */
 /** @file
  * VM - Internal header file.
  */
@@ -154,6 +154,10 @@ typedef enum
     VMHALTMETHOD_1,
     /** The first go at a more global approach. */
     VMHALTMETHOD_GLOBAL_1,
+#if defined(VBOX_VMM_TARGET_ARMV8) && defined(RT_OS_WINDOWS)
+    /** NEM takes over halting. */
+    VMHALTMETHOD_NEM,
+#endif
     /** The end of valid methods. (not inclusive of course) */
     VMHALTMETHOD_END,
     /** The usual 32-bit max value. */
