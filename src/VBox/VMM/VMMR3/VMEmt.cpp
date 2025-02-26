@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 108564 2025-02-26 09:14:34Z alexander.eichner@oracle.com $ */
+/* $Id: VMEmt.cpp 108565 2025-02-26 10:02:21Z alexander.eichner@oracle.com $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -1437,6 +1437,15 @@ int vmR3SetHaltMethodU(PUVM pUVM, VMHALTMETHOD enmHaltMethod)
             enmHaltMethod = VMHALTMETHOD_GLOBAL_1;
             //enmHaltMethod = VMHALTMETHOD_1;
             //enmHaltMethod = VMHALTMETHOD_OLD;
+
+#if defined(VBOX_VMM_TARGET_ARMV8) && defined(RT_OS_WINDOWS)
+        /*
+         * We can't use the global halt method on Windows/ARM with Hyper-V
+         * as APs can't be brought online by the guest due to missing
+         * PSCI VM exits currently.
+         */
+        enmHaltMethod = VMHALTMETHOD_NEM;
+#endif
     }
 
     /*
