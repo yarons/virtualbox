@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win-armv8.cpp 108574 2025-02-26 15:19:45Z alexander.eichner@oracle.com $ */
+/* $Id: NEMR3Native-win-armv8.cpp 108577 2025-02-26 16:41:49Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -197,8 +197,8 @@ static decltype(WHvGetVirtualProcessorRegisters) *  g_pfnWHvGetVirtualProcessorR
 static decltype(WHvSetVirtualProcessorRegisters) *  g_pfnWHvSetVirtualProcessorRegisters;
 static decltype(WHvSuspendPartitionTime) *          g_pfnWHvSuspendPartitionTime;
 static decltype(WHvResumePartitionTime) *           g_pfnWHvResumePartitionTime;
-
-//static decltype(WHvGetVirtualProcessorState) *      g_pfnWHvGetVirtualProcessorState;
+decltype(WHvGetVirtualProcessorState) *             g_pfnWHvGetVirtualProcessorState;
+decltype(WHvSetVirtualProcessorState) *             g_pfnWHvSetVirtualProcessorState;
 decltype(WHvRequestInterrupt) *                     g_pfnWHvRequestInterrupt;
 /** @} */
 
@@ -237,7 +237,8 @@ static const struct
     NEM_WIN_IMPORT(0, false, WHvSetVirtualProcessorRegisters),
     NEM_WIN_IMPORT(0, false, WHvSuspendPartitionTime),
     NEM_WIN_IMPORT(0, false, WHvResumePartitionTime),
-//    NEM_WIN_IMPORT(0, false, WHvGetVirtualProcessorState),
+    NEM_WIN_IMPORT(0, false, WHvGetVirtualProcessorState),
+    NEM_WIN_IMPORT(0, false, WHvSetVirtualProcessorState),
     NEM_WIN_IMPORT(0, false, WHvRequestInterrupt),
 #undef NEM_WIN_IMPORT
 };
@@ -266,7 +267,8 @@ static const struct
 # define WHvSetVirtualProcessorRegisters            g_pfnWHvSetVirtualProcessorRegisters
 # define WHvSuspendPartitionTime                    g_pfnWHvSuspendPartitionTime
 # define WHvResumePartitionTime                     g_pfnWHvResumePartitionTime
-//# define WHvGetVirtualProcessorState                g_pfnWHvGetVirtualProcessorState
+# define WHvGetVirtualProcessorState                g_pfnWHvGetVirtualProcessorState
+# define WHvSetVirtualProcessorState                g_pfnWHvSetVirtualProcessorState
 # define WHvRequestInterrupt                        g_pfnWHvRequestInterrupt
 #endif
 
