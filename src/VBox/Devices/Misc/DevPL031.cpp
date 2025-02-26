@@ -1,4 +1,4 @@
-/* $Id: DevPL031.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DevPL031.cpp 108576 2025-02-26 16:40:38Z alexander.eichner@oracle.com $ */
 /** @file
  * DevPL031 - ARM PL011 PrimeCell RTC.
  *
@@ -469,14 +469,12 @@ static DECLCALLBACK(int) pl031R3LoadDone(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
 
     RT_NOREF(pSSM);
     int rc = VINF_SUCCESS;
+    PDMDevHlpTimerLockClock(pDevIns, pThis->hTimerSecond, VERR_IGNORED);
     if (pThis->fRtcStarted)
-    {
-        PDMDevHlpTimerLockClock(pDevIns, pThis->hTimerSecond, VERR_IGNORED);
         rc = PDMDevHlpTimerSetMillies(pDevIns, pThis->hTimerSecond, RT_MS_1SEC);
-        PDMDevHlpTimerUnlockClock(pDevIns, pThis->hTimerSecond);
-    }
     else
         PDMDevHlpTimerStop(pDevIns, pThis->hTimerSecond);
+    PDMDevHlpTimerUnlockClock(pDevIns, pThis->hTimerSecond);
 
     return rc;
 }
