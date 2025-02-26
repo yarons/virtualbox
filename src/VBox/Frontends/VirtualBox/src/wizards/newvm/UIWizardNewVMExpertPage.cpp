@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 108554 2025-02-25 15:40:32Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 108567 2025-02-26 10:30:23Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -919,6 +919,7 @@ void UIWizardNewVMExpertPage::sltHostnameDomainNameChanged(const QString &strHos
 
 void UIWizardNewVMExpertPage::sltProductKeyChanged(const QString &strProductKey)
 {
+    emit completeChanged();
     AssertReturnVoid(wizardWindow<UIWizardNewVM>());
     m_userModifiedParameters << "ProductKey";
     wizardWindow<UIWizardNewVM>()->setProductKey(strProductKey);
