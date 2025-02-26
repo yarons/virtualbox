@@ -1,4 +1,4 @@
-; $Id: VBoxUSBMon.inf 106846 2024-11-05 10:01:38Z andreas.loeffler@oracle.com $
+; $Id: VBoxUSBMon.inf 108578 2025-02-26 16:48:45Z andreas.loeffler@oracle.com $
 ;; @file
 ; VBox USB Monitor driver - Installation file
 ;
@@ -60,7 +60,7 @@ CopyFiles=VBoxUSBMon_CopyFiles
 AddService=VBoxUSBMon,0x00000002,VBoxUSBMon_Service,VBoxUSBMon_AddEventLog
 
 [DefaultUninstall@DOT-NT-ARCH@.Services]
-DelService = VBoxUSBMon
+DelService = VBoxUSBMon,0x00000200
 DelReg     = VBoxUSBMon_AddEventLogRegistry
 LegacyUninstall=1
 
