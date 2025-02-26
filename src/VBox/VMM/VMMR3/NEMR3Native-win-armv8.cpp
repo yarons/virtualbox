@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win-armv8.cpp 108573 2025-02-26 14:33:00Z alexander.eichner@oracle.com $ */
+/* $Id: NEMR3Native-win-armv8.cpp 108574 2025-02-26 15:19:45Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -2799,9 +2799,12 @@ bool nemR3NativeSetSingleInstruction(PVM pVM, PVMCPU pVCpu, bool fEnable)
 void nemR3NativeNotifyFF(PVM pVM, PVMCPU pVCpu, uint32_t fFlags)
 {
     Log8(("nemR3NativeNotifyFF: canceling %u\n", pVCpu->idCpu));
-    HRESULT hrc = WHvCancelRunVirtualProcessor(pVM->nem.s.hPartition, pVCpu->idCpu, 0);
-    AssertMsg(SUCCEEDED(hrc), ("WHvCancelRunVirtualProcessor -> hrc=%Rhrc\n", hrc));
-    RT_NOREF_PV(hrc);
+    if (pVM->nem.s.fCreatedEmts)
+    {
+        HRESULT hrc = WHvCancelRunVirtualProcessor(pVM->nem.s.hPartition, pVCpu->idCpu, 0);
+        AssertMsg(SUCCEEDED(hrc), ("WHvCancelRunVirtualProcessor -> hrc=%Rhrc\n", hrc));
+        RT_NOREF_PV(hrc);
+    }
     RT_NOREF_PV(fFlags);
 }
 
