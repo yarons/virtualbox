@@ -1,4 +1,4 @@
-; $Id: VMMR0.inf 107030 2024-11-15 02:10:14Z knut.osmundsen@oracle.com $
+; $Id: VMMR0.inf 108582 2025-02-26 21:45:38Z klaus.espenlaub@oracle.com $
 ;; @file
 ; VMMR0.inf - VirtualBox VMM drivers.
 ;
@@ -38,7 +38,7 @@ Provider    = %ORACLE%
 
 [SourceDisksFiles]
 VMMR0.r0=1
-VBoxDDR0.r0=1
+;amd64 VBoxDDR0.r0=1
 
 [DestinationDirs]
 DefaultDestDir = 12
