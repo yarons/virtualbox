@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 108053 2025-01-24 10:00:36Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMInternal.h 108573 2025-02-26 14:33:00Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -522,6 +522,9 @@ typedef struct NEMCPU
     RTR3PTR                     pvMsgSlotMapping;
     /** The windows thread handle. */
     RTR3PTR                     hNativeThreadHandle;
+# elif defined(VBOX_VMM_TARGET_ARMV8)
+    /** Flag whether syncing the CNTV_CTL_EL0/CNTV_CVAL_EL0 registers to Hyper-V is required. */
+    bool                        fSyncCntvRegs;
 # endif
 
     /** @name Statistics
