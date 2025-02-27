@@ -1,4 +1,4 @@
-/* $Id: GICR3Nem-linux.cpp 108051 2025-01-24 09:43:16Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICR3Nem-linux.cpp 108593 2025-02-27 19:10:58Z alexander.eichner@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - KVM in kernel interface.
  */
@@ -275,14 +275,13 @@ DECLCALLBACK(int) gicR3KvmConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE
      * Init the data.
      */
     pGic->pDevInsR3 = pDevIns;
-    pGic->fNemGic   = true;
     pThis->pDevIns  = pDevIns;
     pThis->fdKvmVm  = pVM->nem.s.fdVm;
 
     /*
      * Validate GIC settings.
      */
-    PDMDEV_VALIDATE_CONFIG_RETURN(pDevIns, "DistributorMmioBase|RedistributorMmioBase", "");
+    PDMDEV_VALIDATE_CONFIG_RETURN(pDevIns, "DistributorMmioBase|RedistributorMmioBase|ItsMmioBase", "");
 
     /*
      * Disable automatic PDM locking for this device.

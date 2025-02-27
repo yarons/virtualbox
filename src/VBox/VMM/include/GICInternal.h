@@ -1,4 +1,4 @@
-/* $Id: GICInternal.h 108122 2025-01-30 06:43:18Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICInternal.h 108593 2025-02-27 19:10:58Z alexander.eichner@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -52,6 +52,9 @@ extern const PDMGICBACKEND g_GicHvfBackend;
 # elif defined(RT_OS_WINDOWS)
 /** The Hyper-V GIC backend. */
 extern const PDMGICBACKEND g_GicHvBackend;
+# elif defined(RT_OS_LINUX)
+/** The KVM GIC backend. */
+extern const PDMGICBACKEND g_GicKvmBackend;
 # endif
 #endif
 
