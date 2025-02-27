@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr-x86.cpp 108427 2025-02-17 15:24:14Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImplSvmInstr-x86.cpp 108590 2025-02-27 10:35:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation (x86 target).
  */
@@ -57,6 +57,8 @@
 
 #include "IEMInline.h"
 #include "IEMInline-x86.h"
+#include "IEMInlineExec.h"
+#include "IEMInlineExec-x86.h"
 
 #ifdef VBOX_WITH_NESTED_HWVIRT_SVM /* Almost the whole file. */
 
