@@ -1,4 +1,4 @@
-/* $Id: VBoxStub.rc 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $*/
+/* $Id: VBoxStub.rc 108597 2025-02-28 09:50:18Z andreas.loeffler@oracle.com $*/
 /** @file
  * Resource file for the Windows install stub program.
  */
@@ -60,6 +60,8 @@ BEGIN
       VALUE "Translation", 0x409, 1200
    END
 END
+
+IDB_SPLASH PNG "splash.png"
 
 #include "VBoxStub-icon.rc"
 #include "VBoxStub-manifest.rc"
