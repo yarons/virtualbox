@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin-armv8.cpp 108594 2025-02-28 09:12:06Z alexander.eichner@oracle.com $ */
+/* $Id: NEMR3Native-darwin-armv8.cpp 108595 2025-02-28 09:29:04Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework, ARMv8 variant.
  *
@@ -637,6 +637,7 @@ static const char *nemR3DarwinHvStatusName(hv_return_t hrc)
 }
 
 
+#if 0 /* unused right now */
 /**
  * Converts an ICC system register into Darwin's Hypervisor.Framework equivalent.
  *
@@ -678,6 +679,7 @@ static hv_gic_icc_reg_t nemR3DarwinIccRegFromSysReg(uint32_t u32Reg)
     AssertReleaseFailed();
     return HV_GIC_ICC_REG_INVALID;
 }
+#endif
 
 
 /**
