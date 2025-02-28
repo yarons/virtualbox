@@ -1,4 +1,4 @@
-/* $Id: resource.h 108597 2025-02-28 09:50:18Z andreas.loeffler@oracle.com $ */
+/* $Id: resource.h 108598 2025-02-28 10:03:38Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxStub - resource header file.
  */
@@ -38,7 +38,8 @@
 #endif
 #define APP_MANIFEST 1
 
-#define IDB_SPLASH   102
+#ifdef VBOX_STUB_WITH_SPLASH
+# define IDB_SPLASH    102
+#endif
 
 #endif /* !VBOX_INCLUDED_SRC_Stub_resource_h */
-
