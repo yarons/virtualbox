@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 106849 2024-11-05 11:35:04Z brent.paulson@oracle.com $ */
+/* $Id: SnapshotImpl.cpp 108602 2025-02-28 22:33:32Z brent.paulson@oracle.com $ */
 /** @file
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
  */
@@ -852,7 +852,7 @@ void Snapshot::i_updateNVRAMPaths(const Utf8Str &strOldPath,
     AutoWriteLock alock(m->pMachine COMMA_LOCKVAL_SRC_POS);
 
     // call the implementation under the tree lock
-    i_updateSavedStatePathsImpl(strOldPath, strNewPath);
+    i_updateNVRAMPathsImpl(strOldPath, strNewPath);
 }
 
 /**
