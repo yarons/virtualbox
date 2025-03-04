@@ -1,4 +1,4 @@
-/* $Id: VBoxWinDrvCommon.cpp 108269 2025-02-07 15:04:54Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxWinDrvCommon.cpp 108624 2025-03-04 14:10:10Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxWinDrvCommon - Common Windows driver installation functions.
  */
@@ -653,6 +653,8 @@ const char *VBoxWinDrvWinErrToStr(const DWORD dwErr)
     switch (dwErr)
     {
         RT_CASE_RET_STR(ERROR_BADKEY                            );
+        RT_CASE_RET_STR(ERROR_INVALID_SERVICE_CONTROL           );
+        RT_CASE_RET_STR(ERROR_SERVICE_REQUEST_TIMEOUT           );
         RT_CASE_RET_STR(ERROR_SERVICE_MARKED_FOR_DELETE         );
         RT_CASE_RET_STR(CERT_E_EXPIRED                          );
         RT_CASE_RET_STR(CERT_E_UNTRUSTEDTESTROOT                );
