@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 108614 2025-03-04 08:42:26Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICAll.cpp 108616 2025-03-04 09:16:36Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - All Contexts.
  */
@@ -1693,12 +1693,12 @@ static uint16_t gicDistGetHighestPrioPendingIntr(PCGICDEV pGicDev, bool fGroup0,
     }
 
     /* Among the collected interrupts, pick the one with the highest priority. */
-    uint16_t       uIntId;
-    uint16_t       idxHighest;
-    uint16_t       uPriority = UINT16_MAX;
-    void const    *pvIntrs   = &bmIntrPending[0];
-    uint32_t const cIntrs    = sizeof(bmIntrPending) * 8;
-    int32_t        idxIntr   = ASMBitFirstSet(pvIntrs, cIntrs);
+    uint16_t       uIntId     = GIC_INTID_RANGE_SPECIAL_NO_INTERRUPT;
+    uint16_t       idxHighest = UINT16_MAX;
+    uint16_t       uPriority  = UINT16_MAX;
+    void const    *pvIntrs    = &bmIntrPending[0];
+    uint32_t const cIntrs     = sizeof(bmIntrPending) * 8;
+    int32_t        idxIntr    = ASMBitFirstSet(pvIntrs, cIntrs);
     AssertCompile(!(cIntrs % 32));
     if (idxIntr >= 0)
     {
@@ -1714,12 +1714,6 @@ static uint16_t gicDistGetHighestPrioPendingIntr(PCGICDEV pGicDev, bool fGroup0,
             }
             idxIntr = ASMBitNextSet(pvIntrs, cIntrs, idxIntr);
         } while (idxIntr != -1);
-    }
-    else
-    {
-        idxHighest = UINT16_MAX;
-        uPriority  = UINT8_MAX;
-        uIntId     = GIC_INTID_RANGE_SPECIAL_NO_INTERRUPT;
     }
 
     *pbPriority = uPriority;
@@ -1777,12 +1771,12 @@ static uint16_t gicReDistGetHighestPrioPendingIntr(PCGICCPU pGicCpu, bool fGroup
     }
 
     /* Among the collected interrupts, pick the one with the highest priority. */
-    uint16_t       uIntId;
-    uint16_t       idxHighest;
-    uint16_t       uPriority = UINT16_MAX;
-    const void    *pvIntrs   = &bmIntrPending[0];
-    uint32_t const cIntrs    = sizeof(bmIntrPending) * 8;
-    int32_t        idxIntr   = ASMBitFirstSet(pvIntrs, cIntrs);
+    uint16_t       uIntId     = GIC_INTID_RANGE_SPECIAL_NO_INTERRUPT;
+    uint16_t       idxHighest = UINT16_MAX;
+    uint16_t       uPriority  = UINT16_MAX;
+    const void    *pvIntrs    = &bmIntrPending[0];
+    uint32_t const cIntrs     = sizeof(bmIntrPending) * 8;
+    int32_t        idxIntr    = ASMBitFirstSet(pvIntrs, cIntrs);
     AssertCompile(!(cIntrs % 32));
     if (idxIntr >= 0)
     {
@@ -1797,12 +1791,6 @@ static uint16_t gicReDistGetHighestPrioPendingIntr(PCGICCPU pGicCpu, bool fGroup
             }
             idxIntr = ASMBitNextSet(pvIntrs, cIntrs, idxIntr);
         } while (idxIntr != -1);
-    }
-    else
-    {
-        idxHighest = UINT16_MAX;
-        uPriority  = UINT8_MAX;
-        uIntId     = GIC_INTID_RANGE_SPECIAL_NO_INTERRUPT;
     }
 
     *pbPriority = uPriority;
