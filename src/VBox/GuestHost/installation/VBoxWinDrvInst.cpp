@@ -1,4 +1,4 @@
-/* $Id: VBoxWinDrvInst.cpp 108243 2025-02-06 08:58:45Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxWinDrvInst.cpp 108625 2025-03-04 18:09:59Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxWinDrvInst - Windows driver installation handling.
  */
@@ -2343,6 +2343,7 @@ int VBoxWinDrvInstUninstallExecuteInf(VBOXWINDRVINST hDrvInst, const char *pszIn
  * Controls a Windows service, internal version.
  *
  * @returns VBox status code.
+ * @retval  VERR_NOT_FOUND if the given service was not found.
  * @param   hDrvInst            Windows driver installer handle to use.
  * @param   pszService          Name of service to control.
  * @param   enmFn               Service control function to use.
@@ -2372,9 +2373,7 @@ static int vboxWinDrvInstControlServiceEx(PVBOXWINDRVINSTINTERNAL pCtx,
         if (hSvc == NULL)
         {
             rc = RTErrConvertFromWin32(GetLastError());
-            if (rc == VERR_NOT_FOUND)
-                vboxWinDrvInstLogError(pCtx, "Service '%s' not found", pszService);
-            else
+            if (rc != VERR_NOT_FOUND)
                 rc = vboxWinDrvInstLogLastError(pCtx, "Opening service '%s' failed", pszService);
         }
     }
