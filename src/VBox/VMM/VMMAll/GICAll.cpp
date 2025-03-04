@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 108622 2025-03-04 12:42:48Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICAll.cpp 108623 2025-03-04 13:38:06Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - All Contexts.
  */
@@ -3696,7 +3696,6 @@ DECLHIDDEN(void) gicInitCpu(PPDMDEVINS pDevIns, PVMCPUCC pVCpu)
     RT_ZERO(pGicCpu->bmIntrPending);
     RT_ZERO(pGicCpu->bmIntrActive);
     RT_ZERO(pGicCpu->abIntrPriority);
-    pGicCpu->fRegWritePending = false;
 
     /* SGIs are always edge-triggered, writes to GICR_ICFGR0 are to be ignored. */
     pGicCpu->bmIntrConfig[0] = 0xaaaaaaaa;
