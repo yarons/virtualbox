@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 107357 2024-12-13 08:09:39Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: PDMDevice.cpp 108618 2025-03-04 11:24:21Z alexander.eichner@oracle.com $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -720,6 +720,12 @@ static int pdmR3DevLoadModules(PVM pVM)
     /* Register the internal VMM APIC device. */
     int rc = pdmR3DevReg_Register(&RegCB.Core, &g_DeviceAPIC);
     AssertRCReturn(rc, rc);
+
+# if defined(RT_OS_WINDOWS)
+    /* Register the internal VMM APIC device for NEM mode. */
+    rc = pdmR3DevReg_Register(&RegCB.Core, &g_DeviceAPICNem);
+    AssertRCReturn(rc, rc);
+# endif
 #endif
 
     /*

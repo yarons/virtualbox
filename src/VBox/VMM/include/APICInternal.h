@@ -1,4 +1,4 @@
-/* $Id: APICInternal.h 107137 2024-11-22 10:48:00Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: APICInternal.h 108618 2025-03-04 11:24:21Z alexander.eichner@oracle.com $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -45,6 +45,10 @@
 #ifdef VBOX_INCLUDED_vmm_pdmapic_h
 /** The VirtualBox APIC backend table. */
 extern const PDMAPICBACKEND g_ApicBackend;
+#if defined(RT_OS_WINDOWS)
+/** The Hyper-V APIC backend. */
+extern const PDMAPICBACKEND g_ApicNemBackend;
+# endif
 #endif
 
 /** The APIC hardware version we are emulating. */
