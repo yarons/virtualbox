@@ -1,4 +1,4 @@
-/* $Id: VBoxWinDrvInst.h 108127 2025-01-30 12:15:39Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxWinDrvInst.h 108626 2025-03-04 18:26:48Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxWinDrvInst - Header for Windows driver installation handling.
  */
@@ -119,6 +119,8 @@ typedef enum VBOXWINDRVSVCFN
     VBOXWINDRVSVCFN_STOP,
     /** Restart the service. */
     VBOXWINDRVSVCFN_RESTART,
+    /** Deletes a service. */
+    VBOXWINDRVSVCFN_DELETE,
     /** End marker, do not use. */
     VBOXWINDRVSVCFN_END
 } VBOXWINDRVSVCFN;
