@@ -1,4 +1,4 @@
-/* $Id: PDMAllGic.cpp 108051 2025-01-24 09:43:16Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: PDMAllGic.cpp 108611 2025-03-04 08:21:36Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * PDM - Generic Interrupt Controller (GIC) Interface.
  */
@@ -91,14 +91,15 @@ VMM_INT_DECL(VBOXSTRICTRC) PDMGicWriteSysReg(PVMCPUCC pVCpu, uint32_t u32Reg, ui
  * Sets the specified shared peripheral interrupt starting.
  *
  * @returns VBox status code.
- * @param   pVM                 The cross context virtual machine structure.
- * @param   uIntId              The SPI ID (minus GIC_INTID_RANGE_SPI_START) to assert/de-assert.
- * @param   fAsserted           Flag whether to mark the interrupt as asserted/de-asserted.
+ * @param   pVM         The cross context virtual machine structure.
+ * @param   uSpiIntId   The SPI ID (minus GIC_INTID_RANGE_SPI_START) to
+ *                      assert/de-assert.
+ * @param   fAsserted   Flag whether to mark the interrupt as asserted/de-asserted.
  */
-VMM_INT_DECL(int) PDMGicSetSpi(PVMCC pVM, uint32_t uIntId, bool fAsserted)
+VMM_INT_DECL(int) PDMGicSetSpi(PVMCC pVM, uint32_t uSpiIntId, bool fAsserted)
 {
     AssertReturn(PDM_TO_GICBACKEND(pVM)->pfnSetSpi, VERR_INVALID_POINTER);
-    return PDM_TO_GICBACKEND(pVM)->pfnSetSpi(pVM, uIntId, fAsserted);
+    return PDM_TO_GICBACKEND(pVM)->pfnSetSpi(pVM, uSpiIntId, fAsserted);
 }
 
 
