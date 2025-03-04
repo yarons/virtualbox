@@ -1,4 +1,4 @@
-/* $Id: APICR3Nem-win.cpp 108618 2025-03-04 11:24:21Z alexander.eichner@oracle.com $ */
+/* $Id: APICR3Nem-win.cpp 108619 2025-03-04 11:27:15Z alexander.eichner@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - Hyper-V interface.
  */
@@ -333,7 +333,7 @@ static DECLCALLBACK(int) apicR3HvGetTimerFreq(PVMCC pVM, uint64_t *pu64Value)
     AssertPtrReturn(pu64Value, VERR_INVALID_PARAMETER);
 
     RT_NOREF(pVM, pu64Value);
-    AssertFailed();    
+    AssertFailed();
     return VERR_PDM_NO_APIC_INSTANCE;
 }
 
