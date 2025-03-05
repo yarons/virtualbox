@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionInternal.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMAsyncCompletionInternal.h 108644 2025-03-05 17:33:56Z alexander.eichner@oracle.com $ */
 /** @file
  * PDM - Pluggable Device Manager, Async I/O Completion internal header.
  */
@@ -281,7 +281,7 @@ typedef struct PDMASYNCCOMPLETIONTASK
 } PDMASYNCCOMPLETIONTASK;
 
 void pdmR3AsyncCompletionCompleteTask(PPDMASYNCCOMPLETIONTASK pTask, int rc, bool fCallCompletionHandler);
-bool pdmacEpIsTransferAllowed(PPDMASYNCCOMPLETIONENDPOINT pEndpoint, uint32_t cbTransfer, RTMSINTERVAL *pmsWhenNext);
+bool pdmacEpIsTransferAllowed(PPDMASYNCCOMPLETIONENDPOINT pEndpoint, uint64_t cbTransfer, RTMSINTERVAL *pmsWhenNext);
 
 RT_C_DECLS_END
 

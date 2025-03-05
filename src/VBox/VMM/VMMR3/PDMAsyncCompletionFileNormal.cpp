@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileNormal.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMAsyncCompletionFileNormal.cpp 108644 2025-03-05 17:33:56Z alexander.eichner@oracle.com $ */
 /** @file
  * PDM Async I/O - Async File I/O manager.
  */
@@ -998,7 +998,7 @@ static int pdmacFileAioMgrNormalProcessTaskList(PPDMACTASKFILE pTaskHead,
         RTMSINTERVAL msWhenNext;
         PPDMACTASKFILE pCurr = pTaskHead;
 
-        if (!pdmacEpIsTransferAllowed(&pEndpoint->Core, (uint32_t)pCurr->DataSeg.cbSeg, &msWhenNext))
+        if (!pdmacEpIsTransferAllowed(&pEndpoint->Core, pCurr->DataSeg.cbSeg, &msWhenNext))
         {
             pAioMgr->msBwLimitExpired = RT_MIN(pAioMgr->msBwLimitExpired, msWhenNext);
             break;
