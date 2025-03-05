@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 108635 2025-03-05 11:40:22Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICAll.cpp 108636 2025-03-05 12:24:57Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - All Contexts.
  */
@@ -272,7 +272,7 @@ DECLHIDDEN(uint16_t) gicReDistGetIntIdFromIndex(uint16_t idxIntr)
         uIntId = idxIntr;
     /* Extended PPIs. */
     else if (idxIntr < 96)
-        uIntId = GIC_INTID_RANGE_PPI_LAST + 1 + idxIntr - GIC_INTID_RANGE_EXT_PPI_START;
+        uIntId = GIC_INTID_RANGE_EXT_PPI_START + idxIntr - 32;
     else
     {
         uIntId = 0;
