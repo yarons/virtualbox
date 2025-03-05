@@ -1,4 +1,4 @@
-/* $Id: VBoxInstallHelper.cpp 108638 2025-03-05 16:26:50Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxInstallHelper.cpp 108639 2025-03-05 16:33:37Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxInstallHelper - Various helper routines for Windows host installer.
  */
@@ -2160,7 +2160,7 @@ static UINT _createHostOnlyInterface(MSIHANDLE hModule, LPCWSTR pwszId, LPCWSTR 
 }
 #endif /* VBOX_WITH_NETADP */
 
-UINT __stdcall Ndis6CreateHostOnlyInterface(MSIHANDLE hModule)
+UINT __stdcall CreateHostOnlyInterface(MSIHANDLE hModule)
 {
 #ifdef VBOX_WITH_NETADP
 # if 0 /* Trick for allowing the debugger to be attached. */
@@ -2332,7 +2332,7 @@ static UINT _updateHostOnlyInterfaces(MSIHANDLE hModule, LPCWSTR pwszInfName, LP
 }
 #endif /* VBOX_WITH_NETADP */
 
-UINT __stdcall Ndis6UpdateHostOnlyInterfaces(MSIHANDLE hModule)
+UINT __stdcall UpdateHostOnlyInterfaces(MSIHANDLE hModule)
 {
 #ifdef VBOX_WITH_NETADP
     return _updateHostOnlyInterfaces(hModule, L"VBoxNetAdp6.inf", NETADP_ID);
