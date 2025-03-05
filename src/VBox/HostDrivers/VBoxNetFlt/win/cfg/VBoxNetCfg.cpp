@@ -1,4 +1,4 @@
-/* $Id: VBoxNetCfg.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetCfg.cpp 108643 2025-03-05 17:14:53Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxNetCfg.cpp - Network Configuration API.
  */
@@ -2195,11 +2195,13 @@ VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinNetFltInstall(IN INetCfg *pNc, IN LPCWS
 static HRESULT vboxNetCfgWinNetAdpUninstall(IN INetCfg *pNc, LPCWSTR pwszId, DWORD InfRmFlags)
 {
     NOREF(pNc);
+
     NonStandardLog("Finding NetAdp driver package and trying to uninstall it ...\n");
 
-    VBoxDrvCfgInfUninstallAllF(L"Net", pwszId, InfRmFlags);
-    NonStandardLog("NetAdp is not installed currently\n");
-    return S_OK;
+    HRESULT const hr = VBoxDrvCfgInfUninstallAllF(L"Net", pwszId, InfRmFlags);
+
+    NonStandardLog("Finding NetAdp driver package and trying to uninstall done: %Rhrc\n", hr);
+    return hr;
 }
 
 VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinNetAdpUninstall(IN INetCfg *pNc, IN LPCWSTR pwszId)
