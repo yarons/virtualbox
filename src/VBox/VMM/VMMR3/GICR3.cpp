@@ -1,4 +1,4 @@
-/* $Id: GICR3.cpp 108648 2025-03-06 08:30:37Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICR3.cpp 108649 2025-03-06 08:46:22Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -407,7 +407,7 @@ static DECLCALLBACK(int) gicR3SaveExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
         pHlp->pfnSSMPutU64(pSSM, pGicCpu->uIccCtlr);
         pHlp->pfnSSMPutMem(pSSM, &pGicCpu->abRunningPriorities[0], sizeof(pGicCpu->abRunningPriorities));
         pHlp->pfnSSMPutU8(pSSM,   pGicCpu->idxRunningPriority);
-        pHlp->pfnSSMPutU8(pSSM,   pGicCpu->bInterruptPriority);
+        pHlp->pfnSSMPutU8(pSSM,   pGicCpu->bIntrPriorityMask);
         pHlp->pfnSSMPutU8(pSSM,   pGicCpu->bBinaryPtGroup0);
         pHlp->pfnSSMPutU8(pSSM,   pGicCpu->bBinaryPtGroup1);
         pHlp->pfnSSMPutBool(pSSM, pGicCpu->fIntrGroup0Enabled);
@@ -558,7 +558,7 @@ static DECLCALLBACK(int) gicR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint
         pHlp->pfnSSMGetU64(pSSM,  &pGicCpu->uIccCtlr);
         pHlp->pfnSSMGetMem(pSSM,  &pGicCpu->abRunningPriorities[0], sizeof(pGicCpu->abRunningPriorities));
         pHlp->pfnSSMGetU8(pSSM,   &pGicCpu->idxRunningPriority);
-        pHlp->pfnSSMGetU8(pSSM,   &pGicCpu->bInterruptPriority);
+        pHlp->pfnSSMGetU8(pSSM,   &pGicCpu->bIntrPriorityMask);
         pHlp->pfnSSMGetU8(pSSM,   &pGicCpu->bBinaryPtGroup0);
         pHlp->pfnSSMGetU8(pSSM,   &pGicCpu->bBinaryPtGroup1);
         pHlp->pfnSSMGetBool(pSSM, &pGicCpu->fIntrGroup0Enabled);
