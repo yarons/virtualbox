@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpUninstall.cpp 107344 2024-12-12 11:07:22Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxNetAdpUninstall.cpp 108652 2025-03-06 13:32:42Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * NetAdpUninstall - VBoxNetAdp uninstaller command line tool
  */
@@ -50,7 +50,7 @@
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
-#define VBOX_NETADP_HWID L"sun_VBoxNetAdp6"
+#define VBOX_NETADP_HWID L"sun_VBoxNetAdp"
 
 
 static DECLCALLBACK(void) winNetCfgLogger(const char *pszString)
