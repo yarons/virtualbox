@@ -1,4 +1,4 @@
-/* $Id: sysfs.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: sysfs.cpp 108672 2025-03-07 17:03:01Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Linux sysfs access.
  */
@@ -95,6 +95,7 @@ static int rtLinuxConstructPathV(char *pszBuf, size_t cchBuf,
 }
 
 
+#if 0 /*Unused*/
 /**
  * Constructs the path of a sysfs file from the format parameters passed,
  * prepending a prefix if the path is relative.
@@ -118,6 +119,7 @@ DECLINLINE(int) rtLinuxConstructPath(char *pszBuf, size_t cchBuf,
     va_end(va);
     return rc;
 }
+#endif
 
 
 /**
