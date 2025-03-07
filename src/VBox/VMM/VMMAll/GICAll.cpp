@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 108656 2025-03-07 07:23:33Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICAll.cpp 108657 2025-03-07 07:24:35Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - All Contexts.
  */
@@ -2010,7 +2010,7 @@ static uint16_t gicAckHighestPriorityPendingIntr(PGICDEV pGicDev, PVMCPUCC pVCpu
          * We mask the sub-priority bits and only compare the group priority.
          *
          * When the binary point registers indicates no preemption, we must allow interrupts that have
-         * a higher priority than the idle. Hence the two different masks here.
+         * a higher priority than idle. Hence, the use of two different masks below.
          *
          * See ARM GIC spec. 4.8.3 "Priority grouping".
          * See ARM GIC spec. 4.8.5 "Preemption".
