@@ -1,4 +1,4 @@
-/* $Id: GICR3.cpp 108669 2025-03-07 13:46:26Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICR3.cpp 108670 2025-03-07 14:09:31Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -883,6 +883,8 @@ DECLCALLBACK(int) gicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pC
         GIC_REG_COUNTER(&pGicCpu->StatMmioWriteR3,   "%u/R3/MmioWrite",   "Number of APIC MMIO writes in R3.");
         GIC_REG_COUNTER(&pGicCpu->StatSysRegReadR3,  "%u/R3/SysRegRead",  "Number of GIC system register reads in R3.");
         GIC_REG_COUNTER(&pGicCpu->StatSysRegWriteR3, "%u/R3/SysRegWrite", "Number of GIC system register writes in R3.");
+        GIC_REG_COUNTER(&pGicCpu->StatSetSpiR3,      "%u/R3/SetSpi",      "Number of GIC set SPI callbacks in R3.");
+        GIC_REG_COUNTER(&pGicCpu->StatSetPpiR3,      "%u/R3/SetPpi",      "Number of GIC set PPI callbacks in R3.");
     }
 #endif
 

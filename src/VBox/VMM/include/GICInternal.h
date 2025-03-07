@@ -1,4 +1,4 @@
-/* $Id: GICInternal.h 108664 2025-03-07 12:17:47Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICInternal.h 108670 2025-03-07 14:09:31Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -289,6 +289,10 @@ typedef struct GICCPU
     STAMCOUNTER                 StatSysRegReadR3;
     /** Number of MSR writes in R3. */
     STAMCOUNTER                 StatSysRegWriteR3;
+    /** Number of set SPI callbacks. */
+    STAMCOUNTER                 StatSetSpiR3;
+    /** Number of set PPI callbacks. */
+    STAMCOUNTER                 StatSetPpiR3;
 
 # if 0 /* No R0 for now. */
     /** Number of MMIO reads in RZ. */
