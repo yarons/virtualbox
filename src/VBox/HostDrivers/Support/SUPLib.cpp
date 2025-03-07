@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 107886 2025-01-16 00:21:46Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPLib.cpp 108671 2025-03-07 17:02:28Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -155,6 +155,7 @@ DECL_HIDDEN_DATA(uint32_t)          g_uSupFakeMode = UINT32_MAX;
 static int supInitFake(PSUPDRVSESSION *ppSession);
 
 
+#ifdef RT_OS_DARWIN
 /** Touch a range of pages. */
 DECLINLINE(void) supR3TouchPages(void *pv, size_t cPages)
 {
@@ -165,6 +166,7 @@ DECLINLINE(void) supR3TouchPages(void *pv, size_t cPages)
         pu32 += PAGE_SIZE / sizeof(uint32_t);
     }
 }
+#endif
 
 
 SUPR3DECL(int) SUPR3Install(void)

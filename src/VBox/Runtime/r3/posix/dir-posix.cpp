@@ -1,4 +1,4 @@
-/* $Id: dir-posix.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: dir-posix.cpp 108671 2025-03-07 17:02:28Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Directory manipulation, POSIX.
  */
@@ -430,12 +430,17 @@ static int rtDirReadMore(PRTDIRINTERNAL pDir)
         if (!pDir->fDataUnread)
         {
             struct dirent *pResult = NULL;
-#if RT_GNUC_PREREQ(4, 6)
+#if RT_CLANG_PREREQ(3, 4) /* Needs to come first because clang also triggers on RT_GNUC_PREREQ() but doesn't work there. */
+# pragma clang diagnostic push
+# pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#elif RT_GNUC_PREREQ(4, 6)
 # pragma GCC diagnostic push
 # pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #endif
             int rc = readdir_r(pDir->pDir, &pDir->Data, &pResult);
-#if RT_GNUC_PREREQ(4, 6)
+#if RT_CLANG_PREREQ(3, 4)
+# pragma clang diagnostic pop
+#elif RT_GNUC_PREREQ(4, 6)
 # pragma GCC diagnostic pop
 #endif
             if (rc)
