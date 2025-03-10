@@ -1,4 +1,4 @@
-/* $Id: VBoxEditElf.cpp 108699 2025-03-10 21:17:16Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxEditElf.cpp 108701 2025-03-10 21:29:47Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxEditElf - Simple ELF binary file editor.
  */
@@ -57,7 +57,7 @@ typedef struct
     Elf64_Half      vd_cnt;
     Elf64_Word      vd_hash;
     Elf64_Word      vd_aux;
-    Elf64_Word      vd_next;    
+    Elf64_Word      vd_next;
 } Elf64_Verdef;
 
 
@@ -763,7 +763,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 108699 $";
+                static const char s_szRev[] = "$Revision: 108701 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
