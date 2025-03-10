@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsWidget.cpp 108694 2025-03-10 16:23:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsWidget.cpp 108695 2025-03-10 17:05:08Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsWidget class implementation.
  */
@@ -319,7 +319,7 @@ void UIGlobalToolsWidget::prepareWidgets()
         }
 
         /* Create tool-pane: */
-        m_pPane = new UIToolPane(actionPool());
+        m_pPane = new UIToolPane(this, UIToolClass_Global, actionPool());
         if (toolPane())
         {
             /// @todo make sure it's used properly

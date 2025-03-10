@@ -1,4 +1,4 @@
-/* $Id: UIToolPane.cpp 108694 2025-03-10 16:23:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolPane.cpp 108695 2025-03-10 17:05:08Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPane class implementation.
  */
@@ -48,8 +48,9 @@
 #include <iprt/assert.h>
 
 
-UIToolPane::UIToolPane(UIActionPool *pActionPool, QWidget *pParent /* = 0 */)
+UIToolPane::UIToolPane(QWidget *pParent, UIToolClass enmClass, UIActionPool *pActionPool)
     : QWidget(pParent)
+    , m_enmClass(enmClass)
     , m_pActionPool(pActionPool)
     , m_pLayout(0)
     , m_pPaneHome(0)
@@ -350,10 +351,21 @@ void UIToolPane::prepare()
     /* Create stacked-layout: */
     m_pLayout = new QStackedLayout(this);
 
-    /* Create welcome pane: */
-    openTool(UIToolType_Home);
-    /* Create machines pane: */
-    openTool(UIToolType_Machines);
+    /* Open default tools: */
+    switch (m_enmClass)
+    {
+        case UIToolClass_Global:
+        {
+            /* Create welcome pane: */
+            openTool(UIToolType_Home);
+            /* Create machines pane: */
+            openTool(UIToolType_Machines);
+
+            break;
+        }
+        default:
+            break;
+    }
 }
 
 void UIToolPane::cleanup()
