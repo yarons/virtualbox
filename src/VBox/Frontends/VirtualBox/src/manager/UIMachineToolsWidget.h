@@ -1,4 +1,4 @@
-/* $Id: UIMachineToolsWidget.h 108689 2025-03-10 13:54:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineToolsWidget.h 108694 2025-03-10 16:23:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineToolsWidget class declaration.
  */
@@ -43,7 +43,7 @@ class QTimer;
 class QISplitter;
 class UIActionPool;
 class UIChooser;
-class UIToolPaneGlobal;
+class UIToolPane;
 class UIToolPaneMachine;
 class UITools;
 class UIVirtualMachineItem;
@@ -89,7 +89,7 @@ public:
 
     /** Constructs Machine Tools Widget passing @a pParent to the base-class.
       * @param  pActionPool  Brings the action-pool reference. */
-    UIMachineToolsWidget(UIToolPaneGlobal *pParent, UIActionPool *pActionPool);
+    UIMachineToolsWidget(UIToolPane *pParent, UIActionPool *pActionPool);
 
     /** @name Common stuff.
       * @{ */
@@ -243,9 +243,9 @@ private:
     /** @} */
 
     /** Holds the parent reference. */
-    UIToolPaneGlobal *m_pParent;
+    UIToolPane   *m_pParent;
     /** Holds the action-pool reference. */
-    UIActionPool     *m_pActionPool;
+    UIActionPool *m_pActionPool;
 
     /** Holds the central splitter instance. */
     QISplitter        *m_pSplitter;

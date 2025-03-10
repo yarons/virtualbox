@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsWidget.h 108691 2025-03-10 14:07:09Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsWidget.h 108694 2025-03-10 16:23:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsWidget class declaration.
  */
@@ -43,7 +43,7 @@ class QIToolBar;
 class UIActionPool;
 class UIChooser;
 class UIMachineToolsWidget;
-class UIToolPaneGlobal;
+class UIToolPane;
 class UIToolPaneMachine;
 class UITools;
 class UIVirtualBoxManagerAdvancedWidget;
@@ -86,7 +86,7 @@ public:
     /** @name Tools pane stuff.
       * @{ */
         /** Returns tool-pane instance. */
-        UIToolPaneGlobal *toolPane() const;
+        UIToolPane *toolPane() const;
         /** Returns Machine Tools Widget reference. */
         UIMachineToolsWidget *machineToolsWidget() const;
 
@@ -188,10 +188,10 @@ private:
     /** Holds the grid-layout instance. */
     QGridLayout *m_pLayout;
 
-    /** Holds the Tools-menu instance. */
-    UITools          *m_pMenu;
-    /** Holds the Tools-pane instance. */
-    UIToolPaneGlobal *m_pPane;
+    /** Holds the tools-menu instance. */
+    UITools    *m_pMenu;
+    /** Holds the tool-pane instance. */
+    UIToolPane *m_pPane;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_manager_UIGlobalToolsWidget_h */
