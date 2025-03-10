@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsWidget.h 108694 2025-03-10 16:23:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsWidget.h 108696 2025-03-10 17:44:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsWidget class declaration.
  */
@@ -44,7 +44,6 @@ class UIActionPool;
 class UIChooser;
 class UIMachineToolsWidget;
 class UIToolPane;
-class UIToolPaneMachine;
 class UITools;
 class UIVirtualBoxManagerAdvancedWidget;
 class UIVirtualMachineItem;
@@ -176,10 +175,10 @@ private:
       * @{ */
         /** Returns tool-menu instance. */
         UITools *toolMenu() const;
-        /** Returns Machine Tools Widget's Chooser-pane reference. */
+        /** Returns Machine Tools Widget's chooser-pane reference. */
         UIChooser *chooser() const;
-        /** Returns Machine Tools Widget's Tool-pane instance. */
-        UIToolPaneMachine *toolPaneMachine() const;
+        /** Returns Machine Tools Widget's tool-pane instance. */
+        UIToolPane *toolPaneMachine() const;
     /** @} */
 
     /** Holds the action-pool instance. */

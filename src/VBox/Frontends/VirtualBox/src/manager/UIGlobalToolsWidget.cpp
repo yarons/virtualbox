@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsWidget.cpp 108695 2025-03-10 17:05:08Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsWidget.cpp 108696 2025-03-10 17:44:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsWidget class implementation.
  */
@@ -36,7 +36,6 @@
 #include "UIGlobalToolsWidget.h"
 #include "UIMachineToolsWidget.h"
 #include "UIToolPane.h"
-#include "UIToolPaneMachine.h"
 #include "UITools.h"
 #include "UIVirtualBoxEventHandler.h"
 #include "UIVirtualBoxManagerAdvancedWidget.h"
@@ -358,7 +357,7 @@ void UIGlobalToolsWidget::prepareConnections()
             this, &UIGlobalToolsWidget::sltHandleGlobalToolMenuUpdate);
     connect(machineToolsWidget(), &UIMachineToolsWidget::sigToolMenuUpdate,
             this, &UIGlobalToolsWidget::sltHandleMachineToolMenuUpdate);
-    connect(toolPaneMachine(), &UIToolPaneMachine::sigSwitchToActivityOverviewPane,
+    connect(toolPaneMachine(), &UIToolPane::sigSwitchToActivityOverviewPane,
             this, &UIGlobalToolsWidget::sltSwitchToActivitiesTool);
 }
 
@@ -395,7 +394,7 @@ void UIGlobalToolsWidget::cleanupConnections()
                this, &UIGlobalToolsWidget::sltHandleGlobalToolMenuUpdate);
     disconnect(machineToolsWidget(), &UIMachineToolsWidget::sigToolMenuUpdate,
                this, &UIGlobalToolsWidget::sltHandleMachineToolMenuUpdate);
-    disconnect(toolPaneMachine(), &UIToolPaneMachine::sigSwitchToActivityOverviewPane,
+    disconnect(toolPaneMachine(), &UIToolPane::sigSwitchToActivityOverviewPane,
                this, &UIGlobalToolsWidget::sltSwitchToActivitiesTool);
 }
 
@@ -409,7 +408,7 @@ UIChooser *UIGlobalToolsWidget::chooser() const
     return machineToolsWidget()->chooser();
 }
 
-UIToolPaneMachine *UIGlobalToolsWidget::toolPaneMachine() const
+UIToolPane *UIGlobalToolsWidget::toolPaneMachine() const
 {
     return machineToolsWidget()->toolPane();
 }
