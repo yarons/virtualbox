@@ -1,4 +1,4 @@
-# $Id: Config.kmk 108522 2025-02-24 12:41:25Z valery.portnyagin@oracle.com $
+# $Id: Config.kmk 108685 2025-03-10 13:00:08Z alexander.eichner@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2607,6 +2607,9 @@ VBOX_CHECK_IMPORTS ?= $(PATH_OBJ)/VBoxCheckImports/VBoxCheckImports$(HOSTSUFF_EX
 
 # VBoxEditCoffLib (symbol name tweaking for VBoxSF on windows)
 VBOX_EDIT_COFF_LIB ?= $(PATH_OBJ)/VBoxEditCoffLib/VBoxEditCoffLib$(HOSTSUFF_EXE)
+
+# VBoxEditElf (Simple ELF binary editor).
+VBOX_EDIT_ELF      ?= $(PATH_OBJ)/VBoxEditElf/VBoxEditElf$(HOSTSUFF_EXE)
 
 # GNU tar if present.
 if1of ($(KBUILD_TARGET), linux os2 win)
@@ -9386,7 +9389,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 108522 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 108685 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
