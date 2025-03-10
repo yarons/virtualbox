@@ -1,4 +1,4 @@
-/* $Id: GICR3.cpp 108674 2025-03-10 07:03:19Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICR3.cpp 108677 2025-03-10 08:40:48Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -804,7 +804,7 @@ DECLCALLBACK(int) gicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pC
     /** @devcfgm{gic, Nmi, bool, false}
      * Configures whether message-based interrupts (MBIs) are supported
      * (GICD_TYPER.MBIS). */
-    rc = pHlp->pfnCFGMQueryBoolDef(pCfg, "Mbi", &pGicDev->fMbi, false);
+    rc = pHlp->pfnCFGMQueryBoolDef(pCfg, "Mbi", &pGicDev->fMbi, true);
     AssertLogRelRCReturn(rc, rc);
 
     /*
