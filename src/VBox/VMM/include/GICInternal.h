@@ -1,4 +1,4 @@
-/* $Id: GICInternal.h 108673 2025-03-10 07:00:57Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICInternal.h 108679 2025-03-10 10:11:55Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -185,8 +185,11 @@ typedef struct GICDEV
     bool                        fNmi;
     /** Whether message-based interrupts are supported (GICD_TYPER.MBIS). */
     bool                        fMbi;
+    /** Whether non-zero affinity 3 levels are supported (GICD_TYPER.A3V) and
+     *  (ICC_CTLR.A3V). */
+    bool                        fAff3Levels;
     /** Alignment. */
-    bool                        afPadding[3];
+    bool                        afPadding[2];
     /** @} */
 } GICDEV;
 /** Pointer to a GIC device. */
