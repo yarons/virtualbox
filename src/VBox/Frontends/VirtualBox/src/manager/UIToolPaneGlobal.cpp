@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.cpp 108337 2025-02-12 08:25:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolPaneGlobal.cpp 108689 2025-03-10 13:54:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class implementation.
  */
@@ -38,7 +38,7 @@
 #include "UICloudProfileManager.h"
 #include "UIExtensionPackManager.h"
 #include "UIHomePane.h"
-#include "UIMachineToolsManagerWidget.h"
+#include "UIMachineToolsWidget.h"
 #include "UIMediumManager.h"
 #include "UINetworkManager.h"
 #include "UIToolPaneGlobal.h"
@@ -133,8 +133,8 @@ void UIToolPaneGlobal::openTool(UIToolType enmType)
             }
             case UIToolType_Machines:
             {
-                /* Create Machine Tool Manager: */
-                m_pPaneMachines = new UIMachineToolsManagerWidget(this, m_pActionPool);
+                /* Create Machine Tools Widget: */
+                m_pPaneMachines = new UIMachineToolsWidget(this, m_pActionPool);
                 AssertPtrReturnVoid(m_pPaneMachines);
                 {
                     /* Configure pane: */
@@ -340,7 +340,7 @@ void UIToolPaneGlobal::setCloudMachineItems(const QList<UIVirtualMachineItemClou
     }
 }
 
-UIMachineToolsManagerWidget *UIToolPaneGlobal::machineToolManager() const
+UIMachineToolsWidget *UIToolPaneGlobal::machineToolsWidget() const
 {
     return m_pPaneMachines;
 }

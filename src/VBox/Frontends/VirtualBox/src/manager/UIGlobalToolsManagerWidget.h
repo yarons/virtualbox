@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsManagerWidget.h 108464 2025-02-19 13:48:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsManagerWidget.h 108689 2025-03-10 13:54:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsManagerWidget class declaration.
  */
@@ -42,7 +42,7 @@ class QGridLayout;
 class QIToolBar;
 class UIActionPool;
 class UIChooser;
-class UIMachineToolsManagerWidget;
+class UIMachineToolsWidget;
 class UIToolPaneGlobal;
 class UIToolPaneMachine;
 class UITools;
@@ -87,8 +87,8 @@ public:
       * @{ */
         /** Returns tool-pane instance. */
         UIToolPaneGlobal *toolPane() const;
-        /** Returns Machine Tool Manager reference. */
-        UIMachineToolsManagerWidget *machineToolManager() const;
+        /** Returns Machine Tools Widget reference. */
+        UIMachineToolsWidget *machineToolsWidget() const;
 
         /** Returns menu tool type. */
         UIToolType menuToolType() const;

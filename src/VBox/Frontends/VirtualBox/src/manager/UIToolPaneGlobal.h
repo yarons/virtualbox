@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.h 108337 2025-02-12 08:25:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolPaneGlobal.h 108689 2025-03-10 13:54:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class declaration.
  */
@@ -44,7 +44,7 @@ class QUuid;
 class UIActionPool;
 class UICloudProfileManagerWidget;
 class UIExtensionPackManagerWidget;
-class UIMachineToolsManagerWidget;
+class UIMachineToolsWidget;
 class UIMediumManagerWidget;
 class UINetworkManagerWidget;
 class UIVMActivityOverviewWidget;
@@ -96,8 +96,8 @@ public:
     /** Defines the @a cloudItems. */
     void setCloudMachineItems(const QList<UIVirtualMachineItemCloud*> &cloudItems);
 
-    /** Holds the Machine Tool Manager instance. */
-    UIMachineToolsManagerWidget *machineToolManager() const;
+    /** Holds the Machine Tools Widget instance. */
+    UIMachineToolsWidget *machineToolsWidget() const;
 
 private:
 
@@ -118,8 +118,8 @@ private:
     QStackedLayout               *m_pLayout;
     /** Holds the Home pane instance. */
     UIHomePane                   *m_pPaneHome;
-    /** Holds the Machine Tool Manager instance. */
-    UIMachineToolsManagerWidget  *m_pPaneMachines;
+    /** Holds the Machine Tools Widget instance. */
+    UIMachineToolsWidget         *m_pPaneMachines;
     /** Holds the Extension Pack Manager instance. */
     UIExtensionPackManagerWidget *m_pPaneExtensions;
     /** Holds the Virtual Media Manager instance. */
