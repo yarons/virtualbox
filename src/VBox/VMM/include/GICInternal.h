@@ -1,4 +1,4 @@
-/* $Id: GICInternal.h 108670 2025-03-07 14:09:31Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICInternal.h 108673 2025-03-10 07:00:57Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -180,7 +180,7 @@ typedef struct GICDEV
     /** The maximum extended PPI supported (GICR_TYPER.PPInum). */
     uint8_t                     uMaxExtPpi;
     /** Whether range-selector is supported (GICD_TYPER.RSS and ICC_CTLR_EL1.RSS). */
-    bool                        fRangeSelSupport;
+    bool                        fRangeSel;
     /** Whether NMIs are supported (GICD_TYPER.NMI). */
     bool                        fNmi;
     /** Whether message-based interrupts are supported (GICD_TYPER.MBIS). */
