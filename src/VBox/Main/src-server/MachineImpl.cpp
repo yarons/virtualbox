@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 108711 2025-03-11 17:53:25Z samantha.scholz@oracle.com $ */
+/* $Id: MachineImpl.cpp 108712 2025-03-11 17:59:24Z samantha.scholz@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -4654,10 +4654,10 @@ HRESULT Machine::unregister(AutoCaller &autoCaller,
         mData->llFilesToDelete.push_back(strNVRAMFile);
 
     Utf8Str strServerCertificate(VRDE_AUTO_GENENERATED_CERT_FILENAME);
-    int vrc = i_calculateFullPath(strServerCertificate, strServerCertificate);
+    i_calculateFullPath(strServerCertificate, strServerCertificate);
 
     Utf8Str strServerPrivateKey(VRDE_AUTO_GENENERATED_PKEY_FILENAME);
-    vrc = i_calculateFullPath(strServerPrivateKey, strServerPrivateKey);
+    i_calculateFullPath(strServerPrivateKey, strServerPrivateKey);
 
     if (RTFileExists(strServerPrivateKey.c_str()))
         mData->llFilesToDelete.push_back(strServerPrivateKey);
