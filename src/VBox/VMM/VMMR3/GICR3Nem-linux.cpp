@@ -1,4 +1,4 @@
-/* $Id: GICR3Nem-linux.cpp 108593 2025-02-27 19:10:58Z alexander.eichner@oracle.com $ */
+/* $Id: GICR3Nem-linux.cpp 108705 2025-03-11 08:53:03Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - KVM in kernel interface.
  */
@@ -29,7 +29,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define LOG_GROUP LOG_GROUP_DEV_APIC
+#define LOG_GROUP LOG_GROUP_DEV_GIC
 #include <VBox/log.h>
 #include "GICInternal.h"
 #include "NEMInternal.h" /* Need access to the VM file descriptor. */

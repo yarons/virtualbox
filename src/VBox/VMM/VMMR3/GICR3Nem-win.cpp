@@ -1,4 +1,4 @@
-/* $Id: GICR3Nem-win.cpp 108583 2025-02-27 07:22:56Z alexander.eichner@oracle.com $ */
+/* $Id: GICR3Nem-win.cpp 108705 2025-03-11 08:53:03Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - Hyper-V interface.
  */
@@ -29,7 +29,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define LOG_GROUP LOG_GROUP_DEV_APIC
+#define LOG_GROUP LOG_GROUP_DEV_GIC
 #include <iprt/nt/nt-and-windows.h>
 #include <iprt/nt/hyperv.h>
 #include <iprt/mem.h>
