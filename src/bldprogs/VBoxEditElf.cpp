@@ -1,4 +1,4 @@
-/* $Id: VBoxEditElf.cpp 108709 2025-03-11 12:18:25Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxEditElf.cpp 108721 2025-03-12 09:51:13Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxEditElf - Simple ELF binary file editor.
  */
@@ -277,8 +277,8 @@ static RTEXITCODE changeRunpathEntry(RTFILE hFileElf, const char *pszInput, Elf6
         return RTMsgErrorExit(RTEXITCODE_FAILURE, "New runpath '%s' is too long to overwrite current one, maximum length is: %zu\n", cchNewRunpath, cchMax);
     }
 
-    memcpy(pbStr, pszRunpath, cchNewRunpath);
-    rc = RTFileReadAt(hFileElf, offStrTab, pbStrTab, cbStrTab, NULL);
+    memcpy(pbStr, pszRunpath, cchNewRunpath + 1);
+    rc = RTFileWriteAt(hFileElf, offStrTab, pbStrTab, cbStrTab, NULL);
     RTMemFree(pbStrTab);
     if (RT_FAILURE(rc))
         return RTMsgErrorExit(RTEXITCODE_FAILURE, "Writing altered string table failed: %Rrc\n", rc);
@@ -960,7 +960,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 108709 $";
+                static const char s_szRev[] = "$Revision: 108721 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
