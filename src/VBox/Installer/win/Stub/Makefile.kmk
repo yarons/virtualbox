@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 108599 2025-02-28 13:59:08Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 108728 2025-03-12 19:56:11Z andreas.loeffler@oracle.com $
 ## @file
 # Sub-Makefile for the stub installer.
 #
@@ -61,6 +61,7 @@ VBoxStub_SDKS = \
 
 ifdef VBOX_STUB_WITH_SPLASH
  VBoxStub.cpp_DEFS += VBOX_STUB_WITH_SPLASH
+ VBoxStub.rc_DEFS  += VBOX_STUB_WITH_SPLASH
  VBOX_STUB_IMPORTS += user32.dll shlwapi.dll gdi32.dll
 endif
 
