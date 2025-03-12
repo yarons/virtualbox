@@ -1,4 +1,4 @@
-/* $Id: VBoxStub.rc 108598 2025-02-28 10:03:38Z andreas.loeffler@oracle.com $*/
+/* $Id: VBoxStub.rc 108729 2025-03-12 20:03:51Z andreas.loeffler@oracle.com $*/
 /** @file
  * Resource file for the Windows install stub program.
  */
@@ -62,7 +62,7 @@ BEGIN
 END
 
 #ifdef VBOX_STUB_WITH_SPLASH
- IDB_SPLASH PNG "splash.png"
+ IDB_SPLASH PNG "Binary\\splash.png"
 #endif
 
 #include "VBoxStub-icon.rc"
