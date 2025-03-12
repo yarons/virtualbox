@@ -1,4 +1,4 @@
-/* $Id: GICR3.cpp 108715 2025-03-12 07:31:50Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICR3.cpp 108720 2025-03-12 09:39:41Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -575,7 +575,7 @@ DECLCALLBACK(int) gicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pC
 
     /** @devcfgm{gic, ExtSpi, bool, false}
      * Configures whether extended SPIs supported is enabled (GICD_TYPER.ESPI). */
-    rc = pHlp->pfnCFGMQueryBoolDef(pCfg, "ExtSpi", &pGicDev->fExtSpi, false);
+    rc = pHlp->pfnCFGMQueryBoolDef(pCfg, "ExtSpi", &pGicDev->fExtSpi, true);
     AssertLogRelRCReturn(rc, rc);
 
     /** @devcfgm{gic, MaxExtSpi, uint8_t, 31}
@@ -731,6 +731,11 @@ DECLCALLBACK(int) gicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pC
 #endif
 
     gicR3Reset(pDevIns);
+
+    LogRel(("GIC: ArchRev=%u MaxSpi=%u ExtSpi=%RTbool MaxExtSpi=%u ExtPpi=%RTbool "
+            "MaxExtPpi=%u RangeSel=%RTbool Nmi=%RTbool Mbi=%RTbool Aff3Levels=%RTbool\n",
+            pGicDev->uArchRev, pGicDev->uMaxSpi, pGicDev->fExtSpi, pGicDev->uMaxExtSpi,
+            pGicDev->fExtPpi, pGicDev->uMaxExtPpi, pGicDev->fRangeSel, pGicDev->fNmi, pGicDev->fMbi));
     return VINF_SUCCESS;
 }
 
