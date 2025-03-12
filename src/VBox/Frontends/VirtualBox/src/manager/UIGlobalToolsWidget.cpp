@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsWidget.cpp 108696 2025-03-10 17:44:18Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsWidget.cpp 108723 2025-03-12 10:17:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsWidget class implementation.
  */
@@ -38,14 +38,13 @@
 #include "UIToolPane.h"
 #include "UITools.h"
 #include "UIVirtualBoxEventHandler.h"
-#include "UIVirtualBoxManagerAdvancedWidget.h"
 #include "UIVirtualMachineItem.h"
 
 /* Other VBox includes: */
 #include "iprt/assert.h"
 
 
-UIGlobalToolsWidget::UIGlobalToolsWidget(UIVirtualBoxManagerAdvancedWidget *pParent, UIActionPool *pActionPool)
+UIGlobalToolsWidget::UIGlobalToolsWidget(QWidget *pParent, UIActionPool *pActionPool)
     : QWidget(pParent)
     , m_pActionPool(pActionPool)
     , m_pLayout(0)

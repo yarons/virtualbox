@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsWidget.h 108696 2025-03-10 17:44:18Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsWidget.h 108723 2025-03-12 10:17:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsWidget class declaration.
  */
@@ -45,7 +45,6 @@ class UIChooser;
 class UIMachineToolsWidget;
 class UIToolPane;
 class UITools;
-class UIVirtualBoxManagerAdvancedWidget;
 class UIVirtualMachineItem;
 
 /** QWidget extension used as Global Tools Widget instance. */
@@ -68,7 +67,7 @@ public:
 
     /** Constructs Global Tools Widget passing @a pParent to the base-class.
       * @param  pActionPool  Brings the action-pool reference.  */
-    UIGlobalToolsWidget(UIVirtualBoxManagerAdvancedWidget *pParent, UIActionPool *pActionPool);
+    UIGlobalToolsWidget(QWidget *pParent, UIActionPool *pActionPool);
 
     /** @name Common stuff.
       * @{ */
