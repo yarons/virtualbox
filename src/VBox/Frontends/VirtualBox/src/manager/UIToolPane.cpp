@@ -1,4 +1,4 @@
-/* $Id: UIToolPane.cpp 108696 2025-03-10 17:44:18Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolPane.cpp 108725 2025-03-12 10:35:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPane class implementation.
  */
@@ -59,6 +59,7 @@ UIToolPane::UIToolPane(QWidget *pParent, UIToolClass enmClass, UIActionPool *pAc
     : QWidget(pParent)
     , m_enmClass(enmClass)
     , m_pActionPool(pActionPool)
+    , m_fActive(false)
     , m_pLayout(0)
     , m_pPaneHome(0)
     , m_pPaneMachines(0)
@@ -67,7 +68,6 @@ UIToolPane::UIToolPane(QWidget *pParent, UIToolClass enmClass, UIActionPool *pAc
     , m_pPaneNetwork(0)
     , m_pPaneCloud(0)
     , m_pPaneActivities(0)
-    , m_fActive(false)
 {
     prepare();
 }
@@ -490,19 +490,6 @@ QString UIToolPane::currentHelpKeyword() const
     return uiCommon().helpKeyword(pCurrentToolWidget);
 }
 
-void UIToolPane::setCloudMachineItems(const QList<UIVirtualMachineItemCloud*> &cloudItems)
-{
-    /* Cache passed value: */
-    m_cloudItems = cloudItems;
-
-    /* Update activity overview pane if it is open: */
-    if (isToolOpened(UIToolType_Activities))
-    {
-        AssertPtrReturnVoid(m_pPaneActivities);
-        m_pPaneActivities->setCloudMachineItems(m_cloudItems);
-    }
-}
-
 UIMachineToolsWidget *UIToolPane::machineToolsWidget() const
 {
     return m_pPaneMachines;
@@ -561,6 +548,19 @@ bool UIToolPane::isCurrentStateItemSelected() const
 QUuid UIToolPane::currentSnapshotId()
 {
     return m_pPaneSnapshots ? m_pPaneSnapshots->currentSnapshotId() : QUuid();
+}
+
+void UIToolPane::setCloudMachineItems(const QList<UIVirtualMachineItemCloud*> &cloudItems)
+{
+    /* Cache passed value: */
+    m_cloudItems = cloudItems;
+
+    /* Update activity overview pane if it is open: */
+    if (isToolOpened(UIToolType_Activities))
+    {
+        AssertPtrReturnVoid(m_pPaneActivities);
+        m_pPaneActivities->setCloudMachineItems(m_cloudItems);
+    }
 }
 
 void UIToolPane::sltDetachToolPane()
