@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 108728 2025-03-12 19:56:11Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 108730 2025-03-12 20:04:29Z andreas.loeffler@oracle.com $
 ## @file
 # Sub-Makefile for the stub installer.
 #
@@ -57,7 +57,7 @@ VBoxStub_SDKS = \
 	VBoxNtDll
 
 # Enables splash screen support.
-#VBOX_STUB_WITH_SPLASH=
+VBOX_STUB_WITH_SPLASH=1
 
 ifdef VBOX_STUB_WITH_SPLASH
  VBoxStub.cpp_DEFS += VBOX_STUB_WITH_SPLASH
