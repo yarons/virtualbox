@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigArmV8.cpp 107551 2025-01-08 10:14:39Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImplConfigArmV8.cpp 108748 2025-03-13 17:47:45Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits for ARMv8.
  */
@@ -613,7 +613,7 @@ int Console::i_configConstructorArmV8(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
         vrc = RTFdtNodePropertyAddU32(     hFdt, "bank-width", 4);                          VRC();
         vrc = RTFdtNodePropertyAddCellsU64(hFdt, "reg", 4,
                                            GCPhysFw,    cbFw,     /* First region (EFI). */
-                                           GCPhysFlash, cbFlash); /* Second region (NVRAM). */ VRC();
+                                           GCPhysFlash, 3 * _256K); /* Second region (NVRAM), see NvramStoreImpl.cpp for an explanation of the size choice. */ VRC();
         vrc = RTFdtNodePropertyAddString(  hFdt, "compatible", "cfi-flash");                VRC();
         vrc = RTFdtNodeFinalize(hFdt);                                                      VRC();
 
