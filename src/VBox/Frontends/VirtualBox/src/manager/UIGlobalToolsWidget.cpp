@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsWidget.cpp 108745 2025-03-13 17:34:40Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsWidget.cpp 108747 2025-03-13 17:44:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsWidget class implementation.
  */
@@ -250,7 +250,7 @@ void UIGlobalToolsWidget::sltHandleMachineToolMenuUpdate(UIVirtualMachineItem *p
     // /* Disable even unrestricted tools for inacccessible VMs: */
     // const bool fCurrentItemIsOk = isItemAccessible(pItem);
     // toolMenu()->setItemsEnabled(fCurrentItemIsOk);
-    
+
     /* Close all restricted tools: */
     foreach (const UIToolType &enmRestrictedType, restrictedTypes)
         toolPaneMachine()->closeTool(enmRestrictedType);

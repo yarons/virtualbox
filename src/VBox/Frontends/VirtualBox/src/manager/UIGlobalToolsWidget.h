@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsWidget.h 108744 2025-03-13 17:22:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsWidget.h 108747 2025-03-13 17:44:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsWidget class declaration.
  */
@@ -180,7 +180,7 @@ private:
         UIToolPane *toolPaneMachine() const;
     /** @} */
 
-    /** Holds the action-pool instance. */
+    /** Holds the action-pool reference. */
     UIActionPool *m_pActionPool;
 
     /** Holds the grid-layout instance. */
