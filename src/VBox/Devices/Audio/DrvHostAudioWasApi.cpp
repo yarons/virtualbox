@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioWasApi.cpp 108727 2025-03-12 19:34:43Z andreas.loeffler@oracle.com $ */
+/* $Id: DrvHostAudioWasApi.cpp 108736 2025-03-13 07:02:22Z andreas.loeffler@oracle.com $ */
 /** @file
  * Host audio driver - Windows Audio Session API.
  */
@@ -1152,7 +1152,7 @@ static int drvHostAudioWasCacheInitConfig(PDRVHOSTAUDIOWASCACHEDEVCFG pDevCfg)
  *
  * If lookup fails, a new entry will be created.
  *
- * @note    Called holding the cache's lock (if \a fUseCache is @true), returning without holding it!
+ * @note    Called holding the cache's lock (if \a fUseCache is \c @true), returning without holding it!
  */
 static int drvHostAudioWasCacheLookupOrCreateConfig(PDRVHOSTAUDIOWAS pThis, PDRVHOSTAUDIOWASCACHEDEV pDevEntry,
                                                     PCPDMAUDIOSTREAMCFG pCfgReq, bool fUseCache, bool fOnWorker,
