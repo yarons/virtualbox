@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsWidget.cpp 108744 2025-03-13 17:22:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsWidget.cpp 108745 2025-03-13 17:34:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsWidget class implementation.
  */
@@ -362,8 +362,12 @@ void UIGlobalToolsWidget::loadSettings()
     sltHandleToolsMenuIndexChange(toolMenu()->toolsType(UIToolClass_Global));
     sltHandleToolsMenuIndexChange(toolMenu()->toolsType(UIToolClass_Machine));
 
-    /* Update tools restrictions: */
-    emit sigToolMenuUpdate();
+    /* Update Global tools restrictions: */
+    sltHandleGlobalToolMenuUpdate();
+    /* Update Machine tools restrictions for currently selected item: */
+    UIVirtualMachineItem *pItem = machineToolsWidget()->currentItem();
+    if (pItem)
+        sltHandleMachineToolMenuUpdate(pItem);
 }
 
 void UIGlobalToolsWidget::cleanupConnections()
