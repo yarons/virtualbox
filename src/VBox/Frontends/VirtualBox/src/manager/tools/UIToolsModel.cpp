@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 108531 2025-02-24 16:21:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.cpp 108746 2025-03-13 17:42:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -426,17 +426,18 @@ void UIToolsModel::sltRetranslateUI()
             case UIToolType_Home:        pItem->setName(tr("Home")); break;
             case UIToolType_Machines:    pItem->setName(tr("Machines")); break;
             case UIToolType_Managers:    pItem->setName(tr("Management")); break;
-            case UIToolType_Extensions:  pItem->setName(tr("Extensions")); break;
-            case UIToolType_Media:       pItem->setName(tr("Media")); break;
-            case UIToolType_Network:     pItem->setName(tr("Network")); break;
-            case UIToolType_Cloud:       pItem->setName(tr("Cloud")); break;
-            case UIToolType_Activities:  pItem->setName(tr("Activities")); break;
             // Machine
             case UIToolType_Details:     pItem->setName(tr("Details")); break;
             case UIToolType_Snapshots:   pItem->setName(tr("Snapshots")); break;
             case UIToolType_Logs:        pItem->setName(tr("Logs")); break;
             case UIToolType_VMActivity:  pItem->setName(tr("Activity")); break;
             case UIToolType_FileManager: pItem->setName(tr("File Manager")); break;
+            // Management
+            case UIToolType_Extensions:  pItem->setName(tr("Extensions")); break;
+            case UIToolType_Media:       pItem->setName(tr("Media")); break;
+            case UIToolType_Network:     pItem->setName(tr("Network")); break;
+            case UIToolType_Cloud:       pItem->setName(tr("Cloud")); break;
+            case UIToolType_Activities:  pItem->setName(tr("Activities")); break;
             default: break;
         }
     }
