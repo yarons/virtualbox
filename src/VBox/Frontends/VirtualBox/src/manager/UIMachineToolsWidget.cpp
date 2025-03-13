@@ -1,10 +1,10 @@
-/* $Id: UIMachineToolsWidget.cpp 108696 2025-03-10 17:44:18Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineToolsWidget.cpp 108744 2025-03-13 17:22:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineToolsWidget class implementation.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -527,8 +527,8 @@ void UIMachineToolsWidget::loadSettings()
         m_pSplitter->setSizes(sizes);
     }
 
-    /* Open tool last chosen in tools-menu: */
-    switchToolTo(toolMenu()->toolsType(UIToolClass_Machine));
+    /* Acquire & select tool currently chosen in the menu: */
+    sltHandleToolsMenuIndexChange(toolMenu()->toolsType(UIToolClass_Machine));
 }
 
 void UIMachineToolsWidget::cleanupConnections()

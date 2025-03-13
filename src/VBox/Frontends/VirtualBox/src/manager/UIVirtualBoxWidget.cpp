@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxWidget.cpp 108723 2025-03-12 10:17:35Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxWidget.cpp 108744 2025-03-13 17:22:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxWidget class implementation.
  */
@@ -224,7 +224,7 @@ void UIVirtualBoxWidget::setToolsTypeGlobal(UIToolType enmType, bool)
 UIToolType UIVirtualBoxWidget::toolsTypeGlobal() const
 {
     AssertPtrReturn(globalToolsWidget(), UIToolType_Invalid);
-    return globalToolsWidget()->menuToolType();
+    return globalToolsWidget()->menuToolType(UIToolClass_Global);
 }
 
 void UIVirtualBoxWidget::setToolsTypeMachine(UIToolType enmType)
