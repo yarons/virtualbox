@@ -1,4 +1,4 @@
-/* $Id: SystemTableBuilder.h 106974 2024-11-12 10:24:48Z alexander.eichner@oracle.com $ */
+/* $Id: SystemTableBuilder.h 108752 2025-03-14 09:53:47Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox system tables builder.
  */
@@ -65,7 +65,8 @@ public:
     virtual int configurePcieRootBus(const char *pszVBoxName, uint32_t aPinIrqs[4], RTGCPHYS GCPhysMmioPio, RTGCPHYS GCPhysMmioEcam, size_t cbPciMmioEcam,
                                      RTGCPHYS GCPhysPciMmioBase, RTGCPHYS cbPciMmio, RTGCPHYS GCPhysPciMmio32Base, RTGCPHYS cbPciMmio32);
     virtual int configureTpm2(bool fCrb, RTGCPHYS GCPhysMmioStart, RTGCPHYS cbMmio, uint32_t u32Irq);
-
+    virtual int configureGpioDevice(const char *pszVBoxName, uint32_t uInstance, RTGCPHYS GCPhysMmio, RTGCPHYS cbMmio, uint32_t u32Irq,
+                                    uint16_t u16PinShutdown, uint16_t u16PinSuspend);
 
     virtual int dumpTables(const char *pszFilename);
 };
@@ -89,6 +90,8 @@ public:
     int configurePcieRootBus(const char *pszVBoxName, uint32_t aPinIrqs[4], RTGCPHYS GCPhysMmioPio, RTGCPHYS GCPhysMmioEcam, size_t cbPciMmioEcam,
                              RTGCPHYS GCPhysPciMmioBase, RTGCPHYS cbPciMmio, RTGCPHYS GCPhysPciMmio32Base, RTGCPHYS cbPciMmio32);
     int configureTpm2(bool fCrb, RTGCPHYS GCPhysMmioStart, RTGCPHYS cbMmio, uint32_t u32Irq);
+    int configureGpioDevice(const char *pszVBoxName, uint32_t uInstance, RTGCPHYS GCPhysMmio, RTGCPHYS cbMmio, uint32_t u32Irq,
+                            uint16_t u16PinShutdown, uint16_t u16PinSuspend);
 
     int dumpTables(const char *pszFilename);
 
