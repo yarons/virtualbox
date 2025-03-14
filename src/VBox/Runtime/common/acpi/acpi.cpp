@@ -1,4 +1,4 @@
-/* $Id: acpi.cpp 108751 2025-03-14 09:52:06Z alexander.eichner@oracle.com $ */
+/* $Id: acpi.cpp 108753 2025-03-14 09:59:21Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Advanced Configuration and Power Interface (ACPI) Table generation API.
  */
@@ -2447,7 +2447,7 @@ RTDECL(int) RTAcpiResourceAddGpioInt(RTACPIRES hAcpiRes, RTACPIRESGPIOMOD enmMod
     pb[14] = 23;                                                              /* Pin table offset[7:0]  */
     pb[15] = 0;                                                               /* Pin table offset[15:8] */
     pb[16] = 0;                                                               /* Resource Source Index  */
-    pb[17] = 23 + cPins * sizeof(*pau16Pins);                                 /* Resource Source Name Offset[7:0]  */
+    pb[17] = (uint8_t)(23 + cPins * sizeof(*pau16Pins));                      /* Resource Source Name Offset[7:0]  */
     pb[18] = 0;                                                               /* Resource Source Name Offset[15:8] */
     pb[19] = 0;                                                               /* Vendor Data Offset[7:0]           */
     pb[20] = 0;                                                               /* Vendor Data Offset[15:8]          */
