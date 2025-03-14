@@ -1,4 +1,4 @@
-/* $Id: UIToolPane.h 108725 2025-03-12 10:35:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolPane.h 108755 2025-03-14 12:30:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPane class declaration.
  */
@@ -47,6 +47,7 @@ class UIErrorPane;
 class UIExtensionPackManagerWidget;
 class UIFileManager;
 class UIMachineToolsWidget;
+class UIManagementToolsWidget;
 class UIMediumManagerWidget;
 class UINetworkManagerWidget;
 class UISnapshotPane;
@@ -128,8 +129,10 @@ public:
 
     /** @name Global tool stuff.
       * @{ */
-        /** Holds the Machine Tools Widget instance. */
+        /** Returns the Machine Tools Widget instance. */
         UIMachineToolsWidget *machineToolsWidget() const;
+        /** Returns the Management Tools Widget instance. */
+        UIManagementToolsWidget *managementToolsWidget() const;
     /** @} */
 
     /** @name Machine tool stuff.
@@ -189,7 +192,9 @@ private:
         UIHomePane *m_pPaneHome;
 
         /** Holds the Machine Tools Widget instance. */
-        UIMachineToolsWidget *m_pPaneMachines;
+        UIMachineToolsWidget    *m_pPaneMachines;
+        /** Holds the Management Tools Widget instance. */
+        UIManagementToolsWidget *m_pPaneManagement;
     /** @} */
 
     /** @name Machine tool stuff.
