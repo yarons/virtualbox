@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.cpp 107651 2025-01-09 11:04:40Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtualBoxClientImpl.cpp 108759 2025-03-14 18:59:54Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -42,8 +42,8 @@
 #include <iprt/semaphore.h>
 #include <iprt/cpp/utils.h>
 #include <iprt/utf16.h>
+#include <iprt/err.h>
 #ifdef RT_OS_WINDOWS
-# include <iprt/err.h>
 # include <iprt/ldr.h>
 # include <msi.h>
 # include <WbemIdl.h>
