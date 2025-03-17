@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPage.cpp 108761 2025-03-17 10:48:45Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMDiskPage.cpp 108764 2025-03-17 12:14:39Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPage class implementation.
  */
@@ -113,7 +113,7 @@ QWidget *UIWizardNewVMDiskPage::createNewDiskWidgets()
                     pSizeLayout->addWidget(m_pMediumSizeEditorLabel, 0, 0, Qt::AlignBottom);
                 }
                 /* Prepare Hard disk size editor: */
-                m_pMediumSizeEditor = new UIMediumSizeEditor(pWidget);
+                m_pMediumSizeEditor = new UIMediumSizeEditor(pWidget, true /* with editor label */);
                 if (m_pMediumSizeEditor)
                 {
                     m_pMediumSizeEditorLabel->setBuddy(m_pMediumSizeEditor);

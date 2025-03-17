@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMHardwarePage.cpp 108763 2025-03-17 11:32:31Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMHardwarePage.cpp 108764 2025-03-17 12:14:39Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMHardwarePage class implementation.
  */
@@ -73,7 +73,7 @@ void UIWizardNewVMHardwarePage::prepare()
 
     m_pBaseMemoryEditor = new UIBaseMemoryEditor;
     m_pVirtualCPUEditor = new UIVirtualCPUEditor;
-    m_pMediumSizeEditor = new UIMediumSizeEditor;
+    m_pMediumSizeEditor = new UIMediumSizeEditor(this, true /* with editor label */);
     m_pEFICheckBox      = new QCheckBox;
     pContainerLayout->addWidget(m_pBaseMemoryEditor, 0, 0, 1, 4);
     pContainerLayout->addWidget(m_pVirtualCPUEditor, 1, 0, 1, 4);

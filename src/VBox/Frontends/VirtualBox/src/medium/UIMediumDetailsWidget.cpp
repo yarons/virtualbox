@@ -1,4 +1,4 @@
-/* $Id: UIMediumDetailsWidget.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMediumDetailsWidget.cpp 108764 2025-03-17 12:14:39Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumDetailsWidget class implementation.
  */
@@ -471,7 +471,7 @@ void UIMediumDetailsWidget::prepareTabOptions()
 #endif
 
                 /* Create size editor: */
-                m_pEditorSize = new UIMediumSizeEditor(0 /* parent */);
+                m_pEditorSize = new UIMediumSizeEditor(0 /* parent */, false /* no label*/);
                 AssertPtrReturnVoid(m_pEditorSize);
                 {
                     /* Configure editor: */
