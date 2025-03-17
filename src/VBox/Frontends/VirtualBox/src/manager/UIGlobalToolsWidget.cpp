@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsWidget.cpp 108755 2025-03-14 12:30:47Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsWidget.cpp 108765 2025-03-17 13:39:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsWidget class implementation.
  */
@@ -216,7 +216,7 @@ void UIGlobalToolsWidget::sltHandleGlobalToolMenuUpdate()
                         << UIToolType_Network;
 
     /* Make sure Machines tool is hidden for empty Chooser-pane: */
-    if (!chooser()->currentItem())
+    if (chooser()->isNavigationListEmpty())
         restrictedTypes << UIToolType_Machines;
 
     /* Make sure no restricted tool is selected: */

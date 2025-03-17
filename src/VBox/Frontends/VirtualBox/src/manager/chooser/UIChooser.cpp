@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 108317 2025-02-11 12:08:22Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooser.cpp 108765 2025-03-17 13:39:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -71,6 +71,12 @@ QList<UIVirtualMachineItemCloud*> UIChooser::cloudMachineItems() const
 {
     AssertPtrReturn(model(), QList<UIVirtualMachineItemCloud*>());
     return model()->cloudMachineItems();
+}
+
+bool UIChooser::isNavigationListEmpty() const
+{
+    AssertPtrReturn(model(), true);
+    return model()->isNavigationListEmpty();
 }
 
 UIVirtualMachineItem *UIChooser::currentItem() const

@@ -1,4 +1,4 @@
-/* $Id: UIChooser.h 108317 2025-02-11 12:08:22Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooser.h 108765 2025-03-17 13:39:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooser class declaration.
  */
@@ -134,6 +134,12 @@ public:
 
         /** Returns a list of real cloud machine items. */
         QList<UIVirtualMachineItemCloud*> cloudMachineItems() const;
+    /** @} */
+
+    /** @name Navigation stuff.
+      * @{ */
+        /** Returns whether navigation list empty. */
+        bool isNavigationListEmpty() const;
     /** @} */
 
     /** @name Current-item stuff.
