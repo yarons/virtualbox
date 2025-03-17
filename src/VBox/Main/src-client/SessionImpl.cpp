@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 106994 2024-11-13 08:52:53Z valery.portnyagin@oracle.com $ */
+/* $Id: SessionImpl.cpp 108760 2025-03-17 05:35:54Z valery.portnyagin@oracle.com $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -101,8 +101,6 @@ HRESULT Session::init()
     mType = SessionType_Null;
 
     mClientTokenHolder = NULL;
-
-    setTracked(18000, 60);//5 hours, 1 hour
 
     /* Confirm a successful initialization when it's the case */
     autoInitSpan.setSucceeded();

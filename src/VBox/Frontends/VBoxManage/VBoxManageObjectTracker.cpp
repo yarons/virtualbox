@@ -1,4 +1,4 @@
-/* $Id: VBoxManageObjectTracker.cpp 107305 2024-12-09 15:09:37Z valery.portnyagin@oracle.com $ */
+/* $Id: VBoxManageObjectTracker.cpp 108760 2025-03-17 05:35:54Z valery.portnyagin@oracle.com $ */
 /** @file
  * VBoxManageObjectTracker - The object tracker related commands.
  */
@@ -45,9 +45,6 @@ enum supIfaces_T
 
 std::map <com::Utf8Str, supIfaces_T> mapInterfaceNameToEnum = {
     {"IProgress", kProgress},
-    {"ISession", kSession},
-    {"IMedium", kMedium},
-    {"IMachine", kMachine}
 };
 
 static void printProgressObjectInfo(const ComPtr<IProgress>& pObj);
