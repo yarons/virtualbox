@@ -1,4 +1,4 @@
-/* $Id: vbox_ttm.c 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: vbox_ttm.c 108767 2025-03-17 13:41:04Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -641,7 +641,7 @@ int vbox_bo_create(struct drm_device *dev, int size, int align,
 	vboxbo->bo.bdev->dev_mapping = dev->dev_mapping;
 #endif
 
-	vbox_ttm_placement(vboxbo, VBOX_MEM_TYPE_VRAM | VBOX_MEM_TYPE_SYSTEM);
+	vbox_ttm_placement(vboxbo, VBOX_MEM_TYPE_SYSTEM);
 
 #if RTLNX_VER_MAX(5,13,0) && !RTLNX_RHEL_RANGE(8,6, 8,99)
 	acc_size = ttm_bo_dma_acc_size(&vbox->ttm.bdev, size,
