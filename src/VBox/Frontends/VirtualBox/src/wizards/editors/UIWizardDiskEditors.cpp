@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.cpp 108325 2025-02-11 15:31:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardDiskEditors.cpp 108769 2025-03-17 14:26:39Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -37,6 +37,7 @@
 #include <QVBoxLayout>
 
 /* GUI includes: */
+#include "QIFileDialog.h"
 #include "QILineEdit.h"
 #include "QIToolButton.h"
 #include "QIRichTextLabel.h"
@@ -49,13 +50,12 @@
 #include "UITranslationEventListener.h"
 #include "UIUserNamePasswordEditor.h"
 #include "UIWizardDiskEditors.h"
-#include "UIWizardNewVMDiskPage.h"
 
 /* Other VBox includes: */
 #include "iprt/assert.h"
 #include "iprt/fs.h"
 #include "CSystemProperties.h"
-
+#include "KMediumVariant.h"
 
 /*********************************************************************************************************************************
 *   UIWizardDiskEditors implementation.                                                                                   *

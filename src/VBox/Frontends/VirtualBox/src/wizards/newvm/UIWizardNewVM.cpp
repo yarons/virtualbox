@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 108761 2025-03-17 10:48:45Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVM.cpp 108769 2025-03-17 14:26:39Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -27,6 +27,7 @@
 
 /* Qt includes: */
 #include <QAbstractButton>
+#include <QDir>
 #include <QLayout>
 
 /* GUI includes: */
@@ -40,7 +41,6 @@
 #include "UIWizardNewVMNameOSTypePage.h"
 #include "UIWizardNewVMUnattendedPage.h"
 #include "UIWizardNewVMHardwarePage.h"
-#include "UIWizardNewVMDiskPage.h"
 #include "UIWizardNewVMExpertPage.h"
 #include "UIWizardNewVMSummaryPage.h"
 

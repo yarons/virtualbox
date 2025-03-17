@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 108749 2025-03-13 17:48:30Z sergey.dubov@oracle.com $
+# $Id: Makefile.kmk 108769 2025-03-17 14:26:39Z serkan.bayraktar@oracle.com $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -659,7 +659,6 @@ VirtualBox_QT_MOCHDRS = \
 	src/wizards/newvm/UIWizardNewVMNameOSTypePage.h \
 	src/wizards/newvm/UIWizardNewVMUnattendedPage.h \
 	src/wizards/newvm/UIWizardNewVMHardwarePage.h \
-	src/wizards/newvm/UIWizardNewVMDiskPage.h \
 	src/wizards/newvm/UIWizardNewVMExpertPage.h \
 	src/wizards/newvm/UIWizardNewVMSummaryPage.h \
 	src/wizards/clonevm/UIWizardCloneVM.h \
@@ -1183,7 +1182,6 @@ VirtualBox_SOURCES = \
 	src/wizards/newvm/UIWizardNewVMNameOSTypePage.cpp \
 	src/wizards/newvm/UIWizardNewVMUnattendedPage.cpp \
 	src/wizards/newvm/UIWizardNewVMHardwarePage.cpp \
-	src/wizards/newvm/UIWizardNewVMDiskPage.cpp \
 	src/wizards/newvm/UIWizardNewVMExpertPage.cpp \
 	src/wizards/newvm/UIWizardNewVMSummaryPage.cpp \
 	src/wizards/clonevm/UIWizardCloneVM.cpp \
