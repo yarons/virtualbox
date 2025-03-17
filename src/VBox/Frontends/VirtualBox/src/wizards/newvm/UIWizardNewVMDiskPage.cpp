@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPage.cpp 108742 2025-03-13 12:38:09Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMDiskPage.cpp 108761 2025-03-17 10:48:45Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPage class implementation.
  */
@@ -200,11 +200,7 @@ void UIWizardNewVMDiskPage::initializePage()
         pWizard->setMediumSize(iRecommendedSize);
     }
 
-    /* Initialize medium variant parameter of the wizard (only if user has not touched the checkbox yet): */
-    if (!m_userModifiedParameters.contains("MediumVariant"))
-    {
-        pWizard->setMediumVariant((qulonglong)KMediumVariant_Standard);
-    }
+    pWizard->setMediumVariant((qulonglong)KMediumVariant_Standard);
 }
 
 bool UIWizardNewVMDiskPage::isComplete() const

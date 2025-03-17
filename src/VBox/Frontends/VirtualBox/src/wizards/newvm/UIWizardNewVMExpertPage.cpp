@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 108567 2025-02-26 10:30:23Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 108761 2025-03-17 10:48:45Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -80,7 +80,7 @@ UIWizardNewVMExpertPage::UIWizardNewVMExpertPage(UIActionPool *pActionPool)
         m_pToolBox = new UIToolBox;
         m_pToolBox->insertPage(ExpertToolboxItems_NameAndOSType, createNameOSTypeWidgets(), "");
         m_pToolBox->insertPage(ExpertToolboxItems_Unattended, createUnattendedWidgets(), "");
-        m_pHardwareWidgetContainer = new UINewVMHardwareContainer;
+        m_pHardwareWidgetContainer = new UINewVMHardwareContainer(this, false /* without medium size editor */);
         m_pToolBox->insertPage(ExpertToolboxItems_Hardware, m_pHardwareWidgetContainer, "");
         m_pToolBox->insertPage(ExpertToolboxItems_Disk, createDiskWidgets(), "");
         m_pToolBox->setCurrentPage(ExpertToolboxItems_NameAndOSType);
