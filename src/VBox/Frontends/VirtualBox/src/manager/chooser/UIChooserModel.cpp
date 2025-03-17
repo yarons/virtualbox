@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 108723 2025-03-12 10:17:35Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.cpp 108766 2025-03-17 13:39:53Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -467,6 +467,11 @@ UIChooserItem *UIChooserModel::currentItem() const
 const QList<UIChooserItem*> &UIChooserModel::navigationItems() const
 {
     return m_navigationItems;
+}
+
+bool UIChooserModel::isNavigationListEmpty() const
+{
+    return m_navigationItems.isEmpty();
 }
 
 void UIChooserModel::removeFromNavigationItems(UIChooserItem *pItem)

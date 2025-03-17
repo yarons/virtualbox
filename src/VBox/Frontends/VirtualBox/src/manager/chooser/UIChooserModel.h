@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 108317 2025-02-11 12:08:22Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.h 108766 2025-03-17 13:39:53Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -188,6 +188,8 @@ public:
       * @{ */
         /** Returns a list of navigation-items. */
         const QList<UIChooserItem*> &navigationItems() const;
+        /** Returns whether navigation list empty. */
+        bool isNavigationListEmpty() const;
         /** Removes @a pItem from navigation list. */
         void removeFromNavigationItems(UIChooserItem *pItem);
         /** Updates navigation list. */
