@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMHardwarePage.h 108762 2025-03-17 11:18:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMHardwarePage.h 108763 2025-03-17 11:32:31Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMHardwarePage class declaration.
  */
@@ -68,6 +68,7 @@ private:
     virtual void initializePage() RT_OVERRIDE RT_FINAL;
     virtual bool isComplete() const RT_OVERRIDE RT_FINAL;
     void initializeVirtualHardDiskParameters();
+    void updateMinimumLayoutHint();
     /** @name Widgets
       * @{ */
         QIRichTextLabel    *m_pLabel;
