@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.h 108757 2025-03-14 12:40:37Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsItem.h 108791 2025-03-18 12:49:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class declaration.
  */
@@ -88,6 +88,7 @@ public:
         HidingReason_Null       = 0,
         HidingReason_Restricted = RT_BIT(0),
         HidingReason_Unsuitable = RT_BIT(1),
+        HidingReason_Animated   = RT_BIT(2),
     };
 
     /** Constructs item on the basis of passed arguments.
