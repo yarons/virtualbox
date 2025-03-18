@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 108789 2025-03-18 12:43:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.h 108790 2025-03-18 12:46:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -130,6 +130,9 @@ public:
         void setRestrictedToolTypes(UIToolClass enmClass, const QList<UIToolType> &types);
         /** Defines whether the @a enmClass specified is @a fUnsuitable. */
         void setUnsuitableToolClass(UIToolClass enmClass, bool fUnsuitable);
+
+        /** Returns restricted tool types for the @a enmClass specified. */
+        QList<UIToolType> restrictedToolTypes(UIToolClass enmClass) const;
 
         /** Returns abstractly stored data value for certain @a iKey. */
         QVariant data(int iKey) const;
