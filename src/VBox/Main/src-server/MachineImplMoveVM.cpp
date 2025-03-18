@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.cpp 108489 2025-02-20 17:50:24Z brent.paulson@oracle.com $ */
+/* $Id: MachineImplMoveVM.cpp 108799 2025-03-18 21:01:41Z brent.paulson@oracle.com $ */
 /** @file
  * Implementation of MachineMoveVM
  */
@@ -1265,7 +1265,9 @@ void MachineMoveVM::updatePathsToNVRAMFiles(const Utf8Str &sourcePath, const Utf
                                       targetPath.c_str());
     ComObjPtr<NvramStore> pNvramStore(m_pMachine->mNvramStore);
     const Utf8Str NVRAMFile(pNvramStore->i_getNonVolatileStorageFile());
-    if (NVRAMFile.isNotEmpty())
+    if (   NVRAMFile.isNotEmpty()
+        && RTFileExists(NVRAMFile.c_str())
+        && m_pMachine->i_getFirmwareType() != FirmwareType_BIOS)
     {
         Utf8Str newNVRAMFile;
         if (RTPathStartsWith(NVRAMFile.c_str(), sourcePath.c_str()))
