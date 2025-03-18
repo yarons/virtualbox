@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 108792 2025-03-18 14:08:39Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.cpp 108793 2025-03-18 14:22:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -1073,7 +1073,7 @@ void UIToolsModel::saveCurrentItems()
         || m_enmClass == UIToolClass_Invalid)
     {
         if (UIToolsItem *pItem = currentItem(UIToolClass_Management))
-            enmTypeMachine = pItem->itemType();
+            enmTypeManagment = pItem->itemType();
     }
 
     /* Save selected items data: */
