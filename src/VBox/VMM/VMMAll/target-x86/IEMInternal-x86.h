@@ -1,4 +1,4 @@
-/* $Id: IEMInternal-x86.h 108544 2025-02-25 13:17:32Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal-x86.h 108785 2025-03-18 10:08:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file, x86 target specifics.
  */
@@ -3003,7 +3003,6 @@ VBOXSTRICTRC    iemMemCommitAndUnmapPostponeTroubleToR3(PVMCPUCC pVCpu, uint8_t 
 #endif
 VBOXSTRICTRC    iemMemApplySegment(PVMCPUCC pVCpu, uint32_t fAccess, uint8_t iSegReg, size_t cbMem, PRTGCPTR pGCPtrMem) RT_NOEXCEPT;
 VBOXSTRICTRC    iemMemMarkSelDescAccessed(PVMCPUCC pVCpu, uint16_t uSel) RT_NOEXCEPT;
-VBOXSTRICTRC    iemMemPageTranslateAndCheckAccess(PVMCPUCC pVCpu, RTGCPTR GCPtrMem, uint32_t cbAccess, uint32_t fAccess, PRTGCPHYS pGCPhysMem) RT_NOEXCEPT;
 
 void            iemOpcodeFlushLight(PVMCPUCC pVCpu, uint8_t cbInstr);
 void            iemOpcodeFlushHeavy(PVMCPUCC pVCpu, uint8_t cbInstr);
