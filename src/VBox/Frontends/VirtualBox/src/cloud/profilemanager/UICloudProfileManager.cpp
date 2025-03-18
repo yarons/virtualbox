@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UICloudProfileManager.cpp 108787 2025-03-18 12:11:51Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class implementation.
  */
@@ -577,7 +577,7 @@ void UICloudProfileManagerWidget::prepare()
     loadCloudStuff();
 
     /* Set help keyowrd for context sensitive help: */
-    uiCommon().setHelpKeyword(this, "cloud-using-cloud-profile-manager");
+    uiCommon().setHelpKeyword(this, "cloud-using-cloud-profile-manager" /* help keyword */);
 
 }
 

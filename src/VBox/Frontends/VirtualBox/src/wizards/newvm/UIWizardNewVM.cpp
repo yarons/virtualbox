@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 108769 2025-03-17 14:26:39Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVM.cpp 108787 2025-03-18 12:11:51Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -110,7 +110,7 @@ void UIWizardNewVM::populatePages()
             addPage(pNamePage);
             if (!m_strInitialISOFilePath.isEmpty())
                 pNamePage->setISOFilePath(m_strInitialISOFilePath);
-            m_iUnattendedInstallPageIndex = addPage(new UIWizardNewVMUnattendedPage("create-vm-wizard-unattended-install"));
+            m_iUnattendedInstallPageIndex = addPage(new UIWizardNewVMUnattendedPage("create-vm-wizard-unattended-install" /* help keyword */));
             setUnattendedPageVisible(false);
             addPage(new UIWizardNewVMHardwarePage("create-vm-wizard-hardware" /* help keyword*/));
             addPage(new UIWizardNewVMSummaryPage);

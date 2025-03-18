@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 107159 2024-11-25 16:17:23Z sergey.dubov@oracle.com $ */
+/* $Id: UIVisoCreator.cpp 108787 2025-03-18 12:11:51Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes implementation.
  */
@@ -837,7 +837,7 @@ void UIVisoCreatorDialog::prepareWidgets(const QString& strVisoFilePath, const Q
     connect(m_pButtonBox, &QIDialogButtonBox::accepted, this, &UIVisoCreatorDialog::accept);
 
 
-    uiCommon().setHelpKeyword(m_pButtonBox->button(QDialogButtonBox::Help), "create-optical-disk-image");
+    uiCommon().setHelpKeyword(m_pButtonBox->button(QDialogButtonBox::Help), "create-optical-disk-image" /* help keyword */);
 
     sltRetranslateUI();
     connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,

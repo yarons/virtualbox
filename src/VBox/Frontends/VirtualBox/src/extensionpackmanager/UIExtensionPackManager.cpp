@@ -1,4 +1,4 @@
-/* $Id: UIExtensionPackManager.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIExtensionPackManager.cpp 108787 2025-03-18 12:11:51Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtensionPackManager class implementation.
  */
@@ -373,7 +373,7 @@ void UIExtensionPackManagerWidget::sltHandleExtensionPackUninstalled(const QStri
 void UIExtensionPackManagerWidget::prepare()
 {
     /* Prepare self: */
-    uiCommon().setHelpKeyword(this, "ext-pack-manager");
+    uiCommon().setHelpKeyword(this, "ext-pack-manager" /* help keyword */);
 
     /* Prepare stuff: */
     prepareActions();

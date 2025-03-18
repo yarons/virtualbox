@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UISoftKeyboard.cpp 108787 2025-03-18 12:11:51Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -3987,7 +3987,7 @@ UISoftKeyboard::UISoftKeyboard(QWidget *pParent, UIMachine *pMachine,
 
     loadSettings();
     configure();
-    uiCommon().setHelpKeyword(this, "soft-keyb");
+    uiCommon().setHelpKeyword(this, "soft-keyb" /* help keyword */);
 }
 
 bool UISoftKeyboard::shouldBeMaximized() const

@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileDetailsWidget.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UICloudProfileDetailsWidget.cpp 108787 2025-03-18 12:11:51Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudProfileDetailsWidget class implementation.
  */
@@ -202,7 +202,7 @@ void UICloudProfileDetailsWidget::prepare()
 
     /* Update button states finally: */
     updateButtonStates();
-    uiCommon().setHelpKeyword(this, "ovf-cloud-profile-manager");
+    uiCommon().setHelpKeyword(this, "ovf-cloud-profile-manager" /* help keyword */);
 }
 
 void UICloudProfileDetailsWidget::prepareWidgets()
