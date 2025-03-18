@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsWidget.cpp 108765 2025-03-17 13:39:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsWidget.cpp 108788 2025-03-18 12:38:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsWidget class implementation.
  */
@@ -380,6 +380,8 @@ void UIGlobalToolsWidget::prepareConnections()
     /* Tools-pane connections: */
     connect(this, &UIGlobalToolsWidget::sigToolMenuUpdate,
             this, &UIGlobalToolsWidget::sltHandleGlobalToolMenuUpdate);
+    connect(this, &UIGlobalToolsWidget::sigToolMenuUpdate,
+            this, &UIGlobalToolsWidget::sltHandleManagementToolMenuUpdate);
     connect(machineToolsWidget(), &UIMachineToolsWidget::sigToolMenuUpdate,
             this, &UIGlobalToolsWidget::sltHandleMachineToolMenuUpdate);
     connect(toolPaneMachine(), &UIToolPane::sigSwitchToActivityOverviewPane,
@@ -399,6 +401,8 @@ void UIGlobalToolsWidget::loadSettings()
     UIVirtualMachineItem *pItem = machineToolsWidget()->currentItem();
     if (pItem)
         sltHandleMachineToolMenuUpdate(pItem);
+    /* Update Management tools restrictions: */
+    sltHandleManagementToolMenuUpdate();
 }
 
 void UIGlobalToolsWidget::cleanupConnections()
@@ -422,6 +426,8 @@ void UIGlobalToolsWidget::cleanupConnections()
     /* Tools-pane connections: */
     disconnect(this, &UIGlobalToolsWidget::sigToolMenuUpdate,
                this, &UIGlobalToolsWidget::sltHandleGlobalToolMenuUpdate);
+    disconnect(this, &UIGlobalToolsWidget::sigToolMenuUpdate,
+               this, &UIGlobalToolsWidget::sltHandleManagementToolMenuUpdate);
     disconnect(machineToolsWidget(), &UIMachineToolsWidget::sigToolMenuUpdate,
                this, &UIGlobalToolsWidget::sltHandleMachineToolMenuUpdate);
     disconnect(toolPaneMachine(), &UIToolPane::sigSwitchToActivityOverviewPane,
