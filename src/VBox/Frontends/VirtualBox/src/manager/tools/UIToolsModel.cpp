@@ -1,4 +1,4 @@
-﻿/* $Id: UIToolsModel.cpp 108814 2025-03-19 17:00:54Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIToolsModel.cpp 108815 2025-03-19 17:03:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -485,25 +485,6 @@ void UIToolsModel::setUnsuitableToolClass(UIToolClass enmClass, bool fUnsuitable
             if (pItem->itemClass() != enmClass)
                 continue;
             pItem->setHiddenByReason(fUnsuitable, UIToolsItem::HidingReason_Unsuitable);
-        }
-
-        /* Update linked values: */
-        updateLayout();
-        sltItemMinimumWidthHintChanged();
-        sltItemMinimumHeightHintChanged();
-    }
-}
-
-void UIToolsModel::setAnimatedToolClass(UIToolClass enmClass, bool fAnimated)
-{
-    if (m_mapAnimatedToolClasses.value(enmClass) != fAnimated)
-    {
-        m_mapAnimatedToolClasses[enmClass] = fAnimated;
-        foreach (UIToolsItem *pItem, items())
-        {
-            if (pItem->itemClass() != enmClass)
-                continue;
-            pItem->setHiddenByReason(fAnimated, UIToolsItem::HidingReason_Animated);
         }
 
         /* Update linked values: */
