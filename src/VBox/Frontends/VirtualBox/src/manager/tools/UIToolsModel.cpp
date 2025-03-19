@@ -1,4 +1,4 @@
-﻿/* $Id: UIToolsModel.cpp 108807 2025-03-19 15:47:38Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIToolsModel.cpp 108808 2025-03-19 15:54:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -412,7 +412,7 @@ void UIToolsAnimationEngine::fetchAnimationLimits()
     /* Acquire limits from parent class: */
     const int iVerticalHintMach = m_pParent->overallShiftMachines();
     const int iVerticalHintMana = m_pParent->overallShiftManagers();
-    
+
     /* Update animation values: */
     m_pAnmHomeMach->setValue(iVerticalHintMach);
     m_pAnmHomeMana->setValue(iVerticalHintMana);
