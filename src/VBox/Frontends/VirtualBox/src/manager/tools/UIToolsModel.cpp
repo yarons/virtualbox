@@ -1,4 +1,4 @@
-﻿/* $Id: UIToolsModel.cpp 108810 2025-03-19 16:40:56Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIToolsModel.cpp 108811 2025-03-19 16:44:53Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -627,6 +627,9 @@ void UIToolsModel::updateLayout()
         if (!pItem->isVisible())
             continue;
 
+        /* Acquire item properties: */
+        const int iItemHeight = pItem->minimumHeightHint();
+
         /* Separate procedures for different classes: */
         switch (enmClass)
         {
@@ -635,14 +638,14 @@ void UIToolsModel::updateLayout()
                 /* Set item position: */
                 pItem->setPos(iMargin, iVerticalIndentGlobal);
                 /* Set root-item size: */
-                pItem->resize(iViewportWidth, pItem->minimumHeightHint());
+                pItem->resize(iViewportWidth, iItemHeight);
                 /* Make sure item is shown: */
                 pItem->show();
                 /* Advance vertical indent: */
-                iVerticalIndentGlobal += (pItem->minimumHeightHint() + iSpacing);
-                iVerticalIndentRest += (pItem->minimumHeightHint() + iSpacing);
+                iVerticalIndentGlobal += (iItemHeight + iSpacing);
+                iVerticalIndentRest += (iItemHeight + iSpacing);
 
-                /* If we are in animated state: */
+                /* Do we have animation engine? */
                 if (m_pAnimationEngine)
                 {
                     /* Append some animated indentation after items of certain types: */
@@ -673,11 +676,11 @@ void UIToolsModel::updateLayout()
                 /* Set item position: */
                 pItem->setPos(iMargin, iVerticalIndentRest);
                 /* Set root-item size: */
-                pItem->resize(iViewportWidth, pItem->minimumHeightHint());
+                pItem->resize(iViewportWidth, iItemHeight);
                 /* Make sure item is shown: */
                 pItem->show();
                 /* Advance vertical indent: */
-                iVerticalIndentRest += (pItem->minimumHeightHint() + iSpacing);
+                iVerticalIndentRest += (iItemHeight + iSpacing);
 
                 break;
             }
