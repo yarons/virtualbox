@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompFuncs-x86.h 108545 2025-02-25 13:23:41Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompFuncs-x86.h 108836 2025-03-20 12:32:08Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler - Inlined Bits, x86 target.
  */
@@ -7404,7 +7404,8 @@ iemNativeEmitMemFetchStoreDataCommon(PIEMRECOMPILERSTATE pReNative, uint32_t off
     /* Save variables in volatile registers. */
     uint32_t const fHstGprsNotToSave = TlbState.getRegsNotToSave()
                                      | (idxRegMemResult  < 32                    ? RT_BIT_32(idxRegMemResult)        : 0)
-#ifdef _MSC_VER /* Workaround for stupid compiler (2019). */
+#if    defined(_MSC_VER) /* Workaround for stupid compiler (2019). */ \
+    || (defined(__clang__) && defined(RT_OS_LINUX))
                                      | (idxRegValueFetch < 32 && !fSimdRegValues ? RT_BIT_32(idxRegValueFetch & 0x1f) : 0);
 #else
                                      | (idxRegValueFetch < 32 && !fSimdRegValues ? RT_BIT_32(idxRegValueFetch)        : 0);
