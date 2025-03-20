@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 107193 2024-11-27 10:34:23Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIKeyboardHandler.cpp 108831 2025-03-20 12:02:30Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -87,10 +87,6 @@
 # include <X11/XKBlib.h>
 # include <X11/keysym.h>
 # ifdef KeyPress
-const int XFocusIn = FocusIn;
-const int XFocusOut = FocusOut;
-const int XKeyPress = KeyPress;
-const int XKeyRelease = KeyRelease;
 #  undef KeyRelease
 #  undef KeyPress
 #  undef FocusOut
