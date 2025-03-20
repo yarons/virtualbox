@@ -1,4 +1,4 @@
-/* $Id: BusAssignmentManager.cpp 107550 2025-01-08 10:09:53Z alexander.eichner@oracle.com $ */
+/* $Id: BusAssignmentManager.cpp 108823 2025-03-20 10:42:47Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox bus slots assignment manager
  */
@@ -43,7 +43,15 @@
 
 #include <map>
 #include <vector>
+
+#if RT_CLANG_PREREQ(3, 4) /* complains about deprecated get_temporary_buffer() during instantiation of stable_sort(). */
+# pragma clang diagnostic push
+# pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#endif
 #include <algorithm>
+#if RT_CLANG_PREREQ(3, 4)
+# pragma clang diagnostic pop
+#endif
 
 
 /*********************************************************************************************************************************
