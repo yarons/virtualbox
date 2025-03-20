@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestProp.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestR3LibGuestProp.cpp 108817 2025-03-20 10:36:24Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest properties.
  */
@@ -75,6 +75,7 @@ extern "C" void* xf86memset(const void*,int,xf86size_t);
 # undef RTStrEnd
 # define RTStrEnd xf86RTStrEnd
 
+#if 0 /* unused */
 DECLINLINE(char const *) RTStrEnd(char const *pszString, size_t cchMax)
 {
     /* Avoid potential issues with memchr seen in glibc.
@@ -89,6 +90,7 @@ DECLINLINE(char const *) RTStrEnd(char const *pszString, size_t cchMax)
     }
     return (char const *)memchr(pszString, '\0', cchMax);
 }
+#endif
 
 DECLINLINE(char *) RTStrEnd(char *pszString, size_t cchMax)
 {
