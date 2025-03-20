@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers-http.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: clipboard-transfers-http.cpp 108819 2025-03-20 10:37:28Z alexander.eichner@oracle.com $ */
 /** @file
  * Shared Clipboard: HTTP server implementation for Shared Clipboard transfers on UNIX-y guests / hosts.
  */
@@ -146,6 +146,7 @@ DECLINLINE(void) shClTransferHttpServerUnlock(PSHCLHTTPSERVER pSrv)
     AssertRC(rc2);
 }
 
+#if 0 /* unused */
 /**
  * Locks an HTTP transfer.
  *
@@ -167,6 +168,7 @@ DECLINLINE(void) shClHttpTransferUnlock(PSHCLHTTPSERVERTRANSFER pSrvTx)
     int rc2 = RTCritSectLeave(&pSrvTx->CritSect);
     AssertRC(rc2);
 }
+#endif
 
 /**
  * Creates an URL from a given path, extended version.
@@ -273,6 +275,7 @@ DECLINLINE(PSHCLHTTPSERVERTRANSFER) shClTransferHttpGetTransferFromUrl(PSHCLHTTP
     return pSrvTx;
 }
 
+#if 0 /* unused */
 /**
  * Returns a HTTP server transfer from an internal HTTP handle.
  *
@@ -298,6 +301,7 @@ DECLINLINE(PSHCLHTTPSERVERTRANSFER) shClTransferHttpGetTransferFromHandle(PSHCLH
 
     return NULL;
 }
+#endif
 
 
 /*********************************************************************************************************************************
