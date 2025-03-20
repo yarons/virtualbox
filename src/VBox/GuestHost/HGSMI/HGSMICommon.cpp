@@ -1,4 +1,4 @@
-/* $Id: HGSMICommon.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: HGSMICommon.cpp 108857 2025-03-20 15:39:56Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI) - Functions common to both host and guest.
  */
@@ -129,7 +129,7 @@ int HGSMIAreaInitialize(HGSMIAREA *pArea, void *pvBase, HGSMISIZE cbArea, HGSMIO
 
     if (  !pArea                                   /* Check that the area: */
         || cbArea < HGSMIBufferMinimumSize()       /* large enough; */
-        || pu8Base + cbArea < pu8Base              /* no address space wrap; */
+        || (pu8Base + cbArea) < pu8Base            /* no address space wrap; */
         || offBase > UINT32_C(0xFFFFFFFF) - cbArea /* area within the 32 bit space: offBase + cbMem <= 0xFFFFFFFF. */
        )
     {
