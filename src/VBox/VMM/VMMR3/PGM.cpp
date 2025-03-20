@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 108873 2025-03-20 21:33:44Z alexander.eichner@oracle.com $ */
+/* $Id: PGM.cpp 108874 2025-03-20 21:50:48Z alexander.eichner@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -633,7 +633,6 @@
 #include <iprt/mem.h>
 #include <iprt/rand.h>
 #include <iprt/string.h>
-#include <iprt/system.h>
 #include <iprt/thread.h>
 #ifdef RT_OS_LINUX
 # include <iprt/linux/sysfs.h>
@@ -1035,7 +1034,7 @@ VMMR3DECL(int) PGMR3Init(PVM pVM)
         uint32_t       cbTreeAndBitmap = 0;
         uint32_t const cbTotalAligned  = pgmHandlerPhysicalCalcTableSizes(&cAccessHandlers, &cbTreeAndBitmap);
         uint8_t       *pb = NULL;
-        rc = SUPR3PageAlloc(cbTotalAligned >> RTSystemGetPageShift(), 0, (void **)&pb);
+        rc = SUPR3PageAlloc(cbTotalAligned >> HOST_PAGE_SHIFT, 0, (void **)&pb);
         AssertLogRelRCReturn(rc, rc);
 
         pVM->pgm.s.PhysHandlerAllocator.initSlabAllocator(cAccessHandlers, (PPGMPHYSHANDLER)&pb[cbTreeAndBitmap],
