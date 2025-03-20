@@ -1,4 +1,4 @@
-/* $Id: XKeyboard-new.cpp 107970 2025-01-20 23:36:53Z klaus.espenlaub@oracle.com $ */
+/* $Id: XKeyboard-new.cpp 108822 2025-03-20 10:40:39Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Qt GUI - Implementation of Linux-specific keyboard functions.
  */
@@ -226,7 +226,7 @@ void initMappedX11Keyboard(Display *pDisplay, const QString &remapScancodes)
     initXKeyboard(pDisplay, scancodes);
 
     if (scancodes)
-        delete scancodes;
+        delete[] scancodes;
 }
 
 unsigned handleXKeyEvent(Display *pDisplay, unsigned int iDetail)
