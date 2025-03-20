@@ -1,4 +1,4 @@
-/* $Id: GuestOSTypeImpl.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestOSTypeImpl.h 108838 2025-03-20 12:53:11Z andreas.loeffler@oracle.com $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -80,7 +80,6 @@ private:
     HRESULT getRecommendedRAM(ULONG *RAMSize);
     HRESULT getRecommendedGraphicsController(GraphicsControllerType_T *aRecommendedGraphicsController);
     HRESULT getRecommendedVRAM(ULONG *aVRAMSize);
-    HRESULT getRecommended2DVideoAcceleration(BOOL *aRecommended2DVideoAcceleration);
     HRESULT getRecommended3DAcceleration(BOOL *aRecommended3DAcceleration);
     HRESULT getRecommendedHDD(LONG64 *aHDDSize);
     HRESULT getAdapterType(NetworkAdapterType_T *aNetworkAdapterType);

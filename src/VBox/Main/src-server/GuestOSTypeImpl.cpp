@@ -1,4 +1,4 @@
-/* $Id: GuestOSTypeImpl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestOSTypeImpl.cpp 108838 2025-03-20 12:53:11Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -254,15 +254,6 @@ HRESULT GuestOSType::getRecommendedVRAM(ULONG *aVRAMSize)
 {
     /* mVRAMSize is constant during life time, no need to lock */
     *aVRAMSize = mVRAMSize;
-
-    return S_OK;
-}
-
-
-HRESULT GuestOSType::getRecommended2DVideoAcceleration(BOOL *aRecommended2DVideoAcceleration)
-{
-    /* Constant during life time, no need to lock */
-    *aRecommended2DVideoAcceleration = !!(mOSHint & VBOXOSHINT_ACCEL2D);
 
     return S_OK;
 }
