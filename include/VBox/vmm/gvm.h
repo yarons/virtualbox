@@ -1,4 +1,4 @@
-/* $Id: gvm.h 108008 2025-01-22 15:31:45Z knut.osmundsen@oracle.com $ */
+/* $Id: gvm.h 108830 2025-03-20 11:54:50Z alexander.eichner@oracle.com $ */
 /** @file
  * GVM - The Global VM Data.
  */
@@ -155,10 +155,15 @@ typedef struct GVMCPU
 #endif
 } GVMCPU;
 #ifndef IN_TSTVMSTRUCT
-# if RT_GNUC_PREREQ(4, 6) && defined(__cplusplus)
+# if RT_CLANG_PREREQ(3, 4) && defined(__cplusplus)
+#  pragma clang diagnostic push
+# elif RT_GNUC_PREREQ(4, 6) && defined(__cplusplus)
 #  pragma GCC diagnostic push
 # endif
-# if RT_GNUC_PREREQ(4, 3) && defined(__cplusplus)
+
+# if RT_CLANG_PREREQ(3, 4) && defined(__cplusplus)
+#  pragma clang diagnostic ignored "-Winvalid-offsetof"
+# elif RT_GNUC_PREREQ(4, 3) && defined(__cplusplus)
 #  pragma GCC diagnostic ignored "-Winvalid-offsetof"
 # endif
 AssertCompileMemberAlignment(GVMCPU, idCpu,  16384);
@@ -169,7 +174,9 @@ AssertCompileMemberAlignment(GVMCPU, nemr0,  64);
 #  endif
 # endif
 AssertCompileSizeAlignment(GVMCPU,           16384);
-# if RT_GNUC_PREREQ(4, 6) && defined(__cplusplus)
+# if RT_CLANG_PREREQ(3, 4) && defined(__cplusplus)
+#  pragma clang diagnostic pop
+# elif RT_GNUC_PREREQ(4, 6) && defined(__cplusplus)
 #  pragma GCC diagnostic pop
 # endif
 #endif
