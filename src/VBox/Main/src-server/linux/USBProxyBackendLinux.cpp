@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendLinux.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: USBProxyBackendLinux.cpp 108824 2025-03-20 10:52:10Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox USB Proxy Service, Linux Specialization.
  */
@@ -337,7 +337,7 @@ int USBProxyBackendLinux::waitUsbfs(RTMSINTERVAL aMillies)
     PollFds[1].fd        = (int)RTPipeToNative(mhWakeupPipeR);
     PollFds[1].events    = POLLIN | POLLERR | POLLHUP;
 
-    int iRc = poll(&PollFds[0], 2, aMillies);
+    int iRc = poll(&PollFds[0], 2, (int)aMillies);
     if (iRc == 0)
         return VERR_TIMEOUT;
     if (iRc > 0)

@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceLinux.cpp 108156 2025-02-01 02:19:11Z knut.osmundsen@oracle.com $ */
+/* $Id: HostDnsServiceLinux.cpp 108824 2025-03-20 10:52:10Z alexander.eichner@oracle.com $ */
 /** @file
  * Linux specific DNS information fetching.
  */
@@ -161,7 +161,7 @@ static int monitorSymlinkedDir(int iInotifyFd, char szRealResolvConf[PATH_MAX], 
             && strchr(szRealResolvConf, '/'))
         {
             /* Cut of the filename part. We only need that for deletion checks and such. */
-            size_t const offFilename = strrchr(szRealResolvConf, '/') - &szRealResolvConf[0];
+            size_t const offFilename = (size_t)(strrchr(szRealResolvConf, '/') - &szRealResolvConf[0]);
             *poffFilename = offFilename + 1;
             szRealResolvConf[offFilename] = '\0';
 
