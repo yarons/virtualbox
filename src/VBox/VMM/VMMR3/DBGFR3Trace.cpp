@@ -1,4 +1,4 @@
-/* $Id: DBGFR3Trace.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFR3Trace.cpp 108868 2025-03-20 18:12:16Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Tracing.
  */
@@ -44,6 +44,7 @@
 
 #include <iprt/assert.h>
 #include <iprt/ctype.h>
+#include <iprt/system.h>
 #include <iprt/trace.h>
 
 
@@ -124,10 +125,10 @@ static int dbgfR3TraceEnable(PVM pVM, uint32_t cbEntry, uint32_t cEntries)
      * Note! We ASSUME that the returned trace buffer handle has the same value
      *       as the heap block.
      */
-    cbBlock = RT_ALIGN_Z(cbBlock, HOST_PAGE_SIZE);
+    cbBlock = RT_ALIGN_Z(cbBlock, RTSystemGetPageSize());
     RTR0PTR pvBlockR0 = NIL_RTR0PTR;
     void   *pvBlockR3 = NULL;
-    rc = SUPR3PageAllocEx(cbBlock >> HOST_PAGE_SHIFT, 0, &pvBlockR3, &pvBlockR0, NULL);
+    rc = SUPR3PageAllocEx(cbBlock >> RTSystemGetPageShift(), 0, &pvBlockR3, &pvBlockR0, NULL);
     if (RT_FAILURE(rc))
         return rc;
 
