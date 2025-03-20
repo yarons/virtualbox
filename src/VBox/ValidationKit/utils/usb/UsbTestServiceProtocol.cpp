@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceProtocol.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UsbTestServiceProtocol.cpp 108821 2025-03-20 10:38:29Z alexander.eichner@oracle.com $ */
 /** @file
  * UsbTestService - Remote USB test configuration and execution server, Protocol helpers.
  */
@@ -58,6 +58,7 @@ DECLINLINE(void) utsProtocolPktHdrH2N(PUTSPKTHDR pPktHdr)
 }
 
 
+#if 0 /* unused */
 /**
  * Converts a UTS packet header from network to host byte order.
  *
@@ -94,6 +95,7 @@ DECLINLINE(void) utsProtocolStsHdrN2H(PUTSPKTSTS pPktHdr)
     pPktHdr->rcReq     = RT_N2H_U32(pPktHdr->rcReq);
     pPktHdr->cchStsMsg = RT_N2H_U32(pPktHdr->cchStsMsg);
 }
+#endif
 
 
 DECLHIDDEN(void) utsProtocolReqH2N(PUTSPKTHDR pPktHdr)
