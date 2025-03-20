@@ -1,4 +1,4 @@
-/* $Id: keyboard-layouts.h 107971 2025-01-20 23:44:35Z klaus.espenlaub@oracle.com $ */
+/* $Id: keyboard-layouts.h 108832 2025-03-20 12:03:19Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox/Frontends/Common - X11 keyboard driver translation tables (keyboard layouts).
  *
@@ -57,6 +57,12 @@
    Japanese keyboards and the Yen key on Japanese keyboards.
    The layout-switching keys on Japanese and Korean keyboards are
    dealt with elsewhere. */
+
+/** @todo r=aeichner Someone needs to check whether the warnings are indeed valid. */
+#ifdef __clang__
+# pragma clang diagnostic push
+# pragma clang diagnostic ignored "-Wstring-concatenation"
+#endif
 
 /* U.S. English */
 static const char main_key_us[MAIN_LEN][2] =
@@ -2083,3 +2089,7 @@ static const char main_key_ng_hausa[MAIN_LEN][2] =
 "r\x9d","xX","cC","vV","bB","nN","\xf1\xd1",",<","\xe7\xc7","\xba\xaa","<>","\x0\x0","\x0\x0"
 };
 
+
+#ifdef __clang__
+# pragma clang diagnostic pop
+#endif
