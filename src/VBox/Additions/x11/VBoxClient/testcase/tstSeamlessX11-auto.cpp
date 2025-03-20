@@ -1,4 +1,4 @@
-/* $Id: tstSeamlessX11-auto.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: tstSeamlessX11-auto.cpp 108863 2025-03-20 17:16:50Z alexander.eichner@oracle.com $ */
 /** @file
  * Automated test of the X11 seamless Additions code.
  * @todo Better separate test data from implementation details!
@@ -382,21 +382,21 @@ void VBClSeamlessSendRegionUpdate(RTRECT *pRects, size_t cRects)
     g_fNotified = true;
 }
 
-int VbglR3SeamlessSetCap(bool bState)
+VBGLR3DECL(int) VbglR3SeamlessSetCap(bool bState)
 {
     RTPrintf("%s\n", bState ? "Seamless capability set"
                             : "Seamless capability unset");
     return VINF_SUCCESS;
 }
 
-int VbglR3CtlFilterMask(uint32_t u32OrMask, uint32_t u32NotMask)
+VBGLR3DECL(int) VbglR3CtlFilterMask(uint32_t u32OrMask, uint32_t u32NotMask)
 {
     RTPrintf("IRQ filter mask changed.  Or mask: 0x%x.  Not mask: 0x%x\n",
              u32OrMask, u32NotMask);
     return VINF_SUCCESS;
 }
 
-int VbglR3SeamlessWaitEvent(VMMDevSeamlessMode *pMode)
+VBGLR3DECL(int) VbglR3SeamlessWaitEvent(VMMDevSeamlessMode *pMode)
 {
     RT_NOREF(pMode);
     return VINF_SUCCESS;
