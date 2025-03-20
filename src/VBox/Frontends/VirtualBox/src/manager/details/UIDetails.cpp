@@ -1,4 +1,4 @@
-/* $Id: UIDetails.cpp 108787 2025-03-18 12:11:51Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIDetails.cpp 108844 2025-03-20 14:40:08Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetails class implementation.
  */
@@ -61,7 +61,7 @@ void UIDetails::prepare()
     prepareConnections();
 
     /* Configure context-sensitive help: */
-    uiCommon().setHelpKeyword(this, "vm-details-tool" /* help keyword */);
+    uiCommon().setHelpKeyword(this, "settings-window" /* help keyword */);
 
     /* Init model finally: */
     initModel();

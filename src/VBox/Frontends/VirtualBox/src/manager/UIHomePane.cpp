@@ -1,4 +1,4 @@
-/* $Id: UIHomePane.cpp 108787 2025-03-18 12:11:51Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHomePane.cpp 108844 2025-03-20 14:40:08Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHomePane class implementation.
  */
@@ -225,7 +225,7 @@ void UIHomePane::prepare()
     }
 
     /* Assign Help keyword: */
-    uiCommon().setHelpKeyword(this, "intro-starting" /* help keyword */);
+    uiCommon().setHelpKeyword(this, "Introduction" /* help keyword */);
 
     /* Translate finally: */
     sltRetranslateUI();
