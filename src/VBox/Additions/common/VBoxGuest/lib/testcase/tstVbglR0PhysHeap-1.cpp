@@ -1,4 +1,4 @@
-/* $Id: tstVbglR0PhysHeap-1.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVbglR0PhysHeap-1.cpp 108864 2025-03-20 17:17:46Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT Testcase - Offset Based Heap.
  */
@@ -54,6 +54,14 @@
 #define IN_RING0 /* pretend we're in ring-0 so we get access to the functions */
 #include <iprt/memobj.h>
 #include "../VBoxGuestR0LibInternal.h"
+#if defined(RT_OS_LINUX) && defined(RT_ARCH_ARM64)
+# undef PAGE_SIZE
+# undef PAGE_OFFSET_MASK
+# undef PAGE_SHIFT
+# define PAGE_SIZE _4K /* Assume a page size of 4KiB, the real page size doesn't matter for this testcase. */
+# define PAGE_OFFSET_MASK ((uintptr_t)(PAGE_SIZE - 1))
+# define PAGE_SHIFT 12
+#endif
 
 
 /*********************************************************************************************************************************
