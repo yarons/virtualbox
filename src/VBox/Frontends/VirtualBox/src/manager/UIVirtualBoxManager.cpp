@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 108755 2025-03-14 12:30:47Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 108834 2025-03-20 12:20:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1185,7 +1185,7 @@ void UIVirtualBoxManager::sltClosePreferencesDialog()
     delete m_settings.take(UIAdvancedSettingsDialog::Type_Global);
 }
 
-void UIVirtualBoxManager::sltPerformSwitchToGlobalTool(QAction *pAction)
+void UIVirtualBoxManager::sltPerformSwitchToTool(QAction *pAction)
 {
     /* Sanity checks: */
     AssertPtrReturnVoid(pAction);
@@ -1195,8 +1195,25 @@ void UIVirtualBoxManager::sltPerformSwitchToGlobalTool(QAction *pAction)
     const UIToolType enmType = pAction->property("UIToolType").value<UIToolType>();
     AssertReturnVoid(enmType != UIToolType_Invalid);
 
-    /* Open the tool finally: */
-    m_pWidget->setToolsTypeGlobal(enmType, true /* make sure it's visible */);
+    /* Handle all possible classes: */
+    const UIToolClass enmClass = UIToolStuff::castTypeToClass(enmType);
+    switch (enmClass)
+    {
+        case UIToolClass_Global:
+            m_pWidget->setToolsTypeGlobal(enmType);
+            break;
+        case UIToolClass_Machine:
+            m_pWidget->setToolsTypeGlobal(UIToolType_Machines);
+            m_pWidget->setToolsTypeMachine(enmType);
+            break;
+        case UIToolClass_Management:
+            m_pWidget->setToolsTypeGlobal(UIToolType_Managers);
+            m_pWidget->setToolsTypeManagement(enmType);
+            break;
+        default:
+            AssertFailedReturnVoid();
+            break;
+    }
 }
 
 void UIVirtualBoxManager::sltPerformExit()
@@ -2553,7 +2570,7 @@ void UIVirtualBoxManager::prepareConnections()
 
     /* 'File/Tools' menu connections: */
     connect(actionPool()->actionGroup(UIActionIndexMN_M_File_M_Tools), &QActionGroup::triggered,
-            this, &UIVirtualBoxManager::sltPerformSwitchToGlobalTool);
+            this, &UIVirtualBoxManager::sltPerformSwitchToTool);
 
     /* 'Home' menu connections: */
     connect(actionPool()->action(UIActionIndexMN_M_Home_S_New), &UIAction::triggered,

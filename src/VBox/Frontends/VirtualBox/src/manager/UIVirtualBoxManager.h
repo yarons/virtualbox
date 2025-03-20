@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 108755 2025-03-14 12:30:47Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.h 108834 2025-03-20 12:20:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -200,8 +200,8 @@ private slots:
         /** Handles call to close Preferences dialog. */
         void sltClosePreferencesDialog();
 
-        /** Handles call to switch to global tool corresponding to passed @a pAction. */
-        void sltPerformSwitchToGlobalTool(QAction *pAction);
+        /** Handles call to switch to tool corresponding to passed @a pAction. */
+        void sltPerformSwitchToTool(QAction *pAction);
 
         /** Handles call to exit application. */
         void sltPerformExit();
