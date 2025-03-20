@@ -1,4 +1,4 @@
-/* $Id: tstCFGM.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: tstCFGM.cpp 108827 2025-03-20 11:17:11Z alexander.eichner@oracle.com $ */
 /** @file
  * Testcase for CFGM.
  */
@@ -43,6 +43,7 @@
 #include <iprt/stream.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
+#include <iprt/system.h>
 
 #include <iprt/test.h>
 
@@ -112,7 +113,7 @@ static void doInVmmTests(RTTEST hTest)
     }
 
     PVM pVM;
-    RTTESTI_CHECK_RC_RETV(SUPR3PageAlloc(RT_ALIGN_Z(sizeof(*pVM), HOST_PAGE_SIZE) >> HOST_PAGE_SHIFT, 0, (void **)&pVM),
+    RTTESTI_CHECK_RC_RETV(SUPR3PageAlloc(RT_ALIGN_Z(sizeof(*pVM), RTSystemGetPageSize()) >> RTSystemGetPageShift(), 0, (void **)&pVM),
                           VINF_SUCCESS);
 
 
