@@ -1,4 +1,4 @@
-/* $Id: Disasm.cpp 108842 2025-03-20 14:26:32Z alexander.eichner@oracle.com $ */
+/* $Id: Disasm.cpp 108843 2025-03-20 14:36:40Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Disassemble and optionally format.
  */
@@ -34,7 +34,6 @@
 #include <iprt/errcore.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>
-#include <iprt/system.h>
 #include "DisasmInternal.h"
 
 
@@ -60,7 +59,7 @@ static DECLCALLBACK(int) disReadBytesDefault(PDISSTATE pDis, uint8_t offInstr, u
     return VERR_DIS_NO_READ_CALLBACK;
 #else
     uint8_t const  *pbSrc        = (uint8_t const *)(uintptr_t)pDis->uInstrAddr + offInstr;
-    size_t          cbLeftOnPage = (uintptr_t)pbSrc & RTSystemGetPageOffsetMask();
+    size_t          cbLeftOnPage = (uintptr_t)pbSrc & PAGE_OFFSET_MASK;
     uint8_t         cbToRead     = cbLeftOnPage >= cbMaxRead
                                  ? cbMaxRead
                                  : cbLeftOnPage <= cbMinRead
