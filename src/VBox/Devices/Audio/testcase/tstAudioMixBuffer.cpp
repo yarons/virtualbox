@@ -1,4 +1,4 @@
-/* $Id: tstAudioMixBuffer.cpp 108826 2025-03-20 11:15:51Z alexander.eichner@oracle.com $ */
+/* $Id: tstAudioMixBuffer.cpp 108829 2025-03-20 11:23:40Z alexander.eichner@oracle.com $ */
 /** @file
  * Audio testcase - Mixing buffer.
  */
@@ -168,7 +168,7 @@ static void tstBasics(RTTEST hTest)
     RTTESTI_CHECK_MSG((u32 = PDMAudioPropsMilliToBytes(&Cfg441StereoS16,          5)) == 884,       ("cb=%RU32\n", u32));
 
     /* DrvAudioHlpClearBuf: */
-    size_t const cbPageSize = RTSystemGetPageSize();
+    uint32_t const cbPageSize = RTSystemGetPageSize();
     uint8_t *pbPage;
     int rc = RTTestGuardedAlloc(hTest, cbPageSize, 0, false /*fHead*/, (void **)&pbPage);
     RTTESTI_CHECK_RC_OK_RETV(rc);
