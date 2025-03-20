@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsWidget.cpp 108860 2025-03-20 16:39:19Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsWidget.cpp 108861 2025-03-20 16:54:08Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsWidget class implementation.
  */
@@ -316,11 +316,13 @@ void UIGlobalToolsWidget::sltSwitchToVMActivityTool(const QUuid &uMachineId)
 {
     AssertPtrReturnVoid(chooser());
     chooser()->setCurrentMachine(uMachineId);
+    setMenuToolType(UIToolType_Machines);
     setMenuToolType(UIToolType_VMActivity);
 }
 
 void UIGlobalToolsWidget::sltSwitchToActivitiesTool()
 {
+    setMenuToolType(UIToolType_Managers);
     setMenuToolType(UIToolType_Activities);
 }
 
@@ -389,12 +391,12 @@ void UIGlobalToolsWidget::prepareConnections()
             this, &UIGlobalToolsWidget::sltHandleGlobalToolMenuUpdate);
     connect(this, &UIGlobalToolsWidget::sigToolMenuUpdate,
             this, &UIGlobalToolsWidget::sltHandleManagementToolMenuUpdate);
-    connect(toolPane(), &UIToolPane::sigSwitchToMachineActivityPane,
-            this, &UIGlobalToolsWidget::sltSwitchToVMActivityTool);
     connect(machineToolsWidget(), &UIMachineToolsWidget::sigToolMenuUpdate,
             this, &UIGlobalToolsWidget::sltHandleMachineToolMenuUpdate);
     connect(toolPaneMachine(), &UIToolPane::sigSwitchToActivityOverviewPane,
             this, &UIGlobalToolsWidget::sltSwitchToActivitiesTool);
+    connect(toolPaneManagement(), &UIToolPane::sigSwitchToMachineActivityPane,
+            this, &UIGlobalToolsWidget::sltSwitchToVMActivityTool);
 }
 
 void UIGlobalToolsWidget::loadSettings()
