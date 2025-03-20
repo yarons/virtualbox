@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 108289 2025-02-10 11:43:35Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMInternal.h 108872 2025-03-20 21:29:19Z alexander.eichner@oracle.com $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3014,10 +3014,12 @@ typedef struct PGMSTATS
  */
 typedef struct PGM
 {
+#ifndef VBOX_WITH_ONLY_PGM_NEM_MODE
     /** The zero page. */
     uint8_t                         abZeroPg[RT_MAX(HOST_PAGE_SIZE, GUEST_PAGE_SIZE)];
     /** The MMIO placeholder page. */
     uint8_t                         abMmioPg[RT_MAX(HOST_PAGE_SIZE, GUEST_PAGE_SIZE)];
+#endif
 
     /** @name   RAM, MMIO2 and ROM ranges
      * @{ */
