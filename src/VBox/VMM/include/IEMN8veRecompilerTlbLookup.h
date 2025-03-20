@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerTlbLookup.h 108544 2025-02-25 13:17:32Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompilerTlbLookup.h 108870 2025-03-20 18:23:32Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler TLB Lookup Code Emitter.
  */
@@ -1097,7 +1097,9 @@ iemNativeEmitTlbLookup(PIEMRECOMPILERSTATE pReNative, uint32_t off, IEMNATIVEEMI
             Assert(idxRegFlatPtr == pTlbState->idxRegPtr);
 # if defined(RT_ARCH_ARM64)
             Assert(idxRegMappingPtr == idxRegMemResult);
+#  ifndef RT_OS_LINUX /* We don't know the page size during compile time */
             AssertCompile(GUEST_PAGE_SIZE <= HOST_PAGE_SIZE);
+#  endif
             pCodeBuf[off++] = Armv8A64MkInstrBfxil(idxRegMemResult, idxRegFlatPtr, 0, GUEST_PAGE_SHIFT);
 # else
             Assert(idxRegMappingPtr == pTlbState->idxReg1);
