@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestDnDPrivate.h 108828 2025-03-20 11:18:13Z alexander.eichner@oracle.com $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -35,6 +35,7 @@
 #include <iprt/dir.h>
 #include <iprt/file.h>
 #include <iprt/path.h>
+#include <iprt/system.h>
 
 #include <VBox/hgcmsvc.h> /* For PVBOXHGCMSVCPARM. */
 #include <VBox/GuestHost/DragAndDrop.h>
@@ -190,7 +191,7 @@ struct GuestDnDMetaData
         if (cbSize == cbAllocated)
             return VINF_SUCCESS;
 
-        cbSize = RT_ALIGN_Z(cbSize, PAGE_SIZE);
+        cbSize = RT_ALIGN_Z(cbSize, RTSystemGetPageSize());
 
         if (cbSize > _32M) /* Meta data can be up to 32MB. */
             return VERR_BUFFER_OVERFLOW;
