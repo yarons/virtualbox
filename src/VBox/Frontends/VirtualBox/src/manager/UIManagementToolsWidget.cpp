@@ -1,4 +1,4 @@
-/* $Id: UIManagementToolsWidget.cpp 108749 2025-03-13 17:48:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIManagementToolsWidget.cpp 108841 2025-03-20 13:47:46Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIManagementToolsWidget class implementation.
  */
@@ -118,9 +118,6 @@ void UIManagementToolsWidget::prepareWidgets()
         m_pPane = new UIToolPane(this, UIToolClass_Management, actionPool());
         if (toolPane())
         {
-            /// @todo make sure it's used properly
-            toolPane()->setActive(true);
-
             /* Add into layout: */
             pLayout->addWidget(toolPane());
         }

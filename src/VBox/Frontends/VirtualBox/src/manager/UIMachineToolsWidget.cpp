@@ -1,4 +1,4 @@
-/* $Id: UIMachineToolsWidget.cpp 108744 2025-03-13 17:22:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineToolsWidget.cpp 108841 2025-03-20 13:47:46Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineToolsWidget class implementation.
  */
@@ -449,9 +449,6 @@ void UIMachineToolsWidget::prepareWidgets()
             m_pPaneTools = new UIToolPane(this, UIToolClass_Machine, actionPool());
             if (toolPane())
             {
-                /// @todo make sure it's used properly
-                toolPane()->setActive(true);
-
                 /* Add into splitter: */
                 m_pSplitter->addWidget(toolPane());
             }
