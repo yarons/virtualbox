@@ -1,4 +1,4 @@
-/* $Id: VBoxDispMini.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDispMini.h 108837 2025-03-20 12:48:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox XPDM Display driver, helper functions which interacts with our miniport driver
  */
@@ -41,9 +41,6 @@ int VBoxDispMPUnmapMemory(PVBOXDISPDEV pDev);
 int VBoxDispMPQueryHGSMIInfo(HANDLE hDriver, QUERYHGSMIRESULT *pInfo);
 int VBoxDispMPQueryHGSMICallbacks(HANDLE hDriver, HGSMIQUERYCALLBACKS *pCallbacks);
 int VBoxDispMPHGSMIQueryPortProcs(HANDLE hDriver, HGSMIQUERYCPORTPROCS *pPortProcs);
-#ifdef VBOX_WITH_VIDEOHWACCEL
-int VBoxDispMPVHWAQueryInfo(HANDLE hDriver, VHWAQUERYINFO *pInfo);
-#endif
 int VBoxDispMPSetColorRegisters(HANDLE hDriver, PVIDEO_CLUT pClut, DWORD cbClut);
 int VBoxDispMPDisablePointer(HANDLE hDriver);
 int VBoxDispMPSetPointerPosition(HANDLE hDriver, PVIDEO_POINTER_POSITION pPos);

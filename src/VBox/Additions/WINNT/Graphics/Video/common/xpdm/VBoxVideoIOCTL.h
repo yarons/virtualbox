@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoIOCTL.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxVideoIOCTL.h 108837 2025-03-20 12:48:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Miniport IOCTL related header
  */
@@ -155,13 +155,6 @@ typedef struct _HGSMIHANDLERENABLE
     uint8_t u8Channel;
 } HGSMIHANDLERENABLE;
 
-#ifdef VBOX_WITH_VIDEOHWACCEL
-/* Data returned by IOCTL_VIDEO_VHWA_QUERY_INFO. */
-typedef struct _VHWAQUERYINFO
-{
-    ULONG_PTR offVramBase;
-} VHWAQUERYINFO;
-#endif
 #pragma pack()
 
 /* IOCTL_VIDEO_QUERY_INFO */

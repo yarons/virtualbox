@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 108760 2025-03-17 05:35:54Z valery.portnyagin@oracle.com $ */
+/* $Id: MachineImpl.cpp 108837 2025-03-20 12:48:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -15290,27 +15290,9 @@ HRESULT Machine::applyDefaults(const com::Utf8Str &aFlags)
     hrc = mGraphicsAdapter->COMSETTER(VRAMSize)(vramSize);
     if (FAILED(hrc)) return hrc;
 
-    BOOL fAccelerate2DVideoEnabled;
-    hrc = osType->COMGETTER(Recommended2DVideoAcceleration)(&fAccelerate2DVideoEnabled);
-    if (FAILED(hrc)) return hrc;
-
-    hrc = mGraphicsAdapter->SetFeature(GraphicsFeature_Acceleration2DVideo, fAccelerate2DVideoEnabled);
-    if (FAILED(hrc))
-    {
-        if (hrc != VBOX_E_NOT_SUPPORTED)
-            return hrc;
-    }
-
     BOOL fAccelerate3DEnabled;
     hrc = osType->COMGETTER(Recommended3DAcceleration)(&fAccelerate3DEnabled);
     if (FAILED(hrc)) return hrc;
-
-    hrc = mGraphicsAdapter->SetFeature(GraphicsFeature_Acceleration2DVideo, fAccelerate3DEnabled);
-    if (FAILED(hrc))
-    {
-        if (hrc != VBOX_E_NOT_SUPPORTED)
-            return hrc;
-    }
 
     /* Apply network adapters defaults */
     for (ULONG slot = 0; slot < mNetworkAdapters.size(); ++slot)

@@ -1,4 +1,4 @@
-/* $Id: VBoxDispInternal.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDispInternal.h 108837 2025-03-20 12:48:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox XPDM Display driver, internal header
  */
@@ -53,10 +53,6 @@
 #include <VBoxDisplay.h>
 
 typedef struct _VBOXDISPDEV *PVBOXDISPDEV;
-
-#ifdef VBOX_WITH_VIDEOHWACCEL
-# include "VBoxDispVHWA.h"
-#endif
 
 /* 4bytes tag passed to EngAllocMem.
  * Note: chars are reverse order.

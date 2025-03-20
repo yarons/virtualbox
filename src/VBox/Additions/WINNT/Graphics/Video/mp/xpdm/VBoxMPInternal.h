@@ -1,4 +1,4 @@
-/* $Id: VBoxMPInternal.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxMPInternal.h 108837 2025-03-20 12:48:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox XPDM Miniport internal header
  */
@@ -74,9 +74,6 @@ BOOLEAN VBoxMPHGSMIQueryPortProcs(PVBOXMP_DEVEXT pExt, HGSMIQUERYCPORTPROCS *pPr
 BOOLEAN VBoxMPHGSMIQueryCallbacks(PVBOXMP_DEVEXT pExt, HGSMIQUERYCALLBACKS *pCallbacks, PSTATUS_BLOCK pStatus);
 BOOLEAN VBoxMPQueryHgsmiInfo(PVBOXMP_DEVEXT pExt, QUERYHGSMIRESULT *pResult, PSTATUS_BLOCK pStatus);
 BOOLEAN VBoxMPHgsmiHandlerEnable(PVBOXMP_DEVEXT pExt, HGSMIHANDLERENABLE *pChannel, PSTATUS_BLOCK pStatus);
-#ifdef VBOX_WITH_VIDEOHWACCEL
-BOOLEAN VBoxMPVhwaQueryInfo(PVBOXMP_DEVEXT pExt, VHWAQUERYINFO *pInfo, PSTATUS_BLOCK pStatus);
-#endif
 BOOLEAN VBoxMPQueryRegistryFlags(PVBOXMP_DEVEXT pExt, ULONG *pulFlags, PSTATUS_BLOCK pStatus);
 
 #endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_xpdm_VBoxMPInternal_h */

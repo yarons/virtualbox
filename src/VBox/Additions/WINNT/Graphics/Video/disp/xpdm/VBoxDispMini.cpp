@@ -1,4 +1,4 @@
-/* $Id: VBoxDispMini.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDispMini.cpp 108837 2025-03-20 12:48:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox XPDM Display driver, helper functions which interacts with our miniport driver
  */
@@ -286,24 +286,6 @@ int VBoxDispMPHGSMIQueryPortProcs(HANDLE hDriver, HGSMIQUERYCPORTPROCS *pPortPro
     LOGF_LEAVE();
     return VINF_SUCCESS;
 }
-
-#ifdef VBOX_WITH_VIDEOHWACCEL
-int VBoxDispMPVHWAQueryInfo(HANDLE hDriver, VHWAQUERYINFO *pInfo)
-{
-    DWORD dwrc;
-    ULONG cbReturned;
-    LOGF_ENTER();
-
-    memset(pInfo, 0, sizeof(VHWAQUERYINFO));
-    dwrc = EngDeviceIoControl(hDriver, IOCTL_VIDEO_VHWA_QUERY_INFO, NULL, 0,
-                              pInfo, sizeof(VHWAQUERYINFO), &cbReturned);
-    VBOX_CHECK_WINERR_RETRC(dwrc, VERR_DEV_IO_ERROR);
-    VBOX_WARN_IOCTLCB_RETRC("IOCTL_VIDEO_VHWA_QUERY_INFO", cbReturned, sizeof(VHWAQUERYINFO), VERR_DEV_IO_ERROR);
-
-    LOGF_LEAVE();
-    return VINF_SUCCESS;
-}
-#endif
 
 int VBoxDispMPSetColorRegisters(HANDLE hDriver, PVIDEO_CLUT pClut, DWORD cbClut)
 {

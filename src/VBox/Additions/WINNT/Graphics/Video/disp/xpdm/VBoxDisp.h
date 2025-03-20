@@ -1,4 +1,4 @@
-/* $Id: VBoxDisp.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDisp.h 108837 2025-03-20 12:48:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox XPDM Display driver
  */
@@ -141,10 +141,6 @@ typedef struct _VBOXDISPDEV
 
 #ifdef VBOX_WITH_DDRAW
     VBOXDDLOCKINFO ddpsLock;                 /* Primary surface DirectDraw lock information */
-#endif
-
-#ifdef VBOX_WITH_VIDEOHWACCEL
-    VBOXDISPVHWAINFO  vhwa;                  /* VHWA Info */
 #endif
 
     BOOL bBitmapCacheDisabled;

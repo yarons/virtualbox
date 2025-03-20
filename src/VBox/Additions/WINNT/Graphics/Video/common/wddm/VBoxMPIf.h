@@ -1,4 +1,4 @@
-/* $Id: VBoxMPIf.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxMPIf.h 108837 2025-03-20 12:48:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox WDDM Miniport driver.
  *
@@ -672,7 +672,7 @@ typedef struct VBOXWDDM_QAI
     VBOXVIDEO_HWTYPE    enmHwType;       /* Hardware type. Determines what kind of data is returned. */
     uint32_t            u32AdapterCaps;  /* VBOXWDDM_QAI_CAP_* */
     uint32_t            cInfos;          /* Number of initialized elements in aInfos (equal to number of guest
-                                          * displays). 0 if VBOX_WITH_VIDEOHWACCEL is not defined. */
+                                          * displays). Always 0 currently. */
     VBOXVHWA_INFO       aInfos[VBOX_VIDEO_MAX_SCREENS]; /* cInfos elements are initialized. */
     union
     {

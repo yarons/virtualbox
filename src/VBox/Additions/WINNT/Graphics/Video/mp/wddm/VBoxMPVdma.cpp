@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVdma.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxMPVdma.cpp 108837 2025-03-20 12:48:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -28,9 +28,6 @@
 #include "VBoxMPWddm.h"
 #include "common/VBoxMPCommon.h"
 #include "VBoxMPVdma.h"
-#ifdef VBOX_WITH_VIDEOHWACCEL
-#include "VBoxMPVhwa.h"
-#endif
 #include <iprt/asm.h>
 #include <iprt/mem.h>
 

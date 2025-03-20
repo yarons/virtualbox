@@ -1,4 +1,4 @@
-/* $Id: VBoxMPIOCTL.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxMPIOCTL.cpp 108837 2025-03-20 12:48:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox XPDM Miniport IOCTL handlers
  */
@@ -645,32 +645,6 @@ BOOLEAN VBoxMPHgsmiHandlerEnable(PVBOXMP_DEVEXT pExt, HGSMIHANDLERENABLE *pChann
     LOGF_LEAVE();
     return fRc;
 }
-
-#ifdef VBOX_WITH_VIDEOHWACCEL
-/* Called for IOCTL_VIDEO_VHWA_QUERY_INFO.
- * Returns framebuffer offset.
- */
-BOOLEAN VBoxMPVhwaQueryInfo(PVBOXMP_DEVEXT pExt, VHWAQUERYINFO *pInfo, PSTATUS_BLOCK pStatus)
-{
-    BOOLEAN fRc = TRUE;
-    LOGF_ENTER();
-
-    if (VBoxCommonFromDeviceExt(pExt)->bHGSMI)
-    {
-        pInfo->offVramBase = (ULONG_PTR)pExt->ulFrameBufferOffset;
-
-        pStatus->Information = sizeof (VHWAQUERYINFO);
-    }
-    else
-    {
-        pStatus->Status = ERROR_INVALID_FUNCTION;
-        fRc=FALSE;
-    }
-
-    LOGF_LEAVE();
-    return fRc;
-}
-#endif
 
 BOOLEAN VBoxMPQueryRegistryFlags(PVBOXMP_DEVEXT pExt, ULONG *pulFlags, PSTATUS_BLOCK pStatus)
 {

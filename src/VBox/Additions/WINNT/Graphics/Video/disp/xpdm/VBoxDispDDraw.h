@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDDraw.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDispDDraw.h 108837 2025-03-20 12:48:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox XPDM Display driver, direct draw callbacks
  */
@@ -39,19 +39,5 @@ DWORD APIENTRY VBoxDispDDDestroySurface(PDD_DESTROYSURFACEDATA lpDestroySurface)
 DWORD APIENTRY VBoxDispDDLock(PDD_LOCKDATA lpLock);
 DWORD APIENTRY VBoxDispDDUnlock(PDD_UNLOCKDATA lpUnlock);
 DWORD APIENTRY VBoxDispDDMapMemory(PDD_MAPMEMORYDATA lpMapMemory);
-
-#ifdef VBOX_WITH_VIDEOHWACCEL
-int VBoxDispVHWAUpdateDDHalInfo(PVBOXDISPDEV pDev, DD_HALINFO *pHalInfo);
-
-DWORD APIENTRY VBoxDispDDGetDriverInfo(DD_GETDRIVERINFODATA *lpData);
-DWORD APIENTRY VBoxDispDDSetColorKey(PDD_SETCOLORKEYDATA lpSetColorKey);
-DWORD APIENTRY VBoxDispDDAddAttachedSurface(PDD_ADDATTACHEDSURFACEDATA lpAddAttachedSurface);
-DWORD APIENTRY VBoxDispDDBlt(PDD_BLTDATA lpBlt);
-DWORD APIENTRY VBoxDispDDFlip(PDD_FLIPDATA lpFlip);
-DWORD APIENTRY VBoxDispDDGetBltStatus(PDD_GETBLTSTATUSDATA lpGetBltStatus);
-DWORD APIENTRY VBoxDispDDGetFlipStatus(PDD_GETFLIPSTATUSDATA lpGetFlipStatus);
-DWORD APIENTRY VBoxDispDDSetOverlayPosition(PDD_SETOVERLAYPOSITIONDATA lpSetOverlayPosition);
-DWORD APIENTRY VBoxDispDDUpdateOverlay(PDD_UPDATEOVERLAYDATA lpUpdateOverlay);
-#endif
 
 #endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_xpdm_VBoxDispDDraw_h */

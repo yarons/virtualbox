@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DIf.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDispD3DIf.h 108837 2025-03-20 12:48:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -71,11 +71,6 @@ void VBoxDispD3DGlobalInit(void);
 void VBoxDispD3DGlobalTerm(void);
 HRESULT VBoxDispD3DGlobalOpen(PVBOXWDDMDISP_D3D pD3D, PVBOXWDDMDISP_FORMATS pFormats, VBOXWDDM_QAI const *pAdapterInfo);
 void VBoxDispD3DGlobalClose(PVBOXWDDMDISP_D3D pD3D, PVBOXWDDMDISP_FORMATS pFormats);
-
-#ifdef VBOX_WITH_VIDEOHWACCEL
-HRESULT VBoxDispD3DGlobal2DFormatsInit(struct VBOXWDDMDISP_ADAPTER *pAdapter);
-void VBoxDispD3DGlobal2DFormatsTerm(struct VBOXWDDMDISP_ADAPTER *pAdapter);
-#endif
 
 #ifdef DEBUG
 void vboxDispCheckCapsLevel(const D3DCAPS9 *pCaps);

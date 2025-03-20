@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDevExt.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxMPDevExt.h 108837 2025-03-20 12:48:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Miniport device extension header
  */
@@ -156,21 +156,17 @@ typedef struct _VBOXMP_DEVEXT
    DWORD dwDrvCfgFlags;
 
    BOOLEAN f3DEnabled;
-   BOOLEAN fCmdVbvaEnabled;
+   BOOLEAN fCmdVbvaEnabled; /** @todo r=andy Remove this too for @bugref{10756}? */
    BOOLEAN fComplexTopologiesEnabled;
 
    VBOXWDDM_GLOBAL_POINTER_INFO PointerInfo;
 
    VBOXVTLIST CtlList;
    VBOXVTLIST DmaCmdList;
-#ifdef VBOX_WITH_VIDEOHWACCEL
-   VBOXVTLIST VhwaCmdList;
-#endif
+
    BOOLEAN bNotifyDxDpc;
 
    BOOLEAN fDisableTargetUpdate;
-
-
 
    BOOL bVSyncTimerEnabled;
    volatile uint32_t fVSyncInVBlank;

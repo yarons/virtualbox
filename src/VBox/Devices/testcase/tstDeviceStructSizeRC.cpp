@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: tstDeviceStructSizeRC.cpp 108837 2025-03-20 12:48:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -354,9 +354,6 @@ int main()
 #endif
     GEN_CHECK_OFF(VGASTATE, IBase);
     GEN_CHECK_OFF(VGASTATE, IPort);
-#if defined(VBOX_WITH_HGSMI) && defined(VBOX_WITH_VIDEOHWACCEL)
-    GEN_CHECK_OFF(VGASTATE, IVBVACallbacks);
-#endif
     GEN_CHECK_OFF(VGASTATE, pDrvBase);
     GEN_CHECK_OFF(VGASTATE, pDrv);
     GEN_CHECK_OFF(VGASTATE, RefreshTimer);

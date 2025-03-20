@@ -3,7 +3,7 @@
 # pylint: disable=line-too-long
 # pylint: disable=too-many-statements
 # pylint: disable=deprecated-module
-# $Id: vboxshell.py 108190 2025-02-04 05:24:54Z samantha.scholz@oracle.com $
+# $Id: vboxshell.py 108837 2025-03-20 12:48:42Z andreas.loeffler@oracle.com $
 
 # The following checks for the right (i.e. most recent) Python binary available
 # and re-starts the script using that binary (like a shell wrapper).
@@ -63,7 +63,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 108190 $"
+__version__ = "$Revision: 108837 $"
 
 
 import gc
@@ -1015,7 +1015,6 @@ def infoCmd(ctx, args):
         print("  HPET [HPETEnabled]: %s" % (asState(mach.platform.x86.HPETEnabled)))
 
     print("  Hardware 3d acceleration [accelerate3DEnabled]: " + asState(mach.graphicsAdapter.isFeatureEnabled(ctx['const'].GraphicsFeature_Acceleration3D)))
-    print("  Hardware 2d video acceleration [accelerate2DVideoEnabled]: " + asState(mach.graphicsAdapter.isFeatureEnabled(ctx['const'].GraphicsFeature_Acceleration2DVideo)))
     print("  Use universal time [RTCUseUTC]: %s" % (asState(mach.platform.RTCUseUTC)))
     audioAdp = mach.audioSettings.adapter
     if audioAdp.enabled:
