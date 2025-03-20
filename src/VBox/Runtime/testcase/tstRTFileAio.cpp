@@ -1,4 +1,4 @@
-/* $Id: tstRTFileAio.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTFileAio.cpp 108845 2025-03-20 14:41:09Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT Testcase - File Async I/O.
  */
@@ -44,6 +44,7 @@
 #include <iprt/mem.h>
 #include <iprt/param.h>
 #include <iprt/string.h>
+#include <iprt/system.h>
 #include <iprt/test.h>
 
 
@@ -77,7 +78,7 @@ static void tstFileAioTestReadWriteBasic(RTFILE File, bool fWrite, void *pvTestB
     /* Allocate the buffers*/
     for (unsigned i = 0; i < cMaxReqsInFlight; i++)
     {
-        RTTESTI_CHECK_RC_OK_RETV(RTTestGuardedAlloc(g_hTest, cbTestBuf, PAGE_SIZE, true /*fHead*/, &papvBuf[i]));
+        RTTESTI_CHECK_RC_OK_RETV(RTTestGuardedAlloc(g_hTest, cbTestBuf, RTSystemGetPageSize(), true /*fHead*/, &papvBuf[i]));
         if (fWrite)
             memcpy(papvBuf[i], pvTestBuf, cbTestBuf);
         if (fWrite)
