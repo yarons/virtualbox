@@ -1,4 +1,4 @@
-/* $Id: tstRTMemSafer.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTMemSafer.cpp 108846 2025-03-20 14:51:03Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT Testcase - RTMemSafer* functions.
  */
@@ -45,6 +45,7 @@
 #include <iprt/rand.h>
 #include <iprt/string.h>
 #include <iprt/test.h>
+#include <iprt/system.h>
 #if defined(VBOX) && (defined(RT_ARCH_X86) || defined(RT_ARCH_AMD64))
 # include <VBox/sup.h>
 #endif
@@ -118,11 +119,11 @@ static void doMemSaferAllocation(RTTEST hTest)
 
 static void doMemRealloc(RTTEST hTest)
 {
-    RTTestPrintf(hTest, RTTESTLVL_ALWAYS, "%u reallocation, grow by 1 bytes\n", PAGE_SIZE * 2);
+    RTTestPrintf(hTest, RTTESTLVL_ALWAYS, "%u reallocation, grow by 1 bytes\n", RTSystemGetPageSize() * 2);
     size_t cbAlloc = RTRandS32Ex(1, _16K);
     void  *pvBuf   = NULL;
     RTTESTI_CHECK_RC_OK_RETV(RTMemSaferAllocZEx(&pvBuf, cbAlloc, 0));
-    for (uint32_t i = 0; i <= PAGE_SIZE * 2; i++)
+    for (uint32_t i = 0; i <= RTSystemGetPageSize() * 2; i++)
     {
         cbAlloc += 1;
         RTTESTI_CHECK_RC_OK_RETV(RTMemSaferReallocZEx(cbAlloc - 1, pvBuf, cbAlloc, &pvBuf, 0));
