@@ -1,4 +1,4 @@
-/* $Id: split-soapC.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: split-soapC.cpp 108820 2025-03-20 10:38:07Z alexander.eichner@oracle.com $ */
 /** @file
  * Splits soapC.cpp and soapH-noinline.cpp into more manageable portions.
  */
@@ -130,7 +130,7 @@ int main(int argc, char *argv[])
         {
             /* construct output filename */
             char szFilename[1024];
-            sprintf(szFilename, "%s%lu.cpp", argv[2], ++cFiles);
+            snprintf(szFilename, sizeof(szFilename), "%s%lu.cpp", argv[2], ++cFiles);
             szFilename[sizeof(szFilename)-1] = '\0';
 
             size_t offName = strlen(szFilename);
