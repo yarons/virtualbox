@@ -1,4 +1,4 @@
-/* $Id: UIMachineToolsWidget.h 108744 2025-03-13 17:22:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineToolsWidget.h 108851 2025-03-20 15:02:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineToolsWidget class declaration.
  */
@@ -70,9 +70,6 @@ signals:
         void sigChooserPaneIndexChange();
         /** Notifies about Chooser-pane selection change. */
         void sigChooserPaneSelectionChange();
-
-        /** Notifies about state change for cloud machine with certain @a uId. */
-        void sigCloudMachineStateChange(const QUuid &uId);
     /** @} */
 
     /** @name Tools pane stuff.
@@ -187,9 +184,6 @@ private slots:
 
         /** Handles signal about Chooser-pane selection invalidated. */
         void sltHandleChooserPaneSelectionInvalidated();
-
-        /** Handles state change for cloud machine with certain @a uId. */
-        void sltHandleCloudMachineStateChange(const QUuid &uId);
     /** @} */
 
     /** @name Tools pane stuff.

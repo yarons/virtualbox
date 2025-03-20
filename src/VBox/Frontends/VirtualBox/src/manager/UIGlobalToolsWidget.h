@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsWidget.h 108755 2025-03-14 12:30:47Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsWidget.h 108851 2025-03-20 15:02:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsWidget class declaration.
  */
@@ -62,6 +62,12 @@ signals:
 
         /** Notifies about Tool type change. */
         void sigToolTypeChange();
+    /** @} */
+
+    /** @name Chooser pane stuff.
+      * @{ */
+        /** Notifies about state change for cloud machine with certain @a uId. */
+        void sigCloudMachineStateChange(const QUuid &uId);
     /** @} */
 
 public:
@@ -133,6 +139,9 @@ private slots:
         /** Handles state change for cloud profile with certain @a strProviderShortName and @a strProfileName. */
         void sltHandleCloudProfileStateChange(const QString &strProviderShortName,
                                               const QString &strProfileName);
+
+        /** Handles state change for cloud machine with certain @a uId. */
+        void sltHandleCloudMachineStateChange(const QUuid &uId);
     /** @} */
 
     /** @name Tools pane stuff.
