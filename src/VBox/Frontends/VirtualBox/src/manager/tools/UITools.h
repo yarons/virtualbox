@@ -1,10 +1,10 @@
-/* $Id: UITools.h 108479 2025-02-20 11:53:24Z sergey.dubov@oracle.com $ */
+/* $Id: UITools.h 108886 2025-03-21 13:49:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITools class declaration.
  */
 
 /*
- * Copyright (C) 2012-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -61,12 +61,10 @@ public:
 
     /** Constructs Tools-pane passing @a pParent to the base-class.
       * @param  enmClass     Brings the tools class, it will be fixed one.
-      * @param  pActionPool  Brings the action-pool reference.
-      * @param  theFlags     Brings the widget flags. */
+      * @param  pActionPool  Brings the action-pool reference. */
     UITools(QWidget *pParent,
             UIToolClass enmClass,
-            UIActionPool *pActionPool,
-            Qt::WindowFlags theFlags = Qt::Popup);
+            UIActionPool *pActionPool);
     /** Destructs Tools-pane. */
     virtual ~UITools();
 
@@ -122,9 +120,6 @@ private:
 
         /** Holds the action-pool reference. */
         UIActionPool *m_pActionPool;
-
-        /** Holds whether tools represented as popup. */
-        const bool  m_fPopup;
 
         /** Holds the main layout instance. */
         QVBoxLayout  *m_pMainLayout;
