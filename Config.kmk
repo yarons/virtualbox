@@ -1,4 +1,4 @@
-# $Id: Config.kmk 108882 2025-03-21 10:57:02Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 108884 2025-03-21 12:40:08Z alexander.eichner@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1359,6 +1359,8 @@ ifeq ($(KBUILD_TARGET),darwin)
  VBOX_WITH_VBOXSDL =
 
  ifeq ($(KBUILD_TARGET_ARCH),arm64)
+  # Skip the webservice for now
+  VBOX_WITH_WEBSERVICES :=
   # Skip JWS bindings as those are tedious to build.
   VBOX_WITH_JWS :=
   # Ditto for the java<->XPCOM bridge.
@@ -9373,7 +9375,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 108882 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 108884 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
