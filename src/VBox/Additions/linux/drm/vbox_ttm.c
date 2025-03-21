@@ -1,4 +1,4 @@
-/* $Id: vbox_ttm.c 108767 2025-03-17 13:41:04Z vadim.galitsyn@oracle.com $ */
+/* $Id: vbox_ttm.c 108885 2025-03-21 13:13:47Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -363,7 +363,7 @@ static int vbox_bo_move(struct ttm_buffer_object *bo, bool evict,
 	struct ttm_operation_ctx *ctx, struct ttm_resource *new_mem,
 	struct ttm_place *hop)
 {
-# if RTLNX_VER_MIN(6,4,0)
+# if RTLNX_VER_MIN(6,4,0) || RTLNX_RHEL_RANGE(9,7, 9,99)
 	if (!bo->resource)
 	{
 		if (new_mem->mem_type != TTM_PL_SYSTEM)
