@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 108878 2025-03-21 09:38:38Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICAll.cpp 108881 2025-03-21 10:50:09Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - All Contexts.
  */
@@ -122,10 +122,8 @@ static const char *gicIccGetRegDescription(uint32_t u32Reg)
         GIC_ICC_REG_CASE(ICC_IGRPEN1_EL1);
 #undef GIC_ICC_REG_CASE
         default:
-            break;
+            return "<UNKNOWN>";
     }
-
-    return "<UNKNOWN>";
 }
 
 
@@ -197,9 +195,11 @@ static const char *gicReDistGetRegDescription(uint16_t offReg)
     if (offReg - GIC_REDIST_SGI_PPI_REG_ICFGR0_OFF            < GIC_REDIST_SGI_PPI_REG_ICFGRnE_RANGE_SIZE)      return "GICR_ICFGRn";
     switch (offReg)
     {
-        case GIC_REDIST_REG_TYPER_OFF:          return "GICR_TYPER";
+        case GIC_REDIST_REG_CTLR_OFF:           return "GICR_CTLR";
         case GIC_REDIST_REG_IIDR_OFF:           return "GICR_IIDR";
+        case GIC_REDIST_REG_TYPER_OFF:          return "GICR_TYPER";
         case GIC_REDIST_REG_TYPER_AFFINITY_OFF: return "GICR_TYPER_AFF";
+        case GIC_REDIST_REG_STATUSR_OFF:        return "GICR_STATUSR";
         case GIC_REDIST_REG_PIDR2_OFF:          return "GICR_PIDR2";
         default:
             return "<UNKNOWN>";
@@ -2332,7 +2332,7 @@ DECLINLINE(VBOXSTRICTRC) gicReDistReadRegister(PPDMDEVINS pDevIns, PVMCPUCC pVCp
             *puValue = GIC_REDIST_REG_PIDR2_ARCH_REV_SET(pGicDev->uArchRev);
             break;
         case GIC_REDIST_REG_CTLR_OFF:
-            *puValue = GIC_REDIST_REG_CTLR_CES_SET(1) | RT_BIT_32(2);
+            *puValue = GIC_REDIST_REG_CTLR_CES_SET(1);
             break;
         default:
             *puValue = 0;
