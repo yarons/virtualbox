@@ -1,4 +1,4 @@
-/* $Id: dxvk_video_decoder.h 108771 2025-03-17 15:17:37Z vitali.pelenjow@oracle.com $ */
+/* $Id: dxvk_video_decoder.h 108897 2025-03-21 17:28:22Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBoxDxVk - Video decoder.
  */
@@ -395,6 +395,7 @@ namespace dxvk {
       } h264;
       struct {
         std::array<StdVideoH265VideoParameterSet, 32>     vps;
+        std::array<StdVideoH265ProfileTierLevel, 32>      vpsProfileTierLevel;
         std::array<StdVideoH265SequenceParameterSet, 32>  sps;
         std::array<StdVideoH265PictureParameterSet, 256>  pps;
       } h265;
