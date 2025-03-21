@@ -1,4 +1,4 @@
-/* $Id: GICR3Nem-win.cpp 108705 2025-03-11 08:53:03Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICR3Nem-win.cpp 108878 2025-03-21 09:38:38Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - Hyper-V interface.
  */
@@ -678,6 +678,7 @@ const PDMGICBACKEND g_GicHvBackend =
     /* .pfnWriteSysReg = */ NULL,
     /* .pfnSetSpi = */      gicR3HvSetSpi,
     /* .pfnSetPpi = */      gicR3HvSetPpi,
+    /* .pfnSendMsi = */     NULL,
 };
 
 #endif /* !VBOX_DEVICE_STRUCT_TESTCASE */
