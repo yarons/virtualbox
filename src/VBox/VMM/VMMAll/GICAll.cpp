@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 108881 2025-03-21 10:50:09Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICAll.cpp 108890 2025-03-21 15:19:48Z alexander.eichner@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - All Contexts.
  */
@@ -55,6 +55,7 @@
  * evaluated in the future if/when there is support for nested virtualization on
  * ARMv8 hosts.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *

@@ -1,4 +1,4 @@
-/* $Id: GITSAll.cpp 108878 2025-03-21 09:38:38Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GITSAll.cpp 108890 2025-03-21 15:19:48Z alexander.eichner@oracle.com $ */
 /** @file
  * GITS - Generic Interrupt Controller Interrupt Translation Service (ITS) - All Contexts.
  */
@@ -33,7 +33,7 @@
 #include "GITSInternal.h"
 
 #include <VBox/log.h>
-#include <iprt/err.h>           /* VINF_SUCCESS */
+#include <iprt/errcore.h>       /* VINF_SUCCESS */
 #include <iprt/string.h>        /* RT_ZERO */
 
 
