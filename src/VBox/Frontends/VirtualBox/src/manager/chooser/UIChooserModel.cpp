@@ -1,10 +1,10 @@
-/* $Id: UIChooserModel.cpp 108766 2025-03-17 13:39:53Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.cpp 108883 2025-03-21 12:35:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
 
 /*
- * Copyright (C) 2012-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -116,12 +116,6 @@ QPaintDevice *UIChooserModel::paintDevice() const
 QGraphicsItem *UIChooserModel::itemAt(const QPointF &position, const QTransform &deviceTransform /* = QTransform() */) const
 {
     return scene() ? scene()->itemAt(position, deviceTransform) : 0;
-}
-
-void UIChooserModel::handleToolButtonClick(UIChooserItem *pItem)
-{
-    emit sigToolMenuRequested(pItem->mapToScene(QPointF(pItem->size().width(), 0)).toPoint(),
-                              pItem->type() == UIChooserNodeType_Machine ? pItem->toMachineItem()->cache() : 0);
 }
 
 void UIChooserModel::setSelectedItems(const QList<UIChooserItem*> &items)

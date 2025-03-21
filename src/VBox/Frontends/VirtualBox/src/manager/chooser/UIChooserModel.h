@@ -1,10 +1,10 @@
-/* $Id: UIChooserModel.h 108766 2025-03-17 13:39:53Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.h 108883 2025-03-21 12:35:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
 
 /*
- * Copyright (C) 2012-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -63,12 +63,6 @@ class UIChooserModel : public UIChooserAbstractModel
 
 signals:
 
-    /** @name Tool stuff.
-      * @{ */
-        /** Notifies listeners about tool popup-menu request for certain @a position and optionally machine @a pItem. */
-        void sigToolMenuRequested(const QPoint &position, UIVirtualMachineItem *pItem);
-    /** @} */
-
     /** @name Selection stuff.
       * @{ */
         /** Notifies listeners about selection changed. */
@@ -117,9 +111,6 @@ public:
 
         /** Returns item at @a position, taking into account possible @a deviceTransform. */
         QGraphicsItem *itemAt(const QPointF &position, const QTransform &deviceTransform = QTransform()) const;
-
-        /** Handles tool button click for certain @a pItem. */
-        void handleToolButtonClick(UIChooserItem *pItem);
     /** @} */
 
     /** @name Selection stuff.
