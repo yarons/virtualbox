@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 108590 2025-02-27 10:35:39Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 108898 2025-03-21 23:27:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -163,6 +163,7 @@
 # include "target-x86/IEMInlineDecode-x86.h"
 # include "target-x86/IEMInlineExec-x86.h"
 #elif defined(VBOX_VMM_TARGET_ARMV8)
+# include "target-armv8/IEMInline-armv8.h"
 # include "target-armv8/IEMInlineExec-armv8.h"
 #endif
 
