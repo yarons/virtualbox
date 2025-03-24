@@ -1,4 +1,4 @@
-/* $Id: SUPLib-linux.cpp 108925 2025-03-24 18:53:21Z alexander.eichner@oracle.com $ */
+/* $Id: SUPLib-linux.cpp 108926 2025-03-24 18:54:47Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox Support Library - GNU/Linux specific parts.
  */
@@ -63,6 +63,7 @@
 #include <iprt/assert.h>
 #include <VBox/types.h>
 #include <iprt/string.h>
+#include <iprt/system.h>
 #include <VBox/err.h>
 #include <VBox/param.h>
 #include "../SUPLibInternal.h"
