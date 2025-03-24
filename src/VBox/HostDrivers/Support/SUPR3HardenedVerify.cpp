@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedVerify.cpp 108671 2025-03-07 17:02:28Z alexander.eichner@oracle.com $ */
+/* $Id: SUPR3HardenedVerify.cpp 108910 2025-03-24 11:05:02Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Verification of Hardened Installation.
  */
@@ -130,8 +130,10 @@ static SUPINSTFILE const    g_aSupInstallFiles[] =
 {
     /*  type,         dir,                       fOpt, "pszFile"              */
     /* ---------------------------------------------------------------------- */
+#ifdef VBOX_WITH_R0_MODULES
     {   kSupIFT_Dll,  kSupID_AppPrivArch,       false, "VMMR0.r0" },
     {   kSupIFT_Dll,  kSupID_AppPrivArch,       false, "VBoxDDR0.r0" },
+#endif
 
 #ifdef VBOX_WITH_RAW_MODE
     {   kSupIFT_Rc,   kSupID_AppPrivArch,       false, "VMMRC.rc" },
