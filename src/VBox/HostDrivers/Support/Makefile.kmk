@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 107017 2024-11-14 01:14:23Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 108925 2025-03-24 18:53:21Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -48,9 +48,7 @@ VBOX_PATH_RUNTIME_SRC        ?= $(PATH_ROOT)/src/VBox/Runtime
 #
 # Targets
 #
-if "$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)" != "linux.arm64" || defined(VBOX_WITH_STATIC_ARM64_PAGE_SHIFT) # @todo Required by LoadGenerator in the validationkit but uses PAGE_SIZE++
- LIBRARIES += SUPR3 SUPR3Static
-endif
+LIBRARIES += SUPR3 SUPR3Static
 if   defined(VBOX_WITH_HARDENING) \
   && !defined(VBOX_ONLY_VALIDATIONKIT)
  LIBRARIES += SUPR3HardenedStatic
