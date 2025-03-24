@@ -1,4 +1,4 @@
-/* $Id: QILineEdit.h 104980 2024-06-20 13:21:58Z sergey.dubov@oracle.com $ */
+/* $Id: QILineEdit.h 108909 2025-03-24 11:02:36Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QILineEdit class declaration.
  */
@@ -70,6 +70,7 @@ protected:
 
     /** Handles any Qt @a pEvent. */
     virtual bool event(QEvent *pEvent) RT_OVERRIDE;
+    virtual void paintEvent(QPaintEvent *pEvent) RT_OVERRIDE;
 
 private slots:
 
@@ -95,7 +96,7 @@ private:
     /** Holds whether line-edit is markable. */
     bool     m_fMarkable;
     /** Holds whether line-edit is marked for error. */
-    bool     m_fMarkForError;
+    bool     m_fMarkedForError;
     /** Holds the icon label instance. */
     QLabel  *m_pLabelIcon;
     /** Holds last error message. */
