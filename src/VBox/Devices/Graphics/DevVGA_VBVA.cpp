@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 108837 2025-03-20 12:48:42Z andreas.loeffler@oracle.com $ */
+/* $Id: DevVGA_VBVA.cpp 108922 2025-03-24 16:50:43Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -982,20 +982,7 @@ int vboxVBVASaveStateExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
     PVGASTATECC     pThisCC = PDMDEVINS_2_DATA_CC(pDevIns, PVGASTATECC);
     PCPDMDEVHLPR3   pHlp    = pDevIns->pHlpR3;
 
-    int rc = vboxVBVASaveDevStateExec(pHlp, pThis, pThisCC, pSSM);
-    if (RT_SUCCESS(rc))
-    {
-        for (uint32_t i = 0; i < pThis->cMonitors; ++i)
-        {
-            rc = pHlp->pfnSSMPutU32(pSSM, VBOXVBVASAVEDSTATE_VHWAUNAVAILABLE_MAGIC);
-            AssertRCReturn(rc, rc);
-        }
-    }
-
-    /* no pending commands */
-    pHlp->pfnSSMPutU32(pSSM, 0);
-
-    return rc;
+    return vboxVBVASaveDevStateExec(pHlp, pThis, pThisCC, pSSM);
 }
 
 int vboxVBVALoadStateExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint32_t uVersion)
