@@ -1,4 +1,4 @@
-# $Id: Config.kmk 108902 2025-03-24 07:00:16Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 108903 2025-03-24 08:45:31Z vitali.pelenjow@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -659,6 +659,10 @@ ifdef VBOX_WITH_VMSVGA3D
  if1of ($(KBUILD_TARGET), linux darwin)
   VBOX_WITH_DXVK = 1
  endif
+endif
+# Enable video decoding in DXVK library
+ifdef VBOX_WITH_DXVK
+ VBOX_WITH_DXVK_VIDEO = 1
 endif
 # Enable the generic 3D settings support if at least one 3D capable solution is enabled
 ifdef VBOX_WITH_VMSVGA3D
@@ -9376,7 +9380,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 108902 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 108903 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
