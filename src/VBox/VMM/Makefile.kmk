@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 108904 2025-03-24 09:16:43Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 108905 2025-03-24 09:28:25Z alexander.eichner@oracle.com $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -90,7 +90,7 @@ endif
 if "$(KBUILD_TYPE)" == "debug" && "$(USERNAME)" == "bird" && 0
  VBoxVMM_DEFS   += RTMEM_WRAP_TO_EF_APIS
 endif
-if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH),linux.arm64)
+if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), linux.arm64)
  VBoxVMM_DEFS   += VMM_HOST_PAGE_SIZE_DYNAMIC
 endif
 
@@ -437,7 +437,7 @@ ifdef VBOX_WITH_VIRT_ARMV8
  #ifdef VBOX_WITH_DBGF_FLOW_TRACING @todo Later
  # VBoxVMMArm_DEFS   += VBOX_WITH_DBGF_FLOW_TRACING
  #endif
- if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH),linux.arm64)
+ if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), linux.arm64)
   VBoxVMMArm_DEFS   += VMM_HOST_PAGE_SIZE_DYNAMIC
  endif
 
