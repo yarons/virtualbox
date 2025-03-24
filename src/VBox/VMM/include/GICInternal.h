@@ -1,4 +1,4 @@
-/* $Id: GICInternal.h 108878 2025-03-21 09:38:38Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICInternal.h 108912 2025-03-24 12:43:36Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -126,14 +126,22 @@ typedef struct GICDEV
     /** Whether non-zero affinity 3 levels are supported (GICD_TYPER.A3V) and
      *  (ICC_CTLR.A3V). */
     bool                        fAff3Levels;
-    /** Alignment. */
-    bool                        afPadding[2];
+    /** Whether LPIs are supported (GICD_TYPER.PLPIS). */
+    bool                        fLpi;
+    /** The maximum LPI supported (GICD_TYPER.num_LPI). */
+    uint8_t                     uMaxLpi;
+    /** Padding. */
+    bool                        afPadding[4];
     /** @} */
 
     /** @name GITS device data and LPIs.
      * @{ */
+    /** ITS device state. */
     GITSDEV                     Gits;
-    uint8_t                     abLpiPriority[8192];
+    /** LPI configuration table (priority + enabled bit). */
+    uint8_t                     abLpiConfig[2048];
+    /** LPI pending bitmap. */
+    uint32_t                    bmLpiPending[64];
     /** @} */
 
     /** @name MMIO data.
