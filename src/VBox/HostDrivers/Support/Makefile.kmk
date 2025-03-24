@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 108925 2025-03-24 18:53:21Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 108927 2025-03-24 20:08:34Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -195,6 +195,7 @@ SUPR3_DEFS          = \
 	$(if $(VBOX_WITH_MAIN),VBOX_WITH_MAIN,) \
 	$(if $(VBOX_WITH_RAW_MODE),VBOX_WITH_RAW_MODE,) \
 	$(if $(VBOX_WITH_DRIVERLESS_NEM_FALLBACK),VBOX_WITH_DRIVERLESS_NEM_FALLBACK,) \
+	$(if $(VBOX_WITH_R0_MODULES),VBOX_WITH_R0_MODULES,) \
 	VBOX_PERMIT_MORE \
 	VBOX_PERMIT_EVEN_MORE
 SUPR3_INCS         := $(PATH_SUB_CURRENT)
