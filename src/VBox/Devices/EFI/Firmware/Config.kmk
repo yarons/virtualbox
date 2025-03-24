@@ -1,4 +1,4 @@
-# $Id: Config.kmk 107065 2024-11-19 12:16:53Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 108915 2025-03-24 15:26:59Z alexander.eichner@oracle.com $
 ## @file
 # kBuild configuration for the VBox EFI firmware.
 #
@@ -79,14 +79,13 @@ ifeq ($(KBUILD_HOST),win)
  # The VS2019 template is the same as the VS2022 in upstream, so we stick with this till we upgrade.
  VBOX_EFI_TOOL_CHAIN.x86   := VS2019
  VBOX_EFI_TOOL_CHAIN.amd64 := VS2019
- VBOX_EFI_TOOL_CHAIN.arm32 := CLANGDWARF
- VBOX_EFI_TOOL_CHAIN.arm64 := CLANGDWARF
 else
  VBOX_EFI_TOOL_CHAIN.x86   := GCC48
  VBOX_EFI_TOOL_CHAIN.amd64 := GCC48
- VBOX_EFI_TOOL_CHAIN.arm32 := GCC48
- VBOX_EFI_TOOL_CHAIN.arm64 := GCC48
 endif
+
+VBOX_EFI_TOOL_CHAIN.arm32 := CLANGDWARF
+VBOX_EFI_TOOL_CHAIN.arm64 := CLANGDWARF
 
 
 #
