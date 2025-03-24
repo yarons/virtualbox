@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 108530 2025-02-24 15:20:00Z serkan.bayraktar@oracle.com $ */
+/* $Id: UnattendedImpl.cpp 108923 2025-03-24 17:07:21Z serkan.bayraktar@oracle.com $ */
 /** @file
  * Unattended class implementation
  */
@@ -24,8 +24,6 @@
  *
  * SPDX-License-Identifier: GPL-3.0-only
  */
-
-#include <cstdio>
 
 
 /*********************************************************************************************************************************
