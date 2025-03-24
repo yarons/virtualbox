@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 108008 2025-01-22 15:31:45Z knut.osmundsen@oracle.com $ */
+/* $Id: VM.cpp 108904 2025-03-24 09:16:43Z alexander.eichner@oracle.com $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -2927,7 +2927,7 @@ VMMR3DECL(PRTUUID) VMR3GetUuid(PUVM pUVM, PRTUUID pUuid)
  */
 VMMR3DECL(VMSTATE) VMR3GetState(PVM pVM)
 {
-    AssertMsgReturn(RT_VALID_ALIGNED_PTR(pVM, HOST_PAGE_SIZE), ("%p\n", pVM), VMSTATE_TERMINATED);
+    AssertMsgReturn(RT_VALID_ALIGNED_PTR(pVM, HOST_PAGE_SIZE_DYNAMIC), ("%p\n", pVM), VMSTATE_TERMINATED);
     VMSTATE enmVMState = pVM->enmVMState;
     return enmVMState >= VMSTATE_CREATING && enmVMState <= VMSTATE_TERMINATED ? enmVMState : VMSTATE_TERMINATED;
 }

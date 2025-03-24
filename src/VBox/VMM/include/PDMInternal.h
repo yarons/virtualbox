@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 108287 2025-02-10 11:05:23Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMInternal.h 108904 2025-03-24 09:16:43Z alexander.eichner@oracle.com $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -96,7 +96,7 @@ RT_C_DECLS_BEGIN
 /** The maximum device instance (total) size, ring-3 only devices. */
 #define PDM_MAX_DEVICE_INSTANCE_SIZE_R3   _8M
 /** The maximum size for the DBGF tracing tracking structure allocated for each device. */
-#define PDM_MAX_DEVICE_DBGF_TRACING_TRACK HOST_PAGE_SIZE
+#define PDM_MAX_DEVICE_DBGF_TRACING_TRACK HOST_PAGE_SIZE_DYNAMIC
 
 
 
