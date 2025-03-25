@@ -1,4 +1,4 @@
-/* $Id: GICR3Nem-linux.cpp 108878 2025-03-21 09:38:38Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICR3Nem-linux.cpp 108932 2025-03-25 08:28:01Z alexander.eichner@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - KVM in kernel interface.
  */
@@ -352,7 +352,7 @@ DECLCALLBACK(int) gicR3KvmConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE
                                  "VGIC init");
     AssertRCReturn(rc, rc);
 
-    gicR3Reset(pDevIns);
+    gicR3KvmReset(pDevIns);
     return VINF_SUCCESS;
 }
 
