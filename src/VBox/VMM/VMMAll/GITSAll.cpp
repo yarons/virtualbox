@@ -1,4 +1,4 @@
-/* $Id: GITSAll.cpp 108912 2025-03-24 12:43:36Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GITSAll.cpp 108933 2025-03-25 08:42:33Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GITS - Generic Interrupt Controller Interrupt Translation Service (ITS) - All Contexts.
  */
@@ -59,7 +59,7 @@
 #ifdef LOG_ENABLED
 DECL_HIDDEN_CALLBACK(const char *) gitsGetCtrlRegDescription(uint16_t offReg)
 {
-    if (offReg - GITS_CTRL_REG_BASER_OFF_FIRST < GITS_CTRL_REG_BASER_RANGE_SIZE)
+    if ((uint32_t)offReg - GITS_CTRL_REG_BASER_OFF_FIRST < GITS_CTRL_REG_BASER_RANGE_SIZE)
         return "GITS_BASER<n>";
     switch (offReg)
     {
