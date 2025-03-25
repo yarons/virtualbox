@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.cpp 108799 2025-03-18 21:01:41Z brent.paulson@oracle.com $ */
+/* $Id: MachineImplMoveVM.cpp 108941 2025-03-25 13:29:27Z brent.paulson@oracle.com $ */
 /** @file
  * Implementation of MachineMoveVM
  */
@@ -813,7 +813,7 @@ void MachineMoveVM::i_MoveVMThreadTask(MachineMoveVM *task)
 
             /* Create a full path */
             Bstr bstrMachineName;
-            machine->COMGETTER(Name)(bstrMachineName.asOutParam());
+            hrc = machine->COMGETTER(Name)(bstrMachineName.asOutParam());
             if (FAILED(hrc))
                 throw hrc;
             strTargetSettingsFilePath.append(RTPATH_DELIMITER).append(Utf8Str(bstrMachineName));
@@ -821,7 +821,7 @@ void MachineMoveVM::i_MoveVMThreadTask(MachineMoveVM *task)
 
             Utf8Str strSettingsFilePath;
             Bstr bstr_settingsFilePath;
-            machine->COMGETTER(SettingsFilePath)(bstr_settingsFilePath.asOutParam());
+            hrc = machine->COMGETTER(SettingsFilePath)(bstr_settingsFilePath.asOutParam());
             if (FAILED(hrc))
                 throw hrc;
             strSettingsFilePath = bstr_settingsFilePath;
