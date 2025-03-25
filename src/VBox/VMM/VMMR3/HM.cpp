@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 108904 2025-03-24 09:16:43Z alexander.eichner@oracle.com $ */
+/* $Id: HM.cpp 108942 2025-03-25 14:08:37Z alexander.eichner@oracle.com $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1107,7 +1107,6 @@ VMMR3_INT_DECL(int) HMR3InitCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
             return hmR3InitFinalizeR0(pVM);
 #else
         case VMINITCOMPLETED_RING0:
-            AssertFailedReturn(VERR_NOT_SUPPORTED);
 #endif
         default:
             return VINF_SUCCESS;
