@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 107956 2025-01-18 23:59:26Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMInternal.h 108962 2025-03-26 16:05:20Z alexander.eichner@oracle.com $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -115,7 +115,7 @@ typedef uint64_t STAMCOUNTER;
 #if defined(VBOX_VMM_TARGET_X86)
 # define CPUM_SAVED_STATE_VERSION               CPUM_SAVED_STATE_VERSION_HWVIRT_VMX_4
 #elif defined(VBOX_VMM_TARGET_ARMV8)
-# define CPUM_SAVED_STATE_VERSION               CPUM_SAVED_STATE_VERSION_ARMV8_V1
+# define CPUM_SAVED_STATE_VERSION               CPUM_SAVED_STATE_VERSION_ARMV8_V2
 #endif
 
 #if defined(VBOX_VMM_TARGET_X86)
@@ -162,6 +162,8 @@ typedef uint64_t STAMCOUNTER;
 #endif
 
 #if defined(VBOX_VMM_TARGET_ARMV8)
+/** Adds ACTLR_EL1 to the ARMv8 saved state. */
+# define CPUM_SAVED_STATE_VERSION_ARMV8_V2      2
 /** The initial ARMv8 saved state. */
 # define CPUM_SAVED_STATE_VERSION_ARMV8_V1      1
 #endif

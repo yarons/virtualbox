@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 108618 2025-03-04 11:24:21Z alexander.eichner@oracle.com $ */
+/* $Id: NEMInternal.h 108962 2025-03-26 16:05:20Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -336,6 +336,8 @@ typedef struct NEM
     bool                        fCreatedVm   : 1;
     /** Set if EL2 is enabled. */
     bool                        fEl2Enabled  : 1;
+    /** Set if we are running at least on macOS Sequioa 15.0. */
+    bool                        fMacOsSequia : 1;
 # ifdef VBOX_VMM_TARGET_ARMV8
     /** @name vTimer related state.
      * @{ */
