@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 108443 2025-02-18 11:59:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPoolManager.cpp 108959 2025-03-26 12:56:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -3503,8 +3503,8 @@ protected:
     {
         setName(QApplication::translate("UIActionPool", "VM Activity"));
         setShortcutScope(QApplication::translate("UIActionPool", "VM Activity Overview"));
-        setStatusTip(QApplication::translate("UIActionPool", "Switch to selected virtual machine's activity monitor pane"));
-        setToolTip(  QApplication::translate("UIActionPool", "Switch to selected virtual machine's activity monitor pane")
+        setStatusTip(QApplication::translate("UIActionPool", "View activity for selected virtual machine"));
+        setToolTip(  QApplication::translate("UIActionPool", "View activity for selected virtual machine")
                    + (shortcut().isEmpty() ? QString() : QString(" (%1)").arg(shortcut().toString())));
     }
 };
