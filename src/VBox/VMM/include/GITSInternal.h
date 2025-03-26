@@ -1,4 +1,4 @@
-/* $Id: GITSInternal.h 108878 2025-03-21 09:38:38Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GITSInternal.h 108954 2025-03-26 10:33:33Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GITS - Generic Interrupt Controller Interrupt Translation Service - Internal.
  */
@@ -82,6 +82,14 @@ typedef struct GITSDEV
 
     /** @name Interrupt translation space.
      * @{ */
+    /** @} */
+
+    /** @name Configurables.
+     * @{ */
+    /** The ITS architecture (GITS_PIDR2.ArchRev). */
+    uint8_t                 uArchRev;
+    /** Padding. */
+    uint8_t                 afPadding0[7];
     /** @} */
 } GITSDEV;
 /** Pointer to a GITS device. */
