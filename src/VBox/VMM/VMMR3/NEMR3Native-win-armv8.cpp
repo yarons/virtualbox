@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win-armv8.cpp 108592 2025-02-27 11:46:20Z alexander.eichner@oracle.com $ */
+/* $Id: NEMR3Native-win-armv8.cpp 108951 2025-03-26 07:48:57Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -655,9 +655,10 @@ static int nemR3WinGicCreate(PVM pVM)
 
     RTGCPHYS GCPhysMmioBaseIts = 0;
     rc = CFGMR3QueryU64(pGicCfg, "ItsMmioBase", &GCPhysMmioBaseIts);
-    if (RT_FAILURE(rc))
+    if (RT_FAILURE(rc) && rc != VERR_CFGM_VALUE_NOT_FOUND)
         return VMSetError(pVM, rc, RT_SRC_POS,
                           "Configuration error: Failed to get the \"ItsMmioBase\" value\n");
+    rc = VINF_SUCCESS;
 
     /*
      * One can only set the GIC distributor base. The re-distributor regions for the individual
