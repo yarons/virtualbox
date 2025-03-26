@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceAutoMount.cpp 108956 2025-03-26 11:55:20Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceAutoMount.cpp 108957 2025-03-26 12:02:25Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxService - Auto-mounting for Shared Folders, only Linux & Solaris atm.
  */
@@ -209,7 +209,8 @@ static DECLCALLBACK(int) vbsvcAutomounterInit(void)
     {
         /* If the service was not found, we disable this service without
            causing VBoxService to fail. */
-        if (rc == VERR_HGCM_SERVICE_NOT_FOUND) /* Host service is not available. */
+        if (   rc == VERR_HGCM_SERVICE_NOT_FOUND                          /* Host service is not available. */
+            || RTSystemGetNtVersion() <= RTSYSTEM_MAKE_NT_VERSION(4,0,0)) /* On <= NT4 guests no Shared Folders are available. */
         {
             VGSvcVerbose(0, "vbsvcAutomounterInit: Shared Folders service is not available\n");
             rc = VERR_SERVICE_DISABLED;
