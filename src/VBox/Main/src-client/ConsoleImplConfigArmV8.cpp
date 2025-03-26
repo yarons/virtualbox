@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigArmV8.cpp 108945 2025-03-26 06:42:04Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: ConsoleImplConfigArmV8.cpp 108949 2025-03-26 07:46:17Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits for ARMv8.
  */
@@ -531,7 +531,10 @@ int Console::i_configConstructorArmV8(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
         InsertConfigInteger(pCfg,  "DistributorMmioBase",   GCPhysIntcDist);
         InsertConfigInteger(pCfg,  "RedistributorMmioBase", GCPhysIntcReDist);
         if (fGicIts == TRUE)
+        {
             InsertConfigInteger(pCfg, "ItsMmioBase", GCPhysIntcIts);
+            InsertConfigInteger(pCfg, "Lpi",         1);
+        }
 
         vrc = RTFdtNodeAddF(hFdt, "intc@%RGp", GCPhysIntcDist);                                         VRC();
         vrc = RTFdtNodePropertyAddU32(     hFdt, "phandle",          idPHandleIntCtrl);                 VRC();
