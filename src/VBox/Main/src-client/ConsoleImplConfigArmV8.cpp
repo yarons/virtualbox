@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigArmV8.cpp 108952 2025-03-26 08:44:50Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: ConsoleImplConfigArmV8.cpp 108955 2025-03-26 10:45:58Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits for ARMv8.
  */
@@ -534,6 +534,7 @@ int Console::i_configConstructorArmV8(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
         {
             InsertConfigInteger(pCfg, "ItsMmioBase", GCPhysIntcIts);
             InsertConfigInteger(pCfg, "Lpi",         1);
+            InsertConfigInteger(pCfg, "Mbi",         1);
         }
         else
             GCPhysIntcIts = cbMmioIntcIts = 0;
