@@ -1,4 +1,4 @@
-/* $Id: GICR3.cpp 108934 2025-03-25 10:24:27Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICR3.cpp 108950 2025-03-26 07:47:08Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -597,7 +597,9 @@ DECLCALLBACK(int) gicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pC
                                            "|RangeSel"
                                            "|Nmi"
                                            "|Mbi"
-                                           "|Aff3Levels", "");
+                                           "|Aff3Levels"
+                                           "|Lpi"
+                                           "|MaxLpi", "");
 
 #if 0
     /*
@@ -803,7 +805,14 @@ DECLCALLBACK(int) gicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pC
                                            N_("Configuration error: \"Lpi\" must be enabled when ITS is enabled\n"));
         }
         else
+        {
             pGicDev->hMmioGits = NIL_IOMMMIOHANDLE;
+
+            /* When the ITS is disabled we don't support LPIs as we do not support direct LPI injection (guests don't use it). */
+            if (pGicDev->fLpi)
+                return PDMDevHlpVMSetError(pDevIns, VERR_INVALID_PARAMETER, RT_SRC_POS,
+                                           N_("Configuration error: \"Lpi\" must be disabled when ITS is disabled\n"));
+        }
     }
 
     /*
