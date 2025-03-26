@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceAutoMount.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceAutoMount.cpp 108956 2025-03-26 11:55:20Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxService - Auto-mounting for Shared Folders, only Linux & Solaris atm.
  */
@@ -1406,8 +1406,13 @@ static int vbsvcAutomounterMountIt(PVBSVCAUTOMOUNTERENTRY pEntry)
                      pEntry->pszName, pEntry->pszActualMountPoint);
         return VINF_SUCCESS;
     }
-    VGSvcError("vbsvcAutomounterMountIt: Failed to attach '%s' to '%s': %Rrc (%u)\n",
-               pEntry->pszName, pEntry->pszActualMountPoint, RTErrConvertFromWin32(dwErr), dwErr);
+    else if (dwErr == ERROR_BAD_PROVIDER)
+        VGSvcError("vbsvcAutomounterMountIt: Failed to attach '%s' to '%s': VirtualBox Shared Folders provider not or " \
+                   "incorrectly installed, can't continue\n",
+                   pEntry->pszName, pEntry->pszActualMountPoint);
+    else
+        VGSvcError("vbsvcAutomounterMountIt: Failed to attach '%s' to '%s': %Rrc (%u)\n",
+                   pEntry->pszName, pEntry->pszActualMountPoint, RTErrConvertFromWin32(dwErr), dwErr);
     return VERR_OPEN_FAILED;
 
 #elif defined(RT_OS_OS2)
