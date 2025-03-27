@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 108971 2025-03-27 13:08:29Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICAll.cpp 108982 2025-03-27 18:34:42Z alexander.eichner@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - All Contexts.
  */
@@ -208,6 +208,7 @@ static const char *gicReDistGetRegDescription(uint16_t offReg)
             return "<UNKNOWN>";
     }
 }
+#endif /* LOG_ENABLED */
 
 
 /**
@@ -239,7 +240,6 @@ static const char *gicReDistGetSgiPpiRegDescription(uint16_t offReg)
             return "<UNKNOWN>";
     }
 }
-#endif /* LOG_ENABLED */
 
 
 /**
