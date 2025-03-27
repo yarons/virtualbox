@@ -1,4 +1,4 @@
-/* $Id: VBoxMPIf.h 108837 2025-03-20 12:48:42Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxMPIf.h 108970 2025-03-27 11:38:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox WDDM Miniport driver.
  *
@@ -826,6 +826,8 @@ DECLINLINE(uint32_t) vboxWddmFormatToFourcc(D3DDDIFORMAT enmFormat)
     return 0;
 }
 
+/** @todo r=bird: This is the same as RT_ALIGN. Best switch to using
+ *        RT_ALIGN_32, RT_ALIGN_64 and RT_ALIGN_T! */
 #define VBOXWDDM_ROUNDBOUND(_v, _b) (((_v) + ((_b) - 1)) & ~((_b) - 1))
 
 DECLINLINE(UINT) vboxWddmCalcOffXru(UINT w, D3DDDIFORMAT enmFormat)
