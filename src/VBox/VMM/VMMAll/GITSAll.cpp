@@ -1,4 +1,4 @@
-/* $Id: GITSAll.cpp 108969 2025-03-27 10:59:19Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GITSAll.cpp 108971 2025-03-27 13:08:29Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GITS - GIC Interrupt Translation Service (ITS) - All Contexts.
  */
@@ -177,6 +177,14 @@ DECL_HIDDEN_CALLBACK(VBOXSTRICTRC) gitsMmioReadCtrl(PCGITSDEV pGitsDev, uint16_t
             break;
         }
 
+        case GITS_CTRL_REG_CBASER_OFF:
+            *puValue = pGitsDev->uCmdBaseReg.s.Lo;
+            break;
+
+        case GITS_CTRL_REG_CBASER_OFF + 4:
+            *puValue = pGitsDev->uCmdBaseReg.s.Hi;
+            break;
+
         default:
             AssertReleaseMsgFailed(("offReg=%#x (%s)\n", offReg, gitsGetCtrlRegDescription(offReg)));
             break;
@@ -218,6 +226,23 @@ DECL_HIDDEN_CALLBACK(VBOXSTRICTRC) gitsMmioWriteCtrl(PGITSDEV pGitsDev, uint16_t
             pGitsDev->fEnabled = RT_BF_GET(uValue, GITS_BF_CTRL_REG_CTLR_ENABLED);
             break;
 
+        case GITS_CTRL_REG_CBASER_OFF:
+            pGitsDev->uCmdBaseReg.s.Lo = uValue & RT_LO_U32(GITS_CTRL_REG_CBASER_RW_MASK);
+            break;
+
+        case GITS_CTRL_REG_CBASER_OFF + 4:
+            pGitsDev->uCmdBaseReg.s.Hi = uValue & RT_HI_U32(GITS_CTRL_REG_CBASER_RW_MASK);
+            break;
+
+        case GITS_CTRL_REG_CWRITER_OFF:
+            pGitsDev->uCmdWriteReg = uValue & RT_LO_U32(GITS_CTRL_REG_CWRITER_RW_MASK);
+            break;
+
+        case GITS_CTRL_REG_CWRITER_OFF + 4:
+            /* Upper 32-bits are all reserved, ignore write. Fedora 40 arm64 writes does this and probably other guests. */
+            Assert(uValue == 0);
+            break;
+
         default:
             AssertReleaseMsgFailed(("offReg=%#x (%s) uValue=%#RX32\n", offReg, gitsGetCtrlRegDescription(offReg), uValue));
             break;
@@ -243,6 +268,7 @@ DECL_HIDDEN_CALLBACK(void) gitsInit(PGITSDEV pGitsDev)
     pGitsDev->fUnmappedMsiReporting = false;
     pGitsDev->fQuiescent            = true;
     RT_ZERO(pGitsDev->aItsTableRegs);
+    pGitsDev->uCmdBaseReg.u         = 0;
 }
 
 
