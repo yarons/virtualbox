@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsNT4.nsh 108977 2025-03-27 15:32:33Z andreas.loeffler@oracle.com $
+; $Id: VBoxGuestAdditionsNT4.nsh 108978 2025-03-27 15:45:34Z andreas.loeffler@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsNT4.nsh - Guest Additions installation for NT4.
 ;
@@ -138,7 +138,6 @@ Function NT4_CallbackPrepare
 FunctionEnd
 
 
-!ifndef UNINSTALLER_ONLY
 ;;
 ; Callback function for extracting files for NT4 guests.
 ;
@@ -153,7 +152,6 @@ Function NT4_CallbackExtractFiles
   ; Nothing to do here.
 
 FunctionEnd
-!endif ; !UNINSTALLER_ONLY
 
 
 ;;
@@ -304,7 +302,7 @@ Function ${un}NT4_CallbackUninstall
   Delete /REBOOTOK "$SYSDIR\drivers\VBoxMouseNT.sys"
 
   ; Remove any pending post-installation steps from the registy.
-  DeleteRegValue HKLM "Software\Microsoft\Windows\CurrentVersion\RunOnce\VBoxGuestPostInstCleanup"
+  DeleteRegValue HKLM "Software\Microsoft\Windows\CurrentVersion\RunOnce" "VBoxGuestPostInstCleanup"
 
   Pop $0
 
