@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsExternal.nsh 107279 2024-12-05 14:53:26Z andreas.loeffler@oracle.com $
+; $Id: VBoxGuestAdditionsExternal.nsh 108977 2025-03-27 15:32:33Z andreas.loeffler@oracle.com $
 ;; @file
 ; VBoxGuestAdditionExternal.nsh - Utility function for invoking external applications.
 ;
@@ -24,6 +24,7 @@
 ;
 ; SPDX-License-Identifier: GPL-3.0-only
 ;
+
 
 ;;
 ; Macro for executing external applications.

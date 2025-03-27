@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsLog.nsh 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+; $Id: VBoxGuestAdditionsLog.nsh 108977 2025-03-27 15:32:33Z andreas.loeffler@oracle.com $
 ;; @file
 ; VBoxGuestAdditionLog.nsh - Logging functions.
 ;
@@ -25,8 +25,10 @@
 ; SPDX-License-Identifier: GPL-3.0-only
 ;
 
+
 ;
-; Macro for enable/disable logging
+; Macro for enable/disable logging.
+;
 ; @param   "true" to enable logging, "false" to disable.
 ;
 !macro _logEnable enable
@@ -42,8 +44,10 @@
 !macroend
 !define LogEnable "!insertmacro _logEnable"
 
+
 ;
-; Macro for (verbose) logging
+; Macro for (verbose) logging.
+;
 ; @param   Text to log.
 ;
 !macro _logVerbose text
@@ -54,6 +58,7 @@
 
 !macroend
 !define LogVerbose "!insertmacro _logVerbose"
+
 
 ;
 ; Sends a logging text to the running instance of VBoxTray
