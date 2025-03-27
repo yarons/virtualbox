@@ -1,4 +1,4 @@
-/* $Id: GITSAll.cpp 108971 2025-03-27 13:08:29Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GITSAll.cpp 108981 2025-03-27 18:10:21Z alexander.eichner@oracle.com $ */
 /** @file
  * GITS - GIC Interrupt Translation Service (ITS) - All Contexts.
  */
@@ -69,7 +69,6 @@ AssertCompileSize(GITSITE, 8);
 
 #ifndef VBOX_DEVICE_STRUCT_TESTCASE
 
-#ifdef LOG_ENABLED
 DECL_HIDDEN_CALLBACK(const char *) gitsGetCtrlRegDescription(uint16_t offReg)
 {
     if (GITS_IS_REG_IN_RANGE(offReg, GITS_CTRL_REG_BASER_OFF_FIRST, GITS_CTRL_REG_BASER_RANGE_SIZE))
@@ -92,6 +91,7 @@ DECL_HIDDEN_CALLBACK(const char *) gitsGetCtrlRegDescription(uint16_t offReg)
     }
 }
 
+#ifdef LOG_ENABLED
 DECL_HIDDEN_CALLBACK(const char *) gitsGetTranslationRegDescription(uint16_t offReg)
 {
     switch (offReg)
