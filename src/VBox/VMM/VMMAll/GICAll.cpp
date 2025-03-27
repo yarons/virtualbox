@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 108954 2025-03-26 10:33:33Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICAll.cpp 108966 2025-03-27 10:16:28Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - All Contexts.
  */
@@ -3278,8 +3278,6 @@ DECL_HIDDEN_CALLBACK(VBOXSTRICTRC) gicItsMmioWrite(PPDMDEVINS pDevIns, void *pvU
     RT_NOREF_PV(pvUser);
     Assert(!(off & 0x3));
     Assert(cb == 4); RT_NOREF_PV(cb);
-
-    AssertReleaseFailed();
 
     PGICDEV  pGicDev  = PDMDEVINS_2_DATA(pDevIns, PGICDEV);
     PGITSDEV pGitsDev = &pGicDev->Gits;
