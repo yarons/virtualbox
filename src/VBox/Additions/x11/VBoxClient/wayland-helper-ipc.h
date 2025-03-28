@@ -1,4 +1,4 @@
-/* $Id: wayland-helper-ipc.h 108996 2025-03-28 19:34:05Z vadim.galitsyn@oracle.com $ */
+/* $Id: wayland-helper-ipc.h 108999 2025-03-28 20:17:09Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - Definitions for IPC between VBoxClient and vboxwl tool.
  */
@@ -149,7 +149,7 @@ namespace vbcl
          *          is validated and its fields, such as packet size, can be trusted.
          * @param   uSessionId      IPC session ID.
          * @param   hSession        IPC session handle.
-         * @param   mcTimeout       Read operation timeout in milliseconds.
+         * @param   msTimeout       Read operation timeout in milliseconds.
          * @param   ppvData         Output buffer structured as validated
          *                          IPC packet (contains size inside).
          */
