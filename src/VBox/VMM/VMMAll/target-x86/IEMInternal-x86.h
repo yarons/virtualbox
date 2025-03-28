@@ -1,4 +1,4 @@
-/* $Id: IEMInternal-x86.h 108785 2025-03-18 10:08:56Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal-x86.h 109000 2025-03-28 21:58:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file, x86 target specifics.
  */
@@ -2895,9 +2895,9 @@ DECL_NO_RETURN(void)    iemRaiseSimdFpExceptionJmp(PVMCPUCC pVCpu) IEM_NOEXCEPT_
 void                    iemLogSyscallRealModeInt(PVMCPUCC pVCpu, uint8_t u8Vector, uint8_t cbInstr);
 void                    iemLogSyscallProtModeInt(PVMCPUCC pVCpu, uint8_t u8Vector, uint8_t cbInstr);
 
-IEM_CIMPL_DEF_0(iemCImplRaiseDivideError);
-IEM_CIMPL_DEF_0(iemCImplRaiseInvalidLockPrefix);
-IEM_CIMPL_DEF_0(iemCImplRaiseInvalidOpcode);
+IEM_CIMPL_PROTO_0(iemCImplRaiseDivideError);
+IEM_CIMPL_PROTO_0(iemCImplRaiseInvalidLockPrefix);
+IEM_CIMPL_PROTO_0(iemCImplRaiseInvalidOpcode);
 
 /**
  * Macro for calling iemCImplRaiseDivideError().

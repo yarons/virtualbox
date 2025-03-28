@@ -1,4 +1,4 @@
-/* $Id: IEMAllTlb.cpp 108785 2025-03-18 10:08:56Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllTlb.cpp 109000 2025-03-28 21:58:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - TLB Management.
  */
@@ -175,7 +175,7 @@ VMM_INT_DECL(void) IEMTlbInvalidatePage(PVMCPUCC pVCpu, RTGCPTR GCPtr)
     IEMTLBTRACE_INVLPG(pVCpu, GCPtr);
 #if defined(IEM_WITH_CODE_TLB) || defined(IEM_WITH_DATA_TLB)
     Log10(("IEMTlbInvalidatePage: GCPtr=%RGv\n", GCPtr));
-    GCPtr = IEMTLB_CALC_TAG_NO_REV(GCPtr);
+    GCPtr = IEMTLB_CALC_TAG_NO_REV(pVCpu, GCPtr);
     Assert(!(GCPtr >> (48 - X86_PAGE_SHIFT)));
     uintptr_t const idxEven = IEMTLB_TAG_TO_EVEN_INDEX(GCPtr);
 

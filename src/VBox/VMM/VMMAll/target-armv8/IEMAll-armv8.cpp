@@ -1,4 +1,4 @@
-/* $Id: IEMAll-armv8.cpp 108906 2025-03-24 09:34:46Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll-armv8.cpp 109000 2025-03-28 21:58:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - ARMv8 target, miscellaneous.
  */
@@ -59,7 +59,7 @@ uint32_t iemCalcExecDbgFlagsSlow(PVMCPUCC pVCpu)
 #ifdef IEM_WITH_DATA_TLB
 # define INVALID_TLB_ENTRY_FOR_BP(a_uValue) do { \
         RTGCPTR uTagNoRev = (a_uValue); \
-        uTagNoRev = IEMTLB_CALC_TAG_NO_REV(uTagNoRev); \
+        uTagNoRev = IEMTLB_CALC_TAG_NO_REV(pVCpu, uTagNoRev); \
         /** @todo do large page accounting */ \
         uintptr_t const idxEven = IEMTLB_TAG_TO_EVEN_INDEX(uTagNoRev); \
         if (pVCpu->iem.s.DataTlb.aEntries[idxEven].uTag == (uTagNoRev | pVCpu->iem.s.DataTlb.uTlbRevision)) \

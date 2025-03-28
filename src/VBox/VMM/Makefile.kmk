@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 108930 2025-03-25 06:48:39Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 109000 2025-03-28 21:58:31Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -569,7 +569,8 @@ ifdef VBOX_WITH_VIRT_ARMV8
   	VMMAll/IEMAll.cpp \
   	VMMAll/IEMAllMem.cpp \
   	VMMAll/IEMAllTlb.cpp \
-  	VMMAll/target-armv8/IEMAll-armv8.cpp
+  	VMMAll/target-armv8/IEMAll-armv8.cpp \
+  	VMMAll/target-armv8/IEMAllMem-armv8.cpp
  else
   VBoxVMMArm_SOURCES += VMMAll/IEMAllStub.cpp
  endif
