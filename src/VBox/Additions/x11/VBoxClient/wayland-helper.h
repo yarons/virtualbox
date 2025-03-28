@@ -1,4 +1,4 @@
-/* $Id: wayland-helper.h 106799 2024-10-30 11:33:02Z vadim.galitsyn@oracle.com $ */
+/* $Id: wayland-helper.h 108998 2025-03-28 19:55:43Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - Definitions for Wayland helpers.
  */
@@ -293,7 +293,7 @@ namespace vbcl
             {
                 uint64_t tsStart = RTTimeMilliTS();
 
-                while(   (RTTimeMilliTS() - tsStart) < m_TimeoutMs
+                while(   (m_TimeoutMs == RT_INDEFINITE_WAIT ? 1 : (RTTimeMilliTS() - tsStart) < m_TimeoutMs)
                       && (ASMAtomicReadU64(&m_Value)) == m_Default)
                 {
                     RTThreadSleep(VBCL_WAYLAND_RELAX_INTERVAL_MS);
@@ -310,6 +310,14 @@ namespace vbcl
             T defaults()
             {
                 return m_Default;
+            }
+
+            /**
+             * Get data waiting timeout as was specified during initialization.
+             */
+            uint64_t timeout()
+            {
+                return m_TimeoutMs;
             }
 
         protected:
