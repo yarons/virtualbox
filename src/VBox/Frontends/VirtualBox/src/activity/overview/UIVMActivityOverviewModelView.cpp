@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewModelView.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVMActivityOverviewModelView.cpp 108992 2025-03-28 13:33:32Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewModelView class implementation.
  */
@@ -268,8 +268,15 @@ UIVMActivityOverviewRow::~UIVMActivityOverviewRow()
 
 void UIVMActivityOverviewRow::initCells()
 {
+    /* Hide VM exits in release builds: */
     for (int i = (int) VMActivityOverviewColumn_Name; i < (int) VMActivityOverviewColumn_Max; ++i)
+    {
+#ifndef DEBUG
+        if (i == (int) VMActivityOverviewColumn_VMExits)
+            continue;
+#endif
         m_cells[i] = new UIVMActivityOverviewCell(this);
+    }
     m_cells[VMActivityOverviewColumn_Name]->setText(m_strMachineName);
 }
 
