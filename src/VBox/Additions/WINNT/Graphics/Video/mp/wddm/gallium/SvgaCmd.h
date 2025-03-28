@@ -1,4 +1,4 @@
-/* $Id: SvgaCmd.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: SvgaCmd.h 108995 2025-03-28 18:24:19Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA command encoders.
  */
@@ -37,6 +37,19 @@ void SvgaCmdDefineScreen(void *pvCmd, uint32_t u32Id, bool fActivate,
                          int32_t xOrigin, int32_t yOrigin, uint32_t u32Width, uint32_t u32Height,
                          bool fPrimary, uint32_t u32VRAMOffset, bool fBlank);
 void SvgaCmdDestroyScreen(void *pvCmd, uint32_t u32Id);
+void Svga3dCmdDefineGBScreenTarget(void *pvCmd,
+                                   uint32_t stid,
+                                   uint32_t width,
+                                   uint32_t height,
+                                   int32_t xRoot,
+                                   int32_t yRoot,
+                                   SVGAScreenTargetFlags flags,
+                                   uint32_t dpi);
+void Svga3dCmdDestroyGBScreenTarget(void *pvCmd,
+                                    uint32_t stid);
+void Svga3dCmdBindGBScreenTarget(void *pvCmd,
+                                 uint32_t stid,
+                                 uint32_t sid);
 void SvgaCmdUpdate(void *pvCmd, uint32_t u32X, uint32_t u32Y, uint32_t u32Width, uint32_t u32Height);
 void SvgaCmdDefineCursor(void *pvCmd, uint32_t u32HotspotX, uint32_t u32HotspotY, uint32_t u32Width, uint32_t u32Height,
                          uint32_t u32AndMaskDepth, uint32_t u32XorMaskDepth,

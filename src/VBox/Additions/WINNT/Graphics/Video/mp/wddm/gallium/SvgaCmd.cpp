@@ -1,4 +1,4 @@
-/* $Id: SvgaCmd.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: SvgaCmd.cpp 108995 2025-03-28 18:24:19Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA command encoders.
  */
@@ -67,6 +67,61 @@ void SvgaCmdDestroyScreen(void *pvCmd, uint32_t u32Id)
     *pu32Id = SVGA_CMD_DESTROY_SCREEN;
 
     pCommand->screenId = u32Id;
+}
+
+void Svga3dCmdDefineGBScreenTarget(void *pvCmd,
+                                   uint32_t stid,
+                                   uint32_t width,
+                                   uint32_t height,
+                                   int32_t xRoot,
+                                   int32_t yRoot,
+                                   SVGAScreenTargetFlags flags,
+                                   uint32_t dpi)
+{
+    SVGA3dCmdHeader *pHeader = (SVGA3dCmdHeader *)pvCmd;
+    SVGA3dCmdDefineGBScreenTarget *pCommand = (SVGA3dCmdDefineGBScreenTarget *)&pHeader[1];
+
+    uint32_t cbCommand = sizeof(SVGA3dCmdDefineGBScreenTarget);
+    pHeader->id = SVGA_3D_CMD_DEFINE_GB_SCREENTARGET;
+    pHeader->size = cbCommand;
+
+    pCommand->stid = stid;
+    pCommand->width = width;
+    pCommand->height = height;
+    pCommand->xRoot = xRoot;
+    pCommand->yRoot = yRoot;
+    pCommand->flags = flags;
+    pCommand->dpi = dpi;
+}
+
+void Svga3dCmdDestroyGBScreenTarget(void *pvCmd,
+                                    uint32_t stid)
+{
+    SVGA3dCmdHeader *pHeader = (SVGA3dCmdHeader *)pvCmd;
+    SVGA3dCmdDestroyGBScreenTarget *pCommand = (SVGA3dCmdDestroyGBScreenTarget *)&pHeader[1];
+
+    uint32_t cbCommand = sizeof(SVGA3dCmdDestroyGBScreenTarget);
+    pHeader->id = SVGA_3D_CMD_DESTROY_GB_SCREENTARGET;
+    pHeader->size = cbCommand;
+
+    pCommand->stid = stid;
+}
+
+void Svga3dCmdBindGBScreenTarget(void *pvCmd,
+                                 uint32_t stid,
+                                 uint32_t sid)
+{
+    SVGA3dCmdHeader *pHeader = (SVGA3dCmdHeader *)pvCmd;
+    SVGA3dCmdBindGBScreenTarget *pCommand = (SVGA3dCmdBindGBScreenTarget *)&pHeader[1];
+
+    uint32_t cbCommand = sizeof(SVGA3dCmdBindGBScreenTarget);
+    pHeader->id = SVGA_3D_CMD_BIND_GB_SCREENTARGET;
+    pHeader->size = cbCommand;
+
+    pCommand->stid = stid;
+    pCommand->image.sid = sid;
+    pCommand->image.face = 0;
+    pCommand->image.mipmap = 0;
 }
 
 void SvgaCmdUpdate(void *pvCmd, uint32_t u32X, uint32_t u32Y, uint32_t u32Width, uint32_t u32Height)
