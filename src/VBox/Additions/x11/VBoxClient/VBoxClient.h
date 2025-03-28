@@ -1,4 +1,4 @@
-/* $Id: VBoxClient.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxClient.h 108997 2025-03-28 19:38:30Z vadim.galitsyn@oracle.com $ */
 /** @file
  *
  * VirtualBox additions user session daemon.
@@ -38,8 +38,15 @@
 
 #include <VBox/GuestHost/DisplayServerType.h>
 
+/** Macros to separate selectable logging levels. */
+#define VBCL_INFO(fmt, ...)     VBClLogVerbose(1, fmt, __VA_ARGS__)
+#define VBCL_WARN(fmt, ...)     VBClLogVerbose(2, fmt, __VA_ARGS__)
+#define VBCL_WARN_NO_ARGS(msg)  VBClLogVerbose(2, msg)
+#define VBCL_DEBUG(fmt, ...)    VBClLogVerbose(3, fmt, __VA_ARGS__)
+#define VBCL_DEBUG_NO_ARGS(msg) VBClLogVerbose(3, msg)
+
 /** A shortcut to log callback entering. */
-#define VBCL_LOG_CALLBACK VBClLogVerbose(3, "%s\n", __func__)
+#define VBCL_LOG_CALLBACK       VBClLogVerbose(3, "%s\n", __func__)
 
 int VBClShowNotify(const char *pszHeader, const char *pszBody);
 
