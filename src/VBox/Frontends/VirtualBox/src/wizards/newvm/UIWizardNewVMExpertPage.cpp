@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 108769 2025-03-17 14:26:39Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 108993 2025-03-28 13:41:06Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -495,10 +495,12 @@ void UIWizardNewVMExpertPage::markWidgets() const
     {
         if (m_pNameAndSystemEditor->name().isEmpty())
             m_pNameAndSystemEditor->markNameEditor(m_pNameAndSystemEditor->name().isEmpty(),
-                                                   tr("Virtual machine name cannot be empty"), tr("Virtual machine name is valid"));
+                                                   UIWizardNewVM::tr("Virtual machine name cannot be empty"),
+                                                   UIWizardNewVM::tr("Virtual machine name is valid"));
         else
             m_pNameAndSystemEditor->markNameEditor((QDir(m_pNameAndSystemEditor->fullPath()).exists()),
-                                                   tr("Virtual machine path is not unique"), tr("Virtual machine name is valid"));
+                                                   UIWizardNewVM::tr("Virtual machine path is not unique"),
+                                                   UIWizardNewVM::tr("Virtual machine name is valid"));
 
         m_pNameAndSystemEditor->markImageEditor(!UIWizardNewVMNameOSTypeCommon::checkISOFile(m_pNameAndSystemEditor->ISOImagePath()),
                                                 UIWizardNewVM::tr("Invalid file path or unreadable file"),
