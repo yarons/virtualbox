@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 108602 2025-02-28 22:33:32Z brent.paulson@oracle.com $ */
+/* $Id: SnapshotImpl.cpp 109018 2025-03-31 18:04:24Z brent.paulson@oracle.com $ */
 /** @file
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
  */
@@ -781,7 +781,7 @@ bool Snapshot::i_sharesSavedStateFile(const Utf8Str &strPath,
         llSnapshotsTodo.pop_front();
         const Utf8Str &path = pSnapshot->m->pMachine->mSSData->strStateFilePath;
 
-        if ((!pSnapshotToIgnore || pSnapshotToIgnore != this) && path.isNotEmpty())
+        if ((!pSnapshotToIgnore || pSnapshotToIgnore != pSnapshot) && path.isNotEmpty())
             if (path == strPath)
                 return true;
 
