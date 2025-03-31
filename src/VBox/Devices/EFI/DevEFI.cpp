@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 107168 2024-11-26 10:19:37Z knut.osmundsen@oracle.com $ */
+/* $Id: DevEFI.cpp 109012 2025-03-31 15:57:08Z alexander.eichner@oracle.com $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -691,6 +691,11 @@ static const char *efiDbgPointName(EFIDBGPOINT enmDbgPoint)
         case EFIDBGPOINT_SMI_EXIT:      return "SMI_EXIT";
         case EFIDBGPOINT_GRAPHICS:      return "GRAPHICS";
         case EFIDBGPOINT_DXE_AP:        return "DXE_AP";
+        case EFIDBGPOINT_PEI:           return "PEI";
+        case EFIDBGPOINT_DXE_LOAD:      return "DXE_LOAD";
+        case EFIDBGPOINT_DXE_UNLOAD:    return "DXE_UNLOAD";
+        case EFIDBGPOINT_REINITIALIZE:  return "REINITIALIZE";
+        case EFIDBGPOINT_DXE_CORE_LATE: return "DXE_CORE_LATE";
         default:
             AssertFailed();
             return "Unknown";
