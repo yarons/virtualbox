@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 109028 2025-04-01 19:08:51Z klaus.espenlaub@oracle.com $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X Guest Additions.
 #
@@ -167,7 +167,7 @@ $(VBOX_PATH_PACK_TMP)/VBoxGuestAdditions.pkg: \
 		-e 's+@VBOX_C_YEAR@+$(VBOX_C_YEAR)+g' \
 		--output $(VBOX_PATH_PACK_TMP)/VBoxDarwinAdditions.dist.res/English.lproj/Localizable.strings \
 		$(VBOX_ADD_PATH_DI_SRC)/VBoxGuestAdditions_mpkg/Localizable.strings
-	$(INSTALL) -m 0644 $(VBOX_BRAND_DARWIN_INSTALLER_BG)                          $(VBOX_PATH_PACK_TMP)/VBoxDarwinAdditions.dist.res/background.tif
+	$(INSTALL) -m 0644 $(VBOX_BRAND_DARWIN_INSTALLER_BG)                          $(VBOX_PATH_PACK_TMP)/VBoxDarwinAdditions.dist.res/background.tiff
 
 	$(foreach f,$(VBOX_INSTALLER_ADD_LANGUAGES), \
 		$(MKDIR) -p \

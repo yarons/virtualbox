@@ -1,4 +1,4 @@
-# $Id: Config.kmk 109020 2025-04-01 05:35:38Z samantha.scholz@oracle.com $
+# $Id: Config.kmk 109028 2025-04-01 19:08:51Z klaus.espenlaub@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1318,7 +1318,7 @@ VBOX_BRAND_WIN_INST_EXT              :=
 VBOX_BRAND_WIN_ADD_INST_DLGBMP       := $(PATH_ROOT)/src/VBox/Additions/WINNT/Installer/welcome.bmp
 VBOX_BRAND_DARWIN_DISKIMAGE_DS_STORE := $(PATH_ROOT)/src/VBox/Installer/darwin/DiskImage/DS_Store
 VBOX_BRAND_DARWIN_DISKIMAGE_BG       := $(PATH_ROOT)/src/VBox/Installer/darwin/DiskImage/vbox_folder.tiff
-VBOX_BRAND_DARWIN_INSTALLER_BG       := $(PATH_ROOT)/src/VBox/Installer/darwin/VirtualBox_mpkg/background.tif
+VBOX_BRAND_DARWIN_INSTALLER_BG       := $(PATH_ROOT)/src/VBox/Installer/darwin/VirtualBox_mpkg/background.tiff
 
 #
 # Skip stuff.
@@ -9380,7 +9380,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 109020 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 109028 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
