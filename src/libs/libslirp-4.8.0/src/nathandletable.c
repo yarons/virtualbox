@@ -1,4 +1,4 @@
-/* $Id: nathandletable.c 109031 2025-04-01 21:09:35Z knut.osmundsen@oracle.com $ */
+/* $Id: nathandletable.c 109032 2025-04-01 21:11:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * libslirp: NAT Handle Table Wrapper
  */
@@ -66,7 +66,7 @@ int libslirp_wrap_RTHandleTableAlloc(SOCKET hSock, uint32_t *pHandle)
     else
     {
         int rc = RTHandleTableCreate(&hHandleTable);
-        AssertLogRelRCReturn(rc, -1);
+        AssertLogRelRCReturn(rc, rc);
         /** @todo potential race here? iff so, use cmpxchg from asm.h   */
         g_hNATHandleTable = hHandleTable;
     }
