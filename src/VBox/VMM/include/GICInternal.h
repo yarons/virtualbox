@@ -1,4 +1,4 @@
-/* $Id: GICInternal.h 109036 2025-04-02 06:04:51Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICInternal.h 109037 2025-04-02 07:12:26Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -100,7 +100,7 @@ typedef struct GICDEV
     /** Flag whether affinity routing is enabled. */
     bool                        fAffRoutingEnabled;
     /** Alignment. */
-    bool                        fAlignment0;
+    bool                        fPadding0;
     /** @} */
 
     /** @name Configurables.
@@ -133,17 +133,24 @@ typedef struct GICDEV
     /** The maximum LPI supported (GICD_TYPER.num_LPI). */
     uint8_t                     uMaxLpi;
     /** Padding. */
-    bool                        afPadding[3];
+    bool                        afPadding0[3];
     /** @} */
 
     /** @name GITS device data and LPIs.
      * @{ */
     /** ITS device state. */
     GITSDEV                     Gits;
-    /** LPI configuration table (priority + enabled bit). */
+    /** LPI config table (priority + enabled bit). */
     uint8_t                     abLpiConfig[2048];
     /** LPI pending bitmap. */
     uint32_t                    bmLpiPending[64];
+    /** The LPI config table base address register (GICR_PROPBASER). */
+    RTUINT64U                   uLpiConfigBaseReg;
+    /** Whether LPIs are enabled (GICR_CTLR.EnableLpis) common to all
+     *  redistributors). */
+    bool                        fEnableLpis;
+    /** Padding. */
+    bool                        afPadding1[7];
     /** @} */
 
     /** @name MMIO data.
