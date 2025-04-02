@@ -1,4 +1,4 @@
-/* $Id: GICR3.cpp 109036 2025-04-02 06:04:51Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICR3.cpp 109044 2025-04-02 13:40:34Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -626,7 +626,10 @@ DECLCALLBACK(int) gicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pC
     int rc = pHlp->pfnCFGMQueryU8Def(pCfg, "ArchRev", &pGicDev->uArchRev, 3);
     AssertLogRelRCReturn(rc, rc);
     if (pGicDev->uArchRev == GIC_DIST_REG_PIDR2_ARCHREV_GICV3)
+    {
+        AssertCompile(GIC_DIST_REG_PIDR2_ARCHREV_GICV3 == GITS_CTRL_REG_PIDR2_ARCHREV_GICV3);
         pGicDev->Gits.uArchRev = pGicDev->uArchRev;
+    }
     else
         return PDMDevHlpVMSetError(pDevIns, VERR_INVALID_PARAMETER, RT_SRC_POS,
                                    N_("Configuration error: \"ArchRev\" must be %u, other revisions not supported"),
