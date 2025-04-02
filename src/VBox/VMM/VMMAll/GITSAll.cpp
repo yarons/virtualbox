@@ -1,4 +1,4 @@
-/* $Id: GITSAll.cpp 108988 2025-03-28 10:58:15Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GITSAll.cpp 109041 2025-04-02 09:40:24Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GITS - GIC Interrupt Translation Service (ITS) - All Contexts.
  */
@@ -43,6 +43,8 @@
 *********************************************************************************************************************************/
 /** The current GITS saved state version. */
 #define GITS_SAVED_STATE_VERSION                        1
+
+/** Gets whether the given register offset is within the specified range. */
 #define GITS_IS_REG_IN_RANGE(a_offReg, a_offFirst, a_cbRegion)    ((uint32_t)(a_offReg) - (a_offFirst) < (a_cbRegion))
 
 
@@ -106,27 +108,17 @@ DECL_HIDDEN_CALLBACK(const char *) gitsGetTranslationRegDescription(uint16_t off
 DECL_HIDDEN_CALLBACK(uint64_t) gitsMmioReadCtrl(PCGITSDEV pGitsDev, uint16_t offReg, unsigned cb)
 {
     Assert(cb == 4 || cb == 8);
+    RT_NOREF(cb);
 
     /*
      * GITS_BASER<n>.
      */
     uint64_t uReg;
-    if (GITS_IS_REG_IN_RANGE(offReg, GITS_CTRL_REG_BASER_OFF_FIRST,  GITS_CTRL_REG_BASER_RANGE_SIZE))
+    if (GITS_IS_REG_IN_RANGE(offReg, GITS_CTRL_REG_BASER_OFF_FIRST, GITS_CTRL_REG_BASER_RANGE_SIZE))
     {
         uint16_t const cbReg  = sizeof(uint64_t);
         uint16_t const idxReg = (offReg - GITS_CTRL_REG_BASER_OFF_FIRST) / cbReg;
-        if (!(offReg & 7))
-        {
-            if (cb == 8)
-                uReg = pGitsDev->aItsTableRegs[idxReg].u;
-            else
-                uReg = pGitsDev->aItsTableRegs[idxReg].s.Lo;
-        }
-        else
-        {
-            Assert(cb == 4);
-            uReg = pGitsDev->aItsTableRegs[idxReg].s.Hi;
-        }
+        uReg = pGitsDev->aItsTableRegs[idxReg].u >> ((offReg & 7) << 3 /* to bits */);
         return uReg;
     }
 
@@ -190,6 +182,14 @@ DECL_HIDDEN_CALLBACK(uint64_t) gitsMmioReadCtrl(PCGITSDEV pGitsDev, uint16_t off
         case GITS_CTRL_REG_CBASER_OFF + 4:
             Assert(cb == 4);
             uReg = pGitsDev->uCmdBaseReg.s.Hi;
+            break;
+
+        case GITS_CTRL_REG_CREADR_OFF:
+            uReg = pGitsDev->uCmdReadReg;
+            break;
+
+        case GITS_CTRL_REG_CREADR_OFF + 4:
+            uReg = 0;   /* Upper 32-bits are reserved, MBZ. */
             break;
 
         default:
