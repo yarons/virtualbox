@@ -1,4 +1,4 @@
-/* $Id: tstVBoxAPIXPCOM.cpp 107852 2025-01-15 12:17:44Z alexander.eichner@oracle.com $ */
+/* $Id: tstVBoxAPIXPCOM.cpp 109038 2025-04-02 07:32:45Z alexander.eichner@oracle.com $ */
 /** @file
  *
  * tstVBoxAPIXPCOM - sample program to illustrate the VirtualBox
@@ -488,9 +488,10 @@ int main(int argc, char **argv)
         setenv("VBOX_XPCOM_HOME", RTPATH_APP_PRIVATE_ARCH, 1);
 # else
     char szTmp[8192];
+    memset(szTmp, 0, sizeof(szTmp));
     if (!getenv("VBOX_XPCOM_HOME"))
     {
-        strncpy(szTmp, argv[0], sizeof(szTmp));
+        strncpy(szTmp, argv[0], sizeof(szTmp) - 1);
         *strrchr(szTmp, '/') = '\0';
         strcat(szTmp, "/..");
         fprintf(stderr, "tstVBoxAPIXPCOM: VBOX_XPCOM_HOME is not set, using '%s' instead\n", szTmp);
