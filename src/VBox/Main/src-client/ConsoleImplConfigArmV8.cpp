@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigArmV8.cpp 108955 2025-03-26 10:45:58Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: ConsoleImplConfigArmV8.cpp 109034 2025-04-02 05:35:55Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits for ARMv8.
  */
@@ -61,6 +61,7 @@
 #include <VBox/vmm/vmmr3vtable.h>
 #include <VBox/vmm/vmapi.h>
 #include <VBox/err.h>
+#include <VBox/gic.h>
 #include <VBox/param.h>
 #include <VBox/version.h>
 #include <VBox/platforms/vbox-armv8.h>
@@ -428,6 +429,9 @@ int Console::i_configConstructorArmV8(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
         hrc = platformARM->GetCPUProperty(CPUPropertyTypeARM_HWVirt, &fNestedHWVirt); H();
         InsertConfigInteger(pCpum, "NestedHWVirt", fNestedHWVirt ? true : false);
 
+        /* GIC. */
+        uint8_t const uGicArchRev = GIC_DIST_REG_PIDR2_ARCHREV_GICV3;
+        InsertConfigInteger(pCpum, "GicArchRev", uGicArchRev);
 
         /*
          * PDM config.
@@ -528,6 +532,7 @@ int Console::i_configConstructorArmV8(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
         InsertConfigNode(pDev,     "0",                     &pInst);
         InsertConfigInteger(pInst, "Trusted",               1);
         InsertConfigNode(pInst,    "Config",                &pCfg);
+        InsertConfigInteger(pCfg,  "ArchRev",               uGicArchRev);
         InsertConfigInteger(pCfg,  "DistributorMmioBase",   GCPhysIntcDist);
         InsertConfigInteger(pCfg,  "RedistributorMmioBase", GCPhysIntcReDist);
         if (fGicIts == TRUE)
