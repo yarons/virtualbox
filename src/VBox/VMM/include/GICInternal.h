@@ -1,4 +1,4 @@
-/* $Id: GICInternal.h 109048 2025-04-03 08:16:02Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICInternal.h 109050 2025-04-03 10:40:08Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -282,7 +282,6 @@ DECLHIDDEN(uint16_t)               gicDistGetIntIdFromIndex(uint16_t idxIntr);
 
 DECLCALLBACK(int)                  gicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pCfg);
 DECLCALLBACK(int)                  gicR3Destruct(PPDMDEVINS pDevIns);
-DECLCALLBACK(void)                 gicR3Relocate(PPDMDEVINS pDevIns, RTGCINTPTR offDelta);
 DECLCALLBACK(void)                 gicR3Reset(PPDMDEVINS pDevIns);
 
 /** @} */

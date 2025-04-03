@@ -1,4 +1,4 @@
-/* $Id: GITSAll.cpp 109048 2025-04-03 08:16:02Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GITSAll.cpp 109050 2025-04-03 10:40:08Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GITS - GIC Interrupt Translation Service (ITS) - All Contexts.
  */
@@ -321,7 +321,7 @@ DECL_HIDDEN_CALLBACK(void) gitsR3DbgInfo(PCGITSDEV pGitsDev, PCDBGFINFOHLP pHlp,
         static uint32_t const s_acbPageSize[] = { _4K, _16K, _64K, _64K };
         static const char* const s_apszType[] = { "UnImpl", "Devices", "vPEs", "Intr Collections" };
 
-        uint64_t const uReg        = pGitsDev->aItsTableRegs[8].u;
+        uint64_t const uReg        = pGitsDev->aItsTableRegs[i].u;
         uint16_t const uSize       = RT_BF_GET(uReg, GITS_BF_CTRL_REG_BASER_SIZE);
         uint16_t const cPages      = uSize > 0 ? uSize + 1 : 0;
         uint8_t const  idxPageSize = RT_BF_GET(uReg, GITS_BF_CTRL_REG_BASER_PAGESIZE);
