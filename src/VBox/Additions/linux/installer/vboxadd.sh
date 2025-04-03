@@ -1,7 +1,7 @@
 #! /bin/sh
-# $Id: vboxadd.sh 108329 2025-02-11 17:13:34Z vadim.galitsyn@oracle.com $
+# $Id: vboxadd.sh 109053 2025-04-03 19:28:34Z vadim.galitsyn@oracle.com $
 ## @file
-# Linux Additions kernel module init script ($Revision: 108329 $)
+# Linux Additions kernel module init script ($Revision: 109053 $)
 #
 
 #
@@ -1053,6 +1053,8 @@ check_status_kernel()
             # Do not spoil $?.
             true
         fi
+    else
+        false
     fi
 }
 
