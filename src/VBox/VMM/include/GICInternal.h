@@ -1,4 +1,4 @@
-/* $Id: GICInternal.h 109039 2025-04-02 09:12:22Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICInternal.h 109048 2025-04-03 08:16:02Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -33,6 +33,7 @@
 
 #include <VBox/gic.h>
 #include <VBox/vmm/pdmdev.h>
+#include <VBox/vmm/pdmthread.h>
 #include <VBox/vmm/pdmgic.h>
 #include <VBox/vmm/stam.h>
 
@@ -152,6 +153,10 @@ typedef struct GICDEV
     bool                        fEnableLpis;
     /** Padding. */
     bool                        afPadding1[7];
+    /** The command-queue thread. */
+    R3PTRTYPE(PPDMTHREAD)       pCmdQueueThread;
+    /** The event semaphore the command-queue thread waits on. */
+    SUPSEMEVENT                 hEvtCmdQueue;
     /** @} */
 
     /** @name MMIO data.

@@ -1,4 +1,4 @@
-/* $Id: GITSInternal.h 108987 2025-03-28 10:09:33Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GITSInternal.h 109048 2025-04-03 08:16:02Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GITS - Generic Interrupt Controller Interrupt Translation Service - Internal.
  */
@@ -80,7 +80,7 @@ typedef struct GITSDEV
     /** Whether the ITS is enabled. */
     bool                    fEnabled;
     /** Whether unmapped MSI reporting interrupt is enabled. */
-    bool                    fUnmappedMsiReporting;
+    bool                    fUnmappedMsiReport;
     /** Whether ITS is quiescent and can be powered down. */
     bool                    fQuiescent;
     /** Padding. */
@@ -89,10 +89,10 @@ typedef struct GITSDEV
     RTUINT64U               aItsTableRegs[8];
     /** The ITS command queue base registers. */
     RTUINT64U               uCmdBaseReg;
-    /** The ITS command write register. */
-    uint32_t                uCmdWriteReg;
     /** The ITS command read register. */
     uint32_t                uCmdReadReg;
+    /** The ITS command write register. */
+    uint32_t                uCmdWriteReg;
     /** @} */
 
     /** @name Interrupt translation space.
