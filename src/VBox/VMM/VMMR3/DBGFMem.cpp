@@ -1,4 +1,4 @@
-/* $Id: DBGFMem.cpp 107265 2024-12-04 15:20:14Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFMem.cpp 109058 2025-04-04 08:36:32Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Memory Methods.
  */
@@ -526,7 +526,7 @@ static uint32_t dbgfR3PagingDumpModeToFlags(PGMMODE enmMode)
         case PGMMODE_EPT:
             return DBGFPGDMP_FLAGS_EPT;
 
-# elif defined(VBOX_VMM_TARGET_ARM64)
+# elif defined(VBOX_VMM_TARGET_ARMV8)
        /** @todo arm64: dumping page tables. */
 # else
 #  error "port me"

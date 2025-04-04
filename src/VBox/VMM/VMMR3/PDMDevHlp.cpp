@@ -1,5 +1,5 @@
 
-/* $Id: PDMDevHlp.cpp 107357 2024-12-13 08:09:39Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: PDMDevHlp.cpp 109058 2025-04-04 08:36:32Z alexander.eichner@oracle.com $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -4722,7 +4722,11 @@ static DECLCALLBACK(bool) pdmR3DevHlp_A20IsEnabled(PPDMDEVINS pDevIns)
     PDMDEV_ASSERT_DEVINS(pDevIns);
     VM_ASSERT_EMT(pDevIns->Internal.s.pVMR3);
 
+#if defined(VBOX_VMM_TARGET_X86)
     bool fRc = PGMPhysIsA20Enabled(VMMGetCpu(pDevIns->Internal.s.pVMR3));
+#else
+    bool fRc = false; RT_NOREF(pDevIns);
+#endif
 
     LogFlow(("pdmR3DevHlp_A20IsEnabled: caller='%s'/%d: returns %d\n", pDevIns->pReg->szName, pDevIns->iInstance, fRc));
     return fRc;

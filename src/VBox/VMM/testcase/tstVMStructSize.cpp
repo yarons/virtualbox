@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 108289 2025-02-10 11:43:35Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVMStructSize.cpp 109058 2025-04-04 08:36:32Z alexander.eichner@oracle.com $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -317,10 +317,12 @@ int main()
     CHECK_PADDING2(PDMCRITSECTRW);
 
     /* pgm */
+#if defined(VBOX_VMM_TARGET_X86) || defined(VBOX_VMM_TARGET_AGNOSTIC)
     CHECK_MEMBER_ALIGNMENT(PGMCPU, GCPhysCR3, sizeof(RTGCPHYS));
     CHECK_MEMBER_ALIGNMENT(PGMCPU, aGCPhysGstPaePDs, sizeof(RTGCPHYS));
     CHECK_MEMBER_ALIGNMENT(PGMCPU, Dis, 8);
     CHECK_MEMBER_ALIGNMENT(PGMCPU, cPoolAccessHandler, 8);
+#endif
 #ifndef VBOX_WITH_ONLY_PGM_NEM_MODE
     CHECK_MEMBER_ALIGNMENT(PGMPOOLPAGE, idx, sizeof(uint16_t));
     CHECK_MEMBER_ALIGNMENT(PGMPOOLPAGE, pvPageR3, sizeof(RTHCPTR));

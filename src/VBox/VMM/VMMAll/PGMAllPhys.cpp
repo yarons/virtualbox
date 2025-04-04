@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 108904 2025-03-24 09:16:43Z alexander.eichner@oracle.com $ */
+/* $Id: PGMAllPhys.cpp 109058 2025-04-04 08:36:32Z alexander.eichner@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1914,6 +1914,7 @@ VMMR0_INT_DECL(int) PGMR0PhysRomAllocateRangeReq(PGVM pGVM, PPGMPHYSROMALLOCATER
 
 
 
+#if defined(VBOX_VMM_TARGET_X86)
 /**
  * Checks if Address Gate 20 is enabled or not.
  *
@@ -1927,6 +1928,7 @@ VMMDECL(bool) PGMPhysIsA20Enabled(PVMCPU pVCpu)
     LogFlow(("PGMPhysIsA20Enabled %d\n", pVCpu && pVCpu->pgm.s.fA20Enabled));
     return pVCpu && pVCpu->pgm.s.fA20Enabled;
 }
+#endif
 
 
 /**
