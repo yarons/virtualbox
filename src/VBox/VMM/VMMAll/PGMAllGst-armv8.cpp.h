@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst-armv8.cpp.h 109058 2025-04-04 08:36:32Z alexander.eichner@oracle.com $ */
+/* $Id: PGMAllGst-armv8.cpp.h 109061 2025-04-04 09:01:14Z alexander.eichner@oracle.com $ */
 /** @file
  * PGM - Page Manager, ARMv8 Guest Paging Template - All context code.
  */
@@ -138,12 +138,6 @@ static PGM_CTX_DECL(int) PGM_CTX(pgm,GstNoneWalk)(PVMCPUCC pVCpu, RTGCPTR GCPtr,
 }
 
 
-/**
- * Enters the guest mode.
- *
- * @returns VBox status code.
- * @param   pVCpu       The cross context virtual CPU structure.
- */
 static PGM_CTX_DECL(int) PGM_CTX(pgm,GstNoneEnter)(PVMCPUCC pVCpu)
 {
     /* Nothing to do. */
@@ -152,12 +146,6 @@ static PGM_CTX_DECL(int) PGM_CTX(pgm,GstNoneEnter)(PVMCPUCC pVCpu)
 }
 
 
-/**
- * Exits the guest mode.
- *
- * @returns VBox status code.
- * @param   pVCpu       The cross context virtual CPU structure.
- */
 static PGM_CTX_DECL(int) PGM_CTX(pgm,GstNoneExit)(PVMCPUCC pVCpu)
 {
     /* Nothing to do. */
