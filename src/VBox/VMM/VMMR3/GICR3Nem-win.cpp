@@ -1,4 +1,4 @@
-/* $Id: GICR3Nem-win.cpp 109056 2025-04-04 08:22:25Z alexander.eichner@oracle.com $ */
+/* $Id: GICR3Nem-win.cpp 109060 2025-04-04 08:46:54Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - Hyper-V interface.
  */
@@ -583,7 +583,8 @@ DECLCALLBACK(int) gicR3HvConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE 
      */
     PDMDEV_VALIDATE_CONFIG_RETURN(pDevIns, "DistributorMmioBase|RedistributorMmioBase|ItsMmioBase"
                                            "|ArchRev"
-                                           "|ArchRevMinor", "");
+                                           "|Lpi"
+                                           "|Mbi", "");
 
     /*
      * Disable automatic PDM locking for this device.
