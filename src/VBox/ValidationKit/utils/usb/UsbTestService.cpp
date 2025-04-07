@@ -1,4 +1,4 @@
-/* $Id: UsbTestService.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UsbTestService.cpp 109085 2025-04-07 11:39:16Z alexander.eichner@oracle.com $ */
 /** @file
  * UsbTestService - Remote USB test configuration and execution server.
  */
@@ -1264,7 +1264,7 @@ static int utsInit(void)
 
     RTListInit(&g_LstClientsNew);
 
-    rc = RTJsonParseFromFile(&g_hCfgJson, g_szCfgPath, pErrInfo);
+    rc = RTJsonParseFromFile(&g_hCfgJson, 0 /*fFlags*/, g_szCfgPath, pErrInfo);
     if (RT_SUCCESS(rc))
     {
         rc = utsPlatformInit();
@@ -1561,7 +1561,7 @@ static RTEXITCODE utsParseArgv(int argc, char **argv, bool *pfExit)
             }
 
             case 'V':
-                RTPrintf("$Revision: 106061 $\n");
+                RTPrintf("$Revision: 109085 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 
