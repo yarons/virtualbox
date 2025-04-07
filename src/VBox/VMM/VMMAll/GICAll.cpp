@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 109050 2025-04-03 10:40:08Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICAll.cpp 109079 2025-04-07 09:10:44Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - All Contexts.
  */
@@ -3356,7 +3356,7 @@ DECL_HIDDEN_CALLBACK(VBOXSTRICTRC) gicItsMmioWrite(PPDMDEVINS pDevIns, void *pvU
     {
         /* Control registers space. */
         uint16_t const offReg = off & 0xfffc;
-        gitsMmioWriteCtrl(pGitsDev, offReg, uValue, cb);
+        gitsMmioWriteCtrl(pDevIns, pGitsDev, offReg, uValue, cb);
         LogFlowFunc(("offReg=%#RX16 (%s) written %#RX64\n", offReg, gitsGetCtrlRegDescription(offReg), uValue));
     }
     else
