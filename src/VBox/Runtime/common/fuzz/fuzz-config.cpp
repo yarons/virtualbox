@@ -1,4 +1,4 @@
-/* $Id: fuzz-config.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: fuzz-config.cpp 109084 2025-04-07 11:36:49Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Fuzzing framework API, config API.
  */
@@ -248,7 +248,7 @@ static int rtFuzzCfgLoad(PRTFUZZCFGINT pThis, PRTERRINFO pErrInfo)
     int rc = rtFuzzCfgGrabFileFromTarball(pThis->hVfsFile, RTFUZZ_CFG_INDEX_FILE_NAME, true /*fValidateUtf8*/, &hVfsJson);
     if (RT_SUCCESS(rc))
     {
-        rc = RTJsonParseFromVfsFile(&pThis->hJsonRoot, hVfsJson, pErrInfo);
+        rc = RTJsonParseFromVfsFile(&pThis->hJsonRoot, 0 /*fFlags*/, hVfsJson, pErrInfo);
         if (RT_SUCCESS(rc))
         {
             /* Look for the custom config in the JSON and find it in the VFS file. */

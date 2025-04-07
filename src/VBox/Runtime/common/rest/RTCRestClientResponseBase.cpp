@@ -1,4 +1,4 @@
-/* $Id: RTCRestClientResponseBase.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: RTCRestClientResponseBase.cpp 109084 2025-04-07 11:36:49Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - C++ REST, RTCRestClientResponseBase implementation.
  */
@@ -377,7 +377,7 @@ void RTCRestClientResponseBase::deserializeBody(const char *a_pchData, size_t a_
 
             RTERRINFOSTATIC ErrInfo;
             RTJSONVAL hValue;
-            rc = RTJsonParseFromBuf(&hValue, (const uint8_t *)a_pchData, a_cbData, RTErrInfoInitStatic(&ErrInfo));
+            rc = RTJsonParseFromBuf(&hValue, 0 /*fFlags*/, (const uint8_t *)a_pchData, a_cbData, RTErrInfoInitStatic(&ErrInfo));
             if (RT_SUCCESS(rc))
             {
                 PrimaryJsonCursorForBody PrimaryCursor(hValue, a_pszBodyName, this); /* note: consumes hValue */

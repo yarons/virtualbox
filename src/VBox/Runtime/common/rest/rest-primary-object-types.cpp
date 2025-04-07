@@ -1,4 +1,4 @@
-/* $Id: rest-primary-object-types.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: rest-primary-object-types.cpp 109084 2025-04-07 11:36:49Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - C++ REST, RTCRestObjectBase implementation.
  */
@@ -127,7 +127,7 @@ int RTCRestObjectBase::fromString(RTCString const &a_rValue, const char *a_pszNa
      * Just wrap the JSON serialization method.
      */
     RTJSONVAL hValue = NIL_RTJSONVAL;
-    int rc = RTJsonParseFromString(&hValue, a_rValue.c_str(), a_pErrInfo);
+    int rc = RTJsonParseFromString(&hValue, 0 /*fFlags*/, a_rValue.c_str(), a_pErrInfo);
     if (RT_SUCCESS(rc))
     {
         RTCRestJsonPrimaryCursor PrimaryCursor(hValue, a_pszName, a_pErrInfo);

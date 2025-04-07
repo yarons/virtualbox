@@ -1,4 +1,4 @@
-/* $Id: DrvTpmEmu.cpp 107486 2025-01-06 17:01:30Z alexander.eichner@oracle.com $ */
+/* $Id: DrvTpmEmu.cpp 109084 2025-04-07 11:36:49Z alexander.eichner@oracle.com $ */
 /** @file
  * TPM emulator using a TCP/socket interface to talk to swtpm (https://github.com/stefanberger/swtpm).
  */
@@ -502,7 +502,7 @@ static int drvTpmEmuQueryTpmVersion(PDRVTPMEMU pThis)
             if (RT_SUCCESS(rc))
             {
                 RTJSONVAL hJsonVal = NIL_RTJSONVAL;
-                rc = RTJsonParseFromBuf(&hJsonVal, &abData[0], RT_BE2H_U32(Resp.cbThis), NULL /*pErrInfo*/);
+                rc = RTJsonParseFromBuf(&hJsonVal, 0 /*fFlags*/, &abData[0], RT_BE2H_U32(Resp.cbThis), NULL /*pErrInfo*/);
                 if (RT_SUCCESS(rc))
                 {
                     RTJSONVAL hJsonTpmSpec = NIL_RTJSONVAL;
