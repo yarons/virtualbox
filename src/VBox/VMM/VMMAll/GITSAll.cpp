@@ -1,4 +1,4 @@
-/* $Id: GITSAll.cpp 109086 2025-04-07 13:38:57Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GITSAll.cpp 109087 2025-04-07 13:48:00Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GITS - GIC Interrupt Translation Service (ITS) - All Contexts.
  */
@@ -548,22 +548,22 @@ DECL_HIDDEN_CALLBACK(int) gitsR3CmdQueueProcess(PPDMDEVINS pDevIns, PGITSDEV pGi
                 cbCmds = cbForward + cbWrapped;
             }
 
-            /* Indicate to the guest we've fetched all commands. */
-            GITS_CRIT_SECT_ENTER(pDevIns);
-            pGitsDev->uCmdReadReg = RT_BF_SET(pGitsDev->uCmdReadReg, GITS_BF_CTRL_REG_CREADR_OFFSET, offWrite);
-
             /*
              * Process the commands in the buffer.
              */
             if (RT_SUCCESS(rc))
             {
-                /* Don't hold the lock while processing commands. */
+                /* Indicate to the guest we've fetched all commands. */
+                GITS_CRIT_SECT_ENTER(pDevIns);
+                pGitsDev->uCmdReadReg = RT_BF_SET(pGitsDev->uCmdReadReg, GITS_BF_CTRL_REG_CREADR_OFFSET, offWrite);
+
+                /* Don't hold the critical section while processing commands. */
                 GITS_CRIT_SECT_LEAVE(pDevIns);
 
-                uint32_t const cCmds = cbCmds / GITS_CMD_SIZE;
+                uint32_t const cCmds = cbCmds / sizeof(GITSCMD);
                 for (uint32_t idxCmd = 0; idxCmd < cCmds; idxCmd++)
                 {
-                    PCGITSCMD pCmd = (PCGITSCMD)((uintptr_t)pvBuf + (idxCmd * GITS_CMD_SIZE));
+                    PCGITSCMD pCmd = (PCGITSCMD)((uintptr_t)pvBuf + (idxCmd * sizeof(GITSCMD)));
                     uint8_t const uCmdId = pCmd->common.uCmdId;
                     switch (uCmdId)
                     {
