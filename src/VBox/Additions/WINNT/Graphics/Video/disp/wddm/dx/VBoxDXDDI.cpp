@@ -1,10 +1,10 @@
-/* $Id: VBoxDXDDI.cpp 106586 2024-10-22 22:00:15Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDXDDI.cpp 109095 2025-04-08 09:27:48Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox D3D11 user mode DDI interface.
  */
 
 /*
- * Copyright (C) 2020-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2020-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -972,7 +972,7 @@ static void APIENTRY ddi10SoSetTargets(
     NumTargets = RT_MIN(NumTargets, SVGA3D_DX_MAX_SOTARGETS);
 
     /* Fetch allocation handles. */
-    D3DKMT_HANDLE aAllocations[SVGA3D_DX_MAX_SOTARGETS];
+    PVBOXDXKMRESOURCE apKMResources[SVGA3D_DX_MAX_SOTARGETS];
     uint32_t aOffsets[SVGA3D_DX_MAX_SOTARGETS];
     uint32_t aSizes[SVGA3D_DX_MAX_SOTARGETS];
     for (unsigned i = 0; i < NumTargets; ++i)
@@ -980,19 +980,19 @@ static void APIENTRY ddi10SoSetTargets(
         if (i < NumBuffers)
         {
             VBOXDX_RESOURCE *pResource = (PVBOXDX_RESOURCE)phResource[i].pDrvPrivate;
-            aAllocations[i] = vboxDXGetAllocation(pResource);
+            apKMResources[i] = vboxDXGetKMResource(pResource);
             aOffsets[i] = pOffsets[i];
-            aSizes[i] = pResource ? pResource->AllocationDesc.cbAllocation : 0;
+            aSizes[i] = apKMResources[i] ? apKMResources[i]->AllocationDesc.cbAllocation : 0;
         }
         else
         {
-            aAllocations[i] = 0;
+            apKMResources[i] = 0;
             aOffsets[i] = 0;
             aSizes[i] = 0;
         }
     }
 
-    vboxDXSoSetTargets(pDevice, NumTargets, aAllocations, aOffsets, aSizes);
+    vboxDXSoSetTargets(pDevice, NumTargets, apKMResources, aOffsets, aSizes);
 }
 
 static void APIENTRY ddi10DrawAuto(D3D10DDI_HDEVICE hDevice)
@@ -1357,9 +1357,7 @@ static void APIENTRY ddi11CreateResource(
         pCreateResource->ByteStride));
 
     pResource->hRTResource = hRTResource;
-    int rc = vboxDXInitResourceData(pResource, pCreateResource);
-    if (RT_SUCCESS(rc))
-        vboxDXCreateResource(pDevice, pResource, pCreateResource);
+    vboxDXCreateResource(pDevice, pResource, pCreateResource);
 }
 
 static void APIENTRY ddi10CreateResource(
@@ -1387,27 +1385,25 @@ static void APIENTRY ddi10CreateResource(
         pCreateResource->MipLevels,
         pCreateResource->ArraySize));
 
-        D3D11DDIARG_CREATERESOURCE CreateResource;
-        CreateResource.pMipInfoList      = pCreateResource->pMipInfoList;
-        CreateResource.pInitialDataUP    = pCreateResource->pInitialDataUP;
-        CreateResource.ResourceDimension = pCreateResource->ResourceDimension;
-        CreateResource.Usage             = pCreateResource->Usage;
-        CreateResource.BindFlags         = pCreateResource->BindFlags;
-        CreateResource.MapFlags          = pCreateResource->MapFlags;
-        CreateResource.MiscFlags         = pCreateResource->MiscFlags;
-        CreateResource.Format            = pCreateResource->Format;
-        CreateResource.SampleDesc        = pCreateResource->SampleDesc;
-        CreateResource.MipLevels         = pCreateResource->MipLevels;
-        CreateResource.ArraySize         = pCreateResource->ArraySize;
-        CreateResource.pPrimaryDesc      = pCreateResource->pPrimaryDesc;
-        CreateResource.ByteStride        = 0;
-        CreateResource.DecoderBufferType = D3D11_1DDI_VIDEO_DECODER_BUFFER_UNKNOWN;
-        CreateResource.TextureLayout     = D3DWDDM2_0DDI_TL_UNDEFINED;
+    D3D11DDIARG_CREATERESOURCE CreateResource;
+    CreateResource.pMipInfoList      = pCreateResource->pMipInfoList;
+    CreateResource.pInitialDataUP    = pCreateResource->pInitialDataUP;
+    CreateResource.ResourceDimension = pCreateResource->ResourceDimension;
+    CreateResource.Usage             = pCreateResource->Usage;
+    CreateResource.BindFlags         = pCreateResource->BindFlags;
+    CreateResource.MapFlags          = pCreateResource->MapFlags;
+    CreateResource.MiscFlags         = pCreateResource->MiscFlags;
+    CreateResource.Format            = pCreateResource->Format;
+    CreateResource.SampleDesc        = pCreateResource->SampleDesc;
+    CreateResource.MipLevels         = pCreateResource->MipLevels;
+    CreateResource.ArraySize         = pCreateResource->ArraySize;
+    CreateResource.pPrimaryDesc      = pCreateResource->pPrimaryDesc;
+    CreateResource.ByteStride        = 0;
+    CreateResource.DecoderBufferType = D3D11_1DDI_VIDEO_DECODER_BUFFER_UNKNOWN;
+    CreateResource.TextureLayout     = D3DWDDM2_0DDI_TL_UNDEFINED;
 
     pResource->hRTResource = hRTResource;
-    int rc = vboxDXInitResourceData(pResource, &CreateResource);
-    if (RT_SUCCESS(rc))
-        vboxDXCreateResource(pDevice, pResource, &CreateResource);
+    vboxDXCreateResource(pDevice, pResource, &CreateResource);
 }
 
 static void APIENTRY ddi10OpenResource(
@@ -3866,7 +3862,9 @@ static HRESULT APIENTRY dxgiSetDisplayMode(DXGI_DDI_ARG_SETDISPLAYMODE *pDisplay
     PVBOXDX_RESOURCE pResource = (PVBOXDX_RESOURCE)pDisplayModeData->hResource;
     LogFlowFunc(("pDevice 0x%p, pResource 0x%p, subres %d", pDevice, pResource, pDisplayModeData->SubResourceIndex));
 
-    AssertReturn(pResource->AllocationDesc.fPrimary && pDisplayModeData->SubResourceIndex == 0, E_INVALIDARG);
+    AssertReturn(pResource->pKMResource
+              && pResource->pKMResource->AllocationDesc.fPrimary
+              && pDisplayModeData->SubResourceIndex == 0, E_INVALIDARG);
 
     D3DDDICB_SETDISPLAYMODE ddiSetDisplayMode;
     RT_ZERO(ddiSetDisplayMode);
