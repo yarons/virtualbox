@@ -1,4 +1,4 @@
-/* $Id: GICInternal.h 109079 2025-04-07 09:10:44Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICInternal.h 109097 2025-04-08 10:53:54Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -232,29 +232,29 @@ typedef struct GICCPU
     /** @name Statistics.
      * @{ */
 #ifdef VBOX_WITH_STATISTICS
-    /** Number of MMIO reads in R3. */
-    STAMCOUNTER                 StatMmioReadR3;
-    /** Number of MMIO writes in R3. */
-    STAMCOUNTER                 StatMmioWriteR3;
-    /** Number of MSR reads in R3. */
-    STAMCOUNTER                 StatSysRegReadR3;
-    /** Number of MSR writes in R3. */
-    STAMCOUNTER                 StatSysRegWriteR3;
+    /** Number of MMIO reads. */
+    STAMCOUNTER                 StatMmioRead;
+    /** Number of MMIO writes. */
+    STAMCOUNTER                 StatMmioWrite;
+    /** Number of MSR reads. */
+    STAMCOUNTER                 StatSysRegRead;
+    /** Number of MSR writes. */
+    STAMCOUNTER                 StatSysRegWrite;
     /** Number of set SPI callbacks. */
-    STAMCOUNTER                 StatSetSpiR3;
+    STAMCOUNTER                 StatSetSpi;
     /** Number of set PPI callbacks. */
-    STAMCOUNTER                 StatSetPpiR3;
+    STAMCOUNTER                 StatSetPpi;
     /** Number of SGIs generated. */
-    STAMCOUNTER                 StatSetSgiR3;
+    STAMCOUNTER                 StatSetSgi;
 
     /** Profiling of interrupt acknowledge (IAR). */
-    STAMPROFILE                 StatProfIntrAckR3;
+    STAMPROFILE                 StatProfIntrAck;
     /** Profiling of set SPI callback. */
-    STAMPROFILE                 StatProfSetSpiR3;
+    STAMPROFILE                 StatProfSetSpi;
     /** Profiling of set PPI callback. */
-    STAMPROFILE                 StatProfSetPpiR3;
+    STAMPROFILE                 StatProfSetPpi;
     /** Profiling of set SGI function. */
-    STAMPROFILE                 StatProfSetSgiR3;
+    STAMPROFILE                 StatProfSetSgi;
 #endif
     /** @} */
 } GICCPU;
