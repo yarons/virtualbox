@@ -1,4 +1,4 @@
-/* $Id: IEMInlineExec-armv8.h 108590 2025-02-27 10:35:39Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInlineExec-armv8.h 109116 2025-04-08 18:09:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - ARMv8 target, Inline Exec/Decoder routines.
  *
@@ -35,16 +35,13 @@
 #endif
 
 
-DECL_FORCE_INLINE(VBOXSTRICTRC) iemExecDecodeAndInterpretTargetInstruction(PVMCPUCC pVCpu)
+#ifdef VMM_INCLUDED_SRC_VMMAll_target_armv8_IEMAllIntprTables_armv8_h
+DECL_FORCE_INLINE_THROW(VBOXSTRICTRC) iemExecDecodeAndInterpretTargetInstruction(PVMCPUCC pVCpu)
 {
-#if 1
-    RT_NOREF(pVCpu);
-    return VERR_NOT_IMPLEMENTED;
-#else
-    uint32_t const u32 = iemOpcodeGetU32Jmp(pVCpu);
-    return FNIEMOP_CALL_1(g_apfnIemInterpretOnly???[u32 & ???], u32);
-#endif
+    uint32_t const uOpcode = 0; /// @todo iemOpcodeGetU32Jmp(pVCpu);
+    return FNIEMOP_CALL_1(g_apfnIemInterpretOnlyA64[iemInterpretOnlyA64CalcIndex(uOpcode)], uOpcode);
 }
+#endif
 
 
 DECL_FORCE_INLINE(uint64_t) iemRegGetPC(PVMCPUCC pVCpu)

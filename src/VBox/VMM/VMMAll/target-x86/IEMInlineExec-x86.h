@@ -1,4 +1,4 @@
-/* $Id: IEMInlineExec-x86.h 108590 2025-02-27 10:35:39Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInlineExec-x86.h 109116 2025-04-08 18:09:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - X86 target, Inline Exec/Decoder routines.
  *
@@ -36,7 +36,7 @@
 
 
 #ifdef IEM_OPCODE_GET_FIRST_U8
-DECL_FORCE_INLINE(VBOXSTRICTRC) iemExecDecodeAndInterpretTargetInstruction(PVMCPUCC pVCpu)
+DECL_FORCE_INLINE_THROW(VBOXSTRICTRC) iemExecDecodeAndInterpretTargetInstruction(PVMCPUCC pVCpu)
 {
     uint8_t b; IEM_OPCODE_GET_FIRST_U8(&b);
     return FNIEMOP_CALL(g_apfnIemInterpretOnlyOneByteMap[b]);

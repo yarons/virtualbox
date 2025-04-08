@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 108544 2025-02-25 13:17:32Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc.h 109116 2025-04-08 18:09:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX, common.
  */
@@ -1146,8 +1146,13 @@
  * @param   a_pfnCImpl      The pointer to the C routine.
  * @sa      IEM_DECL_IMPL_C_TYPE_0 and IEM_CIMPL_DEF_0.
  */
-#define IEM_MC_CALL_CIMPL_0(a_fFlags, a_fGstShwFlush, a_pfnCImpl) \
+#ifdef IEM_GET_INSTR_LEN
+# define IEM_MC_CALL_CIMPL_0(a_fFlags, a_fGstShwFlush, a_pfnCImpl) \
     IEM_MC_CALL_CIMPL_HLP_RET(a_fFlags, (a_pfnCImpl)(pVCpu, IEM_GET_INSTR_LEN(pVCpu)))
+#else
+# define IEM_MC_CALL_CIMPL_0(a_fFlags, a_fGstShwFlush, a_pfnCImpl) \
+    IEM_MC_CALL_CIMPL_HLP_RET(a_fFlags, (a_pfnCImpl)(pVCpu))
+#endif
 
 /**
  * Defers the rest of instruction emulation to a C implementation routine and
@@ -1236,8 +1241,13 @@
  * @param   a_pfnCImpl      The pointer to the C routine.
  * @sa      IEM_DECL_IMPL_C_TYPE_0 and IEM_CIMPL_DEF_0.
  */
-#define IEM_MC_DEFER_TO_CIMPL_0_RET(a_fFlags, a_fGstShwFlush, a_pfnCImpl) \
+#ifdef IEM_GET_INSTR_LEN
+# define IEM_MC_DEFER_TO_CIMPL_0_RET(a_fFlags, a_fGstShwFlush, a_pfnCImpl) \
     IEM_MC_CALL_CIMPL_HLP_RET(a_fFlags, (a_pfnCImpl)(pVCpu, IEM_GET_INSTR_LEN(pVCpu)))
+#else
+# define IEM_MC_DEFER_TO_CIMPL_0_RET(a_fFlags, a_fGstShwFlush, a_pfnCImpl) \
+    IEM_MC_CALL_CIMPL_HLP_RET(a_fFlags, (a_pfnCImpl)(pVCpu))
+#endif
 
 /**
  * Defers the entire instruction emulation to a C implementation routine and
