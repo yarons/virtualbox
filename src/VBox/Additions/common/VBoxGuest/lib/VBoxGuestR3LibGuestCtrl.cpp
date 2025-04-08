@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestCtrl.cpp 109108 2025-04-08 15:16:43Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxGuestR3LibGuestCtrl.cpp 109114 2025-04-08 15:53:09Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest control.
  */
@@ -904,7 +904,6 @@ VBGLR3DECL(void) VbglR3GuestCtrlSessionStartupInfoFree(PVBGLR3GUESTCTRLSESSIONST
     VbglR3GuestCtrlSessionStartupInfoDestroy(pStartupInfo);
 
     RTMemFree(pStartupInfo);
-    pStartupInfo = NULL;
 }
 
 /**
