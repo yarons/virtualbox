@@ -1,4 +1,4 @@
-/* $Id: GICR3.cpp 109097 2025-04-08 10:53:54Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICR3.cpp 109100 2025-04-08 11:16:07Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -993,13 +993,14 @@ DECLCALLBACK(int) gicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pC
 
     /* ITS. */
     PGITSDEV pGitsDev = &pGicDev->Gits;
-    GIC_REG_COUNTER(&pGitsDev->StatCmdMapc,    "ITS/Commands/MAPC",   "Number of MAPC commands executed.");
-    GIC_REG_COUNTER(&pGitsDev->StatCmdSync,    "ITS/Commands/SYNC",   "Number of SYNC commands executed.");
-    GIC_REG_COUNTER(&pGitsDev->StatCmdInvall,  "ITS/Commands/INVALL", "Number of INVALL commands executed.");
+    GIC_REG_COUNTER(&pGitsDev->StatCmdMapc,   "ITS/Commands/MAPC",   "Number of MAPC commands executed.");
+    GIC_REG_COUNTER(&pGitsDev->StatCmdSync,   "ITS/Commands/SYNC",   "Number of SYNC commands executed.");
+    GIC_REG_COUNTER(&pGitsDev->StatCmdInvall, "ITS/Commands/INVALL", "Number of INVALL commands executed.");
 
 # undef GICCPU_REG_COUNTER
 # undef GICCPU_PROF_COUNTER
-#endif
+# undef GIC_REG_COUNTER
+#endif  /* VBOX_WITH_STATISTICS */
 
     gicR3Reset(pDevIns);
 
