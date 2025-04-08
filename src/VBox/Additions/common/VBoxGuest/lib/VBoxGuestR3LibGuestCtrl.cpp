@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestCtrl.cpp 107946 2025-01-17 11:21:08Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxGuestR3LibGuestCtrl.cpp 109108 2025-04-08 15:16:43Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest control.
  */
@@ -1808,15 +1808,15 @@ VBGLR3DECL(int) VbglR3GuestCtrlProcGetStart(PVBGLR3GUESTCTRLCMDCTX pCtx, PVBGLR3
     } while ((   rc == VERR_INTERRUPTED
               || rc == VERR_BUFFER_OVERFLOW) && g_fVbglR3GuestCtrlHavePeekGetCancel);
 
+    LogRel(("VbglR3GuestCtrlProcGetStart: Returning %Rrc (retry %u, cbCmd=%RU32, cbArgs=%RU32, cbEnv=%RU32)\n",
+            rc, cRetries, pStartupInfo->cbCmd, pStartupInfo->cbArgs, pStartupInfo->cbEnv));
+
     if (RT_SUCCESS(rc))
     {
         *ppStartupInfo = pStartupInfo;
     }
     else
         VbglR3GuestCtrlProcStartupInfoFree(pStartupInfo);
-
-    LogRel(("VbglR3GuestCtrlProcGetStart: Returning %Rrc (retry %u, cbCmd=%RU32, cbArgs=%RU32, cbEnv=%RU32)\n",
-            rc, cRetries, pStartupInfo->cbCmd, pStartupInfo->cbArgs, pStartupInfo->cbEnv));
 
     LogFlowFuncLeaveRC(rc);
     return rc;
