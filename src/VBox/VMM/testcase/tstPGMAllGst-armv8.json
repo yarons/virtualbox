@@ -1,4 +1,4 @@
-/* $Id: tstPGMAllGst-armv8.json 109094 2025-04-08 09:14:30Z alexander.eichner@oracle.com $ */
+/* $Id: tstPGMAllGst-armv8.json 109102 2025-04-08 11:59:40Z alexander.eichner@oracle.com $ */
 /** @file
  * PGM page table walking testcase - ARMv8 variant.
  */
@@ -44,7 +44,7 @@
     {
         Name:      "4K Granules",
         SCTLR_EL1: 0x1,
-        TCR_EL1:   0,
+        TCR_EL1:   { IPS: '64G', TG0: '4K', TG1: '4K' },
         TTBR0_EL1: 0x0,
         TTBR1_EL1: 0x1000,
 
