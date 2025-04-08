@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-linux.c 109111 2025-04-08 15:28:00Z vadim.galitsyn@oracle.com $ */
+/* $Id: timer-r0drv-linux.c 109113 2025-04-08 15:41:17Z vadim.galitsyn@oracle.com $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, Linux.
  */
@@ -1634,7 +1634,7 @@ RTDECL(int) RTTimerCreateEx(PRTTIMER *ppTimer, uint64_t u64NanoInterval, uint32_
 #ifdef RTTIMER_LINUX_WITH_HRTIMER
         if (pTimer->fHighRes)
         {
-#if RTLNX_VER_MIN(4,15,0)
+#if RTLNX_VER_MIN(6,15,0)
             hrtimer_setup(&pTimer->aSubTimers[iCpu].u.Hr.LnxTimer,
                           rtTimerLinuxHrCallback, CLOCK_MONOTONIC, HRTIMER_MODE_ABS);
 #else
