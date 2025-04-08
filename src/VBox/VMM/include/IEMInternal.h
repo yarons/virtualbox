@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 109116 2025-04-08 18:09:19Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 109118 2025-04-08 18:15:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -3028,7 +3028,7 @@ typedef struct IEM
 /** @name C instruction implementations for anything slightly complicated.
  * @{ */
 
-#if defined(CONFIG_TARGET_X86)
+#if defined(VBOX_VMM_TARGET_X86)
 # define IEM_CIMPL_NEEDS_INSTR_LEN
 #endif
 
