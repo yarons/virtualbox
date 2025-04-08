@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbMon.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxUsbMon.cpp 109096 2025-04-08 10:10:11Z michal.necasek@oracle.com $ */
 /** @file
  * VBox USB Monitor
  */
@@ -77,7 +77,7 @@
  * applying existing filters.
  *
  * Newly arrived USB devices are intercepted early in their PnP enumeration
- * through the hooked bus driver dispatch routine. Devices which satisty the
+ * through the hooked bus driver dispatch routine. Devices which satisfy the
  * filter matching criteria are morphed (see above) such that VBoxUSB.sys loads
  * for them before any default driver does.
  *

@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbFlt.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxUsbFlt.cpp 109096 2025-04-08 10:10:11Z michal.necasek@oracle.com $ */
 /** @file
  * VBox USB Monitor Device Filtering functionality
  */
@@ -1632,7 +1632,7 @@ void VBoxUsbFltProxyStopped(HVBOXUSBFLTDEV hDev)
     if (pDevice->enmState == VBOXUSBFLT_DEVSTATE_CAPTURED
             || pDevice->enmState == VBOXUSBFLT_DEVSTATE_USED_BY_GUEST)
     {
-        /* this is due to devie was physically removed */
+        /* this is due to the device being physically removed */
         LOG(("The proxy notified proxy stop for the captured device 0x%p, current state %d", pDevice, pDevice->enmState));
         pDevice->enmState = VBOXUSBFLT_DEVSTATE_CAPTURING;
     }
