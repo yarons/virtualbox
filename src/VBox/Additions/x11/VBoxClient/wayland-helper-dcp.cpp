@@ -1,4 +1,4 @@
-/* $Id: wayland-helper-dcp.cpp 106803 2024-10-30 13:21:47Z vadim.galitsyn@oracle.com $ */
+/* $Id: wayland-helper-dcp.cpp 109115 2025-04-08 16:13:41Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - Data Control Protocol (DCP) helper for Wayland.
  *
@@ -1371,7 +1371,7 @@ static DECLCALLBACK(int) vbcl_wayland_hlp_dcp_clip_hg_report_join3_cb(
                     RTMemFree(pvBufOut);
                 }
                 else
-                    VBClLogError("cannot convert '%s' to native format, rc=%Rrc\n", rc);
+                    VBClLogError("cannot convert '%s' to native format, rc=%Rrc\n", pPriv->sMimeType, rc);
             }
             else
                 rc = VERR_TIMEOUT;
