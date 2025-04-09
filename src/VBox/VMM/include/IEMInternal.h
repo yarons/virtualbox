@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 109123 2025-04-09 00:16:57Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 109129 2025-04-09 07:44:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -220,7 +220,7 @@ RT_C_DECLS_BEGIN
 # if RT_CPLUSPLUS_PREREQ(201700)
 #  define IEM_NOEXCEPT_MAY_LONGJMP_TYPEDEF  RT_NOEXCEPT_EX(false)
 # else
-#  define IEM_NOEXCEPT_MAY_LONGJMP_TYPEDEF  RT_NOEXCEPT_EX(false)
+#  define IEM_NOEXCEPT_MAY_LONGJMP_TYPEDEF
 # endif
 #else
 # define IEM_NOEXCEPT_MAY_LONGJMP           RT_NOEXCEPT
