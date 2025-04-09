@@ -1,4 +1,4 @@
-/* $Id: tstPGMAllGst-armv8.cpp 109132 2025-04-09 09:08:53Z alexander.eichner@oracle.com $ */
+/* $Id: tstPGMAllGst-armv8.cpp 109151 2025-04-09 14:08:25Z alexander.eichner@oracle.com $ */
 /** @file
  * PGM page table walking testcase - ARMv8 variant.
  */
@@ -589,9 +589,9 @@ static int tstTestcaseMmuConfigPrepare(RTTEST hTest, PTSTPGMARMV8MMU pMmuCfg, RT
     uint64_t u64RegTcrEl1 = 0;
     static const TSTCFGNAMEDVALUE s_aTgSizes[] =
     {
-        { "4K",  0 },
+        { "4K",  2 },
         { "64K", 1 },
-        { "16K", 2 },
+        { "16K", 3 },
         { NULL,  0 }
     };
     static const TSTCFGNAMEDVALUE s_aIpsSizes[] =
