@@ -1,4 +1,4 @@
-/* $Id: GITSAll.cpp 109103 2025-04-08 13:03:01Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GITSAll.cpp 109127 2025-04-09 06:19:01Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GITS - GIC Interrupt Translation Service (ITS) - All Contexts.
  */
@@ -618,10 +618,8 @@ DECL_HIDDEN_CALLBACK(int) gitsR3CmdQueueProcess(PPDMDEVINS pDevIns, PGITSDEV pGi
                         }
 
                         default:
-                            AssertReleaseMsgFailed(("Cmd=%#x (%s) idxCmd=%u cCmds=%u cbCmds=%u %u CREADR=%#RX32 CWRITER=%#RX32\n",
-                                                    uCmdId, gitsGetCommandName(uCmdId), idxCmd, cCmds, cbCmds,
-                                                    pGitsDev->StatCmdSync.c + pGitsDev->StatCmdInvall.c + pGitsDev->StatCmdMapc.c,
-                                                    pGitsDev->uCmdReadReg, pGitsDev->uCmdWriteReg));
+                            AssertReleaseMsgFailed(("Cmd=%#x (%s) idxCmd=%u cCmds=%u offRead=%#RX32 offWrite=%#RX32\n",
+                                                    uCmdId, gitsGetCommandName(uCmdId), idxCmd, cCmds, offRead, offWrite));
                             break;
                     }
                 }
