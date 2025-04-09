@@ -1,4 +1,4 @@
-/* $Id: IEMInternal-x86.h 109000 2025-03-28 21:58:31Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal-x86.h 109123 2025-04-09 00:16:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file, x86 target specifics.
  */
@@ -2471,20 +2471,6 @@ IEM_DECL_IMPL_PROTO(uint32_t, iemAImpl_vcvtpd2dq_u128_u256_fallback,(uint32_t uM
  */
 #define IEM_SET_CPL(a_pVCpu, a_uCpl) \
     do { (a_pVCpu)->iem.s.fExec = ((a_pVCpu)->iem.s.fExec & ~IEM_F_X86_CPL_MASK) | ((a_uCpl) << IEM_F_X86_CPL_SHIFT); } while (0)
-
-/**
- * Returns a (const) pointer to the CPUMFEATURES for the guest CPU.
- * @returns PCCPUMFEATURES
- * @param   a_pVCpu         The cross context virtual CPU structure of the calling thread.
- */
-#define IEM_GET_GUEST_CPU_FEATURES(a_pVCpu) (&((a_pVCpu)->CTX_SUFF(pVM)->cpum.ro.GuestFeatures))
-
-/**
- * Returns a (const) pointer to the CPUMFEATURES for the host CPU.
- * @returns PCCPUMFEATURES
- * @param   a_pVCpu         The cross context virtual CPU structure of the calling thread.
- */
-#define IEM_GET_HOST_CPU_FEATURES(a_pVCpu)  (&g_CpumHostFeatures.s)
 
 /**
  * Evaluates to true if we're presenting an Intel CPU to the guest.

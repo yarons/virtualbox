@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 109120 2025-04-08 18:38:32Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 109123 2025-04-09 00:16:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -3498,6 +3498,21 @@ FNIEMOP_TYPE_1(PFIEMOPU32, uint32_t, u32);
 # define IEM_RETURN_ASPECT_NOT_IMPLEMENTED_LOG(a_LoggerArgs) \
     return VERR_IEM_ASPECT_NOT_IMPLEMENTED
 #endif
+
+/**
+ * Returns a (const) pointer to the CPUMFEATURES for the guest CPU.
+ * @returns PCCPUMFEATURES
+ * @param   a_pVCpu         The cross context virtual CPU structure of the calling thread.
+ */
+#define IEM_GET_GUEST_CPU_FEATURES(a_pVCpu) (&((a_pVCpu)->CTX_SUFF(pVM)->cpum.ro.GuestFeatures))
+
+/**
+ * Returns a (const) pointer to the CPUMFEATURES for the host CPU.
+ * @returns PCCPUMFEATURES
+ * @param   a_pVCpu         The cross context virtual CPU structure of the calling thread.
+ */
+#define IEM_GET_HOST_CPU_FEATURES(a_pVCpu)  (&g_CpumHostFeatures.s)
+
 
 
 /** @} */
