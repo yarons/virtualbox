@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 109071 2025-04-04 17:36:38Z alexander.eichner@oracle.com $ */
+/* $Id: PGMAll.cpp 109170 2025-04-10 10:33:03Z alexander.eichner@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -3558,7 +3558,7 @@ static PGMMODE pgmCalcShadowMode(PVMCC pVM, PGMMODE enmGuestMode, SUPPAGINGMODE 
 
 VMM_INT_DECL(int) PGMChangeMode(PVMCPUCC pVCpu, uint8_t bEl, uint64_t u64RegSctlr, uint64_t u64RegTcr)
 {
-    VMCPU_ASSERT_EMT(pVCpu);
+    VMCPU_ASSERT_EMT_OR_NOT_RUNNING(pVCpu);
     Assert(bEl > 0 && bEl < 4);
 
     /* Only go through the setup when something has changed. */
