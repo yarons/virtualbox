@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsCommon.nsh 109177 2025-04-10 18:26:01Z andreas.loeffler@oracle.com $
+; $Id: VBoxGuestAdditionsCommon.nsh 109178 2025-04-10 18:43:11Z andreas.loeffler@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsCommon.nsh - Common / shared utility functions.
 ;
@@ -219,7 +219,7 @@ Function Common_ExtractFiles
       FILE "$%PATH_OUT%\bin\additions\VBoxSFW2K.sys"
     !endif
     FILE "$%PATH_OUT%\bin\additions\VBoxMRXNP.dll"
-    !if $%KBUILD_TARGET_ARCH% == "x86"
+    !if $%KBUILD_TARGET_ARCH% == "amd64" ; Not available on arm64.
       FILE "$%PATH_OUT%\bin\additions\VBoxMRXNP-x86.dll"
     !endif
   ${EndIf}
