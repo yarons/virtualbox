@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 108787 2025-03-18 12:11:51Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerWidget.cpp 109169 2025-04-10 10:09:44Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -689,7 +689,7 @@ void UIVMLogViewerWidget::prepare()
     connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
             this, &UIVMLogViewerWidget::sltRetranslateUI);
 
-    uiCommon().setHelpKeyword(this, "log-viewer" /* help keyword */);
+    uiCommon().setHelpKeyword(this, "ct_log-viewer" /* help keyword */);
 }
 
 void UIVMLogViewerWidget::prepareActions()

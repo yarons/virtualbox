@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 108787 2025-03-18 12:11:51Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISnapshotPane.cpp 109169 2025-04-10 10:09:44Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -1327,7 +1327,7 @@ void UISnapshotPane::prepare()
     loadSettings();
 
     /* Register help topic: */
-    uiCommon().setHelpKeyword(this, "snapshots" /* help keyword */);
+    uiCommon().setHelpKeyword(this, "ct_snapshots" /* help keyword */);
 
     /* Apply language settings: */
     sltRetranslateUI();

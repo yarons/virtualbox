@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.cpp 108980 2025-03-27 17:07:41Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityOverviewWidget.cpp 109169 2025-04-10 10:09:44Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class implementation.
  */
@@ -1100,7 +1100,7 @@ void UIVMActivityOverviewWidget::prepare()
     prepareActions();
     sltRetranslateUI();
     updateModelColumVisibilityCache();
-    uiCommon().setHelpKeyword(this, "vm-activity-overview" /* help keyword */);
+    uiCommon().setHelpKeyword(this, "tk_vm-activity-overview" /* help keyword */);
     connect(&uiCommon(), &UICommon::sigAskToCommitData,
             this, &UIVMActivityOverviewWidget::sltSaveSettings);
     connect(&uiCommon(), &UICommon::sigAskToDetachCOM,

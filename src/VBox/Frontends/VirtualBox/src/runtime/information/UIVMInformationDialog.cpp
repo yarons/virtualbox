@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 109062 2025-04-04 09:38:55Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMInformationDialog.cpp 109169 2025-04-10 10:09:44Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -275,7 +275,7 @@ void UIVMInformationDialog::prepareButtonBox()
     {
         /* Configure button-box: */
         m_pButtonBox->setStandardButtons(QDialogButtonBox::Close | QDialogButtonBox::Help);
-        uiCommon().setHelpKeyword(m_pButtonBox->button(QDialogButtonBox::Help), "vm-activity-session-information" /* help keyword */);
+        uiCommon().setHelpKeyword(m_pButtonBox->button(QDialogButtonBox::Help), "tk_vm-activity-session-information" /* help keyword */);
         connect(m_pButtonBox, &QIDialogButtonBox::rejected, this, &UIVMInformationDialog::sigClose);
         connect(m_pButtonBox->button(QDialogButtonBox::Help), &QPushButton::pressed,
                 m_pButtonBox, &QIDialogButtonBox::sltHandleHelpRequest);

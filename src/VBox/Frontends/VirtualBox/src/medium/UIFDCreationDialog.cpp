@@ -1,4 +1,4 @@
-/* $Id: UIFDCreationDialog.cpp 108787 2025-03-18 12:11:51Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFDCreationDialog.cpp 109169 2025-04-10 10:09:44Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFDCreationDialog class implementation.
  */
@@ -266,7 +266,7 @@ void UIFDCreationDialog::prepare()
         m_pButtonBox = new QIDialogButtonBox(QDialogButtonBox::Help | QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal, this);
         if (m_pButtonBox)
         {
-            uiCommon().setHelpKeyword(m_pButtonBox->button(QDialogButtonBox::Help), "create-floppy-disk-image" /* help keyword */);
+            uiCommon().setHelpKeyword(m_pButtonBox->button(QDialogButtonBox::Help), "tk_create-floppy-disk-image" /* help keyword */);
             connect(m_pButtonBox, &QDialogButtonBox::accepted, this, &UIFDCreationDialog::accept);
             connect(m_pButtonBox, &QDialogButtonBox::rejected, this, &UIFDCreationDialog::reject);
             connect(m_pButtonBox->button(QDialogButtonBox::Help), &QPushButton::pressed,
