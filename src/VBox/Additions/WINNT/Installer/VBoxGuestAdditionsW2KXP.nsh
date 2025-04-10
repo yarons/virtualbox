@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsW2KXP.nsh 108991 2025-03-28 13:26:22Z andreas.loeffler@oracle.com $
+; $Id: VBoxGuestAdditionsW2KXP.nsh 109177 2025-04-10 18:26:01Z andreas.loeffler@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsW2KXP.nsh - Guest Additions installation for Windows 2000/XP.
 ;
@@ -567,7 +567,7 @@ Function W2K_CallbackInstall
   ${LogVerbose} "Installing Shared Folders driver ..."
 
   ; The Shared Folder IFS goes to the system directory.
-  !if $%BUILD_TARGET_ARCH% == "x86"
+  !if $%KBUILD_TARGET_ARCH% == "x86"
     ; On x86 we have to use a different shared folder driver linked against an older RDBSS for Windows 7 and older.
     ${If} $g_strWinVersion == "2000"
     ${OrIf} $g_strWinVersion == "XP"
