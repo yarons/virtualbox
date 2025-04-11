@@ -1,4 +1,4 @@
-/* $Id: tstPGMAllGst-armv8.cpp 109181 2025-04-11 08:03:05Z alexander.eichner@oracle.com $ */
+/* $Id: tstPGMAllGst-armv8.cpp 109182 2025-04-11 08:14:09Z alexander.eichner@oracle.com $ */
 /** @file
  * PGM page table walking testcase - ARMv8 variant.
  */
@@ -296,7 +296,7 @@ static int tstMmuCfgReadRc(RTTEST hTest, RTJSONVAL hObj, const char *pszName, in
     static const TSTCFGNAMEDVALUE s_aRc[] =
     {
 #define CREATE_RC(a_Rc) \
-        {#a_Rc, (uint64_t)a_Rc} 
+        {#a_Rc, (uint64_t)a_Rc}
         CREATE_RC(VINF_SUCCESS),
         CREATE_RC(VERR_RESERVED_PAGE_TABLE_BITS),
         CREATE_RC(VERR_PGM_INVALID_GC_PHYSICAL_ADDRESS),
