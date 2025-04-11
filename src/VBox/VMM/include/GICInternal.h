@@ -1,4 +1,4 @@
-/* $Id: GICInternal.h 109097 2025-04-08 10:53:54Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICInternal.h 109188 2025-04-11 09:44:17Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -169,6 +169,8 @@ typedef GICDEV *PGICDEV;
 /** Pointer to a const GIC device. */
 typedef GICDEV const *PCGICDEV;
 AssertCompileMemberSizeAlignment(GICDEV, Gits, 8);
+AssertCompileMemberAlignment(GICDEV, abLpiConfig, 8);
+AssertCompileMemberAlignment(GICDEV, hMmioDist, 8);
 
 /**
  * GIC VM Instance data.

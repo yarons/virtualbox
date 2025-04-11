@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 109183 2025-04-11 08:30:04Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICAll.cpp 109188 2025-04-11 09:44:17Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - All Contexts.
  */
@@ -3109,6 +3109,7 @@ static void gicInit(PPDMDEVINS pDevIns)
     RT_ZERO(pGicDev->abLpiConfig);
     RT_ZERO(pGicDev->bmLpiPending);
     pGicDev->uLpiConfigBaseReg.u = 0;
+    pGicDev->uLpiPendingBaseReg.u = 0;
     pGicDev->fEnableLpis = false;
 }
 
