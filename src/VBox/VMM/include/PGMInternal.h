@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 109058 2025-04-04 08:36:32Z alexander.eichner@oracle.com $ */
+/* $Id: PGMInternal.h 109194 2025-04-11 13:04:57Z alexander.eichner@oracle.com $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2876,7 +2876,7 @@ typedef struct PGMMODEDATAGST
 #  define PGM_GUEST_MODE_DATA_ARRAY_SIZE     (PGM_TYPE_PAE + 1)
 # endif
 #elif defined(VBOX_VMM_TARGET_ARMV8)
-# define PGM_GUEST_MODE_DATA_ARRAY_SIZE      (128 + 2) /** @todo Find a better way to express that. */
+# define PGM_GUEST_MODE_DATA_ARRAY_SIZE      (512 + 2) /** @todo Find a better way to express that. */
 #else
 # error "Port me"
 #endif
