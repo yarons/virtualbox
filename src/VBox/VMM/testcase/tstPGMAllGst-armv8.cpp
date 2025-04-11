@@ -1,4 +1,4 @@
-/* $Id: tstPGMAllGst-armv8.cpp 109186 2025-04-11 09:07:29Z alexander.eichner@oracle.com $ */
+/* $Id: tstPGMAllGst-armv8.cpp 109195 2025-04-11 13:17:02Z alexander.eichner@oracle.com $ */
 /** @file
  * PGM page table walking testcase - ARMv8 variant.
  */
@@ -1032,7 +1032,7 @@ static void tstExecuteGetPage(RTTEST hTest, PVM pVM, RTGCPTR GCPtr, uint8_t bEl,
         WalkResult.fFailed    = pWalkResult->fFailed;
         WalkResult.uLevel     = (pWalkResult->fFailed & PGM_WALKFAIL_LEVEL_MASK) >> PGM_WALKFAIL_LEVEL_SHIFT;
         WalkResult.fSucceeded = false;
-    } 
+    }
     else
         WalkResult.fSucceeded = true;
 
