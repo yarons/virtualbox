@@ -1,4 +1,4 @@
-/* $Id: GITSInternal.h 109183 2025-04-11 08:30:04Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GITSInternal.h 109193 2025-04-11 12:19:36Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GITS - Generic Interrupt Controller Interrupt Translation Service - Internal.
  */
@@ -90,6 +90,7 @@ RT_BF_ASSERT_COMPILE_CHECKS(GITS_BF_CTE_, UINT32_C(0), UINT32_MAX,
                             (RDBASE, RSVD_30_16, VALID));
 /** GITS CTE: Size of the CTE in bytes. */
 #define GITS_CTE_SIZE                               4
+/** @} */
 
 /**
  * GITS error diagnostics.
