@@ -1,4 +1,4 @@
-/* $Id: IEMAllXcpt-armv8.cpp 109001 2025-03-28 22:36:52Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllXcpt-armv8.cpp 109198 2025-04-11 23:49:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - ARM target, exceptions & interrupts.
  */
@@ -72,5 +72,13 @@ iemRaiseDebugDataAccessOrInvokeDbgfJmp(PVMCPUCC pVCpu, uint32_t fDataBps, RTGCPT
 {
     VBOXSTRICTRC const rcStrict = iemRaiseDebugDataAccessOrInvokeDbgf(pVCpu, fDataBps, GCPtrMem, cbMem, fAccess);
     IEM_DO_LONGJMP(pVCpu, VBOXSTRICTRC_VAL(rcStrict));
+}
+
+
+/** Accessed via IEMOP_RAISE_INVALID_OPCODE. */
+IEM_CIMPL_DEF_0(iemCImplRaiseInvalidOpcode)
+{
+    RT_NOREF(pVCpu);
+    AssertFailedReturn(VERR_IEM_ASPECT_NOT_IMPLEMENTED);
 }
 
