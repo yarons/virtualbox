@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 109097 2025-04-08 10:53:54Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICAll.cpp 109183 2025-04-11 08:30:04Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - All Contexts.
  */
@@ -3101,15 +3101,15 @@ static void gicInit(PPDMDEVINS pDevIns)
     pGicDev->fIntrGroup1Enabled = false;
     pGicDev->fAffRoutingEnabled = true; /* GICv2 backwards compatibility is not implemented, so this is RA1/WI. */
 
-    /* LPIs. */
-    RT_ZERO(pGicDev->bmLpiPending);
-    RT_ZERO(pGicDev->abLpiConfig);
-    pGicDev->uLpiConfigBaseReg.u = 0;
-    pGicDev->fEnableLpis = false;
-
     /* GITS. */
     PGITSDEV pGitsDev = &pGicDev->Gits;
     gitsInit(pGitsDev);
+
+    /* LPIs. */
+    RT_ZERO(pGicDev->abLpiConfig);
+    RT_ZERO(pGicDev->bmLpiPending);
+    pGicDev->uLpiConfigBaseReg.u = 0;
+    pGicDev->fEnableLpis = false;
 }
 
 
