@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.h 108886 2025-03-21 13:49:37Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsView.h 109211 2025-04-14 17:26:46Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class declaration.
  */
@@ -54,6 +54,14 @@ public:
       * @{ */
         /** Returns the tools model reference. */
         UIToolsModel *model() const { return m_pModel; }
+    /** @} */
+
+    /** @name Layout stuff.
+      * @{ */
+        /** Calculates and returns minimum size-hint. */
+        virtual QSize minimumSizeHint() const RT_OVERRIDE;
+        /** Calculates and returns size-hint. */
+        virtual QSize sizeHint() const  RT_OVERRIDE;
     /** @} */
 
 protected:
