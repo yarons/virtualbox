@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 107811 2025-01-14 09:28:52Z alexander.eichner@oracle.com $ */
+/* $Id: VMDK.cpp 109206 2025-04-14 09:44:18Z michal.necasek@oracle.com $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -1047,7 +1047,7 @@ static char *vmdkEncodeString(const char *psz)
 static int vmdkDecodeString(const char *pszEncoded, char *psz, size_t cb)
 {
     int rc = VINF_SUCCESS;
-    char szBuf[4];
+    char szBuf[8];
 
     if (!cb)
         return VERR_BUFFER_OVERFLOW;
