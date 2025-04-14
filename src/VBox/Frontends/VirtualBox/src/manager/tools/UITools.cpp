@@ -1,4 +1,4 @@
-/* $Id: UITools.cpp 108887 2025-03-21 14:02:55Z sergey.dubov@oracle.com $ */
+/* $Id: UITools.cpp 109213 2025-04-14 17:37:43Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITools class implementation.
  */
@@ -38,9 +38,12 @@
 
 
 UITools::UITools(QWidget *pParent,
+                 UIToolClass enmClass,
                  UIActionPool *pActionPool)
     : QWidget(pParent, Qt::Widget)
+    , m_enmClass(enmClass)
     , m_pActionPool(pActionPool)
+    , m_enmAlignment(m_enmClass == UIToolClass_Machine ? Qt::Horizontal : Qt::Vertical)
     , m_pMainLayout(0)
     , m_pToolsModel(0)
     , m_pToolsView(0)
@@ -96,7 +99,15 @@ void UITools::prepare()
 void UITools::prepareContents()
 {
     /* Setup own layout rules: */
-    setSizePolicy(QSizePolicy::Fixed, QSizePolicy::MinimumExpanding);
+    switch (m_enmAlignment)
+    {
+        case Qt::Vertical:
+            setSizePolicy(QSizePolicy::Fixed, QSizePolicy::MinimumExpanding);
+            break;
+        case Qt::Horizontal:
+            setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
+            break;
+    }
 
     /* Prepare main-layout: */
     m_pMainLayout = new QVBoxLayout(this);
