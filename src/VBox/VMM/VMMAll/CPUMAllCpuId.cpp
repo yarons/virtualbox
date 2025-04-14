@@ -1,4 +1,4 @@
-/* $Id: CPUMAllCpuId.cpp 109215 2025-04-14 20:45:36Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMAllCpuId.cpp 109216 2025-04-14 21:46:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU ID part, common bits.
  */
@@ -1500,9 +1500,12 @@ int cpumCpuIdExplodeFeaturesX86(PCCPUMCPUIDLEAF paLeaves, uint32_t cLeaves,
         pFeatures->fPclMul              = RT_BOOL(pStd1Leaf->uEcx & X86_CPUID_FEATURE_ECX_PCLMUL);
         pFeatures->fMovBe               = RT_BOOL(pStd1Leaf->uEcx & X86_CPUID_FEATURE_ECX_MOVBE);
         pFeatures->fF16c                = RT_BOOL(pStd1Leaf->uEcx & X86_CPUID_FEATURE_ECX_F16C);
-# ifdef VBOX_VMM_TARGET_X86 /** @todo maybe populate this for x86 hosts targeting non-x86 guest? */
+# if (defined(RT_ARCH_X86) || defined(RT_ARCH_AMD64) || defined(VBOX_VMM_TARGET_X86)) \
+ && !defined(VBOX_VMM_TARGET_ARMV8) /** @todo Ugly hack to avoid dragging in hm_vmx.h when targeting armv8. */
         if (pFeatures->fVmx)
             cpumExplodeVmxFeatures(&pMsrs->hwvirt.vmx, pFeatures);
+# else
+        RT_NOREF_PV(pMsrs);
 # endif
 
         /* Structured extended features. */
