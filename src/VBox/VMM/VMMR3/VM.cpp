@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 108904 2025-03-24 09:16:43Z alexander.eichner@oracle.com $ */
+/* $Id: VM.cpp 109215 2025-04-14 20:45:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -752,9 +752,10 @@ static int vmR3ReadBaseConfig(PVM pVM, PUVM pUVM, uint32_t cCpus)
     /*
      * Base EM and HM config properties.
      */
-#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
+    /** @todo get rid of this carp.   */
+#if (defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)) && defined(VBOX_VMM_TARGET_X86)
     pVM->fHMEnabled = true;
-#else /* Other architectures must fall back on IEM for the time being: */
+#else
     pVM->fHMEnabled = false;
 #endif
 

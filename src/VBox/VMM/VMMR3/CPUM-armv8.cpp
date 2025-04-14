@@ -1,4 +1,4 @@
-/* $Id: CPUM-armv8.cpp 108962 2025-03-26 16:05:20Z alexander.eichner@oracle.com $ */
+/* $Id: CPUM-armv8.cpp 109215 2025-04-14 20:45:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager (ARMv8 variant).
  */
@@ -130,10 +130,8 @@ static DECLCALLBACK(void) cpumR3InfoGuestInstr(PVM pVM, PCDBGFINFOHLP pHlp, cons
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
 *********************************************************************************************************************************/
-#if defined(RT_ARCH_ARM64)
 /** Host CPU features. */
 DECL_HIDDEN_DATA(CPUHOSTFEATURES) g_CpumHostFeatures;
-#endif
 
 /**
  * System register ranges.

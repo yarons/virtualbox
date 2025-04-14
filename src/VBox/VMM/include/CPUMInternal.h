@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 108962 2025-03-26 16:05:20Z alexander.eichner@oracle.com $ */
+/* $Id: CPUMInternal.h 109215 2025-04-14 20:45:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -544,6 +544,8 @@ typedef struct CPUMCPU
 #ifndef VBOX_FOR_DTRACE_LIB
 # ifdef RT_ARCH_AMD64
 AssertCompileMemberAlignment(CPUMCPU, Host, 64);
+# endif
+# if defined(VBOX_VMM_TARGET_X86)
 AssertCompileAdjacentMembers(CPUMCPU, Guest, GuestMsrs); /* HACK ALERT! HMR0A.asm makes this ASSUMPTION in the SVM RUN code! */
 # endif
 #endif
@@ -563,7 +565,7 @@ PCPUMCPUIDLEAF      cpumCpuIdEnsureSpace(PVM pVM, PCPUMCPUIDLEAF *ppaLeaves, uin
 #  ifdef VBOX_STRICT
 void                cpumCpuIdAssertOrder(PCPUMCPUIDLEAF paLeaves, uint32_t cLeaves);
 #  endif
-int                 cpumCpuIdExplodeFeaturesX86(PCCPUMCPUIDLEAF paLeaves, uint32_t cLeaves, PCCPUMMSRS pMsrs,
+int                 cpumCpuIdExplodeFeaturesX86(PCCPUMCPUIDLEAF paLeaves, uint32_t cLeaves, struct CPUMMSRS const *pMsrs,
                                                 CPUMFEATURESX86 *pFeatures);
 void                cpumCpuIdExplodeFeaturesX86SetSummaryBits(CPUMFEATURESX86 *pFeatures);
 void                cpumCpuIdExplodeArchCapabilities(CPUMFEATURESX86 *pFeatures, bool fHasArchCap, uint64_t fArchVal);

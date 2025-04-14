@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 108620 2025-03-04 11:38:14Z alexander.eichner@oracle.com $ */
+/* $Id: PDMDevice.cpp 109215 2025-04-14 20:45:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -707,9 +707,11 @@ static int pdmR3DevLoadModules(PVM pVM)
     int rc = pdmR3DevReg_Register(&RegCB.Core, &g_DeviceGIC);
     AssertRCReturn(rc, rc);
 
+# ifdef VBOX_WITH_NATIVE_NEM
     /* Register the internal VMM GIC device, NEM variant. */
     rc = pdmR3DevReg_Register(&RegCB.Core, &g_DeviceGICNem);
     AssertRCReturn(rc, rc);
+# endif
 
     /* Register the internal VMM PMU device. */
     rc = pdmR3DevReg_Register(&RegCB.Core, &g_DevicePMU);

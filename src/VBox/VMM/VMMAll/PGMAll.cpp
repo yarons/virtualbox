@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 109170 2025-04-10 10:33:03Z alexander.eichner@oracle.com $ */
+/* $Id: PGMAll.cpp 109215 2025-04-14 20:45:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -3946,7 +3946,7 @@ VMMDECL(PGMMODE) PGMGetGuestMode(PVMCPU pVCpu)
  */
 VMMDECL(PGMMODE) PGMGetShadowMode(PVMCPU pVCpu)
 {
-#ifndef VBOX_WITH_ONLY_PGM_NEM_MODE
+#if !defined(VBOX_WITH_ONLY_PGM_NEM_MODE) && defined(VBOX_VMM_TARGET_X86)
     return pVCpu->pgm.s.enmShadowMode;
 #else
     RT_NOREF(pVCpu);
