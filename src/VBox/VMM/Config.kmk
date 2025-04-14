@@ -1,4 +1,4 @@
-# $Id: Config.kmk 108370 2025-02-13 16:26:48Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 109207 2025-04-14 09:57:59Z knut.osmundsen@oracle.com $
 ## @file
 # kBuild Configuration file for the VMM.
 #
@@ -118,9 +118,6 @@ ifdef VBOX_WITH_PCI_PASSTHROUGH
 endif
 ifdef VBOX_WITH_DTRACE_RC
  VMM_COMMON_DEFS += VBOX_WITH_DTRACE_RC
-endif
-ifdef VBOX_WITH_SAFE_STR
- VMM_COMMON_DEFS += VBOX_WITH_SAFE_STR
 endif
 ifdef VBOX_WITH_64ON32_CMOS_DEBUG
  VMM_COMMON_DEFS += VBOX_WITH_64ON32_CMOS_DEBUG
