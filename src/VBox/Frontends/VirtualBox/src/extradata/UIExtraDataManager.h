@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 109225 2025-04-15 13:07:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.h 109232 2025-04-15 14:53:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -92,6 +92,9 @@ signals:
     void sigRuntimeUIShortcutChange();
     /** Notifies about Runtime UI host-key combination change. */
     void sigRuntimeUIHostKeyCombinationChange();
+
+    /** Notifies about tool labels visibility change. */
+    void sigToolLabelsVisibilityChange(bool fVisible);
 
     /** Notifies about Cloud Profile Manager restriction change. */
     void sigCloudProfileManagerRestrictionChange();

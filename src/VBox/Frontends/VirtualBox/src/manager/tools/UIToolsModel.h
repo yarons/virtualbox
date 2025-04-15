@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 109225 2025-04-15 13:07:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.h 109232 2025-04-15 14:53:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -186,6 +186,9 @@ private slots:
 
         /** Handles translation event. */
         void sltRetranslateUI();
+
+        /** Handles tool label visibility change event. */
+        void sltHandleToolLabelsVisibilityChange(bool fVisible);
     /** @} */
 
 private:

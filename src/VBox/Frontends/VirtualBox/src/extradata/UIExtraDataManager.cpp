@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 109225 2025-04-15 13:07:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.cpp 109232 2025-04-15 14:53:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -4857,6 +4857,9 @@ void UIExtraDataManager::sltExtraDataChange(const QUuid &uMachineID, const QStri
             /* Runtime UI host-key combintation changed? */
             else if (strKey == GUI_Input_HostKeyCombination)
                 emit sigRuntimeUIHostKeyCombinationChange();
+            /* Tool labels visibility changed? */
+            else if (strKey == GUI_Tools_Text)
+                emit sigToolLabelsVisibilityChange(isToolTextVisible());
             /* Cloud Profile Manager restrictions changed: */
             else if (strKey == GUI_CloudProfileManager_Restrictions)
                 emit sigCloudProfileManagerRestrictionChange();
