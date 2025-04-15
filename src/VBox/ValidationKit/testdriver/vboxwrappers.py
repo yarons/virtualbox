@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 109224 2025-04-15 12:55:31Z alexander.eichner@oracle.com $
+# $Id: vboxwrappers.py 109227 2025-04-15 13:14:19Z alexander.eichner@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 109224 $"
+__version__ = "$Revision: 109227 $"
 
 
 # Standard Python imports.
@@ -1995,10 +1995,10 @@ class SessionWrapper(TdTaskBase):
             if iPort >= oCtl.portCount:
                 oCtl.portCount = iPort + 1
                 self.oTstDrv.processPendingEvents()
-                reporter.log('set controller "%s" port count to value %d' % (sController, iPortCount + 1))
+                reporter.log('set controller "%s" port count to value %d' % (sController, iPort + 1))
             return True
         except:
-            reporter.log('unable to set storage controller "%s" ports count to %d' % (sController, iPortCount))
+            reporter.log('unable to set storage controller "%s" ports count to %d' % (sController, iPort))
 
         return False
 
