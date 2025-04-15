@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 109215 2025-04-14 20:45:36Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 109219 2025-04-15 07:21:32Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -413,7 +413,7 @@ ifdef VBOX_WITH_VIRT_ARMV8
  	$(filter-out \
  		VBOX_WITH_HWVIRT \
  		VBOX_WITH_PAGE_SHARING \
-		$(if-expr "$(KBUILD_TARGET_ARCH)" != "arm64",VBOX_WITH_NATIVE_NEM,) \
+ 		$(if-expr "$(KBUILD_TARGET_ARCH)" != "arm64",VBOX_WITH_NATIVE_NEM,) \
  		VBOX_WITH_IEM_RECOMPILER \
  		VBOX_WITH_IEM_NATIVE_RECOMPILER \
  		VBOX_WITH_NESTED_HWVIRT_SVM \
