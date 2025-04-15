@@ -1,4 +1,4 @@
-﻿/* $Id: UIToolsModel.cpp 109232 2025-04-15 14:53:34Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIToolsModel.cpp 109234 2025-04-15 15:00:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -391,25 +391,6 @@ void UIToolsModel::setRestrictedToolTypes(UIToolClass enmClass, const QList<UITo
 
         /* Update linked values: */
         recalculateOverallShifts(enmClass);
-        updateLayout();
-        sltItemMinimumWidthHintChanged();
-        sltItemMinimumHeightHintChanged();
-    }
-}
-
-void UIToolsModel::setUnsuitableToolClass(UIToolClass enmClass, bool fUnsuitable)
-{
-    if (m_mapUnsuitableToolClasses.value(enmClass) != fUnsuitable)
-    {
-        m_mapUnsuitableToolClasses[enmClass] = fUnsuitable;
-        foreach (UIToolsItem *pItem, items())
-        {
-            if (pItem->itemClass() != enmClass)
-                continue;
-            pItem->setHiddenByReason(fUnsuitable, UIToolsItem::HidingReason_Unsuitable);
-        }
-
-        /* Update linked values: */
         updateLayout();
         sltItemMinimumWidthHintChanged();
         sltItemMinimumHeightHintChanged();
