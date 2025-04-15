@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: vboxwrappers.py 109224 2025-04-15 12:55:31Z alexander.eichner@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 106061 $"
+__version__ = "$Revision: 109224 $"
 
 
 # Standard Python imports.
@@ -1985,6 +1985,23 @@ class SessionWrapper(TdTaskBase):
             self.oTstDrv.processPendingEvents();
         return True;
 
+    def ensureStorageControllerPortCount(self, sController, iPort):
+        """
+        Makes sure the specified controller attched to the VM has the necessary number of ports,
+        trying to set them if not.
+        """
+        try:
+            oCtl = self.o.machine.getStorageControllerByName(sController)
+            if iPort >= oCtl.portCount:
+                oCtl.portCount = iPort + 1
+                self.oTstDrv.processPendingEvents()
+                reporter.log('set controller "%s" port count to value %d' % (sController, iPortCount + 1))
+            return True
+        except:
+            reporter.log('unable to set storage controller "%s" ports count to %d' % (sController, iPortCount))
+
+        return False
+
     def setStorageControllerPortCount(self, sController, iPortCount):
         """
         Set maximum ports count for storage controller
@@ -2068,6 +2085,8 @@ class SessionWrapper(TdTaskBase):
 
         if not self.ensureControllerAttached(sController):
             return False;
+        if not self.ensureStorageControllerPortCount(sController, iPort):
+            return False;
 
         # Find/register the image if specified.
         oImage = None;
@@ -2126,6 +2145,8 @@ class SessionWrapper(TdTaskBase):
             return None;
 
         if not self.ensureControllerAttached(sController):
+            return False;
+        if not self.ensureStorageControllerPortCount(sController, iPort):
             return False;
 
         # Find the HD, registering it if necessary (as immutable).
@@ -2236,6 +2257,8 @@ class SessionWrapper(TdTaskBase):
         Returns True on success and False on failure.  Error information is logged.
         """
         if not self.ensureControllerAttached(sController):
+            return False;
+        if not self.ensureStorageControllerPortCount(sController, iPort):
             return False;
 
         oHd = self.createBaseHd(sHd, sFmt, cb, cMsTimeout, tMediumVariant);
