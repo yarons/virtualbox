@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 109227 2025-04-15 13:14:19Z alexander.eichner@oracle.com $
+# $Id: vboxwrappers.py 109228 2025-04-15 13:14:34Z alexander.eichner@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 109227 $"
+__version__ = "$Revision: 109228 $"
 
 
 # Standard Python imports.
@@ -1998,7 +1998,7 @@ class SessionWrapper(TdTaskBase):
                 reporter.log('set controller "%s" port count to value %d' % (sController, iPort + 1))
             return True
         except:
-            reporter.log('unable to set storage controller "%s" ports count to %d' % (sController, iPort))
+            reporter.log('unable to set storage controller "%s" ports count to %d' % (sController, iPort + 1))
 
         return False
 
