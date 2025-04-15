@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.cpp 109230 2025-04-15 14:28:23Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsItem.cpp 109231 2025-04-15 14:37:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class definition.
  */
@@ -441,9 +441,8 @@ QVariant UIToolsItem::data(int iKey) const
             QFont fnt = font();
             fnt.setWeight(QFont::Bold);
 
-            /* Make Machine tool font smaller: */
-            if (itemClass() == UIToolClass_Machine)
-                fnt.setPointSize(fnt.pointSize() - 1);
+            /* Make font a bit smaller: */
+            fnt.setPointSize(fnt.pointSize() - 1);
 
             /* Return font: */
             return fnt;
@@ -457,10 +456,8 @@ QVariant UIToolsItem::data(int iKey) const
 
 void UIToolsItem::updatePixmap()
 {
-    /* Smaller Machine tool icons: */
-    const int iIconMetric = itemClass() == UIToolClass_Machine
-                          ? QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize)
-                          : QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize) * 1.5;
+    /* Make icons a bit smaller: */
+    const int iIconMetric = QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize);
 
     /* Prepare new pixmap size: */
     const QSize pixmapSize = QSize(iIconMetric, iIconMetric);
