@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsWidget.cpp 109225 2025-04-15 13:07:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsWidget.cpp 109229 2025-04-15 13:48:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsWidget class implementation.
  */
@@ -57,7 +57,7 @@ UIGlobalToolsWidget::UIGlobalToolsWidget(QWidget *pParent, UIActionPool *pAction
 void UIGlobalToolsWidget::addToolBar(QIToolBar *pToolBar)
 {
     AssertPtrReturnVoid(m_pLayout);
-    m_pLayout->addWidget(pToolBar, 0, 1);
+    m_pLayout->addWidget(pToolBar, 0, 0, 1, 2);
 }
 
 UIToolPane *UIGlobalToolsWidget::toolPane() const
@@ -312,7 +312,7 @@ void UIGlobalToolsWidget::prepareWidgets()
         if (toolMenu())
         {
             /* Add into layout: */
-            m_pLayout->addWidget(toolMenu(), 0, 0, 2, 1);
+            m_pLayout->addWidget(toolMenu(), 1, 0);
         }
 
         /* Create tool-pane: */
