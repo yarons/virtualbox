@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 108837 2025-03-20 12:48:42Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageInfo.cpp 109220 2025-04-15 09:01:23Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1337,7 +1337,10 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
 
         case PlatformArchitecture_ARM:
         {
-            /** @todo BUGBUG ARM stuff here */
+            ComPtr<IPlatformARM> platformARM;
+            CHECK_ERROR_RET(platform, COMGETTER(ARM)(platformARM.asOutParam()), hrc);
+
+            SHOW_BOOLEAN_METHOD(platformARM, GetCPUProperty(CPUPropertyTypeARM_GICITS, &f), "gic-its", "GIC ITS:");
             break;
         }
 

@@ -1,4 +1,4 @@
-/* $Id: PlatformARMImpl.cpp 106385 2024-10-16 13:58:41Z alexander.eichner@oracle.com $ */
+/* $Id: PlatformARMImpl.cpp 109220 2025-04-15 09:01:23Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - ARM platform settings.
  */
@@ -289,6 +289,10 @@ HRESULT PlatformARM::getCPUProperty(CPUPropertyTypeARM_T aProperty, BOOL *aValue
             *aValue = m->bd->fNestedHWVirt;
             break;
 
+        case CPUPropertyTypeARM_GICITS:
+            *aValue = m->bd->fGicIts;
+            break;
+
         default:
             return E_INVALIDARG;
     }
@@ -313,6 +317,13 @@ HRESULT PlatformARM::setCPUProperty(CPUPropertyTypeARM_T aProperty, BOOL aValue)
         {
             m->bd.backup();
             m->bd->fNestedHWVirt = !!aValue;
+            break;
+        }
+
+        case CPUPropertyTypeARM_GICITS:
+        {
+            m->bd.backup();
+            m->bd->fGicIts = !!aValue;
             break;
         }
 
