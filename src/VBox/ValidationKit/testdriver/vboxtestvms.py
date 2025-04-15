@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: vboxtestvms.py 109222 2025-04-15 09:29:45Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 106061 $"
+__version__ = "$Revision: 109222 $"
 
 # Standard Python imports.
 import copy;
@@ -2289,7 +2289,7 @@ class TestVmManager(object):
         #
         TestVm('tst-ol-9_2-arm64',          kfGrpStdSmoke,        sHd = '7.1/smoketests/ol-9_2-arm64-txs.vdi',
                sKind = 'Oracle_arm64', acCpusSup = range(1, 33), sChipsetType = 'armv8virtual', \
-               sHddControllerType='VirtIO SCSI Controller', sDvdControllerType = 'SATA Controller', \
+               sHddControllerType='VirtIO SCSI Controller', sDvdControllerType = 'VirtIO SCSI Controller', \
                sGraphicsControllerType = 'QemuRamFb', sPlatformArchitecture = 'ARM'),
     );
 
