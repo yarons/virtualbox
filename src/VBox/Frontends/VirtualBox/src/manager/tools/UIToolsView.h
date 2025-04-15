@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.h 109211 2025-04-14 17:26:46Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsView.h 109237 2025-04-15 16:25:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class declaration.
  */
@@ -33,6 +33,7 @@
 
 /* GUI includes: */
 #include "QIGraphicsView.h"
+#include "UIExtraDataDefs.h"
 
 /* Forward declarations: */
 class UIToolsModel;
@@ -45,8 +46,9 @@ class UIToolsView : public QIGraphicsView
 public:
 
     /** Constructs a Tools-view passing @a pParent to the base-class.
-      * @param  pModel  Brings the tools model reference. */
-    UIToolsView(QWidget *pParent, UIToolsModel *pModel);
+      * @param  enmClass  Brings the tool class.
+      * @param  pModel    Brings the tools model reference. */
+    UIToolsView(QWidget *pParent, UIToolClass enmClass, UIToolsModel *pModel);
     /** Destructs a Tools-view. */
     virtual ~UIToolsView();
 
@@ -120,6 +122,9 @@ private:
 
     /** @name General stuff.
       * @{ */
+        /** Holds the tool class. */
+        UIToolClass  m_enmClass;
+
         /** Holds the tools model reference. */
         UIToolsModel *m_pModel;
     /** @} */

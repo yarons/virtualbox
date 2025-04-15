@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.cpp 109229 2025-04-15 13:48:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsView.cpp 109237 2025-04-15 16:25:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class implementation.
  */
@@ -114,8 +114,9 @@ private:
 };
 
 
-UIToolsView::UIToolsView(QWidget *pParent, UIToolsModel *pModel)
+UIToolsView::UIToolsView(QWidget *pParent, UIToolClass enmClass, UIToolsModel *pModel)
     : QIGraphicsView(pParent)
+    , m_enmClass(enmClass)
     , m_pModel(pModel)
     , m_iMinimumWidthHint(0)
     , m_iMinimumHeightHint(0)
@@ -221,9 +222,19 @@ void UIToolsView::preparePalette()
     /* Setup palette: */
     QPalette pal = qApp->palette();
 
-    /* We are just taking the [in]active Window colors: */
+    /* We are just taking the [in]active Window colors and
+     * making them a bit darker/lighter according to theme: */
     QColor backgroundColorActive = pal.color(QPalette::Active, QPalette::Window);
     QColor backgroundColorInactive = pal.color(QPalette::Inactive, QPalette::Window);
+    if (m_enmClass == UIToolClass_Global)
+    {
+        backgroundColorActive = uiCommon().isInDarkMode()
+                              ? backgroundColorActive.lighter(120)
+                              : backgroundColorActive.darker(110);
+        backgroundColorInactive = uiCommon().isInDarkMode()
+                                ? backgroundColorInactive.lighter(120)
+                                : backgroundColorInactive.darker(110);
+    }
     pal.setColor(QPalette::Active, QPalette::Base, backgroundColorActive);
     pal.setColor(QPalette::Inactive, QPalette::Base, backgroundColorInactive);
 
