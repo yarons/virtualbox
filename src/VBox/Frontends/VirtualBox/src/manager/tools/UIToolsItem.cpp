@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.cpp 109231 2025-04-15 14:37:49Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsItem.cpp 109235 2025-04-15 15:19:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class definition.
  */
@@ -533,7 +533,7 @@ void UIToolsItem::paintBackground(QPainter *pPainter, const QRect &rectangle) co
             case UIToolClass_Global:
             {
                 /* Draw gradient token: */
-                QRect tokenRect(rectangle.topLeft(), QSize(5, rectangle.height()));
+                QRect tokenRect(rectangle.topLeft(), QSize(3, rectangle.height()));
                 QLinearGradient tkGrad(tokenRect.topLeft(), tokenRect.bottomLeft());
                 tkGrad.setColorAt(0, highlightColor1);
                 tkGrad.setColorAt(1, highlightColor2);
