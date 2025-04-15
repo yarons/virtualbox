@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxWidget.h 108834 2025-03-20 12:20:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxWidget.h 109225 2025-04-15 13:07:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxWidget class declaration.
  */
@@ -44,7 +44,6 @@ class UIActionPool;
 class UIChooser;
 class UIGlobalToolsWidget;
 class UIMachineToolsWidget;
-class UIManagementToolsWidget;
 class UIToolPane;
 class UIVirtualBoxManager;
 class UIVirtualMachineItem;
@@ -80,8 +79,6 @@ signals:
         void sigToolTypeChangeGlobal();
         /** Notifies about Machine Tool type change. */
         void sigToolTypeChangeMachine();
-        /** Notifies about Management Tool type change. */
-        void sigToolTypeChangeManagement();
     /** @} */
 
     /** @name Tools / Media pane stuff.
@@ -196,31 +193,20 @@ public:
         /** Returns Machine tools type. */
         UIToolType toolsTypeMachine() const;
 
-        /** Defines Management tools @a enmType. */
-        void setToolsTypeManagement(UIToolType enmType);
-        /** Returns Management tools type. */
-        UIToolType toolsTypeManagement() const;
-
         /** Returns a type of curent Global tool. */
         UIToolType currentGlobalTool() const;
         /** Returns a type of curent Machine tool. */
         UIToolType currentMachineTool() const;
-        /** Returns a type of curent Management tool. */
-        UIToolType currentManagementTool() const;
 
         /** Returns whether Global tool of passed @a enmType is opened. */
         bool isGlobalToolOpened(UIToolType enmType) const;
         /** Returns whether Machine tool of passed @a enmType is opened. */
         bool isMachineToolOpened(UIToolType enmType) const;
-        /** Returns whether Management tool of passed @a enmType is opened. */
-        bool isManagementToolOpened(UIToolType enmType) const;
 
         /** Closes Global tool of passed @a enmType. */
         void closeGlobalTool(UIToolType enmType);
         /** Closes Machine tool of passed @a enmType. */
         void closeMachineTool(UIToolType enmType);
-        /** Closes Management tool of passed @a enmType. */
-        void closeManagementTool(UIToolType enmType);
     /** @} */
 
     /** @name Tools / Snapshot pane stuff.
@@ -295,9 +281,6 @@ private:
         UIToolPane *machineToolPane() const;
         /** Returns Machine Chooser Pane reference. */
         UIChooser *chooser() const;
-
-        /** Returns Management Tools Widget reference. */
-        UIManagementToolsWidget *managementToolsWidget() const;
     /** @} */
 
     /** Holds the action-pool reference. */

@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 108531 2025-02-24 16:21:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.cpp 109225 2025-04-15 13:07:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -2873,8 +2873,7 @@ void UIExtraDataManager::setSelectorWindowToolBarTextVisible(bool fVisible)
 }
 
 void UIExtraDataManager::toolsPaneLastItemsChosen(UIToolType &enmTypeGlobal,
-                                                  UIToolType &enmTypeMachine,
-                                                  UIToolType &enmTypeManagement)
+                                                  UIToolType &enmTypeMachine)
 {
     /* Parse loaded data: */
     QList<UIToolType> result;
@@ -2892,20 +2891,15 @@ void UIExtraDataManager::toolsPaneLastItemsChosen(UIToolType &enmTypeGlobal,
     enmTypeMachine = result.value(1);
     if (!UIToolStuff::isTypeOfClass(enmTypeMachine, UIToolClass_Machine))
         enmTypeMachine = UIToolType_Details;
-    enmTypeManagement = result.value(2);
-    if (!UIToolStuff::isTypeOfClass(enmTypeManagement, UIToolClass_Management))
-        enmTypeManagement = UIToolType_Extensions;
 }
 
 void UIExtraDataManager::setToolsPaneLastItemsChosen(UIToolType enmTypeGlobal,
-                                                     UIToolType enmTypeMachine,
-                                                     UIToolType enmTypeManagement)
+                                                     UIToolType enmTypeMachine)
 {
     /* Serialize passed values: */
     const QList<UIToolType> currentTypes = QList<UIToolType>()
                                          << enmTypeGlobal
-                                         << enmTypeMachine
-                                         << enmTypeManagement;
+                                         << enmTypeMachine;
     QStringList data;
     foreach (const UIToolType &enmType, currentTypes)
         data << gpConverter->toInternalString(enmType);

@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 108531 2025-02-24 16:21:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.h 109225 2025-04-15 13:07:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -400,12 +400,10 @@ public:
 
         /** Returns last selected tool set of VirtualBox Manager. */
         void toolsPaneLastItemsChosen(UIToolType &enmTypeGlobal,
-                                      UIToolType &enmTypeMachine,
-                                      UIToolType &enmTypeManagement);
+                                      UIToolType &enmTypeMachine);
         /** Defines last selected tool @a set of VirtualBox Manager. */
         void setToolsPaneLastItemsChosen(UIToolType enmTypeGlobal,
-                                         UIToolType enmTypeMachine,
-                                         UIToolType enmTypeManagement);
+                                         UIToolType enmTypeMachine);
         /** Returns the list of detached tools of VirtualBox Manager. */
         QList<UIToolType> detachedTools();
         /** Defines the list of detached @a tools of VirtualBox Manager. */

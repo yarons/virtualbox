@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 108794 2025-03-18 14:23:42Z sergey.dubov@oracle.com $ */
+/* $Id: UIConverterBackendGlobal.cpp 109225 2025-04-15 13:07:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendGlobal implementation.
  */
@@ -1648,7 +1648,6 @@ template<> SHARED_LIBRARY_STUFF QString UIConverter::toInternalString(const UITo
     {
         case UIToolType_Home:         strResult = "Home"; break;
         case UIToolType_Machines:     strResult = "Machines"; break;
-        case UIToolType_Managers:     strResult = "Managers"; break;
         case UIToolType_Extensions:   strResult = "Extensions"; break;
         case UIToolType_Media:        strResult = "Media"; break;
         case UIToolType_Network:      strResult = "Network"; break;
@@ -1676,8 +1675,6 @@ template<> SHARED_LIBRARY_STUFF UIToolType UIConverter::fromInternalString<UIToo
         return UIToolType_Home;
     if (strToolType.compare("Machines", Qt::CaseInsensitive) == 0)
         return UIToolType_Machines;
-    if (strToolType.compare("Managers", Qt::CaseInsensitive) == 0)
-        return UIToolType_Managers;
     if (strToolType.compare("Extensions", Qt::CaseInsensitive) == 0)
         return UIToolType_Extensions;
     if (strToolType.compare("Media", Qt::CaseInsensitive) == 0)

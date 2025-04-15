@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 108860 2025-03-20 16:39:19Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataDefs.cpp 109225 2025-04-15 13:07:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -290,7 +290,12 @@ UIToolClass UIToolStuff::castTypeToClass(UIToolType enmType)
             return UIToolClass_Aux;
         case UIToolType_Home:
         case UIToolType_Machines:
-        case UIToolType_Managers:
+        case UIToolType_Extensions:
+        case UIToolType_Media:
+        case UIToolType_Network:
+        case UIToolType_Cloud:
+        case UIToolType_CloudConsole:
+        case UIToolType_Activities:
             return UIToolClass_Global;
         case UIToolType_Error:
         case UIToolType_Details:
@@ -299,13 +304,6 @@ UIToolClass UIToolStuff::castTypeToClass(UIToolType enmType)
         case UIToolType_VMActivity:
         case UIToolType_FileManager:
             return UIToolClass_Machine;
-        case UIToolType_Extensions:
-        case UIToolType_Media:
-        case UIToolType_Network:
-        case UIToolType_Cloud:
-        case UIToolType_CloudConsole:
-        case UIToolType_Activities:
-            return UIToolClass_Management;
         default:
             break;
     }

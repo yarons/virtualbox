@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 108834 2025-03-20 12:20:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.h 109225 2025-04-15 13:07:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -149,8 +149,6 @@ private slots:
         void sltHandleGlobalToolTypeChange();
         /** Handles signal about Machine Tool type change.  */
         void sltHandleMachineToolTypeChange();
-        /** Handles signal about Management Tool type change.  */
-        void sltHandleManagementToolTypeChange();
 
         /** Handles create medium request. */
         void sltCreateMedium();
