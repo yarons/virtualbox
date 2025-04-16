@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.h 109249 2025-04-16 12:15:52Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsItem.h 109253 2025-04-16 14:46:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class declaration.
  */
@@ -199,6 +199,16 @@ private:
         static void paintText(QPainter *pPainter, QPoint point,
                               const QFont &font, QPaintDevice *pPaintDevice,
                               const QString &strText);
+
+        /** Paints rounded button which moves light focus according to @a cursorPosition using passed @a pPainter.
+          * @param  rectangle  Brings the button's rectangle.
+          * @param  color      Brings the base color to work with.
+          * @param  iPadding   Brings the button rounded padding. */
+        static void paintRoundedButton(QPainter *pPainter,
+                                       const QRect &rectangle,
+                                       const QPointF &cursorPosition,
+                                       const QColor &color,
+                                       int iPadding);
     /** @} */
 
     /** @name Item stuff.
