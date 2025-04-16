@@ -1,4 +1,4 @@
-﻿/* $Id: UIToolsModel.cpp 109234 2025-04-15 15:00:30Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIToolsModel.cpp 109247 2025-04-16 12:08:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -433,6 +433,11 @@ void UIToolsModel::setCurrentItem(UIToolsItem *pItem)
         UIToolsItem *pOldCurrentItem = m_mapCurrentItems.value(enmClass);
         /* Set new item as current: */
         m_mapCurrentItems[enmClass] = pItem;
+
+        /* Rebuild whole layout if names hidden for machine tools: */
+        if (   !showItemNames()
+            && m_enmClass == UIToolClass_Machine)
+            updateLayout();
 
         /* Update old item (if any): */
         if (pOldCurrentItem)
