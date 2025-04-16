@@ -1,4 +1,4 @@
-/* $Id: GICR3.cpp 109223 2025-04-15 12:30:07Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICR3.cpp 109245 2025-04-16 10:42:46Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -315,6 +315,12 @@ static DECLCALLBACK(void) gicR3DbgInfoLpi(PVM pVM, PCDBGFINFOHLP pHlp, const cha
         pHlp->pfnPrintf(pHlp, "GIC LPI support is not enabled for the VM\n");
         return;
     }
+
+    PVMCPU pVCpu = VMMGetCpu(pVM);
+    if (!pVCpu)
+        pVCpu = pVM->apCpusR3[0];
+    PCGICCPU pGicCpu = VMCPU_TO_GICCPU(pVCpu);
+
     pHlp->pfnPrintf(pHlp, "GIC LPIs:\n");
     pHlp->pfnPrintf(pHlp, "  Enabled            = %RTbool\n", pGicDev->fEnableLpis);
 
@@ -359,7 +365,17 @@ static DECLCALLBACK(void) gicR3DbgInfoLpi(PVM pVM, PCDBGFINFOHLP pHlp, const cha
         }
     }
 
-    /** @todo Dump LPI pending registers. */
+    /* Pending LPI registers. */
+    pHlp->pfnPrintf(pHlp, "  LPI pending bitmap:\n");
+    for (uint32_t i = 0; i < RT_ELEMENTS(pGicCpu->bmLpiPending); i += 8)
+    {
+        pHlp->pfnPrintf(pHlp, "    [%3u..%-3u] = %08RX64 %08RX64 %08RX64 %08RX64 %08RX64 %08RX64 %08RX64 %08RX64\n",
+                              i,                                    i + 7,
+                              pGicCpu->bmLpiPending[i],      pGicCpu->bmLpiPending[i + 1],
+                              pGicCpu->bmLpiPending[i + 2],  pGicCpu->bmLpiPending[i + 3],
+                              pGicCpu->bmLpiPending[i + 4],  pGicCpu->bmLpiPending[i + 5],
+                              pGicCpu->bmLpiPending[i + 6],  pGicCpu->bmLpiPending[i + 7]);
+    }
 }
 
 
