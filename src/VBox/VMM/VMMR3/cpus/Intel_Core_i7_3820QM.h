@@ -1,4 +1,4 @@
-/* $Id: Intel_Core_i7_3820QM.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: Intel_Core_i7_3820QM.h 109259 2025-04-16 20:59:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPU database entry "Intel Core i7-3820QM".
  * Generated at 2013-12-04T12:54:32Z by VBoxCpuReport v4.3.51r91071 on darwin.amd64.
@@ -365,17 +365,20 @@ static CPUMMSRRANGE const g_aMsrRanges_Intel_Core_i7_3820QM[] =
 /**
  * Database entry for Intel(R) Core(TM) i7-3820QM CPU @ 2.70GHz.
  */
-static CPUMDBENTRY const g_Entry_Intel_Core_i7_3820QM =
+static CPUMDBENTRYX86 const g_Entry_Intel_Core_i7_3820QM =
 {
-    /*.pszName          = */ "Intel Core i7-3820QM",
-    /*.pszFullName      = */ "Intel(R) Core(TM) i7-3820QM CPU @ 2.70GHz",
-    /*.enmVendor        = */ CPUMCPUVENDOR_INTEL,
+    {
+        /*.pszName      = */ "Intel Core i7-3820QM",
+        /*.pszFullName  = */ "Intel(R) Core(TM) i7-3820QM CPU @ 2.70GHz",
+        /*.enmVendor    = */ CPUMCPUVENDOR_INTEL,
+        /*.enmMicroarch = */ kCpumMicroarch_Intel_Core7_IvyBridge,
+        /*.fFlags       = */ 0,
+        /*.enmEntryType = */ CPUMDBENTRYTYPE_X86,
+    },
     /*.uFamily          = */ 6,
     /*.uModel           = */ 58,
     /*.uStepping        = */ 9,
-    /*.enmMicroarch     = */ kCpumMicroarch_Intel_Core7_IvyBridge,
     /*.uScalableBusFreq = */ CPUM_SBUSFREQ_UNKNOWN,
-    /*.fFlags           = */ 0,
     /*.cMaxPhysAddrWidth= */ 36,
     /*.paCpuIdLeaves    = */ NULL_ALONE(g_aCpuIdLeaves_Intel_Core_i7_3820QM),
     /*.cCpuIdLeaves     = */ ZERO_ALONE(RT_ELEMENTS(g_aCpuIdLeaves_Intel_Core_i7_3820QM)),

@@ -1,4 +1,4 @@
-/* $Id: Intel_Xeon_X5482_3_20GHz.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: Intel_Xeon_X5482_3_20GHz.h 109259 2025-04-16 20:59:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPU database entry "Intel Xeon X5482 3.20GHz".
  * Generated at 2013-12-16T12:10:52Z by VBoxCpuReport v4.3.53r91299 on darwin.amd64.
@@ -232,17 +232,20 @@ static CPUMMSRRANGE const g_aMsrRanges_Intel_Xeon_X5482_3_20GHz[] =
 /**
  * Database entry for Intel(R) Xeon(R) CPU           X5482  @ 3.20GHz.
  */
-static CPUMDBENTRY const g_Entry_Intel_Xeon_X5482_3_20GHz =
+static CPUMDBENTRYX86 const g_Entry_Intel_Xeon_X5482_3_20GHz =
 {
-    /*.pszName          = */ "Intel Xeon X5482 3.20GHz",
-    /*.pszFullName      = */ "Intel(R) Xeon(R) CPU           X5482  @ 3.20GHz",
-    /*.enmVendor        = */ CPUMCPUVENDOR_INTEL,
+    {
+        /*.pszName      = */ "Intel Xeon X5482 3.20GHz",
+        /*.pszFullName  = */ "Intel(R) Xeon(R) CPU           X5482  @ 3.20GHz",
+        /*.enmVendor    = */ CPUMCPUVENDOR_INTEL,
+        /*.enmMicroarch = */ kCpumMicroarch_Intel_Core2_Penryn,
+        /*.fFlags       = */ 0,
+        /*.enmEntryType = */ CPUMDBENTRYTYPE_X86,
+    },
     /*.uFamily          = */ 6,
     /*.uModel           = */ 23,
     /*.uStepping        = */ 6,
-    /*.enmMicroarch     = */ kCpumMicroarch_Intel_Core2_Penryn,
     /*.uScalableBusFreq = */ CPUM_SBUSFREQ_400MHZ,
-    /*.fFlags           = */ 0,
     /*.cMaxPhysAddrWidth= */ 38,
     /*.fMxCsrMask       = */ 0xffff,
     /*.paCpuIdLeaves    = */ NULL_ALONE(g_aCpuIdLeaves_Intel_Xeon_X5482_3_20GHz),

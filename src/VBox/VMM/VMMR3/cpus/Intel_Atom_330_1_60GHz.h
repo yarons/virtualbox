@@ -1,4 +1,4 @@
-/* $Id: Intel_Atom_330_1_60GHz.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: Intel_Atom_330_1_60GHz.h 109259 2025-04-16 20:59:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPU database entry "Intel Atom 330 1.60GHz".
  * Generated at 2015-11-04T12:58:59Z by VBoxCpuReport v5.0.51r103818 on linux.amd64.
@@ -194,17 +194,20 @@ static CPUMMSRRANGE const g_aMsrRanges_Intel_Atom_330_1_60GHz[] =
 /**
  * Database entry for Intel(R) Atom(TM) CPU  330   @ 1.60GHz.
  */
-static CPUMDBENTRY const g_Entry_Intel_Atom_330_1_60GHz =
+static CPUMDBENTRYX86 const g_Entry_Intel_Atom_330_1_60GHz =
 {
-    /*.pszName          = */ "Intel Atom 330 1.60GHz",
-    /*.pszFullName      = */ "Intel(R) Atom(TM) CPU  330   @ 1.60GHz",
-    /*.enmVendor        = */ CPUMCPUVENDOR_INTEL,
+    {
+        /*.pszName      = */ "Intel Atom 330 1.60GHz",
+        /*.pszFullName  = */ "Intel(R) Atom(TM) CPU  330   @ 1.60GHz",
+        /*.enmVendor    = */ CPUMCPUVENDOR_INTEL,
+        /*.enmMicroarch = */ kCpumMicroarch_Intel_Atom_Bonnell,
+        /*.fFlags       = */ 0,
+        /*.enmEntryType = */ CPUMDBENTRYTYPE_X86,
+    },
     /*.uFamily          = */ 6,
     /*.uModel           = */ 28,
     /*.uStepping        = */ 2,
-    /*.enmMicroarch     = */ kCpumMicroarch_Intel_Atom_Bonnell,
     /*.uScalableBusFreq = */ CPUM_SBUSFREQ_133MHZ,
-    /*.fFlags           = */ 0,
     /*.cMaxPhysAddrWidth= */ 32,
     /*.fMxCsrMask       = */ 0xffff,
     /*.paCpuIdLeaves    = */ NULL_ALONE(g_aCpuIdLeaves_Intel_Atom_330_1_60GHz),

@@ -1,4 +1,4 @@
-/* $Id: AMD_Athlon_64_X2_Dual_Core_4200.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: AMD_Athlon_64_X2_Dual_Core_4200.h 109259 2025-04-16 20:59:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPU database entry "AMD Athlon 64 X2 Dual Core 4200+".
  * Generated at 2014-02-28T15:19:16Z by VBoxCpuReport v4.3.53r92578 on linux.amd64                                                        .
@@ -216,17 +216,20 @@ static CPUMMSRRANGE const g_aMsrRanges_AMD_Athlon_64_X2_Dual_Core_4200[] =
 /**
  * Database entry for AMD Athlon(tm) 64 X2 Dual Core Processor 4200+.
  */
-static CPUMDBENTRY const g_Entry_AMD_Athlon_64_X2_Dual_Core_4200 =
+static CPUMDBENTRYX86 const g_Entry_AMD_Athlon_64_X2_Dual_Core_4200 =
 {
-    /*.pszName          = */ "AMD Athlon 64 X2 Dual Core 4200+",
-    /*.pszFullName      = */ "AMD Athlon(tm) 64 X2 Dual Core Processor 4200+",
-    /*.enmVendor        = */ CPUMCPUVENDOR_AMD,
+    {
+        /*.pszName      = */ "AMD Athlon 64 X2 Dual Core 4200+",
+        /*.pszFullName  = */ "AMD Athlon(tm) 64 X2 Dual Core Processor 4200+",
+        /*.enmVendor    = */ CPUMCPUVENDOR_AMD,
+        /*.enmMicroarch = */ kCpumMicroarch_AMD_K8_90nm_AMDV,
+        /*.fFlags       = */ 0,
+        /*.enmEntryType = */ CPUMDBENTRYTYPE_X86,
+    },
     /*.uFamily          = */ 15,
     /*.uModel           = */ 75,
     /*.uStepping        = */ 2,
-    /*.enmMicroarch     = */ kCpumMicroarch_AMD_K8_90nm_AMDV,
     /*.uScalableBusFreq = */ CPUM_SBUSFREQ_UNKNOWN,
-    /*.fFlags           = */ 0,
     /*.cMaxPhysAddrWidth= */ 40,
     /*.fMxCsrMask       = */ 0xffff,
     /*.paCpuIdLeaves    = */ NULL_ALONE(g_aCpuIdLeaves_AMD_Athlon_64_X2_Dual_Core_4200),

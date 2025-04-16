@@ -1,4 +1,4 @@
-/* $Id: Intel_Core_i7_3960X.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: Intel_Core_i7_3960X.h 109259 2025-04-16 20:59:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPU database entry "Intel Core i7-3960X".
  * Generated at 2013-12-12T15:29:11Z by VBoxCpuReport v4.3.53r91237 on win.amd64.
@@ -353,17 +353,20 @@ static CPUMMSRRANGE const g_aMsrRanges_Intel_Core_i7_3960X[] =
 /**
  * Database entry for Intel(R) Core(TM) i7-3960X CPU @ 3.30GHz.
  */
-static CPUMDBENTRY const g_Entry_Intel_Core_i7_3960X =
+static CPUMDBENTRYX86 const g_Entry_Intel_Core_i7_3960X =
 {
-    /*.pszName          = */ "Intel Core i7-3960X",
-    /*.pszFullName      = */ "Intel(R) Core(TM) i7-3960X CPU @ 3.30GHz",
-    /*.enmVendor        = */ CPUMCPUVENDOR_INTEL,
+    {
+        /*.pszName      = */ "Intel Core i7-3960X",
+        /*.pszFullName  = */ "Intel(R) Core(TM) i7-3960X CPU @ 3.30GHz",
+        /*.enmVendor    = */ CPUMCPUVENDOR_INTEL,
+        /*.enmMicroarch = */ kCpumMicroarch_Intel_Core7_SandyBridge,
+        /*.fFlags       = */ 0,
+        /*.enmEntryType = */ CPUMDBENTRYTYPE_X86,
+    },
     /*.uFamily          = */ 6,
     /*.uModel           = */ 45,
     /*.uStepping        = */ 6,
-    /*.enmMicroarch     = */ kCpumMicroarch_Intel_Core7_SandyBridge,
     /*.uScalableBusFreq = */ CPUM_SBUSFREQ_100MHZ,
-    /*.fFlags           = */ 0,
     /*.cMaxPhysAddrWidth= */ 46,
     /*.fMxCsrMask       = */ 0xffff,
     /*.paCpuIdLeaves    = */ NULL_ALONE(g_aCpuIdLeaves_Intel_Core_i7_3960X),

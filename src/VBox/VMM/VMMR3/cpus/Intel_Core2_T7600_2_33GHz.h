@@ -1,4 +1,4 @@
-/* $Id: Intel_Core2_T7600_2_33GHz.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: Intel_Core2_T7600_2_33GHz.h 109259 2025-04-16 20:59:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPU database entry "Intel Core2 T7600 2.33GHz".
  * Generated at 2017-10-12T18:17:56Z by VBoxCpuReport v5.2.0_RC1r118339 on linux.x86.
@@ -208,17 +208,20 @@ static CPUMMSRRANGE const g_aMsrRanges_Intel_Core2_T7600_2_33GHz[] =
 /**
  * Database entry for Intel(R) Core(TM)2 CPU         T7600  @ 2.33GHz.
  */
-static CPUMDBENTRY const g_Entry_Intel_Core2_T7600_2_33GHz =
+static CPUMDBENTRYX86 const g_Entry_Intel_Core2_T7600_2_33GHz =
 {
-    /*.pszName          = */ "Intel Core2 T7600 2.33GHz",
-    /*.pszFullName      = */ "Intel(R) Core(TM)2 CPU         T7600  @ 2.33GHz",
-    /*.enmVendor        = */ CPUMCPUVENDOR_INTEL,
+    {
+        /*.pszName      = */ "Intel Core2 T7600 2.33GHz",
+        /*.pszFullName  = */ "Intel(R) Core(TM)2 CPU         T7600  @ 2.33GHz",
+        /*.enmVendor    = */ CPUMCPUVENDOR_INTEL,
+        /*.enmMicroarch = */ kCpumMicroarch_Intel_Core2_Merom,
+        /*.fFlags       = */ 0,
+        /*.enmEntryType = */ CPUMDBENTRYTYPE_X86,
+    },
     /*.uFamily          = */ 6,
     /*.uModel           = */ 15,
     /*.uStepping        = */ 6,
-    /*.enmMicroarch     = */ kCpumMicroarch_Intel_Core2_Merom,
     /*.uScalableBusFreq = */ CPUM_SBUSFREQ_167MHZ,
-    /*.fFlags           = */ 0,
     /*.cMaxPhysAddrWidth= */ 36,
     /*.fMxCsrMask       = */ 0x0000ffff,
     /*.paCpuIdLeaves    = */ NULL_ALONE(g_aCpuIdLeaves_Intel_Core2_T7600_2_33GHz),

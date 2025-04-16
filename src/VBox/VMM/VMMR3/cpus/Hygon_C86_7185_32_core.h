@@ -1,4 +1,4 @@
-/* $Id: Hygon_C86_7185_32_core.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: Hygon_C86_7185_32_core.h 109259 2025-04-16 20:59:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPU database entry "Hygon C86 7185 32-core".
  * Generated at 2019-09-25T11:07:33Z by VBoxCpuReport v6.1.0_BETA1r80830 on linux.amd64.
@@ -5208,17 +5208,20 @@ static CPUMMSRRANGE const g_aMsrRanges_Hygon_C86_7185_32_core[] =
 /**
  * Database entry for Hygon C86 7185 32-core Processor.
  */
-static CPUMDBENTRY const g_Entry_Hygon_C86_7185_32_core =
+static CPUMDBENTRYX86 const g_Entry_Hygon_C86_7185_32_core =
 {
-    /*.pszName          = */ "Hygon C86 7185 32-core",
-    /*.pszFullName      = */ "Hygon C86 7185 32-core Processor",
-    /*.enmVendor        = */ CPUMCPUVENDOR_HYGON,
+    {
+        /*.pszName      = */ "Hygon C86 7185 32-core",
+        /*.pszFullName  = */ "Hygon C86 7185 32-core Processor",
+        /*.enmVendor    = */ CPUMCPUVENDOR_HYGON,
+        /*.enmMicroarch = */ kCpumMicroarch_Hygon_Dhyana,
+        /*.fFlags       = */ 0,
+        /*.enmEntryType = */ CPUMDBENTRYTYPE_X86,
+    },
     /*.uFamily          = */ 24,
     /*.uModel           = */ 0,
     /*.uStepping        = */ 1,
-    /*.enmMicroarch     = */ kCpumMicroarch_Hygon_Dhyana,
     /*.uScalableBusFreq = */ CPUM_SBUSFREQ_UNKNOWN,
-    /*.fFlags           = */ 0,
     /*.cMaxPhysAddrWidth= */ 48,
     /*.fMxCsrMask       = */ 0x0002ffff,
     /*.paCpuIdLeaves    = */ NULL_ALONE(g_aCpuIdLeaves_Hygon_C86_7185_32_core),

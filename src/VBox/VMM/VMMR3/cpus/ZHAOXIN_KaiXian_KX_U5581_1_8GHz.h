@@ -1,4 +1,4 @@
-/* $Id: ZHAOXIN_KaiXian_KX_U5581_1_8GHz.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: ZHAOXIN_KaiXian_KX_U5581_1_8GHz.h 109259 2025-04-16 20:59:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPU database entry "ZHAOXIN KaiXian KX-U5581 1.8GHz"
  * Generated at 2019-01-15T08:37:25Z by VBoxCpuReport v5.2.22r126460 on linux.amd64.
@@ -401,17 +401,20 @@ static CPUMMSRRANGE const g_aMsrRanges_ZHAOXIN_KaiXian_KX_U5581_1_8GHz[] =
 /**
  * Database entry for ZHAOXIN KaiXian KX-U5581@1.8GHz.
  */
-static CPUMDBENTRY const g_Entry_ZHAOXIN_KaiXian_KX_U5581_1_8GHz =
+static CPUMDBENTRYX86 const g_Entry_ZHAOXIN_KaiXian_KX_U5581_1_8GHz =
 {
-    /*.pszName          = */ "ZHAOXIN KaiXian KX-U5581 1.8GHz",
-    /*.pszFullName      = */ "ZHAOXIN KaiXian KX-U5581@1.8GHz",
-    /*.enmVendor        = */ CPUMCPUVENDOR_SHANGHAI,
+    {
+        /*.pszName      = */ "ZHAOXIN KaiXian KX-U5581 1.8GHz",
+        /*.pszFullName  = */ "ZHAOXIN KaiXian KX-U5581@1.8GHz",
+        /*.enmVendor    = */ CPUMCPUVENDOR_SHANGHAI,
+        /*.enmMicroarch = */ kCpumMicroarch_Shanghai_Wudaokou,
+        /*.fFlags       = */ 0,
+        /*.enmEntryType = */ CPUMDBENTRYTYPE_X86,
+    },
     /*.uFamily          = */ 7,
     /*.uModel           = */ 11,
     /*.uStepping        = */ 5,
-    /*.enmMicroarch     = */ kCpumMicroarch_Shanghai_Wudaokou,
     /*.uScalableBusFreq = */ CPUM_SBUSFREQ_UNKNOWN,
-    /*.fFlags           = */ 0,
     /*.cMaxPhysAddrWidth= */ 40,
     /*.fMxCsrMask       = */ 0x0000ffff,
     /*.paCpuIdLeaves    = */ NULL_ALONE(g_aCpuIdLeaves_ZHAOXIN_KaiXian_KX_U5581_1_8GHz),

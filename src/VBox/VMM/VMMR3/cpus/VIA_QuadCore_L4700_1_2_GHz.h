@@ -1,4 +1,4 @@
-/* $Id: VIA_QuadCore_L4700_1_2_GHz.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VIA_QuadCore_L4700_1_2_GHz.h 109259 2025-04-16 20:59:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPU database entry "VIA QuadCore L4700 1.2+ GHz".
  * Generated at 2013-12-20T14:40:07Z by VBoxCpuReport v4.3.53r91411 on linux.amd64.
@@ -388,17 +388,20 @@ static CPUMMSRRANGE const g_aMsrRanges_VIA_QuadCore_L4700_1_2_GHz[] =
 /**
  * Database entry for VIA QuadCore L4700 @ 1.2+ GHz.
  */
-static CPUMDBENTRY const g_Entry_VIA_QuadCore_L4700_1_2_GHz =
+static CPUMDBENTRYX86 const g_Entry_VIA_QuadCore_L4700_1_2_GHz =
 {
-    /*.pszName          = */ "VIA QuadCore L4700 1.2+ GHz",
-    /*.pszFullName      = */ "VIA QuadCore L4700 @ 1.2+ GHz",
-    /*.enmVendor        = */ CPUMCPUVENDOR_VIA,
+    {
+        /*.pszName      = */ "VIA QuadCore L4700 1.2+ GHz",
+        /*.pszFullName  = */ "VIA QuadCore L4700 @ 1.2+ GHz",
+        /*.enmVendor    = */ CPUMCPUVENDOR_VIA,
+        /*.enmMicroarch = */ kCpumMicroarch_VIA_Isaiah,
+        /*.fFlags       = */ 0,
+        /*.enmEntryType = */ CPUMDBENTRYTYPE_X86,
+    },
     /*.uFamily          = */ 6,
     /*.uModel           = */ 15,
     /*.uStepping        = */ 13,
-    /*.enmMicroarch     = */ kCpumMicroarch_VIA_Isaiah,
     /*.uScalableBusFreq = */ CPUM_SBUSFREQ_267MHZ, /*??*/
-    /*.fFlags           = */ 0,
     /*.cMaxPhysAddrWidth= */ 36,
     /*.fMxCsrMask       = */ 0xffff,
     /*.paCpuIdLeaves    = */ NULL_ALONE(g_aCpuIdLeaves_VIA_QuadCore_L4700_1_2_GHz),

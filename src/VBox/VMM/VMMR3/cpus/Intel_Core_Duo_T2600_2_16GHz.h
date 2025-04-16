@@ -1,4 +1,4 @@
-/* $Id: Intel_Core_Duo_T2600_2_16GHz.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: Intel_Core_Duo_T2600_2_16GHz.h 109259 2025-04-16 20:59:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPU database entry "Intel Core Duo T2600 2.16GHz".
  * Generated at 2017-11-02T10:39:16Z by VBoxCpuReport v5.2.0_RC1r118339 on linux.x86.
@@ -208,18 +208,21 @@ static CPUMMSRRANGE const g_aMsrRanges_Intel_Core_Duo_T2600_2_16GHz[] =
 /**
  * Database entry for Intel(R) Core(TM) Duo CPU      T2600  @ 2.16GHz.
  */
-static CPUMDBENTRY const g_Entry_Intel_Core_Duo_T2600_2_16GHz =
+static CPUMDBENTRYX86 const g_Entry_Intel_Core_Duo_T2600_2_16GHz =
 {
-    /*.pszName          = */ "Intel Core Duo T2600 2.16GHz",
-    /*.pszFullName      = */ "Genuine Intel(R) CPU           T2600  @ 2.16GHz",
-//    /*.pszFullName      = */ "Intel(R) Core(TM) Duo CPU      T2600  @ 2.16GHz",
-    /*.enmVendor        = */ CPUMCPUVENDOR_INTEL,
+    {
+        /*.pszName      = */ "Intel Core Duo T2600 2.16GHz",
+        /*.pszFullName  = */ "Genuine Intel(R) CPU           T2600  @ 2.16GHz",
+    //    /*.pszFullName  = */ "Intel(R) Core(TM) Duo CPU      T2600  @ 2.16GHz",
+        /*.enmVendor    = */ CPUMCPUVENDOR_INTEL,
+        /*.enmMicroarch = */ kCpumMicroarch_Intel_Core_Yonah,
+        /*.fFlags       = */ 0,
+        /*.enmEntryType = */ CPUMDBENTRYTYPE_X86,
+    },
     /*.uFamily          = */ 6,
     /*.uModel           = */ 14,
     /*.uStepping        = */ 8,
-    /*.enmMicroarch     = */ kCpumMicroarch_Intel_Core_Yonah,
     /*.uScalableBusFreq = */ CPUM_SBUSFREQ_167MHZ,
-    /*.fFlags           = */ 0,
     /*.cMaxPhysAddrWidth= */ 32,
     /*.fMxCsrMask       = */ 0x0000ffff,
     /*.paCpuIdLeaves    = */ NULL_ALONE(g_aCpuIdLeaves_Intel_Core_Duo_T2600_2_16GHz),
