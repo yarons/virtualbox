@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 108350 2025-02-12 15:35:15Z knut.osmundsen@oracle.com $ */
+/* $Id: HMSVMR0.cpp 109243 2025-04-16 06:35:42Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -3410,8 +3410,7 @@ static void hmR0SvmTrpmTrapToPendingEvent(PVMCPUCC pVCpu)
     RTGCUINTPTR GCPtrFaultAddress;
     uint8_t     cbInstr;
 
-    int rc = TRPMQueryTrapAll(pVCpu, &uVector, &enmTrpmEvent, &uErrCode, &GCPtrFaultAddress, &cbInstr, NULL /* pfIcebp */);
-    AssertRC(rc);
+    uVector = TRPMGetTrapAll(pVCpu, &enmTrpmEvent, &uErrCode, &GCPtrFaultAddress, &cbInstr, NULL /* pfIcebp */);
 
     SVMEVENT Event;
     Event.u          = 0;
