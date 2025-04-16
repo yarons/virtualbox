@@ -1,4 +1,4 @@
-/* $Id: GICInternal.h 109245 2025-04-16 10:42:46Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICInternal.h 109251 2025-04-16 12:50:56Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -141,9 +141,7 @@ typedef struct GICDEV
     /** ITS device state. */
     GITSDEV                     Gits;
     /** LPI config table. */
-    uint8_t                     abLpiConfig[2048];
-    /** LPI pending bitmap. */
-    uint32_t                    bmLpiPending[64];
+    uint8_t                     abLpiConfig[4096];
     /** The LPI config table base register (GICR_PROPBASER). */
     RTUINT64U                   uLpiConfigBaseReg;
     /** The LPI pending table base register (GICR_PENDBASER). */
@@ -234,7 +232,7 @@ typedef struct GICCPU
     /** @name LPIs.
      * @{ */
     /** LPI pending bitmap. */
-    uint64_t                    bmLpiPending[32];
+    uint64_t                    bmLpiPending[64];
     /** @} */
 
     /** @name Statistics.

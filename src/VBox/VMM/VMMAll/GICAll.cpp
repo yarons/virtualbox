@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 109245 2025-04-16 10:42:46Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICAll.cpp 109251 2025-04-16 12:50:56Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - All Contexts.
  */
@@ -694,7 +694,7 @@ static void gicReDistReadLpiPendingBitmapFromMem(PPDMDEVINS pDevIns, PVMCPU pVCp
         /* Copy the LPI pending bitmap from guest memory to our internal cache. */
         RTGCPHYS const GCPhysLpiPendingBitmap = (pGicDev->uLpiPendingBaseReg.u & GIC_BF_REDIST_REG_PENDBASER_PHYS_ADDR_MASK)
                                               + GIC_INTID_RANGE_LPI_START;  /* Skip first 1KB (since LPI INTIDs start at 8192). */
-        uint32_t const cbLpiPendingBitmap     = sizeof(pGicDev->bmLpiPending);
+        uint32_t const cbLpiPendingBitmap     = sizeof(pGicCpu->bmLpiPending);
 
         /** @todo Try releasing and re-acquiring the device critical section here.
          *        Probably safe, but haven't verified this... */
@@ -3173,7 +3173,6 @@ static void gicInit(PPDMDEVINS pDevIns)
 
     /* LPIs. */
     RT_ZERO(pGicDev->abLpiConfig);
-    RT_ZERO(pGicDev->bmLpiPending);
     pGicDev->uLpiConfigBaseReg.u = 0;
     pGicDev->uLpiPendingBaseReg.u = 0;
     pGicDev->fEnableLpis = false;
