@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.cpp 109249 2025-04-16 12:15:52Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsItem.cpp 109250 2025-04-16 12:26:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class definition.
  */
@@ -588,7 +588,9 @@ void UIToolsItem::paintBackground(QPainter *pPainter, const QRect &rectangle) co
         /* Configure painter: */
         pPainter->setRenderHint(QPainter::Antialiasing, true);
         /* Acquire background color: */
-        const QColor backgroundColor = pal.color(QPalette::Active, QPalette::Window);
+        const QColor backgroundColor = model() && model()->view()
+                                     ? model()->view()->palette().color(QPalette::Active, QPalette::Base)
+                                     : pal.color(QPalette::Active, QPalette::Window);
 
         /* Prepare icon sub-rect: */
         QRect subRect;
