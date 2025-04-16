@@ -1,4 +1,4 @@
-/* $Id: DevPS2M.cpp 109233 2025-04-15 14:58:11Z michal.necasek@oracle.com $ */
+/* $Id: DevPS2M.cpp 109241 2025-04-16 02:27:01Z bela.lubkin@oracle.com $ */
 /** @file
  * PS2M - PS/2 auxiliary device (mouse) emulation.
  */
@@ -249,6 +249,7 @@ static void ps2mSetRate(PPS2M pThis, uint8_t rate)
     LogFlowFunc(("Sampling rate %u, throttle delay %u ms\n", pThis->u8SampleRate, pThis->uThrottleDelay));
 }
 
+#ifdef IN_RING3
 static void ps2mSetDefaults(PPS2M pThis)
 {
     LogFlowFunc(("Set mouse defaults\n"));
@@ -264,6 +265,7 @@ static void ps2mSetDefaults(PPS2M pThis)
     PS2Q_CLEAR(&pThis->evtQ);
     pThis->iAccumX = pThis->iAccumY = pThis->iAccumZ = pThis->iAccumW = pThis->fAccumB = 0;
 }
+#endif /* IN_RING3 */
 
 /* Handle the sampling rate 'knock' sequence which selects protocol. */
 static void ps2mRateProtocolKnock(PPS2M pThis, uint8_t rate)
