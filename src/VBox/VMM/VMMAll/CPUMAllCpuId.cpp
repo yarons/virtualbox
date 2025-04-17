@@ -1,4 +1,4 @@
-/* $Id: CPUMAllCpuId.cpp 109216 2025-04-14 21:46:20Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMAllCpuId.cpp 109271 2025-04-17 23:37:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU ID part, common bits.
  */
@@ -1228,7 +1228,13 @@ VMMDECL(const char *) CPUMCpuVendorName(CPUMCPUVENDOR enmVendor)
         case CPUMCPUVENDOR_CYRIX:       return "CYRIX";
         case CPUMCPUVENDOR_SHANGHAI:    return "SHANGHAI";
         case CPUMCPUVENDOR_HYGON:       return "HYGON";
-        case CPUMCPUVENDOR_APPLE:       return "APPLE";
+
+        case CPUMCPUVENDOR_ARM:         return "ARM";
+        case CPUMCPUVENDOR_BROADCOM:    return "Broadcom";
+        case CPUMCPUVENDOR_QUALCOMM:    return "Qualecomm";
+        case CPUMCPUVENDOR_APPLE:       return "Apple";
+        case CPUMCPUVENDOR_AMPERE:      return "Ampere";
+
         case CPUMCPUVENDOR_UNKNOWN:     return "UNKNOWN";
 
         case CPUMCPUVENDOR_INVALID:

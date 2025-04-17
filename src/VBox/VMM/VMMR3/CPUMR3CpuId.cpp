@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 107956 2025-01-18 23:59:26Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMR3CpuId.cpp 109271 2025-04-17 23:37:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -107,7 +107,7 @@ static bool cpumR3CpuIdGetLeafLegacy(PCPUMCPUIDLEAF paLeaves, uint32_t cLeaves, 
     }
     return false;
 }
-#endif /* IN_VBOX_CPU_REPORT */
+#endif /* !IN_VBOX_CPU_REPORT */
 
 
 /**

@@ -1,4 +1,4 @@
-/* $Id: CPUMR3Db.cpp 109259 2025-04-16 20:59:36Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMR3Db.cpp 109271 2025-04-17 23:37:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU database part.
  */
@@ -36,6 +36,9 @@
 #include <VBox/vmm/mm.h>
 
 #include <VBox/err.h>
+#if defined(VBOX_VMM_TARGET_ARMV8) || defined(RT_ARCH_ARM64)
+# include <iprt/armv8.h>
+#endif
 #if !defined(RT_ARCH_ARM64)
 # include <iprt/asm-amd64-x86.h>
 #endif
