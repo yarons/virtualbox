@@ -1,4 +1,4 @@
-/* $Id: GITSInternal.h 109193 2025-04-11 12:19:36Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GITSInternal.h 109261 2025-04-17 09:10:49Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GITS - Generic Interrupt Controller Interrupt Translation Service - Internal.
  */
@@ -161,7 +161,9 @@ typedef struct GITSDEV
      * @{
      */
     /** The collection table. */
-    uint32_t                auCtes[256];
+    uint32_t                auCtes[255];
+    /** Padding. */
+    uint32_t                auPadding0;
     /** @} */
 
     /** @name Configurables.

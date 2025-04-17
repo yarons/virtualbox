@@ -1,4 +1,4 @@
-/* $Id: GICR3.cpp 109251 2025-04-16 12:50:56Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICR3.cpp 109261 2025-04-17 09:10:49Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -340,7 +340,7 @@ static DECLCALLBACK(void) gicR3DbgInfoLpi(PVM pVM, PCDBGFINFOHLP pHlp, const cha
         uint64_t const uReg   = pGicDev->uLpiConfigBaseReg.u;
         uint8_t const cIdBits = RT_BF_GET(uReg, GIC_BF_REDIST_REG_PROPBASER_ID_BITS);
         pHlp->pfnPrintf(pHlp, "  uLpiConfigBaseReg  = %#RX64\n", uReg);
-        pHlp->pfnPrintf(pHlp, "    ID bits            = %#x (%u bits)\n", cIdBits, cIdBits);
+        pHlp->pfnPrintf(pHlp, "    ID bits            = %#x (%u bits)\n", cIdBits, cIdBits + 1);
         pHlp->pfnPrintf(pHlp, "    Inner cache        = %#x\n",    RT_BF_GET(uReg, GIC_BF_REDIST_REG_PROPBASER_INNER_CACHE));
         pHlp->pfnPrintf(pHlp, "    Shareability       = %#x\n",    RT_BF_GET(uReg, GIC_BF_REDIST_REG_PROPBASER_SHAREABILITY));
         pHlp->pfnPrintf(pHlp, "    Phys addr          = %#RX64\n", uReg & GIC_BF_REDIST_REG_PROPBASER_PHYS_ADDR_MASK);
