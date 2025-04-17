@@ -1,4 +1,4 @@
-/* $Id: GITSAll.cpp 109261 2025-04-17 09:10:49Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GITSAll.cpp 109262 2025-04-17 10:19:52Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GITS - GIC Interrupt Translation Service (ITS) - All Contexts.
  */
@@ -215,6 +215,35 @@ DECL_FORCE_INLINE(const char *) gitsGetDiagDescription(GITSDIAG enmDiag)
     if (enmDiag < RT_ELEMENTS(g_apszGitsDiagDesc))
         return g_apszGitsDiagDesc[enmDiag];
     return "<Unknown>";
+}
+
+
+static RTGCPHYS gitsGetBaseRegPhysAddr(uint64_t uGitsBaseReg)
+{
+    /* Mask for physical address bits [47:12]. */
+    static uint64_t const s_auPhysAddrLoMasks[] =
+    {
+        UINT64_C(0x0000fffffffff000), /* 4K  bits[47:12] */
+        UINT64_C(0x0000ffffffffe000), /* 16K bits[47:13] */
+        UINT64_C(0x0000ffffffff0000), /* 64K bits[47:16] */
+        UINT64_C(0x0000ffffffff0000)  /* 64K bits[47:16] */
+    };
+
+    /* Mask for physical address bits [51:48]. */
+    static uint64_t const s_auPhysAddrHiMasks[] =
+    {
+        UINT64_C(0x0),                /* 4K  bits[51:48] = 0 */
+        UINT64_C(0x0),                /* 16K bits[51:48] = 0 */
+        UINT64_C(0x000000000000f000), /* 64K bits[51:48] = bits[15:12] */
+        UINT64_C(0x000000000000f000)  /* 64K bits[51:48] = bits[15:12] */
+    };
+    AssertCompile(RT_ELEMENTS(s_auPhysAddrLoMasks) == RT_ELEMENTS(s_auPhysAddrHiMasks));
+
+    uint8_t const idxPageSize = RT_BF_GET(uGitsBaseReg, GITS_BF_CTRL_REG_BASER_PAGESIZE);
+    Assert(idxPageSize < RT_ELEMENTS(s_auPhysAddrLoMasks));
+    RTGCPHYS const GCPhys =  (uGitsBaseReg & s_auPhysAddrLoMasks[idxPageSize])
+                          | ((uGitsBaseReg & s_auPhysAddrHiMasks[idxPageSize]) << (48 - 12));
+    return GCPhys;
 }
 
 
@@ -529,14 +558,15 @@ DECL_HIDDEN_CALLBACK(void) gitsR3DbgInfo(PCGITSDEV pGitsDev, PCDBGFINFOHLP pHlp)
         pHlp->pfnPrintf(pHlp, "  GITS_BASER[%u]      = %#RX64\n", i, uReg);
         pHlp->pfnPrintf(pHlp, "    Size               = %#x (pages=%u total=%.Rhcb)\n", uSize, cPages, cbItsTable);
         pHlp->pfnPrintf(pHlp, "    Page size          = %#x (%.Rhcb)\n", idxPageSize, s_acbPageSize[idxPageSize]);
-        pHlp->pfnPrintf(pHlp, "    Shareability       = %#x\n", RT_BF_GET(uReg, GITS_BF_CTRL_REG_BASER_SHAREABILITY));
-        pHlp->pfnPrintf(pHlp, "    Phys addr          = %#RX64\n", uReg & GITS_BF_CTRL_REG_BASER_PHYS_ADDR_MASK);
+        pHlp->pfnPrintf(pHlp, "    Shareability       = %#x\n",      RT_BF_GET(uReg, GITS_BF_CTRL_REG_BASER_SHAREABILITY));
+        pHlp->pfnPrintf(pHlp, "    Phys addr          = %#RX64 (addr=%#RX64)\n", uReg & GITS_BF_CTRL_REG_BASER_PHYS_ADDR_MASK,
+                                                                                 gitsGetBaseRegPhysAddr(uReg));
         pHlp->pfnPrintf(pHlp, "    Entry size         = %#x (%u bytes)\n", uEntrySize, uEntrySize > 0 ? uEntrySize + 1 : 0);
-        pHlp->pfnPrintf(pHlp, "    Outer cache        = %#x\n", RT_BF_GET(uReg, GITS_BF_CTRL_REG_BASER_OUTER_CACHE));
+        pHlp->pfnPrintf(pHlp, "    Outer cache        = %#x\n",      RT_BF_GET(uReg, GITS_BF_CTRL_REG_BASER_OUTER_CACHE));
         pHlp->pfnPrintf(pHlp, "    Type               = %#x (%s)\n", idxType, pszType);
-        pHlp->pfnPrintf(pHlp, "    Inner cache        = %#x\n", RT_BF_GET(uReg, GITS_BF_CTRL_REG_BASER_INNER_CACHE));
-        pHlp->pfnPrintf(pHlp, "    Indirect           = %RTbool\n", RT_BOOL(RT_BF_GET(uReg, GITS_BF_CTRL_REG_BASER_INDIRECT)));
-        pHlp->pfnPrintf(pHlp, "    Valid              = %RTbool\n", RT_BOOL(RT_BF_GET(uReg, GITS_BF_CTRL_REG_BASER_VALID)));
+        pHlp->pfnPrintf(pHlp, "    Inner cache        = %#x\n",      RT_BF_GET(uReg, GITS_BF_CTRL_REG_BASER_INNER_CACHE));
+        pHlp->pfnPrintf(pHlp, "    Indirect           = %RTbool\n",  RT_BOOL(RT_BF_GET(uReg, GITS_BF_CTRL_REG_BASER_INDIRECT)));
+        pHlp->pfnPrintf(pHlp, "    Valid              = %RTbool\n",  RT_BOOL(RT_BF_GET(uReg, GITS_BF_CTRL_REG_BASER_VALID)));
     }
 
     /* GITS_CBASER. */
