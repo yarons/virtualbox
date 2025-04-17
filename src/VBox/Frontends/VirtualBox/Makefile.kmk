@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 109225 2025-04-15 13:07:15Z sergey.dubov@oracle.com $
+# $Id: Makefile.kmk 109270 2025-04-17 15:57:03Z sergey.dubov@oracle.com $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -979,6 +979,7 @@ VirtualBox_QT_MOCSRCS = \
 	src/manager/UIVirtualBoxManager.cpp \
 	src/manager/UIVirtualMachineItemCloud.cpp \
 	src/manager/chooser/UIChooserAbstractModel.cpp \
+	src/manager/tools/UIToolsItem.cpp \
 	src/manager/tools/UIToolsModel.cpp \
 	src/activity/overview/UIVMActivityOverviewWidget.cpp \
 	src/activity/overview/UIVMActivityOverviewModelView.cpp \
