@@ -1,4 +1,4 @@
-/* $Id: GICInternal.h 109251 2025-04-16 12:50:56Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICInternal.h 109272 2025-04-18 08:56:15Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -68,6 +68,20 @@ extern const PDMGICBACKEND g_GicKvmBackend;
 #elif defined(IN_RING0)
 # error "Not implemented!"
 #endif
+
+/** Acquire the device critical section. */
+#define GIC_CRIT_SECT_ENTER(a_pDevIns) \
+    do \
+    { \
+        int const rcLock = PDMDevHlpCritSectEnter(pDevIns, pDevIns->pCritSectRoR3, VINF_SUCCESS); \
+        PDM_CRITSECT_RELEASE_ASSERT_RC_DEV(pDevIns, pDevIns->pCritSectRoR3, rcLock); \
+    } while(0)
+
+/** Release the device critical section. */
+#define GIC_CRIT_SECT_LEAVE(a_pDevIns)          PDMDevHlpCritSectLeave((a_pDevIns), (a_pDevIns)->CTX_SUFF(pCritSectRo))
+
+/** Returns whether the critical section is held. */
+#define GIC_CRIT_SECT_IS_OWNER(a_pDevIns)       PDMDevHlpCritSectIsOwner((a_pDevIns), (a_pDevIns)->CTX_SUFF(pCritSectRo))
 
 /**
  * GIC PDM instance data (per-VM).
@@ -278,6 +292,8 @@ DECL_HIDDEN_CALLBACK(VBOXSTRICTRC) gicReDistMmioRead(PPDMDEVINS pDevIns, void *p
 DECL_HIDDEN_CALLBACK(VBOXSTRICTRC) gicReDistMmioWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS off, void const *pv, unsigned cb);
 DECL_HIDDEN_CALLBACK(VBOXSTRICTRC) gicItsMmioWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS off, void const *pv, unsigned cb);
 DECL_HIDDEN_CALLBACK(VBOXSTRICTRC) gicItsMmioRead(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS off, void *pv, unsigned cb);
+
+DECLHIDDEN(void)                   gicDistReadLpiConfigTableFromMem(PPDMDEVINS pDevIns);
 
 DECLHIDDEN(void)                   gicResetCpu(PPDMDEVINS pDevIns, PVMCPUCC pVCpu);
 DECLHIDDEN(void)                   gicReset(PPDMDEVINS pDevIns);
