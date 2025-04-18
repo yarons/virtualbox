@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.cpp 109239 2025-04-15 16:51:20Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsView.cpp 109275 2025-04-18 13:26:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class implementation.
  */
@@ -27,7 +27,6 @@
 
 /* Qt includes: */
 #include <QAccessibleWidget>
-#include <QApplication>
 
 /* GUI includes: */
 #include "UICommon.h"

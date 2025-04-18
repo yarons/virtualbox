@@ -1,4 +1,4 @@
-/* $Id: UIMachineToolsWidget.cpp 109238 2025-04-15 16:28:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineToolsWidget.cpp 109275 2025-04-18 13:26:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineToolsWidget class implementation.
  */
@@ -436,7 +436,7 @@ void UIMachineToolsWidget::prepareWidgets()
                     pSubLayout->setSpacing(0);
 
                     /* Create tool-menu: */
-                    m_pMenu = new UITools(this, UIToolClass_Machine, actionPool());
+                    m_pMenu = new UITools(this, UIToolClass_Machine);
                     if (toolMenu())
                     {
                         /* Add into layout: */

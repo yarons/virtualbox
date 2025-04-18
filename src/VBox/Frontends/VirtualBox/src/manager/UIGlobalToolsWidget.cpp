@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsWidget.cpp 109238 2025-04-15 16:28:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsWidget.cpp 109275 2025-04-18 13:26:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsWidget class implementation.
  */
@@ -267,7 +267,7 @@ void UIGlobalToolsWidget::prepareWidgets()
         m_pLayout->setSpacing(0);
 
         /* Create tool-menu: */
-        m_pMenu = new UITools(this, UIToolClass_Global, actionPool());
+        m_pMenu = new UITools(this, UIToolClass_Global);
         if (toolMenu())
         {
             /* Add into layout: */
