@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromWin32.cpp 106322 2024-10-15 13:06:30Z andreas.loeffler@oracle.com $ */
+/* $Id: RTErrConvertFromWin32.cpp 109276 2025-04-19 22:23:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Convert win32 error codes to iprt status codes.
  */
@@ -216,6 +216,7 @@ RTR3DECL(int)  RTErrConvertFromWin32(unsigned uNativeCode)
         case ERROR_INVALID_IMAGE_HASH:      return VERR_LDR_IMAGE_HASH;
         case ERROR_UNRECOGNIZED_VOLUME:     return VERR_MEDIA_NOT_RECOGNIZED;
         case ERROR_ELEVATION_REQUIRED:      return VERR_PROC_ELEVATION_REQUIRED;
+        case ERROR_SYSTEM_INTEGRITY_POLICY_VIOLATION:   return VERR_SYSTEM_INTEGRITY_POLICY_VIOLATION;
 
         case ERROR_ENVVAR_NOT_FOUND:        return VERR_ENV_VAR_NOT_FOUND;
 
