@@ -1,4 +1,4 @@
-# $Id: Config.kmk 109116 2025-04-08 18:09:19Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 109279 2025-04-20 00:29:47Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -5584,7 +5584,7 @@ ifeq ($(VBOX_LDR_FMT),pe)
  ifdef VBOX_WITH_DTRACE_R0
   TEMPLATE_VBoxR0_LDFLAGS          += -Merge:VTGPrLc.Data=VTGPrLc.Begin -Merge:VTGPrLc.End=VTGPrLc.Begin -Merge:VTGPrLc.Begin=VTGObj
  endif
- ifdef VBOX_SIGNING_MODE
+ if defined(VBOX_SIGNING_MODE) && !defined(VBOX_WITHOUT_DRIVER_INTEGRITY_CHECK)
   TEMPLATE_VBoxR0_LDFLAGS          += -IntegrityCheck
  endif
  if "$(VBOX_VCC_TOOL_STEM)" >= "VCC142" # Don't waste space on x86/amd64-on-arm emulation optimizations.
@@ -5796,7 +5796,7 @@ ifeq ($(KBUILD_TARGET),win)
  ifdef VBOX_WITH_DTRACE_R0DRV
   TEMPLATE_VBoxR0Drv_LDFLAGS          += -Merge:VTGPrLc.Data=VTGPrLc.Begin -Merge:VTGPrLc.End=VTGPrLc.Begin -Merge:VTGPrLc.Begin=VTGObj
  endif
- ifdef VBOX_SIGNING_MODE
+ if defined(VBOX_SIGNING_MODE) && !defined(VBOX_WITHOUT_DRIVER_INTEGRITY_CHECK) ## @todo probably VBOX_SIGNING_MODE != test is appropriate here...
   TEMPLATE_VBoxR0Drv_LDFLAGS          += -IntegrityCheck
  endif
  if "$(VBOX_VCC_TOOL_STEM)" >= "VCC142" # Don't waste space on x86/amd64-on-arm emulation optimizations.
@@ -6889,6 +6889,15 @@ else
  else ifeq ($(KBUILD_TARGET),solaris)
   TEMPLATE_VBoxR3Static_LATE_LIBS  += kstat
  endif
+endif
+
+#
+# A test signed version of VBoxR3Static for VBoxCpuReport on win.arm.
+#
+TEMPLATE_VBoxR3StaticSignedExe           := VBoxR3Static with test signing
+TEMPLATE_VBoxR3StaticSignedExe_EXTENDS   := VBoxR3Static
+if "$(KBUILD_TARGET)" == "win" && "$(VBOX_SIGNING_MODE)" == "test"
+ TEMPLATE_VBoxR3StaticSignedExe_POST_CMDS = $(VBOX_UTF8_MANIFEST_CMDS)$(NLTAB)$(call VBOX_SIGN_IMAGE_FN,$(out),,2)
 endif
 
 #
@@ -9384,7 +9393,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 109116 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 109279 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
