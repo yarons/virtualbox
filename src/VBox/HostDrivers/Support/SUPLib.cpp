@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 109265 2025-04-17 12:33:52Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPLib.cpp 109277 2025-04-20 00:27:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -2344,7 +2344,7 @@ SUPR3DECL(int) SUPR3ArmQuerySysRegs(uint32_t fFlags, uint32_t cMaxRegs,
     if (pcRegsAvailable)
         *pcRegsAvailable = 0;
     AssertReturn(cMaxRegs < _64K, VERR_OUT_OF_RANGE);
-    AssertReturn(!(fFlags & SUP_ARM_SYS_REG_F_VALID_MASK), VERR_INVALID_FLAGS);
+    AssertReturn(!(fFlags & ~SUP_ARM_SYS_REG_F_VALID_MASK), VERR_INVALID_FLAGS);
 
     /*
      * Allocate temporary request.
