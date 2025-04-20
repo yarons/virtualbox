@@ -1,4 +1,4 @@
-/* $Id: VBoxCpuReport.h 109271 2025-04-17 23:37:08Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxCpuReport.h 109281 2025-04-20 22:07:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxCpuReport internal header file.
  */
@@ -67,6 +67,7 @@ extern void vbCpuRepDebug(const char *pszMsg, ...);
 extern void vbCpuRepFileHdr(const char *pszName, const char *pszNameC);
 extern void vbCpuRepPrintf(const char *pszMsg, ...);
 extern const char *vbCpuVendorToString(CPUMCPUVENDOR enmCpuVendor);
+extern const char *vbGetCoreTypeToString(CPUMCORETYPE enmCoreType);
 
 extern int  produceCpuReport(void); /* arch specific */
 
