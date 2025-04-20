@@ -1,4 +1,4 @@
-/* $Id: SUPDrvIOC.h 109265 2025-04-17 12:33:52Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrvIOC.h 109280 2025-04-20 02:48:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Driver - IOCtl definitions.
  */
@@ -1566,6 +1566,8 @@ typedef struct SUPARMGETSYSREGS
         /** Inputs.  */
         struct
         {
+            /** Which CPU to query system registers for. */
+            RTCPUID                 idCpu;
             /** SUP_ARM_SYS_REG_F_XXX */
             uint32_t                fFlags;
         } In;
