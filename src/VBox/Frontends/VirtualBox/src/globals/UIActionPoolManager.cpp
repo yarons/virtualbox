@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 109291 2025-04-21 13:33:16Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPoolManager.cpp 109292 2025-04-21 13:34:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -589,10 +589,9 @@ protected:
     /** Handles translation event. */
     virtual void retranslateUi() RT_OVERRIDE
     {
-        /// @todo replace that one with separate "Add" before 6.2
-        setIconText(QApplication::translate("UIActionPool", "&Add...").remove('.'));
-        setName(QApplication::translate("UIActionPool", "&Add Machine..."));
-        setStatusTip(QApplication::translate("UIActionPool", "Add existing virtual machine"));
+        setIconText(QApplication::translate("UIActionPool", "&Open"));
+        setName(QApplication::translate("UIActionPool", "&Open Machine..."));
+        setStatusTip(QApplication::translate("UIActionPool", "Open existing virtual machine"));
         setToolTip(simplifyText(text()) + (shortcut().isEmpty() ? QString() : QString(" (%1)").arg(shortcut().toString())));
     }
 };
@@ -771,8 +770,8 @@ protected:
     /** Handles translation event. */
     virtual void retranslateUi() RT_OVERRIDE
     {
-        setName(QApplication::translate("UIActionPool", "&Add..."));
-        setStatusTip(QApplication::translate("UIActionPool", "Add existing virtual machine"));
+        setName(QApplication::translate("UIActionPool", "&Open..."));
+        setStatusTip(QApplication::translate("UIActionPool", "Open existing virtual machine"));
         setToolTip(simplifyText(text()) + (shortcut().isEmpty() ? QString() : QString(" (%1)").arg(shortcut().toString())));
     }
 };
