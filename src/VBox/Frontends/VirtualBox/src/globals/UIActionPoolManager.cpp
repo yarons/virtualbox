@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 109292 2025-04-21 13:34:40Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPoolManager.cpp 109294 2025-04-21 14:50:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -1103,8 +1103,8 @@ protected:
     /** Handles translation event. */
     virtual void retranslateUi() RT_OVERRIDE
     {
-        setName(QApplication::translate("UIActionPool", "&Normal Start"));
-        setStatusTip(QApplication::translate("UIActionPool", "Start selected virtual machines"));
+        setName(QApplication::translate("UIActionPool", "Start with &GUI"));
+        setStatusTip(QApplication::translate("UIActionPool", "Start selected virtual machines with GUI"));
     }
 };
 
@@ -1131,7 +1131,7 @@ protected:
     /** Handles translation event. */
     virtual void retranslateUi() RT_OVERRIDE
     {
-        setName(QApplication::translate("UIActionPool", "&Headless Start"));
+        setName(QApplication::translate("UIActionPool", "Start with&out GUI"));
         setStatusTip(QApplication::translate("UIActionPool", "Start selected virtual machines in the background"));
     }
 };
@@ -1159,8 +1159,8 @@ protected:
     /** Handles translation event. */
     virtual void retranslateUi() RT_OVERRIDE
     {
-        setName(QApplication::translate("UIActionPool", "&Detachable Start"));
-        setStatusTip(QApplication::translate("UIActionPool", "Start selected virtual machines with option of continuing in background"));
+        setName(QApplication::translate("UIActionPool", "Start with &detachable GUI"));
+        setStatusTip(QApplication::translate("UIActionPool", "Start selected virtual machines with option of continuing in the background"));
     }
 };
 
