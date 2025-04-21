@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 108543 2025-02-25 11:12:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPoolRuntime.cpp 109289 2025-04-21 12:47:17Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -522,8 +522,8 @@ protected:
     /** Handles translation event. */
     virtual void retranslateUi() RT_OVERRIDE
     {
-        setName(QApplication::translate("UIActionPool", "ACPI Sh&utdown"));
-        setStatusTip(QApplication::translate("UIActionPool", "Send the ACPI Shutdown signal to the virtual machine"));
+        setName(QApplication::translate("UIActionPool", "Sh&ut Down"));
+        setStatusTip(QApplication::translate("UIActionPool", "Send the ACPI shutdown signal to the virtual machine"));
     }
 };
 

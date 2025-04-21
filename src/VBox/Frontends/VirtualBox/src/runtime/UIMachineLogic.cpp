@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 106559 2024-10-21 11:20:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 109289 2025-04-21 12:47:17Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1724,7 +1724,7 @@ void UIMachineLogic::sltShutdown()
         return;
     }
 
-    LogRel(("GUI: User requested to shutdown VM.\n"));
+    LogRel(("GUI: User requested to shut down VM.\n"));
     uimachine()->shutdown();
 }
 

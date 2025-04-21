@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 106350 2024-10-16 10:03:28Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineWindow.cpp 109289 2025-04-21 12:47:17Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -520,7 +520,7 @@ void UIMachineWindow::closeEvent(QCloseEvent *pCloseEvent)
         case MachineCloseAction_Shutdown:
         {
             /* Shutdown VM: */
-            LogRel(("GUI: Request for close-action to shutdown VM.\n"));
+            LogRel(("GUI: Request for close-action to shut down VM.\n"));
             uimachine()->shutdown();
             break;
         }
