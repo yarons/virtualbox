@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 109225 2025-04-15 13:07:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 109290 2025-04-21 13:09:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -3238,7 +3238,7 @@ void UIVirtualBoxManager::updateMenuGroupMoveToGroup(QMenu *pMenu)
         if (strVisibleGroupName.startsWith('/'))
             strVisibleGroupName.remove(0, 1);
         if (strVisibleGroupName.isEmpty())
-            strVisibleGroupName = QApplication::translate("UIActionPool", "[Root]", "group");
+            strVisibleGroupName = QApplication::translate("UIActionPool", "Root group");
         QAction *pAction = pMenu->addAction(strVisibleGroupName, this, &UIVirtualBoxManager::sltPerformMachineMoveToSpecificGroup);
         pAction->setProperty("actual_group_name", strGroupName);
     }
@@ -3295,7 +3295,7 @@ void UIVirtualBoxManager::updateMenuMachineMoveToGroup(QMenu *pMenu)
         if (strVisibleGroupName.startsWith('/'))
             strVisibleGroupName.remove(0, 1);
         if (strVisibleGroupName.isEmpty())
-            strVisibleGroupName = QApplication::translate("UIActionPool", "[Root]", "group");
+            strVisibleGroupName = QApplication::translate("UIActionPool", "Root group");
         QAction *pAction = pMenu->addAction(strVisibleGroupName, this, &UIVirtualBoxManager::sltPerformMachineMoveToSpecificGroup);
         pAction->setProperty("actual_group_name", strGroupName);
     }
