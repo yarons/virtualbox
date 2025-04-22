@@ -1,7 +1,7 @@
 #! /bin/sh
-# $Id: vboxadd.sh 109053 2025-04-03 19:28:34Z vadim.galitsyn@oracle.com $
+# $Id: vboxadd.sh 109302 2025-04-22 10:49:38Z vadim.galitsyn@oracle.com $
 ## @file
-# Linux Additions kernel module init script ($Revision: 109053 $)
+# Linux Additions kernel module init script ($Revision: 109302 $)
 #
 
 #
@@ -536,9 +536,10 @@ setup_modules()
     export KERN_VER
     info "Building the modules for kernel $KERN_VER."
 
-    # Prepend PATH for building UEK7 on OL8 distribution.
+    # Prepend PATH for building UEK on OL8/9 distributions.
     case "$KERN_VER" in
         5.15.0-*.el8uek*) PATH="/opt/rh/gcc-toolset-11/root/usr/bin:$PATH";;
+        6.12.0-*.el9uek*)PATH="/opt/rh/gcc-toolset-14/root/usr/bin:$PATH";;
     esac
 
     # Detect if kernel was built with clang.
