@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 107477 2025-01-06 14:58:08Z andreas.loeffler@oracle.com $ */
+/* $Id: ConsoleVRDPServer.cpp 109297 2025-04-22 08:32:28Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBox Console VRDP helper class.
  */
@@ -3376,14 +3376,6 @@ DECLCALLBACK(int) ConsoleVRDPServer::ClipboardServiceExtension(void *pvExtension
                                              0,
                                              NULL);
             }
-        } break;
-
-        case VBOX_CLIPBOARD_EXT_FN_FORMAT_REPORT_TO_GUEST:
-        {
-            /* We need to handle this case here, to act as a no-op.
-             *
-             * If not being handled, this function otherwise would return VERR_NOT_SUPPORTED,
-             * which in turn then will invoke the host backend, messing up the VRDE clipboard handling. */
         } break;
 
         case VBOX_CLIPBOARD_EXT_FN_DATA_READ:
