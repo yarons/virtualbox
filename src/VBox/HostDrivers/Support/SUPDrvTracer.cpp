@@ -1,4 +1,4 @@
-/* $Id: SUPDrvTracer.cpp 109298 2025-04-22 09:39:50Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrvTracer.cpp 109299 2025-04-22 09:52:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Tracer Interface.
  */
@@ -1519,8 +1519,7 @@ __asm__("\
 ");
 # elif defined(RT_ARCH_X86)
 __asm__("\
-            adr    x16, g_pfnSupdrvProbeFireKernel                      \n\
-            adr    x16, g_pfnSupdrvProbeFireKernel                      \n\
+            movl    g_pfnSupdrvProbeFireKernel, %eax                    \n\
             "
 #  if defined(RT_OS_LINUX)
 #   if RTLNX_VER_MIN(4,15,10)
