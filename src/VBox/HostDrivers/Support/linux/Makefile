@@ -1,4 +1,4 @@
-# $Id: Makefile 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile 109298 2025-04-22 09:39:50Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the VirtualBox Linux Host Driver.
 #
@@ -140,10 +140,17 @@ VBOXMOD_OBJS += \
 	generic/errvars-generic.o \
 	generic/mppresent-generic.o \
 	generic/uuid-generic.o \
-	VBox/log-vbox.o \
-	VBox/RTLogWriteVmm-amd64-x86.o
+	VBox/log-vbox.o
  ifeq ($(VBOX_KBUILD_TARGET_ARCH),amd64)
-VBOXMOD_OBJS += common/alloc/heapsimple.o
+VBOXMOD_OBJS += \
+	VBox/RTLogWriteVmm-amd64-x86.o \
+	common/alloc/heapsimple.o
+ else
+VBOXMOD_OBJS += \
+	generic/RTLogWriteVmm-stub-generic.o \
+	common/asm/ASMMultU64ByU32DivByU32-generic.o
+ endif
+ ifeq ($(VBOX_KBUILD_TARGET_ARCH),amd64)
  endif
 endif # VBOX_WITHOUT_COMBINED_SOURCES
 ifeq ($(VBOX_KBUILD_TARGET_ARCH),x86)

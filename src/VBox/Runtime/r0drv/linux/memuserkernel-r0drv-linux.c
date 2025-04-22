@@ -1,4 +1,4 @@
-/* $Id: memuserkernel-r0drv-linux.c 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: memuserkernel-r0drv-linux.c 109298 2025-04-22 09:39:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - User & Kernel Memory, Ring-0 Driver, Linux.
  */
@@ -116,8 +116,8 @@ RTR0DECL(bool) RTR0MemAreKrnlAndUsrDifferent(void)
 }
 RT_EXPORT_SYMBOL(RTR0MemAreKrnlAndUsrDifferent);
 
-
 #if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
+
 /**
  * Treats both source and destination as unsafe buffers.
  */
@@ -189,5 +189,6 @@ RTR0DECL(int) RTR0MemKernelCopyTo(void *pvDst, void const *pvSrc, size_t cb)
     return rtR0MemKernelCopyLnxWorker(pvDst, pvSrc, cb);
 }
 RT_EXPORT_SYMBOL(RTR0MemKernelCopyTo);
-#endif /* !RT_ARCH_AMD64 && !RT_ARCH_X86 */
+
+#endif /* RT_ARCH_AMD64 || RT_ARCH_X86 */
 

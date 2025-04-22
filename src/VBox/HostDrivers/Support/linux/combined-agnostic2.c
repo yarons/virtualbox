@@ -1,4 +1,4 @@
-/* $Id: combined-agnostic2.c 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: combined-agnostic2.c 109298 2025-04-22 09:39:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * SUPDrv - Combine a bunch of OS agnostic sources into one compile unit.
  */
@@ -109,7 +109,12 @@
 #undef LOG_GROUP
 #include "VBox/log-vbox.c"
 #undef LOG_GROUP
-#include "VBox/RTLogWriteVmm-amd64-x86.c"
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
+# include "VBox/RTLogWriteVmm-amd64-x86.c"
+#else
+# include "generic/RTLogWriteVmm-stub-generic.c"
+# include "common/asm/ASMMultU64ByU32DivByU32-generic.c"
+#endif
 
 #ifdef RT_ARCH_AMD64
 # undef LOG_GROUP
