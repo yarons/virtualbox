@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 109298 2025-04-22 09:39:50Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrv.cpp 109300 2025-04-22 09:53:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -467,10 +467,10 @@ static SUPFUNC g_aFunctions[] =
 #endif
     SUPEXP_STK_BACK(    0,  RTR0MemAreKrnlAndUsrDifferent),
     SUPEXP_STK_BACK(    1,  RTR0MemKernelIsValidAddr),
-#if !defined(RT_OS_LINUX) || defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)    
+#if !defined(RT_OS_LINUX) || defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
     SUPEXP_STK_BACK(    3,  RTR0MemKernelCopyFrom),
     SUPEXP_STK_BACK(    3,  RTR0MemKernelCopyTo),
-#endif    
+#endif
     SUPEXP_STK_OKAY(    1,  RTR0MemObjAddress),
     SUPEXP_STK_OKAY(    1,  RTR0MemObjAddressR3),
     SUPEXP_STK_BACK(    5,  RTR0MemObjAllocContTag),
