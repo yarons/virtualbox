@@ -1,4 +1,4 @@
-/* $Id: ARM_Apple_M2_Max.h 109301 2025-04-22 09:56:02Z knut.osmundsen@oracle.com $ */
+/* $Id: ARM_Apple_M2_Max.h 109317 2025-04-23 13:17:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPU database entry "Apple M2 Max".
  * Generated at 2025-04-22T09:46:58Z by VBoxCpuReport v7.1.97r168579 on linux.arm64.
@@ -105,7 +105,7 @@ static SUPARMSYSREGVAL const g_aVar1SysRegVals_ARM_Apple_M2_Max[] =
 /**
  * Database entry for Apple M2 Max.
  */
-static CPUMDBENTRYARM const g_Entry_ARM_Apple_M2_Max = 
+static CPUMDBENTRYARM const g_Entry_ARM_Apple_M2_Max =
 {
     {
         /*.pszName      = */ "Apple M2 Max",

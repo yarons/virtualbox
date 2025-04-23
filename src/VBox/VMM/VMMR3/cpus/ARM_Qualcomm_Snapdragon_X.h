@@ -1,4 +1,4 @@
-/* $Id: ARM_Qualcomm_Snapdragon_X.h 109287 2025-04-21 11:26:45Z knut.osmundsen@oracle.com $ */
+/* $Id: ARM_Qualcomm_Snapdragon_X.h 109317 2025-04-23 13:17:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPU database entry "Qualcomm Snapdragon X".
  * Generated at 2025-04-21T11:23:38Z by VBoxCpuReport v7.1.97r168566 on win.arm64.
@@ -105,7 +105,7 @@ static SUPARMSYSREGVAL const g_aVar1SysRegVals_ARM_Qualcomm_Snapdragon_X[] =
 /**
  * Database entry for Snapdragon(R) X Elite - X1E80100 - Qualcomm(R) Oryon(TM) CPU.
  */
-static CPUMDBENTRYARM const g_Entry_ARM_Qualcomm_Snapdragon_X = 
+static CPUMDBENTRYARM const g_Entry_ARM_Qualcomm_Snapdragon_X =
 {
     {
         /*.pszName      = */ "Qualcomm Snapdragon X",

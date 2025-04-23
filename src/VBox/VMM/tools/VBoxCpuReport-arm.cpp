@@ -1,4 +1,4 @@
-/* $Id: VBoxCpuReport-arm.cpp 109286 2025-04-21 11:20:35Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxCpuReport-arm.cpp 109317 2025-04-23 13:17:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxCpuReport - Produces the basis for a CPU DB entry, x86 specifics.
  */
@@ -751,7 +751,7 @@ int produceCpuReport(void)
                    "/**\n"
                    " * Database entry for %s.\n"
                    " */\n"
-                   "static CPUMDBENTRYARM const g_Entry_%s = \n"
+                   "static CPUMDBENTRYARM const g_Entry_%s =\n"
                    "{\n"
                    "    {\n"
                    "        /*.pszName      = */ \"%s\",\n"
