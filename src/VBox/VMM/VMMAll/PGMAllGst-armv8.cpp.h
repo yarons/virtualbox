@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst-armv8.cpp.h 109194 2025-04-11 13:04:57Z alexander.eichner@oracle.com $ */
+/* $Id: PGMAllGst-armv8.cpp.h 109318 2025-04-24 07:20:21Z alexander.eichner@oracle.com $ */
 /** @file
  * PGM - Page Manager, ARMv8 Guest Paging Template - All context code.
  */
@@ -65,6 +65,7 @@
 DECLINLINE(int) pgmGstWalkReturnNotPresent(PVMCPUCC pVCpu, PPGMPTWALK pWalk, uint8_t uLevel)
 {
     NOREF(pVCpu);
+    pWalk->fSucceeded      = false;
     pWalk->fNotPresent     = true;
     pWalk->uLevel          = uLevel;
     pWalk->fFailed         = PGM_WALKFAIL_NOT_PRESENT
@@ -75,6 +76,7 @@ DECLINLINE(int) pgmGstWalkReturnNotPresent(PVMCPUCC pVCpu, PPGMPTWALK pWalk, uin
 DECLINLINE(int) pgmGstWalkReturnBadPhysAddr(PVMCPUCC pVCpu, PPGMPTWALK pWalk, uint8_t uLevel, int rc)
 {
     AssertMsg(rc == VERR_PGM_INVALID_GC_PHYSICAL_ADDRESS, ("%Rrc\n", rc)); NOREF(rc); NOREF(pVCpu);
+    pWalk->fSucceeded      = false;
     pWalk->fBadPhysAddr    = true;
     pWalk->uLevel          = uLevel;
     pWalk->fFailed         = PGM_WALKFAIL_BAD_PHYSICAL_ADDRESS
@@ -86,6 +88,7 @@ DECLINLINE(int) pgmGstWalkReturnBadPhysAddr(PVMCPUCC pVCpu, PPGMPTWALK pWalk, ui
 DECLINLINE(int) pgmGstWalkReturnRsvdError(PVMCPUCC pVCpu, PPGMPTWALK pWalk, uint8_t uLevel)
 {
     NOREF(pVCpu);
+    pWalk->fSucceeded      = false;
     pWalk->fRsvdError      = true;
     pWalk->uLevel          = uLevel;
     pWalk->fFailed         = PGM_WALKFAIL_RESERVED_BITS
