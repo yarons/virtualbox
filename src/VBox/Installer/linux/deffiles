@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id$
+# $Id: deffiles 109324 2025-04-24 11:38:27Z knut.osmundsen@oracle.com $
 ## @file
 # Oracle VirtualBox - linux default files list.
 #
@@ -35,6 +35,7 @@
 # wrong with an installation...
 
 DEFAULT_FILE_NAMES=" \
+    .autoreg \
     VBoxDD.so \
     VBoxDD2.so \
     VBoxDTrace \

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 108495 2025-02-21 11:38:25Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 109324 2025-04-24 11:38:27Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -939,6 +939,20 @@ $(PATH_TARGET)/VBox-xpcom-xpt-files/VBoxXPCOMBase.xpt: $$(VBOX_XPTFILES) | $$(xp
 	$(QUIET)$(MKDIR) -p -- $(PATH_STAGE_BIN)/components
 	$(QUIET)$(xpt_link_1_TARGET) $@ $^
 
+
+#
+# Touch and install .autoreg to ensure compreg.dat gets updated.
+#
+INSTALLS += VBoxXPCOM-autoreg
+VBoxXPCOM-autoreg_INST = $(INST_BIN)
+VBoxXPCOM-autoreg_MODE = 0644
+VBoxXPCOM-autoreg_SOURCES = \
+	$(PATH_TARGET)/VBox-xpcom-autoreg=>.autoreg
+VBoxXPCOM-autoreg_CLEAN = \
+	$(PATH_TARGET)/VBox-xpcom-autoreg
+
+$(PATH_TARGET)/VBox-xpcom-autoreg:
+	$(TOUCH) "$@"
 
 
 # generate rules

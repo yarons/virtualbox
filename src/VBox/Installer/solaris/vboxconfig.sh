@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: vboxconfig.sh 109324 2025-04-24 11:38:27Z knut.osmundsen@oracle.com $
 ## @file
 # VirtualBox Configuration Script, Solaris host.
 #
@@ -1346,6 +1346,9 @@ cleanup_install()
 postinstall()
 {
     infoprint "Detected Solaris $HOST_OS_MAJORVERSION Version $HOST_OS_MINORVERSION"
+
+    # Ensure XPCOM components are re-registered properly on first use.
+    touch "$VBOX_INSTALL_PATH/.autoreg"
 
     infoprint "Loading VirtualBox kernel modules..."
     install_drivers
