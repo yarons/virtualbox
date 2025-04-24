@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 109324 2025-04-24 11:38:27Z knut.osmundsen@oracle.com $
+# $Id: vboxconfig.sh 109329 2025-04-24 15:45:38Z brent.paulson@oracle.com $
 ## @file
 # VirtualBox Configuration Script, Solaris host.
 #
@@ -944,7 +944,7 @@ install_python_bindings()
     else
         errorprint "Failed to install bindings for Python $PYTHON_VER"
     fi
-    rm "$CONFIG_DIR/python-$CONFIG_FILES"
+    rm -f "$CONFIG_DIR/python-$CONFIG_FILES"
 
     # Remove files created by Python API setup.
     rm -rf "$MY_PYTHON_INSTALLER_PATH/build"
