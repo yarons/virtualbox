@@ -1,4 +1,4 @@
-; $Id: VBoxXPCOM.def 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+; $Id: VBoxXPCOM.def 109321 2025-04-24 10:08:54Z knut.osmundsen@oracle.com $
 ;; @file
 ; VirtualBox XPCOM - Import library definition file.
 
@@ -92,7 +92,7 @@ EXPORTS
     NS_GetServiceManager
     NS_GetTraceRefcnt
     NS_IsXPCOMInitialized
-    NS_InitXPCOM2
+    NS_InitXPCOM2Ex
     NS_MeanAndStdDev
     NS_NewByteInputStream
     NS_NewCStringInputStream

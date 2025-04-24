@@ -1,4 +1,4 @@
-/* $Id: tstVBoxAPIXPCOM.cpp 109038 2025-04-02 07:32:45Z alexander.eichner@oracle.com $ */
+/* $Id: tstVBoxAPIXPCOM.cpp 109321 2025-04-24 10:08:54Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  * tstVBoxAPIXPCOM - sample program to illustrate the VirtualBox
@@ -514,27 +514,12 @@ int main(int argc, char **argv)
      */
     {
         nsCOMPtr<nsIServiceManager> serviceManager;
-        rc = NS_InitXPCOM2(getter_AddRefs(serviceManager), nsnull, nsnull);
+        rc = NS_InitXPCOM2Ex(getter_AddRefs(serviceManager), nsnull, nsnull, 0);
         if (NS_FAILED(rc))
         {
             printf("Error: XPCOM could not be initialized! rc=%#x\n", rc);
             return -1;
         }
-
-#if 0
-        /*
-         * Register our components. This step is only necessary if this executable
-         * implements XPCOM components itself which is not the case for this
-         * simple example.
-         */
-        nsCOMPtr<nsIComponentRegistrar> registrar = do_QueryInterface(serviceManager);
-        if (!registrar)
-        {
-            printf("Error: could not query nsIComponentRegistrar interface!\n");
-            return -1;
-        }
-        registrar->AutoRegister(nsnull);
-#endif
 
         /*
          * Make sure the main event queue is created. This event queue is

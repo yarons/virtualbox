@@ -1,4 +1,4 @@
-/* $Id: VBoxFB.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxFB.cpp 109321 2025-04-24 10:08:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxFB - Linux Direct Framebuffer Frontend.
  *
@@ -152,21 +152,12 @@ int main(int argc, char *argv[])
     {
 #if 0
         nsCOMPtr<nsIServiceManager> serviceManager;
-        rc = NS_InitXPCOM2(getter_AddRefs(serviceManager), nsnull, nsnull);
+        rc = NS_InitXPCOM2Ex(getter_AddRefs(serviceManager), nsnull, nsnull, NS_INIT_XPCOM_F_AUTO_REGISTER_COMPONENTS_WITH_STATUS);
         if (NS_FAILED(rc))
         {
             printf("Error: XPCOM could not be initialized! rc=0x%x\n", rc);
             exit(-1);
         }
-
-        // register our component
-        nsCOMPtr<nsIComponentRegistrar> registrar = do_QueryInterface(serviceManager);
-        if (!registrar)
-        {
-            printf("Error: could not query nsIComponentRegistrar interface!\n");
-            exit(-1);
-        }
-        registrar->AutoRegister(nsnull);
 
         /*
          * Make sure the main event queue is created. This event queue is
