@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 109311 2025-04-23 09:39:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPoolManager.cpp 109328 2025-04-24 13:24:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -3637,7 +3637,7 @@ void UIActionPoolManager::preparePool()
     m_pool[UIActionIndexMN_M_Extension_S_Install] = new UIActionSimpleManagerExtensionPerformInstall(this);
     m_pool[UIActionIndexMN_M_Extension_S_Uninstall] = new UIActionSimpleManagerExtensionPerformUninstall(this);
 
-    /* Virtual Medium Manager actions: */
+    /* Virtual Media Manager actions: */
     m_pool[UIActionIndexMN_M_MediumWindow] = new UIActionMenuManagerMedium(this);
     m_pool[UIActionIndexMN_M_Medium] = new UIActionMenuManagerMedium(this);
     m_pool[UIActionIndexMN_M_Medium_S_Add] = new UIActionMenuManagerMediumPerformAdd(this);

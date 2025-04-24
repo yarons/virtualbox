@@ -1,4 +1,4 @@
-/* $Id: UIMedium.cpp 108068 2025-01-27 12:25:18Z sergey.dubov@oracle.com $ */
+/* $Id: UIMedium.cpp 109328 2025-04-24 13:24:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMedium class implementation.
  */
@@ -646,7 +646,7 @@ void UIMedium::checkNoDiffs(bool fNoDiffs)
             if (m_noDiffs.toolTip.isNull())
                 m_noDiffs.toolTip = m_sstrRow.arg(QApplication::translate("UIMedium",
                                                                           "Some of the files in this hard disk chain "
-                                                                          "are inaccessible. Please use the Virtual Medium "
+                                                                          "are inaccessible. Please use the Virtual Media "
                                                                           "Manager to inspect these files."));
 
             if (!parentMedium.m_result.isOk())
