@@ -1,4 +1,4 @@
-/* $Id: UIDefs.h 109340 2025-04-25 12:06:49Z sergey.dubov@oracle.com $ */
+/* $Id: UIDefs.h 109341 2025-04-25 12:23:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Global definitions.
  */
@@ -33,6 +33,9 @@
 
 /* Qt includes: */
 #include <QStringList>
+#ifdef VBOX_WS_WIN
+# include <QMetaType>
+#endif
 
 /* GUI includes: */
 #include "UILibraryDefs.h"
