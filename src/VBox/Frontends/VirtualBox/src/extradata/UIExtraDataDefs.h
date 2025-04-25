@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 109225 2025-04-15 13:07:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataDefs.h 109338 2025-04-25 10:46:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -52,6 +52,9 @@ namespace UIExtraDataDefs
       * @{ */
         /** Holds restricted dialogs. */
         SHARED_LIBRARY_STUFF extern const char *GUI_RestrictedDialogs;
+
+        /** Holds the color theme type. */
+        SHARED_LIBRARY_STUFF extern const char *GUI_ColorTheme;
     /** @} */
 
     /** @name Messaging
@@ -870,6 +873,7 @@ enum GlobalSettingsPageType
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
     GlobalSettingsPageType_Proxy,
 #endif
+    GlobalSettingsPageType_Interface,
     GlobalSettingsPageType_Max
 };
 Q_DECLARE_METATYPE(GlobalSettingsPageType);
@@ -934,6 +938,16 @@ enum WizardMode
     WizardMode_Basic,
     WizardMode_Expert
 };
+
+
+/** Common UI: Color Theme types. */
+enum UIColorThemeType
+{
+    UIColorThemeType_Auto,
+    UIColorThemeType_Light,
+    UIColorThemeType_Dark,
+};
+Q_DECLARE_METATYPE(UIColorThemeType);
 
 
 /** Tool item classes. */

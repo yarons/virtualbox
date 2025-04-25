@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 109232 2025-04-15 14:53:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.cpp 109338 2025-04-25 10:46:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -2331,6 +2331,16 @@ void UIExtraDataManager::setRestrictedDialogTypes(UIExtraDataMetaDefs::DialogTyp
     }
     /* Save result: */
     setExtraDataStringList(GUI_RestrictedDialogs, result, uID);
+}
+
+UIColorThemeType UIExtraDataManager::colorTheme()
+{
+    return gpConverter->fromInternalString<UIColorThemeType>(extraDataString(GUI_ColorTheme));
+}
+
+void UIExtraDataManager::setColorTheme(const UIColorThemeType &enmType)
+{
+    setExtraDataString(GUI_ColorTheme, gpConverter->toInternalString(enmType));
 }
 
 QStringList UIExtraDataManager::suppressedMessages(const QUuid &uID /* = GlobalID */)
