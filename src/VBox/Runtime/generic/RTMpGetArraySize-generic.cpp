@@ -1,4 +1,4 @@
-/* $Id: RTMpGetArraySize-generic.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: RTMpGetArraySize-generic.cpp 109339 2025-04-25 10:53:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Multiprocessor, Generic RTMpGetArraySize.
  */
@@ -59,7 +59,7 @@ RTDECL(uint32_t) RTMpGetArraySize(void)
     if (RT_UNLIKELY(cCpus == 0))
     {
         RTCPUSET    CpuSet;
-        uint32_t    cCpus1 = RTCpuLastIndex(RTMpGetSet(&CpuSet)) + 1;
+        uint32_t    cCpus1 = RTCpuSetLastIndex(RTMpGetSet(&CpuSet)) + 1;
         uint32_t    cCpus2 = RTMpGetCount();
         cCpus              = RT_MAX(cCpus1, cCpus2);
         ASMAtomicCmpXchgU32(&s_cMaxCpus, cCpus, 0);
