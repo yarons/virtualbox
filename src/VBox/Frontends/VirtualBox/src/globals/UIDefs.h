@@ -1,4 +1,4 @@
-/* $Id: UIDefs.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDefs.h 109340 2025-04-25 12:06:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Global definitions.
  */
@@ -80,6 +80,16 @@ enum MacOSXRelease
     MacOSXRelease_New,
 };
 #endif /* VBOX_WS_MAC */
+
+
+#ifdef VBOX_WS_WIN
+enum WindowsRelease
+{
+    WindowsRelease_Unknown,
+    WindowsRelease_11,
+};
+Q_DECLARE_METATYPE(WindowsRelease);
+#endif /* VBOX_WS_WIN */
 
 
 /** UI types. */

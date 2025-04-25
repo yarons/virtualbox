@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 109338 2025-04-25 10:46:49Z sergey.dubov@oracle.com $ */
+/* $Id: UIConverterBackendGlobal.cpp 109340 2025-04-25 12:06:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendGlobal implementation.
  */
@@ -2953,3 +2953,13 @@ template<> SHARED_LIBRARY_STUFF UIVRDESecurityMethod UIConverter::fromInternalSt
         return UIVRDESecurityMethod_Negotiate;
     return UIVRDESecurityMethod_TLS;
 }
+
+#ifdef VBOX_WS_WIN
+/* WindowsRelease <= QString: */
+template<> SHARED_LIBRARY_STUFF WindowsRelease UIConverter::fromInternalString<WindowsRelease>(const QString &strRelease) const
+{
+    if (strRelease.compare("Windows 11", Qt::CaseInsensitive) == 0)
+        return WindowsRelease_11;
+    return WindowsRelease_Unknown;
+}
+#endif
