@@ -1,4 +1,4 @@
-/* $Id: UIHomePane.h 108237 2025-02-05 18:07:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIHomePane.h 109349 2025-04-28 15:06:17Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHomePane class declaration.
  */
@@ -38,6 +38,7 @@
 
 /* GUI includes: */
 #include "UILibraryDefs.h"
+#include "UIManagerDefs.h"
 
 /* Forward declarations: */
 class QAbstractButton;
@@ -48,6 +49,11 @@ class QIRichTextLabel;
 class UIHomePane : public QWidget
 {
     Q_OBJECT;
+
+signals:
+
+    /** Notify listeners about home @a enmTask was requested. */
+    void sigHomeTask(HomeTask enmTask);
 
 public:
 

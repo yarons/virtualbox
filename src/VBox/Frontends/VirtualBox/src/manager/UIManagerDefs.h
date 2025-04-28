@@ -1,4 +1,4 @@
-/* $Id: UIManagerDefs.h 108293 2025-02-10 13:08:20Z sergey.dubov@oracle.com $ */
+/* $Id: UIManagerDefs.h 109349 2025-04-28 15:06:17Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager definitions.
  */
@@ -30,6 +30,18 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
+
+
+/** Home tasks. */
+enum HomeTask
+{
+    HomeTask_Invalid,
+    HomeTask_Configure,
+    HomeTask_Create,
+    HomeTask_Open,
+    HomeTask_Import,
+    HomeTask_Export,
+};
 
 
 /** Virtual machine item types. */

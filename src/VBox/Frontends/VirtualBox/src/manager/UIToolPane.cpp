@@ -1,4 +1,4 @@
-/* $Id: UIToolPane.cpp 109225 2025-04-15 13:07:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolPane.cpp 109349 2025-04-28 15:06:17Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPane class implementation.
  */
@@ -132,6 +132,7 @@ void UIToolPane::openTool(UIToolType enmType)
                 {
                     /* Configure pane: */
                     m_pPaneHome->setProperty("ToolType", QVariant::fromValue(UIToolType_Home));
+                    connect(m_pPaneHome, &UIHomePane::sigHomeTask, this, &UIToolPane::sigHomeTask);
 
                     /* Add into layout: */
                     m_pLayout->addWidget(m_pPaneHome);

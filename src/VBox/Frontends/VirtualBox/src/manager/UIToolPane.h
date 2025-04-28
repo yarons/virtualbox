@@ -1,4 +1,4 @@
-/* $Id: UIToolPane.h 109348 2025-04-28 15:04:25Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolPane.h 109349 2025-04-28 15:06:17Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPane class declaration.
  */
@@ -37,6 +37,7 @@
 
 /* GUI includes: */
 #include "UIExtraDataDefs.h"
+#include "UIManagerDefs.h"
 
 /* Forward declarations: */
 class QStackedLayout;
@@ -68,6 +69,9 @@ signals:
       * @{ */
         /** Notifies listeners about request to detach pane with tool type @enmToolType. */
         void sigDetachToolPane(UIToolType enmToolType);
+
+        /** Notify listeners about home @a enmTask was requested. */
+        void sigHomeTask(HomeTask enmTask);
 
         /** Notifies listeners about medium creation procedure was requested. */
         void sigCreateMedium();

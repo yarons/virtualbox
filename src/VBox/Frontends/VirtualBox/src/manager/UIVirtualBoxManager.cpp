@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 109311 2025-04-23 09:39:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 109349 2025-04-28 15:06:17Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -941,6 +941,30 @@ void UIVirtualBoxManager::sltHandleMachineToolTypeChange()
 
     /* Make sure separate dialog closed when corresponding tool opened: */
     sltCloseManagerWindow(m_pWidget->toolsTypeMachine());
+}
+
+void UIVirtualBoxManager::sltExecuteHomeTask(HomeTask enmTask)
+{
+    switch (enmTask)
+    {
+        case HomeTask_Configure:
+            sltOpenPreferencesDialog();
+            break;
+        case HomeTask_Create:
+            sltOpenNewMachineWizard();
+            break;
+        case HomeTask_Open:
+            sltOpenAddMachineDialog();
+            break;
+        case HomeTask_Import:
+            sltOpenImportApplianceWizard();
+            break;
+        case HomeTask_Export:
+            sltOpenExportApplianceWizard();
+            break;
+        default:
+            break;
+    }
 }
 
 void UIVirtualBoxManager::sltCreateMedium()
@@ -2499,6 +2523,8 @@ void UIVirtualBoxManager::prepareConnections()
             this, &UIVirtualBoxManager::sltHandleGlobalToolTypeChange);
     connect(m_pWidget, &UIVirtualBoxWidget::sigToolTypeChangeMachine,
             this, &UIVirtualBoxManager::sltHandleMachineToolTypeChange);
+    connect(m_pWidget, &UIVirtualBoxWidget::sigHomeTask,
+            this, &UIVirtualBoxManager::sltExecuteHomeTask);
     connect(m_pWidget, &UIVirtualBoxWidget::sigCreateMedium,
             this, &UIVirtualBoxManager::sltCreateMedium);
     connect(m_pWidget, &UIVirtualBoxWidget::sigCopyMedium,

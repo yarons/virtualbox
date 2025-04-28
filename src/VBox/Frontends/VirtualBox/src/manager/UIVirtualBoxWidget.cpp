@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxWidget.cpp 109230 2025-04-15 14:28:23Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxWidget.cpp 109349 2025-04-28 15:06:17Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxWidget class implementation.
  */
@@ -430,6 +430,8 @@ void UIVirtualBoxWidget::prepareConnections()
     connect(globalToolsWidget(), &UIGlobalToolsWidget::sigToolTypeChange,
             this, &UIVirtualBoxWidget::sigToolTypeChangeGlobal);
     /* Global Tool Pane connections: */
+    connect(globalToolPane(), &UIToolPane::sigHomeTask,
+            this, &UIVirtualBoxWidget::sigHomeTask);
     connect(globalToolPane(), &UIToolPane::sigCreateMedium,
             this, &UIVirtualBoxWidget::sigCreateMedium);
     connect(globalToolPane(), &UIToolPane::sigCopyMedium,
@@ -677,6 +679,8 @@ void UIVirtualBoxWidget::cleanupConnections()
     disconnect(globalToolsWidget(), &UIGlobalToolsWidget::sigToolTypeChange,
                this, &UIVirtualBoxWidget::sigToolTypeChangeGlobal);
     /* Global Tool Pane connections: */
+    disconnect(globalToolPane(), &UIToolPane::sigHomeTask,
+               this, &UIVirtualBoxWidget::sigHomeTask);
     disconnect(globalToolPane(), &UIToolPane::sigCreateMedium,
                this, &UIVirtualBoxWidget::sigCreateMedium);
     disconnect(globalToolPane(), &UIToolPane::sigCopyMedium,

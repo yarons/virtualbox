@@ -1,4 +1,4 @@
-/* $Id: QIRichTextLabel.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: QIRichTextLabel.cpp 109349 2025-04-28 15:06:17Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIRichTextLabel class implementation.
  */
@@ -129,6 +129,7 @@ QIRichTextLabel::QIRichTextLabel(QWidget *pParent)
         {
             /* Configure text-browser: */
             m_pTextBrowser->setReadOnly(true);
+            m_pTextBrowser->setOpenLinks(false);
             m_pTextBrowser->setFocusPolicy(Qt::ClickFocus);
             m_pTextBrowser->setFrameShape(QFrame::NoFrame);
             m_pTextBrowser->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
