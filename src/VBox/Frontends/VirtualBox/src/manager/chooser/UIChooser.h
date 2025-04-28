@@ -1,4 +1,4 @@
-/* $Id: UIChooser.h 108883 2025-03-21 12:35:45Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooser.h 109350 2025-04-28 16:05:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooser class declaration.
  */
@@ -78,6 +78,9 @@ signals:
         void sigSelectionChanged();
         /** Notifies listeners about selection invalidated. */
         void sigSelectionInvalidated();
+
+        /** Notifies listeners about navigation list change. */
+        void sigNavigationListChanged();
 
         /** Notifies listeners about group toggling started. */
         void sigToggleStarted();

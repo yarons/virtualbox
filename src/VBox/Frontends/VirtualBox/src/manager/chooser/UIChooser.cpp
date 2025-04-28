@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 108883 2025-03-21 12:35:45Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooser.cpp 109350 2025-04-28 16:05:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -273,6 +273,8 @@ void UIChooser::prepareConnections()
             this, &UIChooser::sigSelectionChanged);
     connect(model(), &UIChooserModel::sigSelectionInvalidated,
             this, &UIChooser::sigSelectionInvalidated);
+    connect(model(), &UIChooserModel::sigNavigationListChanged,
+            this, &UIChooser::sigNavigationListChanged);
     connect(model(), &UIChooserModel::sigToggleStarted,
             this, &UIChooser::sigToggleStarted);
     connect(model(), &UIChooserModel::sigToggleFinished,
@@ -321,6 +323,8 @@ void UIChooser::cleanupConnections()
                this, &UIChooser::sigSelectionChanged);
     disconnect(model(), &UIChooserModel::sigSelectionInvalidated,
                this, &UIChooser::sigSelectionInvalidated);
+    disconnect(model(), &UIChooserModel::sigNavigationListChanged,
+               this, &UIChooser::sigNavigationListChanged);
     disconnect(model(), &UIChooserModel::sigToggleStarted,
                this, &UIChooser::sigToggleStarted);
     disconnect(model(), &UIChooserModel::sigToggleFinished,

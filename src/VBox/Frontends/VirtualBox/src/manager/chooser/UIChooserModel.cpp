@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 109331 2025-04-24 17:02:18Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.cpp 109350 2025-04-28 16:05:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -478,6 +478,7 @@ void UIChooserModel::updateNavigationItemList()
 {
     m_navigationItems.clear();
     m_navigationItems = createNavigationItemList(root());
+    emit sigNavigationListChanged();
 }
 
 UIChooserItem *UIChooserModel::searchItemByDefinition(const QString &strDefinition) const

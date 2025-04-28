@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsWidget.h 109230 2025-04-15 14:28:23Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsWidget.h 109350 2025-04-28 16:05:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsWidget class declaration.
  */
@@ -123,8 +123,8 @@ private slots:
 
     /** @name Chooser pane stuff.
       * @{ */
-        /** Handles Chooser-pane selection change. */
-        void sltHandleChooserPaneSelectionChange();
+        /** Handles Chooser-pane navigation list change. */
+        void sltHandleChooserPaneNavigationListChange();
 
         /** Handles state change for cloud profile with certain @a strProviderShortName and @a strProfileName. */
         void sltHandleCloudProfileStateChange(const QString &strProviderShortName,

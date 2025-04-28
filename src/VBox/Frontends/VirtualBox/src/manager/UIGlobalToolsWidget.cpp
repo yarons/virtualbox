@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsWidget.cpp 109275 2025-04-18 13:26:41Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsWidget.cpp 109350 2025-04-28 16:05:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsWidget class implementation.
  */
@@ -162,7 +162,7 @@ void UIGlobalToolsWidget::sltHandleSettingsExpertModeChange()
     emit sigToolMenuUpdate();
 }
 
-void UIGlobalToolsWidget::sltHandleChooserPaneSelectionChange()
+void UIGlobalToolsWidget::sltHandleChooserPaneNavigationListChange()
 {
     /* Update tools restrictions: */
     emit sigToolMenuUpdate();
@@ -297,8 +297,8 @@ void UIGlobalToolsWidget::prepareConnections()
             this, &UIGlobalToolsWidget::sltHandleSettingsExpertModeChange);
 
     /* Chooser-pane connections: */
-    connect(chooser(), &UIChooser::sigSelectionChanged,
-            this, &UIGlobalToolsWidget::sltHandleChooserPaneSelectionChange);
+    connect(chooser(), &UIChooser::sigNavigationListChanged,
+            this, &UIGlobalToolsWidget::sltHandleChooserPaneNavigationListChange);
     connect(chooser(), &UIChooser::sigCloudProfileStateChange,
             this, &UIGlobalToolsWidget::sltHandleCloudProfileStateChange);
 
@@ -333,8 +333,8 @@ void UIGlobalToolsWidget::cleanupConnections()
                this, &UIGlobalToolsWidget::sltHandleSettingsExpertModeChange);
 
     /* Chooser-pane connections: */
-    disconnect(chooser(), &UIChooser::sigSelectionChanged,
-               this, &UIGlobalToolsWidget::sltHandleChooserPaneSelectionChange);
+    disconnect(chooser(), &UIChooser::sigNavigationListChanged,
+               this, &UIGlobalToolsWidget::sltHandleChooserPaneNavigationListChange);
     disconnect(chooser(), &UIChooser::sigCloudProfileStateChange,
                this, &UIGlobalToolsWidget::sltHandleCloudProfileStateChange);
 
