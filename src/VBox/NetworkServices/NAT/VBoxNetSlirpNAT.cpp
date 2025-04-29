@@ -1,4 +1,4 @@
-/* $Id: VBoxNetSlirpNAT.cpp 109353 2025-04-28 17:39:45Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxNetSlirpNAT.cpp 109354 2025-04-29 06:39:47Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -1833,7 +1833,7 @@ DECLINLINE(int) pollEventHostToSlirp(int iEvents)
 /**
  * Callback called by libslirp when the guest does something wrong.
  *
- * @param   pMsg    Error message string.
+ * @param   pszMsg  Error message string.
  * @param   pvUser  Pointer to NAT State context.
  *
  * @thread  ?
@@ -1979,8 +1979,7 @@ DECLINLINE(int) pollEventHostToSlirp(int iEvents)
 /**
  * Callback function to add entry to pollfd array.
  *
- * @param   iFd     Integer of system file descriptor of socket.
- *                  (on windows, this is a VBox internal, not system, value).
+ * @param   hFd     Socket handle.
  * @param   iEvents Integer of slirp type poll events.
  * @param   opaque  Pointer to NAT State context.
  *
