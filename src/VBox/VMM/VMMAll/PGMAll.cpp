@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 109215 2025-04-14 20:45:36Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMAll.cpp 109357 2025-04-29 08:14:31Z alexander.eichner@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -3625,7 +3625,7 @@ VMM_INT_DECL(int) PGMChangeMode(PVMCPUCC pVCpu, uint8_t bEl, uint64_t u64RegSctl
             pVCpu->pgm.s.afLookupMaskTtbr1[0] = pVCpu->pgm.s.afLookupMaskTtbr1[1];
         }
 
-        pVCpu->pgm.s.aenmGuestMode[bEl] = (u64RegSctlr & ARMV8_SCTLR_EL1_M) ? PGMMODE_VMSA_V8_64 : PGMMODE_NONE;
+        pVCpu->pgm.s.aenmGuestMode[bEl - 1] = (u64RegSctlr & ARMV8_SCTLR_EL1_M) ? PGMMODE_VMSA_V8_64 : PGMMODE_NONE;
 
         /* Cache values. */
         pVCpu->pgm.s.au64RegSctlrEl[bEl - 1] = u64RegSctlr;
