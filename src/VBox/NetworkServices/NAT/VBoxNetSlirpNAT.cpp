@@ -1,4 +1,4 @@
-/* $Id: VBoxNetSlirpNAT.cpp 109362 2025-04-29 10:36:54Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxNetSlirpNAT.cpp 109365 2025-04-29 13:29:31Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -2309,6 +2309,8 @@ VBoxNetSlirpNAT::receiveThread(RTTHREAD hThreadSelf, void *pvUser)
  * Worker function for drvNATSend().
  *
  * @param   pThis               Pointer to the NAT instance.
+ * @param   pvFrame             Pointer to the frame data.
+ * @param   cbFrame             Size of the frame in bytes.
  * @thread  NAT
  */
 /*static*/ DECLCALLBACK(void) VBoxNetSlirpNAT::slirpSendWorker(VBoxNetSlirpNAT *pThis, void *pvFrame, size_t cbFrame)
