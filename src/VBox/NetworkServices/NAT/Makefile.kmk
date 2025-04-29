@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 109366 2025-04-29 13:33:56Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 109367 2025-04-29 13:52:19Z alexander.eichner@oracle.com $
 ## @file
 # Sub-makefile for NAT Networking
 #
@@ -62,7 +62,7 @@ VBoxNetNAT_DEFS     = \
 	$(if $(VBOX_WITH_LWIP_NAT),VBOX_WITH_LWIP_NAT,)
 
 # VBoxNetNAT_DEFS.linux = WITH_VALGRIND # instrument lwip memp.c
- 
+
 ifdef VBOX_WITH_LWIP_NAT
 
  ifndef LWIP_SOURCES
