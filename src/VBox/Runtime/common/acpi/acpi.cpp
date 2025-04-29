@@ -1,4 +1,4 @@
-/* $Id: acpi.cpp 108753 2025-03-14 09:59:21Z alexander.eichner@oracle.com $ */
+/* $Id: acpi.cpp 109356 2025-04-29 08:13:05Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Advanced Configuration and Power Interface (ACPI) Table generation API.
  */
@@ -2463,6 +2463,6 @@ RTDECL(int) RTAcpiResourceAddGpioInt(RTACPIRES hAcpiRes, RTACPIRESGPIOMOD enmMod
     }
 
     /* Resource name */
-    memcpy(pbPin, pszRsrcSrc, cchRsrcSrc + 1);
+    memcpy(pbPin, pszRsrcSrc, cchRsrcSrc);
     return VINF_SUCCESS;
 }
