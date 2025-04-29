@@ -1,4 +1,4 @@
-/* $Id: winutils.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: winutils.h 109362 2025-04-29 10:36:54Z alexander.eichner@oracle.com $ */
 /** @file
  * NAT Network - winsock compatibility shim.
  */
@@ -41,11 +41,14 @@
 #  include <iprt/err.h>
 #  include <iprt/net.h>
 #  include <iprt/log.h>
+
+#  ifdef VBOX_WITH_LWIP_NAT
 /**
  * Inclusion of lwip/def.h was added here to avoid conflict of definitions
  * of hton-family functions in LWIP and windock's headers.
  */
-#  include <lwip/def.h>
+#   include <lwip/def.h>
+#  endif
 
 #  ifndef PF_LOCAL
 #   define PF_LOCAL AF_INET
