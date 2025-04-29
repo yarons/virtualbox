@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-linux.c 109298 2025-04-22 09:39:50Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrv-linux.c 109363 2025-04-29 10:50:19Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -1753,7 +1753,12 @@ SUPR0DECL(bool) SUPR0FpuBegin(bool fCtxHook)
 #  if 0 /* Always do it for now for better test coverage. */
     if (fCtxHook)
 #  endif
+# if RTLNX_VER_MIN(6,15,0)
+        if (!irqs_disabled())
+            fpregs_unlock();
+# else
         preempt_enable();
+# endif
     return false; /** @todo Not sure if we have license to use any extended state, or
                    *        if we're limited to the SSE & x87 FPU. If it's the former,
                    *        we should return @a true and the caller can skip
@@ -1774,7 +1779,12 @@ SUPR0DECL(void) SUPR0FpuEnd(bool fCtxHook)
 #  if 0 /* Always do it for now for better test coverage. */
     if (fCtxHook)
 #  endif
+# if RTLNX_VER_MIN(6,15,0)
+        if (!irqs_disabled())
+            fpregs_lock();
+# else
         preempt_disable();
+# endif
     kernel_fpu_end();
 # endif
 }
