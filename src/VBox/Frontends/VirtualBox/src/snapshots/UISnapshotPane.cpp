@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 109169 2025-04-10 10:09:44Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISnapshotPane.cpp 109373 2025-04-30 10:54:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -1194,15 +1194,21 @@ void UISnapshotPane::sltHandleContextMenuRequest(const QPoint &position)
         menu.addSeparator();
         menu.addAction(m_pActionPool->action(UIActionIndexMN_M_Snapshot_S_Restore));
         menu.addAction(m_pActionPool->action(UIActionIndexMN_M_Snapshot_T_Properties));
-        menu.addSeparator();
-        menu.addAction(m_pActionPool->action(UIActionIndexMN_M_Snapshot_S_Clone));
+        if (gEDataManager->isSettingsInExpertMode())
+        {
+            menu.addSeparator();
+            menu.addAction(m_pActionPool->action(UIActionIndexMN_M_Snapshot_S_Clone));
+        }
     }
     /* For "current state" item: */
     else
     {
         menu.addAction(m_pActionPool->action(UIActionIndexMN_M_Snapshot_S_Take));
-        menu.addSeparator();
-        menu.addAction(m_pActionPool->action(UIActionIndexMN_M_Snapshot_S_Clone));
+        if (gEDataManager->isSettingsInExpertMode())
+        {
+            menu.addSeparator();
+            menu.addAction(m_pActionPool->action(UIActionIndexMN_M_Snapshot_S_Clone));
+        }
     }
 
     /* Show menu: */
