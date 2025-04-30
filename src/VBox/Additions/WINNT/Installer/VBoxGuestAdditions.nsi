@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 108977 2025-03-27 15:32:33Z andreas.loeffler@oracle.com $
+; $Id: VBoxGuestAdditions.nsi 109378 2025-04-30 15:01:33Z andreas.loeffler@oracle.com $
 ; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -94,7 +94,16 @@ VIAddVersionKey "InternalName"      "${PRODUCT_OUTPUT}"
 !include "nsProcess.nsh"
 !include "Library.nsh"
 !include "Sections.nsh"
-!include "strstr.nsh"         ; Function "strstr".
+
+; String functions.
+!include "StrFunc.nsh"
+${Using:StrFunc} StrStr
+${Using:StrFunc} UnStrStr
+${Using:StrFunc} StrStrAdv
+; Provide a custom define for ${UnStrStr} so that we can make use of it in
+; macro function which are (also) being used in the uninstaller (functions must begin with ".un").
+!define `un.StrStr` `${UnStrStr}`
+
 !if $%KBUILD_TARGET_ARCH% == "x86" ; Only needed for NT4 SP6 recommendation.
   !include "servicepack.nsh"  ; Function "GetServicePack".
 !endif
@@ -614,6 +623,8 @@ Section $(VBOX_COMPONENT_MAIN) SEC01
 !ifdef _DEBUG
   ${LogVerbose} "Installer runs in debug mode"
 !endif
+
+    Abort
 
   ;
   ; Here starts the main dispatcher (based on guest OS).
