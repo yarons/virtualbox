@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 109378 2025-04-30 15:01:33Z andreas.loeffler@oracle.com $
+; $Id: VBoxGuestAdditions.nsi 109379 2025-04-30 15:02:31Z andreas.loeffler@oracle.com $
 ; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -623,8 +623,6 @@ Section $(VBOX_COMPONENT_MAIN) SEC01
 !ifdef _DEBUG
   ${LogVerbose} "Installer runs in debug mode"
 !endif
-
-    Abort
 
   ;
   ; Here starts the main dispatcher (based on guest OS).
