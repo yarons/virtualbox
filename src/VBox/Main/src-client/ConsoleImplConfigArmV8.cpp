@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigArmV8.cpp 109220 2025-04-15 09:01:23Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: ConsoleImplConfigArmV8.cpp 109369 2025-04-30 07:02:09Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits for ARMv8.
  */
@@ -570,13 +570,19 @@ int Console::i_configConstructorArmV8(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
         }
 
 #if 0
-        vrc = RTFdtNodeAddF(hFdt, "its@%RX32", 0x08080000);                                 VRC();
-        vrc = RTFdtNodePropertyAddU32(     hFdt, "phandle",          idPHandleIntCtrlMsi);  VRC();
-        vrc = RTFdtNodePropertyAddCellsU32(hFdt, "reg", 4, 0, 0x08080000, 0, 0x20000);      VRC();
-        vrc = RTFdtNodePropertyAddU32(     hFdt, "#msi-cells", 1);                          VRC();
-        vrc = RTFdtNodePropertyAddEmpty(   hFdt, "msi-controller");                         VRC();
-        vrc = RTFdtNodePropertyAddString(  hFdt, "compatible", "arm,gic-v3-its");           VRC();
-        vrc = RTFdtNodeFinalize(hFdt);                                                      VRC();
+        if (fGicIts == TRUE)
+        {
+            vrc = RTFdtNodePropertyAddEmpty(hFdt, "msi-controller");                                VRC();
+            vrc = RTFdtNodePropertyAddCellsU32(hFdt, "mbi-ranges", 2, 256, 128);                    VRC();
+
+            vrc = RTFdtNodeAddF(hFdt, "gic-its@%RGp", GCPhysIntcIts);                               VRC();
+            vrc = RTFdtNodePropertyAddU32(     hFdt, "phandle",          idPHandleIntCtrlMsi);      VRC();
+            vrc = RTFdtNodePropertyAddCellsU64(hFdt, "reg", 2, GCPhysIntcIts, cbMmioIntcIts);       VRC();
+            vrc = RTFdtNodePropertyAddU32(     hFdt, "#msi-cells", 1);                              VRC();
+            vrc = RTFdtNodePropertyAddEmpty(   hFdt, "msi-controller");                             VRC();
+            vrc = RTFdtNodePropertyAddString(  hFdt, "compatible", "arm,gic-v3-its");               VRC();
+            vrc = RTFdtNodeFinalize(hFdt);                                                          VRC();
+        }
 #endif
 
         vrc = RTFdtNodeFinalize(hFdt);                                                      VRC();
@@ -859,6 +865,13 @@ int Console::i_configConstructorArmV8(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
                                            cbPciMmio >> 32, cbPciMmio);                         VRC();
         vrc = RTFdtNodePropertyAddCellsU64(hFdt, "reg", 2, GCPhysPciMmioEcam, cbPciMmioEcam);   VRC();
         /** @todo msi-map */
+#if 0
+        if (fGicIts == TRUE)
+        {
+            vrc = RTFdtNodePropertyAddCellsU64(hFdt, "msi-map", 4, 0, GCPhysIntcIts, 0, cbMmioIntcIts);
+            VRC();
+        }
+#endif
         vrc = RTFdtNodePropertyAddEmpty(   hFdt, "dma-coherent");                               VRC();
         vrc = RTFdtNodePropertyAddCellsU32(hFdt, "bus-range", 2, 0, 0xf);                       VRC();
         vrc = RTFdtNodePropertyAddU32(     hFdt, "linux,pci-domain", 0);                        VRC();
