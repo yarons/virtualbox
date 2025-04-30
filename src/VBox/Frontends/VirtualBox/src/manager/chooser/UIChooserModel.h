@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 109372 2025-04-30 10:49:41Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.h 109374 2025-04-30 11:09:55Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -319,6 +319,9 @@ private slots:
 
     /** @name General stuff.
       * @{ */
+        /** Handles signal about experience-mode being changed. */
+        void sltHandleSettingsExpertModeChange();
+
         /** Handles signal about context-menu being shown. */
         void sltUpdateContextMenu();
     /** @} */
