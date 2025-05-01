@@ -1,4 +1,4 @@
-/* $Id: SUPDrvGip.cpp 109298 2025-04-22 09:39:50Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrvGip.cpp 109385 2025-05-01 00:34:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code for GIP.
  */
@@ -214,8 +214,9 @@ DECLINLINE(uint32_t) supdrvGipGetApicId(PSUPGLOBALINFOPAGE pGip)
     RT_NOREF(pGip);
     return (uint32_t)ASMGetThreadIdRoEL0();
 
-#elif defined(RT_ARCH_ARM64) && defined(RT_OS_LINUX)
-    return (uint32_t)RTMpCurSetIndex();
+#elif defined(RT_ARCH_ARM64) && (defined(RT_OS_LINUX) || defined(RT_OS_DARWIN))
+    RT_NOREF(pGip);
+    return (uint32_t)RTMpCurSetIndex(); /* the easy way out for now */
 
 #else
 # error "port me"
@@ -268,8 +269,8 @@ static uint32_t supdrvGipGetApicIdSlow(void)
 #elif defined(RT_ARCH_ARM64) && defined(RT_OS_WINDOWS)
     return (uint32_t)ASMGetThreadIdRoEL0();
 
-#elif defined(RT_ARCH_ARM64) && defined(RT_OS_LINUX)
-    return (uint32_t)RTMpCurSetIndex();
+#elif defined(RT_ARCH_ARM64) && (defined(RT_OS_LINUX) || defined(RT_OS_DARWIN))
+    return (uint32_t)RTMpCurSetIndex(); /* the easy way out for now */
 
 #else
 # error "port me"

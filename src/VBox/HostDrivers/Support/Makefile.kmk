@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 108928 2025-03-25 05:51:48Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 109385 2025-05-01 00:34:31Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -759,7 +759,7 @@ if   !defined(VBOX_ONLY_DOCS) \
   ifdef VBOX_WITH_HARDENING
    VBoxDrv_ASDEFS        += VBOX_WITH_HARDENING
   endif
-  ifdef VBOX_WITH_RAM_IN_KERNEL
+  if defined(VBOX_WITH_RAM_IN_KERNEL) || ("$(KBUILD_TARGET_ARCH)" != "amd64" && "$(KBUILD_TARGET_ARCH)" != "x86")
    VBoxDrv_DEFS          += VBOX_WITHOUT_EFLAGS_AC_SET_IN_VBOXDRV IPRT_WITHOUT_EFLAGS_AC_PRESERVING
   else if ($(VBOX_VERSION_BUILD) % 2) == 1
    VBoxDrv_DEFS          += VBOX_WITH_EFLAGS_AC_SET_IN_VBOXDRV IPRT_WITH_EFLAGS_AC_PRESERVING
