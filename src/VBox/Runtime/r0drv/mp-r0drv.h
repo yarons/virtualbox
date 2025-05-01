@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: mp-r0drv.h 109389 2025-05-01 02:16:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Internal Header.
  */
@@ -75,6 +75,10 @@ typedef struct RTMPARGS
 #endif
 #ifdef RT_OS_LINUX
     PRTCPUSET   pWorkerSet;
+#endif
+#if defined(RT_OS_DARWIN) && (defined(RT_ARCH_ARM64) || defined(RT_ARCH_ARM32))
+    /** This is for use as the xcall synch parameter. */
+    uint32_t    cCpusLeftSynch;
 #endif
 } RTMPARGS;
 /** Pointer to a RTMpOn* argument packet. */
