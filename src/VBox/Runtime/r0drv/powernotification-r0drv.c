@@ -1,4 +1,4 @@
-/* $Id: powernotification-r0drv.c 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: powernotification-r0drv.c 109386 2025-05-01 01:31:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Power Management, Ring-0 Driver, Event Notifications.
  */
@@ -44,6 +44,8 @@
 #include <iprt/asm.h>
 #if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
 # include <iprt/asm-amd64-x86.h>
+#elif defined(RT_ARCH_ARM64) || defined(RT_ARCH_ARM32)
+# include <iprt/asm-arm.h>
 #endif
 #include <iprt/assert.h>
 #include <iprt/err.h>
