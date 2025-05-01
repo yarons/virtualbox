@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 109385 2025-05-01 00:34:31Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrv-darwin.cpp 109390 2025-05-01 02:19:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -1272,7 +1272,11 @@ bool VBOXCALL supdrvOSAreCpusOfflinedOnSuspend(void)
 
 bool VBOXCALL supdrvOSAreTscDeltasInSync(void)
 {
+#ifdef RT_ARCH_ARM64
+    return true;
+#else
     return false;
+#endif
 }
 
 
