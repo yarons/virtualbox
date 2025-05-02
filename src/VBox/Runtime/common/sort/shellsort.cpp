@@ -1,4 +1,4 @@
-/* $Id: shellsort.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: shellsort.cpp 109398 2025-05-02 20:25:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTSortShell and RTSortApvShell.
  */
@@ -48,7 +48,11 @@
 
 RTDECL(void) RTSortShell(void *pvArray, size_t cElements, size_t cbElement, PFNRTSORTCMP pfnCmp, void *pvUser)
 {
+#ifdef IN_RING3
+    Assert(cbElement <= _32K);
+#else
     Assert(cbElement <= 128);
+#endif
 
     /* Anything worth sorting? */
     if (cElements < 2)
