@@ -1,4 +1,4 @@
-/* $Id: UIMachineToolsWidget.h 109230 2025-04-15 14:28:23Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineToolsWidget.h 109411 2025-05-05 12:23:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineToolsWidget class declaration.
  */
@@ -252,6 +252,8 @@ private:
     SelectionType  m_enmSelectionType;
     /** Holds whether the last selected item was accessible. */
     bool           m_fSelectedMachineItemAccessible;
+    /** Holds whether the last selected item was started. */
+    bool           m_fSelectedMachineItemStarted;
 
     /** Holds the splitter settings save timer. */
     QTimer *m_pSplitterSettingsSaveTimer;
