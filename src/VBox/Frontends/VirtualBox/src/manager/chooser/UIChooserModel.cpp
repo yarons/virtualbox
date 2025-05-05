@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 109374 2025-04-30 11:09:55Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.cpp 109420 2025-05-05 14:58:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -47,10 +47,12 @@
 #include "UIChooserNodeMachine.h"
 #include "UIChooserView.h"
 #include "UICloudNetworkingStuff.h"
+#include "UICommon.h"
 #include "UIExtraDataManager.h"
 #include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
 #include "UINotificationCenter.h"
+#include "UIVirtualBoxEventHandler.h"
 #include "UIVirtualMachineItemCloud.h"
 #include "UIVirtualMachineItemLocal.h"
 
@@ -1234,7 +1236,31 @@ void UIChooserModel::sltHandleCloudProfileManagerCumulativeChange()
     buildTreeForMainRoot(true /* preserve selection */);
 }
 
+void UIChooserModel::sltHandleCommitData()
+{
+    cleanupConnections();
+}
+
 void UIChooserModel::sltHandleSettingsExpertModeChange()
+{
+    /* Invalidate local and cloud machine context-menus (we are reseting property values): */
+    m_localMenus.value(UIChooserNodeType_Machine)->setProperty("is_valid", QVariant());
+    m_cloudMenus.value(UIChooserNodeType_Machine)->setProperty("is_valid", QVariant());
+}
+
+void UIChooserModel::sltHandleMachineStateChange(const QUuid &uId)
+{
+    /* If that was first selected VM item: */
+    if (   firstSelectedMachineItem()
+        && firstSelectedMachineItem()->id() == uId)
+    {
+        /* Invalidate local and cloud machine context-menus (we are reseting property values): */
+        m_localMenus.value(UIChooserNodeType_Machine)->setProperty("is_valid", QVariant());
+        m_cloudMenus.value(UIChooserNodeType_Machine)->setProperty("is_valid", QVariant());
+    }
+}
+
+void UIChooserModel::sltHandleSelectionChanged()
 {
     /* Invalidate local and cloud machine context-menus (we are reseting property values): */
     m_localMenus.value(UIChooserNodeType_Machine)->setProperty("is_valid", QVariant());
@@ -1593,8 +1619,14 @@ void UIChooserModel::prepareCloudUpdateTimer()
 
 void UIChooserModel::prepareConnections()
 {
+    connect(&uiCommon(), &UICommon::sigAskToCommitData,
+            this, &UIChooserModel::sltHandleCommitData);
     connect(gEDataManager, &UIExtraDataManager::sigSettingsExpertModeChange,
             this, &UIChooserModel::sltHandleSettingsExpertModeChange);
+    connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigMachineStateChange,
+            this, &UIChooserModel::sltHandleMachineStateChange);
+    connect(this, &UIChooserModel::sigSelectionChanged,
+            this, &UIChooserModel::sltHandleSelectionChanged);
     connect(this, &UIChooserModel::sigSelectionChanged,
             this, &UIChooserModel::sltUpdateSelectedCloudProfiles);
     connect(m_pTimerCloudProfileUpdate, &QTimer::timeout,
@@ -1610,6 +1642,10 @@ void UIChooserModel::loadSettings()
 
 void UIChooserModel::cleanupConnections()
 {
+    disconnect(gVBoxEvents, &UIVirtualBoxEventHandler::sigMachineStateChange,
+               this, &UIChooserModel::sltHandleMachineStateChange);
+    disconnect(this, &UIChooserModel::sigSelectionChanged,
+               this, &UIChooserModel::sltHandleSelectionChanged);
     disconnect(this, &UIChooserModel::sigSelectionChanged,
                this, &UIChooserModel::sltUpdateSelectedCloudProfiles);
     disconnect(m_pTimerCloudProfileUpdate, &QTimer::timeout,
@@ -1646,7 +1682,6 @@ void UIChooserModel::cleanupScene()
 
 void UIChooserModel::cleanup()
 {
-    cleanupConnections();
     cleanupCloudUpdateTimer();
     cleanupHandlers();
     cleanupContextMenu();
