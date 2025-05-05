@@ -1,4 +1,4 @@
-/* $Id: UIMachineToolsWidget.h 109411 2025-05-05 12:23:18Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineToolsWidget.h 109412 2025-05-05 14:05:19Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineToolsWidget class declaration.
  */
@@ -68,8 +68,10 @@ signals:
       * @{ */
         /** Notifies about Chooser-pane index change. */
         void sigChooserPaneIndexChange();
-        /** Notifies about Chooser-pane selection change. */
-        void sigChooserPaneSelectionChange();
+        /** Notifies about Chooser-pane selection class change.
+          * @note Every selection class change caused by selection change.
+          *       But not every selection change causes class change. */
+        void sigChooserPaneSelectionClassChange();
 
         /** Notifies about state change for cloud machine with certain @a uId. */
         void sigCloudMachineStateChange(const QUuid &uId);

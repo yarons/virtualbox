@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxWidget.cpp 109349 2025-04-28 15:06:17Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxWidget.cpp 109412 2025-05-05 14:05:19Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxWidget class implementation.
  */
@@ -444,7 +444,7 @@ void UIVirtualBoxWidget::prepareConnections()
             this, &UIVirtualBoxWidget::sigToolTypeChangeMachine);
     connect(machineToolsWidget(), &UIMachineToolsWidget::sigChooserPaneIndexChange,
             this, &UIVirtualBoxWidget::sigChooserPaneIndexChange);
-    connect(machineToolsWidget(), &UIMachineToolsWidget::sigChooserPaneSelectionChange,
+    connect(machineToolsWidget(), &UIMachineToolsWidget::sigChooserPaneSelectionClassChange,
             this, &UIVirtualBoxWidget::sltUpdateToolbar);
     connect(machineToolsWidget(), &UIMachineToolsWidget::sigCloudMachineStateChange,
             this, &UIVirtualBoxWidget::sigCloudMachineStateChange);
@@ -693,7 +693,7 @@ void UIVirtualBoxWidget::cleanupConnections()
                this, &UIVirtualBoxWidget::sigToolTypeChangeMachine);
     disconnect(machineToolsWidget(), &UIMachineToolsWidget::sigChooserPaneIndexChange,
                this, &UIVirtualBoxWidget::sigChooserPaneIndexChange);
-    disconnect(machineToolsWidget(), &UIMachineToolsWidget::sigChooserPaneSelectionChange,
+    disconnect(machineToolsWidget(), &UIMachineToolsWidget::sigChooserPaneSelectionClassChange,
                this, &UIVirtualBoxWidget::sltUpdateToolbar);
     disconnect(machineToolsWidget(), &UIMachineToolsWidget::sigCloudMachineStateChange,
                this, &UIVirtualBoxWidget::sigCloudMachineStateChange);

@@ -1,4 +1,4 @@
-/* $Id: UIMachineToolsWidget.cpp 109411 2025-05-05 12:23:18Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineToolsWidget.cpp 109412 2025-05-05 14:05:19Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineToolsWidget class implementation.
  */
@@ -291,7 +291,7 @@ void UIMachineToolsWidget::sltHandleChooserPaneIndexChange()
     if (   m_enmSelectionType != enmSelectedItemType
         || m_fSelectedMachineItemAccessible != fCurrentItemIsOk
         || m_fSelectedMachineItemStarted != fItemStarted)
-        emit sigChooserPaneSelectionChange();
+        emit sigChooserPaneSelectionClassChange();
 
     /* Remember new status: */
     m_enmSelectionType = enmSelectedItemType;
