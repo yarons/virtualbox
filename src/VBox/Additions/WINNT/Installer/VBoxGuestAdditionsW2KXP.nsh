@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsW2KXP.nsh 109423 2025-05-05 18:00:52Z andreas.loeffler@oracle.com $
+; $Id: VBoxGuestAdditionsW2KXP.nsh 109424 2025-05-05 18:14:15Z andreas.loeffler@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsW2KXP.nsh - Guest Additions installation for Windows 2000/XP.
 ;
@@ -135,7 +135,7 @@ change_res:
   ${If}     ${IsWin2000}
     StrCpy $reg_path_device "SYSTEM\CurrentControlSet\SERVICES\VBoxVideo\Device0"
     StrCpy $reg_path_monitor "SYSTEM\CurrentControlSet\SERVICES\VBoxVideo\Device0\Mon00000001"
-  ${ElseIf} ${IsAtLeastWinXP}
+  ${ElseIf} ${AtLeastWinXP}
     StrCpy $reg_path_device "SYSTEM\CurrentControlSet\Control\Video\$dev_id\0000"
     StrCpy $reg_path_monitor "SYSTEM\CurrentControlSet\Control\VIDEO\$dev_id\0000\Mon00000001"
   ${Else}
