@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 109370 2025-04-30 07:18:23Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICAll.cpp 109401 2025-05-05 07:59:26Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - All Contexts.
  */
@@ -2111,8 +2111,8 @@ DECLINLINE(VBOXSTRICTRC) gicDistReadRegister(PPDMDEVINS pDevIns, PVMCPUCC pVCpu,
                 *puValue |= GIC_DIST_REG_TYPER_LPIS
                          |  GIC_DIST_REG_TYPER_NUM_LPIS_SET(pGicDev->uMaxLpi);
             }
-            Assert((*puValue &  (GIC_DIST_REG_TYPER_MBIS | GIC_DIST_REG_TYPER_LPIS))
-                             == (GIC_DIST_REG_TYPER_MBIS | GIC_DIST_REG_TYPER_LPIS));
+            AssertMsg(   RT_BOOL(*puValue & GIC_DIST_REG_TYPER_MBIS)
+                      == RT_BOOL(*puValue & GIC_DIST_REG_TYPER_LPIS), ("%#RX32\n", *puValue));
             break;
         }
         case GIC_DIST_REG_PIDR2_OFF:
