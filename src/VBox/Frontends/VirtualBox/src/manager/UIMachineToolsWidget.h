@@ -1,4 +1,4 @@
-/* $Id: UIMachineToolsWidget.h 109414 2025-05-05 14:15:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineToolsWidget.h 109418 2025-05-05 14:35:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineToolsWidget class declaration.
  */
@@ -104,6 +104,8 @@ public:
 
         /** Returns whether passed @a pItem accessible, by default it's the current one. */
         bool isItemAccessible(UIVirtualMachineItem *pItem = 0) const;
+        /** Returns whether passed @a pItem started, by default it's the current one. */
+        bool isItemStarted(UIVirtualMachineItem *pItem = 0) const;
 
         /** Returns whether group item is selected. */
         bool isGroupItemSelected() const;
@@ -218,6 +220,9 @@ private:
         void prepareConnections();
         /** Loads settings. */
         void loadSettings();
+
+        /** Recalculates Chooser-pane selection class. */
+        void recalculateChooserPaneSelectionClass();
 
         /** Cleanups connections. */
         void cleanupConnections();

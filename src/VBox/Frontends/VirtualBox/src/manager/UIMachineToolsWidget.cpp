@@ -1,4 +1,4 @@
-/* $Id: UIMachineToolsWidget.cpp 109414 2025-05-05 14:15:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineToolsWidget.cpp 109418 2025-05-05 14:35:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineToolsWidget class implementation.
  */
@@ -80,6 +80,13 @@ bool UIMachineToolsWidget::isItemAccessible(UIVirtualMachineItem *pItem /* = 0 *
     if (!pItem)
         pItem = currentItem();
     return pItem && pItem->accessible();
+}
+
+bool UIMachineToolsWidget::isItemStarted(UIVirtualMachineItem *pItem /* = 0 */) const
+{
+    if (!pItem)
+        pItem = currentItem();
+    return pItem && pItem->isItemStarted();
 }
 
 bool UIMachineToolsWidget::isGroupItemSelected() const
@@ -206,8 +213,8 @@ QString UIMachineToolsWidget::currentHelpKeyword() const
 
 void UIMachineToolsWidget::sltRetranslateUI()
 {
-    /* Make sure chosen item fetched: */
-    sltHandleChooserPaneSelectionChange();
+    /* Fetch Chooser-pane selection class: */
+    recalculateChooserPaneSelectionClass();
 }
 
 void UIMachineToolsWidget::sltHandleCommitData()
@@ -235,6 +242,8 @@ void UIMachineToolsWidget::sltHandleMachineStateChange(const QUuid &uId)
 
     /* Recache current machine item information: */
     recacheCurrentMachineItemInformation();
+    /* Fetch Chooser-pane selection class: */
+    recalculateChooserPaneSelectionClass();
 }
 
 void UIMachineToolsWidget::sltHandleSettingsExpertModeChange()
@@ -271,6 +280,9 @@ void UIMachineToolsWidget::sltHandleSplitterSettingsSave()
 
 void UIMachineToolsWidget::sltHandleChooserPaneSelectionChange()
 {
+    /* Recache current machine item information: */
+    recacheCurrentMachineItemInformation();
+
     /* Let the parent know: */
     emit sigChooserPaneSelectionChange();
 
@@ -279,28 +291,13 @@ void UIMachineToolsWidget::sltHandleChooserPaneSelectionChange()
     if (pItem)
         emit sigToolMenuUpdate(pItem);
 
-    /* Recache current machine item information: */
-    recacheCurrentMachineItemInformation();
-
-    /* Calculate new status: */
-    const SelectionType enmSelectedItemType = selectionType();
-    const bool fCurrentItemIsOk = isItemAccessible();
-    const bool fItemStarted = pItem && pItem->isItemStarted();
-
-    /* Update toolbar if status got changed: */
-    if (   m_enmSelectionType != enmSelectedItemType
-        || m_fSelectedMachineItemAccessible != fCurrentItemIsOk
-        || m_fSelectedMachineItemStarted != fItemStarted)
-        emit sigChooserPaneSelectionClassChange();
-
-    /* Remember new status: */
-    m_enmSelectionType = enmSelectedItemType;
-    m_fSelectedMachineItemAccessible = fCurrentItemIsOk;
-    m_fSelectedMachineItemStarted = fItemStarted;
+    /* Fetch Chooser-pane selection class: */
+    recalculateChooserPaneSelectionClass();
 }
 
 void UIMachineToolsWidget::sltHandleChooserPaneSelectionInvalidated()
 {
+    /* Recache current machine item information: */
     recacheCurrentMachineItemInformation(true /* fDontRaiseErrorPane */);
 }
 
@@ -397,12 +394,9 @@ void UIMachineToolsWidget::prepare()
     loadSettings();
 
     /* Translate UI: */
-    sltRetranslateUI();
     connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
             this, &UIMachineToolsWidget::sltRetranslateUI);
-
-    /* Make sure current Chooser-pane index fetched: */
-    sltHandleChooserPaneSelectionChange();
+    sltRetranslateUI();
 }
 
 void UIMachineToolsWidget::prepareWidgets()
@@ -529,6 +523,25 @@ void UIMachineToolsWidget::loadSettings()
         }
         m_pSplitter->setSizes(sizes);
     }
+}
+
+void UIMachineToolsWidget::recalculateChooserPaneSelectionClass()
+{
+    /* Calculate new status: */
+    const SelectionType enmSelectedItemType = selectionType();
+    const bool fCurrentItemIsOk = isItemAccessible();
+    const bool fItemStarted = isItemStarted();
+
+    /* Notify listeners about selection class change: */
+    if (   m_enmSelectionType != enmSelectedItemType
+        || m_fSelectedMachineItemAccessible != fCurrentItemIsOk
+        || m_fSelectedMachineItemStarted != fItemStarted)
+        emit sigChooserPaneSelectionClassChange();
+
+    /* Remember new status: */
+    m_enmSelectionType = enmSelectedItemType;
+    m_fSelectedMachineItemAccessible = fCurrentItemIsOk;
+    m_fSelectedMachineItemStarted = fItemStarted;
 }
 
 void UIMachineToolsWidget::cleanupConnections()
