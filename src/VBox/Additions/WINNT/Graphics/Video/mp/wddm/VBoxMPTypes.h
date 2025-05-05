@@ -1,10 +1,10 @@
-/* $Id: VBoxMPTypes.h 108837 2025-03-20 12:48:42Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxMPTypes.h 109425 2025-05-05 18:17:33Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBox WDDM Miniport driver
  */
 
 /*
- * Copyright (C) 2011-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -205,14 +205,7 @@ typedef struct VBOXWDDM_ALLOCATION
         uint32_t                sid;                        /* For surfaces. */
         uint32_t                mobid;                      /* For surfaces and shaders. */
         uint32_t                SegmentId;                  /* Segment of the allocation. */
-        union
-        {
-            PMDL                pMDL;                       /* Guest backing for aperture segment 2. */
-            struct
-            {
-                struct VMSVGAMOB *pMob;                     /* Mob for the pages (including RTR0MEMOBJ). */
-            } gb; /** @todo remove the struct */
-        };
+        struct VMSVGAGBO       *pGbo;                       /* Guest memory for this allocation. */
     } dx;
 #endif /* VBOX_WITH_VMSVGA3D_DX */
 } VBOXWDDM_ALLOCATION, *PVBOXWDDM_ALLOCATION;
