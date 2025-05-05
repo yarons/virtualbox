@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 109404 2025-05-05 10:00:40Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 109408 2025-05-05 10:33:33Z alexander.eichner@oracle.com $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -89,6 +89,7 @@ endif
 # libtpms for supporting the in process TPM emulation.
 if   defined(VBOX_WITH_LIBTPMS) \
   && !defined(VBOX_ONLY_BUILD) \
+  && "$(intersects $(KBUILD_TARGET_ARCH),$(VBOX_SUPPORTED_HOST_ARCHS))" != "" \
   && ("$(SDK_VBoxLibTpms_INCS)" == "$(SDK_VBoxLibTpms_DEFAULT_INCS)")
  include $(PATH_SUB_CURRENT)/libtpms-0.10.0/Makefile.kmk
 endif
