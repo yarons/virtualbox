@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 109349 2025-04-28 15:06:17Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 109414 2025-05-05 14:15:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -881,7 +881,7 @@ void UIVirtualBoxManager::sltCheckUSBAccesibility()
         UINotificationMessage::cannotEnumerateHostUSBDevices(comHost);
 }
 
-void UIVirtualBoxManager::sltHandleChooserPaneIndexChange()
+void UIVirtualBoxManager::sltHandleChooserPaneSelectionChange()
 {
     // WORKAROUND:
     // These menus are dynamical since local and cloud VMs have different menu contents.
@@ -2397,7 +2397,7 @@ void UIVirtualBoxManager::prepare()
     prepareConnections();
 
     /* Update actions initially: */
-    sltHandleChooserPaneIndexChange();
+    sltHandleChooserPaneSelectionChange();
 
     /* Load settings: */
     loadSettings();
@@ -2515,8 +2515,8 @@ void UIVirtualBoxManager::prepareConnections()
             this, &UIVirtualBoxManager::sltHandleMediumEnumerationFinish);
 
     /* Widget connections: */
-    connect(m_pWidget, &UIVirtualBoxWidget::sigChooserPaneIndexChange,
-            this, &UIVirtualBoxManager::sltHandleChooserPaneIndexChange);
+    connect(m_pWidget, &UIVirtualBoxWidget::sigChooserPaneSelectionChange,
+            this, &UIVirtualBoxManager::sltHandleChooserPaneSelectionChange);
     connect(m_pWidget, &UIVirtualBoxWidget::sigStartOrShowRequest,
             this, &UIVirtualBoxManager::sltPerformStartOrShowMachine);
     connect(m_pWidget, &UIVirtualBoxWidget::sigToolTypeChangeGlobal,

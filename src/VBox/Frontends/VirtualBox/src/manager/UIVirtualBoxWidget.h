@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxWidget.h 109349 2025-04-28 15:06:17Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxWidget.h 109414 2025-05-05 14:15:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxWidget class declaration.
  */
@@ -58,8 +58,8 @@ signals:
 
     /** @name Chooser pane stuff.
       * @{ */
-        /** Notifies about Chooser-pane index change. */
-        void sigChooserPaneIndexChange();
+        /** Notifies about Chooser-pane selection change. */
+        void sigChooserPaneSelectionChange();
         /** Notifies about Chooser-pane group saving change. */
         void sigGroupSavingStateChanged();
         /** Notifies about Chooser-pane cloud update change. */
