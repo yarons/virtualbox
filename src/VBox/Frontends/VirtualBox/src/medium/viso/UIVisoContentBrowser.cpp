@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 109395 2025-05-02 13:42:27Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.cpp 109415 2025-05-05 14:22:41Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -975,7 +975,7 @@ void UIVisoContentBrowser::createLoadedFileEntries(const QMap<QString, QString> 
                     pItem->setData(strLocalPath, UIFileSystemModelData_LocalPath);
                 /* Pre-scan and populate the directory since we may need its content while processing removed items: */
                 if (enmObjectType == KFsObjType_Directory)
-                    scanHostDirectory(pItem, true  /* recursive */);
+                    scanHostDirectory(pItem, false  /* recursive */);
             }
             if (i == pathList.size() - 1)
                 createVisoEntry(pItem->path(), pItem->data(UIFileSystemModelData_LocalPath).toString(), false);
