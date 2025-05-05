@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxWidget.h 109421 2025-05-05 15:13:44Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxWidget.h 109422 2025-05-05 15:19:46Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxWidget class declaration.
  */
@@ -125,12 +125,6 @@ public:
       * @{ */
         /** Returns the action-pool instance. */
         UIActionPool *actionPool() const { return m_pActionPool; }
-    /** @} */
-
-    /** @name Tool-bar stuff.
-      * @{ */
-        /** Updates tool-bar menu buttons. */
-        void updateToolBarMenuButtons(bool fSeparateMenuSection);
     /** @} */
 
     /** @name Chooser pane stuff.

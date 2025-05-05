@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxWidget.cpp 109421 2025-05-05 15:13:44Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxWidget.cpp 109422 2025-05-05 15:19:46Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxWidget class implementation.
  */
@@ -68,15 +68,6 @@ UIVirtualBoxWidget::UIVirtualBoxWidget(UIVirtualBoxManager *pParent)
 UIVirtualBoxWidget::~UIVirtualBoxWidget()
 {
     cleanup();
-}
-
-void UIVirtualBoxWidget::updateToolBarMenuButtons(bool fSeparateMenuSection)
-{
-    QAction *pAction = actionPool()->action(UIActionIndexMN_M_Machine_M_StartOrShow);
-    AssertPtrReturnVoid(pAction);
-    QToolButton *pButton = qobject_cast<QToolButton*>(m_pToolBar->widgetForAction(pAction));
-    if (pButton)
-        pButton->setPopupMode(fSeparateMenuSection ? QToolButton::MenuButtonPopup : QToolButton::DelayedPopup);
 }
 
 UIVirtualMachineItem *UIVirtualBoxWidget::currentItem() const
@@ -538,7 +529,11 @@ void UIVirtualBoxWidget::updateToolbar()
                 else if (   isSingleCloudProviderGroupSelected()
                          || isSingleCloudProfileGroupSelected())
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Group_M_Stop_S_Terminate));
-                m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Group_M_StartOrShow));
+                if (   currentItem()
+                    && currentItem()->isItemPoweredOff())
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Group_M_Start));
+                else
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Group_S_Show));
             }
             else
             {
@@ -550,7 +545,11 @@ void UIVirtualBoxWidget::updateToolbar()
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Discard));
                 else if (isCloudMachineItemSelected())
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_M_Stop_S_Terminate));
-                m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_M_StartOrShow));
+                if (   currentItem()
+                    && currentItem()->isItemPoweredOff())
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_M_Start));
+                else
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Show));
             }
             break;
         }
@@ -565,7 +564,11 @@ void UIVirtualBoxWidget::updateToolbar()
             m_pToolBar->addSeparator();
             m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Settings));
             m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Discard));
-            m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_M_StartOrShow));
+            if (   currentItem()
+                && currentItem()->isItemPoweredOff())
+                m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_M_Start));
+            else
+                m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Show));
             break;
         }
         case UIToolType_Logs:
@@ -580,7 +583,11 @@ void UIVirtualBoxWidget::updateToolbar()
             m_pToolBar->addSeparator();
             m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Settings));
             m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Discard));
-            m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_M_StartOrShow));
+            if (   currentItem()
+                && currentItem()->isItemPoweredOff())
+                m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_M_Start));
+            else
+                m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Show));
             break;
         }
         case UIToolType_VMActivity:
@@ -591,7 +598,11 @@ void UIVirtualBoxWidget::updateToolbar()
             m_pToolBar->addSeparator();
             m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Settings));
             m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Discard));
-            m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_M_StartOrShow));
+            if (   currentItem()
+                && currentItem()->isItemPoweredOff())
+                m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_M_Start));
+            else
+                m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Show));
             break;
         }
         case UIToolType_FileManager:
@@ -602,7 +613,11 @@ void UIVirtualBoxWidget::updateToolbar()
             m_pToolBar->addSeparator();
             m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Settings));
             m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Discard));
-            m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_M_StartOrShow));
+            if (   currentItem()
+                && currentItem()->isItemPoweredOff())
+                m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_M_Start));
+            else
+                m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Show));
             break;
         }
         case UIToolType_Error:

@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 109414 2025-05-05 14:15:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.h 109422 2025-05-05 15:19:46Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -253,12 +253,16 @@ private slots:
 
         /** Handles call to start or show machine. */
         void sltPerformStartOrShowMachine();
+        /** Handles call to start machine. */
+        void sltPerformStartMachine();
         /** Handles call to start machine in normal mode. */
         void sltPerformStartMachineNormal();
         /** Handles call to start machine in headless mode. */
         void sltPerformStartMachineHeadless();
         /** Handles call to start machine in detachable mode. */
         void sltPerformStartMachineDetachable();
+        /** Handles call to show machine. */
+        void sltPerformShowMachine();
 
         /** Handles call to create console connection for group. */
         void sltPerformCreateConsoleConnectionForGroup();
@@ -413,8 +417,10 @@ private:
         /** Creates an unattended installer and uses it to install guest os to newly created vm. */
         void startUnattendedInstall(const CUnattended &comUnattended, bool fStartHeadless, const QString &strMachineId);
 
-        /** Launches or shows virtual machines represented by passed @a items in corresponding @a enmLaunchMode (for launch). */
-        void performStartOrShowVirtualMachines(const QList<UIVirtualMachineItem*> &items, UILaunchMode enmLaunchMode);
+        /** Launches virtual machines represented by passed @a items in corresponding @a enmLaunchMode. */
+        void performStartVirtualMachines(const QList<UIVirtualMachineItem*> &items, UILaunchMode enmLaunchMode);
+        /** Shows virtual machines represented by passed @a items. */
+        void performShowVirtualMachines(const QList<UIVirtualMachineItem*> &items);
 
 #ifndef VBOX_WS_WIN
         /** Parses serialized @a strArguments string according to shell rules. */
