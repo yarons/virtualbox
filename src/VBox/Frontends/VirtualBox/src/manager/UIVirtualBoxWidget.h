@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxWidget.h 109414 2025-05-05 14:15:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxWidget.h 109421 2025-05-05 15:13:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxWidget class declaration.
  */
@@ -245,6 +245,11 @@ private slots:
       * @{ */
         /** Handles request to commit data. */
         void sltHandleCommitData();
+    /** @} */
+
+    /** @name Chooser pane stuff.
+      * @{ */
+        void sltHandleMachineStateChange(const QUuid &uId);
     /** @} */
 
     /** @name Tool-bar stuff.
