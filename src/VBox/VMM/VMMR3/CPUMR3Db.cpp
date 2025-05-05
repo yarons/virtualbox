@@ -1,4 +1,4 @@
-/* $Id: CPUMR3Db.cpp 109301 2025-04-22 09:56:02Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMR3Db.cpp 109410 2025-05-05 11:58:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU database part.
  */
@@ -125,6 +125,7 @@ static int cpumDbPopulateInfoFromEntry(PCPUMINFO pInfo, PCCPUMDBENTRY pEntryCore
 
 # include "cpus/ARM_Apple_M1.h"
 # include "cpus/ARM_Apple_M2_Max.h"
+# include "cpus/ARM_Apple_M3_Max.h"
 # include "cpus/ARM_Qualcomm_Snapdragon_X.h"
 
 #endif
@@ -246,6 +247,7 @@ static CPUMDBENTRY const * const g_apCpumDbEntries[] =
      */
     &g_Entry_ARM_Apple_M1.Core,
     &g_Entry_ARM_Apple_M2_Max.Core,
+    &g_Entry_ARM_Apple_M3_Max.Core,
     &g_Entry_ARM_Qualcomm_Snapdragon_X.Core,
 #endif /* VBOX_VMM_TARGET_ARMV8 || RT_ARCH_ARM64 */
 };
