@@ -1,4 +1,4 @@
-/* $Id: mach-o.h 109381 2025-05-01 00:06:32Z knut.osmundsen@oracle.com $ */
+/* $Id: mach-o.h 109445 2025-05-06 20:50:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Mach-O Structures and Constants.
  */
@@ -489,6 +489,7 @@ typedef struct section_64
 #define S_THREAD_LOCAL_VARIABLES                UINT32_C(0x13)
 #define S_THREAD_LOCAL_VARIABLE_POINTERS        UINT32_C(0x14)
 #define S_THREAD_LOCAL_INIT_FUNCTION_POINTERS   UINT32_C(0x15)
+#define S_INIT_FUNC_OFFSETS                     UINT32_C(0x16)
 
 
 
