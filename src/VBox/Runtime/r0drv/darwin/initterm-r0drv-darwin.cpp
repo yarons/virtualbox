@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-darwin.cpp 109386 2025-05-01 01:31:56Z knut.osmundsen@oracle.com $ */
+/* $Id: initterm-r0drv-darwin.cpp 109428 2025-05-06 09:15:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, Darwin.
  */
@@ -75,7 +75,9 @@ DECL_HIDDEN_DATA(PFNR0DARWINVMFAULTEXTERNAL)    g_pfnR0DarwinVmFaultExternal = N
 DECL_HIDDEN_DATA(PFN_DARWIN_CPU_XCALL_T)            g_pfnR0DarwinCpuXCall = NULL;
 /** Pointer to cpu_broadcast_xcall (private arm API).  */
 DECL_HIDDEN_DATA(PFN_DARWIN_CPU_BROADCAST_XCALL_T)  g_pfnR0DarwinCpuBroadcastXCall = NULL;
-/** Pointer to cpu_number (private API on arm).  */
+/** Pointer to cpu_number (private API on arm) - can be NULL.  */
+DECL_HIDDEN_DATA(PFN_DARWIN_CPU_NUMBER_T)           g_pfnR0DarwinCpuNumberMayBeNull = NULL;
+/** Pointer to cpu_number (private API on arm) - never NULL.  */
 DECL_HIDDEN_DATA(PFN_DARWIN_CPU_NUMBER_T)           g_pfnR0DarwinCpuNumber = rtR0DarwinFallbackCpuNumber;
 
 /**
@@ -127,9 +129,9 @@ DECLHIDDEN(int) rtR0InitNative(void)
 #if defined(RT_ARCH_ARM64) || defined(RT_ARCH_ARM32)
             GET_FUNCTION(PFN_DARWIN_CPU_XCALL_T,            g_pfnR0DarwinCpuXCall,          "cpu_xcall");
             GET_FUNCTION(PFN_DARWIN_CPU_BROADCAST_XCALL_T,  g_pfnR0DarwinCpuBroadcastXCall, "cpu_broadcast_xcall");
-            GET_FUNCTION(PFN_DARWIN_CPU_NUMBER_T,           g_pfnR0DarwinCpuNumber,         "cpu_number");
-            if (!g_pfnR0DarwinCpuNumber)
-                g_pfnR0DarwinCpuNumber = rtR0DarwinFallbackCpuNumber;
+            GET_FUNCTION(PFN_DARWIN_CPU_NUMBER_T,           g_pfnR0DarwinCpuNumberMayBeNull,"cpu_number");
+            g_pfnR0DarwinCpuNumber = g_pfnR0DarwinCpuNumberMayBeNull
+                                   ? g_pfnR0DarwinCpuNumberMayBeNull : rtR0DarwinFallbackCpuNumber;
 #endif
 
 #undef GET_FUNCTION

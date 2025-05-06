@@ -1,4 +1,4 @@
-/* $Id: the-darwin-kernel.h 109386 2025-05-01 01:31:56Z knut.osmundsen@oracle.com $ */
+/* $Id: the-darwin-kernel.h 109428 2025-05-06 09:15:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Include all necessary headers for the Darwing kernel.
  */
@@ -249,6 +249,7 @@ extern DECL_HIDDEN_DATA(PFNR0DARWINVMFAULTEXTERNAL) g_pfnR0DarwinVmFaultExternal
 extern DECL_HIDDEN_DATA(PFN_DARWIN_CPU_XCALL_T)            g_pfnR0DarwinCpuXCall;
 extern DECL_HIDDEN_DATA(PFN_DARWIN_CPU_BROADCAST_XCALL_T)  g_pfnR0DarwinCpuBroadcastXCall;
 typedef int (*PFN_DARWIN_CPU_NUMBER_T)(void); /* private API for arm */
+extern DECL_HIDDEN_DATA(PFN_DARWIN_CPU_NUMBER_T)           g_pfnR0DarwinCpuNumberMayBeNull;
 extern DECL_HIDDEN_DATA(PFN_DARWIN_CPU_NUMBER_T)           g_pfnR0DarwinCpuNumber;
 # define cpu_number()                                      (g_pfnR0DarwinCpuNumber())
 #endif
