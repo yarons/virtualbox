@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 109408 2025-05-05 10:33:33Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 109438 2025-05-06 15:47:06Z samantha.scholz@oracle.com $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -134,8 +134,8 @@ endif
 # liblzma is used by the IPRT compression code and the iPXE ROM tool.
 if   defined(VBOX_WITH_LIBLZMA) \
   && !defined(VBOX_ONLY_SDK) \
-  && "$(SDK_VBoxLibLzma_INCS)" == "$(PATH_ROOT)/src/libs/liblzma-5.4.1/api"
- include $(PATH_SUB_CURRENT)/liblzma-5.4.1/Makefile.kmk
+  && "$(SDK_VBoxLibLzma_INCS)" == "$(PATH_ROOT)/src/libs/liblzma-5.8.1/api"
+ include $(PATH_SUB_CURRENT)/liblzma-5.8.1/Makefile.kmk
 endif
 
 
