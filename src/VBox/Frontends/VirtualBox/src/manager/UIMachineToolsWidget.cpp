@@ -1,4 +1,4 @@
-/* $Id: UIMachineToolsWidget.cpp 109418 2025-05-05 14:35:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineToolsWidget.cpp 109433 2025-05-06 11:20:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineToolsWidget class implementation.
  */
@@ -213,6 +213,8 @@ QString UIMachineToolsWidget::currentHelpKeyword() const
 
 void UIMachineToolsWidget::sltRetranslateUI()
 {
+    /* Recache current machine item information: */
+    recacheCurrentMachineItemInformation();
     /* Fetch Chooser-pane selection class: */
     recalculateChooserPaneSelectionClass();
 }
