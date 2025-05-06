@@ -1,4 +1,4 @@
-/* $Id: acpi-compiler.cpp 108450 2025-02-19 09:28:41Z alexander.eichner@oracle.com $ */
+/* $Id: acpi-compiler.cpp 109427 2025-05-06 06:29:02Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Advanced Configuration and Power Interface (ACPI) Table generation API.
  */
@@ -2972,6 +2972,7 @@ DECLHIDDEN(int) rtAcpiTblConvertFromAslToAml(RTVFSIOSTREAM hVfsIosOut, RTVFSIOST
     {
         pThis->hVfsIosIn  = hVfsIosIn;
         pThis->pErrInfo   = pErrInfo;
+        pThis->hAcpiTbl   = NIL_RTACPITBL;
         RTListInit(&pThis->LstExternals);
         RTListInit(&pThis->LstStmts);
 
@@ -3041,6 +3042,9 @@ DECLHIDDEN(int) rtAcpiTblConvertFromAslToAml(RTVFSIOSTREAM hVfsIosOut, RTVFSIOST
                     }
                     else
                         rc = RTErrInfoSetF(pErrInfo, rc, "Dumping AST to ACPI table failed with %Rrc", rc);
+
+                    if (pThis->hAcpiTbl != NIL_RTACPITBL)
+                        RTAcpiTblDestroy(pThis->hAcpiTbl);
                 }
 
                 RTScriptLexDestroy(pThis->hLexSource);
