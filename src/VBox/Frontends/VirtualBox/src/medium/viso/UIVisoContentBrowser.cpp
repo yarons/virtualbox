@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 109439 2025-05-06 16:14:06Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.cpp 109440 2025-05-06 16:18:06Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -894,12 +894,12 @@ void UIVisoContentBrowser::parseVisoFileContent(const QString &strFileName)
     QTextStream stream(&file);
     QString strFileContent = stream.readAll();
     QMap<QString, QString> fileEntries;
-    strFileContent.replace("\'", "\"");
+    strFileContent.replace('\'', '\"');
     bool fInsideQuotes = false;
     /* Replace spaces with new lines expect those within quotes: */
     for (int i = 0; i < strFileContent.length(); ++i)
     {
-        if (strFileContent[i] == "\"")
+        if (strFileContent[i] == '\"')
             fInsideQuotes = !fInsideQuotes;
         if (strFileContent[i] == ' ' && !fInsideQuotes)
             strFileContent[i] = '\n';
