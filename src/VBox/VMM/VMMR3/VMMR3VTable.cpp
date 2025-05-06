@@ -1,4 +1,4 @@
-/* $Id: VMMR3VTable.cpp 109446 2025-05-06 21:12:15Z knut.osmundsen@oracle.com $ */
+/* $Id: VMMR3VTable.cpp 109448 2025-05-06 21:22:24Z knut.osmundsen@oracle.com $ */
 /** @file
  * VM - The Virtual Machine Monitor, Ring-3 API VTable Definitions.
  */
@@ -50,7 +50,13 @@ static const VMMR3VTABLE g_VMMR3VTable =
 {
     /* .uMagicVersion = */      VMMR3VTABLE_MAGIC_VERSION,
     /* .fFlags = */             0,
+#ifdef VBOX_VMM_TARGET_X86
     /* .pszDescription = */     "x86 & amd64",
+#elif defined(VBOX_VMM_TARGET_ARMV8)
+    /* .pszDescription = */     "armv8",
+#else
+# error "port me"
+#endif
 
 #define VTABLE_ENTRY(a_Api)     a_Api,
 #define VTABLE_RESERVED(a_Name) vmmR3ReservedVTableEntry,
