@@ -1,4 +1,4 @@
-/* $Id: GITSInternal.h 109435 2025-05-06 13:12:35Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GITSInternal.h 109436 2025-05-06 13:31:32Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GITS - Generic Interrupt Controller Interrupt Translation Service - Internal.
  */
@@ -234,8 +234,6 @@ AssertCompileMemberAlignment(GITSDEV, uCmdReadReg, 4);
 AssertCompileMemberAlignment(GITSDEV, uCmdWriteReg, 4);
 AssertCompileMemberAlignment(GITSDEV, hEvtCmdQueue, 4);
 AssertCompileMemberAlignment(GITSDEV, aCtes, 4);
-AssertCompileMemberAlignment(GITSDEV, aItes, 4);
-AssertCompileMemberAlignment(GITSDEV, aDtes, 4);
 AssertCompileMemberAlignment(GITSDEV, uArchRev, 4);
 AssertCompileMemberSize(GITSDEV, aCtes, RT_ELEMENTS(GITSDEV::aCtes) * sizeof(GITSCTE));
 
