@@ -1,4 +1,4 @@
-/* $Id: CPUM-armv8.cpp 109215 2025-04-14 20:45:36Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUM-armv8.cpp 109454 2025-05-07 11:24:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager (ARMv8 variant).
  */
@@ -47,7 +47,6 @@
 #define LOG_GROUP LOG_GROUP_CPUM
 #define CPUM_WITH_NONCONST_HOST_FEATURES
 #include <VBox/vmm/cpum.h>
-#include <VBox/vmm/cpumdis.h>
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/mm.h>
 #include <VBox/vmm/em.h>

@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 107265 2024-12-04 15:20:14Z knut.osmundsen@oracle.com $ */
+/* $Id: EM.cpp 109454 2025-05-07 11:24:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -67,7 +67,6 @@
 #include "EMInternal.h"
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/uvm.h>
-#include <VBox/vmm/cpumdis.h>
 #include <VBox/dis.h>
 #include <VBox/err.h>
 #include "VMMTracing.h"
