@@ -1,4 +1,4 @@
-/* $Id: VirtioCore.cpp 109451 2025-05-07 07:42:49Z aleksey.ilyushin@oracle.com $ */
+/* $Id: VirtioCore.cpp 109465 2025-05-07 16:36:22Z alexander.rudnev@oracle.com $ */
 
 /** @file
  * VirtioCore - Virtio Core (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
@@ -50,6 +50,7 @@
 #ifdef VIRTIO_REL_INFO_DUMP
 #include <iprt/trace.h>
 #endif /* VIRTIO_REL_INFO_DUMP */
+
 
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
