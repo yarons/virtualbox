@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 109470 2025-05-08 10:12:37Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.cpp 109477 2025-05-08 12:18:44Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes implementation.
  */
@@ -974,6 +974,16 @@ QUuid UIVisoCreatorDialog::createViso(UIActionPool *pActionPool, QWidget *pParen
 
     delete pVisoCreator;
     return mediumId;
+}
+
+/* static */
+QUuid UIVisoCreatorDialog::editViso(UIActionPool *pActionPool, QWidget *pParent, const QString &strVISOFilePath)
+{
+    Q_UNUSED(pActionPool);
+    Q_UNUSED(pParent);
+    if (!QFileInfo(strVISOFilePath).exists())
+        return QUuid();
+    return QUuid();
 }
 
 bool UIVisoCreatorDialog::saveVISOFile()

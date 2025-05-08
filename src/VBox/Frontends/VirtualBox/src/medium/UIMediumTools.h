@@ -1,4 +1,4 @@
-/* $Id: UIMediumTools.h 104915 2024-06-13 13:18:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumTools.h 109477 2025-05-08 12:18:44Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumTools class declaration.
  */
@@ -99,6 +99,17 @@ namespace UIMediumTools
                                                        const QString &strMachineFolder = QString(),
                                                        const QString &strMachineName = QString(),
                                                        const QString &strMachineGuestOSTypeId = QString());
+
+    /** Creates and shows a dialog (wizard) to edit a medium of type @a enmMediumType. For now only for DVD (VISO).
+      * @param  pActionPool              Brings the action-pool.
+      * @param  pParent                  Brings the parent of the dialog,
+      * @param  enmMediumType            Brings the medium type,
+      * @param  strMediumPath            Brings the medium file path,
+      * returns QUuid of the modified medium. */
+    SHARED_LIBRARY_STUFF QUuid openMediumEditDialog(UIActionPool *pActionPool,
+                                                    QWidget *pParent,
+                                                    UIMediumDeviceType enmMediumType,
+                                                    const QString &strMediumPath);
 
     /** Prepares storage menu according passed parameters.
       * @param  pMenu              Brings the #QMenu to be prepared.

@@ -1,4 +1,4 @@
-/* $Id: UIMediumTools.cpp 105820 2024-08-22 14:21:54Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumTools.cpp 109477 2025-05-08 12:18:44Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumTools class implementation.
  */
@@ -329,6 +329,25 @@ QUuid UIMediumTools::openMediumCreatorDialog(UIActionPool *pActionPool,
     /* Update the recent medium list only if the medium type is floppy since updating when a VISO is created is not optimal: */
     if (enmMediumType == UIMediumDeviceType_Floppy)
         gpMediumEnumerator->updateRecentlyUsedMediumListAndFolder(enmMediumType, gpMediumEnumerator->medium(uMediumId).location());
+    return uMediumId;
+}
+
+QUuid UIMediumTools::openMediumEditDialog(UIActionPool *pActionPool,
+                                          QWidget *pParent,
+                                          UIMediumDeviceType enmMediumType,
+                                          const QString &strMediumPath)
+{
+    QUuid uMediumId;
+    switch (enmMediumType)
+    {
+        case UIMediumDeviceType_HardDisk:
+        case UIMediumDeviceType_Floppy:
+        default:
+            break;
+        case UIMediumDeviceType_DVD:
+            uMediumId = UIVisoCreatorDialog::editViso(pActionPool, pParent, strMediumPath);
+            break;
+    }
     return uMediumId;
 }
 

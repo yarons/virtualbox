@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.h 109470 2025-05-08 10:12:37Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMediumManager.h 109477 2025-05-08 12:18:44Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class declaration.
  */
@@ -198,6 +198,8 @@ private slots:
         void sltToggleMediumSearchVisibility(bool fVisible);
         /** Handles command to refresh medium. */
         void sltRefreshAll();
+        /** Handles command to edir viso. */
+        void sltEditVISO();
     /** @} */
 
     /** @name Menu/action handler stuff.

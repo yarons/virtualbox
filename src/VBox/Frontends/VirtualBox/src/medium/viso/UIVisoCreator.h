@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 109395 2025-05-02 13:42:27Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.h 109477 2025-05-08 12:18:44Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes declaration.
  */
@@ -208,6 +208,9 @@ public:
     static QUuid createViso(UIActionPool *pActionPool, QWidget *pParent,
                             const QString &strDefaultFolder = QString(),
                             const QString &strMachineName  = QString());
+    static QUuid editViso(UIActionPool *pActionPool, QWidget *pParent,
+                          const QString &strVISOFilePath);
+
 
 protected:
 

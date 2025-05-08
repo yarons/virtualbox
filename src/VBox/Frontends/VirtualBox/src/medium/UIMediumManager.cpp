@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 109470 2025-05-08 10:12:37Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMediumManager.cpp 109477 2025-05-08 12:18:44Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -585,6 +585,13 @@ void UIMediumManagerWidget::sltRefreshAll()
     gpMediumEnumerator->enumerateMedia();
 }
 
+void UIMediumManagerWidget::sltEditVISO()
+{
+    if (!currentMediumItem())
+        return;
+    UIMediumTools::openMediumEditDialog(m_pActionPool, this, currentMediumType(), currentMediumItem()->location());
+}
+
 void UIMediumManagerWidget::sltHandleMoveProgressFinished()
 {
     /* Get current medium-item: */
@@ -822,6 +829,8 @@ void UIMediumManagerWidget::prepareActions()
             this, &UIMediumManagerWidget::sltToggleMediumSearchVisibility);
     connect(m_pActionPool->action(UIActionIndexMN_M_Medium_S_Refresh), &QAction::triggered,
             this, &UIMediumManagerWidget::sltRefreshAll);
+    connect(m_pActionPool->action(UIActionIndexMN_M_Medium_S_Edit), &QAction::triggered,
+            this, &UIMediumManagerWidget::sltEditVISO);
 
     /* Update action icons: */
     updateActionIcons();
@@ -1596,9 +1605,7 @@ void UIMediumManagerWidget::enableEditAction()
     m_pActionPool->action(UIActionIndexMN_M_Medium_S_Edit)->setVisible(true);
     m_pActionPool->action(UIActionIndexMN_M_Medium_S_Edit)->setEnabled(false);
     if (currentMediumItem())
-    {
-        m_pActionPool->action(UIActionIndexMN_M_Medium_S_Edit)->setEnabled(currentMediumItem()->name().endsWith(".viso"));
-    }
+        m_pActionPool->action(UIActionIndexMN_M_Medium_S_Edit)->setEnabled(currentMediumItem()->location().endsWith(".viso"));
 }
 
 void UIMediumManagerWidget::performSearch(bool fSelectNext)
