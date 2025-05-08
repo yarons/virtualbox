@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 109472 2025-05-08 10:44:52Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICAll.cpp 109476 2025-05-08 12:02:48Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - All Contexts.
  */
@@ -693,8 +693,9 @@ DECLHIDDEN(void) gicDistReadLpiConfigTableFromMem(PPDMDEVINS pDevIns)
 }
 
 
-static void gicReDistReadLpiPendingBitmapFromMem(PPDMDEVINS pDevIns, PVMCPU pVCpu, PGICDEV pGicDev)
+static void gicReDistReadLpiPendingBitmapFromMem(PPDMDEVINS pDevIns, PVMCPU pVCpu)
 {
+    PGICDEV pGicDev = PDMDEVINS_2_DATA(pDevIns, PGICDEV);
     Assert(pGicDev->fEnableLpis);
     LogFlowFunc(("\n"));
 
@@ -2530,7 +2531,7 @@ DECLINLINE(VBOXSTRICTRC) gicReDistWriteRegister(PPDMDEVINS pDevIns, PVMCPUCC pVC
                 if (pGicDev->fEnableLpis)
                 {
                     gicDistReadLpiConfigTableFromMem(pDevIns);
-                    gicReDistReadLpiPendingBitmapFromMem(pDevIns, pVCpu, pGicDev);
+                    gicReDistReadLpiPendingBitmapFromMem(pDevIns, pVCpu);
                 }
                 else
                 {

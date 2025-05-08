@@ -1,4 +1,4 @@
-/* $Id: GITSInternal.h 109472 2025-05-08 10:44:52Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GITSInternal.h 109476 2025-05-08 12:02:48Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GITS - Generic Interrupt Controller Interrupt Translation Service - Internal.
  */
@@ -124,6 +124,7 @@ typedef enum GITSDIAG
     kGitsDiag_CmdQueue_Basic_Invalid_PhysAddr,
 
     /* Command: INVALL. */
+    kGitsDiag_CmdQueue_Cmd_Invall_Cte_Unmapped,
     kGitsDiag_CmdQueue_Cmd_Invall_Icid_Invalid,
 
     /* Command: MAPC. */
