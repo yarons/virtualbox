@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-linux.c 109468 2025-05-08 09:09:56Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrv-linux.c 109469 2025-05-08 09:13:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -1750,7 +1750,7 @@ SUPR0DECL(bool) SUPR0FpuBegin(bool fCtxHook)
      */
     Assert(fCtxHook || !RTThreadPreemptIsEnabled(NIL_RTTHREAD));
     kernel_fpu_begin();
-#  if 0 /* Always do it for now for better test coverage. */
+#  if RTLNX_VER_MIN(6,15,0) /* fpregs_unlock may do more than just preempt_enable, so only when necessary now. */
     if (fCtxHook)
 #  endif
     {
@@ -1778,7 +1778,7 @@ SUPR0DECL(void) SUPR0FpuEnd(bool fCtxHook)
 # if RTLNX_VER_MIN(4,19,0)
     /* HACK ALERT! See SUPR0FpuBegin for an explanation of this. */
     Assert(!RTThreadPreemptIsEnabled(NIL_RTTHREAD));
-#  if 0 /* Always do it for now for better test coverage. */
+#  if RTLNX_VER_MIN(6,15,0) /* fpregs_unlock may do more than just preempt_enable, so only when necessary now. */
     if (fCtxHook)
 #  endif
     {
