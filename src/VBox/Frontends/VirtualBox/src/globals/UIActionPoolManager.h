@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.h 109422 2025-05-05 15:19:46Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPoolManager.h 109470 2025-05-08 10:12:37Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class declaration.
  */
@@ -176,6 +176,7 @@ enum UIActionIndexMN
     UIActionIndexMN_M_Medium_T_Search,
     UIActionIndexMN_M_Medium_S_Refresh,
     UIActionIndexMN_M_Medium_S_Clear,
+    UIActionIndexMN_M_Medium_S_Edit,
 
     /* Network Manager actions: */
     UIActionIndexMN_M_NetworkWindow,

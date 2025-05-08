@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxWidget.cpp 109422 2025-05-05 15:19:46Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxWidget.cpp 109470 2025-05-08 10:12:37Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxWidget class implementation.
  */
@@ -639,6 +639,7 @@ void UIVirtualBoxWidget::updateToolbar()
             m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Medium_S_Add));
             m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Medium_S_Create));
             m_pToolBar->addSeparator();
+            m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Medium_S_Edit));
             m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Medium_S_Copy));
             m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Medium_S_Move));
             m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Medium_S_Remove));

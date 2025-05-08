@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 106721 2024-10-25 18:17:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPool.h 109470 2025-05-08 10:12:37Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -176,6 +176,7 @@ enum UIActionIndex
     UIActionIndex_M_MediumSelector_CreateHD,
     UIActionIndex_M_MediumSelector_CreateCD,
     UIActionIndex_M_MediumSelector_CreateFD,
+    UIActionIndex_M_MediumSelector_EditCD,
     UIActionIndex_M_MediumSelector_Refresh,
 
     /* Maximum index: */

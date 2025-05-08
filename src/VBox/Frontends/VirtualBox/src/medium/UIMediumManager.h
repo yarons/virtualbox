@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMediumManager.h 109470 2025-05-08 10:12:37Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class declaration.
  */
@@ -319,6 +319,7 @@ private:
         void setCurrentItem(QITreeWidget *pTreeWidget, QTreeWidgetItem *pItem);
 
     void enableClearAction();
+    void enableEditAction();
     /** @} */
 
     /** @name Search stuff.
