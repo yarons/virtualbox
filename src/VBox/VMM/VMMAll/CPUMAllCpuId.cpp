@@ -1,4 +1,4 @@
-/* $Id: CPUMAllCpuId.cpp 109480 2025-05-08 22:09:06Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMAllCpuId.cpp 109481 2025-05-08 22:35:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU ID part, common bits.
  */
@@ -1424,7 +1424,6 @@ DECLHIDDEN(void) cpumCpuIdExplodeFeaturesX86Vmx(PCVMXMSRS pVmxMsrs, CPUMFEATURES
 
 /**
  * Call cpumCpuIdExplodeFeaturesX86Vmx with SUPHWVIRTMSRS instead of VMXMSRS.
- *
  */
 DECLHIDDEN(void) cpumCpuIdExplodeFeaturesX86VmxFromSupMsrs(PCSUPHWVIRTMSRS pMsrs, CPUMFEATURESX86 *pFeatures)
 {
