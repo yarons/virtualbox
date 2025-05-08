@@ -1,4 +1,4 @@
-/* $Id: CPUMDbg-armv8.cpp 108962 2025-03-26 16:05:20Z alexander.eichner@oracle.com $ */
+/* $Id: CPUMDbg-armv8.cpp 109480 2025-05-08 22:09:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager, Debugger & Debugging APIs.
  */
@@ -347,15 +347,7 @@ static DBGFREGDESC const g_aCpumRegGstDescs[] =
 };
 
 
-/**
- * Initializes the debugger related sides of the CPUM component.
- *
- * Called by CPUMR3Init.
- *
- * @returns VBox status code.
- * @param   pVM                 The cross context VM structure.
- */
-DECLHIDDEN(int) cpumR3DbgInit(PVM pVM)
+DECLHIDDEN(int) cpumR3DbgInitTarget(PVM pVM)
 {
     for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
     {

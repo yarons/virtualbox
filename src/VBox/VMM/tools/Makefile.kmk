@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 109479 2025-05-08 17:32:11Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 109480 2025-05-08 22:09:06Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for VMM tools.
 #
@@ -78,10 +78,12 @@ VBoxCpuReport_SOURCES    := \
 VBoxCpuReport_SOURCES.amd64 := \
 	VBoxCpuReport-x86.cpp \
 	VBoxCpuReportMsrSup.cpp \
+	../VMMR3/CPUMR3Host-x86.cpp \
 	../VMMR3/CPUMR3CpuId.cpp
 VBoxCpuReport_SOURCES.x86 := \
 	VBoxCpuReport-x86.cpp \
 	VBoxCpuReportMsrSup.cpp \
+	../VMMR3/CPUMR3Host-x86.cpp \
 	../VMMR3/CPUMR3CpuId.cpp
 VBoxCpuReport_SOURCES.linux.amd64 := \
 	VBoxCpuReportMsrLinux.cpp
