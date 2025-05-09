@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 109400 2025-05-03 10:27:05Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 109483 2025-05-09 06:47:35Z knut.osmundsen@oracle.com $
 ## @file
 # Top level makefile.
 #
@@ -909,7 +909,6 @@ VBOX_CORE_DOXYFILE_INPUT_FIRST = \
 	$(PATH_ROOT)/include/VBox/vd.h \
 	$(PATH_ROOT)/include/VBox/types.h \
 	$(PATH_ROOT)/include/VBox/err.h \
-	$(PATH_ROOT)/include/VBox/vmm/cpumdis.h \
 	$(PATH_ROOT)/include/VBox/dbggui.h \
 	$(PATH_ROOT)/include/VBox/dis.h \
 	$(PATH_ROOT)/include/VBox/disopcode-x86-amd64.h \
