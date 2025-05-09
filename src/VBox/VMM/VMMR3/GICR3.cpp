@@ -1,4 +1,4 @@
-/* $Id: GICR3.cpp 109472 2025-05-08 10:44:52Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICR3.cpp 109486 2025-05-09 08:35:23Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -361,7 +361,7 @@ static DECLCALLBACK(void) gicR3DbgInfoLpi(PVM pVM, PCDBGFINFOHLP pHlp, const cha
         {
             uint8_t const uLpiCte   = pGicDev->abLpiConfig[i];
             uint8_t const uPriority = RT_BF_GET(uLpiCte, GIC_BF_LPI_CTE_PRIORITY);
-            pHlp->pfnPrintf(pHlp, "    [%4u]               = %#x (priority=%u)\n", uLpiCte, uPriority);
+            pHlp->pfnPrintf(pHlp, "    [%4u]               = %#x (priority=%u)\n", i, uLpiCte, uPriority);
         }
     }
 

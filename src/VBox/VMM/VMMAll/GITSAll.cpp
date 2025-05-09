@@ -1,4 +1,4 @@
-/* $Id: GITSAll.cpp 109482 2025-05-09 06:25:38Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GITSAll.cpp 109486 2025-05-09 08:35:23Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GITS - GIC Interrupt Translation Service (ITS) - All Contexts.
  */
@@ -128,7 +128,7 @@ DECL_HIDDEN_CALLBACK(const char *) gitsGetTranslationRegDescription(uint16_t off
 {
     switch (offReg)
     {
-        case GITS_TRANSLATION_REG_TRANSLATER:   return "GITS_TRANSLATERR";
+        case GITS_TRANSLATION_REG_TRANSLATER:   return "GITS_TRANSLATER";
         default:
             return "<UNKNOWN>";
     }
