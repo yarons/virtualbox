@@ -1,4 +1,4 @@
-# $Id: VirtualBox.tmpl.spec 109487 2025-05-09 08:50:41Z vadim.galitsyn@oracle.com $
+# $Id: VirtualBox.tmpl.spec 109488 2025-05-09 09:19:32Z vadim.galitsyn@oracle.com $
 ## @file
 # Spec file for creating VirtualBox rpm packages
 #
@@ -215,7 +215,8 @@ if [ -f $RPM_BUILD_ROOT/usr/lib/virtualbox/libQt6CoreVBox.so.6 ]; then
     $RPM_BUILD_ROOT/usr/lib/virtualbox/plugins/platformthemes/*.so \
     $RPM_BUILD_ROOT/usr/lib/virtualbox/plugins/sqldrivers/*.so \
     $RPM_BUILD_ROOT/usr/lib/virtualbox/plugins/styles/*.so \
-    $RPM_BUILD_ROOT/usr/lib/virtualbox/plugins/wayland-shell-integration/*.so || true
+    $RPM_BUILD_ROOT/usr/lib/virtualbox/plugins/wayland-shell-integration/*.so \
+    $RPM_BUILD_ROOT/usr/lib/virtualbox/plugins/wayland-decoration-client/*.so || true
   echo "[Paths]" > $RPM_BUILD_ROOT/usr/lib/virtualbox/qt.conf
   echo "Plugins = /usr/lib/virtualbox/plugins" >> $RPM_BUILD_ROOT/usr/lib/virtualbox/qt.conf
 fi
