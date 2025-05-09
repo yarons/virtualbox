@@ -1,4 +1,4 @@
-/* $Id: GITSAll.cpp 109476 2025-05-08 12:02:48Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GITSAll.cpp 109482 2025-05-09 06:25:38Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GITS - GIC Interrupt Translation Service (ITS) - All Contexts.
  */
@@ -1000,10 +1000,12 @@ DECL_HIDDEN_CALLBACK(int) gitsR3CmdQueueProcess(PPDMDEVINS pDevIns, PGITSDEV pGi
 /**
  * @interface_method_impl{PDMGICBACKEND,pfnSendMsi}
  */
-DECL_HIDDEN_CALLBACK(int) gitsSendMsi(PVMCC pVM, PCIBDF uBusDevFn, PCMSIMSG pMsi, uint32_t uEventId, uint32_t uTagSrc)
+DECL_HIDDEN_CALLBACK(int) gitsSendMsi(PVMCC pVM, PCIBDF uBusDevFn, PCMSIMSG pMsi, uint32_t uTagSrc)
 {
-    Log4Func(("uBusDevFn=%#RX32 uEventId=%#RX32\n", uBusDevFn, uEventId));
-    RT_NOREF(pVM, uBusDevFn, pMsi, uEventId, uTagSrc);
+    AssertPtrReturn(pMsi, VERR_INVALID_PARAMETER);
+    Log4Func(("uBusDevFn=%#RX32 Msi.Addr=%#RX64 Msi.Data=%#RX32\n", uBusDevFn, pMsi->Addr.u64, pMsi->Data.u32));
+    RT_NOREF(pVM, uBusDevFn, pMsi, uTagSrc);
+    AssertMsgFailed(("uBusDevFn=%#RX32 Msi.Addr=%#RX64 Msi.Data=%#RX32\n", uBusDevFn, pMsi->Addr.u64, pMsi->Data.u32));
     return VERR_NOT_IMPLEMENTED;
 }
 

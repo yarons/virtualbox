@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DevPciIch9.cpp 109482 2025-05-09 06:25:38Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -996,7 +996,7 @@ DECLCALLBACK(int) devpcibridgeR3CommonRegisterDevice(PPDMDEVINS pDevIns, PPDMPCI
 }
 
 
-static DECLCALLBACK(int) ich9pciRegisterMsi(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, PPDMMSIREG pMsiReg)
+DECLCALLBACK(int) devpciR3CommonRegisterMsi(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, PPDMMSIREG pMsiReg)
 {
     //PDEVPCIBUS   pBus   = PDMINS_2_DATA(pDevIns, PDEVPCIBUS);
     PDEVPCIBUSCC pBusCC = PDMINS_2_DATA_CC(pDevIns, PDEVPCIBUSCC);
@@ -3386,7 +3386,7 @@ static DECLCALLBACK(int) ich9pciR3Construct(PPDMDEVINS pDevIns, int iInstance, P
     PDMPCIBUSREGCC PciBusReg;
     PciBusReg.u32Version                 = PDM_PCIBUSREGCC_VERSION;
     PciBusReg.pfnRegisterR3              = devpciR3CommonRegisterDevice;
-    PciBusReg.pfnRegisterMsiR3           = ich9pciRegisterMsi;
+    PciBusReg.pfnRegisterMsiR3           = devpciR3CommonRegisterMsi;
     PciBusReg.pfnIORegionRegisterR3      = devpciR3CommonIORegionRegister;
     PciBusReg.pfnInterceptConfigAccesses = devpciR3CommonInterceptConfigAccesses;
     PciBusReg.pfnConfigRead              = devpciR3CommonConfigRead;
@@ -3696,7 +3696,7 @@ static DECLCALLBACK(int) ich9pcibridgeR3Construct(PPDMDEVINS pDevIns, int iInsta
     PDMPCIBUSREGCC PciBusReg;
     PciBusReg.u32Version                 = PDM_PCIBUSREGCC_VERSION;
     PciBusReg.pfnRegisterR3              = devpcibridgeR3CommonRegisterDevice;
-    PciBusReg.pfnRegisterMsiR3           = ich9pciRegisterMsi;
+    PciBusReg.pfnRegisterMsiR3           = devpciR3CommonRegisterMsi;
     PciBusReg.pfnIORegionRegisterR3      = devpciR3CommonIORegionRegister;
     PciBusReg.pfnInterceptConfigAccesses = devpciR3CommonInterceptConfigAccesses;
     PciBusReg.pfnConfigWrite             = devpciR3CommonConfigWrite;

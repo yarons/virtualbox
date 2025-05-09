@@ -1,4 +1,4 @@
-/* $Id: PDMAll.cpp 107357 2024-12-13 08:09:39Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: PDMAll.cpp 109482 2025-05-09 06:25:38Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * PDM Critical Sections
  */
@@ -274,8 +274,13 @@ VMM_INT_DECL(void) PDMIoApicBroadcastEoi(PVMCC pVM, uint8_t uVector)
 VMM_INT_DECL(void) PDMIoApicSendMsi(PVMCC pVM, PCIBDF uBusDevFn, PCMSIMSG pMsi, uint32_t uTagSrc)
 {
     Log9(("PDMIoApicSendMsi: addr=%#RX64 data=%#RX32 tag=%#x src=%#x\n", pMsi->Addr.u64, pMsi->Data.u32, uTagSrc, uBusDevFn));
+#ifdef VBOX_VMM_TARGET_ARMV8
+    PCPDMGICBACKEND pGic = &pVM->pdm.s.Ic.u.armv8.GicBackend;
+    if (pGic->pfnSendMsi)
+        pGic->pfnSendMsi(pVM, uBusDevFn, pMsi, uTagSrc);
+#else
     PCPDMIOAPIC pIoApic = &pVM->pdm.s.IoApic;
-#ifdef IN_RING0
+# ifdef IN_RING0
     if (pIoApic->pDevInsR0)
         pIoApic->pfnSendMsiR0(pIoApic->pDevInsR0, uBusDevFn, pMsi, uTagSrc);
     else if (pIoApic->pDevInsR3)
@@ -294,12 +299,13 @@ VMM_INT_DECL(void) PDMIoApicSendMsi(PVMCC pVM, PCIBDF uBusDevFn, PCMSIMSG pMsi, 
         else
             AssertMsgFailed(("We're out of devhlp queue items!!!\n"));
     }
-#else
+# else
     if (pIoApic->pDevInsR3)
     {
         Assert(pIoApic->pfnSendMsiR3);
         pIoApic->pfnSendMsiR3(pIoApic->pDevInsR3, uBusDevFn, pMsi, uTagSrc);
     }
+# endif
 #endif
 }
 

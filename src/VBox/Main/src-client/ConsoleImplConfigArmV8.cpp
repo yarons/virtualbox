@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigArmV8.cpp 109369 2025-04-30 07:02:09Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: ConsoleImplConfigArmV8.cpp 109482 2025-05-09 06:25:38Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits for ARMv8.
  */
@@ -468,7 +468,11 @@ int Console::i_configConstructorArmV8(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
 
         InsertConfigNode(pRoot, "Devices", &pDevices);
 
-        InsertConfigNode(pDevices, "pci-generic-ecam-bridge", NULL);
+        InsertConfigNode(pDevices, "pci-generic-ecam-bridge", &pDev);
+        InsertConfigNode(pDev,     "0",                       &pInst);
+        InsertConfigNode(pInst,    "Config",                  &pCfg);
+        if (fGicIts == TRUE)
+            InsertConfigInteger(pCfg,  "Msi", 1);
 
         InsertConfigNode(pDevices, "platform",              &pDev);
         InsertConfigNode(pDev,     "0",                     &pInst);
@@ -827,6 +831,8 @@ int Console::i_configConstructorArmV8(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
         InsertConfigInteger(pCfg,  "IntPinB",        aPinIrqs[1]);
         InsertConfigInteger(pCfg,  "IntPinC",        aPinIrqs[2]);
         InsertConfigInteger(pCfg,  "IntPinD",        aPinIrqs[3]);
+        if (fGicIts == TRUE)
+            InsertConfigInteger(pCfg,  "Msi", 1);
         vrc = RTFdtNodeAddF(hFdt, "pcie@%RGp", GCPhysPciMmio);                              VRC();
         vrc = RTFdtNodePropertyAddCellsU32(hFdt, "interrupt-map-mask", 4, 0xf800, 0, 0, 7); VRC();
 
