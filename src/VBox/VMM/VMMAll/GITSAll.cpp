@@ -1,4 +1,4 @@
-/* $Id: GITSAll.cpp 109486 2025-05-09 08:35:23Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GITSAll.cpp 109490 2025-05-09 09:51:55Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GITS - GIC Interrupt Translation Service (ITS) - All Contexts.
  */
@@ -935,7 +935,7 @@ DECL_HIDDEN_CALLBACK(int) gitsR3CmdQueueProcess(PPDMDEVINS pDevIns, PGITSDEV pGi
                             GIC_CRIT_SECT_ENTER(pDevIns);
                             gitsR3CmdMapIntr(pDevIns, pGitsDev, uDevId, uEventId, uIntId, uIcId, false /* fMapti */);
                             GIC_CRIT_SECT_LEAVE(pDevIns);
-                            STAM_COUNTER_INC(&pGitsDev->StatCmdMapti);
+                            STAM_COUNTER_INC(&pGitsDev->StatCmdMapi);
                             break;
                         }
 
