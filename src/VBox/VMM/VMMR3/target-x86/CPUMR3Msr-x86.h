@@ -1,4 +1,4 @@
-/* $Id: CPUMR3Msr-x86.h 109259 2025-04-16 20:59:36Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMR3Msr-x86.h 109485 2025-05-09 07:50:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - x86 MSR macros.
  */
@@ -26,8 +26,8 @@
  */
 
 
-#ifndef VMM_INCLUDED_SRC_VMMR3_CPUMR3Msr_x86_h
-#define VMM_INCLUDED_SRC_VMMR3_CPUMR3Msr_x86_h
+#ifndef VMM_INCLUDED_SRC_VMMR3_target_x86_CPUMR3Msr_x86_h
+#define VMM_INCLUDED_SRC_VMMR3_target_x86_CPUMR3Msr_x86_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -112,4 +112,4 @@
 #endif
 /** @} */
 
-#endif /* !VMM_INCLUDED_SRC_VMMR3_CPUMR3Msr_x86_h */
+#endif /* !VMM_INCLUDED_SRC_VMMR3_target_x86_CPUMR3Msr_x86_h */

@@ -1,4 +1,4 @@
-/* $Id: CPUMR3Db.cpp 109410 2025-05-05 11:58:18Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMR3Db.cpp 109485 2025-05-09 07:50:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU database part.
  */
@@ -78,7 +78,7 @@ static int cpumDbPopulateInfoFromEntry(PCPUMINFO pInfo, PCCPUMDBENTRY pEntryCore
  */
 #if defined(VBOX_VMM_TARGET_X86)
 
-# include "CPUMR3Msr-x86.h" /* MSR macros needed by the profiles. */
+# include "target-x86/CPUMR3Msr-x86.h" /* MSR macros needed by the profiles. */
 
 # include "cpus/Intel_Core_i7_6700K.h"
 # include "cpus/Intel_Core_i7_5600U.h"
