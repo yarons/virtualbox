@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.cpp 109512 2025-05-13 09:51:10Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityOverviewWidget.cpp 109513 2025-05-13 10:31:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class implementation.
  */
@@ -1189,7 +1189,7 @@ void UIVMActivityOverviewWidget::prepareActions()
 {
     updateColumnsMenu();
     m_pVMActivityMonitorAction =
-        m_pActionPool->action(UIActionIndexMN_M_ResourceDashboard_S_SwitchToMachineActivity);
+        m_pActionPool->action(UIActionIndexMN_M_ResourceDashboard_S_SwitchToResourceUtilization);
 
     if (m_pVMActivityMonitorAction)
         connect(m_pVMActivityMonitorAction, &QAction::triggered, this, &UIVMActivityOverviewWidget::sltHandleShowVMActivityMonitor);

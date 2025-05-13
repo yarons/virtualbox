@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 109512 2025-05-13 09:51:10Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIActionPool.h 109513 2025-05-13 10:31:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -627,8 +627,8 @@ protected:
     void updateMenuLogViewer();
     /** Updates 'Log Viewer' @a pMenu. */
     void updateMenuLogViewerWrapper(UIMenu *pMenu);
-    /** Updates 'Performance Monitor' menu. */
-    void updateMenuVMActivityMonitor();
+    /** Updates 'Resource Utilization' menu. */
+    void updateMenuResourceUtilization();
     /** Updates 'File Manager' menu. */
     void updateMenuFileManager();
     /** Updates 'File Manager' @a pMenu. */

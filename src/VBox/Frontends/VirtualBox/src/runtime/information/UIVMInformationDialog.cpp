@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 109169 2025-04-10 10:09:44Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMInformationDialog.cpp 109513 2025-05-13 10:31:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -77,7 +77,7 @@ void UIVMInformationDialog::sltRetranslateUI()
     /* Translate tabs: */
     m_pTabWidget->setTabText(Tabs_ConfigurationDetails, tr("Configuration &Details"));
     m_pTabWidget->setTabText(Tabs_RuntimeInformation, tr("&Runtime Information"));
-    m_pTabWidget->setTabText(Tabs_ActivityMonitor, tr("VM &Activity"));
+    m_pTabWidget->setTabText(Tabs_ActivityMonitor, tr("Resource &Utilization"));
     m_pTabWidget->setTabText(3, tr("&Guest Control"));
 
     /* Retranslate button box buttons: */
