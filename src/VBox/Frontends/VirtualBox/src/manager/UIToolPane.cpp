@@ -1,4 +1,4 @@
-/* $Id: UIToolPane.cpp 109349 2025-04-28 15:06:17Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolPane.cpp 109512 2025-05-13 09:51:10Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPane class implementation.
  */
@@ -242,7 +242,7 @@ void UIToolPane::openTool(UIToolType enmType)
             }
             case UIToolType_Activities:
             {
-                /* Create VM Activity Overview: */
+                /* Create Resource Dashboard: */
                 m_pPaneActivities = new UIVMActivityOverviewWidget(EmbedTo_Stack, m_pActionPool, false /* show toolbar */);
                 AssertPtrReturnVoid(m_pPaneActivities);
                 {

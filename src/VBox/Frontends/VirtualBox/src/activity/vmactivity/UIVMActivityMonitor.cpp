@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.cpp 109169 2025-04-10 10:09:44Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitor.cpp 109512 2025-05-13 09:51:10Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class implementation.
  */
@@ -830,7 +830,7 @@ void UIChart::sltCreateContextMenu(const QPoint &point)
     pExportAction->setIcon(UIIconPool::iconSet(":/performance_monitor_export_16px.png"));
     connect(pExportAction, &QAction::triggered, this, &UIChart::sigExportMetricsToFile);
     if (uiCommon().uiType() == UIType_RuntimeUI)
-        menu.addAction(m_pActionPool->action(UIActionIndex_M_Activity_T_Preferences));
+        menu.addAction(m_pActionPool->action(UIActionIndex_M_ResourceUtilization_T_Preferences));
     menu.addSeparator();
     QAction *pResetAction = menu.addAction(m_strResetActionLabel);
     connect(pResetAction, &QAction::triggered, this, &UIChart::sltResetMetric);
@@ -1189,7 +1189,7 @@ void UIVMActivityMonitor::sltCreateContextMenu(const QPoint &point)
     pExportAction->setIcon(UIIconPool::iconSet(":/performance_monitor_export_16px.png"));
     connect(pExportAction, &QAction::triggered, this, &UIVMActivityMonitor::sltExportMetricsToFile);
     if (uiCommon().uiType() == UIType_RuntimeUI)
-        menu.addAction(m_pActionPool->action(UIActionIndex_M_Activity_T_Preferences));
+        menu.addAction(m_pActionPool->action(UIActionIndex_M_ResourceUtilization_T_Preferences));
     menu.exec(mapToGlobal(point));
 }
 

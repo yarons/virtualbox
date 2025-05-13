@@ -1,4 +1,4 @@
-﻿/* $Id: UIToolsModel.cpp 109275 2025-04-18 13:26:41Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIToolsModel.cpp 109512 2025-05-13 09:51:10Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -485,12 +485,12 @@ void UIToolsModel::sltRetranslateUI()
             case UIToolType_Media:       pItem->setName(tr("Media")); break;
             case UIToolType_Network:     pItem->setName(tr("Network")); break;
             case UIToolType_Cloud:       pItem->setName(tr("Cloud")); break;
-            case UIToolType_Activities:  pItem->setName(tr("Resource Usage")); break;
+            case UIToolType_Activities:  pItem->setName(tr("Resource Dashboard")); break;
             // Machine
             case UIToolType_Details:     pItem->setName(tr("Details")); break;
             case UIToolType_Snapshots:   pItem->setName(tr("Snapshots")); break;
             case UIToolType_Logs:        pItem->setName(tr("Logs")); break;
-            case UIToolType_VMActivity:  pItem->setName(tr("VM Activity")); break;
+            case UIToolType_VMActivity:  pItem->setName(tr("Resource Utilization")); break;
             case UIToolType_FileManager: pItem->setName(tr("File Manager")); break;
             default: break;
         }

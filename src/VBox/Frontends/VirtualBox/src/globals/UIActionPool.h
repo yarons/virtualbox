@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 109470 2025-05-08 10:12:37Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIActionPool.h 109512 2025-05-13 09:51:10Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -102,10 +102,10 @@ enum UIActionIndex
     UIActionIndex_M_Log_S_Save,
 
     /* 'Performance' menu actions: */
-    UIActionIndex_M_Activity,
-    UIActionIndex_M_Activity_S_Export,
-    UIActionIndex_M_Activity_S_ToVMActivityOverview,
-    UIActionIndex_M_Activity_T_Preferences,
+    UIActionIndex_M_ResourceUtilization,
+    UIActionIndex_M_ResourceUtilization_S_Export,
+    UIActionIndex_M_ResourceUtilization_S_ToResourceDashboard,
+    UIActionIndex_M_ResourceUtilization_T_Preferences,
 
     /* File Manager actions: */
     UIActionIndex_M_FileManager,

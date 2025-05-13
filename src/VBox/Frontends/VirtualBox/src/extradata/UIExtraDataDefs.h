@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 109338 2025-04-25 10:46:49Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataDefs.h 109512 2025-05-13 09:51:10Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -1165,25 +1165,25 @@ enum MaximumGuestScreenSizePolicy
 Q_DECLARE_METATYPE(MaximumGuestScreenSizePolicy);
 
 
-/** Manager UI: VM Activity Overview Column types.
+/** Manager UI: Resource Dashboard Column types.
   * @note The first element must be 0 and the rest must be consecutive */
-enum VMActivityOverviewColumn
+enum ResourceDashboardColumn
 {
-    VMActivityOverviewColumn_Name = 0,
-    VMActivityOverviewColumn_CPUGuestLoad,
-    VMActivityOverviewColumn_CPUVMMLoad,
-    VMActivityOverviewColumn_RAMUsedAndTotal,
-    VMActivityOverviewColumn_RAMUsedPercentage,
-    VMActivityOverviewColumn_NetworkUpRate,
-    VMActivityOverviewColumn_NetworkDownRate,
-    VMActivityOverviewColumn_NetworkUpTotal,
-    VMActivityOverviewColumn_NetworkDownTotal,
-    VMActivityOverviewColumn_DiskIOReadRate,
-    VMActivityOverviewColumn_DiskIOWriteRate,
-    VMActivityOverviewColumn_DiskIOReadTotal,
-    VMActivityOverviewColumn_DiskIOWriteTotal,
-    VMActivityOverviewColumn_VMExits,
-    VMActivityOverviewColumn_Max
+    ResourceDashboardColumn_Name = 0,
+    ResourceDashboardColumn_CPUGuestLoad,
+    ResourceDashboardColumn_CPUVMMLoad,
+    ResourceDashboardColumn_RAMUsedAndTotal,
+    ResourceDashboardColumn_RAMUsedPercentage,
+    ResourceDashboardColumn_NetworkUpRate,
+    ResourceDashboardColumn_NetworkDownRate,
+    ResourceDashboardColumn_NetworkUpTotal,
+    ResourceDashboardColumn_NetworkDownTotal,
+    ResourceDashboardColumn_DiskIOReadRate,
+    ResourceDashboardColumn_DiskIOWriteRate,
+    ResourceDashboardColumn_DiskIOReadTotal,
+    ResourceDashboardColumn_DiskIOWriteTotal,
+    ResourceDashboardColumn_VMExits,
+    ResourceDashboardColumn_Max
 };
 
 #endif /* !FEQT_INCLUDED_SRC_extradata_UIExtraDataDefs_h */

@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityToolWidget.cpp 109169 2025-04-10 10:09:44Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityToolWidget.cpp 109512 2025-05-13 09:51:10Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityToolWidget class implementation.
  */
@@ -123,7 +123,7 @@ void UIVMActivityToolWidget::setMachines(const QList<UIVirtualMachineItem*> &mac
 void UIVMActivityToolWidget::prepareActions()
 {
     QAction *pToResourcesAction =
-        m_pActionPool->action(UIActionIndex_M_Activity_S_ToVMActivityOverview);
+        m_pActionPool->action(UIActionIndex_M_ResourceUtilization_S_ToResourceDashboard);
     if (pToResourcesAction)
         connect(pToResourcesAction, &QAction::triggered, this, &UIVMActivityToolWidget::sigSwitchToActivityOverviewPane);
 }
