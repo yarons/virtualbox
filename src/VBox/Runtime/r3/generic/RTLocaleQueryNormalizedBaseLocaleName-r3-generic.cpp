@@ -1,4 +1,4 @@
-/* $Id: RTLocaleQueryNormalizedBaseLocaleName-r3-generic.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: RTLocaleQueryNormalizedBaseLocaleName-r3-generic.cpp 109515 2025-05-13 12:26:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTLocaleQueryNormalizedBaseLocaleName, ring-3 generic.
  */
@@ -70,7 +70,7 @@ RTDECL(int) RTLocaleQueryNormalizedBaseLocaleName(char *pszName, size_t cbName)
             pszLocale++;
         bool fSeenC = false;
         bool fSeenPOSIX = false;
-        do
+        for (;;)
         {
             const char *pszEnd = strchr(pszLocale, ';');
 
@@ -89,8 +89,13 @@ RTDECL(int) RTLocaleQueryNormalizedBaseLocaleName(char *pszName, size_t cbName)
                 fSeenPOSIX = true;
 
             /* advance */
-            pszLocale = pszEnd ? strchr(pszEnd + 1, '=') : NULL;
-        } while (pszLocale++);
+            if (!pszEnd)
+                break;
+            pszLocale = strchr(pszEnd + 1, '=');
+            if (!pszLocale)
+                break;
+            pszLocal++;
+        }
 
         if (fSeenC || fSeenPOSIX)
             return RTStrCopy(pszName, cbName, "C"); /* C and POSIX should be identical IIRC, so keep it simple. */
