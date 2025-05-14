@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 108057 2025-01-24 11:22:16Z alexander.eichner@oracle.com $ */
+/* $Id: VMM.cpp 109522 2025-05-14 08:50:14Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2593,6 +2593,9 @@ static DECLCALLBACK(void) vmmR3InfoFF(PVM pVM, PCDBGFINFOHLP pHlp, const char *p
         PRINT_FLAG(VMCPU_FF_,DBGF);
         PRINT_FLAG(VMCPU_FF_,REQUEST);
         PRINT_FLAG(VMCPU_FF_,HM_UPDATE_CR3);
+#ifdef VBOX_VMM_TARGET_ARMV8
+        PRINT_FLAG(VMCPU_FF_,VTIMER_ACTIVATED);
+#endif
         PRINT_FLAG(VMCPU_FF_,PGM_SYNC_CR3);
         PRINT_FLAG(VMCPU_FF_,PGM_SYNC_CR3_NON_GLOBAL);
         PRINT_FLAG(VMCPU_FF_,TLB_FLUSH);
