@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 109528 2025-05-14 11:41:31Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 109544 2025-05-14 16:29:37Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the lwip library.
 #
@@ -93,5 +93,9 @@ VBox-lwip_SOURCES = \
 	src/netif/ethernet.c \
 	vbox/sys_arch.c \
 	vbox/VBoxLwipCore.cpp
+
+LIBRARIES += VBox-lwip-dhcp
+VBox-lwip-dhcp_EXTENDS := VBox-lwip
+VBox-lwip-dhcp_DEFS += VBOX_LWIP_DHCP
 
 include $(FILE_KBUILD_SUB_FOOTER)
