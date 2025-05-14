@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 109438 2025-05-06 15:47:06Z samantha.scholz@oracle.com $
+# $Id: Makefile.kmk 109531 2025-05-14 12:14:04Z alexander.eichner@oracle.com $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -136,6 +136,14 @@ if   defined(VBOX_WITH_LIBLZMA) \
   && !defined(VBOX_ONLY_SDK) \
   && "$(SDK_VBoxLibLzma_INCS)" == "$(PATH_ROOT)/src/libs/liblzma-5.8.1/api"
  include $(PATH_SUB_CURRENT)/liblzma-5.8.1/Makefile.kmk
+endif
+
+
+# lwip is used by DevINIP and the DHCP server.
+if   (   defined(VBOX_WITH_INIP) \
+      || defined(VBOX_WITH_NAT_SERVICE)) \
+  && !defined(VBOX_ONLY_SDK)
+ include $(PATH_SUB_CURRENT)/lwip-2.2.1/Makefile.kmk
 endif
 
 
