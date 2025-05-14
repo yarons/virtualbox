@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvVD.cpp 109548 2025-05-14 16:52:42Z alexander.eichner@oracle.com $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -56,9 +56,6 @@ RT_C_DECLS_BEGIN
 #include <lwip/inet.h>
 #include <lwip/tcp.h>
 #include <lwip/sockets.h>
-# if LWIP_IPV6
-#  include <lwip/inet6.h>
-# endif
 RT_C_DECLS_END
 #endif /* VBOX_WITH_INIP */
 
