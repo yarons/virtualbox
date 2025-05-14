@@ -1,4 +1,4 @@
-/* $Id: fsw_efi_base.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: fsw_efi_base.h 109526 2025-05-14 10:34:03Z alexander.eichner@oracle.com $ */
 /** @file
  * fsw_efi_base.h - Base definitions for the EFI host environment.
  */

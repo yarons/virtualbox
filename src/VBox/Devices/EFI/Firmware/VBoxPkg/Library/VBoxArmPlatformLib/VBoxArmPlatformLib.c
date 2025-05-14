@@ -1,4 +1,4 @@
-/* $Id: VBoxArmPlatformLib.c 106353 2024-10-16 11:36:33Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxArmPlatformLib.c 109526 2025-05-14 10:34:03Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxArmPlatformLib.c - Helpers for the VirtualBox virtual platform descriptor parsing.
  */

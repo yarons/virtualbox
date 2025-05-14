@@ -1,4 +1,4 @@
-/* $Id: VBoxWinPythonWrap.c 107063 2024-11-19 11:56:07Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxWinPythonWrap.c 109526 2025-05-14 10:34:03Z alexander.eichner@oracle.com $ */
 /** @file
  * Windows wrapper program for kicking off a Python script in the build python interpreter.
  */

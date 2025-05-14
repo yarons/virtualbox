@@ -1,4 +1,4 @@
-/* $Id: VBoxDebugAgentLib.c 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDebugAgentLib.c 109526 2025-05-14 10:34:03Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox implementation of DebugAgentLib that reports EFI state transitions
  * to DevEFI for debugging purposes.
@@ -60,14 +60,20 @@ InitializeDebugAgent(
     EFIDBGPOINT enmDbgPoint;
     switch (InitFlag)
     {
-        case DEBUG_AGENT_INIT_PREMEM_SEC:   enmDbgPoint = EFIDBGPOINT_SEC_PREMEM;  break;
-        case DEBUG_AGENT_INIT_POSTMEM_SEC:  enmDbgPoint = EFIDBGPOINT_SEC_POSTMEM; break;
-        case DEBUG_AGENT_INIT_DXE_CORE:     enmDbgPoint = EFIDBGPOINT_DXE_CORE;    break;
-        case DEBUG_AGENT_INIT_SMM:          enmDbgPoint = EFIDBGPOINT_SMM;         break;
-        case DEBUG_AGENT_INIT_ENTER_SMI:    enmDbgPoint = EFIDBGPOINT_SMI_ENTER;   break;
-        case DEBUG_AGENT_INIT_EXIT_SMI:     enmDbgPoint = EFIDBGPOINT_SMI_EXIT;    break;
-        case DEBUG_AGENT_INIT_S3:           enmDbgPoint = EFIDBGPOINT_GRAPHICS;    break;
-        case DEBUG_AGENT_INIT_DXE_AP:       enmDbgPoint = EFIDBGPOINT_DXE_AP;      break;
+        case DEBUG_AGENT_INIT_PREMEM_SEC:    enmDbgPoint = EFIDBGPOINT_SEC_PREMEM;      break;
+        case DEBUG_AGENT_INIT_POSTMEM_SEC:   enmDbgPoint = EFIDBGPOINT_SEC_POSTMEM;     break;
+        case DEBUG_AGENT_INIT_DXE_CORE:      enmDbgPoint = EFIDBGPOINT_DXE_CORE;        break;
+        case DEBUG_AGENT_INIT_SMM:           enmDbgPoint = EFIDBGPOINT_SMM;             break;
+        case DEBUG_AGENT_INIT_ENTER_SMI:     enmDbgPoint = EFIDBGPOINT_SMI_ENTER;       break;
+        case DEBUG_AGENT_INIT_EXIT_SMI:      enmDbgPoint = EFIDBGPOINT_SMI_EXIT;        break;
+        case DEBUG_AGENT_INIT_S3:            enmDbgPoint = EFIDBGPOINT_GRAPHICS;        break;
+        case DEBUG_AGENT_INIT_DXE_AP:        enmDbgPoint = EFIDBGPOINT_DXE_AP;          break;
+        case DEBUG_AGENT_INIT_PEI:           enmDbgPoint = EFIDBGPOINT_PEI;             break;
+        case DEBUG_AGENT_INIT_DXE_LOAD:      enmDbgPoint = EFIDBGPOINT_DXE_LOAD;        break;
+        case DEBUG_AGENT_INIT_DXE_UNLOAD:    enmDbgPoint = EFIDBGPOINT_DXE_UNLOAD;      break;
+        case DEBUG_AGENT_INIT_REINITIALIZE:  enmDbgPoint = EFIDBGPOINT_REINITIALIZE;    break;
+        case DEBUG_AGENT_INIT_DXE_CORE_LATE: enmDbgPoint = EFIDBGPOINT_DXE_CORE_LATE;   break;
+        case DEBUG_AGENT_INIT_THUNK_PEI_IA32TOX64:
         default:
             ASSERT(false);
             enmDbgPoint = EFIDBGPOINT_INVALID;

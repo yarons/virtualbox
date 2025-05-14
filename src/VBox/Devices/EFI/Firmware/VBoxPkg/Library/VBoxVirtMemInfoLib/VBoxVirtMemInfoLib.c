@@ -1,4 +1,4 @@
-/* $Id: VBoxVirtMemInfoLib.c 107148 2024-11-22 15:47:28Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxVirtMemInfoLib.c 109526 2025-05-14 10:34:03Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxVirtMemInfoLib.c - Providing the address map for setting up the MMU based on the platform settings.
  */

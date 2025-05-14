@@ -1,4 +1,4 @@
-/* $Id: VBoxDebugLib.c 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDebugLib.c 109526 2025-05-14 10:34:03Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxDebugLib.c - Debug logging and assertions support routines using DevEFI.
  */
