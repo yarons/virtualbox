@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 109546 2025-05-14 16:36:28Z alexander.eichner@oracle.com $
 ## @file
 # Top-level makefile for the VBox Network Services.
 #
@@ -29,12 +29,13 @@ SUB_DEPTH = ../../..
 include $(KBUILD_PATH)/subheader.kmk
 
 # Include sub-makefiles.
-include $(PATH_SUB_CURRENT)/Dhcpd/Makefile.kmk
+if "$(intersects $(KBUILD_TARGET_ARCH),$(VBOX_SUPPORTED_HOST_ARCHS))" != ""
+ include $(PATH_SUB_CURRENT)/Dhcpd/Makefile.kmk
 
-# VBoxNetNAT requires COM/XPCOM.
-if   defined(VBOX_WITH_NAT_SERVICE) && defined(VBOX_WITH_MAIN) \
-  && "$(intersects $(KBUILD_TARGET_ARCH),$(VBOX_SUPPORTED_HOST_ARCHS))" != ""
- include $(PATH_SUB_CURRENT)/NAT/Makefile.kmk
+ # VBoxNetNAT requires COM/XPCOM.
+ if defined(VBOX_WITH_NAT_SERVICE) && defined(VBOX_WITH_MAIN)
+  include $(PATH_SUB_CURRENT)/NAT/Makefile.kmk
+ endif
 endif
 
 # Internal network switch
