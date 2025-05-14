@@ -1,4 +1,4 @@
-/* $Id: GICR3.cpp 109514 2025-05-13 10:33:50Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICR3.cpp 109529 2025-05-14 11:50:24Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -241,9 +241,9 @@ static DECLCALLBACK(void) gicR3DbgInfoReDist(PVM pVM, PCDBGFINFOHLP pHlp, const 
     pHlp->pfnPrintf(pHlp, "  fIntrGroup1Enabled  = %RTbool\n", pGicCpu->fIntrGroup1Enabled);
     pHlp->pfnPrintf(pHlp, "  bBinaryPtGroup0     = %#x\n",     pGicCpu->bBinaryPtGroup0);
     pHlp->pfnPrintf(pHlp, "  bBinaryPtGroup1     = %#x\n",     pGicCpu->bBinaryPtGroup1);
-    pHlp->pfnPrintf(pHlp, "  idxRunningPriority  = %#x\n",     pGicCpu->idxRunningPriority);
-    pHlp->pfnPrintf(pHlp, "  Running priority    = %#x\n",     pGicCpu->abRunningPriorities[pGicCpu->idxRunningPriority]);
-    pHlp->pfnPrintf(pHlp, "  Priority mask       = %#x\n",     pGicCpu->bIntrPriorityMask);
+    pHlp->pfnPrintf(pHlp, "  idxRunningPriority  = %u\n",      pGicCpu->idxRunningPriority);
+    pHlp->pfnPrintf(pHlp, "  Running priority    = %u\n",      pGicCpu->abRunningPriorities[pGicCpu->idxRunningPriority]);
+    pHlp->pfnPrintf(pHlp, "  Priority mask       = %u\n",      pGicCpu->bIntrPriorityMask);
 
     /* Running interrupt priorities. */
     {
