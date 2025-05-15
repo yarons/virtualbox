@@ -1,4 +1,4 @@
-; $Id: VBoxUSB.inf 109571 2025-05-15 17:35:22Z klaus.espenlaub@oracle.com $
+; $Id: VBoxUSB.inf 109572 2025-05-15 18:13:03Z klaus.espenlaub@oracle.com $
 ;; @file
 ; VBox host drivers - USB drivers - Win32 USB device
 ;
@@ -50,7 +50,7 @@ PnpLockdown=1
 VBoxUSB.sys = 1
 
 [DestinationDirs]
-DefaultDestDir = 10,System32\Drivers
+DefaultDestDir = 12
 
 [Manufacturer]
 %ORACLE%=VBoxUSB@COMMA-NT-ARCH@
