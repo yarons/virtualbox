@@ -1,4 +1,4 @@
-; $Id: VBoxUSB.inf 106486 2024-10-18 15:33:46Z andreas.loeffler@oracle.com $
+; $Id: VBoxUSB.inf 109571 2025-05-15 17:35:22Z klaus.espenlaub@oracle.com $
 ;; @file
 ; VBox host drivers - USB drivers - Win32 USB device
 ;
@@ -41,7 +41,7 @@ ClassGUID={36FC9E60-C465-11CF-8056-444553540000}
 provider=%ORACLE%
 ;edit-DriverVer=08/26/2008,2.00.0000
 ;cat CatalogFile=VBoxUSB.cat
-;PnpLockdown=1
+PnpLockdown=1
 
 [SourceDisksNames]
 1=%VBoxUSB_DiskDesc%,,,
