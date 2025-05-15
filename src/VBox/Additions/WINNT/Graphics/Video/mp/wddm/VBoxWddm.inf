@@ -1,4 +1,4 @@
-; $Id: VBoxWddm.inf 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+; $Id: VBoxWddm.inf 109568 2025-05-15 15:55:17Z klaus.espenlaub@oracle.com $
 ;; @file
 ; VirtualBox Video Wddm driver
 ;
@@ -33,6 +33,7 @@ Class=Display
 DriverPackageType=PlugAndPlay
 ;edit-DriverVer=02/26/2010,1.00.0000
 ;cat CatalogFile = VBoxWddm.cat
+PnpLockdown=1
 
 [DestinationDirs]
 DefaultDestDir=11
