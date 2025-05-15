@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 108837 2025-03-20 12:48:42Z andreas.loeffler@oracle.com $
+# $Id: vbox.py 109557 2025-05-15 08:23:37Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 108837 $"
+__version__ = "$Revision: 109557 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -1852,7 +1852,7 @@ class TestDriver(base.TestDriver):                                              
         """
         Returns the installed Guest Additions (SVN) revision.
 
-        Returns revision as a string (e.g. "123456"), or None if not found / on error.
+        Returns revision as an integer, or None if not found / on error.
         """
         assert oSession is not None;
         try:
