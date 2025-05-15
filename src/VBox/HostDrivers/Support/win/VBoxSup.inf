@@ -1,4 +1,4 @@
-; $Id: VBoxSup.inf 106846 2024-11-05 10:01:38Z andreas.loeffler@oracle.com $
+; $Id: VBoxSup.inf 109569 2025-05-15 16:03:47Z klaus.espenlaub@oracle.com $
 ;; @file
 ; VirtualBox Support Driver - Windows Driver INF file.
 ;
@@ -42,7 +42,7 @@ Provider=%ORACLE%
 ;edit-DriverVer=08/26/2008,2.00.0000
 DriverPackageType=KernelService
 ;cat CatalogFile=VBoxSup.cat
-;PnpLockdown=1
+PnpLockdown=1
 
 [DestinationDirs]
 DefaultDestDir = 12
