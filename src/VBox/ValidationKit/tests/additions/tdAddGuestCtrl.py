@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 109550 $"
+__version__ = "$Revision: 109556 $"
 
 # Standard Python imports.
 import errno
@@ -1748,9 +1748,9 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
             if  self.oTstDrv.fpApiVer >= 7.0 \
             and self.oTstDrv.isVersionEqualOrBigger(self.oTstDrv.getGuestAdditionsRevision(oSession), "166162"):
                 sRegEditorExeBasePath = 'C:\\Program Files\\Oracle\\VirtualBox Guest Additions\\';
-                # Right now we ASSUME that the installation directory always is one of the the following:
-                if self.oTstDrv.isVersionEqualOrBigger(self.oTstDrv.getGuestAdditionsRevision(oSession), "168202"):
-                    sRegEditorExePath = sRegEditorExeBasePath + 'Tools\\VBoxGuestInstallHelper.exe'; # pylint: disable=line-too-long
+                if  self.oTstDrv.fpApiVer >= 7.2 \
+                and self.oTstDrv.isVersionEqualOrBigger(self.oTstDrv.getGuestAdditionsRevision(oSession), "168202"):
+                    sRegEditorExePath = sRegEditorExeBasePath + 'Tools\\VBoxGuestInstallHelper.exe';
                 else:
                     sRegEditorExePath = sRegEditorExeBasePath + 'VBoxGuestInstallHelper.exe';
                 asRegEditorArgs       = [ sRegEditorExePath, 'registry', 'write', 'HKLM',
