@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsWidget.cpp 109513 2025-05-13 10:31:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGlobalToolsWidget.cpp 109558 2025-05-15 09:22:19Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsWidget class implementation.
  */
@@ -238,7 +238,7 @@ void UIGlobalToolsWidget::sltSwitchToVMActivityTool(const QUuid &uMachineId)
     AssertPtrReturnVoid(chooser());
     chooser()->setCurrentMachine(uMachineId);
     setMenuToolType(UIToolType_Machines);
-    machineToolsWidget()->setMenuToolType(UIToolType_ResourceUtilization);
+    machineToolsWidget()->setMenuToolType(UIToolType_VMResourceUse);
 }
 
 void UIGlobalToolsWidget::sltSwitchToActivitiesTool()
