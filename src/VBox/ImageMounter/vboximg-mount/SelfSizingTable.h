@@ -1,4 +1,4 @@
-/* $Id: SelfSizingTable.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ $Revision: 106061 $ */
+/* $Id: SelfSizingTable.h 109669 2025-05-26 19:52:08Z klaus.espenlaub@oracle.com $ */
 /** @file
  * vboxraw header file
  */

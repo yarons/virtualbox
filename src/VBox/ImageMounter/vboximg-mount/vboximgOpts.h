@@ -1,6 +1,4 @@
-
-/* $Id: vboximgOpts.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ $Revision: 106061 $ $Date: 2024-09-16 16:03:52 +0200 (Mon, 16 Sep 2024) $ $Author: knut.osmundsen@oracle.com $ */
-
+/* $Id: vboximgOpts.h 109669 2025-05-26 19:52:08Z klaus.espenlaub@oracle.com $ */
 /** @file
  * vboximgOpts.h
  */
