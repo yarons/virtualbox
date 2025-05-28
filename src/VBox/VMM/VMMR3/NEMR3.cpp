@@ -1,4 +1,4 @@
-/* $Id: NEMR3.cpp 107887 2025-01-16 00:23:19Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMR3.cpp 109706 2025-05-28 22:12:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * NEM - Native execution manager.
  */
@@ -239,7 +239,7 @@ VMMR3_INT_DECL(int) NEMR3Init(PVM pVM, bool fFallback, bool fForced)
         {
             if (pVM->bMainExecutionEngine == VM_EXEC_ENGINE_NATIVE_API)
             {
-#ifndef VBOX_WITH_HWVIRT /* Don't complain if there are no other alternatives. */
+#ifdef VBOX_WITH_HWVIRT /* Don't complain if there are no other alternatives. */
 # ifdef RT_OS_WINDOWS /* The WHv* API is extremely slow at handling VM exits. The AppleHv and
                          KVM APIs are much faster, thus the different mode name. :-) */
                 LogRel(("NEM:\n"
