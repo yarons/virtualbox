@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106963 2024-11-12 02:41:36Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 109710 2025-05-29 22:48:43Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the headless frontend.
 #
@@ -47,7 +47,7 @@ endif
 # VBoxHeadless
 #
 ifdef VBOX_WITH_HARDENING
- DLLS    += VBoxHeadless
+ DLLS     += VBoxHeadless
 else
  PROGRAMS += VBoxHeadless
 endif
