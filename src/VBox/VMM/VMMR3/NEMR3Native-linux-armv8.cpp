@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-linux-armv8.cpp 109058 2025-04-04 08:36:32Z alexander.eichner@oracle.com $ */
+/* $Id: NEMR3Native-linux-armv8.cpp 109718 2025-05-30 07:48:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Linux backend arm64 version.
  */
@@ -546,14 +546,13 @@ static int nemR3LnxInitSetupVm(PVM pVM, PRTERRINFO pErrInfo)
 }
 
 
-int nemR3NativeInitCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
+DECLHIDDEN(int) nemR3NativeInitCompletedRing3(PVM pVM)
 {
     /*
      * Make RTThreadPoke work again (disabled for avoiding unnecessary
      * critical section issues in ring-0).
      */
-    if (enmWhat == VMINITCOMPLETED_RING3)
-        VMMR3EmtRendezvous(pVM, VMMEMTRENDEZVOUS_FLAGS_TYPE_ALL_AT_ONCE, nemR3LnxFixThreadPoke, NULL);
+    VMMR3EmtRendezvous(pVM, VMMEMTRENDEZVOUS_FLAGS_TYPE_ALL_AT_ONCE, nemR3LnxFixThreadPoke, NULL);
 
     return VINF_SUCCESS;
 }
@@ -948,14 +947,14 @@ VMMR3_INT_DECL(bool) NEMR3CanExecuteGuest(PVM pVM, PVMCPU pVCpu)
 }
 
 
-bool nemR3NativeSetSingleInstruction(PVM pVM, PVMCPU pVCpu, bool fEnable)
+DECLHIDDEN(bool) nemR3NativeSetSingleInstruction(PVM pVM, PVMCPU pVCpu, bool fEnable)
 {
     NOREF(pVM); NOREF(pVCpu); NOREF(fEnable);
     return false;
 }
 
 
-void nemR3NativeNotifyFF(PVM pVM, PVMCPU pVCpu, uint32_t fFlags)
+DECLHIDDEN(void) nemR3NativeNotifyFF(PVM pVM, PVMCPU pVCpu, uint32_t fFlags)
 {
     int rc = RTThreadPoke(pVCpu->hThread);
     LogFlow(("nemR3NativeNotifyFF: #%u -> %Rrc\n", pVCpu->idCpu, rc));
@@ -1365,8 +1364,10 @@ static VBOXSTRICTRC nemHCLnxHandleExit(PVMCC pVM, PVMCPUCC pVCpu, struct kvm_run
 }
 
 
-VBOXSTRICTRC nemR3NativeRunGC(PVM pVM, PVMCPU pVCpu)
+VMMR3_INT_DECL(VBOXSTRICTRC) NEMR3RunGC(PVM pVM, PVMCPU pVCpu)
 {
+    Assert(VM_IS_NEM_ENABLED(pVM));
+
     /*
      * Try switch to NEM runloop state.
      */
