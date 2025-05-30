@@ -1,4 +1,4 @@
-/* $Id: UINetworkSettingsEditor.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UINetworkSettingsEditor.cpp 109724 2025-05-30 11:57:20Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkSettingsEditor class implementation.
  */
@@ -209,7 +209,7 @@ void UINetworkSettingsEditor::sltRetranslateUI()
     if (m_pCheckboxFeature)
     {
         m_pCheckboxFeature->setText(tr("&Enable Network Adapter"));
-        m_pCheckboxFeature->setToolTip(tr("When checked, plugs this virtual network adapter into the virtual machine."));
+        m_pCheckboxFeature->setToolTip(tr("Plug this virtual network adapter into the virtual machine"));
     }
 
     updateMinimumLayoutHint();
