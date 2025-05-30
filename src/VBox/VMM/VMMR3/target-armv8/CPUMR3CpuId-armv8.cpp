@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId-armv8.cpp 109713 2025-05-30 01:02:01Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMR3CpuId-armv8.cpp 109729 2025-05-30 16:23:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU ID part for ARMv8 hypervisor.
  */
@@ -827,6 +827,17 @@ VMMR3_INT_DECL(int) CPUMR3PopulateGuestFeaturesViaCallbacks(PVM pVM, PVMCPU pVCp
                                                             PFNCPUMARMCPUIDREGUPDATE pfnUpdate, void *pvUser)
 {
     Assert(pfnUpdate);
+
+    /** @todo MIDR_EL1 and MPIDR_EL1 (and probably a few others) should be set per
+     *        VCpu. Not urgent, as MS WHv seems to be using a single MIDR value for
+     *        all VCpus and Apple zeros MIDR the part number and stuff.
+     *
+     *        The MPIDR register is a NOSET register at the moment, so,
+     *        not so important either.  OTOH, on Apple we must set it for each
+     *        VCpu whereas on MS it has sensible defaults, so it would probably
+     *        be a good idea to centralize the setting here in CPUM than having
+     *        each NEM backend do it themselves.  This would also help a lot with
+     *        pure IEM execution later on. */
 
     /*
      * If pfnQuery is given, we must determin the guest feature register values first.
