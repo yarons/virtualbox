@@ -1,4 +1,4 @@
-/* $Id: UISharedFoldersEditor.cpp 108190 2025-02-04 05:24:54Z samantha.scholz@oracle.com $ */
+/* $Id: UISharedFoldersEditor.cpp 109727 2025-05-30 12:56:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISharedFoldersEditor class implementation.
  */
@@ -327,7 +327,7 @@ void UISharedFoldersEditor::sltRetranslateUI()
     /* Translate tree-widget: */
     if (m_pTreeWidget)
     {
-        m_pTreeWidget->setWhatsThis(tr("Lists all shared folders accessible to this machine. Use 'net use x: \\\\vboxsvr\\share' "
+        m_pTreeWidget->setWhatsThis(tr("All shared folders accessible to this machine. Use 'net use x: \\\\vboxsvr\\share' "
                                        "to access a shared folder named 'share' from a DOS-like OS, or 'mount -t vboxsf "
                                        "share mount_point' to access it from a Linux OS. This feature requires Guest Additions."));
 
@@ -350,17 +350,17 @@ void UISharedFoldersEditor::sltRetranslateUI()
     if (m_pActionAdd)
     {
         m_pActionAdd->setText(tr("Add Shared Folder"));
-        m_pActionAdd->setToolTip(tr("Adds new shared folder."));
+        m_pActionAdd->setToolTip(tr("Add new shared folder"));
     }
     if (m_pActionEdit)
     {
         m_pActionEdit->setText(tr("Edit Shared Folder"));
-        m_pActionEdit->setToolTip(tr("Edits selected shared folder."));
+        m_pActionEdit->setToolTip(tr("Edit selected shared folder"));
     }
     if (m_pActionRemove)
     {
         m_pActionRemove->setText(tr("Remove Shared Folder"));
-        m_pActionRemove->setToolTip(tr("Removes selected shared folder."));
+        m_pActionRemove->setToolTip(tr("Remove selected shared folder"));
     }
 }
 
