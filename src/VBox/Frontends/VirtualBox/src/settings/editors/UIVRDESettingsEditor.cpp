@@ -1,4 +1,4 @@
-/* $Id: UIVRDESettingsEditor.cpp 109641 2025-05-23 11:22:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIVRDESettingsEditor.cpp 109722 2025-05-30 11:37:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVRDESettingsEditor class implementation.
  */
@@ -215,7 +215,7 @@ void UIVRDESettingsEditor::sltRetranslateUI()
         m_pEditorTimeout->setToolTip(tr("Timeout for guest authentication, in milliseconds"));
 
     if (m_pLabelOptions)
-        m_pLabelOptions->setText(tr("Use These Features"));
+        m_pLabelOptions->setText(tr("Features"));
     if (m_pCheckboxMultipleConnections)
     {
         m_pCheckboxMultipleConnections->setText(tr("&Multiple Connections"));

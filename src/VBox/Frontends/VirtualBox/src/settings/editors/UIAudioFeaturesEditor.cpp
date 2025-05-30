@@ -1,4 +1,4 @@
-/* $Id: UIAudioFeaturesEditor.cpp 109668 2025-05-26 16:35:29Z sergey.dubov@oracle.com $ */
+/* $Id: UIAudioFeaturesEditor.cpp 109722 2025-05-30 11:37:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAudioFeaturesEditor class implementation.
  */
@@ -97,7 +97,7 @@ void UIAudioFeaturesEditor::setMinimumLayoutIndent(int iIndent)
 void UIAudioFeaturesEditor::sltRetranslateUI()
 {
     if (m_pLabel)
-        m_pLabel->setText(tr("Audio Features"));
+        m_pLabel->setText(tr("Features"));
     if (m_pCheckBoxEnableOutput)
     {
         m_pCheckBoxEnableOutput->setText(tr("Audio &Output"));

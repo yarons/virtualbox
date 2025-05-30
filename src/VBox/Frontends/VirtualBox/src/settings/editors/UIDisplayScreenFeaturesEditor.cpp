@@ -1,4 +1,4 @@
-/* $Id: UIDisplayScreenFeaturesEditor.cpp 109641 2025-05-23 11:22:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIDisplayScreenFeaturesEditor.cpp 109722 2025-05-30 11:37:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDisplayScreenFeaturesEditor class implementation.
  */
@@ -78,7 +78,7 @@ void UIDisplayScreenFeaturesEditor::setMinimumLayoutIndent(int iIndent)
 void UIDisplayScreenFeaturesEditor::sltRetranslateUI()
 {
     if (m_pLabel)
-        m_pLabel->setText(tr("Use These Features"));
+        m_pLabel->setText(tr("Features"));
     if (m_pCheckBoxEnable3DAcceleration)
     {
         m_pCheckBoxEnable3DAcceleration->setText(tr("&3D Acceleration"));

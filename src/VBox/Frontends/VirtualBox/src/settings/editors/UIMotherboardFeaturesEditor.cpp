@@ -1,4 +1,4 @@
-/* $Id: UIMotherboardFeaturesEditor.cpp 109625 2025-05-21 10:21:17Z sergey.dubov@oracle.com $ */
+/* $Id: UIMotherboardFeaturesEditor.cpp 109722 2025-05-30 11:37:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMotherboardFeaturesEditor class implementation.
  */
@@ -168,7 +168,7 @@ void UIMotherboardFeaturesEditor::handleFilterChange()
 void UIMotherboardFeaturesEditor::sltRetranslateUI()
 {
     if (m_pLabel)
-        m_pLabel->setText(tr("Use These Features"));
+        m_pLabel->setText(tr("Features"));
     if (m_pCheckBoxEnableIoApic)
     {
         m_pCheckBoxEnableIoApic->setText(tr("&I/O APIC"));

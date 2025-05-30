@@ -1,4 +1,4 @@
-/* $Id: UIProcessorFeaturesEditor.cpp 109625 2025-05-21 10:21:17Z sergey.dubov@oracle.com $ */
+/* $Id: UIProcessorFeaturesEditor.cpp 109722 2025-05-30 11:37:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIProcessorFeaturesEditor class implementation.
  */
@@ -107,7 +107,7 @@ void UIProcessorFeaturesEditor::setMinimumLayoutIndent(int iIndent)
 void UIProcessorFeaturesEditor::sltRetranslateUI()
 {
     if (m_pLabel)
-        m_pLabel->setText(tr("CPU Features"));
+        m_pLabel->setText(tr("Features"));
     if (m_pCheckBoxEnablePae)
     {
         m_pCheckBoxEnablePae->setText(tr("PA&E/NX"));
