@@ -1,4 +1,4 @@
-/* $Id: UIUSBControllerEditor.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIUSBControllerEditor.cpp 109726 2025-05-30 12:49:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUSBControllerEditor class implementation.
  */
@@ -78,20 +78,20 @@ void UIUSBControllerEditor::sltRetranslateUI()
     if (m_pRadioButtonUSB1)
     {
         m_pRadioButtonUSB1->setText(tr("USB &1.1 (OHCI) Controller"));
-        m_pRadioButtonUSB1->setToolTip(tr("When chosen, enables the virtual USB OHCI controller of "
-                                          "this machine. The USB OHCI controller provides USB 1.0 support."));
+        m_pRadioButtonUSB1->setToolTip(tr("The virtual USB OHCI controller of this machine will be enabled. "
+                                          "The USB OHCI controller provides USB 1.0 support."));
     }
     if (m_pRadioButtonUSB2)
     {
         m_pRadioButtonUSB2->setText(tr("USB &2.0 (OHCI + EHCI) Controller"));
-        m_pRadioButtonUSB2->setToolTip(tr("When chosen, enables the virtual USB OHCI and EHCI "
-                                          "controllers of this machine. Together they provide USB 2.0 support."));
+        m_pRadioButtonUSB2->setToolTip(tr("The virtual USB OHCI and EHCI controllers of this machine will be enabled. "
+                                          "Together they provide USB 2.0 support."));
     }
     if (m_pRadioButtonUSB3)
     {
         m_pRadioButtonUSB3->setText(tr("USB &3.0 (xHCI) Controller"));
-        m_pRadioButtonUSB3->setToolTip(tr("When chosen, enables the virtual USB xHCI controller of "
-                                          "this machine. The USB xHCI controller provides USB 3.0 support."));
+        m_pRadioButtonUSB3->setToolTip(tr("The virtual USB xHCI controller of this machine will be enabled. "
+                                          "The USB xHCI controller provides USB 3.0 support."));
     }
 }
 
