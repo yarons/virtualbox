@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win-armv8.cpp 109718 2025-05-30 07:48:21Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMR3Native-win-armv8.cpp 109721 2025-05-30 11:11:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -1111,10 +1111,10 @@ static DECLCALLBACK(int) enmR3WinCpuIdRegQuery(PVM pVM, PVMCPU pVCpu, uint32_t i
  * @callback_method_impl{FNCPUMARMCPUIDREGUPDATE}
  */
 static DECLCALLBACK(int) enmR3WinCpuIdRegUpdate(PVM pVM, PVMCPU pVCpu, uint32_t idReg, uint64_t uValue, void *pvUser,
-                                                uint64_t *puUpdateValue)
+                                                uint64_t *puUpdatedValue)
 {
-    if (puUpdateValue)
-        *puUpdateValue = 0;
+    if (puUpdatedValue)
+        *puUpdatedValue = 0;
     VMCPU_ASSERT_EMT(pVCpu);
     RT_NOREF(pvUser);
 
@@ -1166,8 +1166,8 @@ static DECLCALLBACK(int) enmR3WinCpuIdRegUpdate(PVM pVM, PVMCPU pVCpu, uint32_t 
         LogRelFlow(("enmR3WinCpuIdRegUpdate: idReg=%#x (%s) idCpu=%d: old=%#RX64 new=%#RX64 -> %#RX64\n",
                     idReg, g_aNemWinArmIdRegs[iReg].pszName, idCpu, OldValue.Reg64, uValue, UpdatedValue.Reg64));
 
-        if (puUpdateValue)
-            *puUpdateValue = SUCCEEDED(hrcGet2) ? UpdatedValue.Reg64 : uValue;
+        if (puUpdatedValue)
+            *puUpdatedValue = SUCCEEDED(hrcGet2) ? UpdatedValue.Reg64 : uValue;
         return VINF_SUCCESS;
     }
 
