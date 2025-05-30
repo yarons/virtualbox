@@ -1,4 +1,4 @@
-/* $Id: UIStatusBarEditor.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIStatusBarEditor.cpp 109728 2025-05-30 13:09:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStatusBarEditor class implementation.
  */
@@ -505,7 +505,7 @@ void UIStatusBarEditorWidget::setStatusBarConfiguration(const QList<IndicatorTyp
 void UIStatusBarEditorWidget::sltRetranslateUI()
 {
     /* Translate widget itself: */
-    setToolTip(tr("Allows to modify VM status-bar contents."));
+    setToolTip(tr("Configure the virtual machine status bar"));
 
     /* Translate close-button if necessary: */
     if (!m_fStartedFromVMSettings && m_pButtonClose)

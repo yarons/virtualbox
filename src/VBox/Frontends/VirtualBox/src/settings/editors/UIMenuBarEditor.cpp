@@ -1,4 +1,4 @@
-/* $Id: UIMenuBarEditor.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMenuBarEditor.cpp 109728 2025-05-30 13:09:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMenuBarEditor class implementation.
  */
@@ -672,7 +672,7 @@ void UIMenuBarEditorWidget::setRestrictionsOfMenuHelp(UIExtraDataMetaDefs::MenuH
 void UIMenuBarEditorWidget::sltRetranslateUI()
 {
     /* Translate widget itself: */
-    setToolTip(tr("Allows to modify VM menu-bar contents."));
+    setToolTip(tr("Configure the virtual machine menus"));
 
     /* Translate close-button if necessary: */
     if (!m_fStartedFromVMSettings && m_pButtonClose)
