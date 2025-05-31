@@ -1,4 +1,4 @@
-/* $Id: CPUMR3-armv8.cpp 109713 2025-05-30 01:02:01Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMR3-armv8.cpp 109730 2025-05-31 00:33:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager (ARMv8 variant).
  */
@@ -543,7 +543,8 @@ DECLCALLBACK(int) cpumR3LoadExecTarget(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersi
     /*
      * Validate version.
      */
-    AssertMsgReturn(   uVersion == CPUM_SAVED_STATE_VERSION_ARMV8_IDREGS
+    AssertMsgReturn(   uVersion == CPUM_SAVED_STATE_VERSION_ARMV8_IDREGS2
+                    || uVersion == CPUM_SAVED_STATE_VERSION_ARMV8_IDREGS
                     || uVersion == CPUM_SAVED_STATE_VERSION_ARMV8_V2
                     || uVersion == CPUM_SAVED_STATE_VERSION_ARMV8_V1,
                     ("cpumR3LoadExec: Invalid version uVersion=%d!\n", uVersion),
