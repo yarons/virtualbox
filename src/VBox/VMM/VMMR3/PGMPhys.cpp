@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 109215 2025-04-14 20:45:36Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMPhys.cpp 109731 2025-06-01 23:29:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3980,7 +3980,7 @@ static int pgmR3PhysMmio2UnmapLocked(PVM pVM, uint32_t const idxFirst, uint32_t 
                 int rc = NEMR3NotifyPhysMmioExUnmap(pVM, pRamRange->GCPhys, pRamRange->cb, fNemFlags,
                                                     NULL, pMmio2->pbR3, &u2State, &pRamRange->uNemRange);
                 AssertLogRelMsgStmt(RT_SUCCESS(rc),
-                                    ("NEMR3NotifyPhysMmioExUnmap failed: %Rrc - GCPhys=RGp LB %RGp fNemFlags=%#x pbR3=%p %s\n",
+                                    ("NEMR3NotifyPhysMmioExUnmap failed: %Rrc - GCPhys=%RGp LB %RGp fNemFlags=%#x pbR3=%p %s\n",
                                      rc, pRamRange->GCPhys, pRamRange->cb, fNemFlags, pMmio2->pbR3, pRamRange->pszDesc),
                                     rcRet = rc);
                 if (u2State != UINT8_MAX)
