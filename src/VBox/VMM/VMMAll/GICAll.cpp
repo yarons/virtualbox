@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 109734 2025-06-01 23:31:53Z knut.osmundsen@oracle.com $ */
+/* $Id: GICAll.cpp 109736 2025-06-02 05:55:18Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - All Contexts.
  */
@@ -549,7 +549,7 @@ DECL_FORCE_INLINE(uint32_t) gicDistGetPendingIntrAt(PCGICDEV pGicDev, uint16_t i
 {
     Assert(idxReg < RT_ELEMENTS(pGicDev->bmIntrPending));
     Assert(2U * idxReg + 1U < RT_ELEMENTS(pGicDev->bmIntrConfig));
-    uint32_t const bmIntrConfig   = gicGetAltBits(pGicDev->bmIntrConfig[2 * idxReg], pGicDev->bmIntrConfig[2 * idxReg + 1]);
+    uint32_t const bmIntrConfig   = gicGetAltBits(pGicDev->bmIntrConfig[2U * idxReg], pGicDev->bmIntrConfig[2U * idxReg + 1U]);
     uint32_t const bmLevelPending = pGicDev->bmIntrLevel[idxReg]   & ~bmIntrConfig;
     uint32_t const bmIntrPending  = pGicDev->bmIntrPending[idxReg] | bmLevelPending;
     return bmIntrPending;
@@ -567,7 +567,7 @@ DECL_FORCE_INLINE(uint32_t) gicReDistGetPendingIntrAt(PCGICCPU pGicCpu, uint16_t
 {
     Assert(idxReg < RT_ELEMENTS(pGicCpu->bmIntrPending));
     Assert(2U * idxReg + 1U < RT_ELEMENTS(pGicCpu->bmIntrConfig));
-    uint32_t const bmIntrConfig   = gicGetAltBits(pGicCpu->bmIntrConfig[2 * idxReg], pGicCpu->bmIntrConfig[2 * idxReg + 1]);
+    uint32_t const bmIntrConfig   = gicGetAltBits(pGicCpu->bmIntrConfig[2U * idxReg], pGicCpu->bmIntrConfig[2U * idxReg + 1U]);
     uint32_t const bmLevelPending = pGicCpu->bmIntrLevel[idxReg]   & ~bmIntrConfig;
     uint32_t const bmIntrPending  = pGicCpu->bmIntrPending[idxReg] | bmLevelPending;
     return bmIntrPending;
@@ -1119,7 +1119,6 @@ static VBOXSTRICTRC gicDistWriteIntrSetActiveReg(PVM pVM, PGICDEV pGicDev, uint1
     {
         Assert(idxReg < RT_ELEMENTS(pGicDev->bmIntrActive));
         pGicDev->bmIntrActive[idxReg] |= uValue;
-        AssertMsgFailed(("here idxReg=%#x val=%#x\n", idxReg, uValue));
     }
     else
         AssertReleaseMsgFailed(("Unexpected (but not illegal) write to SGI/PPI register in distributor\n"));

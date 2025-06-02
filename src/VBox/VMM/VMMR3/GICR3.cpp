@@ -1,4 +1,4 @@
-/* $Id: GICR3.cpp 109734 2025-06-01 23:31:53Z knut.osmundsen@oracle.com $ */
+/* $Id: GICR3.cpp 109736 2025-06-02 05:55:18Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -749,7 +749,8 @@ static DECLCALLBACK(int) gicR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint
     /*
      * Finally, perform sanity checks.
      */
-    if (pGicDev->uArchRev <= GIC_DIST_REG_PIDR2_ARCHREV_GICV4) /** @todo r=bird: This doesn't seem tight enough judging from the error message... */
+    if (   pGicDev->uArchRev >= GIC_DIST_REG_PIDR2_ARCHREV_GICV1
+        && pGicDev->uArchRev <= GIC_DIST_REG_PIDR2_ARCHREV_GICV4)
     { /* likely */ }
     else
         return pHlp->pfnSSMSetCfgError(pSSM, RT_SRC_POS, N_("Invalid uArchRev, got %u expected range [%u,%u]"), pGicDev->uArchRev,
