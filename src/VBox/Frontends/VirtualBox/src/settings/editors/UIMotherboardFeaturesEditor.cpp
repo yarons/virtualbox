@@ -1,4 +1,4 @@
-/* $Id: UIMotherboardFeaturesEditor.cpp 109722 2025-05-30 11:37:40Z sergey.dubov@oracle.com $ */
+/* $Id: UIMotherboardFeaturesEditor.cpp 109740 2025-06-02 14:52:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMotherboardFeaturesEditor class implementation.
  */
@@ -193,7 +193,7 @@ void UIMotherboardFeaturesEditor::sltRetranslateUI()
     if (m_pPushButtonResetSecureBoot)
     {
         m_pPushButtonResetSecureBoot->setText(tr("&Reset Secure Boot Keys"));
-        m_pPushButtonResetSecureBoot->setToolTip(tr("Resets secure boot keys to default"));
+        m_pPushButtonResetSecureBoot->setToolTip(tr("Reset secure boot keys to default"));
     }
 }
 

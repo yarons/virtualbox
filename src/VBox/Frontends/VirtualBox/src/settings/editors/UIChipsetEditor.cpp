@@ -1,4 +1,4 @@
-/* $Id: UIChipsetEditor.cpp 109625 2025-05-21 10:21:17Z sergey.dubov@oracle.com $ */
+/* $Id: UIChipsetEditor.cpp 109740 2025-06-02 14:52:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChipsetEditor class implementation.
  */
@@ -87,7 +87,7 @@ void UIChipsetEditor::sltRetranslateUI()
             const KChipsetType enmType = m_pCombo->itemData(i).value<KChipsetType>();
             m_pCombo->setItemText(i, gpConverter->toString(enmType));
         }
-        m_pCombo->setToolTip(tr("Select chipset emulation"));
+        m_pCombo->setToolTip(tr("Emulated chipset type"));
     }
 }
 
