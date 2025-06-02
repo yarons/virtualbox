@@ -1,4 +1,4 @@
-/* $Id: UIAudioControllerEditor.cpp 109668 2025-05-26 16:35:29Z sergey.dubov@oracle.com $ */
+/* $Id: UIAudioControllerEditor.cpp 109738 2025-06-02 14:44:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAudioControllerEditor class implementation.
  */
@@ -87,7 +87,7 @@ void UIAudioControllerEditor::sltRetranslateUI()
             const KAudioControllerType enmType = m_pCombo->itemData(i).value<KAudioControllerType>();
             m_pCombo->setItemText(i, gpConverter->toString(enmType));
         }
-        m_pCombo->setToolTip(tr("The type of the virtual sound card. Depending on this value, "
+        m_pCombo->setToolTip(tr("Virtual sound card type. Depending on this value, "
                                 "VirtualBox will provide different audio hardware to the virtual machine."));
     }
 }
