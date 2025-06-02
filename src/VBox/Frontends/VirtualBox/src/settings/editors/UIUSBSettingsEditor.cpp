@@ -1,4 +1,4 @@
-/* $Id: UIUSBSettingsEditor.cpp 109726 2025-05-30 12:49:13Z sergey.dubov@oracle.com $ */
+/* $Id: UIUSBSettingsEditor.cpp 109745 2025-06-02 15:00:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUSBSettingsEditor class implementation.
  */
@@ -106,7 +106,7 @@ void UIUSBSettingsEditor::sltRetranslateUI()
     if (m_pCheckboxFeature)
     {
         m_pCheckboxFeature->setText(tr("Enable &USB Controller"));
-        m_pCheckboxFeature->setToolTip(tr("The virtual USB controller of this machine will be enabled"));
+        m_pCheckboxFeature->setToolTip(tr("Enable virtual USB controller of this machine"));
     }
 }
 
