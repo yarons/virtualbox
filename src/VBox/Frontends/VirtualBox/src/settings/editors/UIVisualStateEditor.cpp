@@ -1,4 +1,4 @@
-/* $Id: UIVisualStateEditor.cpp 109728 2025-05-30 13:09:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIVisualStateEditor.cpp 109746 2025-06-02 15:01:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisualStateEditor class implementation.
  */
@@ -96,7 +96,7 @@ void UIVisualStateEditor::sltRetranslateUI()
             const UIVisualStateType enmType = m_pCombo->itemData(i).value<UIVisualStateType>();
             m_pCombo->setItemText(i, gpConverter->toString(enmType));
         }
-        m_pCombo->setToolTip(tr("The virtual machine visual appearance. If machine is running it will be applied "
+        m_pCombo->setToolTip(tr("Virtual machine visual appearance. If machine is running it will be applied "
                                 "as soon as possible, otherwise desired one will be defined."));
     }
 }
