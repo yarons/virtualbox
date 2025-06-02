@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsControllerEditor.cpp 109641 2025-05-23 11:22:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIGraphicsControllerEditor.cpp 109739 2025-06-02 14:50:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGraphicsControllerEditor class implementation.
  */
@@ -88,7 +88,7 @@ void UIGraphicsControllerEditor::sltRetranslateUI()
             const KGraphicsControllerType enmType = m_pCombo->itemData(i).value<KGraphicsControllerType>();
             m_pCombo->setItemText(i, gpConverter->toString(enmType));
         }
-        m_pCombo->setToolTip(tr("The graphics controller type the virtual machine will use"));
+        m_pCombo->setToolTip(tr("Graphics controller type the virtual machine will use"));
     }
 }
 

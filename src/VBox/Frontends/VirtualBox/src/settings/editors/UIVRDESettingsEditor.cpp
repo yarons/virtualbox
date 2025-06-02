@@ -1,4 +1,4 @@
-/* $Id: UIVRDESettingsEditor.cpp 109722 2025-05-30 11:37:40Z sergey.dubov@oracle.com $ */
+/* $Id: UIVRDESettingsEditor.cpp 109739 2025-06-02 14:50:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVRDESettingsEditor class implementation.
  */
@@ -175,7 +175,7 @@ void UIVRDESettingsEditor::sltRetranslateUI()
     if (m_pCheckboxFeature)
     {
         m_pCheckboxFeature->setText(tr("&Enable Server"));
-        m_pCheckboxFeature->setToolTip(tr("The VM will act as a Remote Desktop Protocol (RDP) server, allowing "
+        m_pCheckboxFeature->setToolTip(tr("VM will act as a Remote Desktop Protocol (RDP) server, allowing "
                                           "remote clients to connect and operate the VM (when it is running) using a standard "
                                           "RDP client"));
     }

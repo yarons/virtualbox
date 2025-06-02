@@ -1,4 +1,4 @@
-/* $Id: UIDisplayScreenFeaturesEditor.cpp 109722 2025-05-30 11:37:40Z sergey.dubov@oracle.com $ */
+/* $Id: UIDisplayScreenFeaturesEditor.cpp 109739 2025-06-02 14:50:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDisplayScreenFeaturesEditor class implementation.
  */
@@ -82,8 +82,8 @@ void UIDisplayScreenFeaturesEditor::sltRetranslateUI()
     if (m_pCheckBoxEnable3DAcceleration)
     {
         m_pCheckBoxEnable3DAcceleration->setText(tr("&3D Acceleration"));
-        m_pCheckBoxEnable3DAcceleration->setToolTip(tr("The virtual machine will be given access "
-                                                       "to the 3D graphics capabilities available on the host"));
+        m_pCheckBoxEnable3DAcceleration->setToolTip(tr("The VM will be given access to the 3D graphics "
+                                                       "capabilities available on the host"));
     }
 }
 

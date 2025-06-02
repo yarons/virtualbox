@@ -1,4 +1,4 @@
-/* $Id: UIMonitorCountEditor.cpp 109641 2025-05-23 11:22:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIMonitorCountEditor.cpp 109739 2025-06-02 14:50:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMonitorCountEditor class implementation.
  */
@@ -86,7 +86,7 @@ void UIMonitorCountEditor::sltRetranslateUI()
     if (m_pLabel)
         m_pLabel->setText(tr("Number of Virtual Mo&nitors"));
 
-    const QString strToolTip = tr("The number of virtual monitors the virtual machine has");
+    const QString strToolTip = tr("Number of virtual monitors the virtual machine has");
     if (m_pSlider)
         m_pSlider->setToolTip(strToolTip);
     if (m_pSpinBox)
