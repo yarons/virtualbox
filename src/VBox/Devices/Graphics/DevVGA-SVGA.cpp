@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 108283 2025-02-10 09:26:28Z dmitrii.grigorev@oracle.com $ */
+/* $Id: DevVGA-SVGA.cpp 109767 2025-06-03 12:29:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMware SVGA device.
  *
@@ -5706,8 +5706,13 @@ DECLCALLBACK(int) vmsvgaR3PciIORegionFifoMapUnmap(PPDMDEVINS pDevIns, PPDMPCIDEV
  */
 void vmsvgaR33dSurfaceUpdateHeapBuffersOnFifoThread(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGASTATECC pThisCC, uint32_t sid)
 {
-    vmsvgaR3RunExtCmdOnFifoThread(pDevIns, pThis, pThisCC, VMSVGA_FIFO_EXTCMD_UPDATE_SURFACE_HEAP_BUFFERS, (void *)(uintptr_t)sid,
-                                  sid == UINT32_MAX ? 10 * RT_MS_1SEC : RT_MS_1MIN);
+    /* Check that we've got the necessary state for doing the command to
+       avoid asserting in vmsvga3dUpdateHeapBuffersForSurfaces. */
+    if (   pThisCC->svga.p3dState
+        && pThisCC->svga.pSvgaR3State
+        && pThisCC->svga.pSvgaR3State->pFuncs3D)
+        vmsvgaR3RunExtCmdOnFifoThread(pDevIns, pThis, pThisCC, VMSVGA_FIFO_EXTCMD_UPDATE_SURFACE_HEAP_BUFFERS,
+                                      (void *)(uintptr_t)sid, sid == UINT32_MAX ? 10 * RT_MS_1SEC : RT_MS_1MIN);
 }
 
 
