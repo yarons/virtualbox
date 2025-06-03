@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 108147 2025-01-31 14:05:57Z valery.portnyagin@oracle.com $ */
+/* $Id: VBoxManageAppliance.cpp 109758 2025-06-03 08:09:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -2055,7 +2055,8 @@ RTEXITCODE handleExportAppliance(HandlerArg *a)
                                          ComSafeArrayAsOutParam(aVBoxValues),
                                          ComSafeArrayAsOutParam(aExtraConfigValues)));
 
-                Utf8Str flagCloudLaunchInstance(Bstr(aVBoxValues[0]).raw());
+                BSTR const pValue0 = aVBoxValues[0]; /* gcc 13.3.0 gets confused by Bstr(aVBoxValues[0]). */
+                Utf8Str flagCloudLaunchInstance(Bstr(pValue0).raw());
                 retTypes.setNull(); aRefs.setNull(); aOvfValues.setNull(); aVBoxValues.setNull(); aExtraConfigValues.setNull();
 
                 if (flagCloudLaunchInstance.equals("true"))
