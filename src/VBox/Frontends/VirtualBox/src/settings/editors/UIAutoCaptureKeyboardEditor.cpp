@@ -1,4 +1,4 @@
-/* $Id: UIAutoCaptureKeyboardEditor.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIAutoCaptureKeyboardEditor.cpp 109769 2025-06-03 15:29:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAutoCaptureKeyboardEditor class implementation.
  */
@@ -63,12 +63,12 @@ bool UIAutoCaptureKeyboardEditor::value() const
 void UIAutoCaptureKeyboardEditor::sltRetranslateUI()
 {
     if (m_pLabel)
-        m_pLabel->setText(tr("Extended Features:"));
+        m_pLabel->setText(tr("Features"));
     if (m_pCheckBox)
     {
         m_pCheckBox->setText(tr("&Auto Capture Keyboard"));
-        m_pCheckBox->setToolTip(tr("When checked, the keyboard is automatically captured every time the VM window is "
-                                   "activated. When the keyboard is captured, all keystrokes (including system ones like "
+        m_pCheckBox->setToolTip(tr("Keyboard is automatically captured every time the VM window is activated. "
+                                   "When the keyboard is captured, all keystrokes (including system ones like "
                                    "Alt-Tab) are directed to the VM."));
     }
 }
