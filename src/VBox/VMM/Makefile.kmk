@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 109615 2025-05-20 21:23:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 109761 2025-06-03 08:23:49Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -787,13 +787,8 @@ ifdef VBOX_WITH_IEM_RECOMPILER
 	$(QUIET)$(RM) -f -- "$@" "$@.tmp"
 	$(QUIET)$(MKDIR) -p -- "$(dir $@)"
 	$(call KB_FN_AUTO_CMD_DEPS_COMMANDS)
-   ifeq ($(KBUILD_HOST),linux)
 	$(QUIET)$(REDIRECT) -0 /dev/null -o "$@.tmp" -- \
-		dwarfdump --search-regex='^(VMCPU|IEMCPU)$(DOLLAR)' --search-print-children --recurse-depth=1 "$<"
-   else
-	$(QUIET)$(REDIRECT) -0 /dev/null -o "$@.tmp" -- \
-		dwarfdump --regex --name='^(VMCPU|IEMCPU)$(DOLLAR)' --show-children --recurse-depth=1 "$<"
-   endif
+		$(if-expr "$(KBUILD_HOST)"=="linux",llvm-,)dwarfdump --regex --name='^(VMCPU|IEMCPU)$(DOLLAR)' --show-children --recurse-depth=1 "$<"
 	$(QUIET)$(SED) -n -f "$(filter %.sed,$^)" --output "$@" "$@.tmp"
 	$(QUIET)$(RM) -f "$@.tmp"
 	$(QUIET)$(CP) -v -f --changed -- "$@" "$(basename $@)"
