@@ -1,4 +1,4 @@
-/* $Id: CPUMAllCpuId.cpp 109751 2025-06-03 00:44:41Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMAllCpuId.cpp 109754 2025-06-03 00:51:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU ID part, common bits.
  */
@@ -2452,8 +2452,8 @@ DECLINLINE(PCSUPARMSYSREGVAL) cpumCpuIdLookupSysRegPtr(PCSUPARMSYSREGVAL paSysRe
 
 
 /**
- * Helper for CPUMCpuIdExplodeFeaturesArmV8FromSysRegs that does what can't be
- * derived from the specs.
+ * Helper for CPUMCpuIdExplodeFeaturesArmV8() that does what can't be derived
+ * from the specs.
  *
  * We ASSUME this is called after setting all the specification derived feature
  * bits, so we can more easily test for these.

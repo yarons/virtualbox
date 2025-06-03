@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId-armv8.cpp 109749 2025-06-02 22:03:55Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMR3CpuId-armv8.cpp 109754 2025-06-03 00:51:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU ID part for ARMv8 hypervisor.
  */
@@ -853,7 +853,7 @@ VMMR3_INT_DECL(int) CPUMR3PopulateGuestFeaturesViaCallbacks(PVM pVM, PVMCPU pVCp
         /*
          * Pre-explode the CPU ID register info.
          */
-        rc = CPUMCpuIdExplodeFeaturesArmV8FromSysRegs(paIdRegs, cIdRegs, &pVM->cpum.s.GuestFeatures);
+        rc = CPUMCpuIdExplodeFeaturesArmV8(paIdRegs, cIdRegs, &pVM->cpum.s.GuestFeatures);
         AssertLogRelRCReturn(rc, rc);
 
         /*
@@ -865,8 +865,8 @@ VMMR3_INT_DECL(int) CPUMR3PopulateGuestFeaturesViaCallbacks(PVM pVM, PVMCPU pVCp
         /*
          * Explode the sanitized CPU ID register info.
          */
-        rc = CPUMCpuIdExplodeFeaturesArmV8FromSysRegs(pVM->cpum.s.GuestInfo.paIdRegsR3, pVM->cpum.s.GuestInfo.cIdRegs,
-                                                      &pVM->cpum.s.GuestFeatures);
+        rc = CPUMCpuIdExplodeFeaturesArmV8(pVM->cpum.s.GuestInfo.paIdRegsR3, pVM->cpum.s.GuestInfo.cIdRegs,
+                                           &pVM->cpum.s.GuestFeatures);
         AssertLogRelRCReturn(rc, rc);
     }
 

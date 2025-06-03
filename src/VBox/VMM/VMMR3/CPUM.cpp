@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 109615 2025-05-20 21:23:52Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUM.cpp 109754 2025-06-03 00:51:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -318,7 +318,7 @@ VMMR3DECL(int) CPUMR3Init(PVM pVM)
         rc = CPUMCpuIdCollectIdSysRegsFromArmV8Host(&pVM->cpum.s.paHostIdRegsR3, &pVM->cpum.s.cHostIdRegs);
         AssertLogRelRCReturn(rc, rc);
 
-        rc = CPUMCpuIdExplodeFeaturesArmV8FromSysRegs(pVM->cpum.s.paHostIdRegsR3, pVM->cpum.s.cHostIdRegs, &g_CpumHostFeatures.s);
+        rc = CPUMCpuIdExplodeFeaturesArmV8(pVM->cpum.s.paHostIdRegsR3, pVM->cpum.s.cHostIdRegs, &g_CpumHostFeatures.s);
         AssertLogRelRCReturn(rc, rc);
 
 #else
