@@ -1,4 +1,4 @@
-/* $Id: UILanguageSettingsEditor.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UILanguageSettingsEditor.cpp 109771 2025-06-03 16:21:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UILanguageSettingsEditor class implementation.
  */
@@ -240,7 +240,7 @@ void UILanguageSettingsEditor::sltRetranslateUI()
     /* Translate tree-widget: */
     if (m_pTreeWidget)
     {
-        m_pTreeWidget->setWhatsThis(tr("Lists all available user interface languages. The effective language is written "
+        m_pTreeWidget->setWhatsThis(tr("Available user interface languages. The effective language is written "
                                        "in bold. Select Default to reset to the system default language."));
 
         /* Translate tree-widget header: */
