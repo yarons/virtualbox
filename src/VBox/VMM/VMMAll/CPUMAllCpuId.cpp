@@ -1,4 +1,4 @@
-/* $Id: CPUMAllCpuId.cpp 109754 2025-06-03 00:51:22Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMAllCpuId.cpp 109759 2025-06-03 08:21:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU ID part, common bits.
  */
@@ -45,6 +45,9 @@
 #include <iprt/mem.h>
 #include <iprt/string.h>
 #include <iprt/x86-helpers.h>
+#if defined(RT_ARCH_ARM64)
+# include <iprt/system.h>
+#endif
 #if defined(RT_ARCH_ARM64) || defined(VBOX_VMM_TARGET_ARMV8)
 # include <iprt/armv8.h>
 # include <iprt/sort.h>
