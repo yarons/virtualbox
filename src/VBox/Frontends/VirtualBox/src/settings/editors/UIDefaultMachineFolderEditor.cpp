@@ -1,4 +1,4 @@
-/* $Id: UIDefaultMachineFolderEditor.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDefaultMachineFolderEditor.cpp 109768 2025-06-03 15:29:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDefaultMachineFolderEditor class implementation.
  */
@@ -76,9 +76,9 @@ void UIDefaultMachineFolderEditor::setMinimumLayoutIndent(int iIndent)
 void UIDefaultMachineFolderEditor::sltRetranslateUI()
 {
     if (m_pLabel)
-        m_pLabel->setText(tr("Default &Machine Folder:"));
+        m_pLabel->setText(tr("Default &Machine Folder"));
     if (m_pSelector)
-        m_pSelector->setToolTip(tr("Holds the path to the default virtual machine folder. This folder is used, "
+        m_pSelector->setToolTip(tr("Path to the default virtual machine folder. This folder is used, "
                                    "if not explicitly specified otherwise, when creating new virtual machines."));
 }
 

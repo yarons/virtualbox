@@ -1,4 +1,4 @@
-/* $Id: UIVRDEAuthLibraryEditor.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVRDEAuthLibraryEditor.cpp 109768 2025-06-03 15:29:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVRDEAuthLibraryEditor class implementation.
  */
@@ -75,10 +75,10 @@ void UIVRDEAuthLibraryEditor::setMinimumLayoutIndent(int iIndent)
 void UIVRDEAuthLibraryEditor::sltRetranslateUI()
 {
     if (m_pLabel)
-        m_pLabel->setText(tr("V&RDP Authentication Library:"));
+        m_pLabel->setText(tr("V&RDP Authentication Library"));
     if (m_pSelector)
-        m_pSelector->setToolTip(tr("Holds the path to the library that provides "
-                                   "authentication for Remote Display (VRDP) clients."));
+        m_pSelector->setToolTip(tr("Path to the library that provides "
+                                   "authentication for Remote Display (VRDP) clients"));
 }
 
 void UIVRDEAuthLibraryEditor::prepare()
