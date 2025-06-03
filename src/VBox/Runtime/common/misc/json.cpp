@@ -1,4 +1,4 @@
-/* $Id: json.cpp 109084 2025-04-07 11:36:49Z alexander.eichner@oracle.com $ */
+/* $Id: json.cpp 109757 2025-06-03 07:57:18Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT JSON parser API (JSON).
  */
@@ -2027,6 +2027,25 @@ RTDECL(int) RTJsonValueQueryNumber(RTJSONVAL hJsonVal, double *prdNum)
 
     RTJSON_TYPECHECK_RETURN(pThis, RTJSONVALTYPE_NUMBER);
     *prdNum = pThis->Type.rdNum;
+    return VINF_SUCCESS;
+}
+
+RTDECL(unsigned) RTJsonValueGetObjectMemberCount(RTJSONVAL hJsonVal)
+{
+    PRTJSONVALINT pThis = hJsonVal;
+    RTJSON_ASSERT_VALID_HANDLE_AND_TYPE_RETURN(pThis, RTJSONVALTYPE_OBJECT, 0);
+
+    return pThis->Type.Object.cMembers;
+}
+
+RTDECL(int) RTJsonValueQueryObjectMemberCount(RTJSONVAL hJsonVal, unsigned *pcMembers)
+{
+    PRTJSONVALINT pThis = hJsonVal;
+    AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
+    AssertPtrReturn(pcMembers, VERR_INVALID_POINTER);
+
+    RTJSON_TYPECHECK_RETURN(pThis, RTJSONVALTYPE_OBJECT);
+    *pcMembers = pThis->Type.Object.cMembers;
     return VINF_SUCCESS;
 }
 
