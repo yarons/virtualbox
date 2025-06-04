@@ -1,4 +1,4 @@
-/* $Id: RecordingStream.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: RecordingStream.cpp 109778 2025-06-04 15:56:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording stream code.
  */
@@ -303,6 +303,9 @@ int RecordingStream::process(const RecordingBlockSet &streamBlocks, RecordingBlo
             AssertPtr(pFrame);
             Assert(pFrame->msTimestamp == msTimestamp);
 
+            LogFlowFunc(("id=%RU64, type=%s (%#x), ts=%RU64\n",
+                         pFrame->idStream, RecordingUtilsRecordingFrameTypeToStr(pFrame->enmType), pFrame->enmType, pFrame->msTimestamp));
+
             switch (pFrame->enmType)
             {
                 case RECORDINGFRAME_TYPE_VIDEO:
@@ -325,6 +328,7 @@ int RecordingStream::process(const RecordingBlockSet &streamBlocks, RecordingBlo
                 }
 
                 default:
+                    AssertFailed();
                     break;
             }
 
@@ -473,6 +477,27 @@ int RecordingStream::addFrame(PRECORDINGFRAME pFrame, uint64_t msTimestamp)
         pBlock->pvData = pFrame;
         pBlock->cbData = sizeof(RECORDINGFRAME);
 
+#if 0
+        RecordingUtilsDbgLogFrame(pFrame);
+
+        if (!m_Blocks.Map.empty())
+            Log3(("Current blocks (%zu):\n", m_Blocks.Map.size()));
+
+        RecordingBlockMap::const_iterator itStreamBlocks = m_Blocks.Map.cbegin();
+        while (itStreamBlocks != m_Blocks.Map.cend())
+        {
+            RecordingBlocks *pBlocks = itStreamBlocks->second;
+            AssertPtr(pBlocks);
+            RecordingBlockList::const_iterator itBlocks = pBlocks->List.cbegin();
+            while (itBlocks != pBlocks->List.cend())
+            {
+                PRECORDINGFRAME pBlockFrame = (PRECORDINGFRAME)(*itBlocks)->pvData;
+                RecordingUtilsDbgLogFrame(pBlockFrame);
+                itBlocks++;
+            }
+            itStreamBlocks++;
+        }
+#endif
         try
         {
             RecordingBlocks *pRecordingBlocks;

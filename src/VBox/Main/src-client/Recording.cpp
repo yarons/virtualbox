@@ -1,4 +1,4 @@
-/* $Id: Recording.cpp 109720 2025-05-30 11:02:56Z andreas.loeffler@oracle.com $ */
+/* $Id: Recording.cpp 109778 2025-06-04 15:56:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording context code.
  *
@@ -1488,6 +1488,9 @@ int RecordingContext::SendCursorShapeChange(bool fVisible, bool fAlpha, uint32_t
  */
 int RecordingContext::SendScreenChange(uint32_t uScreen, PRECORDINGSURFACEINFO pInfo, uint64_t msTimestamp)
 {
+    LogFlowFunc(("uScreen=%RU32, w=%RU32, h=%RU32, bpp=%RU8, ts=%RU64\n",
+                 uScreen, pInfo->uWidth, pInfo->uHeight, pInfo->uBPP, msTimestamp));
+
     lock();
 
     RecordingStream *pStream = getStreamInternal(uScreen);
