@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId-armv8.cpp 109754 2025-06-03 00:51:22Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMR3CpuId-armv8.cpp 109779 2025-06-04 20:34:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU ID part for ARMv8 hypervisor.
  */
@@ -826,6 +826,7 @@ VMMR3_INT_DECL(int) CPUMR3PopulateGuestFeaturesViaCallbacks(PVM pVM, PVMCPU pVCp
         RTMemFree(pVM->cpum.s.GuestInfo.paIdRegsR3);
         pVM->cpum.s.GuestInfo.paIdRegsR3 = paIdRegs;
         pVM->cpum.s.GuestInfo.cIdRegs    = cIdRegs;
+        LogRel(("CPUM: %u guest ID registers\n", cIdRegs));
 
 #if 0
         /*
