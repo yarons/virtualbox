@@ -1,4 +1,4 @@
-/* $Id: DrvNATlibslirp.cpp 109781 2025-06-04 22:46:34Z jack.doherty@oracle.com $ */
+/* $Id: DrvNATlibslirp.cpp 109783 2025-06-05 06:23:08Z jack.doherty@oracle.com $ */
 /** @file
  * DrvNATlibslirp - NATlibslirp network transport driver.
  */
@@ -1624,8 +1624,11 @@ static DECLCALLBACK(int) drvNATConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
 
     GET_STRING_ALLOC(rc, pDrvIns, pCfg, "TFTPPrefix", pThis->pszTFTPPrefix);
     GET_STRING_ALLOC(rc, pDrvIns, pCfg, "BootFile", pThis->pszBootFile);
-    rc = RTStrATruncate(&pThis->pszBootFile, BOOTP_FILE_MAX_LEN);
-    AssertRCReturn(rc, rc);
+    if (RTStrEnd(pThis->pszBootFile, BOOTP_FILE_MAX_LEN + 1) == NULL)
+    {
+        rc = RTStrATruncate(&pThis->pszBootFile, BOOTP_FILE_MAX_LEN);
+        AssertRCReturn(rc, rc);
+    }
     GET_STRING_ALLOC(rc, pDrvIns, pCfg, "NextServer", pThis->pszNextServer);
 
     int fDNSProxy = 0;
