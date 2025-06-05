@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 109695 2025-05-28 14:43:19Z jack.doherty@oracle.com $ */
+/* $Id: VMDK.cpp 109788 2025-06-05 19:02:54Z jack.doherty@oracle.com $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -777,6 +777,14 @@ static int vmdkFileClose(PVMDKIMAGE pImage, PVMDKFILE *ppVmdkFile, bool fDelete)
 static DECLCALLBACK(int) vmdkFileInflateHelper(void *pvUser, void *pvBuf, size_t cbBuf, size_t *pcbBuf)
 {
     VMDKCOMPRESSIO *pInflateState = (VMDKCOMPRESSIO *)pvUser;
+    LogRel(("Inflating VMDK %s - Details:\n \
+            pInflateState->iOffset: %d\n    \
+            pInflateState->cbCompGrain: %d\n    \
+            pInflateState->pvCompGrain: %p",    \
+            pInflateState->pImage->pszFilename, \
+            pInflateState->iOffset, \
+            pInflateState->cbCompGrain, \
+            pInflateState->pvCompGrain));
     size_t cbInjected = 0;
 
     Assert(cbBuf);
