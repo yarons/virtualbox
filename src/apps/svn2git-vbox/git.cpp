@@ -1,4 +1,4 @@
-/* $Id: git.cpp 109791 2025-06-06 11:20:53Z alexander.eichner@oracle.com $ */
+/* $Id: git.cpp 109793 2025-06-06 13:45:51Z alexander.eichner@oracle.com $ */
 /** @file
  * svn2git - Convert a svn repository to git.
  */
@@ -582,7 +582,7 @@ DECLHIDDEN(int) s2gGitRepositoryQueryCommits(S2GREPOSITORYGIT hGitRepo, PS2GGITC
         if (RT_SUCCESS(rc))
         {
             s2gScratchBufReset(&StdOut);
-            const char *apszArgs[] = { GIT_BINARY, "log", "--no-abbrev", "--oneline", "--format=%H %b", NULL };
+            const char *apszArgs[] = { GIT_BINARY, "log", "--no-abbrev", "--oneline", "--format=%H %B", NULL };
             rc = s2gGitExecWrapperStdOut(GIT_BINARY, pThis->pszGitRepoPath, &apszArgs[0], &StdOut);
             if (RT_SUCCESS(rc))
             {
