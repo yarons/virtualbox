@@ -1,4 +1,4 @@
-/* $Id: svn2git.cpp 109796 2025-06-06 16:21:27Z alexander.eichner@oracle.com $ */
+/* $Id: svn2git.cpp 109797 2025-06-06 17:26:39Z alexander.eichner@oracle.com $ */
 /** @file
  * svn2git - Convert a svn repository to git.
  */
@@ -388,7 +388,7 @@ static RTEXITCODE s2gParseArguments(PS2GCTX pThis, int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 109796 $";
+                static const char s_szRev[] = "$Revision: 109797 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTMsgInfo("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
@@ -1662,7 +1662,7 @@ static RTEXITCODE s2gSvnExportSinglePath(PS2GCTX pThis, PS2GSVNREV pRev, const c
                     strncpy(szGitPath, pszGitPath, sizeof(szGitPath));
                     RTPathStripFilename(szGitPath);
 
-                    rcExit = s2gSvnAddGitIgnore(pThis, pszGitPath, NULL /*pvData*/, 0 /*cbData*/);
+                    rcExit = s2gSvnAddGitIgnore(pThis, szGitPath, NULL /*pvData*/, 0 /*cbData*/);
                 }
             }
             else
@@ -2638,7 +2638,9 @@ static RTEXITCODE s2gSvnVerifyRecursiveWorker(PS2GCTX pThis, PS2GSVNREV pRev, co
                 else
                 {
                     /** @todo Externals */
-                    rcExit = RTMsgErrorExit(RTEXITCODE_SUCCESS, "File '%s/%s' in git repository is unknown to svn",
+                    if (!strcmp(pIt->pszName, "kBuild"))
+                        continue;
+                    rcExit = RTMsgErrorExit(RTEXITCODE_FAILURE, "File '%s/%s' in git repository is unknown to svn",
                                             pszGitPath, pIt->pszName);
                     break;
                 }
