@@ -1,4 +1,4 @@
-/* $Id: svn2git.cpp 109803 2025-06-10 06:29:57Z alexander.eichner@oracle.com $ */
+/* $Id: svn2git.cpp 109805 2025-06-10 06:40:41Z alexander.eichner@oracle.com $ */
 /** @file
  * svn2git - Convert a svn repository to git.
  */
@@ -388,7 +388,7 @@ static RTEXITCODE s2gParseArguments(PS2GCTX pThis, int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 109803 $";
+                static const char s_szRev[] = "$Revision: 109805 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTMsgInfo("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
@@ -2771,12 +2771,13 @@ static RTEXITCODE s2gSvnVerify(PS2GCTX pThis)
             break;
     }
 
-#if 0
-    rc = RTDirRemoveRecursive(pThis->pszVerifyTmpPath, RTDIRRMREC_F_CONTENT_AND_DIR);
-    if (RT_FAILURE(rc))
-        return RTMsgErrorExit(RTEXITCODE_FAILURE, "Failed to completely remove worktree '%s': %Rrc",
-                              pThis->pszVerifyTmpPath, rc);
-#endif
+    if (rcExit == RTEXITCODE_SUCCESS) /* Leave the worktree for manual inspection in case of an error. */
+    {
+        rc = RTDirRemoveRecursive(pThis->pszVerifyTmpPath, RTDIRRMREC_F_CONTENT_AND_DIR);
+        if (RT_FAILURE(rc))
+            return RTMsgErrorExit(RTEXITCODE_FAILURE, "Failed to completely remove worktree '%s': %Rrc",
+                                  pThis->pszVerifyTmpPath, rc);
+    }
 
     RTMemFree(paCommits);
     return rcExit;
