@@ -1,4 +1,4 @@
-/* $Id: RecordingUtils.cpp 109802 2025-06-10 06:21:49Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingUtils.cpp 109804 2025-06-10 06:32:29Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording utility code.
  */
@@ -440,7 +440,9 @@ DECLINLINE(int) recordingUtilsDbgDumpImageData(const uint8_t *pu8RGBBuf, size_t 
     infoHdr.fGreenMask     = 0x0000ff00;
     infoHdr.fBlueMask      = 0x000000ff;
     infoHdr.fAlphaMask     = 0xff000000;
+#ifdef RT_OS_WINDOWS
     infoHdr.enmCSType      = LCS_WINDOWS_COLOR_SPACE;
+#endif
 
     static uint64_t s_cRecordingUtilsBmpsDumped = 0;
 
