@@ -1,4 +1,4 @@
-/* $Id: UIMaximumGuestScreenSizeEditor.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMaximumGuestScreenSizeEditor.cpp 109813 2025-06-10 13:00:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMaximumGuestScreenSizeEditor class implementation.
  */
@@ -130,15 +130,15 @@ void UIMaximumGuestScreenSizeEditor::setMinimumLayoutIndent(int iIndent)
 void UIMaximumGuestScreenSizeEditor::sltRetranslateUI()
 {
     if (m_pLabelPolicy)
-        m_pLabelPolicy->setText(tr("Maximum Guest Screen &Size:"));
+        m_pLabelPolicy->setText(tr("Maximum Guest Screen &Size"));
     if (m_pLabelMaxWidth)
-        m_pLabelMaxWidth->setText(tr("&Width:"));
+        m_pLabelMaxWidth->setText(tr("&Width"));
     if (m_pSpinboxMaxWidth)
-        m_pSpinboxMaxWidth->setToolTip(tr("Holds the maximum width which we would like the guest to use."));
+        m_pSpinboxMaxWidth->setToolTip(tr("Maximum width which we would like the guest to use"));
     if (m_pLabelMaxHeight)
-        m_pLabelMaxHeight->setText(tr("&Height:"));
+        m_pLabelMaxHeight->setText(tr("&Height"));
     if (m_pSpinboxMaxHeight)
-        m_pSpinboxMaxHeight->setToolTip(tr("Holds the maximum height which we would like the guest to use."));
+        m_pSpinboxMaxHeight->setToolTip(tr("Maximum height which we would like the guest to use"));
 
     if (m_pComboPolicy)
     {
@@ -147,7 +147,7 @@ void UIMaximumGuestScreenSizeEditor::sltRetranslateUI()
             const MaximumGuestScreenSizePolicy enmType = m_pComboPolicy->itemData(i).value<MaximumGuestScreenSizePolicy>();
             m_pComboPolicy->setItemText(i, gpConverter->toString(enmType));
         }
-        m_pComboPolicy->setToolTip(tr("Selects maximum guest screen size policy."));
+        m_pComboPolicy->setToolTip(tr("Maximum guest screen size policy"));
     }
 }
 
