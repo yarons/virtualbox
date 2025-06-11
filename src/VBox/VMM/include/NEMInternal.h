@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 109729 2025-05-30 16:23:52Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMInternal.h 109820 2025-06-11 13:32:13Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -268,6 +268,10 @@ typedef struct NEM
     bool                        fDoIa32SpecCtrl : 1;
     /** WHvX64LocalApicEmulationModeXApic is used. */
     bool                        fLocalApicEmulation : 1;
+    /** Flag whether XSAVE/XRSTOR are supported. */
+    bool                        fXsaveSupported: 1;
+    /** Flag whether the compacting form of XSAVE is used. */
+    bool                        fXsaveComp: 1;
 #  ifdef NEM_WIN_WITH_A20
     /** Set if we've started more than one CPU and cannot mess with A20. */
     bool                        fA20Fixed : 1;
