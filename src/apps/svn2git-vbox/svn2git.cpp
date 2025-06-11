@@ -1,4 +1,4 @@
-/* $Id: svn2git.cpp 109812 2025-06-10 11:47:04Z alexander.eichner@oracle.com $ */
+/* $Id: svn2git.cpp 109817 2025-06-11 08:02:25Z alexander.eichner@oracle.com $ */
 /** @file
  * svn2git - Convert a svn repository to git.
  */
@@ -388,7 +388,7 @@ static RTEXITCODE s2gParseArguments(PS2GCTX pThis, int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 109812 $";
+                static const char s_szRev[] = "$Revision: 109817 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTMsgInfo("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
@@ -997,6 +997,48 @@ static RTEXITCODE s2gSvnPathIsEmptyDirEx(svn_fs_root_t *pSvnFsRoot, apr_pool_t *
 DECLINLINE(RTEXITCODE) s2gSvnPathIsEmptyDir(PCS2GSVNREV pRev, const char *pszSvnPath, bool *pfIsEmpty)
 {
     return s2gSvnPathIsEmptyDirEx(pRev->pSvnFsRoot, pRev->pPoolRev, pszSvnPath, pfIsEmpty);
+}
+
+
+DECLINLINE(RTEXITCODE) s2gSvnPathWasEmptyDir(PS2GCTX pThis, uint32_t idRev, const char *pszSvnPath,
+                                             bool *pfWasExisting, bool *pfWasEmpty)
+{
+    /* Create a new temporary pool. */
+    apr_pool_t *pPool = svn_pool_create(pThis->pPoolDefault);
+    if (!pPool)
+        return RTMsgErrorExit(RTEXITCODE_FAILURE, "Allocating pool trying to check '%s' failed", pszSvnPath);
+
+    RTEXITCODE rcExit = RTEXITCODE_SUCCESS;
+    svn_fs_root_t *pSvnFsRoot = NULL;
+    svn_error_t *pSvnErr = svn_fs_revision_root(&pSvnFsRoot, pThis->pSvnFs, idRev, pPool);
+    if (!pSvnErr)
+    {
+        apr_hash_t *pEntries = NULL;
+        pSvnErr = svn_fs_dir_entries(&pEntries, pSvnFsRoot, pszSvnPath, pPool);
+        if (!pSvnErr)
+        {
+            *pfWasExisting = true;
+            *pfWasEmpty = apr_hash_count(pEntries) == 0;
+        }
+        else if (pSvnErr->apr_err == 160013) /* Path not found */
+        {
+            *pfWasExisting = false;
+            *pfWasEmpty = false;
+        }
+        else
+        {
+            svn_error_trace(pSvnErr);
+            rcExit = RTEXITCODE_FAILURE;
+        }
+    }
+    else
+    {
+        svn_error_trace(pSvnErr);
+        rcExit = RTEXITCODE_FAILURE;
+    }
+
+    svn_pool_destroy(pPool);
+    return rcExit;
 }
 
 
@@ -1700,17 +1742,34 @@ static RTEXITCODE s2gSvnExportSinglePath(PS2GCTX pThis, PS2GSVNREV pRev, const c
             || pChange->change_kind == svn_fs_path_change_replace)
         {
             rcExit = s2gSvnDumpBlob(pThis, pRev, pRev->pSvnFsRoot, pszSvnPath, pszGitPath);
-            if (rcExit == RTEXITCODE_SUCCESS)
+            if (   rcExit == RTEXITCODE_SUCCESS
+                && pChange->change_kind == svn_fs_path_change_add
+                && !RTStrStr(pszSvnPath, ".gitignore")) /* We don't want to delete .gitignore files which exist in the svn repository. */
             {
-                /* Remove any possible existing .gitignore file in the parent. */
-                char szGitPath[RTPATH_MAX];
-                strncpy(szGitPath, pszGitPath, sizeof(szGitPath));
-                RTPathStripFilename(szGitPath);
-                RTStrCat(szGitPath, sizeof(szGitPath), "/.gitignore");
+                /*
+                 * Remove any possible existing .gitignore file we added in the parent previously
+                 * because the directory was empty.
+                 */
+                char szSvnPath[RTPATH_MAX];
+                strncpy(szSvnPath, pszSvnPath, sizeof(szSvnPath));
+                RTPathStripFilename(szSvnPath);
 
-                int rc = s2gGitTransactionFileRemove(pThis->hGitRepo, szGitPath);
-                if (RT_FAILURE(rc))
-                    rcExit = RTMsgErrorExit(RTEXITCODE_FAILURE, "Failed to remove '%s' from git repository", szGitPath);
+                bool fWasEmpty = false;
+                bool fWasExisting = false;
+                rcExit = s2gSvnPathWasEmptyDir(pThis, pRev->idRev - 1, szSvnPath, &fWasExisting, &fWasEmpty);
+                if (   rcExit == RTEXITCODE_SUCCESS
+                    && fWasExisting
+                    && fWasEmpty)
+                {
+                    char szGitPath[RTPATH_MAX];
+                    strncpy(szGitPath, pszGitPath, sizeof(szGitPath));
+                    RTPathStripFilename(szGitPath);
+                    RTStrCat(szGitPath, sizeof(szGitPath), "/.gitignore");
+
+                    int rc = s2gGitTransactionFileRemove(pThis->hGitRepo, szGitPath);
+                    if (RT_FAILURE(rc))
+                        rcExit = RTMsgErrorExit(RTEXITCODE_FAILURE, "Failed to remove '%s' from git repository", szGitPath);
+                }
             }
         }
         else if (pChange->change_kind == svn_fs_path_change_delete)
