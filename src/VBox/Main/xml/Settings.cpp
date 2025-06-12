@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 109220 2025-04-15 09:01:23Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: Settings.cpp 109824 2025-06-12 04:12:17Z jack.doherty@oracle.com $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -3596,7 +3596,8 @@ NAT::NAT() :
     fAliasProxyOnly(false),
     fAliasUseSamePorts(false),
     fLocalhostReachable(true), /* Historically this value is true. */
-    fForwardBroadcast(false)
+    fForwardBroadcast(false),
+    fEnableTFTP(false)
 {
 }
 

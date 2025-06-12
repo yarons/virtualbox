@@ -1,4 +1,4 @@
-/* $Id: NATEngineImpl.h 107609 2025-01-08 19:54:13Z jack.doherty@oracle.com $ */
+/* $Id: NATEngineImpl.h 109824 2025-06-12 04:12:17Z jack.doherty@oracle.com $ */
 
 /** @file
  *
@@ -76,6 +76,8 @@ private:
     HRESULT getLocalhostReachable(BOOL *pfLocalhostReachable);
     HRESULT setForwardBroadcast(BOOL fForwardBroadcast);
     HRESULT getForwardBroadcast(BOOL *pfForwardBroadcast);
+    HRESULT setEnableTFTP(BOOL fEnableTFTP);
+    HRESULT getEnableTFTP(BOOL *pfEnableTFTP);
     /* TFTP properties */
     HRESULT setTFTPPrefix(const com::Utf8Str &aTFTPPrefix);
     HRESULT getTFTPPrefix(com::Utf8Str &aTFTPPrefix);

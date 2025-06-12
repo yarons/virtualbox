@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 107689 2025-01-10 09:57:38Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvNAT.cpp 109824 2025-06-12 04:12:17Z jack.doherty@oracle.com $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -1608,6 +1608,7 @@ static DECLCALLBACK(int) drvNATConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
                                   "|HostResolverMappings"
 //#endif
                                   "|ForwardBroadcast" /* Not used, for the libslirp variant. */
+                                  "|EnableTFTP"        /* Not used, for the libslirp variant */
                                   , "PortForwarding");
 
     /*
