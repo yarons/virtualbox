@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-linux.c 109840 2025-06-12 11:20:54Z vadim.galitsyn@oracle.com $ */
+/* $Id: SUPDrv-linux.c 109842 2025-06-12 11:39:25Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -118,6 +118,7 @@
 # else
 #  define VBOX_RDMSR_SAFE rdmsrl_safe
 # endif
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
