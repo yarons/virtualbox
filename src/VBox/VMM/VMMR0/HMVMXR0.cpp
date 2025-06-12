@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 109830 2025-06-12 07:02:09Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMVMXR0.cpp 109835 2025-06-12 10:10:29Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -3784,7 +3784,8 @@ static int hmR0VmxExportGuestHwvirtState(PVMCPUCC pVCpu, PCVMXTRANSIENT pVmxTran
          * Check if the VMX feature is exposed to the guest and if the host CPU supports
          * VMCS shadowing.
          */
-        if (pVCpu->CTX_SUFF(pVM)->hmr0.s.vmx.fUseVmcsShadowing)
+        if (   !pVmxTransient->fIsNestedGuest
+            &&  pVCpu->CTX_SUFF(pVM)->hmr0.s.vmx.fUseVmcsShadowing)
         {
             /*
              * If the nested hypervisor has loaded a current VMCS and is in VMX root mode,
@@ -3800,9 +3801,6 @@ static int hmR0VmxExportGuestHwvirtState(PVMCPUCC pVCpu, PCVMXTRANSIENT pVmxTran
                 && !CPUMIsGuestInVmxNonRootMode(&pVCpu->cpum.GstCtx)
                 && CPUMIsGuestVmxCurrentVmcsValid(&pVCpu->cpum.GstCtx))
             {
-                /* Paranoia. */
-                Assert(!pVmxTransient->fIsNestedGuest);
-
                 /*
                  * For performance reasons, also check if the nested hypervisor's current VMCS
                  * was newly loaded or modified before copying it to the shadow VMCS.
