@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 107641 2025-01-09 09:54:24Z andreas.loeffler@oracle.com $ */
+/* $Id: VMMDevInterface.cpp 109852 2025-06-13 08:24:36Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -1224,7 +1224,7 @@ const PDMDRVREG VMMDev::DrvReg =
     /* u32Version */
     PDM_DRVREG_VERSION,
     /* szName */
-    "HGCM",
+    "HGCM", /** @todo r=andy Shouldn't we rename this to "MainVMMDev" like the rest? */
     /* szRCMod */
     "",
     /* szR0Mod */
