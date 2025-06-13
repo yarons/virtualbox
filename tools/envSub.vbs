@@ -1,4 +1,4 @@
-' $Id: envSub.vbs 109854 2025-06-13 08:59:41Z andreas.loeffler@oracle.com $
+' $Id: envSub.vbs 109855 2025-06-13 09:04:43Z andreas.loeffler@oracle.com $
 ''  @file
 ' VBScript worker for env.cmd
 '
@@ -98,7 +98,7 @@ function Main()
       end if
    end if
 
-   if strRealArch = "" then strRealArch = Trim(EnvGet("PROCESSOR_ARCHITEW6432")) 
+   if strRealArch = "" then strRealArch = Trim(EnvGet("PROCESSOR_ARCHITEW6432"))
    if strRealArch = "" then strRealArch = Trim(EnvGet("PROCESSOR_ARCHITECTURE"))
    if strRealArch = "" then strRealArch = "amd64"
    strRealArch = LCase(strRealArch)
