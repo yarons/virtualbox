@@ -1,4 +1,4 @@
-' $Id: envSub.vbs 109853 2025-06-13 08:56:41Z andreas.loeffler@oracle.com $
+' $Id: envSub.vbs 109854 2025-06-13 08:59:41Z andreas.loeffler@oracle.com $
 ''  @file
 ' VBScript worker for env.cmd
 '
@@ -130,11 +130,11 @@ function Main()
    strHost        = EnvGetDefValid("KBUILD_HOST",        "win", arrTargetAndHosts)
    strHostArch    = EnvGetDefValid("KBUILD_HOST_ARCH",   strRealArch, arrArchitectures)
 
-   'dim strAltHostArch
-   strAltHostArch = "arm76"
-   'if strHostArch = "arm64" then
-   '   strAltHostArch = "amd64"
-   'end if
+   dim strAltHostArch
+   strAltHostArch = ""
+   if strHostArch = "arm64" then
+      strAltHostArch = "amd64"
+   end if
 
    ' Where to look for host related tools.
    dim arrArchToolsSuffixes : arrArchToolsSuffixes = Array("", strHostArch & ".")
