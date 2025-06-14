@@ -1,4 +1,4 @@
-/* $Id: Svga.h 109425 2025-05-05 18:17:33Z vitali.pelenjow@oracle.com $ */
+/* $Id: Svga.h 109856 2025-06-14 14:53:13Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver VMSVGA.
  */
@@ -194,10 +194,24 @@ typedef struct VMSVGAOT
 /* VMSVGA specific part of Gallium device extension. */
 typedef struct VBOXWDDM_EXT_VMSVGA
 {
-    /** First IO port. SVGA_*_PORT are relative to it. */
-    RTIOPORT ioportBase;
-    /** Pointer to FIFO MMIO region. */
-    volatile uint32_t *pu32FIFO;
+    union
+    {
+        struct
+        {
+            /** First IO port. SVGA_*_PORT are relative to it. */
+            RTIOPORT ioportBase;
+            /** Pointer to FIFO MMIO region. */
+            volatile uint32_t *pu32FIFO;
+        };
+        struct
+        {
+            /** MMIO base address. SVGA_REG_* are relative to it. */
+            volatile uint32_t *pu32MMIO;
+        };
+    } hw;
+
+    /** Whether MMIO (hw.pu32MMIO) must be used instead of port IO. */
+    bool fMMIO;
 
     /**
      * Hardware capabilities.

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPGaWddm.cpp 109425 2025-05-05 18:17:33Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxMPGaWddm.cpp 109856 2025-06-14 14:53:13Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface for WDDM kernel mode driver.
  */
@@ -480,7 +480,9 @@ static void gaReportFence(PVBOXMP_DEVEXT pDevExt)
     AssertReturnVoid(pSvga);
 
     /* Read the last completed fence from the device. */
-    const uint32_t u32Fence = SVGAFifoRead(pSvga, SVGA_FIFO_FENCE);
+    const uint32_t u32Fence = pSvga->fMMIO
+                            ? SVGARegRead(pSvga, SVGA_REG_FENCE)
+                            : SVGAFifoRead(pSvga, SVGA_FIFO_FENCE);
     GALOG(("Fence %u\n", u32Fence));
 
     if (u32Fence == ASMAtomicReadU32(&pGaDevExt->u32PreemptionFenceId))
@@ -1530,7 +1532,7 @@ BOOLEAN GaDxgkDdiInterruptRoutine(const PVOID MiniportDeviceContext,
         return FALSE;
     }
 
-    const uint32_t u32IrqStatus = SVGAPortRead(pSvga, SVGA_IRQSTATUS_PORT);
+    const uint32_t u32IrqStatus = SVGAReadIRQStatus(pSvga);
     if (!u32IrqStatus)
     {
         /* Not a VMSVGA interrupt, "return FALSE immediately". */
@@ -1538,7 +1540,7 @@ BOOLEAN GaDxgkDdiInterruptRoutine(const PVOID MiniportDeviceContext,
     }
 
     /* "Dismiss the interrupt on the adapter." */
-    SVGAPortWrite(pSvga, SVGA_IRQSTATUS_PORT, u32IrqStatus);
+    SVGAWriteIRQStatus(pSvga, u32IrqStatus);
     GALOG(("u32IrqStatus = 0x%08X\n", u32IrqStatus));
 
     /* Check what happened. */
