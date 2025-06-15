@@ -1,4 +1,4 @@
-/* $Id: IEMAllXcpt-armv8.cpp 109198 2025-04-11 23:49:15Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllXcpt-armv8.cpp 109859 2025-06-15 22:07:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - ARM target, exceptions & interrupts.
  */
@@ -63,6 +63,40 @@ iemRaiseDebugDataAccessOrInvokeDbgf(PVMCPUCC pVCpu, uint32_t fDataBps, RTGCPTR G
 {
     RT_NOREF(pVCpu, fDataBps, GCPtrMem, cbMem, fAccess);
     AssertFailedReturn(VERR_IEM_ASPECT_NOT_IMPLEMENTED);
+}
+
+
+VBOXSTRICTRC
+iemRaiseInstructionAbortTlbPermision(PVMCPUCC pVCpu, RTGCPTR GCPtrMem, uint8_t cbMem, PCIEMTLBENTRY pTlbe) RT_NOEXCEPT
+{
+    RT_NOREF(pVCpu, GCPtrMem, cbMem, pTlbe);
+    AssertFailedReturn(VERR_IEM_ASPECT_NOT_IMPLEMENTED);
+}
+
+
+DECL_NO_RETURN(void)
+iemRaiseInstructionAbortTlbPermisionJmp(PVMCPUCC pVCpu, RTGCPTR GCPtrMem, uint8_t cbMem, PCIEMTLBENTRY pTlbe)
+{
+    VBOXSTRICTRC const rcStrict = iemRaiseInstructionAbortTlbPermision(pVCpu, GCPtrMem, cbMem, pTlbe);
+    IEM_DO_LONGJMP(pVCpu, VBOXSTRICTRC_VAL(rcStrict));
+}
+
+
+VBOXSTRICTRC
+iemRaiseInstructionAbortFromWalk(PVMCPUCC pVCpu, RTGCPTR GCPtrMem, uint8_t cbMem, uint32_t fAccess, int rc,
+                                 PCPGMPTWALKFAST pWalkFast) RT_NOEXCEPT
+{
+    RT_NOREF(pVCpu, GCPtrMem, cbMem, fAccess, rc, pWalkFast);
+    AssertFailedReturn(VERR_IEM_ASPECT_NOT_IMPLEMENTED);
+}
+
+
+DECL_NO_RETURN(void)
+iemRaiseInstructionAbortFromWalkJmp(PVMCPUCC pVCpu, RTGCPTR GCPtrMem, uint8_t cbMem, uint32_t fAccess, int rc,
+                                    PCPGMPTWALKFAST pWalkFast) IEM_NOEXCEPT_MAY_LONGJMP
+{
+    VBOXSTRICTRC const rcStrict = iemRaiseInstructionAbortFromWalk(pVCpu, GCPtrMem, cbMem, fAccess, rc, pWalkFast);
+    IEM_DO_LONGJMP(pVCpu, VBOXSTRICTRC_VAL(rcStrict));
 }
 
 

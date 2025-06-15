@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst-armv8.cpp.h 109318 2025-04-24 07:20:21Z alexander.eichner@oracle.com $ */
+/* $Id: PGMAllGst-armv8.cpp.h 109859 2025-06-15 22:07:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager, ARMv8 Guest Paging Template - All context code.
  */
@@ -1034,7 +1034,7 @@ DECLINLINE(uintptr_t) pgmR3DeduceTypeFromTcr(uint64_t u64RegSctlr, uint64_t u64R
         }
 
         /* Build the index into the PGM mode callback table for the given config. */
-        idxNewGst = PGM_MODE_TYPE_CREATE(a_fTtbr0, uLookupLvl, u64Tg, fTbi, fEpd, false /*f53BitOa*/);
+        idxNewGst = PGM_MODE_TYPE_CREATE(a_fTtbr0, uLookupLvl, u64Tg, fTbi, fEpd, false /*f52BitOa*/);
     }
     else
         idxNewGst = PGM_TYPE_NONE;

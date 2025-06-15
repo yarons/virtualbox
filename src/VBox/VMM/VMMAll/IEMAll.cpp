@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 109198 2025-04-11 23:49:15Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 109859 2025-06-15 22:07:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -165,6 +165,7 @@
 #elif defined(VBOX_VMM_TARGET_ARMV8)
 # include "target-armv8/IEMInline-armv8.h"
 # include "target-armv8/IEMAllIntprA64Tables-armv8.h"
+# include "target-armv8/IEMInlineDecode-armv8.h"
 # include "target-armv8/IEMInlineExec-armv8.h"
 #endif
 
@@ -371,7 +372,7 @@ DECLINLINE(VBOXSTRICTRC) iemInitDecoderAndPrefetchOpcodes(PVMCPUCC pVCpu, uint32
 {
     iemInitDecoder(pVCpu, fExecOpts);
 
-#ifndef IEM_WITH_CODE_TLB
+#if !defined(IEM_WITH_CODE_TLB) && defined(VBOX_VMM_TARGET_X86)
     return iemOpcodeFetchPrefetch(pVCpu);
 #else
     return VINF_SUCCESS;
