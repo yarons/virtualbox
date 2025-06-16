@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: FsPerf.cpp 109871 2025-06-16 17:28:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -6313,7 +6313,7 @@ static void Usage(PRTSTREAM pStrm)
         const char *pszHelp;
         switch (g_aCmdOptions[i].iShort)
         {
-            case 'd':                           pszHelp = "The directory to use for testing.            default: CWD/fstestdir"; break;
+            case 'd':                           pszHelp = "The directory to use for testing.            default: <temp>/fstestdir-<PID>"; break;
             case 'r':                           pszHelp = "Don't abspath test dir (good for deep dirs). default: disabled"; break;
             case 'e':                           pszHelp = "Enables all tests.                           default: -e"; break;
             case 'z':                           pszHelp = "Disables all tests.                          default: -e"; break;
@@ -6713,7 +6713,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 106061 $";
+                char szRev[] = "$Revision: 109871 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
