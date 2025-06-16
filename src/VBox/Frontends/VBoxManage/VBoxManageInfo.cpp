@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 109862 2025-06-16 05:50:03Z jack.doherty@oracle.com $ */
+/* $Id: VBoxManageInfo.cpp 109870 2025-06-16 17:01:00Z jack.doherty@oracle.com $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1785,8 +1785,10 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
                         {
                             RTPrintf("natnet%d=\"%ls\"\n", currentNIC + 1, strNetwork.length() ? strNetwork.raw(): Bstr("nat").raw());
                             strAttachment = "nat";
-                            strNatSettings.printf("mtu=\"%d\"\nsockSnd=\"%d\"\nsockRcv=\"%d\"\ntcpWndSnd=\"%d\"\ntcpWndRcv=\"%d\"\n",
-                                                  mtu, sockSnd ? sockSnd : 64, sockRcv ? sockRcv : 64, tcpSnd ? tcpSnd : 64, tcpRcv ? tcpRcv : 64);
+                            strNatSettings.printf("mtu=\"%d\"\nsockSnd=\"%d\"\nsockRcv=\"%d\"\ntcpWndSnd=\"%d\"\ntcpWndRcv=\"%d\"\n"
+                                                  "localhostReachable=\"%d\"\nforwardBroadcast=\"%d\"\nenableTFTP=\"%d\"\n",
+                                                  mtu, sockSnd ? sockSnd : 64, sockRcv ? sockRcv : 64, tcpSnd ? tcpSnd : 64,
+                                                  tcpRcv ? tcpRcv : 64, fLocalhostReachable, fForwardBroadcast, fEnableTFTP);
                         }
                         else
                         {
