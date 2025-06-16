@@ -1,4 +1,4 @@
-/* $Id: svn2git.cpp 109850 2025-06-12 12:58:02Z alexander.eichner@oracle.com $ */
+/* $Id: svn2git.cpp 109865 2025-06-16 07:04:19Z alexander.eichner@oracle.com $ */
 /** @file
  * svn2git - Convert a svn repository to git.
  */
@@ -388,7 +388,7 @@ static RTEXITCODE s2gParseArguments(PS2GCTX pThis, int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 109850 $";
+                static const char s_szRev[] = "$Revision: 109865 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTMsgInfo("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
@@ -2594,7 +2594,7 @@ static PS2GDIRENTRY s2gFindGitEntry(PRTLISTANCHOR pLstEntries, const char *pszNa
 
 
 static RTEXITCODE s2gSvnVerifyIgnores(PS2GCTX pThis, PS2GSVNREV pRev, const char *pszSvnPath, const char *pszGitPath,
-                                      uint32_t cGitPathEntries, bool fSvnDirEmpty)
+                                      uint32_t cGitPathEntries, bool fSvnDirEmpty, uint32_t uLvl)
 {
     s2gScratchBufReset(&pThis->BufScratch);
 
@@ -2608,7 +2608,7 @@ static RTEXITCODE s2gSvnVerifyIgnores(PS2GCTX pThis, PS2GSVNREV pRev, const char
 
         /* Process global ignores only in the root path. */
         if (   rcExit == RTEXITCODE_SUCCESS
-            && *pszGitPath == '\0')
+            && uLvl == 0)
         {
             pProp = NULL;
             pSvnErr = svn_fs_node_prop(&pProp, pRev->pSvnFsRoot, pszSvnPath, "svn:global-ignores", pRev->pPoolRev);
@@ -2804,7 +2804,7 @@ static RTEXITCODE s2gSvnVerifyRecursiveWorker(PS2GCTX pThis, PS2GSVNREV pRev, co
                      * .gitignore files appear either when there is a svn:ignore property set on the svn directory
                      * or when the SVN directory is empty.
                      */
-                    rcExit = s2gSvnVerifyIgnores(pThis, pRev, pszSvnPath, pszGitPath, cGitEntries, fSvnDirEmpty);
+                    rcExit = s2gSvnVerifyIgnores(pThis, pRev, pszSvnPath, pszGitPath, cGitEntries, fSvnDirEmpty, uLvl);
                 }
                 else if (   !RTStrCmp(pIt->pszName, ".git")
                          && uLvl == 0)
