@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 108645 2025-03-05 17:35:20Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 109866 2025-06-16 08:13:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -8159,11 +8159,12 @@ HRESULT Console::i_loadVMM(const char *pszVMMMod) RT_NOEXCEPT
                             return S_OK;
                         }
 
-                        hrc = setErrorVrc(vrc, "Bogus VMM vtable: uMagicVersion=%#RX64 uMagicVersionEnd=%#RX64",
+                        hrc = setErrorVrc(VWRN_INVALID_MAGIC, "Bogus VMM vtable: uMagicVersion=%#RX64 uMagicVersionEnd=%#RX64",
                                           pVMM->uMagicVersion, pVMM->uMagicVersionEnd);
                     }
                     else
-                        hrc = setErrorVrc(vrc, "Incompatible of bogus VMM version magic: %#RX64", pVMM->uMagicVersion);
+                        hrc = setErrorVrc(VERR_VERSION_MISMATCH, "Incompatible of bogus VMM version magic: %#RX64",
+                                          pVMM->uMagicVersion);
                 }
                 else
                     hrc = setErrorVrc(vrc, "pfnGetVTable return NULL!");
