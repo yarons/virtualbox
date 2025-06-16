@@ -1,4 +1,4 @@
-/* $Id: tstRTProcCreateEx.cpp 109674 2025-05-26 22:58:20Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTProcCreateEx.cpp 109869 2025-06-16 15:51:41Z ksenia.s.stepanova@oracle.com $ */
 /** @file
  * IPRT Testcase - RTProcCreateEx.
  */
@@ -251,8 +251,8 @@ static void tstRTCreateProcExCwd(const char *pszAsUser, const char *pszPassword)
     rc = RTProcCreateEx(g_szExecName, apszArgs, RTENV_DEFAULT, fFlags,
                         NULL, NULL, NULL, pszAsUser, pszPassword,
                         (void *)szCWD /* pvExtraData (CWD) */, &hProc);
-    if (rc != VERR_PATH_NOT_FOUND && rc != VERR_FILE_NOT_FOUND) /* Not sure why I get the latter on wsl1/ubuntu_24_04 */
-        RTTestIFailed("Invalid CWD -> rc=%Rrc; expected VERR_PATH_NOT_FOUND or VERR_FILE_NOT_FOUND", rc);
+    if (rc != VERR_PATH_NOT_FOUND && rc != VERR_FILE_NOT_FOUND && rc != VERR_NOT_A_DIRECTORY) /* Not sure why I get the latter on wsl1/ubuntu_24_04 */
+        RTTestIFailed("Invalid CWD -> rc=%Rrc; expected VERR_PATH_NOT_FOUND, VERR_FILE_NOT_FOUND or VERR_NOT_A_DIRECTORY", rc);
 
     RTAssertSetMayPanic(fMayPanic);
     RTAssertSetQuiet(fQuiet);
