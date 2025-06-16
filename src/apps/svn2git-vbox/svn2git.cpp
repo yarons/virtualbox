@@ -1,4 +1,4 @@
-/* $Id: svn2git.cpp 109865 2025-06-16 07:04:19Z alexander.eichner@oracle.com $ */
+/* $Id: svn2git.cpp 109867 2025-06-16 09:40:54Z alexander.eichner@oracle.com $ */
 /** @file
  * svn2git - Convert a svn repository to git.
  */
@@ -44,19 +44,9 @@
 #include <iprt/stdarg.h>
 #include <iprt/time.h>
 
-#include <apr_lib.h>
-#include <apr_getopt.h>
-#include <apr_general.h>
+#include <stdio.h>
 
-#include <svn_fs.h>
-#include <svn_pools.h>
-#include <svn_repos.h>
-#include <svn_types.h>
-#include <svn_version.h>
-#include <svn_subst.h>
-#include <svn_props.h>
-#include <svn_time.h>
-
+#include "libsvn.h"
 #include "svn2git-internal.h"
 
 
@@ -388,7 +378,7 @@ static RTEXITCODE s2gParseArguments(PS2GCTX pThis, int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 109865 $";
+                static const char s_szRev[] = "$Revision: 109867 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTMsgInfo("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
