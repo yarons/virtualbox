@@ -1,4 +1,4 @@
-/* $Id: svn2git.cpp 109867 2025-06-16 09:40:54Z alexander.eichner@oracle.com $ */
+/* $Id: svn2git.cpp 109868 2025-06-16 10:08:18Z alexander.eichner@oracle.com $ */
 /** @file
  * svn2git - Convert a svn repository to git.
  */
@@ -378,7 +378,7 @@ static RTEXITCODE s2gParseArguments(PS2GCTX pThis, int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 109867 $";
+                static const char s_szRev[] = "$Revision: 109868 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTMsgInfo("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
@@ -1818,9 +1818,13 @@ static RTEXITCODE s2gSvnExportSinglePath(PS2GCTX pThis, PS2GSVNREV pRev, const c
                 RTPathStripFilename(szSvnPath);
 
                 bool fIsEmpty = false;
+                bool fHasIgnores = false;
                 rcExit = s2gSvnPathIsEmptyDir(pRev, szSvnPath, &fIsEmpty);
+                if (rcExit == RTEXITCODE_SUCCESS)
+                    rcExit = s2gSvnHasIgnores(pRev, szSvnPath, &fHasIgnores);
                 if (   rcExit == RTEXITCODE_SUCCESS
-                    && fIsEmpty)
+                    && fIsEmpty
+                    && !fHasIgnores) /* Don't overwrite .gitignore files due to existing svn:ignore properties. */
                 {
                     char szGitPath[RTPATH_MAX];
                     strncpy(szGitPath, pszGitPath, sizeof(szGitPath));
@@ -2277,7 +2281,7 @@ static RTEXITCODE s2gSvnGetInternalRevisionFromPublic(PS2GCTX pThis, uint32_t id
         if (g_cVerbosity >= 4)
             RTMsgInfo("Searching r%u: %s\n", idRev, pSvnXRef ? pSvnXRef->data : "");
 
-        uint32_t idRevRef = pSvnXRef ? RTStrToUInt32(pSvnXRef->data) : 17427;
+        uint32_t idRevRef = pSvnXRef ? RTStrToUInt32(pSvnXRef->data) : 17427; /** @todo This is for the case of r1 for our OSE repository. */
         if (idRevRef)
         {
             *pidRevInternal = idRevRef;
