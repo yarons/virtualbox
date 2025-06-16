@@ -1,4 +1,4 @@
-/* $Id: tstRTJson.cpp 109084 2025-04-07 11:36:49Z alexander.eichner@oracle.com $ */
+/* $Id: tstRTJson.cpp 109864 2025-06-16 07:03:30Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT Testcase - JSON API.
  */
@@ -314,9 +314,17 @@ static void tstIterator(RTTEST hTest, RTJSONVAL hJsonVal)
             switch (enmTypeMember)
             {
                 case RTJSONVALTYPE_OBJECT:
+                {
                     RTTEST_CHECK(hTest, strcmp(pszName, "subobject") == 0);
+                    RTTEST_CHECK(hTest, RTJsonValueGetObjectMemberCount(hJsonValMember) == 3);
+
+                    uint32_t cMembers = 0;
+                    RTTEST_CHECK_RC_OK(hTest, RTJsonValueQueryObjectMemberCount(hJsonValMember, &cMembers));
+                    RTTEST_CHECK(hTest, cMembers == RTJsonValueGetObjectMemberCount(hJsonValMember));
+
                     tstIterator(hTest, hJsonValMember);
                     break;
+                }
                 case RTJSONVALTYPE_ARRAY:
                     RTTEST_CHECK(hTest, strcmp(pszName, "array") == 0);
                     tstArray(hTest, hJsonValMember);
