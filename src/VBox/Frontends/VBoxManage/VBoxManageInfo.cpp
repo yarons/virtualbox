@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 109220 2025-04-15 09:01:23Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VBoxManageInfo.cpp 109862 2025-06-16 05:50:03Z jack.doherty@oracle.com $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1773,6 +1773,13 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
                         ULONG tcpRcv = 0;
                         engine->GetNetworkSettings(&mtu, &sockSnd, &sockRcv, &tcpSnd, &tcpRcv);
 
+                        BOOL fLocalhostReachable = false;
+                        BOOL fForwardBroadcast = false;
+                        BOOL fEnableTFTP = false;
+                        engine->COMGETTER(LocalhostReachable)(&fLocalhostReachable);
+                        engine->COMGETTER(ForwardBroadcast)(&fForwardBroadcast);
+                        engine->COMGETTER(EnableTFTP)(&fEnableTFTP);
+
 /** @todo r=klaus dnsproxy etc needs to be dumped, too */
                         if (details == VMINFO_MACHINEREADABLE)
                         {
@@ -1784,8 +1791,11 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
                         else
                         {
                             strAttachment = "NAT";
-                            strNatSettings.printf(Info::tr("NIC %d Settings:  MTU: %d, Socket (send: %d, receive: %d), TCP Window (send:%d, receive: %d)\n"),
-                                                  currentNIC + 1, mtu, sockSnd ? sockSnd : 64, sockRcv ? sockRcv : 64, tcpSnd ? tcpSnd : 64, tcpRcv ? tcpRcv : 64);
+                            strNatSettings.printf(Info::tr("NIC %d Settings:\n"
+                                                            "\tMTU: %d, Socket (send: %d, receive: %d), TCP Window (send:%d, receive: %d),\n"
+                                                            "\tLocalhostReachable: %d, ForwardBroadcast: %d, EnableTFTP: %d\n"),
+                                                  currentNIC + 1, mtu, sockSnd ? sockSnd : 64, sockRcv ? sockRcv : 64, tcpSnd ? tcpSnd : 64,
+                                                  tcpRcv ? tcpRcv : 64, fLocalhostReachable, fForwardBroadcast, fEnableTFTP);
                         }
                         break;
                     }
