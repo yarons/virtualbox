@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 109851 2025-06-13 07:37:42Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VMXAllTemplate.cpp.h 109875 2025-06-17 06:06:29Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -3907,6 +3907,7 @@ static int vmxHCImportGuestStateEx(PVMCPUCC pVCpu, PVMXVMCSINFO pVmcsInfo, uint6
                 {
                     Assert(CPUMIsGuestInVmxRootMode(pCtx));
                     rc = vmxHCCopyShadowToNstGstVmcs(pVCpu, pVmcsInfo);
+                    pVCpu->hm.s.vmx.fCopiedNstGstToShadowVmcs = false;
                     if (RT_SUCCESS(rc))
                     { /* likely */ }
                     else
@@ -4175,6 +4176,7 @@ static int vmxHCImportGuestStateInner(PVMCPUCC pVCpu, PVMXVMCSINFO pVmcsInfo, ui
             Assert(CPUMIsGuestInVmxRootMode(&pVCpu->cpum.GstCtx));
             int const rc = vmxHCCopyShadowToNstGstVmcs(pVCpu, pVmcsInfo);
             AssertRCReturn(rc, rc);
+            pVCpu->hm.s.vmx.fCopiedNstGstToShadowVmcs = false;
         }
     }
 #endif
