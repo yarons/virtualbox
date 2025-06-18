@@ -1,4 +1,4 @@
-/* $Id: VBoxWinDrvInst.h 109888 2025-06-18 13:04:42Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxWinDrvInst.h 109894 2025-06-18 14:38:50Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxWinDrvInst - Header for Windows driver installation handling.
  */
@@ -44,6 +44,8 @@
 #include <iprt/win/windows.h>
 
 RT_C_DECLS_BEGIN
+
+/** @defgroup grp_vboxwindrvinst    Windows driver / service (un)installation and management functions.
 
 /** Windows driver installer handle. */
 typedef R3PTRTYPE(struct VBOXWINDRVINSTINTERNAL *) VBOXWINDRVINST;
@@ -193,13 +195,13 @@ int VBoxWinDrvInstUninstall(VBOXWINDRVINST hDrvInst, const char *pszInfFile, con
 int VBoxWinDrvInstUninstallExecuteInf(VBOXWINDRVINST hDrvInst, const char *pszInfFile, const char *pszSection, uint32_t fFlags);
 /** @} */
 
-/** @defgroup grp_windrvinst_nt_native     Native NT functions.
+/** @name Native NT functions.
  * @{
  */
 int VBoxWinDrvInstQueryNtLinkTarget(PCRTUTF16 pwszLinkNt, PRTUTF16 *ppwszLinkTarget);
 /** @} */
 
-/** @defgroup grp_windrvinst_svc     Service functions
+/** @name Service functions
  * @{
  */
 int VBoxWinDrvInstServiceControl(VBOXWINDRVINST hDrvInst, const char *pszService, VBOXWINDRVSVCFN enmFn);
@@ -208,18 +210,20 @@ int VBoxWinDrvInstServiceQuery(const char *pszService, PVBOXWINDRVSVCINFO pSvcIn
 void VBoxWinDrvInstServiceInfoDestroy(PVBOXWINDRVSVCINFO pSvcInfo);
 /** @} */
 
-/** @defgroup grp_windrvinst_string  String functions
+/** @name String functions
  * @{
  */
 int VBoxWinDrvPatternReplace(const char *pszInput, const PVBOXWINDRVSTRPATTERN paPatterns, size_t cPatterns, char **ppszOutput);
 /** @} */
 
-/** @defgroup grp_windrvinst_file    File functions
+/** @name File functions
  * @{
  */
 int VBoxWinDrvInstFileQueryVersionEx(const char *pszPath, uint32_t *puMajor, uint32_t *puMinor, uint32_t *puBuildNumber, uint32_t *puRevisionNumber);
 int VBoxWinDrvInstFileQueryVersion(const char *pszPath, char *pszVersion, size_t cbVersion);
 int VBoxWinDrvInstFileQueryVersionUtf16(PCRTUTF16 pwszPath, char *pszVersion, size_t cbVersion);
+/** @} */
+
 /** @} */
 
 RT_C_DECLS_END
