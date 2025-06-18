@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 108993 2025-03-28 13:41:06Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 109891 2025-06-18 13:18:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -244,7 +244,7 @@ void UIWizardNewVMExpertPage::sltRetranslateUI()
 {
     if (m_pUnattendedCheckBox)
     {
-        m_pUnattendedCheckBox->setText(UIWizardNewVM::tr("&Install OS Using Unattended Installation."));
+        m_pUnattendedCheckBox->setText(UIWizardNewVM::tr("&Proceed with Unattended Installation"));
         m_pUnattendedCheckBox->setToolTip(UIWizardNewVM::tr("The ISO is attached to the VM, so you can install the OS manually"));
     }
 
