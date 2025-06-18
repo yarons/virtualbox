@@ -1,4 +1,4 @@
-/* $Id: VBoxWinDrvInst.h 109885 2025-06-18 12:37:52Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxWinDrvInst.h 109888 2025-06-18 13:04:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxWinDrvInst - Header for Windows driver installation handling.
  */
@@ -41,6 +41,7 @@
 #endif
 
 #include <iprt/types.h>
+#include <iprt/win/windows.h>
 
 RT_C_DECLS_BEGIN
 
