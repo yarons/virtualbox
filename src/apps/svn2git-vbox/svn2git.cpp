@@ -1,4 +1,4 @@
-/* $Id: svn2git.cpp 109877 2025-06-17 09:18:28Z alexander.eichner@oracle.com $ */
+/* $Id: svn2git.cpp 109895 2025-06-18 15:22:46Z alexander.eichner@oracle.com $ */
 /** @file
  * svn2git - Convert a svn repository to git.
  */
@@ -376,7 +376,7 @@ static RTEXITCODE s2gParseArguments(PS2GCTX pThis, int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 109877 $";
+                static const char s_szRev[] = "$Revision: 109895 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTMsgInfo("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
@@ -2794,10 +2794,7 @@ static RTEXITCODE s2gSvnVerifyRecursiveWorker(PS2GCTX pThis, PS2GSVNREV pRev, co
 
             /* Paths containing .git are invalid as git thinks these are other repositories. */
             if (!RTStrCmp(pIt->pszName, ".git"))
-            {
-                RTMsgWarning("Skipping invalid path '%s/%s'\n", pszSvnPath, pIt->pszName);
                 continue;
-            }
 
             /* Try to find the matching entry in the git path. */
             PS2GDIRENTRY pGit = s2gFindGitEntry(&LstGitEntries, pIt->pszName);
