@@ -1,4 +1,4 @@
-/* $Id: IEMMc-armv8.h 109881 2025-06-18 01:28:27Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc-armv8.h 109899 2025-06-18 20:56:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX, ARMv8 target.
  */
@@ -35,6 +35,11 @@
 /** @name   "Microcode" macros, ARMv8 specifics and overrides.
  * @{
  */
+
+ /** Set 64-bit PC to uAddr (local) and PSTATE.BTYPE to a_uBType (constant). */
+#define IEM_MC_BRANCH_TO_WITH_BTYPE_AND_FINISH(a_uNewPc, a_uBType); \
+    return iemRegPcA64BranchToAndFinishClearingFlags((pVCpu), (a_uNewPc), (a_uBType))
+
 
 
 /** @}  */

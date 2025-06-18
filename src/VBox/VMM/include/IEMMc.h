@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 109878 2025-06-17 12:32:45Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc.h 109899 2025-06-18 20:56:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX, common.
  */
@@ -1578,7 +1578,7 @@
 #ifdef VBOX_VMM_TARGET_X86
 # include "VMMAll/target-x86/IEMMc-x86.h"
 #elif defined(VBOX_VMM_TARGET_ARMV8)
-//# include "VMMAll/target-armv8/IEMMc-armv8.h"
+# include "VMMAll/target-armv8/IEMMc-armv8.h"
 #else
 # error "port me"
 #endif
