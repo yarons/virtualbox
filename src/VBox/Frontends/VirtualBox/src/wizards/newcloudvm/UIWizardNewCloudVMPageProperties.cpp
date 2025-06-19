@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageProperties.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardNewCloudVMPageProperties.cpp 109902 2025-06-19 15:11:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageProperties class implementation.
  */
@@ -98,7 +98,7 @@ UIWizardNewCloudVM *UIWizardNewCloudVMPageProperties::wizard() const
 void UIWizardNewCloudVMPageProperties::sltRetranslateUI()
 {
     /* Translate page: */
-    setTitle(UIWizardNewCloudVM::tr("Cloud Virtual Machine settings"));
+    setTitle(UIWizardNewCloudVM::tr("Cloud virtual machine settings"));
 
     /* Translate description label: */
     if (m_pLabel)
