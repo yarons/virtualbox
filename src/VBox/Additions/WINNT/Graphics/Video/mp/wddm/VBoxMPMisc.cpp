@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.cpp 106508 2024-10-19 03:25:57Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxMPMisc.cpp 109912 2025-06-20 10:53:01Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -496,6 +496,7 @@ NTSTATUS vboxWddmDisplaySettingsQueryPos(IN PVBOXMP_DEVEXT pDevExt, D3DDDI_VIDEO
     return Status;
 }
 
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
 void vboxWddmDisplaySettingsCheckPos(IN PVBOXMP_DEVEXT pDevExt, D3DDDI_VIDEO_PRESENT_SOURCE_ID VidPnSourceId)
 {
     POINT Pos = {0};
@@ -516,6 +517,7 @@ void vboxWddmDisplaySettingsCheckPos(IN PVBOXMP_DEVEXT pDevExt, D3DDDI_VIDEO_PRE
 
     vboxWddmGhDisplayCheckSetInfoFromSource(pDevExt, pSource);
 }
+#endif
 
 NTSTATUS vboxWddmRegDrvFlagsSet(PVBOXMP_DEVEXT pDevExt, DWORD fVal)
 {
