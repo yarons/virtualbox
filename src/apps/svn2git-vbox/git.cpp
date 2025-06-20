@@ -1,4 +1,4 @@
-/* $Id: git.cpp 109918 2025-06-20 13:28:24Z alexander.eichner@oracle.com $ */
+/* $Id: git.cpp 109923 2025-06-20 16:25:41Z alexander.eichner@oracle.com $ */
 /** @file
  * svn2git - Convert a svn repository to git.
  */
@@ -316,7 +316,7 @@ static int s2gGitRepositoryQueryBranches(const char *pszGitRepoPath, PRTLISTANCH
     S2GSCRATCHBUF StdOut;
     s2gScratchBufInit(&StdOut);
 
-    const char *apszArgs[] = { GIT_BINARY, "branch", "-a", NULL };
+    const char *apszArgs[] = { GIT_BINARY, "branch", NULL };
     int rc = s2gGitExecWrapperStdOut(GIT_BINARY, pszGitRepoPath, &apszArgs[0], &StdOut);
     if (RT_SUCCESS(rc))
     {
