@@ -1,4 +1,4 @@
-/* $Id: GICInternal.h 109633 2025-05-22 09:01:18Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICInternal.h 109906 2025-06-20 07:47:58Z alexander.eichner@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -151,6 +151,8 @@ typedef struct GICDEV
     /** @name Distributor register state.
      * @{
      */
+    /** @todo r=aeichner This could be made uint64_t so we have fewer loop iterations
+     *                   in gicDistGetHighestPriorityPendingIntr() etc. */
     /** Interrupt group bitmap. */
     uint32_t                    bmIntrGroup[64];
     /** Interrupt config bitmap (edge-triggered vs level-sensitive). */
