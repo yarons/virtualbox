@@ -1,4 +1,4 @@
-/* $Id: VBoxWinDrvInst.cpp 109904 2025-06-19 15:44:51Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxWinDrvInst.cpp 109907 2025-06-20 08:27:05Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxWinDrvInst - Windows driver installation handling.
  */
@@ -1951,6 +1951,21 @@ static int vboxWinDrvInstSetupAPILog(PVBOXWINDRVINSTINTERNAL pCtx, unsigned cLas
         vboxWinDrvInstLogEx(pCtx, VBOXWINDRIVERLOGTYPE_ERROR, "Error retrieving SetupAPI log, rc=%Rrc", rc);
 
     return rc;
+}
+
+/**
+ * Logs the setupapi(.dev).log file to the installation logging instance.
+ *
+ * @returns VBox status code.
+ * @param   hDrvInst            Windows driver installer handle to use.
+ * @param   cLastSections       Number of installation sections to log (i.e. tail).
+ */
+int VBoxWinDrvInstLogSetupAPI(VBOXWINDRVINST hDrvInst, unsigned cLastSections)
+{
+    PVBOXWINDRVINSTINTERNAL pCtx = hDrvInst;
+    VBOXWINDRVINST_VALID_RETURN(pCtx);
+
+    return vboxWinDrvInstSetupAPILog(pCtx, cLastSections);
 }
 
 /**

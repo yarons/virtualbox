@@ -1,4 +1,4 @@
-/* $Id: VBoxWinDrvInst.h 109898 2025-06-18 16:00:04Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxWinDrvInst.h 109907 2025-06-20 08:27:05Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxWinDrvInst - Header for Windows driver installation handling.
  */
@@ -224,6 +224,12 @@ int VBoxWinDrvPatternReplace(const char *pszInput, const PVBOXWINDRVSTRPATTERN p
 int VBoxWinDrvInstFileQueryVersionEx(const char *pszPath, uint32_t *puMajor, uint32_t *puMinor, uint32_t *puBuildNumber, uint32_t *puRevisionNumber);
 int VBoxWinDrvInstFileQueryVersion(const char *pszPath, char *pszVersion, size_t cbVersion);
 int VBoxWinDrvInstFileQueryVersionUtf16(PCRTUTF16 pwszPath, char *pszVersion, size_t cbVersion);
+/** @} */
+
+/** @name Log functions
+ * @{
+ */
+int VBoxWinDrvInstLogSetupAPI(VBOXWINDRVINST hDrvInst, unsigned cLastSections);
 /** @} */
 
 /** @} */
