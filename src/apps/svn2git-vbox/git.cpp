@@ -1,4 +1,4 @@
-/* $Id: git.cpp 109917 2025-06-20 13:25:42Z alexander.eichner@oracle.com $ */
+/* $Id: git.cpp 109918 2025-06-20 13:28:24Z alexander.eichner@oracle.com $ */
 /** @file
  * svn2git - Convert a svn repository to git.
  */
@@ -586,8 +586,8 @@ DECLHIDDEN(int) s2gGitRepositoryPush(S2GREPOSITORYGIT hGitRepo)
     if (RT_SUCCESS(rc))
     {
         /* Do the push now. */
-        const char *apszArgsRepack[] = { GIT_BINARY, "push", "--force", "--all", "origin", NULL };
-        rc = s2gGitExecWrapper(GIT_BINARY, pThis->pszGitRepoPath, &apszArgsRepack[0]);
+        const char *apszArgsPush[] = { GIT_BINARY, "push", "--force", "--all", "origin", NULL };
+        rc = s2gGitExecWrapper(GIT_BINARY, pThis->pszGitRepoPath, &apszArgsPush[0]);
     }
 
     return rc;
