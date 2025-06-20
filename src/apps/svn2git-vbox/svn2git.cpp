@@ -1,4 +1,4 @@
-/* $Id: svn2git.cpp 109917 2025-06-20 13:25:42Z alexander.eichner@oracle.com $ */
+/* $Id: svn2git.cpp 109920 2025-06-20 14:16:43Z alexander.eichner@oracle.com $ */
 /** @file
  * svn2git - Convert a svn repository to git.
  */
@@ -429,7 +429,7 @@ static RTEXITCODE s2gParseArguments(PS2GCTX pThis, int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 109917 $";
+                static const char s_szRev[] = "$Revision: 109920 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTMsgInfo("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
@@ -2420,17 +2420,22 @@ static RTEXITCODE s2gGitInit(PS2GCTX pThis)
         {
             if (idRevLast != 0)
             {
-                /*
-                 * We need to match the revision to the one of the repository as svn:sync-xref-src-repo-rev
-                 * is a property.
-                 */
                 uint32_t idRevPublic = 0;
-                RTEXITCODE rcExit = s2gSvnFindMatchingRevision(pThis, idRevLast + 1, &idRevPublic);
-                if (rcExit != RTEXITCODE_SUCCESS)
-                    return rcExit;
+                if (pThis->fSvnSyncXrefSrcRepoRevAvail)
+                {
+                    /*
+                     * We need to match the revision to the one of the repository as svn:sync-xref-src-repo-rev
+                     * is a property.
+                     */
+                    RTEXITCODE rcExit = s2gSvnFindMatchingRevision(pThis, idRevLast + 1, &idRevPublic);
+                    if (rcExit != RTEXITCODE_SUCCESS)
+                        return rcExit;
 
-                RTMsgInfo("Matched internal revision r%u to public r%u, continuing at that revision\n",
-                          idRevLast + 1, idRevPublic);
+                    RTMsgInfo("Matched internal revision r%u to public r%u, continuing at that revision\n",
+                              idRevLast + 1, idRevPublic);
+                }
+                else
+                    idRevPublic = idRevLast;
 
                 pThis->idRevStart = idRevPublic + 1;
             }
