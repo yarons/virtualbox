@@ -1,4 +1,4 @@
-/* $Id: svn2git-internal.h 109791 2025-06-06 11:20:53Z alexander.eichner@oracle.com $ */
+/* $Id: svn2git-internal.h 109915 2025-06-20 13:08:05Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Internal svn2git header.
  */
@@ -165,6 +165,8 @@ typedef const S2GGITCOMMIT2SVNREV *PCS2GGITCOMMIT2SVNREV;
 
 DECLHIDDEN(int) s2gGitRepositoryCreate(PS2GREPOSITORYGIT phGitRepo, const char *pszGitRepoPath, const char *pszDefaultBranch,
                                        const char *pszDumpFilename, uint32_t *pidRevLast);
+DECLHIDDEN(int) s2gGitRepositoryFlush(S2GREPOSITORYGIT hGitRepo);
+DECLHIDDEN(int) s2gGitRepositoryDone(S2GREPOSITORYGIT hGitRepo);
 DECLHIDDEN(int) s2gGitRepositoryClose(S2GREPOSITORYGIT hGitRepo);
 DECLHIDDEN(int) s2gGitRepositoryClone(S2GREPOSITORYGIT hGitRepo, const char *pszWorktree);
 DECLHIDDEN(int) s2gGitRepositoryCheckout(const char *pszWorktree, const char *pszCommitHash);
