@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 109912 2025-06-20 10:53:01Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxMPWddm.cpp 109925 2025-06-21 11:23:05Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -2029,6 +2029,10 @@ NTSTATUS APIENTRY DxgkDdiQueryAdapterInfo(
             }
 #endif
             LOGREL(("DXGKQAITYPE_QUERYSEGMENT3 treating as unsupported!"));
+            Status = STATUS_NOT_SUPPORTED;
+            break;
+
+        case DXGKQAITYPE_ADAPTERPERFDATA:
             Status = STATUS_NOT_SUPPORTED;
             break;
 
@@ -5482,11 +5486,13 @@ DriverEntry(
 #else
         VBOXVIDEO_HWTYPE enmHwType = VBOXVIDEO_HWTYPE_VMSVGA; /* ARM only supports VMSVGA3 based VBoxSVGA. */
 
-        /** @todo Query 3D and display count from the host. */
-        BOOL f3DSupported = FALSE;
-
+        /* Query 3D and display count from the host. */
+        BOOL f3DSupported = VBoxGetHostGraphicsCap(VBOX_GRAPHICS_DEVCAP_3D) != 0;
         g_f3DSupported = f3DSupported;
-        g_cDisplays = 1;
+
+        g_cDisplays = VBoxGetHostGraphicsCap(VBOX_GRAPHICS_DEVCAP_NUM_DISPLAYS);
+        if (g_cDisplays == 0)
+            g_cDisplays = 1;
 #endif /* !(defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)) */
 
         if (NT_SUCCESS(Status))

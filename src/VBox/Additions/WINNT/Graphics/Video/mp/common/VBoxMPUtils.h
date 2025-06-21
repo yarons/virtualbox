@@ -1,4 +1,4 @@
-/* $Id: VBoxMPUtils.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxMPUtils.h 109925 2025-06-21 11:23:05Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBox Miniport common utils header
  */
@@ -83,6 +83,7 @@ RT_C_DECLS_BEGIN
 vboxWinVersion_t VBoxQueryWinVersion(uint32_t *pbuild);
 uint32_t VBoxGetHeightReduction(void);
 bool     VBoxLikesVideoMode(uint32_t display, uint32_t width, uint32_t height, uint32_t bpp);
+uint32_t VBoxGetHostGraphicsCap(uint32_t capIndex);
 bool     VBoxQueryDisplayRequest(uint32_t *xres, uint32_t *yres, uint32_t *bpp, uint32_t *pDisplayId);
 bool     VBoxQueryHostWantsAbsolute(void);
 bool     VBoxQueryPointerPos(uint16_t *pPosX, uint16_t *pPosY);
