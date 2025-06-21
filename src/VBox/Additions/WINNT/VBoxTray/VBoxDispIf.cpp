@@ -1,4 +1,4 @@
-/* $Id: VBoxDispIf.cpp 106727 2024-10-26 00:33:05Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDispIf.cpp 109924 2025-06-21 10:45:33Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBoxTray - Display Settings Interface abstraction for XPDM & WDDM
  */
@@ -2114,7 +2114,7 @@ BOOL VBoxDispIfResizeDisplayWin7Wddm(PCVBOXDISPIF const pIf, uint32_t cDispDef, 
     }
     else
     {
-        WARN(("VBoxTray:(WDDM) pfnSetDisplayConfig Ok to VALIDATE winEr %d.\n", winEr));
+        Log(("VBoxTray:(WDDM) pfnSetDisplayConfig Ok to VALIDATE.\n"));
         vboxDispIfWddmDcLogRel(&DispCfg, fSetFlags);
     }
 
