@@ -1,4 +1,4 @@
-/* $Id: VBoxNetSlirpNAT.cpp 109926 2025-06-23 03:41:17Z jack.doherty@oracle.com $ */
+/* $Id: VBoxNetSlirpNAT.cpp 109933 2025-06-23 18:09:50Z jack.doherty@oracle.com $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -68,6 +68,8 @@
 #include <iprt/semaphore.h>
 #include <iprt/cpp/utils.h>
 #include <VBox/log.h>
+
+#include <limits.h>
 
 #include <iprt/buildconfig.h>
 #include <iprt/getopt.h>
