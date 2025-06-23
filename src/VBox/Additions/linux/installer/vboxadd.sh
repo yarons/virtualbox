@@ -1,7 +1,7 @@
 #! /bin/sh
-# $Id: vboxadd.sh 109530 2025-05-14 11:57:45Z vadim.galitsyn@oracle.com $
+# $Id: vboxadd.sh 109930 2025-06-23 16:36:38Z vadim.galitsyn@oracle.com $
 ## @file
-# Linux Additions kernel module init script ($Revision: 109530 $)
+# Linux Additions kernel module init script ($Revision: 109930 $)
 #
 
 #
@@ -1050,7 +1050,14 @@ check_status_kernel()
     # running VBoxVGA or VBoxSVGA graphics.
     if [ $? -eq 0 ]; then
         gpu_vendor=$(lspci | grep 'VGA compatible controller' | cut -d ' ' -f 5 2>/dev/null)
-        if [ "$gpu_vendor" = "InnoTek" ]; then
+
+        # vboxvideo is not installed for kernels 3.10.x and older.
+        have_vboxvideo=
+        if [ "$(printf '%s\n%s\n' "3.10" "$(uname -r)" | sort -Vr | head -1)" = "$(uname -r)" ]; then
+            have_vboxvideo="1"
+        fi
+
+        if [ -n "$have_vboxvideo" -a "$gpu_vendor" = "InnoTek" ]; then
             check_running_module "vboxvideo"
         else
             # Do not spoil $?.
