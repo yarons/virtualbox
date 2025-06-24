@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 109925 2025-06-21 11:23:05Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxMPWddm.cpp 109945 2025-06-24 15:15:24Z dmitrii.grigorev@oracle.com $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -5400,10 +5400,6 @@ DriverEntry(
         return STATUS_UNSUCCESSFUL;
     }
 
-#if 0//def DEBUG_misha
-    RTLogGroupSettings(0, "+default.e.l.f.l2.l3");
-#endif
-
 #ifdef DEBUG
 #define VBOXWDDM_BUILD_TYPE "dbg"
 #else
@@ -5420,6 +5416,7 @@ DriverEntry(
         || !ARGUMENT_PRESENT(RegistryPath))
         return STATUS_INVALID_PARAMETER;
 
+    vboxWddmLoggerCreate(RegistryPath);
     vboxWddmDrvCfgInit(RegistryPath);
 
     ULONG major, minor, build;
@@ -5560,12 +5557,8 @@ DriverEntry(
 
     AssertRelease(!NT_SUCCESS(Status));
 
-    PRTLOGGER pLogger = RTLogRelSetDefaultInstance(NULL);
-    if (pLogger)
-    {
-        RTLogDestroy(pLogger);
-    }
-    pLogger = RTLogSetDefaultInstance(NULL);
+    PRTLOGGER pLogger = RTLogSetDefaultInstance(NULL);
+
     if (pLogger)
     {
         RTLogDestroy(pLogger);

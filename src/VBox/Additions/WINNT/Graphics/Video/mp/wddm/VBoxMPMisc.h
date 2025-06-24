@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxMPMisc.h 109945 2025-06-24 15:15:24Z dmitrii.grigorev@oracle.com $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -162,6 +162,7 @@ BOOLEAN vboxShRcTreeRemove(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_ALLOCATION pAlloc);
 #endif
 
 NTSTATUS vboxWddmDrvCfgInit(PUNICODE_STRING pRegStr);
+NTSTATUS vboxWddmLoggerCreate(PUNICODE_STRING pRegStr);
 
 NTSTATUS VBoxWddmSlEnableVSyncNotification(PVBOXMP_DEVEXT pDevExt, BOOLEAN fEnable);
 NTSTATUS VBoxWddmSlGetScanLine(PVBOXMP_DEVEXT pDevExt, DXGKARG_GETSCANLINE *pSl);
