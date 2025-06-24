@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 109870 2025-06-16 17:01:00Z jack.doherty@oracle.com $ */
+/* $Id: Settings.cpp 109946 2025-06-24 19:31:00Z jack.doherty@oracle.com $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -9739,11 +9739,7 @@ void MachineConfigFile::bumpSettingsVersionIfNeeded()
              netit != hardwareMachine.llNetworkAdapters.end();
              ++netit)
         {
-            if ((  netit->fEnabled // VirtualBox 7.2 adds a flag if NAT can forward broadcast packets to
-                                   // external, host-side network (added in 7.1, settings file updated in 7.2).
-                && netit->mode == NetworkAttachmentType_NAT
-                && netit->nat.fForwardBroadcast) ||
-                ( netit->fEnabled // VirtualBox 7.2 adds a flag if NAT has enabled TFTP
+            if (( netit->fEnabled // VirtualBox 7.2 adds a flag if NAT has enabled TFTP
                 && netit->mode == NetworkAttachmentType_NAT
                 && netit->nat.fEnableTFTP))
             {
@@ -9778,6 +9774,21 @@ void MachineConfigFile::bumpSettingsVersionIfNeeded()
                     m->sv = SettingsVersion_v1_20;
                     return;
                 }
+            }
+        }
+
+        NetworkAdaptersList::const_iterator netit;
+        for (netit = hardwareMachine.llNetworkAdapters.begin();
+             netit != hardwareMachine.llNetworkAdapters.end();
+             ++netit)
+        {
+            if ((  netit->fEnabled // VirtualBox 7.1 adds a flag if NAT can forward
+                                   // broadcast packets to external, host-side network.
+                && netit->mode == NetworkAttachmentType_NAT
+                && netit->nat.fForwardBroadcast))
+            {
+                m->sv = SettingsVersion_v1_20;
+                break;
             }
         }
     }
