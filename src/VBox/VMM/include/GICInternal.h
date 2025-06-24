@@ -1,4 +1,4 @@
-/* $Id: GICInternal.h 109906 2025-06-20 07:47:58Z alexander.eichner@oracle.com $ */
+/* $Id: GICInternal.h 109942 2025-06-24 07:51:05Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -143,6 +143,16 @@ extern const PDMGICBACKEND g_GicKvmBackend;
         (a_uReg) = ((a_uReg) & ~(a_fRwMask)) | ((uint32_t)(a_uValue) & (uint32_t)(a_fRwMask)); \
     } while (0)
 
+/** @name GIC interrupt groups.
+ * @{ */
+/** Interrupt Group 0. */
+#define GIC_INTR_GROUP_0                          RT_BIT_32(0)
+/** Interrupt Group 1 (Secure). */
+#define GIC_INTR_GROUP_1S                         RT_BIT_32(1)
+/** Interrupt Group 1 (Non-secure). */
+#define GIC_INTR_GROUP_1NS                        RT_BIT_32(2)
+/** @} */
+
 /**
  * GIC PDM instance data (per-VM).
  */
@@ -171,10 +181,8 @@ typedef struct GICDEV
     uint32_t                    au32IntrRouting[2048];
     /** Interrupt routine mode bitmap. */
     uint32_t                    bmIntrRoutingMode[64];
-    /** Flag whether group 0 interrupts are enabled. */
-    bool                        fIntrGroup0Enabled;
-    /** Flag whether group 1 interrupts are enabled. */
-    bool                        fIntrGroup1Enabled;
+    /** Mask of enabled interrupt groups (see GIC_INTR_GROUP_XXX). */
+    uint32_t                    fIntrGroupMask;
     /** Flag whether affinity routing is enabled. */
     bool                        fAffRoutingEnabled;
     /** @} */
@@ -215,7 +223,7 @@ typedef struct GICDEV
     /** Whether LPIs are enabled (GICR_CTLR.EnableLpis of all redistributors). */
     bool                        fEnableLpis;
     /** Padding. */
-    bool                        afPadding1[3];
+    bool                        afPadding1[1];
     /** ITS device state. */
     GITSDEV                     Gits;
     /** LPI config table. */
