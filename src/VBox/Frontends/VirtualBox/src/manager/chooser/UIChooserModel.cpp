@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 109422 2025-05-05 15:19:46Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.cpp 109964 2025-06-25 15:26:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -981,6 +981,9 @@ void UIChooserModel::sortSelectedGroupItem()
 
     /* Rebuild tree for main root: */
     buildTreeForMainRoot(true /* preserve selection */);
+
+    /* Save groups finally: */
+    saveGroups();
 }
 
 void UIChooserModel::setCurrentMachineItem(const QUuid &uId)
