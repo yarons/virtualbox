@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDX.cpp 109912 2025-06-20 10:53:01Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxMPDX.cpp 109966 2025-06-25 16:15:44Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Graphics Driver - Direct3D (DX) driver function.
  */
@@ -45,6 +45,25 @@ bool SvgaIsDXSupported(PVBOXMP_DEVEXT pDevExt)
     return    pDevExt->pGa
            && pDevExt->pGa->hw.pSvga
            && RT_BOOL(pDevExt->pGa->hw.pSvga->u32Caps & SVGA_CAP_DX);
+}
+
+
+void SvgaCursorSetVisibility(PVBOXMP_DEVEXT pDevExt, bool fVisible)
+{
+    /** @todo Implement SVGA_CAP2_EXTRA_REGS with SVGA_REG_CURSOR4_* */
+    PVBOXWDDM_EXT_VMSVGA pSvga = pDevExt->pGa->hw.pSvga;
+    uint32_t const u32CursorOn = fVisible
+                               ? SVGA_CURSOR_ON_SHOW
+                               : SVGA_CURSOR_ON_HIDE;
+    SVGARegWrite(pSvga, SVGA_REG_CURSOR_ON, u32CursorOn);
+}
+
+
+void SvgaCursorUpdatePosition(PVBOXMP_DEVEXT pDevExt, int xPos, int yPos)
+{
+    PVBOXWDDM_EXT_VMSVGA pSvga = pDevExt->pGa->hw.pSvga;
+    SVGARegWrite(pSvga, SVGA_REG_CURSOR_X, xPos);
+    SVGARegWrite(pSvga, SVGA_REG_CURSOR_Y, yPos);
 }
 
 
