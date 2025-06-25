@@ -1,4 +1,4 @@
-/* $Id: d3d11main.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: d3d11main.cpp 109970 2025-06-25 16:43:47Z vitali.pelenjow@oracle.com $ */
 /** @file
  * D3D testcase. Win32 application to run D3D11 tests.
  */
@@ -29,6 +29,7 @@
 
 #include <iprt/file.h>
 #include <iprt/formats/bmp.h>
+#include <iprt/alloc.h>
 #include <iprt/string.h>
 
 /*

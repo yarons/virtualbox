@@ -1,4 +1,4 @@
-/* $Id: oglrender.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: oglrender.cpp 109970 2025-06-25 16:43:47Z vitali.pelenjow@oracle.com $ */
 /** @file
  * OpenGL testcase. Simple OpenGL tests.
  */
@@ -44,6 +44,7 @@ HRESULT OGLRenderTriangle::InitRender()
 
 HRESULT OGLRenderTriangle::DoRender()
 {
+    glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
     glBegin(GL_TRIANGLES);
     glColor3f ( 1.0f,  0.0f, 0.0f);
