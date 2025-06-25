@@ -1,4 +1,4 @@
-/* $Id: VBoxDX.cpp 109095 2025-04-08 09:27:48Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxDX.cpp 109971 2025-06-25 17:47:32Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox D3D user mode driver.
  */
@@ -3864,7 +3864,7 @@ static int vboxDXDeviceCreateObjects(PVBOXDX_DEVICE pDevice)
     AssertRCReturn(rc, rc);
 
     rc = RTHandleTableCreateEx(&pDevice->hHTShaderResourceView, /* fFlags */ 0, /* uBase */ 0,
-                               SVGA3D_MAX_SHADERIDS, NULL, NULL);
+                               SVGA_COTABLE_MAX_IDS, NULL, NULL);
     AssertRCReturn(rc, rc);
 
     rc = RTHandleTableCreateEx(&pDevice->hHTRenderTargetView, /* fFlags */ 0, /* uBase */ 0,
