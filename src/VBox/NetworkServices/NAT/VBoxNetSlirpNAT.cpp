@@ -1,4 +1,4 @@
-/* $Id: VBoxNetSlirpNAT.cpp 109950 2025-06-25 07:43:03Z jack.doherty@oracle.com $ */
+/* $Id: VBoxNetSlirpNAT.cpp 109976 2025-06-25 22:06:12Z jack.doherty@oracle.com $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -35,7 +35,7 @@
 # define AF_INET6 23
 #endif
 
-#ifdef RT_OS_LINUX
+#if defined(RT_OS_LINUX) || defined(RT_OS_SOLARIS)
 # include <limits.h>
 #endif
 
