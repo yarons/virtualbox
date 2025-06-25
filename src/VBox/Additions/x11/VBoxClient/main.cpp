@@ -1,4 +1,4 @@
-/* $Id: main.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: main.cpp 109961 2025-06-25 14:42:58Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Guest Additions - X11 Client.
  */
@@ -493,7 +493,7 @@ static int vbclGetPidfileName(char *szBuf, size_t cbBuf, const char *szTemplate,
         RTStrCat(szBuf, cbBuf, fParentProcess ? "-control.pid" : "-service.pid");
 
     if (RT_FAILURE(rc))
-        VBClLogFatalError("%s: reating PID file path failed: %Rrc\n",
+        VBClLogFatalError("%s: creating PID file path failed: %Rrc\n",
                           g_Service.pDesc->pszDesc, rc);
 
     return rc;
