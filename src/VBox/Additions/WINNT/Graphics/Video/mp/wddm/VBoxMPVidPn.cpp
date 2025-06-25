@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVidPn.cpp 109912 2025-06-20 10:53:01Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxMPVidPn.cpp 109957 2025-06-25 11:13:12Z dmitrii.grigorev@oracle.com $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -1416,7 +1416,7 @@ NTSTATUS VBoxVidPnRecommendMonitorModes(PVBOXMP_DEVEXT pDevExt, D3DDDI_VIDEO_PRE
 
 NTSTATUS VBoxVidPnUpdateModes(PVBOXMP_DEVEXT pDevExt, uint32_t u32TargetId, const RTRECTSIZE *pSize)
 {
-    LOGF(("ENTER u32TargetId(%d) mode(%d x %d)", u32TargetId, pSize->cx, pSize->cy));
+    LogRel2((VBOX_VIDEO_LOG_NAME ": VBoxVidPnUpdateModes u32TargetId(%d) mode(%d x %d)\n", u32TargetId, pSize->cx, pSize->cy));
 
     if (u32TargetId >= (uint32_t)VBoxCommonFromDeviceExt(pDevExt)->cDisplays)
     {
