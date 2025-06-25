@@ -1,4 +1,4 @@
-/* $Id: VBoxMF.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxMF.h 109959 2025-06-25 12:29:50Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBox Mouse Filter Driver - Internal Header.
  */
@@ -64,9 +64,11 @@ typedef struct _VBOXMOUSE_DEVEXT
     PDEVICE_OBJECT pdoParent;         /* Highest PDO in chain before we've attached our filter */
 
     BOOLEAN bHostMouse;               /* Indicates if we're filtering the chain with emulated i8042 PS/2 adapter */
+    BOOLEAN bNeedFullStateProtocol;   /* Whether VMMDEV_MOUSE_HOST_SUPPORTS_FULL_STATE_PROTOCOL is required. */
 
     INTERNAL_MOUSE_CONNECT_DATA OriginalConnectData; /* Original connect data intercepted in IOCTL_INTERNAL_MOUSE_CONNECT */
-    VMMDevReqMouseStatus       *pSCReq;              /* Preallocated request to use in pfnServiceCB */
+    VMMDevReqMouseStatusEx     *pSCReq;              /* Preallocated request to use in pfnServiceCB */
+    uint32_t                    fLastButtons;        /* Last reported state of mouse buttons for FULL_STATE_PROTOCOL. */
 
     IO_REMOVE_LOCK RemoveLock;
 } VBOXMOUSE_DEVEXT, *PVBOXMOUSE_DEVEXT;
