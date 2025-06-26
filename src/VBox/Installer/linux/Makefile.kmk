@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 109325 2025-04-24 11:45:32Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 109987 2025-06-26 08:57:20Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -171,7 +171,7 @@ VBOX_LNX_STRIP_BIN = \
 		$(if $(VBOX_WITH_FE_BUGREPORT),VBoxBugReport,) \
 		VBoxManage \
 		VBoxNetDHCP $(if $(VBOX_WITH_HARDENING),VBoxNetDHCP.so,) \
-		$(if $(VBOX_WITH_LWIP_NAT),VBoxNetNAT $(if $(VBOX_WITH_HARDENING),VBoxNetNAT.so,),) \
+		$(if-expr defined(VBOX_WITH_NAT_SERVICE) && defined(VBOX_WITH_MAIN),VBoxNetNAT $(if $(VBOX_WITH_HARDENING),VBoxNetNAT.so,),) \
 		VBoxNetAdpCtl \
 		$(if $(VBOX_WITH_DEVMAPPER),VBoxVolInfo,) \
 		VBoxSVC \
