@@ -1,4 +1,4 @@
-/* $Id: GICInternal.h 109942 2025-06-24 07:51:05Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICInternal.h 109990 2025-06-26 10:36:55Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -166,7 +166,7 @@ typedef struct GICDEV
     /** Interrupt group bitmap. */
     uint32_t                    bmIntrGroup[64];
     /** Interrupt config bitmap (edge-triggered vs level-sensitive). */
-    uint32_t                    bmIntrConfig[128];
+    uint32_t                    bmIntrConfig[64];
     /** Interrupt enabled bitmap. */
     uint32_t                    bmIntrEnabled[64];
     /** Interrupt pending bitmap. */
@@ -278,7 +278,7 @@ typedef struct GICCPU
     /** Interrupt group bitmap. */
     uint32_t                    bmIntrGroup[3];
     /** Interrupt config bitmap (edge-triggered vs level-sensitive). */
-    uint32_t                    bmIntrConfig[6];
+    uint32_t                    bmIntrConfig[3];
     /** Interrupt enabled bitmap. */
     uint32_t                    bmIntrEnabled[3];
     /** Interrupt pending bitmap. */
