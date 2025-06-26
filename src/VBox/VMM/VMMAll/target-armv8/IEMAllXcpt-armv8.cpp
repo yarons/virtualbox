@@ -1,4 +1,4 @@
-/* $Id: IEMAllXcpt-armv8.cpp 109859 2025-06-15 22:07:50Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllXcpt-armv8.cpp 109977 2025-06-26 00:04:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - ARM target, exceptions & interrupts.
  */
@@ -37,6 +37,21 @@
 #include <VBox/log.h>
 #include <VBox/err.h>
 
+
+VBOXSTRICTRC
+iemRaiseUndefined(PVMCPUCC pVCpu) RT_NOEXCEPT
+{
+    RT_NOREF(pVCpu);
+    AssertFailedReturn(VERR_IEM_ASPECT_NOT_IMPLEMENTED);
+}
+
+
+DECL_NO_RETURN(void)
+iemRaiseUndefinedJmp(PVMCPUCC pVCpu) IEM_NOEXCEPT_MAY_LONGJMP
+{
+    VBOXSTRICTRC const rcStrict = iemRaiseUndefined(pVCpu);
+    IEM_DO_LONGJMP(pVCpu, VBOXSTRICTRC_VAL(rcStrict));
+}
 
 
 VBOXSTRICTRC
