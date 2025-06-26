@@ -1,7 +1,7 @@
 #! /bin/sh
-# $Id: vboxadd.sh 109930 2025-06-23 16:36:38Z vadim.galitsyn@oracle.com $
+# $Id: vboxadd.sh 109986 2025-06-26 08:54:56Z vadim.galitsyn@oracle.com $
 ## @file
-# Linux Additions kernel module init script ($Revision: 109930 $)
+# Linux Additions kernel module init script ($Revision: 109986 $)
 #
 
 #
@@ -623,8 +623,8 @@ create_udev_rule()
             fi
         fi
         ## @todo 60-vboxadd.rules -> 60-vboxguest.rules ?
-        echo "KERNEL=${udev_fix}\"vboxguest\", NAME=\"vboxguest\", OWNER=\"vboxadd\", MODE=\"0660\"" > /etc/udev/rules.d/60-vboxadd.rules
-        echo "KERNEL=${udev_fix}\"vboxuser\", NAME=\"vboxuser\", OWNER=\"vboxadd\", MODE=\"0666\"" >> /etc/udev/rules.d/60-vboxadd.rules
+        echo "KERNEL=${udev_fix}\"vboxguest\", OWNER=\"vboxadd\", MODE=\"0660\"" > /etc/udev/rules.d/60-vboxadd.rules
+        echo "KERNEL=${udev_fix}\"vboxuser\", OWNER=\"vboxadd\", MODE=\"0666\"" >> /etc/udev/rules.d/60-vboxadd.rules
         # Make sure the new rule is noticed.
         udevadm control --reload >/dev/null 2>&1 || true
         udevcontrol reload_rules >/dev/null 2>&1 || true
