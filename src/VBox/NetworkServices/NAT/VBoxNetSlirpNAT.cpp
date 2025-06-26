@@ -1,4 +1,4 @@
-/* $Id: VBoxNetSlirpNAT.cpp 109976 2025-06-25 22:06:12Z jack.doherty@oracle.com $ */
+/* $Id: VBoxNetSlirpNAT.cpp 109978 2025-06-26 05:44:20Z jack.doherty@oracle.com $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -2165,7 +2165,7 @@ VBoxNetSlirpNAT::processFrame(void *pvUser, void *pvFrame, uint32_t cbFrame)
     if (!pvBuf)
         return;
 
-    int rc = RTReqQueueCallEx(pThis->m_hSlirpReqQueue, NULL /*ppReq*/, 0 /*cMillies*/, RTREQFLAGS_VOID | RTREQFLAGS_NO_WAIT,
+    int rc = RTReqQueueCallEx(pThis->m_hSlirpReqQueue, NULL /*ppReq*/, (RTMSINTERVAL)0 /*cMillies*/, RTREQFLAGS_VOID | RTREQFLAGS_NO_WAIT,
                               (PFNRT)pThis->slirpSendWorker, 3, pThis, pvBuf, cbFrame);
     if (RT_SUCCESS(rc))
     {
