@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 109990 2025-06-26 10:36:55Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICAll.cpp 109994 2025-06-26 11:28:52Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - All Contexts.
  */
@@ -218,7 +218,7 @@ DECL_FORCE_INLINE(uint32_t) gicPackAltBits(uint32_t uSrc)
     uint32_t       uOut = 0;
     unsigned const cBits = sizeof(uSrc) << 3;
     for (unsigned i = 1; i < cBits; i += 2)
-        uOut |= ((uSrc & RT_BIT(i)) >> i) << (i / 2);
+        uOut |= ((uSrc >> i) & 1) << (i / 2);
     return uOut;
 }
 
@@ -236,7 +236,7 @@ DECL_FORCE_INLINE(uint64_t) gicUnpackAltBits(uint32_t uSrc)
     uint64_t       uOut  = 0;
     unsigned const cBits = sizeof(uSrc) << 3;
     for (unsigned i = 0; i < cBits; i++)
-        uOut |= (((uint64_t)uSrc & RT_BIT_64(i)) >> i) << (i * 2 + 1);
+        uOut |= (uint64_t)((uSrc >> i) & 1) << ((i << 1) + 1);
     return uOut;
 }
 
