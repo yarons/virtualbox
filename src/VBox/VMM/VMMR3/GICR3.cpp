@@ -1,4 +1,4 @@
-/* $Id: GICR3.cpp 109990 2025-06-26 10:36:55Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICR3.cpp 109996 2025-06-26 11:51:09Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -519,6 +519,7 @@ static DECLCALLBACK(int) gicR3SaveExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
 
     /* Distributor state. */
     pHlp->pfnSSMPutU32(pSSM,  pGicDev->fIntrGroupMask);
+    pHlp->pfnSSMPutBool(pSSM, pGicDev->fAffRoutingEnabled);
     pHlp->pfnSSMPutMem(pSSM,  &pGicDev->bmIntrGroup[0],       sizeof(pGicDev->bmIntrGroup));
     pHlp->pfnSSMPutMem(pSSM,  &pGicDev->bmIntrConfig[0],      sizeof(pGicDev->bmIntrConfig));
     pHlp->pfnSSMPutMem(pSSM,  &pGicDev->bmIntrEnabled[0],     sizeof(pGicDev->bmIntrEnabled));
