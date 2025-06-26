@@ -1,4 +1,4 @@
-/* $Id: DrvNATlibslirp.cpp 109863 2025-06-16 06:09:44Z jack.doherty@oracle.com $ */
+/* $Id: DrvNATlibslirp.cpp 109981 2025-06-26 07:57:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * DrvNATlibslirp - NATlibslirp network transport driver.
  */
@@ -41,7 +41,7 @@
 # define AF_INET6 23
 #endif
 
-#include <libslirp.h>
+#include <slirp/libslirp.h>
 
 #include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/pdmdrv.h>
