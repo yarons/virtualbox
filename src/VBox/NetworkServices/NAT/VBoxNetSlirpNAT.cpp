@@ -1,4 +1,4 @@
-/* $Id: VBoxNetSlirpNAT.cpp 109978 2025-06-26 05:44:20Z jack.doherty@oracle.com $ */
+/* $Id: VBoxNetSlirpNAT.cpp 109979 2025-06-26 07:48:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -103,7 +103,7 @@
 #include "../NetLib/IntNetIf.h"
 #include "../NetLib/VBoxPortForwardString.h"
 
-#include <libslirp.h>
+#include <slirp/libslirp.h>
 
 #ifdef VBOX_RAWSOCK_DEBUG_HELPER
 #if    defined(VBOX_WITH_HARDENING) /* obviously */     \
