@@ -1,4 +1,4 @@
-/* $Id: VBoxMFInternal.cpp 109959 2025-06-25 12:29:50Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxMFInternal.cpp 109997 2025-06-26 12:28:30Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBox Mouse Filter Driver - Internal functions.
  *
@@ -261,13 +261,14 @@ VOID VBoxDrvNotifyServiceCB(PVBOXMOUSE_DEVEXT pDevExt, PMOUSE_INPUT_DATA InputDa
                         }
                         if (pDevExt->pSCReq->dz)
                         {
+                            /** @todo Both dz and dw movements are too slow without the magic '120' from GUI. */
                             pData->ButtonFlags |= MOUSE_WHEEL;
-                            pData->ButtonData = pDevExt->pSCReq->dz;
+                            pData->ButtonData = -pDevExt->pSCReq->dz * 120;
                         }
                         else if (pDevExt->pSCReq->dw) /* Note the 'else'. Seems to be no way to report both WHEEL and HWHEEL. */
                         {
                             pData->ButtonFlags |= MOUSE_HWHEEL;
-                            pData->ButtonData = pDevExt->pSCReq->dw;
+                            pData->ButtonData = -pDevExt->pSCReq->dw * 120;
                         }
                     }
 
