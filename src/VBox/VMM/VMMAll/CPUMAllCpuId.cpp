@@ -1,4 +1,4 @@
-/* $Id: CPUMAllCpuId.cpp 109779 2025-06-04 20:34:22Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMAllCpuId.cpp 110022 2025-06-27 15:57:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU ID part, common bits.
  */
@@ -2562,6 +2562,12 @@ static int cpumCpuIdExplodeFeaturesArmV8Handcoded(PCSUPARMSYSREGVAL paSysRegs, u
         pFeatures->cBreakpoints = 0;
         pFeatures->cWatchpoints = 0;
     }
+
+    /*
+     * Set the EL2 and EL3 support indicators (EL0 & EL1 are mandatory).
+     */
+    pFeatures->fEl2 = pFeatures->fAa64El2 | pFeatures->fAa32El2;
+    pFeatures->fEl3 = pFeatures->fAa64El3 | pFeatures->fAa32El3;
 
     return rc;
 }
