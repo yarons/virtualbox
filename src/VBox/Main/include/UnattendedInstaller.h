@@ -1,4 +1,4 @@
-/* $Id: UnattendedInstaller.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UnattendedInstaller.h 110018 2025-06-27 14:46:04Z andreas.loeffler@oracle.com $ */
 /** @file
  * UnattendedInstaller class header
  */
@@ -936,6 +936,19 @@ public:
     ~UnattendedOracleLinux9Installer() {}
 };
 
+/**
+ * Oracle Linux 10 installer.
+ *
+ * Currently the same as the OL9 installer, using the same kickerstarter config.
+ */
+class UnattendedOracleLinux10Installer : public UnattendedOracleLinux9Installer
+{
+public:
+    DECLARE_TRANSLATE_METHODS(UnattendedOracleLinux10Installer)
+
+    UnattendedOracleLinux10Installer(Unattended *pParent) : UnattendedOracleLinux9Installer(pParent, "ol9_ks.cfg") {}
+    ~UnattendedOracleLinux10Installer() {}
+};
 
 #if 0 /* fixme */
 /**

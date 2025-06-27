@@ -1,4 +1,4 @@
-/* $Id: UnattendedInstaller.cpp 107227 2024-11-29 13:36:34Z andreas.loeffler@oracle.com $ */
+/* $Id: UnattendedInstaller.cpp 110018 2025-06-27 14:46:04Z andreas.loeffler@oracle.com $ */
 /** @file
  * UnattendedInstaller class and it's descendants implementation
  */
@@ -122,7 +122,9 @@ UnattendedInstaller::createInstance(VBOXOSTYPE enmDetectedOSType, const Utf8Str 
         else if (   enmDetectedOSType >= VBOXOSTYPE_Oracle
                  && enmDetectedOSType <= VBOXOSTYPE_Oracle_latest_arm64)
         {
-            if (RTStrVersionCompare(strDetectedOSVersion.c_str(), "9") >= 0)
+            if (RTStrVersionCompare(strDetectedOSVersion.c_str(), "10") >= 0)
+                pUinstaller = new UnattendedOracleLinux10Installer(pParent);
+            else if (RTStrVersionCompare(strDetectedOSVersion.c_str(), "9") >= 0)
                 pUinstaller = new UnattendedOracleLinux9Installer(pParent);
             else if (RTStrVersionCompare(strDetectedOSVersion.c_str(), "8") >= 0)
                 pUinstaller = new UnattendedOracleLinux8Installer(pParent);
