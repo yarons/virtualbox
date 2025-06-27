@@ -1,4 +1,4 @@
-/* $Id: GICInternal.h 110005 2025-06-27 07:40:09Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICInternal.h 110024 2025-06-27 16:33:18Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -323,10 +323,10 @@ typedef struct GICCPU
     uint8_t                     bBinaryPtGroup0;
     /** The binary point register for group 1 interrupts. */
     uint8_t                     bBinaryPtGroup1;
-    /** Flag whether group 0 interrupts are enabled. */
-    bool                        fIntrGroup0Enabled;
-    /** Flag whether group 1 interrupts are enabled. */
-    bool                        fIntrGroup1Enabled;
+    /** Alignment. */
+    bool                        afPadding1[2];
+    /** Mask of enabled interrupt groups (see GIC_INTR_GROUP_XXX). */
+    uint32_t                    fIntrGroupMask;
     /** The INTID of the running interrupts (for debugging). */
     uint16_t                    abRunningIntId[256];
     /** @} */
