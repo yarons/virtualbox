@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 110027 2025-06-27 18:56:48Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 110031 2025-06-27 21:08:50Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -1298,7 +1298,7 @@ $(foreach py, \
 	$(if-expr "$(VBOX_BLD_PYTHON_VERSION)" vge "3.8.0" && "$(VBOX_PYLINT_VERSION)" >= 20000, \
 		$(PATH_SUB_CURRENT)/VMMAll/target-armv8/ArmAst.py \
 		$(PATH_SUB_CURRENT)/VMMAll/target-armv8/ArmBsdSpec.py \
-		$(PATH_SUB_CURRENT)/VMMAll/target-armv8/bsd-spec-analyze.py,) \
+		$(PATH_SUB_CURRENT)/VMMAll/target-armv8/ArmBsdSpecCodeGen.py,) \
 , $(eval $(def_vbox_vmm_py_check)))
 
 
