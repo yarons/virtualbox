@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: ArmAst.py 110026 2025-06-27 17:13:22Z knut.osmundsen@oracle.com $
+# $Id: ArmAst.py 110027 2025-06-27 18:56:48Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name,too-many-lines
 
 """
-ARM BSD specification analyser.
+ARM BSD / OpenSource specification reader - AST related bits.
 """
 
 from __future__ import print_function;
@@ -31,7 +31,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 110026 $"
+__version__ = "$Revision: 110027 $"
 
 # Standard python imports.
 import re;
