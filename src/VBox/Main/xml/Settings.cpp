@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 109946 2025-06-24 19:31:00Z jack.doherty@oracle.com $ */
+/* $Id: Settings.cpp 110006 2025-06-27 08:10:35Z andreas.loeffler@oracle.com $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -2972,7 +2972,7 @@ RecordingScreen::~RecordingScreen()
 const char *RecordingScreen::getDefaultOptions(void)
 {
     /* Note: Needs to be kept in sync with FE/Qt's UIMachineSettingsDisplay::putToCache()! */
-    return "vc_enabled=true,ac_enabled=false,ac_profile=med";
+    return "ac_profile=med";
 }
 
 /**
