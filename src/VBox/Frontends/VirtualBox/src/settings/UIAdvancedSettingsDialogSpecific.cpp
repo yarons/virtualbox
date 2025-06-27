@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialogSpecific.cpp 109340 2025-04-25 12:06:49Z sergey.dubov@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialogSpecific.cpp 110017 2025-06-27 12:39:54Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialogSpecific class implementation.
  */
@@ -725,7 +725,7 @@ void UIAdvancedSettingsDialogMachine::prepare()
                     pSettingsPage = new UIMachineSettingsSF;
                     addItem(":/sf_32px.png", ":/sf_24px.png", ":/sf_16px.png",
                             iPageIndex, "#sharedFolders", pSettingsPage);
-                    addPageHelpKeyword(iPageIndex, "shared-folders" /* help keyword */);
+                    addPageHelpKeyword(iPageIndex, "ct_shared-folders" /* help keyword */);
                     break;
                 }
                 /* Interface page: */
