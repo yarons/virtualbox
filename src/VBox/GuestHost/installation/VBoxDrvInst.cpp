@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvInst.cpp 109943 2025-06-24 12:11:47Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxDrvInst.cpp 110008 2025-06-27 08:32:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * Driver installation utility for Windows hosts and guests.
  */
@@ -1136,7 +1136,8 @@ static DECLCALLBACK(RTEXITCODE) vboxDrvInstCmdStatusMain(PRTGETOPTSTATE pGetStat
                 cSvcListed++;
                 vboxDrvInstServiceList(s_apszServices[i].pszName, &SvcInfo);
 
-                if (RTStrVersionCompare(SvcInfo.szVer, szVer) != 0)
+                if (   RTStrICmp(SvcInfo.szVer, "-") != 0 /* Version information found? */
+                    && RTStrVersionCompare(SvcInfo.szVer, szVer) != 0)
                     LOG_WARNING("Service '%s' version ('%s') is different (from '%s')\n",
                                  s_apszServices[i].pszName, SvcInfo.szVer, szVer);
 
