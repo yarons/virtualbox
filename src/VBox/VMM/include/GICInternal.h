@@ -1,4 +1,4 @@
-/* $Id: GICInternal.h 110004 2025-06-27 07:38:00Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICInternal.h 110005 2025-06-27 07:40:09Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -262,6 +262,8 @@ typedef struct GICDEV
 typedef GICDEV *PGICDEV;
 /** Pointer to a const GIC device. */
 typedef GICDEV const *PCGICDEV;
+AssertCompileMemberAlignment(GICDEV, au32IntrRouting, 4);
+AssertCompileMemberAlignment(GICDEV, abIntrPriority, 4);
 AssertCompileMemberSizeAlignment(GICDEV, Gits, 8);
 AssertCompileMemberAlignment(GICDEV, abLpiConfig, 8);
 AssertCompileMemberAlignment(GICDEV, hMmioDist, 8);
