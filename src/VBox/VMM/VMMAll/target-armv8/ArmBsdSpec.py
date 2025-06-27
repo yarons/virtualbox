@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: ArmBsdSpec.py 110027 2025-06-27 18:56:48Z knut.osmundsen@oracle.com $
+# $Id: ArmBsdSpec.py 110029 2025-06-27 20:53:44Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name,too-many-lines
 
 """
@@ -31,7 +31,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 110027 $"
+__version__ = "$Revision: 110029 $"
 
 # Standard python imports.
 import collections;
@@ -44,7 +44,19 @@ import tarfile;
 import time;
 
 # AST imports:
-from ArmAst import *; # pylint: disable=wildcard-import,unused-wildcard-import
+from ArmAst import assertJsonAttribsInSet
+from ArmAst import ArmAstBase
+from ArmAst import ArmAstBinaryOp
+from ArmAst import ArmAstDotAtom
+from ArmAst import ArmAstConcat
+from ArmAst import ArmAstFunction
+from ArmAst import ArmAstIdentifier
+from ArmAst import ArmAstBool
+from ArmAst import ArmAstInteger
+from ArmAst import ArmAstSet
+from ArmAst import ArmAstValue
+from ArmAst import ArmAstField
+from ArmAst import ArmAstIfList
 
 
 #
