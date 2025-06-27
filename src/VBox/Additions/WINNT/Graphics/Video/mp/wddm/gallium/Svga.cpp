@@ -1,4 +1,4 @@
-/* $Id: Svga.cpp 109912 2025-06-20 10:53:01Z vitali.pelenjow@oracle.com $ */
+/* $Id: Svga.cpp 110012 2025-06-27 12:02:06Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA.
  */
@@ -161,16 +161,15 @@ static NTSTATUS svgaObjectTablesNotify(VBOXWDDM_EXT_VMSVGA *pSvga, SVGAOTableTyp
             pCmd->validSizeInBytes = pOT->cEntries * pOTInfo->cbEntry;
             pCmd->ptDepth          = pGbo->enmMobFormat;
 
-            SvgaCmdBufCommit(pSvga, sizeof(*pCmd));
+            /* Command buffer completion callback to free the old OT. */
+            struct VMSVGAOTFREE callbackData;
+            callbackData.pGbo = pOT->pGbo;
+            SvgaCmdBufCommitWithCompletionCallback(pSvga, sizeof(*pCmd),
+                svgaOTFreeCb, &callbackData, sizeof(callbackData));
         }
         else
             AssertFailedReturnStmt(SvgaGboUnreference(pSvga, &pGbo),
                                    STATUS_INSUFFICIENT_RESOURCES);
-
-        /* Command buffer completion callback to free the old OT. */
-        struct VMSVGAOTFREE callbackData;
-        callbackData.pGbo = pOT->pGbo;
-        SvgaCmdBufSetCompletionCallback(pSvga, svgaOTFreeCb, &callbackData, sizeof(callbackData));
 
         pOT->pGbo = 0;
     }
