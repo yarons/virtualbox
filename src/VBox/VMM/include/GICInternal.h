@@ -1,4 +1,4 @@
-/* $Id: GICInternal.h 110003 2025-06-27 07:37:03Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICInternal.h 110004 2025-06-27 07:38:00Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -155,8 +155,6 @@ extern const PDMGICBACKEND g_GicKvmBackend;
 
 /**
  * GIC distributor interrupt bitmap.
- *
- * @returns
  */
 typedef union GICDISTINTRBMP
 {
