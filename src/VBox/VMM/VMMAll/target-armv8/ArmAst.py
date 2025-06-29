@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: ArmAst.py 110038 2025-06-28 23:29:16Z knut.osmundsen@oracle.com $
+# $Id: ArmAst.py 110040 2025-06-29 23:34:10Z knut.osmundsen@oracle.com $
 
 """
 ARM BSD / OpenSource specification reader - AST related bits.
@@ -30,7 +30,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 110038 $"
+__version__ = "$Revision: 110040 $"
 
 # Standard python imports.
 import re;
@@ -944,6 +944,12 @@ class ArmAstSquareOp(ArmAstBase):
                     elif isinstance(aoValueMatches[i], str):
                         if not oValue.isMatchingIdentifier(aoValueMatches[i]):
                             return False;
+                    elif aoValueMatches[i] is int:
+                        if not isinstance(oValue, ArmAstInteger):
+                            return False;
+                    elif aoValueMatches[i] is str:
+                        if not isinstance(oValue, ArmAstIdentifier):
+                            return False;
                     elif aoValueMatches[i] is not None:
                         raise Exception('Unexpected #%u: %s' % (i, aoValueMatches[i],));
                 return True;
@@ -1101,6 +1107,12 @@ class ArmAstFunction(ArmAstBase):
                             return False;
                     elif isinstance(aoArgMatches[i], str):
                         if not oArg.toString() != aoArgMatches[i]:
+                            return False;
+                    elif aoArgMatches[i] is int:
+                        if not isinstance(oArg, ArmAstInteger):
+                            return False;
+                    elif aoArgMatches[i] is str:
+                        if not isinstance(oArg, ArmAstIdentifier):
                             return False;
                     elif aoArgMatches[i] is not None:
                         raise Exception('Unexpected #%u: %s' % (i, aoArgMatches[i],));
@@ -1269,7 +1281,7 @@ class ArmAstValue(ArmAstLeafBase):
         return cBitsWidth;
 
     @staticmethod
-    def parseValue(sValue, cBitsWidth):
+    def parseValue(sValue, cBitsWidth = 0):
         """
         Returns (fValue, fFixed, fWildcard, cBitsWidth) tuple on success, raises AssertionError otherwise.
         """
