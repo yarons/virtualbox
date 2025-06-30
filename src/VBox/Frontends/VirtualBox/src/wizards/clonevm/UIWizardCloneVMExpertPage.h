@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMExpertPage.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardCloneVMExpertPage.h 110042 2025-06-30 09:53:07Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMExpertPage class declaration.
  */
@@ -60,6 +60,7 @@ private slots:
     void sltKeepDiskNamesToggled(bool fKeepDiskNames);
     void sltKeepHardwareUUIDsToggled(bool fKeepHardwareUUIDs);
     void sltCloneTypeChanged(bool fIsFullClone);
+    void sltCloneModeChanged(KCloneMode enmCloneMode);
     /** Translation stuff. */
     virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
