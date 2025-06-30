@@ -1,4 +1,4 @@
-/* $Id: UIToolBox.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIToolBox.cpp 110047 2025-06-30 17:29:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolBox class implementation.
  */
@@ -36,6 +36,7 @@
 /* GUI includes: */
 #include "QIRichTextLabel.h"
 #include "QIToolButton.h"
+#include "UICommon.h"
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIIconPool.h"
 #include "UIToolBox.h"
@@ -393,7 +394,9 @@ bool UIToolBox::insertPage(int iIndex, QWidget *pWidget, const QString &strTitle
     pNewPage->setTitle(strTitle);
 
     const QPalette pal = QApplication::palette();
-    QColor tabBackgroundColor = pal.color(QPalette::Active, QPalette::Highlight).lighter(130);
+    QColor tabBackgroundColor = uiCommon().isInDarkMode()
+                              ? pal.color(QPalette::Active, QPalette::Window).lighter(120)
+                              : pal.color(QPalette::Active, QPalette::Window).darker(110);
     pNewPage->setTitleBackgroundColor(tabBackgroundColor);
 
     m_pages[iIndex] = pNewPage;
