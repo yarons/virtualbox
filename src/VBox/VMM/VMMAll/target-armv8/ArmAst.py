@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: ArmAst.py 110040 2025-06-29 23:34:10Z knut.osmundsen@oracle.com $
+# $Id: ArmAst.py 110046 2025-06-30 11:06:39Z knut.osmundsen@oracle.com $
 
 """
 ARM BSD / OpenSource specification reader - AST related bits.
@@ -30,7 +30,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 110040 $"
+__version__ = "$Revision: 110046 $"
 
 # Standard python imports.
 import re;
@@ -299,6 +299,10 @@ class ArmAstBase(object):
         """ Extended version of toString() that can split the expression up into multiple lines (newline sep). """
         _ = cchMaxWidth;
         return self.toString();
+
+    def toDebugString(self):
+        """ For debugging the tree structure... """
+        return '{%s: %s}' % (type(self).__name__, self.toString(),);
 
     def __str__(self):
         return self.toString();
@@ -1279,6 +1283,12 @@ class ArmAstValue(ArmAstLeafBase):
         _ = oHelper;
         (_, _, _, cBitsWidth) = ArmAstValue.parseValue(self.sValue, 0);
         return cBitsWidth;
+
+    def getParsedValue(self):
+        """
+        Returns (fValue, fFixed, fWildcard, cBitsWidth) tuple on success.
+        """
+        return self.parseValue(self.sValue, 0);
 
     @staticmethod
     def parseValue(sValue, cBitsWidth = 0):
