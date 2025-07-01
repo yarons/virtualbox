@@ -1,4 +1,4 @@
-/* $Id: VBoxNetSlirpNAT.cpp 109985 2025-06-26 08:46:48Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetSlirpNAT.cpp 110059 2025-07-01 09:04:11Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -704,8 +704,8 @@ int VBoxNetSlirpNAT::initIPv4()
     }
     else
     {
-        if((acNameservers[0].u & RT_H2N_U32_C(IN_CLASSA_NET))
-            == RT_N2H_U32_C(INADDR_LOOPBACK & IN_CLASSA_NET))
+        if (   acNameservers
+            && (acNameservers[0].u & RT_H2N_U32_C(IN_CLASSA_NET)) == RT_N2H_U32_C(INADDR_LOOPBACK & IN_CLASSA_NET))
             LogRel(("Nameserver is on 127/8 network."
                     "Falling back to libslirp DNS proxy.\n"));
         else
