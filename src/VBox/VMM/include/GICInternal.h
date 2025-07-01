@@ -1,4 +1,4 @@
-/* $Id: GICInternal.h 110024 2025-06-27 16:33:18Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICInternal.h 110057 2025-07-01 06:36:50Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -257,6 +257,15 @@ typedef struct GICDEV
     /** The physical address of the ITS. */
     RTGCPHYS                    GCPhysGits;
     /** @} */
+
+    /** @name Statistics.
+     * @{ */
+#ifdef VBOX_WITH_STATISTICS
+    /** Number of set SPI callbacks. */
+    STAMCOUNTER                 StatSetSpi;
+    /** Number of set LPI callbacks. */
+    STAMCOUNTER                 StatSetLpi;
+#endif
 } GICDEV;
 /** Pointer to a GIC device. */
 typedef GICDEV *PGICDEV;
@@ -348,8 +357,6 @@ typedef struct GICCPU
     STAMCOUNTER                 StatSysRegRead;
     /** Number of MSR writes. */
     STAMCOUNTER                 StatSysRegWrite;
-    /** Number of set SPI callbacks. */
-    STAMCOUNTER                 StatSetSpi;
     /** Number of set PPI callbacks. */
     STAMCOUNTER                 StatSetPpi;
     /** Number of SGIs generated. */
