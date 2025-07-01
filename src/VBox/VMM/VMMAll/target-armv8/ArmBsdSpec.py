@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: ArmBsdSpec.py 110050 2025-06-30 20:55:00Z knut.osmundsen@oracle.com $
+# $Id: ArmBsdSpec.py 110075 2025-07-01 19:04:13Z knut.osmundsen@oracle.com $
 
 """
 ARM BSD / OpenSource specification reader.
@@ -30,7 +30,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 110050 $"
+__version__ = "$Revision: 110075 $"
 
 # Standard python imports.
 import collections;
@@ -918,7 +918,7 @@ class ArmRegEncoding(object):
             if oOther is not None:
                 oMyValue = self.dNamedValues.get(sMine);
                 if oMyValue:
-                    (iMyValue, _, fWildcard, _) = oMyValue.getParsedValue();
+                    (iMyValue, _, fWildcard, _) = oMyValue.getValueDetails();
                     if fWildcard == 0:
                         if isinstance(oOther, range):
                             if iMyValue not in oOther:

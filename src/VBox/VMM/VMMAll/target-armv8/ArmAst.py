@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: ArmAst.py 110074 2025-07-01 19:01:33Z knut.osmundsen@oracle.com $
+# $Id: ArmAst.py 110075 2025-07-01 19:04:13Z knut.osmundsen@oracle.com $
 
 """
 ARM BSD / OpenSource specification reader - AST related bits.
@@ -30,7 +30,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 110074 $"
+__version__ = "$Revision: 110075 $"
 
 # Standard python imports.
 import re;
@@ -298,7 +298,8 @@ class ArmAstBase(object):
     def toStringEx(self, sLang = None, cchMaxWidth = 120):
         """ Extended version of toString() that can split the expression up into multiple lines (newline sep). """
         _ = cchMaxWidth; _ = sLang;
-        raise Exception('Child did not implement toStringEx: %s' % (type(self),));
+        #raise Exception('Child did not implement toStringEx: %s' % (type(self),));
+        return '{todo: implement toStringEx for %s!}' % (type(self).__name__,);
 
     def toDebugString(self, sLang = None, cchMaxWidth = 120):
         """ For debugging the tree structure... """
@@ -1246,7 +1247,7 @@ class ArmAstInteger(ArmAstLeafBase):
     def getIntegerValue(self):
         return self.iValue;
 
-    def getParsedValue(self):
+    def getValueDetails(self):
         """
         For compatibility with ArmAstValue.
         Returns (fValue, fFixed, fWildcard, cBitsWidth) tuple on success.
@@ -1311,7 +1312,7 @@ class ArmAstValue(ArmAstLeafBase):
         (_, _, _, cBitsWidth) = ArmAstValue.parseValue(self.sValue, 0);
         return cBitsWidth;
 
-    def getParsedValue(self):
+    def getValueDetails(self):
         """
         Returns (fValue, fFixed, fWildcard, cBitsWidth) tuple on success.
         """
