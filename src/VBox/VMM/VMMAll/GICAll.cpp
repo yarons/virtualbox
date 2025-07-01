@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 110041 2025-06-30 05:59:53Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICAll.cpp 110051 2025-07-01 06:25:11Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - All Contexts.
  */
@@ -1873,10 +1873,10 @@ static uint16_t gicGetHighestPriorityPendingIntr(PCGICDEV pGicDev, PCVMCPUCC pVC
             if (!fSufficientPriority)
             {
                 uIntId = GIC_INTID_RANGE_SPECIAL_NO_INTERRUPT;
-                pHighestIntr->uIntId    = uIntId;
-                pHighestIntr->idxIntr   = UINT16_MAX;
-                pHighestIntr->bPriority = GIC_IDLE_PRIORITY;
-                Assert(pHighestIntr->fIntrGroupMask == fIntrGroupMask);
+                pHighestIntr->fIntrGroupMask = 0;
+                pHighestIntr->uIntId         = uIntId;
+                pHighestIntr->idxIntr        = UINT16_MAX;
+                pHighestIntr->bPriority      = GIC_IDLE_PRIORITY;
             }
         }
 
