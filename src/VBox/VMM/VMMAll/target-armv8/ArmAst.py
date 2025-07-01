@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: ArmAst.py 110068 2025-07-01 12:32:13Z knut.osmundsen@oracle.com $
+# $Id: ArmAst.py 110074 2025-07-01 19:01:33Z knut.osmundsen@oracle.com $
 
 """
 ARM BSD / OpenSource specification reader - AST related bits.
@@ -30,7 +30,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 110068 $"
+__version__ = "$Revision: 110074 $"
 
 # Standard python imports.
 import re;
@@ -1245,6 +1245,14 @@ class ArmAstInteger(ArmAstLeafBase):
 
     def getIntegerValue(self):
         return self.iValue;
+
+    def getParsedValue(self):
+        """
+        For compatibility with ArmAstValue.
+        Returns (fValue, fFixed, fWildcard, cBitsWidth) tuple on success.
+        """
+        cBitsWidth = self.getWidth(None);
+        return (self.iValue, (1 << cBitsWidth) - 1, 0, cBitsWidth);
 
 
 class ArmAstSet(ArmAstValuesBase):
