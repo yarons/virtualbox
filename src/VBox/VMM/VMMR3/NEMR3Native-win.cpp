@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win.cpp 109820 2025-06-11 13:32:13Z alexander.eichner@oracle.com $ */
+/* $Id: NEMR3Native-win.cpp 110060 2025-07-01 09:52:27Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -1800,6 +1800,21 @@ DECLHIDDEN(int) nemR3NativeInitAfterCPUM(PVM pVM)
         }
     }
     pVM->nem.s.fCreatedEmts = true;
+
+    /* Determine the size of the xsave area if supported. */
+    if (pVM->nem.s.fXsaveSupported)
+    {
+        pVCpu = pVM->apCpusR3[0];
+        hrc = WHvGetVirtualProcessorXsaveState(pVM->nem.s.hPartition, pVCpu->idCpu, NULL, 0, &pVM->nem.s.cbXSaveArea);
+        AssertLogRelMsgReturn(hrc == WHV_E_INSUFFICIENT_BUFFER, ("WHvGetVirtualProcessorState(%p, %u,%x,,) -> %Rhrc (Last=%#x/%u)\n",
+                              pVM->nem.s.hPartition, pVCpu->idCpu, WHvVirtualProcessorStateTypeXsaveState,
+                              hrc, RTNtLastStatusValue(), RTNtLastErrorValue()), VERR_NEM_VM_CREATE_FAILED);
+        LogRel(("NEM: cbXSaveArea=%u\n", pVM->nem.s.cbXSaveArea));
+        AssertLogRelMsgReturn(pVM->nem.s.cbXSaveArea <= sizeof(pVCpu->cpum.GstCtx.XState),
+                              ("Returned XSAVE area exceeds what VirtualBox supported (%u > %zu)\n",
+                              pVM->nem.s.cbXSaveArea, sizeof(pVCpu->cpum.GstCtx.XState)),
+                              VERR_NEM_VM_CREATE_FAILED);
+    }
 
     LogRel(("NEM: Successfully set up partition (device handle %p, partition ID %#llx)\n", hPartitionDevice, idHvPartition));
 

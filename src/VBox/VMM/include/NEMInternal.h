@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 109820 2025-06-11 13:32:13Z alexander.eichner@oracle.com $ */
+/* $Id: NEMInternal.h 110060 2025-07-01 09:52:27Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -278,6 +278,8 @@ typedef struct NEM
     /** Set if A20 is enabled. */
     bool                        fA20Enabled : 1;
 #  endif
+    /** Size of the xsave area returned by Hyper-V, required for setting the state. */
+    uint32_t                    cbXSaveArea;
 # endif
     /** The reported CPU vendor.   */
     CPUMCPUVENDOR               enmCpuVendor;
