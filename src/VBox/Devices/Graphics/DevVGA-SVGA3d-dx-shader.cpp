@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-shader.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx-shader.cpp 110093 2025-07-02 18:00:01Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device - VGPU10+ (DX) shader utilities.
  */
@@ -2578,6 +2578,9 @@ static int dxbcCreateIOSGNBlob(DXShaderInfo const *pInfo, DXBCHeader *pHdr, uint
         dst->enmComponentType = srcEntry->componentType;
         dst->idxRegister      = srcEntry->registerIndex;
         dst->u.mask           = srcEntry->mask;
+        /* Set 'Used' mask equal to 'Mask'. Dxvk needs this. */
+        if (dst->u.m.mask2 == 0)
+            dst->u.m.mask2 = dst->u.m.mask;
 
         Log6(("  [%u]: %s[%u] sv %u type %u reg %u mask %X\n",
               iSignatureEntry, srcSemantic->pcszSemanticName, dst->idxSemantic,
