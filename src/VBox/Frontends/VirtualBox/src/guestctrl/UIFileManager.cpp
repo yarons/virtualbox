@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.cpp 109169 2025-04-10 10:09:44Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManager.cpp 110089 2025-07-02 13:10:07Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManager class implementation.
  */
@@ -105,6 +105,7 @@ UIFileManagerOptions::UIFileManagerOptions()
     , fAskDeleteConfirmation(false)
     , fShowHumanReadableSizes(true)
     , fShowHiddenObjects(true)
+    , fAllowInteractiveColumnWidths(false)
 {
 }
 
@@ -646,7 +647,8 @@ void UIFileManager::saveOptions()
         gEDataManager->setFileManagerOptions(pOptions->fListDirectoriesOnTop,
                                              pOptions->fAskDeleteConfirmation,
                                              pOptions->fShowHumanReadableSizes,
-                                             pOptions->fShowHiddenObjects);
+                                             pOptions->fShowHiddenObjects,
+                                             pOptions->fAllowInteractiveColumnWidths);
     }
 }
 
@@ -685,6 +687,7 @@ void UIFileManager::loadOptions()
         pOptions->fAskDeleteConfirmation = gEDataManager->fileManagerShowDeleteConfirmation();
         pOptions->fShowHumanReadableSizes = gEDataManager->fileManagerShowHumanReadableSizes();
         pOptions->fShowHiddenObjects = gEDataManager->fileManagerShowHiddenObjects();
+        pOptions->fAllowInteractiveColumnWidths = gEDataManager->fileManagerAllowInteractiveColumnWidths();
     }
 }
 

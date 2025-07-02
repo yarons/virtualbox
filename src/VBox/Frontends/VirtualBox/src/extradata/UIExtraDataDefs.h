@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 109664 2025-05-26 13:42:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataDefs.h 110089 2025-07-02 13:10:07Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -419,6 +419,7 @@ namespace UIExtraDataDefs
         extern const char *GUI_GuestControl_FileManagerShowDeleteConfirmation;
         extern const char *GUI_GuestControl_FileManagerShowHumanReadableSizes;
         extern const char *GUI_GuestControl_FileManagerShowHiddenObjects;
+        extern const char *GUI_GuestControl_FileManagerAllowInteractiveColumnWidths;
     /** @} */
 
     /** @name Virtual Machine: Close dialog
