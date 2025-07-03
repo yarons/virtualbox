@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerDialog.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIFileManagerDialog.cpp 110103 2025-07-03 14:25:57Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerDialog class implementation.
  */
@@ -154,7 +154,6 @@ void UIFileManagerDialog::finalize()
     sltRetranslateUI();
     connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
         this, &UIFileManagerDialog::sltRetranslateUI);
-    manageEscapeShortCut();
 }
 
 void UIFileManagerDialog::loadSettings()
@@ -184,12 +183,4 @@ void UIFileManagerDialog::sltSetCloseButtonShortCut(QKeySequence shortcut)
 {
     if (!closeEmitted() &&  button(ButtonType_Close))
         button(ButtonType_Close)->setShortcut(shortcut);
-}
-
-void UIFileManagerDialog::manageEscapeShortCut()
-{
-    UIFileManager *pWidget = qobject_cast<UIFileManager*>(widget());
-    if (!pWidget)
-        return;
-    pWidget->manageEscapeShortCut();
 }

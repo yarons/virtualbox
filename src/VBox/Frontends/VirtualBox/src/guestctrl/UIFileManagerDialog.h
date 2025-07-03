@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerDialog.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIFileManagerDialog.h 110103 2025-07-03 14:25:57Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerDialog class declaration.
  */
@@ -113,7 +113,6 @@ private slots:
 
 private:
 
-    void manageEscapeShortCut();
     UIActionPool *m_pActionPool;
     QUuid    m_uMachineId;
     QString  m_strMachineName;

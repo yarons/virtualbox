@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 110089 2025-07-02 13:10:07Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerTable.cpp 110103 2025-07-03 14:25:57Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -313,15 +313,6 @@ void UIPropertiesDialog::addDirectoryStatistics(UIDirectoryStatistics directoryS
 {
     if (!m_pInfoEdit)
         return;
-    // QString propertyString = m_pInfoEdit->toHtml();
-    // propertyString += "<b>Total Size:</b> " + QString::number(directoryStatistics.m_totalSize) + QString(" bytes");
-    // if (directoryStatistics.m_totalSize >= UIFileManagerTable::m_iKiloByte)
-    //     propertyString += " (" + UIFileManagerTable::humanReadableSize(directoryStatistics.m_totalSize) + ")";
-    // propertyString += "<br/>";
-    // propertyString += "<b>File Count:</b> " + QString::number(directoryStatistics.m_uFileCount);
-
-    // m_pInfoEdit->setHtml(propertyString);
-
     QString detailsString(m_strProperty);
     detailsString += "<br/>";
     detailsString += "<b>" + UIFileManager::tr("Total Size") + "</b> " +
