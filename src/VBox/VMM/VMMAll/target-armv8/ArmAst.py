@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: ArmAst.py 110076 2025-07-01 23:37:22Z knut.osmundsen@oracle.com $
+# $Id: ArmAst.py 110104 2025-07-03 14:37:35Z knut.osmundsen@oracle.com $
 
 """
 ARM BSD / OpenSource specification reader - AST related bits.
@@ -30,7 +30,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 110076 $"
+__version__ = "$Revision: 110104 $"
 
 # Standard python imports.
 import re;
@@ -1839,8 +1839,11 @@ class ArmAstReturn(ArmAstStatementBase):
 
     def isSame(self, oOther):
         if isinstance(oOther, ArmAstReturn):
-            if self.oValue.isSame(oOther.oValue):
-                return True;
+            if self.oValue and oOther.oValue:
+                if self.oValue.isSame(oOther.oValue):
+                    return True;
+            elif not self.oValue and not oOther.oValue:
+                    return True;
         return False;
 
     def walk(self, fnCallback, oCallbackArg = None, fDepthFirst = True):
