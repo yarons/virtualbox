@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: ArmBsdSpec.py 110075 2025-07-01 19:04:13Z knut.osmundsen@oracle.com $
+# $Id: ArmBsdSpec.py 110096 2025-07-03 00:22:41Z knut.osmundsen@oracle.com $
 
 """
 ARM BSD / OpenSource specification reader.
@@ -30,7 +30,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 110075 $"
+__version__ = "$Revision: 110096 $"
 
 # Standard python imports.
 import collections;
@@ -922,7 +922,7 @@ class ArmRegEncoding(object):
                     if fWildcard == 0:
                         if isinstance(oOther, range):
                             if iMyValue not in oOther:
-                                iOtherFirst = next(oOther);
+                                iOtherFirst = next(iter(oOther));
                                 assert iOtherFirst != iMyValue;
                                 return iOtherFirst - iMyValue;
                         elif oOther != iMyValue:
@@ -932,13 +932,13 @@ class ArmRegEncoding(object):
                         (iMyLastValue,  _, _, _) = ArmAstValue.parseValue(oMyValue.sValue.replace('x', '1'), 0);
                         if isinstance(oOther, range):
                             if not set(oOther) & set(range(iMyFirstValue, iMyLastValue + 1)):
-                                return next(oOther) - iMyFirstValue;
+                                return next(iter(oOther)) - iMyFirstValue;
                         elif oOther < iMyFirstValue:
                             return oOther - iMyFirstValue;
                         elif oOther > iMyLastValue:
                             return oOther - iMyLastValue;
                 elif isinstance(oOther, range):
-                    iOtherFirst = next(oOther);
+                    iOtherFirst = next(iter(oOther));
                     return -1 if iOtherFirst < 0 else 1;
                 else:
                     return -1 if oOther < 0 else 1;
