@@ -1,4 +1,4 @@
-/* $Id: IEMInline-armv8.h 110102 2025-07-03 12:17:47Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInline-armv8.h 110116 2025-07-04 10:11:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Inlined Functions, ARMv8 target.
  */
@@ -3192,6 +3192,41 @@ DECLINLINE(uint32_t) iemGetEffHcrEl2NVx(PVMCPU pVCpu, const CPUMFEATURESARMV8 * 
     return 0;
 }
 
+
+/**
+ * Gets the effective ACTLRMASK_EL1 value.
+ */
+DECLINLINE(uint64_t) iemGetEffActlrMaskEl1(PVMCPU pVCpu, const CPUMFEATURESARMV8 * const pGstFeats)
+{
+    /** @todo implement ACTLRMASK_EL1 & FEAT_SRMASK */
+    Assert(!pGstFeats->fSrMask);
+    RT_NOREF(pVCpu, pGstFeats);
+    return 0;
+}
+
+
+/**
+ * Gets the effective SCTLRMASK_EL1 value.
+ */
+DECLINLINE(uint64_t) iemGetEffSctlrMaskEl1(PVMCPU pVCpu, const CPUMFEATURESARMV8 * const pGstFeats)
+{
+    /** @todo implement SCTLRMASK_EL1 & FEAT_SRMASK */
+    Assert(!pGstFeats->fSrMask);
+    RT_NOREF(pVCpu, pGstFeats);
+    return 0;
+}
+
+
+/**
+ * Gets the effective SCTLRMASK_EL2 value.
+ */
+DECLINLINE(uint64_t) iemGetEffSctlrMaskEl2(PVMCPU pVCpu, const CPUMFEATURESARMV8 * const pGstFeats)
+{
+    /** @todo implement SCTLRMASK_EL2 & FEAT_SRMASK */
+    Assert(!pGstFeats->fSrMask);
+    RT_NOREF(pVCpu, pGstFeats);
+    return 0;
+}
 
 /** @} */
 
