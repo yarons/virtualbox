@@ -1,4 +1,4 @@
-/* $Id: RecordingStream.cpp 109953 2025-06-25 09:52:43Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingStream.cpp 110112 2025-07-04 07:57:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording stream code.
  */
@@ -362,8 +362,8 @@ int RecordingStream::process(RecordingBlockSet &streamBlockSet, RecordingBlockMa
         }
 
         /* Move block set to housekeeping set. */
-        streamBlockSet.Map.erase(itStreamBlock);
         m_BlockSetHousekeeping.Insert(msTimestamp, itStreamBlock->second);
+        streamBlockSet.Map.erase(itStreamBlock);
         itStreamBlock = streamBlockSet.Map.begin();
     }
 
