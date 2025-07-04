@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewModelView.cpp 109614 2025-05-20 14:00:56Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityOverviewModelView.cpp 110115 2025-07-04 09:39:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewModelView class implementation.
  */
@@ -449,15 +449,18 @@ QString UIVMActivityOverviewRowLocal::machineStateString() const
 UIVMActivityOverviewRowCloud::UIVMActivityOverviewRowCloud(QITableView *pTableView, const QUuid &uMachineId,
                                                                            const QString &strMachineName, CCloudMachine &comCloudMachine)
     : UIVMActivityOverviewRow(pTableView, uMachineId, strMachineName)
+    , m_pTimer(0)
     , m_comCloudMachine(comCloudMachine)
 {
-    updateMachineState();
+    /* Create timer prematurelly, it's used in updateMachineState() code: */
     m_pTimer = new QTimer(this);
     if (m_pTimer)
     {
         connect(m_pTimer, &QTimer::timeout, this, &UIVMActivityOverviewRowCloud::sltTimeout);
         m_pTimer->setInterval(60 * 1000);
     }
+
+    updateMachineState();
     resetColumData();
 }
 
