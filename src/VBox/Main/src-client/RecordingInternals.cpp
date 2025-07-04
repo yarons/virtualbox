@@ -1,4 +1,4 @@
-/* $Id: RecordingInternals.cpp 110109 2025-07-04 07:23:45Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingInternals.cpp 110110 2025-07-04 07:36:23Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording internals code.
  */
@@ -327,17 +327,14 @@ DECLINLINE(void) recordingVideoFrameBlitRawAlpha(PRECORDINGVIDEOFRAME pFrame, ui
                                                  const uint8_t *pu8Src, size_t cbSrc, uint32_t uSrcX, uint32_t uSrcY, uint32_t uSrcWidth, uint32_t uSrcHeight,
                                                  uint32_t uSrcBytesPerLine, uint8_t uSrcBPP, RECORDINGPIXELFMT enmFmt)
 {
-    RT_NOREF(cbSrc, uSrcBytesPerLine);
+    RT_NOREF(cbSrc, uSrcBytesPerLine, enmFmt);
 
     Assert(enmFmt == RECORDINGPIXELFMT_BRGA32);
     Assert(pFrame->Info.enmPixelFmt == enmFmt);
     Assert(pFrame->Info.uBPP == uSrcBPP);
 
-    uint8_t const uDstBytesPerPixel = pFrame->Info.uBPP / 8;
-    uint8_t const uSrcBytesPerPixel = uSrcBPP / 8;
-
-    Assert(uSrcBytesPerPixel == 4); /* BGRA, 32-bit, must hold. */
-    Assert(uDstBytesPerPixel == 4); /* Ditto. */
+    Assert(uSrcBPP / 8 == 4); /* BGRA, 32-bit, must hold. */
+    Assert(pFrame->Info.uBPP / 8 == 4); /* Ditto. */
 
     uint32_t uDstWidth  = pFrame->Info.uWidth;
     uint32_t uDstHeight = pFrame->Info.uHeight;
