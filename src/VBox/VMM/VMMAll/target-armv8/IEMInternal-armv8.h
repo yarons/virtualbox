@@ -1,4 +1,4 @@
-/* $Id: IEMInternal-armv8.h 110122 2025-07-05 00:56:17Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal-armv8.h 110124 2025-07-05 01:55:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file, ARMv8 target specifics.
  */
@@ -172,6 +172,7 @@ VBOXSTRICTRC iemRaiseSystemAccessTrapSve(PVMCPU pVCpu, uint32_t uEl) RT_NOEXCEPT
 VBOXSTRICTRC iemRaiseSystemAccessTrapSme(PVMCPU pVCpu, uint32_t uEl) RT_NOEXCEPT;
 VBOXSTRICTRC iemRaiseSystemAccessTrapAdvSimdFpAccessA64(PVMCPU pVCpu, uint32_t uEl) RT_NOEXCEPT;
 VBOXSTRICTRC iemRaiseSystemAccessTrapUnknown(PVMCPU pVCpu, uint32_t uEl) RT_NOEXCEPT;
+VBOXSTRICTRC iemRaiseExlockException(PVMCPU pVCpu) RT_NOEXCEPT;
 
 IEM_CIMPL_PROTO_0(iemCImplRaiseInvalidOpcode);
 

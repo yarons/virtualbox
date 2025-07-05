@@ -1,4 +1,4 @@
-/* $Id: IEMInline-armv8.h 110116 2025-07-04 10:11:49Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInline-armv8.h 110124 2025-07-05 01:55:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Inlined Functions, ARMv8 target.
  */
@@ -3226,6 +3226,18 @@ DECLINLINE(uint64_t) iemGetEffSctlrMaskEl2(PVMCPU pVCpu, const CPUMFEATURESARMV8
     Assert(!pGstFeats->fSrMask);
     RT_NOREF(pVCpu, pGstFeats);
     return 0;
+}
+
+
+/**
+ * Gets GCSCR_EL1/2/3.EXLOCKEN corresponding to PSTATE.EL.
+ */
+DECLINLINE(bool) iemGetCurrentExlockEn(PVMCPU pVCpu, const CPUMFEATURESARMV8 * const pGstFeats)
+{
+    /** @todo implement FEAT_GCS */
+    Assert(!pGstFeats->fGcs);
+    RT_NOREF(pVCpu, pGstFeats);
+    return false;
 }
 
 /** @} */
