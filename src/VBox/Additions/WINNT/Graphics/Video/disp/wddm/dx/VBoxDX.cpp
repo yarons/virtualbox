@@ -1,4 +1,4 @@
-/* $Id: VBoxDX.cpp 109971 2025-06-25 17:47:32Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxDX.cpp 110128 2025-07-06 16:55:42Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox D3D user mode driver.
  */
@@ -3004,6 +3004,20 @@ void vboxDXSetRenderTargets(PVBOXDX_DEVICE pDevice, PVBOXDXDEPTHSTENCILVIEW pDep
 
     for (unsigned i = 0; i < ClearSlots; ++i)
         pDevice->pipeline.apRenderTargetViews[NumRTVs + i] = NULL;
+
+    /* 'ClearSlots' does not cover all previously bound RTs sometimes.
+     * "The range of render target surfaces between the number that NumViews specifies
+     *  and the maximum number of render target surfaces that are allowed is required
+     *  to contain all NULL or unbound values."
+     */
+    for (unsigned i = NumRTVs + ClearSlots; i < SVGA3D_MAX_SIMULTANEOUS_RENDER_TARGETS; ++i)
+    {
+        if (pDevice->pipeline.apRenderTargetViews[i])
+        {
+            ClearSlots = i - NumRTVs + 1;
+            pDevice->pipeline.apRenderTargetViews[i] = NULL;
+        }
+    }
 
     pDevice->pipeline.pDepthStencilView = pDepthStencilView;
 
