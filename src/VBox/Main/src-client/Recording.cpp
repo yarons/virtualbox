@@ -1,4 +1,4 @@
-/* $Id: Recording.cpp 110139 2025-07-07 17:56:37Z andreas.loeffler@oracle.com $ */
+/* $Id: Recording.cpp 110141 2025-07-07 18:03:16Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording context code.
  *
@@ -975,7 +975,7 @@ int RecordingContext::stopInternal(void)
 
     lock();
 
-    int vrc;
+    int vrc = VINF_SUCCESS;
 
     RecordingStreams::const_iterator itStream = m_vecStreams.begin();
     while (itStream != m_vecStreams.end())
