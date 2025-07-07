@@ -1,4 +1,4 @@
-/* $Id: IEMInternal-armv8.h 110124 2025-07-05 01:55:01Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal-armv8.h 110145 2025-07-07 22:14:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file, ARMv8 target specifics.
  */
@@ -357,6 +357,8 @@ uint64_t        iemMemFetchStackU64SafeJmp(PVMCPUCC pVCpu, RTGCPTR GCPtrMem) IEM
 /*
  * System register related stuff.
  */
+IEM_CIMPL_PROTO_2(iemCImplA64_msr, uint32_t, idSysReg, uint32_t, idxGprSrc);
+IEM_CIMPL_PROTO_2(iemCImplA64_mrs, uint32_t, idSysReg, uint32_t, idxGprDst);
 DECLHIDDEN(VBOXSTRICTRC) iemCImplA64_mrs_novar(PVMCPU pVCpu, uint32_t idSysReg, const char *pszRegName,
                                                uint64_t *puDst, uint32_t idxGprDst) RT_NOEXCEPT;
 DECLHIDDEN(VBOXSTRICTRC) iemCImplA64_msr_novar(PVMCPU pVCpu, uint32_t idSysReg, const char *pszRegName,

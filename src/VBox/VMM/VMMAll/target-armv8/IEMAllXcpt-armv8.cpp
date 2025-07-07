@@ -1,4 +1,4 @@
-/* $Id: IEMAllXcpt-armv8.cpp 109977 2025-06-26 00:04:10Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllXcpt-armv8.cpp 110145 2025-07-07 22:14:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - ARM target, exceptions & interrupts.
  */
@@ -124,10 +124,53 @@ iemRaiseDebugDataAccessOrInvokeDbgfJmp(PVMCPUCC pVCpu, uint32_t fDataBps, RTGCPT
 }
 
 
+VBOXSTRICTRC iemRaiseSystemAccessTrap(PVMCPU pVCpu, uint32_t uEl, uint32_t uInstrEssence) RT_NOEXCEPT
+{
+    RT_NOREF(pVCpu, uEl, uInstrEssence);
+    AssertFailedReturn(VERR_IEM_ASPECT_NOT_IMPLEMENTED);
+}
+
+
+VBOXSTRICTRC iemRaiseSystemAccessTrapSve(PVMCPU pVCpu, uint32_t uEl) RT_NOEXCEPT
+{
+    RT_NOREF(pVCpu, uEl);
+    AssertFailedReturn(VERR_IEM_ASPECT_NOT_IMPLEMENTED);
+}
+
+
+VBOXSTRICTRC iemRaiseSystemAccessTrapSme(PVMCPU pVCpu, uint32_t uEl) RT_NOEXCEPT
+{
+    RT_NOREF(pVCpu, uEl);
+    AssertFailedReturn(VERR_IEM_ASPECT_NOT_IMPLEMENTED);
+}
+
+
+VBOXSTRICTRC iemRaiseSystemAccessTrapAdvSimdFpAccessA64(PVMCPU pVCpu, uint32_t uEl) RT_NOEXCEPT
+{
+    RT_NOREF(pVCpu, uEl);
+    AssertFailedReturn(VERR_IEM_ASPECT_NOT_IMPLEMENTED);
+}
+
+
+VBOXSTRICTRC iemRaiseSystemAccessTrapUnknown(PVMCPU pVCpu, uint32_t uEl) RT_NOEXCEPT
+{
+    RT_NOREF(pVCpu, uEl);
+    AssertFailedReturn(VERR_IEM_ASPECT_NOT_IMPLEMENTED);
+}
+
+
+VBOXSTRICTRC iemRaiseExlockException(PVMCPU pVCpu) RT_NOEXCEPT
+{
+    RT_NOREF(pVCpu);
+    AssertFailedReturn(VERR_IEM_ASPECT_NOT_IMPLEMENTED);
+}
+
+
 /** Accessed via IEMOP_RAISE_INVALID_OPCODE. */
 IEM_CIMPL_DEF_0(iemCImplRaiseInvalidOpcode)
 {
     RT_NOREF(pVCpu);
     AssertFailedReturn(VERR_IEM_ASPECT_NOT_IMPLEMENTED);
 }
+
 
