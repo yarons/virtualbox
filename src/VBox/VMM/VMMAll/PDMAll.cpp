@@ -1,4 +1,4 @@
-/* $Id: PDMAll.cpp 109482 2025-05-09 06:25:38Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: PDMAll.cpp 110131 2025-07-07 10:14:51Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * PDM Critical Sections
  */
@@ -275,9 +275,18 @@ VMM_INT_DECL(void) PDMIoApicSendMsi(PVMCC pVM, PCIBDF uBusDevFn, PCMSIMSG pMsi, 
 {
     Log9(("PDMIoApicSendMsi: addr=%#RX64 data=%#RX32 tag=%#x src=%#x\n", pMsi->Addr.u64, pMsi->Data.u32, uTagSrc, uBusDevFn));
 #ifdef VBOX_VMM_TARGET_ARMV8
+    /*
+     * ARM expects that the 16-bit requester ID from a PCIe Root Complex is
+     * presented to an ITS as the device ID. The guest seems to use device ID
+     * of 0 instead of the legacy endpoint BDF (bus:dev:fn).
+     *
+     * See ARM GIC spec. 5.2.3 "The Device Table".
+     */
+    /** @todo Figure out why device ID 0 is being used? Is it because the device
+     *        maybe behind the PCI-to-PCI bridge? */
     PCPDMGICBACKEND pGic = &pVM->pdm.s.Ic.u.armv8.GicBackend;
     if (pGic->pfnSendMsi)
-        pGic->pfnSendMsi(pVM, uBusDevFn, pMsi, uTagSrc);
+        pGic->pfnSendMsi(pVM, 0 /* uBusDevFn */, pMsi, uTagSrc);
 #else
     PCPDMIOAPIC pIoApic = &pVM->pdm.s.IoApic;
 # ifdef IN_RING0
