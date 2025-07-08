@@ -1,4 +1,4 @@
-/* $Id: RecordingStream.h 110139 2025-07-07 17:56:37Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingStream.h 110147 2025-07-08 07:10:33Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording stream code header.
  */
@@ -293,13 +293,19 @@ protected:
     /** STAM values. */
     struct
     {
-        STAMCOUNTER     cFramesAdded;
-        STAMCOUNTER     cFramesEncoded;
-        STAMPROFILE     profileFrameEncode;
+        STAMCOUNTER     cVideoFramesAdded;
+        STAMCOUNTER     cVideoFramesToEncode;
+        STAMCOUNTER     cVideoFramesEncoded;
+        STAMCOUNTER     cVideoFramesHousekeeping;
+# ifdef VBOX_WITH_AUDIO_RECORDING
+        STAMCOUNTER     cAudioFramesAdded;
+        STAMCOUNTER     cAudioFramesToEncode;
+        STAMCOUNTER     cAudioFramesEncoded;
+        STAMCOUNTER     cAudioFramesHousekeeping;
+# endif
         STAMPROFILE     profileFnProcessTotal;
         STAMPROFILE     profileFnProcessVideo;
         STAMPROFILE     profileFnProcessAudio;
-        STAMPROFILE     profileFnHouekeeping;
     } m_STAM;
 #endif /* VBOX_WITH_STATISTICS */
     /** Video codec instance data to use. */
