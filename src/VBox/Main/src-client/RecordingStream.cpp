@@ -1,4 +1,4 @@
-/* $Id: RecordingStream.cpp 110147 2025-07-08 07:10:33Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingStream.cpp 110148 2025-07-08 07:23:10Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording stream code.
  */
@@ -1083,8 +1083,8 @@ int RecordingStream::initInternal(RecordingContext *pCtx, uint32_t uScreen,
          ptrVM.vtable()->pfnSTAMR3RegisterFU(ptrVM.rawUVM(), &m_STAM.profileFnProcessAudio,
                                              STAMTYPE_PROFILE, STAMVISIBILITY_ALWAYS, STAMUNIT_NS_PER_CALL,
                                              "Profiling the processing function (audio).", "/Main/Recording/Stream%RU32/ProfileFnProcessAudio", uScreen);
-    }
 # endif
+    }
 #endif
 
     if (RT_SUCCESS(vrc))
