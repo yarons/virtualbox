@@ -1,4 +1,4 @@
-/* $Id: VBoxMPGaWddm.cpp 109912 2025-06-20 10:53:01Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxMPGaWddm.cpp 110157 2025-07-08 19:33:23Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface for WDDM kernel mode driver.
  */
@@ -1661,9 +1661,6 @@ VOID GaDxgkDdiDpcRoutine(const PVOID MiniportDeviceContext)
         }
     }
 
-    if (ASMAtomicCmpXchgBool(&pSvga->fCommandBufferIrq, false, true) && pSvga->pCBState)
-        SvgaCmdBufProcess(pSvga);
-
     /*
      * Deferred MOB destruction.
      */
@@ -1681,6 +1678,12 @@ VOID GaDxgkDdiDpcRoutine(const PVOID MiniportDeviceContext)
             IoQueueWorkItemEx(pWorkItem, dxDeferredMobDestruction, DelayedWorkQueue, pSvga);
         }
     }
+
+    /* Dispose completed buffers.
+     * Must be done as last step to avoid race with cQueuedWorkItems when unloading the driver.
+     */
+    if (ASMAtomicCmpXchgBool(&pSvga->fCommandBufferIrq, false, true) && pSvga->pCBState)
+        SvgaCmdBufProcess(pSvga);
 }
 
 typedef struct GAPREEMPTCOMMANDCBCTX
