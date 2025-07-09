@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 110158 2025-07-09 01:45:46Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc.h 110159 2025-07-09 02:02:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX, common.
  */
@@ -228,6 +228,7 @@
 #define IEM_MC_AND_2LOCS_U32(a_u32Local, a_u32Mask)     do { (a_u32Local) &= (a_u32Mask); } while (0)
 
 #define IEM_MC_OR_2LOCS_U32(a_u32Local, a_u32Mask)      do { (a_u32Local) |= (a_u32Mask); } while (0)
+#define IEM_MC_OR_2LOCS_U64(a_u64Local, a_u64Mask)      do { (a_u64Local) |= (a_u64Mask); } while (0)
 
 
 #define IEM_MC_AND_GREG_U32(a_iGReg, a_u32Value) \

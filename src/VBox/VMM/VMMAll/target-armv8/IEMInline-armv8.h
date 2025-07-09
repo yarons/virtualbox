@@ -1,4 +1,4 @@
-/* $Id: IEMInline-armv8.h 110154 2025-07-08 14:57:17Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInline-armv8.h 110159 2025-07-09 02:02:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Inlined Functions, ARMv8 target.
  */
@@ -374,7 +374,7 @@ DECL_FORCE_INLINE(uint16_t) iemGRegFetchU16(PVMCPUCC pVCpu, uint8_t iReg, bool f
  * @param   iReg    The register.
  * @param   fSp     Set if register 31 is SP, otherwise it's zero.
  */
-DECL_FORCE_INLINE(uint32_t) iemGRegFetchU32(PVMCPUCC pVCpu, uint8_t iReg, bool fSp) RT_NOEXCEPT
+DECL_FORCE_INLINE(uint32_t) iemGRegFetchU32(PVMCPUCC pVCpu, uint8_t iReg, bool fSp = false) RT_NOEXCEPT
 {
     Assert(iReg < 32);
     return iReg < 31 ? pVCpu->cpum.GstCtx.aGRegs[iReg].w
