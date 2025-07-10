@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 110181 2025-07-10 06:43:26Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICAll.cpp 110184 2025-07-10 07:40:09Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - All Contexts.
  */
@@ -2886,7 +2886,6 @@ DECLHIDDEN(void) gicReDistSetLpi(PPDMDEVINS pDevIns, PVMCPUCC pVCpu, uint16_t uI
 }
 
 
-
 /**
  * @interface_method_impl{PDMGICBACKEND,pfnSetSpi}
  */
@@ -3001,7 +3000,7 @@ DECL_HIDDEN_CALLBACK(int) gicSendMsi(PVMCC pVM, PCIBDF uBusDevFn, PCMSIMSG pMsi,
               ("Addr=%#RX64 offset=%#RX32\n", pMsi->Addr.u64, GITS_TRANSLATION_REG_TRANSLATER));
     STAM_COUNTER_INC(&pGicDev->StatSetLpi);
 
-    gitsSetLpi(pDevIns, &pGicDev->Gits, uDevId, uEventId, true /* fAsserted */);
+    gitsSetLpi(pVM, pDevIns, &pGicDev->Gits, uDevId, uEventId, true /* fAsserted */);
     return VINF_SUCCESS;
 }
 
