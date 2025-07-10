@@ -1,4 +1,4 @@
-/* $Id: RecordingStream.h 110172 2025-07-09 16:11:52Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingStream.h 110182 2025-07-10 07:04:44Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording stream code header.
  */
@@ -312,7 +312,7 @@ public:
 
     int Insert(uint64_t uPTS, RecordingBlocks *pBlocks);
 
-    int Worker(uint64_t msTimeout, bool fShutdown, void *pvUser);
+    DECLCALLBACK(int) Worker(uint64_t msTimeout, bool fShutdown, void *pvUser);
 
 protected:
 
