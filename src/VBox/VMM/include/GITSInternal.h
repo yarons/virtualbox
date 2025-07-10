@@ -1,4 +1,4 @@
-/* $Id: GITSInternal.h 110184 2025-07-10 07:40:09Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GITSInternal.h 110185 2025-07-10 10:09:10Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GITS - Generic Interrupt Controller Interrupt Translation Service - Internal.
  */
@@ -283,7 +283,7 @@ DECL_HIDDEN_CALLBACK(void)         gitsMmioWriteTranslate(PGITSDEV pGitsDev, uin
 
 #ifdef IN_RING3
 DECL_HIDDEN_CALLBACK(void)         gitsR3DbgInfo(PCGITSDEV pGitsDev, PCDBGFINFOHLP pHlp);
-DECL_HIDDEN_CALLBACK(int)          gitsR3CmdQueueProcess(PPDMDEVINS pDevIns, PGITSDEV pGitsDev, void *pvBuf, uint32_t cbBuf);
+DECL_HIDDEN_CALLBACK(int)          gitsR3CmdQueueProcess(PCVMCC pVM, PPDMDEVINS pDevIns, PGITSDEV pGitsDev, void *pvBuf, uint32_t cbBuf);
 #endif
 
 #ifdef LOG_ENABLED
