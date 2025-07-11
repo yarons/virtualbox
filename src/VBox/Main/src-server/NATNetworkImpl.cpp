@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.cpp 109774 2025-06-03 20:19:59Z jack.doherty@oracle.com $ */
+/* $Id: NATNetworkImpl.cpp 110198 2025-07-11 12:15:06Z michal.necasek@oracle.com $ */
 /** @file
  * INATNetwork implementation.
  */
@@ -1175,7 +1175,7 @@ int NATNetwork::i_recalculateIpv4AddressAssignments()
     RTStrPrintf(szTmpIp, 16, "%RTnaipv4", netmask);
     m->IPv4NetworkMask = szTmpIp;
 
-    LogFlowFunc(("getaway:%RTnaipv4, netmask:%RTnaipv4\n", gateway, netmask));
+    LogFlowFunc(("gateway:%RTnaipv4, netmask:%RTnaipv4\n", gateway, netmask));
     return VINF_SUCCESS;
 }
 
