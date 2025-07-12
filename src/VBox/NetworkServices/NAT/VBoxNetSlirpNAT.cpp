@@ -1,4 +1,4 @@
-/* $Id: VBoxNetSlirpNAT.cpp 110163 2025-07-09 06:53:34Z jack.doherty@oracle.com $ */
+/* $Id: VBoxNetSlirpNAT.cpp 110202 2025-07-12 01:56:54Z jack.doherty@oracle.com $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -683,7 +683,7 @@ int VBoxNetSlirpNAT::initIPv4()
     /** @todo r=uwe Check the address is unicast, not a loopback, etc. */
 
     RTNETADDRIPV4 Addr4;
-    Addr4.u = Net4.u | RT_H2N_U32_C(0x00000002);
+    Addr4.u = Net4.u | RT_H2N_U32_C(0x00000001);
 
     memcpy(&m_ProxyOptions.vnetwork, &Net4, sizeof(in_addr));
     memcpy(&m_ProxyOptions.vnetmask, &Mask4, sizeof(in_addr));
