@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdImportExport1.py 110219 2025-07-14 20:46:18Z brent.paulson@oracle.com $
+# $Id: tdImportExport1.py 110220 2025-07-14 23:25:19Z brent.paulson@oracle.com $
 
 """
 VirtualBox Validation Kit - Import and Export EFI-base VM Test #1
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 110219 $"
+__version__ = "$Revision: 110220 $"
 
 
 # Standard Python imports.
@@ -244,9 +244,9 @@ class SubTstDrvImportExportEFIVM1(base.SubTestDriverBase):
         # which only apply to certain item types.
         sNewVmName = self.sVmName + '-imported';
         aEnabled = [];
-        for i in range(0, len(aTypes)):
+        for (i, aType) in enumerate(aTypes):
             aEnabled.append(True);
-            if aTypes[i] == vboxcon.VirtualSystemDescriptionType_Name:
+            if aType == vboxcon.VirtualSystemDescriptionType_Name:
                 aVBoxValues[i] = sNewVmName;
 
         try:
