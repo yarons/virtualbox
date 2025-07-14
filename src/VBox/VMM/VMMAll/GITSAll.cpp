@@ -1,4 +1,4 @@
-/* $Id: GITSAll.cpp 110216 2025-07-14 12:25:20Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GITSAll.cpp 110217 2025-07-14 12:44:18Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GITS - GIC Interrupt Translation Service (ITS) - All Contexts.
  */
@@ -1130,7 +1130,7 @@ DECLHIDDEN(void) gitsLpiSet(PVMCC pVM, PPDMDEVINS pDevIns, PGITSDEV pGitsDev, ui
                 {
                     uint16_t const uIntId = LpiMapEntry.uIntId;
                     Assert(GIC_IS_INTR_LPI(uIntId));
-                    PVMCPUCC      pVCpu = pVM->CTX_SUFF(apCpus)[idCpu];
+                    PVMCPUCC pVCpu = pVM->CTX_SUFF(apCpus)[idCpu];
                     gicReDistSetLpi(pDevIns, pVCpu, uIntId, fAsserted);
                 }
                 else
@@ -1183,6 +1183,7 @@ DECLHIDDEN(void) gitsLpiSet(PVMCC pVM, PPDMDEVINS pDevIns, PGITSDEV pGitsDev, ui
                                 gicReDistSetLpi(pDevIns, pVCpu, uIntId, fAsserted);
 
                                 /* Add the LPI to the cache. */
+                                /** @todo Consider storing the target VMCPUID in GITSLPIMAP. */
                                 GITSLPIMAPENTRY LpiMapEntry;
                                 LpiMapEntry.uDevIdEventId.s.Lo = uDevId;
                                 LpiMapEntry.uDevIdEventId.s.Hi = uEventId;
