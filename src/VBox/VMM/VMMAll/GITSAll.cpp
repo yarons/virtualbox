@@ -1,4 +1,4 @@
-/* $Id: GITSAll.cpp 110213 2025-07-14 12:10:51Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GITSAll.cpp 110216 2025-07-14 12:25:20Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GITS - GIC Interrupt Translation Service (ITS) - All Contexts.
  */
@@ -45,9 +45,6 @@
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
-/** The current GITS saved state version. */
-#define GITS_SAVED_STATE_VERSION                        1
-
 /** GITS diagnostic enum description expansion.
  * The below construct ensures typos in the input to this macro are caught
  * during compile time. */
@@ -1125,18 +1122,22 @@ DECLHIDDEN(void) gitsLpiSet(PVMCC pVM, PPDMDEVINS pDevIns, PGITSDEV pGitsDev, ui
         bool const fFound = gitstLpiCacheLookup(pGitsDev, uDevId, uEventId, &LpiMapEntry);
         if (fFound)
         {
-            uint16_t const uIntId = LpiMapEntry.uIntId;
-            Assert(GIC_IS_INTR_LPI(uIntId));
             uint16_t const uIcId = LpiMapEntry.uIcId;
-            if (uIcId < RT_ELEMENTS(pGitsDev->aCtes))
+            if (RT_LIKELY(uIcId < RT_ELEMENTS(pGitsDev->aCtes)))
             {
                 VMCPUID const idCpu = pGitsDev->aCtes[uIcId].idTargetCpu;
-                if (idCpu < pVM->cCpus)
+                if (RT_LIKELY(idCpu < pVM->cCpus))
                 {
+                    uint16_t const uIntId = LpiMapEntry.uIntId;
+                    Assert(GIC_IS_INTR_LPI(uIntId));
                     PVMCPUCC      pVCpu = pVM->CTX_SUFF(apCpus)[idCpu];
-                    gicReDistSetLpi(pDevIns, pVCpu, LpiMapEntry.uIntId, fAsserted);
+                    gicReDistSetLpi(pDevIns, pVCpu, uIntId, fAsserted);
                 }
+                else
+                    AssertMsgFailed(("CPU index out-of-bounds %RU32\n", idCpu));
             }
+            else
+                AssertMsgFailed(("ICID invalid %RU16\n", uIcId));
             return;
         }
     }
@@ -1210,7 +1211,6 @@ DECLHIDDEN(void) gitsLpiSet(PVMCC pVM, PPDMDEVINS pDevIns, PGITSDEV pGitsDev, ui
     else
         AssertMsgFailed(("Failed to read the DTE (uDevId=%#RX32 uEventId=%#RX32 rc=%Rrc)\n", uDevId, uEventId, rc));
 }
-
 
 #endif /* !VBOX_DEVICE_STRUCT_TESTCASE */
 
