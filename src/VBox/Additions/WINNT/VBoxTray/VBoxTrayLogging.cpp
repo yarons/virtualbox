@@ -1,4 +1,4 @@
-/* $Id: VBoxTrayLogging.cpp 110206 2025-07-13 10:34:48Z dmitrii.grigorev@oracle.com $ */
+/* $Id: VBoxTrayLogging.cpp 110223 2025-07-15 08:48:20Z dmitrii.grigorev@oracle.com $ */
 /** @file
  * VBoxTrayLogging.cpp - Logging.
  */
@@ -142,7 +142,7 @@ int VBoxTrayLogCreate(const char *pszLogFile)
 #endif
     RTERRINFOSTATIC ErrInfo;
     int rc = RTLogCreateEx(&g_pLoggerRelease, s_szEnvVarPfx,
-                           RTLOGFLAGS_PREFIX_THREAD | RTLOGFLAGS_USECRLF,
+                           RTLOGFLAGS_PREFIX_THREAD | RTLOGFLAGS_PREFIX_TIME_PROG | RTLOGFLAGS_USECRLF,
                            s_szGroupSettings, RT_ELEMENTS(s_apszGroups), s_apszGroups, UINT32_MAX,
                            0 /*cBufDescs*/, NULL /*paBufDescs*/, RTLOGDEST_STDOUT | RTLOGDEST_USER,
                            vboxTrayLogHeaderFooter, g_cHistory, g_uHistoryFileSize, g_uHistoryFileTime,
