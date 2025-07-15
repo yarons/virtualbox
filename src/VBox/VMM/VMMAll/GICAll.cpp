@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 110217 2025-07-14 12:44:18Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICAll.cpp 110221 2025-07-15 06:21:40Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - All Contexts.
  */
@@ -908,6 +908,8 @@ static void gicDistHasIrqPendingForVCpu(PCVMCPUCC pVCpu, bool *pfIrq, bool *pfFi
  */
 DECLHIDDEN(void) gicDistReadLpiConfigTableFromMem(PPDMDEVINS pDevIns)
 {
+    Assert(GIC_CRIT_SECT_IS_OWNER(pDevIns));
+
     PGICDEV pGicDev = PDMDEVINS_2_DATA(pDevIns, PGICDEV);
     Assert(pGicDev->fEnableLpis);
     LogFlowFunc(("\n"));
@@ -944,6 +946,8 @@ DECLHIDDEN(void) gicDistReadLpiConfigTableFromMem(PPDMDEVINS pDevIns)
  */
 static void gicReDistReadLpiPendingTableFromMem(PPDMDEVINS pDevIns, PVMCPU pVCpu)
 {
+    Assert(GIC_CRIT_SECT_IS_OWNER(pDevIns));
+
     PGICDEV pGicDev = PDMDEVINS_2_DATA(pDevIns, PGICDEV);
     Assert(pGicDev->fEnableLpis);
     LogFlowFunc(("\n"));
@@ -2968,7 +2972,7 @@ DECLINLINE(VBOXSTRICTRC) gicReDistWriteSgiPpiRegister(PPDMDEVINS pDevIns, PVMCPU
  */
 DECLHIDDEN(void) gicReDistSetLpi(PPDMDEVINS pDevIns, PVMCPUCC pVCpu, uint16_t uIntId, bool fAsserted)
 {
-    Assert(GIC_CRIT_SECT_IS_OWNER(pDevIns)); NOREF(pDevIns);
+    Assert(GIC_CRIT_SECT_IS_OWNER(pDevIns)); RT_NOREF(pDevIns);
     Assert(GIC_IS_INTR_LPI(uIntId));
     Log4Func(("[%u] uIntId=%RU32 fAsserted=%RTbool\n", pVCpu->idCpu, uIntId, fAsserted));
 
