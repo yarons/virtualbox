@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 110239 2025-07-16 08:09:37Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICAll.cpp 110240 2025-07-16 08:12:57Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - All Contexts.
  */
@@ -1915,6 +1915,7 @@ static int gicReDistUpdateLpiPending(PVMCPUCC pVCpu, uint16_t uIntId, bool fAsse
     uint64_t       bmLpiPending     = pGicCpu->LpiPending.au64[idxPending];
     uint8_t const  idxPendingBit    = idxIntr % cIntrsPerElement;
     bool const     fIntrLevel       = RT_BOOL(bmLpiPending & RT_BIT_64(idxPendingBit));
+    AssertCompile(sizeof(bmLpiPending) * 8 == cIntrsPerElement);
 
     if (fAsserted != fIntrLevel)
     {
