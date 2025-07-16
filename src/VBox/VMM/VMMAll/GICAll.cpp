@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 110233 2025-07-16 05:13:19Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICAll.cpp 110235 2025-07-16 05:39:10Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - All Contexts.
  */
@@ -68,12 +68,6 @@
 #include <VBox/vmm/vmcc.h>
 #include <VBox/vmm/vmm.h>
 #include <VBox/vmm/vmcpuset.h>
-
-
-/*********************************************************************************************************************************
-*   Defined Constants And Macros                                                                                                 *
-*********************************************************************************************************************************/
-#define GIC_IDLE_PRIORITY                       0xff
 
 
 /*********************************************************************************************************************************
