@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.cpp 110268 2025-07-16 17:45:40Z jack.doherty@oracle.com $ */
+/* $Id: NATNetworkImpl.cpp 110269 2025-07-16 17:58:19Z jack.doherty@oracle.com $ */
 /** @file
  * INATNetwork implementation.
  */
@@ -718,13 +718,13 @@ HRESULT NATNetwork::getLocalhostReachable(BOOL *pfLocalhostReachable)
 
 HRESULT NATNetwork::setForwardBroadcast(BOOL fForwardBroadcast)
 {
-    RT_NOREF(pfLocalhostReachable);
+    RT_NOREF(fForwardBroadcast);
     return E_NOTIMPL;
 }
 
 HRESULT NATNetwork::getForwardBroadcast(BOOL *pfForwardBroadcast)
 {
-    RT_NOREF(pfLocalhostReachable);
+    RT_NOREF(pfForwardBroadcast);
     return E_NOTIMPL;
 }
 
