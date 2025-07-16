@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.cpp 110198 2025-07-11 12:15:06Z michal.necasek@oracle.com $ */
+/* $Id: NATNetworkImpl.cpp 110268 2025-07-16 17:45:40Z jack.doherty@oracle.com $ */
 /** @file
  * INATNetwork implementation.
  */
@@ -702,6 +702,54 @@ HRESULT NATNetwork::getPortForwardRules6(std::vector<com::Utf8Str> &aPortForward
     i_getPortForwardRulesFromMap(aPortForwardRules6,
                                  m->s.mapPortForwardRules6);
     return S_OK;
+}
+
+HRESULT NATNetwork::setLocalhostReachable(BOOL fLocalhostReachable)
+{
+    RT_NOREF(fLocalhostReachable);
+    return E_NOTIMPL;
+}
+
+HRESULT NATNetwork::getLocalhostReachable(BOOL *pfLocalhostReachable)
+{
+    RT_NOREF(pfLocalhostReachable);
+    return E_NOTIMPL;
+}
+
+HRESULT NATNetwork::setForwardBroadcast(BOOL fForwardBroadcast)
+{
+    RT_NOREF(pfLocalhostReachable);
+    return E_NOTIMPL;
+}
+
+HRESULT NATNetwork::getForwardBroadcast(BOOL *pfForwardBroadcast)
+{
+    RT_NOREF(pfLocalhostReachable);
+    return E_NOTIMPL;
+}
+
+HRESULT NATNetwork::setNatMTU(ULONG uMTU)
+{
+    RT_NOREF(uMTU);
+    return E_NOTIMPL;
+}
+
+HRESULT NATNetwork::getNatMTU(ULONG *puMTU)
+{
+    RT_NOREF(puMTU);
+    return E_NOTIMPL;
+}
+
+HRESULT NATNetwork::setNatMRU(ULONG uMRU)
+{
+    RT_NOREF(uMRU);
+    return E_NOTIMPL;
+}
+
+HRESULT NATNetwork::getNatMRU(ULONG *puMRU)
+{
+    RT_NOREF(puMRU);
+    return E_NOTIMPL;
 }
 
 HRESULT NATNetwork::addPortForwardRule(BOOL aIsIpv6,
