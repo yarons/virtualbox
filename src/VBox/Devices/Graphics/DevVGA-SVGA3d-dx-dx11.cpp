@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 110156 2025-07-08 19:25:11Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 110302 2025-07-18 10:50:07Z alexander.eichner@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -378,14 +378,20 @@ static HRESULT BlitInit(D3D11BLITTER *pBlitter, ID3D11Device1 *pDevice, ID3D11De
 static void BlitRelease(D3D11BLITTER *pBlitter);
 
 
+#if defined(VBOX_WITH_DXVK)
+# define VBOX_DX_LIBRARY "VBoxDxVk"
+#elif defined(VBOX_WITH_DXMT)
+# define VBOX_DX_LIBRARY "VBoxDxMt"
+#endif
+
 static int dxLoadD3D11Library(RTLDRMOD *phD3D11)
 {
-#if defined(VBOX_WITH_DXVK)
+#if defined(VBOX_DX_LIBRARY)
     RTERRINFOSTATIC ErrInfo;
-    int rc = SUPR3HardenedLdrLoadAppPriv("VBoxDxVk", phD3D11, RTLDRLOAD_FLAGS_LOCAL, RTErrInfoInitStatic(&ErrInfo));
+    int rc = SUPR3HardenedLdrLoadAppPriv(VBOX_DX_LIBRARY, phD3D11, RTLDRLOAD_FLAGS_LOCAL, RTErrInfoInitStatic(&ErrInfo));
     if (RT_FAILURE(rc))
     {
-        LogRel(("VMSVGA: Failed to load dxvk: %Rrc\n", rc));
+        LogRel(("VMSVGA: Failed to load %s: %Rrc\n", VBOX_DX_LIBRARY, rc));
         if (RTErrInfoIsSet(&ErrInfo.Core))
             LogRel(("VMSVGA: %#RTeic\n", &ErrInfo.Core));
     }
