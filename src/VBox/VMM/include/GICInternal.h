@@ -1,4 +1,4 @@
-/* $Id: GICInternal.h 110290 2025-07-18 09:49:20Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICInternal.h 110291 2025-07-18 10:03:06Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -246,7 +246,7 @@ typedef struct GICDEV
     /** Whether LPIs are enabled (GICR_CTLR.EnableLpis of all redistributors). */
     bool                        fEnableLpis;
     /** Padding. */
-    bool                        afPadding1[1];
+    bool                        afPadding0;
     /** ITS device state. */
     GITSDEV                     Gits;
     /** LPI config table. */
