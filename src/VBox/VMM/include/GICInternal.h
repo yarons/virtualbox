@@ -1,4 +1,4 @@
-/* $Id: GICInternal.h 110288 2025-07-18 08:58:48Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICInternal.h 110290 2025-07-18 09:49:20Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -177,12 +177,6 @@ typedef union GICDISTINTRBMP
 AssertCompileSize(GICDISTINTRBMP, 256);
 AssertCompileMembersSameSize(GICDISTINTRBMP, au64, GICDISTINTRBMP, au32);
 AssertCompileMemberAlignment(GICDISTINTRBMP, au32, 4);
-
-/** GIC LPI pending-table entry. */
-typedef uint64_t GICLPIPTE;
-
-/** GIC LPI config-table entry. */
-typedef uint64_t GICLPICTE;
 
 /**
  * GIC PDM instance data (per-VM).
