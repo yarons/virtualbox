@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 110300 2025-07-18 10:45:59Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 110314 2025-07-18 17:51:58Z alexander.eichner@oracle.com $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -52,7 +52,7 @@ if   defined(VBOX_WITH_DXVK) \
   && !defined(VBOX_ONLY_BUILD) \
   && "$(SDK_VBoxDxVk_INCS)" == "$(SDK_VBoxDxVk_DEFAULT_INCS)" \
   && "$(intersects $(KBUILD_TARGET_ARCH),$(VBOX_SUPPORTED_HOST_ARCHS))" != ""
- include $(PATH_SUB_CURRENT)/dxvk-2.3.1/Makefile.kmk
+ include $(PATH_SUB_CURRENT)/dxvk-2.6.2/Makefile.kmk
 endif
 
 
