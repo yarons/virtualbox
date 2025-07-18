@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 108837 2025-03-20 12:48:42Z andreas.loeffler@oracle.com $ */
+/* $Id: MachineImpl.cpp 110311 2025-07-18 16:34:06Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -629,6 +629,17 @@ HRESULT Machine::initFromSettings(VirtualBox *aParent,
                 mData->pMachineConfigFile = new settings::MachineConfigFile(&mData->m_strConfigFileFull,
                                                                             pCryptoIf,
                                                                             strPassword.c_str());
+
+                // reject VM with zero or invalid UUID, could happen if the
+                // code for parsing machine XML is buggy and it would cause
+                // a VBoxSVC start crash which is hard to fix for users
+                if (   mData->pMachineConfigFile->uuid.isZero()
+                    || !mData->pMachineConfigFile->uuid.isValid())
+                {
+                    throw setError(E_FAIL,
+                                   tr("Trying to open a VM config '%s' which has a zero or invalid UUID"),
+                                   mData->m_strConfigFile.c_str());
+                }
 
                 // reject VM UUID duplicates, they can happen if someone
                 // tries to register an already known VM config again
