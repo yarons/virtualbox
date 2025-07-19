@@ -1,4 +1,4 @@
-/* $Id: VBoxDX.cpp 110310 2025-07-18 15:27:55Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxDX.cpp 110318 2025-07-19 10:46:18Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox D3D user mode driver.
  */
@@ -2787,6 +2787,7 @@ void vboxDXResourceUnmap(PVBOXDX_DEVICE pDevice, PVBOXDX_RESOURCE pResource, UIN
     if (SUCCEEDED(hr))
     {
         if (   pResource->DDIMap == D3D10_DDI_MAP_WRITE
+            || pResource->DDIMap == D3D10_DDI_MAP_READWRITE
             || pResource->DDIMap == D3D10_DDI_MAP_WRITE_DISCARD
             || pResource->DDIMap == D3D10_DDI_MAP_WRITE_NOOVERWRITE)
         {
