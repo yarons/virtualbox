@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 110288 2025-07-18 08:58:48Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICAll.cpp 110320 2025-07-21 06:52:53Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - All Contexts.
  */
@@ -2976,8 +2976,7 @@ DECLHIDDEN(void) gicReDistSetLpi(PPDMDEVINS pDevIns, PVMCPUCC pVCpu, uint16_t uI
     Log4Func(("[%u] uIntId=%RU32 fAsserted=%RTbool\n", pVCpu->idCpu, uIntId, fAsserted));
 
     bool const fUpdated = gicReDistUpdateLpiPending(pVCpu, uIntId, fAsserted);
-    if (   fUpdated
-        && fAsserted)
+    if (fUpdated)
         gicReDistUpdateIrqState(pVCpu);
 }
 
