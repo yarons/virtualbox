@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 110320 2025-07-21 06:52:53Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICAll.cpp 110333 2025-07-21 09:37:13Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - All Contexts.
  */
@@ -3108,7 +3108,7 @@ DECL_HIDDEN_CALLBACK(int) gicSendMsi(PVMCC pVM, PCIBDF uBusDevFn, PCMSIMSG pMsi,
      */
     GIC_CRIT_SECT_ENTER(pDevIns);
     if (pGicDev->fEnableLpis)
-        gitsLpiSet(pVM, pDevIns, &pGicDev->Gits, uDevId, uEventId, true /* fAsserted */);
+        gitsLpiTrigger(pVM, pDevIns, &pGicDev->Gits, uDevId, uEventId, true /* fAsserted */);
     GIC_CRIT_SECT_LEAVE(pDevIns);
 
     return VINF_SUCCESS;

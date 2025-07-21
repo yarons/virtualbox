@@ -1,4 +1,4 @@
-/* $Id: GICR3.cpp 110321 2025-07-21 07:12:18Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICR3.cpp 110333 2025-07-21 09:37:13Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -32,11 +32,9 @@
 #define LOG_GROUP LOG_GROUP_DEV_GIC
 #include <VBox/log.h>
 #include "GICInternal.h"
-#include <VBox/vmm/pdmgic.h>
 #include <VBox/vmm/cpum.h>
 #include <VBox/vmm/hm.h>
 #include <VBox/vmm/mm.h>
-#include <VBox/vmm/pdmdev.h>
 #include <VBox/vmm/ssm.h>
 #include <VBox/vmm/vm.h>
 
