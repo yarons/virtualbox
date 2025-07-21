@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 110311 2025-07-18 16:34:06Z klaus.espenlaub@oracle.com $ */
+/* $Id: Settings.cpp 110341 2025-07-21 16:04:44Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -2588,11 +2588,11 @@ void MainConfigFile::bumpSettingsVersionIfNeeded()
         if (   !llNATNetworks.empty())
             m->sv = SettingsVersion_v1_14;
     }
-    if (m->sv < SettingsVersion_v1_20)
+    if (m->sv < SettingsVersion_v1_21)
     {
-        // VirtualBox 7.1 adds global shared folders.
+        // VirtualBox 7.2 adds global shared folders.
         if (!llGlobalSharedFolders.empty())
-            m->sv = SettingsVersion_v1_20;
+            m->sv = SettingsVersion_v1_21;
     }
 
 }
