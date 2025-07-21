@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 110242 2025-07-16 08:35:24Z andreas.loeffler@oracle.com $ */
+/* $Id: VirtualBoxImpl.cpp 110340 2025-07-21 14:14:57Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -2052,7 +2052,7 @@ HRESULT VirtualBox::getGuestOSFamilies(std::vector<com::Utf8Str> &aOSFamilies)
          it != m->allGuestOSTypes.end(); ++it)
     {
         const Utf8Str &familyId = (*it)->i_familyId();
-        AssertMsg(!familyId.isEmpty(), ("familfyId must not be NULL"));
+        AssertMsg(!familyId.isEmpty(), ("familyId must not be NULL"));
         allOSFamilies.push_back(familyId);
     }
 
@@ -4703,7 +4703,7 @@ HRESULT VirtualBox::getGuestOSSubtypesByFamilyId(const Utf8Str &strOSFamily,
          it != m->allGuestOSTypes.end(); ++it)
     {
         const Utf8Str &familyId = (*it)->i_familyId();
-        AssertMsg(!familyId.isEmpty(), ("familfyId must not be NULL"));
+        AssertMsg(!familyId.isEmpty(), ("familyId must not be NULL"));
         if (familyId.compare(strOSFamily, Utf8Str::CaseInsensitive) == 0)
         {
             fFoundGuestOSType = true;
@@ -4719,7 +4719,7 @@ HRESULT VirtualBox::getGuestOSSubtypesByFamilyId(const Utf8Str &strOSFamily,
          it != m->allGuestOSTypes.end(); ++it)
     {
         const Utf8Str &familyId = (*it)->i_familyId();
-        AssertMsg(!familyId.isEmpty(), ("familfyId must not be NULL"));
+        AssertMsg(!familyId.isEmpty(), ("familyId must not be NULL"));
         if (familyId.compare(strOSFamily, Utf8Str::CaseInsensitive) == 0)
         {
             const Utf8Str &strOSSubtype = (*it)->i_subtype();
