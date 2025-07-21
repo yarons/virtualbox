@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 110333 2025-07-21 09:37:13Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICAll.cpp 110334 2025-07-21 09:47:48Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - All Contexts.
  */
@@ -62,12 +62,9 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_DEV_GIC
 #include "GICInternal.h"
-#include <VBox/vmm/pdmgic.h>
-#include <VBox/vmm/pdmdev.h>
-#include <VBox/vmm/pdmapi.h>
 #include <VBox/vmm/vmcc.h>
-#include <VBox/vmm/vmm.h>
 #include <VBox/vmm/vmcpuset.h>
+#include <VBox/vmm/pdmapi.h>        /* PDMR3HasLoadedState */
 
 
 /*********************************************************************************************************************************
