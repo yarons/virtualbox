@@ -1,4 +1,4 @@
-/* $Id: VBoxNetSlirpNAT.cpp 110237 2025-07-16 06:42:29Z jack.doherty@oracle.com $ */
+/* $Id: VBoxNetSlirpNAT.cpp 110342 2025-07-22 06:44:56Z jack.doherty@oracle.com $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -1089,7 +1089,7 @@ VBoxNetSlirpNAT::run()
     /* spawn intnet input pump */
     rc = RTThreadCreate(&m_hThrRecv,
                         VBoxNetSlirpNAT::receiveThread, this,
-                        0, /* :cbStack */
+                        1024, /* :cbStack */
                         RTTHREADTYPE_IO, RTTHREADFLAGS_WAITABLE,
                         "RECV");
     AssertRCReturn(rc, rc);
@@ -2084,10 +2084,10 @@ VBoxNetSlirpNAT::pollThread(RTTHREAD hThreadSelf, void *pvUser)
         pThis->timersRunExpired();
     }
 
-#if 0
+// #if 0
     LogRel(("pollThread: Exiting\n"));
     return VERR_INVALID_STATE;
-#endif
+// #endif
 }
 
 
@@ -2156,7 +2156,10 @@ VBoxNetSlirpNAT::processFrame(void *pvUser, void *pvFrame, uint32_t cbFrame)
 
     /* we expect normal ethernet frame including .1Q and FCS */
     if (cbFrame > 1522)
+    {
+        Log2Func(("Error: Frame larger than expected.\n"));
         return;
+    }
 
     AssertReturnVoid(pvUser != NULL);
     VBoxNetSlirpNAT *pThis = static_cast<VBoxNetSlirpNAT *>(pvUser);
