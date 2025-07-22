@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 110353 2025-07-22 16:06:55Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 110354 2025-07-22 16:25:44Z andreas.loeffler@oracle.com $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -1166,7 +1166,6 @@ if !defined(VBOX_ONLY_SDK) && !defined(VBOX_ONLY_EXTPACKS) # Note this goes on f
  	src-all/PCIDeviceAttachmentImpl.cpp \
  	src-all/PlatformPropertiesImpl.cpp \
  	src-all/ProgressImpl.cpp \
- 	src-all/RecordingUtils.cpp \
  	src-all/SecretKeyStore.cpp \
  	src-all/AutoCaller.cpp \
  	src-all/ThreadTask.cpp \
