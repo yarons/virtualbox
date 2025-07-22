@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 110270 2025-07-16 17:58:34Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 110348 2025-07-22 15:04:28Z andreas.loeffler@oracle.com $
 ## @file
 # Sub-Makefile for the VBox API testcases.
 #
@@ -328,7 +328,9 @@ tstSettings_INCS     = \
 	$(dir $(VBOX_XML_SCHEMADEFS_H))
 tstSettings_SOURCES  = \
 	tstSettings.cpp \
+	../src-all/AudioUtils.cpp \
 	../src-all/HashedPw.cpp \
+	../src-all/RecordingUtils.cpp \
 	../xml/Settings.cpp
 
 #

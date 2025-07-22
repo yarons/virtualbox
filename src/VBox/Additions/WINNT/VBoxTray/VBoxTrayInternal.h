@@ -1,4 +1,4 @@
-/* $Id: VBoxTrayInternal.h 106412 2024-10-17 07:44:43Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxTrayInternal.h 110348 2025-07-22 15:04:28Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxSeamless - Display notifications
  */
@@ -105,6 +105,8 @@ DWORD EnableAndResizeDispDev(DEVMODE *paDeviceModes, DISPLAY_DEVICE *paDisplayDe
 
 int                      VBoxTrayLogCreate(const char *pszLogFile);
 void                     VBoxTrayLogDestroy(void);
+int                      VBoxTrayLogWindowCreate(void);
+void                     VBoxTrayLogWindowDestroy(void);
 
 void                     VBoxTrayInfo(const char *pszFormat, ...);
 RTEXITCODE               VBoxTrayError(const char *pszFormat, ...) RT_IPRT_FORMAT_ATTR(1, 2);
