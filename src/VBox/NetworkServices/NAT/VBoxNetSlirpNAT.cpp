@@ -1,4 +1,4 @@
-/* $Id: VBoxNetSlirpNAT.cpp 110342 2025-07-22 06:44:56Z jack.doherty@oracle.com $ */
+/* $Id: VBoxNetSlirpNAT.cpp 110343 2025-07-22 06:48:58Z jack.doherty@oracle.com $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -2084,10 +2084,10 @@ VBoxNetSlirpNAT::pollThread(RTTHREAD hThreadSelf, void *pvUser)
         pThis->timersRunExpired();
     }
 
-// #if 0
+#if 0
     LogRel(("pollThread: Exiting\n"));
     return VERR_INVALID_STATE;
-// #endif
+#endif
 }
 
 
