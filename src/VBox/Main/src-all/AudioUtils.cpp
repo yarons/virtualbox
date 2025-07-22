@@ -1,4 +1,4 @@
-/* $Id: AudioUtils.cpp 110348 2025-07-22 15:04:28Z andreas.loeffler@oracle.com $ */
+/* $Id: AudioUtils.cpp 110356 2025-07-22 17:20:38Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox audio utility functions for Main.
  */
@@ -25,6 +25,8 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+#include <iprt/ldr.h>
+#include <iprt/process.h>
 #include <iprt/system.h>
 
 #include "AudioUtils.h"
