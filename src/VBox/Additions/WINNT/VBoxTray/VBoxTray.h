@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.h 110348 2025-07-22 15:04:28Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxTray.h 110349 2025-07-22 15:06:53Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxTray - Guest Additions Tray, Internal Header.
  */
@@ -70,8 +70,6 @@
 #define TIMERID_VBOXTRAY_CAPS_TIMER             1001
 #define TIMERID_VBOXTRAY_DT_TIMER               1002
 #define TIMERID_VBOXTRAY_ST_DELAYED_INIT_TIMER  1003
-
-#define ID_WND_LOG_MAIN_MENU                    3000
 
 
 /*********************************************************************************************************************************
@@ -214,15 +212,6 @@ typedef struct VBOXTRAYGLOBALMSG
 /** Pointer to a globally registered Windows message. */
 typedef VBOXTRAYGLOBALMSG *PVBOXTRAYGLOBALMSG;
 
-typedef struct VBOXTRAYLOGWND
-{
-    RTTHREAD   hThread;
-    HWND       hWndLogMain;
-    HWND       hWndLogMainEdit;
-    RTPIPE     hNotifyPipeW;
-} VBOXTRAYLOGWND;
-typedef VBOXTRAYLOGWND *PVBOXTRAYLOGWND;
-
 /*********************************************************************************************************************************
 *   Externals                                                                                                                    *
 *********************************************************************************************************************************/
@@ -243,8 +232,6 @@ extern unsigned     g_cVerbosity;
 extern HINSTANCE    g_hInstance;
 extern HWND         g_hwndToolWindow;
 extern uint32_t     g_fGuestDisplaysChanged;
-
-extern VBOXTRAYLOGWND g_LogWnd;
 
 #endif /* !GA_INCLUDED_SRC_WINNT_VBoxTray_VBoxTray_h */
 
