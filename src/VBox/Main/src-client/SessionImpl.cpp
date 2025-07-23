@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 108760 2025-03-17 05:35:54Z valery.portnyagin@oracle.com $ */
+/* $Id: SessionImpl.cpp 110376 2025-07-23 12:19:36Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -355,7 +355,10 @@ HRESULT Session::assignMachine(const ComPtr<IMachine> &aMachine,
         AssertComRCReturn(hrc, hrc);
 
         hrc = mConsole->initWithMachine(aMachine, mControl, aLockType);
-        AssertComRCReturn(hrc, hrc);
+        if (hrc != VBOX_E_PLATFORM_ARCH_NOT_SUPPORTED)
+            AssertComRCReturn(hrc, hrc);
+        else
+            return hrc;
     }
     else
         mRemoteMachine = aMachine;
