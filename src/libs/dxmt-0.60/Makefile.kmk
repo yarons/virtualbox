@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 110345 2025-07-22 12:42:30Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 110362 2025-07-23 07:39:42Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the DXMT library.
 #
@@ -287,7 +287,6 @@ VBox-DxMtNativeD3D11_SOURCES        = \
 	src/d3d11/d3d11_context_imm.cpp \
 	src/d3d11/d3d11_context_impl.cpp \
 	src/d3d11/d3d11_device.cpp \
-	src/d3d11/d3d11_enumerable.cpp \
 	src/d3d11/d3d11_fence.cpp \
 	src/d3d11/d3d11_input_layout.cpp \
 	src/d3d11/d3d11_inspection.cpp \
