@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 110348 2025-07-22 15:04:28Z andreas.loeffler@oracle.com $ */
+/* $Id: SystemPropertiesImpl.cpp 110382 2025-07-23 13:01:20Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1062,6 +1062,16 @@ HRESULT SystemProperties::getSupportedPlatformArchitectures(std::vector<Platform
     {
         Assert(aSupportedPlatformArchitectures[0] == PlatformArchitecture_x86);
         if (aSupportedPlatformArchitectures[0] == PlatformArchitecture_x86)
+            aSupportedPlatformArchitectures.erase(aSupportedPlatformArchitectures.begin());
+    }
+#endif
+#if !defined(RT_ARCH_ARM64) && defined(VBOX_WITH_VIRT_ARMV8) && !defined(VBOX_WITH_ARM_ON_X86_ENABLED)
+    Bstr bstrEnableArmOnX86;
+    HRESULT hrc = mParent->GetExtraData(Bstr("VBoxInternal2/EnableArmOnX86").raw(), bstrEnableArmOnX86.asOutParam());
+    if (FAILED(hrc) || !bstrEnableArmOnX86.equals("1"))
+    {
+        Assert(aSupportedPlatformArchitectures[1] == PlatformArchitecture_ARM);
+        if (aSupportedPlatformArchitectures[1] == PlatformArchitecture_ARM)
             aSupportedPlatformArchitectures.erase(aSupportedPlatformArchitectures.begin());
     }
 #endif
