@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 110359 2025-07-23 06:43:45Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICAll.cpp 110360 2025-07-23 07:00:07Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC) - All Contexts.
  */
@@ -2124,6 +2124,7 @@ static uint16_t gicAckHighestPriorityPendingIntr(PVMCPUCC pVCpu, uint32_t fIntrG
         /* LPIs are always edge-triggered, mark the interrupt as no longer pending. */
         gicReDistUpdateLpiPending(pVCpu, uIntId, false /* fAsserted */);
         gicReDistSetActiveIntrPriority(pGicCpu, uIntId, bIntrPriority, fIntrGroupMask);
+        gicReDistUpdateIrqState(pVCpu);
         STAM_COUNTER_INC(&pVCpu->gic.s.StatIntrAck);
     }
     else
