@@ -1,4 +1,4 @@
-/* $Id: RecordingStream.cpp 110348 2025-07-22 15:04:28Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingStream.cpp 110375 2025-07-23 10:38:25Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording stream code.
  */
@@ -462,7 +462,9 @@ int RecordingBlockWorker::Run(void)
     while (m_fShutdown || msTimeout > 0)
     {
         vrc = Worker(msTimeout, m_fShutdown, m_pvUser);
-        if (m_fShutdown || RT_FAILURE(vrc))
+        if (   vrc == VINF_CALLBACK_RETURN
+            || m_fShutdown
+            || RT_FAILURE(vrc))
             break;
 
         if (m_msWait)
@@ -471,6 +473,9 @@ int RecordingBlockWorker::Run(void)
             if (   RT_FAILURE(vrc)
                 && vrc != VERR_TIMEOUT)
                 break;
+
+            timeoutReset();
+            vrc = VINF_SUCCESS;
         }
 
         msTimeout = timeoutRemaining();
