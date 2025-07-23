@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxWidget.cpp 110384 2025-07-23 13:12:08Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxWidget.cpp 110385 2025-07-23 13:14:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxWidget class implementation.
  */
@@ -373,7 +373,7 @@ void UIVirtualBoxWidget::prepareWidgets()
             m_pToolBar->setUseTextLabels(true);
 
             /* Check whether we should show Dev Preview tag: */
-            bool fShowDevPreviewTag = true;
+            bool fShowDevPreviewTag = false;
 #if defined(VBOX_WS_MAC) && (defined(RT_ARCH_ARM64) || defined(RT_ARCH_ARM32))
             const CVirtualBox comVBox = gpGlobalSession->virtualBox();
             if (comVBox.isNotNull())
