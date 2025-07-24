@@ -1,4 +1,4 @@
-/* $Id: GICInternal.h 110291 2025-07-18 10:03:06Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICInternal.h 110396 2025-07-24 06:35:08Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -207,7 +207,7 @@ typedef struct GICDEV
     /** Mask of enabled interrupt groups (see GIC_INTR_GROUP_XXX). */
     uint32_t                    fIntrGroupMask;
     /** Flag whether affinity routing is enabled. */
-    bool                        fAffRoutingEnabled;
+    bool                        fAffRouting;
     /** @} */
 
     /** @name Configurables.
