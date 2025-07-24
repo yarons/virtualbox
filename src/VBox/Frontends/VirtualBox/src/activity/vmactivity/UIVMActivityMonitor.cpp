@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.cpp 110398 2025-07-24 07:58:43Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitor.cpp 110400 2025-07-24 12:52:28Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class implementation.
  */
@@ -1462,7 +1462,7 @@ void UIVMActivityMonitorLocal::sltGuestAdditionsStateChange()
 
 void UIVMActivityMonitorLocal::sltClearCOMData()
 {
-    if (m_comConsole.isNull() && m_comConsole.isOk() && m_comConsole.GetEventSource().isOk())
+    if (!m_comConsole.isNull() && m_comConsole.isOk() && m_comConsole.GetEventSource().isOk())
     {
         if (!m_pQtConsoleListener.isNull())
         {
@@ -1478,6 +1478,8 @@ void UIVMActivityMonitorLocal::sltClearCOMData()
         m_comSession.UnlockMachine();
         m_comSession.detach();
     }
+    if (!m_comConsole.isNull())
+        m_comConsole.detach();
 }
 
 void UIVMActivityMonitorLocal::reset()
