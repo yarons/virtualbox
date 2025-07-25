@@ -1,4 +1,4 @@
-/* $Id: RecordingSettingsImpl.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: RecordingSettingsImpl.cpp 110414 2025-07-25 15:18:13Z andreas.loeffler@oracle.com $ */
 /** @file
  *
  * VirtualBox COM class implementation - Machine capture settings.
@@ -409,9 +409,14 @@ HRESULT RecordingSettings::start(ComPtr<IProgress> &aProgress)
     if (RT_FAILURE(vrc))
     {
         /* Make the progress' error info available to the caller on failure. */
-        ComObjPtr<IVirtualBoxErrorInfo> pErrorInfo;
-        m->mProgress->COMGETTER(ErrorInfo)(pErrorInfo.asOutParam());
-        return setError(pErrorInfo);
+        if (m->mProgress.isNotNull()) /* Progress object available (yet)? */
+        {
+            ComObjPtr<IVirtualBoxErrorInfo> pErrorInfo;
+            m->mProgress->COMGETTER(ErrorInfo)(pErrorInfo.asOutParam());
+            return setError(pErrorInfo);
+        }
+
+        return setErrorBoth(VBOX_E_RECORDING_ERROR, vrc, "Starting recording failed with %Rrc", vrc);
     }
 
     return m->mProgress.queryInterfaceTo(aProgress.asOutParam());
