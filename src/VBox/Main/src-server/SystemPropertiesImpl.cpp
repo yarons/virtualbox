@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 110389 2025-07-23 15:27:51Z klaus.espenlaub@oracle.com $ */
+/* $Id: SystemPropertiesImpl.cpp 110418 2025-07-25 20:26:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1040,7 +1040,7 @@ HRESULT SystemProperties::getSupportedPlatformArchitectures(std::vector<Platform
     static const PlatformArchitecture_T s_aPlatformArchitectures[] =
     {
 #if   defined(RT_ARCH_X86)   || defined(RT_ARCH_AMD64)
-        /* Currently x86 can run x86 VMs only and if enabled ARM VMs with much limitations. */
+        /* Currently, x86 can only run x86 VMs and, if enabled, pretend to run ARM VMs. */
         PlatformArchitecture_x86
 # ifdef VBOX_WITH_VIRT_ARMV8
         , PlatformArchitecture_ARM
