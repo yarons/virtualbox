@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 109891 2025-06-18 13:18:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 110420 2025-07-27 09:31:34Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -672,7 +672,7 @@ bool UIWizardNewVMExpertPage::isComplete() const
         {
             m_pToolBox->setPageTitleIcon(ExpertToolboxItems_NameAndOSType,
                                          UIIconPool::iconSet(":/status_error_16px.png"),
-                                         UIWizardNewVM::tr("Virtual` machine path is not unique"));
+                                         UIWizardNewVM::tr("Virtual machine path is not unique"));
             fIsComplete = false;
         }
         if (!UIWizardNewVMNameOSTypeCommon::checkISOFile(m_pNameAndSystemEditor->ISOImagePath()))
