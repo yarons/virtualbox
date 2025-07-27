@@ -1,4 +1,4 @@
-/* $Id: IEMAllXcpt-armv8.cpp 110178 2025-07-09 17:25:59Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllXcpt-armv8.cpp 110422 2025-07-27 22:59:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - ARM target, exceptions & interrupts.
  */
@@ -68,6 +68,23 @@ iemRaiseDataAbortFromWalkJmp(PVMCPUCC pVCpu, RTGCPTR GCPtrMem, uint32_t cbMem, u
                              PCPGMPTWALKFAST pWalkFast) IEM_NOEXCEPT_MAY_LONGJMP
 {
     VBOXSTRICTRC const rcStrict = iemRaiseDataAbortFromWalk(pVCpu, GCPtrMem, cbMem, fAccess, rc, pWalkFast);
+    IEM_DO_LONGJMP(pVCpu, VBOXSTRICTRC_VAL(rcStrict));
+}
+
+
+VBOXSTRICTRC
+iemRaiseDataAbortFromAlignmentCheck(PVMCPUCC pVCpu, RTGCPTR GCPtrMem, uint32_t cbMem, uint32_t fAccess) RT_NOEXCEPT
+{
+    RT_NOREF(pVCpu, GCPtrMem, cbMem, fAccess);
+    AssertFailedReturn(VERR_IEM_ASPECT_NOT_IMPLEMENTED);
+}
+
+
+DECL_NO_RETURN(void)
+iemRaiseDataAbortFromAlignmentCheckJmp(PVMCPUCC pVCpu, RTGCPTR GCPtrMem, uint32_t cbMem,
+                                       uint32_t fAccess) IEM_NOEXCEPT_MAY_LONGJMP
+{
+    VBOXSTRICTRC const rcStrict = iemRaiseDataAbortFromAlignmentCheck(pVCpu, GCPtrMem, cbMem, fAccess);
     IEM_DO_LONGJMP(pVCpu, VBOXSTRICTRC_VAL(rcStrict));
 }
 
