@@ -1,4 +1,4 @@
-/* $Id: GICInternal.h 110397 2025-07-24 07:57:57Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICInternal.h 110423 2025-07-28 07:16:43Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -431,7 +431,6 @@ DECL_HIDDEN_CALLBACK(VBOXSTRICTRC) gicItsMmioRead(PPDMDEVINS pDevIns, void *pvUs
 
 DECLHIDDEN(void)                   gicReDistSetLpi(PPDMDEVINS pDevIns, PVMCPUCC pVCpu, uint16_t uIntId, bool fAsserted);
 DECLHIDDEN(void)                   gicDistReadLpiConfigTableFromMem(PPDMDEVINS pDevIns);
-DECLHIDDEN(bool)                   gicDistIsLpiValid(PPDMDEVINS pDevIns, uint16_t uIntId);
 
 DECLHIDDEN(void)                   gicResetCpu(PPDMDEVINS pDevIns, PVMCPUCC pVCpu);
 DECLHIDDEN(void)                   gicReset(PPDMDEVINS pDevIns);
