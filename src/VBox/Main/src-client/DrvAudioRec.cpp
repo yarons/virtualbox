@@ -1,4 +1,4 @@
-/* $Id: DrvAudioRec.cpp 110348 2025-07-22 15:04:28Z andreas.loeffler@oracle.com $ */
+/* $Id: DrvAudioRec.cpp 110425 2025-07-28 09:18:33Z andreas.loeffler@oracle.com $ */
 /** @file
  * Video recording audio backend for Main.
  *
@@ -46,6 +46,7 @@
 
 #include "DrvAudioRec.h"
 #include "ConsoleImpl.h"
+#include "RecordingStream.h"
 
 #include "WebMWriter.h"
 

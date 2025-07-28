@@ -1,4 +1,4 @@
-/* $Id: RecordingCodec.cpp 110348 2025-07-22 15:04:28Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingCodec.cpp 110425 2025-07-28 09:18:33Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording codec wrapper.
  */
@@ -65,7 +65,6 @@
 #include <VBox/vmm/pdmaudioifs.h>
 #include <VBox/vmm/pdmaudioinline.h>
 
-#include "Recording.h"
 #include "RecordingInternals.h"
 #include "RecordingUtils.h"
 #include "WebMWriter.h"
@@ -741,7 +740,6 @@ static DECLCALLBACK(int) recordingCodecVorbisEncode(PRECORDINGCODEC pCodec,
 #ifdef LOG_ENABLED
             cBlocksEncoded++;
 #endif
-
             vrc = pCodec->Callbacks.pfnWriteData(pCodec, op.packet, (size_t)op.bytes, pCodec->State.tsLastWrittenMs,
                                                  RECORDINGCODEC_ENC_F_BLOCK_IS_KEY /* Every Vorbis frame is a key frame */,
                                                  pCodec->Callbacks.pvUser);

@@ -1,4 +1,4 @@
-/* $Id: RecordingUtils.cpp 110358 2025-07-23 06:37:21Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingUtils.cpp 110425 2025-07-28 09:18:33Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording utility code.
  */
@@ -24,6 +24,8 @@
  *
  * SPDX-License-Identifier: GPL-3.0-only
  */
+
+#include <VBox/com/VirtualBox.h>
 
 #include "RecordingUtils.h"
 
