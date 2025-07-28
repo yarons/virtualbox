@@ -1,4 +1,4 @@
-/* $Id: IEMInline.h 110422 2025-07-27 22:59:43Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInline.h 110424 2025-07-28 07:29:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Inlined Functions, Common.
  */
@@ -293,10 +293,8 @@ DECLINLINE(void) iemMemRollbackAndUnmapWo(PVMCPUCC pVCpu, uint8_t bMapInfo) RT_N
 }
 
 
-#ifdef IEM_WITH_DATA_TLB
 /**
  * Helper for iemMemMap, iemMemMapJmp and iemMemBounceBufferMapCrossPage.
- * @todo duplicated
  */
 DECL_FORCE_INLINE(uint32_t)
 iemMemCheckDataBreakpoint(PVMCC pVM, PVMCPUCC pVCpu, RTGCPTR GCPtrMem, size_t cbMem, uint32_t fAccess)
@@ -306,7 +304,6 @@ iemMemCheckDataBreakpoint(PVMCC pVM, PVMCPUCC pVCpu, RTGCPTR GCPtrMem, size_t cb
         return DBGFBpCheckDataWrite(pVM, pVCpu, GCPtrMem, (uint32_t)cbMem, fSysAccess);
     return DBGFBpCheckDataRead(pVM, pVCpu, GCPtrMem, (uint32_t)cbMem, fSysAccess);
 }
-#endif
 
 /** @} */
 
