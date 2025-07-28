@@ -1,4 +1,4 @@
-/* $Id: VBoxNetSlirpNAT.cpp 110343 2025-07-22 06:48:58Z jack.doherty@oracle.com $ */
+/* $Id: VBoxNetSlirpNAT.cpp 110448 2025-07-28 20:27:59Z jack.doherty@oracle.com $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -1089,7 +1089,7 @@ VBoxNetSlirpNAT::run()
     /* spawn intnet input pump */
     rc = RTThreadCreate(&m_hThrRecv,
                         VBoxNetSlirpNAT::receiveThread, this,
-                        1024, /* :cbStack */
+                        0, /* :cbStack */
                         RTTHREADTYPE_IO, RTTHREADFLAGS_WAITABLE,
                         "RECV");
     AssertRCReturn(rc, rc);
