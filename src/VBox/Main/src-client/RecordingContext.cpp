@@ -1,4 +1,4 @@
-/* $Id: RecordingContext.cpp 110427 2025-07-28 10:43:42Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingContext.cpp 110429 2025-07-28 11:07:29Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording context code.
  *
@@ -59,7 +59,7 @@
 
 #include "ConsoleImpl.h"
 #include "ProgressImpl.h"
-#include "Recording.h"
+#include "RecordingContext.h"
 #include "RecordingInternals.h"
 #include "RecordingStream.h"
 #include "RecordingUtils.h"
