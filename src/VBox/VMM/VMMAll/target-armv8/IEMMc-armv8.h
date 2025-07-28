@@ -1,4 +1,4 @@
-/* $Id: IEMMc-armv8.h 110440 2025-07-28 14:37:24Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc-armv8.h 110446 2025-07-28 17:15:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX, ARMv8 target.
  */
@@ -111,6 +111,9 @@
 
 #define IEM_MC_STORE_MEM_FLAT_U64_PAIR(a_GCPtrMem, a_u64Value1, a_u64Value2) \
     iemMemFlatStoreDataPairU64Jmp(pVCpu, (a_GCPtrMem), (a_u64Value1), (a_u64Value2))
+
+/** Fetched PC (for PC relative addressing). */
+#define IEM_MC_FETCH_PC_U64(a_GCPtrMem)  (a_GCPtrMem) = pVCpu->cpum.GstCtx.Pc.u64
 
 /** Adds a constant to an address (64-bit), applying checked
  *  pointer arithmetic at the current EL. */
