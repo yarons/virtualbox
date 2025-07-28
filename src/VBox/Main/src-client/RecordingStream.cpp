@@ -1,4 +1,4 @@
-/* $Id: RecordingStream.cpp 110425 2025-07-28 09:18:33Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingStream.cpp 110426 2025-07-28 09:27:30Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording stream code.
  */
@@ -1004,7 +1004,7 @@ int RecordingStream::initInternal(RecordingContext *pCtx, uint32_t uScreen,
 #ifdef VBOX_WITH_AUDIO_RECORDING
     m_pCodecAudio    = pCodecAudio;
 #else
-    m_pCodecAudio    = NULL;
+    RT_NOREF(pCodecAudio);
 #endif
     m_Settings = ScreenSettings;
 
