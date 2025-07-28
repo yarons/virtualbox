@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 110425 2025-07-28 09:18:33Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 110428 2025-07-28 10:47:44Z andreas.loeffler@oracle.com $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -1071,7 +1071,7 @@ if !defined(VBOX_ONLY_SDK) && !defined(VBOX_ONLY_EXTPACKS) # Note this goes on f
   	src-all/RecordingUtils.cpp \
   	src-client/EBMLWriter.cpp \
   	src-client/WebMWriter.cpp \
-  	src-client/Recording.cpp \
+  	src-client/RecordingContext.cpp \
   	src-client/RecordingInternals.cpp \
   	src-client/RecordingCodec.cpp \
   	src-client/RecordingStream.cpp
