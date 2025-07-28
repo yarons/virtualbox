@@ -1,4 +1,4 @@
-/* $Id: RecordingInternals.h 110425 2025-07-28 09:18:33Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingInternals.h 110427 2025-07-28 10:43:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording internals header.
  */
@@ -57,7 +57,7 @@
 # include "vorbis/vorbisenc.h"
 #endif
 
-#include "Recording.h" /* For RECORDINGPIXELFMT. */
+#include "RecordingContext.h" /* For RECORDINGPIXELFMT. */
 
 
 /*********************************************************************************************************************************

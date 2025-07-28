@@ -1,4 +1,4 @@
-/* $Id: DrvAudioRec.h 110348 2025-07-22 15:04:28Z andreas.loeffler@oracle.com $ */
+/* $Id: DrvAudioRec.h 110427 2025-07-28 10:43:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox driver interface video recording audio backend.
  */
@@ -37,7 +37,7 @@
 #include <VBox/vmm/pdmifs.h>
 
 #include "AudioDriver.h"
-#include "Recording.h"
+#include "RecordingContext.h"
 
 using namespace com;
 

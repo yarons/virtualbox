@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 110425 2025-07-28 09:18:33Z andreas.loeffler@oracle.com $ */
+/* $Id: DisplayImpl.cpp 110427 2025-07-28 10:43:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -56,11 +56,7 @@
 #include <VBox/com/array.h>
 
 #ifdef VBOX_WITH_RECORDING
-# include <iprt/path.h>
-# include "Recording.h"
-
-# include <VBox/vmm/pdmapi.h>
-# include <VBox/vmm/pdmaudioifs.h>
+# include "RecordingContext.h"
 #endif
 
 /**

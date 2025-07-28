@@ -1,4 +1,4 @@
-/* $Id: RecordingScreenSettingsImpl.h 110352 2025-07-22 15:43:09Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingScreenSettingsImpl.h 110427 2025-07-28 10:43:42Z andreas.loeffler@oracle.com $ */
 
 /** @file
  *
@@ -33,7 +33,7 @@
 # pragma once
 #endif
 
-#include "Recording.h"
+#include "RecordingContext.h"
 #include "RecordingScreenSettingsWrap.h"
 
 class RecordingSettings;

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 110379 2025-07-23 12:36:43Z klaus.espenlaub@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 110427 2025-07-28 10:43:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -101,7 +101,7 @@
 #include "ThreadTask.h"
 
 #ifdef VBOX_WITH_RECORDING
-# include "Recording.h"
+# include "RecordingContext.h"
 #endif
 
 #include "CryptoUtils.h"

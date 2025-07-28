@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 110348 2025-07-22 15:04:28Z andreas.loeffler@oracle.com $ */
+/* $Id: ConsoleImpl.h 110427 2025-07-28 10:43:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -39,7 +39,7 @@
 #include "SecretKeyStore.h"
 #include "ConsoleWrap.h"
 #ifdef VBOX_WITH_RECORDING
-# include "Recording.h"
+# include "RecordingContext.h"
 #endif
 #ifdef VBOX_WITH_CLOUD_NET
 #include "CloudGateway.h"
