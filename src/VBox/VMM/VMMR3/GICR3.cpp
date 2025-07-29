@@ -1,4 +1,4 @@
-/* $Id: GICR3.cpp 110399 2025-07-24 09:25:19Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GICR3.cpp 110456 2025-07-29 09:39:05Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
@@ -408,7 +408,7 @@ static DECLCALLBACK(void) gicR3DbgInfoLpi(PVM pVM, PCDBGFINFOHLP pHlp, const cha
     pHlp->pfnPrintf(pHlp, "  VCPU[%u] LPI pending bitmap:\n", pVCpu->idCpu);
     for (uint32_t i = 0; i < RT_ELEMENTS(pGicCpu->LpiPending.au64); i += sizeof(pGicCpu->LpiPending.au64[0]))
     {
-        pHlp->pfnPrintf(pHlp, "    [%3u..%-3u] = %08RX64 %08RX64 %08RX64 %08RX64 %08RX64 %08RX64 %08RX64 %08RX64\n",
+        pHlp->pfnPrintf(pHlp, "    [%3u..%-3u] = %'016RX64 %'016RX64 %'016RX64 %'016RX64 %'016RX64 %'016RX64 %'016RX64 %'016RX64\n",
                               i,                                i + 7,
                               pGicCpu->LpiPending.au64[i],      pGicCpu->LpiPending.au64[i + 1],
                               pGicCpu->LpiPending.au64[i + 2],  pGicCpu->LpiPending.au64[i + 3],
