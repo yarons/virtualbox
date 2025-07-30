@@ -1,4 +1,4 @@
-/* $Id: IEMInternal-armv8.h 110467 2025-07-30 08:31:12Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal-armv8.h 110476 2025-07-30 11:37:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file, ARMv8 target specifics.
  */
@@ -380,6 +380,11 @@ DECLHIDDEN(VBOXSTRICTRC) iemCImplA64_msr_novar(PVMCPU pVCpu, uint32_t idSysReg, 
                                                uint64_t uValue, uint32_t idxGprSrc) RT_NOEXCEPT;
 DECLHIDDEN(VBOXSTRICTRC) iemCImplA64_mrs_fallback(PVMCPU pVCpu, uint32_t idxGprDst, uint32_t idSysReg) RT_NOEXCEPT;
 DECLHIDDEN(VBOXSTRICTRC) iemCImplA64_msr_fallback(PVMCPU pVCpu, uint32_t idSysReg, uint64_t uValue, uint32_t idxGprSrc) RT_NOEXCEPT;
+
+DECLHIDDEN(VBOXSTRICTRC) iemCImplHlpRecalcFlags(PVMCPU pVCpu, VBOXSTRICTRC rcStrict);
+DECLHIDDEN(VBOXSTRICTRC) iemCImplHlpRecalcFlagsAndPgmModeEl1(PVMCPU pVCpu, VBOXSTRICTRC rcStrict);
+DECLHIDDEN(VBOXSTRICTRC) iemCImplHlpRecalcFlagsAndPgmModeEl2(PVMCPU pVCpu, VBOXSTRICTRC rcStrict);
+DECLHIDDEN(VBOXSTRICTRC) iemCImplHlpRecalcFlagsAndPgmModeEl3(PVMCPU pVCpu, VBOXSTRICTRC rcStrict);
 
 DECLHIDDEN(VBOXSTRICTRC) iemCImplHlpNVMemReadU64(PVMCPU pVCpu, uint32_t off, uint64_t *puDst) RT_NOEXCEPT;
 DECLHIDDEN(VBOXSTRICTRC) iemCImplHlpNVMemWriteU64(PVMCPU pVCpu, uint32_t off, uint64_t uValue) RT_NOEXCEPT;
