@@ -1,4 +1,4 @@
-/* $Id: IEMInternal-armv8.h 110422 2025-07-27 22:59:43Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal-armv8.h 110467 2025-07-30 08:31:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file, ARMv8 target specifics.
  */
@@ -160,6 +160,8 @@ IEM_RAISE_PROTOS(iemRaiseInstructionAbortFromWalk,
 IEM_RAISE_PROTOS(iemRaiseInstructionAbortTlbPermision,
                  PVMCPUCC pVCpu, RTGCPTR GCPtrMem, uint8_t cbMem, PCIEMTLBENTRY pTlbe);
 
+IEM_RAISE_PROTOS(iemRaisePcAlignmentCheck, PVMCPUCC pVCpu);
+IEM_RAISE_PROTOS(iemRaiseSpAlignmentCheck, PVMCPUCC pVCpu);
 
 
 /** Creates an instruction essence value for MRS, MSR and similar.   */

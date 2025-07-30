@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 110422 2025-07-27 22:59:43Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 110467 2025-07-30 08:31:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -1426,6 +1426,8 @@ typedef IEMTLBTRACEENTRY const *PCIEMTLBTRACEENTRY;
 # define IEM_F_ARM_A                        UINT32_C(0x00000040)
 /** ARM: LSE2 alignment checks enabled (~SCTRL_ELx.nAA). */
 # define IEM_F_ARM_AA                       UINT32_C(0x00000080)
+/** ARM: SP alignment checks enabled for current EL (SCTRL_ELx.SA/SA0). */
+# define IEM_F_ARM_SA                       UINT32_C(0x00000100)
 
 #if 0 /* revisit when needed */
 /** ARM: 4K minium page (granule) size (stage 1+2). */

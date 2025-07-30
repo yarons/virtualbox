@@ -1,4 +1,4 @@
-/* $Id: IEMAllXcpt-armv8.cpp 110422 2025-07-27 22:59:43Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllXcpt-armv8.cpp 110467 2025-07-30 08:31:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - ARM target, exceptions & interrupts.
  */
@@ -137,6 +137,38 @@ iemRaiseDebugDataAccessOrInvokeDbgfJmp(PVMCPUCC pVCpu, uint32_t fDataBps, RTGCPT
                                        uint32_t fAccess) IEM_NOEXCEPT_MAY_LONGJMP
 {
     VBOXSTRICTRC const rcStrict = iemRaiseDebugDataAccessOrInvokeDbgf(pVCpu, fDataBps, GCPtrMem, cbMem, fAccess);
+    IEM_DO_LONGJMP(pVCpu, VBOXSTRICTRC_VAL(rcStrict));
+}
+
+
+VBOXSTRICTRC
+iemRaisePcAlignmentCheck(PVMCPUCC pVCpu) RT_NOEXCEPT
+{
+    RT_NOREF(pVCpu);
+    AssertFailedReturn(VERR_IEM_ASPECT_NOT_IMPLEMENTED);
+}
+
+
+DECL_NO_RETURN(void)
+iemRaisePcAlignmentCheckJmp(PVMCPUCC pVCpu) IEM_NOEXCEPT_MAY_LONGJMP
+{
+    VBOXSTRICTRC const rcStrict = iemRaisePcAlignmentCheck(pVCpu);
+    IEM_DO_LONGJMP(pVCpu, VBOXSTRICTRC_VAL(rcStrict));
+}
+
+
+VBOXSTRICTRC
+iemRaiseSpAlignmentCheck(PVMCPUCC pVCpu) RT_NOEXCEPT
+{
+    RT_NOREF(pVCpu);
+    AssertFailedReturn(VERR_IEM_ASPECT_NOT_IMPLEMENTED);
+}
+
+
+DECL_NO_RETURN(void)
+iemRaiseSpAlignmentCheckJmp(PVMCPUCC pVCpu) IEM_NOEXCEPT_MAY_LONGJMP
+{
+    VBOXSTRICTRC const rcStrict = iemRaiseSpAlignmentCheck(pVCpu);
     IEM_DO_LONGJMP(pVCpu, VBOXSTRICTRC_VAL(rcStrict));
 }
 
