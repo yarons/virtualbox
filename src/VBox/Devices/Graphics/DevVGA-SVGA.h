@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.h 110457 2025-07-29 13:56:34Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA.h 110487 2025-07-30 17:55:38Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VMware SVGA device
  */
@@ -36,7 +36,7 @@
 
 #define VMSVGA_USE_EMT_HALT_CODE
 
-//#define VMSVGA_WITH_PGM_LOCKING
+#define VMSVGA_WITH_PGM_LOCKING
 
 #include <VBox/pci.h>
 #include <VBox/vmm/pdmifs.h>
