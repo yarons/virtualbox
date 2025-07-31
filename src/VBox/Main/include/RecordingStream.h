@@ -1,4 +1,4 @@
-/* $Id: RecordingStream.h 110425 2025-07-28 09:18:33Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingStream.h 110491 2025-07-31 09:28:23Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording stream code header.
  */
@@ -346,6 +346,9 @@ protected:
         STAMCOUNTER     cVideoFramesHousekeeping;
 # ifdef VBOX_WITH_AUDIO_RECORDING
         STAMCOUNTER     cAudioFramesAdded;
+        /* Note: STAM values for frames to encode / encoded / housekeeping
+                 will be handled in the recording context, as this is common data
+                 which needs to be multiplexed for now. */
         STAMCOUNTER     cAudioFramesToEncode;
         STAMCOUNTER     cAudioFramesEncoded;
         STAMCOUNTER     cAudioFramesHousekeeping;
