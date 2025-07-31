@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA-cmd.cpp 110457 2025-07-29 13:56:34Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA-cmd.cpp 110493 2025-07-31 10:09:24Z alexander.eichner@oracle.com $ */
 /** @file
  * VMware SVGA device - implementation of VMSVGA commands.
  */
@@ -401,8 +401,6 @@ const char *vmsvgaR3FifoCmdToString(uint32_t u32Cmd)
  *
  */
 
-#ifdef VBOX_WITH_VMSVGA3D
-
 #ifdef VMSVGA_WITH_PGM_LOCKING
 int vmsvgaR3GboAllocDescriptors(PVMSVGAGBO pGbo)
 {
@@ -472,6 +470,7 @@ int vmsvgaR3GboMapPages(PPDMDEVINS pDevIns, PVMSVGAGBO pGbo)
 }
 #endif
 
+#ifdef VBOX_WITH_VMSVGA3D
 static int vmsvgaR3GboCreate(PVMSVGAR3STATE pSvgaR3State, SVGAMobFormat ptDepth, PPN64 baseAddress, uint32_t sizeInBytes, PVMSVGAGBO pGbo)
 {
     ASSERT_GUEST_RETURN(sizeInBytes <= _128M, VERR_INVALID_PARAMETER); /** @todo Less than SVGA_REG_MOB_MAX_SIZE */
