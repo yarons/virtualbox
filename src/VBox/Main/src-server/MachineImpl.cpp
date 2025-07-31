@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 110380 2025-07-23 12:41:32Z klaus.espenlaub@oracle.com $ */
+/* $Id: MachineImpl.cpp 110489 2025-07-31 08:32:38Z andreas.loeffler@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -14344,7 +14344,7 @@ HRESULT SessionMachine::i_onVRDEServerChange(BOOL aRestart)
 /**
  * @note Caller needs to take the machine's lock if needed.
  */
-HRESULT SessionMachine::i_onRecordingStateChange(BOOL aEnable, IProgress **aProgress)
+HRESULT SessionMachine::i_onRecordingStateChange(RecordingState_T aState, IProgress **aProgress)
 {
     LogFlowThisFunc(("\n"));
 
@@ -14361,13 +14361,13 @@ HRESULT SessionMachine::i_onRecordingStateChange(BOOL aEnable, IProgress **aProg
     if (!directControl)
         return S_OK;
 
-    return directControl->OnRecordingStateChange(aEnable, aProgress);
+    return directControl->OnRecordingStateChange(aState, aProgress);
 }
 
 /**
  * @note Locks this object for reading.
  */
-HRESULT SessionMachine::i_onRecordingScreenStateChange(BOOL aEnable, ULONG aScreen)
+HRESULT SessionMachine::i_onRecordingScreenStateChange(RecordingState_T aState, ULONG aScreen)
 {
     LogFlowThisFunc(("\n"));
 
@@ -14385,7 +14385,7 @@ HRESULT SessionMachine::i_onRecordingScreenStateChange(BOOL aEnable, ULONG aScre
     if (!directControl)
         return S_OK;
 
-    return directControl->OnRecordingScreenStateChange(aEnable, aScreen);
+    return directControl->OnRecordingScreenStateChange(aState, aScreen);
 }
 
 /**

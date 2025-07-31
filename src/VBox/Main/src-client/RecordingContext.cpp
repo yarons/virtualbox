@@ -1,4 +1,4 @@
-/* $Id: RecordingContext.cpp 110432 2025-07-28 12:23:28Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingContext.cpp 110489 2025-07-31 08:32:38Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording context code.
  *
@@ -904,7 +904,7 @@ DECLCALLBACK(void) RecordingContextImpl::progressCancelCallback(void *pvUser)
     if (pThis->m_pParent->m_pConsole)
     {
         ComPtr<IProgress> pProgressIgnored;
-        pThis->m_pParent->m_pConsole->i_onRecordingStateChange(FALSE /* Disable */, pProgressIgnored);
+        pThis->m_pParent->m_pConsole->i_onRecordingStateChange(RecordingState_Canceled, pProgressIgnored);
     }
 }
 
@@ -928,7 +928,7 @@ DECLCALLBACK(void) RecordingContextImpl::stateChangedCallback(RECORDINGSTS enmSt
             if (uScreen == UINT32_MAX) /* Limit for all screens reached? Disable recording. */
             {
                 ComPtr<IProgress> pProgressIgnored;
-                pConsole ->i_onRecordingStateChange(FALSE /* Disable */, pProgressIgnored);
+                pConsole ->i_onRecordingStateChange(RecordingState_LimitReached, pProgressIgnored);
 
                 pThis->lock();
 
@@ -938,7 +938,7 @@ DECLCALLBACK(void) RecordingContextImpl::stateChangedCallback(RECORDINGSTS enmSt
                 pThis->unlock();
             }
             else
-                pConsole->i_onRecordingScreenStateChange(FALSE /* Disable */, uScreen);
+                pConsole->i_onRecordingScreenStateChange(RecordingState_Stopped, uScreen);
             break;
         }
 
