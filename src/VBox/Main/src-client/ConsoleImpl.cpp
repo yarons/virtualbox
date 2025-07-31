@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 110489 2025-07-31 08:32:38Z andreas.loeffler@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 110490 2025-07-31 09:26:13Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -6313,7 +6313,10 @@ HRESULT Console::i_onRecordingStateChange(RecordingState_T aState, ComPtr<IProgr
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    LogRel2(("Recording: State changed (%s)\n", aState == RecordingState_Started ? "enabled" : "disabled"));
+    /* Note: Currently we only support starting / stopping recording. See @bugref{10947}. */
+    BOOL const fEnable = aState == RecordingState_Started;
+
+    LogRel2(("Recording: State changed (%s)\n", fEnable ? "enabled" : "disabled"));
 
     /* Don't trigger recording changes if the VM isn't running. */
     SafeVMPtrQuiet ptrVM(this);
@@ -6321,7 +6324,7 @@ HRESULT Console::i_onRecordingStateChange(RecordingState_T aState, ComPtr<IProgr
     {
         ComPtr<IVirtualBoxErrorInfo> pErrorInfo;
 
-        int vrc = i_recordingEnable(aState, &alock, aProgress);
+        int vrc = i_recordingEnable(fEnable, &alock, aProgress);
         if (RT_FAILURE(vrc))
         {
             /* If available, get the error information from the progress object and fire it via the event below. */
