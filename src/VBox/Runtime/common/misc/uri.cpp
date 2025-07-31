@@ -1,4 +1,4 @@
-/* $Id: uri.cpp 107513 2025-01-07 10:16:43Z alexander.eichner@oracle.com $ */
+/* $Id: uri.cpp 110494 2025-07-31 10:11:09Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - Uniform Resource Identifier handling.
  */
@@ -463,7 +463,7 @@ static int rtUriParse(const char *pszUri, PRTURIPARSED pParsed)
 
     /*
      * RFC-3986, section 3.2:
-     *      The authority component is preceeded by a double slash ("//")...
+     *      The authority component is preceded by a double slash ("//")...
      */
     if (   pszUri[off] == '/'
         && pszUri[off + 1] == '/')

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDHCPServer.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageDHCPServer.cpp 110494 2025-07-31 10:11:09Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of dhcpserver command.
  */
@@ -508,7 +508,7 @@ static DECLCALLBACK(RTEXITCODE) dhcpdHandleAddAndModify(PDHCPDCMDCTX pCtx, int a
 
                 case 'n':   // --nic        Sets the option scope to pszVmName + (ValueUnion.u8 - 1).
                     if (Scope.getScope() != DHCPConfigScope_MachineNIC)
-                        return errorSyntax(DHCPServer::tr("--nic option requires a --vm preceeding selecting the VM it should apply to"));
+                        return errorSyntax(DHCPServer::tr("--nic option requires a --vm preceding selecting the VM it should apply to"));
                     if (fNeedValueOrRemove)
                         return errorSyntax(DHCPServer::tr("Incomplete option sequence preseeding '--nic=%u"), ValueUnion.u8);
                     if (ValueUnion.u8 < 1)

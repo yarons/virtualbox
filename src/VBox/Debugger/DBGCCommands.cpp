@@ -1,4 +1,4 @@
-/* $Id: DBGCCommands.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGCCommands.cpp 110494 2025-07-31 10:11:09Z andreas.loeffler@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, Native Commands.
  */
@@ -559,7 +559,7 @@ static int dbgcCmdHelpCmdOrFunc(PDBGCCMDHLP pCmdHlp, const char *pszName, bool f
             return DBGCCmdHlpPrintf(pCmdHlp, "%*s %s\n", cchPadding, "", pszDescription);
         else
         {
-            /* Split on preceeding blank. */
+            /* Split on preceding blank. */
             const char *pszEnd  = &pszDescription[cchCurWidth];
             if (!RT_C_IS_BLANK(*pszEnd))
                 while (pszEnd != pszDescription && !RT_C_IS_BLANK(pszEnd[-1]))
