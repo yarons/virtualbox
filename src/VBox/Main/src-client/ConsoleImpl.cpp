@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 110490 2025-07-31 09:26:13Z andreas.loeffler@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 110506 2025-08-01 08:03:54Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -6348,7 +6348,7 @@ HRESULT Console::i_onRecordingStateChange(RecordingState_T aState, ComPtr<IProgr
 
     return hrc;
 #else
-    RT_NOREF(aEnable, aProgress);
+    RT_NOREF(aState, aProgress);
     ReturnComNotImplemented();
 #endif /* VBOX_WITH_RECORDING */
 }
