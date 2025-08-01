@@ -1,4 +1,4 @@
-/* $Id: IEMInline-x86.h 108590 2025-02-27 10:35:39Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInline-x86.h 110512 2025-08-01 12:32:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Inlined Functions, x86 target.
  */
@@ -2987,7 +2987,7 @@ DECLINLINE(void) iemFpuUpdateOpcodeAndIpWorkerEx(PVMCPUCC pVCpu, PX86FXSTATE pFp
 {
     Assert(uFpuOpcode != UINT16_MAX);
     pFpuCtx->FOP = uFpuOpcode;
-    /** @todo x87.CS and FPUIP needs to be kept seperately. */
+    /** @todo x87.CS and FPUIP needs to be kept separately. */
     if (IEM_IS_REAL_OR_V86_MODE(pVCpu))
     {
         /** @todo Testcase: making assumptions about how FPUIP and FPUDP are handled

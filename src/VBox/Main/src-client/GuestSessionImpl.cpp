@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 107636 2025-01-09 09:31:03Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImpl.cpp 110512 2025-08-01 12:32:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -2394,7 +2394,7 @@ bool GuestSession::i_isReady(void)
      * the VM is in an online *and* non-transient state while at it.
      *
      * This for instance is required if we want to close a guest session while the VM state is being saved or
-     * is doing some other lenghtly operations we can't operate with the guest.
+     * is doing some other lengthy operations we can't operate with the guest.
      */
     MachineState_T enmMachineState = MachineState_Null;
     HRESULT hrc = mConsole->COMGETTER(State)(&enmMachineState);

@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.cpp 110400 2025-07-24 12:52:28Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitor.cpp 110512 2025-08-01 12:32:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class implementation.
  */
@@ -1656,7 +1656,7 @@ bool UIVMActivityMonitorLocal::guestAdditionsAvailable(const char *pszMinimumVer
 
 void UIVMActivityMonitorLocal::enableDisableGuestAdditionDependedWidgets(bool fEnable)
 {
-    /* Configure performace monitor: */
+    /* Configure performance monitor: */
     if (fEnable)
         configureCOMPerformanceCollector();
     for (QMap<Metric_Type, UIMetric>::const_iterator iterator =  m_metrics.begin();

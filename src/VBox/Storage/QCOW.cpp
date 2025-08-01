@@ -1,4 +1,4 @@
-/* $Id: QCOW.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: QCOW.cpp 110512 2025-08-01 12:32:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * QCOW - QCOW Disk image.
  */
@@ -134,7 +134,7 @@ typedef struct QCowHeader
                 uint64_t    u64AutoClrFeat;
                 /** Width in bits of a reference count block. */
                 uint32_t    u32RefCntWidth;
-                /** Lenght of the header structure in bytes (for the header extensions). */
+                /** Length of the header structure in bytes (for the header extensions). */
                 uint32_t    u32HdrLenBytes;
             } v3;
         } v2;

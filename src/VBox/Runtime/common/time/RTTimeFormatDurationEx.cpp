@@ -1,4 +1,4 @@
-/* $Id: RTTimeFormatDurationEx.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: RTTimeFormatDurationEx.cpp 110512 2025-08-01 12:32:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - RTTimeFormatInterval.
  */
@@ -142,7 +142,7 @@ static ssize_t rtTimeFormatDurationCopyOutResult(char *pszDst, size_t cbDst, con
  * Formats duration as best we can according to ISO-8601.
  *
  * The returned value is on the form "[-]PnnnnnWnDTnnHnnMnn.fffffffffS", where a
- * sequence of 'n' can be between 1 and the given lenght, and all but the
+ * sequence of 'n' can be between 1 and the given length, and all but the
  * "nn.fffffffffS" part is optional and will only be outputted when the duration
  * is sufficiently large.  The code currently does not omit any inbetween
  * elements other than the day count (D), so an exactly 7 day duration is

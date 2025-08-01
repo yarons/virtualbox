@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.h 108097 2025-01-28 15:01:40Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImplTasks.h 110512 2025-08-01 12:32:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks header.
  */
@@ -161,7 +161,7 @@ public:
 typedef std::vector<FsList *> FsLists;
 
 /**
- * Abstract base class for a lenghtly per-session operation which
+ * Abstract base class for a lengthy per-session operation which
  * runs in a Main worker thread.
  */
 class GuestSessionTask

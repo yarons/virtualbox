@@ -1,4 +1,4 @@
-/* $Id: DarwinKeyboard.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DarwinKeyboard.cpp 110512 2025-08-01 12:32:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - Declarations of utility functions for handling Darwin Keyboard specific tasks.
  */
@@ -1400,7 +1400,7 @@ static void darwinHidInputCbKeyUp(VBoxKbdState_t *pKbd, uint32_t iKeyCode, VBoxH
     CFIndex         iQueue = 0;
     VBoxKbdEvent_t *pEvent = NULL;
 
-    // Key-up event assumes that key-down event occured previously. If so, an event
+    // Key-up event assumes that key-down event occurred previously. If so, an event
     // data should be in event queue. Attempt to find it.
     for (CFIndex i = 0; i < CFArrayGetCount(pHidState->pFifoEventQueue); i++)
     {

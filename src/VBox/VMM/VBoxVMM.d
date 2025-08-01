@@ -1,4 +1,4 @@
-/* $Id: VBoxVMM.d 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxVMM.d 110512 2025-08-01 12:32:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxVMM - Static dtrace probes.
  */
@@ -92,7 +92,7 @@ provider vboxvmm
     probe xcpt__br(struct VMCPU *a_pVCpu, struct CPUMCTX *a_pCtx);
     /** \#UD - undefined opcode.  */
     probe xcpt__ud(struct VMCPU *a_pVCpu, struct CPUMCTX *a_pCtx);
-    /** \#NM - FPU not avaible and more.  */
+    /** \#NM - FPU not available and more.  */
     probe xcpt__nm(struct VMCPU *a_pVCpu, struct CPUMCTX *a_pCtx);
     /** \#DF - double fault.  */
     probe xcpt__df(struct VMCPU *a_pVCpu, struct CPUMCTX *a_pCtx);

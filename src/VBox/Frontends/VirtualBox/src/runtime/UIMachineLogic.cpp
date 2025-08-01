@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 109289 2025-04-21 12:47:17Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 110512 2025-08-01 12:32:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -580,7 +580,7 @@ void UIMachineLogic::sltAdditionsStateChanged()
 
 void UIMachineLogic::sltMouseCapabilityChanged()
 {
-    /* Variable falgs: */
+    /* Variable flags: */
     bool fIsMouseSupportsAbsolute = uimachine()->isMouseSupportsAbsolute();
     bool fIsMouseSupportsRelative = uimachine()->isMouseSupportsRelative();
     bool fIsMouseSupportsTouchScreen = uimachine()->isMouseSupportsTouchScreen();
@@ -1371,7 +1371,7 @@ void UIMachineLogic::updateDock()
     else
     {
         m_DockIconPreviewMonitor = 0;
-        /* Remove the seperator as well: */
+        /* Remove the separator as well: */
         if (m_pDockSettingsMenuSeparator)
         {
             pDockSettingsMenu->removeAction(m_pDockSettingsMenuSeparator);

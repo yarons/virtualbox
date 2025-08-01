@@ -1,4 +1,4 @@
-/* $Id: IEMAllHlpFpu-x86.cpp 108427 2025-02-17 15:24:14Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllHlpFpu-x86.cpp 110512 2025-08-01 12:32:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - x86 target, FPU helpers.
  */
@@ -80,7 +80,7 @@ DECLINLINE(void) iemFpuUpdateDP(PVMCPUCC pVCpu, PX86FXSTATE pFpuCtx, uint8_t iEf
             AssertMsgFailed(("%d\n", iEffSeg));
             sel = pVCpu->cpum.GstCtx.ds.Sel;
     }
-    /** @todo pFpuCtx->DS and FPUDP needs to be kept seperately. */
+    /** @todo pFpuCtx->DS and FPUDP needs to be kept separately. */
     if (IEM_IS_REAL_OR_V86_MODE(pVCpu))
     {
         pFpuCtx->DS    = 0;

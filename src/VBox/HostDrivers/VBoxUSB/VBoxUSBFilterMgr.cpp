@@ -1,4 +1,4 @@
-/* $Id: VBoxUSBFilterMgr.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxUSBFilterMgr.cpp 110512 2025-08-01 12:32:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Ring-0 USB Filter Manager.
  */
@@ -455,7 +455,7 @@ void VBoxUSBFilterRemoveOwner(VBOXUSBFILTER_CONTEXT Owner)
  * @param   fRemoveFltIfOneShot Whether or not to remove one-shot filters on
  *                              match.
  * @param   pfFilter            Where to store whether the device must be filtered or not
- * @param   pfIsOneShot         Where to return whetehr the match was a one-shot
+ * @param   pfIsOneShot         Where to return whether the match was a one-shot
  *                              filter or not.  Optional.
  *
  */

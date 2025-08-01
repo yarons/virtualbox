@@ -1,4 +1,4 @@
-/* $Id: DBGCRemoteKd.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGCRemoteKd.cpp 110512 2025-08-01 12:32:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, Windows Kd Remote Stub.
  */
@@ -636,7 +636,7 @@ typedef const KDPACKETSTATECHANGE64 *PCKDPACKETSTATECHANGE64;
  * @{ */
 /** Minimum state change type. */
 #define KD_PACKET_STATE_CHANGE_MIN                  UINT32_C(0x00003030)
-/** An exception occured. */
+/** An exception occurred. */
 #define KD_PACKET_STATE_CHANGE_EXCEPTION            KD_PACKET_STATE_CHANGE_MIN
 /** Symbols were loaded(?). */
 #define KD_PACKET_STATE_CHANGE_LOAD_SYMBOLS         UINT32_C(0x00003031)

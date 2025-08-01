@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDriver.cpp 108837 2025-03-20 12:48:42Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxMPDriver.cpp 110512 2025-08-01 12:32:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox XPDM Miniport driver interface functions
  */
@@ -496,7 +496,7 @@ VBoxDrvStartIO(PVOID HwDeviceExtension, PVIDEO_REQUEST_PACKET RequestPacket)
             break;
         }
 
-        /* Called by the display driver when it recieves visible regions information. */
+        /* Called by the display driver when it receives visible regions information. */
         case IOCTL_VIDEO_VBOX_SETVISIBLEREGION:
         {
             STARTIO_IN(RTRECT, pRects);

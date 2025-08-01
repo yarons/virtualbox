@@ -1,4 +1,4 @@
-/* $Id: VBoxNetPortForwardString.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetPortForwardString.cpp 110512 2025-08-01 12:32:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxNetPortForwardString - Routines for managing port-forward strings.
  */
@@ -275,7 +275,7 @@ int netPfStrToPf(const char *pcszStrPortForward, bool fIPv6, PPORTFORWARDRULE pP
 
     size_t cchRaw = strlen(pcszStrPortForward);
 
-    /* Minimal rule ":tcp:[]:0:[]:0" has got lenght 14 */
+    /* Minimal rule ":tcp:[]:0:[]:0" has got length 14 */
     AssertReturn(cchRaw > 14, VERR_INVALID_PARAMETER);
 
     char *pszRaw = RTStrDup(pcszStrPortForward);

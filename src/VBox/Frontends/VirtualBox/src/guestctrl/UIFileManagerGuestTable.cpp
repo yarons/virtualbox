@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIFileManagerGuestTable.cpp 110512 2025-08-01 12:32:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -930,7 +930,7 @@ QString UIFileManagerGuestTable::fsObjectPropertyString()
         propertyStringList << UIFileManager::tr("<b>Access:</b> %1<br/>").
             arg(QDateTime::fromMSecsSinceEpoch(fileInfo.GetAccessTime() / RT_NS_1MS).toString());
 
-        /* Join the list elements into a single string seperated by empty string: */
+        /* Join the list elements into a single string separated by empty string: */
         return propertyStringList.join(QString());
     }
 

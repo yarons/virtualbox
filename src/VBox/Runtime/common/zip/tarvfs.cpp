@@ -1,4 +1,4 @@
-/* $Id: tarvfs.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: tarvfs.cpp 110512 2025-08-01 12:32:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - TAR Virtual Filesystem, Reader.
  */
@@ -395,7 +395,7 @@ static int rtZipTarReaderParseNextHeader(PRTZIPTARREADER pThis, PCRTZIPTARHDR pH
         /*
          * A GNU long name or long link is a dummy record followed by one or
          * more 512 byte string blocks holding the long name/link.  The name
-         * lenght is encoded in the size field, null terminator included.  If
+         * length is encoded in the size field, null terminator included.  If
          * it is a symlink or hard link the long name may be followed by a
          * long link sequence.
          */

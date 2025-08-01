@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-win.cpp 110512 2025-08-01 12:32:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -53,7 +53,7 @@
 #include "DevVGA-SVGA3d-internal.h"
 
 /* Enable to disassemble defined shaders. */
-#if defined(DEBUG) && 0 /* Disabled as we don't have the DirectX SDK avaible atm. */
+#if defined(DEBUG) && 0 /* Disabled as we don't have the DirectX SDK available atm. */
 #define DUMP_SHADER_DISASSEMBLY
 #endif
 

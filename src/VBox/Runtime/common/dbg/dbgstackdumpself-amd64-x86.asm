@@ -1,4 +1,4 @@
-; $Id: dbgstackdumpself-amd64-x86.asm 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+; $Id: dbgstackdumpself-amd64-x86.asm 110512 2025-08-01 12:32:24Z andreas.loeffler@oracle.com $
 ;; @file
 ; IPRT - RTDbgStackDumpSelf assembly wrapper calling rtDbgStackDumpSelfWorker.
 ;
@@ -109,7 +109,7 @@ RT_BEGINPROC RTDbgStackDumpSelf
         SEH64_PUSH_GREG xAX
 
         ;
-        ; ... preceeded by the EIP/RIP.
+        ; ... preceded by the EIP/RIP.
         ;
 %ifdef RT_ARCH_AMD64
         mov     r10, [xBP + xCB]

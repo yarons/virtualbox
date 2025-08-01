@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequest.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UINetworkRequest.cpp 110512 2025-08-01 12:32:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkRequest class implementation.
  */
@@ -82,7 +82,7 @@ void UINetworkRequest::sltHandleNetworkReplyFinish()
         /* Notify network-request listeners: */
         emit sigCanceled();
     }
-    /* If some other error occured: */
+    /* If some other error occurred: */
     else
     {
         /* Check if we are able to handle error: */

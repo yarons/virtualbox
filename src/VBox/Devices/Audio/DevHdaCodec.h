@@ -1,4 +1,4 @@
-/* $Id: DevHdaCodec.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DevHdaCodec.h 110512 2025-08-01 12:32:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * Intel HD Audio Controller Emulation - Codec, Sigmatel/IDT STAC9220.
  */
@@ -291,7 +291,7 @@ typedef enum CODECTYPE
 #define CODEC_F00_12_NUM_STEPS(f00_12)                     CODEC_F00_0D_NUM_STEPS(f00_12)
 #define CODEC_F00_12_OFFSET(f00_12)                        CODEC_F00_0D_OFFSET(f00_12)
 
-/* Connection list lenght (7.3.4.11). */
+/* Connection list length (7.3.4.11). */
 #define CODEC_MAKE_F00_0E(long_form, length)    \
     (  (((long_form) & 0x1) << 7)               \
      | ((length) & 0x7F))
