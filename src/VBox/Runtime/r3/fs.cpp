@@ -1,4 +1,4 @@
-/* $Id: fs.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: fs.cpp 110508 2025-08-01 10:02:42Z brent.paulson@oracle.com $ */
 /** @file
  * IPRT - File System.
  */
@@ -242,6 +242,7 @@ RTDECL(const char *) RTFsTypeName(RTFSTYPE enmType)
         case RTFSTYPE_PROC:         return "proc";
         case RTFSTYPE_OCFS2:        return "ocfs2";
         case RTFSTYPE_BTRFS:        return "btrfs";
+        case RTFSTYPE_ECRYPTFS:     return "ecryptfs";
 
         case RTFSTYPE_NTFS:         return "ntfs";
         case RTFSTYPE_FAT:          return "fat";
