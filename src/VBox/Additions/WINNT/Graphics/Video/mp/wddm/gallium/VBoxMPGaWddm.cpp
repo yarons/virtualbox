@@ -1,4 +1,4 @@
-/* $Id: VBoxMPGaWddm.cpp 110485 2025-07-30 17:22:08Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxMPGaWddm.cpp 110520 2025-08-04 08:17:58Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface for WDDM kernel mode driver.
  */
@@ -1404,7 +1404,6 @@ NTSTATUS APIENTRY GaDxgkDdiSubmitCommand(const HANDLE hAdapter, const DXGKARG_SU
          */
         Assert(cbPrivateData == 0);
         Assert(pSubmitCommand->Flags.Paging);
-        LogRelMax(16, ("WDDM: empty buffer: cbPrivateData %d, flags 0x%x\n", cbPrivateData, pSubmitCommand->Flags.Value));
     }
 
     GARENDERDATA const *pRenderData = (GARENDERDATA *)pvPrivateData;
