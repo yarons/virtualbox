@@ -1,4 +1,4 @@
-/* $Id: RecordingContext.cpp 110491 2025-07-31 09:28:23Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingContext.cpp 110525 2025-08-04 09:48:21Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording context code.
  *
@@ -423,7 +423,7 @@ int RecordingContextImpl::progressCreate(const ComPtr<IRecordingSettings> &Setti
 
         ULONG ulMaxTime;
         hrc = ScreenSettings->COMGETTER(MaxTime)(&ulMaxTime);
-        AssertComRCBreak(hrc, VERR_RECORDING_INIT_FAILED);
+        AssertComRCBreak(hrc, RT_NOTHING);
         if (ulMaxTime == 0)
         {
             cOperations = 1; /* Screen will be recorded indefinitely, reset operation count and bail out.  */
