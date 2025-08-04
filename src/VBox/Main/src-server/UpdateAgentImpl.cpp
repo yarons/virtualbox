@@ -1,4 +1,4 @@
-/* $Id: UpdateAgentImpl.cpp 110529 2025-08-04 14:30:35Z knut.osmundsen@oracle.com $ */
+/* $Id: UpdateAgentImpl.cpp 110532 2025-08-04 14:46:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * IUpdateAgent COM class implementations.
  */
@@ -1147,7 +1147,7 @@ DECLCALLBACK(HRESULT) HostUpdateAgent::i_checkForUpdateTask(UpdateAgentTask *pTa
     Utf8StrFmt strUserAgent("VirtualBox %ls <", version.raw());
     i_appendPlatformInfo(strUserAgent);
     strUserAgent.append('>');
-    Log2Rel(("Update agent (%s): Using user agent '%s'\n",  mData.m_strName.c_str(), strUserAgent.c_str()));
+    LogRel2(("Update agent (%s): Using user agent '%s'\n",  mData.m_strName.c_str(), strUserAgent.c_str()));
 
     /*
      * Create the HTTP client instance and pass it to a inner worker method to
