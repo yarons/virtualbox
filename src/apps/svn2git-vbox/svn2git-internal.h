@@ -1,4 +1,4 @@
-/* $Id: svn2git-internal.h 109917 2025-06-20 13:25:42Z alexander.eichner@oracle.com $ */
+/* $Id: svn2git-internal.h 110518 2025-08-04 08:05:22Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Internal svn2git header.
  */
@@ -178,7 +178,8 @@ DECLHIDDEN(int) s2gGitBranchCreate(S2GREPOSITORYGIT hGitRepo, const char *pszNam
                                    uint32_t idRevAncestor);
 
 DECLHIDDEN(int) s2gGitTransactionStart(S2GREPOSITORYGIT hGitRepo);
-DECLHIDDEN(int) s2gGitTransactionCommit(S2GREPOSITORYGIT hGitRepo, const char *pszAuthor, const char *pszAuthorEmail,
+DECLHIDDEN(int) s2gGitTransactionCommit(S2GREPOSITORYGIT hGitRepo, const char *pszCommitter, const char *pszCommitterEmail,
+                                        const char *pszAuthor, const char *pszAuthorEmail,
                                         const char *pszLog, int64_t cEpochSecs, const char *pszBranch, uint32_t idSvnRev);
 DECLHIDDEN(int) s2gGitTransactionFileAdd(S2GREPOSITORYGIT hGitRepo, const char *pszPath, bool fIsExec, uint64_t cbFile);
 DECLHIDDEN(int) s2gGitTransactionFileWriteData(S2GREPOSITORYGIT hGitRepo, const void *pvBuf, size_t cb);
