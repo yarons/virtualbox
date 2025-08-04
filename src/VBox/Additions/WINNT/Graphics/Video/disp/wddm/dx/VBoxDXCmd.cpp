@@ -1,4 +1,4 @@
-/* $Id: VBoxDXCmd.cpp 109095 2025-04-08 09:27:48Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxDXCmd.cpp 110516 2025-08-04 07:58:18Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox D3D user mode driver utilities.
  */
@@ -2508,6 +2508,28 @@ int vgpu10GetVideoCapability(PVBOXDX_DEVICE pDevice,
 
     vboxDXStorePatchLocation(pDevice, &cmd->mobid, pKMResource,
                              offsetInBytes, true);
+
+    vboxDXCommandBufferCommit(pDevice);
+    return VINF_SUCCESS;
+}
+
+
+int vgpu10BindGBSurface(PVBOXDX_DEVICE pDevice,
+                        PVBOXDXKMRESOURCE pKMResource)
+{
+    void *pvCmd = vboxDXCommandBufferReserve(pDevice, SVGA_3D_CMD_BIND_GB_SURFACE,
+                                             sizeof(SVGA3dCmdBindGBSurface), 2);
+    if (!pvCmd)
+        return VERR_NO_MEMORY;
+
+    SVGA3dCmdBindGBSurface *cmd = (SVGA3dCmdBindGBSurface *)pvCmd;
+    cmd->sid = SVGA3D_INVALID_ID;
+    cmd->mobid = SVGA3D_INVALID_ID;
+
+    vboxDXStorePatchLocation(pDevice, &cmd->mobid, pKMResource,
+                             0, true, VBOXDXPATCHID_INSTANCEMOB);
+    vboxDXStorePatchLocation(pDevice, &cmd->sid, pKMResource,
+                             0, true);
 
     vboxDXCommandBufferCommit(pDevice);
     return VINF_SUCCESS;

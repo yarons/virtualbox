@@ -1,4 +1,4 @@
-/* $Id: VBoxDX.h 110310 2025-07-18 15:27:55Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxDX.h 110516 2025-08-04 07:58:18Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -656,7 +656,7 @@ void *vboxDXCommandBufferReserve(PVBOXDX_DEVICE pDevice, SVGAFifo3dCmdId enmCmd,
 void vboxDXCommandBufferCommit(PVBOXDX_DEVICE pDevice);
 
 void vboxDXStorePatchLocation(PVBOXDX_DEVICE pDevice, void *pvPatch, PVBOXDXKMRESOURCE pKMResource,
-                              uint32_t offAllocation, bool fWriteOperation);
+                              uint32_t offAllocation, bool fWriteOperation, uint32_t DriverId = 0);
 
 typedef void FNVBOXDXINITALLOCATIONDESC(VBOXDXALLOCATIONDESC *pDesc, void const *pvInitData);
 typedef FNVBOXDXINITALLOCATIONDESC *PFNVBOXDXINITALLOCATIONDESC;
