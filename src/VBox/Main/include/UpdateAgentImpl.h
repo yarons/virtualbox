@@ -1,4 +1,4 @@
-/* $Id: UpdateAgentImpl.h 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UpdateAgentImpl.h 110529 2025-08-04 14:30:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * Update agent COM class implementation - Header
  */
@@ -83,7 +83,7 @@ protected:
 
     /** @name Static helper methods.
      * @{ */
-    static Utf8Str i_getPlatformInfo(void);
+    void           i_appendPlatformInfo(Utf8Str &a_rStr);
     const char    *i_proxyModeToStr(ProxyMode_T enmMode);
     bool           i_urlSchemeIsSupported(const Utf8Str &strUrl) const;
     /** @} */
