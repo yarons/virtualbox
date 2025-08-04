@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryOSInfo-win.cpp 106500 2024-10-19 03:11:08Z knut.osmundsen@oracle.com $ */
+/* $Id: RTSystemQueryOSInfo-win.cpp 110540 2025-08-04 16:00:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTSystemQueryOSInfo, generic stub.
  */
@@ -241,6 +241,7 @@ static int rtSystemWinQueryOSVersion(RTSYSOSINFO enmInfo, char *pszInfo, size_t 
                 case kRTWinOSType_2019:         strcpy(szTmp, "Windows 2019"); break;
                 case kRTWinOSType_2022:         strcpy(szTmp, "Windows 2022"); break;
                 case kRTWinOSType_11:           strcpy(szTmp, "Windows 11"); break;
+                case kRTWinOSType_2025:         strcpy(szTmp, "Windows 2025"); break;
 
                 case kRTWinOSType_NT_UNKNOWN:
                     RTStrPrintf(szTmp, sizeof(szTmp), "Unknown NT v%u.%u",
