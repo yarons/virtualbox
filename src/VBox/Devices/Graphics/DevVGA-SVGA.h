@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.h 110487 2025-07-30 17:55:38Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA.h 110522 2025-08-04 08:29:09Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VMware SVGA device
  */
@@ -37,6 +37,12 @@
 #define VMSVGA_USE_EMT_HALT_CODE
 
 #define VMSVGA_WITH_PGM_LOCKING
+
+/* Debugging helpers. */
+/* Measure how much time each command takes. */
+//#define VMSVGA_CMD_STATS
+/* Write render targets, shader resources, etc to bitmaps. */
+//#define DUMP_BITMAPS
 
 #include <VBox/pci.h>
 #include <VBox/vmm/pdmifs.h>
