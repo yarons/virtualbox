@@ -1,4 +1,4 @@
-/* $Id: git.cpp 110518 2025-08-04 08:05:22Z alexander.eichner@oracle.com $ */
+/* $Id: git.cpp 110521 2025-08-04 08:18:02Z alexander.eichner@oracle.com $ */
 /** @file
  * svn2git - Convert a svn repository to git.
  */
@@ -799,7 +799,6 @@ DECLHIDDEN(int) s2gGitTransactionCommit(S2GREPOSITORYGIT hGitRepo, const char *p
     if (RT_SUCCESS(rc) && pszAuthor && pszAuthorEmail)
         rc = s2gScratchBufPrintf(&pThis->BufScratch,
                                  "author %s <%s> %RI64 +0000\n",
-                                 pszBranch, idMark,
                                  pszAuthor, pszAuthorEmail, cEpochSecs);
     if (RT_SUCCESS(rc))
         rc = s2gScratchBufPrintf(&pThis->BufScratch,
