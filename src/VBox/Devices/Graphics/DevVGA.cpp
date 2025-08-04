@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 110351 2025-07-22 15:36:21Z michal.necasek@oracle.com $ */
+/* $Id: DevVGA.cpp 110535 2025-08-04 15:01:12Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -1875,7 +1875,13 @@ static int vgaR3DrawText(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGASTATER3 pThisC
             return rc;
         AssertRCReturn(rc, rc);
     }
-    AssertReturn(scr_width == (int)pDrv->cx && scr_height == (int)pDrv->cy, VERR_INVALID_STATE);
+
+    if (   scr_width != (int)pDrv->cx
+        || scr_height != (int)pDrv->cy)
+    {
+        AssertReturn(pDrv->cx == 0 && pDrv->cy == 0, VERR_INVALID_STATE);
+        return VINF_SUCCESS;
+    }
 
     x_incr = cw * ((pDrv->cBits + 7) >> 3);
 
