@@ -1,4 +1,4 @@
-/* $Id: UpdateAgentImpl.cpp 110532 2025-08-04 14:46:00Z knut.osmundsen@oracle.com $ */
+/* $Id: UpdateAgentImpl.cpp 110534 2025-08-04 14:52:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * IUpdateAgent COM class implementations.
  */
@@ -212,7 +212,7 @@ void UpdateAgentBase::i_appendPlatformInfo(Utf8Str &a_rStr)
         ptrHost->IsExecutionEngineSupported(CPUArchitecture_x86, VMExecutionEngine_NativeApi, &fIsNativeApiSupported);
         ptrHost->IsExecutionEngineSupported(CPUArchitecture_x86, VMExecutionEngine_HwVirt, &fIsHwVirtSupported);
 #  else
-        ptrHost->isExecutionEngineSupported(CPUArchitecture_ARMv8_64, VMExecutionEngine_NativeApi, &fIsNativeApiSupported);
+        ptrHost->IsExecutionEngineSupported(CPUArchitecture_ARMv8_64, VMExecutionEngine_NativeApi, &fIsNativeApiSupported);
 #  endif
     }
 # else
