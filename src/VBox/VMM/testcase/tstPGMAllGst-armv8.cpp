@@ -1,4 +1,4 @@
-/* $Id: tstPGMAllGst-armv8.cpp 109195 2025-04-11 13:17:02Z alexander.eichner@oracle.com $ */
+/* $Id: tstPGMAllGst-armv8.cpp 110554 2025-08-05 07:17:38Z alexander.eichner@oracle.com $ */
 /** @file
  * PGM page table walking testcase - ARMv8 variant.
  */
@@ -556,6 +556,8 @@ static int tstTestcaseMmuMemoryAdd(RTTEST hTest, PTSTPGMARMV8MMU pMmuCfg, uint64
                                 {
                                     uint8_t bVal = (uint8_t)i64Data;
                                     rc = tstTestcaseMmuMemoryWrite(hTest, pMmuCfg, GCPhysAddr, &bVal, sizeof(bVal));
+                                    if (RT_FAILURE(rc))
+                                        break; /* Failure is already set. */
                                 }
                                 else
                                 {
@@ -669,7 +671,11 @@ static int tstTestcaseAddressSpacePrepare(RTTEST hTest, RTJSONVAL hTestcase)
                     uint64_t GCPhysAddr = 0;
                     rc = RTStrToUInt64Full(pszAddress, 0, &GCPhysAddr);
                     if (rc == VINF_SUCCESS)
+                    {
                         rc = tstTestcaseMmuMemoryAdd(hTest, &g_MmuCfg, GCPhysAddr, hMemObj);
+                        if (RT_FAILURE(rc))
+                            break;
+                    }
                     else
                     {
                         RTTestFailed(hTest, "Address '%s' is not a valid 64-bit physical address", pszAddress);
@@ -1203,7 +1209,7 @@ static void tstExecuteTestcase(RTTEST hTest, RTJSONVAL hTestcase)
             if (RT_SUCCESS(rc))
                 rc = tstTestcaseMmuConfigPrepare(hTest, &g_MmuCfg, hTestcase);
             if (RT_SUCCESS(rc))
-                rc = tstTestcaseMmuRun(hTest, hTestcase);
+                tstTestcaseMmuRun(hTest, hTestcase);
         }
         else
             RTTestFailed(hTest, "The testcase name is not a string");
