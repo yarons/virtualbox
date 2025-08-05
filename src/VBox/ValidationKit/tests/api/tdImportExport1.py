@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdImportExport1.py 110220 2025-07-14 23:25:19Z brent.paulson@oracle.com $
+# $Id: tdImportExport1.py 110557 2025-08-05 11:59:33Z brent.paulson@oracle.com $
 
 """
 VirtualBox Validation Kit - Import and Export EFI-base VM Test #1
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 110220 $"
+__version__ = "$Revision: 110557 $"
 
 
 # Standard Python imports.
@@ -244,6 +244,10 @@ class SubTstDrvImportExportEFIVM1(base.SubTestDriverBase):
         # which only apply to certain item types.
         sNewVmName = self.sVmName + '-imported';
         aEnabled = [];
+        # pywin32 returns SAFEARRAY [out] arguments as tuples so we need to convert
+        # aVBoxValues to a list in order to modify it.
+        if utils.getHostOs() == 'win':
+            aVBoxValues = list(aVBoxValues);
         for (i, aType) in enumerate(aTypes):
             aEnabled.append(True);
             if aType == vboxcon.VirtualSystemDescriptionType_Name:
