@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.cpp 110533 2025-08-04 14:51:01Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d.cpp 110572 2025-08-05 19:33:16Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common core code.
  */
@@ -1091,7 +1091,7 @@ int vmsvga3dScreenUpdate(PVGASTATECC pThisCC, uint32_t idDstScreen, SVGASignedRe
                         && srcRect.bottom - srcRect.top == dstRect.bottom - dstRect.top,
                         VERR_INVALID_PARAMETER); /* Stretch is not supported. */
 
-    if (pSvgaR3State->pFuncs3D->pfnFlush)
+    if (pSvgaR3State->pFuncs3D && pSvgaR3State->pFuncs3D->pfnFlush)
         pSvgaR3State->pFuncs3D->pfnFlush(pThisCC);
 
     /* Destination box should be within the screen rectangle. */
