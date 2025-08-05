@@ -1,4 +1,4 @@
-/* $Id: scmrw.cpp 110494 2025-07-31 10:11:09Z andreas.loeffler@oracle.com $ */
+/* $Id: scmrw.cpp 110574 2025-08-05 20:49:25Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -1879,7 +1879,7 @@ static int scmWriteCommentBody(PSCMSTREAM pOut, const char *pszText, size_t cchT
  * @param   enmCommentStyle     The comment style used by the file.
  */
 static SCMREWRITERRES rewrite_Copyright_Common(PSCMRWSTATE pState, PSCMSTREAM pIn, PSCMSTREAM pOut,
-                                                 PCSCMSETTINGSBASE pSettings, SCMCOMMENTSTYLE enmCommentStyle)
+                                               PCSCMSETTINGSBASE pSettings, SCMCOMMENTSTYLE enmCommentStyle)
 {
     if (   !pSettings->fUpdateCopyrightYear
         && pSettings->enmUpdateLicense == kScmLicense_LeaveAlone)
@@ -1943,13 +1943,15 @@ static SCMREWRITERRES rewrite_Copyright_Common(PSCMRWSTATE pState, PSCMSTREAM pI
     {
         if (   pSettings->enmUpdateLicense != kScmLicense_Mit
             && pSettings->enmUpdateLicense != kScmLicense_BasedOnMit)
-            while (Info.pExpectedLicense->enmOpt != pSettings->enmUpdateLicense)
+            while (   Info.pExpectedLicense->enmOpt != pSettings->enmUpdateLicense
+                   && Info.pExpectedLicense->enmType != kScmLicenseType_Invalid)
                 Info.pExpectedLicense++;
         else
             Assert(Info.pExpectedLicense->enmOpt == kScmLicense_Mit);
     }
     else
-        while (Info.pExpectedLicense->enmType != kScmLicenseType_Confidential)
+        while (   Info.pExpectedLicense->enmType != kScmLicenseType_Confidential
+               && Info.pExpectedLicense->enmType != kScmLicenseType_Invalid)
             Info.pExpectedLicense++;
 
     /* Scan the comments. */
