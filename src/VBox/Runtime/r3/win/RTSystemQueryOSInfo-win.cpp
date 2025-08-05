@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryOSInfo-win.cpp 110540 2025-08-04 16:00:14Z knut.osmundsen@oracle.com $ */
+/* $Id: RTSystemQueryOSInfo-win.cpp 110559 2025-08-05 13:45:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTSystemQueryOSInfo, generic stub.
  */
@@ -46,9 +46,10 @@
 #include <iprt/system.h>
 #include <iprt/assert.h>
 #include <iprt/ctype.h>
-#include <iprt/errcore.h>
+#include <iprt/err.h>
 #include <iprt/string.h>
 #include <iprt/utf16.h>
+#include <iprt/win/reg.h>
 
 
 /*********************************************************************************************************************************
@@ -264,8 +265,19 @@ static int rtSystemWinQueryOSVersion(RTSYSOSINFO enmInfo, char *pszInfo, size_t 
          */
         case RTSYSOSINFO_RELEASE:
         {
-            RTStrPrintf(szTmp, sizeof(szTmp), "%u.%u.%u",
-                        g_WinOsInfoEx.dwMajorVersion, g_WinOsInfoEx.dwMinorVersion, g_WinOsInfoEx.dwBuildNumber);
+            uint32_t uUpdateBuildRev = 0;
+            int vrc = RTWinRegQueryValueU32(kRTWinRegRoot_LocalMachine,
+                                            L"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion", L"UBR", &uUpdateBuildRev);
+            if (RT_SUCCESS(vrc))
+                RTStrPrintf(szTmp, sizeof(szTmp), "%u.%u.%u.%u",
+                            g_WinOsInfoEx.dwMajorVersion, g_WinOsInfoEx.dwMinorVersion, g_WinOsInfoEx.dwBuildNumber,
+                            uUpdateBuildRev);
+            else
+            {
+                Assert(vrc == VERR_FILE_NOT_FOUND || vrc == VERR_PATH_NOT_FOUND || vrc == VERR_NOT_FOUND);
+                RTStrPrintf(szTmp, sizeof(szTmp), "%u.%u.%u",
+                            g_WinOsInfoEx.dwMajorVersion, g_WinOsInfoEx.dwMinorVersion, g_WinOsInfoEx.dwBuildNumber);
+            }
             break;
         }
 
