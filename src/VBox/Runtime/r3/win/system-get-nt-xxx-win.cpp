@@ -1,6 +1,6 @@
-/* $Id: system-get-nt-xxx-win.cpp 110560 2025-08-05 14:59:45Z knut.osmundsen@oracle.com $ */
+/* $Id: system-get-nt-xxx-win.cpp 110573 2025-08-05 20:37:09Z knut.osmundsen@oracle.com $ */
 /** @file
- * IPRT - RTSystemQueryOSInfo, generic stub.
+ * IPRT - RTSystemGetNtXxxx functions.
  */
 
 /*
@@ -69,6 +69,8 @@ RTDECL(uint8_t) RTSystemGetNtProductType(void)
 }
 
 
+/** @todo this is a bit out of place, since it's a query and it's about
+ *        windows feature according to the GUI. */
 RTDECL(int) RTSystemQueryNtFeatureEnabled(RTSYSNTFEATURE enmFeature, bool *pfEnabled)
 {
     AssertPtrReturn(pfEnabled, VERR_INVALID_POINTER);
