@@ -1,4 +1,4 @@
-# $Id: .scm-settings 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 110575 2025-08-05 20:53:31Z klaus.espenlaub@oracle.com $
 ## @file
 # Source code massager settings for 3D additions stuff.
 #
@@ -26,5 +26,8 @@
 #
 
 
---filter-out-dirs  "/mesa-*/."
+/mesa-*/.gitlab-ci/*.sh: --no-update-license --external-copyright --no-convert-tabs
+/mesa-*/.gitlab-ci/*/*.sh: --no-update-license --external-copyright --no-convert-tabs
+/mesa-*/.gitlab-ci/*.py: --no-update-license --external-copyright
+/mesa-*/.gitlab-ci/*/*.py: --no-update-license --external-copyright
 
