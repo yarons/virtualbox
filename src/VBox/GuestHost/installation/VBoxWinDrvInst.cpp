@@ -1,4 +1,4 @@
-/* $Id: VBoxWinDrvInst.cpp 110565 2025-08-05 16:03:21Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxWinDrvInst.cpp 110582 2025-08-06 10:20:01Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxWinDrvInst - Windows driver installation handling.
  */
@@ -1555,7 +1555,23 @@ static int vboxWinDrvInstallPerform(PVBOXWINDRVINSTINTERNAL pCtx, PVBOXWINDRVINS
                         if (fRc)
                             vboxWinDrvInstLogInfo(pCtx, "Copying OEM INF successful");
                         else
-                            rc = vboxWinDrvInstLogLastError(pCtx, "Installation(SetupCopyOEMInfW) failed");
+                        {
+                            DWORD const dwErr = GetLastError();
+                            switch (dwErr)
+                            {
+                                case CERT_E_UNTRUSTEDROOT:
+                                    vboxWinDrvInstLogError(pCtx, "Not able to copy OEM INF into the system, as the "
+                                                                 "certificate chain terminated in an untrusted root "
+                                                                 "certificate. If this is a custom / debug build, "
+                                                                 "the required certificates need to be installed into the "
+                                                                 "driver store first.");
+                                    break;
+
+                                default:
+                                    rc = vboxWinDrvInstLogLastError(pCtx, "Installation(SetupCopyOEMInfW) failed");
+                                    break;
+                            }
+                        }
                     }
                 }
                 else
