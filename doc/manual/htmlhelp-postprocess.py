@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-# $Id: htmlhelp-postprocess.py 110589 2025-08-06 15:43:39Z serkan.bayraktar@oracle.com $
+# $Id: htmlhelp-postprocess.py 110590 2025-08-06 16:33:27Z serkan.bayraktar@oracle.com $
 
 """
 A python script to create post process html file in a gived folder. It
@@ -54,7 +54,7 @@ def check_css_references(folder):
     css_href_pattern = re.compile(r'href="([^"]+\.css)"', re.IGNORECASE)
     for file_name in html_files:
         html_folder = os.path.dirname(file_name)
-        with open(file_name, encoding="utf-8", errors="replace") as file:
+        with open(file_name, encoding="iso-8859-1", errors="replace") as file:
             content = file.read()
         updated = False
         matches = css_href_pattern.findall(content)
@@ -72,7 +72,7 @@ def check_css_references(folder):
                 logging.info(f'{old_href} is updated to {new_href} in {file_name}.')
                 updated = True
         if updated:
-            with open(file_name, 'w', encoding="utf-8", errors="replace") as f:
+            with open(file_name, 'w', encoding="iso-8859-1", errors="replace") as f:
                 f.write(content)
 
 def usage(iExitCode):
