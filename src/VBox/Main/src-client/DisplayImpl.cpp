@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 110436 2025-07-28 13:25:09Z knut.osmundsen@oracle.com $ */
+/* $Id: DisplayImpl.cpp 110587 2025-08-06 14:24:28Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1963,7 +1963,7 @@ HRESULT Display::takeScreenShotWorker(ULONG aScreenId,
 
     Console::SafeVMPtr ptrVM(mParent);
     HRESULT hrc = ptrVM.hrc();
-    if (!FAILED(hrc))
+    if (FAILED(hrc))
         return hrc;
 
     int vrc = i_displayTakeScreenshot(ptrVM.rawUVM(), ptrVM.vtable(), this, mpDrv, aScreenId, aAddress, aWidth, aHeight);
