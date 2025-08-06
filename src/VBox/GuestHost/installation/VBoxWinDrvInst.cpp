@@ -1,4 +1,4 @@
-/* $Id: VBoxWinDrvInst.cpp 110582 2025-08-06 10:20:01Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxWinDrvInst.cpp 110584 2025-08-06 11:43:13Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxWinDrvInst - Windows driver installation handling.
  */
@@ -1396,7 +1396,18 @@ static int vboxWinDrvInstallPerform(PVBOXWINDRVINSTINTERNAL pCtx, PVBOXWINDRVINS
              * Pre-install driver.
              */
             DWORD dwInstallFlags = 0;
-            if (pCtx->uOsVer >= RTSYSTEM_MAKE_NT_VERSION(6, 0, 0)) /* for Vista / 2008 Server and up. */
+
+            /* Note: We don't use the following installation method as the default for
+             *       Windows >= Vista anymore, as this might cause unrelated (system) device
+             *       removal / re-adding, which makes the installation process a lot longer
+             *       and can have other side effects.
+             *
+             *       As a new default we use the block for Windows 2000 below.
+             *
+             *       However, we leave this code enabled in case it needs testing / re-evaluation.
+             *       Needs the OS version set to >= 99 (i.e. --debug-os-ver "99:0"). Intentionally undocumented.
+             */
+            if (pCtx->uOsVer >= RTSYSTEM_MAKE_NT_VERSION(99, 0, 0))
             {
                 if (g_pfnDiInstallDriverW)
                 {
