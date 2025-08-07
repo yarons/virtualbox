@@ -1,4 +1,4 @@
-/* $Id: DevINIP.cpp 109552 2025-05-14 17:36:51Z alexander.eichner@oracle.com $ */
+/* $Id: DevINIP.cpp 110607 2025-08-07 09:59:20Z alexander.eichner@oracle.com $ */
 /** @file
  * DevINIP - Internal Network IP stack device/service.
  */
@@ -373,7 +373,7 @@ static DECLCALLBACK(int) devINIPNetworkDown_Input(PPDMINETWORKDOWN pInterface, c
 
         /* We've setup flags NETIF_FLAG_ETHARP and NETIF_FLAG_ETHERNET
           so this should be thread-safe. */
-        tcpip_input(p,iface);
+        iface->input(p, iface);
     }
 
     LogFlow(("%s: return %Rrc\n", __FUNCTION__, VINF_SUCCESS));
@@ -448,6 +448,7 @@ static DECLCALLBACK(void) devINIPTcpipInitDone(void *arg)
 
     lwip_netif_set_default(&pThis->IntNetIF);
     lwip_netif_set_up(&pThis->IntNetIF);
+    netif_set_link_up(&pThis->IntNetIF);
 }
 
 

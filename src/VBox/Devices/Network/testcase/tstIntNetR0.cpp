@@ -1,4 +1,4 @@
-/* $Id: tstIntNetR0.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: tstIntNetR0.cpp 110607 2025-08-07 09:59:20Z alexander.eichner@oracle.com $ */
 /** @file
  * Internal networking - Usermode testcase for the kernel mode bits.
  *
@@ -179,6 +179,12 @@ INTNETR3DECL(int) SUPR0MemFree(PSUPDRVSESSION pSession, RTHCUINTPTR uPtr)
     RTTEST_CHECK_RET(g_hTest, pSession == g_pSession, VERR_INVALID_PARAMETER);
     RTTestGuardedFree(g_hTest, (void *)uPtr);
     return VINF_SUCCESS;
+}
+
+INTNETR3DECL(int) SUPR0Printf(const char *pszFormat, ...)
+{
+    RT_NOREF(pszFormat);
+    return 0;
 }
 
 /* Fake non-existing ring-0 APIs. */
