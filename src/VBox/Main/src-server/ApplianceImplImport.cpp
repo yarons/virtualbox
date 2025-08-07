@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 110133 2025-07-07 12:49:50Z brent.paulson@oracle.com $ */
+/* $Id: ApplianceImplImport.cpp 110598 2025-08-07 08:37:46Z alexander.eichner@oracle.com $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -4392,7 +4392,9 @@ void Appliance::i_importOneDiskImage(const ovf::DiskImage &di,
 
                 /* Now wait for the background import operation to complete; this throws
                  * HRESULTs on error. */
-                stack.pProgress->WaitForOtherProgressCompletion(pProgressImport, 0 /* indefinite wait */);
+                hrc = stack.pProgress->WaitForOtherProgressCompletion(pProgressImport, 0 /* indefinite wait */);
+                if (FAILED(hrc))
+                    throw hrc;
 
                 /* The creating/importing has placed the medium in the global
                  * media registry since the VM isn't created yet. Remove it
