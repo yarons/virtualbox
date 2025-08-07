@@ -1,4 +1,4 @@
-/* $Id: acpi-ast.cpp 108402 2025-02-16 14:24:41Z alexander.eichner@oracle.com $ */
+/* $Id: acpi-ast.cpp 110615 2025-08-07 13:26:43Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Advanced Configuration and Power Interface (ACPI) AST handling.
  */
@@ -103,6 +103,25 @@ DECLHIDDEN(void) rtAcpiAstNodeFree(PRTACPIASTNODE pAstNd)
             RTListNodeRemove(&pIt->NdAst);
             rtAcpiAstNodeFree(pIt);
         }
+    }
+
+    switch (pAstNd->enmOp)
+    {
+        case kAcpiAstNodeOp_Field:
+        {
+            RTMemFree(pAstNd->Fields.paFields);
+            pAstNd->Fields.paFields = NULL;
+            pAstNd->Fields.cFields  = 0;
+            break;
+        }
+        case kAcpiAstNodeOp_ResourceTemplate:
+        {
+            RTAcpiResourceDestroy(pAstNd->hAcpiRes);
+            pAstNd->hAcpiRes = NIL_RTACPIRES;
+            break;
+        }
+        default:
+            break;
     }
 
     pAstNd->enmOp  = kAcpiAstNodeOp_Invalid;

@@ -1,4 +1,4 @@
-/* $Id: acpi-ns.cpp 108401 2025-02-16 14:20:28Z alexander.eichner@oracle.com $ */
+/* $Id: acpi-ns.cpp 110615 2025-08-07 13:26:43Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Advanced Configuration and Power Interface (ACPI) namespace handling.
  */
@@ -74,6 +74,12 @@ static void rtAcpiNsEntryDestroy(PRTACPINSENTRY pNsEntry)
     {
         RTListNodeRemove(&pIt->NdNs);
         rtAcpiNsEntryDestroy(pIt);
+    }
+    if (pNsEntry->enmType == kAcpiNsEntryType_External)
+    {
+        AssertPtr(pNsEntry->pExternal);
+        RTMemFree((void *)pNsEntry->pExternal);
+        pNsEntry->pExternal = NULL;
     }
     RTMemFree(pNsEntry);
 }
