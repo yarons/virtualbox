@@ -1,4 +1,4 @@
-/* $Id: tstRTAcpi.cpp 110586 2025-08-06 12:33:22Z alexander.eichner@oracle.com $ */
+/* $Id: tstRTAcpi.cpp 110613 2025-08-07 12:45:53Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT Testcase - ACPI API.
  */
@@ -93,10 +93,10 @@ static const RTSCRIPTLEXRULE s_aRules[] =
 {
     { '\"', '\"',  RTSCRIPT_LEX_RULE_CONSUME, RTScriptLexScanStringLiteralC,  NULL},
     { '0',  '9',   RTSCRIPT_LEX_RULE_DEFAULT, tstRtAcpiAslLexerParseNumber,   NULL},
-    { 'A',  'Z',   RTSCRIPT_LEX_RULE_DEFAULT, RTScriptLexScanIdentifier,      NULL},
-    { '_',  '_',   RTSCRIPT_LEX_RULE_DEFAULT, RTScriptLexScanIdentifier,      NULL},
-    { '^',  '^',   RTSCRIPT_LEX_RULE_DEFAULT, RTScriptLexScanIdentifier,      NULL},
-    { '\\',  '\\', RTSCRIPT_LEX_RULE_DEFAULT, RTScriptLexScanIdentifier,      NULL},
+    { 'A',  'Z',   RTSCRIPT_LEX_RULE_CONSUME, RTScriptLexScanIdentifier,      NULL},
+    { '_',  '_',   RTSCRIPT_LEX_RULE_CONSUME, RTScriptLexScanIdentifier,      NULL},
+    { '^',  '^',   RTSCRIPT_LEX_RULE_CONSUME, RTScriptLexScanIdentifier,      NULL},
+    { '\\',  '\\', RTSCRIPT_LEX_RULE_CONSUME, RTScriptLexScanIdentifier,      NULL},
 
     { '\0', '\0',  RTSCRIPT_LEX_RULE_DEFAULT, NULL,                           NULL}
 };
@@ -388,6 +388,8 @@ static void tstBasic(RTTEST hTest)
 
                     rc = RTAcpiTblConvertFromVfsIoStrm(hVfsIosDstAsl, RTACPITBLTYPE_ASL, hVfsIosDst, RTACPITBLTYPE_AML, RTErrInfoInitStatic(&ErrInfo));
                     RTTESTI_CHECK_RC(rc, VINF_SUCCESS);
+                    if (RT_FAILURE(rc))
+                        RTTestPrintf(hTest, RTTESTLVL_ALWAYS, "AML disassembler error: %s\n", ErrInfo.Core.pszMsg);
                     RTVfsIoStrmRelease(hVfsIosDstAsl);
 
                     rc = RTVfsFileSeek(hVfsFileDstAsl, 0 /*offSeek*/, RTFILE_SEEK_BEGIN, NULL /*poffActual*/);
