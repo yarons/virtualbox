@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 109639 2025-05-22 14:49:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIMessageCenter.cpp 110610 2025-08-07 12:28:12Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -2061,7 +2061,7 @@ void UIMessageCenter::sltShowHelpWebDialog()
 
 void UIMessageCenter::sltShowBugTracker()
 {
-    uiCommon().openURL("https://www.virtualbox.org/wiki/Bugtracker");
+    uiCommon().openURL("https://github.com/VirtualBox/virtualbox/issues");
 }
 
 void UIMessageCenter::sltShowForums()
