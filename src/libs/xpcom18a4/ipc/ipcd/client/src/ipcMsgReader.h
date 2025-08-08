@@ -1,4 +1,4 @@
-/* $Id: ipcMsgReader.h 103571 2024-02-26 13:19:44Z alexander.eichner@oracle.com $ */
+/* $Id: ipcMsgReader.h 110654 2025-08-08 15:19:27Z klaus.espenlaub@oracle.com $ */
 /** @file
  * XPCOM - IPC message reader helper.
  */
@@ -61,9 +61,11 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-
-#ifndef ipcMsgReader_h__
-#define ipcMsgReader_h__
+#ifndef VBOX_INCLUDED_SRC_src_ipcMsgReader_h
+#define VBOX_INCLUDED_SRC_src_ipcMsgReader_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 #include <iprt/string.h>
@@ -237,4 +239,4 @@ DECL_FORCE_INLINE(void) IPCMsgReaderReadBytes(PIPCMSGREADER pThis, void *pvDst, 
 }
 
 
-#endif /* ipcMsgReader_h__ */
+#endif /* !VBOX_INCLUDED_SRC_src_ipcMsgReader_h */
