@@ -1,4 +1,4 @@
-/* $Id: tstDisasm-2.cpp 110623 2025-08-07 17:10:29Z knut.osmundsen@oracle.com $ */
+/* $Id: tstDisasm-2.cpp 110639 2025-08-08 11:00:24Z alexander.eichner@oracle.com $ */
 /** @file
  * Testcase - Generic Disassembler Tool.
  */
@@ -333,7 +333,7 @@ static int MyDisasmBlock(const char *argv0, DISCPUMODE enmCpuMode, uint64_t uAdd
                     State.Dis.pfnReadBytes(&State.Dis, 0, sizeof(uint32_t), sizeof(uint32_t));
                     State.cbInstr = sizeof(uint32_t);
                 }
-                RTPrintf("    dd %008xh ; %s\n", State.Dis.Instr.au32[0], State.szLine);
+                RTPrintf("    dd %08xh ; %s\n", State.Dis.Instr.au32[0], State.szLine);
             }
             else if (!State.fUndefOp && State.enmUndefOp == kUndefOp_All)
             {
@@ -624,7 +624,7 @@ int main(int argc, char **argv)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 110623 $\n");
+                RTPrintf("$Revision: 110639 $\n");
                 return 0;
 
             default:
