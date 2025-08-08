@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdSaveStateTest.py 110638 2025-08-08 10:56:53Z alexander.eichner@oracle.com $
+# $Id: tdSaveStateTest1.py 110641 2025-08-08 11:11:03Z klaus.espenlaub@oracle.com $
 
 """
-VirtualBox Validation Kit - Save State Smoke Test.
+VirtualBox Validation Kit - Save State Test (based on Smoke Test).
 """
 
 __copyright__ = \
 """
-Copyright (C) 2025 Oracle and/or its affiliates.
+Copyright (C) 2010-2024 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 110638 $"
+__version__ = "$Revision: 110641 $"
 
 
 #temp file for extending current smoke test
@@ -61,9 +61,10 @@ from testdriver import vbox;
 from testdriver import vboxcon;
 from testdriver import vboxwrappers;
 
-class tdSaveStateTest(vbox.TestDriver):
+
+class tdSaveStateTest1(vbox.TestDriver):
     """
-    VBox Save State Test.
+    VBox Save State Test #1.
     """
 
     def __init__(self):
@@ -146,14 +147,14 @@ class tdSaveStateTest(vbox.TestDriver):
         """
         Execute the testcase.
         """
-        return self.oTestVmSet.actionExecute(self, self.testSaveStatesConfig)
+        return self.oTestVmSet.actionExecute(self, self.testOneVmConfig)
 
 
     #
     # Test execution helpers.
     #
 
-    def testSaveStatesConfig(self, oVM, oTestVm):
+    def testOneVmConfig(self, oVM, oTestVm):
         """
         Runs the specified VM thru test #1.
         """
@@ -212,5 +213,4 @@ class tdSaveStateTest(vbox.TestDriver):
         return None;
 
 if __name__ == '__main__':
-    sys.exit(tdSmokeTest2().main(sys.argv));
-
+    sys.exit(tdSaveStateTest1().main(sys.argv));
