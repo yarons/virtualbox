@@ -1,4 +1,4 @@
-; $Id: VBoxExtPackPuel.inf 109570 2025-05-15 17:30:30Z klaus.espenlaub@oracle.com $
+; $Id: VBoxExtPackPuel.inf 110647 2025-08-08 13:10:37Z alexander.eichner@oracle.com $
 ;; @file
 ; VBoxExtPackPuel - VirtualBox PUEL ExtPack drivers.
 ;
@@ -39,7 +39,7 @@ PnpLockdown=1
 
 [SourceDisksFiles]
 ;VBoxEhciR0.r0=1
-VBoxNvmeR0.r0=1
+;VBoxNvmeR0.r0=1 Part of the base package now
 ;VBoxPciRawR0.r0=1
 
 [DestinationDirs]
