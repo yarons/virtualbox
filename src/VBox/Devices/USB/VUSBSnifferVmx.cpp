@@ -1,4 +1,4 @@
-/* $Id: VUSBSnifferVmx.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VUSBSnifferVmx.cpp 110657 2025-08-08 18:29:31Z michal.necasek@oracle.com $ */
 /** @file
  * Virtual USB Sniffer facility - VMX USBIO format.
  */
@@ -166,23 +166,23 @@ static DECLCALLBACK(int) vusbSnifferFmtVmxRecordEvent(PVUSBSNIFFERFMTINT pThis, 
             || pUrb->enmType == VUSBXFERTYPE_MSG)
         {
             if (enmEvent == VUSBSNIFFEREVENT_SUBMIT)
-                rc = vusbSnifferFmtVmxLogData(pThis, &Time, &pUrb->abData[0], sizeof(VUSBSETUP));
+                rc = vusbSnifferFmtVmxLogData(pThis, &Time, &pUrb->pbData[0], sizeof(VUSBSETUP));
             else if (enmEvent == VUSBSNIFFEREVENT_COMPLETE)
             {
-                rc = vusbSnifferFmtVmxLogData(pThis, &Time, &pUrb->abData[0], sizeof(VUSBSETUP));
+                rc = vusbSnifferFmtVmxLogData(pThis, &Time, &pUrb->pbData[0], sizeof(VUSBSETUP));
                 if (   RT_SUCCESS(rc)
                     && pUrb->cbData > sizeof(VUSBSETUP))
-                    rc = vusbSnifferFmtVmxLogData(pThis, &Time, &pUrb->abData[sizeof(VUSBSETUP)], pUrb->cbData - sizeof(VUSBSETUP));
+                    rc = vusbSnifferFmtVmxLogData(pThis, &Time, &pUrb->pbData[sizeof(VUSBSETUP)], pUrb->cbData - sizeof(VUSBSETUP));
             }
         }
         else
         {
             if (   enmEvent == VUSBSNIFFEREVENT_SUBMIT
                 && pUrb->enmDir == VUSBDIRECTION_OUT)
-                rc = vusbSnifferFmtVmxLogData(pThis, &Time, &pUrb->abData[0], pUrb->cbData);
+                rc = vusbSnifferFmtVmxLogData(pThis, &Time, &pUrb->pbData[0], pUrb->cbData);
             else if (   enmEvent == VUSBSNIFFEREVENT_COMPLETE
                      && pUrb->enmDir == VUSBDIRECTION_IN)
-                rc = vusbSnifferFmtVmxLogData(pThis, &Time, &pUrb->abData[0], pUrb->cbData);
+                rc = vusbSnifferFmtVmxLogData(pThis, &Time, &pUrb->pbData[0], pUrb->cbData);
         }
     }
 

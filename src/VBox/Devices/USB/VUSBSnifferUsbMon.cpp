@@ -1,4 +1,4 @@
-/* $Id: VUSBSnifferUsbMon.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VUSBSnifferUsbMon.cpp 110657 2025-08-08 18:29:31Z michal.necasek@oracle.com $ */
 /** @file
  * Virtual USB Sniffer facility - Linux usbmon ASCII format.
  */
@@ -157,7 +157,7 @@ static DECLCALLBACK(int) vusbSnifferFmtUsbMonRecordEvent(PVUSBSNIFFERFMTINT pThi
         if (   (pUrb->enmType == VUSBXFERTYPE_CTRL || pUrb->enmType == VUSBXFERTYPE_MSG)
             && enmEvent == VUSBSNIFFEREVENT_SUBMIT)
         {
-            PVUSBSETUP pSetup = (PVUSBSETUP)pUrb->abData;
+            PVUSBSETUP pSetup = (PVUSBSETUP)pUrb->pbData;
 
             cch = RTStrPrintf(&aszLineBuf[0], sizeof(aszLineBuf), "s %02x %02x %04x %04x %04x ",
                               pSetup->bmRequestType, pSetup->bRequest, pSetup->wValue,

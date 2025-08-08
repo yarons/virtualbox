@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-win.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: USBProxyDevice-win.cpp 110657 2025-08-08 18:29:31Z michal.necasek@oracle.com $ */
 /** @file
  * USBPROXY - USB proxy, Win32 backend
  */
@@ -466,12 +466,12 @@ static DECLCALLBACK(int) usbProxyWinUrbQueue(PUSBPROXYDEV pProxyDev, PVUSBURB pU
             return VERR_INVALID_PARAMETER;
     }
 
-    Log(("usbproxy: Queue URB %p ep=%d cbData=%d abData=%p cIsocPkts=%d\n", pUrb, pUrb->EndPt, pUrb->cbData, pUrb->abData, pUrb->cIsocPkts));
+    Log(("usbproxy: Queue URB %p ep=%d cbData=%d pbData=%p cIsocPkts=%d\n", pUrb, pUrb->EndPt, pUrb->cbData, pUrb->pbData, pUrb->cIsocPkts));
 
     pQUrbWin->urb           = pUrb;
     pQUrbWin->urbwin.ep     = pUrb->EndPt;
     pQUrbWin->urbwin.len    = pUrb->cbData;
-    pQUrbWin->urbwin.buf    = pUrb->abData;
+    pQUrbWin->urbwin.buf    = pUrb->pbData;
     pQUrbWin->urbwin.error  = USBSUP_XFER_OK;
     pQUrbWin->urbwin.flags  = USBSUP_FLAG_NONE;
     if (pUrb->enmDir == VUSBDIRECTION_IN && !pUrb->fShortNotOk)

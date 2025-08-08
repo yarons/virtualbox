@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-freebsd.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: USBProxyDevice-freebsd.cpp 110657 2025-08-08 18:29:31Z michal.necasek@oracle.com $ */
 /** @file
  * USB device proxy - the FreeBSD backend.
  */
@@ -728,7 +728,7 @@ retry:
     pEndpointFBSD = &pDevFBSD->aSwEndpoint[index];
     pXferEndpoint = &pDevFBSD->aHwEndpoint[index];
 
-    pbData = pUrb->abData;
+    pbData = pUrb->pbData;
 
     switch (pUrb->enmType)
     {

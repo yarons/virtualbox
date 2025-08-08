@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-vrdp.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: USBProxyDevice-vrdp.cpp 110657 2025-08-08 18:29:31Z michal.necasek@oracle.com $ */
 /** @file
  * USB device proxy - the VRDP backend, calls the RemoteUSBBackend methods.
  */
@@ -237,7 +237,7 @@ static DECLCALLBACK(int) usbProxyVrdpUrbQueue(PUSBPROXYDEV pProxyDev, PVUSBURB p
 
     PUSBPROXYDEVVRDP pDevVrdp = USBPROXYDEV_2_DATA(pProxyDev, PUSBPROXYDEVVRDP);
     int rc = pDevVrdp->pCallback->pfnQueueURB (pDevVrdp->pDevice, pUrb->enmType, pUrb->EndPt, pUrb->enmDir, pUrb->cbData,
-                                               pUrb->abData, pUrb, (PREMOTEUSBQURB *)&pUrb->Dev.pvPrivate);
+                                               pUrb->pbData, pUrb, (PREMOTEUSBQURB *)&pUrb->Dev.pvPrivate);
 
     if (rc == VERR_VUSB_DEVICE_NOT_ATTACHED)
     {

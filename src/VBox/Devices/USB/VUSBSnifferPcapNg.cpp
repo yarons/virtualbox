@@ -1,4 +1,4 @@
-/* $Id: VUSBSnifferPcapNg.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VUSBSnifferPcapNg.cpp 110657 2025-08-08 18:29:31Z michal.necasek@oracle.com $ */
 /** @file
  * Virtual USB Sniffer facility - PCAP-NG format writer.
  */
@@ -606,7 +606,7 @@ static DECLCALLBACK(int) vusbSnifferFmtPcapNgRecordEvent(PVUSBSNIFFERFMTINT pThi
             cbUrbLength = 0;
     }
     uint32_t cbDataLength = cbUrbLength;
-    pbData = &pUrb->abData[0];
+    pbData = &pUrb->pbData[0];
 
     uint32_t cIsocPkts = 0;
     switch (pUrb->enmType)
@@ -677,7 +677,7 @@ static DECLCALLBACK(int) vusbSnifferFmtPcapNgRecordEvent(PVUSBSNIFFERFMTINT pThi
     if (   (pUrb->enmType == VUSBXFERTYPE_MSG || pUrb->enmType == VUSBXFERTYPE_CTRL)
         && enmEvent == VUSBSNIFFEREVENT_SUBMIT)
     {
-        PVUSBSETUP pSetup = (PVUSBSETUP)pUrb->abData;
+        PVUSBSETUP pSetup = (PVUSBSETUP)pUrb->pbData;
 
         UsbHdr.u.UsbSetup.bmRequestType = pSetup->bmRequestType;
         UsbHdr.u.UsbSetup.bRequest      = pSetup->bRequest;

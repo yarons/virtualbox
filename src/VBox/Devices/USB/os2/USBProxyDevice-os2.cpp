@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-os2.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: USBProxyDevice-os2.cpp 110657 2025-08-08 18:29:31Z michal.necasek@oracle.com $ */
 /** @file
  * USB device proxy - the Linux backend.
  */
@@ -313,7 +313,7 @@ static DECLCALLBACK(int) usbProxyOs2AsyncThread(RTTHREAD Thread, void *pvProxyDe
              * Process the URB.
              */
             PVUSBURB pUrb = pUrbOs2->pUrb;
-            uint8_t *pbData = &pUrb->abData[0];
+            uint8_t *pbData = pUrb->pbData;
             ULONG cbData = pUrb->cbData;
             if (    (uintptr_t)pbData >= 0x20000000
                 ||  ((uintptr_t)pbData & 0xfff))
@@ -378,7 +378,7 @@ static DECLCALLBACK(int) usbProxyOs2AsyncThread(RTTHREAD Thread, void *pvProxyDe
 
             /* unbuffer */
             if (pbData == pvLow)
-                memcpy(pUrb->abData, pbData, pUrb->cbData);
+                memcpy(pUrb->pbData, pbData, pUrb->cbData);
 
             /* Convert rc to USB status code. */
             int orc = rc;
