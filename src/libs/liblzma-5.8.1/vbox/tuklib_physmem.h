@@ -1,4 +1,4 @@
-/* $Id: tuklib_physmem.h 109136 2025-04-09 10:54:47Z samantha.scholz@oracle.com $ */
+/* $Id: tuklib_physmem.h 110650 2025-08-08 15:13:56Z klaus.espenlaub@oracle.com $ */
 /** @file
  * tuklib_physmem.h - Memory information.
  */
@@ -25,20 +25,23 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-#ifndef TUKLIB_PHYSMEM_H
-#define TUKLIB_PHYSMEM_H
+#ifndef VBOX_INCLUDED_SRC_vbox_tuklib_physmem_h
+#define VBOX_INCLUDED_SRC_vbox_tuklib_physmem_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "sysdefs.h"
 RT_C_DECLS_BEGIN
 
 DECL_FORCE_INLINE(uint64_t) tuklib_physmem(void)
 {
-	uint64_t cbMemAvail = 0;
-	int rc = RTSystemQueryAvailableRam(&cbMemAvail);
-	if (RT_FAILURE(rc))
-		cbMemAvail = 0;
-	return cbMemAvail;
+    uint64_t cbMemAvail = 0;
+    int rc = RTSystemQueryAvailableRam(&cbMemAvail);
+    if (RT_FAILURE(rc))
+        cbMemAvail = 0;
+    return cbMemAvail;
 }
 
 RT_C_DECLS_END
-#endif
+#endif /* !VBOX_INCLUDED_SRC_vbox_tuklib_physmem_h */
