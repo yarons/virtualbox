@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 109687 2025-05-27 15:31:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsSystem.cpp 110644 2025-08-08 11:50:46Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class implementation.
  */
@@ -659,6 +659,8 @@ void UIMachineSettingsSystem::handleFilterChange()
             m_pEditorChipset->hide();
         if (m_pEditorProcessorFeatures)
             m_pEditorProcessorFeatures->hide();
+        if (m_pEditorAccelerationFeatures)
+            m_pEditorAccelerationFeatures->hide();
     }
 }
 
@@ -880,7 +882,7 @@ void UIMachineSettingsSystem::prepareTabAcceleration()
             }
 
             /* Prepare acceleration features editor: */
-#ifndef VBOX_WITH_VIRT_ARMV8
+#if defined(RT_ARCH_X86) || defined(RT_ARCH_AMD64)
             m_pEditorAccelerationFeatures = new UIAccelerationFeaturesEditor(m_pTabAcceleration);
 #endif
             if (m_pEditorAccelerationFeatures)
