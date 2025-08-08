@@ -1,4 +1,4 @@
-# $Id: .scm-settings 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 110656 2025-08-08 15:52:47Z klaus.espenlaub@oracle.com $
 ## @file
 # Source code massager settings for the Main API.
 #
@@ -35,6 +35,7 @@
 
 # The Python bindings is licensed under dual GPL and CDDL.
 /glue/python/vboxapi.py:                --license-ose-dual
+/glue/python/pyproject.toml:            --license-ose-dual --treat-as qt-pro
 
 # Source dirs.
 --filter-out-files /src-all/VBoxAPI-end.d
