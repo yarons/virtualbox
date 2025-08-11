@@ -1,4 +1,4 @@
-/* $Id: tstCFGM.cpp 108827 2025-03-20 11:17:11Z alexander.eichner@oracle.com $ */
+/* $Id: tstCFGM.cpp 110662 2025-08-11 08:38:36Z alexander.eichner@oracle.com $ */
 /** @file
  * Testcase for CFGM.
  */
@@ -113,7 +113,9 @@ static void doInVmmTests(RTTEST hTest)
     }
 
     PVM pVM;
-    RTTESTI_CHECK_RC_RETV(SUPR3PageAlloc(RT_ALIGN_Z(sizeof(*pVM), RTSystemGetPageSize()) >> RTSystemGetPageShift(), 0, (void **)&pVM),
+    size_t const cbPage = RTSystemGetPageSize();
+    size_t const cPages = RT_ALIGN_Z(sizeof(*pVM), cbPage) >> RTSystemGetPageShift();
+    RTTESTI_CHECK_RC_RETV(SUPR3PageAlloc(cPages, 0, (void **)&pVM),
                           VINF_SUCCESS);
 
 

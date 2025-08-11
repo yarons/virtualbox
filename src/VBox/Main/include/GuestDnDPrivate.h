@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 108828 2025-03-20 11:18:13Z alexander.eichner@oracle.com $ */
+/* $Id: GuestDnDPrivate.h 110662 2025-08-11 08:38:36Z alexander.eichner@oracle.com $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -191,7 +191,8 @@ struct GuestDnDMetaData
         if (cbSize == cbAllocated)
             return VINF_SUCCESS;
 
-        cbSize = RT_ALIGN_Z(cbSize, RTSystemGetPageSize());
+        size_t const cbPage = RTSystemGetPageSize();
+        cbSize = RT_ALIGN_Z(cbSize, cbPage);
 
         if (cbSize > _32M) /* Meta data can be up to 32MB. */
             return VERR_BUFFER_OVERFLOW;
