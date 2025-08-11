@@ -1,4 +1,4 @@
-/* $Id: IEMAllOpcodeFetch-armv8.cpp 110494 2025-07-31 10:11:09Z andreas.loeffler@oracle.com $ */
+/* $Id: IEMAllOpcodeFetch-armv8.cpp 110687 2025-08-11 23:02:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Opcode Fetching, ARMv8.
  */
@@ -373,7 +373,10 @@ DECLINLINE(a_RetType) iemOpcodeFetchBytesJmp(PVMCPUCC pVCpu) IEM_NOEXCEPT_MAY_LO
 
     /* Update the state and probably return. */
     if RT_CONSTEXPR_IF(sizeof(a_RetType) == sizeof(uint16_t) && a_cbPrevInstrHalf > 0)
+    {
+        uint32_t const offPg = GCPtrFirst & GUEST_MIN_PAGE_OFFSET_MASK;
         pVCpu->iem.s.fTbCrossedPage |= offPg == 0;
+    }
 
     pVCpu->iem.s.cbInstrBufTotal  = GUEST_MIN_PAGE_SIZE; /** @todo ??? */
     pVCpu->iem.s.offInstrNextByte = (GCPtrFirst & GUEST_MIN_PAGE_OFFSET_MASK) + sizeof(a_RetType);

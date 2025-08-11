@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl-armv8.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: IEMAllCImpl-armv8.cpp 110687 2025-08-11 23:02:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - ARMv8 target, miscellaneous.
  */
@@ -190,8 +190,11 @@ DECLHIDDEN(VBOXSTRICTRC) iemCImplHlpReadDbgDtrEl0U32(PVMCPU pVCpu, uint64_t *puD
 
 DECLHIDDEN(uint64_t)     iemCImplHlpGetIdSysReg(PVMCPU pVCpu, uint32_t idSysReg) RT_NOEXCEPT
 {
-    RT_NOREF(pVCpu, idSysReg);
-    AssertFailedReturn(0);
+    uint64_t uRet = 0;
+    int const rc = CPUMR3QueryGuestIdReg(pVCpu->CTX_SUFF(pVM), idSysReg, &uRet);
+    if (RT_SUCCESS(rc))
+        return uRet;
+    AssertMsgFailedReturn(("idSysReg=%#x\n", idSysReg), 0);
 }
 
 
@@ -357,8 +360,11 @@ DECLHIDDEN(VBOXSTRICTRC) iemCImplHlpA64SysDc(PVMCPU pVCpu, uint64_t uValue, kIem
 
 DECLHIDDEN(VBOXSTRICTRC) iemCImplHlpA64SysIc(PVMCPU pVCpu, kIemCImplA64CacheOpScope enmScope) RT_NOEXCEPT
 {
-    RT_NOREF(pVCpu, enmScope);
-    return VERR_IEM_INSTR_NOT_IMPLEMENTED;
+    /*
+     * This is a nop for now.
+     */
+    RT_NOREF(enmScope);
+    return iemRegPcA64IncAndFinishingClearingFlags(pVCpu, VINF_SUCCESS);
 }
 
 

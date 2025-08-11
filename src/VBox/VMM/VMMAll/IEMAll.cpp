@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: IEMAll.cpp 110687 2025-08-11 23:02:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -466,11 +466,11 @@ static void iemLogCurInstr(PVMCPUCC pVCpu, const char *pszFunction) RT_NOEXCEPT
              (a_pszName), pVCpu->cpum.GstCtx.Pc, pVCpu->cpum.GstCtx.aGRegs[ARMV8_A64_REG_LR], \
              pVCpu->cpum.GstCtx.aSpReg[IEM_F_MODE_ARM_GET_EL(pVCpu->iem.s.fExec) > 0], pVCpu->cpum.GstCtx.fPState, \
              IEM_F_MODE_ARM_GET_EL(pVCpu->iem.s.fExec), __VA_ARGS__))
-    LOGFLOW_REG_STATE_EX(pszFunction, "",1);
 
 # else
 #  error "port me"
 # endif
+    LOGFLOW_REG_STATE_EX(pszFunction, " #%u", pVCpu->iem.s.cInstructions); /* have to have something here. sigh. */
     RT_NOREF_PV(pVCpu);
 }
 #endif /* LOG_ENABLED */
