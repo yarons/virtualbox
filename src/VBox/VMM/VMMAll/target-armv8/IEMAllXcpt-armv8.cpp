@@ -1,4 +1,4 @@
-/* $Id: IEMAllXcpt-armv8.cpp 110467 2025-07-30 08:31:12Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllXcpt-armv8.cpp 110660 2025-08-11 08:25:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - ARM target, exceptions & interrupts.
  */
@@ -174,6 +174,13 @@ iemRaiseSpAlignmentCheckJmp(PVMCPUCC pVCpu) IEM_NOEXCEPT_MAY_LONGJMP
 
 
 VBOXSTRICTRC iemRaiseSystemAccessTrap(PVMCPU pVCpu, uint32_t uEl, uint32_t uInstrEssence) RT_NOEXCEPT
+{
+    RT_NOREF(pVCpu, uEl, uInstrEssence);
+    AssertFailedReturn(VERR_IEM_ASPECT_NOT_IMPLEMENTED);
+}
+
+
+VBOXSTRICTRC iemRaiseSystemAccessTrap128Bit(PVMCPU pVCpu, uint32_t uEl, uint32_t uInstrEssence) RT_NOEXCEPT
 {
     RT_NOREF(pVCpu, uEl, uInstrEssence);
     AssertFailedReturn(VERR_IEM_ASPECT_NOT_IMPLEMENTED);
