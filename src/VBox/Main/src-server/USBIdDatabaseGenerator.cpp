@@ -1,10 +1,10 @@
-/* $Id: USBIdDatabaseGenerator.cpp 106065 2024-09-16 21:42:41Z knut.osmundsen@oracle.com $ */
+/* $Id: USBIdDatabaseGenerator.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * USB device vendor and product ID database - generator.
  */
 
 /*
- * Copyright (C) 2015-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2015-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

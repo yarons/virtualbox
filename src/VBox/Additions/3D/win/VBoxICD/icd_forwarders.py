@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: icd_forwarders.py 106683 2024-10-24 21:31:30Z knut.osmundsen@oracle.com $
+# $Id: icd_forwarders.py 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
 
 """
 Generates forwards from a .def file.
@@ -8,7 +8,7 @@ Generates forwards from a .def file.
 
 __copyright__ = \
 """
-Copyright (C) 2018-2024 Oracle and/or its affiliates.
+Copyright (C) 2018-2025 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -28,7 +28,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 106683 $"
+__version__ = "$Revision: 110684 $"
 
 # Standard python imports"""
 import sys

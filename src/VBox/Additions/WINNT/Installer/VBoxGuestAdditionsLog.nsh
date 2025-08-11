@@ -1,10 +1,10 @@
-; $Id: VBoxGuestAdditionsLog.nsh 108977 2025-03-27 15:32:33Z andreas.loeffler@oracle.com $
+; $Id: VBoxGuestAdditionsLog.nsh 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
 ;; @file
 ; VBoxGuestAdditionLog.nsh - Logging functions.
 ;
 
 ;
-; Copyright (C) 2013-2024 Oracle and/or its affiliates.
+; Copyright (C) 2013-2025 Oracle and/or its affiliates.
 ;
 ; This file is part of VirtualBox base platform packages, as
 ; available from https://www.virtualbox.org.

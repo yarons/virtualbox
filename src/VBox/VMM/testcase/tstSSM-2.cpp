@@ -1,10 +1,10 @@
-/* $Id: tstSSM-2.cpp 107897 2025-01-16 10:35:41Z alexander.eichner@oracle.com $ */
+/* $Id: tstSSM-2.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Saved State Manager Testcase: Extract the content of a saved state.
  */
 
 /*
- * Copyright (C) 2015-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2015-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

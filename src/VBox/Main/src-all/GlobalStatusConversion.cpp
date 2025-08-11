@@ -1,4 +1,4 @@
-/* $Id: GlobalStatusConversion.cpp 107697 2025-01-10 10:25:34Z alexander.eichner@oracle.com $ */
+/* $Id: GlobalStatusConversion.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox COM global definitions - status code conversion.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2008-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2008-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

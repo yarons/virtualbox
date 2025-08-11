@@ -1,10 +1,10 @@
-/* $Id: poll.cpp 110528 2025-08-04 14:26:36Z alexander.eichner@oracle.com $ */
+/* $Id: poll.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT - Polling I/O Handles, Windows+Posix Implementation.
  */
 
 /*
- * Copyright (C) 2010-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

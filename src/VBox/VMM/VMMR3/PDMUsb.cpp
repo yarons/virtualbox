@@ -1,10 +1,10 @@
-/* $Id: PDMUsb.cpp 107320 2024-12-10 12:40:08Z aleksey.ilyushin@oracle.com $ */
+/* $Id: PDMUsb.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, USB part.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: RTErrConvertFromNtStatus.cpp 109624 2025-05-21 08:25:13Z knut.osmundsen@oracle.com $ */
+/* $Id: RTErrConvertFromNtStatus.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT - Convert NT status codes to iprt status codes.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 107768 2025-01-10 17:30:05Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
 
 /*
- * Copyright (C) 2011-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

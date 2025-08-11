@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 108837 2025-03-20 12:48:42Z andreas.loeffler@oracle.com $ */
+/* $Id: tstDeviceStructSizeRC.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

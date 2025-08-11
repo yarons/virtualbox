@@ -1,10 +1,10 @@
-/* $Id: STAM.cpp 107231 2024-11-29 14:47:06Z knut.osmundsen@oracle.com $ */
+/* $Id: STAM.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * STAM - The Statistics Manager.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

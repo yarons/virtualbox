@@ -1,10 +1,10 @@
-/* $Id: GaDrvEnvKMT.cpp 106453 2024-10-17 13:45:57Z andreas.loeffler@oracle.com $ */
+/* $Id: GaDrvEnvKMT.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface to the WDDM miniport driver using Kernel Mode Thunks.
  */
 
 /*
- * Copyright (C) 2016-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2016-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

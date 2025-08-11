@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin-armv8.cpp 110152 2025-07-08 14:36:58Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMR3Native-darwin-armv8.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework, ARMv8 variant.
  *
@@ -8,7 +8,7 @@
  */
 
 /*
- * Copyright (C) 2023-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2023-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

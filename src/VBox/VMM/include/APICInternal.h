@@ -1,10 +1,10 @@
-/* $Id: APICInternal.h 108618 2025-03-04 11:24:21Z alexander.eichner@oracle.com $ */
+/* $Id: APICInternal.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
 
 /*
- * Copyright (C) 2016-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2016-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: tstRTJson.cpp 109864 2025-06-16 07:03:30Z alexander.eichner@oracle.com $ */
+/* $Id: tstRTJson.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT Testcase - JSON API.
  */
 
 /*
- * Copyright (C) 2016-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2016-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

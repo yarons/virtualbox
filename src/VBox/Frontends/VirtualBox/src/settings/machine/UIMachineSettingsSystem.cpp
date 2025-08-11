@@ -1,10 +1,10 @@
-/* $Id: UIMachineSettingsSystem.cpp 110644 2025-08-08 11:50:46Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsSystem.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class implementation.
  */
 
 /*
- * Copyright (C) 2008-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2008-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

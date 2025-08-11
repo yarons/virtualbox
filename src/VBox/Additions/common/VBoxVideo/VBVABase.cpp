@@ -1,11 +1,11 @@
-/* $Id: VBVABase.cpp 107673 2025-01-09 17:32:38Z vadim.galitsyn@oracle.com $ */
+/* $Id: VBVABase.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox Video driver, common code - VBVA initialisation and helper
  * functions.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

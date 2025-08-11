@@ -1,10 +1,10 @@
-/* $Id: SelfSizingTable.h 109669 2025-05-26 19:52:08Z klaus.espenlaub@oracle.com $ */
+/* $Id: SelfSizingTable.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * vboxraw header file
  */
 
 /*
- * Copyright (C) 2018-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2018-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

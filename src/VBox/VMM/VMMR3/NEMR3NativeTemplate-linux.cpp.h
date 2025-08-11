@@ -1,10 +1,10 @@
-/* $Id: NEMR3NativeTemplate-linux.cpp.h 109718 2025-05-30 07:48:21Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMR3NativeTemplate-linux.cpp.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Linux backend, common bits for x86 and arm64.
  */
 
 /*
- * Copyright (C) 2021-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2021-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

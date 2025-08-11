@@ -1,10 +1,10 @@
-/* $Id: ntDisplay.cpp 107045 2024-11-18 13:16:33Z dmitrii.grigorev@oracle.com $ */
+/* $Id: ntDisplay.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Test cases for Display device and DirectX 3D rendering - NT.
  */
 
 /*
- * Copyright (C) 2007-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2007-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

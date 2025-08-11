@@ -1,10 +1,10 @@
-/* $Id: UpdateAgentImpl.cpp 110552 2025-08-04 23:46:48Z knut.osmundsen@oracle.com $ */
+/* $Id: UpdateAgentImpl.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IUpdateAgent COM class implementations.
  */
 
 /*
- * Copyright (C) 2020-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2020-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

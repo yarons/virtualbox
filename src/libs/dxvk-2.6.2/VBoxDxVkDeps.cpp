@@ -1,10 +1,10 @@
-/* $Id: VBoxDxVkDeps.cpp 110079 2025-07-02 06:39:24Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxDxVkDeps.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxDxVk - For dragging in library objects.
  */
 
 /*
- * Copyright (C) 2022-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2022-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

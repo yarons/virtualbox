@@ -1,10 +1,10 @@
-/* $Id: UIUpdateSettingsEditor.h 106485 2024-10-18 15:33:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIUpdateSettingsEditor.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUpdateSettingsEditor class declaration.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

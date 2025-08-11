@@ -1,10 +1,10 @@
-/* $Id: alloc-ef-r0drv.cpp 106434 2024-10-17 11:37:24Z alexander.eichner@oracle.com $ */
+/* $Id: alloc-ef-r0drv.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT - Memory Allocation, electric fence for ring-0 drivers.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

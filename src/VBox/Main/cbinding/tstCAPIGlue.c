@@ -1,4 +1,4 @@
-/* $Id: tstCAPIGlue.c 107033 2024-11-15 09:44:28Z andreas.loeffler@oracle.com $ */
+/* $Id: tstCAPIGlue.c 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file tstCAPIGlue.c
  * Demonstrator program to illustrate use of C bindings of Main API.
  *
@@ -8,7 +8,7 @@
  */
 
 /*
- * Copyright (C) 2009-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

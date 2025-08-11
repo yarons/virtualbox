@@ -1,10 +1,10 @@
-/* $Id: VBoxLnxModInline.h 103792 2024-03-11 18:05:14Z vadim.galitsyn@oracle.com $ */
+/* $Id: VBoxLnxModInline.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * A common code for VirtualBox Linux kernel modules.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

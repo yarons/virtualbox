@@ -1,10 +1,10 @@
-/* $Id: UICloudConsoleManager.cpp 107159 2024-11-25 16:17:23Z sergey.dubov@oracle.com $ */
+/* $Id: UICloudConsoleManager.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudConsoleManager class implementation.
  */
 
 /*
- * Copyright (C) 2009-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: uniread.cpp 107627 2025-01-09 09:10:21Z andreas.loeffler@oracle.com $ */
+/* $Id: uniread.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT - Unicode Specification Reader.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

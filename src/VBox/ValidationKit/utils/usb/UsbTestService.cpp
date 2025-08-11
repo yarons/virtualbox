@@ -1,10 +1,10 @@
-/* $Id: UsbTestService.cpp 109085 2025-04-07 11:39:16Z alexander.eichner@oracle.com $ */
+/* $Id: UsbTestService.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * UsbTestService - Remote USB test configuration and execution server.
  */
 
 /*
- * Copyright (C) 2010-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -1561,7 +1561,7 @@ static RTEXITCODE utsParseArgv(int argc, char **argv, bool *pfExit)
             }
 
             case 'V':
-                RTPrintf("$Revision: 109085 $\n");
+                RTPrintf("$Revision: 110684 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 

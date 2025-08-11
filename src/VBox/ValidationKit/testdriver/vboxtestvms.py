@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 109222 2025-04-15 09:29:45Z alexander.eichner@oracle.com $
+# $Id: vboxtestvms.py 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -7,7 +7,7 @@ VirtualBox Test VMs
 
 __copyright__ = \
 """
-Copyright (C) 2010-2024 Oracle and/or its affiliates.
+Copyright (C) 2010-2025 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 109222 $"
+__version__ = "$Revision: 110684 $"
 
 # Standard Python imports.
 import copy;

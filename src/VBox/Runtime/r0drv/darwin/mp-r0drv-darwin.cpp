@@ -1,10 +1,10 @@
-/* $Id: mp-r0drv-darwin.cpp 109431 2025-05-06 09:48:39Z knut.osmundsen@oracle.com $ */
+/* $Id: mp-r0drv-darwin.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Darwin.
  */
 
 /*
- * Copyright (C) 2008-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2008-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: UIMenuBarEditor.cpp 109728 2025-05-30 13:09:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIMenuBarEditor.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMenuBarEditor class implementation.
  */
 
 /*
- * Copyright (C) 2014-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2014-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

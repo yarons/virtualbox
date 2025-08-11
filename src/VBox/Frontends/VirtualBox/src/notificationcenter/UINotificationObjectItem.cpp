@@ -1,10 +1,10 @@
-/* $Id: UINotificationObjectItem.cpp 108935 2025-03-25 10:35:14Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjectItem.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationObjectItem class implementation.
  */
 
 /*
- * Copyright (C) 2021-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2021-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: SUPDrvTracerA-arm64.S 106642 2024-10-23 21:59:56Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrvTracerA-arm64.S 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox Support Driver - Tracer Interface, Assembly bits, ARM64.
  */
 
 /*
- * Copyright (C) 2012-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

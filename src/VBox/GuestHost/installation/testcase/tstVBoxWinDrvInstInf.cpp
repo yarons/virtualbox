@@ -1,10 +1,10 @@
-/* $Id: tstVBoxWinDrvInstInf.cpp 107099 2024-11-21 09:59:02Z andreas.loeffler@oracle.com $ */
+/* $Id: tstVBoxWinDrvInstInf.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox Windows driver installation tests.
  */
 
 /*
- * Copyright (C) 2024 Oracle and/or its affiliates.
+ * Copyright (C) 2024-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

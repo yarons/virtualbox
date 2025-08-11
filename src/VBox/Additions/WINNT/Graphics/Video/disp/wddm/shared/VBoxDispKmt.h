@@ -1,10 +1,10 @@
-/* $Id: VBoxDispKmt.h 106453 2024-10-17 13:45:57Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxDispKmt.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
 
 /*
- * Copyright (C) 2011-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

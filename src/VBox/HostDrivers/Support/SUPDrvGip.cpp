@@ -1,10 +1,10 @@
-/* $Id: SUPDrvGip.cpp 109399 2025-05-02 20:41:05Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrvGip.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code for GIP.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

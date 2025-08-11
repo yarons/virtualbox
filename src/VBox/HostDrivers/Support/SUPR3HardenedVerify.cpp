@@ -1,10 +1,10 @@
-/* $Id: SUPR3HardenedVerify.cpp 108910 2025-03-24 11:05:02Z alexander.eichner@oracle.com $ */
+/* $Id: SUPR3HardenedVerify.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Verification of Hardened Installation.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

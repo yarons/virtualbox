@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 109228 2025-04-15 13:14:34Z alexander.eichner@oracle.com $
+# $Id: vboxwrappers.py 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -8,7 +8,7 @@ VirtualBox Wrapper Classes
 
 __copyright__ = \
 """
-Copyright (C) 2010-2024 Oracle and/or its affiliates.
+Copyright (C) 2010-2025 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 109228 $"
+__version__ = "$Revision: 110684 $"
 
 
 # Standard Python imports.

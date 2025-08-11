@@ -1,10 +1,10 @@
-/* $Id: HGSMIBase.h 107060 2024-11-19 10:45:39Z knut.osmundsen@oracle.com $ */
+/* $Id: HGSMIBase.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI) - buffer management.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

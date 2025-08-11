@@ -1,10 +1,10 @@
-/* $Id: VBoxNSISTool.cpp 107314 2024-12-10 08:25:35Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxNSISTool.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxNSISTool - Utility program for NSIS-based tasks.
  */
 
 /*
- * Copyright (C) 2024 Oracle and/or its affiliates.
+ * Copyright (C) 2024-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

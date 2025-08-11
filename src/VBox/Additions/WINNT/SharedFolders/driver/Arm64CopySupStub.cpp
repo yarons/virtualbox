@@ -1,10 +1,10 @@
-/* $Id: Arm64CopySupStub.cpp 106723 2024-10-25 23:38:20Z knut.osmundsen@oracle.com $ */
+/* $Id: Arm64CopySupStub.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - Ugly hack for missing CopySup.lib on ARM64.
  */
 
 /*
- * Copyright (C) 2024 Oracle and/or its affiliates.
+ * Copyright (C) 2024-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

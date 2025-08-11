@@ -1,10 +1,10 @@
-/* $Id: UIExtension.cpp 103783 2024-03-11 17:29:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtension.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtension namespace implementation.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

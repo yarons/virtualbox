@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 107034 2024-11-15 10:00:46Z andreas.loeffler@oracle.com $
+# $Id: tdUnitTest1.py 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -8,7 +8,7 @@ VirtualBox Validation Kit - Unit Tests.
 
 __copyright__ = \
 """
-Copyright (C) 2010-2024 Oracle and/or its affiliates.
+Copyright (C) 2010-2025 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 107034 $"
+__version__ = "$Revision: 110684 $"
 
 
 # Standard Python imports.

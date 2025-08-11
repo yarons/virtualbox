@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 110195 2025-07-10 16:00:55Z ksenia.s.stepanova@oracle.com $
+# $Id: utils.py 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -10,7 +10,7 @@ from __future__ import print_function;
 
 __copyright__ = \
 """
-Copyright (C) 2012-2024 Oracle and/or its affiliates.
+Copyright (C) 2012-2025 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -39,7 +39,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 110195 $"
+__version__ = "$Revision: 110684 $"
 
 
 # Standard Python imports.

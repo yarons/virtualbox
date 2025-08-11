@@ -1,10 +1,10 @@
-/* $Id: DnDTransferList.cpp 109026 2025-04-01 15:16:47Z andreas.loeffler@oracle.com $ */
+/* $Id: DnDTransferList.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * DnD - transfer list implemenation.
  */
 
 /*
- * Copyright (C) 2014-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2014-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

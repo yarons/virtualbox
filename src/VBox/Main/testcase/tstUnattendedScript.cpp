@@ -1,10 +1,10 @@
-/* $Id: tstUnattendedScript.cpp 108538 2025-02-24 19:25:09Z serkan.bayraktar@oracle.com $ */
+/* $Id: tstUnattendedScript.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * tstUnattendedScript - testcases for UnattendedScript.
  */
 
 /*
- * Copyright (C) 2022-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2022-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

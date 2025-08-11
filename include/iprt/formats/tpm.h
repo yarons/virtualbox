@@ -1,10 +1,10 @@
-/* $Id: tpm.h 104974 2024-06-20 09:30:46Z alexander.eichner@oracle.com $ */
+/* $Id: tpm.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT, TPM common definitions (this is actually a protocol and not a format).
  */
 
 /*
- * Copyright (C) 2021-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2021-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

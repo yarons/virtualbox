@@ -1,10 +1,10 @@
-/* $Id: DevLsiLogicSCSI.cpp 107499 2025-01-06 18:43:39Z alexander.eichner@oracle.com $ */
+/* $Id: DevLsiLogicSCSI.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

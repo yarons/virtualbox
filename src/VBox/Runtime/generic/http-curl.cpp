@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 106667 2024-10-24 12:58:33Z brent.paulson@oracle.com $ */
+/* $Id: http-curl.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  *
@@ -10,7 +10,7 @@
  */
 
 /*
- * Copyright (C) 2012-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

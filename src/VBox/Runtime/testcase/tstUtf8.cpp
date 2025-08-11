@@ -1,10 +1,10 @@
-/* $Id: tstUtf8.cpp 107816 2025-01-14 09:52:54Z andreas.loeffler@oracle.com $ */
+/* $Id: tstUtf8.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT Testcase - UTF-8 and UTF-16 string conversions.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

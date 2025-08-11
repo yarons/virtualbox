@@ -1,10 +1,10 @@
-/* $Id: bmp.h 107429 2024-12-19 01:21:50Z knut.osmundsen@oracle.com $ */
+/* $Id: bmp.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT - Microsoft Bitmap Formats (BMP).
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: DrvNATlibslirp.cpp 109981 2025-06-26 07:57:56Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvNATlibslirp.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * DrvNATlibslirp - NATlibslirp network transport driver.
  */
 
 /*
- * Copyright (C) 2022-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2022-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

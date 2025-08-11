@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllN8vePython.py 108437 2025-02-18 09:14:21Z knut.osmundsen@oracle.com $
+# $Id: IEMAllN8vePython.py 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -14,7 +14,7 @@ from __future__ import print_function;
 
 __copyright__ = \
 """
-Copyright (C) 2023-2024 Oracle and/or its affiliates.
+Copyright (C) 2023-2025 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -34,7 +34,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 108437 $"
+__version__ = "$Revision: 110684 $"
 
 # Standard python imports:
 import copy;

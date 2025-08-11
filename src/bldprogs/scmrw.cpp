@@ -1,10 +1,10 @@
-/* $Id: scmrw.cpp 110574 2025-08-05 20:49:25Z klaus.espenlaub@oracle.com $ */
+/* $Id: scmrw.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
 
 /*
- * Copyright (C) 2010-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,11 +1,11 @@
-/* $Id: Hygon_C86_7185_32_core.h 109259 2025-04-16 20:59:36Z knut.osmundsen@oracle.com $ */
+/* $Id: Hygon_C86_7185_32_core.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * CPU database entry "Hygon C86 7185 32-core".
  * Generated at 2019-09-25T11:07:33Z by VBoxCpuReport v6.1.0_BETA1r80830 on linux.amd64.
  */
 
 /*
- * Copyright (C) 2013-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

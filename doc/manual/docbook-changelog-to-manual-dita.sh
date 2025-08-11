@@ -1,12 +1,12 @@
 #!/usr/bin/env kmk_ash
-# $Id: docbook-changelog-to-manual-dita.sh 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: docbook-changelog-to-manual-dita.sh 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
 ## @file
 # Helper script for converting the changelog into a ditamap and a topic
 # file per version.
 #
 
 #
-# Copyright (C) 2023-2024 Oracle and/or its affiliates.
+# Copyright (C) 2023-2025 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.

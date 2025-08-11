@@ -1,10 +1,10 @@
-/* $Id: vbox_mode.c 109110 2025-04-08 15:25:54Z vadim.galitsyn@oracle.com $ */
+/* $Id: vbox_mode.c 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
 
 /*
- * Copyright (C) 2013-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2025 Oracle and/or its affiliates.
  * This file is based on ast_mode.c
  * Copyright 2012 Red Hat Inc.
  * Parts based on xf86-video-ast

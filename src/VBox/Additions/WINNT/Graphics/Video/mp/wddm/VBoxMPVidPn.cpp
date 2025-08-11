@@ -1,10 +1,10 @@
-/* $Id: VBoxMPVidPn.cpp 109957 2025-06-25 11:13:12Z dmitrii.grigorev@oracle.com $ */
+/* $Id: VBoxMPVidPn.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox WDDM Miniport driver
  */
 
 /*
- * Copyright (C) 2011-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

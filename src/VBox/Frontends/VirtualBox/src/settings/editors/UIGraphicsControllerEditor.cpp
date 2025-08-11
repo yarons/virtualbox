@@ -1,10 +1,10 @@
-/* $Id: UIGraphicsControllerEditor.cpp 109739 2025-06-02 14:50:11Z sergey.dubov@oracle.com $ */
+/* $Id: UIGraphicsControllerEditor.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGraphicsControllerEditor class implementation.
  */
 
 /*
- * Copyright (C) 2019-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2019-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

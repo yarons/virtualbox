@@ -1,10 +1,10 @@
-/* $Id: VBoxAboutDlg.cpp 106352 2024-10-16 10:45:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: VBoxAboutDlg.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - VBoxAboutDlg class implementation.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

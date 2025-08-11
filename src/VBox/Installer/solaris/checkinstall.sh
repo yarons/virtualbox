@@ -1,12 +1,12 @@
 #!/bin/sh
-# $Id: checkinstall.sh 109329 2025-04-24 15:45:38Z brent.paulson@oracle.com $
+# $Id: checkinstall.sh 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
 ## @file
 #
 # VirtualBox checkinstall script for Solaris.
 #
 
 #
-# Copyright (C) 2009-2024 Oracle and/or its affiliates.
+# Copyright (C) 2009-2025 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.

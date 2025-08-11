@@ -1,4 +1,4 @@
-/* $Id: wayland-helper-dcp.cpp 109115 2025-04-08 16:13:41Z vadim.galitsyn@oracle.com $ */
+/* $Id: wayland-helper-dcp.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Guest Additions - Data Control Protocol (DCP) helper for Wayland.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

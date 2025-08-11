@@ -1,10 +1,10 @@
-/* $Id: gvmm.h 109209 2025-04-14 10:18:36Z knut.osmundsen@oracle.com $ */
+/* $Id: gvmm.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * GVMM - The Global VM Manager.
  */
 
 /*
- * Copyright (C) 2007-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2007-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

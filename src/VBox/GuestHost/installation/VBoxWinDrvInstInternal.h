@@ -1,4 +1,4 @@
-/* $Id: VBoxWinDrvInstInternal.h 107084 2024-11-20 16:09:39Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxWinDrvInstInternal.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxWinDrvInstInternal.h - Internal header for VBoxWinDrvInst.cpp.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2024 Oracle and/or its affiliates.
+ * Copyright (C) 2024-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

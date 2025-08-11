@@ -1,10 +1,10 @@
-/* $Id: SvgaFifo.h 110485 2025-07-30 17:22:08Z vitali.pelenjow@oracle.com $ */
+/* $Id: SvgaFifo.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver VMSVGA FIFO operations.
  */
 
 /*
- * Copyright (C) 2016-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2016-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: RecordingStream.h 110491 2025-07-31 09:28:23Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingStream.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Recording stream code header.
  */
 
 /*
- * Copyright (C) 2012-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

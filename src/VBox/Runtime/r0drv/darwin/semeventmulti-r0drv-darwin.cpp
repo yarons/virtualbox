@@ -1,10 +1,10 @@
-/* $Id: semeventmulti-r0drv-darwin.cpp 109386 2025-05-01 01:31:56Z knut.osmundsen@oracle.com $ */
+/* $Id: semeventmulti-r0drv-darwin.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT - Multiple Release Event Semaphores, Ring-0 Driver, Darwin.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

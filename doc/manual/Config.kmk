@@ -1,10 +1,10 @@
-# $Id: Config.kmk 110558 2025-08-05 13:36:37Z serkan.bayraktar@oracle.com $
+# $Id: Config.kmk 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
 ## @file
 # kBuild Configuration file for the manual.
 #
 
 #
-# Copyright (C) 2010-2024 Oracle and/or its affiliates.
+# Copyright (C) 2010-2025 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.

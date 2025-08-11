@@ -1,10 +1,10 @@
-/* $Id: DevPcBios.cpp 107542 2025-01-08 09:17:26Z alexander.eichner@oracle.com $ */
+/* $Id: DevPcBios.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * DevPcBios - PC BIOS Device.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

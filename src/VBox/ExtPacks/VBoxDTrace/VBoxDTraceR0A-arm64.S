@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceR0A-arm64.S 106964 2024-11-12 02:42:33Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDTraceR0A-arm64.S 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxDTraceR0.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2012-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from http://www.virtualbox.org.

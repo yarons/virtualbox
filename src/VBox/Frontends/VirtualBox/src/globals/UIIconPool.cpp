@@ -1,10 +1,10 @@
-/* $Id: UIIconPool.cpp 107954 2025-01-17 18:17:04Z brent.paulson@oracle.com $ */
+/* $Id: UIIconPool.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIconPool class implementation.
  */
 
 /*
- * Copyright (C) 2010-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

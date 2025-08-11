@@ -1,10 +1,10 @@
-/* $Id: zero.cpp 106602 2024-10-23 00:53:16Z knut.osmundsen@oracle.com $ */
+/* $Id: zero.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT - Zero Memory.
  */
 
 /*
- * Copyright (C) 2015-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2015-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

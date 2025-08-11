@@ -1,10 +1,10 @@
-/* $Id: KeyboardImpl.cpp 107682 2025-01-10 09:44:43Z alexander.eichner@oracle.com $ */
+/* $Id: KeyboardImpl.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

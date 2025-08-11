@@ -1,10 +1,10 @@
-/* $Id: vbox-tpm.dsl 105047 2024-06-27 09:05:56Z alexander.eichner@oracle.com $ */
+/* $Id: vbox-tpm.dsl 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox ACPI - TPM ACPI device.
  */
 
 /*
- * Copyright (C) 2021-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2021-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

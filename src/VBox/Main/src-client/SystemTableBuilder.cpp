@@ -1,10 +1,10 @@
-/* $Id: SystemTableBuilder.cpp 109369 2025-04-30 07:02:09Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: SystemTableBuilder.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox bus slots assignment manager
  */
 
 /*
- * Copyright (C) 2010-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

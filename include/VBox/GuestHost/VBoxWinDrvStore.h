@@ -1,10 +1,10 @@
-/* $Id: VBoxWinDrvStore.h 108017 2025-01-22 22:21:48Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxWinDrvStore.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxWinDrvInst - Header for Windows driver store handling.
  */
 
 /*
- * Copyright (C) 2024 Oracle and/or its affiliates.
+ * Copyright (C) 2024-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

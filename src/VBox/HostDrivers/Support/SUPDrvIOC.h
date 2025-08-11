@@ -1,10 +1,10 @@
-/* $Id: SUPDrvIOC.h 109280 2025-04-20 02:48:56Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrvIOC.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox Support Driver - IOCtl definitions.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

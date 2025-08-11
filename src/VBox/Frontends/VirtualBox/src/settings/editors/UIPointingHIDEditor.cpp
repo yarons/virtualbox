@@ -1,10 +1,10 @@
-/* $Id: UIPointingHIDEditor.cpp 109625 2025-05-21 10:21:17Z sergey.dubov@oracle.com $ */
+/* $Id: UIPointingHIDEditor.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPointingHIDEditor class implementation.
  */
 
 /*
- * Copyright (C) 2019-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2019-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

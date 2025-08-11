@@ -1,10 +1,10 @@
-/* $Id: QIRichTextLabel.cpp 109349 2025-04-28 15:06:17Z sergey.dubov@oracle.com $ */
+/* $Id: QIRichTextLabel.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIRichTextLabel class implementation.
  */
 
 /*
- * Copyright (C) 2012-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: GIMHv.cpp 107468 2025-01-06 10:04:59Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GIMHv.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * GIM - Guest Interface Manager, Hyper-V implementation.
  */
 
 /*
- * Copyright (C) 2014-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2014-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

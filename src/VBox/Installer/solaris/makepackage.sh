@@ -1,11 +1,11 @@
 #!/bin/sh
-# $Id: makepackage.sh 107326 2024-12-10 19:45:03Z brent.paulson@oracle.com $
+# $Id: makepackage.sh 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
 ## @file
 # VirtualBox package creation script, Solaris hosts.
 #
 
 #
-# Copyright (C) 2007-2024 Oracle and/or its affiliates.
+# Copyright (C) 2007-2025 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.

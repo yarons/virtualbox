@@ -1,10 +1,10 @@
-/* $Id: NEMR0Native-stubs.cpp 109718 2025-05-30 07:48:21Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMR0Native-stubs.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * NEM - Native execution manager, ring-0 stubs until there is a driverless mode.
  */
 
 /*
- * Copyright (C) 2021-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2021-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

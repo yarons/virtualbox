@@ -1,10 +1,10 @@
-/* $Id: bs3-mode-TestDoModesByOne.c 107672 2025-01-09 17:10:14Z andreas.loeffler@oracle.com $ */
+/* $Id: bs3-mode-TestDoModesByOne.c 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * BS3Kit - Bs3TestDoModesByOne
  */
 
 /*
- * Copyright (C) 2007-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2007-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

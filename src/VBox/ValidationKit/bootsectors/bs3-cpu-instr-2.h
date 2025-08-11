@@ -1,10 +1,10 @@
-/* $Id: bs3-cpu-instr-2.h 104000 2024-03-22 15:37:38Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-instr-2.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-instr-2, common header file.
  */
 
 /*
- * Copyright (C) 2024 Oracle and/or its affiliates.
+ * Copyright (C) 2024-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

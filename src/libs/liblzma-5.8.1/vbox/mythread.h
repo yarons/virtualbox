@@ -1,10 +1,10 @@
-/* $Id: mythread.h 110650 2025-08-08 15:13:56Z klaus.espenlaub@oracle.com $ */
+/* $Id: mythread.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * mythread.h - Thread implementation based on IPRT
  */
 
 /*
- * Copyright (C) 2023 Oracle and/or its affiliates.
+ * Copyright (C) 2023-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

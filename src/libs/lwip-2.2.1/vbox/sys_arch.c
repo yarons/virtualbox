@@ -1,10 +1,10 @@
-/** $Id: sys_arch.c 109528 2025-05-14 11:41:31Z alexander.eichner@oracle.com $ */
+/** $Id: sys_arch.c 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * System dependent parts of lwIP, implemented with IPRT.
  */
 
 /*
- * Copyright (C) 2007-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2007-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

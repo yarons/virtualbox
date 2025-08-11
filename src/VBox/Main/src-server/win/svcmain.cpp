@@ -1,10 +1,10 @@
-/* $Id: svcmain.cpp 108474 2025-02-19 16:13:33Z andreas.loeffler@oracle.com $ */
+/* $Id: svcmain.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * SVCMAIN - COM out-of-proc server main entry
  */
 
 /*
- * Copyright (C) 2004-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2004-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

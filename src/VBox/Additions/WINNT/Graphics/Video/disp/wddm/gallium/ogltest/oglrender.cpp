@@ -1,10 +1,10 @@
-/* $Id: oglrender.cpp 109970 2025-06-25 16:43:47Z vitali.pelenjow@oracle.com $ */
+/* $Id: oglrender.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * OpenGL testcase. Simple OpenGL tests.
  */
 
 /*
- * Copyright (C) 2019-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2019-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

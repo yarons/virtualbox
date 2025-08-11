@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win-armv8.cpp 109837 2025-06-12 10:56:35Z alexander.eichner@oracle.com $ */
+/* $Id: NEMR3Native-win-armv8.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -10,7 +10,7 @@
  */
 
 /*
- * Copyright (C) 2018-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2018-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

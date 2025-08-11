@@ -1,10 +1,10 @@
-/* $Id: tstRecording.cpp 105006 2024-06-24 17:43:00Z andreas.loeffler@oracle.com $ */
+/* $Id: tstRecording.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Recording testcases.
  */
 
 /*
- * Copyright (C) 2024 Oracle and/or its affiliates.
+ * Copyright (C) 2024-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

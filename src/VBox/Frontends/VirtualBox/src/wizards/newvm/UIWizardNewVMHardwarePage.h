@@ -1,10 +1,10 @@
-/* $Id: UIWizardNewVMHardwarePage.h 108763 2025-03-17 11:32:31Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMHardwarePage.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMHardwarePage class declaration.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: DBGPlugInWinNt.cpp 106380 2024-10-16 13:45:18Z alexander.eichner@oracle.com $ */
+/* $Id: DBGPlugInWinNt.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * DBGPlugInWindows - Debugger and Guest OS Digger Plugin For Windows NT.
  */
 
 /*
- * Copyright (C) 2009-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

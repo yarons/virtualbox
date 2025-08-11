@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.h 107585 2025-01-08 15:16:56Z andreas.loeffler@oracle.com $ */
+/* $Id: HostNetworkInterfaceImpl.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 
 /** @file
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

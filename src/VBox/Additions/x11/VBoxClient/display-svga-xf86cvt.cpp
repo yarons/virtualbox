@@ -1,10 +1,10 @@
-/* $Id: display-svga-xf86cvt.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: display-svga-xf86cvt.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Guest Additions - Our version of xf86CVTMode.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  * This file is based on x.org server 1.18.0 file xf86cvt.c:
  *
  * Copyright 2005-2006 Luc Verhaegen.

@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth-x86.cpp.h 108297 2025-02-10 14:38:31Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMAllBth-x86.cpp.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -11,7 +11,7 @@
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

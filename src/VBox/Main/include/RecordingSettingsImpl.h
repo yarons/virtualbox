@@ -1,10 +1,10 @@
-/* $Id: RecordingSettingsImpl.h 110489 2025-07-31 08:32:38Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingSettingsImpl.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Machine recording screen settings.
  */
 
 /*
- * Copyright (C) 2018-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2018-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

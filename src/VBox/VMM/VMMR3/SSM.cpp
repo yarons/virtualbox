@@ -1,10 +1,10 @@
-/* $Id: SSM.cpp 109712 2025-05-30 00:37:24Z knut.osmundsen@oracle.com $ */
+/* $Id: SSM.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * SSM - Saved State Manager.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

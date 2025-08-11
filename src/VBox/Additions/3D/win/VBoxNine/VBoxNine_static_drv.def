@@ -1,10 +1,10 @@
-; $Id: VBoxNine_static_drv.def 103999 2024-03-22 12:38:39Z vitali.pelenjow@oracle.com $;
+; $Id: VBoxNine_static_drv.def 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $;
 ;; @file
 ; Export definition file for the VBoxNine D3D9 state tracker.
 ;
 
 ;
-; Copyright (C) 2024 Oracle and/or its affiliates.
+; Copyright (C) 2024-2025 Oracle and/or its affiliates.
 ;
 ; This file is part of VirtualBox base platform packages, as
 ; available from https://www.virtualbox.org.

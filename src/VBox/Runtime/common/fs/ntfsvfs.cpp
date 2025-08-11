@@ -1,10 +1,10 @@
-/* $Id: ntfsvfs.cpp 107868 2025-01-15 15:19:08Z alexander.eichner@oracle.com $ */
+/* $Id: ntfsvfs.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT - NTFS Virtual Filesystem, currently only for reading allocation bitmap.
  */
 
 /*
- * Copyright (C) 2012-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

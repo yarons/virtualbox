@@ -1,10 +1,10 @@
-/* $Id: tarcmd.cpp 107871 2025-01-15 15:33:12Z alexander.eichner@oracle.com $ */
+/* $Id: tarcmd.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT - A mini TAR Command.
  */
 
 /*
- * Copyright (C) 2010-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

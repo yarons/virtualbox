@@ -1,10 +1,10 @@
-/* $Id: VRDEServerImpl.cpp 108310 2025-02-11 01:05:15Z samantha.scholz@oracle.com $ */
+/* $Id: VRDEServerImpl.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

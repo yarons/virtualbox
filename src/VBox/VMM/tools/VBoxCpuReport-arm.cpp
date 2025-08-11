@@ -1,10 +1,10 @@
-/* $Id: VBoxCpuReport-arm.cpp 109713 2025-05-30 01:02:01Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxCpuReport-arm.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxCpuReport - Produces the basis for a CPU DB entry, x86 specifics.
  */
 
 /*
- * Copyright (C) 2013-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

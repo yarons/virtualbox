@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 110164 2025-07-09 07:24:28Z jack.doherty@oracle.com $
+# $Id: Makefile.kmk 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
 ## @file
 # Sub-Makefile for the libslirp library.
 #
 
 #
-# Copyright (C) 2024 Oracle and/or its affiliates.
+# Copyright (C) 2024-2025 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.

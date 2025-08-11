@@ -1,10 +1,10 @@
-/* $Id: UIWizardDiskEditors.cpp 108769 2025-03-17 14:26:39Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardDiskEditors.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

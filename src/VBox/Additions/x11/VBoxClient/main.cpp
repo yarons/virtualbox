@@ -1,10 +1,10 @@
-/* $Id: main.cpp 109963 2025-06-25 15:24:41Z vadim.galitsyn@oracle.com $ */
+/* $Id: main.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox Guest Additions - X11 Client.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

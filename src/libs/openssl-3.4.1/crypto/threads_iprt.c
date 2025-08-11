@@ -1,10 +1,10 @@
-/* $Id: threads_iprt.c 109305 2025-04-22 13:23:25Z aleksey.ilyushin@oracle.com $ */
+/* $Id: threads_iprt.c 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Crypto threading and atomic functions built upon IPRT.
  */
 
 /*
- * Copyright (C) 2016-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2016-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,11 +1,11 @@
 @echo off
-rem $Id: loadall.cmd 107344 2024-12-12 11:07:22Z andreas.loeffler@oracle.com $
+rem $Id: loadall.cmd 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
 rem rem @file
 rem Windows NT batch script for loading the host drivers.
 rem
 
 rem
-rem Copyright (C) 2009-2024 Oracle and/or its affiliates.
+rem Copyright (C) 2009-2025 Oracle and/or its affiliates.
 rem
 rem This file is part of VirtualBox base platform packages, as
 rem available from https://www.virtualbox.org.

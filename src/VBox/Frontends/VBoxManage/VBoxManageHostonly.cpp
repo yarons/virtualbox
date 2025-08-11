@@ -1,10 +1,10 @@
-/* $Id: VBoxManageHostonly.cpp 108264 2025-02-07 13:12:08Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageHostonly.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of hostonlyif command.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

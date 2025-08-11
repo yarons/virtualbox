@@ -1,10 +1,10 @@
-/* $Id: d3d11main.cpp 110306 2025-07-18 13:59:09Z vitali.pelenjow@oracle.com $ */
+/* $Id: d3d11main.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * D3D testcase. Win32 application to run D3D11 tests.
  */
 
 /*
- * Copyright (C) 2017-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2017-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

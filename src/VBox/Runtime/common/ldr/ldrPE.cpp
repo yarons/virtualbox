@@ -1,10 +1,10 @@
-/* $Id: ldrPE.cpp 106879 2024-11-07 03:18:57Z knut.osmundsen@oracle.com $ */
+/* $Id: ldrPE.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

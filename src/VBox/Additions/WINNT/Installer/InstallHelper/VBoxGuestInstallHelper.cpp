@@ -1,10 +1,10 @@
-/* $Id: VBoxGuestInstallHelper.cpp 106982 2024-11-12 15:33:37Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxGuestInstallHelper.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxGuestInstallHelper - Driver and service installation helper for Windows guests.
  */
 
 /*
- * Copyright (C) 2011-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

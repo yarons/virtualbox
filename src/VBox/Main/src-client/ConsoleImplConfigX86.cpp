@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigX86.cpp 107957 2025-01-20 11:23:21Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImplConfigX86.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -9,7 +9,7 @@
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

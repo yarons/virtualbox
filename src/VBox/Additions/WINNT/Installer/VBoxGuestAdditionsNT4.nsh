@@ -1,10 +1,10 @@
-; $Id: VBoxGuestAdditionsNT4.nsh 108978 2025-03-27 15:45:34Z andreas.loeffler@oracle.com $
+; $Id: VBoxGuestAdditionsNT4.nsh 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsNT4.nsh - Guest Additions installation for NT4.
 ;
 
 ;
-; Copyright (C) 2006-2024 Oracle and/or its affiliates.
+; Copyright (C) 2006-2025 Oracle and/or its affiliates.
 ;
 ; This file is part of VirtualBox base platform packages, as
 ; available from https://www.virtualbox.org.

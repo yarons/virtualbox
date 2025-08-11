@@ -1,10 +1,10 @@
-/* $Id: UIVMInformationDialog.h 110344 2025-07-22 07:46:07Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMInformationDialog.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class declaration.
  */
 
 /*
- * Copyright (C) 2016-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2016-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: VBoxGuestControlHelper.cpp 104375 2024-04-19 12:47:54Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxGuestControlHelper.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Helper binary for Guest Control tests.
  */
 
 /*
- * Copyright (C) 2024 Oracle and/or its affiliates.
+ * Copyright (C) 2024-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

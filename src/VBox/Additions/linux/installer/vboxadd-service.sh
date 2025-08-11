@@ -1,11 +1,11 @@
 #!/bin/sh
-# $Id: vboxadd-service.sh 109588 2025-05-16 16:06:57Z andreas.loeffler@oracle.com $
+# $Id: vboxadd-service.sh 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
 ## @file
 # Linux Additions Guest Additions service daemon init script.
 #
 
 #
-# Copyright (C) 2006-2024 Oracle and/or its affiliates.
+# Copyright (C) 2006-2025 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.

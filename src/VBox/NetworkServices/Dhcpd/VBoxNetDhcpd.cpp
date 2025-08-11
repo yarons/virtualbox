@@ -1,10 +1,10 @@
-/* $Id: VBoxNetDhcpd.cpp 109545 2025-05-14 16:30:39Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxNetDhcpd.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxNetDhcpd - DHCP server for host-only and NAT networks.
  */
 
 /*
- * Copyright (C) 2009-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

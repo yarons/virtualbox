@@ -1,10 +1,10 @@
-; $Id: ftol2-vcc.asm 106513 2024-10-20 00:47:58Z knut.osmundsen@oracle.com $
+; $Id: ftol2-vcc.asm 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
 ;; @file
 ; IPRT - Floating Point to Integer related Visual C++ support routines.
 ;
 
 ;
-; Copyright (C) 2022-2024 Oracle and/or its affiliates.
+; Copyright (C) 2022-2025 Oracle and/or its affiliates.
 ;
 ; This file is part of VirtualBox base platform packages, as
 ; available from https://www.virtualbox.org.

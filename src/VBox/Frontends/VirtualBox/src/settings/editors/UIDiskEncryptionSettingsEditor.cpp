@@ -1,10 +1,10 @@
-/* $Id: UIDiskEncryptionSettingsEditor.cpp 109606 2025-05-19 15:06:14Z sergey.dubov@oracle.com $ */
+/* $Id: UIDiskEncryptionSettingsEditor.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDiskEncryptionSettingsEditor class implementation.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

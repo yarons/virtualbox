@@ -1,10 +1,10 @@
-/* $Id: RTMpGetArraySize-generic.cpp 109339 2025-04-25 10:53:30Z knut.osmundsen@oracle.com $ */
+/* $Id: RTMpGetArraySize-generic.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT - Multiprocessor, Generic RTMpGetArraySize.
  */
 
 /*
- * Copyright (C) 2010-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

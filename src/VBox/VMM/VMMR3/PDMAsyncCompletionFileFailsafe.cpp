@@ -1,11 +1,11 @@
-/* $Id: PDMAsyncCompletionFileFailsafe.cpp 108644 2025-03-05 17:33:56Z alexander.eichner@oracle.com $ */
+/* $Id: PDMAsyncCompletionFileFailsafe.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * Simple File I/O manager.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

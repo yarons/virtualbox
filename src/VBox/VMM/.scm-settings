@@ -1,10 +1,10 @@
-# $Id: .scm-settings 109616 2025-05-20 21:27:26Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
 ## @file
 # Source code massager settings for the VMM.
 #
 
 #
-# Copyright (C) 2017-2024 Oracle and/or its affiliates.
+# Copyright (C) 2017-2025 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.

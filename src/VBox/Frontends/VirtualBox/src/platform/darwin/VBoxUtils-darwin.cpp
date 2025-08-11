@@ -1,10 +1,10 @@
-/* $Id: VBoxUtils-darwin.cpp 107943 2025-01-17 10:38:38Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxUtils-darwin.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - Utility Classes and Functions specific to Darwin.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

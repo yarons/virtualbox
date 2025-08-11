@@ -1,10 +1,10 @@
-/* $Id: VBoxTraceLogDecoders.cpp 105046 2024-06-27 09:05:03Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxTraceLogDecoders.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * RTTraceLogDecoders - Implement decoders for the tracing driver.
  */
 
 /*
- * Copyright (C) 2024 Oracle and/or its affiliates.
+ * Copyright (C) 2024-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,9 +1,9 @@
-/* $Id: VBoxUsbFlt.cpp 109101 2025-04-08 11:51:30Z michal.necasek@oracle.com $ */
+/* $Id: VBoxUsbFlt.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox USB Monitor Device Filtering functionality
  */
 /*
- * Copyright (C) 2011-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

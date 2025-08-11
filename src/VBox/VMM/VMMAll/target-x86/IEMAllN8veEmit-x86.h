@@ -1,10 +1,10 @@
-/* $Id: IEMAllN8veEmit-x86.h 110154 2025-07-08 14:57:17Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veEmit-x86.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, x86 Target - Code Emitters.
  */
 
 /*
- * Copyright (C) 2023-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2023-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

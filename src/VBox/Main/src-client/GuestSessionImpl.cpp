@@ -1,10 +1,10 @@
-/* $Id: GuestSessionImpl.cpp 110512 2025-08-01 12:32:24Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImpl.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
 
 /*
- * Copyright (C) 2012-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

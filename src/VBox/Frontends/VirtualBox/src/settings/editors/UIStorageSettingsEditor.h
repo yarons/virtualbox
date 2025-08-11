@@ -1,10 +1,10 @@
-/* $Id: UIStorageSettingsEditor.h 106138 2024-09-24 12:36:53Z sergey.dubov@oracle.com $ */
+/* $Id: UIStorageSettingsEditor.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStorageSettingsEditor class declaration.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

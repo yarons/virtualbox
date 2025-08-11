@@ -1,10 +1,10 @@
-; $Id: nt3fakesA-r0drv-nt.asm 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+; $Id: nt3fakesA-r0drv-nt.asm 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
 ;; @file
 ; IPRT - Companion to nt3fakes-r0drv-nt.cpp that provides import stuff to satisfy the linker.
 ;
 
 ;
-; Copyright (C) 2006-2024 Oracle and/or its affiliates.
+; Copyright (C) 2006-2025 Oracle and/or its affiliates.
 ;
 ; This file is part of VirtualBox base platform packages, as
 ; available from https://www.virtualbox.org.

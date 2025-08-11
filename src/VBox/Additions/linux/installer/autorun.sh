@@ -1,11 +1,11 @@
 #!/bin/sh
-# $Id: autorun.sh 110048 2025-06-30 17:46:44Z andreas.loeffler@oracle.com $
+# $Id: autorun.sh 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
 ## @file
 # VirtualBox Guest Additions installation script for *nix guests
 #
 
 #
-# Copyright (C) 2009-2024 Oracle and/or its affiliates.
+# Copyright (C) 2009-2025 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.

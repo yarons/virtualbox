@@ -1,10 +1,10 @@
-/* $Id: VBoxDnD.cpp 109921 2025-06-20 15:40:58Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxDnD.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxDnD.cpp - Windows-specific bits of the drag and drop service.
  */
 
 /*
- * Copyright (C) 2013-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

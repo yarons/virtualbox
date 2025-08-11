@@ -1,10 +1,10 @@
-/* $Id: IEMR0.cpp 108360 2025-02-13 14:57:25Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMR0.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Ring-0.
  */
 
 /*
- * Copyright (C) 2011-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

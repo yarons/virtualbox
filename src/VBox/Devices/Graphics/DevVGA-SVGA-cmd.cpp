@@ -1,10 +1,10 @@
-/* $Id: DevVGA-SVGA-cmd.cpp 110661 2025-08-11 08:27:30Z alexander.eichner@oracle.com $ */
+/* $Id: DevVGA-SVGA-cmd.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VMware SVGA device - implementation of VMSVGA commands.
  */
 
 /*
- * Copyright (C) 2013-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

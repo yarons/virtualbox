@@ -1,10 +1,10 @@
-/* $Id: ConsoleVRDPServer.cpp 109297 2025-04-22 08:32:28Z vadim.galitsyn@oracle.com $ */
+/* $Id: ConsoleVRDPServer.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Console VRDP helper class.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

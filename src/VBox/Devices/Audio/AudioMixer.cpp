@@ -1,10 +1,10 @@
-/* $Id: AudioMixer.cpp 107652 2025-01-09 11:16:11Z andreas.loeffler@oracle.com $ */
+/* $Id: AudioMixer.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  */
 
 /*
- * Copyright (C) 2014-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2014-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

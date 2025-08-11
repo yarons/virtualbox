@@ -1,5 +1,5 @@
 
-/* $Id: VBoxDTraceTypes.h 106939 2024-11-11 09:51:28Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDTraceTypes.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxDTraceTypes.h - Fake a bunch of Solaris types.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2012-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from http://www.virtualbox.org.

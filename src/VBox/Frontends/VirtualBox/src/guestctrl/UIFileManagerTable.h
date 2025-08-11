@@ -1,10 +1,10 @@
-/* $Id: UIFileManagerTable.h 110089 2025-07-02 13:10:07Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerTable.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class declaration.
  */
 
 /*
- * Copyright (C) 2016-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2016-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

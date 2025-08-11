@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstThree0f3a-x86.cpp.h 108467 2025-02-19 14:44:11Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstThree0f3a-x86.cpp.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, x86 target, 0x0f 0x3a map.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2011-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

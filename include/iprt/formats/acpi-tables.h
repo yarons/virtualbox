@@ -1,4 +1,4 @@
-/* $Id: acpi-tables.h 109369 2025-04-30 07:02:09Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: acpi-tables.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT, ACPI (Advanced Configuration and Power Interface) table format.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2024 Oracle and/or its affiliates.
+ * Copyright (C) 2024-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

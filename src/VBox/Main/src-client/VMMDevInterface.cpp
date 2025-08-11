@@ -1,10 +1,10 @@
-/* $Id: VMMDevInterface.cpp 109925 2025-06-21 11:23:05Z vitali.pelenjow@oracle.com $ */
+/* $Id: VMMDevInterface.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

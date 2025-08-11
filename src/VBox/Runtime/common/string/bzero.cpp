@@ -1,10 +1,10 @@
-/* $Id: bzero.cpp 106935 2024-11-10 02:26:41Z knut.osmundsen@oracle.com $ */
+/* $Id: bzero.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT - CRT Strings, bzero().
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

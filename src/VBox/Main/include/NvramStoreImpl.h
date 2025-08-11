@@ -1,10 +1,10 @@
-/* $Id: NvramStoreImpl.h 108816 2025-03-19 19:29:06Z brent.paulson@oracle.com $ */
+/* $Id: NvramStoreImpl.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox COM NVRAM store class implementation
  */
 
 /*
- * Copyright (C) 2021-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2021-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

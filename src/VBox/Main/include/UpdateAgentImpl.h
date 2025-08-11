@@ -1,10 +1,10 @@
-/* $Id: UpdateAgentImpl.h 110529 2025-08-04 14:30:35Z knut.osmundsen@oracle.com $ */
+/* $Id: UpdateAgentImpl.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Update agent COM class implementation - Header
  */
 
 /*
- * Copyright (C) 2020-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2020-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

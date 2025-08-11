@@ -1,9 +1,9 @@
-; $Id: VMMR0.def 106948 2024-11-11 15:26:11Z knut.osmundsen@oracle.com $
+; $Id: VMMR0.def 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
 ;; @file
 ; VMM Ring 0 DLL - Definition file.
 
 ;
-; Copyright (C) 2006-2024 Oracle and/or its affiliates.
+; Copyright (C) 2006-2025 Oracle and/or its affiliates.
 ;
 ; This file is part of VirtualBox base platform packages, as
 ; available from https://www.virtualbox.org.

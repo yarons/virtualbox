@@ -1,10 +1,10 @@
-/* $Id: NoCrtOutput.h 106322 2024-10-15 13:06:30Z andreas.loeffler@oracle.com $ */
+/* $Id: NoCrtOutput.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * NoCrtOutput - ErrorMsgXxx and PrintXxx functions for small EXEs.
  */
 
 /*
- * Copyright (C) 2022-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2022-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

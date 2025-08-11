@@ -1,10 +1,10 @@
-/* $Id: DevEFI.cpp 109012 2025-03-31 15:57:08Z alexander.eichner@oracle.com $ */
+/* $Id: DevEFI.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/** $Id: VBoxOs2AdditionsInstall.cpp 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/** $Id: VBoxOs2AdditionsInstall.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxOs2AdditionsInstall - Barebone OS/2 Guest Additions Installer.
  */
 
 /*
- * Copyright (C) 2022-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2022-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -1592,7 +1592,7 @@ static RTEXITCODE ShowVersion(void)
 {
     DoWriteNStr(g_hStdOut, RT_STR_TUPLE(VBOX_VERSION_STRING " r"));
 
-    const char *pszRev = "$Rev: 106061 $";
+    const char *pszRev = "$Rev: 110684 $";
     while (!RT_C_IS_DIGIT(*pszRev))
         pszRev++;
     size_t cchRev = 1;

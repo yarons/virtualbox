@@ -1,10 +1,10 @@
-/* $Id: HMVMXR0.cpp 109884 2025-06-18 10:05:37Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMVMXR0.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
 
 /*
- * Copyright (C) 2012-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

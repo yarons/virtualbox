@@ -1,10 +1,10 @@
-/* $Id: UIAutoCaptureKeyboardEditor.cpp 109769 2025-06-03 15:29:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIAutoCaptureKeyboardEditor.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAutoCaptureKeyboardEditor class implementation.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

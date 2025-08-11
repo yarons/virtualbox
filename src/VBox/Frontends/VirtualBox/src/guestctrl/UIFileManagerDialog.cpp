@@ -1,10 +1,10 @@
-/* $Id: UIFileManagerDialog.cpp 110103 2025-07-03 14:25:57Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerDialog.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerDialog class implementation.
  */
 
 /*
- * Copyright (C) 2010-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

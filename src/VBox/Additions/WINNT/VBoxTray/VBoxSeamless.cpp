@@ -1,10 +1,10 @@
-/* $Id: VBoxSeamless.cpp 106468 2024-10-18 07:03:23Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSeamless.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxSeamless - Seamless windows
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

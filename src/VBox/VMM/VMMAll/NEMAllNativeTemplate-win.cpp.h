@@ -1,10 +1,10 @@
-/* $Id: NEMAllNativeTemplate-win.cpp.h 110483 2025-07-30 15:54:00Z alexander.eichner@oracle.com $ */
+/* $Id: NEMAllNativeTemplate-win.cpp.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * NEM - Native execution manager, Windows code template ring-0/3.
  */
 
 /*
- * Copyright (C) 2018-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2018-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

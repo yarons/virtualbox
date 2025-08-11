@@ -1,10 +1,10 @@
-/* $Id: VBoxServiceStats.cpp 107936 2025-01-17 10:20:42Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceStats.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxStats - Guest statistics notification
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

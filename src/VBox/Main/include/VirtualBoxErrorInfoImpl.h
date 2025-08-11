@@ -1,10 +1,10 @@
-/* $Id: VirtualBoxErrorInfoImpl.h 106822 2024-10-31 14:37:43Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtualBoxErrorInfoImpl.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBoxErrorInfo COM class definition.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

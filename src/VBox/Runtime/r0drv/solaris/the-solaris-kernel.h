@@ -1,10 +1,10 @@
-/* $Id: the-solaris-kernel.h 107290 2024-12-06 17:50:03Z knut.osmundsen@oracle.com $ */
+/* $Id: the-solaris-kernel.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT - Include all necessary headers for the Solaris kernel.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

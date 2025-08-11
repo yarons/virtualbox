@@ -1,10 +1,10 @@
-/* $Id: vfsmod.h 107202 2024-11-27 11:59:47Z vadim.galitsyn@oracle.com $ */
+/* $Id: vfsmod.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * vboxsf - Linux Shared Folders VFS, internal header.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

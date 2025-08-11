@@ -1,10 +1,10 @@
-/* $Id: UIMachineView.h 107479 2025-01-06 16:01:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
 
 /*
- * Copyright (C) 2010-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

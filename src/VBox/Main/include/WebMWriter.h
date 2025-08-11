@@ -1,10 +1,10 @@
-/* $Id: WebMWriter.h 107560 2025-01-08 12:51:13Z andreas.loeffler@oracle.com $ */
+/* $Id: WebMWriter.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * WebMWriter.h - WebM container handling.
  */
 
 /*
- * Copyright (C) 2013-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-# $Id: Makefile 109968 2025-06-25 16:30:39Z klaus.espenlaub@oracle.com $
+# $Id: Makefile 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
 ## @file
 # Makefile
 #
 
 #
-# Copyright (C) 2006-2024 Oracle and/or its affiliates.
+# Copyright (C) 2006-2025 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.

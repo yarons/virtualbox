@@ -1,10 +1,10 @@
-/* $Id: VBoxManageCloud.cpp 107831 2025-01-14 13:36:10Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageCloud.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxManageCloud - The cloud related commands.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

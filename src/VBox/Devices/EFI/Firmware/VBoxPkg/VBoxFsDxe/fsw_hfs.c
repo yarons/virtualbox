@@ -1,4 +1,4 @@
-/* $Id: fsw_hfs.c 109526 2025-05-14 10:34:03Z alexander.eichner@oracle.com $ */
+/* $Id: fsw_hfs.c 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * fsw_hfs.c - HFS file system driver code, see
  *
@@ -13,7 +13,7 @@
  */
 
 /*
- * Copyright (C) 2010-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

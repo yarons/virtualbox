@@ -1,10 +1,10 @@
-/* $Id: VBoxAppleSim.c 110304 2025-07-18 11:07:06Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxAppleSim.c 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxAppleSim.c - VirtualBox Apple Firmware simulation support
  */
 
 /*
- * Copyright (C) 2010-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

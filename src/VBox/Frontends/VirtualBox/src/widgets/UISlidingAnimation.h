@@ -1,10 +1,10 @@
-/* $Id: UISlidingAnimation.h 107309 2024-12-09 16:31:38Z sergey.dubov@oracle.com $ */
+/* $Id: UISlidingAnimation.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISlidingAnimation class declaration.
  */
 
 /*
- * Copyright (C) 2017-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2017-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

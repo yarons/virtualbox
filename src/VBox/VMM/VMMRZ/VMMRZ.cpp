@@ -1,10 +1,10 @@
-/* $Id: VMMRZ.cpp 106938 2024-11-11 01:09:38Z knut.osmundsen@oracle.com $ */
+/* $Id: VMMRZ.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VMM - Virtual Machine Monitor, Raw-mode and ring-0 context code.
  */
 
 /*
- * Copyright (C) 2009-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

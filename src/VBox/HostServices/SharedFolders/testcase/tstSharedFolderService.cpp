@@ -1,4 +1,4 @@
-/* $Id: tstSharedFolderService.cpp 106238 2024-10-08 14:16:19Z brent.paulson@oracle.com $ */
+/* $Id: tstSharedFolderService.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Testcase for the shared folder service vbsf API.
  *
@@ -10,7 +10,7 @@
  */
 
 /*
- * Copyright (C) 2011-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

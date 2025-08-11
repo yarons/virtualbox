@@ -1,10 +1,10 @@
-/* $Id: CPUProfileImpl.cpp 109259 2025-04-16 20:59:36Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUProfileImpl.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox Main - interface for CPU profiles, VBoxSVC.
  */
 
 /*
- * Copyright (C) 2020-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2020-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

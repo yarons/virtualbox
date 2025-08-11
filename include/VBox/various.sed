@@ -1,4 +1,4 @@
-# $Id: various.sed 106033 2024-09-12 13:26:05Z knut.osmundsen@oracle.com $
+# $Id: various.sed 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
 ## @file
 # Converts some C header elements into nasm/yasm syntax.
 #
@@ -7,7 +7,7 @@
 #
 
 #
-# Copyright (C) 2006-2024 Oracle and/or its affiliates.
+# Copyright (C) 2006-2025 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.

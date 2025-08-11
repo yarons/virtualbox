@@ -1,10 +1,10 @@
-/* $Id: ProgressImpl.cpp 106994 2024-11-13 08:52:53Z valery.portnyagin@oracle.com $ */
+/* $Id: ProgressImpl.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox Progress COM class implementation
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,11 +1,11 @@
-/* $Id: jconfigint.h 110566 2025-08-05 16:20:37Z samantha.scholz@oracle.com $ */
+/* $Id: jconfigint.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * libjpeg-turbo - This contains only the stuff we can't do in Makefile.kmk.
  * The rest of the preprocessor / constant stuff is done in Makefile.kmk.
  */
 
 /*
- * Copyright (C) 2010-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

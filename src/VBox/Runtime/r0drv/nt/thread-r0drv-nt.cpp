@@ -1,10 +1,10 @@
-/* $Id: thread-r0drv-nt.cpp 106457 2024-10-17 14:03:57Z alexander.eichner@oracle.com $ */
+/* $Id: thread-r0drv-nt.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, NT.
  */
 
 /*
- * Copyright (C) 2006-2024 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2025 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
