@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 110683 2025-08-11 16:06:39Z klaus.espenlaub@oracle.com $
 ## @file
 # Sub-makefile for iPXE.
 #
@@ -398,6 +398,7 @@ endif
  ipxezbin_TEMPLATE = VBoxBldProg
  ipxezbin_CFLAGS   = -Wno-format -Wno-unused-function -Wno-pointer-arith
  ipxezbin_SOURCES  = src/util/zbin.c
+ ipxezbin_DEFS     = _POSIX_C_SOURCE=200809L # For ssize_t and fileno() in stdio.h (mostly if GNU extensions disabled with -std=c23).
  ifdef VBOX_WITH_LIBLZMA
   ipxezbin_INCS     = $(SDK_VBoxLibLzma_INCS) # Can't use the proper SDK here as link order matters and liblzma depends on our runtime.
   ipxezbin_LIBS    = \
