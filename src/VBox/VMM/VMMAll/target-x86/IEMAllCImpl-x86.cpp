@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl-x86.cpp 108427 2025-02-17 15:24:14Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImpl-x86.cpp 110667 2025-08-11 10:48:09Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in C/C++, x86 target.
  */
@@ -2550,7 +2550,6 @@ IEM_CIMPL_DEF_2(iemCImpl_retf, IEMMODE, enmEffOpSize, uint16_t, cbPop)
                 return iemRaiseNotCanonical(pVCpu);
             }
             u64Base  = 0;
-            f64BitCs = true;
             f64BitCs = true;
         }
         else
