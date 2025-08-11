@@ -1,4 +1,4 @@
-/* $Id: acpi-ast.cpp 110615 2025-08-07 13:26:43Z alexander.eichner@oracle.com $ */
+/* $Id: acpi-ast.cpp 110666 2025-08-11 10:34:07Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Advanced Configuration and Power Interface (ACPI) AST handling.
  */
@@ -643,6 +643,8 @@ DECLHIDDEN(int) rtAcpiAstDumpToTbl(PCRTACPIASTNODE pAstNd, PRTACPINSROOT pNsRoot
                             rc = VERR_INTERNAL_ERROR);
 
             rc = RTAcpiTblBufferStart(hAcpiTbl);
+            if (RT_FAILURE(rc))
+                break;
 
             /* Try to gather the number of elements. */
             uint64_t cElems = 0;
@@ -694,7 +696,8 @@ DECLHIDDEN(int) rtAcpiAstDumpToTbl(PCRTACPIASTNODE pAstNd, PRTACPINSROOT pNsRoot
                     rc = VERR_NO_MEMORY;
             }
 
-            rc = RTAcpiTblBufferFinalize(hAcpiTbl);
+            if (RT_SUCCESS(rc))
+                rc = RTAcpiTblBufferFinalize(hAcpiTbl);
             break;
         }
         case kAcpiAstNodeOp_ToUuid:
