@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl-armv8.cpp 110660 2025-08-11 08:25:12Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImpl-armv8.cpp 110676 2025-08-11 13:45:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - ARMv8 target, miscellaneous.
  */
@@ -66,41 +66,42 @@ DECLHIDDEN(VBOXSTRICTRC) iemCImplA64_msr_novar(PVMCPU pVCpu, uint32_t idSysReg, 
 }
 
 
-DECLHIDDEN(VBOXSTRICTRC) iemCImplA64_mrs_fallback(PVMCPU pVCpu, uint32_t idxGprDst, uint32_t idSysReg) RT_NOEXCEPT
+DECLHIDDEN(VBOXSTRICTRC)
+iemCImplA64_mrs_fallback(PVMCPU pVCpu, uint32_t idSysReg, uint32_t idxGprDst, uint64_t *puDst) RT_NOEXCEPT
 {
-    RT_NOREF(pVCpu, idxGprDst, idSysReg);
+    RT_NOREF(pVCpu, idSysReg, idxGprDst, puDst);
     AssertFailedReturn(VERR_IEM_ASPECT_NOT_IMPLEMENTED);
 }
 
 
 DECLHIDDEN(VBOXSTRICTRC)
-iemCImplA64_msr_fallback(PVMCPU pVCpu, uint32_t idSysReg, uint64_t uValue, uint32_t idxGprSrc) RT_NOEXCEPT
+iemCImplA64_msr_fallback(PVMCPU pVCpu, uint32_t idSysReg, uint32_t idxGprSrc, uint64_t uValue) RT_NOEXCEPT
 {
-    RT_NOREF(pVCpu, idSysReg, uValue, idxGprSrc);
+    RT_NOREF(pVCpu, idSysReg, idxGprSrc, uValue);
     AssertFailedReturn(VERR_IEM_ASPECT_NOT_IMPLEMENTED);
 }
 
 
 DECLHIDDEN(VBOXSTRICTRC)
-iemCImplA64_sys_fallback(PVMCPU pVCpu, uint32_t idSysReg, uint64_t uValue, uint32_t idxGprSrc) RT_NOEXCEPT
+iemCImplA64_sys_fallback(PVMCPU pVCpu, uint32_t idSysReg, uint32_t idxGprSrc, uint64_t uValue) RT_NOEXCEPT
 {
-    RT_NOREF(pVCpu, idSysReg, uValue, idxGprSrc);
+    RT_NOREF(pVCpu, idSysReg, idxGprSrc, uValue);
     AssertFailedReturn(VERR_IEM_ASPECT_NOT_IMPLEMENTED);
 }
 
 
 DECLHIDDEN(VBOXSTRICTRC)
-iemCImplA64_sysp_fallback(PVMCPU pVCpu, uint32_t idSysReg, PCRTUINT128U puValue, uint32_t idxGprSrc) RT_NOEXCEPT
+iemCImplA64_sysp_fallback(PVMCPU pVCpu, uint32_t idSysReg, uint32_t idxGprSrc, PCRTUINT128U puValue) RT_NOEXCEPT
 {
-    RT_NOREF(pVCpu, idSysReg, puValue, idxGprSrc);
+    RT_NOREF(pVCpu, idSysReg, idxGprSrc, puValue);
     AssertFailedReturn(VERR_IEM_ASPECT_NOT_IMPLEMENTED);
 }
 
 
 DECLHIDDEN(VBOXSTRICTRC)
-iemCImplA64_sysl_fallback(PVMCPU pVCpu, uint32_t idSysReg, uint32_t idxGprDst) RT_NOEXCEPT
+iemCImplA64_sysl_fallback(PVMCPU pVCpu, uint32_t idSysReg, uint32_t idxGprDst, uint64_t *puDst) RT_NOEXCEPT
 {
-    RT_NOREF(pVCpu, idxGprDst, idSysReg);
+    RT_NOREF(pVCpu, idSysReg, idxGprDst, puDst);
     AssertFailedReturn(VERR_IEM_ASPECT_NOT_IMPLEMENTED);
 }
 

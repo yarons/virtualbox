@@ -1,4 +1,4 @@
-/* $Id: IEMInternal-armv8.h 110660 2025-08-11 08:25:12Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal-armv8.h 110676 2025-08-11 13:45:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file, ARMv8 target specifics.
  */
@@ -382,14 +382,16 @@ DECLHIDDEN(VBOXSTRICTRC) iemCImplA64_mrs_novar(PVMCPU pVCpu, uint32_t idSysReg, 
                                                uint64_t *puDst, uint32_t idxGprDst) RT_NOEXCEPT;
 DECLHIDDEN(VBOXSTRICTRC) iemCImplA64_msr_novar(PVMCPU pVCpu, uint32_t idSysReg, const char *pszRegName,
                                                uint64_t uValue, uint32_t idxGprSrc) RT_NOEXCEPT;
-DECLHIDDEN(VBOXSTRICTRC) iemCImplA64_mrs_fallback(PVMCPU pVCpu, uint32_t idxGprDst, uint32_t idSysReg) RT_NOEXCEPT;
-DECLHIDDEN(VBOXSTRICTRC) iemCImplA64_msr_fallback(PVMCPU pVCpu, uint32_t idSysReg,
-                                                  uint64_t uValue, uint32_t idxGprSrc) RT_NOEXCEPT;
-DECLHIDDEN(VBOXSTRICTRC) iemCImplA64_sys_fallback(PVMCPU pVCpu, uint32_t idSysReg,
-                                                  uint64_t uValue, uint32_t idxGprSrc) RT_NOEXCEPT;
-DECLHIDDEN(VBOXSTRICTRC) iemCImplA64_sysp_fallback(PVMCPU pVCpu, uint32_t idSysReg,
-                                                   PCRTUINT128U puValue, uint32_t idxGprSrc) RT_NOEXCEPT;
-DECLHIDDEN(VBOXSTRICTRC) iemCImplA64_sysl_fallback(PVMCPU pVCpu, uint32_t idSysReg, uint32_t idxGprDst) RT_NOEXCEPT;
+DECLHIDDEN(VBOXSTRICTRC) iemCImplA64_mrs_fallback(PVMCPU pVCpu, uint32_t idSysReg, uint32_t idxGprDst,
+                                                  uint64_t *puDst) RT_NOEXCEPT;
+DECLHIDDEN(VBOXSTRICTRC) iemCImplA64_msr_fallback(PVMCPU pVCpu, uint32_t idSysReg, uint32_t idxGprSrc,
+                                                  uint64_t uValue) RT_NOEXCEPT;
+DECLHIDDEN(VBOXSTRICTRC) iemCImplA64_sys_fallback(PVMCPU pVCpu, uint32_t idSysReg, uint32_t idxGprSrc,
+                                                  uint64_t uValue) RT_NOEXCEPT;
+DECLHIDDEN(VBOXSTRICTRC) iemCImplA64_sysp_fallback(PVMCPU pVCpu, uint32_t idSysReg, uint32_t idxGprSrc,
+                                                   PCRTUINT128U puValue) RT_NOEXCEPT;
+DECLHIDDEN(VBOXSTRICTRC) iemCImplA64_sysl_fallback(PVMCPU pVCpu, uint32_t idSysReg, uint32_t idxGprDst,
+                                                   uint64_t *puDst) RT_NOEXCEPT;
 
 DECLHIDDEN(VBOXSTRICTRC) iemCImplHlpRecalcFlags(PVMCPU pVCpu, VBOXSTRICTRC rcStrict);
 DECLHIDDEN(VBOXSTRICTRC) iemCImplHlpRecalcFlagsAndPgmModeEl1(PVMCPU pVCpu, VBOXSTRICTRC rcStrict);
