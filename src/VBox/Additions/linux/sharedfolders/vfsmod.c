@@ -1,4 +1,4 @@
-/* $Id: vfsmod.c 106061 2024-09-16 14:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: vfsmod.c 110673 2025-08-11 12:56:27Z vadim.galitsyn@oracle.com $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, module init/term, super block management.
  */
@@ -913,7 +913,9 @@ static int vbsf_read_super_aux(struct super_block *sb, void *data, int flags)
         sb->s_time_gran = 1; /* This might be a little optimistic for windows hosts, where it should be 100. */
 #endif
         sb->s_op        = &g_vbsf_super_ops;
-#if RTLNX_VER_MIN(2,6,38)
+#if RTLNX_VER_MIN(6,17,0)
+        set_default_d_op(sb, &vbsf_dentry_ops);
+#elif RTLNX_VER_MIN(2,6,38)
         sb->s_d_op      = &vbsf_dentry_ops;
 #endif
 
