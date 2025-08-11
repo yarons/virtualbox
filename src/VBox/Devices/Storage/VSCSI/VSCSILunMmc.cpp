@@ -1,4 +1,4 @@
-/* $Id: VSCSILunMmc.cpp 110132 2025-07-07 11:33:52Z michal.necasek@oracle.com $ */
+/* $Id: VSCSILunMmc.cpp 110663 2025-08-11 08:43:01Z alexander.eichner@oracle.com $ */
 /** @file
  * Virtual SCSI driver: MMC LUN implementation (CD/DVD-ROM)
  */
@@ -1467,7 +1467,8 @@ static DECLCALLBACK(int) vscsiLunMmcReqProcess(PVSCSILUNINT pVScsiLun, PVSCSIREQ
                         RT_ZERO(aReply);
 
                         vscsiReqSetXferDir(pVScsiReq, VSCSIXFERDIR_T2I);
-                        vscsiReqSetXferSize(pVScsiReq, RT_MIN(sizeof(aReply), scsiBE2H_U24(&pVScsiReq->pbCDB[6])));
+                        uint32_t const cbGstReply = scsiBE2H_U24(&pVScsiReq->pbCDB[6]);
+                        vscsiReqSetXferSize(pVScsiReq, RT_MIN(sizeof(aReply), cbGstReply));
 
                         RTSgBufCopyFromBuf(&pVScsiReq->SgBuf, aReply, sizeof(aReply));
                         rcReq = vscsiLunReqSenseOkSet(pVScsiLun, pVScsiReq);
@@ -1523,7 +1524,8 @@ static DECLCALLBACK(int) vscsiLunMmcReqProcess(PVSCSILUNINT pVScsiLun, PVSCSIREQ
                             aReply[3] = 0;
 
                             vscsiReqSetXferDir(pVScsiReq, VSCSIXFERDIR_T2I);
-                            vscsiReqSetXferSize(pVScsiReq, RT_MIN(sizeof(aReply), scsiBE2H_U16(&pVScsiReq->pbCDB[7])));
+                            uint16_t const cbGstReply = scsiBE2H_U16(&pVScsiReq->pbCDB[7]);
+                            vscsiReqSetXferSize(pVScsiReq, RT_MIN(sizeof(aReply), cbGstReply));
 
                             RTSgBufCopyFromBuf(&pVScsiReq->SgBuf, aReply, sizeof(aReply));
                             rcReq = vscsiLunReqSenseOkSet(pVScsiLun, pVScsiReq);
