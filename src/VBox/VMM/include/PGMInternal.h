@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 110512 2025-08-01 12:32:24Z andreas.loeffler@oracle.com $ */
+/* $Id: PGMInternal.h 110668 2025-08-11 11:20:55Z alexander.eichner@oracle.com $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3785,9 +3785,9 @@ typedef struct PGMCPU
     /** The cached TCR_ELx register (EL0 isn't used). */
     uint64_t                        au64RegTcrEl[3];
     /** Guest mode data table index for a page translation going through TTBR0_ELx (PGM_TYPE_XXX). */
-    uint8_t volatile                aidxGuestModeDataTtbr0[4];
+    uint16_t volatile               aidxGuestModeDataTtbr0[4];
     /** Guest mode data table index for a page translation going through TTBR1_ELx (PGM_TYPE_XXX). */
-    uint8_t volatile                aidxGuestModeDataTtbr1[4];
+    uint16_t volatile               aidxGuestModeDataTtbr1[4];
     /** The initial lookup mask for translations going through TTBR0_ELx. */
     uint64_t                        afLookupMaskTtbr0[4];
     /** The initial lookup mask for translations going through TTBR1_ELx. */
