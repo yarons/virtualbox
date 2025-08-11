@@ -1,4 +1,4 @@
-/** $Id: VBoxReplaceDll.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/** $Id: VBoxReplaceDll.cpp 110685 2025-08-11 18:54:52Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxReplaceDll - helper for replacing a dll when it's in use by the system
  */
@@ -54,7 +54,7 @@ static int usage(const char *argv0)
            "Tells the kernel to cache the specified DLLs in memory and close the\n"
            "files on disk, allowing new DLL versions to be installed.\n"
            "\n"
-           "Copyright (C) 2013-" VBOX_C_YEAR " Oracle Corporation\n",
+           "Copyright (C) 2013-" VBOX_C_YEAR " Oracle and/or its affiliates.\n",
            argv0);
     return 0;
 }
@@ -79,7 +79,7 @@ int main(int argc, char **argv)
             else if (   !strcmp(argv[i], "--version")
                      || !strcmp(argv[i], "-V") )
             {
-                printf("$Revision: 110684 $\n");
+                printf("$Revision: 110685 $\n");
                 return 0;
             }
             else

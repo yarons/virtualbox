@@ -1,4 +1,4 @@
-/* $Id: VBoxDef2LazyLoad.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxDef2LazyLoad.cpp 110685 2025-08-11 18:54:52Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxDef2LazyLoad - Lazy Library Loader Generator.
  *
@@ -1767,7 +1767,7 @@ static int usage(const char *pszArgv0)
     /*      0         1         2         3         4         5         6         7         8
             012345678901234567890123456789012345678901234567890123456789012345678901234567890 */
     printf("VBoxDef2LazyLoad - Lazy DLL/SO/DYLIB loader code generator.\n"
-           "Copyright (C) 2013-2016 Oracle Corporation\n"
+           "Copyright (C) 2013-2025 Oracle and/or its affiliates.\n"
            "\n"
            "Description:\n"
            "------------\n"
@@ -1885,7 +1885,7 @@ int main(int argc, char **argv)
             else if (   !strcmp(psz, "--version")
                      || !strcmp(psz, "-V"))
             {
-                printf("$Revision: 110684 $\n");
+                printf("$Revision: 110685 $\n");
                 return RTEXITCODE_SUCCESS;
             }
             else
