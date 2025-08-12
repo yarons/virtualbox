@@ -1,4 +1,4 @@
-; $Id: memset.asm 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+; $Id: memset.asm 110694 2025-08-12 14:01:24Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - No-CRT memset - AMD64 & X86.
 ;
@@ -99,9 +99,13 @@ RT_NOCRT_BEGINPROC memset
 
 %else ; X86
         push    edi
+ %ifdef ASM_CALL32_WATCOM
+        push    eax                     ; for return
+        push    ecx
+        push    edx
+ %endif
 
  %ifdef ASM_CALL32_WATCOM
-        push    eax
         mov     edi, eax
         mov     ecx, ebx
         movzx   eax, dl
@@ -129,6 +133,8 @@ RT_NOCRT_BEGINPROC memset
         rep stosb
 
  %ifdef ASM_CALL32_WATCOM
+        pop     edx
+        pop     ecx
         pop     eax
         pop     edi
  %else

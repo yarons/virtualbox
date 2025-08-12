@@ -1,4 +1,4 @@
-; $Id: bzero.asm 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+; $Id: bzero.asm 110694 2025-08-12 14:01:24Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - No-CRT bzero - AMD64 & X86.
 ;
@@ -79,6 +79,10 @@ GLOBALNAME __bzero
         push    ebp
         mov     ebp, esp
         push    edi
+ %ifdef ASM_CALL32_WATCOM
+        push    ecx
+        push    edx
+ %endif
 
  %ifdef ASM_CALL32_WATCOM
         mov     ecx, edx
@@ -97,6 +101,10 @@ GLOBALNAME __bzero
         mov     ecx, edx
         rep stosb
 
+ %ifdef ASM_CALL32_WATCOM
+        pop     edx
+        pop     ecx
+ %endif
         pop     edi
         leave
 
