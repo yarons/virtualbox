@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win-armv8.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: NEMR3Native-win-armv8.cpp 110693 2025-08-12 06:04:32Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -1765,6 +1765,19 @@ NEM_TMPL_STATIC int nemHCWinCopyStateToHyperV(PVMCC pVM, PVMCPUCC pVCpu)
     AssertLogRelMsgFailed(("WHvSetVirtualProcessorRegisters(%p, %u,,%u,) -> %Rhrc (Last=%#x/%u)\n",
                            pVM->nem.s.hPartition, pVCpu->idCpu, iReg,
                            hrc, RTNtLastStatusValue(), RTNtLastErrorValue()));
+
+    /* Try to figure out which register Hyper-V is not happy with exactly. */
+    for (uint32_t i = 0; i < iReg; i++)
+    {
+        hrc = WHvSetVirtualProcessorRegisters(pVM->nem.s.hPartition, pVCpu->idCpu, &aenmNames[i], 1, &aValues[i]);
+        if (FAILED(hrc))
+        {
+            AssertLogRelMsgFailed(("WHvSetVirtualProcessorRegisters(%p, %u, %#x, 1, %#RX64) -> %Rhrc (Last=%#x/%u)\n",
+                                   pVM->nem.s.hPartition, pVCpu->idCpu, aenmNames[i], aValues[i].Reg64,
+                                   hrc, RTNtLastStatusValue(), RTNtLastErrorValue()));
+        }
+    }
+
     return VERR_INTERNAL_ERROR;
 }
 
