@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 110702 2025-08-12 23:03:08Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -3615,7 +3615,7 @@ RuntimeR0Drv_SOURCES    = \
 	common/checksum/ipv4.cpp \
 	common/checksum/ipv6.cpp \
 	common/err/RTErrConvertToErrno.cpp \
-	common/err/RTErrConvertFromErrno.cpp \
+	$(if-expr !defined(VBOX_USE_WATCOM_FOR_OS2) || "$(KBUILD_TARGET)" != "os2", common/err/RTErrConvertFromErrno.cpp,) \
 	common/err/errinfo.cpp \
 	common/log/log.cpp \
 	common/log/log-weak.cpp \
