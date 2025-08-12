@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 110698 2025-08-12 20:12:20Z jack.doherty@oracle.com $ */
+/* $Id: DrvNAT.cpp 110699 2025-08-12 20:44:12Z jack.doherty@oracle.com $ */
 /** @file
  * DrvNATlibslirp - NATlibslirp network transport driver.
  */
@@ -96,7 +96,15 @@
 #define DRVNAT_DEFAULT_TIMEOUT (int)RT_MS_1HOUR
 #define MAX_IP_ADDRESS_STR_LEN_W_NULL 16
 #define BOOTP_FILE_MAX_LEN 127
+
+#if RT_CLANG_PREREQ(3, 4) /* Most of the defined functions are not used. */
+# pragma clang diagnostic push
+# pragma clang diagnostic ignored "-Wunused-function"
+#endif
 RTVEC_DECL(InAddrList, struct in_addr)
+#if RT_CLANG_PREREQ(3, 4)
+# pragma clang diagnostic pop
+#endif
 
 
 /*********************************************************************************************************************************
@@ -1049,7 +1057,7 @@ static DECLCALLBACK(void) drvNATNotifyDnsChanged(PPDMINETWORKNATCONFIG pInterfac
     if (pDnsConf->cNameServers > 0)
     {
         struct InAddrList vNameservers = RTVEC_INITIALIZER;
-        for (int i = 0; i < pDnsConf->cNameServers; i++)
+        for (size_t i = 0; i < pDnsConf->cNameServers; i++)
         {
             struct in_addr *mNameserver = InAddrListPushBack(&vNameservers);
             if (!mNameserver)
