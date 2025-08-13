@@ -1,4 +1,4 @@
-/* $Id: IEMAllMem-armv8.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: IEMAllMem-armv8.cpp 110711 2025-08-13 09:01:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - ARMV8 target, memory.
  */
@@ -210,6 +210,7 @@ iemMemArmPtAttrsToTlbeFlags(uint64_t const fEff, uint64_t const fInfo, uint64_t 
 }
 
 
+#ifdef IEM_WITH_DATA_TLB
 /**
  * Converts PGM_PTATTRS_XXX to IEMTLBE_GCPHYS_F_XXX.
  */
@@ -231,6 +232,7 @@ DECL_FORCE_INLINE(uint64_t) iemMemArmPtAttrsToGCPhysFlags(uint64_t const fEff)
 
     return fGCPhysFlags;
 }
+#endif /* IEM_WITH_DATA_TLB */
 
 
 /**
