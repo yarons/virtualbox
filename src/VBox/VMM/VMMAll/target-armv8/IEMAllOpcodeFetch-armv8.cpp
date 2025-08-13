@@ -1,4 +1,4 @@
-/* $Id: IEMAllOpcodeFetch-armv8.cpp 110687 2025-08-11 23:02:11Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllOpcodeFetch-armv8.cpp 110713 2025-08-13 09:43:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Opcode Fetching, ARMv8.
  */
@@ -102,7 +102,9 @@ DECLINLINE(a_RetType) iemOpcodeFetchBytesJmp(PVMCPUCC pVCpu) IEM_NOEXCEPT_MAY_LO
      * to do so without going above the 32-bit space.
      */
     RTGCPTR  const GCPtrFirst = pVCpu->cpum.GstCtx.Pc.u64 + a_cbPrevInstrHalf;
+#  ifdef VBOX_STRICT
     uint32_t const cbMaxRead  = GUEST_MIN_PAGE_SIZE - ((uint32_t)GCPtrFirst & GUEST_MIN_PAGE_OFFSET_MASK);
+#  endif
     Assert(!(pVCpu->iem.s.fExec & IEM_F_MODE_ARM_32BIT) || GCPtrFirst < _4G);
     Assert((GCPtrFirst & (sizeof(a_RetType) - 1)) == 0); /* ASSUMES PC is aligned correctly */
 
