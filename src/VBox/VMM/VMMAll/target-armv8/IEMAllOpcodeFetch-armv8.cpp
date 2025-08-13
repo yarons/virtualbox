@@ -1,4 +1,4 @@
-/* $Id: IEMAllOpcodeFetch-armv8.cpp 110713 2025-08-13 09:43:27Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllOpcodeFetch-armv8.cpp 110714 2025-08-13 11:52:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Opcode Fetching, ARMv8.
  */
@@ -78,7 +78,7 @@
  *                              Otherwise it will always be zero.
  */
 template<typename a_RetType, bool const a_fTlbLoad = false, unsigned const a_cbPrevInstrHalf = 0>
-DECLINLINE(a_RetType) iemOpcodeFetchBytesJmp(PVMCPUCC pVCpu) IEM_NOEXCEPT_MAY_LONGJMP
+DECL_INLINE_THROW(a_RetType) iemOpcodeFetchBytesJmp(PVMCPUCC pVCpu) IEM_NOEXCEPT_MAY_LONGJMP
 {
     AssertCompile(sizeof(a_RetType) == sizeof(uint16_t) || sizeof(a_RetType) == sizeof(uint32_t));
 
