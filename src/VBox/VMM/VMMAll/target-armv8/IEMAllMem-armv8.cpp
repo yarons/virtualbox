@@ -1,4 +1,4 @@
-/* $Id: IEMAllMem-armv8.cpp 110711 2025-08-13 09:01:34Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllMem-armv8.cpp 110712 2025-08-13 09:31:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - ARMV8 target, memory.
  */
@@ -129,6 +129,7 @@ VBOXSTRICTRC iemMemPageTranslateAndCheckAccess(PVMCPUCC pVCpu, RTGCPTR GCPtrMem,
 }
 
 
+#ifdef IEM_WITH_DATA_TLB
 /**
  * Converts PGM_PTATTRS_XXX to IEMTLBE_F_XXX.
  */
@@ -208,6 +209,7 @@ iemMemArmPtAttrsToTlbeFlags(uint64_t const fEff, uint64_t const fInfo, uint64_t 
 
     return fTlbe;
 }
+#endif /* IEM_WITH_DATA_TLB */
 
 
 #ifdef IEM_WITH_DATA_TLB
