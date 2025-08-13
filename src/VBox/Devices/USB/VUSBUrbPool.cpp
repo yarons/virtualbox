@@ -1,4 +1,4 @@
-/* $Id: VUSBUrbPool.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: VUSBUrbPool.cpp 110716 2025-08-13 16:04:15Z michal.necasek@oracle.com $ */
 /** @file
  * Virtual USB - URB pool.
  */
@@ -81,7 +81,8 @@ typedef struct VUSBURBHDR
     uint32_t        u32Alignment0;
 #endif
     /** The data immediately following this header. */
-    uint8_t         abHdrData[1];
+    RT_FLEXIBLE_ARRAY_EXTENSION
+    uint8_t         abHdrData[RT_FLEXIBLE_ARRAY];
 } VUSBURBHDR;
 /** Pointer to a URB header. */
 typedef VUSBURBHDR *PVUSBURBHDR;
@@ -206,7 +207,7 @@ DECLHIDDEN(PVUSBURB) vusbUrbPoolAlloc(PVUSBURBPOOL pUrbPool, VUSBXFERTYPE enmTyp
                                : cbData <= _32K ? RT_ALIGN_32(cbData, _4K)
                                                 : RT_ALIGN_32(cbData, 16*_1K);
 
-        pHdr = (PVUSBURBHDR)RTMemAllocZ(RT_UOFFSETOF_DYN(VUSBURBHDR, abHdrData[cbDataAllocated - 1]));
+        pHdr = (PVUSBURBHDR)RTMemAllocZ(RT_UOFFSETOF_DYN(VUSBURBHDR, abHdrData[cbDataAllocated]));
         if (RT_UNLIKELY(!pHdr))
         {
             RTCritSectLeave(&pUrbPool->CritSectPool);
