@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 110718 2025-08-13 17:00:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -2438,6 +2438,12 @@ void UIVirtualBoxManager::prepare()
     if (uiCommon().argumentUrlsPresent())
         QMetaObject::invokeMethod(this, "sltHandleOpenUrlCall", Qt::QueuedConnection);
     QMetaObject::invokeMethod(this, "sltCheckUSBAccesibility", Qt::QueuedConnection);
+
+#if defined(VBOX_GUI_WITH_NETWORK_MANAGER) && defined(VBOX_WITH_UPDATE_REQUEST)
+    /* Ask updater to check for the first time: */
+    if (gEDataManager->applicationUpdateEnabled())
+        gUpdateManager->sltCheckIfUpdateIsNecessary();
+#endif /* VBOX_GUI_WITH_NETWORK_MANAGER && VBOX_WITH_UPDATE_REQUEST */
 }
 
 void UIVirtualBoxManager::prepareCloudMachineManager()

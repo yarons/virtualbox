@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIUpdateManager.h 110718 2025-08-13 17:00:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class declaration.
  */
@@ -70,11 +70,11 @@ public slots:
     /** Performs forced new version check. */
     void sltForceCheck();
 
-private slots:
-
     /** Checks whether update is necessary.
       * @param  fForcedCall  Brings whether this customer has forced privelegies. */
     void sltCheckIfUpdateIsNecessary(bool fForcedCall = false);
+
+private slots:
 
     /** Handles update finishing. */
     void sltHandleUpdateFinishing();
