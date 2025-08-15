@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 110734 2025-08-15 14:26:23Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc.h 110738 2025-08-15 16:06:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX, common.
  */
@@ -241,6 +241,18 @@
 
 #define IEM_MC_XOR_2LOCS_U32(a_u32Local, a_u32Mask)     do { (a_u32Local) ^= (a_u32Mask); } while (0)
 #define IEM_MC_XOR_2LOCS_U64(a_u64Local, a_u64Mask)     do { (a_u64Local) ^= (a_u64Mask); } while (0)
+
+#define IEM_MC_SHL_2LOCS_U32(a_u32Value, a_cShift)      do { (a_u32Value) <<= (a_cShift); } while (0)
+#define IEM_MC_SHL_2LOCS_U64(a_u64Value, a_cShift)      do { (a_u64Value) <<= (a_cShift); } while (0)
+
+#define IEM_MC_SHR_2LOCS_U32(a_u32Value, a_cShift)      do { (a_u32Value) >>= (a_cShift); } while (0)
+#define IEM_MC_SHR_2LOCS_U64(a_u64Value, a_cShift)      do { (a_u64Value) >>= (a_cShift); } while (0)
+
+#define IEM_MC_SAR_2LOCS_U32(a_u32Local, a_cShift)      do { (a_u32Local) = (uint32_t)((int32_t)(a_u32Local) >>(a_cShift));  } while (0)
+#define IEM_MC_SAR_2LOCS_U64(a_u64Local, a_cShift)      do { (a_u64Local) = (uint64_t)((int64_t)(a_u64Local) >>(a_cShift));  } while (0)
+
+#define IEM_MC_ROR_2LOCS_U32(a_u32Local, a_cShift)      do { (a_u32Local) = ASMRotateRightU32((a_u32Local), (a_cShift));  } while (0)
+#define IEM_MC_ROR_2LOCS_U64(a_u64Local, a_cShift)      do { (a_u64Local) = ASMRotateRightU64((a_u64Local), (a_cShift));  } while (0)
 
 
 #define IEM_MC_AND_GREG_U32(a_iGReg, a_u32Value) \
