@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: IEMInternal.h 110741 2025-08-15 22:48:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -2997,6 +2997,15 @@ typedef IEMCPU const *PCIEMCPU;
             AssertRCStmt(rcCtxImport, IEM_DO_LONGJMP(pVCpu, rcCtxImport)); \
         } \
     } while (0)
+
+
+/** Helper for sign-extending an non-standard value to unsigned 32-bit. */
+#define IEM_SIGN_EXTEND_TO_U32(a_uValue, a_cSrcBits, a_cShiftLeft) \
+    ( (uint32_t)((int32_t)(a_uValue) << (32 - (a_cSrcBits)) >> (32 - (a_cSrcBits) - (a_cShiftLeft))) )
+
+/** Helper for sign-extending an non-standard value to unsigned 64-bit. */
+#define IEM_SIGN_EXTEND_TO_U64(a_uValue, a_cSrcBits, a_cShiftLeft) \
+    ( (uint64_t)((int64_t)(a_uValue) << (64 - (a_cSrcBits)) >> (64 - (a_cSrcBits) - (a_cShiftLeft))) )
 
 
 

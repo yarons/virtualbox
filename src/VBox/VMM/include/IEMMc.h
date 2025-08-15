@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 110739 2025-08-15 21:32:29Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc.h 110741 2025-08-15 22:48:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX, common.
  */
@@ -134,6 +134,11 @@
         (a_u128Dst).s.Lo = iemGRegFetchU64(pVCpu, (a_iGRegLo)); \
         (a_u128Dst).s.Hi = iemGRegFetchU64(pVCpu, (a_iGRegHi)); \
     } while(0)
+
+#define IEM_MC_STORE_GREG_U8(a_iGReg, a_u8Value)        iemGRegStoreU8( pVCpu, (a_iGReg), (a_u8Value))
+#define IEM_MC_STORE_GREG_U16(a_iGReg, a_u16Value)      iemGRegStoreU16(pVCpu, (a_iGReg), (a_u16Value))
+#define IEM_MC_STORE_GREG_U8_CONST                      IEM_MC_STORE_GREG_U8
+#define IEM_MC_STORE_GREG_U16_CONST                     IEM_MC_STORE_GREG_U16
 
 /** @todo these zero-extends the result, which can be a bit confusing for
  *        IEM_MC_STORE_GREG_I32... */

@@ -1,4 +1,4 @@
-/* $Id: IEMInline-x86.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: IEMInline-x86.h 110741 2025-08-15 22:48:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Inlined Functions, x86 target.
  */
@@ -648,6 +648,31 @@ DECL_FORCE_INLINE(uint64_t) iemGRegFetchU64(PVMCPUCC pVCpu, uint8_t iReg) RT_NOE
     Assert(iReg < 16);
     return pVCpu->cpum.GstCtx.aGRegs[iReg].u64;
 }
+
+
+#ifndef IEM_WITH_OPAQUE_DECODER_STATE
+/**
+ * Stores a 8-bit value to a general purpose register.
+ *
+ * @param   pVCpu               The cross context virtual CPU structure of the calling thread.
+ * @param   iReg                The register.
+ * @param   bValue              The value to store.
+ */
+DECL_FORCE_INLINE(void) iemGRegStoreU8(PVMCPUCC pVCpu, uint8_t iReg, uint16_t bValue) RT_NOEXCEPT
+{
+    if (iReg < 4 || (pVCpu->iem.s.fPrefixes & (IEM_OP_PRF_REX | IEM_OP_PRF_VEX)))
+    {
+        Assert(iReg < 16);
+        pVCpu->cpum.GstCtx.aGRegs[iReg].u8 = bValue;
+    }
+    else
+    {
+        /* high 8-bit register. */
+        Assert(iReg < 8);
+        pVCpu->cpum.GstCtx.aGRegs[iReg & 3].bHi = bValue;
+    }
+}
+#endif
 
 
 /**
