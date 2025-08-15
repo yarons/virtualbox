@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxWidget.cpp 110391 2025-07-23 17:16:20Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxWidget.cpp 110737 2025-08-15 14:31:43Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxWidget class implementation.
  */
@@ -399,8 +399,8 @@ void UIVirtualBoxWidget::prepareWidgets()
         }
     }
 
-    /* Create notification-center: */
-    UINotificationCenter::create(this);
+    /* Reparent notification-center: */
+    gpNotificationCenter->setParent(this);
 
     /* Update toolbar finally: */
     updateToolbar();
@@ -746,8 +746,8 @@ void UIVirtualBoxWidget::cleanupConnections()
 
 void UIVirtualBoxWidget::cleanup()
 {
-    /* Destroy notification-center: */
-    UINotificationCenter::destroy();
+    /* Reparent notification-center: */
+    gpNotificationCenter->setParent(0);
 }
 
 UIGlobalToolsWidget *UIVirtualBoxWidget::globalToolsWidget() const
