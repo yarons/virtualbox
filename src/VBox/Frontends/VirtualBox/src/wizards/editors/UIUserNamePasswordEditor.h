@@ -1,4 +1,4 @@
-/* $Id: UIUserNamePasswordEditor.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIUserNamePasswordEditor.h 110731 2025-08-15 12:38:57Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class declaration.
  */
@@ -102,7 +102,7 @@ public:
     void setPassword(const QString &strPassword);
 
     /** Returns false if username or password fields are empty, or password fields do not match. */
-    bool isComplete();
+    bool isComplete(const QString &strGuestOSFamilyId);
 
     /** When fEnabled true place holder texts for the line edits are shown. */
     void setPlaceholderTextEnabled(bool fEnabled);
@@ -121,7 +121,7 @@ private:
     template <class T>
     void addLineEdit(int &iRow, QLabel *&pLabel, T *&pLineEdit, QGridLayout *pLayout);
 
-    bool isUserNameComplete();
+    bool isUserNameComplete(const QString &strGuestOSFamilyId);
     bool isPasswordComplete();
 
     QILineEdit         *m_pUserNameLineEdit;

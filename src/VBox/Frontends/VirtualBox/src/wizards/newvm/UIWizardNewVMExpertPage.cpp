@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 110731 2025-08-15 12:38:57Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -629,7 +629,7 @@ bool UIWizardNewVMExpertPage::isComplete() const
         }
         if (m_pUserNamePasswordGroupBox)
         {
-            if (!m_pUserNamePasswordGroupBox->isComplete())
+            if (!m_pUserNamePasswordGroupBox->isComplete(pWizard->guestOSFamilyId()))
             {
                 m_pToolBox->setPageTitleIcon(ExpertToolboxItems_Unattended,
                                              UIIconPool::iconSet(":/status_error_16px.png"),

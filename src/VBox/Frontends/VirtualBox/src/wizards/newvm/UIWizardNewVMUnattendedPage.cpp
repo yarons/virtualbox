@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMUnattendedPage.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIWizardNewVMUnattendedPage.cpp 110731 2025-08-15 12:38:57Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMUnattendedPage class implementation.
  */
@@ -176,7 +176,7 @@ bool UIWizardNewVMUnattendedPage::isComplete() const
         m_pGAInstallationISOContainer &&
         !UIWizardNewVMUnattendedCommon::checkGAISOFile(m_pGAInstallationISOContainer->path()))
         return false;
-    if (m_pUserNamePasswordGroupBox && !m_pUserNamePasswordGroupBox->isComplete())
+    if (m_pUserNamePasswordGroupBox && !m_pUserNamePasswordGroupBox->isComplete(pWizard->guestOSFamilyId()))
         return false;
     if (m_pAdditionalOptionsContainer && !m_pAdditionalOptionsContainer->hostDomainNameComplete())
         return false;
