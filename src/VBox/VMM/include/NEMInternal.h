@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: NEMInternal.h 110729 2025-08-15 08:41:34Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -253,6 +253,8 @@ typedef struct NEM
 # ifdef VBOX_VMM_TARGET_ARMV8
     bool                        fHypercallExit : 1;
     bool                        fGpaAccessFaultExit : 1;
+    /** Flag whether Hyper-V supports PAC. */
+    bool                        fPacSupported : 1;
     /** Cache line flush size as a power of two. */
     uint8_t                     cPhysicalAddressWidth;
 # elif defined(VBOX_VMM_TARGET_X86)
