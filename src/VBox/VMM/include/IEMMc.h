@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: IEMMc.h 110734 2025-08-15 14:26:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX, common.
  */
@@ -212,12 +212,19 @@
 #define IEM_MC_SAR_LOCAL_S16(a_i16Local, a_cShift)      do { (a_i16Local) >>= (a_cShift);  } while (0)
 #define IEM_MC_SAR_LOCAL_S32(a_i32Local, a_cShift)      do { (a_i32Local) >>= (a_cShift);  } while (0)
 #define IEM_MC_SAR_LOCAL_S64(a_i64Local, a_cShift)      do { (a_i64Local) >>= (a_cShift);  } while (0)
+#define IEM_MC_SAR_LOCAL_U32(a_u32Local, a_cShift)      do { (a_u32Local) = (uint32_t)((int32_t)(a_u32Local) >>(a_cShift));  } while (0)
+#define IEM_MC_SAR_LOCAL_U64(a_u64Local, a_cShift)      do { (a_u64Local) = (uint64_t)((int64_t)(a_u64Local) >>(a_cShift));  } while (0)
 
 #define IEM_MC_SHR_LOCAL_U8(a_u8Local, a_cShift)        do { (a_u8Local)  >>= (a_cShift);  } while (0)
 
 #define IEM_MC_SHL_LOCAL_S16(a_i16Local, a_cShift)      do { (a_i16Local) <<= (a_cShift);  } while (0)
 #define IEM_MC_SHL_LOCAL_S32(a_i32Local, a_cShift)      do { (a_i32Local) <<= (a_cShift);  } while (0)
 #define IEM_MC_SHL_LOCAL_S64(a_i64Local, a_cShift)      do { (a_i64Local) <<= (a_cShift);  } while (0)
+#define IEM_MC_SHL_LOCAL_U32(a_u32Local, a_cShift)      do { (a_u32Local) <<= (a_cShift);  } while (0)
+#define IEM_MC_SHL_LOCAL_U64(a_u64Local, a_cShift)      do { (a_u64Local) <<= (a_cShift);  } while (0)
+
+#define IEM_MC_ROR_LOCAL_U32(a_u32Local, a_cShift)      do { (a_u32Local) = ASMRotateRightU32((a_u32Local), (a_cShift));  } while (0)
+#define IEM_MC_ROR_LOCAL_U64(a_u64Local, a_cShift)      do { (a_u64Local) = ASMRotateRightU64((a_u64Local), (a_cShift));  } while (0)
 
 
 #define IEM_MC_ADD_2LOCS_U32(a_u32Value, a_u32Addend)   do { (a_u32Value) += a_u32Addend; } while (0)
