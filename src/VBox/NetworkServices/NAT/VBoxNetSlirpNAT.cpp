@@ -1,4 +1,4 @@
-/* $Id: VBoxNetSlirpNAT.cpp 110699 2025-08-12 20:44:12Z jack.doherty@oracle.com $ */
+/* $Id: VBoxNetSlirpNAT.cpp 110750 2025-08-18 17:07:52Z jack.doherty@oracle.com $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -1438,7 +1438,7 @@ struct Nameserver4List VBoxNetSlirpNAT::getHostNameservers()
          */
         /** @todo r=jack: Make calls to loopback DNS work. */
         if (!((tmpNameserver.u & RT_H2N_U32_C(IN_CLASSA_NET))
-            == RT_N2H_U32_C(INADDR_LOOPBACK & IN_CLASSA_NET)))
+            == RT_H2N_U32_C(INADDR_LOOPBACK & IN_CLASSA_NET)))
         {
             PRTNETADDRIPV4 pNameserver = Nameserver4ListPushBack(&vRealNameservers);
             if (!pNameserver)
