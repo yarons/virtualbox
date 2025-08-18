@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: CPUMInternal.h 110755 2025-08-18 21:01:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -677,6 +677,7 @@ DECLCALLBACK(void)  cpumR3InfoHyper(PVM pVM, PCDBGFINFOHLP pHlp, const char *psz
 #  endif
 #  if defined(VBOX_VMM_TARGET_ARMV8)
 DECLHIDDEN(int)     cpumR3SysRegStrictInitChecks(void);
+DECLHIDDEN(int)     cpumR3InitCpuId(PVM pVM);
 #  elif defined(VBOX_VMM_TARGET_X86)
 int                 cpumR3InitCpuIdAndMsrs(PVM pVM, PCSUPHWVIRTMSRS pHostMsrs);
 DECLHIDDEN(void)    cpumR3InitVmxGuestFeaturesAndMsrs(PVM pVM, PCFGMNODE pCpumCfg, PCSUPHWVIRTMSRS pHostMsrs,
@@ -712,7 +713,7 @@ DECLHIDDEN(void)    cpumR3CpuIdInfoVerboseCompareListU64(PCPUMCPUIDINFOSTATE pTh
                                                          struct DBGFREGSUBFIELD const *paDescs, uint32_t cchWidth,
                                                          bool fColumnHeaders = false, const char *pszLeadIn = NULL);
 
-int                 cpumR3DbGetCpuInfo(const char *pszName, PCPUMINFO pInfo);
+DECLHIDDEN(int)     cpumR3DbGetCpuInfo(PVM pVM, const char *pszName, PCPUMINFO pInfo);
 #  ifdef VBOX_VMM_TARGET_X86
 int                 cpumR3MsrRangesInsert(PVM pVM, PCPUMMSRRANGE *ppaMsrRanges, uint32_t *pcMsrRanges, PCCPUMMSRRANGE pNewRange);
 DECLHIDDEN(int)     cpumR3MsrReconcileWithCpuId(PVM pVM, bool fForceFlushCmd, bool fForceSpecCtrl);

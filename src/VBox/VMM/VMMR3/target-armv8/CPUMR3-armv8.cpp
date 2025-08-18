@@ -1,4 +1,4 @@
-/* $Id: CPUMR3-armv8.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: CPUMR3-armv8.cpp 110755 2025-08-18 21:01:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager (ARMv8 variant).
  */
@@ -437,6 +437,23 @@ DECLHIDDEN(int) cpumR3InitTarget(PVM pVM)
     AssertLogRelRCReturn(rc, rc);
     if (fNestedHWVirt)
         pVM->cpum.s.bResetEl = ARMV8_AARCH64_EL_2;
+
+
+    /*
+     * Initialize the Guest CPU ID stuff.
+     *
+     * On ARM hosts we'll do this later via CPUMR3PopulateGuestFeaturesViaCallbacks,
+     * unless we're in IEM mode.
+     */
+    Assert(pVM->bMainExecutionEngine != VM_EXEC_ENGINE_NOT_SET);
+#ifdef RT_ARCH_ARM64
+    if (VM_IS_EXEC_ENGINE_IEM(pVM))
+#endif
+    {
+        rc = cpumR3InitCpuId(pVM);
+        if (RT_FAILURE(rc))
+            return rc;
+    }
 
     /*
      * Initialize the Guest system register states.

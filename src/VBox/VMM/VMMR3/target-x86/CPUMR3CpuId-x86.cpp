@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId-x86.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: CPUMR3CpuId-x86.cpp 110755 2025-08-18 21:01:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -3501,7 +3501,7 @@ int cpumR3InitCpuIdAndMsrs(PVM pVM, PCSUPHWVIRTMSRS pHostMsrs)
      *        now a fixed sized arrays in the VM structure.  Maybe we can simplify
      *        this allocation fun a little now?  Or maybe it's too convenient for
      *        the CPU reporter code... No time to figure that out now.   */
-    rc = cpumR3DbGetCpuInfo(Config.szCpuName, &pCpum->GuestInfo);
+    rc = cpumR3DbGetCpuInfo(pVM, Config.szCpuName, &pCpum->GuestInfo);
     if (RT_FAILURE(rc))
         return rc == VERR_CPUM_DB_CPU_NOT_FOUND
              ? VMSetError(pVM, rc, RT_SRC_POS,
