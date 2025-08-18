@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: SrvIntNetR0.cpp 110744 2025-08-18 10:35:36Z alexander.eichner@oracle.com $ */
 /** @file
  * Internal networking - The ring 0 service.
  *
@@ -5813,7 +5813,6 @@ static void intnetR0TrunkIfDestroy(PINTNETTRUNKIF pThis, PINTNETNETWORK pNetwork
  */
 static int intnetR0NetworkCreateTrunkIf(PINTNETNETWORK pNetwork, PSUPDRVSESSION pSession)
 {
-#if defined(IN_RING0) || defined(LOG_ENABLED)
     const char *pszName;
     switch (pNetwork->enmTrunkType)
     {
@@ -5854,7 +5853,6 @@ static int intnetR0NetworkCreateTrunkIf(PINTNETNETWORK pNetwork, PSUPDRVSESSION 
             break;
 # endif
     }
-#endif /* IN_RING0 || LOG_ENABLED */
 
     /*
      * Allocate the trunk interface and associated destination tables.
