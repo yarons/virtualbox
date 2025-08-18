@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: vboxconfig.sh 110752 2025-08-18 19:58:46Z brent.paulson@oracle.com $
 ## @file
 # VirtualBox Configuration Script, Solaris host.
 #
@@ -979,6 +979,7 @@ maybe_run_python_bindings_installer() {
                 python3.9  \
                 python3.10 \
                 python3.11 \
+                python3.13 \
                 python3    \
                 python     \
                 "
