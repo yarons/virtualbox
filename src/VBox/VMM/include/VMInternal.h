@@ -1,4 +1,4 @@
-/* $Id: VMInternal.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: VMInternal.h 110749 2025-08-18 14:53:14Z alexander.eichner@oracle.com $ */
 /** @file
  * VM - Internal header file.
  */
@@ -319,6 +319,8 @@ typedef struct VMINTUSERPERVM
             uint32_t                u32StartSpinningCfg;
             /** When to stop spinning (lag / nano secs). */
             uint32_t                u32StopSpinningCfg;
+            /** The minimum timeout to pass to RTSemEventWaitEx(). */
+            uint32_t                cSemWaitNsMin;
         }                           Method12;
 
        /**
