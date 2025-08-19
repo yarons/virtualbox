@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 110750 2025-08-18 17:07:52Z jack.doherty@oracle.com $ */
+/* $Id: DrvNAT.cpp 110757 2025-08-19 08:21:12Z jack.doherty@oracle.com $ */
 /** @file
  * DrvNATlibslirp - NATlibslirp network transport driver.
  */
@@ -1059,16 +1059,16 @@ static DECLCALLBACK(void) drvNATNotifyDnsChanged(PPDMINETWORKNATCONFIG pInterfac
         struct InAddrList vNameservers = RTVEC_INITIALIZER;
         for (size_t i = 0; i < pDnsConf->cNameServers; i++)
         {
-            struct in_addr *mNameserver = InAddrListPushBack(&vNameservers);
-            if (!mNameserver)
-                LogRel(("Nameserver array construction failed. Out of memory.\n"));
-
             RTNETADDRIPV4 tmpNameserver;
             RTNetStrToIPv4Addr(pDnsConf->papszNameServers[i], &tmpNameserver);
 
             if (!((tmpNameserver.u & RT_H2N_U32_C(IN_CLASSA_NET))
                 == RT_H2N_U32_C(INADDR_LOOPBACK & IN_CLASSA_NET)))
             {
+                struct in_addr *mNameserver = InAddrListPushBack(&vNameservers);
+                if (!mNameserver)
+                    LogRel(("Nameserver array construction failed. Out of memory.\n"));
+
                 mNameserver->s_addr = tmpNameserver.u;
                 LogRelMax(256, ("NAT DNS Update: Stored %u as nameserver #%u\n", tmpNameserver.u, i));
             }
