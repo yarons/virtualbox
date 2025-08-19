@@ -1,4 +1,4 @@
-/* $Id: IEMAllMem-armv8.cpp 110712 2025-08-13 09:31:31Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllMem-armv8.cpp 110767 2025-08-19 23:13:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - ARMV8 target, memory.
  */
@@ -1060,6 +1060,8 @@ static void *iemMemMapSafeJmp(PVMCPUCC pVCpu, uint8_t *pbUnmapInfo, size_t cbMem
 #define TMPL_MEM_FMT_DESC       "qword"
 #include "IEMAllMemRWTmpl-armv8.cpp.h"
 
+#define TMPL_MEM_BY_REF
+
 #define TMPL_MEM_TYPE           RTUINT128U
 #define TMPL_MEM_FN_SUFF        U128
 #define TMPL_MEM_FMT_TYPE       "%.16Rhxs"
@@ -1075,7 +1077,7 @@ static void *iemMemMapSafeJmp(PVMCPUCC pVCpu, uint8_t *pbUnmapInfo, size_t cbMem
 #include "IEMAllMemRWTmpl-armv8.cpp.h"
 
 #undef  TMPL_MEM_NO_PAIR
-
+#undef  TMPL_MEM_BY_REF
 
 #if 0 /** @todo ARM: more memory stuff... */
 /**
