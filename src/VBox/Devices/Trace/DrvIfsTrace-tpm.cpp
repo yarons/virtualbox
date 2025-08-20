@@ -1,4 +1,4 @@
-/* $Id: DrvIfsTrace-tpm.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: DrvIfsTrace-tpm.cpp 110772 2025-08-20 15:51:11Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox interface callback tracing driver.
  */
@@ -37,6 +37,42 @@
 #include <iprt/tracelog.h>
 
 #include "DrvIfsTraceInternal.h"
+
+
+/*
+ *
+ * ITpmPort Implementation.
+ *
+ */
+static const RTTRACELOGEVTITEMDESC g_ITpmPortGetMaxBufferSizeEvtItems[] =
+{
+    {"cbBuffer",    "Buffer size in bytes returned by the upper device", RTTRACELOGTYPE_UINT32,  0}
+};
+
+static const RTTRACELOGEVTDESC g_ITpmConnectorGetMaxBufferSizeEvtDesc =
+{
+    "ITpmPort.GetMaxBufferSize",
+    "",
+    RTTRACELOGEVTSEVERITY_DEBUG,
+    RT_ELEMENTS(g_ITpmPortGetMaxBufferSizeEvtItems),
+    g_ITpmPortGetMaxBufferSizeEvtItems
+};
+
+/**
+ * @interface_method_impl{PDMITPMPORT,pfnGetMaxBufferSize}
+ */
+static DECLCALLBACK(uint32_t) drvIfTraceITpmPort_GetMaxBufferSize(PPDMITPMPORT pInterface)
+{
+    PDRVIFTRACE pThis = RT_FROM_MEMBER(pInterface, DRVIFTRACE, ITpmPort);
+    uint32_t cbBuffer = pThis->pITpmPortAbove->pfnGetMaxBufferSize(pThis->pITpmPortAbove);
+
+    int rcTraceLog = RTTraceLogWrEvtAddL(pThis->hTraceLog, &g_ITpmConnectorGetMaxBufferSizeEvtDesc, 0, 0, 0, cbBuffer);
+    if (RT_FAILURE(rcTraceLog))
+        LogRelMax(10, ("DrvIfTrace#%d: Failed to add event to trace log %Rrc\n", pThis->pDrvIns->iInstance, rcTraceLog));
+
+    return cbBuffer;
+}
+
 
 
 /*
@@ -288,6 +324,8 @@ static DECLCALLBACK(int) drvIfTraceITpmConnector_CmdCancel(PPDMITPMCONNECTOR pIn
  */
 DECLHIDDEN(void) drvIfsTrace_TpmIfInit(PDRVIFTRACE pThis)
 {
+    pThis->ITpmPort.pfnGetMaxBufferSize          = drvIfTraceITpmPort_GetMaxBufferSize;
+
     pThis->ITpmConnector.pfnGetVersion           = drvIfTraceITpmConnector_GetVersion;
     pThis->ITpmConnector.pfnGetLocalityMax       = drvIfTraceITpmConnector_GetLocalityMax;
     pThis->ITpmConnector.pfnGetBufferSize        = drvIfTraceITpmConnector_GetBufferSize;
