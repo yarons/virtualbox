@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 110769 2025-08-20 10:29:00Z alexander.eichner@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -1427,7 +1427,9 @@ static int dxDeviceCreate(PVMSVGA3DBACKEND pBackend, DXDEVICE *pDXDevice)
 
         /* Failure to query VideoDevice should be ignored. */
         hr2 = pDXDevice->pDevice->QueryInterface(__uuidof(ID3D11VideoDevice), (void**)&pDXDevice->pVideoDevice);
+#ifndef VBOX_WITH_DXMT /* DXMT has no video support, so failing is expected here. */
         Assert(SUCCEEDED(hr2));
+#endif
         if (SUCCEEDED(hr2))
         {
             hr2 = pDXDevice->pImmediateContext->QueryInterface(__uuidof(ID3D11VideoContext), (void**)&pDXDevice->pVideoContext);
@@ -3887,7 +3889,7 @@ static DECLCALLBACK(int) vmsvga3dBackQueryCaps(PVGASTATECC pThisCC, SVGA3dDevCap
         *pu32Val = VBSVGA3D_CAP_3D;
         if (pState->pBackend->dxDevice.pVideoDevice)
             *pu32Val |= VBSVGA3D_CAP_VIDEO;
-#if !defined(VBOX_WITH_DXVK)
+#if !defined(VBOX_WITH_DXVK) && !defined(VBOX_WITH_DXMT)
         /* D3D11_RASTERIZER_DESC1::ForcedSampleCount does not work with dxvk (at least up to 2.6.2).
          * Therefore only 11.0 level can be supported in the guest. */
         if (FeatureLevel >= D3D_FEATURE_LEVEL_11_1)
