@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 110781 2025-08-21 14:47:59Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 110782 2025-08-21 14:56:20Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -3188,8 +3188,13 @@ static DECLCALLBACK(int) vmsvga3dBackTerminate(PVGASTATECC pThisCC)
     AssertReturn(pState, VERR_INVALID_STATE);
 
     if (pState->pBackend)
+    {
         dxDeviceDestroy(pState->pBackend, &pState->pBackend->dxDevice);
 
+#if defined(VBOX_DX_LIBRARY)
+        RTLdrClose(pState->pBackend->hD3D11);
+#endif
+    }
     return VINF_SUCCESS;
 }
 
