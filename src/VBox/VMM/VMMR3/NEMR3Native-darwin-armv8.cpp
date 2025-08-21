@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin-armv8.cpp 110775 2025-08-21 10:00:29Z alexander.eichner@oracle.com $ */
+/* $Id: NEMR3Native-darwin-armv8.cpp 110776 2025-08-21 10:08:19Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework, ARMv8 variant.
  *
@@ -2388,7 +2388,7 @@ static VBOXSTRICTRC nemR3DarwinHandleExitException(PVM pVM, PVMCPU pVCpu, const 
  */
 static VBOXSTRICTRC nemR3DarwinHandleExit(PVM pVM, PVMCPU pVCpu)
 {
-    int rc = nemR3DarwinCopyStateFromHv(pVM, pVCpu, CPUMCTX_EXTRN_ALL);
+    int rc = nemR3DarwinCopyStateFromHv(pVM, pVCpu, NEM_DARWIN_CPUMCTX_EXTRN_MASK_FOR_IEM);
     if (RT_FAILURE(rc))
         return rc;
 
