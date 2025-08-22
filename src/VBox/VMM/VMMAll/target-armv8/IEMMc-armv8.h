@@ -1,4 +1,4 @@
-/* $Id: IEMMc-armv8.h 110767 2025-08-19 23:13:17Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc-armv8.h 110794 2025-08-22 16:49:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX, ARMv8 target.
  */
@@ -132,6 +132,13 @@
 /** Actualizes the guest FPU state so it can be accessed and modified. */
 #define IEM_MC_ACTUALIZE_FPU_STATE_FOR_CHANGE() iemFpuActualizeStateForChange(pVCpu)
 
+
+#define IEM_MC_FETCH_MEM_FLAT_U32_PAIR(a_GCPtrMem, a_u32Value1, a_u32Value2) \
+    (a_u32Value1) = iemMemFlatFetchDataPairU32Jmp(pVCpu, (a_GCPtrMem), &(a_u32Value2))
+#define IEM_MC_FETCH_MEM_FLAT_U64_PAIR(a_GCPtrMem, a_u64Value1, a_u64Value2) \
+    (a_u64Value1) = iemMemFlatFetchDataPairU64Jmp(pVCpu, (a_GCPtrMem), &(a_u64Value2))
+#define IEM_MC_FETCH_MEM_FLAT_U128_PAIR(a_GCPtrMem, a_u128Value1, a_u128Value2) \
+    iemMemFlatFetchDataPairU128Jmp(pVCpu, (a_GCPtrMem), &(a_u128Value1), &(a_u128Value2))
 
 #define IEM_MC_STORE_MEM_FLAT_U32_PAIR(a_GCPtrMem, a_u32Value1, a_u32Value2) \
     iemMemFlatStoreDataPairU32Jmp(pVCpu, (a_GCPtrMem), (a_u32Value1), (a_u32Value2))

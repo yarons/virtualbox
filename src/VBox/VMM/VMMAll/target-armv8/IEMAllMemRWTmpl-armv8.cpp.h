@@ -1,4 +1,4 @@
-/* $Id: IEMAllMemRWTmpl-armv8.cpp.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: IEMAllMemRWTmpl-armv8.cpp.h 110794 2025-08-22 16:49:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - R/W Memory Functions Template, ARMv8 target.
  */
@@ -126,7 +126,7 @@ RT_CONCAT3(iemMemFetchDataPair,TMPL_MEM_FN_SUFF,SafeJmp)(PVMCPUCC pVCpu, RTGCPTR
 }
 # else /* !TMPL_MEM_BY_REF */
 TMPL_MEM_TYPE
-RT_CONCAT3(iemMemFetchData,TMPL_MEM_FN_SUFF,SafeJmp)(PVMCPUCC pVCpu, RTGCPTR GCPtrMem, TMPL_MEM_TYPE *pDst2) IEM_NOEXCEPT_MAY_LONGJMP
+RT_CONCAT3(iemMemFetchDataPair,TMPL_MEM_FN_SUFF,SafeJmp)(PVMCPUCC pVCpu, RTGCPTR GCPtrMem, TMPL_MEM_TYPE *pDst2) IEM_NOEXCEPT_MAY_LONGJMP
 {
 #  if defined(IEM_WITH_DATA_TLB) && defined(IN_RING3)
     pVCpu->iem.s.DataTlb.cTlbSafeReadPath++;
