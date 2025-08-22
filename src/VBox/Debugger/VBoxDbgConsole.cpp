@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgConsole.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxDbgConsole.cpp 110792 2025-08-22 15:30:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Debugger GUI - Console.
  */
@@ -553,8 +553,8 @@ VBoxDbgConsole::VBoxDbgConsole(VBoxDbgGui *a_pDbgGui, QWidget *a_pParent/* = NUL
      */
     m_pOutput = new VBoxDbgConsoleOutput(this, a_pVirtualBox);
 
-    /* try figure a suitable size and tell the parent class. */
-    QLabel *pLabel = new QLabel("8888888888888888888888888888888888888888888888888888888888888888888888888888888", this);
+    /* try figure a suitable size (90 columns) and tell the parent class. */
+    QLabel *pLabel = new QLabel("000000000011111111112222222222333333333344444444445555555555666666666677777777778888888888", this);
     pLabel->setFont(m_pOutput->font());
     QSize Size = pLabel->sizeHint();
     delete pLabel;
