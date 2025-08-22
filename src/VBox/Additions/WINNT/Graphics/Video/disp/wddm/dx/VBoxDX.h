@@ -1,4 +1,4 @@
-/* $Id: VBoxDX.h 110516 2025-08-04 07:58:18Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxDX.h 110788 2025-08-22 11:34:23Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -30,6 +30,11 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
+
+/* Write statistics to the host release log: execution time of DDI entry points, etc.
+ * Requires g_VBoxLogUm = VBOXWDDM_CFG_LOG_UM_BACKDOOR in a release build in the miniport driver.
+ */
+//#define DX_STATS
 
 #include <iprt/assert.h>
 #include <iprt/handletable.h>
