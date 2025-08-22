@@ -1,4 +1,4 @@
-/* $Id: DisasmCore-armv8.cpp 110686 2025-08-11 20:01:26Z knut.osmundsen@oracle.com $ */
+/* $Id: DisasmCore-armv8.cpp 110793 2025-08-22 16:10:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Disassembler - Core Components.
  */
@@ -323,9 +323,17 @@ static int disArmV8ParseImmAdr(PDISSTATE pDis, uint32_t u32Insn, PCDISARMV8OPCOD
     Assert(pParam->armv8.enmType == kDisArmv8OpParmNone);
 
     pParam->armv8.enmType = kDisArmv8OpParmImmRel;
-    pParam->uValue  = disArmV8ExtractBitVecFromInsn(u32Insn, 5, 19);
-    pParam->uValue |= disArmV8ExtractBitVecFromInsn(u32Insn, 29, 2) << 29;
-    pParam->fUse |= DISUSE_IMMEDIATE32;
+    pParam->uValue  = disArmV8ExtractBitVecFromInsnSignExtend(u32Insn, 5, 19) << 2;
+    pParam->uValue |= disArmV8ExtractBitVecFromInsn(u32Insn, 29, 2);
+    if (pOp->Opc.uOpcode == OP_ARMV8_A64_ADRP)
+    {
+        /** @todo ADRP representation is too hackish! */
+        pParam->uValue = (uint64_t)(int64_t)(int32_t)pParam->uValue << 12;
+        pParam->fUse  |= DISUSE_IMMEDIATE64;
+    }
+    else
+        pParam->fUse  |= DISUSE_IMMEDIATE32;
+
     return VINF_SUCCESS;
 }
 
