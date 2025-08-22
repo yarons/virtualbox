@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tstArm64-1-codegen.py 110790 2025-08-22 13:23:39Z knut.osmundsen@oracle.com $
+# $Id: tstArm64-1-codegen.py 110800 2025-08-22 20:59:23Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -31,7 +31,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 110790 $"
+__version__ = "$Revision: 110800 $"
 
 # pylint: enable=invalid-name
 
@@ -455,7 +455,7 @@ class Arm64No1CodeGen(object):
             A64No1CodeGenShiftedReg('orn',  A64No1CodeGenShiftedReg.calcOrn, fWithRor = True),
             A64No1CodeGenShiftedReg('eor',  A64No1CodeGenShiftedReg.calcEor, fWithRor = True),
             A64No1CodeGenShiftedReg('eon',  A64No1CodeGenShiftedReg.calcEon, fWithRor = True),
-        ]
+        ];
 
 
         #
