@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-nix.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxUtils-nix.cpp 110791 2025-08-22 15:14:50Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling X11 specific tasks.
  */
@@ -56,6 +56,11 @@
 #undef  BOOL            /* Restore the VBox/com/defs.h variant */
 #define BOOL PRBool
 #include <dlfcn.h>
+
+bool NativeWindowSubsystem::hasXdgDesktopPortal()
+{
+    return QDBusConnection::sessionBus().interface()->isServiceRegistered("org.freedesktop.portal.Desktop");
+}
 
 VBGHDISPLAYSERVERTYPE NativeWindowSubsystem::displayServerType()
 {

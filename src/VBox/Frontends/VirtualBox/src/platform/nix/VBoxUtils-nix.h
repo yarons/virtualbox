@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-nix.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxUtils-nix.h 110791 2025-08-22 15:14:50Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling X11 specific tasks.
  */
@@ -94,6 +94,7 @@ struct _XDisplay;
 /* Namespace for native window sub-system functions: */
 namespace NativeWindowSubsystem
 {
+    SHARED_LIBRARY_STUFF bool hasXdgDesktopPortal();
     /** Determines display sever type by looking at QGuiApplication::nativeInterface() return  type: */
     SHARED_LIBRARY_STUFF VBGHDISPLAYSERVERTYPE displayServerType();
     /** Wrapper function for X11IsCompositingManagerRunning and WaylandIsCompositingManagerRunning. */
