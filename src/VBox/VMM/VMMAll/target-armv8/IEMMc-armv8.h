@@ -1,4 +1,4 @@
-/* $Id: IEMMc-armv8.h 110797 2025-08-22 17:37:22Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc-armv8.h 110799 2025-08-22 20:58:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX, ARMv8 target.
  */
@@ -133,11 +133,11 @@
 #define IEM_MC_ACTUALIZE_FPU_STATE_FOR_CHANGE() iemFpuActualizeStateForChange(pVCpu)
 
 
-#define IEM_MC_FETCH_MEM_FLAT_U32_PAIR(a_GCPtrMem, a_u32Value1, a_u32Value2) \
+#define IEM_MC_FETCH_MEM_FLAT_U32_PAIR(a_u32Value1, a_u32Value2, a_GCPtrMem) \
     (a_u32Value1) = iemMemFlatFetchDataPairU32Jmp(pVCpu, (a_GCPtrMem), &(a_u32Value2))
-#define IEM_MC_FETCH_MEM_FLAT_U64_PAIR(a_GCPtrMem, a_u64Value1, a_u64Value2) \
+#define IEM_MC_FETCH_MEM_FLAT_U64_PAIR(a_u64Value1, a_u64Value2, a_GCPtrMem) \
     (a_u64Value1) = iemMemFlatFetchDataPairU64Jmp(pVCpu, (a_GCPtrMem), &(a_u64Value2))
-#define IEM_MC_FETCH_MEM_FLAT_U128_PAIR(a_GCPtrMem, a_u128Value1, a_u128Value2) \
+#define IEM_MC_FETCH_MEM_FLAT_U128_PAIR(a_u128Value1, a_u128Value2, a_GCPtrMem) \
     iemMemFlatFetchDataPairU128Jmp(pVCpu, (a_GCPtrMem), &(a_u128Value1), &(a_u128Value2))
 
 #define IEM_MC_STORE_MEM_FLAT_U32_PAIR(a_GCPtrMem, a_u32Value1, a_u32Value2) \
