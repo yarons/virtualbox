@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 110789 2025-08-22 13:23:11Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMR3.cpp 110796 2025-08-22 16:57:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -1123,7 +1123,7 @@ VMMR3_INT_DECL(int) IEMR3Init(PVM pVM)
                     void *pvBits = RTMemAlloc(cbImage);
                     if (pvBits)
                     {
-                        uint32_t const uLoadAddr = _128M;
+                        uint32_t const uLoadAddr = _128M + _4M;
                         rc = RTLdrGetBits(hLdrMod, pvBits, uLoadAddr, NULL, NULL);
                         if (RT_SUCCESS(rc))
                         {
@@ -1140,6 +1140,10 @@ VMMR3_INT_DECL(int) IEMR3Init(PVM pVM)
                                     LogRel(("IEM: Successfully loaded '%s' at %#x LB %#zx\n", pszTestImageFile, uLoadAddr, cbImage));
                                     PCPUMCTX pCtx = CPUMQueryGuestCtxPtr(pVM->apCpusR3[0]);
                                     pCtx->Pc.u64 = uEntrypoint;
+                                    pCtx->aSpReg[0].u64 = uLoadAddr - _1M*3;
+                                    pCtx->aSpReg[1].u64 = uLoadAddr - _1M*2;
+                                    pCtx->aSpReg[2].u64 = uLoadAddr - _1M*1;
+                                    pCtx->aSpReg[3].u64 = uLoadAddr - _128K;
                                 }
                                 else
                                     rc = VMR3SetError(pUVM, rc, RT_SRC_POS, "Failed to get the address of '%s' in '%s': %Rrc",
