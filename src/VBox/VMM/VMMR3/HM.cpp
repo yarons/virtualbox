@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 110815 2025-08-26 08:47:24Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HM.cpp 110816 2025-08-26 08:56:57Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1184,7 +1184,9 @@ static int hmR3InitFinalizeR0(PVM pVM)
     /*
      * Report ring-0 init errors.
      */
-    if (RT_FAILURE(pVM->hm.s.ForR3.rcInit))
+    if (   RT_FAILURE(pVM->hm.s.ForR3.rcInit)
+        || (  !pVM->hm.s.vmx.fSupported
+           && !pVM->hm.s.svm.fSupported))
     {
         LogRel(("HM: Failed to initialize %s: %Rrc\n", pVM->hm.s.vmx.fSupported ? "VT-x" : "AMD-V", pVM->hm.s.ForR3.rcInit));
         switch (pVM->hm.s.ForR3.rcInit)
