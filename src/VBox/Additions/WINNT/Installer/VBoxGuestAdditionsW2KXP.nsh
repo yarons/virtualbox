@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsW2KXP.nsh 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+; $Id: VBoxGuestAdditionsW2KXP.nsh 110822 2025-08-27 14:54:02Z klaus.espenlaub@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsW2KXP.nsh - Guest Additions installation for Windows 2000/XP.
 ;
@@ -750,7 +750,7 @@ Function ${un}W2K_CallbackUninstall
   Delete /REBOOTOK "$g_strSystemDir\VBoxMRXNP.dll" ; The network provider DLL will be locked.
   !if $%KBUILD_TARGET_ARCH% == "amd64"
     ; Only 64-bit installer: Also remove 32-bit DLLs on 64-bit target arch in Wow64 node.
-    Delete /REBOOTOK "$g_strSysWow64\VBoxMRXNP.dll"
+    Delete /REBOOTOK "$g_strSysWow64\VBoxMRXNP-x86.dll"
   !endif ; amd64
   Delete /REBOOTOK "$g_strSystemDir\drivers\VBoxSF.sys"
 
