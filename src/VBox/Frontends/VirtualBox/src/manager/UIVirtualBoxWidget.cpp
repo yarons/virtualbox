@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxWidget.cpp 110737 2025-08-15 14:31:43Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxWidget.cpp 110821 2025-08-27 14:39:12Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxWidget class implementation.
  */
@@ -319,7 +319,7 @@ void UIVirtualBoxWidget::sltHandleCommitData()
 void UIVirtualBoxWidget::sltHandleMachineStateChange(const QUuid &uId)
 {
     /* Update toolbar to show/hide corresponding actions: */
-    if (currentItem()->id() == uId)
+    if (currentItem() && currentItem()->id() == uId)
         updateToolbar();
 }
 
