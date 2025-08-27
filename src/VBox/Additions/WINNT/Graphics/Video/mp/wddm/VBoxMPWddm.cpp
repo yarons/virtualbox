@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 110773 2025-08-20 18:24:11Z dmitrii.grigorev@oracle.com $ */
+/* $Id: VBoxMPWddm.cpp 110825 2025-08-27 17:31:55Z dmitrii.grigorev@oracle.com $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -1251,7 +1251,8 @@ NTSTATUS DxgkDdiStartDevice(
                         }
                     }
 
-                    pDevExt->dwDrvCfgFlags = dwVal;
+                    /* The flag is enforced assuming that Windows itself preserves a displays settings across reboot. */
+                    pDevExt->dwDrvCfgFlags = dwVal | VBOXWDDM_CFG_DRV_SECONDARY_TARGETS_CONNECTED;
 
                     for (UINT i = 0; i < (UINT)VBoxCommonFromDeviceExt(pDevExt)->cDisplays; ++i)
                     {
