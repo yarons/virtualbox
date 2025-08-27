@@ -1,4 +1,4 @@
-# $Id: Config.kmk 110826 2025-08-27 17:49:54Z klaus.espenlaub@oracle.com $
+# $Id: Config.kmk 110829 2025-08-27 18:41:56Z klaus.espenlaub@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2576,6 +2576,9 @@ VBOX_VBOXCPP    ?= $(PATH_OBJ)/VBoxCPP/VBoxCPP$(HOSTSUFF_EXE)
 
 # VBoxTpG (tracepoint generator)
 VBOX_VBOXTPG    ?= $(PATH_OBJ)/VBoxTpG/VBoxTpG$(HOSTSUFF_EXE)
+
+# VBoxPeSetVersion (changes the minimum OS version of an image)
+VBOX_PE_SET_VERSION ?= $(PATH_OBJ)/VBoxPeSetVersion/VBoxPeSetVersion$(HOSTSUFF_EXE)
 
 # Visual C++ EditBin.exe.
 VBOX_VCC_EDITBIN = $(if $(PATH_TOOL_$(VBOX_VCC_TOOL)_BIN_QSH),$(PATH_TOOL_$(VBOX_VCC_TOOL)_BIN_QSH)/,$(if $(PATH_TOOL_$(VBOX_VCC_TOOL)_BIN),$(PATH_TOOL_$(VBOX_VCC_TOOL)_BIN)/,))editbin.exe /NoLogo
@@ -9447,7 +9450,7 @@ SVN                    ?= svn$(HOSTSUFF_EXE)
 GIT                    ?= git$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 110826 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 110829 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  VBOX_GIT_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.git/config $(abspath $(PATH_ROOT)/../.git/config) $(abspath $(PATH_ROOT)/../../.git/config)))
@@ -9461,7 +9464,7 @@ ifndef VBOX_SVN_REV
  ifneq ($(VBOX_GIT_DEP),)
   #
   # VBOX_SVN_REV_CONFIG_FALLBACK is not properly populated for a git checkout,
-  # as the $Rev: 110826 $ is not expanded, so we have to set it based on the information in the repo.
+  # as the $Rev: 110829 $ is not expanded, so we have to set it based on the information in the repo.
   #
   VBOX_SVN_REV_FALLBACK := $(shell $(GIT) log -1 $(PATH_ROOT)/Config.kmk | $(SED) -e 's/^[ \t]*//' -e '/svn:sync-xref-src-repo-rev\: r/!d' -e 's/svn:sync-xref-src-repo-rev\: r*//; t a; :a q')
  endif
