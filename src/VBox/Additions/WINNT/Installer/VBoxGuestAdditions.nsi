@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+; $Id: VBoxGuestAdditions.nsi 110823 2025-08-27 14:57:20Z klaus.espenlaub@oracle.com $
 ; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -570,9 +570,9 @@ force_extract_unsupported_os:
     Call W2K_CallbackExtractFiles
     Call Vista_CallbackExtractFiles
     goto extract_common ; Needed for force_extract_unsupported_os label.
-!if $%KBUILD_TARGET_ARCH% == "x86" ; 32-bit only
   ${ElseIf} ${AtLeastWin2000}
     Call W2K_CallbackExtractFiles
+!if $%KBUILD_TARGET_ARCH% == "x86" ; 32-bit only
   ${ElseIf} ${AtLeastWinNT4}
     Call NT4_CallbackExtractFiles
 !endif
