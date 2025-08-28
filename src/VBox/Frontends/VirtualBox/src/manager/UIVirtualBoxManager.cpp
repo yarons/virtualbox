@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 110737 2025-08-15 14:31:43Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 110838 2025-08-28 16:36:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -111,7 +111,6 @@
 #include "CGuestOSType.h"
 #include "CSystemProperties.h"
 #include "CUnattended.h"
-#include "CVirtualBoxErrorInfo.h"
 #ifdef VBOX_WS_MAC
 # include "CVirtualBox.h"
 #endif

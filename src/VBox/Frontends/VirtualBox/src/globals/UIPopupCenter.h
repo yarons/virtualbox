@@ -1,4 +1,4 @@
-/* $Id: UIPopupCenter.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIPopupCenter.h 110838 2025-08-28 16:36:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPopupCenter class declaration.
  */
@@ -49,7 +49,6 @@ class CEmulatedUSB;
 class CMachine;
 class CNetworkAdapter;
 class CVirtualBox;
-class CVirtualBoxErrorInfo;
 class CVRDEServer;
 
 

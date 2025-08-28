@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMessageCenter.cpp 110838 2025-08-28 16:36:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -100,7 +100,6 @@
 #include "CSystemProperties.h"
 #include "CUnattended.h"
 #include "CVFSExplorer.h"
-#include "CVirtualBoxErrorInfo.h"
 #include "CVirtualSystemDescription.h"
 #include "CVirtualSystemDescriptionForm.h"
 #ifdef VBOX_WITH_DRAG_AND_DROP

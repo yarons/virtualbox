@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UICloudNetworkingStuff.cpp 110838 2025-08-28 16:36:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace implementation.
  */
@@ -40,7 +40,6 @@
 #include "CProgress.h"
 #include "CStringArray.h"
 #include "CVirtualBox.h"
-#include "CVirtualBoxErrorInfo.h"
 #include "CVirtualSystemDescription.h"
 
 
