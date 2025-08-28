@@ -1,4 +1,4 @@
-/* $Id: UITranslationEventListener.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UITranslationEventListener.h 110837 2025-08-28 12:44:55Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITranslationEventListener class declaration.
  */
@@ -54,6 +54,10 @@ public:
 protected:
 
     bool eventFilter(QObject *pObject, QEvent *pEvent) RT_OVERRIDE RT_FINAL;
+
+private slots:
+
+    void sltRetranslateUI() { emit sigRetranslateUI(); }
 
 private:
 

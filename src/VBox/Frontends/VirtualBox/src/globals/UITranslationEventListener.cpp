@@ -1,4 +1,4 @@
-/* $Id: UITranslationEventListener.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UITranslationEventListener.cpp 110837 2025-08-28 12:44:55Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITranslationEventListener class implementation.
  */
@@ -81,7 +81,8 @@ bool UITranslationEventListener::eventFilter(QObject *pObject, QEvent *pEvent)
            && pEvent->type() == QEvent::LanguageChange
            && pObject == qApp)
     {
-        emit sigRetranslateUI();
+        /* Send translation signal asynchronously: */
+        QMetaObject::invokeMethod(this, "sltRetranslateUI", Qt::QueuedConnection);
     }
     /* Call to base-class: */
     return QObject::eventFilter(pObject, pEvent);
