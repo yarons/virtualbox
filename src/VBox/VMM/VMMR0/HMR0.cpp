@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: HMR0.cpp 110834 2025-08-28 10:11:09Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -632,6 +632,8 @@ static int hmR0InitAmd(void)
             g_rcHmInit = rc;
             if (rc == VERR_SVM_DISABLED || rc == VERR_SVM_IN_USE)
                 rc = VINF_SUCCESS; /* Don't fail if AMD-V is disabled or in use. */
+            else
+                SVMR0GlobalTerm();
         }
     }
     else
