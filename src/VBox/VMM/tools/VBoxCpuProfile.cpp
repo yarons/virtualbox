@@ -1,4 +1,4 @@
-/* $Id: VBoxCpuProfile.cpp 109857 2025-06-15 22:05:36Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxCpuProfile.cpp 110840 2025-08-28 21:39:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxCpuProfile - For testing and poking at the CPU profile DB.
  */
@@ -560,6 +560,9 @@ int main(int argc, char **argv)
             case 'A':
                 g_fShowArmFeatures = false;
                 break;
+
+            case 'h':
+                return cmdHelp();
 
             case VINF_GETOPT_NOT_OPTION:
             {
