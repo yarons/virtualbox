@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 110841 2025-08-29 09:54:40Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMR0.cpp 110842 2025-08-29 10:05:21Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -539,7 +539,8 @@ static int hmR0InitIntel(void)
                  */
                 g_fHmVmxSupportsVmcsEfer = (g_HmMsrs.u.vmx.EntryCtls.n.allowed1 & VMX_ENTRY_CTLS_LOAD_EFER_MSR)
                                         && (g_HmMsrs.u.vmx.ExitCtls.n.allowed1  & VMX_EXIT_CTLS_LOAD_EFER_MSR)
-                                        && (g_HmMsrs.u.vmx.ExitCtls.n.allowed1  & VMX_EXIT_CTLS_SAVE_EFER_MSR)
+                                        && (g_HmMsrs.u.vmx.ExitCtls.n.allowed1  & VMX_EXIT_CTLS_SAVE_EFER_MSR);
+
                 /*
                  * Install the VT-x methods and mark it enabled.
                  */
