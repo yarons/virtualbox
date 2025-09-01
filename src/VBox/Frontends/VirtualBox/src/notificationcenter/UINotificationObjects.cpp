@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 110770 2025-08-20 12:56:12Z brent.paulson@oracle.com $ */
+/* $Id: UINotificationObjects.cpp 110849 2025-09-01 15:00:23Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -38,6 +38,7 @@
 #include "UIGlobalSession.h"
 #include "UIHostComboEditor.h"
 #include "UILocalMachineStuff.h"
+#include "UILoggingDefs.h"
 #include "UINotificationCenter.h"
 #include "UINotificationObjects.h"
 #include "UITranslator.h"
@@ -737,6 +738,13 @@ void UINotificationMessage::cannotAcquireSessionParameter(const CSession &comSes
 /* static */
 void UINotificationMessage::cannotAcquireMachineParameter(const CMachine &comMachine)
 {
+    /* Do not show error for the NS_ERROR_NOT_IMPLEMENTED case, just add it to the log: */
+    if (comMachine.lastRC() == NS_ERROR_NOT_IMPLEMENTED)
+    {
+        LogRel(("GUI: IMachine getter lastRC == NS_ERROR_NOT_IMPLEMENTED, skipping ...\n"));
+        return;
+    }
+
     createMessage(
         QApplication::translate("UIMessageCenter", "Machine failure ..."),
         QApplication::translate("UIMessageCenter", "Failed to acquire machine parameter.") +
