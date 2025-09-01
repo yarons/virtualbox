@@ -1,4 +1,4 @@
-/* $Id: DisasmTables-armv8-a64.cpp 110843 2025-09-01 07:19:07Z knut.osmundsen@oracle.com $ */
+/* $Id: DisasmTables-armv8-a64.cpp 110845 2025-09-01 11:19:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for ARMv8 A64.
  */
@@ -1469,3 +1469,4 @@ DIS_ARMV8_DECODE_MAP_DEFINE_BEGIN(DecodeL0)
     DIS_ARMV8_DECODE_MAP_ENTRY(LdStOp0Lo_Bit26_1),                  /* Load/Stores, op1=1 (bit 26, VR). */
     DIS_ARMV8_DECODE_MAP_ENTRY(DataProcSimdFpBit28_1)               /* Data processing (SIMD & FP) (op0<0> 1). */
 DIS_ARMV8_DECODE_MAP_DEFINE_END_NON_STATIC(DecodeL0, RT_BIT_32(25) | RT_BIT_32(26) | RT_BIT_32(27) | RT_BIT_32(28), 25);
+
