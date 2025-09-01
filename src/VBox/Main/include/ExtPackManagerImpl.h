@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: ExtPackManagerImpl.h 110853 2025-09-01 17:23:38Z brent.paulson@oracle.com $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -92,7 +92,7 @@ private:
                          com::Utf8Str &aLicenseText);
     HRESULT install(BOOL aReplace,
                     const com::Utf8Str &aDisplayInfo,
-                    ComPtr<IProgress> &aProgess);
+                    ComPtr<IProgress> &aProgress);
 
     struct Data;
     /** Pointer to the private instance. */
@@ -298,7 +298,7 @@ private:
     HRESULT uninstall(const com::Utf8Str &aName,
                       BOOL aForcedRemoval,
                       const com::Utf8Str &aDisplayInfo,
-                      ComPtr<IProgress> &aProgess);
+                      ComPtr<IProgress> &aProgress);
     HRESULT cleanup();
     HRESULT queryAllPlugInsForFrontend(const com::Utf8Str &aFrontendName,
                                        std::vector<com::Utf8Str> &aPlugInModules);
