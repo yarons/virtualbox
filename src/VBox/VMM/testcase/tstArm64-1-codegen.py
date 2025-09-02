@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tstArm64-1-codegen.py 110860 2025-09-02 11:51:04Z knut.osmundsen@oracle.com $
+# $Id: tstArm64-1-codegen.py 110861 2025-09-02 12:07:44Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -31,7 +31,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 110860 $"
+__version__ = "$Revision: 110861 $"
 
 # pylint: enable=invalid-name
 
@@ -434,6 +434,9 @@ class A64No1CodeGenBase(object):
             self.oGprAllocator.free(iRegTmpToUse);
         return None;
 
+
+g_kdFprBytesToInfix     = { 1: 'B', 2: 'H', 4: 'S', 8: 'D', 16: 'Q' };
+g_kdFprBytesToRegPrefix = { 1: 'b', 2: 'h', 4: 's', 8: 'd', 16: 'q' };
 
 class A64No1CodeGenFprBase(A64No1CodeGenBase):
     """
@@ -913,9 +916,6 @@ class A64No1CodeGenLdImm9(A64No1CodeGenLdBase):
         self.oGprAllocator.free(iRegDst);
 
 
-g_kdFprBytesToInfix     = { 1: 'B', 2: 'H', 4: 'S', 8: 'D', 16: 'Q' };
-g_kdFprBytesToRegPrefix = { 1: 'b', 2: 'h', 4: 's', 8: 'd', 16: 'q' };
-
 class A64No1CodeGenLdImm9Fp(A64No1CodeGenFprBase, A64No1CodeGenLdImm9):
 
     def __init__(self, sInstr, fnCalc, cbMem = 1, cBits = 64, fPreIdx = True):
@@ -1118,6 +1118,27 @@ class A64No1CodeGenStImm9(A64No1CodeGenStBase):
         self.oGprAllocator.free(iRegLoad);
 
 
+class A64No1CodeGenStImm9Fp(A64No1CodeGenFprBase, A64No1CodeGenStImm9):
+
+    def __init__(self, sInstr, cbMem = 1, cBits = 64, fPreIdx = True):
+        sBaseName = sInstr + '_' + g_kdFprBytesToInfix[cbMem];
+        A64No1CodeGenFprBase.__init__(self, sBaseName, sInstr);
+        A64No1CodeGenStImm9.__init__(self, sInstr, cbMem, cBits, fPreIdx, sBaseName = sBaseName);
+        self.sPrefix = g_kdFprBytesToRegPrefix[cbMem]
+
+    def emitStInstrAndRandValue(self, sRegBase, iOffset):
+        uValue = randUBits(128);
+        self.emitStInstrForRestore(sRegBase, iOffset, uValue);
+        return uValue & bitsOnes(self.cbMem * 8);
+
+    def emitStInstrForRestore(self, sRegBase, iOffset, uValue):
+        iRegSrc = self.emitFprLoad(self.oFprAllocator.alloc(uValue), uValue);
+        if self.fPreIdx:
+            self.emitInstr(self.sInstr, '%s%u, [%s, #%d]!' % (self.sPrefix, iRegSrc, sRegBase, iOffset,));
+        else:
+            self.emitInstr(self.sInstr, '%s%u, [%s], #%d'  % (self.sPrefix, iRegSrc, sRegBase, iOffset,));
+        self.oFprAllocator.free(iRegSrc);
+        return None;
 
 
 
@@ -1265,6 +1286,17 @@ class Arm64No1CodeGen(object):
         # Instantiate the generators.
         aoGenerators = [
             # Loads and stores with unscaled 9-bit signed immediates:
+            A64No1CodeGenStImm9Fp(   'str',                   cbMem = 16, cBits = 128, fPreIdx = False),
+            A64No1CodeGenStImm9Fp(   'str',                   cbMem = 16, cBits = 128, fPreIdx = True),
+            A64No1CodeGenStImm9Fp(   'str',                   cbMem =  8, cBits =  64, fPreIdx = False),
+            A64No1CodeGenStImm9Fp(   'str',                   cbMem =  8, cBits =  64, fPreIdx = True),
+            A64No1CodeGenStImm9Fp(   'str',                   cbMem =  4, cBits =  32, fPreIdx = False),
+            A64No1CodeGenStImm9Fp(   'str',                   cbMem =  4, cBits =  32, fPreIdx = True),
+            A64No1CodeGenStImm9Fp(   'str',                   cbMem =  2, cBits =  16, fPreIdx = False),
+            A64No1CodeGenStImm9Fp(   'str',                   cbMem =  2, cBits =  16, fPreIdx = True),
+            A64No1CodeGenStImm9Fp(   'str',                   cbMem =  1, cBits =   8, fPreIdx = False),
+            A64No1CodeGenStImm9Fp(   'str',                   cbMem =  1, cBits =   8, fPreIdx = True),
+
             A64No1CodeGenStImm9(     'str',                   cbMem =  8, cBits =  64, fPreIdx = False),
             A64No1CodeGenStImm9(     'str',                   cbMem =  8, cBits =  64, fPreIdx = True),
             A64No1CodeGenStImm9(     'str',                   cbMem =  4, cBits =  32, fPreIdx = False),
