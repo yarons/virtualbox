@@ -1,4 +1,4 @@
-/* $Id: UIHomePane.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIHomePane.h 110864 2025-09-02 19:25:55Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHomePane class declaration.
  */
@@ -81,10 +81,10 @@ private:
     /** Prepares all. */
     void prepare();
 
-    /** Updates text labels. */
-    void updateTextLabels();
     /** Updates pixmap. */
     void updatePixmap();
+    /** Updates text labels. */
+    void updateTextLabels();
 
     /** Holds the icon instance. */
     QIcon  m_icon;

@@ -1,4 +1,4 @@
-/* $Id: UIHomePane.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIHomePane.cpp 110864 2025-09-02 19:25:55Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHomePane class implementation.
  */
@@ -68,9 +68,9 @@ bool UIHomePane::event(QEvent *pEvent)
         case QEvent::Show:
         case QEvent::ScreenChangeInternal:
         {
-            /* Update pixmap: */
-            updateTextLabels();
+            /* Update stuff: */
             updatePixmap();
+            updateTextLabels();
             break;
         }
         default:
@@ -249,24 +249,8 @@ void UIHomePane::prepare()
             this, &UIHomePane::sltRetranslateUI);
 
     /* Update stuff: */
-    updateTextLabels();
     updatePixmap();
-}
-
-void UIHomePane::updateTextLabels()
-{
-    /* For all the text-labels: */
-    QList<QIRichTextLabel*> labels = findChildren<QIRichTextLabel*>();
-    if (!labels.isEmpty())
-    {
-        /* Make sure their minimum width is around 20% of the screen width: */
-        const QSize screenGeometry = gpDesktop->screenGeometry(this).size();
-        foreach (QIRichTextLabel *pLabel, labels)
-        {
-            pLabel->setMinimumTextWidth(screenGeometry.width() * .2);
-            pLabel->resize(pLabel->minimumSizeHint());
-        }
-    }
+    updateTextLabels();
 }
 
 void UIHomePane::updatePixmap()
@@ -280,5 +264,20 @@ void UIHomePane::updatePixmap()
         /* Acquire device-pixel ratio: */
         const qreal fDevicePixelRatio = gpDesktop->devicePixelRatio(this);
         m_pLabelIcon->setPixmap(m_icon.pixmap(defaultSize, fDevicePixelRatio));
+    }
+}
+
+void UIHomePane::updateTextLabels()
+{
+    /* For all the text-labels: */
+    QList<QIRichTextLabel*> labels = findChildren<QIRichTextLabel*>();
+    if (!labels.isEmpty())
+    {
+        /* Make sure their minimum width is around icon label width: */
+        foreach (QIRichTextLabel *pLabel, labels)
+        {
+            pLabel->setMinimumTextWidth(m_pLabelIcon->minimumSizeHint().width() * 1.1);
+            pLabel->resize(pLabel->minimumSizeHint());
+        }
     }
 }
