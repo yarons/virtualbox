@@ -1,4 +1,4 @@
-/* $Id: DisplayServerType.cpp 110857 2025-09-02 06:26:30Z alexander.eichner@oracle.com $ */
+/* $Id: DisplayServerType.cpp 110859 2025-09-02 10:21:55Z alexander.eichner@oracle.com $ */
 /** @file
  * Guest / Host common code - Session type detection + handling.
  */
@@ -36,6 +36,16 @@
 #include <iprt/log.h>
 
 #include <VBox/GuestHost/DisplayServerType.h>
+
+#ifdef RT_OS_SOLARIS
+/*
+ * For some unknown reason there is no libX11.so.6 on Solaris but
+ * libX11.so/libX11.so.5 which both link to libX11.so.4...
+ */
+# define X11_LIBRARY_NAME "libX11.so"
+#else
+# define X11_LIBRARY_NAME "libX11.so.6"
+#endif
 
 
 /*********************************************************************************************************************************
@@ -117,7 +127,7 @@ VBGHDISPLAYSERVERTYPE VBGHDisplayServerTypeDetect(void)
     /* Also try to connect to the default X11 display to determine if Xserver is running: */
     bool     fHasX = false;
     RTLDRMOD hX11  = NIL_RTLDRMOD;
-    rc = RTLdrLoadSystem("libX11.so.6", true /*fNoUnload*/, &hX11);
+    rc = RTLdrLoadSystem(X11_LIBRARY_NAME, true /*fNoUnload*/, &hX11);
     if (RT_SUCCESS(rc))
     {
         void * (*pfnOpenDisplay)(const char *) = NULL;
