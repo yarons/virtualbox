@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-usbip.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: USBProxyDevice-usbip.cpp 110856 2025-09-02 06:12:15Z alexander.eichner@oracle.com $ */
 /** @file
  * USB device proxy - USB/IP backend.
  */
@@ -1167,7 +1167,7 @@ static int usbProxyUsbIpUrbQueueWorker(PUSBPROXYDEVUSBIP pProxyDevUsbIp, PUSBPRO
     switch (pUrb->enmType)
     {
         case VUSBXFERTYPE_MSG:
-            memcpy(&ReqSubmit.Setup, &pUrb->pbData, sizeof(ReqSubmit.Setup));
+            memcpy(&ReqSubmit.Setup, pUrb->pbData, sizeof(ReqSubmit.Setup));
             ReqSubmit.u32TransferBufferLength -= sizeof(VUSBSETUP);
             if (pUrb->enmDir == VUSBDIRECTION_OUT)
             {
