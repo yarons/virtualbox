@@ -1,4 +1,4 @@
-/* $Id: keyboard-layouts.h 108832 2025-03-20 12:03:19Z alexander.eichner@oracle.com $ */
+/* $Id: keyboard-layouts.h 110858 2025-09-02 07:54:56Z bela.lubkin@oracle.com $ */
 /** @file
  * VBox/Frontends/Common - X11 keyboard driver translation tables (keyboard layouts).
  *
@@ -58,7 +58,8 @@
    The layout-switching keys on Japanese and Korean keyboards are
    dealt with elsewhere. */
 
-/** @todo r=aeichner Someone needs to check whether the warnings are indeed valid. */
+/* The tables concatenate strings to avoid mis-concatenating hex
+   constants; e.g. `` "\x3""1" '' to generate bytes 0x03 0x31. */
 #ifdef __clang__
 # pragma clang diagnostic push
 # pragma clang diagnostic ignored "-Wstring-concatenation"
