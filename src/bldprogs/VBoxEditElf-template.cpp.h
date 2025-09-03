@@ -1,4 +1,4 @@
-/* $Id: VBoxEditElf-template.cpp.h 110876 2025-09-03 15:38:09Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxEditElf-template.cpp.h 110878 2025-09-03 15:43:39Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxEditElf - Simple ELF binary file editor, templated code.
  */
@@ -403,14 +403,14 @@ static RTEXITCODE ELFEDIT_NAME(Parse)(PELFEDITSTUBIMG pStubImg, RTFILE hFileElf)
     }
 
     /* Process exported symbols. */
-    uint32_t const cSyms = cbDynSyms / sizeof(*paDynSyms);
+    size_t const cSyms = cbDynSyms / sizeof(*paDynSyms);
 
     pStubImg->paSyms = (PELFEDITSTUBSYM)RTMemAllocZ(cSyms * sizeof(*pStubImg->paSyms));
     if (!pStubImg->paSyms)
         return RTMsgErrorExit(RTEXITCODE_FAILURE, "Failed to allocate %u entries for the symbol table\n", cSyms);
 
     uint32_t idxSym = 0;
-    for (uint32_t i = 0; i < cSyms; i++)
+    for (size_t i = 0; i < cSyms; i++)
     {
         PELFEDITSTUBSYM pSym = &pStubImg->paSyms[idxSym];
 
