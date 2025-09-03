@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 110877 2025-09-03 15:42:34Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 110879 2025-09-03 15:48:36Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for various generic build tools (there is currently only one of them).
 #
@@ -85,7 +85,7 @@ if !defined(VBOX_ONLY_BUILD) || defined(VBOX_ONLY_EXTPACKS)
  	VBoxEditElf.cpp \
  	../VBox/Runtime/common/misc/json.cpp
  VBoxEditElf_INCS = \
-	$(PATH_ROOT)/src/VBox/Runtime/include
+ 	$(PATH_ROOT)/src/VBox/Runtime/include
  #VBoxEditElf_LDFLAGS  =  $(VBOX_GCC_SANITIZER_FLAGS) $(VBOX_GCC_SANITIZER_LDFLAGS)
  #VBoxEditElf_CXXFLAGS =  $(VBOX_GCC_SANITIZER_FLAGS)
 endif

@@ -1,4 +1,4 @@
-/* $Id: VBoxEditElf.cpp 110877 2025-09-03 15:42:34Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxEditElf.cpp 110879 2025-09-03 15:48:36Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxEditElf - Simple ELF binary file editor.
  */
@@ -1052,7 +1052,6 @@ static RTEXITCODE elfEditStubLoadFromJson(PELFEDITSTUBIMG pStubImg, const char *
 
     for (;;)
     {
-        
         rc = RTJsonIteratorNext(hJsonIt);
         if (rc == VERR_JSON_ITERATOR_END)
             break;
@@ -1315,7 +1314,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 110877 $";
+                static const char s_szRev[] = "$Revision: 110879 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
