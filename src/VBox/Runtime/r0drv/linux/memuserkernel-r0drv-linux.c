@@ -1,4 +1,4 @@
-/* $Id: memuserkernel-r0drv-linux.c 110873 2025-09-03 12:19:58Z vadim.galitsyn@oracle.com $ */
+/* $Id: memuserkernel-r0drv-linux.c 110875 2025-09-03 14:24:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - User & Kernel Memory, Ring-0 Driver, Linux.
  */
@@ -150,7 +150,7 @@ static int rtR0MemKernelCopyLnxWorker(void *pvDst, void const *pvSrc, size_t cb)
         return VINF_SUCCESS;
 
     __asm__ __volatile__ (
-#  if RTLNX_VER_MAX(6,0,0) /* Do not call CLD for recent kernels since it triggers objtool warning. */
+#  if RTLNX_VER_MAX(6,0,0) /* Do not use CLD for recent kernels since it triggers objtool warning. */
                           "cld\n"
 #  endif
                           "1:\n\t"
