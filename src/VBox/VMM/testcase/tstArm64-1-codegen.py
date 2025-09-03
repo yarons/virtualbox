@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tstArm64-1-codegen.py 110869 2025-09-03 08:26:22Z knut.osmundsen@oracle.com $
+# $Id: tstArm64-1-codegen.py 110870 2025-09-03 08:31:57Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -31,7 +31,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 110869 $"
+__version__ = "$Revision: 110870 $"
 
 # pylint: enable=invalid-name
 
@@ -1518,30 +1518,30 @@ class Arm64No1CodeGen(object):
             A64No1CodeGenStImm9Fp(   'str',                   cbMem =  2,              sType = 'preidx'),
             A64No1CodeGenStImm9Fp(   'str',                   cbMem =  1,              sType = 'postidx'),
             A64No1CodeGenStImm9Fp(   'str',                   cbMem =  1,              sType = 'preidx'),
-            A64No1CodeGenStImm9(     'str',                   cbMem =  8, cBits =  64, sType = 'postidx'),
-            A64No1CodeGenStImm9(     'str',                   cbMem =  8, cBits =  64, sType = 'preidx'),
-            A64No1CodeGenStImm9(     'str',                   cbMem =  4, cBits =  32, sType = 'postidx'),
-            A64No1CodeGenStImm9(     'str',                   cbMem =  4, cBits =  32, sType = 'preidx'),
-            A64No1CodeGenStImm9(     'strh',                  cbMem =  2, cBits =  32, sType = 'postidx'),
-            A64No1CodeGenStImm9(     'strh',                  cbMem =  2, cBits =  32, sType = 'preidx'),
-            A64No1CodeGenStImm9(     'strb',                  cbMem =  1, cBits =  32, sType = 'postidx'),
-            A64No1CodeGenStImm9(     'strb',                  cbMem =  1, cBits =  32, sType = 'preidx'),
-            A64No1CodeGenLdImm9(     'ldr',   calcLdUnsigned, cbMem =  8, cBits =  64, sType = 'postidx'),
-            A64No1CodeGenLdImm9(     'ldr',   calcLdUnsigned, cbMem =  8, cBits =  64, sType = 'preidx'),
-            A64No1CodeGenLdImm9(     'ldr',   calcLdUnsigned, cbMem =  4, cBits =  32, sType = 'postidx'),
-            A64No1CodeGenLdImm9(     'ldr',   calcLdUnsigned, cbMem =  4, cBits =  32, sType = 'preidx'),
-            A64No1CodeGenLdImm9(     'ldrh',  calcLdUnsigned, cbMem =  2, cBits =  32, sType = 'postidx'),
-            A64No1CodeGenLdImm9(     'ldrh',  calcLdUnsigned, cbMem =  2, cBits =  32, sType = 'preidx'),
-            A64No1CodeGenLdImm9(     'ldrb',  calcLdUnsigned, cbMem =  1, cBits =  32, sType = 'postidx'),
-            A64No1CodeGenLdImm9(     'ldrb',  calcLdUnsigned, cbMem =  1, cBits =  32, sType = 'preidx'),
+            A64No1CodeGenStImm9(     'str',                   cbMem =  8,              sType = 'postidx'),
+            A64No1CodeGenStImm9(     'str',                   cbMem =  8,              sType = 'preidx'),
+            A64No1CodeGenStImm9(     'str',                   cbMem =  4,              sType = 'postidx'),
+            A64No1CodeGenStImm9(     'str',                   cbMem =  4,              sType = 'preidx'),
+            A64No1CodeGenStImm9(     'strh',                  cbMem =  2,              sType = 'postidx'),
+            A64No1CodeGenStImm9(     'strh',                  cbMem =  2,              sType = 'preidx'),
+            A64No1CodeGenStImm9(     'strb',                  cbMem =  1,              sType = 'postidx'),
+            A64No1CodeGenStImm9(     'strb',                  cbMem =  1,              sType = 'preidx'),
+            A64No1CodeGenLdImm9(     'ldr',   calcLdUnsigned, cbMem =  8,              sType = 'postidx'),
+            A64No1CodeGenLdImm9(     'ldr',   calcLdUnsigned, cbMem =  8,              sType = 'preidx'),
+            A64No1CodeGenLdImm9(     'ldr',   calcLdUnsigned, cbMem =  4,              sType = 'postidx'),
+            A64No1CodeGenLdImm9(     'ldr',   calcLdUnsigned, cbMem =  4,              sType = 'preidx'),
+            A64No1CodeGenLdImm9(     'ldrh',  calcLdUnsigned, cbMem =  2,              sType = 'postidx'),
+            A64No1CodeGenLdImm9(     'ldrh',  calcLdUnsigned, cbMem =  2,              sType = 'preidx'),
+            A64No1CodeGenLdImm9(     'ldrb',  calcLdUnsigned, cbMem =  1,              sType = 'postidx'),
+            A64No1CodeGenLdImm9(     'ldrb',  calcLdUnsigned, cbMem =  1,              sType = 'preidx'),
             A64No1CodeGenLdImm9(     'ldrsw', calcLdSigned,   cbMem =  4, cBits =  64, sType = 'postidx'),
             A64No1CodeGenLdImm9(     'ldrsw', calcLdSigned,   cbMem =  4, cBits =  64, sType = 'preidx'),
-            A64No1CodeGenLdImm9(     'ldrsh', calcLdSigned,   cbMem =  2, cBits =  32, sType = 'postidx'),
-            A64No1CodeGenLdImm9(     'ldrsh', calcLdSigned,   cbMem =  2, cBits =  32, sType = 'preidx'),
+            A64No1CodeGenLdImm9(     'ldrsh', calcLdSigned,   cbMem =  2,              sType = 'postidx'),
+            A64No1CodeGenLdImm9(     'ldrsh', calcLdSigned,   cbMem =  2,              sType = 'preidx'),
             A64No1CodeGenLdImm9(     'ldrsh', calcLdSigned,   cbMem =  2, cBits =  64, sType = 'postidx'),
             A64No1CodeGenLdImm9(     'ldrsh', calcLdSigned,   cbMem =  2, cBits =  64, sType = 'preidx'),
-            A64No1CodeGenLdImm9(     'ldrsb', calcLdSigned,   cbMem =  1, cBits =  32, sType = 'postidx'),
-            A64No1CodeGenLdImm9(     'ldrsb', calcLdSigned,   cbMem =  1, cBits =  32, sType = 'preidx'),
+            A64No1CodeGenLdImm9(     'ldrsb', calcLdSigned,   cbMem =  1,              sType = 'postidx'),
+            A64No1CodeGenLdImm9(     'ldrsb', calcLdSigned,   cbMem =  1,              sType = 'preidx'),
             A64No1CodeGenLdImm9(     'ldrsb', calcLdSigned,   cbMem =  1, cBits =  64, sType = 'postidx'),
             A64No1CodeGenLdImm9(     'ldrsb', calcLdSigned,   cbMem =  1, cBits =  64, sType = 'preidx'),
             A64No1CodeGenLdImm9Fp(   'ldr',   calcLdUnsigned, cbMem = 16,              sType = 'postidx'),
