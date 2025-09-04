@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDX.cpp 110804 2025-08-24 13:05:51Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxMPDX.cpp 110895 2025-09-04 18:19:10Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Graphics Driver - Direct3D (DX) driver function.
  */
@@ -531,6 +531,7 @@ static DECLCALLBACK(int) svgaDestroyAllocationCb(PAVLU32NODECORE pNode, void *pv
     VBOXWDDM_EXT_VMSVGA *pSvga = (VBOXWDDM_EXT_VMSVGA *)pvUser;
 
     SvgaGboUnreference(pSvga, &pInstance->pGbo);
+    GaMemFree(pInstance);
     return 0;
 }
 
