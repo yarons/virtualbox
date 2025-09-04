@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 110842 2025-08-29 10:05:21Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMR0.cpp 110885 2025-09-04 09:24:22Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1238,6 +1238,7 @@ VMMR0_INT_DECL(int) HMR0InitVM(PVMCC pVM)
         pVM->hmr0.s.vmx.fUsePreemptTimer            = pVM->hm.s.vmx.fUsePreemptTimerCfg && g_fHmVmxUsePreemptTimer;
         pVM->hm.s.vmx.fUsePreemptTimerCfg           = pVM->hmr0.s.vmx.fUsePreemptTimer;
         pVM->hm.s.vmx.cPreemptTimerShift            = g_cHmVmxPreemptTimerShift;
+        pVM->hm.s.ForR3.vmx.fUsingSUPR0EnableVTx    = g_fHmVmxUsingSUPR0EnableVTx;
         pVM->hm.s.ForR3.vmx.u64HostCr0              = g_uHmVmxHostCr0;
         pVM->hm.s.ForR3.vmx.u64HostCr4              = g_uHmVmxHostCr4;
         pVM->hm.s.ForR3.vmx.u64HostMsrEfer          = g_uHmVmxHostMsrEfer;
