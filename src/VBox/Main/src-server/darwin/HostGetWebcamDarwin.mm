@@ -1,4 +1,4 @@
-/* $Id: HostGetWebcamDarwin.mm 110892 2025-09-04 10:09:22Z alexander.eichner@oracle.com $ */
+/* $Id: HostGetWebcamDarwin.mm 110893 2025-09-04 10:24:47Z alexander.eichner@oracle.com $ */
 /** @file
  * Main - Return accessible webcams, Darwin implementation.
  */
@@ -49,7 +49,7 @@ typedef FNVBOXHOSTWEBCAMADD *PFNVBOXHOSTWEBCAMADD;
 
 DECLHIDDEN(int) DarwinHostWebcamList(PFNVBOXHOSTWEBCAMADD pfnWebcamAdd, void *pvUser, uint64_t *pu64WebcamAddResult)
 {
-    int rc = VINF_SUCCESS;
+    int vrc = VINF_SUCCESS;
 
     NSAutoreleasePool* localpool = [[NSAutoreleasePool alloc] init];
 
@@ -81,21 +81,21 @@ DECLHIDDEN(int) DarwinHostWebcamList(PFNVBOXHOSTWEBCAMADD pfnWebcamAdd, void *pv
 
         if (pszAlias)
         {
-            rc = pfnWebcamAdd(pvUser,
-                              device.localizedName.UTF8String,
-                              device.uniqueID.UTF8String,
-                              pszAlias,
-                              pu64WebcamAddResult);
+            vrc = pfnWebcamAdd(pvUser,
+                               device.localizedName.UTF8String,
+                               device.uniqueID.UTF8String,
+                               pszAlias,
+                               pu64WebcamAddResult);
         }
         else
-            rc = VERR_NO_MEMORY;
+            vrc = VERR_NO_MEMORY;
 
         RTStrFree(pszAlias);
 
-        if (RT_FAILURE(rc))
+        if (RT_FAILURE(vrc))
             break;
     }
 
     [localpool drain];
-    return rc;
+    return vrc;
 }
