@@ -1,4 +1,4 @@
-/* $Id: HostGetWebcamDarwin.mm 110890 2025-09-04 10:04:32Z alexander.eichner@oracle.com $ */
+/* $Id: HostGetWebcamDarwin.mm 110892 2025-09-04 10:09:22Z alexander.eichner@oracle.com $ */
 /** @file
  * Main - Return accessible webcams, Darwin implementation.
  */
