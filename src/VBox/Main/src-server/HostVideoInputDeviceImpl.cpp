@@ -1,4 +1,4 @@
-/* $Id: HostVideoInputDeviceImpl.cpp 110889 2025-09-04 09:41:47Z alexander.eichner@oracle.com $ */
+/* $Id: HostVideoInputDeviceImpl.cpp 110890 2025-09-04 10:04:32Z alexander.eichner@oracle.com $ */
 /** @file
  * Host video capture device implementation.
  */
@@ -466,6 +466,9 @@ static int hostWebcamList(PFNVBOXHOSTWEBCAMADD pfnWebcamAdd, void *pvUser, uint6
         return VERR_NOT_SUPPORTED;
     return VINF_SUCCESS;
 }
+#elif defined(RT_OS_DARWIN)
+DECLHIDDEN(int) DarwinHostWebcamList(PFNVBOXHOSTWEBCAMADD pfnWebcamAdd, void *pvUser, uint64_t *pu64WebcamAddResult);
+# define hostWebcamList DarwinHostWebcamList
 #else
 /** @todo The other hosts. */
 static int hostWebcamList(PFNVBOXHOSTWEBCAMADD pfnWebcamAdd, void *pvUser, uint64_t *pu64WebcamAddResult)

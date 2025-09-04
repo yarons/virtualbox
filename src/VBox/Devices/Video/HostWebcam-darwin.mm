@@ -1,4 +1,4 @@
-/* $Id: HostWebcam-darwin.mm 110881 2025-09-04 06:41:15Z alexander.eichner@oracle.com $ */
+/* $Id: HostWebcam-darwin.mm 110890 2025-09-04 10:04:32Z alexander.eichner@oracle.com $ */
 /** @file
  * DrvHostWebcam - Mac host webcam backend. Uses AVFoundation framework.
  */
@@ -1106,63 +1106,6 @@ void hostWebcamDestruct(PPDMDRVINS pDrvIns, PDRVHOSTWEBCAM pThis)
         RTMemFree(pThis->pHostWebcam);
         pThis->pHostWebcam = NULL;
     }
-}
-
-extern "C" DECLEXPORT(int) VBoxHostWebcamList(PFNVBOXHOSTWEBCAMADD pfnWebcamAdd,
-                                              void *pvUser,
-                                              uint64_t *pu64WebcamAddResult)
-{
-    int rc = VINF_SUCCESS;
-
-    NSAutoreleasePool* localpool = [[NSAutoreleasePool alloc] init];
-
-#if MAC_OS_X_VERSION_MIN_REQUIRED >= 101500
-    RT_GCC_NO_WARN_DEPRECATED_BEGIN /* AVCaptureDeviceTypeExternalUnknown is deprecated since 15.0, was renamed to AVCaptureDeviceTypeExternal. */
-    AVCaptureDeviceDiscoverySession *DiscoverySession = [AVCaptureDeviceDiscoverySession
-                                                         discoverySessionWithDeviceTypes:@[ /* only types available on macOS: */
-                                                             AVCaptureDeviceTypeBuiltInWideAngleCamera,
-                                                             AVCaptureDeviceTypeExternalUnknown]
-                                                         mediaType:AVMediaTypeVideo
-                                                         position:AVCaptureDevicePositionUnspecified];
-    RT_GCC_NO_WARN_DEPRECATED_END
-    NSArray<AVCaptureDevice *> *devices = DiscoverySession.devices;
-#else /* < 10.15 */
-    NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
-#endif
-
-    int iDevice = 0;
-    for (AVCaptureDevice *device in devices)
-    {
-        iDevice++;
-
-        /* Skip unconnected devices. */
-        if (device.connected == NO)
-            continue;
-
-        char *pszAlias = NULL;
-        RTStrAPrintf(&pszAlias, ".%d", iDevice);
-
-        if (pszAlias)
-        {
-            rc = pfnWebcamAdd(pvUser,
-                              device.localizedName.UTF8String,
-                              device.uniqueID.UTF8String,
-                              pszAlias,
-                              pu64WebcamAddResult);
-        }
-        else
-        {
-            rc = VERR_NO_MEMORY;
-        }
-
-        RTStrFree(pszAlias);
-
-        if (RT_FAILURE(rc))
-            break;
-    }
-
-    [localpool drain];
-    return rc;
 }
 
 #ifdef AVFTEST
