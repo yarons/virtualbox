@@ -1,4 +1,4 @@
-/* $Id: HostVideoInputDeviceImpl.cpp 110888 2025-09-04 09:39:34Z alexander.eichner@oracle.com $ */
+/* $Id: HostVideoInputDeviceImpl.cpp 110889 2025-09-04 09:41:47Z alexander.eichner@oracle.com $ */
 /** @file
  * Host video capture device implementation.
  */
@@ -416,8 +416,8 @@ static HRESULT hwcFillList(PFNVBOXHOSTWEBCAMADD pfnWebcamAdd,
 
         if (pszName && pszPath && pszAlias)
         {
-            rc = pfnWebcamAdd(pvUser, pszName, pszPath, pszAlias, pu64WebcamAddResult);
-            if (RT_FAILURE(rc))
+            vrc = pfnWebcamAdd(pvUser, pszName, pszPath, pszAlias, pu64WebcamAddResult);
+            if (RT_FAILURE(vrc))
                 hr = E_FAIL;
         }
         else
