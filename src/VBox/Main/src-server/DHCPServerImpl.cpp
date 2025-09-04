@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.cpp 110890 2025-09-04 10:04:32Z alexander.eichner@oracle.com $ */
+/* $Id: DHCPServerImpl.cpp 110891 2025-09-04 10:05:17Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -331,7 +331,6 @@ HRESULT DHCPServer::i_saveSettings(settings::DHCPServer &rData)
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    Assert(!RTStrCmp(m->strName.c_str(), "0.0.0.0"));
     rData.strNetworkName = m->strName;
     rData.strIPAddress   = m->IPAddress;
     rData.fEnabled       = m->enabled != FALSE;
