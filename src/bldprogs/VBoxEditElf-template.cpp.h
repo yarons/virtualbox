@@ -1,4 +1,4 @@
-/* $Id: VBoxEditElf-template.cpp.h 110902 2025-09-05 08:11:00Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxEditElf-template.cpp.h 110910 2025-09-05 15:31:02Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxEditElf - Simple ELF binary file editor, templated code.
  */
@@ -551,7 +551,7 @@ static RTEXITCODE ELFEDIT_NAME(Parse)(PELFEDITSTUBIMG pStubImg, RTFILE hFileElf)
                 if (pStubImg->cNeeded == pStubImg->cNeededMax)
                 {
                     const char **papszNeededNew = (const char **)RTMemRealloc(pStubImg->papszNeeded,
-                                                                              (pStubImg->cNeededMax + 10) * sizeof(const char **));
+                                                                              (pStubImg->cNeededMax + 10) * sizeof(const char *));
                     if (!papszNeededNew)
                         return RTMsgErrorExit(RTEXITCODE_FAILURE,
                                               "Failed to allocate more entries for the needed array\n",
