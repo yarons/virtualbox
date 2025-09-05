@@ -1,4 +1,4 @@
-/* $Id: VBoxEditElf-template.cpp.h 110914 2025-09-05 19:09:35Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxEditElf-template.cpp.h 110915 2025-09-05 19:24:42Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxEditElf - Simple ELF binary file editor, templated code.
  */
@@ -887,7 +887,7 @@ static RTEXITCODE ELFEDIT_NAME(GenerateStub)(PELFEDITSTUBIMG pStubImg, const cha
 
     for (uint32_t i = 0; i < pStubImg->cNeeded; i++)
     {
-        paDyn[idxDyn].d_tag        = DT_SONAME;
+        paDyn[idxDyn].d_tag        = DT_NEEDED;
         paDyn[idxDyn++].d_un.d_val = elfEditImgGetStrIdxInStrTab(pStubImg, pStubImg->papszNeeded[i]);
     }
 
