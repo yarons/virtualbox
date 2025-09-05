@@ -1,4 +1,4 @@
-/* $Id: VBoxEditElf.cpp 110911 2025-09-05 18:50:52Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxEditElf.cpp 110912 2025-09-05 18:55:53Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxEditElf - Simple ELF binary file editor.
  */
@@ -236,7 +236,7 @@ static uint32_t elfEditImgGetStrIdxInStrTab(PELFEDITSTUBIMG pStubImg, const char
     PELFEDITSTR pStr = (PELFEDITSTR)RTStrSpaceGet(&pStubImg->StrSpace, pszString);
     AssertRelease(pStr && pStr->offStrTab > 0);
 
-    return pStr->offStrTab;
+    return (uint32_t)pStr->offStrTab;
 }
 
 
@@ -1567,7 +1567,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 110911 $";
+                static const char s_szRev[] = "$Revision: 110912 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
