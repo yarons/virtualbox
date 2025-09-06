@@ -1,4 +1,4 @@
-/* $Id: VBoxDX.h 110855 2025-09-01 20:57:56Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxDX.h 110922 2025-09-06 20:06:44Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -152,6 +152,7 @@ typedef struct VBOXDXKMRESOURCE
         struct /* Context object allocation */
         {
             RTLISTNODE             nodeAllocationsChain;    /* CO allocations can be chained. */
+            uint8_t               *pu8COMapped;             /* If CO is locked. */
             uint64_t               u64Bitmap;               /* Bitmap of allocated blocks. */
             uint32_t               aOffset[VBOXDX_COALLOCATION_MAX_OBJECTS]; /* Start offsets of blocks. */
         } co;
