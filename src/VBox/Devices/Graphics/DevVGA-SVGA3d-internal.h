@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-internal.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-internal.h 110921 2025-09-06 19:51:34Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part, internal header.
  */
@@ -1371,6 +1371,8 @@ DECLINLINE(int) vmsvga3dDXContextFromCid(PVMSVGA3DSTATE pState, uint32_t cid, PV
 }
 
 void vmsvga3dDXInitContextMobData(SVGADXContextMobFormat *p);
+void vmsvga3dDXCbFinishQuery(PVGASTATECC pThisCC, SVGACOTableDXQueryEntry *pEntry,
+                             SVGADXQueryResultUnion const *pQueryResult, uint32_t cbQueryResult);
 #endif
 
 DECLINLINE(int) vmsvga3dSurfaceFromSid(PVMSVGA3DSTATE pState, uint32_t sid, PVMSVGA3DSURFACE *ppSurface)

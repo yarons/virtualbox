@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.h 110780 2025-08-21 13:49:48Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d.h 110921 2025-09-06 19:51:34Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part.
  */
@@ -511,7 +511,8 @@ typedef struct
     DECLCALLBACKMEMBER(int, pfnDXDefineQuery,               (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, SVGA3dQueryId queryId, SVGACOTableDXQueryEntry const *pEntry));
     DECLCALLBACKMEMBER(int, pfnDXDestroyQuery,              (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, SVGA3dQueryId queryId));
     DECLCALLBACKMEMBER(int, pfnDXBeginQuery,                (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, SVGA3dQueryId queryId));
-    DECLCALLBACKMEMBER(int, pfnDXEndQuery,                  (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, SVGA3dQueryId queryId, SVGADXQueryResultUnion *pQueryResult, uint32_t *pcbOut));
+    DECLCALLBACKMEMBER(int, pfnDXEndQuery,                  (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, SVGA3dQueryId queryId));
+    DECLCALLBACKMEMBER(int, pfnDXEndQuerySync,              (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, SVGA3dQueryId queryId, SVGADXQueryResultUnion *pQueryResult, uint32_t *pcbOut));
     DECLCALLBACKMEMBER(int, pfnDXSetPredication,            (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, SVGA3dQueryId queryId, uint32_t predicateValue));
     DECLCALLBACKMEMBER(int, pfnDXSetSOTargets,              (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, uint32_t cSoTarget, SVGA3dSoTarget const *paSoTarget));
     DECLCALLBACKMEMBER(int, pfnDXSetViewports,              (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, uint32_t cViewport, SVGA3dViewport const *paViewport));
