@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxManageModifyVM.cpp 110930 2025-09-08 16:34:44Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -1726,6 +1726,10 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
                 else if (!RTStrICmp(ValueUnion.psz, "82545EM"))
                 {
                     CHECK_ERROR(nic, COMSETTER(AdapterType)(NetworkAdapterType_I82545EM));
+                }
+                else if (!RTStrICmp(ValueUnion.psz, "82583V"))
+                {
+                    CHECK_ERROR(nic, COMSETTER(AdapterType)(NetworkAdapterType_I82583V));
                 }
 #endif
 #ifdef VBOX_WITH_VIRTIO

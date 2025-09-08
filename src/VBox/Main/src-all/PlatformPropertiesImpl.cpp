@@ -1,4 +1,4 @@
-/* $Id: PlatformPropertiesImpl.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: PlatformPropertiesImpl.cpp 110930 2025-09-08 16:34:44Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform properties.
  */
@@ -768,6 +768,7 @@ HRESULT PlatformProperties::getSupportedNetworkAdapterTypes(std::vector<NetworkA
               , NetworkAdapterType_I82540EM
               , NetworkAdapterType_I82543GC
               , NetworkAdapterType_I82545EM
+              , NetworkAdapterType_I82583V
 #endif
 #ifdef VBOX_WITH_VIRTIO
               , NetworkAdapterType_Virtio
@@ -788,6 +789,7 @@ HRESULT PlatformProperties::getSupportedNetworkAdapterTypes(std::vector<NetworkA
               , NetworkAdapterType_I82540EM
               , NetworkAdapterType_I82543GC
               , NetworkAdapterType_I82545EM
+              , NetworkAdapterType_I82583V
 #endif
 #ifdef VBOX_WITH_VIRTIO
               , NetworkAdapterType_Virtio
