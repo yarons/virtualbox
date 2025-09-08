@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 110932 2025-09-08 16:57:10Z aleksey.ilyushin@oracle.com $ */
+/* $Id: DevE1000.cpp 110933 2025-09-08 17:19:28Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -800,7 +800,7 @@ struct E1kRxDStatusLegacy_st
 typedef struct E1kRxDStatusLegacy_st E1KRXDST;
 AssertCompileSize(E1KRXDST, 4);
 
-/** todo: spec ref! */
+/** @todo: spec ref! */
 struct E1kRxDStatusExtended_st
 {
     /** @name Extended Status field (7.1.4.6)
@@ -2809,7 +2809,7 @@ DECLINLINE(RTGCPHYS) e1kDescAddr(uint32_t baseHigh, uint32_t baseLow, uint32_t i
  * Advance the head pointer of the receive descriptor queue.
  *
  * @remarks Packet split descriptors are 32-byte long!
- * 
+ *
  * @remarks RDH always points to the next available RX descriptor.
  *
  * @param   pDevIns     The device instance.
