@@ -1,4 +1,4 @@
-/* $Id: UISettingsSelector.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UISettingsSelector.cpp 110929 2025-09-08 14:02:31Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsSelector class implementation.
  */
@@ -45,6 +45,7 @@
 #include "QITreeView.h"
 #include "UICommon.h"
 #include "UIDesktopWidgetWatchdog.h"
+#include "UIExtraDataManager.h"
 #include "UIIconPool.h"
 #include "UIImageTools.h"
 #include "UISettingsPage.h"
@@ -831,13 +832,17 @@ void UISelectorTreeView::prepare()
     // WORKAROUND:
     // The call to
     // viewport()->setAutoFillBackground(false);
-    // above is ineffective on new modern Windows theme.
+    // above is ineffective on new modern Windows 11 theme.
     // We'll have to make current color transparent.
-    QPalette pal = palette();
-    QColor col = pal.color(QPalette::Base);
-    col.setAlpha(0);
-    pal.setColor(QPalette::Base, col);
-    setPalette(pal);
+    if (   uiCommon().osRelease() >= WindowsRelease_11
+        && gEDataManager->colorTheme() == UIColorThemeType_Auto)
+    {
+        QPalette pal = palette();
+        QColor col = pal.color(QPalette::Base);
+        col.setAlpha(0);
+        pal.setColor(QPalette::Base, col);
+        setPalette(pal);
+    }
 #endif
 
     /* Prepare selector delegate: */

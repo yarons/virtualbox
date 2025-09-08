@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialogSpecific.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialogSpecific.cpp 110929 2025-09-08 14:02:31Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialogSpecific class implementation.
  */
@@ -262,13 +262,10 @@ void UIAdvancedSettingsDialogGlobal::prepare()
                 /* Interface page: */
                 case GlobalSettingsPageType_Interface:
                 {
-                    if (uiCommon().osRelease() < WindowsRelease_11)
-                    {
-                        pSettingsPage = new UIGlobalSettingsInterface;
-                        addItem(":/interface_32px.png", ":/interface_24px.png", ":/interface_16px.png",
-                                iPageIndex, "#userInterface", pSettingsPage);
-                        addPageHelpKeyword(iPageIndex, "preferences");
-                    }
+                    pSettingsPage = new UIGlobalSettingsInterface;
+                    addItem(":/interface_32px.png", ":/interface_24px.png", ":/interface_16px.png",
+                            iPageIndex, "#userInterface", pSettingsPage);
+                    addPageHelpKeyword(iPageIndex, "preferences");
                     break;
                 }
 #endif /* VBOX_WS_WIN */
