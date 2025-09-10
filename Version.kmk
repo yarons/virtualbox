@@ -1,4 +1,4 @@
-# $Id: Version.kmk 110953 2025-09-10 09:27:12Z vadim.galitsyn@oracle.com $
+# $Id: Version.kmk 110955 2025-09-10 16:33:27Z vadim.galitsyn@oracle.com $
 ## @file
 # The VirtualBox version.
 #
@@ -42,7 +42,7 @@ VBOX_BUILD_PUBLISHER =
 VBOX_VERSION_PRERELEASE =
 # Force a release-type build with exactly matching Additions etc, even if
 # our numbering does not say this is a release build, by setting this non-empty.
-VBOX_RELEASE_EXACT_MATCH = 1
+VBOX_RELEASE_EXACT_MATCH  = 1
 
 # Fallback revision when there is no other source. See Config.kmk.
-VBOX_SVN_REV_VERSION_FALLBACK := $(patsubst %:,,  $Rev: 110953 $  )
+VBOX_SVN_REV_VERSION_FALLBACK := $(patsubst %:,,  $Rev: 110955 $  )
