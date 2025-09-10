@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 110938 2025-09-09 10:16:01Z aleksey.ilyushin@oracle.com $ */
+/* $Id: DevE1000.cpp 110952 2025-09-10 08:15:32Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -9023,7 +9023,7 @@ static DECLCALLBACK(int)  e1kRZConstruct(PPDMDEVINS pDevIns)
     pThisCC->CTX_SUFF(pTxSg)        = NULL;
 
     /* Override EEPROM write callback */
-    if (pThis->eChip != E1K_CHIP_82583V)
+    if (pThis->eChip == E1K_CHIP_82583V)
     {
         g_aE1kRegMap[EERD_IDX].pfnWrite = e1kRegWriteEERD82583;
     }
