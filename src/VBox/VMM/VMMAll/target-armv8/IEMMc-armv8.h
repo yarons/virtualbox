@@ -1,4 +1,4 @@
-/* $Id: IEMMc-armv8.h 110937 2025-09-09 09:17:32Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc-armv8.h 110957 2025-09-10 21:26:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX, ARMv8 target.
  */
@@ -139,6 +139,9 @@
 #define IEM_MC_ACTUALIZE_FPU_STATE_FOR_READ()   iemFpuActualizeStateForRead(pVCpu)
 /** Actualizes the guest FPU state so it can be accessed and modified. */
 #define IEM_MC_ACTUALIZE_FPU_STATE_FOR_CHANGE() iemFpuActualizeStateForChange(pVCpu)
+
+/** @todo AArch64.CheckFPAdvSIMDEnabled */
+#define IEM_MC_A64_CHECK_FP_AND_ADV_SIMD_ENABLED() ((void)0)
 
 #define IEM_MC_FETCH_FREG_HI_U64(a_u64Dst, a_iFpReg)    (a_u64Dst) = iemFRegFetchHiU64(pVCpu, (a_iFpReg))
 #define IEM_MC_STORE_FREG_HI_U64(a_iFpReg, a_u64Value)  iemFRegStoreHiU64(pVCpu, (a_iFpReg), (a_u64Value))
