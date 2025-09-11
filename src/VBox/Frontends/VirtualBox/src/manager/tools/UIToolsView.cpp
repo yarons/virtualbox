@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.cpp 109275 2025-04-18 13:26:41Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsView.cpp 110963 2025-09-11 14:56:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class implementation.
  */
@@ -103,7 +103,7 @@ public:
 
         /* Return view tool-tip: */
         Q_UNUSED(enmTextRole);
-        return view()->toolTip();
+        return view()->whatsThis();
     }
 
 private:
