@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSType.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIGuestOSType.cpp 110967 2025-09-12 15:05:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSType class implementation.
  */
@@ -56,7 +56,8 @@ bool UIGuestOSTypeHelpers::isWddmCompatibleOsType(const QString &strGuestOSTypeI
            || strGuestOSTypeId.startsWith(GUEST_OS_ID_STR_PARTIAL("Windows2008"))
            || strGuestOSTypeId.startsWith(GUEST_OS_ID_STR_PARTIAL("Windows2012"))
            || strGuestOSTypeId.startsWith(GUEST_OS_ID_STR_PARTIAL("Windows2016"))
-           || strGuestOSTypeId.startsWith(GUEST_OS_ID_STR_PARTIAL("Windows2019"));
+           || strGuestOSTypeId.startsWith(GUEST_OS_ID_STR_PARTIAL("Windows2019"))
+           || strGuestOSTypeId.startsWith(GUEST_OS_ID_STR_PARTIAL("Windows2022"));
 }
 #endif /* VBOX_WITH_3D_ACCELERATION */
 
