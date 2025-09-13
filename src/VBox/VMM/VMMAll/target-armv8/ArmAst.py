@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: ArmAst.py 110924 2025-09-08 11:08:21Z knut.osmundsen@oracle.com $
+# $Id: ArmAst.py 110969 2025-09-13 01:39:40Z knut.osmundsen@oracle.com $
 
 """
 ARM BSD / OpenSource specification reader - AST related bits.
@@ -30,7 +30,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 110924 $"
+__version__ = "$Revision: 110969 $"
 
 # Standard python imports.
 import re;
@@ -983,18 +983,21 @@ class ArmAstBinaryOp(ArmAstBase):
         return -1;
 
     @staticmethod
+    def listToTree(aoConditions, sOp):
+        """ Creates AST tree from 'aoConditions' with 'sOp' as operator. """
+        if len(aoConditions) <= 1:
+            return aoConditions[0].clone();
+        return ArmAstBinaryOp(aoConditions[0].clone(), sOp, ArmAstBinaryOp.listToTree(aoConditions[1:], sOp));
+
+    @staticmethod
     def andListToTree(aoAndConditions):
         """ Creates AST tree of AND binary checks from aoAndConditions. """
-        if len(aoAndConditions) <= 1:
-            return aoAndConditions[0].clone();
-        return ArmAstBinaryOp(aoAndConditions[0].clone(), '&&', ArmAstBinaryOp.andListToTree(aoAndConditions[1:]));
+        return ArmAstBinaryOp.listToTree(aoAndConditions, '&&');
 
     @staticmethod
     def orListToTree(aoOrConditions):
         """ Creates AST tree of OR binary checks from aoAndConditions. """
-        if len(aoOrConditions) <= 1:
-            return aoOrConditions[0].clone();
-        return ArmAstBinaryOp(aoOrConditions[0].clone(), '||', ArmAstBinaryOp.orListToTree(aoOrConditions[1:]));
+        return ArmAstBinaryOp.listToTree(aoOrConditions, '||');
 
 
 class ArmAstUnaryOp(ArmAstBase):
