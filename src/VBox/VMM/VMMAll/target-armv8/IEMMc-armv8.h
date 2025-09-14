@@ -1,4 +1,4 @@
-/* $Id: IEMMc-armv8.h 110957 2025-09-10 21:26:27Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc-armv8.h 110975 2025-09-14 11:15:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX, ARMv8 target.
  */
@@ -39,6 +39,10 @@
  /** Set 64-bit PC to uAddr (local) and PSTATE.BTYPE to a_uBType (constant). */
 #define IEM_MC_BRANCH_TO_WITH_BTYPE_AND_FINISH(a_uNewPc, a_uBType); \
     return iemRegPcA64BranchToAndFinishClearingFlags((pVCpu), (a_uNewPc), (a_uBType))
+
+#define IEM_MC_A64_STORE_NZCV_CONST(a_uNzcv) \
+    Assert(((a_uNzcv) & ~(uint64_t)UINT32_C(0xf0000000)) == 0); \
+    pVCpu->cpum.GstCtx.fPState = (pVCpu->cpum.GstCtx.fPState & ~(uint64_t)UINT32_C(0xf0000000)) | (a_uNzcv)
 
 #define IEM_MC_FETCH_GREG_SP_U32(a_u32Dst, a_iGReg)     (a_u32Dst) = iemGRegFetchU32(pVCpu, (a_iGReg), true /*fSp*/)
 #define IEM_MC_FETCH_GREG_SP_U64(a_u64Dst, a_iGReg)     (a_u64Dst) = iemGRegFetchU64(pVCpu, (a_iGReg), true /*fSp*/)

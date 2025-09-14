@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tstArm64-1-codegen.py 110971 2025-09-13 01:41:55Z knut.osmundsen@oracle.com $
+# $Id: tstArm64-1-codegen.py 110975 2025-09-14 11:15:15Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -31,7 +31,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 110971 $"
+__version__ = "$Revision: 110975 $"
 
 # pylint: enable=invalid-name
 
@@ -433,6 +433,12 @@ class A64No1CodeGenBase(object):
             uValue = 0;
             assert fIncludingReg31;
         return (uValue, iReg);
+
+    def emitLoadNzcv(self, u4Nzcv):
+        assert 0 <= u4Nzcv < 16;
+        iRegTmp = self.emitGprLoad(self.oGprAllocator.alloc(), u4Nzcv << 28);
+        self.emitInstr('msr',   'NZCV, x%u' % (iRegTmp,));
+        self.oGprAllocator.free(iRegTmp);
 
     def emitFlagsCheck(self, fExpectedNzcv, iRegTmp = -1):
         """ Emits a NZCV flags check. """
@@ -1014,38 +1020,6 @@ g_kdCondNames = {
     15: 'NV',
 };
 
-class A64No1CodeGenCondSel(A64No1CodeGenBase):
-    """ C4.1.94.12 Conditional Select - CSEL, CSINC, CSINV, CSNEG """
-    def __init__(self, sInstr, fnCalc):
-        A64No1CodeGenBase.__init__(self, sInstr, sInstr, Arm64GprAllocator());
-        self.fnCalc = fnCalc;
-
-    def generateBody(self, oOptions, cLeftToAllCheck):
-        for cBits in (64, 32):
-            for _ in range(oOptions.cTestsPerInstruction):
-                (uSrc1, iRegIn1)    = self.allocGprAndLoadRandUBits(fIncludingReg31 = True);
-                (uSrc2, iRegIn2)    = self.allocGprAndLoadRandUBits(fIncludingReg31 = True);
-                u4Nzcv              = randUBits(4);
-                u4Cond              = randUBits(4);
-
-                uRes = self.fnCalc(cBits, uSrc1, uSrc2, u4Nzcv, u4Cond);
-
-                # Load NZCV
-                iRegTmp = self.emitGprLoad(self.oGprAllocator.alloc(), u4Nzcv << 28);
-                self.emitInstr('msr',   'NZCV, x%u' % (iRegTmp,));
-                self.oGprAllocator.free(iRegTmp);
-
-                # Execute the instruction.
-                iRegDst = self.oGprAllocator.alloc(uRes, fIncludingReg31 = True);
-                self.emitInstr(self.sInstr, '%s, %s, %s, %s'
-                               % (g_ddGprNamesZrByBits[cBits][iRegDst], g_ddGprNamesZrByBits[cBits][iRegIn1],
-                                  g_ddGprNamesZrByBits[cBits][iRegIn2], g_kdCondNames[u4Cond],));
-                if iRegDst != 31:
-                    self.emitGprValCheck(iRegDst, uRes);
-
-                self.oGprAllocator.freeList((iRegIn1, iRegIn2, iRegDst,));
-                cLeftToAllCheck = self.maybeEmitAllGprChecks(cLeftToAllCheck, oOptions);
-
 def calcCond(u4Nzcv, u4Cond):
     """ Matches the given condition to the NZCV value. """
     fInv = u4Cond & 1;
@@ -1062,6 +1036,73 @@ def calcCond(u4Nzcv, u4Cond):
     if fInv:
         fResult = not fResult;
     return fResult;
+
+
+class A64No1CodeGenCondCmpImm(A64No1CodeGenBase):
+    """ C4.1.94.11 Conditional Compare (immediate) - CCMN, CCMP """
+    def __init__(self, sInstr, fnCalc):
+        A64No1CodeGenBase.__init__(self, sInstr + '_imm', sInstr, Arm64GprAllocator());
+        self.fnCalc = fnCalc; # calcSub/calcAdd
+
+    def generateBody(self, oOptions, cLeftToAllCheck):
+        for cBits in (64, 32):
+            for _ in range(oOptions.cTestsPerInstruction):
+                (uSrc, iRegIn)      = self.allocGprAndLoadRandUBits(fIncludingReg31 = True);
+                u5Imm               = randUBits(5);
+                u4Cond              = randUBits(4);
+                u4NzcvMiss          = randUBits(4);
+                u4NzcvIn            = randUBits(4);
+                if u4Cond < 14:
+                    fDoCmp          = randBool();
+                    while fDoCmp != calcCond(u4NzcvIn, u4Cond):
+                        u4NzcvIn    = randUBits(4);
+
+                if calcCond(u4NzcvIn, u4Cond):
+                    fExpectedNzcv   = self.fnCalc(cBits, uSrc, u5Imm, 0)[1];
+                    while fExpectedNzcv == u4NzcvMiss << 28:
+                        u4NzcvMiss  = randUBits(4);
+                else:
+                    fExpectedNzcv   = u4NzcvMiss << 28;
+
+                # Load flags and execute the instruction.
+                self.emitLoadNzcv(u4NzcvIn);
+                self.emitInstr(self.sInstr, '%s, #%u, #%u, %s'
+                               % (g_ddGprNamesZrByBits[cBits][iRegIn], u5Imm, u4NzcvMiss, g_kdCondNames[u4Cond],));
+
+                # Check the resulting flags.
+                self.emitFlagsCheck(fExpectedNzcv);
+
+                self.oGprAllocator.free(iRegIn);
+                cLeftToAllCheck = self.maybeEmitAllGprChecks(cLeftToAllCheck, oOptions);
+
+
+class A64No1CodeGenCondSel(A64No1CodeGenBase):
+    """ C4.1.94.12 Conditional Select - CSEL, CSINC, CSINV, CSNEG """
+    def __init__(self, sInstr, fnCalc):
+        A64No1CodeGenBase.__init__(self, sInstr, sInstr, Arm64GprAllocator());
+        self.fnCalc = fnCalc;
+
+    def generateBody(self, oOptions, cLeftToAllCheck):
+        for cBits in (64, 32):
+            for _ in range(oOptions.cTestsPerInstruction):
+                (uSrc1, iRegIn1)    = self.allocGprAndLoadRandUBits(fIncludingReg31 = True);
+                (uSrc2, iRegIn2)    = self.allocGprAndLoadRandUBits(fIncludingReg31 = True);
+                u4Nzcv              = randUBits(4);
+                u4Cond              = randUBits(4);
+
+                uRes = self.fnCalc(cBits, uSrc1, uSrc2, u4Nzcv, u4Cond);
+
+                # Load flags and execute the instruction.
+                self.emitLoadNzcv(u4Nzcv);
+                iRegDst = self.oGprAllocator.alloc(uRes, fIncludingReg31 = True);
+                self.emitInstr(self.sInstr, '%s, %s, %s, %s'
+                               % (g_ddGprNamesZrByBits[cBits][iRegDst], g_ddGprNamesZrByBits[cBits][iRegIn1],
+                                  g_ddGprNamesZrByBits[cBits][iRegIn2], g_kdCondNames[u4Cond],));
+                if iRegDst != 31:
+                    self.emitGprValCheck(iRegDst, uRes);
+
+                self.oGprAllocator.freeList((iRegIn1, iRegIn2, iRegDst,));
+                cLeftToAllCheck = self.maybeEmitAllGprChecks(cLeftToAllCheck, oOptions);
 
 def calcCondSel(cBits, uSrc1, uSrc2, u4Nzcv, u4Cond):
     """ Regular CSEL result. """
@@ -2252,6 +2293,13 @@ class Arm64No1CodeGen(object):
         # Instantiate the generators.
         #
         aoGenerators = [];
+
+        if True: # pylint: disable=using-constant-test
+            # asimdimm
+            aoGenerators += [
+                A64No1CodeGenCondCmpImm( 'ccmn',    calcAdd),
+                A64No1CodeGenCondCmpImm( 'ccmp',    calcSub),
+            ];
 
         if True: # pylint: disable=using-constant-test
             # asimdimm
