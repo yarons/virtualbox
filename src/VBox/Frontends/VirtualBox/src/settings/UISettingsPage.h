@@ -1,4 +1,4 @@
-/* $Id: UISettingsPage.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UISettingsPage.h 110990 2025-09-15 14:47:46Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsPage class declaration.
  */
@@ -135,11 +135,6 @@ public:
     /** Performs page validation composing a list of @a messages. */
     virtual bool validate(QList<UIValidationMessage> &messages) { Q_UNUSED(messages); return true; }
 
-    /** Returns first navigation widget. */
-    QWidget *firstWidget() const { return m_pFirstWidget; }
-    /** Defines the first navigation widget for TAB-order. */
-    virtual void setOrderAfter(QWidget *pWidget) { m_pFirstWidget = pWidget; }
-
     /** Defines @a enmConfigurationAccessLevel. */
     virtual void setConfigurationAccessLevel(ConfigurationAccessLevel enmConfigurationAccessLevel);
     /** Returns configuration access level. */
@@ -200,8 +195,6 @@ private:
     /** Holds the page ID. */
     int  m_cId;
 
-    /** Holds the first TAB-orer widget reference. */
-    QWidget                 *m_pFirstWidget;
     /** Holds the page validator. */
     UISettingsPageValidator *m_pValidator;
 

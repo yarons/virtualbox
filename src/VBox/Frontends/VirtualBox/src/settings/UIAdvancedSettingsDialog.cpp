@@ -1,4 +1,4 @@
-﻿/* $Id: UIAdvancedSettingsDialog.cpp 110988 2025-09-15 14:07:35Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIAdvancedSettingsDialog.cpp 110990 2025-09-15 14:47:46Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class implementation.
  */
@@ -1251,9 +1251,6 @@ void UIAdvancedSettingsDialog::addItem(const QString &strBigIcon,
                 this, &UIAdvancedSettingsDialog::sltHandleValidityChange);
         pSettingsPage->setValidator(pValidator);
         m_pWarningPane->registerValidator(pValidator);
-
-        /* Update navigation (tab-order): */
-        pSettingsPage->setOrderAfter(m_pSelector->widget());
     }
 }
 
