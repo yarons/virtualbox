@@ -1,4 +1,4 @@
-﻿/* $Id: UIAdvancedSettingsDialog.cpp 110982 2025-09-15 13:42:32Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIAdvancedSettingsDialog.cpp 110988 2025-09-15 14:07:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class implementation.
  */
@@ -50,9 +50,6 @@
 #include <QToolButton>
 #include <QVariant>
 #include <QVBoxLayout>
-#ifndef VBOX_WS_MAC
-# include <QStyle>
-#endif
 
 /* GUI includes: */
 #include "QIDialogButtonBox.h"
