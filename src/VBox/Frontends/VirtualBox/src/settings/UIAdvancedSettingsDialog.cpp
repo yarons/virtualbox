@@ -1,4 +1,4 @@
-﻿/* $Id: UIAdvancedSettingsDialog.cpp 110965 2025-09-12 13:34:24Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIAdvancedSettingsDialog.cpp 110982 2025-09-15 13:42:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class implementation.
  */
@@ -1516,10 +1516,7 @@ void UIAdvancedSettingsDialog::prepareSelector()
     /* Prepare classical tree-view selector: */
     m_pSelector = new UISettingsSelectorTreeView(centralWidget());
     if (m_pSelector)
-    {
         m_pLayoutMain->addWidget(m_pSelector->widget(), 1, 0);
-        m_pSelector->widget()->setFocus();
-    }
 
     /* Prepare filter editor: */
     m_pEditorFilter = new UIFilterEditor(centralWidget());
