@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstrA64Impl.h 110981 2025-09-15 13:25:08Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstrA64Impl.h 110998 2025-09-15 21:32:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * A64 Instruction Implementation Macros.
  *
@@ -18124,7 +18124,7 @@
 #define IEM_INSTR_IMPL_A64__MOVN_32_movewide(Rd, imm16, hw) \
     if (hw & 2) return iemDecodeA64_Invalid(pVCpu, uOpcode); /** @todo missing 32-bit MOVZ precond... */ \
     IEM_MC_BEGIN(0, 0); \
-    IEM_MC_STORE_GREG_U32_CONST(Rd, hw & 1 ? ~(uint32_t)imm16 << 16 : ~(uint32_t)imm16); \
+    IEM_MC_STORE_GREG_U32_CONST(Rd, hw & 1 ? ~((uint32_t)imm16 << 16) : ~(uint32_t)imm16); \
     IEM_MC_ADVANCE_PC_AND_FINISH(); \
     IEM_MC_END()
 
@@ -18154,7 +18154,7 @@
 /* MOVN  <Xd>, #<imm>{, LSL #<shift>} (ff800000/92800000) */
 #define IEM_INSTR_IMPL_A64__MOVN_64_movewide(Rd, imm16, hw) \
     IEM_MC_BEGIN(0, 0); \
-    IEM_MC_STORE_GREG_U64_CONST(Rd, ~(uint64_t)imm16 << (hw * 16)); \
+    IEM_MC_STORE_GREG_U64_CONST(Rd, ~((uint64_t)imm16 << (hw * 16))); \
     IEM_MC_ADVANCE_PC_AND_FINISH(); \
     IEM_MC_END()
 
