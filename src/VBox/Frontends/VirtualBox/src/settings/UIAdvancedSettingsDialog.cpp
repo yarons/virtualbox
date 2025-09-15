@@ -1,4 +1,4 @@
-﻿/* $Id: UIAdvancedSettingsDialog.cpp 110990 2025-09-15 14:47:46Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIAdvancedSettingsDialog.cpp 110991 2025-09-15 16:16:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class implementation.
  */
@@ -600,6 +600,7 @@ void UIFilterEditor::prepare()
     m_pToolButton = new QToolButton(this);
     if (m_pToolButton)
     {
+        m_pToolButton->setFocusPolicy(Qt::NoFocus);
         m_pToolButton->setStyleSheet("QToolButton {\
                                       border: 0px none black;\
                                       margin: 0px 5px 0px 5px;\
@@ -776,6 +777,9 @@ void UIVerticalScrollArea::wheelEvent(QWheelEvent *pEvent)
 
 void UIVerticalScrollArea::prepare()
 {
+    /* No need to have focus, children will have it: */
+    setFocusPolicy(Qt::NoFocus);
+
     /* Make vertical scroll-bar always hidden: */
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
