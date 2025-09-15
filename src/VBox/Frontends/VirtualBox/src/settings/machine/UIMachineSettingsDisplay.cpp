@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineSettingsDisplay.cpp 110989 2025-09-15 14:43:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -763,25 +763,6 @@ bool UIMachineSettingsDisplay::validate(QList<UIValidationMessage> &messages)
 
     /* Return result: */
     return fPass;
-}
-
-void UIMachineSettingsDisplay::setOrderAfter(QWidget *pWidget)
-{
-    /* Screen tab-order: */
-    setTabOrder(pWidget, m_pTabWidget->focusProxy());
-    setTabOrder(m_pTabWidget->focusProxy(), m_pEditorVideoMemorySize);
-    setTabOrder(m_pEditorVideoMemorySize, m_pEditorMonitorCount);
-    setTabOrder(m_pEditorMonitorCount, m_pEditorScaleFactor);
-    setTabOrder(m_pEditorScaleFactor, m_pEditorGraphicsController);
-#ifdef VBOX_WITH_3D_ACCELERATION
-    setTabOrder(m_pEditorGraphicsController, m_pEditorDisplayScreenFeatures);
-    setTabOrder(m_pEditorDisplayScreenFeatures, m_pEditorVRDESettings);
-#else
-    setTabOrder(m_pEditorGraphicsController, m_pEditorVRDESettings);
-#endif
-
-    /* Remote Display tab-order: */
-    setTabOrder(m_pEditorVRDESettings, m_pEditorRecordingSettings);
 }
 
 void UIMachineSettingsDisplay::sltRetranslateUI()

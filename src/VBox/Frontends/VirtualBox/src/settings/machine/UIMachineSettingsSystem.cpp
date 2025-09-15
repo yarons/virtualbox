@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineSettingsSystem.cpp 110989 2025-09-15 14:43:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class implementation.
  */
@@ -604,27 +604,6 @@ bool UIMachineSettingsSystem::validate(QList<UIValidationMessage> &messages)
 
     /* Return result: */
     return fPass;
-}
-
-void UIMachineSettingsSystem::setOrderAfter(QWidget *pWidget)
-{
-    /* Configure navigation for 'motherboard' tab: */
-    setTabOrder(pWidget, m_pTabWidget->focusProxy());
-    setTabOrder(m_pTabWidget->focusProxy(), m_pEditorBaseMemory);
-    setTabOrder(m_pEditorBaseMemory, m_pEditorBootOrder);
-    setTabOrder(m_pEditorBootOrder, m_pEditorChipset);
-    setTabOrder(m_pEditorChipset, m_pEditorTpm);
-    setTabOrder(m_pEditorTpm, m_pEditorPointingHID);
-    setTabOrder(m_pEditorPointingHID, m_pEditorMotherboardFeatures);
-    setTabOrder(m_pEditorMotherboardFeatures, m_pEditorVCPU);
-
-    /* Configure navigation for 'processor' tab: */
-    setTabOrder(m_pEditorVCPU, m_pEditorExecCap);
-    setTabOrder(m_pEditorExecCap, m_pEditorProcessorFeatures);
-    setTabOrder(m_pEditorProcessorFeatures, m_pEditorParavirtProvider);
-
-    /* Configure navigation for 'acceleration' tab: */
-    setTabOrder(m_pEditorParavirtProvider, m_pEditorAccelerationFeatures);
 }
 
 void UIMachineSettingsSystem::sltRetranslateUI()

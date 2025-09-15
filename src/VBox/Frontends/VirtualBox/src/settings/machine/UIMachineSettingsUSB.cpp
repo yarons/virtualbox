@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineSettingsUSB.cpp 110989 2025-09-15 14:43:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class implementation.
  */
@@ -304,11 +304,6 @@ bool UIMachineSettingsUSB::validate(QList<UIValidationMessage> &messages)
 
     /* Return result: */
     return fPass;
-}
-
-void UIMachineSettingsUSB::setOrderAfter(QWidget *pWidget)
-{
-    setTabOrder(pWidget, m_pEditorUsbSettings);
 }
 
 void UIMachineSettingsUSB::sltRetranslateUI()

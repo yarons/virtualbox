@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineSettingsGeneral.cpp 110989 2025-09-15 14:43:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -435,27 +435,6 @@ bool UIMachineSettingsGeneral::validate(QList<UIValidationMessage> &messages)
 
     /* Return result: */
     return fPass;
-}
-
-void UIMachineSettingsGeneral::setOrderAfter(QWidget *pWidget)
-{
-    /* 'Basic' tab: */
-    if (pWidget && m_pTabWidget && m_pTabWidget->focusProxy())
-        setTabOrder(pWidget, m_pTabWidget->focusProxy());
-    if (m_pTabWidget && m_pTabWidget->focusProxy() && m_pEditorNameAndSystem)
-        setTabOrder(m_pTabWidget->focusProxy(), m_pEditorNameAndSystem);
-
-    /* 'Advanced' tab: */
-    if (m_pEditorNameAndSystem && m_pEditorSnapshotFolder)
-        setTabOrder(m_pEditorNameAndSystem, m_pEditorSnapshotFolder);
-    if (m_pEditorSnapshotFolder && m_pEditorClipboard)
-        setTabOrder(m_pEditorSnapshotFolder, m_pEditorClipboard);
-    if (m_pEditorClipboard && m_pEditorDragAndDrop)
-        setTabOrder(m_pEditorClipboard, m_pEditorDragAndDrop);
-
-    /* 'Description' tab: */
-    if (m_pEditorDragAndDrop && m_pEditorDescription)
-        setTabOrder(m_pEditorDragAndDrop, m_pEditorDescription);
 }
 
 void UIMachineSettingsGeneral::sltRetranslateUI()

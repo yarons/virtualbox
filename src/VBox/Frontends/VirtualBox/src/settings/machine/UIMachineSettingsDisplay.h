@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineSettingsDisplay.h 110989 2025-09-15 14:43:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class declaration.
  */
@@ -97,9 +97,6 @@ protected:
 
     /** Performs validation, updates @a messages list if something is wrong. */
     virtual bool validate(QList<UIValidationMessage> &messages) RT_OVERRIDE;
-
-    /** Defines TAB order for passed @a pWidget. */
-    virtual void setOrderAfter(QWidget *pWidget) RT_OVERRIDE;
 
     /** Handles filter change. */
     virtual void handleFilterChange() RT_OVERRIDE;
