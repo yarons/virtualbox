@@ -1,4 +1,4 @@
-/* $Id: DisasmTables-armv8-a64-simd-fp.cpp.h 111003 2025-09-16 07:43:44Z knut.osmundsen@oracle.com $ */
+/* $Id: DisasmTables-armv8-a64-simd-fp.cpp.h 111005 2025-09-16 12:19:33Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for ARMv8 A64 - SIMD & FP.
  */
@@ -84,7 +84,7 @@ DIS_ARMV8_DECODE_INSN_CLASS_DEFINE_END(DataProcAdvSimdThreeDifferent_U1, 0x00000
 DIS_ARMV8_DECODE_INSN_CLASS_DEFINE_DECODER(DataProcAdvSimdAcrossLanes_U0)
     DIS_ARMV8_INSN_DECODE(kDisParmParseVecRegElemSize, 22,  2, DIS_ARMV8_INSN_PARAM_UNSET),
     DIS_ARMV8_INSN_DECODE(kDisParmParseVecQ,           30,  1, DIS_ARMV8_INSN_PARAM_UNSET),
-    DIS_ARMV8_INSN_DECODE(kDisParmParseSimdRegSize,    22,  2, 0),
+    DIS_ARMV8_INSN_DECODE(kDisParmParseSimdRegSizeHSD, 22,  2, 0),
     DIS_ARMV8_INSN_DECODE(kDisParmParseSimdRegScalar,   0,  5, 0 /*idxParam*/),
     DIS_ARMV8_INSN_DECODE(kDisParmParseVecReg,          5,  5, 1 /*idxParam*/),
 DIS_ARMV8_DECODE_INSN_CLASS_DEFINE_DECODER_ALTERNATIVE(DataProcAdvSimdAcrossLanes_U0_BHS)
@@ -234,7 +234,7 @@ DIS_ARMV8_DECODE_INSN_CLASS_DEFINE_END(DataProcAdvSimdAcrossLanes_U0, 0x00000000
 DIS_ARMV8_DECODE_INSN_CLASS_DEFINE_DECODER(DataProcAdvSimdAcrossLanes_U1)
     DIS_ARMV8_INSN_DECODE(kDisParmParseVecRegElemSize, 22,  2, DIS_ARMV8_INSN_PARAM_UNSET),
     DIS_ARMV8_INSN_DECODE(kDisParmParseVecQ,           30,  1, DIS_ARMV8_INSN_PARAM_UNSET),
-    DIS_ARMV8_INSN_DECODE(kDisParmParseSimdRegSize,    22,  2, 0),
+    DIS_ARMV8_INSN_DECODE(kDisParmParseSimdRegSizeHSD, 22,  2, 0),
     DIS_ARMV8_INSN_DECODE(kDisParmParseSimdRegScalar,   0,  5, 0 /*idxParam*/),
     DIS_ARMV8_INSN_DECODE(kDisParmParseVecReg,          5,  5, 1 /*idxParam*/),
 DIS_ARMV8_DECODE_INSN_CLASS_DEFINE_DECODER_ALTERNATIVE(DataProcAdvSimdAcrossLanes_U1_BHS)

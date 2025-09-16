@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1-tests.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: tstDisasmArmv8-1-tests.h 111005 2025-09-16 12:19:33Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Collection of testcases for the ARMv8 disassembler.
  */
@@ -37,6 +37,10 @@ RT_C_DECLS_BEGIN
 
 extern const unsigned char g_abtstDisasmArmv8_1[];
 extern const unsigned g_cbtstDisasmArmv8_1;
+
+extern const unsigned char g_abtstDisasmArmv8_1_Simd[];
+extern const unsigned g_cbtstDisasmArmv8_1_Simd;
+
 
 RT_C_DECLS_END
 
