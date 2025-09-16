@@ -1,4 +1,4 @@
-/* $Id: Intel_80386.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: Intel_80386.h 111009 2025-09-16 13:43:45Z michal.necasek@oracle.com $ */
 /** @file
  * CPU database entry "Intel 80386".
  * Handcrafted.
@@ -36,7 +36,7 @@
 /**
  * Fake CPUID leaves for Intel(R) 80386.
  *
- * We fake these to keep the CPUM ignorant of CPUs withou CPUID leaves
+ * We fake these to keep the CPUM ignorant of CPUs without CPUID leaves
  * and avoid having to seed CPUM::GuestFeatures filling with bits from the
  * CPUMDBENTRY.
  */
