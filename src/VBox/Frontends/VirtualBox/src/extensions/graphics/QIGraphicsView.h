@@ -1,4 +1,4 @@
-/* $Id: QIGraphicsView.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: QIGraphicsView.h 111007 2025-09-16 12:51:23Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIGraphicsView class declaration.
  */
@@ -50,6 +50,9 @@ public:
 
     /** Constructs graphics-view passing @a pParent to the base-class. */
     QIGraphicsView(QWidget *pParent = 0);
+
+    /** Returns this widget's preferred size. */
+    virtual QSize sizeHint() const RT_OVERRIDE;
 
 protected:
 

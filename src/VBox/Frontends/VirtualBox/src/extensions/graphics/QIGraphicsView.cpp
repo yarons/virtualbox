@@ -1,4 +1,4 @@
-/* $Id: QIGraphicsView.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: QIGraphicsView.cpp 111007 2025-09-16 12:51:23Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIGraphicsView class implementation.
  */
@@ -26,8 +26,11 @@
  */
 
 /* Qt includes: */
+#include <QGuiApplication>
+#include <QScreen>
 #include <QScrollBar>
 #include <QTouchEvent>
+#include <QTransform>
 
 /* GUI includes: */
 #include "QIGraphicsView.h"
@@ -43,6 +46,34 @@ QIGraphicsView::QIGraphicsView(QWidget *pParent /* = 0 */)
     /* Enable multi-touch support: */
     setAttribute(Qt::WA_AcceptTouchEvents);
     viewport()->setAttribute(Qt::WA_AcceptTouchEvents);
+}
+
+QSize QIGraphicsView::sizeHint() const
+{
+    // WORKAROUND:
+    // Ok, we have a problem in parent class (QGraphicsView) where the
+    // QGuiApplication::primaryScreen() not being tested for being null,
+    // which is possible in many cases, one of them seems to be happen
+    // on monitor sleep/awake or reconnect.
+    //
+    // So we're trying to do the same with more paranoia checks.
+    // This code is mostly taken from Qt source code for reusing.
+    if (QScreen *pPrimaryScreen = QGuiApplication::primaryScreen())
+    {
+        if (scene())
+        {
+            QSizeF baseSize = transform().mapRect(sceneRect()).size();
+            baseSize += QSizeF(frameWidth() * 2, frameWidth() * 2);
+            return baseSize.boundedTo((3 * pPrimaryScreen->virtualSize()) / 4).toSize();
+        }
+    }
+    else
+    {
+        qWarning() << "QGuiApplication::primaryScreen() is Null. Call to sub-base class.";
+        return QAbstractScrollArea::sizeHint();
+    }
+    /* Call to sub-base class: */
+    return QAbstractScrollArea::sizeHint();
 }
 
 bool QIGraphicsView::event(QEvent *pEvent)
