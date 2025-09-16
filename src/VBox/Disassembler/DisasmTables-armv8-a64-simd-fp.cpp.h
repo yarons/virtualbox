@@ -1,4 +1,4 @@
-/* $Id: DisasmTables-armv8-a64-simd-fp.cpp.h 111002 2025-09-16 07:42:33Z knut.osmundsen@oracle.com $ */
+/* $Id: DisasmTables-armv8-a64-simd-fp.cpp.h 111003 2025-09-16 07:43:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for ARMv8 A64 - SIMD & FP.
  */
@@ -866,6 +866,13 @@ DIS_ARMV8_DECODE_INSN_CLASS_DEFINE_END(DataProcAdvSimdThreeSame_U0, 0x00000000 /
 
 /*
  * C4.1.95.24 - Data Processing - Advanced SIMD three same, U=1
+ *
+ * Fixed bits:
+ *      - bit 31:     0     (op0=0xx0)
+ *      - bit 28:     1     (op0=0xx0,U=1)
+ *      - bits 27-24: 1110  (111,op1=0x)
+ *      - bits 21:    1     (op2=x1xx)
+ *      - bits 10:    1     (op3=xxxxxxxx1)
  *
  * Indexing size (bits 22 & 23) and opcode (bits 11 thru 15):
  *      - bits 0-4 = opcode; 0x00..0x1f
