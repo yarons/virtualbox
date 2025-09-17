@@ -1,4 +1,4 @@
-/* $Id: tstArm64-1.S 110860 2025-09-02 11:51:04Z knut.osmundsen@oracle.com $ */
+/* $Id: tstArm64-1.S 111033 2025-09-17 21:18:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * ARM64 instruction set testcase \#1.
  */
@@ -28,12 +28,30 @@
 #include <iprt/asmdefs-arm.h>
 
 
-/*
- * Main entry point.
+/**
+ * Main entry point for the VM run.
+ */
+BEGINPROC_EXPORTED  MainEntrypoint
+        /*
+         * Set CPACR_EL1.FPEN=11 to enable the advanced SIMD fun.
+         */
+        mrs     x0, CPACR_EL1
+        orr     x0, x0, 0x00300000
+        msr     CPACR_EL1, x0
+
+        /*
+         * Now, do the same as the user-mode executable.
+         */
+        b       NAME(ExeEntrypoint)
+ENDPROC             MainEntrypoint
+
+
+/**
+ * Main entry point for the user-mode exectuable.
  */
 .global NAME(main)
 NAME(main):
-BEGINPROC_EXPORTED  MainEntrypoint
+BEGINPROC_EXPORTED  ExeEntrypoint
         stp     x19, x20, [sp, #-0x60]!
         stp     x21, x22, [sp, #0x10]
         stp     x23, x24, [sp, #0x20]
@@ -53,7 +71,8 @@ BEGINPROC_EXPORTED  MainEntrypoint
         ldp     x19, x20, [sp], #0x60
         movz    x0, #0
         ret
-ENDPROC             MainEntrypoint
+ENDPROC             ExeEntrypoint
+
 
 /**
  * Where MainEntrypoint returns to when running in a VM (see IEMR3.cpp).
