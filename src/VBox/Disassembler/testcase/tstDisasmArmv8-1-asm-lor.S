@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1-asm-lor.S 111016 2025-09-17 10:35:46Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1-asm-lor.S 111022 2025-09-17 11:31:04Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for ARMv8 A64 - LOR.
  */
@@ -29,7 +29,9 @@
 
 BEGINPROC_HIDDEN TestProcA64Lor
 
-        .cpu generic+lor
+#ifndef RT_OS_DARWIN
+        .cpu generic+lor /* Our macOS toolchain doesn't know about fp16 but includes support by default */
+#endif
 
         ldlarb w0,  [x1]
         ldlarb wzr, [sp]
