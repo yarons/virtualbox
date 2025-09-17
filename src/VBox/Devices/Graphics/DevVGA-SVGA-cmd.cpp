@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA-cmd.cpp 110780 2025-08-21 13:49:48Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA-cmd.cpp 111031 2025-09-17 18:26:39Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VMware SVGA device - implementation of VMSVGA commands.
  */
@@ -3668,8 +3668,10 @@ static int vmsvga3dCmdDXTransferFromBuffer(PVGASTATECC pThisCC, SVGA3dCmdDXTrans
          * Map the surface.
          */
         VMSVGA3D_MAPPED_SURFACE mapSurface;
+        uint32_t const mapFlags = vmsvga3dIsEntireImage(pThisCC, &imageSurface, &pCmd->destBox)
+                                ? 0 : (VMSVGA3D_MAP_F_DYNAMIC_INTERMEDIATE | VMSVGA3D_MAP_F_EXACT_REGION);
         rc = vmsvga3dSurfaceMap(pThisCC, &imageSurface, &pCmd->destBox, VMSVGA3D_SURFACE_MAP_WRITE_DISCARD,
-            VMSVGA3D_MAP_F_DYNAMIC_INTERMEDIATE | VMSVGA3D_MAP_F_EXACT_REGION, &mapSurface);
+            mapFlags, &mapSurface);
         if (RT_SUCCESS(rc))
         {
             /*
