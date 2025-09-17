@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1-asm-fullfp16.S 111016 2025-09-17 10:35:46Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1-asm-fullfp16.S 111021 2025-09-17 11:18:26Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for ARMv8 A64 - FlagM.
  */
@@ -29,7 +29,9 @@
 
 BEGINPROC_HIDDEN TestProcA64FullFp16
 
-        .cpu generic+fp16
+#ifndef RT_OS_DARWIN
+        .cpu generic+fp16 /* Our macOS toolchain doesn't know about fp16 but includes support by default */
+#endif
 
         fmadd  h0, h1, h3, h31
         fmsub  h0, h1, h3, h31
