@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: SUPDrv-darwin.cpp 111013 2025-09-17 08:49:51Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -1198,60 +1198,6 @@ int VBOXCALL supdrvOSEnableVTx(bool fEnable)
 # else  /* !VBOX_WITH_HOST_VMX */
     return VERR_NOT_SUPPORTED;
 # endif /* !VBOX_WITH_HOST_VMX */
-}
-
-
-/**
- * @copydoc SUPR0SuspendVTxOnCpu
- */
-bool VBOXCALL supdrvOSSuspendVTxOnCpu(void)
-{
-# ifdef VBOX_WITH_HOST_VMX
-    /*
-     * Consult the VMX usage counter, don't try suspend if not enabled.
-     *
-     * Note!  The host_vmxon/off code is still race prone since, but this is
-     *        currently the best we can do without always enable VMX when
-     *        loading the driver.
-     */
-    if (   g_pVmxUseCount
-        && *g_pVmxUseCount > 0)
-    {
-        IPRT_DARWIN_SAVE_EFL_AC();
-        g_pfnVmxSuspend();
-        IPRT_DARWIN_RESTORE_EFL_AC();
-        return true;
-    }
-    return false;
-# else
-    return false;
-# endif
-}
-
-
-/**
- * @copydoc SUPR0ResumeVTxOnCpu
- */
-void VBOXCALL   supdrvOSResumeVTxOnCpu(bool fSuspended)
-{
-# ifdef VBOX_WITH_HOST_VMX
-    /*
-     * Don't consult the counter here, the state knows better.
-     * We're executing with interrupts disabled and anyone racing us with
-     * disabling VT-x will be waiting in the rendezvous code.
-     */
-    if (   fSuspended
-        && g_pfnVmxResume)
-    {
-        IPRT_DARWIN_SAVE_EFL_AC();
-        g_pfnVmxResume();
-        IPRT_DARWIN_RESTORE_EFL_AC();
-    }
-    else
-        Assert(!fSuspended);
-# else
-    Assert(!fSuspended);
-# endif
 }
 
 #endif /* RT_ARCH_AMD64 || RT_ARCH_X86 */

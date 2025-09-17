@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-linux.c 111010 2025-09-17 05:58:02Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: SUPDrv-linux.c 111013 2025-09-17 08:49:51Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -1668,30 +1668,6 @@ int VBOXCALL supdrvOSEnableVTx(bool fEnable)
     return VINF_SUCCESS;
 #endif
     return VERR_NOT_SUPPORTED;
-}
-
-
-/**
- * @copydoc SUPR0SuspendVTxOnCpu
- */
-bool VBOXCALL supdrvOSSuspendVTxOnCpu(void)
-{
-# ifdef SUPDRV_LINUX_HAS_KVM_VMX_API
-    /* The KVM kernel API registers and handles suspend/resume callbacks by itself. */
-    return true;
-# else
-    return false;
-# endif
-}
-
-
-/**
- * @copydoc SUPR0ResumeVTxOnCpu
- */
-void VBOXCALL supdrvOSResumeVTxOnCpu(bool fSuspended)
-{
-    /* The KVM kernel API registers and handles suspend/resume callbacks by itself. */
-    NOREF(fSuspended);
 }
 
 

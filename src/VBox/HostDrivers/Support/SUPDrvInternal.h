@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: SUPDrvInternal.h 111013 2025-09-17 08:49:51Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -1071,8 +1071,6 @@ bool VBOXCALL   supdrvOSAreCpusOfflinedOnSuspend(void);
 bool VBOXCALL   supdrvOSAreTscDeltasInSync(void);
 int  VBOXCALL   supdrvOSEnableVTx(bool fEnabled);
 RTCCUINTREG VBOXCALL supdrvOSChangeCR4(RTCCUINTREG fOrMask, RTCCUINTREG fAndMask);
-bool VBOXCALL   supdrvOSSuspendVTxOnCpu(void);
-void VBOXCALL   supdrvOSResumeVTxOnCpu(bool fSuspended);
 int  VBOXCALL   supdrvOSGetCurrentGdtRw(RTHCUINTPTR *pGdtRw);
 
 /**
