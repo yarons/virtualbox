@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: usbgadget.py 111028 2025-09-17 12:39:42Z alexander.eichner@oracle.com $
+# $Id: usbgadget.py 111029 2025-09-17 12:57:11Z alexander.eichner@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111028 $"
+__version__ = "$Revision: 111029 $"
 
 # Standard Python imports.
 import array
@@ -215,7 +215,7 @@ def strToByteArry(sStr):
         # the primitive approach...
         sUtf8 = sStr.encode('utf_8');
         for ch in sUtf8:
-            abPayload.append(ord(ch))
+            abArray.append(ord(ch))
     abArray.append(0);
     return abArray;
 
