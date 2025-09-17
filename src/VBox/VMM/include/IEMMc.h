@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 111017 2025-09-17 10:42:50Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc.h 111034 2025-09-17 21:32:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX, common.
  */
@@ -280,6 +280,7 @@
 
 #define IEM_MC_SUB_2LOCS_U32(a_u32Value, a_u32Subtrahend) do { (a_u32Value) -= a_u32Subtrahend; } while (0)
 #define IEM_MC_SUB_2LOCS_U64(a_u64Value, a_u64Subtrahend) do { (a_u64Value) -= a_u64Subtrahend; } while (0)
+#define IEM_MC_SUB_2LOCS_S64(a_i64Value, a_i64Subtrahend) do { (a_i64Value) -= a_i64Subtrahend; } while (0)
 
 #define IEM_MC_AND_2LOCS_U32(a_u32Local, a_u32Mask)     do { (a_u32Local) &= (a_u32Mask); } while (0)
 #define IEM_MC_AND_2LOCS_U64(a_u64Local, a_u64Mask)     do { (a_u64Local) &= (a_u64Mask); } while (0)
