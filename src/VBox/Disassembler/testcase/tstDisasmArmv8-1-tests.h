@@ -1,4 +1,4 @@
-/* $Id: tstDisasmArmv8-1-tests.h 111005 2025-09-16 12:19:33Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasmArmv8-1-tests.h 111016 2025-09-17 10:35:46Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Collection of testcases for the ARMv8 disassembler.
  */
@@ -41,6 +41,29 @@ extern const unsigned g_cbtstDisasmArmv8_1;
 extern const unsigned char g_abtstDisasmArmv8_1_Simd[];
 extern const unsigned g_cbtstDisasmArmv8_1_Simd;
 
+extern const unsigned char g_abtstDisasmArmv8_1_PAuth[];
+extern const unsigned g_cbtstDisasmArmv8_1_PAuth;
+
+extern const unsigned char g_abtstDisasmArmv8_1_FlagM[];
+extern const unsigned g_cbtstDisasmArmv8_1_FlagM;
+
+extern const unsigned char g_abtstDisasmArmv8_1_FullFp16[];
+extern const unsigned g_cbtstDisasmArmv8_1_FullFp16;
+
+extern const unsigned char g_abtstDisasmArmv8_1_Lor[];
+extern const unsigned g_cbtstDisasmArmv8_1_Lor;
+
+extern const unsigned char g_abtstDisasmArmv8_1_Lse[];
+extern const unsigned g_cbtstDisasmArmv8_1_Lse;
+
+extern const unsigned char g_abtstDisasmArmv8_1_Crc[];
+extern const unsigned g_cbtstDisasmArmv8_1_Crc;
+
+extern const unsigned char g_abtstDisasmArmv8_1_Frint3264[];
+extern const unsigned g_cbtstDisasmArmv8_1_Frint3264;
+
+extern const unsigned char g_abtstDisasmArmv8_1_Rcpc[];
+extern const unsigned g_cbtstDisasmArmv8_1_Rcpc;
 
 RT_C_DECLS_END
 
