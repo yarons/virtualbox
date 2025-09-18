@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 111013 2025-09-17 08:49:51Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: SUPDrv.cpp 111035 2025-09-18 05:45:00Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -4306,6 +4306,7 @@ SUPR0_EXPORT_SYMBOL(SUPR0ChangeCR4);
  * @returns VBox status code.
  * @retval  VINF_SUCCESS on success.
  * @retval  VERR_NOT_SUPPORTED if not supported by the native OS.
+ * @retval  VERR_NOT_AVAILABLE if supported by the native OS but not available atm.
  *
  * @param   fEnable         Whether to enable or disable.
  */
