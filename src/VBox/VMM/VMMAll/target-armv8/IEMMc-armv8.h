@@ -1,4 +1,4 @@
-/* $Id: IEMMc-armv8.h 111034 2025-09-17 21:32:38Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc-armv8.h 111039 2025-09-18 09:46:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX, ARMv8 target.
  */
@@ -148,8 +148,9 @@
 #define IEM_MC_A64_CHECK_FP_AND_ADV_SIMD_ENABLED() ((void)0)
 
 #define IEM_MC_FETCH_FREG_HI_U64(a_u64Dst, a_iFpReg)    (a_u64Dst) = iemFRegFetchHiU64(pVCpu, (a_iFpReg))
+#define IEM_MC_FETCH_FREG_HI_S64(a_i64Dst, a_iFpReg)    (a_i64Dst) = (int64_t)iemFRegFetchHiU64(pVCpu, (a_iFpReg))
 #define IEM_MC_STORE_FREG_HI_U64(a_iFpReg, a_u64Value)  iemFRegStoreHiU64(pVCpu, (a_iFpReg), (a_u64Value))
-
+#define IEM_MC_STORE_FREG_HI_S64(a_iFpReg, a_i64Value)  iemFRegStoreHiU64(pVCpu, (a_iFpReg), (a_i64Value))
 
 #define IEM_MC_FETCH_MEM_FLAT_U32_PAIR(a_u32Value1, a_u32Value2, a_GCPtrMem) \
     (a_u32Value1) = iemMemFlatFetchDataPairU32Jmp(pVCpu, (a_GCPtrMem), &(a_u32Value2))
