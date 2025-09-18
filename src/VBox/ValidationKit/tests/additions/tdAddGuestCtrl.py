@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # pylint: disable=too-many-lines
-# $Id: tdAddGuestCtrl.py 111048 2025-09-18 18:20:47Z alexander.eichner@oracle.com $
+# $Id: tdAddGuestCtrl.py 111049 2025-09-18 18:27:29Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Guest Control Tests.
@@ -38,7 +38,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111048 $"
+__version__ = "$Revision: 111049 $"
 
 # Standard Python imports.
 import errno
@@ -1848,6 +1848,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                 self.oTstDrv.sleep(5);
                 self.vboxServiceControl(oTxsSession, oTestVm, fStart = True);
 
+                # pylint: disable=line-too-long
                 ## @todo r=aeichner A workaround for the t-xppro VM failing to start VBoxService the first time after
                 #                   the reboot.
                 #
@@ -1883,6 +1884,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                 #                   first start of VBoxService works without reporting an error when it times out and just try again.
                 #
                 #                   This needs to be investigate by a Windows/Guest Additions expert.
+                # pylint: enable=line-too-long
                 fRc = self.waitForGuestFacility(oSession, vboxcon.AdditionsFacilityType_VBoxService, "VBoxService",
                                                 vboxcon.AdditionsFacilityStatus_Active, cMsTimeout = 3 * 1000,
                                                 fReportError = False);
