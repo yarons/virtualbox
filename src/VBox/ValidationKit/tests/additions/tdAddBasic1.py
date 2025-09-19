@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: tdAddBasic1.py 111066 2025-09-19 19:34:48Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 110684 $"
+__version__ = "$Revision: 111066 $"
 
 # Standard Python imports.
 import os;
@@ -444,7 +444,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         #
         # Do the actual install.
         #
-        fRc = self.txsRunTest(oTxsSession, 'VBoxWindowsAdditions.exe', 5 * 60 * 1000, sExe, asArgs, fCheckSessionStatus = True);
+        fRc = self.txsRunTest(oTxsSession, 'VBoxWindowsAdditions.exe', 10 * 60 * 1000, sExe, asArgs, fCheckSessionStatus = True);
 
         # Add the Windows Guest Additions installer files to the files we want to download
         # from the guest. Note: There won't be a install_ui.log because of the silent installation.
