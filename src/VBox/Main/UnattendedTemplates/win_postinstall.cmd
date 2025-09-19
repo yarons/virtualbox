@@ -1,5 +1,5 @@
 @echo off
-rem $Id: win_postinstall.cmd 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+rem $Id: win_postinstall.cmd 111053 2025-09-19 08:33:32Z alexander.eichner@oracle.com $
 rem rem @file
 rem Post installation script template for Windows.
 rem
@@ -147,6 +147,11 @@ echo *** Running: reg.exe ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
 reg.exe ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v ForceAutoLogon /d 1 /f >> %MY_LOG_FILE% 2>&1
 echo *** ERRORLEVEL: %ERRORLEVEL% >> %MY_LOG_FILE%
 rem  AutoAdminLogon too if administrator?
+
+rem Disable UAC
+echo *** Running: reg.exe ADD "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v EnableLUA /t REG_DWORD /d 0 /f >> %MY_LOG_FILE%
+reg.exe ADD "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v EnableLUA /t REG_DWORD /d 0 /f >> %MY_LOG_FILE% 2>&1
+echo *** ERRORLEVEL: %ERRORLEVEL% >> %MY_LOG_FILE%
 
 @@VBOX_COND_END@@
 
