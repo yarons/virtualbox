@@ -1,4 +1,4 @@
-/* $Id: VBoxNetSlirpNAT.cpp 110811 2025-08-25 17:36:12Z jack.doherty@oracle.com $ */
+/* $Id: VBoxNetSlirpNAT.cpp 111065 2025-09-19 15:58:58Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -1624,8 +1624,11 @@ DECLCALLBACK(void) VBoxNetSlirpNAT::natServicePfRegister(VBoxNetSlirpNAT *pThis,
                 pNatPf->fPfrIPv6 ? "IPv6" : "IPv4",
                 pNatPf->szPfrName));
 
-    /* Free the rule in any case. */
-    RTMemFree(pNatPf);
+    if (fRuntime)
+    {
+        /* Free the rule in any case. */
+        RTMemFree(pNatPf);
+    }
 }
 
 
