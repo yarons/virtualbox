@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineView.cpp 111057 2025-09-19 11:27:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -1176,6 +1176,9 @@ void UIMachineView::sltMousePointerShapeChange()
 {
     /* Fetch the shape and the mask: */
     QPixmap pixmapShape = uimachine()->cursorShapePixmap();
+    /* We can't do anything if shape is null itself: */
+    if (pixmapShape.isNull())
+        return;
     QPixmap pixmapMask = uimachine()->cursorMaskPixmap();
     const QPoint hotspot = uimachine()->cursorHotspot();
     int iXHot = hotspot.x();
