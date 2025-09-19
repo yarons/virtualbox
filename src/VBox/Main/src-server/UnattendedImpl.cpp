@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UnattendedImpl.cpp 111054 2025-09-19 09:22:32Z alexander.eichner@oracle.com $ */
 /** @file
  * Unattended class implementation
  */
@@ -967,6 +967,8 @@ HRESULT Unattended::i_innerDetectIsoOSWindows(RTVFS hVfsIso, DETECTBUFFER *pBuf)
                                     {
                                         LogRel2(("Unattended: happy with mDetectedImages[%u]\n", i));
                                         mEnmOsType = mDetectedImages[i].mOSType;
+                                        RTMemTmpFree(pachXmlBuf);
+                                        RTVfsFileRelease(hVfsFile);
                                         return S_OK;
                                     }
                                 }
