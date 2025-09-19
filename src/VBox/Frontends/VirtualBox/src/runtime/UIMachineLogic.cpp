@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 111058 2025-09-19 11:35:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1437,10 +1437,6 @@ void UIMachineLogic::cleanupHandlers()
 
 void UIMachineLogic::cleanupSessionConnections()
 {
-    /* We should stop watching for VBoxSVC availability changes: */
-    disconnect(gpGlobalSession, &UIGlobalSession::sigVBoxSVCAvailabilityChange,
-               this, &UIMachineLogic::sltHandleVBoxSVCAvailabilityChange);
-
     /* We should stop watching for machine UI initialization signal: */
     disconnect(uimachine(), &UIMachine::sigInitialized, this, &UIMachineLogic::sltHandleMachineInitialized);
 
