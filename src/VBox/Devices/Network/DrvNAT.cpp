@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 111071 2025-09-20 05:33:17Z alexander.eichner@oracle.com $ */
+/* $Id: DrvNAT.cpp 111073 2025-09-20 06:13:58Z alexander.eichner@oracle.com $ */
 /** @file
  * DrvNATlibslirp - NATlibslirp network transport driver.
  */
@@ -222,8 +222,8 @@ static void drvNATTimersRunExpired(PDRVNAT pThis);
 static DECLCALLBACK(int) drvNAT_AddPollCb(slirp_os_socket hFd, int iEvents, void *opaque);
 static int64_t drvNAT_ClockGetNsCb(void *opaque);
 static DECLCALLBACK(int) drvNAT_GetREventsCb(int idx, void *opaque);
-static int drvNATNotifyApplyPortForwardCommand(PDRVNAT pThis, bool fRemove, bool fUdp, const char *pszHostIp,
-                                               uint16_t u16HostPort, const char *pszGuestIp, uint16_t u16GuestPort);
+static DECLCALLBACK(int) drvNATNotifyApplyPortForwardCommand(PDRVNAT pThis, bool fRemove, bool fUdp, const char *pszHostIp,
+                                                             uint16_t u16HostPort, const char *pszGuestIp, uint16_t u16GuestPort);
 
 
 
