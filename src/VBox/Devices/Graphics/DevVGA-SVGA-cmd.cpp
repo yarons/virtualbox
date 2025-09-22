@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA-cmd.cpp 111031 2025-09-17 18:26:39Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA-cmd.cpp 111079 2025-09-22 10:09:00Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VMware SVGA device - implementation of VMSVGA commands.
  */
@@ -2245,7 +2245,7 @@ static void vmsvga3dCmdBindGBScreenTarget(PVGASTATECC pThisCC, SVGA3dCmdBindGBSc
                 rc = pSvgaR3State->pFuncsGBO->pfnScreenTargetBind(pThisCC, pScreen, pCmd->image.sid);
                 AssertRC(rc);
 #ifdef DX_NEW_HWSCREEN
-                if (RT_SUCCESS(rc))
+                if (RT_SUCCESS(rc) && pCmd->image.sid != SVGA_ID_INVALID)
                 {
                     SVGA3dRect rect;
                     rect.x = 0;
