@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 111066 2025-09-19 19:34:48Z alexander.eichner@oracle.com $
+# $Id: tdAddBasic1.py 111084 2025-09-22 14:35:19Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111066 $"
+__version__ = "$Revision: 111084 $"
 
 # Standard Python imports.
 import os;
@@ -573,11 +573,25 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
                     reporter.testFailure('Rebooting and reconnecting to TXS service failed');
             else:
                 reporter.log('Skipping guest reboot after Guest Additions installation as requested');
-                fRc = self.txsRunTest(oTxsSession, 'Check Guest Additions kernel modules status', 5 * 60 * 1000,
-                                      self.getGuestSystemShell(oTestVm),
-                                      (self.getGuestSystemShell(oTestVm),
-                                      '/sbin/rcvboxadd', 'status-kernel'));
-                if fRc and oTxsSession.isSuccess():
+                #
+                # For test VMs which feature a graphical desktop _and_ use the VBoxVGA graphics controller emulation 
+                # calling "/sbin/rcvboxadd status kernel" will report that the vboxvideo kernel module wasn't reloaded
+                # because Xorg will make use of any shipped vboxvideo driver (like tst-ubuntu-18_04_3-64 for instance)
+                # and prevent unloading the currently loaded vboxvideo driver.
+                # For these VMs don't bother with checking the status and just assume everything went well.
+                #
+                if oTestVm.sGraphicsControllerType == 'VMSVGA':
+                    fRc = self.txsRunTest(oTxsSession, 'Check Guest Additions kernel modules status', 5 * 60 * 1000,
+                                          self.getGuestSystemShell(oTestVm),
+                                          (self.getGuestSystemShell(oTestVm),
+                                          '/sbin/rcvboxadd', 'status-kernel'));
+                    if fRc and oTxsSession.isSuccess():
+                        pass;
+                    else:
+                        fRc = False;
+                        reporter.testFailure('Kernel modules were not reloaded');
+
+                if fRc:
                     fRc = self.txsRunTest(oTxsSession, 'Check Guest Additions user services status', 5 * 60 * 1000,
                                           self.getGuestSystemShell(oTestVm),
                                           (self.getGuestSystemShell(oTestVm),
@@ -587,9 +601,6 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
                     else:
                         fRc = False;
                         reporter.testFailure('User services were not reloaded');
-                else:
-                    fRc = False;
-                    reporter.testFailure('Kernel modules were not reloaded');
             if fRc:
                 reporter.testDone();
 
