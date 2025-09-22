@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 110885 2025-09-04 09:24:22Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMInternal.h 111076 2025-09-22 08:10:34Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM - Internal header file.
  */
@@ -350,7 +350,10 @@ typedef struct HM
     {
         /** Last recorded error code during HM ring-0 init. */
         int32_t                     rcInit;
-        uint32_t                    u32Alignment3;
+        /** Whether a host API is used for enabling VMX/SVM (set by ring-0 init,
+         *  for logging). */
+        bool                        fUsingHostEnableApi;
+        bool                        afAlignment3[3];
 
         /** Maximum ASID allowed.
          * This is mainly for the release log.  */
@@ -370,8 +373,6 @@ typedef struct HM
             /** Whether MOV DRx is always intercepted or not (set by ring-0 VMX init, for
              * logging). */
             bool                        fAlwaysInterceptMovDRx;
-            /** Whether SUPR0EnableVTx is being used (set by ring-0 VMX init, for logging). */
-            bool                        fUsingSUPR0EnableVTx;
             /** Padding.*/
             bool                        afPadding[3];
 

@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: HMVMXR0.cpp 111076 2025-09-22 08:10:34Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -3130,8 +3130,8 @@ VMMR0DECL(void) VMXR0GlobalTerm()
  *                          fEnabledByHost is @c true).
  * @param   HCPhysCpuPage   Physical address of the VMXON region (can be 0 if
  *                          @a fEnabledByHost is @c true).
- * @param   fEnabledByHost  Set if SUPR0EnableVTx() or similar was used to
- *                          enable VT-x on the host.
+ * @param   fEnabledByHost  Set if SUPR0EnableHwvirt() or similar was used to enable
+ *                          VT-x on the host.
  * @param   pHwvirtMsrs     Pointer to the hardware-virtualization MSRs.
  */
 VMMR0DECL(int) VMXR0EnableCpu(PHMPHYSCPU pHostCpu, PVMCC pVM, void *pvCpuPage, RTHCPHYS HCPhysCpuPage, bool fEnabledByHost,
@@ -3176,9 +3176,6 @@ VMMR0DECL(int) VMXR0EnableCpu(PHMPHYSCPU pHostCpu, PVMCC pVM, void *pvCpuPage, R
  * @param   pHostCpu        The HM physical-CPU structure.
  * @param   pvCpuPage       Pointer to the VMXON region.
  * @param   HCPhysCpuPage   Physical address of the VMXON region.
- *
- * @remarks This function should never be called when SUPR0EnableVTx() or
- *          similar was used to enable VT-x on the host.
  */
 VMMR0DECL(int) VMXR0DisableCpu(PHMPHYSCPU pHostCpu, void *pvCpuPage, RTHCPHYS HCPhysCpuPage)
 {

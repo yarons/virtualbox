@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: SUPLib.cpp 111076 2025-09-22 08:10:34Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -473,7 +473,7 @@ static int supInitFake(PSUPDRVSESSION *ppSession)
         { "SUPR0MemFree",                           0, 0xefef000a },
         { "SUPR0Printf",                            0, 0xefef000b },
         { "SUPR0GetPagingMode",                     0, 0xefef000c },
-        { "SUPR0EnableVTx",                         0, 0xefef000e },
+        { "SUPR0EnableHwvirt",                      0, 0xefef000e },
         { "RTMemAlloc",                             0, 0xefef000f },
         { "RTMemAllocZ",                            0, 0xefef0010 },
         { "RTMemFree",                              0, 0xefef0011 },
