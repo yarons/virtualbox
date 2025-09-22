@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 111084 2025-09-22 14:35:19Z alexander.eichner@oracle.com $
+# $Id: tdAddBasic1.py 111085 2025-09-22 14:41:20Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111084 $"
+__version__ = "$Revision: 111085 $"
 
 # Standard Python imports.
 import os;
@@ -574,7 +574,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
             else:
                 reporter.log('Skipping guest reboot after Guest Additions installation as requested');
                 #
-                # For test VMs which feature a graphical desktop _and_ use the VBoxVGA graphics controller emulation 
+                # For test VMs which feature a graphical desktop _and_ use the VBoxVGA graphics controller emulation
                 # calling "/sbin/rcvboxadd status kernel" will report that the vboxvideo kernel module wasn't reloaded
                 # because Xorg will make use of any shipped vboxvideo driver (like tst-ubuntu-18_04_3-64 for instance)
                 # and prevent unloading the currently loaded vboxvideo driver.
