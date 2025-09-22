@@ -1,4 +1,4 @@
-/* $Id: VBoxNetSlirpNAT.cpp 111065 2025-09-19 15:58:58Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxNetSlirpNAT.cpp 111087 2025-09-22 19:15:28Z jack.doherty@oracle.com $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -859,6 +859,9 @@ int VBoxNetSlirpNAT::initIPv6()
         return VERR_GENERAL_FAILURE;
     }
 
+    /* Invert the config flag. Makes more sense for necessary slirp modification. */
+    m_ProxyOptions.fDisableIPv6RA = !fIPv6DefaultRoute;
+
     rc = fetchNatPortForwardRules(m_vecPortForwardRule6, /* :fIsIPv6 */ true);
     AssertLogRelRCReturn(rc, rc);
 
@@ -883,15 +886,6 @@ int VBoxNetSlirpNAT::initIPv6()
                     strSourceIp6.c_str()));
         }
     }
-
-#if 0 /** @todo */
-    m_ProxyOptions.ipv6_defroute = fIPv6DefaultRoute;
-
-
-    // /* Raw socket for ICMP. */
-    // initIPv6RawSock();
-
-#endif
 
     return VINF_SUCCESS;
 }
