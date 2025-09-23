@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl-x86.cpp 111091 2025-09-23 07:36:20Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllCImpl-x86.cpp 111092 2025-09-23 07:36:49Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in C/C++, x86 target.
  */
@@ -2524,8 +2524,6 @@ IEM_CIMPL_DEF_2(iemCImpl_retf, IEMMODE, enmEffOpSize, uint16_t, cbPop)
             pVCpu->cpum.GstCtx.rsp           = (uint32_t)NewOuterRsp.u;
         else
             pVCpu->cpum.GstCtx.sp            = (uint16_t)NewOuterRsp.u;
-
-        iemRecalcExecModeAndCplAndAcFlags(pVCpu); /* Affects iemRegAddToRspEx and the setting of RSP/SP below.  */
 
         /** @todo check if the hidden bits are loaded correctly for 64-bit
          *        mode. */
