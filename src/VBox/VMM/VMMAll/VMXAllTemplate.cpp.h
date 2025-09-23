@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 111078 2025-09-22 08:49:19Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VMXAllTemplate.cpp.h 111094 2025-09-23 08:53:40Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -3998,8 +3998,12 @@ static int vmxHCImportGuestStateInner(PVMCPUCC pVCpu, PVMXVMCSINFO pVmcsInfo, ui
 {
     Assert(a_fWhat != 0); /* No AssertCompile as the assertion probably kicks in before the compiler (clang) discards it. */
     AssertCompile(!(a_fWhat & ~HMVMX_CPUMCTX_EXTRN_ALL));
+    /* KERNEL_GS_BASE and SYSCALL_MSRS would've already been imported if we happen to get preempted (see hmR0VmxLeave). */
     AssertMsg(   (pVCpu->cpum.GstCtx.fExtrn & a_fWhat) == a_fWhat
-              || (pVCpu->cpum.GstCtx.fExtrn & a_fWhat) == (a_fWhat & ~(CPUMCTX_EXTRN_RIP | CPUMCTX_EXTRN_RFLAGS)),
+              || (pVCpu->cpum.GstCtx.fExtrn & a_fWhat) == (a_fWhat & ~(CPUMCTX_EXTRN_RIP | CPUMCTX_EXTRN_RFLAGS))
+              || (pVCpu->cpum.GstCtx.fExtrn & a_fWhat) == (a_fWhat & ~(CPUMCTX_EXTRN_KERNEL_GS_BASE | CPUMCTX_EXTRN_SYSCALL_MSRS))
+              || (pVCpu->cpum.GstCtx.fExtrn & a_fWhat) == (a_fWhat & ~(  CPUMCTX_EXTRN_RIP | CPUMCTX_EXTRN_RFLAGS \
+                                                                       | CPUMCTX_EXTRN_KERNEL_GS_BASE | CPUMCTX_EXTRN_SYSCALL_MSRS)),
               ("fExtrn=%#RX64 a_fWhat=%#RX64\n", pVCpu->cpum.GstCtx.fExtrn, a_fWhat));
 
     STAM_PROFILE_ADV_STOP(&VCPU_2_VMXSTATS(pVCpu).StatImportGuestState, x);
