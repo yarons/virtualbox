@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 111086 2025-09-22 17:25:13Z brent.paulson@oracle.com $ */
+/* $Id: VMMDev.cpp 111095 2025-09-23 09:16:49Z brent.paulson@oracle.com $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -336,6 +336,7 @@ static void vmmdevLogGuestOsInfo(VBoxGuestInfo *pGuestInfo)
             case VBOXOSTYPE_Win2k22_x64:                  pszOs = "Windows Server 2022"; break;
             case VBOXOSTYPE_Win2k25_x64:                  pszOs = "Windows Server 2025"; break;
             case VBOXOSTYPE_Win11_x64:                    pszOs = "Windows 11";     break;
+            case VBOXOSTYPE_Win11_arm64:                  pszOs = "Windows 11";     break;
             default:                                      pszOs = "unknown";        break;
         }
     }
