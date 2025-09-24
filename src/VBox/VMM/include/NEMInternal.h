@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 111093 2025-09-23 08:44:43Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMInternal.h 111100 2025-09-24 08:18:24Z knut.osmundsen@oracle.com $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -549,7 +549,6 @@ typedef struct NEMCPU
      * @{ */
     STAMCOUNTER                 StatExitMemUnmapped;
 # if !defined(VBOX_VMM_TARGET_ARMV8)
-    STAMCOUNTER                 StatExitMemIntercept;
     STAMCOUNTER                 StatExitPortIo;
     STAMCOUNTER                 StatExitHalt;
     STAMCOUNTER                 StatExitInterruptWindow;
@@ -565,6 +564,8 @@ typedef struct NEMCPU
 # endif
 # if defined(VBOX_VMM_TARGET_ARMV8)
     STAMCOUNTER                 StatExitMemUnmappedToIem;
+    STAMCOUNTER                 StatExitMemIntercept;
+    STAMCOUNTER                 StatExitMemInterceptToIem;
     STAMCOUNTER                 StatExitHypercall;
     STAMCOUNTER                 StatExitCanceled;
 # endif
