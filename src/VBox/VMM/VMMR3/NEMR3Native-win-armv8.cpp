@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win-armv8.cpp 111100 2025-09-24 08:18:24Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMR3Native-win-armv8.cpp 111101 2025-09-24 08:35:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -2295,9 +2295,9 @@ nemR3WinHandleExitMemory(PVMCC pVM, PVMCPUCC pVCpu, MY_WHV_RUN_VP_EXIT_CONTEXT c
         uint8_t const uAcc     = ARMV8_EC_ISS_DATA_ABRT_SAS_GET(uIss);
         size_t  const cbAcc    = nemR3WinGetByteCountFromSas(uAcc);
         RT_NOREF(fL2Fault);
-        LogFlowFunc(("GCPtrDataAbrt=%RGv GCPhys=%RGp PC=%RGv cbInstr=%u uIss=%RX64 fIsv=true fL2Fault=%RTbool fWrite=%RTbool f64BitReg=%RTbool fSignExtend=%RTbool uReg=%u uAcc=%u\n",
-                     pExit->MemoryAccess.Gva, GCPhys, pExit->MemoryAccess.Header.Pc, cbInstr, uIss, fL2Fault, fWrite,
-                     f64BitReg, fSignExtend, uReg, uAcc));
+        LogFlowFunc(("%s GCPtrDataAbrt=%RGv GCPhys=%RGp PC=%RGv cbInstr=%u uIss=%RX64 fIsv=true fL2Fault=%RTbool fWrite=%RTbool f64BitReg=%RTbool fSignExtend=%RTbool uReg=%u uAcc=%u\n",
+                     fUnmappedExit ? "Unmapped" : "Intercept", pExit->MemoryAccess.Gva, GCPhys, pExit->MemoryAccess.Header.Pc,
+                     cbInstr, uIss, fL2Fault, fWrite, f64BitReg, fSignExtend, uReg, uAcc));
 
         int rc = nemHCWinCopyStateFromHyperV(pVM, pVCpu, CPUMCTX_EXTRN_GPRS_MASK | CPUMCTX_EXTRN_PC);
         AssertRCReturn(rc, rc);
@@ -2329,8 +2329,9 @@ nemR3WinHandleExitMemory(PVMCC pVM, PVMCPUCC pVCpu, MY_WHV_RUN_VP_EXIT_CONTEXT c
     else
     {
         /* The following ASSUMES that the vCPU state is completely synced. */
-        LogFlowFunc(("GCPtrDataAbrt=%RGv GCPhys=%RGp PC=%RGv cbInstr=%u uIss=%RX64\n",
-                     pExit->MemoryAccess.Gva, GCPhys, pExit->MemoryAccess.Header.Pc, cbInstr, uIss));
+        LogFlowFunc(("%s GCPtrDataAbrt=%RGv GCPhys=%RGp PC=%RGv cbInstr=%u uIss=%RX64\n",
+                     fUnmappedExit ? "Unmapped" : "Intercept", pExit->MemoryAccess.Gva, GCPhys, pExit->MemoryAccess.Header.Pc,
+                     cbInstr, uIss));
         if (fUnmappedExit)
             STAM_REL_COUNTER_INC(&pVCpu->nem.s.StatExitMemUnmappedToIem);
         else
