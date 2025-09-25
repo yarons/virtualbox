@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsUnattendedInst1.py 111117 2025-09-25 15:08:35Z alexander.eichner@oracle.com $
+# $Id: tdGuestOsUnattendedInst1.py 111121 2025-09-25 16:28:01Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Guest OS unattended installation tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111117 $"
+__version__ = "$Revision: 111121 $"
 
 
 # Standard Python imports.
@@ -549,7 +549,8 @@ class tdGuestOsInstTest1(vbox.TestDriver):
             UnattendedVm(oSet, 'tst-ubuntu-16.04.5-32', 'Ubuntu',    '6.0/uaisos/ubuntu-16.04.5-desktop-i386.iso'),  # >=4.5GiB
             UnattendedVm(oSet, 'tst-ubuntu-16.04.6-64', 'Ubuntu_64', '6.0/uaisos/ubuntu-16.04.6-desktop-amd64.iso'), # >=5GiB
             UnattendedVm(oSet, 'tst-ubuntu-16.04.6-32', 'Ubuntu',    '6.0/uaisos/ubuntu-16.04.6-desktop-i386.iso'),  # >=4.5GiB
-            UnattendedVm(oSet, 'tst-ubuntu-16.10-64',   'Ubuntu_64', '6.0/uaisos/ubuntu-16.10-desktop-amd64.iso'),   # >=5.5GiB
+            UnattendedVm(oSet, 'tst-ubuntu-16.10-64',   'Ubuntu_64', '6.0/uaisos/ubuntu-16.10-desktop-amd64.iso',    # >=5.5GiB
+                         UnattendedVm.kfLinuxIoApic),
             ## @todo 16.10-32 doesn't ask for an IP, so it always fails.
             #UnattendedVm(oSet, 'tst-ubuntu-16.10-32',   'Ubuntu',    '6.0/uaisos/ubuntu-16.10-desktop-i386.iso'),   # >=5.5GiB?
             UnattendedVm(oSet, 'tst-ubuntu-17.04-64',   'Ubuntu_64', '6.0/uaisos/ubuntu-17.04-desktop-amd64.iso'),   # >=5GiB
