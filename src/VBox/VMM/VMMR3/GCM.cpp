@@ -1,4 +1,4 @@
-/* $Id: GCM.cpp 111107 2025-09-25 13:15:27Z alexander.eichner@oracle.com $ */
+/* $Id: GCM.cpp 111118 2025-09-25 15:17:27Z alexander.eichner@oracle.com $ */
 /** @file
  * GCM - Guest Compatibility Manager.
  */
@@ -465,6 +465,6 @@ static DECLCALLBACK(void) gcmR3PatchGuest(PVM pVM, GCMGSTPATCHID enmPatch)
  */
 VMMR3_INT_DECL(void) GCMR3PatchGuest(PVM pVM, GCMGSTPATCHID enmPatch)
 {
-    VMR3ReqPriorityCallWait(pVM, 0 /*idDstCpu*/, (PFNRT)gcmR3PatchGuest, 3, pVM, enmPatch);
+    VMR3ReqPriorityCallWait(pVM, 0 /*idDstCpu*/, (PFNRT)gcmR3PatchGuest, 2, pVM, enmPatch);
 }
 
