@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigX86.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: ConsoleImplConfigX86.cpp 111107 2025-09-25 13:15:27Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -79,6 +79,7 @@
 #include <VBox/vmm/pdmusb.h> /* For PDMR3UsbCreateEmulatedDevice. */
 #include <VBox/vmm/pdmapic.h> /* For PDMAPICMODE enum. */
 #include <VBox/vmm/pdmstorageifs.h>
+#include <VBox/vmm/gcm.h> /* GCMGSTPATCHID enum */
 #include <VBox/version.h>
 
 #include <VBox/com/com.h>
@@ -1986,6 +1987,15 @@ int Console::i_configConstructorX86(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Auto
                     break;
             }
 #endif
+
+            /*
+             * Do we want to patch older Linux guests which run into panics during boot when configuring the IO-APIC
+             * because they think timers aren't properly working? See @bugref{4017}.
+             */
+            bool fLnxIoApicBugPatching = GetExtraDataBoth(virtualBox, pMachine,
+                                                          "VBoxInternal2/LinuxIoApicPatching", &strTmp)->equals("1");
+            if (fLnxIoApicBugPatching)
+                InsertConfigInteger(pCfg, "GcmPatchIdOnAcpiEnable", kGcmGstPatchId_LinuxIoApicBug);
 
             InsertConfigNode(pInst,    "LUN#0", &pLunL0);
             InsertConfigString(pLunL0, "Driver",               "ACPIHost");
