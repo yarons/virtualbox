@@ -1,4 +1,4 @@
-/* $Id: ResourceAssignmentManager.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: ResourceAssignmentManager.cpp 111106 2025-09-25 11:56:14Z dmitrii.grigorev@oracle.com $ */
 /** @file
  * VirtualBox bus slots assignment manager
  */
@@ -179,7 +179,7 @@ HRESULT ResourceAssignmentManager::State::ensureAdditionalRegions(uint32_t cRegi
 void ResourceAssignmentManager::State::setRegion(PRESOURCEREGION pRegion, const char *pszName, RESOURCEREGIONTYPE enmType,
                                                  RTGCPHYS GCPhysStart, RTGCPHYS GCPhysEnd)
 {
-    strncpy(&pRegion->szName[0], pszName, sizeof(pRegion->szName));
+    strncpy(&pRegion->szName[0], pszName, sizeof(pRegion->szName) - 1);
     pRegion->szName[sizeof(pRegion->szName) - 1] = '\0';
     pRegion->enmType     = enmType;
     pRegion->GCPhysStart = GCPhysStart;
