@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigX86.cpp 111107 2025-09-25 13:15:27Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImplConfigX86.cpp 111109 2025-09-25 13:26:28Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1995,7 +1995,7 @@ int Console::i_configConstructorX86(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Auto
             bool fLnxIoApicBugPatching = GetExtraDataBoth(virtualBox, pMachine,
                                                           "VBoxInternal2/LinuxIoApicPatching", &strTmp)->equals("1");
             if (fLnxIoApicBugPatching)
-                InsertConfigInteger(pCfg, "GcmPatchIdOnAcpiEnable", kGcmGstPatchId_LinuxIoApicBug);
+                InsertConfigInteger(pCfg, "GcmPatchIdOnAcpiEnable", (uint32_t)kGcmGstPatchId_LinuxIoApicBug);
 
             InsertConfigNode(pInst,    "LUN#0", &pLunL0);
             InsertConfigString(pLunL0, "Driver",               "ACPIHost");
