@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win-armv8.cpp 111101 2025-09-24 08:35:39Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMR3Native-win-armv8.cpp 111123 2025-09-25 19:56:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -2257,6 +2257,8 @@ DECLINLINE(uint64_t) nemR3WinGetGReg(PVMCPU pVCpu, uint8_t uReg)
  * @param   pVM             The cross context VM structure.
  * @param   pVCpu           The cross context per CPU structure.
  * @param   pExit           The VM exit information to handle.
+ * @param   fUnmappedExit   Set if WHvRunVpExitReasonUnmappedGpa,
+ *                          clear if WHvRunVpExitReasonGpaIntercept.
  * @sa      nemHCWinHandleMessageMemory
  */
 NEM_TMPL_STATIC VBOXSTRICTRC
