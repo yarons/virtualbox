@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsUnattendedInst1.py 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: tdGuestOsUnattendedInst1.py 111117 2025-09-25 15:08:35Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Guest OS unattended installation tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 110684 $"
+__version__ = "$Revision: 111117 $"
 
 
 # Standard Python imports.
@@ -76,6 +76,8 @@ class UnattendedVm(vboxtestvms.BaseTestVm):
     kfKeyFile               = 0x0004; ##< ISO requires a .key file containing the product key.
     kfNeedCom1              = 0x0008; ##< Need serial port, typically for satifying the windows kernel debugger.
 
+    kfLinuxIoApic           = 0x0010; ##< Patch the Linux guest to work around IO-APIC issues.
+
     kfIdeIrqDelay           = 0x1000;
     kfUbuntuNewAmdBug       = 0x2000;
     kfNoWin81Paravirt       = 0x4000;
@@ -87,6 +89,9 @@ class UnattendedVm(vboxtestvms.BaseTestVm):
 
     ## IRQ delay extra data config for win2k VMs.
     kasIdeIrqDelay     = [ 'VBoxInternal/Devices/piix3ide/0/Config/IRQDelay:1', ];
+
+    ## IO-APIC related workaround for older Linux VMs.
+    kasLinuxIoApic     = [ 'VBoxInternal2/LinuxIoApicPatching:1', ];
 
     def __init__(self, oSet, sVmName, sKind, sInstallIso, fFlags = 0, sPlatformArchitecture = 'x86'):
         vboxtestvms.BaseTestVm.__init__(self, sVmName, sPlatformArchitecture, oSet = oSet, sKind = sKind,
@@ -106,6 +111,8 @@ class UnattendedVm(vboxtestvms.BaseTestVm):
             self.asOptExtraData    += self.kasIdeIrqDelay;
         if fFlags & self.kfNeedCom1:
             self.fCom1RawFile       = True;
+        if fFlags & self.kfLinuxIoApic:
+            self.asOptExtraData    += self.kasLinuxIoApic;
 
     def _unattendedConfigure(self, oIUnattended, oTestDrv): # type: (Any, vbox.TestDriver) -> bool
         """
@@ -569,11 +576,11 @@ class tdGuestOsInstTest1(vbox.TestDriver):
             # Debian
             #
             UnattendedVm(oSet, 'tst-debian-9.3-64', 'Debian_64', '6.0/uaisos/debian-9.3.0-amd64-DVD-1.iso',  # >=6GiB?
-                         UnattendedVm.kfAvoidNetwork | UnattendedVm.kfNoGAs),
+                         UnattendedVm.kfAvoidNetwork | UnattendedVm.kfNoGAs | UnattendedVm.kfLinuxIoApic),
             UnattendedVm(oSet, 'tst-debian-9.4-64', 'Debian_64', '6.0/uaisos/debian-9.4.0-amd64-DVD-1.iso',  # >=6GiB?
-                         UnattendedVm.kfAvoidNetwork | UnattendedVm.kfNoGAs),
+                         UnattendedVm.kfAvoidNetwork | UnattendedVm.kfNoGAs | UnattendedVm.kfLinuxIoApic),
             UnattendedVm(oSet, 'tst-debian-10.0-64', 'Debian_64', '6.0/uaisos/debian-10.0.0-amd64-DVD-1.iso',  # >=6GiB?
-                         UnattendedVm.kfAvoidNetwork),
+                         UnattendedVm.kfAvoidNetwork | UnattendedVm.kfLinuxIoApic),
 
             #
             # Fedora
