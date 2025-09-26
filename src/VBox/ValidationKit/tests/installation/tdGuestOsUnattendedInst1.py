@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsUnattendedInst1.py 111128 2025-09-26 06:00:36Z alexander.eichner@oracle.com $
+# $Id: tdGuestOsUnattendedInst1.py 111137 2025-09-26 15:09:42Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Guest OS unattended installation tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111128 $"
+__version__ = "$Revision: 111137 $"
 
 
 # Standard Python imports.
@@ -559,14 +559,14 @@ class tdGuestOsInstTest1(vbox.TestDriver):
             UnattendedVm(oSet, 'tst-ubuntu-17.10-64',   'Ubuntu_64', '6.0/uaisos/ubuntu-17.10-desktop-amd64.iso',    # >=4Gib
                          UnattendedVm.kfNoGAs | UnattendedVm.kfLinuxIoApic),
             UnattendedVm(oSet, 'tst-ubuntu-18.04-64',   'Ubuntu_64', '6.0/uaisos/ubuntu-18.04-desktop-amd64.iso',    # >=6GiB
-                         UnattendedVm.kfNoGAs),
+                         UnattendedVm.kfNoGAs | UnattendedVm.kfLinuxIoApic),
             # 18.10 hangs reading install DVD during "starting partitioner..."
             #UnattendedVm(oSet, 'tst-ubuntu-18.10-64',   'Ubuntu_64', '6.0/uaisos/ubuntu-18.10-desktop-amd64.iso',
             #             UnattendedVm.kfNoGAs),
             UnattendedVm(oSet, 'tst-ubuntu-19.04-64',   'Ubuntu_64', '6.0/uaisos/ubuntu-19.04-desktop-amd64.iso',    # >=6GiB
-                         UnattendedVm.kfNoGAs),
+                         UnattendedVm.kfNoGAs | UnattendedVm.kfLinuxIoApic),
             UnattendedVm(oSet, 'tst-ubuntu-22.04-64', 'Ubuntu_64', '7.0/uaisos/ubuntu-22.04.3-desktop-amd64.iso',    # >=6GiB ?
-                         UnattendedVm.kfNoGAs),
+                         UnattendedVm.kfNoGAs | UnattendedVm.kfLinuxIoApic),
             UnattendedVm(oSet, 'tst-ubuntu-23.10-64', 'Ubuntu_64', '7.0/uaisos/ubuntu-23.10.1-desktop-amd64.iso',    # >=6GiB ?
                          UnattendedVm.kfNoGAs),
             UnattendedVm(oSet, 'tst-ubuntu-server-23.10-64', 'Ubuntu_64', '7.1/uaisos/ubuntu-23.10-live-server-amd64.iso',
