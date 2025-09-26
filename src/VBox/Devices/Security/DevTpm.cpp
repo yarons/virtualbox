@@ -1,4 +1,4 @@
-/* $Id: DevTpm.cpp 111125 2025-09-25 21:13:51Z knut.osmundsen@oracle.com $ */
+/* $Id: DevTpm.cpp 111127 2025-09-26 00:25:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevTpm - Trusted Platform Module emulation.
  *
@@ -1320,7 +1320,7 @@ static VBOXSTRICTRC tpmMmioCrbWriteInt(PPDMDEVINS pDevIns, PDEVTPM pThis, PDEVTP
 static DECLCALLBACK(VBOXSTRICTRC) tpmMmioCrbRead(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS off, void *pv, uint32_t cb)
 {
     PDEVTPM const pThis = PDMDEVINS_2_DATA(pDevIns, PDEVTPM);
-    RT_NOREF(pvUser);
+    RT_NOREF(pvUser, cb);
     Assert(pThis->fCrb);
 
     /* Check IOMMMIO_FLAGS_READ_DWORD ASSUMPTIONS: */
@@ -1390,8 +1390,7 @@ static DECLCALLBACK(VBOXSTRICTRC) tpmMmioCrbRead(PPDMDEVINS pDevIns, void *pvUse
 static DECLCALLBACK(VBOXSTRICTRC) tpmMmioCrbWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS off, void const *pv, uint32_t cb)
 {
     PDEVTPM pThis  = PDMDEVINS_2_DATA(pDevIns, PDEVTPM);
-    RT_NOREF(pvUser);
-
+    RT_NOREF(pvUser, cb);
     Assert(pThis->fCrb);
 
     /* Check IOMMMIO_FLAGS_READ_DWORD ASSUMPTIONS: */
