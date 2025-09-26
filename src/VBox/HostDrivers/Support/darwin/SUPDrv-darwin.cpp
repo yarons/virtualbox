@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 111013 2025-09-17 08:49:51Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: SUPDrv-darwin.cpp 111133 2025-09-26 07:01:31Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -1108,9 +1108,9 @@ static DECLCALLBACK(void) vboxdrvDarwinVmxEnableFix(RTCPUID idCpu, void *pvUser1
 
 
 /**
- * @copydoc SUPR0EnableVTx
+ * @copydoc SUPR0EnableHwvirt
  */
-int VBOXCALL supdrvOSEnableVTx(bool fEnable)
+int VBOXCALL supdrvOSEnableHwvirt(bool fEnable)
 {
 # ifdef VBOX_WITH_HOST_VMX
     int rc;

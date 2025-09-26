@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-linux.c 111014 2025-09-17 10:02:36Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: SUPDrv-linux.c 111133 2025-09-26 07:01:31Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -1649,9 +1649,9 @@ int VBOXCALL    supdrvOSMsrProberModify(RTCPUID idCpu, PSUPMSRPROBER pReq)
 
 
 /**
- * @copydoc SUPR0EnableVTx
+ * @copydoc SUPR0EnableHwvirt
  */
-int VBOXCALL supdrvOSEnableVTx(bool fEnable)
+int VBOXCALL supdrvOSEnableHwvirt(bool fEnable)
 {
 #ifdef SUPDRV_LINUX_HAS_KVM_VMX_API
     if (fEnable)
