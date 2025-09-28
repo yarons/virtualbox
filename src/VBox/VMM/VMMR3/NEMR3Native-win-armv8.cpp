@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win-armv8.cpp 111123 2025-09-25 19:56:08Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMR3Native-win-armv8.cpp 111145 2025-09-28 12:30:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -2283,11 +2283,8 @@ nemR3WinHandleExitMemory(PVMCC pVM, PVMCPUCC pVCpu, MY_WHV_RUN_VP_EXIT_CONTEXT c
     uint64_t const uIss   = pExit->MemoryAccess.Syndrome;
 
     VBOXSTRICTRC rcStrict;
-    /** @todo r=bird: Must check DFSC and/or LST to handle/reject(LST!=0) ST64BV,
-     *        LD64B, ST64B and ST64BV0.  Probably need to check that CM=0 as well
-     *        (so we don't confuse this with DC ZVA/VGA/GZVA, if that's at all
-     *        possible). */
-    if (uIss & ARMV8_EC_ISS_DATA_ABRT_ISV)
+    if (   (uIss & (ARMV8_EC_ISS_DATA_ABRT_ISV | ARMV8_EC_ISS_DATA_ABRT_LST))
+        == ARMV8_EC_ISS_DATA_ABRT_ISV) /* LST != 0 for LD64B/ST64B/ST64BV/ST64BV0 */
     {
         bool const fL2Fault    = RT_BOOL(uIss & ARMV8_EC_ISS_DATA_ABRT_S1PTW);
         bool const fWrite      = RT_BOOL(uIss & ARMV8_EC_ISS_DATA_ABRT_WNR);
