@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsInstTest1.py 111128 2025-09-26 06:00:36Z alexander.eichner@oracle.com $
+# $Id: tdGuestOsInstTest1.py 111142 2025-09-28 07:36:44Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Guest OS installation tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111128 $"
+__version__ = "$Revision: 111142 $"
 
 
 # Standard Python imports.
@@ -251,7 +251,7 @@ class tdGuestOsInstTest1(vbox.TestDriver):
             InstallTestVm(oSet, 'tst-suse102',      'OpenSUSE',         'opensuse102-txs.iso',      InstallTestVm.ksIdeController,   8, InstallTestVm.kf32Bit | InstallTestVm.kfReqIoApic),
             ## @todo InstallTestVm(oSet, 'tst-ubuntu606',    'Ubuntu',           'ubuntu606-txs.iso',        InstallTestVm.ksSataController,  8, InstallTestVm.kf32Bit),
             ## @todo InstallTestVm(oSet, 'tst-ubuntu710',    'Ubuntu',           'ubuntu710-txs.iso',        InstallTestVm.ksSataController,  8, InstallTestVm.kf32Bit),
-            InstallTestVm(oSet, 'tst-ubuntu804',    'Ubuntu',           'ubuntu804-txs.iso',        InstallTestVm.ksSataController,  8, InstallTestVm.kf32Bit | InstallTestVm.kfUbuntuNewAmdBug | InstallTestVm.kfReqPae | InstallTestVm.kfReqIoApic),
+            InstallTestVm(oSet, 'tst-ubuntu804',    'Ubuntu',           'ubuntu804-txs.iso',        InstallTestVm.ksSataController,  8, InstallTestVm.kf32Bit | InstallTestVm.kfUbuntuNewAmdBug | InstallTestVm.kfReqPae | InstallTestVm.kfReqIoApic | InstallTestVm.kfLinuxIoApic),
             InstallTestVm(oSet, 'tst-ubuntu804-64', 'Ubuntu_64',        'ubuntu804-amd64-txs.iso',  InstallTestVm.ksSataController,  8, InstallTestVm.kf64Bit),
             InstallTestVm(oSet, 'tst-ubuntu904',    'Ubuntu',           'ubuntu904-txs.iso',        InstallTestVm.ksSataController,  8, InstallTestVm.kf32Bit | InstallTestVm.kfUbuntuNewAmdBug | InstallTestVm.kfReqPae | InstallTestVm.kfLinuxIoApic),
             InstallTestVm(oSet, 'tst-ubuntu904-64', 'Ubuntu_64',        'ubuntu904-amd64-txs.iso',  InstallTestVm.ksSataController,  8, InstallTestVm.kf64Bit | InstallTestVm.kfLinuxIoApic),
