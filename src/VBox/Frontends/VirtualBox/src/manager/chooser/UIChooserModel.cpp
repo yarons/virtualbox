@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 109964 2025-06-25 15:26:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.cpp 111162 2025-09-29 10:12:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -26,6 +26,7 @@
  */
 
 /* Qt includes: */
+#include <QAccessibleInterface>
 #include <QDrag>
 #include <QGraphicsScene>
 #include <QGraphicsSceneContextMenuEvent>
@@ -437,6 +438,22 @@ void UIChooserModel::setCurrentItem(UIChooserItem *pItem)
 
     /* Set new current-item: */
     m_pCurrentItem = pItem;
+
+    /* Updating accessibility for newly chosen item if necessary: */
+    if (m_pCurrentItem && QAccessible::isActive())
+    {
+        /* Calculate index of item interface in parent interface: */
+        QAccessibleInterface *pIfaceItem = QAccessible::queryAccessibleInterface(m_pCurrentItem);
+        AssertPtrReturnVoid(pIfaceItem);
+        QAccessibleInterface *pIfaceParent = pIfaceItem->parent();
+        AssertPtrReturnVoid(pIfaceParent);
+        const int iIndexOfItem = pIfaceParent->indexOfChild(pIfaceItem);
+
+        /* Compose and send accessibility update event: */
+        QAccessibleEvent focusEvent(pIfaceParent, QAccessible::Focus);
+        focusEvent.setChild(iIndexOfItem);
+        QAccessible::updateAccessibility(&focusEvent);
+    }
 
     /* Disconnect old current-item (if any): */
     if (pOldCurrentItem)
