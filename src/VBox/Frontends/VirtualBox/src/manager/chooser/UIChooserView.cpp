@@ -1,4 +1,4 @@
-/* $Id: UIChooserView.cpp 111159 2025-09-29 10:03:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserView.cpp 111160 2025-09-29 10:07:53Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserView class implementation.
  */
@@ -102,6 +102,22 @@ public:
 
         /* Return the index of item in it's parent: */
         return pChildItem->parentItem()->items().indexOf(pChildItem);
+    }
+
+    /** Returns the state. */
+    virtual QAccessible::State state() const RT_OVERRIDE
+    {
+        /* Sanity check: */
+        AssertPtrReturn(view(), QAccessible::State());
+
+        /* Compose the state: */
+        QAccessible::State myState;
+        myState.focusable = true;
+        if (view()->hasFocus())
+            myState.focused = true;
+
+        /* Return the state: */
+        return myState;
     }
 
     /** Returns a text for the passed @a enmTextRole. */
