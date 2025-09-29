@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.cpp 111157 2025-09-29 09:56:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserItem.cpp 111158 2025-09-29 10:01:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class definition.
  */
@@ -85,7 +85,21 @@ public:
         /* Sanity check: */
         AssertPtrReturn(item(), 0);
 
-        /* Return the parent: */
+        /* Get item parent: */
+        UIChooserItem *pParentItem = item()->parentItem();
+
+        /* Sanity check: */
+        AssertPtrReturn(pParentItem, 0);
+
+        /* Return the parent item interface for non-root parent item: */
+        if (!pParentItem->isRoot())
+            return QAccessible::queryAccessibleInterface(pParentItem);
+
+        /* Sanity check: */
+        AssertPtrReturn(item()->model(), 0);
+        AssertPtrReturn(item()->model()->view(), 0);
+
+        /* Return the parent view interface if parent item is root: */
         return QAccessible::queryAccessibleInterface(item()->model()->view());
     }
 
