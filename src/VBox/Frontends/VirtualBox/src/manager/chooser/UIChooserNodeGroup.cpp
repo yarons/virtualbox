@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGroup.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIChooserNodeGroup.cpp 111153 2025-09-29 08:49:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGroup class implementation.
  */
@@ -116,7 +116,7 @@ QString UIChooserNodeGroup::fullName() const
 
 QString UIChooserNodeGroup::description() const
 {
-    return name();
+    return m_strDescription;
 }
 
 QString UIChooserNodeGroup::definition(bool fFull /* = false */) const
@@ -301,6 +301,9 @@ QUuid UIChooserNodeGroup::id() const
 
 void UIChooserNodeGroup::sltRetranslateUI()
 {
+    /* Update internal stuff: */
+    m_strDescription = tr("Machine Group");
+
     /* Update group-item: */
     if (item())
         item()->updateItem();
