@@ -1,4 +1,4 @@
-/* $Id: UIChooserView.cpp 111161 2025-09-29 10:10:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserView.cpp 111165 2025-09-29 11:42:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserView class implementation.
  */
@@ -59,7 +59,12 @@ public:
 
     /** Constructs an accessibility interface passing @a pWidget to the base-class. */
     UIAccessibilityInterfaceForUIChooserView(QWidget *pWidget)
+#ifdef VBOX_WS_MAC
+        // WORKAROUND: macOS doesn't respect QAccessible::Tree/TreeItem roles.
+        : QAccessibleWidget(pWidget, QAccessible::List)
+#else
         : QAccessibleWidget(pWidget, QAccessible::Tree)
+#endif
     {}
 
     /** Returns a specialized accessibility interface type. */
@@ -67,8 +72,12 @@ public:
     {
         switch (enmType)
         {
+#ifdef VBOX_WS_MAC
+            /// @todo Fix selection interface for macOS first of all!
+#else
             case QAccessible::SelectionInterface:
                 return static_cast<QAccessibleSelectionInterface*>(this);
+#endif
             default:
                 break;
         }
