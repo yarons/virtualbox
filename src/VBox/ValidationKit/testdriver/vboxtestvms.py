@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 111110 2025-09-25 13:32:30Z alexander.eichner@oracle.com $
+# $Id: vboxtestvms.py 111170 2025-09-29 15:00:56Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111110 $"
+__version__ = "$Revision: 111170 $"
 
 # Standard Python imports.
 import copy;
@@ -2364,7 +2364,8 @@ class TestVmManager(object):
 
         # Audio testing.
         TestVm('tst-audio-debian10-64',     kfGrpStdSmoke,       sHd = '6.1/audio/debian10-amd64-7.vdi',
-               sKind = 'Debian_64', acCpusSup = range(1, 33), fIoApic = True),
+               sKind = 'Debian_64', acCpusSup = range(1, 33), fIoApic = True,
+               fQuirks = g_kfQuirkLinuxIoApic),
 
         # DOS and Old Windows.
         AncientTestVm('tst-dos20',              sKind = 'DOS',
