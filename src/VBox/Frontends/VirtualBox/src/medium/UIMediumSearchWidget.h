@@ -1,4 +1,4 @@
-/* $Id: UIMediumSearchWidget.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMediumSearchWidget.h 111171 2025-09-29 15:51:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumSearchWidget class declaration.
  */
@@ -71,10 +71,6 @@ public:
     /** Performs the search on the items of the @p pTreeWidget. If @p is true
       * then the next marched item is selected. */
     void    search(QITreeWidget* pTreeWidget, bool fGotoNext = true);
-
-protected:
-
-    virtual void showEvent(QShowEvent *pEvent) RT_OVERRIDE;
 
 private slots:
 

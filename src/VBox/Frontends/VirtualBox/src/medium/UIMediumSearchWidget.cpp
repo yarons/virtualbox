@@ -1,4 +1,4 @@
-/* $Id: UIMediumSearchWidget.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMediumSearchWidget.cpp 111171 2025-09-29 15:51:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumSearchWidget class implementation.
  */
@@ -211,13 +211,6 @@ void UIMediumSearchWidget::sltRetranslateUI()
         m_pShowNextMatchButton->setToolTip(tr("Navigates to the next item matching the search term"));
         m_pShowNextMatchButton->setText(tr("Next Match"));
     }
-}
-
-void UIMediumSearchWidget::showEvent(QShowEvent *pEvent)
-{
-    if (m_pSearchTermLineEdit)
-        m_pSearchTermLineEdit->setFocus();
-    QWidget::showEvent(pEvent);
 }
 
 void UIMediumSearchWidget::markUnmarkItems(QList<QTreeWidgetItem*> &itemList, bool fMark)
