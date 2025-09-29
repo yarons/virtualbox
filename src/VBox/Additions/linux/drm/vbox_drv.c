@@ -1,4 +1,4 @@
-/*  $Id: vbox_drv.c 111097 2025-09-23 10:57:19Z vadim.galitsyn@oracle.com $ */
+/*  $Id: vbox_drv.c 111167 2025-09-29 14:04:45Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -382,7 +382,7 @@ static struct drm_driver driver = {
 	.load = vbox_driver_load,
 	.unload = vbox_driver_unload,
 #endif
-#if RTLNX_VER_MAX(6,12,0) && !RTLNX_RHEL_RANGE(9,7, 9,99)
+#if RTLNX_VER_MAX(6,12,0) && !RTLNX_RHEL_RANGE(9,6, 9,99)
 	.lastclose = vbox_driver_lastclose,
 #endif
 	.master_set = vbox_master_set,
