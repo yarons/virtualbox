@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.cpp 108883 2025-03-21 12:35:45Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserItemMachine.cpp 111152 2025-09-29 08:43:08Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class implementation.
  */
@@ -262,7 +262,6 @@ void UIChooserItemMachine::updateToolTip()
 
 QList<UIChooserItem*> UIChooserItemMachine::items(UIChooserNodeType) const
 {
-    AssertMsgFailed(("Machine graphics item do NOT support children!"));
     return QList<UIChooserItem*>();
 }
 
