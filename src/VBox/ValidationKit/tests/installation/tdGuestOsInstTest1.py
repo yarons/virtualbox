@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsInstTest1.py 111142 2025-09-28 07:36:44Z alexander.eichner@oracle.com $
+# $Id: tdGuestOsInstTest1.py 111166 2025-09-29 13:47:13Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Guest OS installation tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111142 $"
+__version__ = "$Revision: 111166 $"
 
 
 # Standard Python imports.
@@ -245,8 +245,8 @@ class tdGuestOsInstTest1(vbox.TestDriver):
             InstallTestVm(oSet, 'tst-fedora9',      'Fedora',           'fedora9-txs.iso',          InstallTestVm.ksSataController,  8, InstallTestVm.kf32Bit),
             InstallTestVm(oSet, 'tst-fedora18-64',  'Fedora_64',        'fedora18-x64-txs.iso',     InstallTestVm.ksSataController,  8, InstallTestVm.kf64Bit),
             InstallTestVm(oSet, 'tst-fedora18',     'Fedora',           'fedora18-txs.iso',         InstallTestVm.ksScsiController,  8, InstallTestVm.kf32Bit),
-            InstallTestVm(oSet, 'tst-ols6',         'Oracle',           'ols6-i386-txs.iso',        InstallTestVm.ksSataController, 12, InstallTestVm.kf32Bit | InstallTestVm.kfReqPae),
-            InstallTestVm(oSet, 'tst-ols6-64',      'Oracle_64',        'ols6-x86_64-txs.iso',      InstallTestVm.ksSataController, 12, InstallTestVm.kf64Bit),
+            InstallTestVm(oSet, 'tst-ols6',         'Oracle',           'ols6-i386-txs.iso',        InstallTestVm.ksSataController, 12, InstallTestVm.kf32Bit | InstallTestVm.kfReqPae | InstallTestVm.kfLinuxIoApic),
+            InstallTestVm(oSet, 'tst-ols6-64',      'Oracle_64',        'ols6-x86_64-txs.iso',      InstallTestVm.ksSataController, 12, InstallTestVm.kf64Bit | InstallTestVm.kfLinuxIoApic),
             InstallTestVm(oSet, 'tst-rhel5',        'RedHat',           'rhel5-txs.iso',            InstallTestVm.ksSataController,  8, InstallTestVm.kf32Bit | InstallTestVm.kfReqPae | InstallTestVm.kfReqIoApic | InstallTestVm.kfLinuxIoApic),
             InstallTestVm(oSet, 'tst-suse102',      'OpenSUSE',         'opensuse102-txs.iso',      InstallTestVm.ksIdeController,   8, InstallTestVm.kf32Bit | InstallTestVm.kfReqIoApic),
             ## @todo InstallTestVm(oSet, 'tst-ubuntu606',    'Ubuntu',           'ubuntu606-txs.iso',        InstallTestVm.ksSataController,  8, InstallTestVm.kf32Bit),
