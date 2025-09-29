@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 109275 2025-04-18 13:26:41Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.h 111172 2025-09-29 15:54:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -208,6 +208,9 @@ private:
 
     /** @name General stuff.
       * @{ */
+        /** Handles request to select passed @a pItem. */
+        bool maybeSelectItem(UIToolsItem *pItem);
+
         /** Holds the tool class. */
         UIToolClass  m_enmClass;
 
