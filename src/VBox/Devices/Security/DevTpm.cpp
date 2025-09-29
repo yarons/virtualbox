@@ -1,4 +1,4 @@
-/* $Id: DevTpm.cpp 111127 2025-09-26 00:25:11Z knut.osmundsen@oracle.com $ */
+/* $Id: DevTpm.cpp 111163 2025-09-29 10:32:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevTpm - Trusted Platform Module emulation.
  *
@@ -1504,7 +1504,7 @@ static DECLCALLBACK(VBOXSTRICTRC) tpmMmioFifoWrite(PPDMDEVINS pDevIns, void *pvU
     PDEVTPM pThis  = PDMDEVINS_2_DATA(pDevIns, PDEVTPM);
     RT_NOREF(pvUser);
 
-    Assert(pThis->fCrb);
+    Assert(!pThis->fCrb);
     Assert(!(off & (cb - 1))); /** @todo it's passthru, what do you expect... */
 
     uint32_t uReg = tpmGetRegisterFromOffset(off);
