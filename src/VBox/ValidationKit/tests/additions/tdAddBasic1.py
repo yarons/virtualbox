@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 111085 2025-09-22 14:41:20Z alexander.eichner@oracle.com $
+# $Id: tdAddBasic1.py 111169 2025-09-29 14:44:29Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111085 $"
+__version__ = "$Revision: 111169 $"
 
 # Standard Python imports.
 import os;
@@ -250,7 +250,8 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
                 ## @todo Final test: Uninstallation.
 
                 # Download the TxS (Test Execution Service) log. This is not fatal when not being present.
-                if not fRc:
+                # The TXS session can be None if re-connecting after the reboot failed.
+                if not fRc and oTxsSession is not None:
                     self.txsDownloadFiles(oSession, oTxsSession,
                                           [ (oTestVm.pathJoin(self.getGuestTempDir(oTestVm), 'vbox-txs-release.log'),
                                                               'vbox-txs-%s.log' % oTestVm.sVmName) ],
