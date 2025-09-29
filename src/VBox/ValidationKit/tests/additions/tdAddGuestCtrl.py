@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # pylint: disable=too-many-lines
-# $Id: tdAddGuestCtrl.py 111075 2025-09-21 17:11:00Z alexander.eichner@oracle.com $
+# $Id: tdAddGuestCtrl.py 111168 2025-09-29 14:29:23Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Guest Control Tests.
@@ -38,7 +38,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111075 $"
+__version__ = "$Revision: 111168 $"
 
 # Standard Python imports.
 import errno
@@ -5732,10 +5732,13 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                     oWrapperProgress = vboxwrappers.ProgressWrapper(oCurProgress, self.oTstDrv.oVBoxMgr,
                                                                     self.oTstDrv, "gctrlUpGA");
                     oWrapperProgress.wait();
-                    assert oWrapperProgress.isCompleted();
-                    fRc = oWrapperProgress.isSuccess();
-                    if not fRc:
-                        oWrapperProgress.logResult(fIgnoreErrors = True);
+                    fRc = oWrapperProgress.isCompleted();
+                    if fRc:
+                        fRc = oWrapperProgress.isSuccess();
+                        if not fRc:
+                            oWrapperProgress.logResult(fIgnoreErrors = True);
+                    else:
+                        fRc = reporter.error('Timed out waiting for the guest additions update to complete');
                 else:
                     fRc = reporter.error('No progress object returned');
 
