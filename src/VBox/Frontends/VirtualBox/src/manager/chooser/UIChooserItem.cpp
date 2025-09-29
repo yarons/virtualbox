@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.cpp 111156 2025-09-29 09:53:03Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserItem.cpp 111157 2025-09-29 09:56:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class definition.
  */
@@ -76,15 +76,7 @@ public:
     /** Returns the role. */
     virtual QAccessible::Role role() const RT_OVERRIDE
     {
-        /* Sanity check: */
-        AssertPtrReturn(item(), QAccessible::NoRole);
-
-        /* Return the role of group: */
-        if (item()->type() == UIChooserNodeType_Group)
-            return QAccessible::List;
-
-        /* ListItem by default: */
-        return QAccessible::ListItem;
+        return QAccessible::TreeItem;
     }
 
     /** Returns the parent. */

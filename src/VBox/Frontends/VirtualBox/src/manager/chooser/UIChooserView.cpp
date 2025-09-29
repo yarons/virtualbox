@@ -1,4 +1,4 @@
-/* $Id: UIChooserView.cpp 111155 2025-09-29 09:47:49Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserView.cpp 111157 2025-09-29 09:56:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserView class implementation.
  */
@@ -59,7 +59,7 @@ public:
 
     /** Constructs an accessibility interface passing @a pWidget to the base-class. */
     UIAccessibilityInterfaceForUIChooserView(QWidget *pWidget)
-        : QAccessibleWidget(pWidget, QAccessible::List)
+        : QAccessibleWidget(pWidget, QAccessible::Tree)
     {}
 
     /** Returns the number of children. */
