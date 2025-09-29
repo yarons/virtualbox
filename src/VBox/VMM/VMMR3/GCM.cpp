@@ -1,4 +1,4 @@
-/* $Id: GCM.cpp 111130 2025-09-26 06:10:39Z alexander.eichner@oracle.com $ */
+/* $Id: GCM.cpp 111149 2025-09-29 06:38:25Z alexander.eichner@oracle.com $ */
 /** @file
  * GCM - Guest Compatibility Manager.
  */
@@ -443,7 +443,7 @@ static DECLCALLBACK(void) gcmR3PatchGuest(PVM pVM, GCMGSTPATCHID enmPatch)
                     if (!iNoTimerCheck)
                     {
                         iNoTimerCheck = 1;
-                        rc = DBGFR3MemRead(pUVM, 0 /*idCpu*/, &Addr, &iNoTimerCheck, sizeof(iNoTimerCheck));
+                        rc = DBGFR3MemWrite(pUVM, 0 /*idCpu*/, &Addr, &iNoTimerCheck, sizeof(iNoTimerCheck));
                         if (RT_SUCCESS(rc))
                             LogRel(("GCM:    no_timer_check enabled successfully, good luck!\n"));
                         else
