@@ -1,4 +1,4 @@
-/* $Id: UIHomePane.cpp 110864 2025-09-02 19:25:55Z sergey.dubov@oracle.com $ */
+/* $Id: UIHomePane.cpp 111185 2025-09-30 10:53:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHomePane class implementation.
  */
@@ -178,6 +178,7 @@ void UIHomePane::prepare()
         m_pLabelGreetings = new QIRichTextLabel(this);
         if (m_pLabelGreetings)
         {
+            m_pLabelGreetings->setFocusPolicy(Qt::TabFocus);
             m_pLabelGreetings->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
             connect(m_pLabelGreetings, &QIRichTextLabel::sigLinkClicked, this, &UIHomePane::sltHandleLinkActivated);
             pMainLayout->addWidget(m_pLabelGreetings, 0, 0);

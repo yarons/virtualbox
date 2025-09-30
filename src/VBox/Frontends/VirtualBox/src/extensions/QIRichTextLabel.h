@@ -1,4 +1,4 @@
-/* $Id: QIRichTextLabel.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: QIRichTextLabel.h 111185 2025-09-30 10:53:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIRichTextLabel class declaration.
  */
@@ -72,13 +72,14 @@ public:
     /** Defines word wrapping @a policy. */
     void setWordWrapMode(QTextOption::WrapMode policy);
 
-    /** Installs event filter for a passed @ pFilterObj. */
-    void installEventFilter(QObject *pFilterObj);
-
     /** Returns browser font. */
     QFont browserFont() const;
     /** Defines @a newFont for browser. */
     void setBrowserFont(const QFont &newFont);
+
+    /** Defines focus @a enmPolicy for the internal text-browser.
+      * @note Keep in mind that by historical reasons default policy is Qt::ClickFocus. */
+    void setFocusPolicy(Qt::FocusPolicy enmPolicy);
 
 public slots:
 

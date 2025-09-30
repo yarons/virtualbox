@@ -1,4 +1,4 @@
-/* $Id: QIRichTextLabel.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: QIRichTextLabel.cpp 111185 2025-09-30 10:53:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIRichTextLabel class implementation.
  */
@@ -200,12 +200,6 @@ void QIRichTextLabel::setWordWrapMode(QTextOption::WrapMode policy)
     m_pTextBrowser->setWordWrapMode(policy);
 }
 
-void QIRichTextLabel::installEventFilter(QObject *pFilterObj)
-{
-    QWidget::installEventFilter(pFilterObj);
-    m_pTextBrowser->installEventFilter(pFilterObj);
-}
-
 QFont QIRichTextLabel::browserFont() const
 {
     return m_pTextBrowser->font();
@@ -214,6 +208,12 @@ QFont QIRichTextLabel::browserFont() const
 void QIRichTextLabel::setBrowserFont(const QFont &newFont)
 {
     m_pTextBrowser->setFont(newFont);
+}
+
+void QIRichTextLabel::setFocusPolicy(Qt::FocusPolicy enmPolicy)
+{
+    AssertPtrReturnVoid(m_pTextBrowser);
+    m_pTextBrowser->setFocusPolicy(enmPolicy);
 }
 
 int QIRichTextLabel::minimumTextWidth() const
