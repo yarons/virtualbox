@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 111172 2025-09-29 15:54:49Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.h 111189 2025-09-30 13:20:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -178,6 +178,11 @@ private slots:
 
         /** Handles tool label visibility change event. */
         void sltHandleToolLabelsVisibilityChange(bool fVisible);
+
+        /** Handles view's focus-in event. */
+        void sltHandleViewFocusInEvent();
+        /** Handles view's focus-out event. */
+        void sltHandleViewFocusOutEvent();
     /** @} */
 
 private:

@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.cpp 110963 2025-09-11 14:56:14Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsView.cpp 111189 2025-09-30 13:20:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class implementation.
  */
@@ -146,6 +146,24 @@ void UIToolsView::resizeEvent(QResizeEvent *pEvent)
 
     /* Update model's layout: */
     model()->updateLayout();
+}
+
+void UIToolsView::focusInEvent(QFocusEvent *pEvent)
+{
+    /* Call to base-class: */
+    QIGraphicsView::focusInEvent(pEvent);
+
+    /* Notify listeners about focus-in event: */
+    emit sigFocusInEvent();
+}
+
+void UIToolsView::focusOutEvent(QFocusEvent *pEvent)
+{
+    /* Call to base-class: */
+    QIGraphicsView::focusOutEvent(pEvent);
+
+    /* Notify listeners about focus-out event: */
+    emit sigFocusOutEvent();
 }
 
 void UIToolsView::sltRetranslateUI()

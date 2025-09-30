@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.h 109237 2025-04-15 16:25:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsView.h 111189 2025-09-30 13:20:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class declaration.
  */
@@ -43,6 +43,13 @@ class UIToolsView : public QIGraphicsView
 {
     Q_OBJECT;
 
+signals:
+
+    /** Notifies listeners about focus-in event. */
+    void sigFocusInEvent();
+    /** Notifies listeners about focus-out event. */
+    void sigFocusOutEvent();
+
 public:
 
     /** Constructs a Tools-view passing @a pParent to the base-class.
@@ -72,6 +79,11 @@ protected:
       * @{ */
         /** Handles resize @a pEvent. */
         virtual void resizeEvent(QResizeEvent *pEvent) RT_OVERRIDE;
+
+        /** Handles focus-in event. */
+        virtual void focusInEvent(QFocusEvent *pEvent) RT_OVERRIDE;
+        /** Handles focus-out event. */
+        virtual void focusOutEvent(QFocusEvent *pEvent) RT_OVERRIDE;
     /** @} */
 
 private slots:
