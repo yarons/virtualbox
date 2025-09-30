@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatArmV8.cpp 110960 2025-09-11 11:28:20Z knut.osmundsen@oracle.com $ */
+/* $Id: DisasmFormatArmV8.cpp 111175 2025-09-30 07:32:24Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Disassembler - ARMv8 Style Formatter.
  */
@@ -553,8 +553,8 @@ static const char *disasmFormatArmV8SysReg(PCDISSTATE pDis, PCDISOPPARAM pParam,
     uint8_t bTmp = (idSysReg >> 7) & 0xf;
     if (bTmp >= 10)
     {
-        pachTmp[idx++] = '1' + (bTmp - 10);
-        bTmp -= 10;
+        pachTmp[idx++] = '0' + (bTmp / 10);
+        bTmp %= 10;
     }
     pachTmp[idx++] = '0' + bTmp;
     pachTmp[idx++] = '_';
@@ -562,8 +562,8 @@ static const char *disasmFormatArmV8SysReg(PCDISSTATE pDis, PCDISOPPARAM pParam,
     bTmp = (idSysReg >> 3) & 0xf;
     if (bTmp >= 10)
     {
-        pachTmp[idx++] = '1' + (bTmp - 10);
-        bTmp -= 10;
+        pachTmp[idx++] = '0' + (bTmp / 10);
+        bTmp %= 10;
     }
     pachTmp[idx++] = '0' + bTmp;
 
@@ -598,8 +598,8 @@ static const char *disasmFormatArmV8SysIns(PCDISOPPARAM pParam, char *pachTmp, s
     uint8_t bTmp =  + ARMV8_AARCH64_SYSREG_ID_GET_CRN(idSysIns);
     if (bTmp >= 10)
     {
-        pachTmp[idx++] = '1' + (bTmp - 10);
-        bTmp -= 10;
+        pachTmp[idx++] = '0' + (bTmp / 10);
+        bTmp %= 10;
     }
     pachTmp[idx++] = '0' + bTmp;
     pachTmp[idx++] = '_';
@@ -607,8 +607,8 @@ static const char *disasmFormatArmV8SysIns(PCDISOPPARAM pParam, char *pachTmp, s
     bTmp =  + ARMV8_AARCH64_SYSREG_ID_GET_CRM(idSysIns);
     if (bTmp >= 10)
     {
-        pachTmp[idx++] = '1' + (bTmp - 10);
-        bTmp -= 10;
+        pachTmp[idx++] = '0' + (bTmp / 10);
+        bTmp %= 10;
     }
     pachTmp[idx++] = '0' + bTmp;
     pachTmp[idx++] = '_';
