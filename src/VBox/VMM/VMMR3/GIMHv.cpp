@@ -1,4 +1,4 @@
-/* $Id: GIMHv.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: GIMHv.cpp 111178 2025-09-30 08:24:34Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIM - Guest Interface Manager, Hyper-V implementation.
  */
@@ -597,7 +597,7 @@ VMMR3_INT_DECL(int) gimR3HvInitCompleted(PVM pVM)
      * has finished inserting/removing the x2APIC MSR range.
      */
     if (pHv->uHyperHints & GIM_HV_HINT_X2APIC_MSRS)
-        PDMR3ApicHvSetCompatMode(pVM, true);
+        PDMR3ApicSetHvCompatMode(pVM, true);
 
     return rc;
 }
