@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 111076 2025-09-22 08:10:34Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMSVMR0.cpp 111177 2025-09-30 07:47:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -6894,7 +6894,7 @@ HMSVM_EXIT_DECL hmR0SvmExitCpuid(PVMCPUCC pVCpu, PSVMTRANSIENT pSvmTransient)
     HMSVM_CPUMCTX_IMPORT_STATE(pVCpu, IEM_CPUMCTX_EXTRN_EXEC_DECODED_NO_MEM_MASK | CPUMCTX_EXTRN_RAX | CPUMCTX_EXTRN_RCX);
     VBOXSTRICTRC rcStrict;
     PCEMEXITREC pExitRec = EMHistoryUpdateFlagsAndTypeAndPC(pVCpu,
-                                                            EMEXIT_MAKE_FT(EMEXIT_F_KIND_EM | EMEXIT_F_HM, EMEXITTYPE_CPUID),
+                                                            EMEXIT_MAKE_FT(EMEXIT_F_KIND_EM | EMEXIT_F_HM, EMEXITTYPE_X86_CPUID),
                                                             pVCpu->cpum.GstCtx.rip + pVCpu->cpum.GstCtx.cs.u64Base);
     if (!pExitRec)
     {
@@ -7690,11 +7690,11 @@ HMSVM_EXIT_DECL hmR0SvmExitIOInstr(PVMCPUCC pVCpu, PSVMTRANSIENT pSvmTransient)
         pExitRec = EMHistoryUpdateFlagsAndTypeAndPC(pVCpu,
                                                     !IoExitInfo.n.u1Str
                                                     ? IoExitInfo.n.u1Type == SVM_IOIO_READ
-                                                    ? EMEXIT_MAKE_FT(EMEXIT_F_KIND_EM | EMEXIT_F_HM, EMEXITTYPE_IO_PORT_READ)
-                                                    : EMEXIT_MAKE_FT(EMEXIT_F_KIND_EM | EMEXIT_F_HM, EMEXITTYPE_IO_PORT_WRITE)
+                                                    ? EMEXIT_MAKE_FT(EMEXIT_F_KIND_EM | EMEXIT_F_HM, EMEXITTYPE_X86_PIO_READ)
+                                                    : EMEXIT_MAKE_FT(EMEXIT_F_KIND_EM | EMEXIT_F_HM, EMEXITTYPE_X86_PIO_WRITE)
                                                     : IoExitInfo.n.u1Type == SVM_IOIO_READ
-                                                    ? EMEXIT_MAKE_FT(EMEXIT_F_KIND_EM | EMEXIT_F_HM, EMEXITTYPE_IO_PORT_STR_READ)
-                                                    : EMEXIT_MAKE_FT(EMEXIT_F_KIND_EM | EMEXIT_F_HM, EMEXITTYPE_IO_PORT_STR_WRITE),
+                                                    ? EMEXIT_MAKE_FT(EMEXIT_F_KIND_EM | EMEXIT_F_HM, EMEXITTYPE_X86_PIO_STR_READ)
+                                                    : EMEXIT_MAKE_FT(EMEXIT_F_KIND_EM | EMEXIT_F_HM, EMEXITTYPE_X86_PIO_STR_WRITE),
                                                     pVCpu->cpum.GstCtx.rip + pVCpu->cpum.GstCtx.cs.u64Base);
     if (!pExitRec)
     {

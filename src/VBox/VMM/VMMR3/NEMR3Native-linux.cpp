@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-linux.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: NEMR3Native-linux.cpp 111177 2025-09-30 07:47:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Linux backend.
  */
@@ -1277,11 +1277,11 @@ static VBOXSTRICTRC nemHCLnxHandleExitIo(PVMCC pVM, PVMCPUCC pVCpu, struct kvm_r
     EMHistoryAddExit(pVCpu,
                      pRun->io.count == 1
                      ? (  pRun->io.direction == KVM_EXIT_IO_IN
-                        ? EMEXIT_MAKE_FT(EMEXIT_F_KIND_EM, EMEXITTYPE_IO_PORT_READ)
-                        : EMEXIT_MAKE_FT(EMEXIT_F_KIND_EM, EMEXITTYPE_IO_PORT_WRITE))
+                        ? EMEXIT_MAKE_FT(EMEXIT_F_KIND_EM, EMEXITTYPE_X86_PIO_READ)
+                        : EMEXIT_MAKE_FT(EMEXIT_F_KIND_EM, EMEXITTYPE_X86_PIO_WRITE))
                      : (  pRun->io.direction == KVM_EXIT_IO_IN
-                        ? EMEXIT_MAKE_FT(EMEXIT_F_KIND_EM, EMEXITTYPE_IO_PORT_STR_READ)
-                        : EMEXIT_MAKE_FT(EMEXIT_F_KIND_EM, EMEXITTYPE_IO_PORT_STR_WRITE)),
+                        ? EMEXIT_MAKE_FT(EMEXIT_F_KIND_EM, EMEXITTYPE_X86_PIO_STR_READ)
+                        : EMEXIT_MAKE_FT(EMEXIT_F_KIND_EM, EMEXITTYPE_X86_PIO_STR_WRITE)),
                      pRun->s.regs.regs.rip + pRun->s.regs.sregs.cs.base, ASMReadTSC());
 
     /*
@@ -1404,7 +1404,7 @@ static VBOXSTRICTRC nemHCLnxHandleExitRdMsr(PVMCPUCC pVCpu, struct kvm_run *pRun
      * stateful and the instruction will be completed in the next KVM_RUN call.
      * There seems no way to circumvent this.
      */
-    EMHistoryAddExit(pVCpu, EMEXIT_MAKE_FT(EMEXIT_F_KIND_EM, EMEXITTYPE_MSR_READ),
+    EMHistoryAddExit(pVCpu, EMEXIT_MAKE_FT(EMEXIT_F_KIND_EM, EMEXITTYPE_X86_MSR_READ),
                      pRun->s.regs.regs.rip + pRun->s.regs.sregs.cs.base, ASMReadTSC());
 
     /*
@@ -1447,7 +1447,7 @@ static VBOXSTRICTRC nemHCLnxHandleExitWrMsr(PVMCPUCC pVCpu, struct kvm_run *pRun
      * stateful and the instruction will be completed in the next KVM_RUN call.
      * There seems no way to circumvent this.
      */
-    EMHistoryAddExit(pVCpu, EMEXIT_MAKE_FT(EMEXIT_F_KIND_EM, EMEXITTYPE_MSR_WRITE),
+    EMHistoryAddExit(pVCpu, EMEXIT_MAKE_FT(EMEXIT_F_KIND_EM, EMEXITTYPE_X86_MSR_WRITE),
                      pRun->s.regs.regs.rip + pRun->s.regs.sregs.cs.base, ASMReadTSC());
 
     /*
