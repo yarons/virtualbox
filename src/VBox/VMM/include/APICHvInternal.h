@@ -1,4 +1,4 @@
-/* $Id: APICHvInternal.h 111178 2025-09-30 08:24:34Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: APICHvInternal.h 111184 2025-09-30 10:24:59Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - NEM Hyper-V backend.
  */
@@ -117,7 +117,6 @@ typedef struct HVAPICCPU
     uint64_t                    uApicBaseMsr;
     /** The error status register's internal state. */
     uint32_t                    uEsrInternal;
-    /** @} */
 
     /** @name The APIC timer.
      * @{ */
