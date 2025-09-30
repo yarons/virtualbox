@@ -1,4 +1,4 @@
-/* $Id: NEMR3.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: NEMR3.cpp 111176 2025-09-30 07:36:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * NEM - Native execution manager.
  */
@@ -485,7 +485,7 @@ VMMR3_INT_DECL(bool) NEMR3NeedSpecialTscMode(PVM pVM)
  * Gets the name of a generic NEM exit code.
  *
  * @returns Pointer to read only string if @a uExit is known, otherwise NULL.
- * @param   uExit               The NEM exit to name.
+ * @param   uExit           The NEM exit to name.
  */
 VMMR3DECL(const char *) NEMR3GetExitName(uint32_t uExit)
 {
@@ -511,7 +511,6 @@ VMMR3DECL(const char *) NEMR3GetExitName(uint32_t uExit)
         case NEMEXITTYPE_END:
             break;
     }
-
     return NULL;
 }
 
