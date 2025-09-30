@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsUnattendedInst1.py 111187 2025-09-30 11:27:04Z alexander.eichner@oracle.com $
+# $Id: tdGuestOsUnattendedInst1.py 111188 2025-09-30 11:50:50Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Guest OS unattended installation tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111187 $"
+__version__ = "$Revision: 111188 $"
 
 
 # Standard Python imports.
@@ -77,7 +77,8 @@ class UnattendedVm(vboxtestvms.BaseTestVm):
     kfNeedCom1              = 0x0008; ##< Need serial port, typically for satifying the windows kernel debugger.
 
     kfLinuxIoApic           = 0x0010; ##< Patch the Linux guest to work around IO-APIC issues.
-    kfWinGaTimesync         = 0x0020; ##< Don't set the host time when the timesync service starts as that breaks the task scheduler causing TXS to not start.
+    kfWinGaTimesync         = 0x0020; ##< Don't set the host time when the timesync service starts as that breaks
+                                      #   the task scheduler causing TXS to not start.
 
     kfIdeIrqDelay           = 0x1000;
     kfUbuntuNewAmdBug       = 0x2000;
@@ -335,7 +336,8 @@ class UnattendedVm(vboxtestvms.BaseTestVm):
 
         if self.fOptNoTimesyncSetStart:
             fRc = oSession.setGuestPropertyValue('/VirtualBox/GuestAdd/VBoxService/--timesync-no-set-start', '1') and fRc;
-            fRc = oSession.setGuestPropertyValue('/VirtualBox/GuestAdd/VBoxService/--timesync-set-threshold', '43200000') and fRc; # 12 hours
+            fRc =     oSession.setGuestPropertyValue('/VirtualBox/GuestAdd/VBoxService/--timesync-set-threshold', '43200000') \
+                  and fRc; # 12 hours
 
         # Save the settings.
         fRc = fRc and oSession.saveSettings()
