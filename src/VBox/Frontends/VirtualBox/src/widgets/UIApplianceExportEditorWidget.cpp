@@ -1,4 +1,4 @@
-/* $Id: UIApplianceExportEditorWidget.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIApplianceExportEditorWidget.cpp 111182 2025-09-30 09:38:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIApplianceExportEditorWidget class implementation.
  */
@@ -25,10 +25,8 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-/* Qt includes: */
-#include <QTextEdit>
-
 /* GUI includes: */
+#include "QITextEdit.h"
 #include "QITreeView.h"
 #include "UIApplianceExportEditorWidget.h"
 #include "UIMessageCenter.h"

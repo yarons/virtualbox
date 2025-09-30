@@ -1,4 +1,4 @@
-/* $Id: UIDescriptionEditor.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIDescriptionEditor.cpp 111182 2025-09-30 09:38:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDescriptionEditor class implementation.
  */
@@ -27,10 +27,10 @@
 
 /* Qt includes: */
 #include <QApplication>
-#include <QTextEdit>
 #include <QVBoxLayout>
 
 /* GUI includes: */
+#include "QITextEdit.h"
 #include "UIDescriptionEditor.h"
 
 
@@ -96,7 +96,7 @@ void UIDescriptionEditor::prepare()
         pLayout->setContentsMargins(0, 0, 0, 0);
 
         /* Prepare text-edit: */
-        m_pTextEdit = new QTextEdit(this);
+        m_pTextEdit = new QITextEdit(this);
         if (m_pTextEdit)
         {
             setFocusProxy(m_pTextEdit);

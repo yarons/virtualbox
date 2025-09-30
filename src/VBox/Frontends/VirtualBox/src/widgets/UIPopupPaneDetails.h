@@ -1,4 +1,4 @@
-/* $Id: UIPopupPaneDetails.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIPopupPaneDetails.h 111182 2025-09-30 09:38:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPopupPaneDetails class declaration.
  */
@@ -38,7 +38,7 @@
 #include "UILibraryDefs.h"
 
 /* Forward declarations: */
-class QTextEdit;
+class QITextEdit;
 class UIAnimation;
 
 /** QWidget extension providing GUI with popup-pane details-pane prototype class. */
@@ -128,7 +128,7 @@ private:
     QString m_strText;
 
     /** Holds the text-editor instance. */
-    QTextEdit *m_pTextEdit;
+    QITextEdit *m_pTextEdit;
 
     /** Holds the desired textr-editor width. */
     int m_iDesiredTextEditWidth;

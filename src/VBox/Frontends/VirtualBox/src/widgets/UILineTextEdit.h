@@ -1,4 +1,4 @@
-/* $Id: UILineTextEdit.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UILineTextEdit.h 111182 2025-09-30 09:38:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UILineTextEdit class declaration.
  */
@@ -38,8 +38,8 @@
 #include <QPushButton>
 
 /* Qt forward declarations */
-class QTextEdit;
 class QDialogButtonBox;
+class QITextEdit;
 
 ////////////////////////////////////////////////////////////////////////////////
 // UITextEditor
@@ -61,7 +61,7 @@ private slots:
 
 private:
     /* Private member vars */
-    QTextEdit        *m_pTextEdit;
+    QITextEdit       *m_pTextEdit;
     QDialogButtonBox *m_pButtonBox;
     QPushButton      *m_pOpenButton;
 };

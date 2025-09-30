@@ -1,4 +1,4 @@
-/* $Id: UIMediumDetailsWidget.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMediumDetailsWidget.h 111182 2025-09-30 09:38:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumDetailsWidget class declaration.
  */
@@ -48,10 +48,10 @@ class QComboBox;
 class QLabel;
 class QLineEdit;
 class QStackedLayout;
-class QTextEdit;
 class QWidget;
 class QILabel;
 class QITabWidget;
+class QITextEdit;
 class QIToolButton;
 class UIEnumerationProgressBar;
 class UIMediumManagerWidget;
@@ -327,11 +327,11 @@ private:
         QIToolButton *m_pButtonLocation;
 
         /** Holds the description label. */
-        QLabel    *m_pLabelDescription;
+        QLabel     *m_pLabelDescription;
         /** Holds the description editor. */
-        QTextEdit *m_pEditorDescription;
+        QITextEdit *m_pEditorDescription;
         /** Holds the description error pane. */
-        QLabel    *m_pErrorPaneDescription;
+        QLabel     *m_pErrorPaneDescription;
 
         /** Holds the size label. */
         QLabel             *m_pLabelSize;

@@ -1,4 +1,4 @@
-/* $Id: UIDescriptionEditor.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIDescriptionEditor.h 111182 2025-09-30 09:38:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDescriptionEditor class declaration.
  */
@@ -35,7 +35,7 @@
 #include "UIEditor.h"
 
 /* Forward declarations: */
-class QTextEdit;
+class QITextEdit;
 
 /** UIEditor sub-class used as machine description editor. */
 class SHARED_LIBRARY_STUFF UIDescriptionEditor : public UIEditor
@@ -72,8 +72,8 @@ private:
     /** Holds the value to be set. */
     QString  m_strValue;
 
-    /** Holds the check-box instance. */
-    QTextEdit *m_pTextEdit;
+    /** Holds the text-edit instance. */
+    QITextEdit *m_pTextEdit;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_settings_editors_UIDescriptionEditor_h */

@@ -1,4 +1,4 @@
-/* $Id: UINetworkFeaturesEditor.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UINetworkFeaturesEditor.cpp 111182 2025-09-30 09:38:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkFeaturesEditor class implementation.
  */
@@ -31,11 +31,11 @@
 #include <QGridLayout>
 #include <QLabel>
 #include <QPushButton>
-#include <QTextEdit>
 #include <QVBoxLayout>
 
 /* GUI includes: */
 #include "QILineEdit.h"
+#include "QITextEdit.h"
 #include "QIToolButton.h"
 #include "UIConverter.h"
 #include "UIGlobalSession.h"
@@ -355,7 +355,7 @@ void UINetworkFeaturesEditor::prepare()
             m_pLayoutSettings->addWidget(m_pLabelGenericProperties, 3, 0);
         }
         /* Prepare MAC editor: */
-        m_pEditorGenericProperties = new QTextEdit(this);
+        m_pEditorGenericProperties = new QITextEdit(this);
         if (m_pEditorGenericProperties)
             m_pLayoutSettings->addWidget(m_pEditorGenericProperties, 3, 1, 1, 3);
 

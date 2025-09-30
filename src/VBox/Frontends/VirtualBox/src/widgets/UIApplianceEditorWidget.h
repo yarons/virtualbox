@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIApplianceEditorWidget.h 111182 2025-09-30 09:38:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class declaration.
  */
@@ -48,7 +48,7 @@
 class UIApplianceModelItem;
 class QCheckBox;
 class QLabel;
-class QTextEdit;
+class QITextEdit;
 class QITreeView;
 class QVBoxLayout;
 
@@ -347,11 +347,11 @@ protected:
     QITreeView *m_pTreeViewSettings;
 
     /** Holds the warning pane instance. */
-    QWidget   *m_pPaneWarning;
+    QWidget    *m_pPaneWarning;
     /** Holds the warning label instance. */
-    QLabel    *m_pLabelWarning;
+    QLabel     *m_pLabelWarning;
     /** Holds the warning browser instance. */
-    QTextEdit *m_pTextEditWarning;
+    QITextEdit *m_pTextEditWarning;
 
 private slots:
 

@@ -1,4 +1,4 @@
-/* $Id: UIGuestProcessControlWidget.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIGuestProcessControlWidget.cpp 111182 2025-09-30 09:38:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlWidget class implementation.
  */
@@ -33,6 +33,7 @@
 /* GUI includes: */
 #include "QIDialog.h"
 #include "QIDialogButtonBox.h"
+#include "QITextEdit.h"
 #include "QIToolBar.h"
 #include "UIGlobalSession.h"
 #include "UIGuestControlConsole.h"
@@ -59,7 +60,7 @@ public:
 private:
 
     QVBoxLayout *m_pMainLayout;
-    QTextEdit   *m_pInfoEdit;
+    QITextEdit  *m_pInfoEdit;
     QString      m_strProperty;
 };
 
@@ -102,7 +103,7 @@ private:
 UISessionProcessPropertiesDialog::UISessionProcessPropertiesDialog(QWidget *pParent /* = 0 */, Qt::WindowFlags enmFlags /* = Qt::WindowFlags() */)
     :QIDialog(pParent, enmFlags)
     , m_pMainLayout(new QVBoxLayout)
-    , m_pInfoEdit(new QTextEdit)
+    , m_pInfoEdit(new QITextEdit)
 {
     setLayout(m_pMainLayout);
 

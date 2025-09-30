@@ -1,4 +1,4 @@
-/* $Id: UITakeSnapshotDialog.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UITakeSnapshotDialog.cpp 111182 2025-09-30 09:38:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITakeSnapshotDialog class implementation.
  */
@@ -37,6 +37,7 @@
 /* GUI includes: */
 #include "QIDialogButtonBox.h"
 #include "QILabel.h"
+#include "QITextEdit.h"
 #include "VBoxUtils.h"
 #include "UICommon.h"
 #include "UIDesktopWidgetWatchdog.h"
@@ -262,7 +263,7 @@ void UITakeSnapshotDialog::prepareContents()
             }
 
             /* Create description editor: */
-            m_pEditorDescription = new QTextEdit;
+            m_pEditorDescription = new QITextEdit;
             if (m_pEditorDescription)
             {
                 /* Configure editor: */

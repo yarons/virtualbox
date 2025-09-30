@@ -1,4 +1,4 @@
-/* $Id: UILineTextEdit.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UILineTextEdit.cpp 111182 2025-09-30 09:38:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UILineTextEdit class definitions.
  */
@@ -30,12 +30,12 @@
 #include <QFile>
 #include <QLineEdit>
 #include <QPushButton>
-#include <QTextEdit>
 #include <QTextStream>
 #include <QVBoxLayout>
 
 /* GUI includes: */
 #include "QIFileDialog.h"
+#include "QITextEdit.h"
 #include "UICommon.h"
 #include "UILineTextEdit.h"
 #include "UITranslationEventListener.h"
@@ -50,7 +50,7 @@ UITextEditor::UITextEditor(QWidget *pParent /* = NULL */)
     pMainLayout->setContentsMargins(12, 12, 12, 12);
 
     /* We need a text editor */
-    m_pTextEdit = new QTextEdit(this);
+    m_pTextEdit = new QITextEdit(this);
     pMainLayout->addWidget(m_pTextEdit);
     /* and some buttons to interact with */
     m_pButtonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal, this);

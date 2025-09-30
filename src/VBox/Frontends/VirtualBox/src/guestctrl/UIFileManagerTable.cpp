@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIFileManagerTable.cpp 111182 2025-09-30 09:38:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -33,13 +33,13 @@
 #include <QHeaderView>
 #include <QItemDelegate>
 #include <QGridLayout>
-#include <QTextEdit>
 
 /* GUI includes: */
 #include "QIDialog.h"
 #include "QIDialogButtonBox.h"
 #include "QILabel.h"
 #include "QILineEdit.h"
+#include "QITextEdit.h"
 #include "QIToolBar.h"
 #include "UIActionPool.h"
 #include "UIFileSystemModel.h"
@@ -284,7 +284,7 @@ QString UIStringInputDialog::getString() const
 UIPropertiesDialog::UIPropertiesDialog(QWidget *pParent, Qt::WindowFlags enmFlags)
     :QIDialog(pParent, enmFlags)
     , m_pMainLayout(new QVBoxLayout)
-    , m_pInfoEdit(new QTextEdit)
+    , m_pInfoEdit(new QITextEdit)
 {
     setLayout(m_pMainLayout);
 

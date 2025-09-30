@@ -1,4 +1,4 @@
-/* $Id: UIPopupPaneDetails.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIPopupPaneDetails.cpp 111182 2025-09-30 09:38:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPopupPaneDetails class implementation.
  */
@@ -28,9 +28,9 @@
 /* Qt includes: */
 #include <QCheckBox>
 #include <QTextDocument>
-#include <QTextEdit>
 
 /* GUI includes: */
+#include "QITextEdit.h"
 #include "UIAnimationFramework.h"
 #include "UIPopupPane.h"
 #include "UIPopupPaneDetails.h"
@@ -187,7 +187,7 @@ void UIPopupPaneDetails::prepare()
 void UIPopupPaneDetails::prepareContent()
 {
     /* Create text-editor: */
-    m_pTextEdit = new QTextEdit(this);
+    m_pTextEdit = new QITextEdit(this);
     if (m_pTextEdit)
     {
         /* Configure text-editor: */
