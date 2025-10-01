@@ -1,4 +1,4 @@
-/* $Id: vbsf.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: vbsf.cpp 111192 2025-10-01 08:00:47Z alexander.eichner@oracle.com $ */
 /** @file
  * Shared Folders - VBox Shared Folders.
  */
@@ -2438,6 +2438,17 @@ int vbsfRemove(SHFLCLIENTDATA *pClient, SHFLROOT root, PCSHFLSTRING pPath, uint3
                     rc = RTFileDelete(pszFullPath);
                 else
                     rc = RTDirRemove(pszFullPath);
+
+                /** @todo r=aeichner 2025-10-01 Temporarily for investigating an error on the testboxes. */
+                if (RT_FAILURE(rc))
+                {
+                    if (flags & SHFL_REMOVE_SYMLINK)
+                        LogRel(("RTSymlinkDelete(%s, 0) -> %Rrc", pszFullPath, rc));
+                    else if (flags & SHFL_REMOVE_FILE)
+                        LogRel(("RTFileDelete(%s) -> %Rrc", pszFullPath, rc));
+                    else
+                        LogRel(("RTDirRemove(%s) -> %Rrc", pszFullPath, rc));
+                }
 
 #if 0 //ndef RT_OS_WINDOWS
                 /* There are a few adjustments to be made here: */
