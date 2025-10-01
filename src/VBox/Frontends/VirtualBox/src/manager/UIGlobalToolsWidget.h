@@ -1,4 +1,4 @@
-/* $Id: UIGlobalToolsWidget.h 109665 2025-05-26 14:37:46Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalToolsWidget.h 111197 2025-10-01 11:07:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalToolsWidget class declaration.
  */
@@ -81,8 +81,8 @@ public:
         /** Returns Machine Tools Widget reference. */
         UIMachineToolsWidget *machineToolsWidget() const;
 
-        /** Returns menu tool type for the @a enmClass specified. */
-        UIToolType menuToolType(UIToolClass enmClass) const;
+        /** Returns menu tool type. */
+        UIToolType menuToolType() const;
         /** Defines menu tool @a enmType. */
         void setMenuToolType(UIToolType enmType);
 

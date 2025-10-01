@@ -1,4 +1,4 @@
-/* $Id: UIMachineToolsWidget.h 109418 2025-05-05 14:35:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineToolsWidget.h 111197 2025-10-01 11:07:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineToolsWidget class declaration.
  */
@@ -134,8 +134,8 @@ public:
         /** Returns tool-pane instance. */
         UIToolPane *toolPane() const;
 
-        /** Returns menu tool type for the @a enmClass specified. */
-        UIToolType menuToolType(UIToolClass enmClass) const;
+        /** Returns menu tool type. */
+        UIToolType menuToolType() const;
         /** Defines menu tool @a enmType. */
         void setMenuToolType(UIToolType enmType);
 

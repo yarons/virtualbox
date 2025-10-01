@@ -1,4 +1,4 @@
-/* $Id: UITools.h 109275 2025-04-18 13:26:41Z sergey.dubov@oracle.com $ */
+/* $Id: UITools.h 111197 2025-10-01 11:07:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITools class declaration.
  */
@@ -60,8 +60,7 @@ public:
 
     /** Constructs Tools-pane passing @a pParent to the base-class.
       * @param  enmClass  Brings the tool class. */
-    UITools(QWidget *pParent,
-            UIToolClass enmClass);
+    UITools(QWidget *pParent, UIToolClass enmClass);
     /** Destructs Tools-pane. */
     virtual ~UITools();
 
@@ -69,16 +68,16 @@ public:
       * @{ */
         /** Defines current tools @a enmType. */
         void setToolsType(UIToolType enmType);
-        /** Returns current tools type for the @a enmClass specified. */
-        UIToolType toolsType(UIToolClass enmClass) const;
+        /** Returns current tools type. */
+        UIToolType toolsType() const;
 
         /** Defines whether tool items @a fEnabled. */
         void setItemsEnabled(bool fEnabled);
         /** Returns whether tool items enabled. */
         bool isItemsEnabled() const;
 
-        /** Defines restricted tool @a types for the @a enmClass specified. */
-        void setRestrictedToolTypes(UIToolClass enmClass, const QList<UIToolType> &types);
+        /** Defines restricted tool @a types. */
+        void setRestrictedToolTypes(const QList<UIToolType> &types);
     /** @} */
 
 private:
@@ -112,7 +111,7 @@ private:
     /** @name General stuff.
       * @{ */
         /** Holds the tool class. */
-        UIToolClass  m_enmClass;
+        const UIToolClass  m_enmClass;
 
         /** Holds the layout alignment. */
         Qt::Alignment  m_enmAlignment;
