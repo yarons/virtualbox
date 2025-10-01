@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.cpp 111199 2025-10-01 11:19:19Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsItem.cpp 111200 2025-10-01 11:21:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class definition.
  */
@@ -118,14 +118,9 @@ public:
     }
 
     /** Returns the index of the passed @a pChild. */
-    virtual int indexOfChild(const QAccessibleInterface *pChild) const RT_OVERRIDE
+    virtual int indexOfChild(const QAccessibleInterface*) const RT_OVERRIDE
     {
-        /* Search for corresponding child: */
-        for (int i = 0; i < childCount(); ++i)
-            if (child(i) == pChild)
-                return i;
-
-        /* -1 by default: */
+        /* -1: */
         return -1;
     }
 
