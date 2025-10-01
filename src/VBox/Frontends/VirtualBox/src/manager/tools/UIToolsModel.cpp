@@ -1,4 +1,4 @@
-﻿/* $Id: UIToolsModel.cpp 111197 2025-10-01 11:07:45Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIToolsModel.cpp 111204 2025-10-01 11:30:16Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -26,6 +26,7 @@
  */
 
 /* Qt includes: */
+#include <QAccessibleInterface>
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsView>
@@ -184,6 +185,22 @@ void UIToolsModel::setCurrentItem(UIToolsItem *pItem)
     UIToolsItem *pOldCurrentItem = currentItem();
     /* Set new item as current: */
     m_pCurrentItem = pItem;
+
+    /* Updating accessibility for newly chosen item if necessary: */
+    if (currentItem() && QAccessible::isActive())
+    {
+        /* Calculate index of item interface in parent interface: */
+        QAccessibleInterface *pIfaceItem = QAccessible::queryAccessibleInterface(currentItem());
+        AssertPtrReturnVoid(pIfaceItem);
+        QAccessibleInterface *pIfaceParent = pIfaceItem->parent();
+        AssertPtrReturnVoid(pIfaceParent);
+        const int iIndexOfItem = pIfaceParent->indexOfChild(pIfaceItem);
+
+        /* Compose and send accessibility update event: */
+        QAccessibleEvent focusEvent(pIfaceParent, QAccessible::Focus);
+        focusEvent.setChild(iIndexOfItem);
+        QAccessible::updateAccessibility(&focusEvent);
+    }
 
     /* Rebuild whole layout if names hidden for machine tools: */
     if (   !showItemNames()
