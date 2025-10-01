@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.cpp 111201 2025-10-01 11:23:37Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsView.cpp 111202 2025-10-01 11:25:12Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class implementation.
  */
@@ -99,6 +99,22 @@ public:
 
         /* Return the index of passed model child: */
         return view()->model()->items().indexOf(pChildItem);
+    }
+
+    /** Returns the state. */
+    virtual QAccessible::State state() const RT_OVERRIDE
+    {
+        /* Sanity check: */
+        AssertPtrReturn(view(), QAccessible::State());
+
+        /* Compose the state: */
+        QAccessible::State myState;
+        myState.focusable = true;
+        if (view()->hasFocus())
+            myState.focused = true;
+
+        /* Return the state: */
+        return myState;
     }
 
     /** Returns a text for the passed @a enmTextRole. */

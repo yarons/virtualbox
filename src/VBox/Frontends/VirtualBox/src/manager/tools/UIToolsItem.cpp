@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.cpp 111200 2025-10-01 11:21:45Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsItem.cpp 111202 2025-10-01 11:25:12Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class definition.
  */
@@ -132,20 +132,17 @@ public:
         AssertPtrReturn(item()->model(), QAccessible::State());
 
         /* Compose the state: */
-        QAccessible::State state;
-        state.focusable = true;
-        state.selectable = true;
-
-        /* Compose the state of current item: */
-        if (item() && item() == item()->model()->currentItem())
+        QAccessible::State myState;
+        myState.focusable = true;
+        myState.selectable = true;
+        if (item()->model()->currentItem() == item())
         {
-            state.active = true;
-            state.focused = true;
-            state.selected = true;
+            myState.focused = true;
+            myState.selected = true;
         }
 
         /* Return the state: */
-        return state;
+        return myState;
     }
 
     /** Returns a text for the passed @a enmTextRole. */
