@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.cpp 111199 2025-10-01 11:19:19Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsView.cpp 111201 2025-10-01 11:23:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class implementation.
  */
@@ -107,9 +107,15 @@ public:
         /* Sanity check: */
         AssertPtrReturn(view(), QString());
 
-        /* Return view tool-tip: */
-        Q_UNUSED(enmTextRole);
-        return view()->whatsThis();
+        /* Text for known roles: */
+        switch (enmTextRole)
+        {
+            case QAccessible::Name: return view()->whatsThis();
+            default: break;
+        }
+
+        /* Null string by default: */
+        return QString();
     }
 
 private:
