@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TrapRmV86Init.c 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: bs3-cmn-TrapRmV86Init.c 111193 2025-10-01 08:52:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Bs3TrapRmV86Init
  */
@@ -86,8 +86,8 @@ BS3_CMN_DEF(void, Bs3TrapRmV86InitEx,(bool f386Plus))
     {
         uint8_t BS3_FAR_DATA *pbFunction = &bs3TrapRmV86GenericTrapOrInt[0];
 #if ARCH_BITS == 16
-        if (g_bBs3CurrentMode != BS3_MODE_RM)
-            pbFunction = (uint8_t BS3_FAR_DATA *)BS3_FP_MAKE(BS3_SEL_TILED + 1, BS3_FP_OFF(pbFunction));
+        if (g_bBs3CurrentMode != BS3_MODE_RM) /* Code seg isn't writable in prot mode. Do manual conversion to titled address. */
+            pbFunction = (uint8_t BS3_FAR_DATA *)BS3_FP_MAKE(BS3_SEL_TILED + 8, BS3_FP_OFF(pbFunction));
 #endif
         pbFunction[1] = 0;
         pbFunction[2] = 0;
