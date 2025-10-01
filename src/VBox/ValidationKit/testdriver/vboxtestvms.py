@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 111170 2025-09-29 15:00:56Z alexander.eichner@oracle.com $
+# $Id: vboxtestvms.py 111196 2025-10-01 10:56:37Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111170 $"
+__version__ = "$Revision: 111196 $"
 
 # Standard Python imports.
 import copy;
@@ -2251,7 +2251,8 @@ class TestVmManager(object):
                sKind = 'RedHat', acCpusSup = range(1, 33), fIoApic = True, sNic0AttachType = 'nat',
                fQuirks = g_kfQuirkLinuxIoApic),
         TestVm('tst-arch',                  kfGrpStandard,        sHd = '4.2/usb/tst-arch.vdi',
-               sKind = 'ArchLinux_64', acCpusSup = range(1, 33), fIoApic = True, sNic0AttachType = 'nat'),
+               sKind = 'ArchLinux_64', acCpusSup = range(1, 33), fIoApic = True, sNic0AttachType = 'nat',
+               fQuirks = g_kfQuirkLinuxIoApic),
         # disabled 2019-03-08 klaus - fails all over the place and pollutes the test results
         #TestVm('tst-ubuntu-1804-64',   kfGrpStdSmoke,        sHd = '4.2/ubuntu-1804/t-ubuntu-1804-64.vdi',
         #       sKind = 'Ubuntu_64', acCpusSup = range(1, 33), fIoApic = True),
