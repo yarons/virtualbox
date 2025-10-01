@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: virtual_test_sheriff.py 111194 2025-10-01 09:07:33Z alexander.eichner@oracle.com $
 # pylint: disable=line-too-long
 
 """
@@ -45,7 +45,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 110684 $"
+__version__ = "$Revision: 111194 $"
 
 
 # Standard python imports
@@ -350,7 +350,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");   # pylint: disable=consider-using-with,unspecified-encoding
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 110684 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 111194 $ \n');
 
 
     def eprint(self, sText):
@@ -622,6 +622,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
     ktReason_Add_ShFl_Automount                        = ( 'Additions',         'Automounting' );
     ktReason_Add_ShFl_FsPerf                           = ( 'Additions',         'FsPerf' );
     ktReason_Add_ShFl_FsPerf_Abend                     = ( 'Additions',         'FsPerf abend' );
+    ktReason_Add_ShFl_FsPerf_VERR_SHARING_VIOLATION    = ( 'Additions',         'FsPerf VERR_SHARING_VIOLATION' );
     ktReason_Add_GstCtl                                = ( 'Additions',         'GstCtl' );
     ktReason_Add_GstCtl_Preparations                   = ( 'Additions',         'GstCtl preparations' );
     ktReason_Add_GstCtl_SessionBasics                  = ( 'Additions',         'Session basics' );
@@ -764,7 +765,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 110684 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 111194 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -1288,7 +1289,10 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
             elif sResultLog.find('FlushViewOfFile') >= 0:
                 enmReason = self.ktReason_Add_FlushViewOfFile;
         elif sParentName == 'Shared Folders' and oFailedResult.sName == 'Running FsPerf':
-            enmReason = self.ktReason_Add_ShFl_FsPerf;  ## Maybe it would be better to be more specific...
+            if sResultLog.find('expected VINF_SUCCESS, got VERR_SHARING_VIOLATION') >= 0:
+                enmReason = self.ktReason_Add_ShFl_FsPerf_VERR_SHARING_VIOLATION;
+            else:
+                enmReason = self.ktReason_Add_ShFl_FsPerf;  ## Maybe it would be better to be more specific...
 
         if enmReason is not None:
             return oCaseFile.noteReasonForId(enmReason, oFailedResult.idTestResult);
