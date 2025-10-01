@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewModelView.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIVMActivityOverviewModelView.cpp 111205 2025-10-01 13:08:24Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewModelView class implementation.
  */
@@ -32,6 +32,7 @@
 #include <QTimer>
 
 /* GUI includes: */
+#include "UICommon.h"
 #include "UIConverter.h"
 #include "UIExtraDataDefs.h"
 #include "UIGlobalSession.h"
@@ -824,6 +825,9 @@ void UIVMActivityOverviewModel::setupPerformanceCollector()
 
 void UIVMActivityOverviewModel::clearData()
 {
+    if (m_pLocalVMUpdateTimer)
+            m_pLocalVMUpdateTimer->stop();
+
     /* We have a request to detach COM stuff,
      * first of all we are removing all the items,
      * this will detach COM wrappers implicitly: */
@@ -913,6 +917,9 @@ void UIVMActivityOverviewModel::initialize()
             this, &UIVMActivityOverviewModel::sltMachineStateChanged);
     connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigMachineRegistered,
             this, &UIVMActivityOverviewModel::sltMachineRegistered);
+    connect(&uiCommon(), &UICommon::sigAskToDetachCOM,
+            this, &UIVMActivityOverviewModel::sltDetachCOM);
+
     foreach (const CMachine &comMachine, gpGlobalSession->virtualBox().GetMachines())
     {
         if (!comMachine.isNull())
@@ -953,6 +960,11 @@ void UIVMActivityOverviewModel::sltMachineStateChanged(const QUuid &uId, const K
                 pItem->resetDebugger();
         }
     }
+}
+
+void UIVMActivityOverviewModel::sltDetachCOM()
+{
+    clearData();
 }
 
 void UIVMActivityOverviewModel::sltMachineRegistered(const QUuid &uId, bool fRegistered)

@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewModelView.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIVMActivityOverviewModelView.h 111205 2025-10-01 13:08:24Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewModelView class declaration.
  */
@@ -153,6 +153,7 @@ private slots:
     void sltMachineStateChanged(const QUuid &uId, const KMachineState state);
     void sltMachineRegistered(const QUuid &uId, bool fRegistered);
     void sltLocalVMUpdateTimeout();
+    void sltDetachCOM();
 
 private:
 
