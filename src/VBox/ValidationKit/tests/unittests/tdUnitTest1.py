@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: tdUnitTest1.py 111221 2025-10-02 19:20:52Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 110684 $"
+__version__ = "$Revision: 111221 $"
 
 
 # Standard Python imports.
@@ -262,6 +262,7 @@ class tdUnitTest1(vbox.TestDriver):
     # @note Stripped of extensions!
     kdTestCasesBlackListAsan = {
         'testcase/tstVMMR0CallHost-1': '',              # Triggers a stack overflow error on linux.amd64
+        'testcase/tstRTProcCreateEx' : '',              # Triggers on some linux hosts where a PAM module probably introduces a memory leak.
     }
 
     # Suffix exclude list.
