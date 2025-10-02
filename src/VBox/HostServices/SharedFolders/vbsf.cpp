@@ -1,4 +1,4 @@
-/* $Id: vbsf.cpp 111212 2025-10-02 11:31:42Z alexander.eichner@oracle.com $ */
+/* $Id: vbsf.cpp 111213 2025-10-02 11:34:27Z alexander.eichner@oracle.com $ */
 /** @file
  * Shared Folders - VBox Shared Folders.
  */
@@ -2463,11 +2463,11 @@ int vbsfRemove(SHFLCLIENTDATA *pClient, SHFLROOT root, PCSHFLSTRING pPath, uint3
                                 rc2 = RTProcQueryExecutablePathA(aPids[i], &pszProc);
                                 if (RT_SUCCESS(rc2))
                                 {
-                                    LogRel(("    [0]: <%RU32>:%s\n", i, aPids[i], pszProc));
+                                    LogRel(("    [%u]: <%RU32>:%s\n", i, aPids[i], pszProc));
                                     RTStrFree(pszProc);
                                 }
                                 else
-                                    LogRel(("    [0]: <%RU32>\n", i, aPids[i]));
+                                    LogRel(("    [%u]: <%RU32>\n", i, aPids[i]));
                             }
                         }
                         else
