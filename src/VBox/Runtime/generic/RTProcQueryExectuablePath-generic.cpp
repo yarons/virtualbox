@@ -1,4 +1,4 @@
-/* $Id: RTProcQueryExectuablePath-generic.cpp 111211 2025-10-02 11:20:45Z alexander.eichner@oracle.com $ */
+/* $Id: RTProcQueryExectuablePath-generic.cpp 111214 2025-10-02 11:41:06Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - RTProcQueryExecutablePath, generic.
  */
@@ -42,7 +42,7 @@
 
 #include <iprt/process.h>
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 
 RTR3DECL(int) RTProcQueryExecutablePath(RTPROCESS hProcess, char *pszExecPath, size_t cbExecPath, size_t *pcbExecPath)
