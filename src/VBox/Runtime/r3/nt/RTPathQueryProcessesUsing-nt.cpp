@@ -1,4 +1,4 @@
-/* $Id: RTPathQueryProcessesUsing-nt.cpp 111208 2025-10-02 09:24:53Z alexander.eichner@oracle.com $ */
+/* $Id: RTPathQueryProcessesUsing-nt.cpp 111209 2025-10-02 09:43:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTPathQueryProcessesUsing, Native NT.
  */
@@ -93,10 +93,13 @@ static int rtNtPathResolveFinal(const char *pszPath, struct _UNICODE_STRING *pNt
     {
         rcRet = RTNtPathFromHandle(pNtName, hFile, 0);
         NtClose(hFile);
+        RTNtPathFree(&NtName, &hRootDir);
+        return rcRet;
     }
 
-    RTNtPathFree(&NtName, &hRootDir);
-    return rcRet;
+    /* Failed to open, so return the name from RTNtPathFromWinUtf8. */
+    *pNtName = NtName;
+    return VINF_SUCCESS;
 }
 
 
