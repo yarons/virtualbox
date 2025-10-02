@@ -1,4 +1,4 @@
-/* $Id: RTPathQueryProcessesUsing-nt.cpp 111207 2025-10-02 09:08:05Z alexander.eichner@oracle.com $ */
+/* $Id: RTPathQueryProcessesUsing-nt.cpp 111208 2025-10-02 09:24:53Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - RTPathQueryProcessesUsing, Native NT.
  */
@@ -43,7 +43,7 @@
 #include "internal-r3-nt.h"
 
 #include <iprt/path.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
 #include <iprt/utf16.h>
@@ -237,3 +237,4 @@ RTR3DECL(int) RTPathQueryProcessesUsing(const char *pszPath, uint32_t fFlags, ui
     RTNtPathFree(&NtName, NULL);
     return rcRet;
 }
+
