@@ -1,4 +1,4 @@
-/* $Id: UIMachineToolsWidget.cpp 111197 2025-10-01 11:07:45Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineToolsWidget.cpp 111240 2025-10-03 14:48:29Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineToolsWidget class implementation.
  */
@@ -462,11 +462,13 @@ void UIMachineToolsWidget::prepareWidgets()
 
             /* Add into layout: */
             pLayout->addWidget(m_pSplitter);
+
+            /* Bring the VM list to the focus, this have to be done after hierarchy is
+             * finalized for the parent, i.e. splitter is inserted into layout: */
+            if (chooser())
+                chooser()->setFocus();
         }
     }
-
-    /* Bring the VM list to the focus: */
-    chooser()->setFocus();
 }
 
 void UIMachineToolsWidget::prepareConnections()

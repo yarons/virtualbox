@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 111182 2025-09-30 09:38:54Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 111240 2025-10-03 14:48:29Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -2527,8 +2527,17 @@ void UIVirtualBoxManager::prepareWidgets()
 {
     /* Prepare central-widget: */
     m_pWidget = new UIVirtualBoxWidget(this);
+    QWidget *pLastFocusedWidget = m_pWidget->focusWidget();
     if (m_pWidget)
+    {
+        /* Insert widget into QMainWindow: */
         setCentralWidget(m_pWidget);
+
+        /* Restore last focused widget lost during
+         * hierarchy change done by setCentralWidget: */
+        if (pLastFocusedWidget)
+            pLastFocusedWidget->setFocus();
+    }
 }
 
 void UIVirtualBoxManager::prepareConnections()

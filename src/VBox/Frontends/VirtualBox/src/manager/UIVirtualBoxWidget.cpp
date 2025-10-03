@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxWidget.cpp 111197 2025-10-01 11:07:45Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxWidget.cpp 111240 2025-10-03 14:48:29Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxWidget class implementation.
  */
@@ -404,9 +404,6 @@ void UIVirtualBoxWidget::prepareWidgets()
 
     /* Update toolbar finally: */
     updateToolbar();
-
-    /* Bring the VM list to the focus: */
-    chooser()->setFocus();
 }
 
 void UIVirtualBoxWidget::prepareConnections()
