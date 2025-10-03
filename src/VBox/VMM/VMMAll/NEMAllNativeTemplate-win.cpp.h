@@ -1,4 +1,4 @@
-/* $Id: NEMAllNativeTemplate-win.cpp.h 111224 2025-10-03 09:30:57Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: NEMAllNativeTemplate-win.cpp.h 111229 2025-10-03 11:20:04Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * NEM - Native execution manager, Windows code template ring-0/3.
  */
@@ -486,9 +486,6 @@ NEM_TMPL_STATIC int nemHCWinCopyStateToHyperV(PVMCC pVM, PVMCPUCC pVCpu)
                 return VERR_INTERNAL_ERROR;
             }
         }
-
-        if (pVCpu->CTX_SUFF(pVM)->nem.s.fLocalApicEmulation)
-            PDMApicExportState(pVCpu);
 
         pVCpu->cpum.GstCtx.fExtrn |= CPUMCTX_EXTRN_ALL | CPUMCTX_EXTRN_NEM_WIN_MASK | CPUMCTX_EXTRN_KEEPER_NEM;
         return VINF_SUCCESS;
@@ -2792,6 +2789,9 @@ NEM_TMPL_STATIC VBOXSTRICTRC nemHCWinRunGC(PVMCC pVM, PVMCPUCC pVCpu)
                              aRegs[2].Reg64, aRegs[3].Segment.Selector, aRegs[4].Reg64, aRegs[5].Reg64));
                 }
 #endif
+                if (pVCpu->CTX_SUFF(pVM)->nem.s.fLocalApicEmulation)
+                    PDMApicExportState(pVCpu);
+
                 WHV_RUN_VP_EXIT_CONTEXT ExitReason = {0};
                 TMNotifyStartOfExecution(pVM, pVCpu);
 
