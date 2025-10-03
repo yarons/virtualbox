@@ -1,4 +1,4 @@
-﻿/* $Id: UIToolsModel.cpp 111204 2025-10-01 11:30:16Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIToolsModel.cpp 111225 2025-10-03 09:33:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -242,6 +242,11 @@ bool UIToolsModel::showItemNames() const
 
 void UIToolsModel::updateLayout()
 {
+    /* Sanity check: */
+    AssertPtrReturnVoid(scene());
+    if (scene()->views().isEmpty())
+        return;
+
     /* Prepare variables: */
     const int iMargin = data(ToolsModelData_Margin).toInt();
     const int iSpacing = data(ToolsModelData_Spacing).toInt();
