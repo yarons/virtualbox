@@ -1,4 +1,4 @@
-/* $Id: UITools.h 111227 2025-10-03 10:54:20Z sergey.dubov@oracle.com $ */
+/* $Id: UITools.h 111231 2025-10-03 12:16:02Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITools class declaration.
  */
@@ -92,10 +92,10 @@ private:
 
     /** @name General stuff.
       * @{ */
-        /** Holds the tool class. */
+        /** Holds the passed tool class. */
         const UIToolClass  m_enmClass;
 
-        /** Holds the layout alignment. */
+        /** Holds the layout alignment (based on tool class). */
         const Qt::Alignment  m_enmAlignment;
 
         /** Holds the main layout instance. */
