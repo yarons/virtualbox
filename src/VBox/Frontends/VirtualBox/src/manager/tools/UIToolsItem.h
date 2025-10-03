@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.h 111236 2025-10-03 12:59:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsItem.h 111238 2025-10-03 13:07:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class declaration.
  */
@@ -173,9 +173,6 @@ private:
       * @{ */
         /** Prepares all. */
         void prepare();
-        /** Prepares connections. */
-        void prepareConnections();
-
         /** Cleanups all. */
         void cleanup();
     /** @} */

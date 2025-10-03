@@ -1,4 +1,4 @@
-﻿/* $Id: UIToolsModel.cpp 111237 2025-10-03 13:02:33Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIToolsModel.cpp 111238 2025-10-03 13:07:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -567,6 +567,12 @@ void UIToolsModel::prepareItem(UIToolType enmType)
     UIToolsItem *pItem = new UIToolsItem(scene(), enmType);
     if (pItem)
     {
+        /* Prepare item's connections: */
+        connect(pItem, &UIToolsItem::sigMinimumWidthHintChanged,
+                this, &UIToolsModel::sltItemMinimumWidthHintChanged);
+        connect(pItem, &UIToolsItem::sigMinimumHeightHintChanged,
+                this, &UIToolsModel::sltItemMinimumHeightHintChanged);
+
         /* Append item to the list: */
         m_items << pItem;
     }
