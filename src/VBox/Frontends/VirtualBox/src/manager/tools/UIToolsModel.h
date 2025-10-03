@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 111233 2025-10-03 12:18:14Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.h 111235 2025-10-03 12:53:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -207,11 +207,14 @@ private:
         void cleanup();
     /** @} */
 
-    /** @name General stuff.
+    /** @name Event handling stuff.
       * @{ */
         /** Handles request to trigger @a pItem. */
         bool triggerItem(UIToolsItem *pItem);
+    /** @} */
 
+    /** @name General stuff.
+      * @{ */
         /** Holds the passed tool class. */
         const UIToolClass  m_enmClass;
 
