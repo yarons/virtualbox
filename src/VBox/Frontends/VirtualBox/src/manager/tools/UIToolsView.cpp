@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.cpp 111203 2025-10-01 11:26:39Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsView.cpp 111228 2025-10-03 11:08:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class implementation.
  */
@@ -30,7 +30,6 @@
 
 /* GUI includes: */
 #include "UICommon.h"
-#include "UITools.h"
 #include "UIToolsItem.h"
 #include "UIToolsModel.h"
 #include "UIToolsView.h"
@@ -237,6 +236,9 @@ void UIToolsView::resizeEvent(QResizeEvent *pEvent)
     /* Call to base-class: */
     QIGraphicsView::resizeEvent(pEvent);
 
+    /* Sanity check: */
+    AssertPtrReturnVoid(model());
+
     /* Update model's layout: */
     model()->updateLayout();
 }
@@ -311,6 +313,10 @@ void UIToolsView::prepare()
 
 void UIToolsView::prepareThis()
 {
+    /* Sanity check: */
+    AssertPtrReturnVoid(model());
+    AssertPtrReturnVoid(model()->scene());
+
     /* Exchange information with model: */
     setScene(model()->scene());
     model()->setView(this);
@@ -354,25 +360,32 @@ void UIToolsView::preparePalette()
     // WORKAROUND:
     // New Windows Modern look&feel style have different palettes for view
     // and viewport, so we are assigning viewport palette as well.
+    AssertPtrReturnVoid(viewport());
     viewport()->setPalette(pal);
 #endif
 }
 
 void UIToolsView::prepareConnections()
 {
-    /* Translation signal: */
-    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
-            this, &UIToolsView::sltRetranslateUI);
+    /* Sanity check: */
+    AssertPtrReturnVoid(model());
 
     /* Model connections: */
     connect(model(), &UIToolsModel::sigItemMinimumWidthHintChanged,
             this, &UIToolsView::sltMinimumWidthHintChanged);
     connect(model(), &UIToolsModel::sigItemMinimumHeightHintChanged,
             this, &UIToolsView::sltMinimumHeightHintChanged);
+
+    /* Translation signal: */
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIToolsView::sltRetranslateUI);
 }
 
 void UIToolsView::cleanupConnections()
 {
+    /* Sanity check: */
+    AssertPtrReturnVoid(model());
+
     /* Model connections: */
     disconnect(model(), &UIToolsModel::sigItemMinimumWidthHintChanged,
                this, &UIToolsView::sltMinimumWidthHintChanged);

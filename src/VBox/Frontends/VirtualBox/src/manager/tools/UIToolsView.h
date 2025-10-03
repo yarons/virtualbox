@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.h 111189 2025-09-30 13:20:07Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsView.h 111228 2025-10-03 11:08:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class declaration.
  */
@@ -125,11 +125,6 @@ private:
       * @{ */
         /** Updates scene rectangle. */
         void updateSceneRect();
-
-#ifndef VBOX_WS_MAC
-        /** Returns a number shifter per 10% from @a i1 to @a i2. */
-        static int iShift10(int i1, int i2);
-#endif
     /** @} */
 
     /** @name General stuff.
