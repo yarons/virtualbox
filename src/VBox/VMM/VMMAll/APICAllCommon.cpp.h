@@ -1,4 +1,4 @@
-/* $Id: APICAllCommon.cpp.h 111223 2025-10-03 09:17:51Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: APICAllCommon.cpp.h 111226 2025-10-03 10:02:06Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All-context and R3-context common code.
  */
@@ -329,6 +329,20 @@ static void apicCommonResetBaseMsr(PVMCPUCC pVCpu)
     ASMAtomicWriteU64(&pVCpu->apic.s.uApicBaseMsr, uApicBaseMsr);
 }
 # endif /* VMM_APIC_TEMPLATE_ALL_COMMON */
+
+
+/**
+ * Gets the timer shift value.
+ *
+ * @returns The timer shift value.
+ * @param   pXApicPage      The xAPIC page.
+ */
+DECL_FORCE_INLINE(uint8_t) apicCommonGetTimerShift(PCXAPICPAGE pXApicPage)
+{
+    /* See Intel spec. 10.5.4 "APIC Timer". */
+    uint32_t uShift = pXApicPage->timer_dcr.u.u2DivideValue0 | (pXApicPage->timer_dcr.u.u1DivideValue1 << 2);
+    return (uShift + 1) & 7;
+}
 
 
 # if defined(IN_RING3) && defined(VMM_APIC_TEMPLATE_R3_COMMON)

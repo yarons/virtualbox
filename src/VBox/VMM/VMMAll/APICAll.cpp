@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 111223 2025-10-03 09:17:51Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: APICAll.cpp 111226 2025-10-03 10:02:06Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -1259,7 +1259,7 @@ static VBOXSTRICTRC apicGetTimerCcr(PPDMDEVINS pDevIns, PVMCPUCC pVCpu, int rcBu
         {
             uint64_t const cTicksElapsed = PDMDevHlpTimerGet(pDevIns, hTimer) - pApicCpu->u64TimerInitial;
             PDMDevHlpTimerUnlockClock(pDevIns, hTimer);
-            uint8_t  const uTimerShift   = apicGetTimerShift(pXApicPage);
+            uint8_t  const uTimerShift   = apicCommonGetTimerShift(pXApicPage);
             uint64_t const uDelta        = cTicksElapsed >> uTimerShift;
             if (uInitialCount > uDelta)
                 *puValue = uInitialCount - uDelta;
@@ -2864,7 +2864,7 @@ void apicStartTimer(PVMCPUCC pVCpu, uint32_t uInitialCount)
     Assert(uInitialCount > 0);
 
     PCXAPICPAGE    pXApicPage   = APICCPU_TO_CXAPICPAGE(pApicCpu);
-    uint8_t  const uTimerShift  = apicGetTimerShift(pXApicPage);
+    uint8_t  const uTimerShift  = apicCommonGetTimerShift(pXApicPage);
     uint64_t const cTicksToNext = (uint64_t)uInitialCount << uTimerShift;
 
     Log2(("APIC%u: apicStartTimer: uInitialCount=%#RX32 uTimerShift=%u cTicksToNext=%RU64\n", pVCpu->idCpu, uInitialCount,

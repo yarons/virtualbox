@@ -1,6 +1,6 @@
-/* $Id: APICHvInternal.h 111184 2025-09-30 10:24:59Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: APICHvInternal.h 111226 2025-10-03 10:02:06Z ramshankar.venkataraman@oracle.com $ */
 /** @file
- * APIC - Advanced Programmable Interrupt Controller - NEM Hyper-V backend.
+ * APIC - Advanced Programmable Interrupt Controller - NEM Hyper-V backend, Internal header.
  */
 
 /*
