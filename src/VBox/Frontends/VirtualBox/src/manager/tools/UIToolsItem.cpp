@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.cpp 111230 2025-10-03 11:54:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsItem.cpp 111234 2025-10-03 12:20:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class definition.
  */
@@ -36,6 +36,7 @@
 #include <QStyle>
 #include <QStyleOptionGraphicsItem>
 #include <QToolTip>
+#include <QWindow> // for windowHandle()
 
 /* GUI includes: */
 #include "UICommon.h"
