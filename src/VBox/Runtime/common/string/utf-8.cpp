@@ -1,4 +1,4 @@
-/* $Id: utf-8.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: utf-8.cpp 111241 2025-10-05 01:24:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - UTF-8 Decoding.
  */
@@ -876,17 +876,17 @@ static int rtUtf8RecodeAsUtf16(const char *psz, size_t cch, PRTUTF16 pwsz, size_
         }
         else if ((uch & (RT_BIT(7) | RT_BIT(6) | RT_BIT(5))) == (RT_BIT(7) | RT_BIT(6)))
         {
-            uint16_t uc = (puch[1] & 0x3f)
-                    | ((uint16_t)(uch     & 0x1f) << 6);
+            uint16_t uc =            (puch[1] & 0x3f)
+                        | ((uint16_t)(uch     & 0x1f) << 6);
             *pwc++ = uc;
             puch += 2;
             cch -= 2;
         }
         else if ((uch & (RT_BIT(7) | RT_BIT(6) | RT_BIT(5) | RT_BIT(4))) == (RT_BIT(7) | RT_BIT(6) | RT_BIT(5)))
         {
-            uint16_t uc = (puch[2] & 0x3f)
-                    | ((uint16_t)(puch[1] & 0x3f) << 6)
-                    | ((uint16_t)(uch     & 0x0f) << 12);
+            uint16_t uc =            (puch[2] & 0x3f)
+                        | ((uint16_t)(puch[1] & 0x3f) << 6)
+                        | ((uint16_t)(uch     & 0x0f) << 12);
             *pwc++ = uc;
             puch += 3;
             cch -= 3;
@@ -967,17 +967,17 @@ static int rtUtf8RecodeAsUtf16Big(const char *psz, size_t cch, PRTUTF16 pwsz, si
         }
         else if ((uch & (RT_BIT(7) | RT_BIT(6) | RT_BIT(5))) == (RT_BIT(7) | RT_BIT(6)))
         {
-            uint16_t uc = (puch[1] & 0x3f)
-                    | ((uint16_t)(uch     & 0x1f) << 6);
+            uint16_t uc =            (puch[1] & 0x3f)
+                        | ((uint16_t)(uch     & 0x1f) << 6);
             *pwc++ = RT_H2BE_U16(uc);
             puch += 2;
             cch -= 2;
         }
         else if ((uch & (RT_BIT(7) | RT_BIT(6) | RT_BIT(5) | RT_BIT(4))) == (RT_BIT(7) | RT_BIT(6) | RT_BIT(5)))
         {
-            uint16_t uc = (puch[2] & 0x3f)
-                    | ((uint16_t)(puch[1] & 0x3f) << 6)
-                    | ((uint16_t)(uch     & 0x0f) << 12);
+            uint16_t uc =            (puch[2] & 0x3f)
+                        | ((uint16_t)(puch[1] & 0x3f) << 6)
+                        | ((uint16_t)(uch     & 0x0f) << 12);
             *pwc++ = RT_H2BE_U16(uc);
             puch += 3;
             cch -= 3;
