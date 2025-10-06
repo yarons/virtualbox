@@ -1,4 +1,4 @@
-/* $Id: APICAllCommon.cpp.h 111244 2025-10-06 07:02:12Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: APICAllCommon.cpp.h 111245 2025-10-06 07:05:23Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All-context and R3-context common code.
  */
@@ -51,7 +51,6 @@ DECL_FORCE_INLINE(uint8_t) apicCommonGetTimerShift(PCXAPICPAGE pXApicPage)
 }
 
 
-# ifdef VMM_APIC_TEMPLATE_USES_INFO_FUNCS
 /**
  * Gets the APIC mode given the base MSR value.
  *
@@ -78,6 +77,8 @@ static XAPICMODE apicCommonGetMode(uint64_t uApicBaseMsr)
     return enmMode;
 }
 
+
+# ifdef VMM_APIC_TEMPLATE_USES_INFO_FUNCS
 
 /**
  * Gets the descriptive APIC mode.
