@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIVMActivityMonitor.h 111251 2025-10-06 09:49:35Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class declaration.
  */
@@ -295,6 +295,7 @@ private:
     void resetDiskIOInfoLabel();
     virtual void prepareWidgets() RT_OVERRIDE;
     void configureCOMPerformanceCollector();
+    template <typename T> void detachCOMResource(T &comObject);
 
     bool m_fGuestAdditionsAvailable;
     CMachine m_comMachine;

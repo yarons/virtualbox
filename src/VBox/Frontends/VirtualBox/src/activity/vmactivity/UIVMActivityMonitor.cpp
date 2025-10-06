@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIVMActivityMonitor.cpp 111251 2025-10-06 09:49:35Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class implementation.
  */
@@ -1460,8 +1460,17 @@ void UIVMActivityMonitorLocal::sltGuestAdditionsStateChange()
     enableDisableGuestAdditionDependedWidgets(m_fGuestAdditionsAvailable);
 }
 
+template <typename T> void UIVMActivityMonitorLocal::detachCOMResource(T &comObject)
+{
+    if (!comObject.isNull())
+        comObject.detach();
+}
+
 void UIVMActivityMonitorLocal::sltClearCOMData()
 {
+    detachCOMResource(m_comGuest);
+    detachCOMResource(m_comMachineDebugger);
+
     if (!m_comConsole.isNull() && m_comConsole.isOk() && m_comConsole.GetEventSource().isOk())
     {
         if (!m_pQtConsoleListener.isNull())
@@ -1474,12 +1483,13 @@ void UIVMActivityMonitorLocal::sltClearCOMData()
     }
 
     if (!m_comSession.isNull())
-    {
         m_comSession.UnlockMachine();
-        m_comSession.detach();
-    }
-    if (!m_comConsole.isNull())
-        m_comConsole.detach();
+    detachCOMResource(m_comSession);
+
+    detachCOMResource(m_comMachine);
+    detachCOMResource(m_comConsole);
+    detachCOMResource(m_performanceCollector);
+    detachCOMResource(m_comConsole);
 }
 
 void UIVMActivityMonitorLocal::reset()
