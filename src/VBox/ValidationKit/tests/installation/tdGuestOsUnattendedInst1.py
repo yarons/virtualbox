@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsUnattendedInst1.py 111218 2025-10-02 18:16:57Z alexander.eichner@oracle.com $
+# $Id: tdGuestOsUnattendedInst1.py 111266 2025-10-07 12:20:32Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Guest OS unattended installation tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111218 $"
+__version__ = "$Revision: 111266 $"
 
 
 # Standard Python imports.
@@ -415,7 +415,7 @@ class UnattendedVm(vboxtestvms.BaseTestVm):
         #
         sInstallIso = self.sInstallIso
         if not os.path.isabs(sInstallIso):
-            sInstallIso = os.path.join(oTestDrv.sResourcePath, sInstallIso);
+            sInstallIso = oTestDrv.getFullResourceName(sInstallIso);
 
         try:
             oIUnattended.isoPath = sInstallIso;

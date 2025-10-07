@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 111266 2025-10-07 12:20:32Z alexander.eichner@oracle.com $
 ## @file
 # VirtualBox Validation Kit.
 #
@@ -84,6 +84,7 @@ ValidationKit-testdriver_SOURCES := \
 	$(PATH_SUB_CURRENT)/testdriver/base.py \
 	$(PATH_SUB_CURRENT)/testdriver/btresolver.py \
 	$(PATH_SUB_CURRENT)/testdriver/reporter.py \
+	$(PATH_SUB_CURRENT)/testdriver/resourcecache.py \
 	$(PATH_SUB_CURRENT)/testdriver/testfileset.py \
 	$(PATH_SUB_CURRENT)/testdriver/tst-txsclient.py \
 	$(PATH_SUB_CURRENT)/testdriver/txsclient.py \
