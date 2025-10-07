@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 111266 2025-10-07 12:20:32Z alexander.eichner@oracle.com $
+# $Id: base.py 111269 2025-10-07 12:45:01Z alexander.eichner@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111266 $"
+__version__ = "$Revision: 111269 $"
 
 
 # Standard Python imports.
@@ -983,7 +983,9 @@ class TestDriverBase(object): # pylint: disable=too-many-instance-attributes
         if     self.oLocalRsrcCache is None \
            and self.sResourcePathCache is not None \
            and self.cbResourceCacheMax != 0:
-            self.oLocalRsrcCache = resourcecache.LocalRsrcCache(self.sResourcePath, self.sResourcePathCache, self.cbResourceCacheMax);
+            self.oLocalRsrcCache = resourcecache.LocalRsrcCache(self.sResourcePath, \
+                                                                self.sResourcePathCache, \
+                                                                self.cbResourceCacheMax);
 
         if os.path.isabs(sName): ## @todo Hack. Need to deal properly with stuff in the validationkit.zip and similar.
             return sName;
