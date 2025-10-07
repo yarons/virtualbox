@@ -1,4 +1,4 @@
-/* $Id: QITreeWidget.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: QITreeWidget.cpp 111272 2025-10-07 14:45:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITreeWidget class implementation.
  */
@@ -456,12 +456,12 @@ void QITreeWidget::setSizeHintForItems(const QSize &sizeHint)
 
 int QITreeWidget::childCount() const
 {
-    return invisibleRootItem()->childCount();
+    return topLevelItemCount();
 }
 
 QITreeWidgetItem *QITreeWidget::childItem(int iIndex) const
 {
-    return invisibleRootItem()->child(iIndex) ? QITreeWidgetItem::toItem(invisibleRootItem()->child(iIndex)) : 0;
+    return topLevelItem(iIndex) ? QITreeWidgetItem::toItem(topLevelItem(iIndex)) : 0;
 }
 
 QModelIndex QITreeWidget::itemIndex(QTreeWidgetItem *pItem)
