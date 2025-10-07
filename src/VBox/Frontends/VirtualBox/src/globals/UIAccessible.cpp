@@ -1,4 +1,4 @@
-/* $Id: UIAccessible.cpp 111281 2025-10-07 15:52:12Z sergey.dubov@oracle.com $ */
+/* $Id: UIAccessible.cpp 111282 2025-10-07 15:55:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: UIAccessible namespace implementation.
  */
@@ -27,6 +27,7 @@
 
 /* Qt includes: */
 #include <QAccessibleInterface>
+#include <QWidget>
 
 /* GUI includes: */
 #include "UIAccessible.h"
