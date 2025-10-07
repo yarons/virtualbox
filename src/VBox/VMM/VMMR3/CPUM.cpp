@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: CPUM.cpp 111265 2025-10-07 07:44:24Z alexander.eichner@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -491,6 +491,21 @@ VMMR3DECL(int) CPUMR3Term(PVM pVM)
         memset(pVCpu->cpum.s.aMagic, 0, sizeof(pVCpu->cpum.s.aMagic));
         pVCpu->cpum.s.uMagic      = 0;
         pvCpu->cpum.s.Guest.dr[5] = 0;
+    }
+#endif
+
+#if defined(RT_ARCH_X86) || defined(RT_ARCH_AMD64)
+    if (pVM->cpum.s.paHostLeavesR3)
+    {
+        RTMemFree(pVM->cpum.s.paHostLeavesR3);
+        pVM->cpum.s.paHostLeavesR3 = NULL;
+    }
+
+#elif defined(RT_ARCH_ARM64)
+    if (pVM->cpum.s.paHostIdRegsR3)
+    {
+        RTMemFree(pVM->cpum.s.paHostIdRegsR3);
+        pVM->cpum.s.paHostIdRegsR3 = NULL;
     }
 #endif
 
