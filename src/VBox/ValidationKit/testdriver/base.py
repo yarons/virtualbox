@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 111269 2025-10-07 12:45:01Z alexander.eichner@oracle.com $
+# $Id: base.py 111270 2025-10-07 13:17:20Z alexander.eichner@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111269 $"
+__version__ = "$Revision: 111270 $"
 
 
 # Standard Python imports.
@@ -923,8 +923,8 @@ class TestDriverBase(object): # pylint: disable=too-many-instance-attributes
             elif self.sHost == 'solaris':   self.sResourcePath = "/mnt/testrsrc/";
             elif self.sHost == 'win':       self.sResourcePath = "T:/";
             else: raise GenError('unknown host OS "%s"' % (self.sHost));
-        self.sResourcePathCache = getDirEnv( 'TESTBOX_PATH_RESOURCES_CACHE');
-        self.cbResourceCacheMax = int(getEnv('TESTBOX_PATH_RESOURCES_CACHE_SIZE_MAX', '0'));
+        self.sResourcePathCache = getDirEnv(         'TESTBOX_PATH_RESOURCES_CACHE');
+        self.cbResourceCacheMax = int(os.environ.get('TESTBOX_PATH_RESOURCES_CACHE_SIZE_MAX', '0'));
 
         # PID file for the testdriver.
         self.sPidFile = os.path.join(self.sScratchPath, 'testdriver.pid');
