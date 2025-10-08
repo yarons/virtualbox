@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: resourcecache.py 111286 2025-10-08 08:50:43Z alexander.eichner@oracle.com $
+# $Id: resourcecache.py 111287 2025-10-08 09:45:48Z alexander.eichner@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111286 $"
+__version__ = "$Revision: 111287 $"
 
 
 # Standard Python imports.
@@ -100,7 +100,7 @@ class LocalRsrcCache(object):
         Cleans up the cache, writing the TOC file.
         """
         asToc = [];
-        for sKey in self.oCacheLru.keys():
+        for sKey, _ in self.oCacheLru.items():
             asToc.append(sKey);
 
         sCacheToc = os.path.join(self.sLocalCachePath, 'cache-toc.json');
@@ -132,7 +132,7 @@ class LocalRsrcCache(object):
             if self.cbCache + cbObj > self.cbCacheMax:
                 cbEvict = (self.cbCache + cbObj) - self.cbCacheMax;
                 while cbEvict > 0:
-                    sCachedPath, cbCachedObj = self.oCacheLru.popitem(True);
+                    sCachedPath, cbCachedObj = self.oCacheLru.popitem(False);
                     os.remove(os.path.join(self.sLocalCachePath, sCachedPath));
                     self.cbCache = self.cbCache - cbCachedObj;
                     cbEvict = cbEvict - min(cbEvict, cbCachedObj);
