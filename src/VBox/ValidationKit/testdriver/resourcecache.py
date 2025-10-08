@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: resourcecache.py 111284 2025-10-08 06:58:53Z alexander.eichner@oracle.com $
+# $Id: resourcecache.py 111286 2025-10-08 08:50:43Z alexander.eichner@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111284 $"
+__version__ = "$Revision: 111286 $"
 
 
 # Standard Python imports.
@@ -82,7 +82,7 @@ class LocalRsrcCache(object):
                         sPath = os.path.join(self.sLocalCachePath, sItem);
                         cbObj = os.path.getsize(sPath);
                         self.cbCache += cbObj;
-                        self.oCacheLru[sPath] = cbObj;
+                        self.oCacheLru[sItem] = cbObj;
                 else:
                     fRc = False;
         except:
