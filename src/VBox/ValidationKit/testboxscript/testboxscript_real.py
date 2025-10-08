@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: testboxscript_real.py 111266 2025-10-07 12:20:32Z alexander.eichner@oracle.com $
+# $Id: testboxscript_real.py 111283 2025-10-08 06:51:32Z alexander.eichner@oracle.com $
 
 """
 TestBox Script - main().
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111266 $"
+__version__ = "$Revision: 111283 $"
 
 
 # Standard python imports.
@@ -200,7 +200,7 @@ class TestBoxScript(object):
         testboxcommons.log('Test Manager URL: %s' % self._oOptions.sTestManagerUrl,)
         testboxcommons.log('Scratch root path: %s' % self._oOptions.sScratchRoot,)
         if self._oOptions.sResourceCacheRoot is not None:
-            testboxcommons.log('Local resource cache root path: %s' % self._oOptions.sResourceCacheRoots,);
+            testboxcommons.log('Local resource cache root path: %s' % self._oOptions.sResourceCacheRoot,);
             testboxcommons.log('Local resource cache maximum size: %s' % self._oOptions.sResourceCacheSizeMax,);
         for sItem in self._ddSignOnParams:                      # pylint: disable=consider-using-dict-items
             testboxcommons.log('Sign-On value %18s: %s' % (sItem, self._ddSignOnParams[sItem][self.VALUE]));
