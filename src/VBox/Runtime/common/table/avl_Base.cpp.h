@@ -1,4 +1,4 @@
-/* $Id: avl_Base.cpp.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: avl_Base.cpp.h 111291 2025-10-08 20:29:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * kAVLBase - basic routines for all AVL trees.
  */
@@ -134,6 +134,7 @@
 #ifndef KAVL_RANGE
 # define KAVL_R_IS_INTERSECTING(key1B, key2B, key1E, key2E) KAVL_E(key1B, key2B)
 # define KAVL_R_IS_IDENTICAL(key1B, key2B, key1E, key2E)    KAVL_E(key1B, key2B)
+# define KAVL_R_IS_IN_RANGE(key1B, key1E, key2)             KAVL_E(key1B, key2)
 #endif
 
 /** @def KAVL_DECL
