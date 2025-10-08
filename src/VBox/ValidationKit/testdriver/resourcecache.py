@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: resourcecache.py 111268 2025-10-07 12:36:22Z alexander.eichner@oracle.com $
+# $Id: resourcecache.py 111284 2025-10-08 06:58:53Z alexander.eichner@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111268 $"
+__version__ = "$Revision: 111284 $"
 
 
 # Standard Python imports.
@@ -115,7 +115,7 @@ class LocalRsrcCache(object):
         sCachePath = os.path.join(self.sLocalCachePath, sName);
         if os.path.exists(sCachePath):
             # Resource is already cached, return this variant and place it at the top of the cache.
-            cbObj = self.oCacheLru.pop(sCachePath);
+            cbObj = self.oCacheLru.pop(sName);
             self.oCacheLru[sName] = cbObj;
             self.writeToc();
             return sCachePath;
