@@ -1,5 +1,5 @@
 #!/usr/bin/make -f
-# $Id: rules 111289 2025-10-08 17:19:35Z vadim.galitsyn@oracle.com $
+# $Id: rules 111290 2025-10-08 18:55:33Z vadim.galitsyn@oracle.com $
 ## @file
 # VirtualBox rules.
 #
@@ -183,7 +183,7 @@ cfg_flags := $(if $(NOQT),--disable-qt,) \
     $(if $(VNC),--enable-vnc,) \
     $(if $(PATH_OUT_BASE),--out-base-dir=$(PATH_OUT_BASE),) \
     $(if $(filter el10 openSUSE156,$(rpmrel)),--build-libssl,) \
-    $(if $(filter el10 openSUSE156,$(rpmrel)),--disable-java,) \
+    $(if $(filter el10 openSUSE156 openSUSE160,$(rpmrel)),--disable-java,) \
     --disable-extpack
 
 bld_flags := LOCALCFG=$(instlin)/rpm/LocalConfig.kmk \
