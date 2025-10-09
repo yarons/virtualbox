@@ -1,4 +1,4 @@
-# $Id: VirtualBox.tmpl.spec 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: VirtualBox.tmpl.spec 111300 2025-10-09 11:19:42Z vadim.galitsyn@oracle.com $
 ## @file
 # Spec file for creating VirtualBox rpm packages
 #
@@ -45,7 +45,7 @@ BuildRoot: %BUILDROOT%
 Requires:  %INITSCRIPTS% %LIBASOUND% %NETTOOLS% %LIBVULKAN%
 
 %if %{?rpm_suse:1}%{!?rpm_suse:0}
-%debug_package
+%global debug_package %{nil}
 %endif
 
 %MACROSPYTHON%
