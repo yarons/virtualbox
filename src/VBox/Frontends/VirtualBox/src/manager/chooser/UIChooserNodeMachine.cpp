@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeMachine.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIChooserNodeMachine.cpp 111301 2025-10-09 11:43:53Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeMachine class implementation.
  */
@@ -280,7 +280,7 @@ bool UIChooserNodeMachine::accessible() const
 void UIChooserNodeMachine::sltRetranslateUI()
 {
     /* Update internal stuff: */
-    m_strDescription = tr("Virtual Machine");
+    m_strDescription = tr("Virtual machine");
 
     /* Update machine-item: */
     if (item())
