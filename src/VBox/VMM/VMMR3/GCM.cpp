@@ -1,4 +1,4 @@
-/* $Id: GCM.cpp 111294 2025-10-09 08:39:07Z alexander.eichner@oracle.com $ */
+/* $Id: GCM.cpp 111295 2025-10-09 09:31:52Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GCM - Guest Compatibility Manager.
  */
@@ -428,6 +428,8 @@ static DECLCALLBACK(void) gcmR3PatchGuest(PVM pVM, GCMGSTPATCHID enmPatch)
                                    | CPUMCTX_EXTRN_CR0  /* for mode */
                                    | CPUMCTX_EXTRN_EFER /* for mode */
                                    | CPUMCTX_EXTRN_DR7  /* for debugging - compulsory */
+                                   | CPUMCTX_EXTRN_GDTR /* for selector info */
+                                   | CPUMCTX_EXTRN_LDTR /* for selector info */
                                    | CPUMCTX_EXTRN_CR3 /* for page tables */
                                    | CPUMCTX_EXTRN_CR4 /* for mode paging mode */
                                    | CPUMCTX_EXTRN_DR7 /* for memory breakpoints */,
