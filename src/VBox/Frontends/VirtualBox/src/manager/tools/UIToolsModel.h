@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 111237 2025-10-03 13:02:33Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.h 111302 2025-10-09 12:16:55Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -168,9 +168,6 @@ private slots:
      * @{ */
         /** Handles request to commit data. */
         void sltHandleCommitData();
-
-        /** Handles translation event. */
-        void sltRetranslateUI();
 
         /** Handles tool label visibility change event. */
         void sltHandleToolLabelsVisibilityChange(bool fVisible);
