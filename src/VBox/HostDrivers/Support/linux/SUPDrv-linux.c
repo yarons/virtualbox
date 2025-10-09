@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-linux.c 111292 2025-10-09 06:54:16Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: SUPDrv-linux.c 111293 2025-10-09 07:20:03Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -440,12 +440,13 @@ static int __init VBoxDrvLinuxInit(void)
                         if (rc2)
                             printk(KERN_WARNING "vboxdrv: failed to register module notifier! rc2=%d\n", rc2);
 #endif
+#ifdef SUPDRV_LINUX_HAS_KVM_HWVIRT_API
                         g_fUseKvmHwvirtApi = is_kvm_hwvirt_mod_likely_loaded();
                         ASMCompilerBarrier();
-
-                        printk(KERN_INFO "vboxdrv: TSC mode is %s, tentative frequency %llu Hz. KVM is %s loaded.\n",
-                               SUPGetGIPModeName(g_DevExt.pGip), g_DevExt.pGip->u64CpuHz,
-                               g_fUseKvmHwvirtApi ? "likely" : "not likely");
+                        printk(KERN_INFO "vboxdrv: KVM is %s loaded\n", g_fUseKvmHwvirtApi ? "likely" : "not likely");
+#endif
+                        printk(KERN_INFO "vboxdrv: TSC mode is %s, tentative frequency %llu Hz\n",
+                               SUPGetGIPModeName(g_DevExt.pGip), g_DevExt.pGip->u64CpuHz);
                         LogFlow(("VBoxDrv::ModuleInit returning %#x\n", rc));
                         printk(KERN_DEBUG "vboxdrv: Successfully loaded version "
                                 VBOX_VERSION_STRING " r" RT_XSTR(VBOX_SVN_REV)
