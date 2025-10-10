@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 111323 2025-10-10 13:24:36Z alexander.eichner@oracle.com $
+# $Id: tdAddBasic1.py 111326 2025-10-10 13:33:54Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111323 $"
+__version__ = "$Revision: 111326 $"
 
 # Standard Python imports.
 import os;
@@ -274,7 +274,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         elif oTestVm.isLinux():
             (fRc, oTxsSession) = self.testLinuxInstallAdditions(oSession, oTxsSession, oTestVm);
         elif oTestVm.isSolaris():
-            (fRc, oTxsSession) = self.testSolarisInstallAdditions(oSession, oTxsSession, oTestVm);
+            (fRc, oTxsSession) = self.testSolarisInstallAdditions(oSession, oTxsSession);
         else:
             reporter.error('Guest Additions installation not implemented for %s yet! (%s)' %
                            (oTestVm.sKind, oTestVm.sVmName,));
@@ -611,7 +611,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
 
         return (fRc, oTxsSession);
 
-    def testSolarisInstallAdditions(self, oSession, oTxsSession, oTestVm):
+    def testSolarisInstallAdditions(self, oSession, oTxsSession):
         #
         # The actual install.
         #
@@ -639,7 +639,9 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
             return reporter.error('Failed to create "%s" via TXS' % (sAdminFile,));
 
         # Construct arguments for installer.
-        asArgs = [ '/usr/sbin/pkgadd', '-a', sAdminFile, '-n', '-d', '${CDROM}/%s/VBoxSolarisAdditions.pkg' % self.sGstPathGaPrefix, 'SUNWvboxguest' ];
+        asArgs = [ '/usr/sbin/pkgadd', '-a', sAdminFile, '-n', '-d',
+                   '${CDROM}/%s/VBoxSolarisAdditions.pkg' % self.sGstPathGaPrefix,
+                   'SUNWvboxguest' ];
 
         fRc = self.txsRunTest(oTxsSession, 'VBoxSolarisAdditions.pkg', 30 * 60 * 1000,
                               '/usr/sbin/pkgadd', asArgs);
