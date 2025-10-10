@@ -1,4 +1,4 @@
-/* $Id: isomaker.cpp 111317 2025-10-10 07:22:51Z knut.osmundsen@oracle.com $ */
+/* $Id: isomaker.cpp 111320 2025-10-10 11:09:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ISO Image Maker.
  */
@@ -1303,6 +1303,11 @@ static void rtFsIsoMakerDestroy(PRTFSISOMAKERINT pThis)
 
     if (pThis->paCommonSources)
     {
+        for (uint32_t i = 0; i < pThis->cCommonSources; i++)
+        {
+            RTVfsFileRelease(pThis->paCommonSources[i]);
+            pThis->paCommonSources[i] = NIL_RTVFSFILE;
+        }
         RTMemFree(pThis->paCommonSources);
         pThis->paCommonSources = NULL;
     }
