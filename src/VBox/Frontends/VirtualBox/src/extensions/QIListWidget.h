@@ -1,4 +1,4 @@
-/* $Id: QIListWidget.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: QIListWidget.h 111321 2025-10-10 13:04:02Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIListWidget class declaration.
  */
@@ -107,6 +107,9 @@ public:
     QList<QIListWidgetItem*> selectedItems() const;
     /** Finds items with the text that matches the string text using the given flags. */
     QList<QIListWidgetItem*> findItems(const QString &text, Qt::MatchFlags flags) const;
+
+    /** Finds first item with the property @a strKey having @a vValue. */
+    QIListWidgetItem *findItem(const QString &strKey, const QVariant &vValue);
 
 protected:
 

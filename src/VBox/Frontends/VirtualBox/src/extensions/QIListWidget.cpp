@@ -1,4 +1,4 @@
-/* $Id: QIListWidget.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: QIListWidget.cpp 111321 2025-10-10 13:04:02Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIListWidget class implementation.
  */
@@ -424,6 +424,16 @@ QList<QIListWidgetItem*> QIListWidget::selectedItems() const
 QList<QIListWidgetItem*> QIListWidget::findItems(const QString &strText, Qt::MatchFlags flags) const
 {
     return QIListWidgetItem::toList(QListWidget::findItems(strText, flags));
+}
+
+QIListWidgetItem *QIListWidget::findItem(const QString &strKey, const QVariant &vValue)
+{
+    /* Look for the first item having suitable property: */
+    for (int i = 0; i < childCount(); ++i)
+        if (QIListWidgetItem *pItem = childItem(i))
+            if (pItem->property(strKey.toUtf8().constData()) == vValue)
+                return pItem;
+    return 0;
 }
 
 void QIListWidget::paintEvent(QPaintEvent *pEvent)
