@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 111169 2025-09-29 14:44:29Z alexander.eichner@oracle.com $
+# $Id: tdAddBasic1.py 111323 2025-10-10 13:24:36Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111169 $"
+__version__ = "$Revision: 111323 $"
 
 # Standard Python imports.
 import os;
@@ -205,6 +205,8 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
                 self.sFileCdWait = ('%s/VBoxWindowsAdditions.exe' % (self.sGstPathGaPrefix,));
             elif oTestVm.isLinux():
                 self.sFileCdWait = ('%s/VBoxLinuxAdditions.run' % (self.sGstPathGaPrefix,));
+            elif oTestVm.isSolaris():
+                self.sFileCdWait = ('%s/VBoxSolarisAdditions.pkg' % (self.sGstPathGaPrefix,));
 
             oSession, oTxsSession = self.startVmAndConnectToTxsViaTcp(oTestVm.sVmName, fCdWait = True,
                                                                       cMsCdWait = 5 * 60 * 1000,
@@ -271,6 +273,8 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
             (fRc, oTxsSession) = self.testWindowsInstallAdditions(oSession, oTxsSession, oTestVm);
         elif oTestVm.isLinux():
             (fRc, oTxsSession) = self.testLinuxInstallAdditions(oSession, oTxsSession, oTestVm);
+        elif oTestVm.isSolaris():
+            (fRc, oTxsSession) = self.testSolarisInstallAdditions(oSession, oTxsSession, oTestVm);
         else:
             reporter.error('Guest Additions installation not implemented for %s yet! (%s)' %
                            (oTestVm.sKind, oTestVm.sVmName,));
@@ -602,6 +606,58 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
                     else:
                         fRc = False;
                         reporter.testFailure('User services were not reloaded');
+            if fRc:
+                reporter.testDone();
+
+        return (fRc, oTxsSession);
+
+    def testSolarisInstallAdditions(self, oSession, oTxsSession, oTestVm):
+        #
+        # The actual install.
+        #
+
+        # Create the admin file for the non interactive installation.
+        sAdminFile = '/root/admin';
+        sContent = 'mail=\n';
+        sContent += 'instance=overwrite\n';
+        sContent += 'partial=nocheck\n';
+        sContent += 'runlevel=nocheck\n';
+        sContent += 'idepend=nocheck\n';
+        sContent += 'rdepend=nocheck\n';
+        sContent += 'space=nocheck\n';
+        sContent += 'setuid=nocheck\n';
+        sContent += 'conflict=nocheck\n';
+        sContent += 'action=nocheck\n';
+        sContent += 'networktimeout=60\n';
+        sContent += 'networkretries=3\n';
+        sContent += 'authentication=quit\n';
+        sContent += 'keystore=/var/sadm/security\n';
+        sContent += 'proxy=\n';
+        sContent += 'basedir=default\n';
+
+        if oTxsSession.syncUploadString(sContent, sAdminFile, 0o644) is not True:
+            return reporter.error('Failed to create "%s" via TXS' % (sAdminFile,));
+
+        # Construct arguments for installer.
+        asArgs = [ '/usr/sbin/pkgadd', '-a', sAdminFile, '-n', '-d', '${CDROM}/%s/VBoxSolarisAdditions.pkg' % self.sGstPathGaPrefix, 'SUNWvboxguest' ];
+
+        fRc = self.txsRunTest(oTxsSession, 'VBoxSolarisAdditions.pkg', 30 * 60 * 1000,
+                              '/usr/sbin/pkgadd', asArgs);
+        if fRc and oTxsSession.isSuccess():
+            reporter.log('Installation completed');
+        else:
+            reporter.error('Installing Solaris Additions failed (isSuccess=%s, lastReply=%s, see log file for details)'
+                           % (oTxsSession.isSuccess(), oTxsSession.getLastReply()));
+
+        # Do the final reboot to get the just installed Guest Additions up and running.
+        if fRc:
+            if self.fRebootAfterInstall:
+                reporter.testStart('Rebooting guest after Guest Additions installation');
+                (fRc, oTxsSession) = self.txsRebootAndReconnectViaTcp(oSession, oTxsSession, cMsTimeout = 15 * 60 * 1000);
+                if not fRc:
+                    reporter.testFailure('Rebooting and reconnecting to TXS service failed');
+            else:
+                reporter.log('Skipping guest reboot after Guest Additions installation as requested');
             if fRc:
                 reporter.testDone();
 

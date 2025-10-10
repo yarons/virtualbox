@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 111196 2025-10-01 10:56:37Z alexander.eichner@oracle.com $
+# $Id: vboxtestvms.py 111323 2025-10-10 13:24:36Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111196 $"
+__version__ = "$Revision: 111323 $"
 
 # Standard Python imports.
 import copy;
@@ -657,6 +657,7 @@ class BaseTestVm(object):
         if self.isWindows():    return 'win';
         if self.isOS2():        return 'os2';
         if self.isLinux():      return 'linux';
+        if self.isSolaris():    return 'solaris';
         reporter.error('getGuestOs does not what to return!');
         raise Exception();
 
@@ -681,6 +682,10 @@ class BaseTestVm(object):
     def isLinux(self):
         """ Checks if it's an Linux VM. """
         return self.sGuestOsType == g_ksGuestOsTypeLinux;
+
+    def isSolaris(self):
+        """ Checks if it's an Solaris VM. """
+        return self.sGuestOsType == g_ksGuestOsTypeSolaris;
 
     def is64bit(self):
         """ Checks if it's a 64-bit VM. """
@@ -1426,6 +1431,7 @@ class TestVm(object):                                       # pylint: disable=to
         if self.isWindows():    return 'win';
         if self.isOS2():        return 'os2';
         if self.isLinux():      return 'linux';
+        if self.isSolaris():    return 'solaris';
         reporter.error('getGuestOs does not what to return!');
         raise Exception();
 
@@ -1450,6 +1456,10 @@ class TestVm(object):                                       # pylint: disable=to
     def isLinux(self):
         """ Checks if it's an Linux VM. """
         return self.sGuestOsType == g_ksGuestOsTypeLinux;
+
+    def isSolaris(self):
+        """ Checks if it's an Solaris VM. """
+        return self.sGuestOsType == g_ksGuestOsTypeSolaris;
 
     def is64bit(self):
         """ Checks if it's a 64-bit VM. """
