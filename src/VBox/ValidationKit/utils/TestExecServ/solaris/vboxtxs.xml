@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
 <!--
  Solaris SMF service manifest for the VirtualBox Test eXecution Service.
- $Id: vboxtxs.xml 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+ $Id: vboxtxs.xml 111324 2025-10-10 13:26:37Z alexander.eichner@oracle.com $
 -->
 <!--
     Copyright (C) 2010-2025 Oracle and/or its affiliates.
@@ -69,7 +69,7 @@
     </dependency>
 
     <!-- start + stop methods -->
-    <exec_method type='method' name='start' exec='/opt/VBoxTest/testsuite/solaris/vboxtxs.sh' timeout_seconds='30' />
+    <exec_method type='method' name='start' exec='/opt/VBoxTest/validationkit/solaris/vboxtxs.sh' timeout_seconds='30' />
     <exec_method type='method' name='stop' exec=':kill' timeout_seconds='60' />
 
     <!-- Description -->
