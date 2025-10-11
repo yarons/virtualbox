@@ -1,4 +1,4 @@
-/* $Id: isomaker.cpp 111320 2025-10-10 11:09:21Z knut.osmundsen@oracle.com $ */
+/* $Id: isomaker.cpp 111333 2025-10-11 23:01:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ISO Image Maker.
  */
@@ -8835,6 +8835,8 @@ static void rtFsIsoMakerOutFile_ReadUdfIcbOneEntry(PRTFSISOMAKERINT pIsoMaker, P
     uint32_t      cbMaxExtra = RTFSISOMAKER_SECTOR_SIZE - RT_UOFFSETOF(UDFFILEENTRY, abExtAttribs);
     if (pFileEntry->cbAllocDescs + pFileEntry->cbExtAttribs > cbMaxExtra)
     {
+        /** @todo We need use UDF_AD_TYPE_NEXT to link to an UDFALLOCATIONEXTENTDESC
+         *        here. */
         pFileEntry->cbExtAttribs = 0;
         if (pFileEntry->cbAllocDescs > cbMaxExtra)
         {

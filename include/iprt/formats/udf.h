@@ -1,4 +1,4 @@
-/* $Id: udf.h 111332 2025-10-10 23:52:00Z knut.osmundsen@oracle.com $ */
+/* $Id: udf.h 111333 2025-10-11 23:01:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT, Universal Disk Format (UDF).
  */
@@ -119,7 +119,9 @@ typedef UDFLBADDR const *PCUDFLBADDR;
 #define UDF_AD_TYPE_ONLY_ALLOCATED                  1
 /** Not recorded nor allocated. */
 #define UDF_AD_TYPE_FREE                            2
-/** Go figure. */
+/** Location of the an UDFALLOCATIONEXTENTDESC.
+ * This is used when the ICB doesn't contain suffient room for all the
+ * allocation descriptors. */
 #define UDF_AD_TYPE_NEXT                            3
 /** @} */
 
