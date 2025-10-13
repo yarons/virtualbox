@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 111073 2025-09-20 06:13:58Z alexander.eichner@oracle.com $ */
+/* $Id: DrvNAT.cpp 111349 2025-10-13 13:13:25Z alexander.eichner@oracle.com $ */
 /** @file
  * DrvNATlibslirp - NATlibslirp network transport driver.
  */
@@ -1065,7 +1065,8 @@ static DECLCALLBACK(void) drvNATNotifyDnsChanged(PPDMINETWORKNATCONFIG pInterfac
             }
         }
 
-        if (InAddrListSize(&vNameservers) == 0)
+        size_t const cNameservers = InAddrListSize(&vNameservers);
+        if (cNameservers == 0)
         {
             LogRel(("Nameserver is either on 127/8 network or failed to obtain from host. "
                     "Falling back to libslirp DNS proxy.\n"));
@@ -1074,16 +1075,17 @@ static DECLCALLBACK(void) drvNATNotifyDnsChanged(PPDMINETWORKNATCONFIG pInterfac
             mProxyNameserver.s_addr = slirp_get_vnetwork_addr(pThis->pSlirp).s_addr | RT_H2N_U32_C(0x00000003);
 
             slirp_set_vnameserver(pThis->pSlirp, mProxyNameserver);
-            slirp_set_cRealNameservers(pThis->pSlirp, 0); // Ensures libslirp uses fallback.
+            slirp_set_RealNameservers(pThis->pSlirp, 0, NULL);
 
             LogRel(("fallback virtual nameserver: %u", mProxyNameserver.s_addr));
         }
+        else
+        {
+            LogRelMax(256, ("NAT DNS Update: Stored %u total nameservers\n", cNameservers));
 
-        slirp_set_cRealNameservers(pThis->pSlirp, InAddrListSize(&vNameservers));
-        LogRelMax(256, ("NAT DNS Update: Stored %u total nameservers\n", InAddrListSize(&vNameservers)));
-
-        struct in_addr *paDetachedNameservers = InAddrListDetach(&vNameservers);
-        slirp_set_aRealNameservers(pThis->pSlirp, paDetachedNameservers);
+            struct in_addr *paDetachedNameservers = InAddrListDetach(&vNameservers);
+            slirp_set_RealNameservers(pThis->pSlirp, cNameservers, paDetachedNameservers);
+        }
     }
 }
 
