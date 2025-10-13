@@ -1,4 +1,4 @@
-/* $Id: isovfs.cpp 111348 2025-10-13 13:10:03Z knut.osmundsen@oracle.com $ */
+/* $Id: isovfs.cpp 111362 2025-10-13 15:24:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ISO 9660 and UDF Virtual Filesystem (read only).
  */
@@ -345,58 +345,6 @@ static int  rtFsIsoDir_New9660(PRTFSISOVOL pThis, PRTFSISODIRSHRD pParentDir, PC
 static int  rtFsIsoDir_NewUdf(PRTFSISOVOL pThis, PRTFSISODIRSHRD pParentDir, PCUDFFILEIDDESC pFid, PRTVFSDIR phVfsDir);
 static PRTFSISOCORE rtFsIsoDir_LookupShared(PRTFSISODIRSHRD pThis, uint64_t offDirRec);
 
-
-
-/**
- * UDF virtual partition read function.
- *
- * This deals with all the fun related to block mapping and such.
- *
- * @returns VBox status code.
- * @param   pThis           The instance.
- * @param   idxPart         The virtual partition number.
- * @param   idxBlock        The block number.
- * @param   offByteAddend   The byte offset relative to the block.
- * @param   pvBuf           The output buffer.
- * @param   cbToRead        The number of bytes to read.
- */
-static int rtFsIsoVolUdfVpRead(PRTFSISOVOL pThis, uint32_t idxPart, uint32_t idxBlock, uint64_t offByteAddend,
-                               void *pvBuf, size_t cbToRead)
-{
-    uint64_t const offByte = ((uint64_t)idxBlock << pThis->Udf.VolInfo.cShiftBlock) + offByteAddend;
-
-    int rc;
-    if (idxPart < pThis->Udf.VolInfo.cPartitions)
-    {
-        PRTFSISOVOLUDFPMAP  pPart = &pThis->Udf.VolInfo.paPartitions[idxPart];
-        switch (pPart->bType)
-        {
-            case RTFSUDF_PMAP_T_PLAIN:
-                rc = RTVfsFileReadAt(pThis->hVfsBacking, offByte + pPart->offByteLocation, pvBuf, cbToRead, NULL);
-                if (RT_SUCCESS(rc))
-                {
-                    Log3(("ISO/UDF: Read %#x bytes at %#RX64 (p%u/%#RX64(/%#RX64))\n",
-                          cbToRead, offByte + pPart->offByteLocation, idxPart, offByte, offByte >> pThis->Udf.VolInfo.cShiftBlock));
-                    return VINF_SUCCESS;
-                }
-                Log(("ISO/UDF: Error reading %#x bytes at %#RX64 (p%u/%#RX64(/%#RX64)): %Rrc\n",
-                     cbToRead, offByte + pPart->offByteLocation, idxPart, offByte, offByte >> pThis->Udf.VolInfo.cShiftBlock, rc));
-                break;
-
-            default:
-                AssertFailed();
-                rc = VERR_ISOFS_IPE_1;
-                break;
-        }
-    }
-    else
-    {
-        Log(("ISO/UDF: Invalid partition index %#x (offset %#RX64), max partitions %#x\n",
-             idxPart, offByte, pThis->Udf.VolInfo.cPartitions));
-        rc = VERR_ISOFS_INVALID_PARTITION_INDEX;
-    }
-    return rc;
-}
 
 
 /**
