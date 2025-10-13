@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 111076 2025-09-22 08:10:34Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HM.cpp 111343 2025-10-13 12:05:03Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -807,7 +807,7 @@ static int hmR3InitFinalizeR3(PVM pVM)
 #endif
 
 #if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
-    bool const fCpuSupportsVmx = ASMIsIntelCpu() || ASMIsViaCentaurCpu() || ASMIsShanghaiCpu();
+    bool const fCpuSupportsVmx = ASMIsIntelOrCompatibleCpu();
 #else
     bool const fCpuSupportsVmx = false;
 #endif
