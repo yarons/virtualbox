@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsUnattendedInst1.py 111366 2025-10-13 18:25:39Z alexander.eichner@oracle.com $
+# $Id: tdGuestOsUnattendedInst1.py 111367 2025-10-13 19:14:51Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Guest OS unattended installation tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111366 $"
+__version__ = "$Revision: 111367 $"
 
 
 # Standard Python imports.
@@ -278,7 +278,7 @@ class UnattendedVm(vboxtestvms.BaseTestVm):
                 eNic0AttachType = vboxcon.NetworkAttachmentType_HostOnly;
 
             # Also use it for windows xp to prevent it from ever going online.
-            if self.sKind in ('WindowsXP','WindowsXP_64',):
+            if self.isWindows():
                 eNic0AttachType = vboxcon.NetworkAttachmentType_HostOnly;
 
         #
