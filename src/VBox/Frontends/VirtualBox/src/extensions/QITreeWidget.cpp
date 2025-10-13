@@ -1,4 +1,4 @@
-/* $Id: QITreeWidget.cpp 111281 2025-10-07 15:52:12Z sergey.dubov@oracle.com $ */
+/* $Id: QITreeWidget.cpp 111361 2025-10-13 15:11:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITreeWidget class implementation.
  */
@@ -242,7 +242,7 @@ public:
 #endif
     {}
 
-    /** Returns a specialized accessibility interface type. */
+    /** Returns a specialized accessibility interface @a enmType. */
     virtual void *interface_cast(QAccessible::InterfaceType enmType) RT_OVERRIDE
     {
         const int iCase = static_cast<int>(enmType);

@@ -1,4 +1,4 @@
-/* $Id: QIListWidget.cpp 111359 2025-10-13 15:02:30Z sergey.dubov@oracle.com $ */
+/* $Id: QIListWidget.cpp 111361 2025-10-13 15:11:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIListWidget class implementation.
  */
@@ -127,7 +127,7 @@ public:
     /** Returns the index of the passed @a pChild. */
     virtual int indexOfChild(const QAccessibleInterface*) const RT_OVERRIDE
     {
-        /* -1: */
+        /* -1 in any case: */
         return -1;
     }
 
@@ -267,7 +267,7 @@ public:
             if (list()->childItem(i) == pChildItem)
                 return i;
 
-        /* -1: */
+        /* -1 by default: */
         return -1;
     }
 
