@@ -1,4 +1,4 @@
-/* $Id: udfhlp.cpp 111364 2025-10-13 18:21:02Z knut.osmundsen@oracle.com $ */
+/* $Id: udfhlp.cpp 111365 2025-10-13 18:24:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ISO 9660 and UDF Virtual Filesystem (read only).
  */
@@ -119,7 +119,6 @@ DECLHIDDEN(int) RTFsUdfHlpVpRead(PCRTFSUDFVOLINFO pVolInfo, RTVFSFILE hVfsBackin
     return rc;
 }
 
-#if 0 /* maybe later */
 
 /**
  * Converts an UDF timestamp into an IPRT timesspec.
@@ -127,7 +126,7 @@ DECLHIDDEN(int) RTFsUdfHlpVpRead(PCRTFSUDFVOLINFO pVolInfo, RTVFSFILE hVfsBackin
  * @param   pTimeSpec       Where to return the IRPT time.
  * @param   pUdf            The UDF timestamp.
  */
-static void rtFsIsoUdfTimestamp2TimeSpec(PRTTIMESPEC pTimeSpec, PCUDFTIMESTAMP pUdf)
+DECLHIDDEN(void) RTFsUdfHlpTimestamp2TimeSpec(PRTTIMESPEC pTimeSpec, PCUDFTIMESTAMP pUdf)
 {
     /* Check the year range before we try convert anything as it's quite possible
        that this is zero. */
@@ -158,7 +157,6 @@ static void rtFsIsoUdfTimestamp2TimeSpec(PRTTIMESPEC pTimeSpec, PCUDFTIMESTAMP p
         RTTimeSpecSetNano(pTimeSpec, 0);
 }
 
-#endif /* maybe later */
 
 /**
  * Gathers the allocation extents from an ICB.
