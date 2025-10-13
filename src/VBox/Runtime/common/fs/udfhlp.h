@@ -1,4 +1,4 @@
-/* $Id: udfhlp.h 111332 2025-10-10 23:52:00Z knut.osmundsen@oracle.com $ */
+/* $Id: udfhlp.h 111346 2025-10-13 13:02:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - UDF Virtual Filesystem Common Code Header.
  */
@@ -302,6 +302,38 @@ DECLHIDDEN(int)  RTFsUdfHlpValidateDescTagAndCrc(PCUDFTAG pTag, size_t cbDesc, u
 DECLHIDDEN(int)  RTFsUdfHlpReadAndHandleUdfAvdp(PCRTFSUDFHLPCTX pCtx, uint64_t offAvdp, PRTFSUDFHLPSEENSEQENCES pSeenSequences,
                                                 PRTFSUDFVOLINFO pVolInfo);
 DECLHIDDEN(void) RTFsUdfHlpDestroyVolInfo(PRTFSUDFVOLINFO pVolInfo);
+
+/**
+ * RTFsUdfReadIcbRecursive callback for file entries.
+ *
+ * @returns IPRT status code.
+ * @param   pVolInfo        The volume information (partition map ++).
+ * @param   pFileEntry      The file entry.
+ * @param   idxDefaultPart  The default data partition.
+ * @param   pvUser          The user argument.
+ */
+typedef DECLCALLBACKTYPE(int, FNFSUDFREADICBFILENTRY, (PCRTFSUDFVOLINFO pVolInfo, PCUDFFILEENTRY pFileEntry,
+                                                       uint16_t idxDefaultPart, void *pvUser));
+/*** Pointer to a RTFsUdfReadIcbRecursive callback for file entries. */
+typedef FNFSUDFREADICBFILENTRY *PFNFSUDFREADICBFILENTRY;
+
+/**
+ * RTFsUdfReadIcbRecursive callback for extended file entries.
+ *
+ * @returns IPRT status code.
+ * @param   pVolInfo        The volume information (partition map ++).
+ * @param   pFileEntry      The extended file entry.
+ * @param   idxDefaultPart  The default data partition.
+ * @param   pvUser          The user argument.
+ */
+typedef DECLCALLBACKTYPE(int, FNFSUDFREADICBEXFILENTRY, (PCRTFSUDFVOLINFO pVolInfo, PCUDFEXFILEENTRY pFileEntry,
+                                                         uint16_t idxDefaultPart, void *pvUser));
+/*** Pointer to a RTFsUdfReadIcbRecursive callback for extended file entries. */
+typedef FNFSUDFREADICBEXFILENTRY *PFNFSUDFREADICBEXFILENTRY;
+
+DECLHIDDEN(int)  RTFsUdfReadIcbRecursive(PCRTFSUDFVOLINFO pVolInfo, RTVFSFILE hVfsBacking, uint8_t *pbBuf, uint32_t cNestings,
+                                         PFNFSUDFREADICBFILENTRY pfnFileEntry, PFNFSUDFREADICBEXFILENTRY pfnExFileEntry,
+                                         void *pvUser, uint32_t *pcProcessed, uint32_t *pcIndirections, UDFLONGAD AllocDesc);
 
 
 #endif /* !IPRT_INCLUDED_SRC_common_fs_udfhlp_h */
