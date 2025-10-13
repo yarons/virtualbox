@@ -1,4 +1,4 @@
-/* $Id: udfhlp.h 111365 2025-10-13 18:24:11Z knut.osmundsen@oracle.com $ */
+/* $Id: udfhlp.h 111369 2025-10-13 20:32:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - UDF Virtual Filesystem Common Code Header.
  */
@@ -340,7 +340,7 @@ DECLHIDDEN(int)  RTFsUdfHlpIcbStuffToFileMode(uint32_t fIcbTagFlags, uint8_t bFi
 DECLHIDDEN(void) RTFsUdfHlpTimestamp2TimeSpec(PRTTIMESPEC pTimeSpec, PCUDFTIMESTAMP pUdf);
 DECLHIDDEN(int)  RTFsUdfHlpGatherExtentsFromIcb(PCRTFSUDFVOLINFO pVolInfo, uint8_t const *pbAllocDescs, uint32_t cbAllocDescs,
                                                 uint32_t fIcbTagFlags, uint32_t idxDefaultPart, uint64_t offAllocDescs,
-                                                RTVFSFILE hVfsBacking, uint8_t *pbBuf,
+                                                uint64_t cbMax, RTVFSFILE hVfsBacking, uint8_t *pbBuf,
                                                 uint32_t *pcExtents, PRTFSISOEXTENT pFirstExtent, PRTFSISOEXTENT *ppaExtents);
 
 

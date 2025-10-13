@@ -1,4 +1,4 @@
-/* $Id: isovfs.cpp 111365 2025-10-13 18:24:11Z knut.osmundsen@oracle.com $ */
+/* $Id: isovfs.cpp 111369 2025-10-13 20:32:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ISO 9660 and UDF Virtual Filesystem (read only).
  */
@@ -755,6 +755,7 @@ static DECLCALLBACK(int) rtFsIsoCore_InitFromUdfIcbExFileEntry(PCRTFSUDFVOLINFO 
                                               ((uint64_t)pFileEntry->Tag.offTag << pVolInfo->cShiftBlock)
                                             + RT_UOFFSETOF(UDFFILEENTRY, abExtAttribs)
                                             + pFileEntry->cbExtAttribs,
+                                            pCore->cbObject,
                                             RT_FROM_MEMBER(pVolInfo, RTFSISOVOL, Udf.VolInfo)->hVfsBacking,
                                             (uint8_t *)pFileEntry,
                                             &pCore->cExtents,
@@ -817,6 +818,7 @@ static DECLCALLBACK(int) rtFsIsoCore_InitFromUdfIcbFileEntry(PCRTFSUDFVOLINFO pV
                                               ((uint64_t)pFileEntry->Tag.offTag << pVolInfo->cShiftBlock)
                                             + RT_UOFFSETOF(UDFFILEENTRY, abExtAttribs)
                                             + pFileEntry->cbExtAttribs,
+                                            pCore->cbObject,
                                             RT_FROM_MEMBER(pVolInfo, RTFSISOVOL, Udf.VolInfo)->hVfsBacking,
                                             (uint8_t *)pFileEntry,
                                             &pCore->cExtents,
