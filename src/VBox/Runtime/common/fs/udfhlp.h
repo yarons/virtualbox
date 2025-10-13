@@ -1,4 +1,4 @@
-/* $Id: udfhlp.h 111348 2025-10-13 13:10:03Z knut.osmundsen@oracle.com $ */
+/* $Id: udfhlp.h 111364 2025-10-13 18:21:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - UDF Virtual Filesystem Common Code Header.
  */
@@ -39,6 +39,8 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
+
+#include "isoextent.h"
 
 
 /** Check if an entity ID field equals the given ID string. */
@@ -336,6 +338,10 @@ DECLHIDDEN(int)  RTFsUdfReadIcbRecursive(PCRTFSUDFVOLINFO pVolInfo, RTVFSFILE hV
                                          void *pvUser, uint32_t *pcProcessed, uint32_t *pcIndirections, UDFLONGAD AllocDesc);
 
 DECLHIDDEN(int)  RTFsUdfHlpIcbStuffToFileMode(uint32_t fIcbTagFlags, uint8_t bFileType, uint32_t fPermission, PRTFMODE pfAttrib);
+DECLHIDDEN(int)  RTFsUdfHlpGatherExtentsFromIcb(PCRTFSUDFVOLINFO pVolInfo, uint8_t const *pbAllocDescs, uint32_t cbAllocDescs,
+                                                uint32_t fIcbTagFlags, uint32_t idxDefaultPart, uint64_t offAllocDescs,
+                                                RTVFSFILE hVfsBacking, uint8_t *pbBuf,
+                                                uint32_t *pcExtents, PRTFSISOEXTENT pFirstExtent, PRTFSISOEXTENT *ppaExtents);
 
 
 #endif /* !IPRT_INCLUDED_SRC_common_fs_udfhlp_h */
