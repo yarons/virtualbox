@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsUninstall.nsh 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+; $Id: VBoxGuestAdditionsUninstall.nsh 111360 2025-10-13 15:10:33Z klaus.espenlaub@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsUninstall.nsh - Guest Additions uninstallation.
 ;
@@ -51,11 +51,11 @@ force_uninstall_unsupported_os:
     Call ${un}Vista_CallbackUninstall
     goto done_os_specific ; Needed because of force_uninstall_unsupported_os label.
 
-!if $%KBUILD_TARGET_ARCH% == "x86" ; 32-bit only
   ${ElseIf} ${AtLeastWin2000}
 
     Call ${un}W2K_CallbackUninstall
 
+!if $%KBUILD_TARGET_ARCH% == "x86" ; 32-bit only
   ${ElseIf} ${AtLeastWinNT4}
 
     Call ${un}NT4_CallbackUninstall
@@ -279,11 +279,11 @@ force_delete_unsupported_os:
     Call ${un}Vista_CallbackDeleteFiles
     goto done_os_specific ; Needed because of force_delete_unsupported_os label.
 
-!if $%KBUILD_TARGET_ARCH% == "x86" ; 32-bit only
   ${ElseIf} ${AtLeastWin2000}
 
     Call ${un}W2K_CallbackDeleteFiles
 
+!if $%KBUILD_TARGET_ARCH% == "x86" ; 32-bit only
   ${ElseIf} ${AtLeastWinNT4}
 
       Call ${un}NT4_CallbackDeleteFiles

@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 110823 2025-08-27 14:57:20Z klaus.espenlaub@oracle.com $
+; $Id: VBoxGuestAdditions.nsi 111360 2025-10-13 15:10:33Z klaus.espenlaub@oracle.com $
 ; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -641,7 +641,6 @@ force_install_unsupported_os:
     Call Vista_CallbackExtractFiles
     Call Vista_CallbackInstall
 
-!if $%KBUILD_TARGET_ARCH% == "x86" ; 32-bit only
   ${ElseIf} ${AtLeastWin2000}
 
     Call W2K_CallbackPrepare
@@ -650,6 +649,7 @@ force_install_unsupported_os:
 
     Call W2K_CallbackExtractFiles
     Call W2K_CallbackInstall
+!if $%KBUILD_TARGET_ARCH% == "x86" ; 32-bit only
   ${ElseIf} ${AtLeastWinNT4}
 
     ; At least Service Pack 6 installed?
