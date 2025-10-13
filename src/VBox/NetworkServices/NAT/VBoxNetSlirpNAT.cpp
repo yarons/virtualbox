@@ -1,4 +1,4 @@
-/* $Id: VBoxNetSlirpNAT.cpp 111349 2025-10-13 13:13:25Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxNetSlirpNAT.cpp 111352 2025-10-13 13:51:04Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -1329,7 +1329,7 @@ HRESULT VBoxNetSlirpNAT::HandleEvent(VBoxEventType_T aEventType, IEvent *pEvent)
                 for (size_t i = 0; i < m_ProxyOptions.cRealNameservers; i++)
                     m_ProxyOptions.aRealNameservers[i].s_addr = RT_H2N_U32(paDetachedRealNameservers[i].u);
 
-                slirp_set_RealNameservers(m_pSlirp, m_ProxyOptions.cRealNameservers, 
+                slirp_set_RealNameservers(m_pSlirp, m_ProxyOptions.cRealNameservers,
                                           m_ProxyOptions.aRealNameservers);
 
                 LogRel(("Transfered %d nameservers to NAT engine.\n", m_ProxyOptions.cRealNameservers));
