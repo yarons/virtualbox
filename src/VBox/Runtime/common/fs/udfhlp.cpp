@@ -1,4 +1,4 @@
-/* $Id: udfhlp.cpp 111365 2025-10-13 18:24:11Z knut.osmundsen@oracle.com $ */
+/* $Id: udfhlp.cpp 111368 2025-10-13 19:15:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ISO 9660 and UDF Virtual Filesystem (read only).
  */
@@ -186,9 +186,14 @@ DECLHIDDEN(int) RTFsUdfHlpGatherExtentsFromIcb(PCRTFSUDFVOLINFO pVolInfo, uint8_
 {
     RT_NOREF(hVfsBacking, pbBuf); /** @todo UDF_AD_TYPE_NEXT */
 
+    /*
+     * Initialize return values for a no-extents return.
+     */
     *pcExtents  = 0;
-    *ppaExtents = NULL;
+    pFirstExtent->off      = UINT64_MAX;
     pFirstExtent->cbExtent = 0;
+    pFirstExtent->idxPart  = UINT32_MAX;
+    *ppaExtents = NULL;
 
     /*
      * Figure the (minimal) size of an allocation descriptor, deal with the
@@ -268,7 +273,12 @@ DECLHIDDEN(int) RTFsUdfHlpGatherExtentsFromIcb(PCRTFSUDFVOLINFO pVolInfo, uint8_
                     AssertFailedReturn(VERR_IPE_NOT_REACHED_DEFAULT_CASE);
             }
 
-            /** @todo the sequence is terminated when cb == 0! */
+            /* Zero length extent terminates the allocation descriptor list. */
+            if (cb != 0)
+            { /* likely */ }
+            else
+                break;
+
             /** @todo uType == UDF_AD_TYPE_NEXT needs handling! */
 
             /* Check if we can extend the current extent.  This is useful since
@@ -331,11 +341,6 @@ DECLHIDDEN(int) RTFsUdfHlpGatherExtentsFromIcb(PCRTFSUDFVOLINFO pVolInfo, uint8_
         /*
          * Zero descriptors
          */
-        *pcExtents             = 0;
-        pFirstExtent->off      = UINT64_MAX;
-        pFirstExtent->cbExtent = 0;
-        pFirstExtent->idxPart  = UINT32_MAX;
-
         if (cbAllocDescs > 0)
             LogRelMax(45, ("ISO/UDF: Warning! Allocation descriptor area is shorter than one descriptor: %#u vs %#u: %.*Rhxs\n",
                            cbAllocDescs, cbOneDesc, cbAllocDescs, pbAllocDescs));
