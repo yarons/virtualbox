@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsUnattendedInst1.py 111367 2025-10-13 19:14:51Z alexander.eichner@oracle.com $
+# $Id: tdGuestOsUnattendedInst1.py 111371 2025-10-14 06:45:32Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Guest OS unattended installation tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111367 $"
+__version__ = "$Revision: 111371 $"
 
 
 # Standard Python imports.
@@ -277,17 +277,18 @@ class UnattendedVm(vboxtestvms.BaseTestVm):
                     or 'debian' in self.sKind.lower()):
                 eNic0AttachType = vboxcon.NetworkAttachmentType_HostOnly;
 
-            # Also use it for windows xp to prevent it from ever going online.
+            # Also use it for Windows to prevent it from ever going online.
             if self.isWindows():
                 eNic0AttachType = vboxcon.NetworkAttachmentType_HostOnly;
 
         #
-        # Use host-only networks instead of host-only adapters for trunk builds on Mac OS.
+        # Use NAT instead of host-only adapters on macOS because we can't find the
+        # guest's IP address without having the guest additions installed, which is not
+        # always the case.
         #
         if     eNic0AttachType   == vboxcon.NetworkAttachmentType_HostOnly \
-           and utils.getHostOs() == 'darwin' \
-           and oTestDrv.fpApiVer >= 7.0:
-            eNic0AttachType = vboxcon.NetworkAttachmentType_HostOnlyNetwork;
+           and utils.getHostOs() == 'darwin':
+            eNic0AttachType = vboxcon.NetworkAttachmentType_NAT;
 
         return vboxtestvms.BaseTestVm._createVmDoIt(self, oTestDrv, eNic0AttachType, sDvdImage); # pylint: disable=protected-access
 
