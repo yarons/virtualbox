@@ -1,4 +1,4 @@
-/* $Id: udfhlp.h 111369 2025-10-13 20:32:03Z knut.osmundsen@oracle.com $ */
+/* $Id: udfhlp.h 111372 2025-10-14 08:23:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - UDF Virtual Filesystem Common Code Header.
  */
@@ -342,6 +342,8 @@ DECLHIDDEN(int)  RTFsUdfHlpGatherExtentsFromIcb(PCRTFSUDFVOLINFO pVolInfo, uint8
                                                 uint32_t fIcbTagFlags, uint32_t idxDefaultPart, uint64_t offAllocDescs,
                                                 uint64_t cbMax, RTVFSFILE hVfsBacking, uint8_t *pbBuf,
                                                 uint32_t *pcExtents, PRTFSISOEXTENT pFirstExtent, PRTFSISOEXTENT *ppaExtents);
+
+DECLHIDDEN(int)  RTFsUdfHlpDStringFieldToUtf8Buf(const char *pachSrc, size_t cbSrc, void *pvDst, size_t cbDst, size_t *pcbRet);
 
 
 #endif /* !IPRT_INCLUDED_SRC_common_fs_udfhlp_h */
