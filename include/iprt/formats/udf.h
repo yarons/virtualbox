@@ -1,4 +1,4 @@
-/* $Id: udf.h 111333 2025-10-11 23:01:51Z knut.osmundsen@oracle.com $ */
+/* $Id: udf.h 111403 2025-10-14 23:04:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT, Universal Disk Format (UDF).
  */
@@ -1168,7 +1168,7 @@ typedef UDFFILEIDDESC const *PCUDFFILEIDDESC;
 #define UDF_FILE_FLAGS_HIDDEN               UINT8_C(0x01)
 /** Directory - Indicates a directory as apposed to some kind of file or symlink or something  (0). */
 #define UDF_FILE_FLAGS_DIRECTORY            UINT8_C(0x02)
-/** Deleted - Indicate that the file has been deleted.  Assoicated descriptors may still be valid, though. */
+/** Deleted - Indicate that the file has been deleted.  Associated descriptors may still be valid, though. */
 #define UDF_FILE_FLAGS_DELETED              UINT8_C(0x04)
 /** Parent - Indicate the ICB field refers to the parent directory (or maybe
  * a file in case of streaming directory). */
