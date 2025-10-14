@@ -1,4 +1,4 @@
-/* $Id: UIBootOrderEditor.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIBootOrderEditor.h 111377 2025-10-14 10:31:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIBootListWidget class declaration.
  */
@@ -136,8 +136,8 @@ private:
     QGridLayout      *m_pLayout;
     /** Holds the label instance. */
     QLabel           *m_pLabel;
-    /** Holds the table instance. */
-    UIBootListWidget *m_pTable;
+    /** Holds the list instance. */
+    UIBootListWidget *m_pList;
     /** Holds the toolbar instance. */
     QIToolBar        *m_pToolbar;
     /** Holds the move up action. */
