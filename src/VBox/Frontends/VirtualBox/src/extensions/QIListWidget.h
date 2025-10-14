@@ -1,4 +1,4 @@
-/* $Id: QIListWidget.h 111321 2025-10-10 13:04:02Z sergey.dubov@oracle.com $ */
+/* $Id: QIListWidget.h 111376 2025-10-14 10:22:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIListWidget class declaration.
  */
@@ -62,7 +62,7 @@ public:
     static QList<const QIListWidgetItem*> toList(const QList<const QListWidgetItem*> &initialList);
 
     /** Constructs item passing @a pListWidget into the base-class. */
-    QIListWidgetItem(QIListWidget *pListWidget);
+    QIListWidgetItem(QIListWidget *pListWidget = 0);
     /** Constructs item passing @a strText and @a pListWidget into the base-class. */
     QIListWidgetItem(const QString &strText, QIListWidget *pListWidget);
     /** Constructs item passing @a icon, @a strText and @a pListWidget into the base-class. */
