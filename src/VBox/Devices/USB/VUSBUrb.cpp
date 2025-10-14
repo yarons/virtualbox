@@ -1,4 +1,4 @@
-/* $Id: VUSBUrb.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: VUSBUrb.cpp 111380 2025-10-14 13:16:28Z michal.necasek@oracle.com $ */
 /** @file
  * Virtual USB - URBs.
  */
@@ -929,11 +929,9 @@ static int vusbUrbSubmitCtrl(PVUSBURB pUrb)
                 vusbUrbCompletionRh(pUrb);
                 break;
             }
-            if (pPipe->pCtrl != pExtra)
-            {
-                pExtra = pPipe->pCtrl;
-                pSetup = pExtra->pMsg;
-            }
+
+            /* vusbMsgSetup() may have reallocated pMsg */
+            pSetup = pExtra->pMsg;
 
             /* pre-buffer our output if it's device-to-host */
             if (pSetup->bmRequestType & VUSB_DIR_TO_HOST)
