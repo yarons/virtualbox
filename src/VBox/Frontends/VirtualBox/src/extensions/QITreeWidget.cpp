@@ -1,4 +1,4 @@
-/* $Id: QITreeWidget.cpp 111361 2025-10-13 15:11:52Z sergey.dubov@oracle.com $ */
+/* $Id: QITreeWidget.cpp 111373 2025-10-14 10:03:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITreeWidget class implementation.
  */
@@ -296,9 +296,6 @@ public:
             // so we should start enumerating tree indexes since 'column count'.
             const int iColumnCount = tree()->columnCount();
             int iCurrentIndex = iColumnCount;
-
-            // Do some sanity check as well, enough?
-            AssertReturn(iIndex >= iColumnCount, 0);
 
             // Search for sibling with corresponding index:
             QTreeWidgetItem *pItem = tree()->topLevelItem(0);
