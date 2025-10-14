@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsUnattendedInst1.py 111371 2025-10-14 06:45:32Z alexander.eichner@oracle.com $
+# $Id: tdGuestOsUnattendedInst1.py 111374 2025-10-14 10:04:30Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Guest OS unattended installation tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111371 $"
+__version__ = "$Revision: 111374 $"
 
 
 # Standard Python imports.
@@ -332,6 +332,30 @@ class UnattendedVm(vboxtestvms.BaseTestVm):
             fRc = oSession.setGuestPropertyValue('/VirtualBox/GuestAdd/VBoxService/--timesync-no-set-start', '1') and fRc;
             fRc =     oSession.setGuestPropertyValue('/VirtualBox/GuestAdd/VBoxService/--timesync-set-threshold', '43200000') \
                   and fRc; # 12 hours
+
+        if fRc:
+            #
+            # Ensure the IP address doesn't change between guest reboots, as seen with the unattended Debian installer,
+            # by adding a fixed address for the MAC address.
+            #
+            try:
+                oNic              = oSession.o.machine.getNetworkAdapter(0);
+                enmAttachmentType = oNic.attachmentType;
+                if enmAttachmentType == vboxcon.NetworkAttachmentType_HostOnly:
+                    # Get the MAC address and find the DHCP server.
+                    sMacAddr      = oNic.MACAddress;
+                    sHostOnlyNIC  = oNic.hostOnlyInterface;
+                    oIHostOnlyIf  = oTestDrv.oVBox.host.findHostNetworkInterfaceByName(sHostOnlyNIC);
+                    sHostOnlyNet  = oIHostOnlyIf.networkName;
+                    oIDhcpServer  = oTestDrv.oVBox.findDHCPServerByNetworkName(sHostOnlyNet);
+
+                    sLowerIp = oIDhcpServer.lowerIP;
+                    oIDhcpCfg = oIDhcpServer.getConfig(vboxcon.DHCPConfigScope_MAC, sMacAddr, 0, True);
+                    oIDhcpCfg = oTestDrv.oVBoxMgr.queryInterface(oIDhcpCfg, 'IDHCPIndividualConfig');
+                    oIDhcpCfg.fixedAddress = sLowerIp;
+            except:
+                reporter.errorXcpt();
+                fRc = False;
 
         # Save the settings.
         fRc = fRc and oSession.saveSettings()
