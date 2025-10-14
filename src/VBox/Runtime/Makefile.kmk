@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 111332 2025-10-10 23:52:00Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 111404 2025-10-14 23:11:40Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2583,6 +2583,7 @@ RuntimeBldProg_SOURCES          = \
 	common/table/avlru64.cpp \
 	common/table/avlruintptr.cpp \
 	common/table/avlu32.cpp \
+	common/table/avlu64.cpp \
 	common/table/avluintptr.cpp \
 	common/time/time.cpp \
 	common/time/timeprog.cpp \
