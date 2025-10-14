@@ -1,4 +1,4 @@
-/* $Id: UILanguageSettingsEditor.h 111387 2025-10-14 14:27:24Z sergey.dubov@oracle.com $ */
+/* $Id: UILanguageSettingsEditor.h 111388 2025-10-14 14:49:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UILanguageSettingsEditor class declaration.
  */
@@ -69,8 +69,8 @@ private slots:
     /** Handles @a pItem painting with passed @a pPainter. */
     void sltHandleItemPainting(QTreeWidgetItem *pItem, QPainter *pPainter);
 
-    /** Handles @a pCurrentItem change. */
-    void sltHandleCurrentItemChange(QTreeWidgetItem *pCurrentItem);
+    /** Handles current @a pItem change. */
+    void sltHandleCurrentItemChange(QTreeWidgetItem *pItem);
 
 private:
 
