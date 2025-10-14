@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 111374 2025-10-14 10:04:30Z alexander.eichner@oracle.com $
+# $Id: vboxwrappers.py 111375 2025-10-14 10:13:27Z alexander.eichner@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111374 $"
+__version__ = "$Revision: 111375 $"
 
 
 # Standard Python imports.
@@ -3387,7 +3387,6 @@ class SessionWrapper(TdTaskBase):
                         sMacAddr     = None;
                     except:
                         reporter.log4Xcpt();
-                        pass;
             except:
                 reporter.errorXcpt();
                 return None;
