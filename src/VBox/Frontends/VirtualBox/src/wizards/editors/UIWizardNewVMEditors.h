@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.h 110731 2025-08-15 12:38:57Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMEditors.h 111417 2025-10-15 12:01:22Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMEditors class declaration.
  */
@@ -139,7 +139,7 @@ public:
         void setDomainName(const QString &strDomain);
         QString hostnameDomainName() const;
         bool hostDomainNameComplete() const;
-        void mark(bool fProductKeyRequired);
+        void mark();
         void disableEnableProductKeyWidgets(bool fEnabled);
         QString productKey() const;
         bool hasProductKeyAcceptableInput() const;

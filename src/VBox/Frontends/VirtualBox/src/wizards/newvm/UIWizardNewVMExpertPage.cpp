@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 110731 2025-08-15 12:38:57Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 111417 2025-10-15 12:01:22Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -511,7 +511,7 @@ void UIWizardNewVMExpertPage::markWidgets() const
     if (pWizard && pWizard->installGuestAdditions() && m_pGAInstallationISOContainer)
         m_pGAInstallationISOContainer->mark();
     if (isUnattendedEnabled())
-        m_pAdditionalOptionsContainer->mark(pWizard->isProductKeyRequired());
+        m_pAdditionalOptionsContainer->mark();
 }
 
 QWidget *UIWizardNewVMExpertPage::createUnattendedWidgets()
@@ -646,7 +646,6 @@ bool UIWizardNewVMExpertPage::isComplete() const
                                              UIWizardNewVM::tr("Invalid host name or domain name"));
                 fIsComplete = false;
             }
-            if (pWizard->isProductKeyRequired())
             {
                 if (!m_pAdditionalOptionsContainer->hasProductKeyAcceptableInput())
                 {
