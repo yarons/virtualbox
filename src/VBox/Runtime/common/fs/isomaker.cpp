@@ -1,4 +1,4 @@
-/* $Id: isomaker.cpp 111407 2025-10-15 07:46:54Z knut.osmundsen@oracle.com $ */
+/* $Id: isomaker.cpp 111409 2025-10-15 08:14:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ISO Image Maker.
  */
@@ -6096,12 +6096,11 @@ static int rtFsIsoMakerFinalizeDirectoriesInUdfNamespace(PRTFSISOMAKERINT pThis,
      */
     RTListForEach(&pNamespace->FinalizedDirs, pCurDir, RTFSISOMAKERNAMEDIR, FinalizedEntry)
     {
-        PRTFSISOMAKERNAME pCurName    = pCurDir->pName;
-        PRTFSISOMAKERNAME pParentName = pCurName->pParent ? pCurName->pParent : pCurName;
+        PRTFSISOMAKERNAME const pCurName = pCurDir->pName;
 
         /* UDF only have the '..' directory, but we use cbDirRec00 for it. */
         Assert(pCurName->cbDirRec != 0);
-        Assert(pParentName->cbDirRec != 0);
+        Assert((pCurName->pParent ? pCurName->pParent : pCurName)->cbDirRec != 0);
         pCurDir->cbDirRec01 = 0;
         uint32_t offInDir   = pCurDir->cbDirRec00 = RT_UOFFSETOF(UDFFILEIDDESC, abImplementationUse) + 2;
         Assert(!(offInDir & 3));
