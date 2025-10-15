@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsCommon.nsh 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+; $Id: VBoxGuestAdditionsCommon.nsh 111421 2025-10-15 21:33:18Z klaus.espenlaub@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsCommon.nsh - Common / shared utility functions.
 ;
@@ -57,7 +57,7 @@ Function ${un}Common_DetectEnvironment
   ${EndIf}
 
   ; Init global variables that depends on the Windows version.
-  ${If} ${AtLeastWinVista}
+  ${If} ${AtLeastWin2003}
     StrCpy $g_strEarlyNTDrvInfix ""
   ${Else}
     StrCpy $g_strEarlyNTDrvInfix "EarlyNT"
