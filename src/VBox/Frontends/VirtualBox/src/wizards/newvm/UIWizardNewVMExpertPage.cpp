@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 111433 2025-10-16 13:21:23Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 111434 2025-10-16 14:09:11Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -647,7 +647,7 @@ bool UIWizardNewVMExpertPage::isComplete() const
             }
             if (pWizard->isProductKeyRequired())
             {
-                if (!m_pAdditionalOptionsContainer->hasProductKeyAcceptableInput() || m_pAdditionalOptionsContainer->productKey().isEmpty())
+                if (!m_pAdditionalOptionsContainer->isProductKeyValid(pWizard->isProductKeyRequired()))
                 {
                     m_pToolBox->setPageTitleIcon(ExpertToolboxItems_Unattended,
                                                  UIIconPool::iconSet(":/status_error_16px.png"),
