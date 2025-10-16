@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 111349 2025-10-13 13:13:25Z alexander.eichner@oracle.com $ */
+/* $Id: DrvNAT.cpp 111425 2025-10-16 05:03:51Z jack.doherty@oracle.com $ */
 /** @file
  * DrvNATlibslirp - NATlibslirp network transport driver.
  */
@@ -1747,6 +1747,27 @@ static DECLCALLBACK(int) drvNATConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
     slirpCfg.vdomainname = NULL;
     slirpCfg.aRealNameservers = NULL;
     slirpCfg.cRealNameservers = 0;
+
+    /* Pull Bind IP for outgoing traffic (if applicable). */
+    char szTmpBindIp[32]; /* xxx.xxx.xxx.xxx/yy */
+    rc = pDrvIns->pHlpR3->pfnCFGMQueryString(pCfg, "BindIP", szTmpBindIp, sizeof(szNetwork));
+    if (rc != VERR_CFGM_VALUE_NOT_FOUND)
+    {
+        RTNETADDRIPV4 mOutboundAddr;
+        int iPrefixLength;
+        rc = RTNetStrToIPv4Cidr(szTmpBindIp, &mOutboundAddr, &iPrefixLength);
+        AssertLogRelRCReturn(rc, rc);
+        slirpCfg.outbound_addr = (struct sockaddr_in *)RTMemAlloc(sizeof(struct sockaddr_in));
+        slirpCfg.outbound_addr->sin_addr = RTNetIPv4AddrToInAddr(&mOutboundAddr);
+        slirpCfg.outbound_addr->sin_family = AF_INET;
+        slirpCfg.outbound_addr->sin_port = 0;
+    }
+    else
+        rc = VINF_SUCCESS;
+
+    AssertLogRelRCReturn(rc, rc);
+
+    /** @todo r=jack: add IPv6 support for BindIP. */
 
     /*
      * Slirp Callbacks
