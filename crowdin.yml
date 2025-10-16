@@ -1,0 +1,3 @@
+files:
+  - source: src/VBox/Frontends/VirtualBox/nls/*_xx_YY.ts
+    translation: src/VBox/Frontends/VirtualBox/nls/%file_name%_%two_letters_code%.%file_extension%
