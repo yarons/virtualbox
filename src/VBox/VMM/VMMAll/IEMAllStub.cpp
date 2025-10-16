@@ -1,4 +1,4 @@
-/* $Id: IEMAllStub.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: IEMAllStub.cpp 111426 2025-10-16 07:36:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager, dummy IEM stub functions.
  *
@@ -80,6 +80,14 @@ VMM_INT_DECL(VBOXSTRICTRC) IEMExecOneWithPrefetchedByPC(PVMCPUCC pVCpu, uint64_t
 }
 
 
+VMM_INT_DECL(VBOXSTRICTRC) IEMExecOneIgnoreLock(PVMCPUCC pVCpu)
+{
+    AssertReleaseFailed();
+    RT_NOREF(pVCpu);
+    return VERR_NOT_IMPLEMENTED;
+}
+
+
 VMM_INT_DECL(VBOXSTRICTRC) IEMExecOneBypass(PVMCPUCC pVCpu)
 {
     AssertReleaseFailed();
@@ -130,3 +138,30 @@ VMMR3_INT_DECL(VBOXSTRICTRC) IEMR3ProcessForceFlag(PVM pVM, PVMCPUCC pVCpu, VBOX
     return VERR_NOT_IMPLEMENTED;
 }
 
+
+#ifdef VBOX_VMM_TARGET_X86
+
+VMM_INT_DECL(VBOXSTRICTRC)
+IEMInjectTrap(PVMCPUCC pVCpu, uint8_t u8TrapNo, TRPMEVENT enmType, uint16_t uErrCode, RTGCPTR uCr2, uint8_t cbInstr)
+{
+    AssertReleaseFailed();
+    RT_NOREF(pVCpu, u8TrapNo, enmType, uErrCode, uCr2, cbInstr);
+    return VERR_NOT_IMPLEMENTED;
+}
+
+
+VMM_INT_DECL(void) IEMTlbInvalidatePage(PVMCPUCC pVCpu, RTGCPTR GCPtr)
+{
+    AssertReleaseFailed();
+    RT_NOREF(pVCpu, GCPtr);
+}
+
+
+VMM_INT_DECL(VBOXSTRICTRC)  IEMExecDecodedCpuid(PVMCPUCC pVCpu, uint8_t cbInstr)
+{
+    AssertReleaseFailed();
+    RT_NOREF(pVCpu, cbInstr);
+    return VERR_NOT_IMPLEMENTED;
+}
+
+#endif

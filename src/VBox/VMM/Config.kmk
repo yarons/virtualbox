@@ -1,4 +1,4 @@
-# $Id: Config.kmk 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: Config.kmk 111426 2025-10-16 07:36:59Z knut.osmundsen@oracle.com $
 ## @file
 # kBuild Configuration file for the VMM.
 #
@@ -54,6 +54,9 @@ ifdef VBOX_WITH_HWVIRT
 endif
 ifdef VBOX_WITH_NESTED_HWVIRT_SVM
  VMM_COMMON_DEFS += VBOX_WITH_NESTED_HWVIRT_SVM
+endif
+ifdef VBOX_WITH_DEBUGGER
+ VMM_COMMON_DEFS += VBOX_WITH_DEBUGGER
 endif
 
 # IEM config:
