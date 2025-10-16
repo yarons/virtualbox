@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMUnattendedPage.cpp 111417 2025-10-15 12:01:22Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMUnattendedPage.cpp 111433 2025-10-16 13:21:23Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMUnattendedPage class implementation.
  */
@@ -254,7 +254,7 @@ void UIWizardNewVMUnattendedPage::markWidgets() const
     if (pWizard && pWizard->installGuestAdditions() && m_pGAInstallationISOContainer)
         m_pGAInstallationISOContainer->mark();
     if (m_pAdditionalOptionsContainer)
-        m_pAdditionalOptionsContainer->mark();
+        m_pAdditionalOptionsContainer->mark(pWizard->isProductKeyRequired());
 }
 
 void UIWizardNewVMUnattendedPage::sltSelectedWindowsImageChanged(ulong uImageIndex)

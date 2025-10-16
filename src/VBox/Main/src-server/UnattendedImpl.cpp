@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 111417 2025-10-15 12:01:22Z serkan.bayraktar@oracle.com $ */
+/* $Id: UnattendedImpl.cpp 111433 2025-10-16 13:21:23Z serkan.bayraktar@oracle.com $ */
 /** @file
  * Unattended class implementation
  */
@@ -497,8 +497,10 @@ HRESULT Unattended::detectIsoOS()
             return E_OUTOFMEMORY;
         }
     }
-    // if (mStrDetectedOSTypeId.startsWithI("windows11"))
-    //     mfProductKeyRequired = true;
+
+    if (mEnmOsType >= VBOXOSTYPE_Win9x && mEnmOsType <= VBOXOSTYPE_Win2k8_x64)
+         mfProductKeyRequired = true;
+
     /* Check if detected OS type is supported (covers platform architecture). */
     bool fSupported = false;
     for (size_t i = 0; i < mSupportedGuestOSTypes.size() && !fSupported; ++i)

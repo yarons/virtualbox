@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 111417 2025-10-15 12:01:22Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 111433 2025-10-16 13:21:23Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -211,7 +211,6 @@ void UIWizardNewVMExpertPage::sltISOPathChanged(const QString &strISOPath)
     /* Redetect the OS type using the name if detection or the step above failed: */
     if (!fOsTypeFixed && m_pNameAndSystemEditor)
         sltNameChanged(m_pNameAndSystemEditor->name());
-
     emit completeChanged();
 }
 
@@ -511,7 +510,7 @@ void UIWizardNewVMExpertPage::markWidgets() const
     if (pWizard && pWizard->installGuestAdditions() && m_pGAInstallationISOContainer)
         m_pGAInstallationISOContainer->mark();
     if (isUnattendedEnabled())
-        m_pAdditionalOptionsContainer->mark();
+        m_pAdditionalOptionsContainer->mark(pWizard->isProductKeyRequired());
 }
 
 QWidget *UIWizardNewVMExpertPage::createUnattendedWidgets()
@@ -646,8 +645,9 @@ bool UIWizardNewVMExpertPage::isComplete() const
                                              UIWizardNewVM::tr("Invalid host name or domain name"));
                 fIsComplete = false;
             }
+            if (pWizard->isProductKeyRequired())
             {
-                if (!m_pAdditionalOptionsContainer->hasProductKeyAcceptableInput())
+                if (!m_pAdditionalOptionsContainer->hasProductKeyAcceptableInput() || m_pAdditionalOptionsContainer->productKey().isEmpty())
                 {
                     m_pToolBox->setPageTitleIcon(ExpertToolboxItems_Unattended,
                                                  UIIconPool::iconSet(":/status_error_16px.png"),

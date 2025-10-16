@@ -1,4 +1,4 @@
-/* $Id: UIHostnameDomainNameEditor.cpp 111417 2025-10-15 12:01:22Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHostnameDomainNameEditor.cpp 111433 2025-10-16 13:21:23Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHostnameDomainNameEditor class implementation.
  */
@@ -126,7 +126,7 @@ bool UIHostnameDomainNameEditor::hostDomainNameComplete() const
         m_pDomainNameLineEdit && m_pDomainNameLineEdit->hasAcceptableInput();
 }
 
-void UIHostnameDomainNameEditor::mark()
+void UIHostnameDomainNameEditor::mark(bool fProductKeyRequired)
 {
     if (m_pHostnameLineEdit)
         m_pHostnameLineEdit->mark(!m_pHostnameLineEdit->hasAcceptableInput(),
@@ -139,7 +139,7 @@ void UIHostnameDomainNameEditor::mark()
                                        "Allowed characters are alphanumerics, \"-\" and \".\""),
                                     tr("Domain name is valid"));
     if (m_pProductKeyLineEdit)
-        m_pProductKeyLineEdit->mark(!m_pProductKeyLineEdit->isValid(),
+        m_pProductKeyLineEdit->mark((fProductKeyRequired && m_pProductKeyLineEdit->productKey().isEmpty()) || !m_pProductKeyLineEdit->isValid(),
                                     tr("Selected OS requires a valid product key"),
                                     tr("Product key is valid"));
 }
@@ -290,4 +290,10 @@ bool UIHostnameDomainNameEditor::hasProductKeyAcceptableInput() const
     return m_pProductKeyLineEdit->isValid();
 }
 
+QString UIHostnameDomainNameEditor::productKey() const
+{
+    if (m_pProductKeyLineEdit)
+        return m_pProductKeyLineEdit->productKey();
+    return QString();
+}
 #include "UIHostnameDomainNameEditor.moc"
