@@ -1,5 +1,9 @@
-files:
-  - source: src/VBox/Frontends/VirtualBox/nls/*_xx_YY.ts
-    translation: src/VBox/Frontends/VirtualBox/nls/%file_name%_%two_letters_code%.%file_extension%
-    translation_replace:
-      _xx_YY: ''
+"files": [
+  {
+    "source": "src/VBox/Frontends/VirtualBox/nls/*_xx_YY.tso",
+    "translation": "src/VBox/Frontends/VirtualBox/nls/%file_name%_%two_letters_code%.%file_extension%",
+    "translation_replace": {
+      "_xx_YY": ""
+    }
+  }
+]
