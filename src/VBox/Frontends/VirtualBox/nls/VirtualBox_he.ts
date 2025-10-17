@@ -2319,11 +2319,11 @@
     <message numerus="yes">
       <source>&lt;nobr&gt;Used by the following %n hard disk(s):&lt;/nobr&gt;&lt;br&gt;%1</source>
       <comment>This text is never used with n == 0. Feel free to drop the %n where possible, we only included it because of problems with Qt Linguist (but the user can see how many hard drives are in the tool-tip and doesn&apos;t need to be told).</comment>
-      <translation type="unfinished">
+      <translation>
+        <numerusform>&lt;nobr&gt;בשימוש בכונן הקשיח הבא:&lt;/nobr&gt;&lt;br&gt;%1</numerusform>
         <numerusform>&lt;nobr&gt;בשימוש בכוננים הקשיחים הבאים:&lt;/nobr&gt;&lt;br&gt;%1</numerusform>
-        <numerusform>&lt;nobr&gt;Used by the following %n hard disk(s):&lt;/nobr&gt;&lt;br&gt;%1</numerusform>
-        <numerusform>&lt;nobr&gt;Used by the following %n hard disk(s):&lt;/nobr&gt;&lt;br&gt;%1</numerusform>
-        <numerusform>&lt;nobr&gt;Used by the following %n hard disk(s):&lt;/nobr&gt;&lt;br&gt;%1</numerusform>
+        <numerusform>&lt;nobr&gt;בשימוש בכוננים הקשיחים הבאים:&lt;/nobr&gt;&lt;br&gt;%1</numerusform>
+        <numerusform>&lt;nobr&gt;בשימוש בכוננים הקשיחים הבאים:&lt;/nobr&gt;&lt;br&gt;%1</numerusform>
       </translation>
     </message>
     <message>
@@ -2334,8 +2334,8 @@
       <source>This virtual machine is password protected. Please enter the %n encryption password(s) below.</source>
       <comment>This text is never used with n == 0. Feel free to drop the %n where possible, we only included it because of problems with Qt Linguist (but the user can see how many passwords are in the list and doesn&apos;t need to be told).</comment>
       <translation type="unfinished">
-        <numerusform>המכונה הווירטואלית הזאת מוגנת בסיסמה. נא למלא את סיסמת או סיסמאות ההצפנה להלן.</numerusform>
-        <numerusform>This virtual machine is password protected. Please enter the %n encryption password(s) below.</numerusform>
+        <numerusform>המכונה הווירטואלית הזאת מוגנת בסיסמה. נא למלא את סיסמת ההצפנה להלן.</numerusform>
+        <numerusform>המכונה הווירטואלית הזאת מוגנת בסיסמה. נא למלא את שתי סיסמאות ההצפנה להלן.</numerusform>
         <numerusform>This virtual machine is password protected. Please enter the %n encryption password(s) below.</numerusform>
         <numerusform>This virtual machine is password protected. Please enter the %n encryption password(s) below.</numerusform>
       </translation>
@@ -2848,11 +2848,11 @@
     <message numerus="yes">
       <source>%n group(s)</source>
       <comment>Group item tool-tip / Group info</comment>
-      <translation type="unfinished">
+      <translation>
         <numerusform>קבוצה</numerusform>
+        <numerusform>שתי קבוצות</numerusform>
         <numerusform>%n קבוצות</numerusform>
-        <numerusform>%n group(s)</numerusform>
-        <numerusform>%n group(s)</numerusform>
+        <numerusform>%n קבוצות</numerusform>
       </translation>
     </message>
     <message>
@@ -2873,11 +2873,11 @@
     <message numerus="yes">
       <source>(%n running)</source>
       <comment>Group item tool-tip / Running machine info</comment>
-      <translation type="unfinished">
+      <translation>
         <numerusform>(%n רצה)</numerusform>
         <numerusform>(%n רצות)</numerusform>
-        <numerusform>(%n running)</numerusform>
-        <numerusform>(%n running)</numerusform>
+        <numerusform>(%n רצות)</numerusform>
+        <numerusform>(%n רצות)</numerusform>
       </translation>
     </message>
     <message>
@@ -7934,7 +7934,7 @@
     </message>
     <message>
       <source>Failed to pause the execution of the virtual machine &lt;b&gt;%1&lt;/b&gt;.</source>
-      <translation type="unfinished">Failed to pause the execution of the virtual machine &lt;b&gt;%1&lt;/b&gt;.</translation>
+      <translation>השהיית הפעלת המכונה הווירטואלית &lt;b&gt;%1&lt;/b&gt; נכשלה.</translation>
     </message>
     <message>
       <source>Failed to resume the execution of the virtual machine &lt;b&gt;%1&lt;/b&gt;.</source>
