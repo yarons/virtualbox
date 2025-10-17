@@ -2333,11 +2333,11 @@
     <message numerus="yes">
       <source>This virtual machine is password protected. Please enter the %n encryption password(s) below.</source>
       <comment>This text is never used with n == 0. Feel free to drop the %n where possible, we only included it because of problems with Qt Linguist (but the user can see how many passwords are in the list and doesn&apos;t need to be told).</comment>
-      <translation type="unfinished">
+      <translation>
         <numerusform>המכונה הווירטואלית הזאת מוגנת בסיסמה. נא למלא את סיסמת ההצפנה להלן.</numerusform>
         <numerusform>המכונה הווירטואלית הזאת מוגנת בסיסמה. נא למלא את שתי סיסמאות ההצפנה להלן.</numerusform>
-        <numerusform>This virtual machine is password protected. Please enter the %n encryption password(s) below.</numerusform>
-        <numerusform>This virtual machine is password protected. Please enter the %n encryption password(s) below.</numerusform>
+        <numerusform>המכונה הווירטואלית הזאת מוגנת בסיסמה. נא למלא את %n סיסמאות ההצפנה להלן.</numerusform>
+        <numerusform>המכונה הווירטואלית הזאת מוגנת בסיסמה. נא למלא את %n סיסמאות ההצפנה להלן.</numerusform>
       </translation>
     </message>
   </context>
@@ -7798,7 +7798,7 @@
     </message>
     <message>
       <source>&lt;tr&gt;&lt;td&gt;Usage: VirtualBoxVM --startvm &amp;lt;name|UUID&amp;gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Starts the VirtualBox virtual machine with the given name or unique identifier (UUID).&lt;/td&gt;&lt;/tr&gt;</source>
-      <translation type="unfinished">&lt;tr&gt;&lt;td&gt;Usage: VirtualBoxVM --startvm &amp;lt;name|UUID&amp;gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Starts the VirtualBox virtual machine with the given name or unique identifier (UUID).&lt;/td&gt;&lt;/tr&gt;</translation>
+      <translation>&lt;tr&gt;&lt;td&gt;שימוש: VirtualBoxVM --startvm &amp;lt;name|UUID&amp;gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;התחלת מכונת ה־VirtualBox הווירטואלית עם השם (name) או המזהה הייחודי (UUID) שסופק.&lt;/td&gt;&lt;/tr&gt;</translation>
     </message>
     <message>
       <source>You are running a prerelease version of VirtualBox. This version is not suitable for production use.</source>
@@ -7878,7 +7878,7 @@
     </message>
     <message>
       <source>&lt;p&gt;You are trying to move group &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt; to group &lt;nobr&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/nobr&gt; which already have another item with the same name.&lt;/p&gt;&lt;p&gt;Would you like to automatically rename it?&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;You are trying to move group &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt; to group &lt;nobr&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/nobr&gt; which already have another item with the same name.&lt;/p&gt;&lt;p&gt;Would you like to automatically rename it?&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;ניסית להעביר את הקבוצה &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt; לקבוצה &lt;nobr&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/nobr&gt; שכבר יש בה פריט אחר באותו השם.&lt;/p&gt;&lt;p&gt;לשנות את השם אוטומטית?&lt;/p&gt;</translation>
     </message>
     <message>
       <source>Rename</source>
@@ -7886,7 +7886,7 @@
     </message>
     <message>
       <source>Failed to set groups of the virtual machine &lt;b&gt;%1&lt;/b&gt;.</source>
-      <translation type="unfinished">Failed to set groups of the virtual machine &lt;b&gt;%1&lt;/b&gt;.</translation>
+      <translation>הגדרת קבוצות המכונות הווירטואליות &lt;b&gt;%1&lt;/b&gt; נכשלה.</translation>
     </message>
     <message>
       <source>Remove</source>
@@ -7938,15 +7938,15 @@
     </message>
     <message>
       <source>Failed to resume the execution of the virtual machine &lt;b&gt;%1&lt;/b&gt;.</source>
-      <translation type="unfinished">Failed to resume the execution of the virtual machine &lt;b&gt;%1&lt;/b&gt;.</translation>
+      <translation>המשך הפעלת המכונה הווירטואלית &lt;b&gt;%1&lt;/b&gt; נכשלה.</translation>
     </message>
     <message>
       <source>Failed to discard the saved state of the virtual machine &lt;b&gt;%1&lt;/b&gt;.</source>
-      <translation type="unfinished">Failed to discard the saved state of the virtual machine &lt;b&gt;%1&lt;/b&gt;.</translation>
+      <translation>סילוק המצב השמור של המכונה הווירטואלית &lt;b&gt;%1&lt;/b&gt; נכשל.</translation>
     </message>
     <message>
       <source>&lt;p&gt;You are about to start all of the following virtual machines:&lt;/p&gt;&lt;p&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/p&gt;&lt;p&gt;This could take some time and consume a lot of host system resources. Do you wish to proceed?&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;You are about to start all of the following virtual machines:&lt;/p&gt;&lt;p&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/p&gt;&lt;p&gt;This could take some time and consume a lot of host system resources. Do you wish to proceed?&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;הפעולה הזאת תפעיל את כל המכונות הווירטואליות הבאות:&lt;/p&gt;&lt;p&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/p&gt;&lt;p&gt;היא עלולה לארוך זמן מה ולצרוך הרבה ממשאבי הזיכרון של המערכת המארחת. להמשיך?&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&lt;p&gt;You are about to restore snapshot &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;.&lt;/p&gt;&lt;p&gt;You can create a snapshot of the current state of the virtual machine first by checking the box below; if you do not do this the current state will be permanently lost. Do you wish to proceed?&lt;/p&gt;</source>
@@ -8006,7 +8006,7 @@
     </message>
     <message>
       <source>The virtual machine that you are changing has been started. Only certain settings can be changed while a machine is running. All other changes will be lost if you close this window now.</source>
-      <translation type="unfinished">The virtual machine that you are changing has been started. Only certain settings can be changed while a machine is running. All other changes will be lost if you close this window now.</translation>
+      <translation>המכונה הווירטואלית שבחרת לערוך הופעלה. רק חלק מההגדרות זמינות לשינוי כל עוד המכונה פעילה. כל שאר השינויים ילכו לאיבוד אם החלון הזה ייסגר כעת.</translation>
     </message>
     <message>
       <source>&lt;p&gt;The machine settings were changed while you were editing them. You currently have unsaved setting changes.&lt;/p&gt;&lt;p&gt;Would you like to reload the changed settings or to keep your own changes?&lt;/p&gt;</source>
@@ -8030,11 +8030,11 @@
     </message>
     <message>
       <source>Failed to attach the optical drive (&lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;) to the slot &lt;i&gt;%2&lt;/i&gt; of the machine &lt;b&gt;%3&lt;/b&gt;.</source>
-      <translation type="unfinished">Failed to attach the optical drive (&lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;) to the slot &lt;i&gt;%2&lt;/i&gt; of the machine &lt;b&gt;%3&lt;/b&gt;.</translation>
+      <translation>הצמדת הכונן האופטי (&lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;) לחריץ &lt;i&gt;%2&lt;/i&gt; של המכונה &lt;b&gt;%3&lt;/b&gt; נכשלה.</translation>
     </message>
     <message>
       <source>Failed to attach the floppy drive (&lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;) to the slot &lt;i&gt;%2&lt;/i&gt; of the machine &lt;b&gt;%3&lt;/b&gt;.</source>
-      <translation type="unfinished">Failed to attach the floppy drive (&lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;) to the slot &lt;i&gt;%2&lt;/i&gt; of the machine &lt;b&gt;%3&lt;/b&gt;.</translation>
+      <translation>הצמדת כונן התקליטונים (&lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;) לחריץ &lt;i&gt;%2&lt;/i&gt; של המכונה &lt;b&gt;%3&lt;/b&gt; נכשלה.</translation>
     </message>
     <message>
       <source>The current port forwarding rules are not valid. None of the host or guest port values may be set to zero.</source>
@@ -8083,15 +8083,15 @@
     </message>
     <message>
       <source>&lt;p&gt;Are you sure you want to remove the virtual optical disk &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt; from the list of known disk image files?&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Are you sure you want to remove the virtual optical disk &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt; from the list of known disk image files?&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;להסיר את הכונן האופטי הווירטואלי &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt; מרשימת קובצי דמות הכונן המוכרים?&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&lt;p&gt;Note that the storage unit of this medium will not be deleted and that it will be possible to use it later again.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Note that the storage unit of this medium will not be deleted and that it will be possible to use it later again.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;נא לשים לב שיחידת האחסון של אמצעי האחסון הזה לא תימחק ואפשר יהיה להשתמש בה בהמשך.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&lt;p&gt;Are you sure you want to remove the virtual floppy disk &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt; from the list of known disk image files?&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Are you sure you want to remove the virtual floppy disk &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt; from the list of known disk image files?&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;להסיר את התקליטון הווירטואלי &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt; מרשימת קובצי דמות הכונן המוכרים?&lt;/p&gt;</translation>
     </message>
     <message>
       <source>Remove</source>
@@ -8320,7 +8320,7 @@
     </message>
     <message>
       <source>&lt;p&gt;Could not enter seamless mode due to insufficient guest video memory.&lt;/p&gt;&lt;p&gt;You should configure the virtual machine to have at least &lt;b&gt;%1&lt;/b&gt; of video memory.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Could not enter seamless mode due to insufficient guest video memory.&lt;/p&gt;&lt;p&gt;You should configure the virtual machine to have at least &lt;b&gt;%1&lt;/b&gt; of video memory.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;לא ניתן לעבור למצב שילוב שקוף עקב חוסר בזיכרון וידאו.&lt;/p&gt;&lt;p&gt;יש להגדיר את המכונה שיהיו לה &lt;b&gt;%1&lt;/b&gt; לפחות של זיכרון וידאו.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&lt;p&gt;Could not change the guest screen to this host screen due to insufficient guest video memory.&lt;/p&gt;&lt;p&gt;You should configure the virtual machine to have at least &lt;b&gt;%1&lt;/b&gt; of video memory.&lt;/p&gt;&lt;p&gt;Press &lt;b&gt;Ignore&lt;/b&gt; to switch the screen anyway or press &lt;b&gt;Cancel&lt;/b&gt; to cancel the operation.&lt;/p&gt;</source>
@@ -8340,7 +8340,7 @@
     </message>
     <message>
       <source>&lt;p&gt;You have version %1 of the &lt;b&gt;&lt;nobr&gt;%2&lt;/nobr&gt;&lt;/b&gt; installed.&lt;/p&gt;&lt;p&gt;You should download and install version %3 of this extension pack from Oracle!&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;You have version %1 of the &lt;b&gt;&lt;nobr&gt;%2&lt;/nobr&gt;&lt;/b&gt; installed.&lt;/p&gt;&lt;p&gt;You should download and install version %3 of this extension pack from Oracle!&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;מותקנת אצלך גרסה %1 של &lt;b&gt;&lt;nobr&gt;%2&lt;/nobr&gt;&lt;/b&gt;.&lt;/p&gt;&lt;p&gt;יש להוריד ולהתקין את גרסה %3 של חבילת ההרחבה הזאת מ־Oracle!&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&lt;p&gt;Could not find the &lt;b&gt;VirtualBox Guest Additions&lt;/b&gt; disk image file.&lt;/p&gt;&lt;p&gt;Do you wish to download this disk image file from the Internet?&lt;/p&gt;</source>
@@ -8352,7 +8352,7 @@
     </message>
     <message>
       <source>&lt;p&gt;Are you sure you want to download the &lt;b&gt;VirtualBox Guest Additions&lt;/b&gt; disk image file from &lt;nobr&gt;&lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;&lt;/nobr&gt; (size %2 bytes)?&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Are you sure you want to download the &lt;b&gt;VirtualBox Guest Additions&lt;/b&gt; disk image file from &lt;nobr&gt;&lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;&lt;/nobr&gt; (size %2 bytes)?&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;להוריד את קובץ דמות הכונן &lt;b&gt;תוספות האורח ל־VirtualBox&lt;/b&gt; מ־&lt;nobr&gt;&lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;&lt;/nobr&gt; (בגודל %2 בתים)?&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&lt;p&gt;The &lt;b&gt;VirtualBox Guest Additions&lt;/b&gt; disk image file has been successfully downloaded from &lt;nobr&gt;&lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;&lt;/nobr&gt; but can&apos;t be saved locally as &lt;nobr&gt;&lt;b&gt;%2&lt;/b&gt;.&lt;/nobr&gt;&lt;/p&gt;&lt;p&gt;Please choose another location for that file.&lt;/p&gt;</source>
@@ -8364,19 +8364,19 @@
     </message>
     <message>
       <source>&lt;p&gt;You have an old version (%1) of the &lt;b&gt;&lt;nobr&gt;%2&lt;/nobr&gt;&lt;/b&gt; installed.&lt;/p&gt;&lt;p&gt;Do you wish to download latest one from the Internet?&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;You have an old version (%1) of the &lt;b&gt;&lt;nobr&gt;%2&lt;/nobr&gt;&lt;/b&gt; installed.&lt;/p&gt;&lt;p&gt;Do you wish to download latest one from the Internet?&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;מותקנת אצלך גרסה ישנה (%1) של &lt;b&gt;&lt;nobr&gt;%2&lt;/nobr&gt;&lt;/b&gt;.&lt;/p&gt;&lt;p&gt;להוריד את הגרסה העדכנית ביותר מהאינטרנט?&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&lt;p&gt;Are you sure you want to download the &lt;b&gt;&lt;nobr&gt;%1&lt;/nobr&gt;&lt;/b&gt; from &lt;nobr&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt;&lt;/nobr&gt; (size %3 bytes)?&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Are you sure you want to download the &lt;b&gt;&lt;nobr&gt;%1&lt;/nobr&gt;&lt;/b&gt; from &lt;nobr&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt;&lt;/nobr&gt; (size %3 bytes)?&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;להוריד את &lt;b&gt;&lt;nobr&gt;%1&lt;/nobr&gt;&lt;/b&gt; מ־&lt;nobr&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt;&lt;/nobr&gt; (בגודל %3 בתים)?&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&lt;p&gt;The &lt;b&gt;&lt;nobr&gt;%1&lt;/nobr&gt;&lt;/b&gt; has been successfully downloaded from &lt;nobr&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt;&lt;/nobr&gt; but can&apos;t be saved locally as &lt;nobr&gt;&lt;b&gt;%3&lt;/b&gt;.&lt;/nobr&gt;&lt;/p&gt;&lt;p&gt;Please choose another location for that file.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;The &lt;b&gt;&lt;nobr&gt;%1&lt;/nobr&gt;&lt;/b&gt; has been successfully downloaded from &lt;nobr&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt;&lt;/nobr&gt; but can&apos;t be saved locally as &lt;nobr&gt;&lt;b&gt;%3&lt;/b&gt;.&lt;/nobr&gt;&lt;/p&gt;&lt;p&gt;Please choose another location for that file.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;&lt;b&gt;&lt;nobr&gt;%1&lt;/nobr&gt;&lt;/b&gt; ירדה בהצלחה מ־&lt;nobr&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt;&lt;/nobr&gt; אך לא ניתן לשמור אותה מקומית בתור &lt;nobr&gt;&lt;b&gt;%3&lt;/b&gt;.&lt;/nobr&gt;&lt;/p&gt;&lt;p&gt;נא לבחור מקום אחר לקובץ הזה.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&lt;p&gt;The &lt;b&gt;&lt;nobr&gt;%1&lt;/nobr&gt;&lt;/b&gt; has been successfully downloaded from &lt;nobr&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt;&lt;/nobr&gt; and saved locally as &lt;nobr&gt;&lt;b&gt;%3&lt;/b&gt;.&lt;/nobr&gt;&lt;/p&gt;&lt;p&gt;Do you wish to install this extension pack?&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;The &lt;b&gt;&lt;nobr&gt;%1&lt;/nobr&gt;&lt;/b&gt; has been successfully downloaded from &lt;nobr&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt;&lt;/nobr&gt; and saved locally as &lt;nobr&gt;&lt;b&gt;%3&lt;/b&gt;.&lt;/nobr&gt;&lt;/p&gt;&lt;p&gt;Do you wish to install this extension pack?&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;&lt;b&gt;&lt;nobr&gt;%1&lt;/nobr&gt;&lt;/b&gt; ירדה בהצלחה מ־&lt;nobr&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt;&lt;/nobr&gt; ונשמרה מקומית בתור &lt;nobr&gt;&lt;b&gt;%3&lt;/b&gt;.&lt;/nobr&gt;&lt;/p&gt;&lt;p&gt;להתקין את חבילת ההרחבה הזאת?&lt;/p&gt;</translation>
     </message>
     <message>
       <source>Install</source>
@@ -8385,7 +8385,7 @@
     </message>
     <message>
       <source>&lt;p&gt;The &lt;b&gt;&lt;nobr&gt;%1&lt;/nobr&gt;&lt;/b&gt; has been successfully downloaded from &lt;nobr&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt;&lt;/nobr&gt; and saved locally as &lt;nobr&gt;&lt;b&gt;%3&lt;/b&gt;, &lt;/nobr&gt;but the SHA-256 checksum verification failed.&lt;/p&gt;&lt;p&gt;Please do the download, installation and verification manually.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;The &lt;b&gt;&lt;nobr&gt;%1&lt;/nobr&gt;&lt;/b&gt; has been successfully downloaded from &lt;nobr&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt;&lt;/nobr&gt; and saved locally as &lt;nobr&gt;&lt;b&gt;%3&lt;/b&gt;, &lt;/nobr&gt;but the SHA-256 checksum verification failed.&lt;/p&gt;&lt;p&gt;Please do the download, installation and verification manually.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;&lt;b&gt;&lt;nobr&gt;%1&lt;/nobr&gt;&lt;/b&gt; ירד בהצלחה מ־&lt;nobr&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt;&lt;/nobr&gt; ונשמר מקומית בתור &lt;nobr&gt;&lt;b&gt;%3&lt;/b&gt;, &lt;/nobr&gt;אבל האימות מול סיכום הביקורת מסוג SHA-256 נכשל.&lt;/p&gt;&lt;p&gt;נא להוריד, להתקין ולאמת ידנית.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>Do you want to delete the downloaded file &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;?</source>
@@ -8410,7 +8410,7 @@
     </message>
     <message>
       <source>&lt;p&gt;An older version of the extension pack is already installed, would you like to upgrade? &lt;p&gt;%1&lt;/p&gt;&lt;p&gt;&lt;table cellpadding=0 cellspacing=5&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Name:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;New Version:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%3&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Current Version:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%4&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Description:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%5&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;An older version of the extension pack is already installed, would you like to upgrade? &lt;p&gt;%1&lt;/p&gt;&lt;p&gt;&lt;table cellpadding=0 cellspacing=5&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Name:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;New Version:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%3&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Current Version:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%4&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Description:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%5&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;כבר מותקנת גרסה ישנה יותר של חבילת ההרחבה, לשדרג? &lt;p&gt;%1&lt;/p&gt;&lt;p&gt;&lt;table cellpadding=0 cellspacing=5&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;שם:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;גרסה חדשה:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%3&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;גרסה נוכחית:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%4&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;תיאור:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%5&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&amp;Upgrade</source>
@@ -8418,7 +8418,7 @@
     </message>
     <message>
       <source>&lt;p&gt;An newer version of the extension pack is already installed, would you like to downgrade? &lt;p&gt;%1&lt;/p&gt;&lt;p&gt;&lt;table cellpadding=0 cellspacing=5&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Name:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;New Version:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%3&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Current Version:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%4&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Description:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%5&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;An newer version of the extension pack is already installed, would you like to downgrade? &lt;p&gt;%1&lt;/p&gt;&lt;p&gt;&lt;table cellpadding=0 cellspacing=5&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Name:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;New Version:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%3&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Current Version:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%4&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Description:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%5&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;כבר מותקנת גרסה חדשה יותר של חבילת ההרחבה, להחזיר גרסה אחורה (לשנמך)? &lt;p&gt;%1&lt;/p&gt;&lt;p&gt;&lt;table cellpadding=0 cellspacing=5&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;שם:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;גרסה חדשה:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%3&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;גרסה נוכחית:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%4&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;תיאור:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%5&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&amp;Downgrade</source>
@@ -8426,7 +8426,7 @@
     </message>
     <message>
       <source>&lt;p&gt;The extension pack is already installed with the same version, would you like reinstall it? &lt;p&gt;%1&lt;/p&gt;&lt;p&gt;&lt;table cellpadding=0 cellspacing=5&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Name:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Version:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%3&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Description:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%4&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;The extension pack is already installed with the same version, would you like reinstall it? &lt;p&gt;%1&lt;/p&gt;&lt;p&gt;&lt;table cellpadding=0 cellspacing=5&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Name:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Version:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%3&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Description:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%4&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;חבילת ההרחבה כבר מותקנת באותה הגרסה, להתקין אותה מחדש? &lt;p&gt;%1&lt;/p&gt;&lt;p&gt;&lt;table cellpadding=0 cellspacing=5&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;שם:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;גרסה:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%3&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;תיאור:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%4&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&amp;Reinstall</source>
@@ -8454,19 +8454,19 @@
     </message>
     <message>
       <source>The following files already exist:&lt;br /&gt;&lt;br /&gt;%1&lt;br /&gt;&lt;br /&gt;Are you sure you want to replace them? Replacing them will overwrite their contents.</source>
-      <translation type="unfinished">The following files already exist:&lt;br /&gt;&lt;br /&gt;%1&lt;br /&gt;&lt;br /&gt;Are you sure you want to replace them? Replacing them will overwrite their contents.</translation>
+      <translation>הקבצים הבאים כבר קיימים:&lt;br /&gt;&lt;br /&gt;%1&lt;br /&gt;&lt;br /&gt;להחליף אותם? החלפה תחליף את התוכן שיש בהם כרגע.</translation>
     </message>
     <message>
       <source>Could not load the Host USB Proxy Service (VERR_FILE_NOT_FOUND). The service might not be installed on the host computer</source>
-      <translation type="unfinished">Could not load the Host USB Proxy Service (VERR_FILE_NOT_FOUND). The service might not be installed on the host computer</translation>
+      <translation>לא ניתן לטעון את שירות מתווך ה־USB ‏(VERR_FILE_NOT_FOUND). יכול להיות שהשירות לא מותקן במחשב המארח</translation>
     </message>
     <message>
       <source>The USB Proxy Service has not yet been ported to this host</source>
-      <translation type="unfinished">The USB Proxy Service has not yet been ported to this host</translation>
+      <translation>שירות מתווך ה־USB עדיין לא הוסב למארח הזה</translation>
     </message>
     <message>
       <source>Could not load the Host USB Proxy service</source>
-      <translation type="unfinished">Could not load the Host USB Proxy service</translation>
+      <translation>לא ניתן לטעון את שירות מתווך ה־USB של המארח</translation>
     </message>
     <message>
       <source>Do not show this message again</source>
@@ -8499,11 +8499,11 @@
     </message>
     <message>
       <source>Failed to attach the USB device &lt;b&gt;%1&lt;/b&gt; to the virtual machine &lt;b&gt;%2&lt;/b&gt;.</source>
-      <translation type="unfinished">Failed to attach the USB device &lt;b&gt;%1&lt;/b&gt; to the virtual machine &lt;b&gt;%2&lt;/b&gt;.</translation>
+      <translation>חיבור התקן ה־USB‏ &lt;b&gt;%1&lt;/b&gt; למכונה הווירטואלית &lt;b&gt;%2&lt;/b&gt; נכשל.</translation>
     </message>
     <message>
       <source>Failed to detach the USB device &lt;b&gt;%1&lt;/b&gt; from the virtual machine &lt;b&gt;%2&lt;/b&gt;.</source>
-      <translation type="unfinished">Failed to detach the USB device &lt;b&gt;%1&lt;/b&gt; from the virtual machine &lt;b&gt;%2&lt;/b&gt;.</translation>
+      <translation>ניתוק התקן ה־USB‏ &lt;b&gt;%1&lt;/b&gt; מהמכונה הווירטואלית &lt;b&gt;%2&lt;/b&gt; נכשל.</translation>
     </message>
     <message>
       <source>Failed to attach the webcam &lt;b&gt;%1&lt;/b&gt; to the virtual machine &lt;b&gt;%2&lt;/b&gt;.</source>
@@ -8575,7 +8575,7 @@
     </message>
     <message>
       <source>&lt;p&gt;This controller has devices attached.  You have requested storage bus change to type which supports smaller amount of attached devices.&lt;/p&gt;&lt;p&gt;If you proceed excessive devices will be removed.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;This controller has devices attached.  You have requested storage bus change to type which supports smaller amount of attached devices.&lt;/p&gt;&lt;p&gt;If you proceed excessive devices will be removed.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;לבקר הזה מחוברים התקנים. ביקשת שינוי אפיק אחסון לסוג שתומך בכמות קטנה יותר של התקנים מוצמדים.&lt;/p&gt;&lt;p&gt;בחירה להמשיך תסיר את ההתקנים העודפים.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&lt;p&gt;The virtual machine execution ran into a non-fatal problem as described below. We suggest that you take appropriate action to prevent the problem from recurring.&lt;/p&gt;</source>
@@ -8628,15 +8628,15 @@
     </message>
     <message>
       <source>&lt;p&gt;Do you want to remove the cloud network &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;?&lt;/nobr&gt;&lt;/p&gt;&lt;p&gt;If this network is in use by one or more virtual machine network adapters these adapters will no longer be usable until you correct their settings by either choosing a different network name or a different adapter attachment type.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Do you want to remove the cloud network &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;?&lt;/nobr&gt;&lt;/p&gt;&lt;p&gt;If this network is in use by one or more virtual machine network adapters these adapters will no longer be usable until you correct their settings by either choosing a different network name or a different adapter attachment type.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;להסיר את רשת הענן &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;?&lt;/nobr&gt;&lt;/p&gt;&lt;p&gt;אם הרשת הזאת בשימוש על ידי מתאמי רשת של מכונה וירטואלית אחת או יותר המתאמים האלו לא יהיו שמישים עד לתיקון ההגדרות שלהם על ידי בחירה בשם של רשת אחרת או בסוג הצמדה שונה למתאם.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&lt;p&gt;Do you want to remove the host-only network &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;?&lt;/nobr&gt;&lt;/p&gt;&lt;p&gt;If this network is in use by one or more virtual machine network adapters these adapters will no longer be usable until you correct their settings by either choosing a different network name or a different adapter attachment type.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Do you want to remove the host-only network &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;?&lt;/nobr&gt;&lt;/p&gt;&lt;p&gt;If this network is in use by one or more virtual machine network adapters these adapters will no longer be usable until you correct their settings by either choosing a different network name or a different adapter attachment type.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;להסיר את רשת המארח בלבד &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;?&lt;/nobr&gt;&lt;/p&gt;&lt;p&gt;אם הרשת הזאת בשימוש על ידי מתאמי רשת של מכונה וירטואלית אחת או יותר המתאמים האלו לא יהיו שמישים עד לתיקון ההגדרות שלהם על ידי בחירה בשם של רשת אחרת או בסוג הצמדה שונה למתאם.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&lt;p&gt;Do you want to close the Cloud Profile Manager?&lt;/p&gt;&lt;p&gt;There seems to be an unsaved changes. You can choose to &lt;b&gt;Accept&lt;/b&gt; or &lt;b&gt;Reject&lt;/b&gt; them automatically or cancel to keep the dialog opened.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Do you want to close the Cloud Profile Manager?&lt;/p&gt;&lt;p&gt;There seems to be an unsaved changes. You can choose to &lt;b&gt;Accept&lt;/b&gt; or &lt;b&gt;Reject&lt;/b&gt; them automatically or cancel to keep the dialog opened.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;לסגור את מנהל פרופילי הענן?&lt;/p&gt;&lt;p&gt;נראה שיש שינויים שלא נשמרו. אפשר לבחור &lt;b&gt;לקבל&lt;/b&gt; או &lt;b&gt;לדחות&lt;/b&gt; אותם אוטומטית או לבטל כדי להשאיר את החלונית פתוחה.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>Accept</source>
@@ -8698,23 +8698,23 @@
     </message>
     <message>
       <source>Failed to create machine folder at &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;.</source>
-      <translation type="unfinished">Failed to create machine folder at &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;.</translation>
+      <translation>יצירת תיקיית מכונה ב־&lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt; נכשלה.</translation>
     </message>
     <message>
       <source>Can&apos;t overwrite machine folder ...</source>
-      <translation type="unfinished">Can&apos;t overwrite machine folder ...</translation>
+      <translation>לא ניתן לדרוס תיקיית מכונה…</translation>
     </message>
     <message>
       <source>Failed to overwrite machine folder at &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;.</source>
-      <translation type="unfinished">Failed to overwrite machine folder at &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;.</translation>
+      <translation>דריסת תיקיית המכונה שב־&lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt; נכשלה.</translation>
     </message>
     <message>
       <source>Can&apos;t remove machine folder ...</source>
-      <translation type="unfinished">Can&apos;t remove machine folder ...</translation>
+      <translation>לא ניתן להסיר תיקיית מכונה…</translation>
     </message>
     <message>
       <source>Failed to remove machine folder at &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;.</source>
-      <translation type="unfinished">Failed to remove machine folder at &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;.</translation>
+      <translation>הסרת תיקיית המכונה שב־&lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt; נכשלה.</translation>
     </message>
     <message>
       <source>Can&apos;t add machine ...</source>
@@ -8726,11 +8726,11 @@
     </message>
     <message>
       <source>&lt;p&gt;You are trying to move machine &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt; to group &lt;nobr&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/nobr&gt; which already have another item with the same name.&lt;/p&gt;&lt;p&gt;Please resolve this name conflict and try again.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;You are trying to move machine &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt; to group &lt;nobr&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/nobr&gt; which already have another item with the same name.&lt;/p&gt;&lt;p&gt;Please resolve this name conflict and try again.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;ניסית להעביר את המכונה &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt; לקבוצה &lt;nobr&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/nobr&gt; שכבר יש בה פריט אחר באותו השם.&lt;/p&gt;&lt;p&gt;נא לפתור את סתירת השם הזאת ולנסות.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>Failed to acquire cloud machine settings.</source>
-      <translation type="unfinished">Failed to acquire cloud machine settings.</translation>
+      <translation>משיכת הגדרות מכונת ענן נכשלה.</translation>
     </message>
     <message>
       <source>Can&apos;t create medium ...</source>
@@ -8738,7 +8738,7 @@
     </message>
     <message>
       <source>Failed to create medium storage at &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;.</source>
-      <translation type="unfinished">Failed to create medium storage at &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;.</translation>
+      <translation>יצירת אמצעי אחסון ב־&lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt; נכשלה.</translation>
     </message>
     <message>
       <source>Can&apos;t overwrite medium ...</source>
@@ -8838,19 +8838,19 @@
     </message>
     <message>
       <source>Invalid DHCP lower address ...</source>
-      <translation type="unfinished">Invalid DHCP lower address ...</translation>
+      <translation>כתובת DHCP תחתונה שגויה…</translation>
     </message>
     <message>
       <source>Network &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt; does not currently have a valid DHCP server lower address bound.</source>
-      <translation type="unfinished">Network &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt; does not currently have a valid DHCP server lower address bound.</translation>
+      <translation>לרשת &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt; אין גבול כתובות תחתון תקף כרגע לשרת ה־DHCP.</translation>
     </message>
     <message>
       <source>Invalid DHCP upper address ...</source>
-      <translation type="unfinished">Invalid DHCP upper address ...</translation>
+      <translation>כתובת DHCP עליונה שגויה…</translation>
     </message>
     <message>
       <source>Network &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt; does not currently have a valid DHCP server upper address bound.</source>
-      <translation type="unfinished">Network &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt; does not currently have a valid DHCP server upper address bound.</translation>
+      <translation>לרשת &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt; אין גבול כתובות עליון תקף כרגע לשרת ה־DHCP.</translation>
     </message>
     <message>
       <source>No name specified ...</source>
@@ -9002,11 +9002,11 @@
     </message>
     <message>
       <source>VSD failure ...</source>
-      <translation>כשל ב־VSD (תיאור מערכת וירטואלית)…</translation>
+      <translation>כשל ב־VSD (תיאור שירות וירטואלי)…</translation>
     </message>
     <message>
       <source>VSD form failure ...</source>
-      <translation>כשל בטופס VSD (תיאור מכונה וירטואלית)…</translation>
+      <translation>כשל בטופס VSD (תיאור שירות וירטואלי)…</translation>
     </message>
     <message>
       <source>Cloud failure ...</source>
@@ -9126,19 +9126,19 @@
     </message>
     <message>
       <source>Can&apos;t create medium storage ...</source>
-      <translation type="unfinished">Can&apos;t create medium storage ...</translation>
+      <translation>לא ניתן ליצור תשתית אמצעי אחסון…</translation>
     </message>
     <message>
       <source>Failed to acquire Extension Pack Manager.</source>
-      <translation type="unfinished">Failed to acquire Extension Pack Manager.</translation>
+      <translation>קבלת מנהל חבילות הרחבה נכשלה.</translation>
     </message>
     <message>
       <source>Can&apos;t create VFS explorer ...</source>
-      <translation type="unfinished">Can&apos;t create VFS explorer ...</translation>
+      <translation>לא ניתן ליצור סייר VFS (מערכת קבצים וירטואלית)…</translation>
     </message>
     <message>
       <source>Failed to create VFS explorer to check files.</source>
-      <translation type="unfinished">Failed to create VFS explorer to check files.</translation>
+      <translation>לא ניתן ליצור סייר VFS (מערכת קבצים וירטואלית) כדי לבדוק קבצים.</translation>
     </message>
     <message>
       <source>Bad password ...</source>
@@ -9150,11 +9150,11 @@
     </message>
     <message>
       <source>Failed to interpret appliance being imported.</source>
-      <translation type="unfinished">Failed to interpret appliance being imported.</translation>
+      <translation>פענוח המכשיר המיובא נכשל.</translation>
     </message>
     <message>
       <source>Can&apos;t create VSD ...</source>
-      <translation type="unfinished">Can&apos;t create VSD ...</translation>
+      <translation>לא ניתן ליצור VSD (תיאור שירות וירטואלי)…</translation>
     </message>
     <message>
       <source>Can&apos;t find cloud network ...</source>
@@ -9364,7 +9364,7 @@
     </message>
     <message>
       <source>Unable to validate guest additions image ...</source>
-      <translation type="unfinished">Unable to validate guest additions image ...</translation>
+      <translation>לא ניתן לאמת דמות תוספות אורח…</translation>
     </message>
     <message>
       <source>Unable to validate extension pack ...</source>
@@ -9380,43 +9380,43 @@
     </message>
     <message>
       <source>Failed to acquire Extension Pack Manager parameter.</source>
-      <translation type="unfinished">Failed to acquire Extension Pack Manager parameter.</translation>
+      <translation>קבלת משתנה מנהל חבילות הרחבה נכשלה.</translation>
     </message>
     <message>
       <source>Failed to acquire Extension Pack parameter.</source>
-      <translation type="unfinished">Failed to acquire Extension Pack parameter.</translation>
+      <translation>קבלת משתנה מנהל הרחבות נכשלה.</translation>
     </message>
     <message>
       <source>Failed to acquire VSD parameter.</source>
-      <translation type="unfinished">Failed to acquire VSD parameter.</translation>
+      <translation>קבלת משתנה VSD (תיאור שירות וירטואלי) נכשלה.</translation>
     </message>
     <message>
       <source>Failed to acquire VSD form parameter.</source>
-      <translation type="unfinished">Failed to acquire VSD form parameter.</translation>
+      <translation>קבלת משתנה טופס VSD (תיאור שירות וירטואלי) נכשלה.</translation>
     </message>
     <message>
       <source>Can&apos;t get Extension Pack Manager ...</source>
-      <translation type="unfinished">Can&apos;t get Extension Pack Manager ...</translation>
+      <translation>לא ניתן לקבל את מנהל חבילות ההרחבה…</translation>
     </message>
     <message>
       <source>Failed to create VSD.</source>
-      <translation type="unfinished">Failed to create VSD.</translation>
+      <translation>יצירת VSD (תיאור שירות וירטואלי) נכשלה.</translation>
     </message>
     <message>
       <source>Can&apos;t open extension pack ...</source>
-      <translation type="unfinished">Can&apos;t open extension pack ...</translation>
+      <translation>לא ניתן לפתוח חבילת הרחבה…</translation>
     </message>
     <message>
       <source>Can&apos;t read extension pack ...</source>
-      <translation type="unfinished">Can&apos;t read extension pack ...</translation>
+      <translation>לא ניתן לקרוא חבילת הרחבה…</translation>
     </message>
     <message>
       <source>Failed to read the Extension Pack &lt;b&gt;%1&lt;/b&gt;.</source>
-      <translation type="unfinished">Failed to read the Extension Pack &lt;b&gt;%1&lt;/b&gt;.</translation>
+      <translation>קריאת חבילת ההרחבה &lt;b&gt;%1&lt;/b&gt; נכשלה.</translation>
     </message>
     <message>
       <source>Failed to find snapshot with ID=&lt;b&gt;%1&lt;/b&gt;.</source>
-      <translation type="unfinished">Failed to find snapshot with ID=&lt;b&gt;%1&lt;/b&gt;.</translation>
+      <translation>לא ניתן למצוא תמונת מצב עם מזהה/ID‏=&lt;b&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
       <source>Failed to find snapshot with name=&lt;b&gt;%1&lt;/b&gt;.</source>
@@ -9428,11 +9428,11 @@
     </message>
     <message>
       <source>Discard changes</source>
-      <translation type="unfinished">Discard changes</translation>
+      <translation>סילוק השינויים</translation>
     </message>
     <message>
       <source>Keep editing</source>
-      <translation type="unfinished">Keep editing</translation>
+      <translation>להמשיך לערוך</translation>
     </message>
     <message>
       <source>&lt;p&gt;You are going to restore default secure boot keys.&lt;/p&gt;&lt;p&gt;If you proceed your current keys will be rewritten. You may not be able to boot affected VM anymore.&lt;/p&gt;</source>
@@ -9468,7 +9468,7 @@
     </message>
     <message>
       <source>User guide downloaded ...</source>
-      <translation type="unfinished">User guide downloaded ...</translation>
+      <translation>המדריך למשתמשים ירד…</translation>
     </message>
     <message>
       <source>&lt;p&gt;The VirtualBox User Guide has been successfully downloaded from &lt;nobr&gt;&lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;&lt;/nobr&gt; and saved locally as &lt;nobr&gt;&lt;b&gt;%2&lt;/b&gt;.&lt;/nobr&gt;&lt;/p&gt;</source>
@@ -9492,7 +9492,7 @@
     </message>
     <message>
       <source>System properties failure ...</source>
-      <translation type="unfinished">System properties failure ...</translation>
+      <translation>כשל מאפייני מערכת…</translation>
     </message>
     <message>
       <source>Failed to acquire system properties parameter.</source>
@@ -9528,19 +9528,19 @@
     </message>
     <message>
       <source>Audio settings failure ...</source>
-      <translation type="unfinished">Audio settings failure ...</translation>
+      <translation>כשל הגדרות שמע…</translation>
     </message>
     <message>
       <source>Failed to acquire audio settings parameter.</source>
-      <translation type="unfinished">Failed to acquire audio settings parameter.</translation>
+      <translation>קבלת משתנה הגדרות השמע נכשלה.</translation>
     </message>
     <message>
       <source>Failed to acquire audio adapter parameter.</source>
-      <translation type="unfinished">Failed to acquire audio adapter parameter.</translation>
+      <translation>קבלת משתנה מתאם השמע נכשלה.</translation>
     </message>
     <message>
       <source>Failed to acquire network adapter parameter.</source>
-      <translation type="unfinished">Failed to acquire network adapter parameter.</translation>
+      <translation>קבלת משתנה מתאם הרשת נכשלה.</translation>
     </message>
     <message>
       <source>Console failure ...</source>
@@ -9548,7 +9548,7 @@
     </message>
     <message>
       <source>Failed to acquire console parameter.</source>
-      <translation>תפיסת משתנה המסוף נכשלה.</translation>
+      <translation>קבלת משתנה המסוף נכשלה.</translation>
     </message>
     <message>
       <source>Guest failure ...</source>
@@ -9556,7 +9556,7 @@
     </message>
     <message>
       <source>Failed to acquire guest parameter.</source>
-      <translation>תפיסת משתנה האורח נכשלה.</translation>
+      <translation>קבלת משתנה האורח נכשלה.</translation>
     </message>
     <message>
       <source>Guest OS type failure ...</source>
@@ -9564,7 +9564,7 @@
     </message>
     <message>
       <source>Failed to acquire guest OS type parameter.</source>
-      <translation>תפיסת משתנה סוג מערכת ההפעלה של האורח נכשלה.</translation>
+      <translation>קבלת משתנה סוג מערכת ההפעלה של האורח נכשלה.</translation>
     </message>
     <message>
       <source>Mouse failure ...</source>
@@ -9572,7 +9572,7 @@
     </message>
     <message>
       <source>Failed to acquire mouse parameter.</source>
-      <translation>תפיסת משתנה העכבר נכשלה.</translation>
+      <translation>קבלת משתנה העכבר נכשלה.</translation>
     </message>
     <message>
       <source>Emulated USB failure ...</source>
@@ -9580,7 +9580,7 @@
     </message>
     <message>
       <source>Failed to acquire emulated USB parameter.</source>
-      <translation type="unfinished">Failed to acquire emulated USB parameter.</translation>
+      <translation>קבלת משתנה USB מדומה נכשלה.</translation>
     </message>
     <message>
       <source>Recording settings failure ...</source>
@@ -9588,7 +9588,7 @@
     </message>
     <message>
       <source>Failed to acquire recording settings parameter.</source>
-      <translation type="unfinished">Failed to acquire recording settings parameter.</translation>
+      <translation>קבלת משתנה הגדרות ההקלטה נכשלה.</translation>
     </message>
     <message>
       <source>VRDE server failure ...</source>
@@ -9665,15 +9665,15 @@
     </message>
     <message>
       <source>Failed to change machine debugger parameter.</source>
-      <translation type="unfinished">Failed to change machine debugger parameter.</translation>
+      <translation>שינוי משתנה מנפה השגיאות במכונה נכשל.</translation>
     </message>
     <message>
       <source>Failed to change cloud profile parameter.</source>
-      <translation type="unfinished">Failed to change cloud profile parameter.</translation>
+      <translation>שינוי משתנה פרופיל ענן נכשלה.</translation>
     </message>
     <message>
       <source>Failed to change update agent parameter.</source>
-      <translation type="unfinished">Failed to change update agent parameter.</translation>
+      <translation>שינוי משתנה סוכן עדכון נכשלה.</translation>
     </message>
     <message>
       <source>Failed to change keyboard parameter.</source>
@@ -9681,7 +9681,7 @@
     </message>
     <message>
       <source>Failed to change VSD parameter.</source>
-      <translation type="unfinished">Failed to change VSD parameter.</translation>
+      <translation>שינוי משתנה VSD (תיאור שירות וירטואלי) נכשל.</translation>
     </message>
     <message>
       <source>Don&apos;t show again</source>
@@ -9693,7 +9693,7 @@
     </message>
     <message>
       <source>&lt;p&gt;Shut down these VMs by sending the ACPI shutdown signal?&lt;/p&gt;&lt;p&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Shut down these VMs by sending the ACPI shutdown signal?&lt;/p&gt;&lt;p&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;לכבות את המכונות האל על ידי שליחת אות ה־ACPI לכיבוי?&lt;/p&gt;&lt;p&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/p&gt;</translation>
     </message>
     <message>
       <source>Shut Down</source>
@@ -10322,7 +10322,7 @@
     </message>
     <message>
       <source>Holds the upper address bound offered by the DHCP server servicing the network associated with this host-only adapter.</source>
-      <translation type="unfinished">Holds the upper address bound offered by the DHCP server servicing the network associated with this host-only adapter.</translation>
+      <translation>החזקת גבול הכתובות העליון שמוצע על ידי שרת ה־DHCP שמשרת את הרשת שמקושרת למתאם המארח בלבד הזה.</translation>
     </message>
     <message>
       <source>Reset changes in current DHCP server details</source>
@@ -10866,7 +10866,7 @@
     </message>
     <message>
       <source>Set VSD form value ...</source>
-      <translation>הגדרת ערך טופס VSD (תיאור מכונה וירטואלית)…</translation>
+      <translation>הגדרת ערך טופס VSD (תיאור שירות וירטואלי)…</translation>
     </message>
     <message>
       <source>&lt;b&gt;Value:&lt;/b&gt; %1</source>
@@ -12311,11 +12311,11 @@
     </message>
     <message numerus="yes">
       <source>Warning: You are taking a snapshot of a running machine which has %n immutable image(s) attached to it. As long as you are working from this snapshot the immutable image(s) will not be reset to avoid loss of data.</source>
-      <translation type="unfinished">
+      <translation>
+        <numerusform>אזהרה: בחרת ללכוד תמונת מצב של מכונה פעילה שמוצמדת אליה דמות מקובעת. כל עוד בחרת לעבוד מתמונת המצב הזאת הדמויות המקובעות לא תתאפסנה כדי להימנע מאובדן נתונים.</numerusform>
+        <numerusform>אזהרה: בחרת ללכוד תמונת מצב של מכונה פעילה שמוצמדות אליה שתי דמויות מקובעות. כל עוד בחרת לעבוד מתמונת המצב הזאת הדמויות המקובעות לא תתאפסנה כדי להימנע מאובדן נתונים.</numerusform>
         <numerusform>אזהרה: בחרת ללכוד תמונת מצב של מכונה פעילה שמוצמדות אליה %n דמויות מקובעות. כל עוד בחרת לעבוד מתמונת המצב הזאת הדמויות המקובעות לא תתאפסנה כדי להימנע מאובדן נתונים.</numerusform>
-        <numerusform>Warning: You are taking a snapshot of a running machine which has %n immutable image(s) attached to it. As long as you are working from this snapshot the immutable image(s) will not be reset to avoid loss of data.</numerusform>
-        <numerusform>Warning: You are taking a snapshot of a running machine which has %n immutable image(s) attached to it. As long as you are working from this snapshot the immutable image(s) will not be reset to avoid loss of data.</numerusform>
-        <numerusform>Warning: You are taking a snapshot of a running machine which has %n immutable image(s) attached to it. As long as you are working from this snapshot the immutable image(s) will not be reset to avoid loss of data.</numerusform>
+        <numerusform>אזהרה: בחרת ללכוד תמונת מצב של מכונה פעילה שמוצמדות אליה %n דמויות מקובעות. כל עוד בחרת לעבוד מתמונת המצב הזאת הדמויות המקובעות לא תתאפסנה כדי להימנע מאובדן נתונים.</numerusform>
       </translation>
     </message>
     <message>
@@ -12405,11 +12405,11 @@
     <name>UIToolsItem</name>
     <message>
       <source>Tool item</source>
-      <translation type="unfinished">Tool item</translation>
+      <translation>פריט כלי</translation>
     </message>
     <message>
       <source>Media</source>
-      <translation type="unfinished">Media</translation>
+      <translation>אמצעי אחסון</translation>
     </message>
     <message>
       <source>Network</source>
@@ -12417,19 +12417,19 @@
     </message>
     <message>
       <source>Cloud</source>
-      <translation type="unfinished">Cloud</translation>
+      <translation>ענן</translation>
     </message>
     <message>
       <source>Details</source>
-      <translation type="unfinished">Details</translation>
+      <translation>פרטים</translation>
     </message>
     <message>
       <source>Snapshots</source>
-      <translation>תצלומי-בזק</translation>
+      <translation>תמונות מצב</translation>
     </message>
     <message>
       <source>Logs</source>
-      <translation type="unfinished">Logs</translation>
+      <translation>יומנים</translation>
     </message>
     <message>
       <source>Extensions</source>
@@ -12437,27 +12437,27 @@
     </message>
     <message>
       <source>File Manager</source>
-      <translation type="unfinished">File Manager</translation>
+      <translation>מנהל קבצים</translation>
     </message>
     <message>
       <source>Show text</source>
-      <translation type="unfinished">Show text</translation>
+      <translation>הצגת טקסט</translation>
     </message>
     <message>
       <source>Home</source>
-      <translation type="unfinished">Home</translation>
+      <translation>בית</translation>
     </message>
     <message>
       <source>Machines</source>
-      <translation type="unfinished">Machines</translation>
+      <translation>מכונות</translation>
     </message>
     <message>
       <source>Resources</source>
-      <translation type="unfinished">Resources</translation>
+      <translation>משאבים</translation>
     </message>
     <message>
       <source>Resource Use</source>
-      <translation type="unfinished">Resource Use</translation>
+      <translation>שימוש במשאבים</translation>
     </message>
   </context>
   <context>
@@ -12482,56 +12482,56 @@
     <name>UITranslator</name>
     <message numerus="yes">
       <source>%n year(s)</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>שנה</numerusform>
+        <numerusform>שנתיים</numerusform>
         <numerusform>%n שנים</numerusform>
-        <numerusform>%n year(s)</numerusform>
-        <numerusform>%n year(s)</numerusform>
+        <numerusform>%n שנים</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <source>%n month(s)</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>חודש</numerusform>
+        <numerusform>חודשיים</numerusform>
         <numerusform>%n חודשים</numerusform>
-        <numerusform>%n month(s)</numerusform>
-        <numerusform>%n month(s)</numerusform>
+        <numerusform>%n חודשים</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <source>%n day(s)</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>יום</numerusform>
+        <numerusform>יומיים</numerusform>
         <numerusform>%n ימים</numerusform>
-        <numerusform>%n day(s)</numerusform>
-        <numerusform>%n day(s)</numerusform>
+        <numerusform>%n ימים</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <source>%n hour(s)</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>שעה</numerusform>
+        <numerusform>שעתיים</numerusform>
         <numerusform>%n שעות</numerusform>
-        <numerusform>%n hour(s)</numerusform>
-        <numerusform>%n hour(s)</numerusform>
+        <numerusform>%n שעות</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <source>%n minute(s)</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>דקה</numerusform>
+        <numerusform>שתי דקות</numerusform>
         <numerusform>%n דקות</numerusform>
-        <numerusform>%n minute(s)</numerusform>
-        <numerusform>%n minute(s)</numerusform>
+        <numerusform>%n דקות</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <source>%n second(s)</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>שנייה</numerusform>
+        <numerusform>שתי שניות</numerusform>
         <numerusform>%n שניות</numerusform>
-        <numerusform>%n second(s)</numerusform>
-        <numerusform>%n second(s)</numerusform>
+        <numerusform>%n שניות</numerusform>
       </translation>
     </message>
     <message>
@@ -12571,56 +12571,56 @@
     </message>
     <message numerus="yes">
       <source>%n year(s) ago</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>לפני שנה</numerusform>
+        <numerusform>לפני שנתיים</numerusform>
+        <numerusform>לפני %n שנה</numerusform>
         <numerusform>לפני %n שנים</numerusform>
-        <numerusform>%n year(s) ago</numerusform>
-        <numerusform>%n year(s) ago</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <source>%n month(s) ago</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>לפני חודש</numerusform>
+        <numerusform>לפני חודשיים</numerusform>
         <numerusform>לפני %n חודשים</numerusform>
-        <numerusform>%n month(s) ago</numerusform>
-        <numerusform>%n month(s) ago</numerusform>
+        <numerusform>לפני %n חודשים</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <source>%n day(s) ago</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>אתמול</numerusform>
+        <numerusform>לפני יומיים</numerusform>
         <numerusform>לפני %n ימים</numerusform>
-        <numerusform>%n day(s) ago</numerusform>
-        <numerusform>%n day(s) ago</numerusform>
+        <numerusform>לפני %n ימים</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <source>%n hour(s) ago</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>לפני שעה</numerusform>
+        <numerusform>לפני שעתיים</numerusform>
         <numerusform>לפני %n שעות</numerusform>
-        <numerusform>%n hour(s) ago</numerusform>
-        <numerusform>%n hour(s) ago</numerusform>
+        <numerusform>לפני %n שעות</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <source>%n minute(s) ago</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>לפני דקה</numerusform>
+        <numerusform>לפני שתי דקות</numerusform>
         <numerusform>לפני %n דקות</numerusform>
-        <numerusform>%n minute(s) ago</numerusform>
-        <numerusform>%n minute(s) ago</numerusform>
+        <numerusform>לפני %n דקות</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <source>%n second(s) ago</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>לפני שנייה</numerusform>
+        <numerusform>לפני שתי שניות</numerusform>
         <numerusform>לפני %n שניות</numerusform>
-        <numerusform>%n second(s) ago</numerusform>
-        <numerusform>%n second(s) ago</numerusform>
+        <numerusform>לפני %n שניות</numerusform>
       </translation>
     </message>
   </context>
