@@ -2863,11 +2863,11 @@
     <message numerus="yes">
       <source>%n machine(s)</source>
       <comment>Group item tool-tip / Machine info</comment>
-      <translation type="unfinished">
+      <translation>
         <numerusform>מכונה</numerusform>
+        <numerusform>שתי מכונות</numerusform>
         <numerusform>%n מכונות</numerusform>
-        <numerusform>%n machine(s)</numerusform>
-        <numerusform>%n machine(s)</numerusform>
+        <numerusform>%n מכונות</numerusform>
       </translation>
     </message>
     <message numerus="yes">
@@ -2903,14 +2903,14 @@
     <name>UIChooserNodeGroup</name>
     <message>
       <source>Machine group</source>
-      <translation type="unfinished">Machine group</translation>
+      <translation>קבוצת מכונות</translation>
     </message>
   </context>
   <context>
     <name>UIChooserNodeMachine</name>
     <message>
       <source>Virtual machine</source>
-      <translation type="unfinished">Virtual machine</translation>
+      <translation>מכונה וירטואלית</translation>
     </message>
   </context>
   <context>
@@ -14462,78 +14462,78 @@
     </message>
     <message>
       <source>Opens cloud profile manager...</source>
-      <translation type="unfinished">Opens cloud profile manager...</translation>
+      <translation>פתיחת מנהל פרופילי ענן…</translation>
     </message>
   </context>
   <context>
     <name>UIWizardImportApp</name>
     <message>
       <source>Appliance to import</source>
-      <translation>מתקן לייבוא</translation>
+      <translation>מכשיר לייבוא</translation>
     </message>
     <message>
       <source>Open Virtualization Format (%1)</source>
-      <translation>פורמט וירטואליזציה פתוח (%1)</translation>
+      <translation>תסדיר וירטואליזציה פתוח (%1)</translation>
     </message>
     <message>
       <source>Appliance settings</source>
-      <translation>הגדרות מתקן</translation>
+      <translation>הגדרות מכשיר</translation>
     </message>
     <message>
       <source>These are the virtual machines contained in the appliance and the suggested settings of the imported VirtualBox machines. You can change many of the properties shown by double-clicking on the items and disable others using the check boxes below.</source>
-      <translation type="unfinished">These are the virtual machines contained in the appliance and the suggested settings of the imported VirtualBox machines. You can change many of the properties shown by double-clicking on the items and disable others using the check boxes below.</translation>
+      <translation>אלו מכונות וירטואליות שנמצאות בתוך המכשיר וההגדרות המומלצות של מכונות ה־VirtualBox המיובאות. אפשר לשנות הרבה מהמאפיינים בלחיצה כפולה על הפריטים ולהשבית אחרים באמצעות תיבות הסימון שלהלן.</translation>
     </message>
     <message>
       <source>Import Virtual Appliance</source>
-      <translation type="unfinished">Import Virtual Appliance</translation>
+      <translation>ייבוא מכשיר וירטואלי</translation>
     </message>
     <message>
       <source>Choose a virtual appliance file to import...</source>
-      <translation type="unfinished">Choose a virtual appliance file to import...</translation>
+      <translation>בחירת קובץ מכשיר וירטואלי לייבוא…</translation>
     </message>
     <message>
       <source>Please choose a virtual appliance file to import</source>
-      <translation type="unfinished">Please choose a virtual appliance file to import</translation>
+      <translation>נא לבחור קובץ מכשיר וירטואלי לייבוא</translation>
     </message>
     <message>
       <source>Appliance is not signed</source>
-      <translation type="unfinished">Appliance is not signed</translation>
+      <translation>המכשיר לא חתום</translation>
     </message>
     <message>
       <source>Appliance signed by %1 (trusted)</source>
-      <translation type="unfinished">Appliance signed by %1 (trusted)</translation>
+      <translation>המכשיר חתום על ידי %1 (אמין)</translation>
     </message>
     <message>
       <source>Appliance signed by %1 (expired!)</source>
-      <translation type="unfinished">Appliance signed by %1 (expired!)</translation>
+      <translation>המכשיר חתום על ידי %1 (התוקף פג!)</translation>
     </message>
     <message>
       <source>Unverified signature by %1!</source>
-      <translation type="unfinished">Unverified signature by %1!</translation>
+      <translation>חתימה לא מאומתת מאת %1!</translation>
     </message>
     <message>
       <source>Self signed by %1 (trusted)</source>
-      <translation type="unfinished">Self signed by %1 (trusted)</translation>
+      <translation>נחתם עצמית על ידי %1 (אמין)</translation>
     </message>
     <message>
       <source>Self signed by %1 (expired!)</source>
-      <translation type="unfinished">Self signed by %1 (expired!)</translation>
+      <translation>נחתם עצמית על ידי %1 (תוקף פג)</translation>
     </message>
     <message>
       <source>Unverified self signed signature by %1!</source>
-      <translation type="unfinished">Unverified self signed signature by %1!</translation>
+      <translation>חתימה עצמית לא מאומת של %1!</translation>
     </message>
     <message>
       <source>Local File System</source>
-      <translation type="unfinished">Local File System</translation>
+      <translation>מערכת קבצים מקומית</translation>
     </message>
     <message>
       <source>Import from local file system.</source>
-      <translation type="unfinished">Import from local file system.</translation>
+      <translation>ייבוא ממערכת קבצים מקומית.</translation>
     </message>
     <message>
       <source>Import from cloud service provider.</source>
-      <translation type="unfinished">Import from cloud service provider.</translation>
+      <translation>ייבוא מספק שירותי ענן.</translation>
     </message>
     <message>
       <source>&amp;File:</source>
@@ -14541,15 +14541,15 @@
     </message>
     <message>
       <source>&amp;Machines:</source>
-      <translation type="unfinished">&amp;Machines:</translation>
+      <translation>מ&amp;כונות:</translation>
     </message>
     <message>
       <source>These are the the suggested settings of the cloud VM import procedure, they are influencing the resulting local VM instance. You can change many of the properties shown by double-clicking on the items and disable others using the check boxes below.</source>
-      <translation type="unfinished">These are the the suggested settings of the cloud VM import procedure, they are influencing the resulting local VM instance. You can change many of the properties shown by double-clicking on the items and disable others using the check boxes below.</translation>
+      <translation>אלו ההגדרות המוצאות של תהליך ייבוא מכונות וירטואליות בענן, הן משפיעות על עותק המכונה הווירטואלית המקומית. אפשר לשנות מגוון מהמאפיינים המופיעים בלחיצה כפולה על הפריטים ולהשבית אחרים באמצעות תיבות הסימון שלהלן.</translation>
     </message>
     <message>
       <source>Source</source>
-      <translation type="unfinished">Source</translation>
+      <translation>מקור</translation>
     </message>
     <message>
       <source>Settings</source>
@@ -14557,272 +14557,272 @@
     </message>
     <message>
       <source>Please choose the source to import appliance from.  This can be a local file system to import OVF archive or one of known cloud service providers to import cloud VM from.</source>
-      <translation type="unfinished">Please choose the source to import appliance from.  This can be a local file system to import OVF archive or one of known cloud service providers to import cloud VM from.</translation>
+      <translation>נא לבחור את המקור ממנו לייבא מכשיר. זה יכול להיות ממערכת הקבצים המקומית לייבוא ארכיון OVF או אחד מספקי הענן המוכרים כדי לייבא מהם מכונה וירטואלית.</translation>
     </message>
     <message>
       <source>&amp;Source:</source>
-      <translation type="unfinished">&amp;Source:</translation>
+      <translation>מ&amp;קור:</translation>
     </message>
     <message>
       <source>Holds the path of the file selected for import.</source>
-      <translation type="unfinished">Holds the path of the file selected for import.</translation>
+      <translation>החזקת נתיב הקובץ שנבחר לייבוא.</translation>
     </message>
     <message>
       <source>Include all network adapter MAC addresses</source>
-      <translation type="unfinished">Include all network adapter MAC addresses</translation>
+      <translation>לכלול את כל כתובות החומרה/MAC של מתאמי הרשת</translation>
     </message>
     <message>
       <source>Include all network adapter MAC addresses during importing.</source>
-      <translation type="unfinished">Include all network adapter MAC addresses during importing.</translation>
+      <translation>לכלול את כל כתובות החומרה/MAC של מתאמי הרשת במהלך הייבוא.</translation>
     </message>
     <message>
       <source>Include only NAT network adapter MAC addresses</source>
-      <translation type="unfinished">Include only NAT network adapter MAC addresses</translation>
+      <translation>לכלול רק כתובות חומרה/MAC של רשתות NAT</translation>
     </message>
     <message>
       <source>Include only NAT network adapter MAC addresses during importing.</source>
-      <translation type="unfinished">Include only NAT network adapter MAC addresses during importing.</translation>
+      <translation>לכלול רק כתובות חומרה/MAC של מתאמי רשתות NAT במהלך הייבוא.</translation>
     </message>
     <message>
       <source>Generate new MAC addresses for all network adapters</source>
-      <translation type="unfinished">Generate new MAC addresses for all network adapters</translation>
+      <translation>לייצר כתובות חומרה/MAC חדשות לכל מתאמי הרשת</translation>
     </message>
     <message>
       <source>Generate new MAC addresses for all network adapters during importing.</source>
-      <translation type="unfinished">Generate new MAC addresses for all network adapters during importing.</translation>
+      <translation>לייצר כתובות חומרה/MAC חדשות לכל מתאמי הרשת בזמן הייבוא.</translation>
     </message>
     <message>
       <source>&amp;Profile:</source>
-      <translation type="unfinished">&amp;Profile:</translation>
+      <translation>&amp;פרופיל:</translation>
     </message>
     <message>
       <source>&amp;Machine Base Folder:</source>
-      <translation type="unfinished">&amp;Machine Base Folder:</translation>
+      <translation>תיקיית &amp;בסיס של המכונה:</translation>
     </message>
     <message>
       <source>MAC Address &amp;Policy:</source>
-      <translation type="unfinished">MAC Address &amp;Policy:</translation>
+      <translation>מ&amp;דיניות כתובת חומרה/MAC:</translation>
     </message>
     <message>
       <source>Additional Options:</source>
-      <translation type="unfinished">Additional Options:</translation>
+      <translation>אפשרויות נוספות:</translation>
     </message>
     <message>
       <source>When checked, all the hard drives that belong to this appliance will be imported in VDI format.</source>
-      <translation type="unfinished">When checked, all the hard drives that belong to this appliance will be imported in VDI format.</translation>
+      <translation>כשהאפשרות מסומנת, כל הכוננים הקשיחים ששייכים למכשיר הזה ייובאו בתסדיר VDI.</translation>
     </message>
     <message>
       <source>Please choose one of cloud service profiles you have registered to import virtual machine from.  Corresponding machines list will be updated.  To continue, select one of machines to import below.</source>
-      <translation type="unfinished">Please choose one of cloud service profiles you have registered to import virtual machine from.  Corresponding machines list will be updated.  To continue, select one of machines to import below.</translation>
+      <translation>נא לבחור את אחד מפרופילי שירות הענן שרשמת כדי לייבא ממנו מכונה וירטואלית. המכונות המתאימות תעודכנה. כדי להמשיך, יש לבחור באחת המכונות שלהלן לייבוא.</translation>
     </message>
     <message>
       <source>Please choose a file to import the virtual appliance from.  VirtualBox currently supports importing appliances saved in the Open Virtualization Format (OVF).  To continue, select the file to import below.</source>
-      <translation type="unfinished">Please choose a file to import the virtual appliance from.  VirtualBox currently supports importing appliances saved in the Open Virtualization Format (OVF).  To continue, select the file to import below.</translation>
+      <translation>נא לבחור קובץ לייבא ממנו לייבא את המכשיר הווירטואלי. VirtualBox תומך כרגע בייבוא של מכשירים שנשמרו בתסדיר הווירטואליזציה הפתוח (OVF). כדי להמשיך יש לבחור את הקובץ לייבוא להלן.</translation>
     </message>
     <message>
       <source>Selects cloud profile.</source>
-      <translation type="unfinished">Selects cloud profile.</translation>
+      <translation>בחירת פרופיל ענן.</translation>
     </message>
     <message>
       <source>Cloud Profile Manager</source>
-      <translation type="unfinished">Cloud Profile Manager</translation>
+      <translation>מנהל פרופילים לענן</translation>
     </message>
     <message>
       <source>Opens cloud profile manager...</source>
-      <translation type="unfinished">Opens cloud profile manager...</translation>
+      <translation>פתיחת מנהל פרופילי הענן…</translation>
     </message>
     <message>
       <source>Holds the path to the base virtual machine folder. This folder is used when creating new virtual machine.</source>
-      <translation type="unfinished">Holds the path to the base virtual machine folder. This folder is used when creating new virtual machine.</translation>
+      <translation>החזקת הנתיב לתיקיית המכונות הווירטואליות הבסיסית. בתיקייה הזאת נעשה שימוש בעת יצירת מכונה וירטואלית חדשה.</translation>
     </message>
     <message>
       <source>&amp;Import Hard Drives as VDI</source>
-      <translation type="unfinished">&amp;Import Hard Drives as VDI</translation>
+      <translation>יי&amp;בוא כוננים קשיחים כ־VDI</translation>
     </message>
   </context>
   <context>
     <name>UIWizardNewCloudVM</name>
     <message>
       <source>Create Cloud Virtual Machine</source>
-      <translation type="unfinished">Create Cloud Virtual Machine</translation>
+      <translation>יצירת מכונה וירטואלית בענן</translation>
     </message>
     <message>
       <source>These are the the suggested settings of the cloud VM creation procedure, they are influencing the resulting cloud VM instance.  You can change many of the properties shown by double-clicking on the items and disable others using the check boxes below.</source>
-      <translation type="unfinished">These are the the suggested settings of the cloud VM creation procedure, they are influencing the resulting cloud VM instance.  You can change many of the properties shown by double-clicking on the items and disable others using the check boxes below.</translation>
+      <translation>אלו ההגדרות המוצאות של תהליך יצירת מכונה וירטואלית בענן, הן משפיעות על עותק המכונה הווירטואלית בענן שתיווצר. אפשר לשנות הרבה מהמאפיינים המופיעים בלחיצה כפולה על הפריטים והשבתת אחרים באמצעות תיבות הסימון שלהלן.</translation>
     </message>
     <message>
       <source>&amp;Images</source>
-      <translation type="unfinished">&amp;Images</translation>
+      <translation>&amp;דמויות</translation>
     </message>
     <message>
       <source>&amp;Boot Volumes</source>
-      <translation type="unfinished">&amp;Boot Volumes</translation>
+      <translation>&amp;כרכי טעינה (Boot)</translation>
     </message>
     <message>
       <source>Location to create</source>
-      <translation type="unfinished">Location to create</translation>
+      <translation>מקום ליצירה</translation>
     </message>
     <message>
       <source>Please choose the location to create cloud virtual machine in.  This can be one of known cloud service providers below.</source>
-      <translation type="unfinished">Please choose the location to create cloud virtual machine in.  This can be one of known cloud service providers below.</translation>
+      <translation>נא לבחור מקום ליצור בו את המכונה הווירטואלית בענן. זה יכול להיות אחד מבין ספקי שירותי הענן המוכרים שלהלן.</translation>
     </message>
     <message>
       <source>&amp;Source:</source>
-      <translation type="unfinished">&amp;Source:</translation>
+      <translation>מ&amp;קור:</translation>
     </message>
     <message>
       <source>Please choose one of cloud service profiles you have registered to create virtual machine for.  Existing images list will be updated.  To continue, select one of images to create virtual machine on the basis of it.</source>
-      <translation type="unfinished">Please choose one of cloud service profiles you have registered to create virtual machine for.  Existing images list will be updated.  To continue, select one of images to create virtual machine on the basis of it.</translation>
+      <translation>נא לבחור באחד מפרופילי שירותי הענן שרשמת כדי ליצור עבורו מכונה וירטואלית. רשימת הדמויות הקיימות תתעדכן. כדי להמשיך יש לבחור באחת הדמויות כדי ליצור מכונה וירטואלית שמבוססת עליה.</translation>
     </message>
     <message>
       <source>&amp;Provider:</source>
-      <translation type="unfinished">&amp;Provider:</translation>
+      <translation>&amp;ספק:</translation>
     </message>
     <message>
       <source>Selects cloud service provider.</source>
-      <translation type="unfinished">Selects cloud service provider.</translation>
+      <translation>בחירת ספק שירותי ענן.</translation>
     </message>
     <message>
       <source>P&amp;rofile:</source>
-      <translation type="unfinished">P&amp;rofile:</translation>
+      <translation>&amp;פרופיל:</translation>
     </message>
     <message>
       <source>Selects cloud profile.</source>
-      <translation type="unfinished">Selects cloud profile.</translation>
+      <translation>בחירת פרופיל ענן.</translation>
     </message>
     <message>
       <source>Cloud Profile Manager</source>
-      <translation type="unfinished">Cloud Profile Manager</translation>
+      <translation>מנהל פרופילי ענן</translation>
     </message>
     <message>
       <source>Opens cloud profile manager...</source>
-      <translation type="unfinished">Opens cloud profile manager...</translation>
+      <translation>פתיחת מנהל פרופילי ענן…</translation>
     </message>
     <message>
       <source>Lists all the source images or boot volumes.</source>
-      <translation type="unfinished">Lists all the source images or boot volumes.</translation>
+      <translation>הצגת כל מאפייני דמויות מקור או כרכי הטעינה (boot volumes).</translation>
     </message>
     <message>
       <source>Lists all the cloud VM properties.</source>
-      <translation type="unfinished">Lists all the cloud VM properties.</translation>
+      <translation>הצגת כל מאפייני המכונה הווירטואלית בענן.</translation>
     </message>
     <message>
       <source>&amp;Settings:</source>
-      <translation type="unfinished">&amp;Settings:</translation>
+      <translation>ה&amp;גדרות:</translation>
     </message>
     <message>
       <source>Cloud virtual machine settings</source>
-      <translation type="unfinished">Cloud virtual machine settings</translation>
+      <translation>הגדרות מכונה וירוטאלית בענן</translation>
     </message>
   </context>
   <context>
     <name>UIWizardNewVD</name>
     <message>
       <source>Create Virtual Hard Disk</source>
-      <translation type="unfinished">Create Virtual Hard Disk</translation>
+      <translation>יצירת כונן קשיח וירטואלי</translation>
     </message>
     <message>
       <source>Please choose the type of file that you would like to use for the new virtual hard disk. If you do not need to use it with other virtualization software you can leave this setting unchanged.</source>
-      <translation type="unfinished">Please choose the type of file that you would like to use for the new virtual hard disk. If you do not need to use it with other virtualization software you can leave this setting unchanged.</translation>
+      <translation>נא לבחור את סוג הקובץ לשימוש לכונן הקשיח הווירטואלי החדש. אם אין לך צורך להשתמש בו בתוכנות וירטואליזציה נוספות אפשר להשאיר את ההגדרה הזאת ללא שינוי.</translation>
     </message>
     <message>
       <source>Storage on physical hard disk</source>
-      <translation type="unfinished">Storage on physical hard disk</translation>
+      <translation>אחסון על כונן קשיח פיזי</translation>
     </message>
     <message>
       <source>Please choose whether the new virtual hard disk file should grow as it is used (dynamically allocated) or if it should be created at its maximum size (fixed size).</source>
-      <translation type="unfinished">Please choose whether the new virtual hard disk file should grow as it is used (dynamically allocated) or if it should be created at its maximum size (fixed size).</translation>
+      <translation>נא לבחור האם קובץ הכונן הקשיח הווירטואלי יגדל תוך כדי שימוש (הקצאה דינמית) או האם ליצור אותו בגודלו המרבי כמו שהוא (גודל קבוע).</translation>
     </message>
     <message>
       <source>&lt;p&gt;A &lt;b&gt;dynamically allocated&lt;/b&gt; hard disk file will only use space on your physical hard disk as it fills up (up to a maximum &lt;b&gt;fixed size&lt;/b&gt;), although it will not shrink again automatically when space on it is freed.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;A &lt;b&gt;dynamically allocated&lt;/b&gt; hard disk file will only use space on your physical hard disk as it fills up (up to a maximum &lt;b&gt;fixed size&lt;/b&gt;), although it will not shrink again automatically when space on it is freed.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;קובץ כונן קשיח עם &lt;b&gt;הקצאה דינמית&lt;/b&gt; ישתמש במקום בכונן הקשיח שלך רק כשהוא מתמלא (עד לתקורה של &lt;b&gt;גודל קבוע&lt;/b&gt;), למרות שלא יצטמק בחזרה אוטומטית כשהמקום מתפנה.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&lt;p&gt;A &lt;b&gt;fixed size&lt;/b&gt; hard disk file may take longer to create on some systems but is often faster to use.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;A &lt;b&gt;fixed size&lt;/b&gt; hard disk file may take longer to create on some systems but is often faster to use.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;ליצור קובץ כונן קשיח ב&lt;b&gt;גודל קבוע&lt;/b&gt; יכול לארוך זמן רב יותר בחלק מהמערכות אבל הוא בדרך כלל מהיר יותר לשימוש.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&lt;p&gt;You can also choose to &lt;b&gt;split&lt;/b&gt; the hard disk file into several files of up to two gigabytes each. This is mainly useful if you wish to store the virtual machine on removable USB devices or old systems, some of which cannot handle very large files.</source>
-      <translation type="unfinished">&lt;p&gt;You can also choose to &lt;b&gt;split&lt;/b&gt; the hard disk file into several files of up to two gigabytes each. This is mainly useful if you wish to store the virtual machine on removable USB devices or old systems, some of which cannot handle very large files.</translation>
+      <translation>&lt;p&gt;אפשר גם לבחור &lt;b&gt;לפצל&lt;/b&gt; את קובץ הכונן הקשיח למגוון קבצים בגודל של עד 2 ג״ב לכל אחד. שימושי בעיקר לטובת אחסון המכונה הווירטואלית בהתקני USB או מערכות ישנות שחלקן לא יכולות לטפל בקבצים גדולים מדי.</translation>
     </message>
     <message>
       <source>copy</source>
-      <translation type="unfinished">copy</translation>
+      <translation>עותק</translation>
     </message>
     <message>
       <source>Virtual hard disk file type</source>
-      <translation type="unfinished">Virtual hard disk file type</translation>
+      <translation>סוג קובץ כונן קשיח וירטואלי</translation>
     </message>
     <message>
       <source>Location and size of the disk image</source>
-      <translation type="unfinished">Location and size of the disk image</translation>
+      <translation>מקום וגודל דמות כונן קשיח</translation>
     </message>
     <message>
       <source>Copy Virtual Hard Disk</source>
-      <translation type="unfinished">Copy Virtual Hard Disk</translation>
+      <translation>העתקת כונן קשיח וירטואלי</translation>
     </message>
     <message>
       <source>Hard Disk File &amp;Type and Format</source>
-      <translation type="unfinished">Hard Disk File &amp;Type and Format</translation>
+      <translation>&amp;סוג קובץ ותסדיר כונן קשיח</translation>
     </message>
   </context>
   <context>
     <name>UIWizardNewVM</name>
     <message>
       <source>&amp;Install in Background</source>
-      <translation type="unfinished">&amp;Install in Background</translation>
+      <translation>ה&amp;תקנה ברקע</translation>
     </message>
     <message>
       <source>No ISO image is selected, the guest OS will need to be installed manually.</source>
-      <translation type="unfinished">No ISO image is selected, the guest OS will need to be installed manually.</translation>
+      <translation>לא נבחרה דמות ISO, יש להתקין את מערכת ההפעלה של האורח ידנית.</translation>
     </message>
     <message>
       <source>You have selected to skip unattended guest OS install, the guest OS will need to be installed manually.</source>
-      <translation type="unfinished">You have selected to skip unattended guest OS install, the guest OS will need to be installed manually.</translation>
+      <translation>בחרת לדלג על התקנת מערכת הפעלה באורח ללא התערבות, יש להתקין את מערכת ההפעלה באורח ידנית.</translation>
     </message>
     <message>
       <source>Invalid file path or unreadable file</source>
-      <translation type="unfinished">Invalid file path or unreadable file</translation>
+      <translation>נתיב קובץ שגוי או קובץ בלתי קריא</translation>
     </message>
     <message>
       <source>U&amp;se an Existing Virtual Hard Disk File</source>
-      <translation type="unfinished">U&amp;se an Existing Virtual Hard Disk File</translation>
+      <translation>להשתמש בקובץ כונן וירטואלי קשיח &amp;קיים</translation>
     </message>
     <message>
       <source>Invalid path or unreadable ISO file</source>
-      <translation type="unfinished">Invalid path or unreadable ISO file</translation>
+      <translation>נתיב שגוי או קובץ ISO בלתי קריא</translation>
     </message>
     <message>
       <source>Invalid ISO file</source>
-      <translation type="unfinished">Invalid ISO file</translation>
+      <translation>קובץ ISO שגוי</translation>
     </message>
     <message>
       <source>No valid disk is selected</source>
-      <translation type="unfinished">No valid disk is selected</translation>
+      <translation>לא נבחר כונן תקף</translation>
     </message>
     <message>
       <source>Invalid disk size</source>
-      <translation type="unfinished">Invalid disk size</translation>
+      <translation>גודל הכונן שגוי</translation>
     </message>
     <message>
       <source>ISO Image</source>
-      <translation type="unfinished">ISO Image</translation>
+      <translation>דמות ISO</translation>
     </message>
     <message>
       <source>Guest OS Type</source>
-      <translation>טיפוס מערכת אורחת</translation>
+      <translation>סוג מערכת הפעלה אורחת</translation>
     </message>
     <message>
       <source>Product Key</source>
-      <translation type="unfinished">Product Key</translation>
+      <translation>מפתח מוצר</translation>
     </message>
     <message>
       <source>Install in Background</source>
-      <translation type="unfinished">Install in Background</translation>
+      <translation>התקנה ברקע</translation>
     </message>
     <message>
       <source>Install Guest Additions</source>
-      <translation type="unfinished">Install Guest Additions</translation>
+      <translation>התקנת תוספות אורח</translation>
     </message>
     <message>
       <source>Base Memory</source>
@@ -14830,7 +14830,7 @@
     </message>
     <message>
       <source>Attached Disk</source>
-      <translation type="unfinished">Attached Disk</translation>
+      <translation>כונן מחובר</translation>
     </message>
     <message>
       <source>None</source>
@@ -14838,211 +14838,211 @@
     </message>
     <message>
       <source>Summary</source>
-      <translation type="unfinished">Summary</translation>
+      <translation>תקציר</translation>
     </message>
     <message>
       <source>Detected OS type: %1. %2</source>
-      <translation type="unfinished">Detected OS type: %1. %2</translation>
+      <translation>סוג מערכת ההפעלה שזוהתה: %1. %2</translation>
     </message>
     <message>
       <source>Invalid guest additions installation media</source>
-      <translation type="unfinished">Invalid guest additions installation media</translation>
+      <translation>אמצעי התקנת תוספות לאורח שגוי</translation>
     </message>
     <message>
       <source>Guest additions installation media is valid</source>
-      <translation type="unfinished">Guest additions installation media is valid</translation>
+      <translation>אמצעי התקנת תוספות לאורח תקין</translation>
     </message>
     <message>
       <source>File path is valid</source>
-      <translation type="unfinished">File path is valid</translation>
+      <translation>נתיב הקובץ שגוי</translation>
     </message>
     <message>
       <source>Lists chosen configuration of the guest system.</source>
-      <translation type="unfinished">Lists chosen configuration of the guest system.</translation>
+      <translation>הצגת ההגדרות הנבחרות של המערכת האורחת.</translation>
     </message>
     <message>
       <source>&amp;Product Key</source>
-      <translation type="unfinished">&amp;Product Key</translation>
+      <translation>מ&amp;פתח מוצר</translation>
     </message>
     <message>
       <source>The product key</source>
-      <translation type="unfinished">The product key</translation>
+      <translation>מפתח המוצר</translation>
     </message>
     <message>
       <source>Start the virtual machine without a GUI</source>
-      <translation type="unfinished">Start the virtual machine without a GUI</translation>
+      <translation>התחלת המכונה הווירטואלית בלי ממשק משתמש</translation>
     </message>
     <message>
       <source>User Name and Password</source>
-      <translation type="unfinished">User Name and Password</translation>
+      <translation>שם משתמש וסיסמה</translation>
     </message>
     <message>
       <source>The ISO file to install the VirtualBox Guest Additions</source>
-      <translation type="unfinished">The ISO file to install the VirtualBox Guest Additions</translation>
+      <translation>קובץ ה־ISO להתקנת תוספות האורח של VirtualBox</translation>
     </message>
     <message>
       <source>Guest &amp;Additions ISO Image:</source>
-      <translation type="unfinished">Guest &amp;Additions ISO Image:</translation>
+      <translation>דמות ISO של &amp;תוספות לאורח:</translation>
     </message>
     <message>
       <source>Install Gu&amp;est Additions</source>
-      <translation type="unfinished">Install Gu&amp;est Additions</translation>
+      <translation>התקנת תו&amp;ספות לאורח</translation>
     </message>
     <message>
       <source>Install the VirtualBox Guest Additions on the guest OS</source>
-      <translation type="unfinished">Install the VirtualBox Guest Additions on the guest OS</translation>
+      <translation>התקנת תוספות לאורח של VirtualBox על מערכת ההפעלה האורחת</translation>
     </message>
     <message>
       <source>OS Installation Options</source>
-      <translation type="unfinished">OS Installation Options</translation>
+      <translation>אפשרויות התקנת מערכת הפעלה</translation>
     </message>
     <message>
       <source>&amp;Use EFI</source>
-      <translation type="unfinished">&amp;Use EFI</translation>
+      <translation>&amp;להשתמש ב־EFI</translation>
     </message>
     <message>
       <source>Use Extended Firmware Interface (EFI). This is required to boot some OSs.</source>
-      <translation type="unfinished">Use Extended Firmware Interface (EFI). This is required to boot some OSs.</translation>
+      <translation>להשתמש בממשק קושחה מורחב (EFI). נחוץ כדי להעלות מערכות הפעלה מסוימות.</translation>
     </message>
     <message>
       <source>New Virtual Machine</source>
-      <translation type="unfinished">New Virtual Machine</translation>
+      <translation>מכונה וירטואלית חדשה</translation>
     </message>
     <message>
       <source>Virtual machine name and operating system</source>
-      <translation type="unfinished">Virtual machine name and operating system</translation>
+      <translation>שם ומערכת ההפעלה של המכונה הווירטואלית</translation>
     </message>
     <message>
       <source>The ISO image is used to install the operating system on the VM.</source>
-      <translation type="unfinished">The ISO image is used to install the operating system on the VM.</translation>
+      <translation>דמות ה־ISO שמשמשת להתקנת מערכת ההפעלה על המכונה הווירטואלית.</translation>
     </message>
     <message>
       <source>&amp;Proceed with Unattended Installation</source>
-      <translation type="unfinished">&amp;Proceed with Unattended Installation</translation>
+      <translation>להמשיך עם התקנה ללא הת&amp;ערבות</translation>
     </message>
     <message>
       <source>VirtualBox can&apos;t install an OS from the selected ISO. OS cannot be determined, the guest OS will need to be installed manually.</source>
-      <translation type="unfinished">VirtualBox can&apos;t install an OS from the selected ISO. OS cannot be determined, the guest OS will need to be installed manually.</translation>
+      <translation>VirtualBox לא יכול להתקין מערכת הפעלה מה־ISO הנבחר. לא ניתן לזהות את מערכת ההפעלה, יש להתקין את מערכת ההפעלה האורחת ידנית.</translation>
     </message>
     <message>
       <source>This OS can&apos;t be installed using Unattended Installation. The installation needs to be done manually.</source>
-      <translation type="unfinished">This OS can&apos;t be installed using Unattended Installation. The installation needs to be done manually.</translation>
+      <translation>אי אפשר להתקין את מערכת ההפעלה הזאת ללא התערבות. יש לבצע את ההתקנה ידנית.</translation>
     </message>
     <message>
       <source>VirtualBox will install the OS using an unattended installation when the VM is created. Supply the required information in the following steps.</source>
-      <translation type="unfinished">VirtualBox will install the OS using an unattended installation when the VM is created. Supply the required information in the following steps.</translation>
+      <translation>VirtualBox יתקן את מערכת ההפעלה ללא התערבות עם יצירת מכונה וירטואלית יש לספק את פרטי החובה בשלבים הבאים.</translation>
     </message>
     <message>
       <source>Virtual machine name cannot be empty</source>
-      <translation type="unfinished">Virtual machine name cannot be empty</translation>
+      <translation>שם המכונה הווירטואלית לא יכול להיות ריק</translation>
     </message>
     <message>
       <source>Virtual machine name is valid</source>
-      <translation type="unfinished">Virtual machine name is valid</translation>
+      <translation>שם המכונה הווירטואלית תקין</translation>
     </message>
     <message>
       <source>Virtual machine path is not unique</source>
-      <translation type="unfinished">Virtual machine path is not unique</translation>
+      <translation>נתיב המכונה הווירטואלית אינו ייחודי</translation>
     </message>
     <message>
       <source>Set up unattended guest OS installation</source>
-      <translation type="unfinished">Set up unattended guest OS installation</translation>
+      <translation>הגדרת התקנת מערכת ההפעלה ללא התערבות</translation>
     </message>
     <message>
       <source>Enter the information that will be required when the OS is installed.</source>
-      <translation type="unfinished">Enter the information that will be required when the OS is installed.</translation>
+      <translation>נא למלא את פרטי החובה שיידרשו במהלך התקנת מערכת ההפעלה.</translation>
     </message>
     <message>
       <source>Specify virtual hardware</source>
-      <translation type="unfinished">Specify virtual hardware</translation>
+      <translation>נא לציין חומרה וירטואלית</translation>
     </message>
     <message>
       <source>Specify the VM&apos;s hardware. Resources allocated to the VM will not be available to the host when the VM is running.</source>
-      <translation type="unfinished">Specify the VM&apos;s hardware. Resources allocated to the VM will not be available to the host when the VM is running.</translation>
+      <translation>נא לציין חומרת מכונה וירטואלית. המשאבים שמוקצים למכונה הווירטואלית לא יהיו זמינים למארח כשהמכונה הווירטואלית רצה.</translation>
     </message>
     <message>
       <source>Virtual machine name and &amp;operating system</source>
-      <translation type="unfinished">Virtual machine name and &amp;operating system</translation>
+      <translation>&amp;שם ומערכת ההפעלה של המכונה הווירטואלית</translation>
     </message>
     <message>
       <source>Set up &amp;unattended guest OS installation</source>
-      <translation type="unfinished">Set up &amp;unattended guest OS installation</translation>
+      <translation>הגדרת התקנת מערכת הפעלה אורחת ללא הת&amp;ערבות</translation>
     </message>
     <message>
       <source>Specify virtual hard dis&amp;k</source>
-      <translation type="unfinished">Specify virtual hard dis&amp;k</translation>
+      <translation>&amp;ציון כונן קשיח וירטואלי</translation>
     </message>
     <message>
       <source>Specify virtual h&amp;ardware</source>
-      <translation type="unfinished">Specify virtual h&amp;ardware</translation>
+      <translation>ציון &amp;חומרה וירטואלית</translation>
     </message>
     <message>
       <source>C&amp;reate Virtual Machine Without a Virtual Hard Disk</source>
-      <translation type="unfinished">C&amp;reate Virtual Machine Without a Virtual Hard Disk</translation>
+      <translation>ליצור מכונה וירטואלית &amp;ללא כונן קשיח וירטואלי</translation>
     </message>
     <message>
       <source>&amp;Create a New Virtual Hard Disk</source>
-      <translation type="unfinished">&amp;Create a New Virtual Hard Disk</translation>
+      <translation>ליצור כונן קשיח וירטואלי &amp;חדש</translation>
     </message>
     <message>
       <source>Select a Virtual Hard Disk File...</source>
-      <translation type="unfinished">Select a Virtual Hard Disk File...</translation>
+      <translation>בחירת קובץ כונן קשיח וירטואלי…</translation>
     </message>
     <message>
       <source>Select a Virtual Hard Disk File</source>
-      <translation type="unfinished">Select a Virtual Hard Disk File</translation>
+      <translation>בחירת קובץ כונן קשיח וירטואלי</translation>
     </message>
     <message>
       <source>Hard Disk File &amp;Type and Format</source>
-      <translation type="unfinished">Hard Disk File &amp;Type and Format</translation>
+      <translation>&amp;סוג קובץ ותסדיר כונן קשיח</translation>
     </message>
     <message>
       <source>Invalid user name and/or password</source>
-      <translation type="unfinished">Invalid user name and/or password</translation>
+      <translation>שם משתמש ו/או סיסמה שגויים</translation>
     </message>
     <message>
       <source>Invalid host name or domain name</source>
-      <translation type="unfinished">Invalid host name or domain name</translation>
+      <translation>שם מארח או שם תחום שגויים</translation>
     </message>
     <message>
       <source>Invalid product key</source>
-      <translation type="unfinished">Invalid product key</translation>
+      <translation>מפתח המוצר שגוי</translation>
     </message>
     <message>
       <source>Virtual machine name is invalid (possibly empty)</source>
-      <translation type="unfinished">Virtual machine name is invalid (possibly empty)</translation>
+      <translation>שם המכונה הווירטואלית שגוי (כנראה ריק)</translation>
     </message>
     <message>
       <source>Virtual Machine Name and Operating System</source>
-      <translation type="unfinished">Virtual Machine Name and Operating System</translation>
+      <translation>שם ומערכת ההפעלה של המכונה הווירטואלית</translation>
     </message>
     <message>
       <source>VM Name</source>
-      <translation type="unfinished">VM Name</translation>
+      <translation>שם המכונה הווירטואלית</translation>
     </message>
     <message>
       <source>VM Folder</source>
-      <translation type="unfinished">VM Folder</translation>
+      <translation>תיקיית המכונה הווירטואלית</translation>
     </message>
     <message>
       <source>Unattended Installation of Guest OS</source>
-      <translation type="unfinished">Unattended Installation of Guest OS</translation>
+      <translation>התקנה של מערכת ההפעלה האורחת ללא התערבות</translation>
     </message>
     <message>
       <source>User Name</source>
-      <translation type="unfinished">User Name</translation>
+      <translation>שם משתמש</translation>
     </message>
     <message>
       <source>Host Name/Domain Name</source>
-      <translation type="unfinished">Host Name/Domain Name</translation>
+      <translation>שם מארח/שם תחום</translation>
     </message>
     <message>
       <source>Guest Additions ISO Image</source>
-      <translation type="unfinished">Guest Additions ISO Image</translation>
+      <translation>דמות ISO של תוספות לאורח</translation>
     </message>
     <message>
       <source>Virtual Hardware</source>
-      <translation type="unfinished">Virtual Hardware</translation>
+      <translation>חומרה וירטואלית</translation>
     </message>
     <message>
       <source>Processors</source>
@@ -15050,53 +15050,53 @@
     </message>
     <message>
       <source>Use EFI</source>
-      <translation type="unfinished">Use EFI</translation>
+      <translation>להשתמש ב־EFI</translation>
     </message>
     <message>
       <source>Hard Disk Size</source>
-      <translation type="unfinished">Hard Disk Size</translation>
+      <translation>גודל כונן קשיח</translation>
     </message>
     <message>
       <source>A new VM will be created with the following configuration.</source>
-      <translation type="unfinished">A new VM will be created with the following configuration.</translation>
+      <translation>תיווצר מכונה וירטואלית חדשה עם ההגדרות הבאות.</translation>
     </message>
     <message>
       <source>The ISO is attached to the VM, so you can install the OS automatically</source>
-      <translation type="unfinished">The ISO is attached to the VM, so you can install the OS automatically</translation>
+      <translation>ה־ISO מחובר למכונה הווירטואלית, כדי לאפשר את התקנת מערכת ההפעלה אוטומטית</translation>
     </message>
     <message>
       <source>Proceed with Unattended Installation</source>
-      <translation type="unfinished">Proceed with Unattended Installation</translation>
+      <translation>להמשיך עם התקנה ללא התערבות</translation>
     </message>
   </context>
   <context>
     <name>VBoxAboutDlg</name>
     <message>
       <source>VirtualBox - About</source>
-      <translation>VirtualBox - אודות</translation>
+      <translation>VirtualBox - על אודות</translation>
     </message>
     <message>
       <source>VirtualBox Graphical User Interface</source>
-      <translation>ממשק משתמש גרפי VirtualBox</translation>
+      <translation>ממשק משתמש גרפי ל־VirtualBox</translation>
     </message>
     <message>
       <source>Version %1</source>
-      <translation>גירסה %1</translation>
+      <translation>גרסה %1</translation>
     </message>
   </context>
   <context>
     <name>VBoxLicenseViewer</name>
     <message>
       <source>VirtualBox License</source>
-      <translation>רשיון VirtualBox</translation>
+      <translation>רישיון VirtualBox</translation>
     </message>
     <message>
       <source>I &amp;Agree</source>
-      <translation>הריני ל&amp;הסכים</translation>
+      <translation>מ&amp;קובל עליי</translation>
     </message>
     <message>
       <source>I &amp;Disagree</source>
-      <translation>הריני &amp;לא להסכים</translation>
+      <translation>&amp;לא מקובל עליי</translation>
     </message>
   </context>
 </TS>
