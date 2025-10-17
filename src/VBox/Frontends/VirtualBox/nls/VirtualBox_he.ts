@@ -3571,17 +3571,17 @@
     <message>
       <source>Intel PRO/1000 MT Desktop (82540EM)</source>
       <comment>NetworkAdapterType</comment>
-      <translation type="unfinished">Intel PRO/1000 MT Desktop (82540EM)</translation>
+      <translation>Intel PRO/1000 MT למחשבים שולחניים (82540EM)</translation>
     </message>
     <message>
       <source>Intel PRO/1000 T Server (82543GC)</source>
       <comment>NetworkAdapterType</comment>
-      <translation type="unfinished">Intel PRO/1000 T Server (82543GC)</translation>
+      <translation>Intel PRO/1000 T לשרתים (82543GC)</translation>
     </message>
     <message>
       <source>Intel PRO/1000 MT Server (82545EM)</source>
       <comment>NetworkAdapterType</comment>
-      <translation type="unfinished">Intel PRO/1000 MT Server (82545EM)</translation>
+      <translation>Intel PRO/1000 MT לשרתים (82545EM)</translation>
     </message>
     <message>
       <source>Paravirtualized Network (virtio-net)</source>
@@ -4527,7 +4527,7 @@
     <message>
       <source>Intel 82583V Gigabit Network Connection [EXPERIMENTAL]</source>
       <comment>NetworkAdapterType</comment>
-      <translation type="unfinished">Intel 82583V Gigabit Network Connection [EXPERIMENTAL]</translation>
+      <translation>Intel 82583V חיבור רשת גיגה סיביות [ניסיוני]</translation>
     </message>
   </context>
   <context>
@@ -8114,15 +8114,15 @@
     </message>
     <message>
       <source>Failed to detach the hard disk (&lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;) from the slot &lt;i&gt;%2&lt;/i&gt; of the machine &lt;b&gt;%3&lt;/b&gt;.</source>
-      <translation type="unfinished">Failed to detach the hard disk (&lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;) from the slot &lt;i&gt;%2&lt;/i&gt; of the machine &lt;b&gt;%3&lt;/b&gt;.</translation>
+      <translation>ניתוק הכונן הקשיח (&lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;) מהחריץ &lt;i&gt;%2&lt;/i&gt; של המכונה &lt;b&gt;%3&lt;/b&gt; נכשל.</translation>
     </message>
     <message>
       <source>Failed to detach the optical drive (&lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;) from the slot &lt;i&gt;%2&lt;/i&gt; of the machine &lt;b&gt;%3&lt;/b&gt;.</source>
-      <translation type="unfinished">Failed to detach the optical drive (&lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;) from the slot &lt;i&gt;%2&lt;/i&gt; of the machine &lt;b&gt;%3&lt;/b&gt;.</translation>
+      <translation>ניתוק הכונן האופטי (&lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;) מהחריץ &lt;i&gt;%2&lt;/i&gt; של המכונה &lt;b&gt;%3&lt;/b&gt; נכשל.</translation>
     </message>
     <message>
       <source>Failed to detach the floppy drive (&lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;) from the slot &lt;i&gt;%2&lt;/i&gt; of the machine &lt;b&gt;%3&lt;/b&gt;.</source>
-      <translation type="unfinished">Failed to detach the floppy drive (&lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;) from the slot &lt;i&gt;%2&lt;/i&gt; of the machine &lt;b&gt;%3&lt;/b&gt;.</translation>
+      <translation>ניתוק כונן התקליטונים (&lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;) מהחריץ &lt;i&gt;%2&lt;/i&gt; של המכונה &lt;b&gt;%3&lt;/b&gt; נכשל.</translation>
     </message>
     <message>
       <source>&lt;p&gt;Unable to insert the virtual optical disk &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt; into the machine &lt;b&gt;%2&lt;/b&gt;.&lt;/p&gt;</source>
@@ -8616,7 +8616,7 @@
     </message>
     <message>
       <source>&lt;p&gt;This will clear the optical disk list by releasing inaccessible DVDs from the virtual machines they are attached to and removing them from the list of registered media.&lt;p&gt;Are you sure?</source>
-      <translation>&lt;p&gt;הפעולה הזאת תפנה את רשימת אמצעי האחסון האופטיים על ידי שחרור תקליטורי DVD מהמכונה הווירטואלית אליה הם מוצמדים והסרתם מרשימת אמצעי האחסון הרשומים.&lt;p&gt;להמשיך?</translation>
+      <translation>&lt;p&gt;הפעולה הזאת תפנה את רשימת אמצעי האחסון האופטיים על ידי שחרור תקליטורי DVD בלתי נגישים מהמכונה הווירטואלית אליה הם מוצמדים והסרתם מרשימת אמצעי האחסון הרשומים.&lt;p&gt;להמשיך?</translation>
     </message>
     <message>
       <source>Clear</source>
@@ -8624,7 +8624,7 @@
     </message>
     <message>
       <source>&lt;p&gt;This will clear the floppy disk list by releasing inaccessible disks from the virtual machines they are attached to and removing them from the list of registered media.&lt;p&gt;Are you sure?</source>
-      <translation type="unfinished">&lt;p&gt;This will clear the floppy disk list by releasing inaccessible disks from the virtual machines they are attached to and removing them from the list of registered media.&lt;p&gt;Are you sure?</translation>
+      <translation>&lt;p&gt;הפעולה הזאת תפנה את רשימת התקליטונים על ידי שחרור תקליטונים לא נגישים מהמכונה הווירטואלית אליה הם מוצמדים והסרתם מרשימת אמצעי האחסון הרשומים.&lt;p&gt;להמשיך?</translation>
     </message>
     <message>
       <source>&lt;p&gt;Do you want to remove the cloud network &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;?&lt;/nobr&gt;&lt;/p&gt;&lt;p&gt;If this network is in use by one or more virtual machine network adapters these adapters will no longer be usable until you correct their settings by either choosing a different network name or a different adapter attachment type.&lt;/p&gt;</source>
@@ -8738,7 +8738,7 @@
     </message>
     <message>
       <source>Failed to create medium storage at &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;.</source>
-      <translation>יצירת אמצעי אחסון ב־&lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt; נכשלה.</translation>
+      <translation>יצירת תשתית אמצעי אחסון ב־&lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt; נכשלה.</translation>
     </message>
     <message>
       <source>Can&apos;t overwrite medium ...</source>
@@ -8746,7 +8746,7 @@
     </message>
     <message>
       <source>Failed to overwrite medium storage at &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;.</source>
-      <translation type="unfinished">Failed to overwrite medium storage at &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;.</translation>
+      <translation>דריסת תשתית אמצעי אחסון ב־&lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt; נכשלה.</translation>
     </message>
     <message>
       <source>Can&apos;t open license file ...</source>
@@ -9018,7 +9018,7 @@
     </message>
     <message>
       <source>Failed to change the parameter of the medium &lt;b&gt;%1&lt;/b&gt;.</source>
-      <translation type="unfinished">Failed to change the parameter of the medium &lt;b&gt;%1&lt;/b&gt;.</translation>
+      <translation>החלפת משתנה אמצעי האחסון &lt;b&gt;%1&lt;/b&gt; נכשלה.</translation>
     </message>
     <message>
       <source>Failed to change the parameter of the virtual machine &lt;b&gt;%1&lt;/b&gt;.</source>
@@ -9420,11 +9420,11 @@
     </message>
     <message>
       <source>Failed to find snapshot with name=&lt;b&gt;%1&lt;/b&gt;.</source>
-      <translation type="unfinished">Failed to find snapshot with name=&lt;b&gt;%1&lt;/b&gt;.</translation>
+      <translation>לא ניתן למצוא תמונת מצב עם השם/name‏=&lt;b&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
       <source>&lt;p&gt;The machine settings were changed.&lt;/p&gt;&lt;p&gt;Would you like to discard the changed settings or to keep editing them?&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;The machine settings were changed.&lt;/p&gt;&lt;p&gt;Would you like to discard the changed settings or to keep editing them?&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;הגדרות המכונה השתנו.&lt;/p&gt;&lt;p&gt;לסלק את ההגדרות שהשתנו או להמשיך לערוך אותן?&lt;/p&gt;</translation>
     </message>
     <message>
       <source>Discard changes</source>
@@ -9436,11 +9436,11 @@
     </message>
     <message>
       <source>&lt;p&gt;You are going to restore default secure boot keys.&lt;/p&gt;&lt;p&gt;If you proceed your current keys will be rewritten. You may not be able to boot affected VM anymore.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;You are going to restore default secure boot keys.&lt;/p&gt;&lt;p&gt;If you proceed your current keys will be rewritten. You may not be able to boot affected VM anymore.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;הפעולה הזאת תשחזר את מפתחות הטעינה הבטוחה (Secure Boot) כברירת מחדל.&lt;/p&gt;&lt;p&gt;בחירה להמשיך בתהליך תשכתב את המפתחות הנוכחיים שלך. לא תהיה לך אפשרות לטעון את המכונה הווירטואלית המושפעת עוד.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&lt;p&gt;To open a VISO file you will have to discard the current content.&lt;/p&gt;&lt;p&gt;Are you sure you want to proceed?&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;To open a VISO file you will have to discard the current content.&lt;/p&gt;&lt;p&gt;Are you sure you want to proceed?&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;כדי לפתוח קובץ VISO צריך לסלק את התוכן הנוכחי.&lt;/p&gt;&lt;p&gt;להמשיך?&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&lt;p&gt;The &lt;b&gt;VirtualBox Guest Additions&lt;/b&gt; disk image file has been successfully downloaded from &lt;nobr&gt;&lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;&lt;/nobr&gt; and saved locally as &lt;nobr&gt;&lt;b&gt;%2&lt;/b&gt;.&lt;/nobr&gt;&lt;/p&gt;&lt;p&gt;Do you wish to continue with Guest Additions installation?&lt;/p&gt;</source>
@@ -9448,11 +9448,11 @@
     </message>
     <message>
       <source>&lt;p&gt;Could not find the &lt;b&gt;VirtualBox User Guide&lt;/b&gt; &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;.&lt;/nobr&gt;&lt;/p&gt;&lt;p&gt;Do you wish to download this file from the Internet?&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Could not find the &lt;b&gt;VirtualBox User Guide&lt;/b&gt; &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;.&lt;/nobr&gt;&lt;/p&gt;&lt;p&gt;Do you wish to download this file from the Internet?&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;לא ניתן למצוא את &lt;b&gt;המדריך למשתמשים ב־VirtualBox&lt;/b&gt; &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;.&lt;/nobr&gt;&lt;/p&gt;&lt;p&gt;להוריד את הקובץ הזה מהאינטרנט?&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&lt;p&gt;Are you sure you want to download the &lt;b&gt;VirtualBox User Guide&lt;/b&gt; from &lt;nobr&gt;&lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;&lt;/nobr&gt; (size %2 bytes)?&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Are you sure you want to download the &lt;b&gt;VirtualBox User Guide&lt;/b&gt; from &lt;nobr&gt;&lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;&lt;/nobr&gt; (size %2 bytes)?&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;להוריד את &lt;b&gt;המדריך למשתמשים ב־VirtualBox&lt;/b&gt; מ־&lt;nobr&gt;&lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;&lt;/nobr&gt; (בגודל %2 בתים)?&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&lt;p&gt;The VirtualBox User Guide has been successfully downloaded from &lt;nobr&gt;&lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;&lt;/nobr&gt; but can&apos;t be saved locally as &lt;nobr&gt;&lt;b&gt;%2&lt;/b&gt;.&lt;/nobr&gt;&lt;/p&gt;&lt;p&gt;Please choose another location for that file.&lt;/p&gt;</source>
@@ -9460,11 +9460,11 @@
     </message>
     <message>
       <source>VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the &apos;vboxusers&apos; group.  Please see the user guide for a more detailed explanation</source>
-      <translation type="unfinished">VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the &apos;vboxusers&apos; group.  Please see the user guide for a more detailed explanation</translation>
+      <translation>ל־VirtualBox אין כרגע הרשאה לגשת להתקני USB. אפשר לשנות את זה על ידי הוספת המשתמש שלך לקבוצה ‚vboxusers’. נא לעיין במדריך למשתמשים לקבלת הסבר מפורט יותר</translation>
     </message>
     <message>
       <source>VirtualBox is not currently allowed to access USB devices.  You can change this by allowing your user to access the &apos;usbfs&apos; folder and files.  Please see the user guide for a more detailed explanation</source>
-      <translation type="unfinished">VirtualBox is not currently allowed to access USB devices.  You can change this by allowing your user to access the &apos;usbfs&apos; folder and files.  Please see the user guide for a more detailed explanation</translation>
+      <translation>ל־VirtualBox אין כרגע הרשאה לגשת להתקני USB. אפשר לשנות את זה על ידי מתן האפשרות למשתמש שלך לגשת לתיקייה ולקבצים של ה־‚usbfs’. נא לעיין במדריך למשתמשים לקבלת הסבר מפורט יותר</translation>
     </message>
     <message>
       <source>User guide downloaded ...</source>
@@ -9472,23 +9472,23 @@
     </message>
     <message>
       <source>&lt;p&gt;The VirtualBox User Guide has been successfully downloaded from &lt;nobr&gt;&lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;&lt;/nobr&gt; and saved locally as &lt;nobr&gt;&lt;b&gt;%2&lt;/b&gt;.&lt;/nobr&gt;&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;The VirtualBox User Guide has been successfully downloaded from &lt;nobr&gt;&lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;&lt;/nobr&gt; and saved locally as &lt;nobr&gt;&lt;b&gt;%2&lt;/b&gt;.&lt;/nobr&gt;&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;המדריך למשתמשים ב־VirtualBox ירד בהצלחה מ־&lt;nobr&gt;&lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;&lt;/nobr&gt; ונשמר מקומית בתור &lt;nobr&gt;&lt;b&gt;%2&lt;/b&gt;.&lt;/nobr&gt;&lt;/p&gt;</translation>
     </message>
     <message>
       <source>Platform failure ...</source>
-      <translation type="unfinished">Platform failure ...</translation>
+      <translation>כשל פלטפורמה…</translation>
     </message>
     <message>
       <source>Failed to acquire platform parameter.</source>
-      <translation type="unfinished">Failed to acquire platform parameter.</translation>
+      <translation>קבלת משתנה פלטפורמה נכשלה.</translation>
     </message>
     <message>
       <source>Platform properties failure ...</source>
-      <translation type="unfinished">Platform properties failure ...</translation>
+      <translation>כשל מאפייני פלטפורמה…</translation>
     </message>
     <message>
       <source>Failed to acquire platform properties parameter.</source>
-      <translation type="unfinished">Failed to acquire platform properties parameter.</translation>
+      <translation>קבלת משתנה מאפייני פלטפורמה נכשלה.</translation>
     </message>
     <message>
       <source>System properties failure ...</source>
@@ -9496,35 +9496,35 @@
     </message>
     <message>
       <source>Failed to acquire system properties parameter.</source>
-      <translation type="unfinished">Failed to acquire system properties parameter.</translation>
+      <translation>קבלת משתנה מאפייני מערכת נכשלה.</translation>
     </message>
     <message>
       <source>Storage controller failure ...</source>
-      <translation type="unfinished">Storage controller failure ...</translation>
+      <translation>כשל בקר אחסון…</translation>
     </message>
     <message>
       <source>Failed to acquire storage controller parameter.</source>
-      <translation type="unfinished">Failed to acquire storage controller parameter.</translation>
+      <translation>קבלת משתנה בקר האחסון נכשלה.</translation>
     </message>
     <message>
       <source>Medium attachment failure ...</source>
-      <translation type="unfinished">Medium attachment failure ...</translation>
+      <translation>הצמדת אמצעי אחסון נכשלה…</translation>
     </message>
     <message>
       <source>Failed to acquire medium attachment parameter.</source>
-      <translation type="unfinished">Failed to acquire medium attachment parameter.</translation>
+      <translation>קבלת משתנה הצמדת אמצעי אחסון נכשלה.</translation>
     </message>
     <message>
       <source>Debugger failure ...</source>
-      <translation type="unfinished">Debugger failure ...</translation>
+      <translation>כשל מנפה שגיאות…</translation>
     </message>
     <message>
       <source>Failed to acquire machine debugger parameter.</source>
-      <translation type="unfinished">Failed to acquire machine debugger parameter.</translation>
+      <translation>קבלת משתנה מנפה השגיאות במכונה נכשלה.</translation>
     </message>
     <message>
       <source>Failed to acquire graphics adapter parameter.</source>
-      <translation type="unfinished">Failed to acquire graphics adapter parameter.</translation>
+      <translation>קבלת משתנה המתאם הגרפי נכשלה.</translation>
     </message>
     <message>
       <source>Audio settings failure ...</source>
@@ -9689,7 +9689,7 @@
     </message>
     <message>
       <source>&lt;p&gt;Are you sure you want to discard the saved state of the following virtual machines?&lt;/p&gt;&lt;p&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/p&gt;&lt;p&gt;This operation is equivalent to resetting or powering off the machine without doing a proper shut down of the guest OS.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Are you sure you want to discard the saved state of the following virtual machines?&lt;/p&gt;&lt;p&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/p&gt;&lt;p&gt;This operation is equivalent to resetting or powering off the machine without doing a proper shut down of the guest OS.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;לסלק את המצב השמור של המכונות הווירטואליות הבאות?&lt;/p&gt;&lt;p&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/p&gt;&lt;p&gt;הפעולה הזאת שוות ערך להפעלת המכונה מחדש בכוח או כיבוי המכונה מבלי לכבות את מערכת ההפעלה האורחת באופן מסודר.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&lt;p&gt;Shut down these VMs by sending the ACPI shutdown signal?&lt;/p&gt;&lt;p&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/p&gt;</source>
@@ -10658,7 +10658,7 @@
     </message>
     <message>
       <source>Deleting medium storage ...</source>
-      <translation>אחסון אמצעי האחסון נמחק…</translation>
+      <translation>תשתית אמצעי האחסון נמחקת…</translation>
     </message>
     <message>
       <source>&lt;b&gt;Location:&lt;/b&gt; %1</source>
