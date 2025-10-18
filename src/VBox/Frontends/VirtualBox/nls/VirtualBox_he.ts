@@ -7810,11 +7810,11 @@
     </message>
     <message>
       <source>&lt;p&gt;Failed to initialize COM because the VirtualBox global configuration directory &lt;b&gt;&lt;nobr&gt;%1&lt;/nobr&gt;&lt;/b&gt; is not accessible. Please check the permissions of this directory and of its parent directory.&lt;/p&gt;&lt;p&gt;The application will now terminate.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Failed to initialize COM because the VirtualBox global configuration directory &lt;b&gt;&lt;nobr&gt;%1&lt;/nobr&gt;&lt;/b&gt; is not accessible. Please check the permissions of this directory and of its parent directory.&lt;/p&gt;&lt;p&gt;The application will now terminate.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;אתחול COM נכשל כיוון שתיקיית ההגדרות המקיפה של VirtualBox ‏&lt;b&gt;&lt;nobr&gt;%1&lt;/nobr&gt;&lt;/b&gt; אינה נגישה. נא לבדוק את הרשאות התיקייה הזאת וגם של זאת שמעליה.&lt;/p&gt;&lt;p&gt;היישום יחוסל כעת.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&lt;p&gt;Failed to initialize COM or to find the VirtualBox COM server. Most likely, the VirtualBox server is not running or failed to start.&lt;/p&gt;&lt;p&gt;The application will now terminate.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Failed to initialize COM or to find the VirtualBox COM server. Most likely, the VirtualBox server is not running or failed to start.&lt;/p&gt;&lt;p&gt;The application will now terminate.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;אתחול COM או איתור שרת ה־COM של VirtualBox נכשל. ככל הנראה, שרת VirtualBox לא רץ או שהפעלתו נכשלה.&lt;/p&gt;&lt;p&gt;היישום יחוסל כעת.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&lt;p&gt;Failed to create the VirtualBoxClient COM object.&lt;/p&gt;&lt;p&gt;The application will now terminate.&lt;/p&gt;</source>
@@ -7830,11 +7830,11 @@
     </message>
     <message>
       <source>&lt;p&gt;Could not find a language file for the language &lt;b&gt;%1&lt;/b&gt; in the directory &lt;b&gt;&lt;nobr&gt;%2&lt;/nobr&gt;&lt;/b&gt;.&lt;/p&gt;&lt;p&gt;The language will be temporarily reset to the system default language. Please go to the &lt;b&gt;Preferences&lt;/b&gt; window which you can open from the &lt;b&gt;File&lt;/b&gt; menu of the VirtualBox Manager window, and select one of the existing languages on the &lt;b&gt;Language&lt;/b&gt; page.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Could not find a language file for the language &lt;b&gt;%1&lt;/b&gt; in the directory &lt;b&gt;&lt;nobr&gt;%2&lt;/nobr&gt;&lt;/b&gt;.&lt;/p&gt;&lt;p&gt;The language will be temporarily reset to the system default language. Please go to the &lt;b&gt;Preferences&lt;/b&gt; window which you can open from the &lt;b&gt;File&lt;/b&gt; menu of the VirtualBox Manager window, and select one of the existing languages on the &lt;b&gt;Language&lt;/b&gt; page.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;לא ניתן למצוא קובץ שפה ל&lt;b&gt;%1&lt;/b&gt; בתיקייה &lt;b&gt;&lt;nobr&gt;%2&lt;/nobr&gt;&lt;/b&gt;.&lt;/p&gt;&lt;p&gt;השפה תאופס זמנית לשפת ברירת המחדל של המערכת. נא לגשת לחלון ה&lt;b&gt;העדפות&lt;/b&gt; אותו ניתן לפתוח מתפריט &lt;b&gt;קובץ&lt;/b&gt; בחלון מנהל VirtualBox, ולבחור באחת השפות הקיימות בעמוד &lt;b&gt;שפה&lt;/b&gt;.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&lt;p&gt;Could not load the language file &lt;b&gt;&lt;nobr&gt;%1&lt;/nobr&gt;&lt;/b&gt;. &lt;p&gt;The language will be temporarily reset to English (built-in). Please go to the &lt;b&gt;Preferences&lt;/b&gt; window which you can open from the &lt;b&gt;File&lt;/b&gt; menu of the VirtualBox Manager window, and select one of the existing languages on the &lt;b&gt;Language&lt;/b&gt; page.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Could not load the language file &lt;b&gt;&lt;nobr&gt;%1&lt;/nobr&gt;&lt;/b&gt;. &lt;p&gt;The language will be temporarily reset to English (built-in). Please go to the &lt;b&gt;Preferences&lt;/b&gt; window which you can open from the &lt;b&gt;File&lt;/b&gt; menu of the VirtualBox Manager window, and select one of the existing languages on the &lt;b&gt;Language&lt;/b&gt; page.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;לא ניתן לטעון את קובץ השפה &lt;b&gt;&lt;nobr&gt;%1&lt;/nobr&gt;&lt;/b&gt;. &lt;p&gt;השפה תאופס זמנית לאנגלית (מובנית). נא לגשת לחלון ה&lt;b&gt;העדפות&lt;/b&gt; אותו ניתן לפתוח מתפריט &lt;b&gt;קובץ&lt;/b&gt; בחלון מנהל VirtualBox, ולבחור באחת השפות הקיימות בעמוד &lt;b&gt;שפה&lt;/b&gt;.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>There is no virtual machine named &lt;b&gt;%1&lt;/b&gt;.</source>
@@ -8010,7 +8010,7 @@
     </message>
     <message>
       <source>&lt;p&gt;The machine settings were changed while you were editing them. You currently have unsaved setting changes.&lt;/p&gt;&lt;p&gt;Would you like to reload the changed settings or to keep your own changes?&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;The machine settings were changed while you were editing them. You currently have unsaved setting changes.&lt;/p&gt;&lt;p&gt;Would you like to reload the changed settings or to keep your own changes?&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;הגדרות המכונה השתנו בזמן העריכה. יש כרגע שינויי הגדרות שלא נשמרו.&lt;/p&gt;&lt;p&gt;לרענן את ההגדרות שהשתנו או להשאיר את השינויים שלך?&lt;/p&gt;</translation>
     </message>
     <message>
       <source>Reload settings</source>
@@ -8230,7 +8230,7 @@
     </message>
     <message>
       <source>Failed to create the virtual disk image storage &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;.&lt;/nobr&gt;</source>
-      <translation type="unfinished">Failed to create the virtual disk image storage &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;.&lt;/nobr&gt;</translation>
+      <translation>יצירת אחסון דמות הכונן הווירטואלי &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt; נכשלה.&lt;/nobr&gt;</translation>
     </message>
     <message numerus="yes">
       <source>&lt;p&gt;The %n following virtual machine(s) are currently in a saved state: &lt;b&gt;%1&lt;/b&gt;&lt;/p&gt;&lt;p&gt;If you continue the runtime state of the exported machine(s) will be discarded. The other machine(s) will not be changed.&lt;/p&gt;</source>
@@ -8406,7 +8406,7 @@
     </message>
     <message>
       <source>Extension packs complement the functionality of VirtualBox and can contain system level software that could be potentially harmful to your system. Please review the description below and only proceed if you have obtained the extension pack from a trusted source.</source>
-      <translation type="unfinished">Extension packs complement the functionality of VirtualBox and can contain system level software that could be potentially harmful to your system. Please review the description below and only proceed if you have obtained the extension pack from a trusted source.</translation>
+      <translation>חבילות הרחבה משלימות את היכולות של VirtualBox והן תוכנות ברמת מערכת ההפעלה שעלולות להזיק למערכת שלך. נא לקרוא בעיון את התיאור שלהלן ולהמשיך רק אם קיבלת את חבילת ההרחבה ממקור אמין.</translation>
     </message>
     <message>
       <source>&lt;p&gt;An older version of the extension pack is already installed, would you like to upgrade? &lt;p&gt;%1&lt;/p&gt;&lt;p&gt;&lt;table cellpadding=0 cellspacing=5&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Name:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;New Version:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%3&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Current Version:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%4&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Description:&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;%5&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;</source>
@@ -8483,7 +8483,7 @@
     </message>
     <message>
       <source>&lt;p&gt;The Virtual Machine reports that the guest OS supports &lt;b&gt;mouse pointer integration&lt;/b&gt;. This means that you do not need to &lt;i&gt;capture&lt;/i&gt; the mouse pointer to be able to use it in your guest OS -- all mouse actions you perform when the mouse pointer is over the Virtual Machine&apos;s display are directly sent to the guest OS. If the mouse is currently captured, it will be automatically uncaptured.&lt;/p&gt;&lt;p&gt;The mouse icon on the status bar will look like&amp;nbsp;&lt;img src=:/mouse_seamless_16px.png/&gt;&amp;nbsp;to inform you that mouse pointer integration is supported by the guest OS and is currently turned on.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Note&lt;/b&gt;: Some applications may behave incorrectly in mouse pointer integration mode. You can always disable it for the current session (and enable it again) by selecting the corresponding action from the menu bar.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;The Virtual Machine reports that the guest OS supports &lt;b&gt;mouse pointer integration&lt;/b&gt;. This means that you do not need to &lt;i&gt;capture&lt;/i&gt; the mouse pointer to be able to use it in your guest OS -- all mouse actions you perform when the mouse pointer is over the Virtual Machine&apos;s display are directly sent to the guest OS. If the mouse is currently captured, it will be automatically uncaptured.&lt;/p&gt;&lt;p&gt;The mouse icon on the status bar will look like&amp;nbsp;&lt;img src=:/mouse_seamless_16px.png/&gt;&amp;nbsp;to inform you that mouse pointer integration is supported by the guest OS and is currently turned on.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Note&lt;/b&gt;: Some applications may behave incorrectly in mouse pointer integration mode. You can always disable it for the current session (and enable it again) by selecting the corresponding action from the menu bar.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;המכונה הווירטואלית מדווחת שמערכת ההפעלה האורחת תומכת ב&lt;b&gt;שילוב סמן עכבר&lt;/b&gt;. משמעות הדבר היא שלא צריך &lt;i&gt;ללכוד&lt;/i&gt; את סמן העכבר כדי להשתמש בו במערכת ההפעלה האורחת שלך -- כל פעולות העכבר שמבוצעות כשסמן העכבר נמצא מעל התצוגה של המכונה הווירטואלית נשלחות ישירות למערכת ההפעלה האורחת. אם העכבר לכוד כרגע, הוא ישוחרר אוטומטית.&lt;/p&gt;&lt;p&gt;סמל העכבר בשורת המצב ייראה כמו&amp;nbsp;&lt;img src=:/mouse_seamless_16px.png/&gt;&amp;nbsp;כדי ליידע אותך ששילוב סמן העכבר נתמך על ידי מערכת ההפעלה האורחת ושהוא פעיל כרגע.&lt;/p&gt;&lt;p&gt;&lt;b&gt;נא לשים לב&lt;/b&gt;: חלק מהיישומים עלולים להתנהג מוזר במצב שילוב עכבר. תמיד אפשר לכבות את השילוב להפעלה הנוכחית (ולהפעיל אותו שוב) על ידי בחירה בפעולה המתאימה מסרגל התפריטים.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&lt;p&gt;The Virtual Machine reports that the guest OS does not support &lt;b&gt;mouse pointer integration&lt;/b&gt; in the current video mode. You need to capture the mouse (by clicking over the VM display or pressing the host key) in order to use the mouse inside the guest OS.&lt;/p&gt;</source>
