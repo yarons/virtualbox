@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: txsclient.py 111439 2025-10-17 20:02:17Z alexander.eichner@oracle.com $
+# $Id: txsclient.py 111442 2025-10-18 17:07:33Z alexander.eichner@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111439 $"
+__version__ = "$Revision: 111442 $"
 
 # Standard Python imports.
 import array;
@@ -483,7 +483,7 @@ class Session(TdTaskBase):
         # Make sure we don't try to max things like False, True, etc. because someone screwed
         # up the argument order in the wrapper functions.
         #
-        assert(isinstance(cMsTimeout, int));
+        assert(isinstance(cMsTimeout, int) or isinstance(cMsTimeout, float));
 
         self.cMsTimeout     = max(cMsTimeout, 500);
         self.fErr           = not fIgnoreErrors;
