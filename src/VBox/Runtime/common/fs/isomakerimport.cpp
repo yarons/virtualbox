@@ -1,4 +1,4 @@
-/* $Id: isomakerimport.cpp 111441 2025-10-18 03:08:10Z knut.osmundsen@oracle.com $ */
+/* $Id: isomakerimport.cpp 111445 2025-10-18 22:23:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ISO Image Maker, Import Existing Image.
  */
@@ -2494,7 +2494,7 @@ static int rtFsIsoImportUdfProcessTreeWorker(PRTFSISOMKIMPORTER pThis, uint32_t 
     uint8_t * const pbRestBuf   = &pThis->abBuf[pThis->Udf.VolInfo.cbBlock * 2];
     size_t const    cbRestBuf   = sizeof(pThis->abBuf) - pThis->Udf.VolInfo.cbBlock * 2;
 
-    uint8_t * const pbDataBuf   = cbRestBuf >= cbDirAligned ? pbRestBuf : (uint8_t *)RTMemTmpAlloc(cbRestBuf);
+    uint8_t * const pbDataBuf   = cbRestBuf >= cbDirAligned ? pbRestBuf : (uint8_t *)RTMemTmpAllocZ(cbDirAligned);
     AssertReturnStmt(pbDataBuf, RTFsUdfHlpFreeGatherExtents(paExtents), VERR_NO_TMP_MEMORY);
 
     rc = RTFsUdfHlpReadObject(&pThis->Udf.VolInfo, pThis->hSrcFile, cbDirData, cExtents, &FirstExtent, paExtents, 0 /*offRead*/,
