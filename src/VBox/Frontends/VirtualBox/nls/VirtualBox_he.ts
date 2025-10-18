@@ -8283,7 +8283,7 @@
     </message>
     <message>
       <source>&lt;p&gt;Could not start the machine &lt;b&gt;%1&lt;/b&gt; because the following physical network interfaces were not found:&lt;/p&gt;&lt;p&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/p&gt;&lt;p&gt;You can either change the machine&apos;s network settings or stop the machine.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Could not start the machine &lt;b&gt;%1&lt;/b&gt; because the following physical network interfaces were not found:&lt;/p&gt;&lt;p&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/p&gt;&lt;p&gt;You can either change the machine&apos;s network settings or stop the machine.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;לא ניתן להפעיל את המכונה &lt;b&gt;%1&lt;/b&gt; כיוון שממשקי הרשת הפיזיים הבאים לא נמצאו:&lt;/p&gt;&lt;p&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/p&gt;&lt;p&gt;אפשר לשנות את הגדרות הרשת של המכונה או לעצור אותה.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>Change Network Settings</source>
@@ -8571,7 +8571,7 @@
     </message>
     <message>
       <source>&lt;p&gt;This controller has optical devices attached.  You have requested storage bus change to type which doesn&apos;t support optical devices.&lt;/p&gt;&lt;p&gt;If you proceed optical devices will be removed.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;This controller has optical devices attached.  You have requested storage bus change to type which doesn&apos;t support optical devices.&lt;/p&gt;&lt;p&gt;If you proceed optical devices will be removed.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;לבקר הזה מוצמדים התקנים אופטיים. ביקשת לשנות אפיק אחסון לסוג שאינו תומך בהתקנים אופטיים.&lt;/p&gt;&lt;p&gt;בחירה להמשיך בתהליך תסיר את הכוננים האופטיים.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&lt;p&gt;This controller has devices attached.  You have requested storage bus change to type which supports smaller amount of attached devices.&lt;/p&gt;&lt;p&gt;If you proceed excessive devices will be removed.&lt;/p&gt;</source>
@@ -8579,7 +8579,7 @@
     </message>
     <message>
       <source>&lt;p&gt;The virtual machine execution ran into a non-fatal problem as described below. We suggest that you take appropriate action to prevent the problem from recurring.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;The virtual machine execution ran into a non-fatal problem as described below. We suggest that you take appropriate action to prevent the problem from recurring.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;הרצת המכוונה הווירטואלית נתקלה בבעיה לא משמעותית כפי שמתואר להלן. אנו ממליצים לנקוט בצעדים כדי למנוע את הישנות הבעיה.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>Failed to set global host settings.</source>
@@ -9444,7 +9444,7 @@
     </message>
     <message>
       <source>&lt;p&gt;The &lt;b&gt;VirtualBox Guest Additions&lt;/b&gt; disk image file has been successfully downloaded from &lt;nobr&gt;&lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;&lt;/nobr&gt; and saved locally as &lt;nobr&gt;&lt;b&gt;%2&lt;/b&gt;.&lt;/nobr&gt;&lt;/p&gt;&lt;p&gt;Do you wish to continue with Guest Additions installation?&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;The &lt;b&gt;VirtualBox Guest Additions&lt;/b&gt; disk image file has been successfully downloaded from &lt;nobr&gt;&lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;&lt;/nobr&gt; and saved locally as &lt;nobr&gt;&lt;b&gt;%2&lt;/b&gt;.&lt;/nobr&gt;&lt;/p&gt;&lt;p&gt;Do you wish to continue with Guest Additions installation?&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;קובץ דמות &lt;b&gt;תוספות אורח VirtualBox&lt;/b&gt; ירד בהצלחה מ־&lt;nobr&gt;&lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;&lt;/nobr&gt; ונשמר מקומית בתור &lt;nobr&gt;&lt;b&gt;%2&lt;/b&gt;.&lt;/nobr&gt;&lt;/p&gt;&lt;p&gt;להמשיך בהתקנת תוספות לאורח?&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&lt;p&gt;Could not find the &lt;b&gt;VirtualBox User Guide&lt;/b&gt; &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;.&lt;/nobr&gt;&lt;/p&gt;&lt;p&gt;Do you wish to download this file from the Internet?&lt;/p&gt;</source>
@@ -9456,7 +9456,7 @@
     </message>
     <message>
       <source>&lt;p&gt;The VirtualBox User Guide has been successfully downloaded from &lt;nobr&gt;&lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;&lt;/nobr&gt; but can&apos;t be saved locally as &lt;nobr&gt;&lt;b&gt;%2&lt;/b&gt;.&lt;/nobr&gt;&lt;/p&gt;&lt;p&gt;Please choose another location for that file.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;The VirtualBox User Guide has been successfully downloaded from &lt;nobr&gt;&lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;&lt;/nobr&gt; but can&apos;t be saved locally as &lt;nobr&gt;&lt;b&gt;%2&lt;/b&gt;.&lt;/nobr&gt;&lt;/p&gt;&lt;p&gt;Please choose another location for that file.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;המדריך למשתמשים ב־VirtualBox ירד בהצלחה מ־&lt;nobr&gt;&lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;&lt;/nobr&gt; אך לא ניתן לשמור אותו מקומית בתור &lt;nobr&gt;&lt;b&gt;%2&lt;/b&gt;.&lt;/nobr&gt;&lt;/p&gt;&lt;p&gt;נא לבחור מקום אחר לקובץ הזה.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the &apos;vboxusers&apos; group.  Please see the user guide for a more detailed explanation</source>
@@ -9638,7 +9638,7 @@
     <message>
       <source>&lt;p&gt;The host key combo is currently defined as &lt;b&gt;%1&lt;/b&gt;.&lt;/p&gt;</source>
       <comment>additional message box paragraph</comment>
-      <translation type="unfinished">&lt;p&gt;The host key combo is currently defined as &lt;b&gt;%1&lt;/b&gt;.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;צירוף מקשי המארח מוגדר כרגע בתור &lt;b&gt;%1&lt;/b&gt;.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>Continue</source>
