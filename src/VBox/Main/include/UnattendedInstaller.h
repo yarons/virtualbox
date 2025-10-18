@@ -1,4 +1,4 @@
-/* $Id: UnattendedInstaller.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UnattendedInstaller.h 111444 2025-10-18 18:40:47Z knut.osmundsen@oracle.com $ */
 /** @file
  * UnattendedInstaller class header
  */
@@ -429,20 +429,17 @@ public:
                               "win_nt6_unattended.xml", "win_postinstall.cmd",
                               "autounattend.xml",       "VBOXPOST.CMD")
     {
-        Assert(isOriginalIsoNeeded()); Assert(isAuxiliaryFloppyNeeded() || isAuxiliaryIsoNeeded()); Assert(isAuxiliaryIsoIsVISO()); Assert(!bootFromAuxiliaryIso());
-        if (isAuxiliaryFloppyNeeded())
-            mStrAuxiliaryInstallDir = "A:\\";
-        else if (bootFromAuxiliaryIso())
-            mStrAuxiliaryInstallDir = "D:\\";
-        else
-            mStrAuxiliaryInstallDir = "E:\\";
+        Assert(!isOriginalIsoNeeded()); Assert(!isAuxiliaryFloppyNeeded()); Assert(isAuxiliaryIsoNeeded()); Assert(isAuxiliaryIsoIsVISO()); Assert(bootFromAuxiliaryIso());
+        mStrAuxiliaryInstallDir = "D:\\";
     }
-    ~UnattendedWindowsXmlInstaller()      {}
+    ~UnattendedWindowsXmlInstaller()        {}
 
-    bool isAuxiliaryFloppyNeeded() const    { return !mpParent->i_isFirmwareEFI(); }
-    bool isAuxiliaryIsoNeeded() const       { return UnattendedInstaller::isAuxiliaryIsoNeeded() || mpParent->i_isFirmwareEFI(); }
-    bool isAuxiliaryIsoIsVISO() const       { return true; }
-    bool bootFromAuxiliaryIso() const       { return false; }
+    bool isAuxiliaryIsoNeeded() const RT_OVERRIDE   { return true; }
+    bool isOriginalIsoNeeded() const RT_OVERRIDE    { return false; }
+
+protected:
+    HRESULT addFilesToAuxVisoVectors(RTCList<RTCString> &rVecArgs, RTCList<RTCString> &rVecFiles,
+                                     RTVFS hVfsOrgIso, bool fOverwrite) RT_OVERRIDE;
 };
 
 
