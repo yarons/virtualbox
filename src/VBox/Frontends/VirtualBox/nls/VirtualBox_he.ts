@@ -7858,11 +7858,11 @@
     </message>
     <message>
       <source>Failed to set the global VirtualBox extra data for key &lt;i&gt;%1&lt;/i&gt; to value &lt;i&gt;{%2}&lt;/i&gt;.</source>
-      <translation type="unfinished">Failed to set the global VirtualBox extra data for key &lt;i&gt;%1&lt;/i&gt; to value &lt;i&gt;{%2}&lt;/i&gt;.</translation>
+      <translation>הגדרת הנתונים המקיפים הנוספים ל־VirtualBox עבור המפתח &lt;i&gt;%1&lt;/i&gt; לערך &lt;i&gt;{%2}&lt;/i&gt; נכשלה.</translation>
     </message>
     <message>
       <source>Failed to set the extra data for key &lt;i&gt;%1&lt;/i&gt; of machine &lt;i&gt;%2&lt;/i&gt; to value &lt;i&gt;{%3}&lt;/i&gt;.</source>
-      <translation type="unfinished">Failed to set the extra data for key &lt;i&gt;%1&lt;/i&gt; of machine &lt;i&gt;%2&lt;/i&gt; to value &lt;i&gt;{%3}&lt;/i&gt;.</translation>
+      <translation>הגדרת הנתונים הנוספים למפתח &lt;i&gt;%1&lt;/i&gt; של המכונה &lt;i&gt;%2&lt;/i&gt; לערך &lt;i&gt;{%3}&lt;/i&gt; נכשלה.</translation>
     </message>
     <message>
       <source>Encryption password for &lt;nobr&gt;ID = &apos;%1&apos;&lt;/nobr&gt; is invalid.</source>
@@ -7902,7 +7902,7 @@
     </message>
     <message>
       <source>&lt;p&gt;One or more disk image files are not currently accessible. As a result, you will not be able to operate virtual machines that use these files until they become accessible later.&lt;/p&gt;&lt;p&gt;Press &lt;b&gt;Check&lt;/b&gt; to open the Virtual Media Manager window and see which files are inaccessible, or press &lt;b&gt;Ignore&lt;/b&gt; to ignore this message.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;One or more disk image files are not currently accessible. As a result, you will not be able to operate virtual machines that use these files until they become accessible later.&lt;/p&gt;&lt;p&gt;Press &lt;b&gt;Check&lt;/b&gt; to open the Virtual Media Manager window and see which files are inaccessible, or press &lt;b&gt;Ignore&lt;/b&gt; to ignore this message.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;קובץ דמות אחד או יותר אינו נגיש כרגע. כתוצאה מכך, לא יתאפשר תפעול של המכונות הווירטואליות שמשתמשות בקבצים האלה עד שיהיו נגישים מאוחר יותר.&lt;/p&gt;&lt;p&gt;לחיצה על &lt;b&gt;בדיקה&lt;/b&gt; תפתח את מנהל אמצעי האחסון הווירטואליים Virtual ותציג אילו קבצים אינם נגישים, לחיצה על &lt;b&gt;התעלמות&lt;/b&gt; תתעלם מההודעה הזאת.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>Check</source>
@@ -7950,7 +7950,7 @@
     </message>
     <message>
       <source>&lt;p&gt;You are about to restore snapshot &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;.&lt;/p&gt;&lt;p&gt;You can create a snapshot of the current state of the virtual machine first by checking the box below; if you do not do this the current state will be permanently lost. Do you wish to proceed?&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;You are about to restore snapshot &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;.&lt;/p&gt;&lt;p&gt;You can create a snapshot of the current state of the virtual machine first by checking the box below; if you do not do this the current state will be permanently lost. Do you wish to proceed?&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;הפעולה הזאת תשחזר את תמונת המצב &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;.&lt;/p&gt;&lt;p&gt;אפשר ליצור תמונת מצב של המצב הנוכחי של המכונה הווירטואלית תחילה על ידי סימון התיבה שלהלן, ללא הסימון המצב הנוכחי יאבד לנצח. להמשיך?&lt;/p&gt;</translation>
     </message>
     <message>
       <source>Create a snapshot of the current machine state</source>
@@ -7970,7 +7970,7 @@
     </message>
     <message>
       <source>&lt;p&gt;Deleting the snapshot will cause the state information saved in it to be lost, and storage data spread over several image files that VirtualBox has created together with the snapshot will be merged into one file. This can be a lengthy process, and the information in the snapshot cannot be recovered.&lt;/p&gt;&lt;/p&gt;Are you sure you want to delete the selected snapshot &lt;b&gt;%1&lt;/b&gt;?&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Deleting the snapshot will cause the state information saved in it to be lost, and storage data spread over several image files that VirtualBox has created together with the snapshot will be merged into one file. This can be a lengthy process, and the information in the snapshot cannot be recovered.&lt;/p&gt;&lt;/p&gt;Are you sure you want to delete the selected snapshot &lt;b&gt;%1&lt;/b&gt;?&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;מחיקת תמונת המצב תגרום לפרטי המצב שנשמרו ללכת לאיבוד ונתוני האחסון שפרוסים על פני מספר קבצים ש־VirtualBox יצר יחד עם תמונת המצב ימוזגו לקובץ אחד.&lt;/p&gt;&lt;/p&gt;למחוק את תמונת המצב הנבחרת &lt;b&gt;%1&lt;/b&gt;?&lt;/p&gt;</translation>
     </message>
     <message>
       <source>Delete</source>
@@ -8316,7 +8316,7 @@
     </message>
     <message>
       <source>&lt;p&gt;Could not switch the guest display to full-screen mode due to insufficient guest video memory.&lt;/p&gt;&lt;p&gt;You should configure the virtual machine to have at least &lt;b&gt;%1&lt;/b&gt; of video memory.&lt;/p&gt;&lt;p&gt;Press &lt;b&gt;Ignore&lt;/b&gt; to switch to full-screen mode anyway or press &lt;b&gt;Cancel&lt;/b&gt; to cancel the operation.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Could not switch the guest display to full-screen mode due to insufficient guest video memory.&lt;/p&gt;&lt;p&gt;You should configure the virtual machine to have at least &lt;b&gt;%1&lt;/b&gt; of video memory.&lt;/p&gt;&lt;p&gt;Press &lt;b&gt;Ignore&lt;/b&gt; to switch to full-screen mode anyway or press &lt;b&gt;Cancel&lt;/b&gt; to cancel the operation.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;לא ניתן להעביר את תצוגת האורח למצב מסך מלא עקב חוסר בזיכרון וידאו של האורח.&lt;/p&gt;&lt;p&gt;יש להגדיר את המכונה הווירטואלית כך שיהיו לה לפחות &lt;b&gt;%1&lt;/b&gt; של זיכרון וידאו.&lt;/p&gt;&lt;p&gt;לחיצה על &lt;b&gt;התעלמות&lt;/b&gt; תעביר למצב מסך מלא בכל זאת, לחיצה על &lt;b&gt;ביטול&lt;/b&gt; תבטל את הפעולה.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&lt;p&gt;Could not enter seamless mode due to insufficient guest video memory.&lt;/p&gt;&lt;p&gt;You should configure the virtual machine to have at least &lt;b&gt;%1&lt;/b&gt; of video memory.&lt;/p&gt;</source>
@@ -8324,7 +8324,7 @@
     </message>
     <message>
       <source>&lt;p&gt;Could not change the guest screen to this host screen due to insufficient guest video memory.&lt;/p&gt;&lt;p&gt;You should configure the virtual machine to have at least &lt;b&gt;%1&lt;/b&gt; of video memory.&lt;/p&gt;&lt;p&gt;Press &lt;b&gt;Ignore&lt;/b&gt; to switch the screen anyway or press &lt;b&gt;Cancel&lt;/b&gt; to cancel the operation.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Could not change the guest screen to this host screen due to insufficient guest video memory.&lt;/p&gt;&lt;p&gt;You should configure the virtual machine to have at least &lt;b&gt;%1&lt;/b&gt; of video memory.&lt;/p&gt;&lt;p&gt;Press &lt;b&gt;Ignore&lt;/b&gt; to switch the screen anyway or press &lt;b&gt;Cancel&lt;/b&gt; to cancel the operation.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;לא ניתן להחליף את תצוגת האורח למסך המארח הזה עקב חוסר בזיכרון וידאו של האורח.&lt;/p&gt;&lt;p&gt;יש להגדיר את המכונה הווירטואלית כך שיהיו לה לפחות &lt;b&gt;%1&lt;/b&gt; של זיכרון וידאו.&lt;/p&gt;&lt;p&gt;לחיצה על &lt;b&gt;התעלמות&lt;/b&gt; תחליף את המסך בכל זאת, לחיצה על &lt;b&gt;ביטול&lt;/b&gt; תבטל את הפעולה.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&lt;p&gt;Could not change the guest screen to this host screen due to insufficient guest video memory.&lt;/p&gt;&lt;p&gt;You should configure the virtual machine to have at least &lt;b&gt;%1&lt;/b&gt; of video memory.&lt;/p&gt;</source>
@@ -8491,7 +8491,7 @@
     </message>
     <message>
       <source>&lt;p&gt;The Virtual Machine is currently in the &lt;b&gt;Paused&lt;/b&gt; state and not able to see any keyboard or mouse input. If you want to continue to work inside the VM, you need to resume it by selecting the corresponding action from the menu bar.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;The Virtual Machine is currently in the &lt;b&gt;Paused&lt;/b&gt; state and not able to see any keyboard or mouse input. If you want to continue to work inside the VM, you need to resume it by selecting the corresponding action from the menu bar.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;המכונה הווירטואלית במצב &lt;b&gt;מושהה&lt;/b&gt; כרגע ואינה יכולה לקלוט הקשות מקלדת או לחיצות עכבר. כדי להמשיך לעבוד בתוך המכונה הווירטואלית, צריך להמשיך את פעולתה על ידי בחירה בפעולה המתאימה מסרגל התפריטים.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>&lt;p&gt;The virtual screen is currently set to a &lt;b&gt;%1&amp;nbsp;bit&lt;/b&gt; color mode. For better performance please change this to &lt;b&gt;%2&amp;nbsp;bit&lt;/b&gt;. This can usually be done from the &lt;b&gt;Display&lt;/b&gt; section of the guest operating system&apos;s Control Panel or System Settings.&lt;/p&gt;</source>
