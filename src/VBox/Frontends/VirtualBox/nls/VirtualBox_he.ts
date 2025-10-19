@@ -7978,7 +7978,7 @@
     </message>
     <message>
       <source>&lt;p&gt;Deleting the snapshot %1 will temporarily need more storage space. In the worst case the size of image %2 will grow by %3, however on this filesystem there is only %4 free.&lt;/p&gt;&lt;p&gt;Running out of storage space during the merge operation can result in corruption of the image and the VM configuration, i.e. loss of the VM and its data.&lt;/p&gt;&lt;p&gt;You may continue with deleting the snapshot at your own risk.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Deleting the snapshot %1 will temporarily need more storage space. In the worst case the size of image %2 will grow by %3, however on this filesystem there is only %4 free.&lt;/p&gt;&lt;p&gt;Running out of storage space during the merge operation can result in corruption of the image and the VM configuration, i.e. loss of the VM and its data.&lt;/p&gt;&lt;p&gt;You may continue with deleting the snapshot at your own risk.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;מחיקת תמונת המצב %1 תזדקק לנפח אחסון נוסף באופן זמני. במקרה הכי גרוע הגודל של הדמות %2 יתפח ב־%3, אבל במערכת הקבצים הזאת יש רק %4 פנויים.&lt;/p&gt;&lt;p&gt;אם המקום הפנוי אוזל במהלך פעולת המיזוג הגדרות הדמות והמכונה הווירטואליים עלולים להינזק, כלומר אובדן של המכונה הווירטואלית והנתונים שלה.&lt;/p&gt;&lt;p&gt;המשך מחיקת תמונת המצב היא על אחריותך בלבד.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>Failed to restore the snapshot &lt;b&gt;%1&lt;/b&gt; of the virtual machine &lt;b&gt;%2&lt;/b&gt;.</source>
@@ -8100,7 +8100,7 @@
     </message>
     <message>
       <source>&lt;p&gt;Do you want to delete the storage unit of the virtual hard disk &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;?&lt;/p&gt;&lt;p&gt;If you select &lt;b&gt;Delete&lt;/b&gt; then the specified storage unit will be permanently deleted. This operation &lt;b&gt;cannot be undone&lt;/b&gt;.&lt;/p&gt;&lt;p&gt;If you select &lt;b&gt;Keep&lt;/b&gt; then the hard disk will be only removed from the list of known hard disks, but the storage unit will be left untouched which makes it possible to add this hard disk to the list later again.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Do you want to delete the storage unit of the virtual hard disk &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;?&lt;/p&gt;&lt;p&gt;If you select &lt;b&gt;Delete&lt;/b&gt; then the specified storage unit will be permanently deleted. This operation &lt;b&gt;cannot be undone&lt;/b&gt;.&lt;/p&gt;&lt;p&gt;If you select &lt;b&gt;Keep&lt;/b&gt; then the hard disk will be only removed from the list of known hard disks, but the storage unit will be left untouched which makes it possible to add this hard disk to the list later again.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;למחוק את יחידת האחסון של הכונן הקשיח הווירטואלי &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/nobr&gt;?&lt;/p&gt;&lt;p&gt;בחירה ב&lt;b&gt;מחיקה&lt;/b&gt; תמחק את יחידת האחסון שנבחרה לצמיתות. זאת פעולה &lt;b&gt;בלתי הפיכה&lt;/b&gt;.&lt;/p&gt;&lt;p&gt;בחירה ב&lt;b&gt;להשאיר&lt;/b&gt; רק תסיר את הכונן הקשיח מרשימת הכוננים הקשיחים, יחידת האחסון תישאר ללא שינוי, מה שיאפשר להוסיף את הכונן הקשיח הזה לרשימה בהמשך.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>Delete</source>
@@ -8162,7 +8162,7 @@
     </message>
     <message>
       <source>&lt;p&gt;Deleting this host-only network will remove the host-only interface this network is based on. Do you want to remove the (host-only network) interface &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;?&lt;/nobr&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Note:&lt;/b&gt; this interface may be in use by one or more virtual network adapters belonging to one of your VMs. After it is removed, these adapters will no longer be usable until you correct their settings by either choosing a different interface name or a different adapter attachment type.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Deleting this host-only network will remove the host-only interface this network is based on. Do you want to remove the (host-only network) interface &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;?&lt;/nobr&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Note:&lt;/b&gt; this interface may be in use by one or more virtual network adapters belonging to one of your VMs. After it is removed, these adapters will no longer be usable until you correct their settings by either choosing a different interface name or a different adapter attachment type.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;מחיקת רשת מארח בלבד זאת תסיר את ממשק המארח בלבד שהרשת הזאת מבוססת עליו. להסיר את ממשק (רשת המארח בלבד) &lt;nobr&gt;&lt;b&gt;%1&lt;/b&gt;?&lt;/nobr&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;לתשומת ליבך:&lt;/b&gt; הממשק הזה יכול לשמש מתאמי רשת וירטואליים ששייכים למכונה וירטואלית אחת או יותר מבין המכונות שלך. לאחר הסרתו, המתאמים האלה לא יהיו שמישים עד לתיקון ההגדרות שלהם על ידי בחירת שם אחר לממשק או סוג הצמדה אחר למתאם.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>Unable to find the host network interface &lt;b&gt;%1&lt;/b&gt;.</source>
@@ -8235,11 +8235,11 @@
     <message numerus="yes">
       <source>&lt;p&gt;The %n following virtual machine(s) are currently in a saved state: &lt;b&gt;%1&lt;/b&gt;&lt;/p&gt;&lt;p&gt;If you continue the runtime state of the exported machine(s) will be discarded. The other machine(s) will not be changed.&lt;/p&gt;</source>
       <comment>This text is never used with n == 0. Feel free to drop the %n where possible, we only included it because of problems with Qt Linguist (but the user can see how many machines are in the list and doesn&apos;t need to be told).</comment>
-      <translation type="unfinished">
-        <numerusform>&lt;p&gt;The %n following virtual machine(s) are currently in a saved state: &lt;b&gt;%1&lt;/b&gt;&lt;/p&gt;&lt;p&gt;If you continue the runtime state of the exported machine(s) will be discarded. The other machine(s) will not be changed.&lt;/p&gt;</numerusform>
-        <numerusform>&lt;p&gt;The %n following virtual machine(s) are currently in a saved state: &lt;b&gt;%1&lt;/b&gt;&lt;/p&gt;&lt;p&gt;If you continue the runtime state of the exported machine(s) will be discarded. The other machine(s) will not be changed.&lt;/p&gt;</numerusform>
-        <numerusform>&lt;p&gt;The %n following virtual machine(s) are currently in a saved state: &lt;b&gt;%1&lt;/b&gt;&lt;/p&gt;&lt;p&gt;If you continue the runtime state of the exported machine(s) will be discarded. The other machine(s) will not be changed.&lt;/p&gt;</numerusform>
-        <numerusform>&lt;p&gt;The %n following virtual machine(s) are currently in a saved state: &lt;b&gt;%1&lt;/b&gt;&lt;/p&gt;&lt;p&gt;If you continue the runtime state of the exported machine(s) will be discarded. The other machine(s) will not be changed.&lt;/p&gt;</numerusform>
+      <translation>
+        <numerusform>&lt;p&gt;המכונה הווירטואלית הבאה נמצאת כרגע במצב שמור: &lt;b&gt;%1&lt;/b&gt;&lt;/p&gt;&lt;p&gt;המשך פעילותה יסלק את מצב זמן הריצה של המכונה המיוצאת. המכונות האחרות תישארנה ללא שינוי.&lt;/p&gt;</numerusform>
+        <numerusform>&lt;p&gt;שתי המכונות הווירטואליות הבאות נמצאות כרגע במצב שמור: &lt;b&gt;%1&lt;/b&gt;&lt;/p&gt;&lt;p&gt;המשך פעילותן יסלק את מצב זמן הריצה של המכונות המיוצאות. המכונות האחרות תישארנה ללא שינוי.&lt;/p&gt;</numerusform>
+        <numerusform>&lt;p&gt;%n המכונות הווירטואליות הבאות נמצאות כרגע במצב שמור: &lt;b&gt;%1&lt;/b&gt;&lt;/p&gt;&lt;p&gt;המשך פעילותן יסלק את מצב זמן הריצה של המכונות המיוצאות. המכונות האחרות תישארנה ללא שינוי.&lt;/p&gt;</numerusform>
+        <numerusform>&lt;p&gt;%n המכונות הווירטואליות הבאות נמצאות כרגע במצב שמור: &lt;b&gt;%1&lt;/b&gt;&lt;/p&gt;&lt;p&gt;המשך פעילותן יסלק את מצב זמן הריצה של המכונות המיוצאות. המכונות האחרות תישארנה ללא שינוי.&lt;/p&gt;</numerusform>
       </translation>
     </message>
     <message>
@@ -8300,7 +8300,7 @@
     </message>
     <message>
       <source>&lt;p&gt;The virtual machine window will be now switched to &lt;b&gt;full-screen&lt;/b&gt; mode. You can go back to windowed mode at any time by pressing &lt;b&gt;%1&lt;/b&gt;.&lt;/p&gt;&lt;p&gt;Note that the &lt;i&gt;Host&lt;/i&gt; key is currently defined as &lt;b&gt;%2&lt;/b&gt;.&lt;/p&gt;&lt;p&gt;Note that the main menu bar is hidden in full-screen mode. You can access it by pressing &lt;b&gt;Host+Home&lt;/b&gt;.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;The virtual machine window will be now switched to &lt;b&gt;full-screen&lt;/b&gt; mode. You can go back to windowed mode at any time by pressing &lt;b&gt;%1&lt;/b&gt;.&lt;/p&gt;&lt;p&gt;Note that the &lt;i&gt;Host&lt;/i&gt; key is currently defined as &lt;b&gt;%2&lt;/b&gt;.&lt;/p&gt;&lt;p&gt;Note that the main menu bar is hidden in full-screen mode. You can access it by pressing &lt;b&gt;Host+Home&lt;/b&gt;.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;חלון המכונה הווירטואלית עבר עכשיו למצב &lt;b&gt;מסך מלא&lt;/b&gt;. אפשר לחזור למצב חלון בכל עת בלחיצה על &lt;b&gt;%1&lt;/b&gt;.&lt;/p&gt;&lt;p&gt;נא לשים לב שמקש ה&lt;i&gt;מארח&lt;/i&gt; מוגדר כרגע בתור &lt;b&gt;%2&lt;/b&gt;.&lt;/p&gt;&lt;p&gt;נא לשים לב שסרגל התפריט הראשי מוסתר במצב מסך מלא. אפשר לגשת אליו בלחיצה על &lt;b&gt;מארח+Home&lt;/b&gt;.&lt;/p&gt;</translation>
     </message>
     <message>
       <source>Switch</source>
