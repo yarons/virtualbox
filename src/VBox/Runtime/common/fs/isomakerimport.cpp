@@ -1,4 +1,4 @@
-/* $Id: isomakerimport.cpp 111453 2025-10-20 10:41:33Z knut.osmundsen@oracle.com $ */
+/* $Id: isomakerimport.cpp 111456 2025-10-20 11:31:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ISO Image Maker, Import Existing Image.
  */
@@ -684,7 +684,7 @@ static void rtFsIsoImportProcessIso9660TreeWorkerParseRockRidge(PRTFSISOMKIMPORT
          */
         PCISO9660SUSPUNION pUnion = (PCISO9660SUSPUNION)pbSys;
         if (   pUnion->Hdr.cbEntry > cbSys
-            && pUnion->Hdr.cbEntry < sizeof(pUnion->Hdr))
+            || pUnion->Hdr.cbEntry < sizeof(pUnion->Hdr))
         {
             LogRel(("rtFsIsoImportProcessIso9660TreeWorkerParseRockRidge: cbEntry=%#x cbSys=%#x (%#x %#x)\n",
                     pUnion->Hdr.cbEntry, cbSys, pUnion->Hdr.bSig1, pUnion->Hdr.bSig2));
