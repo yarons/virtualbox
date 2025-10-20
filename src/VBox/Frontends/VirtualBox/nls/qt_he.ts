@@ -598,23 +598,23 @@ Do you want to delete it anyway?</source>
     <name>Assets::Downloader::AssetDownloader</name>
     <message>
       <source>Downloading JSON file...</source>
-      <translation type="unfinished">Downloading JSON file...</translation>
+      <translation>קובץ ה־JSON יורד…</translation>
     </message>
     <message>
       <source>Downloading zip file...</source>
-      <translation type="unfinished">Downloading zip file...</translation>
+      <translation>קובץ ה־zip יורד…</translation>
     </message>
     <message>
       <source>Unzipping...</source>
-      <translation type="unfinished">Unzipping...</translation>
+      <translation>מתבצע חילוץ zip…</translation>
     </message>
     <message>
       <source>Downloading assets...</source>
-      <translation type="unfinished">Downloading assets...</translation>
+      <translation>הנכסים יורדים…</translation>
     </message>
     <message>
       <source>Copying assets...</source>
-      <translation type="unfinished">Copying assets...</translation>
+      <translation>הנכסים מועתקים…</translation>
     </message>
   </context>
   <context>
@@ -832,7 +832,7 @@ Do you want to delete it anyway?</source>
     </message>
     <message>
       <source>State</source>
-      <translation type="unfinished">State</translation>
+      <translation>מצב</translation>
     </message>
     <message>
       <source>Shared Data</source>
@@ -856,7 +856,7 @@ Do you want to delete it anyway?</source>
     </message>
     <message>
       <source>Shared State</source>
-      <translation type="unfinished">Shared State</translation>
+      <translation>מצב משותף</translation>
     </message>
     <message>
       <source>Download</source>
@@ -868,16 +868,16 @@ Do you want to delete it anyway?</source>
     </message>
     <message>
       <source>Public</source>
-      <translation type="unfinished">Public</translation>
+      <translation>ציבורי</translation>
     </message>
     <message>
       <source>Templates</source>
-      <translation type="unfinished">Templates</translation>
+      <translation>תבניות</translation>
     </message>
     <message>
       <source>Temporary Items</source>
       <extracomment>macOS: Temporary directory</extracomment>
-      <translation type="unfinished">Temporary Items</translation>
+      <translation>פריטים זמניים</translation>
     </message>
   </context>
   <context>
