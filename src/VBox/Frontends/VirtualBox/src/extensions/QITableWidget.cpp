@@ -1,4 +1,4 @@
-/* $Id: QITableWidget.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: QITableWidget.cpp 111459 2025-10-20 16:28:12Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITableWidget class implementation.
  */
@@ -300,6 +300,12 @@ QITableWidgetItem::QITableWidgetItem(const QString &strText /* = QString() */)
 QITableWidget *QITableWidgetItem::parentTable() const
 {
     return tableWidget() ? qobject_cast<QITableWidget*>(tableWidget()) : 0;
+}
+
+QString QITableWidgetItem::defaultText() const
+{
+    /* Return item text as default: */
+    return text();
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: QITableWidget.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: QITableWidget.h 111459 2025-10-20 16:28:12Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITableWidget class declaration.
  */
@@ -61,6 +61,9 @@ public:
 
     /** Returns the parent table-widget. */
     QITableWidget *parentTable() const;
+
+    /** Returns default text. */
+    virtual QString defaultText() const;
 };
 
 /** QTableWidget subclass extending standard functionality. */
