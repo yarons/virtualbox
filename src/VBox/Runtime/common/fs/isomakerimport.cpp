@@ -1,4 +1,4 @@
-/* $Id: isomakerimport.cpp 111456 2025-10-20 11:31:48Z knut.osmundsen@oracle.com $ */
+/* $Id: isomakerimport.cpp 111457 2025-10-20 12:29:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ISO Image Maker, Import Existing Image.
  */
@@ -482,7 +482,7 @@ static int rtFsIsoImportProcessIso9660AddAndNameDirectory(PRTFSISOMKIMPORTER pTh
     int rc = RTFsIsoMakerAddUnnamedDir(pThis->hIsoMaker, pObjInfo, &idxObj);
     if (RT_SUCCESS(rc))
     {
-        Log3(("  --> added directory #%#x (%s %s%s)\n",
+        Log3(("  --> added directory #%#x (%s%s%s)\n",
               idxObj, pszName, pszRockName && *pszRockName ? " rock:" : "", pszRockName ? pszRockName : ""));
         pThis->pResults->cAddedDirs++;
 

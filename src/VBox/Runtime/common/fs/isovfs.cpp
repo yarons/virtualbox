@@ -1,4 +1,4 @@
-/* $Id: isovfs.cpp 111402 2025-10-14 21:28:15Z knut.osmundsen@oracle.com $ */
+/* $Id: isovfs.cpp 111457 2025-10-20 12:29:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ISO 9660 and UDF Virtual Filesystem (read only).
  */
@@ -1539,6 +1539,7 @@ static int rtFsIsoFile_NewUdf(PRTFSISOVOL pThis, PRTFSISODIRSHRD pParentDir, PCU
                 pNewFile->pShared = pShared;
                 return VINF_SUCCESS;
             }
+            rc = VERR_NOT_A_FILE;
         }
         /*
          * Create a shared object for this alleged file.
@@ -1561,6 +1562,7 @@ static int rtFsIsoFile_NewUdf(PRTFSISOVOL pThis, PRTFSISODIRSHRD pParentDir, PCU
                         pNewFile->pShared = pShared;
                         return VINF_SUCCESS;
                     }
+                    rc = VERR_NOT_A_FILE;
                     rtFsIsoCore_Destroy(&pShared->Core);
                 }
                 RTMemFree(pShared);
