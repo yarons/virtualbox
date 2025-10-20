@@ -36,7 +36,7 @@
 <refentry id="viso" lang="en">
 
   <refentryinfo>
-    <pubdate>$Date: 2025-10-18 05:08:10 +0200 (Sat, 18 Oct 2025) $</pubdate>
+    <pubdate>$Date: 2025-10-20 13:08:46 +0200 (Mon, 20 Oct 2025) $</pubdate>
     <title>VISO file format / RTIsoMaker</title>
   </refentryinfo>
 
@@ -153,6 +153,12 @@
           <term><option>-o <replaceable>output-file</replaceable></option></term>
           <term><option>--output=<replaceable>output-file</replaceable></option></term>
           <listitem><para>The output filename.  This option is not supported in VISO mode.</para></listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--dry-run</option></term>
+          <listitem><para>Do not write anything, just test the argument and image setup.
+            This option is not supported in VISO mode.</para></listitem>
         </varlistentry>
 
         <varlistentry>
