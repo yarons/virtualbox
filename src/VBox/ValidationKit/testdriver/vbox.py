@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 111164 2025-09-29 11:41:22Z alexander.eichner@oracle.com $
+# $Id: vbox.py 111452 2025-10-20 07:38:17Z alexander.eichner@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111164 $"
+__version__ = "$Revision: 111452 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -3895,9 +3895,9 @@ class TestDriver(base.TestDriver):                                              
                     #                  each having an individual raw-mode status. Not relevant right now because
                     #                  there is no raw-mode at all currently.
                     oPlatformProperties = self.oVBox.getPlatformProperties(self.oVBox.host.architecture);
-                    fVBox = oPlatformProperties.rawModeSupported;
+                    fVBox = bool(oPlatformProperties.rawModeSupported);
                 else:
-                    fVBox = self.oVBox.systemProperties.rawModeSupported;
+                    fVBox = bool(self.oVBox.systemProperties.rawModeSupported);
             except:
                 if not fQuiet:
                     reporter.logXcpt();
