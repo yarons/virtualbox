@@ -1,4 +1,4 @@
-/* $Id: RTFsCmdLs.cpp 111469 2025-10-21 07:52:21Z knut.osmundsen@oracle.com $ */
+/* $Id: RTFsCmdLs.cpp 111471 2025-10-21 08:42:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - /bin/ls like utility for testing the VFS code.
  */
@@ -1244,6 +1244,8 @@ static RTEXITCODE rtCmdLsProcessDirectory(PRTCMDLSOPTS pOpts, RTVFSDIR hVfsDir, 
             if (RT_SUCCESS(rc) && GroupInfo.Attr.u.UnixGroup.szName[0])
                 pszGroup = &GroupInfo.Attr.u.UnixGroup.szName[0];
         }
+
+        /** @todo symlinks   */
 
         RTEXITCODE rcExit2 = rtCmdLsAddOne(pCollection, pDirEntry->szName, &pDirEntry->Info, pszOwner, pszGroup, NULL);
         if (rcExit2 != RTEXITCODE_SUCCESS)
