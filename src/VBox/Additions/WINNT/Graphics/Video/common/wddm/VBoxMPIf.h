@@ -1,4 +1,4 @@
-/* $Id: VBoxMPIf.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxMPIf.h 111477 2025-10-21 19:29:03Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBox WDDM Miniport driver.
  *
@@ -138,6 +138,7 @@ typedef struct VBOXDXALLOCATIONDESC
 
 /// @todo Development define, remove. Support for requests to rename an allocation.
 #define DX_RENAME_ALLOCATION
+#define DX_RENAME_ALLOCATION_UNLIMITED
 
 /* D3DDDI_PATCHLOCATIONLIST::DriverId */
 #define VBOXDXPATCHID_NULL        0
