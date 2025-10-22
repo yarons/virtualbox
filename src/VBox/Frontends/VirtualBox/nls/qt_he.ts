@@ -884,11 +884,11 @@ Do you want to delete it anyway?</source>
     <name>QSharedMemory</name>
     <message>
       <source>%1: unsupported key type</source>
-      <translation type="unfinished">%1: unsupported key type</translation>
+      <translation>%1: סוג המפתח לא נתמך</translation>
     </message>
     <message>
       <source>%1: unable to set key on lock (%2)</source>
-      <translation type="unfinished">%1: unable to set key on lock (%2)</translation>
+      <translation>%1: לא ניתן להגדיר מפתח על הנעילה (%2)</translation>
     </message>
     <message>
       <source>%1: create size is less then 0</source>
@@ -920,7 +920,7 @@ Do you want to delete it anyway?</source>
     </message>
     <message>
       <source>%1: unknown error: %2</source>
-      <translation type="unfinished">%1: unknown error: %2</translation>
+      <translation>%1: שגיאה לא מוכרת: %2</translation>
     </message>
     <message>
       <source>%1: key is empty</source>
@@ -959,7 +959,7 @@ Do you want to delete it anyway?</source>
     <name>QSystemSemaphore</name>
     <message>
       <source>%1: unsupported key type</source>
-      <translation type="unfinished">%1: unsupported key type</translation>
+      <translation>%1: סוג המפתח לא נתמך</translation>
     </message>
     <message>
       <source>%1: permission denied</source>
@@ -979,15 +979,15 @@ Do you want to delete it anyway?</source>
     </message>
     <message>
       <source>%1: key too long</source>
-      <translation type="unfinished">%1: key too long</translation>
+      <translation>%1: המפתח ארוך מדי</translation>
     </message>
     <message>
       <source>%1: unknown error: %2</source>
-      <translation type="unfinished">%1: unknown error: %2</translation>
+      <translation>%1: שגיאה לא מוכרת: %2</translation>
     </message>
     <message>
       <source>%1: key is empty</source>
-      <translation type="unfinished">%1: key is empty</translation>
+      <translation>%1: מפתח ריק</translation>
     </message>
     <message>
       <source>%1: System V semaphores are not available for sandboxed applications. Please build Qt with -feature-ipc_posix</source>
@@ -1549,7 +1549,7 @@ Do you want to delete it anyway?</source>
     </message>
     <message>
       <source>missing ) after (?# comment</source>
-      <translation type="unfinished">missing ) after (?# comment</translation>
+      <translation>חסר ) אחרי הערת (?#</translation>
     </message>
     <message>
       <source>parentheses are too deeply nested</source>
@@ -3244,7 +3244,7 @@ Do you want to delete it anyway?</source>
     </message>
     <message>
       <source>Calendar</source>
-      <translation type="unfinished">Calendar</translation>
+      <translation>לוח שנה</translation>
     </message>
     <message>
       <source>Clear</source>
@@ -3260,7 +3260,7 @@ Do you want to delete it anyway?</source>
     </message>
     <message>
       <source>Adjust contrast</source>
-      <translation type="unfinished">Adjust contrast</translation>
+      <translation>כיוון ניגודיות</translation>
     </message>
     <message>
       <source>Copy</source>
@@ -5406,7 +5406,7 @@ Do you want to delete it anyway?</source>
     </message>
     <message>
       <source>No handshake in progress, nothing to abort</source>
-      <translation type="unfinished">No handshake in progress, nothing to abort</translation>
+      <translation>לא מתבצעת לחיצת יד, אין מה לבטל</translation>
     </message>
     <message>
       <source>Cannot send shutdown alert, not encrypted</source>
@@ -5423,7 +5423,7 @@ Do you want to delete it anyway?</source>
     <message>
       <source>%1 failed</source>
       <extracomment>%1: Some function</extracomment>
-      <translation type="unfinished">%1 failed</translation>
+      <translation>%1 נכשל</translation>
     </message>
     <message>
       <source>Invalid SslMode, SslServerMode or SslClientMode expected</source>
@@ -5447,11 +5447,11 @@ Do you want to delete it anyway?</source>
     </message>
     <message>
       <source>The DTLS connection has been closed</source>
-      <translation type="unfinished">The DTLS connection has been closed</translation>
+      <translation>חיבור ה־DTLS נסגר</translation>
     </message>
     <message>
       <source>Error while writing: %1</source>
-      <translation type="unfinished">Error while writing: %1</translation>
+      <translation>שגיאת כתיבה: %1</translation>
     </message>
     <message>
       <source>The DTLS connection has been shutdown</source>
@@ -6064,11 +6064,11 @@ The minimum Direct2D version required is %1. The Direct2D version on this system
     </message>
     <message>
       <source>Username:</source>
-      <translation type="unfinished">Username:</translation>
+      <translation>שם משתמש:</translation>
     </message>
     <message>
       <source>Password:</source>
-      <translation type="unfinished">Password:</translation>
+      <translation>סיסמה:</translation>
     </message>
   </context>
   <context>
