@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineLogic.h 111479 2025-10-22 14:32:44Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -380,6 +380,8 @@ private:
     void showBootFailureDialog();
     /** Resets the machine. If @p fShowConfirmation is true then a confirmation messag box is shown first. */
     void reset(bool fShowConfirmation);
+
+    void checkUnattendedLeftOvers();
 
     /* Private variables: */
     UIMachine *m_pMachine;
