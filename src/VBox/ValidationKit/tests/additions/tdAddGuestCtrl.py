@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # pylint: disable=too-many-lines
-# $Id: tdAddGuestCtrl.py 111181 2025-09-30 09:22:04Z alexander.eichner@oracle.com $
+# $Id: tdAddGuestCtrl.py 111447 2025-10-19 07:26:03Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Guest Control Tests.
@@ -38,7 +38,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111181 $"
+__version__ = "$Revision: 111447 $"
 
 # Standard Python imports.
 import errno
@@ -1729,7 +1729,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                 return reporter.error('Failed to create directory "%s"!' % (sDir,));
 
         # Query the TestExecService (TXS) version first to find out on what we run.
-        fGotTxsVer = self.oTstDrv.txsVer(oSession, oTxsSession, 30 * 100, fIgnoreErrors = True);
+        fGotTxsVer = self.oTstDrv.txsVer(oSession, oTxsSession, 30000, fIgnoreErrors = True);
 
         # Whether to enable verbose logging for VBoxService.
         fEnableVerboseLogging = False;

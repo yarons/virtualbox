@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: PDMDevice.cpp 111450 2025-10-19 10:35:10Z alexander.eichner@oracle.com $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -707,7 +707,7 @@ static int pdmR3DevLoadModules(PVM pVM)
     int rc = pdmR3DevReg_Register(&RegCB.Core, &g_DeviceGIC);
     AssertRCReturn(rc, rc);
 
-# ifdef VBOX_WITH_NATIVE_NEM
+# if defined(VBOX_WITH_NATIVE_NEM) && !defined(IN_VMM_STATIC_UNIT_TESTS)
     /* Register the internal VMM GIC device, NEM variant. */
     rc = pdmR3DevReg_Register(&RegCB.Core, &g_DeviceGICNem);
     AssertRCReturn(rc, rc);
@@ -723,7 +723,7 @@ static int pdmR3DevLoadModules(PVM pVM)
     int rc = pdmR3DevReg_Register(&RegCB.Core, &g_DeviceAPIC);
     AssertRCReturn(rc, rc);
 
-# if defined(RT_OS_WINDOWS) && defined(RT_ARCH_AMD64)
+# if defined(RT_OS_WINDOWS) && defined(RT_ARCH_AMD64) && !defined(IN_VMM_STATIC_UNIT_TESTS)
     /* Register the internal VMM APIC device for NEM mode. */
     rc = pdmR3DevReg_Register(&RegCB.Core, &g_DeviceAPICNem);
     AssertRCReturn(rc, rc);

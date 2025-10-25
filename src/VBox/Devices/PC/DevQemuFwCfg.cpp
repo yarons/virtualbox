@@ -1,4 +1,4 @@
-/* $Id: DevQemuFwCfg.cpp 110779 2025-08-21 10:23:14Z alexander.eichner@oracle.com $ */
+/* $Id: DevQemuFwCfg.cpp 111419 2025-10-15 15:24:51Z alexander.eichner@oracle.com $ */
 /** @file
  * DevQemuFwCfg - QEMU firmware configuration compatible device.
  */
@@ -1109,7 +1109,7 @@ static DECLCALLBACK(VBOXSTRICTRC) qemuFwCfgMmioRead(PPDMDEVINS pDevIns, void *pv
     {
         case QEU_FW_CFG_MMIO_OFF_DATA:
         {
-            if (   pThis->cbCfgItemLeft
+            if (   cb <= pThis->cbCfgItemLeft
                 && pThis->pCfgItem)
             {
                 uint32_t cbRead = 0;

@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMiniToolBar.cpp 111483 2025-10-23 14:08:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class implementation.
  */
@@ -862,8 +862,10 @@ void UIMiniToolBar::sltShow()
         }
         case GeometryType_Full:
         {
-            /* Show full-screen: */
-            showFullScreen();
+            /* First of all show window in normal mode
+             * then request full-screen mode async way: */
+            showNormal();
+            QTimer::singleShot(0, this, SLOT(showFullScreen()));
             break;
         }
     }
@@ -963,16 +965,18 @@ void UIMiniToolBar::sltAdjust()
         }
         case GeometryType_Full:
         {
-            /* Map window onto required screen: */
-            LogRel(("GUI:  Map mini-toolbar for window #%d to screen %d of %d\n",
-                     m_iWindowIndex, iHostScreen, qApp->screens().size()));
-            windowHandle()->setScreen(qApp->screens().at(iHostScreen));
-
             /* Set appropriate window size: */
             const QSize newSize = workingArea.size();
             LogRel(("GUI:  Resize mini-toolbar for window #%d to %dx%d\n",
                      m_iWindowIndex, newSize.width(), newSize.height()));
             resize(newSize);
+
+            /* Map/move window onto required screen: */
+            const QPoint newPosition = workingArea.topLeft();
+            LogRel(("GUI:  Map&move mini-toolbar for window #%d to screen %d of %d\n",
+                     m_iWindowIndex, iHostScreen, qApp->screens().size()));
+            windowHandle()->setScreen(qApp->screens().at(iHostScreen));
+            move(newPosition);
 
             break;
         }

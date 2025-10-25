@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-instr-2-gen.cpp 110685 2025-08-11 18:54:52Z klaus.espenlaub@oracle.com $ */
+/* $Id: bs3-cpu-instr-2-gen.cpp 111344 2025-10-13 12:05:44Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-instr-2, Test Data Generator.
  */
@@ -401,7 +401,7 @@ int main(int argc, char **argv)
      * Constants.
      */
     enum { kEflBeaviour_Intel = 0, kEflBeaviour_Amd }
-        const                   enmEflBehaviour = ASMIsAmdCpu() || ASMIsHygonCpu() ? kEflBeaviour_Amd : kEflBeaviour_Intel;
+        const                   enmEflBehaviour = ASMIsAmdOrCompatibleCpu() ? kEflBeaviour_Amd : kEflBeaviour_Intel;
     static const char * const   s_apszEflBehaviourTabNm[] = { "intel_", "amd_" };
 
     /*

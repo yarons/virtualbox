@@ -1,4 +1,4 @@
-/* $Id: udf.h 111317 2025-10-10 07:22:51Z knut.osmundsen@oracle.com $ */
+/* $Id: udf.h 111403 2025-10-14 23:04:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT, Universal Disk Format (UDF).
  */
@@ -119,7 +119,9 @@ typedef UDFLBADDR const *PCUDFLBADDR;
 #define UDF_AD_TYPE_ONLY_ALLOCATED                  1
 /** Not recorded nor allocated. */
 #define UDF_AD_TYPE_FREE                            2
-/** Go figure. */
+/** Location of the an UDFALLOCATIONEXTENTDESC.
+ * This is used when the ICB doesn't contain suffient room for all the
+ * allocation descriptors. */
 #define UDF_AD_TYPE_NEXT                            3
 /** @} */
 
@@ -1166,7 +1168,7 @@ typedef UDFFILEIDDESC const *PCUDFFILEIDDESC;
 #define UDF_FILE_FLAGS_HIDDEN               UINT8_C(0x01)
 /** Directory - Indicates a directory as apposed to some kind of file or symlink or something  (0). */
 #define UDF_FILE_FLAGS_DIRECTORY            UINT8_C(0x02)
-/** Deleted - Indicate that the file has been deleted.  Assoicated descriptors may still be valid, though. */
+/** Deleted - Indicate that the file has been deleted.  Associated descriptors may still be valid, though. */
 #define UDF_FILE_FLAGS_DELETED              UINT8_C(0x04)
 /** Parent - Indicate the ICB field refers to the parent directory (or maybe
  * a file in case of streaming directory). */
@@ -2166,14 +2168,43 @@ typedef UDFEXFILEENTRY const *PCUDFEXFILEENTRY;
 
 /** Standard ID for UDFEXTVOLDESCBEGIN. */
 #define UDF_EXT_VOL_DESC_STD_ID_BEGIN   "BEA01"
+#define UDF_EXT_VOL_DESC_STD_ID_BEGIN_0 'B'
+#define UDF_EXT_VOL_DESC_STD_ID_BEGIN_1 'E'
+#define UDF_EXT_VOL_DESC_STD_ID_BEGIN_2 'A'
+#define UDF_EXT_VOL_DESC_STD_ID_BEGIN_3 '0'
+#define UDF_EXT_VOL_DESC_STD_ID_BEGIN_4 '1'
 /** Standard ID for UDFEXTVOLDESCTERM. */
 #define UDF_EXT_VOL_DESC_STD_ID_TERM    "TEA01"
+#define UDF_EXT_VOL_DESC_STD_ID_TERM_0  'T'
+#define UDF_EXT_VOL_DESC_STD_ID_TERM_1  'E'
+#define UDF_EXT_VOL_DESC_STD_ID_TERM_2  'A'
+#define UDF_EXT_VOL_DESC_STD_ID_TERM_3  '0'
+#define UDF_EXT_VOL_DESC_STD_ID_TERM_4  '1'
 /** Standard ID for UDFEXTVOLDESCNSR following ECMA-167 2nd edition. */
 #define UDF_EXT_VOL_DESC_STD_ID_NSR_02  "NSR02"
+#define UDF_EXT_VOL_DESC_STD_ID_NSR_02_0 'N'
+#define UDF_EXT_VOL_DESC_STD_ID_NSR_02_1 'S'
+#define UDF_EXT_VOL_DESC_STD_ID_NSR_02_2 'R'
+#define UDF_EXT_VOL_DESC_STD_ID_NSR_02_3 '0'
+#define UDF_EXT_VOL_DESC_STD_ID_NSR_02_4 '2'
 /** Standard ID for UDFEXTVOLDESCNSR following ECMA-167 3rd edition. */
 #define UDF_EXT_VOL_DESC_STD_ID_NSR_03  "NSR03"
+#define UDF_EXT_VOL_DESC_STD_ID_NSR_03_0 'N'
+#define UDF_EXT_VOL_DESC_STD_ID_NSR_03_1 'S'
+#define UDF_EXT_VOL_DESC_STD_ID_NSR_03_2 'R'
+#define UDF_EXT_VOL_DESC_STD_ID_NSR_03_3 '0'
+#define UDF_EXT_VOL_DESC_STD_ID_NSR_03_4 '3'
 /** Standard ID for UDFEXTVOLDESCBOOT. */
 #define UDF_EXT_VOL_DESC_STD_ID_BOOT    "BOOT2"
+#define UDF_EXT_VOL_DESC_STD_ID_BOOT_0  'B'
+#define UDF_EXT_VOL_DESC_STD_ID_BOOT_1  'O'
+#define UDF_EXT_VOL_DESC_STD_ID_BOOT_2  'O'
+#define UDF_EXT_VOL_DESC_STD_ID_BOOT_3  'T'
+#define UDF_EXT_VOL_DESC_STD_ID_BOOT_4  '2'
+
+/** Helper for making a 64-bit header constant from UDF_EXT_VOL_DESC_XXX. */
+#define UDF_EXT_VOL_DESC_MAKE_U64_CONST(a_IdMacroPrefix) \
+    ISO9660VOLDESC_MAKE_U64_HDR_CONST(UDF_EXT_VOL_DESC_TYPE, a_IdMacroPrefix, UDF_EXT_VOL_DESC_VERSION)
 
 
 /**

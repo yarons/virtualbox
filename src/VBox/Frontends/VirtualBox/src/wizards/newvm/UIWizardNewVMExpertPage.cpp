@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 110731 2025-08-15 12:38:57Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 111434 2025-10-16 14:09:11Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -211,7 +211,6 @@ void UIWizardNewVMExpertPage::sltISOPathChanged(const QString &strISOPath)
     /* Redetect the OS type using the name if detection or the step above failed: */
     if (!fOsTypeFixed && m_pNameAndSystemEditor)
         sltNameChanged(m_pNameAndSystemEditor->name());
-
     emit completeChanged();
 }
 
@@ -648,7 +647,7 @@ bool UIWizardNewVMExpertPage::isComplete() const
             }
             if (pWizard->isProductKeyRequired())
             {
-                if (!m_pAdditionalOptionsContainer->hasProductKeyAcceptableInput())
+                if (!m_pAdditionalOptionsContainer->isProductKeyValid(pWizard->isProductKeyRequired()))
                 {
                     m_pToolBox->setPageTitleIcon(ExpertToolboxItems_Unattended,
                                                  UIIconPool::iconSet(":/status_error_16px.png"),

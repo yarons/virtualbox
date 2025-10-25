@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx.cpp 110921 2025-09-06 19:51:34Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx.cpp 111474 2025-10-21 14:56:59Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common code for DX backend interface.
  */
@@ -1030,6 +1030,9 @@ int vmsvga3dDXSetQueryOffset(PVGASTATECC pThisCC, uint32_t idDXContext, SVGA3dCm
 }
 
 
+static int dxEndQuery(PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, SVGA3dQueryId queryId, SVGACOTableDXQueryEntry *pEntry);
+
+
 int vmsvga3dDXBeginQuery(PVGASTATECC pThisCC, uint32_t idDXContext, SVGA3dCmdDXBeginQuery const *pCmd)
 {
     int rc;
@@ -1050,30 +1053,43 @@ int vmsvga3dDXBeginQuery(PVGASTATECC pThisCC, uint32_t idDXContext, SVGA3dCmdDXB
 
     SVGACOTableDXQueryEntry *pEntry = &pDXContext->cot.paQuery[queryId];
     Assert(pEntry->state == SVGADX_QDSTATE_IDLE || pEntry->state == SVGADX_QDSTATE_PENDING || pEntry->state == SVGADX_QDSTATE_FINISHED);
-    if (pEntry->state != SVGADX_QDSTATE_ACTIVE)
-    {
-        rc = pSvgaR3State->pFuncsDX->pfnDXBeginQuery(pThisCC, pDXContext, queryId);
-        if (RT_SUCCESS(rc))
-        {
-            pEntry->state = SVGADX_QDSTATE_ACTIVE;
 
-            /* Update the guest status of the query. */
-            uint32_t const u32 = SVGA3D_QUERYSTATE_PENDING;
-            dxMobWrite(pSvgaR3State, pEntry->mobid, pEntry->offset, &u32, sizeof(u32));
-        }
-        else
-        {
-            uint32_t const u32 = SVGA3D_QUERYSTATE_FAILED;
-            dxMobWrite(pSvgaR3State, pEntry->mobid, pEntry->offset, &u32, sizeof(u32));
-        }
+    if (pEntry->type == SVGA3D_QUERYTYPE_TIMESTAMP) /* Timestamp query has no Begin. */
+        return VINF_SUCCESS;
+
+    if (pEntry->state == SVGADX_QDSTATE_ACTIVE)
+    {
+        rc = dxEndQuery(pThisCC, pDXContext, queryId, pEntry);
+        AssertRCReturn(rc, rc);
     }
+
+    Assert(pEntry->state != SVGADX_QDSTATE_ACTIVE);
+
+    rc = pSvgaR3State->pFuncsDX->pfnDXBeginQuery(pThisCC, pDXContext, queryId);
+    if (RT_SUCCESS(rc))
+    {
+        pEntry->state = SVGADX_QDSTATE_ACTIVE;
+
+        /* Update the guest status of the query. */
+        uint32_t const u32 = SVGA3D_QUERYSTATE_PENDING;
+        dxMobWrite(pSvgaR3State, pEntry->mobid, pEntry->offset, &u32, sizeof(u32));
+    }
+    else
+    {
+        uint32_t const u32 = SVGA3D_QUERYSTATE_FAILED;
+        dxMobWrite(pSvgaR3State, pEntry->mobid, pEntry->offset, &u32, sizeof(u32));
+    }
+
     return rc;
 }
 
 
-void vmsvga3dDXCbFinishQuery(PVGASTATECC pThisCC, SVGACOTableDXQueryEntry *pEntry,
+void vmsvga3dDXCbFinishQuery(PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, SVGA3dQueryId queryId,
                              SVGADXQueryResultUnion const *pQueryResult, uint32_t cbQueryResult)
 {
+    ASSERT_GUEST_RETURN_VOID(queryId < pDXContext->cot.cQuery);
+    SVGACOTableDXQueryEntry *pEntry = &pDXContext->cot.paQuery[queryId];
+
     Assert(pEntry->state == SVGADX_QDSTATE_PENDING);
 
     PVMSVGAR3STATE const pSvgaR3State = pThisCC->svga.pSvgaR3State;
@@ -1131,9 +1147,9 @@ static int dxEndQuery(PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, SVGA3d
             uint32_t cbQuery = 0; /* Actual size of query data returned by backend. */
             rc = pSvgaR3State->pFuncsDX->pfnDXEndQuerySync(pThisCC, pDXContext, queryId, &queryResult, &cbQuery);
             if (RT_SUCCESS(rc))
-                vmsvga3dDXCbFinishQuery(pThisCC, pEntry, &queryResult, cbQuery);
+                vmsvga3dDXCbFinishQuery(pThisCC, pDXContext, queryId, &queryResult, cbQuery);
             else
-                vmsvga3dDXCbFinishQuery(pThisCC, pEntry, NULL, 0);
+                vmsvga3dDXCbFinishQuery(pThisCC, pDXContext, queryId, NULL, 0);
         }
         else
             AssertFailedStmt(rc = VERR_NOT_IMPLEMENTED);
@@ -2228,8 +2244,12 @@ static int dxSetOrGrowCOTable(PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext
         ASSERT_GUEST_RETURN(validSizeInBytes <= cbCOT, VERR_INVALID_PARAMETER);
         RT_UNTRUSTED_VALIDATED_FENCE();
 
+        /* When growing a COTable, the valid size can't be greater than the old COTable size. */
+        if (fGrow)
+            validSizeInBytes = RT_MIN(validSizeInBytes, vmsvgaR3MobSize(pDXContext->aCOTMobs[idxCOTable]));
+
         /* Create a memory pointer, which is accessible by host. */
-        rc = vmsvgaR3MobBackingStoreCreate(pSvgaR3State, pMob, validSizeInBytes);
+        rc = vmsvgaR3MobBackingStoreCreate(pSvgaR3State, pMob, fGrow ? 0 : validSizeInBytes);
     }
     else
     {
@@ -2265,8 +2285,15 @@ static int dxSetOrGrowCOTable(PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext
         };
         AssertCompile(RT_ELEMENTS(s_acbEntry) == VBSVGA_NUM_COTABLES);
 
-        cEntries = cbCOT / s_acbEntry[idxCOTable];
-        cValidEntries = validSizeInBytes / s_acbEntry[idxCOTable];
+        uint32_t const cbEntry = s_acbEntry[idxCOTable];
+
+        cEntries = cbCOT / cbEntry;
+        cEntries = RT_MIN(cEntries, SVGA_COTABLE_MAX_IDS);
+
+        cValidEntries = validSizeInBytes / cbEntry;
+        cValidEntries = RT_MIN(cValidEntries, cEntries);
+
+        validSizeInBytes = cValidEntries * cbEntry;
     }
 
     if (RT_SUCCESS(rc))
@@ -3215,6 +3242,9 @@ int vmsvga3dDXDefineStreamOutputWithMob(PVGASTATECC pThisCC, uint32_t idDXContex
     ASSERT_GUEST_RETURN(pDXContext->cot.paStreamOutput, VERR_INVALID_STATE);
     ASSERT_GUEST_RETURN(soid < pDXContext->cot.cStreamOutput, VERR_INVALID_PARAMETER);
     ASSERT_GUEST_RETURN(pCmd->numOutputStreamEntries < SVGA3D_MAX_STREAMOUT_DECLS, VERR_INVALID_PARAMETER);
+    ASSERT_GUEST_RETURN(pCmd->numOutputStreamStrides < SVGA3D_DX_MAX_SOTARGETS, VERR_INVALID_PARAMETER);
+    ASSERT_GUEST_RETURN(   pCmd->rasterizedStream < SVGA3D_DX_MAX_SOTARGETS
+                        || pCmd->rasterizedStream == SVGA3D_DX_SO_NO_RASTERIZED_STREAM, VERR_INVALID_PARAMETER);
     RT_UNTRUSTED_VALIDATED_FENCE();
 
     SVGACOTableDXStreamOutputEntry *pEntry = &pDXContext->cot.paStreamOutput[soid];

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsUnattendedInst1.py 111266 2025-10-07 12:20:32Z alexander.eichner@oracle.com $
+# $Id: tdGuestOsUnattendedInst1.py 111374 2025-10-14 10:04:30Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Guest OS unattended installation tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111266 $"
+__version__ = "$Revision: 111374 $"
 
 
 # Standard Python imports.
@@ -271,30 +271,24 @@ class UnattendedVm(vboxtestvms.BaseTestVm):
         # downloading updates and doing database updates during installation.
         # We want predicable results.
         #
-        # On macOS however this will result in HostOnly networking being used
-        # with an incompatible IP address, resulting in the TXS service not being
-        # able to contact the host. Until this is fixed properly just get along
-        # with inconsistent results, still better than completely failing testcases.
-        #
         if eNic0AttachType is None:
-            if utils.getHostOs() != 'darwin' \
-               and oTestDrv.fpApiVer < 7.0 \
-               and self.isLinux() \
+            if self.isLinux() \
                and (   'ubuntu' in self.sKind.lower()
                     or 'debian' in self.sKind.lower()):
                 eNic0AttachType = vboxcon.NetworkAttachmentType_HostOnly;
 
-            # Also use it for windows xp to prevent it from ever going online.
-            if self.sKind in ('WindowsXP','WindowsXP_64',):
+            # Also use it for Windows to prevent it from ever going online.
+            if self.isWindows():
                 eNic0AttachType = vboxcon.NetworkAttachmentType_HostOnly;
 
         #
-        # Use host-only networks instead of host-only adapters for trunk builds on Mac OS.
+        # Use NAT instead of host-only adapters on macOS because we can't find the
+        # guest's IP address without having the guest additions installed, which is not
+        # always the case.
         #
         if     eNic0AttachType   == vboxcon.NetworkAttachmentType_HostOnly \
-           and utils.getHostOs() == 'darwin' \
-           and oTestDrv.fpApiVer >= 7.0:
-            eNic0AttachType = vboxcon.NetworkAttachmentType_HostOnlyNetwork;
+           and utils.getHostOs() == 'darwin':
+            eNic0AttachType = vboxcon.NetworkAttachmentType_NAT;
 
         return vboxtestvms.BaseTestVm._createVmDoIt(self, oTestDrv, eNic0AttachType, sDvdImage); # pylint: disable=protected-access
 
@@ -338,6 +332,30 @@ class UnattendedVm(vboxtestvms.BaseTestVm):
             fRc = oSession.setGuestPropertyValue('/VirtualBox/GuestAdd/VBoxService/--timesync-no-set-start', '1') and fRc;
             fRc =     oSession.setGuestPropertyValue('/VirtualBox/GuestAdd/VBoxService/--timesync-set-threshold', '43200000') \
                   and fRc; # 12 hours
+
+        if fRc:
+            #
+            # Ensure the IP address doesn't change between guest reboots, as seen with the unattended Debian installer,
+            # by adding a fixed address for the MAC address.
+            #
+            try:
+                oNic              = oSession.o.machine.getNetworkAdapter(0);
+                enmAttachmentType = oNic.attachmentType;
+                if enmAttachmentType == vboxcon.NetworkAttachmentType_HostOnly:
+                    # Get the MAC address and find the DHCP server.
+                    sMacAddr      = oNic.MACAddress;
+                    sHostOnlyNIC  = oNic.hostOnlyInterface;
+                    oIHostOnlyIf  = oTestDrv.oVBox.host.findHostNetworkInterfaceByName(sHostOnlyNIC);
+                    sHostOnlyNet  = oIHostOnlyIf.networkName;
+                    oIDhcpServer  = oTestDrv.oVBox.findDHCPServerByNetworkName(sHostOnlyNet);
+
+                    sLowerIp = oIDhcpServer.lowerIP;
+                    oIDhcpCfg = oIDhcpServer.getConfig(vboxcon.DHCPConfigScope_MAC, sMacAddr, 0, True);
+                    oIDhcpCfg = oTestDrv.oVBoxMgr.queryInterface(oIDhcpCfg, 'IDHCPIndividualConfig');
+                    oIDhcpCfg.fixedAddress = sLowerIp;
+            except:
+                reporter.errorXcpt();
+                fRc = False;
 
         # Save the settings.
         fRc = fRc and oSession.saveSettings()

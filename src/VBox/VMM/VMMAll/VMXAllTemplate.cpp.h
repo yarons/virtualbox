@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 111177 2025-09-30 07:47:26Z knut.osmundsen@oracle.com $ */
+/* $Id: VMXAllTemplate.cpp.h 111405 2025-10-15 06:57:15Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -5610,7 +5610,7 @@ static uint32_t vmxHCCheckGuestState(PVMCPUCC pVCpu, PCVMXVMCSINFO pVmcsInfo)
                                   || (pCtx->ss.Attr.n.u1Granularity), VMX_IGS_SS_ATTR_G_INVALID);
             }
 
-            /* DS, ES, FS, GS - only check for usable selectors, see vmxHCExportGuestSReg(). */
+            /* DS, ES, FS, GS - only check for usable selectors, see vmxHCExportGuestSegReg(). */
             if (!(pCtx->ds.Attr.u & X86DESCATTR_UNUSABLE))
             {
                 HMVMX_CHECK_BREAK(pCtx->ds.Attr.n.u4Type & X86_SEL_TYPE_ACCESSED, VMX_IGS_DS_ATTR_A_INVALID);

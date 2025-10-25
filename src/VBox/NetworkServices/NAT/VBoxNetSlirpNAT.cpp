@@ -1,4 +1,4 @@
-/* $Id: VBoxNetSlirpNAT.cpp 111089 2025-09-22 23:48:00Z jack.doherty@oracle.com $ */
+/* $Id: VBoxNetSlirpNAT.cpp 111425 2025-10-16 05:03:51Z jack.doherty@oracle.com $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -351,6 +351,12 @@ VBoxNetSlirpNAT::~VBoxNetSlirpNAT()
 {
     RTReqQueueDestroy(m_hSlirpReqQueue);
     m_hSlirpReqQueue = NIL_RTREQQUEUE;
+
+    if (m_ProxyOptions.outbound_addr)
+    {
+        RTMemFree(m_ProxyOptions.outbound_addr);
+        m_ProxyOptions.outbound_addr = NULL;
+    }
 }
 
 
@@ -742,7 +748,10 @@ int VBoxNetSlirpNAT::initIPv4()
         rc = RTNetStrToIPv4Addr(strSourceIp4.c_str(), &addr);
         if (RT_SUCCESS(rc))
         {
+            m_ProxyOptions.outbound_addr = (struct sockaddr_in *)RTMemAlloc(sizeof(struct sockaddr_in));
             m_ProxyOptions.outbound_addr->sin_addr.s_addr = addr.u;
+            m_ProxyOptions.outbound_addr->sin_family = AF_INET;
+            m_ProxyOptions.outbound_addr->sin_port = 0;
 
             LogRel(("Will use %RTnaipv4 as IPv4 source address\n",
                     m_src4.sin_addr.s_addr));
@@ -1325,13 +1334,12 @@ HRESULT VBoxNetSlirpNAT::HandleEvent(VBoxEventType_T aEventType, IEvent *pEvent)
                 }
 
                 m_ProxyOptions.cRealNameservers = Nameserver4ListSize(&vRealNameservers);
-                slirp_set_cRealNameservers(m_pSlirp, m_ProxyOptions.cRealNameservers);
-
                 RTNETADDRIPV4 *paDetachedRealNameservers = Nameserver4ListDetach(&vRealNameservers);
                 for (size_t i = 0; i < m_ProxyOptions.cRealNameservers; i++)
                     m_ProxyOptions.aRealNameservers[i].s_addr = RT_H2N_U32(paDetachedRealNameservers[i].u);
 
-                slirp_set_aRealNameservers(m_pSlirp, m_ProxyOptions.aRealNameservers);
+                slirp_set_RealNameservers(m_pSlirp, m_ProxyOptions.cRealNameservers,
+                                          m_ProxyOptions.aRealNameservers);
 
                 LogRel(("Transfered %d nameservers to NAT engine.\n", m_ProxyOptions.cRealNameservers));
             }
@@ -1346,7 +1354,7 @@ HRESULT VBoxNetSlirpNAT::HandleEvent(VBoxEventType_T aEventType, IEvent *pEvent)
                 memcpy(&m_ProxyOptions.vnameserver, &Nameserver4, sizeof(in_addr));
 
                 // This ensures that any new DHCP requests use fallback.
-                slirp_set_cRealNameservers(m_pSlirp, 0);
+                slirp_set_RealNameservers(m_pSlirp, 0, NULL);
 
                 slirp_set_vnameserver(m_pSlirp, m_ProxyOptions.vnameserver);
             }

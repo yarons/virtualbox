@@ -1,4 +1,4 @@
-/* $Id: eltorito.c 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: eltorito.c 111440 2025-10-18 00:49:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * PC BIOS - ???
  */
@@ -441,6 +441,7 @@ uint16_t cdrom_boot(void)
         return 7;
 
     /// @todo Define a struct for the Boot Catalog, the hardcoded offsets are so dumb...
+    /// bird 2025-10-17: ISO9660ELTORITOVALIDATIONENTRY in iprt/formats/iso9660.h
 
     /* Check if the Boot Catalog looks valid. */
     if (buffer[0x00] != 0x01)

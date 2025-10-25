@@ -1,4 +1,4 @@
-/* $Id: isomakerimport.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: isomakerimport.cpp 111473 2025-10-21 13:45:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ISO Image Maker, Import Existing Image.
  */
@@ -50,12 +50,16 @@
 #include <iprt/ctype.h>
 #include <iprt/file.h>
 #include <iprt/list.h>
+#include <iprt/latin1.h>
 #include <iprt/log.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
 #include <iprt/utf16.h>
 #include <iprt/vfs.h>
 #include <iprt/formats/iso9660.h>
+#include <iprt/formats/udf.h>
+
+#include "udfhlp.h"
 
 
 /*********************************************************************************************************************************
@@ -63,6 +67,13 @@
 *********************************************************************************************************************************/
 /** Max directory depth. */
 #define RTFSISOMK_IMPORT_MAX_DEPTH  32
+
+/** Max UDF directory size. */
+#if ARCH_BITS >= 64
+# define RTFSISOMK_IMPORT_MAX_UDF_DIR_SIZE  _64M
+#else
+# define RTFSISOMK_IMPORT_MAX_UDF_DIR_SIZE  _16M
+#endif
 
 
 /*********************************************************************************************************************************
@@ -73,9 +84,9 @@
  */
 typedef struct RTFSISOMKIMPBLOCK2FILE
 {
-    /** AVL tree node containing the first block number of the file.
-     * Block number is relative to the start of the import image.  */
-    AVLU32NODECORE          Core;
+    /** AVL tree node containing the offset of the first byte of the file,
+     *  relative to the start of the import image. */
+    AVLU64NODECORE          Core;
     /** The configuration index of the file. */
     uint32_t                idxObj;
     /** Namespaces the file has been seen in already (RTFSISOMAKER_NAMESPACE_XXX). */
@@ -135,7 +146,7 @@ typedef struct RTFSISOMKIMPORTER
     /** The root of the tree for converting data block numbers to files
      * (PRTFSISOMKIMPBLOCK2FILE).   This is essential when importing boot files and
      * the 2nd namespace (joliet, udf, hfs) so that we avoid duplicating data. */
-    AVLU32TREE              Block2FileRoot;
+    AVLU64TREE              Block2FileRoot;
 
     /** The block offset of the primary volume descriptor. */
     uint32_t                offPrimaryVolDesc;
@@ -154,6 +165,15 @@ typedef struct RTFSISOMKIMPORTER
     /** The name of the TRANS.TBL in the import media (must ignore). */
     const char             *pszTransTbl;
 
+    /** UDF specific data. */
+    struct
+    {
+        /** Volume information. */
+        RTFSUDFVOLINFO      VolInfo;
+        /** The UDF level. */
+        uint8_t             uLevel;
+    } Udf;
+
     /** Pointer to the import results structure (output). */
     PRTFSISOMAKERIMPORTRESULTS pResults;
 
@@ -161,10 +181,14 @@ typedef struct RTFSISOMKIMPORTER
     union
     {
         uint8_t                     ab[ISO9660_SECTOR_SIZE];
+        char                        ach[ISO9660_SECTOR_SIZE];
+        uint64_t                    au64[ISO9660_SECTOR_SIZE];
         ISO9660VOLDESCHDR           VolDescHdr;
         ISO9660PRIMARYVOLDESC       PrimVolDesc;
         ISO9660SUPVOLDESC           SupVolDesc;
         ISO9660BOOTRECORDELTORITO   ElToritoDesc;
+        UDFANCHORVOLUMEDESCPTR      Avdp;
+        UDFTAG                      UdfTag;
     }                   uSectorBuf;
 
     /** Name buffer.  */
@@ -358,7 +382,7 @@ static int rtFsIsoImpError(PRTFSISOMKIMPORTER pThis, int rc, const char *pszForm
  * @param   pNode               The node to destroy.
  * @param   pvUser              Ignored.
  */
-static DECLCALLBACK(int) rtFsIsoMakerImportDestroyData2File(PAVLU32NODECORE pNode, void *pvUser)
+static DECLCALLBACK(int) rtFsIsoMakerImportDestroyData2File(PAVLU64NODECORE pNode, void *pvUser)
 {
     PRTFSISOMKIMPBLOCK2FILE pBlock2File = (PRTFSISOMKIMPBLOCK2FILE)pNode;
     if (pBlock2File)
@@ -458,7 +482,8 @@ static int rtFsIsoImportProcessIso9660AddAndNameDirectory(PRTFSISOMKIMPORTER pTh
     int rc = RTFsIsoMakerAddUnnamedDir(pThis->hIsoMaker, pObjInfo, &idxObj);
     if (RT_SUCCESS(rc))
     {
-        Log3(("  --> added directory #%#x\n", idxObj));
+        Log3(("  --> added directory #%#x (%s%s%s)\n",
+              idxObj, pszName, pszRockName && *pszRockName ? " rock:" : "", pszRockName ? pszRockName : ""));
         pThis->pResults->cAddedDirs++;
 
         /*
@@ -545,7 +570,8 @@ static int rtFsIsoImportProcessIso9660AddAndNameFile(PRTFSISOMKIMPORTER pThis, P
     PRTFSISOMKIMPBLOCK2FILE pBlock2FilePrev = NULL;
     if (cbData > 0) /* no data tracking for zero byte files */
     {
-        pBlock2File = (PRTFSISOMKIMPBLOCK2FILE)RTAvlU32Get(&pThis->Block2FileRoot, ISO9660_GET_ENDIAN(&pDirRec->offExtent));
+        pBlock2File = (PRTFSISOMKIMPBLOCK2FILE)RTAvlU64Get(&pThis->Block2FileRoot,
+                                                           ISO9660_GET_ENDIAN(&pDirRec->offExtent) * (uint64_t)ISO9660_SECTOR_SIZE);
         if (pBlock2File)
         {
             if (!(pBlock2File->fNamespaces & fNamespace))
@@ -593,12 +619,12 @@ static int rtFsIsoImportProcessIso9660AddAndNameFile(PRTFSISOMKIMPORTER pThis, P
             AssertReturn(pBlock2File, rtFsIsoImpError(pThis, VERR_NO_MEMORY, "Could not allocate RTFSISOMKIMPBLOCK2FILE"));
 
             pBlock2File->idxObj      = idxObj;
-            pBlock2File->Core.Key    = ISO9660_GET_ENDIAN(&pDirRec->offExtent);
+            pBlock2File->Core.Key    = ISO9660_GET_ENDIAN(&pDirRec->offExtent) * (uint64_t)ISO9660_SECTOR_SIZE;
             pBlock2File->fNamespaces = fNamespace;
             pBlock2File->pNext       = NULL;
             if (!pBlock2FilePrev)
             {
-                bool fRc = RTAvlU32Insert(&pThis->Block2FileRoot, &pBlock2File->Core);
+                bool fRc = RTAvlU64Insert(&pThis->Block2FileRoot, &pBlock2File->Core);
                 Assert(fRc); RT_NOREF(fRc);
             }
             else
@@ -658,7 +684,7 @@ static void rtFsIsoImportProcessIso9660TreeWorkerParseRockRidge(PRTFSISOMKIMPORT
          */
         PCISO9660SUSPUNION pUnion = (PCISO9660SUSPUNION)pbSys;
         if (   pUnion->Hdr.cbEntry > cbSys
-            && pUnion->Hdr.cbEntry < sizeof(pUnion->Hdr))
+            || pUnion->Hdr.cbEntry < sizeof(pUnion->Hdr))
         {
             LogRel(("rtFsIsoImportProcessIso9660TreeWorkerParseRockRidge: cbEntry=%#x cbSys=%#x (%#x %#x)\n",
                     pUnion->Hdr.cbEntry, cbSys, pUnion->Hdr.bSig1, pUnion->Hdr.bSig2));
@@ -1664,7 +1690,7 @@ static int rtFsIsoImportProcessIso9660Tree(PRTFSISOMKIMPORTER pThis, uint32_t of
      */
     int          rc     = VINF_SUCCESS;
     uint8_t      cDepth = 0;
-    RTLISTANCHOR TodoList;
+    RTLISTANCHOR TodoList; /* RTFSISOMKIMPDIR */
     RTListInit(&TodoList);
     for (;;)
     {
@@ -2113,6 +2139,777 @@ static int rtFsIsoImportProcessSupplementaryDesc(PRTFSISOMKIMPORTER pThis, PISO9
 }
 
 
+
+/*********************************************************************************************************************************
+*   UDF                                                                                                                          *
+*********************************************************************************************************************************/
+
+/**
+ * UDF directory todo list entry.
+ */
+typedef struct RTFSISOMKIMPUDFDIR
+{
+    /** List stuff. */
+    RTLISTNODE              Entry;
+    /** The directory configuration index with hIsoMaker. */
+    uint32_t                idxObj;
+    /** The depth of this directory.  */
+    uint8_t                 cDepth;
+    /** The ICB allocation descriptor. */
+    UDFLONGAD               IcbAllocDesc;
+} RTFSISOMKIMPUDFDIR;
+/** Pointer to an UDF directory todo list entry. */
+typedef RTFSISOMKIMPUDFDIR *PRTFSISOMKIMPUDFDIR;
+
+typedef union RTFSISOMKIMPUDFFILENTRYPTRUNION
+{
+    void               *pv;
+    uint8_t            *pb;
+    PCUDFFILEENTRY      pFileEntry;
+    PCUDFEXFILEENTRY    pExFileEntry;
+} RTFSISOMKIMPUDFFILENTRYPTRUNION;
+
+
+/**
+ * Helper for getting FS object info from the file ID version and file entry
+ * structures.
+ */
+static int rtFsIsoImportUdfFileIdAndEntryToObjInfo(PRTFSOBJINFO pObjInfo, uint32_t uFidVersion,
+                                                   RTFSISOMKIMPUDFFILENTRYPTRUNION uPtr, uint32_t cbBlock)
+{
+    AssertCompileMembersAtSameOffset(UDFFILEENTRY, cbData, UDFEXFILEENTRY, cbData);
+    pObjInfo->cbObject    = uPtr.pFileEntry->cbData;
+    pObjInfo->cbAllocated = pObjInfo->cbObject;
+
+    AssertCompileMembersAtSameOffset(UDFFILEENTRY, IcbTag,       UDFEXFILEENTRY, IcbTag);
+    AssertCompileMembersAtSameOffset(UDFFILEENTRY, fPermissions, UDFEXFILEENTRY, fPermissions);
+    int rc = RTFsUdfHlpIcbStuffToFileMode(uPtr.pFileEntry->IcbTag.fFlags, uPtr.pFileEntry->IcbTag.bFileType,
+                                          uPtr.pFileEntry->fPermissions, &pObjInfo->Attr.fMode);
+    AssertRCReturn(rc, rc);
+
+    pObjInfo->Attr.enmAdditional        = RTFSOBJATTRADD_UNIX;
+    AssertCompileMembersAtSameOffset(UDFFILEENTRY, gid,       UDFEXFILEENTRY, gid);
+    AssertCompileMembersAtSameOffset(UDFFILEENTRY, uid,       UDFEXFILEENTRY, uid);
+    pObjInfo->Attr.u.Unix.uid           = uPtr.pFileEntry->uid == UINT32_MAX ? NIL_RTUID : uPtr.pFileEntry->uid;
+    pObjInfo->Attr.u.Unix.gid           = uPtr.pFileEntry->gid == UINT32_MAX ? NIL_RTGID : uPtr.pExFileEntry->gid;
+    pObjInfo->Attr.u.Unix.cHardlinks    = 1;
+    pObjInfo->Attr.u.Unix.INodeIdDevice = 0;
+    pObjInfo->Attr.u.Unix.INodeId       = 0;
+    pObjInfo->Attr.u.Unix.fFlags        = 0;
+    pObjInfo->Attr.u.Unix.GenerationId  = uFidVersion;
+    pObjInfo->Attr.u.Unix.Device        = 0;
+
+    uint32_t cbExtAttribs;
+    uint32_t offExtAttribs;
+    if (uPtr.pFileEntry->Tag.idTag == UDF_TAG_ID_FILE_ENTRY)
+    {
+        RTFsUdfHlpTimestamp2TimeSpec(&pObjInfo->AccessTime,       &uPtr.pFileEntry->AccessTime);
+        RTFsUdfHlpTimestamp2TimeSpec(&pObjInfo->ModificationTime, &uPtr.pFileEntry->ModificationTime);
+        RTFsUdfHlpTimestamp2TimeSpec(&pObjInfo->ChangeTime,       &uPtr.pFileEntry->ChangeTime);
+        RTTimeSpecSetNano(&pObjInfo->BirthTime, 0);
+        cbExtAttribs  = uPtr.pFileEntry->cbExtAttribs;
+        offExtAttribs = RT_UOFFSETOF(UDFFILEENTRY, abExtAttribs);
+    }
+    else
+    {
+        RTFsUdfHlpTimestamp2TimeSpec(&pObjInfo->AccessTime,       &uPtr.pExFileEntry->AccessTime);
+        RTFsUdfHlpTimestamp2TimeSpec(&pObjInfo->ModificationTime, &uPtr.pExFileEntry->ModificationTime);
+        RTFsUdfHlpTimestamp2TimeSpec(&pObjInfo->ChangeTime,       &uPtr.pExFileEntry->ChangeTime);
+        RTFsUdfHlpTimestamp2TimeSpec(&pObjInfo->BirthTime,        &uPtr.pExFileEntry->BirthTime);
+        cbExtAttribs  = uPtr.pExFileEntry->cbExtAttribs;
+        offExtAttribs = RT_UOFFSETOF(UDFEXFILEENTRY, abExtAttribs);
+    }
+
+    /* Extended attributs. */
+    PCUDFEXTATTRIBHDRDESC const pHdr = (PCUDFEXTATTRIBHDRDESC)&uPtr.pb[offExtAttribs];
+    if (cbExtAttribs > sizeof(UDFEXTATTRIBHDRDESC) + RT_UOFFSETOF(UDFGEA, u))
+    {
+        cbExtAttribs = RT_MIN(cbExtAttribs, cbBlock - offExtAttribs);
+        rc = RTFsUdfHlpValidateDescTagAndCrc(&pHdr->Tag, cbExtAttribs, UDF_TAG_ID_EXTENDED_ATTRIB_HDR_DESC,
+                                             uPtr.pFileEntry->Tag.offTag, NULL);
+        if (RT_SUCCESS(rc))
+        {
+            /** @todo deal with multiple attributes (assuming that's possible)... */
+            PCUDFGEA const pGenEA = (PCUDFGEA)(pHdr + 1);
+            size_t const cbMaxEA  = cbExtAttribs - RT_UOFFSETOF(UDFGEA, u);
+            size_t const cbEA     = RT_MIN(RT_MAX(pGenEA->cbAttrib, RT_UOFFSETOF(UDFGEA, u)) - RT_UOFFSETOF(UDFGEA, u), cbMaxEA);
+            switch (pGenEA->uAttribType)
+            {
+                case UDFEADATAFILETIMES_ATTRIB_TYPE:
+                    if (   cbEA >= RT_UOFFSETOF(UDFEADATAFILETIMES, aTimestamps) + sizeof(UDFTIMESTAMP)
+                        && (pGenEA->u.FileTimes.fFlags & UDF_FILE_TIMES_EA_F_BIRTH)
+                        && pGenEA->u.FileTimes.cbTimestamps >= sizeof(UDFTIMESTAMP) )
+                        RTFsUdfHlpTimestamp2TimeSpec(&pObjInfo->BirthTime, &pGenEA->u.FileTimes.aTimestamps[0]);
+                    break;
+                case UDFEADATADEVICESPEC_ATTRIB_TYPE:
+                    if (cbEA >= RT_UOFFSETOF(UDFEADATADEVICESPEC, abImplementationUse))
+                    {
+                        if (   pGenEA->u.DeviceSpec.uMajorDeviceNo > UINT32_MAX
+                            || pGenEA->u.DeviceSpec.uMinorDeviceNo > UINT32_MAX)
+                            pObjInfo->Attr.u.Unix.Device = ~(RTDEV)0;
+                        else
+                            pObjInfo->Attr.u.Unix.Device = RTDEV_MAKE(pGenEA->u.DeviceSpec.uMajorDeviceNo,
+                                                                      pGenEA->u.DeviceSpec.uMinorDeviceNo);
+                    }
+                    break;
+            }
+        }
+        else
+            LogRelMax(45, ("rtFsIsoImportUdfFileIdAndEntryToObjInfo: Warning! Bad ExtAttrib tag/crc: %Rrc\n", rc));
+    }
+
+    return VINF_SUCCESS;
+}
+
+
+
+/**
+ * Worker for rtFsIsoImportUdfProcessTreeWorker() that adds a file.
+ */
+static int rtFsIsoImportUdfAddAndNameFile(PRTFSISOMKIMPORTER pThis, PCUDFFILEIDDESC pFid, uint32_t idxParent,
+                                          const char *pszName, RTFSISOMKIMPUDFFILENTRYPTRUNION uPtr,
+                                          uint64_t cbData, uint64_t offData)
+{
+    Assert(cbData == 0 ? offData == UINT64_MAX : offData < pThis->cbSrcFile);
+
+    /*
+     * Convert the FID and file entry data to object info.
+     */
+    RTFSOBJINFO ObjInfo;
+    int rc = rtFsIsoImportUdfFileIdAndEntryToObjInfo(&ObjInfo, pFid->uVersion, uPtr, pThis->Udf.VolInfo.cbBlock);
+    if (RT_FAILURE(rc))
+        return rtFsIsoImpError(pThis, rc, "rtFsIsoImportUdfFileIdAndEntryToObjInfo failed for '%s': %Rrc", pszName, rc);
+
+    /** @todo we don't currently support symbolic links, sockets, fifos or devices */
+    AssertCompileMembersAtSameOffset(UDFFILEENTRY, IcbTag,       UDFEXFILEENTRY, IcbTag);
+    if (   uPtr.pFileEntry->IcbTag.bFileType != UDF_FILE_TYPE_REGULAR_FILE
+        && uPtr.pFileEntry->IcbTag.bFileType != UDF_FILE_TYPE_REAL_TIME_FILE)
+        return rtFsIsoImpError(pThis, VERR_ISOMK_IMPORT_UDF_UNSUPPORTED_FILE_TYPE,
+                               "Unsupported file type for '%s': %#x", pszName, uPtr.pFileEntry->IcbTag.bFileType);
+
+    /*
+     * First we must make sure the common source file has been added.
+     */
+    if (pThis->idxSrcFile != UINT32_MAX)
+    { /* likely */ }
+    else
+    {
+        rc = RTFsIsoMakerAddCommonSourceFile(pThis->hIsoMaker, pThis->hSrcFile, &pThis->idxSrcFile);
+        if (RT_FAILURE(rc))
+            return rtFsIsoImpError(pThis, rc, "RTFsIsoMakerAddCommonSourceFile failed: %Rrc", rc);
+        Assert(pThis->idxSrcFile != UINT32_MAX);
+    }
+
+    /*
+     * Lookup the data block if the file has a non-zero length.   The aim is to
+     * find files across namespaces while bearing in mind that files in the same
+     * namespace may share data storage, i.e. what in a traditional unix file
+     * system would be called hardlinked.  Problem is that the core engine doesn't
+     * do hardlinking yet and assume each file has exactly one name per namespace.
+     */
+    uint32_t                idxObj          = UINT32_MAX;
+    PRTFSISOMKIMPBLOCK2FILE pBlock2File     = NULL;
+    PRTFSISOMKIMPBLOCK2FILE pBlock2FilePrev = NULL;
+    if (cbData > 0) /* no data tracking for zero byte files */
+    {
+        pBlock2File = (PRTFSISOMKIMPBLOCK2FILE)RTAvlU64Get(&pThis->Block2FileRoot, offData);
+        if (pBlock2File)
+        {
+            if (!(pBlock2File->fNamespaces & RTFSISOMAKER_NAMESPACE_UDF))
+            {
+                pBlock2File->fNamespaces |= RTFSISOMAKER_NAMESPACE_UDF;
+                idxObj = pBlock2File->idxObj;
+            }
+            else
+            {
+                do
+                {
+                    pBlock2FilePrev = pBlock2File;
+                    pBlock2File = pBlock2File->pNext;
+                } while (pBlock2File && (pBlock2File->fNamespaces & RTFSISOMAKER_NAMESPACE_UDF));
+                if (pBlock2File)
+                {
+                    pBlock2File->fNamespaces |= RTFSISOMAKER_NAMESPACE_UDF;
+                    idxObj = pBlock2File->idxObj;
+                }
+            }
+        }
+    }
+
+    /*
+     * If the above lookup didn't succeed, add a new file with a lookup record.
+     */
+    const bool fNewFile = idxObj == UINT32_MAX;
+    if (fNewFile)
+    {
+        rc = RTFsIsoMakerAddUnnamedFileWithCommonSrc(pThis->hIsoMaker, pThis->idxSrcFile, offData, cbData, &ObjInfo, &idxObj);
+        if (RT_FAILURE(rc))
+            return rtFsIsoImpError(pThis, rc, "Error adding file '%s': %Rrc", pszName, rc);
+        Assert(idxObj != UINT32_MAX);
+
+        /* Update statistics. */
+        pThis->pResults->cAddedFiles++;
+        if (cbData > 0)
+        {
+            pThis->pResults->cbAddedDataBlocks += RT_ALIGN_64(cbData, pThis->Udf.VolInfo.cbBlock); /** @todo alignment? */
+
+            /* Lookup record. */
+            pBlock2File = (PRTFSISOMKIMPBLOCK2FILE)RTMemAlloc(sizeof(*pBlock2File));
+            AssertReturn(pBlock2File, rtFsIsoImpError(pThis, VERR_NO_MEMORY, "Could not allocate RTFSISOMKIMPBLOCK2FILE"));
+
+            pBlock2File->idxObj      = idxObj;
+            pBlock2File->Core.Key    = offData;
+            pBlock2File->fNamespaces = RTFSISOMAKER_NAMESPACE_UDF;
+            pBlock2File->pNext       = NULL;
+            if (!pBlock2FilePrev)
+            {
+                bool fRc = RTAvlU64Insert(&pThis->Block2FileRoot, &pBlock2File->Core);
+                Assert(fRc); RT_NOREF(fRc);
+            }
+            else
+            {
+                pBlock2File->Core.pLeft  = NULL;
+                pBlock2File->Core.pRight = NULL;
+                pBlock2FilePrev->pNext = pBlock2File;
+            }
+        }
+        Log3(("  --> new file #%#x (%#RX64 LB %#RX64 %s)\n", idxObj, offData, cbData, pszName));
+    }
+    else
+        Log3(("  --> existing file #%#x (%#RX64 LB %#RX64 %s)\n", idxObj, offData, cbData, pszName));
+
+    /*
+     * Enter the object into the namespace.
+     */
+    rc = RTFsIsoMakerObjSetNameAndParent(pThis->hIsoMaker, idxObj, idxParent, RTFSISOMAKER_NAMESPACE_UDF,
+                                         pszName, true /*fNoNormalize*/);
+    if (RT_SUCCESS(rc))
+    {
+        pThis->pResults->cAddedNames++;
+
+        if (!fNewFile)
+        {
+            rc = RTFsIsoMakerSetPathInfoByParentObj(pThis->hIsoMaker, idxParent, pszName,
+                                                    RTFSISOMAKER_NAMESPACE_UDF, &ObjInfo, 0, NULL);
+            AssertRC(rc);
+        }
+
+        /*
+         * Error out on files with alternative streams.
+         */
+        if (   uPtr.pExFileEntry->StreamDirIcb.cb                    >= sizeof(UDFTAG)
+            && uPtr.pExFileEntry->StreamDirIcb.Location.uPartitionNo <  pThis->Udf.VolInfo.cPartitions
+            && uPtr.pExFileEntry->Tag.idTag                          == UDF_TAG_ID_EXTENDED_FILE_ENTRY)
+            return rtFsIsoImpError(pThis, VERR_ISOMK_IMPORT_UDF_FILE_WITH_STREAM_DIR,
+                                   "Stream directory ICB for '%s': cb=%#x uType=%u uPart=%#x off=%#x",
+                                   pszName, uPtr.pExFileEntry->StreamDirIcb.cb, uPtr.pExFileEntry->StreamDirIcb.uType,
+                                   uPtr.pExFileEntry->StreamDirIcb.Location.uPartitionNo,
+                                   uPtr.pExFileEntry->StreamDirIcb.Location.off);
+    }
+    else
+        return rtFsIsoImpError(pThis, rc, "Error naming file '%s': %Rrc", pszName, rc);
+    return VINF_SUCCESS;
+}
+
+
+/**
+ * Worker for rtFsIsoImportUdfProcessTreeWorker() that adds a directory.
+ *
+ * The directory is appended to the todo-list as well.
+ */
+static int rtFsIsoImportUdfAddAndNameDirectory(PRTFSISOMKIMPORTER pThis, PCUDFFILEIDDESC pFid, uint32_t idxParent,
+                                               const char *pszName, uint8_t cDepth, PRTLISTANCHOR pTodoList)
+{
+    Assert(pFid->fFlags & UDF_FILE_FLAGS_DIRECTORY);
+    uint32_t idxObj;
+    int rc = RTFsIsoMakerAddUnnamedDir(pThis->hIsoMaker, NULL, &idxObj);
+    if (RT_SUCCESS(rc))
+    {
+        Log3(("  --> added directory #%#x (UDF: %s)\n", idxObj, pszName));
+        pThis->pResults->cAddedDirs++;
+
+        /*
+         * Enter the object into the namespace.
+         */
+        rc = RTFsIsoMakerObjSetNameAndParent(pThis->hIsoMaker, idxObj, idxParent, RTFSISOMAKER_NAMESPACE_UDF,
+                                             pszName, true /*fNoNormalize*/);
+        if (RT_SUCCESS(rc))
+        {
+            pThis->pResults->cAddedNames++;
+
+            /*
+             * Push it onto the traversal stack.
+             */
+            PRTFSISOMKIMPUDFDIR pImpDir = (PRTFSISOMKIMPUDFDIR)RTMemAlloc(sizeof(*pImpDir));
+            if (pImpDir)
+            {
+                pImpDir->idxObj       = idxObj;
+                pImpDir->cDepth       = cDepth;
+                pImpDir->IcbAllocDesc = pFid->Icb;
+                RTListAppend(pTodoList, &pImpDir->Entry);
+            }
+            else
+                rc = rtFsIsoImpError(pThis, VERR_NO_MEMORY, "Could not allocate RTFSISOMKIMPUDFDIR");
+        }
+        else
+            rc = rtFsIsoImpError(pThis, rc, "Error naming UDF directory '%s': %Rrc", pszName, rc);
+    }
+    else
+        rc = rtFsIsoImpError(pThis, rc, "Error adding UDF directory '%s': %Rrc", pszName, rc);
+    return rc;
+}
+
+
+/** @callback_method_impl{FNFSUDFREADICBFILENTRY} */
+static DECLCALLBACK(int)
+rtFsIsoImportUdfFileEntryCallback(PCRTFSUDFVOLINFO pVolInfo, PCUDFFILEENTRY pFileEntry, uint16_t idxDefaultPart, void *pvUser)
+{
+    PRTFSISOMKIMPORTER const pThis = RT_FROM_MEMBER(pVolInfo, RTFSISOMKIMPORTER, Udf.VolInfo);
+    memcpy(pThis->abBuf, pFileEntry, pThis->Udf.VolInfo.cbBlock);
+    *(uint16_t *)pvUser = idxDefaultPart;
+    return VINF_SUCCESS;
+}
+
+
+/** @callback_method_impl{FNFSUDFREADICBEXFILENTRY} */
+static DECLCALLBACK(int)
+rtFsIsoImportUdfExFileEntryCallback(PCRTFSUDFVOLINFO pVolInfo, PCUDFEXFILEENTRY pFileEntry, uint16_t idxDefaultPart, void *pvUser)
+{
+    PRTFSISOMKIMPORTER const pThis = RT_FROM_MEMBER(pVolInfo, RTFSISOMKIMPORTER, Udf.VolInfo);
+    memcpy(pThis->abBuf, pFileEntry, pThis->Udf.VolInfo.cbBlock);
+    *(uint16_t *)pvUser = idxDefaultPart;
+    return VINF_SUCCESS;
+}
+
+
+/**
+ * Worker the imports a directory and its content.
+ */
+static int rtFsIsoImportUdfProcessTreeWorker(PRTFSISOMKIMPORTER pThis, uint32_t idxDir, UDFLONGAD const *pIcbAllocDesc,
+                                             uint8_t cDepth, PRTLISTANCHOR pTodoList)
+{
+    RT_NOREF(cDepth, pTodoList);
+
+    /* Preformat the error message to reduce code size. */
+    char szIcbErrLoc[80];
+    RTStrPrintf(szIcbErrLoc, sizeof(szIcbErrLoc), "p%u/%#RX64/%#RX32 LB %#x (idxDir=%#x)",
+                pIcbAllocDesc->Location.uPartitionNo, (uint64_t)pIcbAllocDesc->Location.off << pThis->Udf.VolInfo.cShiftBlock,
+                pIcbAllocDesc->Location.off, pIcbAllocDesc->cb, idxDir);
+
+    /*
+     * Read the directory ICB.
+     *
+     * On success we'll have the raw data in pThis->abBuf.  We let the helper function
+     * use the 2nd half of the buffer (already checked that we've got sufficent space).
+     */
+    Assert(sizeof(pThis->abBuf) >= pThis->Udf.VolInfo.cbBlock * 2); /* checked by caller and max block size limit */
+    RTFSISOMKIMPUDFFILENTRYPTRUNION u              = { &pThis->abBuf[0] };
+    uint8_t * const                 pbBlockBuf     = &pThis->abBuf[pThis->Udf.VolInfo.cbBlock];
+    uint16_t                        idxDefaultPart = 0;
+    uint32_t                        cProcessed     = 0;
+    uint32_t                        cIndirections  = 0;
+    int rc = RTFsUdfReadIcbRecursive(&pThis->Udf.VolInfo, pThis->hSrcFile, pbBlockBuf, 0 /*cNestings */,
+                                     rtFsIsoImportUdfFileEntryCallback, rtFsIsoImportUdfExFileEntryCallback, &idxDefaultPart,
+                                     &cProcessed, &cIndirections, *pIcbAllocDesc);
+    if (RT_FAILURE(rc))
+        return rtFsIsoImpError(pThis, rc, "Failed to read ICB at %s: %Rrc", szIcbErrLoc, rc);
+    if (cProcessed == 0)
+        return rtFsIsoImpError(pThis, VERR_ISOFS_NO_DIRECT_ICB_ENTRIES, "No direct ICB for chain at %s", szIcbErrLoc);
+
+    /* Make sure it's a directory. */
+    AssertCompileMembersAtSameOffset(UDFFILEENTRY, IcbTag, UDFEXFILEENTRY, IcbTag);
+    if (u.pFileEntry->IcbTag.bFileType != UDF_FILE_TYPE_DIRECTORY)
+        return rtFsIsoImpError(pThis, VERR_ISOFS_WRONG_FILE_TYPE, "ICB for chain at szIcbErrLoc is not a directory: %#x",
+                               szIcbErrLoc, u.pFileEntry->IcbTag.bFileType);
+
+    /* Check if it is empty (just on the offchance). */
+    AssertCompileMembersAtSameOffset(UDFFILEENTRY, cbData, UDFEXFILEENTRY, cbData);
+    uint64_t const  cbDirData    = u.pFileEntry->cbData;
+    if (!cbDirData)
+        return VINF_SUCCESS;
+    if (cbDirData < UDFFILEIDDESC_CALC_SIZE_EX(0, 0))
+        return rtFsIsoImpError(pThis, VERR_ISOFS_BOGUS_UDF_DIR_SIZE,
+                               "Bogus directory size for ICB at %s: %#RX64", szIcbErrLoc, cbDirData);
+    if (cbDirData >= RTFSISOMK_IMPORT_MAX_UDF_DIR_SIZE)
+        return rtFsIsoImpError(pThis, VERR_ISOMK_IMPORT_UDF_DIR_TOO_BIG,
+                               "Directory too large in ICB at %s: %#RX64", szIcbErrLoc, cbDirData);
+
+    uint64_t const  cbDirAligned = RT_ALIGN_64(cbDirData, pThis->Udf.VolInfo.cbBlock);
+
+    /* Read the allocation extensions. */
+    uint64_t        offIcbInPart = (uint64_t)u.pFileEntry->Tag.offTag << pThis->Udf.VolInfo.cShiftBlock; /* safe */
+    uint32_t        cExtents     = 0;
+    RTFSISOEXTENT   FirstExtent;
+    PRTFSISOEXTENT  paExtents    = NULL;
+    if (u.pFileEntry->Tag.idTag == UDF_TAG_ID_FILE_ENTRY)
+        rc = RTFsUdfHlpGatherExtentsFromIcb(&pThis->Udf.VolInfo,
+                                            &u.pFileEntry->abExtAttribs[u.pFileEntry->cbExtAttribs],
+                                            u.pFileEntry->cbAllocDescs,
+                                            u.pFileEntry->IcbTag.fFlags,
+                                            idxDefaultPart,
+                                            offIcbInPart + RT_UOFFSETOF(UDFFILEENTRY, abExtAttribs) + u.pFileEntry->cbExtAttribs,
+                                            cbDirData,
+                                            pThis->hSrcFile,
+                                            pbBlockBuf,
+                                            &cExtents, &FirstExtent, &paExtents);
+    else if (u.pFileEntry->Tag.idTag == UDF_TAG_ID_EXTENDED_FILE_ENTRY)
+        rc = RTFsUdfHlpGatherExtentsFromIcb(&pThis->Udf.VolInfo,
+                                            &u.pExFileEntry->abExtAttribs[u.pExFileEntry->cbExtAttribs],
+                                            u.pExFileEntry->cbAllocDescs,
+                                            u.pExFileEntry->IcbTag.fFlags,
+                                            idxDefaultPart,
+                                              offIcbInPart
+                                            + RT_UOFFSETOF(UDFEXFILEENTRY, abExtAttribs)
+                                            + u.pExFileEntry->cbExtAttribs,
+                                            cbDirData,
+                                            pThis->hSrcFile,
+                                            pbBlockBuf,
+                                            &cExtents, &FirstExtent, &paExtents);
+    else
+        AssertFailedReturn(VERR_INTERNAL_ERROR_4);
+    if (RT_FAILURE(rc))
+        return rtFsIsoImpError(pThis, rc, "Failed to gather extents for directory ICB szIcbErrLoc: %Rrc", szIcbErrLoc, rc);
+    if (cExtents == 0)
+        return rtFsIsoImpError(pThis, VERR_ISOFS_NO_ADS_FOR_UDF_DIR, "No allocation descriptors for ICB at %s", szIcbErrLoc);
+
+    /*
+     * Set the directory attributes.
+     */
+    RTFSOBJINFO ObjInfo;
+    rc = rtFsIsoImportUdfFileIdAndEntryToObjInfo(&ObjInfo, 0 /*uFidVersion*/, u, pThis->Udf.VolInfo.cbBlock);
+    if (RT_SUCCESS(rc))
+    {
+        rc = RTFsIsoMakerSetPathInfoByObj(pThis->hIsoMaker, idxDir, RTFSISOMAKER_NAMESPACE_UDF, &ObjInfo, 0, NULL);
+        AssertRC(rc);
+    }
+    else
+        rtFsIsoImpError(pThis, rc, "rtFsIsoImportUdfFileIdAndEntryToObjInfo failed for directory #%#x: %Rrc", idxDir, rc);
+
+    /*
+     * Read the directory data.
+     * Use heap if too big for what space its left in abBuf.
+     */
+    AssertCompile(sizeof(pThis->abBuf) >= _16K*3); /* cbMaxLogicalBlock */
+    uint8_t * const pbRestBuf   = &pThis->abBuf[pThis->Udf.VolInfo.cbBlock * 2];
+    size_t const    cbRestBuf   = sizeof(pThis->abBuf) - pThis->Udf.VolInfo.cbBlock * 2;
+
+    uint8_t * const pbDataBuf   = cbRestBuf >= cbDirAligned ? pbRestBuf : (uint8_t *)RTMemTmpAllocZ(cbDirAligned);
+    AssertReturnStmt(pbDataBuf, RTFsUdfHlpFreeGatherExtents(paExtents), VERR_NO_TMP_MEMORY);
+
+    rc = RTFsUdfHlpReadObject(&pThis->Udf.VolInfo, pThis->hSrcFile, cbDirData, cExtents, &FirstExtent, paExtents, 0 /*offRead*/,
+                              pbDataBuf, (size_t)cbDirData, NULL, NULL);
+    RTFsUdfHlpFreeGatherExtents(paExtents);
+    paExtents = NULL;
+    if (RT_SUCCESS(rc))
+    {
+        /*
+         * Process the File ID entries we just loaded.
+         *
+         * We use the sector buffer for name conversion.  It's 2KiB and we need
+         * at most some 768 bytes.
+         */
+        uint32_t idxFid = 0;
+        uint32_t offDir = 0;
+        while (offDir + RT_UOFFSETOF(UDFFILEIDDESC, abImplementationUse) <= cbDirData)
+        {
+            PCUDFFILEIDDESC pFid  = (PCUDFFILEIDDESC)&pbDataBuf[offDir];
+            uint32_t const  cbFid = UDFFILEIDDESC_GET_SIZE(pFid);
+            if (offDir + cbFid <= cbDirData)
+            { /* likely */ }
+            else
+                break;
+
+            /* Skip parent, deleted stuff and metadata. */
+            if (pFid->fFlags & (UDF_FILE_FLAGS_PARENT | UDF_FILE_FLAGS_DELETED | UDF_FILE_FLAGS_METADATA))
+            {
+                Assert((pFid->fFlags & UDF_FILE_FLAGS_DIRECTORY) || !(pFid->fFlags & UDF_FILE_FLAGS_PARENT));
+                idxFid += 1;
+                offDir += cbFid;
+                continue;
+            }
+
+            /*
+             * Convert the name.
+             */
+            char          *pszName = pThis->uSectorBuf.ach;
+            uint8_t const *pbSrc   = &pFid->abImplementationUse[pFid->cbImplementationUse];
+            uint8_t const  cbSrc   = pFid->cbName;
+            int            rc2     = VERR_INVALID_NAME;
+            if (cbSrc > 1)
+            {
+                if (pbSrc[0] == 8)
+                {
+                    /* Latin-1 to UTF-8: */
+                    char *pszDst = pszName;
+                    for (uint32_t offSrc = 1; offSrc < cbSrc; offSrc++)
+                    {
+                        uint8_t uc = pbSrc[offSrc];
+                        if (uc < 128)
+                        {
+                            if (uc)
+                                *pszDst++ = (char)uc;
+                            else
+                                break;
+                        }
+                        else
+                        {
+                            *pszDst++ = (char)(0xc0 | (uc >> 6));
+                            *pszDst++ = (char)(0x80 | (uc & 0x3f));
+                        }
+                    }
+                    *pszDst = '\0';
+                    if (pszDst != pszName)
+                        rc2 = VINF_SUCCESS;
+                }
+                else if (pbSrc[0] == 16) /** @todo technically incorrect for incomplete UTF16 codepoint (lower byte reads as zero) */
+                    rc2 = RTUtf16BigToUtf8Ex((PCRTUTF16)&pbSrc[1], (cbSrc - 1) / sizeof(RTUTF16),
+                                             &pszName, sizeof(pThis->uSectorBuf.ach), NULL);
+            }
+            if (RT_FAILURE(rc2))
+            {
+                rtFsIsoImpError(pThis, rc2, "ISO/UDF: Malformed directory entry name at %#x: fFlags=%#x abName=%.*Rhxs\n",
+                                offDir, pFid->fFlags, cbSrc, pbSrc);
+                RTStrPrintf(pszName, sizeof(pThis->uSectorBuf.ach), "bad-name-%#x", offDir);
+                if (RT_SUCCESS(rc))
+                    rc = rc2;
+            }
+
+            /*
+             * If it's a directory, add just it to the todo list (ICB++ is handled later).
+             */
+            if (pFid->fFlags & UDF_FILE_FLAGS_DIRECTORY)
+                rc2 = rtFsIsoImportUdfAddAndNameDirectory(pThis, pFid, idxDir, pszName, cDepth + 1, pTodoList);
+            /*
+             * Otherwise read the ICB and allocation extent list.
+             */
+            else
+            {
+                RTStrPrintf(szIcbErrLoc, sizeof(szIcbErrLoc), "p%u/%#RX64/%#RX32 LB %#x (idxDir=%#x)",
+                            pFid->Icb.Location.uPartitionNo, (uint64_t)pFid->Icb.Location.off << pThis->Udf.VolInfo.cShiftBlock,
+                            pFid->Icb.Location.off, pFid->Icb.cb, idxDir);
+
+                idxDefaultPart = 0;
+                cProcessed     = 0;
+                cIndirections  = 0;
+                rc2 = RTFsUdfReadIcbRecursive(&pThis->Udf.VolInfo, pThis->hSrcFile, pbBlockBuf, 0 /*cNestings */,
+                                              rtFsIsoImportUdfFileEntryCallback, rtFsIsoImportUdfExFileEntryCallback,
+                                              &idxDefaultPart, &cProcessed, &cIndirections, pFid->Icb);
+                if (RT_SUCCESS(rc2) && cProcessed > 0)
+                {
+                    /* Only gather the extents if it's has a non-zero length. */
+                    AssertCompileMembersAtSameOffset(UDFFILEENTRY, cbData, UDFEXFILEENTRY, cbData);
+                    uint64_t const cbObject = u.pFileEntry->cbData;
+                    cExtents             = 0;
+                    paExtents            = NULL;
+                    FirstExtent.cbExtent = 0;
+                    FirstExtent.off      = UINT64_MAX;
+                    if (cbObject > 0)
+                    {
+                        offIcbInPart = (uint64_t)u.pFileEntry->Tag.offTag << pThis->Udf.VolInfo.cShiftBlock; /* safe */
+                        if (u.pFileEntry->Tag.idTag == UDF_TAG_ID_FILE_ENTRY)
+                            rc2 = RTFsUdfHlpGatherExtentsFromIcb(&pThis->Udf.VolInfo,
+                                                                 &u.pFileEntry->abExtAttribs[u.pFileEntry->cbExtAttribs],
+                                                                 u.pFileEntry->cbAllocDescs,
+                                                                 u.pFileEntry->IcbTag.fFlags,
+                                                                 idxDefaultPart,
+                                                                   offIcbInPart
+                                                                 + RT_UOFFSETOF(UDFFILEENTRY, abExtAttribs)
+                                                                 + u.pFileEntry->cbExtAttribs,
+                                                                 cbObject,
+                                                                 pThis->hSrcFile,
+                                                                 pbBlockBuf,
+                                                                 &cExtents, &FirstExtent, &paExtents);
+                        else if (u.pFileEntry->Tag.idTag == UDF_TAG_ID_EXTENDED_FILE_ENTRY)
+                            rc2 = RTFsUdfHlpGatherExtentsFromIcb(&pThis->Udf.VolInfo,
+                                                                 &u.pExFileEntry->abExtAttribs[u.pExFileEntry->cbExtAttribs],
+                                                                 u.pExFileEntry->cbAllocDescs,
+                                                                 u.pExFileEntry->IcbTag.fFlags,
+                                                                 idxDefaultPart,
+                                                                   offIcbInPart
+                                                                 + RT_UOFFSETOF(UDFEXFILEENTRY, abExtAttribs)
+                                                                 + u.pExFileEntry->cbExtAttribs,
+                                                                 cbObject,
+                                                                 pThis->hSrcFile,
+                                                                 pbBlockBuf,
+                                                                 &cExtents, &FirstExtent, &paExtents);
+                        else
+                            AssertFailedStmt(rc2 = VERR_INTERNAL_ERROR_4);
+                        if (RT_FAILURE(rc2))
+                            rtFsIsoImpError(pThis, rc2, "Failed to gather extents for ICB at %s (%s): %Rrc",
+                                            szIcbErrLoc, pszName, rc);
+                        else if (cExtents == 0)
+                            rc2 = rtFsIsoImpError(pThis, VERR_ISOFS_NO_ADS_FOR_UDF_OBJECT,
+                                                  "No allocation descriptors for ICB at %s (%s)", szIcbErrLoc, pszName);
+                        else if (cExtents != 1)
+                            rc2 = rtFsIsoImpError(pThis, VERR_ISOMK_IMPORT_UDF_DISCONTIGUOUS_ADS,
+                                                  "More than one allocation descriptors for ICB at %s (%s): %u",
+                                                  szIcbErrLoc, pszName, cExtents);
+                        else if (FirstExtent.off == UINT64_MAX)
+                            rc2 = rtFsIsoImpError(pThis, VERR_ISOMK_IMPORT_UDF_SPARSE_FILE,
+                                                  "ICB at %s (%s) describes an sparse empty file", szIcbErrLoc, pszName);
+                        else if (FirstExtent.cbExtent < cbObject)
+                            rc2 = rtFsIsoImpError(pThis, VERR_ISOMK_IMPORT_UDF_SPARSE_FILE,
+                                                  "ICB at %s (%s) describes an sparse file (tail): cbExtent=%#RX64 vs cbObject=%#RX64",
+                                                  szIcbErrLoc, pszName, FirstExtent.cbExtent, cbObject);
+                        else if (FirstExtent.idxPart != UINT32_MAX)
+                        {
+                            if (FirstExtent.idxPart >= pThis->Udf.VolInfo.cPartitions)
+                                rc2 = rtFsIsoImpError(pThis, VERR_ISOFS_INVALID_PARTITION_INDEX,
+                                                      "ICB at %s (%s) have an AD with a bogus partition index: #%x",
+                                                      szIcbErrLoc, pszName, FirstExtent.idxPart);
+                            else /** @todo check that the extent is within the partition boundraries. */
+                            {
+                                FirstExtent.off    += pThis->Udf.VolInfo.paPartitions[FirstExtent.idxPart].offByteLocation;
+                                FirstExtent.idxPart = UINT32_MAX;
+                            }
+                        }
+                    }
+
+                    /* If all is well, add and name the file and set all it's relevant properties. */
+                    if (RT_SUCCESS(rc2))
+                        rc2 = rtFsIsoImportUdfAddAndNameFile(pThis, pFid, idxDir, pszName, u, cbObject, FirstExtent.off);
+                    RTFsUdfHlpFreeGatherExtents(paExtents);
+                    paExtents = NULL;
+                }
+                else if (RT_FAILURE(rc2))
+                    rc2 = rtFsIsoImpError(pThis, rc2, "Failed to read ICB at %s (%s): %Rrc", szIcbErrLoc, pszName, rc2);
+                else
+                    rc2 = rtFsIsoImpError(pThis, VERR_ISOFS_NO_DIRECT_ICB_ENTRIES,
+                                          "No direct for ICB at %s (%s)", szIcbErrLoc, pszName);
+            }
+            if (RT_SUCCESS(rc))
+                rc = rc2;
+
+            /* advance */
+            idxFid += 1;
+            offDir += cbFid;
+        }
+    }
+    else
+        rc = rtFsIsoImpError(pThis, rc, "Failed to read directory data for ICB at %s: %Rrc", szIcbErrLoc, rc);
+    if (pbDataBuf != pbRestBuf)
+        RTMemTmpFree(pbDataBuf);
+    return rc;
+}
+
+
+/**
+ * Processes the UDF directory tree.
+ *
+ * This doesn't recurse, instead it keeps a todo-list of directory ICBs which is
+ * processed one by one by rtFsIsoImportUdfProcessTreeWorker(), adding any
+ * sub-dirs to the todo-list.
+ */
+static int rtFsIsoImportUdfProcessTree(PRTFSISOMKIMPORTER pThis, UDFLONGAD IceAllocDesc)
+{
+    AssertReturn(sizeof(pThis->abBuf) >= pThis->Udf.VolInfo.cbBlock * 4, VERR_INTERNAL_ERROR_3); /* max block size check */
+    AssertReturn(RT_IS_POWER_OF_TWO(pThis->Udf.VolInfo.cbBlock), VERR_INTERNAL_ERROR_4);
+
+    /*
+     * Make sure we've got a root in the namespace.
+     */
+    uint32_t idxDir = RTFsIsoMakerGetObjIdxForPath(pThis->hIsoMaker, RTFSISOMAKER_NAMESPACE_UDF, "/");
+    if (idxDir == UINT32_MAX)
+    {
+        idxDir = RTFSISOMAKER_CFG_IDX_ROOT;
+        int rc = RTFsIsoMakerObjSetPath(pThis->hIsoMaker, RTFSISOMAKER_CFG_IDX_ROOT, RTFSISOMAKER_NAMESPACE_UDF, "/");
+        if (RT_FAILURE(rc))
+            return rtFsIsoImpError(pThis, rc, "RTFsIsoMakerObjSetPath failed on UDF root dir: %Rrc", rc);
+    }
+    Assert(idxDir == RTFSISOMAKER_CFG_IDX_ROOT);
+
+    /*
+     * Directories.
+     */
+    int          rc     = VINF_SUCCESS;
+    uint8_t      cDepth = 0;
+    RTLISTANCHOR TodoList; /* RTFSISOMKIMPUDFDIR */
+    RTListInit(&TodoList);
+    for (;;)
+    {
+
+        int rc2 = rtFsIsoImportUdfProcessTreeWorker(pThis, idxDir, &IceAllocDesc, cDepth, &TodoList);
+        if (RT_FAILURE(rc2) && RT_SUCCESS(rc))
+            rc = rc2;
+
+        /*
+         * Pop the next directory.
+         */
+        PRTFSISOMKIMPUDFDIR pNext = RTListRemoveLast(&TodoList, RTFSISOMKIMPUDFDIR, Entry);
+        if (!pNext)
+            break;
+        idxDir       = pNext->idxObj;
+        cDepth       = pNext->cDepth;
+        IceAllocDesc = pNext->IcbAllocDesc;
+        RTMemFree(pNext);
+    }
+
+    return rc;
+}
+
+
+/**
+ * Function that does the UDF importing after a VRS was found.
+ */
+static int rtFsIsoImportUdf(PRTFSISOMKIMPORTER pThis)
+{
+    /*
+     * Check out the three standard AVDP locations and scan the Volume Descriptor
+     * Sequences they point at, stopping when we've got a working one.
+     */
+    int                     rcRet         = VINF_SUCCESS;
+    RTFSUDFHLPSEENSEQENCES  SeenSequences = {0};
+    RTFSUDFHLPCTX           Ctx;
+    Ctx.hVfsBacking         = pThis->hSrcFile;
+    Ctx.cbBacking           = pThis->cbSrcFile;
+    Ctx.cBackingSectors     = pThis->cBlocksInSrcFile;
+    Ctx.cbSector            = ISO9660_SECTOR_SIZE;
+    Ctx.cbMaxLogicalBlock   = _16K; AssertCompile(sizeof(pThis->abBuf) >= _16K * 4);
+    Ctx.pbBuf               = pThis->abBuf;
+    Ctx.cbBuf               = sizeof(pThis->abBuf);
+    Ctx.pErrInfo            = pThis->pErrInfo;
+
+    uint64_t const aoffAvdps[3] =
+    {
+        256 * ISO9660_SECTOR_SIZE,
+        pThis->cbSrcFile - 256 * ISO9660_SECTOR_SIZE,
+        pThis->cbSrcFile - ISO9660_SECTOR_SIZE
+    };
+    for (unsigned i = 0; i < RT_ELEMENTS(aoffAvdps); i++)
+    {
+        int rc = RTFsUdfHlpReadAndHandleUdfAvdp(&Ctx, aoffAvdps[i], &SeenSequences, &pThis->Udf.VolInfo);
+        if (RT_SUCCESS(rc))
+        {
+            if (!(pThis->fFlags & RTFSISOMK_IMPORT_F_NO_U_VOLUME_ID))
+            {
+                char *psz = NULL;
+                rc = RTFsUdfHlpDStringFieldToUtf8(pThis->Udf.VolInfo.achLogicalVolumeID,
+                                                  sizeof(pThis->Udf.VolInfo.achLogicalVolumeID), &psz);
+                AssertRCReturn(rc, rc);
+                rc = RTFsIsoMakerSetStringProp(pThis->hIsoMaker, RTFSISOMAKERSTRINGPROP_VOLUME_ID,
+                                               RTFSISOMAKER_NAMESPACE_UDF, psz);
+                RTStrFree(psz);
+                AssertRCReturn(rc, rc);
+            }
+
+            /** @todo import more stuff from the volume descriptors... */
+
+            return rtFsIsoImportUdfProcessTree(pThis, pThis->Udf.VolInfo.RootDirIcb);
+        }
+        if (i == 0)
+            rcRet = rc;
+    }
+
+    return rcRet;
+}
+
+
+
+
+/*********************************************************************************************************************************
+*   El Torito                                                                                                                    *
+*********************************************************************************************************************************/
+
 /**
  * Checks out an El Torito boot image to see if it requires info table patching.
  *
@@ -2145,15 +2942,19 @@ static int rtFsIsoImportProcessElToritoImage(PRTFSISOMKIMPORTER pThis, uint32_t 
  * Processes a boot catalog default or section entry.
  *
  * @returns IPRT status code (ignored).
- * @param   pThis       The ISO importer instance.
- * @param   iEntry      The boot catalog entry number. This is 1 for
- *                      the default entry, and 3+ for section entries.
- * @param   cMaxEntries Maximum number of entries.
- * @param   pEntry      The entry to process.
- * @param   pcSkip      Where to return the number of extension entries to skip.
+ * @param   pThis           The ISO importer instance.
+ * @param   iSrcEntry       The source boot catalog entry number. This is 1 for
+ *                          the default entry, and 3+ for section entries.
+ * @param   cMaxEntries     Maximum number of entries.
+ * @param   pEntry          The entry to process.
+ * @param   iDstEntry       The destination boot catalog entry number.
+ * @param   cLocations      Number of entries in @a paoffLocations.
+ * @param   paoffLocations  Array of boot image locations.
+ * @param   pcSkip          Where to return the number of extension entries to skip.
  */
-static int rtFsIsoImportProcessElToritoSectionEntry(PRTFSISOMKIMPORTER pThis, uint32_t iEntry, uint32_t cMaxEntries,
-                                                    PCISO9660ELTORITOSECTIONENTRY pEntry, uint32_t *pcSkip)
+static int rtFsIsoImportProcessElToritoSectionEntry(PRTFSISOMKIMPORTER pThis, uint32_t iSrcEntry, uint32_t cMaxEntries,
+                                                    PCISO9660ELTORITOSECTIONENTRY pEntry, uint32_t iDstEntry,
+                                                    uint32_t cLocations, uint32_t const *paoffLocations, uint32_t *pcSkip)
 {
     *pcSkip = 0;
 
@@ -2174,18 +2975,26 @@ static int rtFsIsoImportProcessElToritoSectionEntry(PRTFSISOMKIMPORTER pThis, ui
     {
         case ISO9660_ELTORITO_BOOT_MEDIA_TYPE_FLOPPY_1_2_MB:
             cbDefaultSize = 512 * 80 * 15 * 2;
+            Log3(("rtFsIsoImportProcessElToritoSectionEntry: bMediaType=%#x 1.2MB floppy\n", bMediaType));
             break;
 
         case ISO9660_ELTORITO_BOOT_MEDIA_TYPE_FLOPPY_1_44_MB:
             cbDefaultSize = 512 * 80 * 18 * 2;
+            Log3(("rtFsIsoImportProcessElToritoSectionEntry: bMediaType=%#x 1.44MB floppy\n", bMediaType));
             break;
 
         case ISO9660_ELTORITO_BOOT_MEDIA_TYPE_FLOPPY_2_88_MB:
             cbDefaultSize = 512 * 80 * 36 * 2;
+            Log3(("rtFsIsoImportProcessElToritoSectionEntry: bMediaType=%#x 2.88MB floppy\n", bMediaType));
             break;
 
         case ISO9660_ELTORITO_BOOT_MEDIA_TYPE_NO_EMULATION:
+            Log3(("rtFsIsoImportProcessElToritoSectionEntry: bMediaType=%#x no emulation\n", bMediaType));
+            cbDefaultSize = 0;
+            break;
+
         case ISO9660_ELTORITO_BOOT_MEDIA_TYPE_HARD_DISK:
+            Log3(("rtFsIsoImportProcessElToritoSectionEntry: bMediaType=%#x hard disk\n", bMediaType));
             cbDefaultSize = 0;
             break;
 
@@ -2194,7 +3003,7 @@ static int rtFsIsoImportProcessElToritoSectionEntry(PRTFSISOMKIMPORTER pThis, ui
                                    "Boot catalog entry #%#x has an invalid boot media type: %#x", bMediaType);
     }
 
-    if (iEntry == 1)
+    if (iSrcEntry == 1)
     {
         if (bMediaType & ISO9660_ELTORITO_BOOT_MEDIA_F_MASK)
         {
@@ -2231,26 +3040,50 @@ static int rtFsIsoImportProcessElToritoSectionEntry(PRTFSISOMKIMPORTER pThis, ui
 
     int                     rc;
     uint32_t                idxImageObj;
-    PRTFSISOMKIMPBLOCK2FILE pBlock2File = (PRTFSISOMKIMPBLOCK2FILE)RTAvlU32Get(&pThis->Block2FileRoot, offBootImage);
+    uint64_t                offByteBootImage = offBootImage * (uint64_t)ISO9660_SECTOR_SIZE;
+    PRTFSISOMKIMPBLOCK2FILE pBlock2File = (PRTFSISOMKIMPBLOCK2FILE)RTAvlU64Get(&pThis->Block2FileRoot, offByteBootImage);
     if (pBlock2File)
+    {
         idxImageObj = pBlock2File->idxObj;
+        Log3(("rtFsIsoImportProcessElToritoSectionEntry: offByteBootImage=%#RX64 -> existing file #%#x\n",
+              offByteBootImage, pBlock2File->idxObj));
+    }
     else
     {
         if (cbDefaultSize == 0)
         {
-            pBlock2File = (PRTFSISOMKIMPBLOCK2FILE)RTAvlU32GetBestFit(&pThis->Block2FileRoot, offBootImage, true /*fAbove*/);
+            /** @todo If someone actually puts a read HD/no-emu image here and then also
+             *        refers to some file within it, this won't necessarily work
+             *        correctly.  However, chances are they'll make the file visible in
+             *        the file system... */
+            uint32_t offNextBootImg = UINT32_MAX;
+            for (uint32_t i = 0; i < cLocations; i++)
+                if (paoffLocations[i] > offBootImage && paoffLocations[i] < offNextBootImg)
+                    offNextBootImg = paoffLocations[i];
+
+            pBlock2File = (PRTFSISOMKIMPBLOCK2FILE)RTAvlU64GetBestFit(&pThis->Block2FileRoot, offByteBootImage, true /*fAbove*/);
             if (pBlock2File)
-                cbDefaultSize = RT_MIN(pBlock2File->Core.Key - offBootImage, UINT32_MAX / ISO9660_SECTOR_SIZE + 1)
+            {
+                cbDefaultSize = RT_MIN(RT_MIN(pBlock2File->Core.Key / ISO9660_SECTOR_SIZE, offNextBootImg) - offBootImage,
+                                       UINT32_MAX / ISO9660_SECTOR_SIZE + 1)
                               * ISO9660_SECTOR_SIZE;
+                Log3(("rtFsIsoImportProcessElToritoSectionEntry: pBlock2File above @%#RX64 vs offNextBootImg=%#RX32 -> %RX32\n",
+                      pBlock2File->Core.Key / ISO9660_SECTOR_SIZE, offNextBootImg, cbDefaultSize));
+            }
             else if (offBootImage < pThis->cBlocksInSrcFile)
-                cbDefaultSize = RT_MIN(pThis->cBlocksInSrcFile - offBootImage, UINT32_MAX / ISO9660_SECTOR_SIZE + 1)
+            {
+                cbDefaultSize = RT_MIN(RT_MIN(pThis->cBlocksInSrcFile, offNextBootImg) - offBootImage,
+                                       UINT32_MAX / ISO9660_SECTOR_SIZE + 1)
                               * ISO9660_SECTOR_SIZE;
+                Log3(("rtFsIsoImportProcessElToritoSectionEntry: end of file @%#RX64 vs offNextBootImg=%#RX32 -> %RX32\n",
+                      pThis->cBlocksInSrcFile, offNextBootImg, cbDefaultSize));
+            }
             else
                 return rtFsIsoImpError(pThis, VERR_ISOMK_IMPORT_BOOT_CAT_ENTRY_UNKNOWN_IMAGE_SIZE,
                                        "Boot catalog entry #%#x has an invalid boot media type: %#x", bMediaType);
         }
 
-        if (pThis->idxSrcFile != UINT32_MAX)
+        if (pThis->idxSrcFile == UINT32_MAX)
         {
             rc = RTFsIsoMakerAddCommonSourceFile(pThis->hIsoMaker, pThis->hSrcFile, &pThis->idxSrcFile);
             if (RT_FAILURE(rc))
@@ -2263,7 +3096,9 @@ static int rtFsIsoImportProcessElToritoSectionEntry(PRTFSISOMKIMPORTER pThis, ui
                                                      cbDefaultSize, NULL, &idxImageObj);
         if (RT_FAILURE(rc))
             return rtFsIsoImpError(pThis, rc, "RTFsIsoMakerAddUnnamedFileWithCommonSrc failed on boot entry #%#x: %Rrc",
-                                   iEntry, rc);
+                                   iSrcEntry, rc);
+        Log3(("rtFsIsoImportProcessElToritoSectionEntry: offByteBootImage=%#RX64 -> new file #%#x cb=%#RX32\n",
+              offByteBootImage, idxImageObj, cbDefaultSize));
     }
 
     /*
@@ -2278,9 +3113,9 @@ static int rtFsIsoImportProcessElToritoSectionEntry(PRTFSISOMKIMPORTER pThis, ui
         cbSelCrit = sizeof(pEntry->abSelectionCriteria);
 
         if (   (bMediaType & ISO9660_ELTORITO_BOOT_MEDIA_F_CONTINUATION)
-            && iEntry + 1 < cMaxEntries)
+            && iSrcEntry + 1 < cMaxEntries)
         {
-            uint32_t                         iExtEntry = iEntry + 1;
+            uint32_t                         iExtEntry = iSrcEntry + 1;
             PCISO9660ELTORITOSECTIONENTRYEXT pExtEntry = (PCISO9660ELTORITOSECTIONENTRYEXT)pEntry;
             for (;;)
             {
@@ -2311,7 +3146,7 @@ static int rtFsIsoImportProcessElToritoSectionEntry(PRTFSISOMKIMPORTER pThis, ui
                     break;
                 }
             }
-            Assert(*pcSkip = iExtEntry - iEntry);
+            Assert(*pcSkip = iExtEntry - iSrcEntry);
         }
         else if (bMediaType & ISO9660_ELTORITO_BOOT_MEDIA_F_CONTINUATION)
             rtFsIsoImpError(pThis, VERR_ISOMK_IMPORT_BOOT_CAT_ENTRY_CONTINUATION_EOS,
@@ -2319,12 +3154,15 @@ static int rtFsIsoImportProcessElToritoSectionEntry(PRTFSISOMKIMPORTER pThis, ui
     }
     else if (bMediaType & ISO9660_ELTORITO_BOOT_MEDIA_F_CONTINUATION)
         rtFsIsoImpError(pThis, VERR_ISOMK_IMPORT_BOOT_CAT_ENTRY_CONTINUATION_WITH_NONE,
-                        "Boot catalog entry #%#x uses the continuation flag with selection criteria NONE", iEntry);
+                        "Boot catalog entry #%#x uses the continuation flag with selection criteria NONE", iSrcEntry);
 
     /*
      * Add the entry.
      */
-    rc = RTFsIsoMakerBootCatSetSectionEntry(pThis->hIsoMaker, iEntry, idxImageObj, bMediaType, pEntry->bSystemType,
+    Log3(("rtFsIsoImportProcessElToritoSectionEntry: iEntry=%u->%u idxImageObj=%#x bMediaType=%#x bSystemType=%#x fBootable=%u uLoadSeg=%#x cEmulatedSectorsToLoad=%#x bSelectionCriteriaType=%#x cbSelCrit=%#x\n",
+          iSrcEntry, iDstEntry, idxImageObj, bMediaType, pEntry->bSystemType, pEntry->bBootIndicator == ISO9660_ELTORITO_BOOT_INDICATOR_BOOTABLE,
+          pEntry->uLoadSeg, pEntry->cEmulatedSectorsToLoad, pEntry->bSelectionCriteriaType, cbSelCrit));
+    rc = RTFsIsoMakerBootCatSetSectionEntry(pThis->hIsoMaker, iDstEntry, idxImageObj, bMediaType, pEntry->bSystemType,
                                             pEntry->bBootIndicator == ISO9660_ELTORITO_BOOT_INDICATOR_BOOTABLE,
                                             pEntry->uLoadSeg, pEntry->cEmulatedSectorsToLoad,
                                             pEntry->bSelectionCriteriaType, pbSelCrit, cbSelCrit);
@@ -2334,10 +3172,10 @@ static int rtFsIsoImportProcessElToritoSectionEntry(PRTFSISOMKIMPORTER pThis, ui
         rc = rtFsIsoImportProcessElToritoImage(pThis, idxImageObj, offBootImage);
     }
     else
-        rtFsIsoImpError(pThis, rc, "RTFsIsoMakerBootCatSetSectionEntry failed for entry #%#x: %Rrc", iEntry, rc);
+        rtFsIsoImpError(pThis, rc, "RTFsIsoMakerBootCatSetSectionEntry failed for entry #%#x(->%#x): %Rrc",
+                        iSrcEntry, iDstEntry, rc);
     return rc;
 }
-
 
 
 /**
@@ -2345,31 +3183,36 @@ static int rtFsIsoImportProcessElToritoSectionEntry(PRTFSISOMKIMPORTER pThis, ui
  *
  * @returns IPRT status code (ignored).
  * @param   pThis       The ISO importer instance.
- * @param   iEntry      The boot catalog entry number.
+ * @param   iSrcEntry   The source boot catalog entry number.
  * @param   pEntry      The entry to process.
+ * @param   iDstEntry   The destination boot catalog entry number.
  */
-static int rtFsIsoImportProcessElToritoSectionHeader(PRTFSISOMKIMPORTER pThis, uint32_t iEntry,
-                                                     PCISO9660ELTORITOSECTIONHEADER pEntry, char pszId[32])
+static int rtFsIsoImportProcessElToritoSectionHeader(PRTFSISOMKIMPORTER pThis, uint32_t iSrcEntry,
+                                                     PCISO9660ELTORITOSECTIONHEADER pEntry, char pszId[32], uint32_t iDstEntry)
 {
-    Assert(pEntry->bHeaderId == ISO9660_ELTORITO_HEADER_ID_SECTION_HEADER);
+    Assert(   pEntry->bHeaderId == ISO9660_ELTORITO_HEADER_ID_SECTION_HEADER
+           || pEntry->bHeaderId == ISO9660_ELTORITO_HEADER_ID_FINAL_SECTION_HEADER);
 
     /* Deal with the string. ASSUME it doesn't contain zeros in non-terminal positions. */
     if (pEntry->achSectionId[0] == '\0')
         pszId = NULL;
     else
     {
-        memcpy(pszId, pEntry->achSectionId, sizeof(pEntry->achSectionId));
-        pszId[sizeof(pEntry->achSectionId)] = '\0';
+        RT_BZERO(pszId, 32);
+        RTLatin1ToUtf8Ex(pEntry->achSectionId, sizeof(pEntry->achSectionId), &pszId, 31, NULL);
     }
+    Log3(("rtFsIsoImportProcessElToritoSectionHeader: iEntry=%u->%u cEntries=%u bPlatformId=%#x pszId=%s\n",
+          iSrcEntry, iDstEntry, RT_LE2H_U16(pEntry->cEntries), pEntry->bPlatformId, pszId ? pszId : ""));
 
-    int rc = RTFsIsoMakerBootCatSetSectionHeaderEntry(pThis->hIsoMaker, iEntry, RT_LE2H_U16(pEntry->cEntries),
-                                                      pEntry->bPlatformId, pszId);
+    int rc = RTFsIsoMakerBootCatSetSectionHeaderEntry(pThis->hIsoMaker, iDstEntry, RT_LE2H_U16(pEntry->cEntries),
+                                                      pEntry->bPlatformId, pszId,
+                                                      pEntry->bHeaderId == ISO9660_ELTORITO_HEADER_ID_FINAL_SECTION_HEADER);
     if (RT_SUCCESS(rc))
         pThis->pResults->cBootCatEntries++;
     else
         rtFsIsoImpError(pThis, rc,
-                        "RTFsIsoMakerBootCatSetSectionHeaderEntry failed for entry #%#x (bPlatformId=%#x cEntries=%#x): %Rrc",
-                        iEntry, RT_LE2H_U16(pEntry->cEntries), pEntry->bPlatformId, rc);
+                        "RTFsIsoMakerBootCatSetSectionHeaderEntry failed for entry #%#x(->%#x) (bPlatformId=%#x cEntries=%#x): %Rrc",
+                        iSrcEntry, iDstEntry, RT_LE2H_U16(pEntry->cEntries), pEntry->bPlatformId, rc);
     return rc;
 }
 
@@ -2386,7 +3229,7 @@ static int rtFsIsoImportProcessElToritoDesc(PRTFSISOMKIMPORTER pThis, PISO9660BO
     /*
      * Read the boot catalog into the abBuf.
      */
-    uint32_t offBootCatalog = RT_LE2H_U32(pVolDesc->offBootCatalog);
+    uint32_t const offBootCatalog = RT_LE2H_U32(pVolDesc->offBootCatalog);
     if (offBootCatalog >= pThis->cBlocksInPrimaryVolumeSpace)
         return rtFsIsoImpError(pThis, VERR_ISOMK_IMPORT_BOOT_CAT_BAD_OUT_OF_BOUNDS,
                                "Boot catalog block number is out of bounds: %#RX32, max %#RX32",
@@ -2396,7 +3239,8 @@ static int rtFsIsoImportProcessElToritoDesc(PRTFSISOMKIMPORTER pThis, PISO9660BO
                              pThis->abBuf, ISO9660_SECTOR_SIZE, NULL);
     if (RT_FAILURE(rc))
         return rtFsIsoImpError(pThis, rc,  "Error reading boot catalog at block #%#RX32: %Rrc", offBootCatalog, rc);
-
+    Log3(("rtFsIsoImportProcessElToritoDesc: offBootCatalog=%#RX32 (%#RX64):\n%.*Rhxd\n",
+          offBootCatalog, offBootCatalog * (uint64_t)ISO9660_SECTOR_SIZE, ISO9660_SECTOR_SIZE, pThis->abBuf));
 
     /*
      * Process the 'validation entry'.
@@ -2427,26 +3271,34 @@ static int rtFsIsoImportProcessElToritoDesc(PRTFSISOMKIMPORTER pThis, PISO9660BO
                                "Invalid boot catalog validation entry checksum: %#x, expected 0", uChecksum);
 
     /* The string ID.  ASSUME no leading zeros in valid strings. */
-    const char *pszId = NULL;
-    char        szId[32];
+    char *pszId = NULL;
+    char  szId[32];
     if (pValEntry->achId[0] != '\0')
     {
-        memcpy(szId, pValEntry->achId, sizeof(pValEntry->achId));
-        szId[sizeof(pValEntry->achId)] = '\0';
+        RT_BZERO(szId, 32);
         pszId = szId;
+        RTLatin1ToUtf8Ex(pValEntry->achId, sizeof(pValEntry->achId), &pszId, sizeof(szId) - 1, NULL);
     }
 
     /*
      * Before we tell the ISO maker about the validation entry, we need to sort
      * out the file backing the boot catalog.  This isn't fatal if it fails.
      */
-    PRTFSISOMKIMPBLOCK2FILE pBlock2File = (PRTFSISOMKIMPBLOCK2FILE)RTAvlU32Get(&pThis->Block2FileRoot, offBootCatalog);
+    PRTFSISOMKIMPBLOCK2FILE pBlock2File = (PRTFSISOMKIMPBLOCK2FILE)RTAvlU64Get(&pThis->Block2FileRoot,
+                                                                               offBootCatalog * (uint64_t)ISO9660_SECTOR_SIZE);
     if (pBlock2File)
     {
         rc = RTFsIsoMakerBootCatSetFile(pThis->hIsoMaker, pBlock2File->idxObj);
         if (RT_FAILURE(rc))
             rtFsIsoImpError(pThis, rc, "RTFsIsoMakerBootCatSetFile failed: %Rrc", rc);
+        Log3(("rtFsIsoImportProcessElToritoDesc: offBootCatalog=%#RX32 (%#RX64): bHeaderId=%#x bPlatformId=%#x pszId=%s idObj=%#x\n",
+              offBootCatalog, offBootCatalog * (uint64_t)ISO9660_SECTOR_SIZE, pValEntry->bHeaderId, pValEntry->bPlatformId,
+              pszId ? pszId : "", pBlock2File->idxObj));
     }
+    else
+        Log3(("rtFsIsoImportProcessElToritoDesc: offBootCatalog=%#RX32 (%#RX64): bHeaderId=%#x bPlatformId=%#x pszId=%s (no associated file)\n",
+              offBootCatalog, offBootCatalog * (uint64_t)ISO9660_SECTOR_SIZE, pValEntry->bHeaderId, pValEntry->bPlatformId, pszId ? pszId : ""));
+
 
     /*
      * Set the validation entry.
@@ -2459,10 +3311,12 @@ static int rtFsIsoImportProcessElToritoDesc(PRTFSISOMKIMPORTER pThis, PISO9660BO
     pThis->pResults->cBootCatEntries = 0;
 
     /*
-     * Process the default entry and any subsequent entries.
+     * To a quick scan to gather up file locations.
      */
-    bool           fSeenFinal  = false;
-    uint32_t const cMaxEntries = ISO9660_SECTOR_SIZE / ISO9660_ELTORITO_ENTRY_SIZE;
+    uint32_t       aoffLocations[ISO9660_SECTOR_SIZE / ISO9660_ELTORITO_ENTRY_SIZE] = {0};
+    uint32_t       cLocations    = 0;
+    uint32_t const cMaxEntries   = ISO9660_SECTOR_SIZE / ISO9660_ELTORITO_ENTRY_SIZE;
+    uint32_t       cSectionsLeft = UINT32_MAX;
     for (uint32_t iEntry = 1; iEntry < cMaxEntries; iEntry++)
     {
         uint8_t const *pbEntry  = &pThis->abBuf[iEntry * ISO9660_ELTORITO_ENTRY_SIZE];
@@ -2473,29 +3327,110 @@ static int rtFsIsoImportProcessElToritoDesc(PRTFSISOMKIMPORTER pThis, PISO9660BO
         if (   idHeader == ISO9660_ELTORITO_BOOT_INDICATOR_NOT_BOOTABLE /* 0x00 */
             && iEntry != 1 /* default */
             && ASMMemIsZero(pbEntry, ISO9660_ELTORITO_ENTRY_SIZE))
-            return rc;
-
+            break;
         if (   iEntry == 1 /* default*/
             || idHeader == ISO9660_ELTORITO_BOOT_INDICATOR_BOOTABLE
             || idHeader == ISO9660_ELTORITO_BOOT_INDICATOR_NOT_BOOTABLE)
         {
-            uint32_t cSkip = 0;
-            rtFsIsoImportProcessElToritoSectionEntry(pThis, iEntry, cMaxEntries, (PCISO9660ELTORITOSECTIONENTRY)pbEntry, &cSkip);
-            iEntry += cSkip;
+            PCISO9660ELTORITOSECTIONENTRY pSecEntry = (PCISO9660ELTORITOSECTIONENTRY)pbEntry;
+            uint32_t offBootImage = RT_LE2H_U32(pSecEntry->offBootImage);
+            if (offBootImage > 0 && offBootImage < pThis->cBlocksInSrcFile)
+                aoffLocations[cLocations++] = offBootImage;
         }
-        else if (idHeader == ISO9660_ELTORITO_HEADER_ID_SECTION_HEADER)
-            rtFsIsoImportProcessElToritoSectionHeader(pThis, iEntry, (PCISO9660ELTORITOSECTIONHEADER)pbEntry, szId);
         else if (idHeader == ISO9660_ELTORITO_HEADER_ID_FINAL_SECTION_HEADER)
         {
-            fSeenFinal = true;
-            break;
+            PCISO9660ELTORITOSECTIONHEADER pSecHdr = (PCISO9660ELTORITOSECTIONHEADER)pbEntry;
+            cSectionsLeft = RT_LE2H_U16(pSecHdr->cEntries);
+            continue;
         }
-        else
-            rtFsIsoImpError(pThis, VERR_ISOMK_IMPORT_BOOT_CAT_UNKNOWN_HEADER_ID,
-                            "Unknown boot catalog header ID for entry #%#x: %#x", iEntry, idHeader);
+        cSectionsLeft -= 1;
+        if (!cSectionsLeft)
+            break;
     }
 
-    if (!fSeenFinal)
+
+    /*
+     * Process the default entry and any subsequent entries.
+     */
+    bool           fSeenFinal  = false;
+    cSectionsLeft = UINT32_MAX;
+    for (uint32_t iSrcEntry = 1, iDstEntry = 1; iSrcEntry < cMaxEntries; iSrcEntry++, iDstEntry++)
+    {
+        uint8_t const *pbEntry  = &pThis->abBuf[iSrcEntry * ISO9660_ELTORITO_ENTRY_SIZE];
+        uint8_t const  idHeader = *pbEntry;
+
+        /* KLUDGE ALERT! Older ISO images, like RHEL5-Server-20070208.0-x86_64-DVD.iso lacks
+                         terminator entry. So, quietly stop with an entry that's all zeros. */
+        if (   idHeader == ISO9660_ELTORITO_BOOT_INDICATOR_NOT_BOOTABLE /* 0x00 */
+            && iSrcEntry != 1 /* default */
+            && ASMMemIsZero(pbEntry, ISO9660_ELTORITO_ENTRY_SIZE))
+        {
+            Log3(("rtFsIsoImportProcessElToritoDesc: %p: iSrcEntry=%u zero entry!\n", pbEntry - &pThis->abBuf[0], iSrcEntry));
+            return rc;
+        }
+
+        if (   iSrcEntry == 1 /* default*/
+            || idHeader == ISO9660_ELTORITO_BOOT_INDICATOR_BOOTABLE
+            || idHeader == ISO9660_ELTORITO_BOOT_INDICATOR_NOT_BOOTABLE)
+        {
+            Log3(("rtFsIsoImportProcessElToritoDesc: %p: iSrcEntry=%u idHeader=%#x%s\n", pbEntry - &pThis->abBuf[0], iSrcEntry, idHeader,
+                  idHeader == ISO9660_ELTORITO_BOOT_INDICATOR_BOOTABLE ? " bootable"
+                  : idHeader == ISO9660_ELTORITO_BOOT_INDICATOR_NOT_BOOTABLE ? " not-bootable" : ""));
+
+            /* KLUDGE ALRET! Do we need to add a section header first? (simplified) */
+            if (iSrcEntry == 2)
+            {
+                Assert(iSrcEntry == iDstEntry);
+                uint32_t cSecEntries = 1;
+                bool     fFinal   = false;
+                for (uint32_t iNextEntry = iSrcEntry + 1; iNextEntry < cMaxEntries; iNextEntry++)
+                    if (pbEntry[iNextEntry * ISO9660_ELTORITO_ENTRY_SIZE] == ISO9660_ELTORITO_BOOT_INDICATOR_BOOTABLE)
+                        cSecEntries++;
+                    else
+                    {
+                        fFinal = ASMMemIsZero(&pbEntry[iNextEntry * ISO9660_ELTORITO_ENTRY_SIZE], ISO9660_ELTORITO_ENTRY_SIZE);
+                        break;
+                    }
+                RTFsIsoMakerBootCatSetSectionHeaderEntry(pThis->hIsoMaker, iSrcEntry, cSecEntries, pValEntry->bPlatformId,
+                                                         pszId, fFinal);
+                iDstEntry++;
+            }
+
+            /* Now process the entry. */
+            uint32_t cSkip = 0;
+            rtFsIsoImportProcessElToritoSectionEntry(pThis, iSrcEntry, cMaxEntries, (PCISO9660ELTORITOSECTIONENTRY)pbEntry,
+                                                     iDstEntry, cLocations, aoffLocations, &cSkip);
+            iSrcEntry += cSkip;
+            iDstEntry += cSkip;
+            cSectionsLeft -= 1;
+            if (!cSectionsLeft)
+                break;
+        }
+        else if (   idHeader == ISO9660_ELTORITO_HEADER_ID_SECTION_HEADER
+                 || idHeader == ISO9660_ELTORITO_HEADER_ID_FINAL_SECTION_HEADER)
+        {
+            PCISO9660ELTORITOSECTIONHEADER pSecHdr = (PCISO9660ELTORITOSECTIONHEADER)pbEntry;
+            Log3(("rtFsIsoImportProcessElToritoDesc: %p: iSrcEntry=%u idHeader=%#x section header cSections=%u%s\n",
+                  pbEntry - &pThis->abBuf[0], iSrcEntry, idHeader, RT_LE2H_U16(pSecHdr->cEntries),
+                  idHeader == ISO9660_ELTORITO_HEADER_ID_FINAL_SECTION_HEADER ? " (final)" : ""));
+            rtFsIsoImportProcessElToritoSectionHeader(pThis, iSrcEntry, pSecHdr, szId, iDstEntry);
+            if (idHeader == ISO9660_ELTORITO_HEADER_ID_FINAL_SECTION_HEADER)
+            {
+                fSeenFinal    = true;
+                cSectionsLeft = RT_LE2H_U16(pSecHdr->cEntries);
+            }
+        }
+        else
+        {
+            rtFsIsoImpError(pThis, VERR_ISOMK_IMPORT_BOOT_CAT_UNKNOWN_HEADER_ID,
+                            "Unknown boot catalog header ID for entry #%#x: %#x", iSrcEntry, idHeader);
+            cSectionsLeft -= 1;
+            if (!cSectionsLeft)
+                break;
+        }
+    }
+
+    if (!fSeenFinal || cSectionsLeft > 0)
         rc = rtFsIsoImpError(pThis, VERR_ISOMK_IMPORT_BOOT_CAT_MISSING_FINAL_OR_TOO_BIG,
                              "Boot catalog is probably larger than a sector, or it's missing the final section header entry");
     return rc;
@@ -2635,7 +3570,6 @@ RTDECL(int) RTFsIsoMakerImport(RTFSISOMAKER hIsoMaker, RTVFSFILE hIsoFile, uint3
                                 break;
                         }
 
-
                         /*
                          * Read the next volume descriptor and check the signature.
                          */
@@ -2667,9 +3601,73 @@ RTDECL(int) RTFsIsoMakerImport(RTFSISOMAKER hIsoMaker, RTVFSFILE hIsoFile, uint3
                                             (int)sizeof(pThis->uSectorBuf.VolDescHdr), &pThis->uSectorBuf.VolDescHdr);
                             break;
                         }
-                        /** @todo UDF support. */
                         if (pThis->uSectorBuf.VolDescHdr.bDescType == ISO9660VOLDESC_TYPE_TERMINATOR)
                             break;
+                    }
+
+                    /*
+                     * Look for UDF descriptors, starting with "BEA01".
+                     * With the exception of the completely unused "BOOT2" descriptor, these have no content.
+                     */
+                    if (   RT_SUCCESS(pThis->rc)
+                        && !(pThis->fFlags & RTFSISOMK_IMPORT_F_NO_UDF)
+                        && iVolDesc < 29)
+                    {
+                        bool fSeenBea01 = false;
+                        for (;;)
+                        {
+                            iVolDesc++;
+                            if (iVolDesc < 32)
+                            {
+                                rc = RTVfsFileReadAt(hIsoFile, _32K + iVolDesc * ISO9660_SECTOR_SIZE,
+                                                     &pThis->uSectorBuf, sizeof(pThis->uSectorBuf), NULL);
+                                if (RT_SUCCESS(rc))
+                                {
+                                    uint64_t const u64Hdr = ISO9660VOLDESC_MAKE_U64_HDR_VALUE(pThis->uSectorBuf.au64[0]);
+                                    if (!fSeenBea01)
+                                    {
+                                        if (u64Hdr == UDF_EXT_VOL_DESC_MAKE_U64_CONST(UDF_EXT_VOL_DESC_STD_ID_BEGIN_))
+                                        {
+                                            fSeenBea01 = true;
+                                            continue;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (u64Hdr == UDF_EXT_VOL_DESC_MAKE_U64_CONST(UDF_EXT_VOL_DESC_STD_ID_NSR_02_))
+                                        {
+                                            pThis->Udf.uLevel = 2;
+                                            continue;
+                                        }
+                                        if (u64Hdr == UDF_EXT_VOL_DESC_MAKE_U64_CONST(UDF_EXT_VOL_DESC_STD_ID_NSR_03_))
+                                        {
+                                            pThis->Udf.uLevel = 3;
+                                            continue;
+                                        }
+                                        if (u64Hdr == UDF_EXT_VOL_DESC_MAKE_U64_CONST(UDF_EXT_VOL_DESC_STD_ID_TERM_))
+                                            break;
+                                        LogRel(("RTFsIsoMakerImport: Warning! Unexpected VRS entry: %.7Rhxs!\n",
+                                                &pThis->uSectorBuf));
+                                        AssertFailed();
+                                        if (u64Hdr != 0)
+                                            continue;
+                                    }
+                                }
+                                else
+                                    rtFsIsoImpError(pThis, rc, "Error reading the volume descriptor #%u at %#RX32: %Rrc",
+                                                    iVolDesc, _32K + iVolDesc * ISO9660_SECTOR_SIZE, rc);
+                            }
+                            else
+                                rtFsIsoImpError(pThis, VERR_ISOMK_IMPORT_TOO_MANY_VOL_DESCS,
+                                                "Parses at most 32 volume descriptors");
+                            pThis->Udf.uLevel = 0;
+                            break;
+                        }
+                        if (pThis->Udf.uLevel != 0)
+                        {
+                            rtFsIsoImportUdf(pThis);
+                            RTFsUdfHlpDestroyVolInfo(&pThis->Udf.VolInfo);
+                        }
                     }
 
                     /*
@@ -2728,7 +3726,7 @@ RTDECL(int) RTFsIsoMakerImport(RTFSISOMAKER hIsoMaker, RTVFSFILE hIsoFile, uint3
             /*
              * Destroy the state.
              */
-            RTAvlU32Destroy(&pThis->Block2FileRoot, rtFsIsoMakerImportDestroyData2File, NULL);
+            RTAvlU64Destroy(&pThis->Block2FileRoot, rtFsIsoMakerImportDestroyData2File, NULL);
             RTMemFree(pThis);
         }
         else

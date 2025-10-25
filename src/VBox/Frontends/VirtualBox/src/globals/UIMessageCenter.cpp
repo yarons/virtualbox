@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 110838 2025-08-28 16:36:44Z sergey.dubov@oracle.com $ */
+/* $Id: UIMessageCenter.cpp 111479 2025-10-22 14:32:44Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1430,6 +1430,20 @@ bool UIMessageCenter::confirmVisoDiscard(QWidget *pParent /* = 0*/) const
                           tr("Discard") /* ok button text */,
                           QString() /* cancel button text */,
                           false /* ok button by default? */);
+}
+
+int UIMessageCenter::confirmUnattendedFilesRemoval(QWidget *pParent /*= 0 */) const
+{
+    QString strText("There are still files left over from unattended guest OS install in VM folder. Do you want to delete those?");
+    QString strOption("Don't ask again");
+
+    return messageWithOption(pParent, MessageType_Question,
+                             strText, strOption,
+                             false /* default option value */,
+                             AlertButton_Ok,
+                             AlertButton_Cancel | AlertButtonOption_Default | AlertButtonOption_Escape,
+                             0,
+                             tr("Delete"));
 }
 
 bool UIMessageCenter::confirmCloudNetworkRemoval(const QString &strName, QWidget *pParent /* = 0*/) const

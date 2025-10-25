@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsW2KXP.nsh 110822 2025-08-27 14:54:02Z klaus.espenlaub@oracle.com $
+; $Id: VBoxGuestAdditionsW2KXP.nsh 111363 2025-10-13 18:08:00Z klaus.espenlaub@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsW2KXP.nsh - Guest Additions installation for Windows 2000/XP.
 ;
@@ -305,7 +305,7 @@ Function ${un}W2K_${fn}Certs
     !else
   Push "SHA-1 timestamp root"
   Push "$%VBOX_GA_CERT_ROOT_SHA1_TS%"
-  Call ${un}W2K_InstallRootCert
+  Call ${un}W2K_${fn}RootCert
     !endif ; VBOX_WITH_VBOX_LEGACY_TS_CA
   !endif
 

@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 110749 2025-08-18 14:53:14Z alexander.eichner@oracle.com $ */
+/* $Id: VMEmt.cpp 111406 2025-10-15 07:04:29Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -336,6 +336,9 @@ static const char *vmR3GetHaltMethodName(VMHALTMETHOD enmMethod)
         case VMHALTMETHOD_1:            return "method1";
         //case VMHALTMETHOD_2:            return "method2";
         case VMHALTMETHOD_GLOBAL_1:     return "global1";
+#if defined(VBOX_VMM_TARGET_ARMV8) && defined(RT_OS_WINDOWS) && defined(RT_ARCH_ARM64)
+        case VMHALTMETHOD_NEM:          return "nem";
+#endif
         default:                        return "unknown";
     }
 }

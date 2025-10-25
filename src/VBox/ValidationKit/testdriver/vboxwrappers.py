@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 111164 2025-09-29 11:41:22Z alexander.eichner@oracle.com $
+# $Id: vboxwrappers.py 111375 2025-10-14 10:13:27Z alexander.eichner@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111164 $"
+__version__ = "$Revision: 111375 $"
 
 
 # Standard Python imports.
@@ -3374,6 +3374,19 @@ class SessionWrapper(TdTaskBase):
                     oIHostOnlyIf  = self.oVBox.host.findHostNetworkInterfaceByName(sHostOnlyNIC);
                     sHostOnlyNet  = oIHostOnlyIf.networkName;
                     oIDhcpServer  = self.oVBox.findDHCPServerByNetworkName(sHostOnlyNet);
+
+                    #
+                    # Check whether a fixed IP was set for the MAC address and use that one, otherwise
+                    # the DHCP server is used to query the guest IP address for the given MAC.
+                    #
+                    try:
+                        oIDhcpCfg    = oIDhcpServer.getConfig(vboxcon.DHCPConfigScope_MAC, sMacAddr, 0, False);
+                        oIDhcpCfg    = self.oVBoxMgr.queryInterface(oIDhcpCfg, 'IDHCPIndividualConfig');
+                        sIpAddr      = oIDhcpCfg.fixedAddress;
+                        oIDhcpServer = None;
+                        sMacAddr     = None;
+                    except:
+                        reporter.log4Xcpt();
             except:
                 reporter.errorXcpt();
                 return None;

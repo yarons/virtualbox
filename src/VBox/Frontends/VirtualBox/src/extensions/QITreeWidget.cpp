@@ -1,4 +1,4 @@
-/* $Id: QITreeWidget.cpp 111281 2025-10-07 15:52:12Z sergey.dubov@oracle.com $ */
+/* $Id: QITreeWidget.cpp 111373 2025-10-14 10:03:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITreeWidget class implementation.
  */
@@ -242,7 +242,7 @@ public:
 #endif
     {}
 
-    /** Returns a specialized accessibility interface type. */
+    /** Returns a specialized accessibility interface @a enmType. */
     virtual void *interface_cast(QAccessible::InterfaceType enmType) RT_OVERRIDE
     {
         const int iCase = static_cast<int>(enmType);
@@ -296,9 +296,6 @@ public:
             // so we should start enumerating tree indexes since 'column count'.
             const int iColumnCount = tree()->columnCount();
             int iCurrentIndex = iColumnCount;
-
-            // Do some sanity check as well, enough?
-            AssertReturn(iIndex >= iColumnCount, 0);
 
             // Search for sibling with corresponding index:
             QTreeWidgetItem *pItem = tree()->topLevelItem(0);

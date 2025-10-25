@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMUnattendedPage.cpp 110731 2025-08-15 12:38:57Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMUnattendedPage.cpp 111434 2025-10-16 14:09:11Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMUnattendedPage class implementation.
  */
@@ -180,7 +180,7 @@ bool UIWizardNewVMUnattendedPage::isComplete() const
         return false;
     if (m_pAdditionalOptionsContainer && !m_pAdditionalOptionsContainer->hostDomainNameComplete())
         return false;
-    if (pWizard->isProductKeyRequired() && !m_pAdditionalOptionsContainer->hasProductKeyAcceptableInput())
+    if (!m_pAdditionalOptionsContainer->isProductKeyValid(pWizard->isProductKeyRequired()))
         return false;
     return true;
 }

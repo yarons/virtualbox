@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: txsclient.py 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: txsclient.py 111443 2025-10-18 17:25:21Z alexander.eichner@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 110684 $"
+__version__ = "$Revision: 111443 $"
 
 # Standard Python imports.
 import array;
@@ -478,6 +478,12 @@ class Session(TdTaskBase):
         self.t3oReply       = (None, None, None);
         self.resetTaskLocked();
         self.unlockTask();
+
+        #
+        # Make sure we don't try to max things like False, True, etc. because someone screwed
+        # up the argument order in the wrapper functions.
+        #
+        assert(isinstance(cMsTimeout, (int, float)));
 
         self.cMsTimeout     = max(cMsTimeout, 500);
         self.fErr           = not fIgnoreErrors;
@@ -1765,9 +1771,9 @@ class Session(TdTaskBase):
         return self.startTask(cMsTimeout, fIgnoreErrors, "cpfile",
                               self.taskCopyFile, (sSrcFile, sDstFile, fMode, fFallbackOkay));
 
-    def syncCopyFile(self, sSrcFile, sDstFile, fMode = 0, cMsTimeout = 30000, fIgnoreErrors = False):
+    def syncCopyFile(self, sSrcFile, sDstFile, fMode = 0, fFallbackOkay = True, cMsTimeout = 30000, fIgnoreErrors = False):
         """Synchronous version."""
-        return self.asyncToSync(self.asyncCopyFile, sSrcFile, sDstFile, fMode, cMsTimeout, fIgnoreErrors);
+        return self.asyncToSync(self.asyncCopyFile, sSrcFile, sDstFile, fMode, fFallbackOkay, cMsTimeout, fIgnoreErrors);
 
     def asyncUploadFile(self, sLocalFile, sRemoteFile,
                         fMode = 0, fFallbackOkay = True, cMsTimeout = 30000, fIgnoreErrors = False):

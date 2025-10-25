@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.h 110731 2025-08-15 12:38:57Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMEditors.h 111434 2025-10-16 14:09:11Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMEditors class declaration.
  */
@@ -142,7 +142,7 @@ public:
         void mark(bool fProductKeyRequired);
         void disableEnableProductKeyWidgets(bool fEnabled);
         QString productKey() const;
-        bool hasProductKeyAcceptableInput() const;
+        bool isProductKeyValid(bool fProductKeyRequired) const;
     /** @} */
 
 private slots:

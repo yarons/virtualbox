@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.cpp 110731 2025-08-15 12:38:57Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMEditors.cpp 111434 2025-10-16 14:09:11Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -312,11 +312,18 @@ void UIAdditionalUnattendedOptions::disableEnableProductKeyWidgets(bool fEnabled
         m_pHostnameDomainNameEditor->disableEnableProductKeyWidgets(fEnabled);
 }
 
-bool UIAdditionalUnattendedOptions::hasProductKeyAcceptableInput() const
+bool UIAdditionalUnattendedOptions::isProductKeyValid(bool fProductKeyRequired) const
 {
     if (m_pHostnameDomainNameEditor)
-       return m_pHostnameDomainNameEditor->hasProductKeyAcceptableInput();
+       return m_pHostnameDomainNameEditor->isProductKeyValid(fProductKeyRequired);
     return false;
+}
+
+QString UIAdditionalUnattendedOptions::productKey() const
+{
+    if (m_pHostnameDomainNameEditor)
+        return m_pHostnameDomainNameEditor->productKey();
+    return QString();
 }
 
 /*********************************************************************************************************************************
