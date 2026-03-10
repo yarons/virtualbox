@@ -1,10 +1,10 @@
-/* $Id: QIToolBar.h 110384 2025-07-23 13:12:08Z sergey.dubov@oracle.com $ */
+/* $Id: QIToolBar.h 112409 2026-01-12 14:14:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - QIToolBar class declaration.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -97,10 +97,20 @@ protected:
     /** Handles paint @a pEvent. */
     virtual void paintEvent(QPaintEvent *pEvent) RT_OVERRIDE;
 
+private slots:
+
+    /** @name Theme stuff stuff.
+      * @{ */
+        /** Updates palette. */
+        void sltUpdatePalette() { preparePalette(); }
+    /** @} */
+
 private:
 
     /** Prepares all. */
     void prepare();
+    /** Prepares palette. */
+    void preparePalette();
 
     /** Recalculates overall contents width. */
     void recalculateOverallContentsWidth();

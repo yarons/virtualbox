@@ -1,10 +1,10 @@
-/* $Id: UIHostComboEditor.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIHostComboEditor.cpp 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHostComboEditor class implementation.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -44,7 +44,6 @@
 #include "UIIconPool.h"
 #include "UITranslationEventListener.h"
 #ifdef VBOX_WS_MAC
-# include "UICocoaApplication.h"
 # include "VBoxUtils-darwin.h"
 # include "DarwinKeyboard.h"
 #elif defined(VBOX_WS_WIN)
@@ -111,6 +110,7 @@ private:
 /*********************************************************************************************************************************
 *   Namespace UINativeHotKey implementation.                                                                                     *
 *********************************************************************************************************************************/
+
 
 #ifdef VBOX_WS_NIX
 namespace UINativeHotKey
@@ -390,6 +390,7 @@ void UINativeHotKey::retranslateKeyNames()
 /*********************************************************************************************************************************
 *   Namespace UIHostCombo implementation.                                                                                        *
 *********************************************************************************************************************************/
+
 
 namespace UIHostCombo
 {

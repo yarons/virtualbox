@@ -1,10 +1,10 @@
-/* $Id: UIDetailsWidgetCloudNetwork.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIDetailsWidgetCloudNetwork.cpp 113267 2026-03-05 10:14:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsWidgetCloudNetwork class implementation.
  */
 
 /*
- * Copyright (C) 2009-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -45,7 +45,6 @@
 #include "UIDetailsWidgetCloudNetwork.h"
 #include "UIFormEditorWidget.h"
 #include "UIIconPool.h"
-#include "UIMessageCenter.h"
 #include "UINetworkManager.h"
 #include "UINetworkManagerUtils.h"
 #include "UINotificationCenter.h"
@@ -81,8 +80,7 @@ void UISubnetSelectionDialog::accept()
                                           aTypes, aRefs, aOVFValues, aVBoxValues, aExtraConfigValues);
     if (!m_comDescription.isOk())
     {
-        UINotificationMessage::cannotAcquireVirtualSystemDescriptionParameter(m_comDescription,
-                                                                              m_pNotificationCenter);
+        UINotificationMessage::cannotAcquireVirtualSystemDescriptionParameter(m_comDescription, this);
         return;
     }
     AssertReturnVoid(!aVBoxValues.isEmpty());
@@ -161,8 +159,13 @@ void UISubnetSelectionDialog::prepare()
 
     /* Prepare local notification-center: */
     m_pNotificationCenter = new UINotificationCenter(this);
-    if (m_pNotificationCenter && m_pFormEditor)
-        m_pFormEditor->setNotificationCenter(m_pNotificationCenter);
+    if (m_pNotificationCenter)
+    {
+        QPointer<UINotificationCenter> target = m_pNotificationCenter;
+        setProperty("notification_center", QVariant::fromValue(target));
+        if (m_pFormEditor)
+            m_pFormEditor->setNotificationCenter(m_pNotificationCenter);
+    }
 
     /* Apply language settings: */
     sltRetranslateUI();
@@ -212,19 +215,10 @@ bool UIDetailsWidgetCloudNetwork::revalidate() const
 {
     /* Make sure network name isn't empty: */
     if (m_newData.m_strName.isEmpty())
-    {
-        UINotificationMessage::warnAboutNoNameSpecified(m_oldData.m_strName);
-        return false;
-    }
-    else
-    {
-        /* Make sure item names are unique: */
-        if (m_busyNames.contains(m_newData.m_strName))
-        {
-            UINotificationMessage::warnAboutNameAlreadyBusy(m_newData.m_strName);
-            return false;
-        }
-    }
+        return UINotificationMessage::warnAboutNoNameSpecified(m_oldData.m_strName);
+    /* Make sure item names are unique: */
+    else if (m_busyNames.contains(m_newData.m_strName))
+        return UINotificationMessage::warnAboutNameAlreadyBusy(m_newData.m_strName);
 
     return true;
 }

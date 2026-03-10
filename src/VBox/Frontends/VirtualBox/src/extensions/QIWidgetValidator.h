@@ -1,10 +1,10 @@
-/* $Id: QIWidgetValidator.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: QIWidgetValidator.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIWidgetValidator class declaration.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -38,10 +38,9 @@
 /* GUI includes: */
 #include "UILibraryDefs.h"
 
-
 /** QObject sub-class,
   * providing passed QObject with validation routine. */
-class SHARED_LIBRARY_STUFF QObjectValidator : public QObject
+class SHARED_LIBRARY_STUFF QIObjectValidator : public QObject
 {
     Q_OBJECT;
 
@@ -55,7 +54,7 @@ public:
     /** Constructs object validator passing @a pParent to the base-class.
       * @param  pValidator  Brings the validator passed on to the OObject
       *                     children and used to perform validation itself. */
-    QObjectValidator(QValidator *pValidator, QObject *pParent = 0);
+    QIObjectValidator(QValidator *pValidator, QObject *pParent = 0);
 
     /** Returns last validation state. */
     QValidator::State state() const { return m_enmState; }
@@ -77,10 +76,9 @@ private:
     QValidator::State m_enmState;
 };
 
-
 /** QObject sub-class,
-  * which can group various QObjectValidator instances to operate on. */
-class SHARED_LIBRARY_STUFF QObjectValidatorGroup : public QObject
+  * which can group various QIObjectValidator instances to operate on. */
+class SHARED_LIBRARY_STUFF QIObjectValidatorGroup : public QObject
 {
     Q_OBJECT;
 
@@ -92,12 +90,12 @@ signals:
 public:
 
     /** Constructs validation group passing @a pParent to the base-class. */
-    QObjectValidatorGroup(QObject *pParent);
+    QIObjectValidatorGroup(QObject *pParent);
 
     /** Adds @a pObjectValidator.
       * @note The ownership of @a pObjectValidator is transferred to the group,
       *       and it's the group's responsibility to delete it. */
-    void addObjectValidator(QObjectValidator *pObjectValidator);
+    void addObjectValidator(QIObjectValidator *pObjectValidator);
 
     /** Returns last validation result. */
     bool result() const { return m_fResult; }
@@ -113,12 +111,11 @@ private:
     static bool toResult(QValidator::State enmState);
 
     /** Holds object-validators and their states. */
-    QMap<QObjectValidator*, bool> m_group;
+    QMap<QIObjectValidator*, bool> m_group;
 
     /** Holds validation result. */
     bool m_fResult;
 };
-
 
 /** QValidator extension,
   * for long number validations. */
@@ -165,6 +162,5 @@ private:
     /** Holds the top. */
     ulong m_uTop;
 };
-
 
 #endif /* !FEQT_INCLUDED_SRC_extensions_QIWidgetValidator_h */

@@ -1,10 +1,10 @@
-/* $Id: UIVMLogViewerTextEdit.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIVMLogViewerTextEdit.cpp 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
 
 /*
- * Copyright (C) 2010-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -78,6 +78,7 @@ const QString horizontalScrollBarStyle("QScrollBar:horizontal {"
 *   UILogScrollLabel definition.                                                                                             *
 *********************************************************************************************************************************/
 
+
 class UILogScrollLabel : public QLabel
 {
     Q_OBJECT;
@@ -100,6 +101,7 @@ private:
 /*********************************************************************************************************************************
 *   UIIndicatorScrollBar definition.                                                                                             *
 *********************************************************************************************************************************/
+
 
 class UIIndicatorScrollBar : public QScrollBar
 {
@@ -192,9 +194,11 @@ void UIIndicatorScrollBar::paintEvent(QPaintEvent *pEvent) /* RT_OVERRIDE */
 *   UILineNumberArea definition.                                                                                                 *
 *********************************************************************************************************************************/
 
+
 class UILineNumberArea : public QWidget
 {
 public:
+
     UILineNumberArea(UIVMLogViewerTextEdit *textEdit);
     QSize sizeHint() const RT_OVERRIDE RT_FINAL;
 
@@ -205,6 +209,7 @@ protected:
     void mousePressEvent(QMouseEvent *pEvent) RT_OVERRIDE RT_FINAL;
 
 private:
+
     UIVMLogViewerTextEdit *m_pTextEdit;
 };
 

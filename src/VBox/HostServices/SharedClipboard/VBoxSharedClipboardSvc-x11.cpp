@@ -1,10 +1,10 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 113171 2026-02-26 11:30:55Z brent.paulson@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -41,6 +41,7 @@
 #include <VBox/GuestHost/SharedClipboard.h>
 #include <VBox/GuestHost/SharedClipboard-x11.h>
 #include <VBox/HostServices/VBoxClipboardSvc.h>
+#include <VBox/HostServices/VBoxSharedClipboardSvc.h>
 #include <iprt/errcore.h>
 
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
@@ -50,7 +51,6 @@
 # endif
 #endif
 
-#include "VBoxSharedClipboardSvc-internal.h"
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
 # include "VBoxSharedClipboardSvc-transfers.h"
 #endif
@@ -131,7 +131,10 @@ void ShClBackendSetCallbacks(PSHCLBACKEND pBackend, PSHCLCALLBACKS pCallbacks)
         pBackend->Callbacks.pfn##a_Fn = pCallbacks->pfn##a_Fn;
 
     SET_FN_IF_NOT_NULL(ReportFormats);
+    SET_FN_IF_NOT_NULL(OnClipboardRead);
+    SET_FN_IF_NOT_NULL(OnClipboardWrite);
     SET_FN_IF_NOT_NULL(OnRequestDataFromSource);
+    SET_FN_IF_NOT_NULL(OnSendDataToDest);
 
 #undef SET_FN_IF_NOT_NULL
 }
@@ -427,7 +430,7 @@ static DECLCALLBACK(int) shClSvcX11TransferOnInitCallback(PSHCLTRANSFERCALLBACKC
     PSHCLTRANSFER pTransfer = pCbCtx->pTransfer;
     AssertPtr(pTransfer);
 
-    int rc;
+    int rc = VERR_NOT_SUPPORTED; /* Shut up GCC. */
 
     switch (ShClTransferGetDir(pTransfer))
     {

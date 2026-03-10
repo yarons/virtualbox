@@ -1,10 +1,10 @@
-/* $Id: IEMInlineMem-x86.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: IEMInlineMem-x86.h 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Inlined Memory Functions, x86 target.
  */
 
 /*
- * Copyright (C) 2011-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -54,7 +54,7 @@ DECLINLINE(bool) iemMemAreAlignmentChecksEnabled(PVMCPUCC pVCpu) RT_NOEXCEPT
     return IEM_GET_CPL(pVCpu) == 3
         && (((uint32_t)pVCpu->cpum.GstCtx.cr0 & pVCpu->cpum.GstCtx.eflags.u) & X86_CR0_AM);
 #else
-    return RT_BOOL(pVCpu->iem.s.fExec & IEM_F_X86_AC);
+    return RT_BOOL(ICORE(pVCpu).fExec & IEM_F_X86_AC);
 #endif
 }
 
@@ -309,7 +309,7 @@ DECLINLINE(void) iemMemFakeStackSelDesc(PIEMSELDESC pDescSs, uint32_t uDpl) RT_N
 #if 1
 # define TMPL_MEM_CHECK_UNALIGNED_WITHIN_PAGE_OK(a_pVCpu, a_GCPtrEff, a_TmplMemType) \
     (   ((a_GCPtrEff) & GUEST_PAGE_OFFSET_MASK) <= GUEST_PAGE_SIZE - sizeof(a_TmplMemType) \
-     && !((a_pVCpu)->iem.s.fExec & IEM_F_X86_AC) )
+     && !(ICORE(a_pVCpu).fExec & IEM_F_X86_AC) )
 #else
 # define TMPL_MEM_CHECK_UNALIGNED_WITHIN_PAGE_OK(a_pVCpu, a_GCPtrEff, a_TmplMemType) 0
 #endif

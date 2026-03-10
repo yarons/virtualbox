@@ -1,10 +1,10 @@
-/* $Id: pdmpcidevint.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: pdmpcidevint.h 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevPCI - PDM PCI Internal header - Only for hiding bits of PDMPCIDEV.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -216,7 +216,7 @@ typedef struct PDMPCIDEVINT
     /** Offset to the PBA for MSI-X.   */
     uint16_t                        offMsixPba;
     /** Add padding to align aIORegions to an 16 byte boundary. */
-    uint8_t                         abPadding2[HC_ARCH_BITS == 32 ? 12 : 8];
+    uint8_t                         abPadding2[8];
     /** The MMIO handle for the MSI-X MMIO bar. */
     IOMMMIOHANDLE                   hMmioMsix;
 
@@ -227,7 +227,7 @@ typedef struct PDMPCIDEVINT
     /** @}  */
 } PDMPCIDEVINT;
 AssertCompileMemberAlignment(PDMPCIDEVINT, aIORegions, 8);
-AssertCompileSize(PDMPCIDEVINT, HC_ARCH_BITS == 32 ? 0x98 : 0x178);
+AssertCompileSize(PDMPCIDEVINT, 0x178);
 
 /** Indicate that PDMPCIDEV::Int.s can be declared. */
 #define PDMPCIDEVINT_DECLARED

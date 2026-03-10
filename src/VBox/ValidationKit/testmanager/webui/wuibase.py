@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuibase.py 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: wuibase.py 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $
 
 """
 Test Manager Web-UI - Base Classes.
@@ -7,7 +7,7 @@ Test Manager Web-UI - Base Classes.
 
 __copyright__ = \
 """
-Copyright (C) 2012-2025 Oracle and/or its affiliates.
+Copyright (C) 2012-2026 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 110684 $"
+__version__ = "$Revision: 112403 $"
 
 
 # Standard python imports.
@@ -54,8 +54,11 @@ from testmanager.core.useraccount import UserAccountLogic
 
 # Python 3 hacks:
 if sys.version_info[0] >= 3:
-    unicode = str;  # pylint: disable=redefined-builtin,invalid-name
-    long = int;     # pylint: disable=redefined-builtin,invalid-name
+    unicode = str;     # pylint: disable=redefined-builtin,invalid-name
+    long = int;        # pylint: disable=redefined-builtin,invalid-name
+else:
+    unicode = unicode; # pylint: disable=redefined-builtin,invalid-name,self-assigning-variable
+    long = long;       # pylint: disable=redefined-builtin,invalid-name,self-assigning-variable
 
 
 class WuiException(TMExceptionBase):
@@ -465,7 +468,7 @@ class WuiDispatcherBase(object):
 
         sValue = self.getStringParam(sName, None, None if lDefault is None else str(lDefault));
         try:
-            lValue = long(sValue);
+            lValue = long(sValue); # pylint: disable=possibly-used-before-assignment
         except:
             raise WuiException('%s parameter %s value "%s" cannot be convert to an integer'
                                % (self._sAction, sName, sValue));
@@ -948,8 +951,6 @@ class WuiDispatcherBase(object):
 
         sRedirAction is what action to redirect to on success.
         """
-        import cgitb;   # pylint: disable=deprecated-module ## @todo these will be retired in python 3.13!
-
         idEntry = self.getIntParam(sParamId, iMin = 1, iMax = 0x7ffffffe)
         fCascade = self.getBoolParam('fCascadeDelete', False);
         sRedirectTo = self.getRedirectToParameter(self._sActionUrlBase + sRedirAction);
@@ -967,7 +968,7 @@ class WuiDispatcherBase(object):
             self._sPageTitle  = 'Unable to delete entry';
             self._sPageBody   = str(oXcpt);
             if config.g_kfDebugDbXcpt:
-                self._sPageBody += cgitb.html(sys.exc_info());
+                self._sPageBody += self._oSrvGlue.formatExceptionAsHtml(sys.exc_info());
             self._sRedirectTo = None;
         return False;
 

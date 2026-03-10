@@ -1,10 +1,10 @@
-/* $Id: VBoxGuest-haiku.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxGuest-haiku.h 112972 2026-02-12 14:07:31Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxGuest kernel module, Haiku Guest Additions, header.
  */
 
 /*
- * Copyright (C) 2012-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -160,7 +160,7 @@ struct vboxguest_module_info
     RTHCPHYS(*_RTR0MemObjGetPagePhysAddr)(RTR0MEMOBJ MemObj, size_t iPage);
     bool (*_RTR0MemObjIsMapping)(RTR0MEMOBJ MemObj);
     int (*_RTR0MemObjLockKernelTag)(PRTR0MEMOBJ pMemObj, void *pv, size_t cb, uint32_t fAccess, const char *pszTag);
-    int (*_RTR0MemObjLockUserTag)(PRTR0MEMOBJ pMemObj, RTR3PTR R3Ptr, size_t cb, uint32_t fAccess,
+    int (*_RTR0MemObjLockUserTag)(PRTR0MEMOBJ pMemObj, RTR3PTR R3Ptr, size_t cb, uint32_t fAccess, uint32_t fFlags,
                                   RTR0PROCESS R0Process, const char *pszTag);
     int (*_RTR0MemObjMapKernelExTag)(PRTR0MEMOBJ pMemObj, RTR0MEMOBJ MemObjToMap, void *pvFixed, size_t uAlignment,
                                      unsigned fProt, size_t offSub, size_t cbSub, const char *pszTag);

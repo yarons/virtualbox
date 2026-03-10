@@ -1,10 +1,10 @@
-/* $Id: SystemPropertiesImpl.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: SystemPropertiesImpl.cpp 113257 2026-03-04 17:38:22Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -147,7 +147,7 @@ HRESULT SystemProperties::init(VirtualBox *aParent)
         hrc = unconst(m_platformProperties).createObject();
         if (SUCCEEDED(hrc))
         {
-            hrc = m_platformProperties->init(mParent);
+            hrc = m_platformProperties->init(mParent, true /*fIsHost*/);
             if (SUCCEEDED(hrc))
                 hrc = m_platformProperties->i_setArchitecture(PlatformProperties::s_getHostPlatformArchitecture());
         }

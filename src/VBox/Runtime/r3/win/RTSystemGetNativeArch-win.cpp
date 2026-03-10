@@ -1,10 +1,10 @@
-/* $Id: RTSystemGetNativeArch-win.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: RTSystemGetNativeArch-win.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTSystemGetNativeArch, Windows ring-3.
  */
 
 /*
- * Copyright (C) 2024-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2024-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -53,10 +53,11 @@ static uint32_t rtSystemNativeToArchVal(USHORT uMachine)
 {
     switch (uMachine)
     {
-        case IMAGE_FILE_MACHINE_I386:       return RT_ARCH_VAL_X86;
-        case IMAGE_FILE_MACHINE_AMD64:      return RT_ARCH_VAL_AMD64;
-        case IMAGE_FILE_MACHINE_ARM:        return RT_ARCH_VAL_ARM32;
-        case IMAGE_FILE_MACHINE_ARM64:      return RT_ARCH_VAL_ARM64;
+        case IMAGE_FILE_MACHINE_I386:        return RT_ARCH_VAL_X86;
+        case IMAGE_FILE_MACHINE_AMD64:       return RT_ARCH_VAL_AMD64;
+        case IMAGE_FILE_MACHINE_ARM:         return RT_ARCH_VAL_ARM32;
+        case IMAGE_FILE_MACHINE_ARM64:       return RT_ARCH_VAL_ARM64;
+        case IMAGE_FILE_MACHINE_TARGET_HOST: return RT_ARCH_VAL;
         default:
             AssertMsgFailed(("Unknown value: uMachine=%#x\n", uMachine));
             return 0;
@@ -85,13 +86,13 @@ RTDECL(uint32_t) RTSystemGetNativeArch(void)
     }
 
     /*
-     * The fallback is KUSER_SHARED_DATA::NativeProcessorArchitecture.
+     * The fallback is KUSER_SHARED_DATA::ImageNumberHigh.
      * This works for NT4 and later.
      */
     if (g_enmWinVer >= kRTWinOSType_NT4)
     {
         KUSER_SHARED_DATA volatile *pUserSharedData = (KUSER_SHARED_DATA volatile *)MM_SHARED_USER_DATA_VA;
-        return rtSystemNativeToArchVal(pUserSharedData->NativeProcessorArchitecture);
+        return rtSystemNativeToArchVal(pUserSharedData->ImageNumberHigh);
     }
     return RT_ARCH_VAL;
 }

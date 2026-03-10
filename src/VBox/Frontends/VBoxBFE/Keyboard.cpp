@@ -1,11 +1,11 @@
-/* $Id: Keyboard.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: Keyboard.cpp 113251 2026-03-04 14:03:34Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox frontends: Basic Frontend (BFE):
  * Keyboard class implementation
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -233,9 +233,7 @@ DECLCALLBACK(void *) Keyboard::i_drvQueryInterface(PPDMIBASE pInterface, const c
 DECLCALLBACK(void) Keyboard::i_drvDestruct(PPDMDRVINS pDrvIns)
 {
     PDMDRV_CHECK_VERSIONS_RETURN_VOID(pDrvIns);
-    PDRVMAINKEYBOARD pThis = PDMINS_2_DATA(pDrvIns, PDRVMAINKEYBOARD);
     LogRelFlowFunc(("iInstance=%d\n", pDrvIns->iInstance));
-
 }
 
 

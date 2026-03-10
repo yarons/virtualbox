@@ -1,10 +1,10 @@
-/* $Id: UIUpdateManager.cpp 110718 2025-08-13 17:00:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIUpdateManager.cpp 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -34,7 +34,6 @@
 #include "UIExtension.h"
 #include "UIExtraDataManager.h"
 #include "UIGlobalSession.h"
-#include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
 #include "UINotificationCenter.h"
 #include "UIUpdateDefs.h"
@@ -67,7 +66,6 @@ private:
 
     /** Holds whether this customer has forced privelegies. */
     bool  m_fForcedCall;
-
 };
 
 
@@ -200,7 +198,7 @@ void UIUpdateStepVirtualBoxExtensionPack::exec()
     }
 
     /* Ask the user about extension pack downloading: */
-    if (!msgCenter().confirmLookingForExtensionPack(GUI_ExtPackName, strExtPackVersion))
+    if (!UINotificationQuestion::confirmLookingForExtensionPack(GUI_ExtPackName, strExtPackVersion))
     {
         emit sigStepFinished();
         return;
@@ -227,10 +225,10 @@ void UIUpdateStepVirtualBoxExtensionPack::sltHandleDownloadedExtensionPack(const
                                                                            const QString &strDigest)
 {
     /* Warn the user about extension pack was downloaded and saved, propose to install it: */
-    if (msgCenter().proposeInstallExtentionPack(GUI_ExtPackName, strSource, QDir::toNativeSeparators(strTarget)))
+    if (UINotificationQuestion::confirmInstallingExtentionPack(GUI_ExtPackName, strSource, QDir::toNativeSeparators(strTarget)))
         UIExtension::install(strTarget, strDigest, windowManager().mainWindowShown(), NULL);
     /* Propose to delete the downloaded extension pack: */
-    if (msgCenter().proposeDeleteExtentionPack(QDir::toNativeSeparators(strTarget)))
+    if (UINotificationQuestion::confirmDeletingExtentionPackFile(QDir::toNativeSeparators(strTarget)))
     {
         /* Delete the downloaded extension pack: */
         QFile::remove(QDir::toNativeSeparators(strTarget));
@@ -240,7 +238,7 @@ void UIUpdateStepVirtualBoxExtensionPack::sltHandleDownloadedExtensionPack(const
         /* Propose to delete old extension pack files if there are any: */
         if (oldExtPackFiles.size())
         {
-            if (msgCenter().proposeDeleteOldExtentionPacks(oldExtPackFiles))
+            if (UINotificationQuestion::confirmDeletingOldExtentionPackFiles(oldExtPackFiles))
             {
                 foreach (const QString &strExtPackFile, oldExtPackFiles)
                 {

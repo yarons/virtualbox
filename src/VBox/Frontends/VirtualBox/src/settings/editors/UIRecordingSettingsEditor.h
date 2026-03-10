@@ -1,10 +1,10 @@
-/* $Id: UIRecordingSettingsEditor.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIRecordingSettingsEditor.h 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIRecordingSettingsEditor class declaration.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -37,13 +37,15 @@
 
 /* Forward declarations: */
 class QCheckBox;
-class QComboBox;
-class QLabel;
-class QSpinBox;
+class QGridLayout;
 class QWidget;
-class QIAdvancedSlider;
-class UIFilePathSelector;
-class UIFilmContainer;
+class UIRecordingAudioProfileEditor;
+class UIRecordingFilePathEditor;
+class UIRecordingModeEditor;
+class UIRecordingScreenSelectorEditor;
+class UIRecordingVideoBitrateEditor;
+class UIRecordingVideoFrameRateEditor;
+class UIRecordingVideoFrameSizeEditor;
 
 /** UIEditor sub-class used as a recording settings editor. */
 class SHARED_LIBRARY_STUFF UIRecordingSettingsEditor : public UIEditor
@@ -62,8 +64,6 @@ public:
 
     /** Defines whether options are @a fAvailable. */
     void setOptionsAvailable(bool fAvailable);
-    /** Defines whether screen options are @a fAvailable. */
-    void setScreenOptionsAvailable(bool fAvailable);
 
     /** Defines @a enmMode. */
     void setMode(UISettingsDefs::RecordingMode enmMode);
@@ -93,44 +93,39 @@ public:
     /** Returns frame rate. */
     int frameRate() const;
 
-    /** Defines bit @a iRate. */
-    void setBitRate(int iRate);
-    /** Returns bit rate. */
-    int bitRate() const;
+    /** Defines @a iBitrate. */
+    void setBitrate(int iBitrate);
+    /** Returns bitrate. */
+    int bitrate() const;
 
-    /** Defines audio quality @a iRate. */
-    void setAudioQualityRate(int iRate);
-    /** Returns audio quality rate. */
-    int audioQualityRate() const;
+    /** Defines audio @a strProfile. */
+    void setAudioProfile(const QString &strProfile);
+    /** Returns audio profile. */
+    QString audioProfile() const;
 
     /** Defines enabled @a screens. */
     void setScreens(const QVector<bool> &screens);
     /** Returns enabled screens. */
     QVector<bool> screens() const;
 
+protected:
+
+    /** Handles filter change. */
+    virtual void handleFilterChange() RT_OVERRIDE;
 
 private slots:
 
     /** Handles translation event. */
     virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
+
     /** Handles feature toggling. */
-    void sltHandleFeatureToggled();
+    void sltHandleFeatureToggle();
     /** Handles mode change. */
-    void sltHandleModeComboChange();
-    /** Handles frame size change. */
-    void sltHandleVideoFrameSizeComboChange();
-    /** Handles frame width change. */
-    void sltHandleVideoFrameWidthChange();
-    /** Handles frame height change. */
-    void sltHandleVideoFrameHeightChange();
-    /** Handles frame rate slider change. */
-    void sltHandleVideoFrameRateSliderChange();
-    /** Handles frame rate spinbox change. */
-    void sltHandleVideoFrameRateSpinboxChange();
-    /** Handles bit-rate slider change. */
-    void sltHandleVideoBitRateSliderChange();
-    /** Handles bit-rate spinbox change. */
-    void sltHandleVideoBitRateSpinboxChange();
+    void sltHandleModeChange();
+    /** Handles video quality change. */
+    void sltHandleVideoQualityChange();
+    /** Handles video bitrate change. */
+    void sltHandleVideoBitrateChange(int iBitrate);
 
 private:
 
@@ -141,124 +136,44 @@ private:
     /** Prepares connections. */
     void prepareConnections();
 
-    /** Populates mode combo-box. */
-    void populateComboMode();
-
-    /** Updates widget visibility. */
-    void updateWidgetVisibility();
     /** Updates widget availability. */
     void updateWidgetAvailability();
-    /** Updates recording file size hint. */
-    void updateRecordingFileSizeHint();
-    /** Searches for corresponding frame size preset. */
-    void lookForCorrespondingFrameSizePreset();
+    /** Updates minimum layout hint. */
+    void updateMinimumLayoutHint();
 
-    /** Searches for the @a data field in corresponding @a pComboBox. */
-    static void lookForCorrespondingPreset(QComboBox *pComboBox, const QVariant &data);
-    /** Calculates recording video bit-rate for passed @a iFrameWidth, @a iFrameHeight, @a iFrameRate and @a iQuality. */
-    static int calculateBitRate(int iFrameWidth, int iFrameHeight, int iFrameRate, int iQuality);
-    /** Calculates recording video quality for passed @a iFrameWidth, @a iFrameHeight, @a iFrameRate and @a iBitRate. */
+    /** Calculates recording bitrate for passed @a iFrameWidth, @a iFrameHeight, @a iFrameRate and @a iQuality. */
+    static int calculateBitrate(int iFrameWidth, int iFrameHeight, int iFrameRate, int iQuality);
+    /** Calculates recording quality for passed @a iFrameWidth, @a iFrameHeight, @a iFrameRate and @a iBitrate. */
     static int calculateQuality(int iFrameWidth, int iFrameHeight, int iFrameRate, int iBitRate);
 
     /** @name Values
      * @{ */
         /** Holds whether feature is enabled. */
         bool  m_fFeatureEnabled;
-
         /** Holds whether options are available. */
         bool  m_fOptionsAvailable;
-        /** Holds whether screen options are available. */
-        bool  m_fScreenOptionsAvailable;
-
-        /** Holds the list of supported modes. */
-        QVector<UISettingsDefs::RecordingMode>  m_supportedValues;
-        /** Holds the mode. */
-        UISettingsDefs::RecordingMode           m_enmMode;
-
-        /** Holds the folder. */
-        QString  m_strFolder;
-        /** Holds the file path. */
-        QString  m_strFilePath;
-
-        /** Holds the frame width. */
-        int  m_iFrameWidth;
-        /** Holds the frame height. */
-        int  m_iFrameHeight;
-        /** Holds the frame rate. */
-        int  m_iFrameRate;
-        /** Holds the bit rate. */
-        int  m_iBitRate;
-        /** Holds the audio quality rate. */
-        int  m_iAudioQualityRate;
-
-        /** Holds the screens. */
-        QVector<bool>  m_screens;
     /** @} */
 
     /** @name Widgets
      * @{ */
         /** Holds the feature check-box instance. */
-        QCheckBox          *m_pCheckboxFeature;
-        /** Holds the mode label instance. */
-        QLabel             *m_pLabelMode;
-        /** Holds the mode combo instance. */
-        QComboBox          *m_pComboMode;
-        /** Holds the file path label instance. */
-        QLabel             *m_pLabelFilePath;
+        QCheckBox                       *m_pCheckboxFeature;
+        /** Holds the settings layout instance. */
+        QGridLayout                     *m_pLayoutSettings;
+        /** Holds the mode editor instance. */
+        UIRecordingModeEditor           *m_pEditorMode;
         /** Holds the file path editor instance. */
-        UIFilePathSelector *m_pEditorFilePath;
-        /** Holds the frame size label instance. */
-        QLabel             *m_pLabelFrameSize;
-        /** Holds the frame size combo instance. */
-        QComboBox          *m_pComboFrameSize;
-        /** Holds the frame width spinbox instance. */
-        QSpinBox           *m_pSpinboxFrameWidth;
-        /** Holds the frame height spinbox instance. */
-        QSpinBox           *m_pSpinboxFrameHeight;
-        /** Holds the frame rate label instance. */
-        QLabel             *m_pLabelFrameRate;
-        /** Holds the frame rate settings widget instance. */
-        QWidget            *m_pWidgetFrameRateSettings;
-        /** Holds the frame rate slider instance. */
-        QIAdvancedSlider   *m_pSliderFrameRate;
-        /** Holds the frame rate spinbox instance. */
-        QSpinBox           *m_pSpinboxFrameRate;
-        /** Holds the frame rate min label instance. */
-        QLabel             *m_pLabelFrameRateMin;
-        /** Holds the frame rate max label instance. */
-        QLabel             *m_pLabelFrameRateMax;
-        /** Holds the video quality label instance. */
-        QLabel             *m_pLabelVideoQuality;
-        /** Holds the video quality settings widget instance. */
-        QWidget            *m_pWidgetVideoQualitySettings;
-        /** Holds the video quality slider instance. */
-        QIAdvancedSlider   *m_pSliderVideoQuality;
-        /** Holds the video quality spinbox instance. */
-        QSpinBox           *m_pSpinboxVideoQuality;
-        /** Holds the video quality min label instance. */
-        QLabel             *m_pLabelVideoQualityMin;
-        /** Holds the video quality med label instance. */
-        QLabel             *m_pLabelVideoQualityMed;
-        /** Holds the video quality max label instance. */
-        QLabel             *m_pLabelVideoQualityMax;
-        /** Holds the audio quality label instance. */
-        QLabel             *m_pLabelAudioQuality;
-        /** Holds the audio quality settings widget instance. */
-        QWidget            *m_pWidgetAudioQualitySettings;
-        /** Holds the audio quality slider instance. */
-        QIAdvancedSlider   *m_pSliderAudioQuality;
-        /** Holds the audio quality min label instance. */
-        QLabel             *m_pLabelAudioQualityMin;
-        /** Holds the audio quality med label instance. */
-        QLabel             *m_pLabelAudioQualityMed;
-        /** Holds the audio quality max label instance. */
-        QLabel             *m_pLabelAudioQualityMax;
-        /** Holds the size hint label instance. */
-        QLabel             *m_pLabelSizeHint;
-        /** Holds the screens label instance. */
-        QLabel             *m_pLabelScreens;
-        /** Holds the screens scroller instance. */
-        UIFilmContainer    *m_pScrollerScreens;
+        UIRecordingFilePathEditor       *m_pEditorFilePath;
+        /** Holds the frame size editor instance. */
+        UIRecordingVideoFrameSizeEditor *m_pEditorFrameSize;
+        /** Holds the frame rate editor instance. */
+        UIRecordingVideoFrameRateEditor *m_pEditorFrameRate;
+        /** Holds the bitrate editor instance. */
+        UIRecordingVideoBitrateEditor   *m_pEditorBitrate;
+        /** Holds the audio profile editor instance. */
+        UIRecordingAudioProfileEditor   *m_pEditorAudioProfile;
+        /** Holds the screen selector editor instance. */
+        UIRecordingScreenSelectorEditor *m_pEditorScreenSelector;
     /** @} */
 };
 

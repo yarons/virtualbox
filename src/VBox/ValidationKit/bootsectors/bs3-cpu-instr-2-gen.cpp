@@ -1,10 +1,10 @@
-/* $Id: bs3-cpu-instr-2-gen.cpp 111344 2025-10-13 12:05:44Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: bs3-cpu-instr-2-gen.cpp 112423 2026-01-12 20:51:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-instr-2, Test Data Generator.
  */
 
 /*
- * Copyright (C) 2024-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2024-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -348,7 +348,7 @@ static void FileHeader(PRTSTREAM pOut, const char *pszFilename, const char *pszI
                  " */\n"
                  "\n"
                  "/*\n"
-                 " * Copyright (C) 2024-2025 Oracle and/or its affiliates.\n"
+                 " * Copyright (C) 2024-2026 Oracle and/or its affiliates.\n"
                  " *\n"
                  " * This file is part of VirtualBox base platform packages, as\n"
                  " * available from https://www.virtualbox.org.\n"

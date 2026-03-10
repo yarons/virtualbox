@@ -1,10 +1,10 @@
-/* $Id: UIHelpBrowserDialog.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIHelpBrowserDialog.cpp 113213 2026-03-03 07:36:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserDialog class implementation.
  */
 
 /*
- * Copyright (C) 2010-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -37,7 +37,7 @@
 #include "UIExtraDataManager.h"
 #include "UIHelpBrowserDialog.h"
 #include "UIHelpBrowserWidget.h"
-#include "UINotificationObjects.h"
+#include "UINotificationMessage.h"
 #include "UITranslationEventListener.h"
 #ifndef VBOX_WS_MAC
 # include "UIIconPool.h"
@@ -55,7 +55,7 @@
 QPointer<UIHelpBrowserDialog> UIHelpBrowserDialog::m_pInstance;
 
 UIHelpBrowserDialog::UIHelpBrowserDialog(QWidget *pParent, QWidget *pCenterWidget, const QString &strHelpFilePath)
-    : QIWithRestorableGeometry<QMainWindow>(pParent)
+    : QIMainWindow(pParent)
     , m_strHelpFilePath(strHelpFilePath)
     , m_pWidget(0)
     , m_pCenterWidget(pCenterWidget)
@@ -116,7 +116,7 @@ bool UIHelpBrowserDialog::event(QEvent *pEvent)
         default:
             break;
     }
-    return QIWithRestorableGeometry<QMainWindow>::event(pEvent);
+    return QIMainWindow::event(pEvent);
 }
 
 void UIHelpBrowserDialog::prepareCentralWidget()
@@ -178,42 +178,9 @@ void UIHelpBrowserDialog::sltZoomPercentageChanged(int iPercentage)
 }
 
 /* static */
-void UIHelpBrowserDialog::findManualFileAndShow(const QString &strKeyword /*= QString() */)
+void UIHelpBrowserDialog::findManualFileAndShow(const QString &strKeyword /* = QString() */)
 {
-#ifndef VBOX_OSE
-    /* For non-OSE version we just open it: */
     showUserManual(uiCommon().helpFile(), strKeyword);
-#else /* #ifndef VBOX_OSE */
-    Q_UNUSED(strKeyword);
-#if 0
-    /* For OSE version we have to check if it present first: */
-    QString strUserManualFileName1 = uiCommon().helpFile();
-    QString strShortFileName = QFileInfo(strUserManualFileName1).fileName();
-    QString strUserManualFileName2 = QDir(gpGlobalSession->homeFolder()).absoluteFilePath(strShortFileName);
-    /* Show if user guide already present: */
-    if (QFile::exists(strUserManualFileName1))
-        showUserManual(strUserManualFileName1, strKeyword);
-    else if (QFile::exists(strUserManualFileName2))
-        showUserManual(strUserManualFileName2, strKeyword);
-# ifdef VBOX_GUI_WITH_NETWORK_MANAGER
-    /* If downloader is running already: */
-    if (UINotificationDownloaderUserManual::exists())
-        gpNotificationCenter->invoke();
-    /* Else propose to download user guide: */
-    else if (confirmLookingForUserManual(strUserManualFileName1))
-    {
-        /* Download user guide: */
-        UINotificationDownloaderUserManual *pNotification = UINotificationDownloaderUserManual::instance(UICommon::helpFile());
-        /* After downloading finished => show User Guide: */
-        /// @todo
-        // connect(pNotification, &UINotificationDownloaderUserManual::sigUserManualDownloaded,
-        //         this, &UIMessageCenter::showUserManual);
-        /* Append and start notification: */
-        gpNotificationCenter->append(pNotification);
-    }
-# endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
-#endif // 0
-#endif /* #ifdef VBOX_OSE */
 }
 
 /* static */

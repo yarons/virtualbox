@@ -1,10 +1,10 @@
-/* $Id: UIWizardImportApp.cpp 111182 2025-09-30 09:38:54Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardImportApp.cpp 113267 2026-03-05 10:14:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardImportApp class implementation.
  */
 
 /*
- * Copyright (C) 2009-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -185,7 +185,7 @@ bool UIWizardImportApp::setFile(const QString &strName)
     CAppliance comAppliance = comVBox.CreateAppliance();
     if (!comVBox.isOk())
     {
-        UINotificationMessage::cannotCreateAppliance(comVBox, notificationCenter());
+        UINotificationMessage::cannotCreateAppliance(comVBox, this);
         return false;
     }
 
@@ -197,10 +197,7 @@ bool UIWizardImportApp::setFile(const QString &strName)
     /* Now we have to interpret that stuff: */
     comAppliance.Interpret();
     if (!comAppliance.isOk())
-    {
-        UINotificationMessage::cannotInterpretAppliance(comAppliance, notificationCenter());
-        return false;
-    }
+        return UINotificationMessage::cannotInterpretAppliance(comAppliance, this);
 
     /* Remember appliance: */
     m_comLocalAppliance = comAppliance;

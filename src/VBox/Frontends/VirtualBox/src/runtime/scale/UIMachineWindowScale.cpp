@@ -1,10 +1,10 @@
-/* $Id: UIMachineWindowScale.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineWindowScale.cpp 112954 2026-02-11 14:42:55Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowScale class implementation.
  */
 
 /*
- * Copyright (C) 2010-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -45,7 +45,6 @@
 #include "UIMachineView.h"
 #include "UINotificationCenter.h"
 #ifdef VBOX_WS_MAC
-# include "VBoxUtils.h"
 # include "UIImageTools.h"
 # include "UICocoaApplication.h"
 # include "UIVersion.h"
@@ -86,7 +85,7 @@ void UIMachineWindowScale::prepareVisualState()
     if (UIVersionInfo::showBetaLabel())
     {
         QPixmap betaLabel = ::betaLabel(QSize(74, darwinWindowTitleHeight(this) - 1));
-        ::darwinLabelWindow(this, &betaLabel);
+        darwinSetWindowLabel(this, &betaLabel);
     }
 
     /* Enable fullscreen support for every screen which requires it: */

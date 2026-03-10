@@ -1,10 +1,10 @@
-/* $Id: VBoxGuestR3LibClipboard.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxGuestR3LibClipboard.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared Clipboard.
  */
 
 /*
- * Copyright (C) 2007-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2007-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -70,11 +70,6 @@
  * FunctionNameReply = Replies to a host message (request).
  * FunctionNameSend  = Sends a guest message to the host.
  */
-
-
-/*********************************************************************************************************************************
-*   Prototypes                                                                                                                   *
-*********************************************************************************************************************************/
 
 
 /**
@@ -621,8 +616,8 @@ VBGLR3DECL(int) VbglR3ClipboardQueryFeatures(uint32_t idClient, uint64_t *pfHost
  * @param   pidMsg          Where to store the message id.
  * @param   pcParameters    Where to store the number  of parameters which will
  *                          be received in a second call to the host.
- * @param   pidRestoreCheck Pointer to the VbglR3GetSessionId() variable to use
- *                          for the VM restore check.  Optional.
+ * @param   pidRestoreCheck Pointer to the VbglR3QuerySessionId() variable to
+ *                          use for the VM restore check.  Optional.
  *
  * @note    Restore check is only performed optimally with a 6.0 host.
  */
@@ -713,8 +708,8 @@ static int vbglR3ClipboardMsgPeekEx(PVBGLR3SHCLCMDCTX pCtx, bool fWait, uint32_t
  * @param   pidMsg          Where to store the message id.
  * @param   pcParameters    Where to store the number  of parameters which will
  *                          be received in a second call to the host.
- * @param   pidRestoreCheck Pointer to the VbglR3GetSessionId() variable to use
- *                          for the VM restore check.  Optional.
+ * @param   pidRestoreCheck Pointer to the VbglR3QuerySessionId() variable to
+ *                          use for the VM restore check.  Optional.
  *
  * @note    Restore check is only performed optimally with a 6.0 host.
  */
@@ -742,8 +737,8 @@ VBGLR3DECL(int) VbglR3ClipboardMsgPeekWait(PVBGLR3SHCLCMDCTX pCtx, uint32_t *pid
  * @param   pidMsg          Where to store the message id.
  * @param   pcParameters    Where to store the number  of parameters which will
  *                          be received in a second call to the host.
- * @param   pidRestoreCheck Pointer to the VbglR3GetSessionId() variable to use
- *                          for the VM restore check.  Optional.
+ * @param   pidRestoreCheck Pointer to the VbglR3QuerySessionId() variable to
+ *                          use for the VM restore check.  Optional.
  *
  * @note    Restore check is only performed optimally with a 6.0 host.
  */

@@ -3,7 +3,7 @@
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -110,6 +110,7 @@ AssertCompile(EMSTATE_HALTED == 6);
 AssertCompile(EMSTATE_WAIT_SIPI == 7);
 
 VMM_INT_DECL(EMSTATE)           EMGetState(PVMCPU pVCpu);
+VMM_INT_DECL(EMSTATE)           EMGetPrevState(PVMCPU pVCpu);
 VMM_INT_DECL(void)              EMSetState(PVMCPU pVCpu, EMSTATE enmNewState);
 VMMDECL(void)                   EMSetHypercallInstructionsEnabled(PVMCPU pVCpu, bool fEnabled);
 VMMDECL(bool)                   EMAreHypercallInstructionsEnabled(PVMCPU pVCpu);
@@ -221,7 +222,9 @@ typedef struct EMEXITREC
     uint16_t            uFlagsAndType;
     /** The action to take (EMEXITACTION). */
     uint8_t             enmAction;
-    uint8_t             abUnused[3];
+    /** Number of exec probe attempts. */
+    uint8_t             cProbeAttempts;
+    uint8_t             abUnused[2];
     /** Maximum number of instructions to execute without hitting an exit. */
     uint16_t            cMaxInstructionsWithoutExit;
     /** The exit number (EMCPU::iNextExit) at which it was last updated. */

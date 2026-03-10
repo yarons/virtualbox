@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 110812 2025-08-25 18:50:11Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for Python bindings
 #
 
 #
-# Copyright (C) 2009-2025 Oracle and/or its affiliates.
+# Copyright (C) 2009-2026 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.
@@ -30,7 +30,8 @@ include $(KBUILD_PATH)/subheader.kmk
 
 #
 # List of supported Python versions, defining a number of
-# VBOX_PYTHON[26|27|31|32|32M|33|33M|34|34M|35|35M|36|36M|37|37M|38|38M|39|39M|310|310M|DEF]_[INC|LIB] variables
+# Note: Since 3.8 the 'm' (malloc-enabled) versions were removed.
+# VBOX_PYTHON[26|27|31|32|32M|33|33M|34|34M|35|35M|36|36M|37|37M|38|39|310|311|312|313|314|DEF]_[INC|LIB] variables
 # which get picked up below.
 #
 ifeq ($(KBUILD_TARGET),darwin) # Relatively predictable, don't script.
@@ -106,7 +107,7 @@ ifndef VBOX_ONLY_SDK
  # Base Python Client Module - the C++/XPCOM bits (not actually built).
  #
  VBoxPythonBase_TEMPLATE = XPComDll
- VBoxPythonBase_CXXFLAGS = -Wno-write-strings
+ VBoxPythonBase_CXXFLAGS = -Wno-write-strings $(VBOX_GCC_Wno-deprecated-declarations)
  VBoxPythonBase_CXXFLAGS.solaris = $(VBOX_GCC_Wno-unknown-pragmas) # /usr/include/python[23].[75]*/ceval.h:67: warning: ignoring #pragma no_inline(PyEval_EvalFrameEx)
  VBoxPythonBase_DLLSUFF.darwin = .so
  VBoxPythonBase_DEFS    = \

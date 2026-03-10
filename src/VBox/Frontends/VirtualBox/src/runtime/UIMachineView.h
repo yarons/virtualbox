@@ -1,10 +1,10 @@
-/* $Id: UIMachineView.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineView.h 113252 2026-03-04 14:45:19Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
 
 /*
- * Copyright (C) 2010-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -68,7 +68,6 @@ class CSession;
 #ifdef VBOX_WITH_DRAG_AND_DROP
 class CDnDTarget;
 #endif
-
 
 class UIMachineView : public QAbstractScrollArea
 {
@@ -273,8 +272,9 @@ protected:
     UIActionPool* actionPool() const;
     QSize sizeHint() const RT_OVERRIDE;
 
-    /** Retrieves the last guest-screen size-hint from extra-data. */
-    QSize storedGuestScreenSizeHint() const;
+    /** Retrieves stored guest-screen size-hint from extra-data.
+      * @param  fFailsafe  Pass true to ensure valid hint is returned. */
+    QSize storedGuestScreenSizeHint(bool fFailsafe = true) const;
     /** Stores a guest-screen @a sizeHint to extra-data. */
     void setStoredGuestScreenSizeHint(const QSize &sizeHint);
 

@@ -1,10 +1,10 @@
-/* $Id: DBGFR3Bp.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: DBGFR3Bp.cpp 112833 2026-02-05 09:16:57Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Breakpoint Management.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -588,9 +588,9 @@ DECLINLINE(PDBGFBPINT) dbgfR3BpGetByHnd(PUVM pUVM, DBGFBP hBp)
     PDBGFBPCHUNKR3 pBpChunk = &pUVM->dbgf.s.aBpChunks[idChunk];
     AssertReturn(pBpChunk->idChunk == idChunk, NULL);
     AssertPtrReturn(pBpChunk->pbmAlloc, NULL);
-    AssertReturn(ASMBitTest(pBpChunk->pbmAlloc, idxEntry), NULL);
-
-    return &pBpChunk->pBpBaseR3[idxEntry];
+    if (ASMBitTest(pBpChunk->pbmAlloc, idxEntry))
+        return &pBpChunk->pBpBaseR3[idxEntry];
+    return NULL;
 }
 
 
@@ -2012,21 +2012,27 @@ static VBOXSTRICTRC dbgfR3BpHit(PVM pVM, PVMCPU pVCpu, DBGFBP hBp, PDBGFBPINT pB
                 rcStrict = pBpOwner->pfnBpHitR3(pVM, pVCpu->idCpu, pBp->pvUserR3, hBp, &pBp->Pub, DBGF_BP_F_HIT_EXEC_BEFORE);
             if (rcStrict == VINF_SUCCESS)
             {
+#ifdef VBOX_VMM_TARGET_X86
                 /** @todo Need to take more care with the reading there if the breakpoint is
                  *        on the edge of a page. */
                 uint8_t abInstr[DBGF_BP_INSN_MAX];
                 RTGCPTR const GCPtrInstr = CPUMGetGuestFlatPC(pVCpu);
                 rcStrict = PGMPhysSimpleReadGCPtr(pVCpu, &abInstr[0], GCPtrInstr, sizeof(abInstr));
                 if (rcStrict == VINF_SUCCESS)
+#endif
                 {
+                    if (!VM_IS_EXEC_ENGINE_IEM(pVCpu->CTX_SUFF(pVM)))
+                        IEMTlbInvalidateAll(pVCpu);
 #ifdef VBOX_VMM_TARGET_X86
                     /* Replace the int3 with the original instruction byte. */
                     abInstr[0] = pBp->Pub.u.Sw.Arch.x86.bOrg;
                     rcStrict = IEMExecOneWithPrefetchedByPC(pVCpu, GCPtrInstr, &abInstr[0], sizeof(abInstr));
+#elif defined(VBOX_VMM_TARGET_ARMV8)
+                    rcStrict = IEMExecOneWithPrefetchedByPC(pVCpu, CPUMGetGuestFlatPC(pVCpu),
+                                                            &pBp->Pub.u.Sw.Arch.armv8.u32Org,
+                                                            sizeof(pBp->Pub.u.Sw.Arch.armv8.u32Org));
 #else
-                    /** @todo arm64: implement stepping over breakpoint. Fix unnecessary opcode reading. */
-                    AssertFailed();
-                    rcStrict = VERR_NOT_IMPLEMENTED;
+# error "port me"
 #endif
                     if (   rcStrict == VINF_SUCCESS
                         && DBGF_BP_PUB_IS_EXEC_AFTER(&pBp->Pub))
@@ -2614,7 +2620,8 @@ VMMR3DECL(int) DBGFR3BpClear(PUVM pUVM, DBGFBP hBp)
     AssertReturn(hBp != NIL_DBGFBPOWNER, VERR_INVALID_HANDLE);
 
     PDBGFBPINT pBp = dbgfR3BpGetByHnd(pUVM, hBp);
-    AssertPtrReturn(pBp, VERR_DBGF_BP_NOT_FOUND);
+    if (!pBp)
+        return VERR_DBGF_BP_NOT_FOUND;
 
     /* Disarm the breakpoint when it is enabled. */
     if (DBGF_BP_PUB_IS_ENABLED(&pBp->Pub))

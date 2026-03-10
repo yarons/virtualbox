@@ -1,10 +1,10 @@
-/* $Id: UIInformationRuntime.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIInformationRuntime.cpp 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class implementation.
  */
 
 /*
- * Copyright (C) 2016-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2016-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -50,6 +50,7 @@
 #include "CMachineDebugger.h"
 #include "CVRDEServerInfo.h"
 
+
 enum InfoRow
 {
     InfoRow_Title = 0,
@@ -67,13 +68,13 @@ enum InfoRow
     InfoRow_Max
 };
 
+
 /*********************************************************************************************************************************
 *   UIRuntimeInfoWidget definition.                                                                                     *
 *********************************************************************************************************************************/
 /** A QTablWidget extention to show some runtime attributes */
 class UIRuntimeInfoWidget : public QITableWidget
 {
-
     Q_OBJECT;
 
 public:

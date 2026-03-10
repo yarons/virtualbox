@@ -1,10 +1,10 @@
-/* $Id: thread.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: thread.h 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Internal RTThread header.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -112,6 +112,9 @@ typedef struct RTTHREADINT
     /** Actual stack size. */
     size_t                  cbStack;
 #ifdef IN_RING3
+    /** The best stack top we can get.
+     * This is not valid before rtThreadMain has been called by the new thread.  */
+    void                    *pvStackTop;
     /** The lock validator data. */
     RTLOCKVALPERTHREAD      LockValidator;
 #endif /* IN_RING3 */
@@ -292,6 +295,11 @@ DECLHIDDEN(bool) rtThreadPosixPriorityProxyStart(void);
 DECLHIDDEN(int)  rtThreadPosixPriorityProxyCall(PRTTHREADINT pTargetThread, PFNRT pfnFunction,
                                                 int cArgs, ...) RT_IPRT_CALLREQ_ATTR(2, 3, 4);
 # endif
+
+DECLINLINE(void *) rtThreadGetStackTop(PRTTHREADINT pThread)
+{
+    return pThread->pvStackTop;
+}
 #endif
 
 #ifdef IPRT_INCLUDED_asm_h

@@ -1,10 +1,10 @@
-/* $Id: UIVMInformationDialog.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIVMInformationDialog.h 112755 2026-01-29 16:40:20Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class declaration.
  */
 
 /*
- * Copyright (C) 2016-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2016-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -32,11 +32,10 @@
 #endif
 
 /* Qt includes: */
-#include <QMainWindow>
 #include <QUuid>
 
 /* GUI includes: */
-#include "QIWithRestorableGeometry.h"
+#include "QIMainWindow.h"
 
 /* COM includes: */
 #include "KMachineState.h"
@@ -46,12 +45,9 @@ class QITabWidget;
 class QIDialogButtonBox;
 class UIActionPool;
 
-/* Type definitions: */
-typedef QIWithRestorableGeometry<QMainWindow> QMainWindowWithRestorableGeometry;
-
 /** QMainWindow subclass providing user
   * with the dialog unifying VM details and statistics. */
-class UIVMInformationDialog : public QMainWindowWithRestorableGeometry
+class UIVMInformationDialog : public QIMainWindow
 {
     Q_OBJECT;
 

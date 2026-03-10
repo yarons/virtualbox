@@ -1,10 +1,10 @@
-/* $Id: vbox_mode.c 111097 2025-09-23 10:57:19Z vadim.galitsyn@oracle.com $ */
+/* $Id: vbox_mode.c 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
 
 /*
- * Copyright (C) 2013-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2026 Oracle and/or its affiliates.
  * This file is based on ast_mode.c
  * Copyright 2012 Red Hat Inc.
  * Parts based on xf86-video-ast
@@ -660,7 +660,7 @@ static int vbox_get_modes(struct drm_connector *connector)
     return num_modes;
 }
 
-#if RTLNX_VER_MIN(6,15,0) || RTLNX_RHEL_RANGE(9,7, 9,99)
+#if RTLNX_VER_MIN(6,15,0) || RTLNX_RHEL_RANGE(9,7, 9,99) || RTLNX_RHEL_RANGE(10,2, 10,99)
 static enum drm_mode_status vbox_mode_valid(struct drm_connector *connector, const struct drm_display_mode *mode)
 #elif RTLNX_VER_MIN(3,14,0) || RTLNX_RHEL_MAJ_PREREQ(7,1)
 static enum drm_mode_status vbox_mode_valid(struct drm_connector *connector, struct drm_display_mode *mode)

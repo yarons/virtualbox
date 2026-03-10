@@ -1,10 +1,10 @@
-/* $Id: UIDetailsModel.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIDetailsModel.cpp 112671 2026-01-22 15:02:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsModel class implementation.
  */
 
 /*
- * Copyright (C) 2012-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -26,6 +26,7 @@
  */
 
 /* Qt includes: */
+#include <QAccessibleInterface>
 #include <QAction>
 #include <QGraphicsScene>
 #include <QGraphicsSceneContextMenuEvent>
@@ -121,6 +122,37 @@ void UIDetailsModel::updateLayout()
 void UIDetailsModel::setItems(const QList<UIVirtualMachineItem*> &items)
 {
     m_pRoot->buildGroup(items);
+}
+
+void UIDetailsModel::setCurrentItem(UIDetailsItem *pItem)
+{
+    /* Is there something changed? */
+    if (currentItem() == pItem)
+        return;
+
+    /* Set new current-item: */
+    m_pCurrentItem = pItem;
+
+    /* Updating accessibility for newly chosen item if necessary: */
+    if (currentItem() && QAccessible::isActive())
+    {
+        /* Calculate index of item interface in parent interface: */
+        QAccessibleInterface *pIfaceItem = QAccessible::queryAccessibleInterface(currentItem());
+        AssertPtrReturnVoid(pIfaceItem);
+        QAccessibleInterface *pIfaceParent = pIfaceItem->parent();
+        AssertPtrReturnVoid(pIfaceParent);
+        const int iIndexOfItem = pIfaceParent->indexOfChild(pIfaceItem);
+
+        /* Compose and send accessibility update event: */
+        QAccessibleEvent focusEvent(pIfaceParent, QAccessible::Focus);
+        focusEvent.setChild(iIndexOfItem);
+        QAccessible::updateAccessibility(&focusEvent);
+    }
+}
+
+UIDetailsItem *UIDetailsModel::currentItem() const
+{
+    return m_pCurrentItem;
 }
 
 void UIDetailsModel::setCategories(const QMap<DetailsElementType, bool> &categories)
@@ -692,9 +724,21 @@ void UIDetailsModel::sltHandleExtraDataOptionsChange(DetailsElementType enmType)
 
 bool UIDetailsModel::eventFilter(QObject *pObject, QEvent *pEvent)
 {
-    /* Handle allowed context-menu events: */
-    if (pObject == scene() && pEvent->type() == QEvent::GraphicsSceneContextMenu)
-        return processContextMenuEvent(static_cast<QGraphicsSceneContextMenuEvent*>(pEvent));
+    /* Process only scene events: */
+    if (pObject != scene())
+        return QObject::eventFilter(pObject, pEvent);
+
+    /* Checking event-type: */
+    switch (pEvent->type())
+    {
+        /* Keyboard handler: */
+        case QEvent::KeyRelease:
+            return processKeyboardEvent(static_cast<QKeyEvent*>(pEvent));
+        /* Context-menu handler: */
+        case QEvent::GraphicsSceneContextMenu:
+            return processContextMenuEvent(static_cast<QGraphicsSceneContextMenuEvent*>(pEvent));
+        default: break; /* Shut up MSC */
+    }
 
     /* Call to base-class: */
     return QObject::eventFilter(pObject, pEvent);
@@ -744,6 +788,23 @@ void UIDetailsModel::sltDetachCOM()
     setItems(QList<UIVirtualMachineItem*>());
 }
 
+void UIDetailsModel::sltHandleGroupBuildDone()
+{
+    /* Sanity check: */
+    AssertPtrReturnVoid(root());
+
+    /* Set the 1st element to be current one: */
+    if (root()->hasItems())
+    {
+        UIDetailsItem *pFirstSet = root()->items().first();
+        if (pFirstSet->hasItems())
+        {
+            UIDetailsItem *pFirstElement = pFirstSet->items().first();
+            setCurrentItem(pFirstElement);
+        }
+    }
+}
+
 void UIDetailsModel::sltToggleAnimationFinished(DetailsElementType enmType, bool fToggled)
 {
     /* Cleanup animation callback: */
@@ -784,6 +845,9 @@ void UIDetailsModel::prepare()
 
     /* Prepare root item: */
     m_pRoot = new UIDetailsGroup(scene());
+    if (root())
+        connect(root(), &UIDetailsGroup::sigBuildDone,
+                this, &UIDetailsModel::sltHandleGroupBuildDone);
 
     /* Prepare context-menu: */
     m_pContextMenu = new UIDetailsContextMenu(this);
@@ -973,6 +1037,44 @@ void UIDetailsModel::cleanup()
     /* Cleanup scene: */
     delete m_pScene;
     m_pScene = 0;
+}
+
+bool UIDetailsModel::processKeyboardEvent(QKeyEvent *pEvent)
+{
+    /* Compose navigation list: */
+    QList<UIDetailsItem*> navigationList;
+    foreach (UIDetailsItem *pSet, root()->items())
+        foreach (UIDetailsItem *pElement, pSet->items())
+            navigationList << pElement;
+
+    /* Look for an index of current item in navigation list: */
+    const int iIndex = navigationList.indexOf(currentItem());
+
+    /* Handle certain key releases: */
+    switch (pEvent->key())
+    {
+        /* Key DOWN? */
+        case Qt::Key_Down:
+        {
+            /* Move focus to next item: */
+            if (iIndex < navigationList.size() - 1)
+                setCurrentItem(navigationList.value(iIndex + 1));
+            return true;
+        }
+        /* Key UP? */
+        case Qt::Key_Up:
+        {
+            /* Move focus to previous item: */
+            if (iIndex > 0)
+                setCurrentItem(navigationList.value(iIndex - 1));
+            return true;
+        }
+        default:
+            break;
+    }
+
+    /* Pass event if unknown: */
+    return false;
 }
 
 bool UIDetailsModel::processContextMenuEvent(QGraphicsSceneContextMenuEvent *pEvent)

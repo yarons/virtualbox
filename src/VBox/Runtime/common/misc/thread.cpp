@@ -1,10 +1,10 @@
-/* $Id: thread.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: thread.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Threads, common routines.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -809,7 +809,7 @@ RTDECL(int) RTThreadCreate(PRTTHREAD pThread, PFNRTTHREAD pfnThread, void *pvUse
     else
         rc = VERR_NO_TMP_MEMORY;
     LogFlow(("RTThreadCreate: Failed to create thread, rc=%Rrc\n", rc));
-    AssertReleaseRC(rc);
+    AssertRC(rc);
     return rc;
 }
 RT_EXPORT_SYMBOL(RTThreadCreate);

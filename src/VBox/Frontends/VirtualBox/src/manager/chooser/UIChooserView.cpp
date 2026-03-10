@@ -1,10 +1,10 @@
-/* $Id: UIChooserView.cpp 111165 2025-09-29 11:42:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserView.cpp 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserView class implementation.
  */
 
 /*
- * Copyright (C) 2012-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -40,6 +40,7 @@
 
 /* Other VBox includes: */
 #include <iprt/assert.h>
+
 
 /** QAccessibleWidget extension used as an accessibility interface for Chooser-view. */
 class UIAccessibilityInterfaceForUIChooserView : public QAccessibleWidget, public QAccessibleSelectionInterface

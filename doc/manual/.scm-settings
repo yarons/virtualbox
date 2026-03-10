@@ -1,10 +1,10 @@
-# $Id: .scm-settings 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: .scm-settings 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $
 ## @file
 # Source code massager settings for the manual.
 #
 
 #
-# Copyright (C) 2010-2025 Oracle and/or its affiliates.
+# Copyright (C) 2010-2026 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.
@@ -30,5 +30,8 @@
 /titlepage-htmlhelp.xml: --external-copyright --no-convert-tabs
 /testcase/*.xml:         --external-copyright
 
---filter-out-dirs  /texfiles/.
+#--filter-out-dirs  /texfiles/.
+/texfiles/*:            --3rd-party --svn-sync-process-export none
+/texfiles/*.sty:        --treat-as plaintext
+/texfiles/*.dat:        --treat-as plaintext --skip-unicode-checks
 

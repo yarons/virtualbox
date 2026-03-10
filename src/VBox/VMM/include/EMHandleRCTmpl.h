@@ -1,10 +1,10 @@
-/* $Id: EMHandleRCTmpl.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: EMHandleRCTmpl.h 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - emR3[Raw|Hm|Nem]HandleRC template.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -161,6 +161,7 @@ int emR3NemHandleRC(PVM pVM, PVMCPU pVCpu, int rc)
 
         case VINF_EM_RAW_INJECT_TRPM_EVENT:
             CPUM_IMPORT_EXTRN_RET(pVCpu, IEM_CPUMCTX_EXTRN_XCPT_MASK);
+            IEMTlbInvalidateAll(pVCpu);
             rc = VBOXSTRICTRC_VAL(IEMInjectTrpmEvent(pVCpu));
             /* The following condition should be removed when IEM_IMPLEMENTS_TASKSWITCH becomes true. */
             if (rc == VERR_IEM_ASPECT_NOT_IMPLEMENTED)

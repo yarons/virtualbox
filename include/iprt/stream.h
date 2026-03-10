@@ -3,7 +3,7 @@
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -505,6 +505,8 @@ RTDECL(int32_t) RTStrmWrappedPrintfV(PRTSTREAM pStream, uint32_t fFlags, const c
 #define RTSTRMWRAPPED_F_HANGING_INDENT_SHIFT        20
 /** Hanging indent.  Used for command synopsis and such. */
 #define RTSTRMWRAPPED_F_HANGING_INDENT              UINT32_C(0x80000000)
+/** Additional word split on pipe (|). */
+#define RTSTRMWRAPPED_F_SPLIT_ON_PIPE               UINT32_C(0x40000000)
 /** @} */
 
 /**

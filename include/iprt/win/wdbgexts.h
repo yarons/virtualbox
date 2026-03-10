@@ -3,7 +3,7 @@
  */
 
 /*
- * Copyright (C) 2023-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2023-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -42,6 +42,7 @@
 #ifdef _MSC_VER
 # pragma warning(push)
 # pragma warning(disable:4838) /* win.x86\ddk\7600.16385.1\inc\api\wdbgexts.h(2477): warning C4838: conversion from 'int' to 'ULONG' requires a narrowing conversion */
+# pragma warning(disable:5246) /* 7600.16385.1\inc\api\wdbgexts.h(2399,13): warning C5246: 'anonymous struct or union': the initialization of a subobject should be wrapped in braces */
 #endif
 
 #include <wdbgexts.h>

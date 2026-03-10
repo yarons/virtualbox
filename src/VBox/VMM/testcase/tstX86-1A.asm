@@ -1,10 +1,10 @@
-; $Id: tstX86-1A.asm 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+; $Id: tstX86-1A.asm 112883 2026-02-09 09:33:10Z knut.osmundsen@oracle.com $
 ;; @file
 ; X86 instruction set exploration/testcase #1.
 ;
 
 ;
-; Copyright (C) 2011-2025 Oracle and/or its affiliates.
+; Copyright (C) 2011-2026 Oracle and/or its affiliates.
 ;
 ; This file is part of VirtualBox base platform packages, as
 ; available from https://www.virtualbox.org.
@@ -2476,7 +2476,8 @@ BEGINPROC   x861_Test7
 ENDPROC     x861_Test7
 
 
-extern NAME(RTTestISub)
+EXTERN_IMP2 RTTestISub
+BEGINCODE
 
 ;;
 ; Sets the current subtest.
@@ -2487,16 +2488,16 @@ extern NAME(RTTestISub)
  %else
         lea     rcx, [%%s_szName wrt rip]
  %endif
-        call    NAME(RTTestISub)
+        call    IMP2(RTTestISub)
 %else
  %ifdef RT_OS_DARWIN
         sub     esp, 12
         push    %%s_szName
-        call    NAME(RTTestISub)
+        call    IMP2(RTTestISub)
         add     esp, 16
  %else
         push    %%s_szName
-        call    NAME(RTTestISub)
+        call    IMP2(RTTestISub)
         add     esp, 4
  %endif
 %endif

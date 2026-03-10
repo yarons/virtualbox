@@ -1,10 +1,10 @@
-/* $Id: CPUMR3Db.cpp 110755 2025-08-18 21:01:55Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMR3Db.cpp 112780 2026-02-01 19:26:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU database part.
  */
 
 /*
- * Copyright (C) 2013-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -132,7 +132,9 @@ static int cpumDbPopulateInfoFromEntry(PCPUMINFO pInfo, PCCPUMDBENTRY pEntryCore
 # include "cpus/ARM_Apple_M1.h"
 # include "cpus/ARM_Apple_M2_Max.h"
 # include "cpus/ARM_Apple_M3_Max.h"
+# include "cpus/ARM_Qualcomm_Snapdragon_8cx_Gen_3.h"
 # include "cpus/ARM_Qualcomm_Snapdragon_X.h"
+# include "cpus/ARM_ARM_Cortex_X925_A725.h"
 
 #endif
 
@@ -254,7 +256,9 @@ static CPUMDBENTRY const * const g_apCpumDbEntries[] =
     &g_Entry_ARM_Apple_M1.Core,
     &g_Entry_ARM_Apple_M2_Max.Core,
     &g_Entry_ARM_Apple_M3_Max.Core,
+    &g_Entry_ARM_Qualcomm_Snapdragon_8cx_Gen_3.Core,
     &g_Entry_ARM_Qualcomm_Snapdragon_X.Core,
+    &g_Entry_ARM_ARM_Cortex_X925_A725.Core,
 #endif /* VBOX_VMM_TARGET_ARMV8 || RT_ARCH_ARM64 */
 };
 

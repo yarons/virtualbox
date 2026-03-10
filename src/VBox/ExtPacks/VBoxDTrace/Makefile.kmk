@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 112921 2026-02-10 13:21:34Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-makefile for VBoxDTrace.
 #
@@ -6,7 +6,7 @@
 #
 
 #
-# Copyright (C) 2012-2025 Oracle and/or its affiliates.
+# Copyright (C) 2012-2026 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from http://www.virtualbox.org.
@@ -118,7 +118,7 @@ if defined(VBOX_WITH_EXTPACK_VBOXDTRACE) && defined(VBOX_WITH_EXTPACK)
   VBoxDTraceCmd_DEFS.win = YY_USE_PROTOS=1 YYENABLE_NLS=0 YYLTYPE_IS_TRIVIAL=0
   VBoxDTraceCmd_SDKS = VBoxZlib
   ifn1of ($(KBUILD_TARGET), win)
-   VBoxDTraceCmd_CFLAGS = -Wno-format $(VBOX_GCC_Wno-overlength-strings) -Wno-sign-compare -Wno-strict-prototypes -Wno-missing-prototypes -Wno-missing-declarations -Wno-shadow
+   VBoxDTraceCmd_CFLAGS = -Wno-format $(VBOX_GCC_Wno-overlength-strings) -Wno-sign-compare -Wno-strict-prototypes -Wno-missing-prototypes -Wno-missing-declarations -Wno-shadow $(VBOX_GCC_Wno-misleading-indentation)
   endif
   VBoxDTraceCmd_INCS = \
   	include \
@@ -359,7 +359,11 @@ if defined(VBOX_WITH_EXTPACK_VBOXDTRACE) && defined(VBOX_WITH_EXTPACK)
 		$(VBoxDTraceIns_0_OUTDIR)/Stage/ExtPack.manifest \
 		$(VBoxDTraceIns_0_OUTDIR)/Stage/ExtPack.signature
  # Tar it up.
+ if 0
 	tar -cvf - -C $(VBoxDTraceIns_0_OUTDIR)/Stage/ . | gzip -9c > $@
+ else
+	$(VBOX_RTTAR) -cvf "$@" $(VBOX_RTTAR_EXTPACK_OPTS) -C "$(VBoxDTraceIns_0_OUTDIR)/Stage/" .
+ endif
  # Clean up
 	$(RM) -Rf $(VBoxDTraceIns_0_OUTDIR)/Stage/
 

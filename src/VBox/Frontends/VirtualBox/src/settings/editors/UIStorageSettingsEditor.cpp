@@ -1,10 +1,10 @@
-/* $Id: UIStorageSettingsEditor.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIStorageSettingsEditor.cpp 113150 2026-02-24 16:11:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStorageSettingsEditor class implementation.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -62,7 +62,7 @@
 #include "UIMediumEnumerator.h"
 #include "UIMediumSelector.h"
 #include "UIMediumTools.h"
-#include "UIMessageCenter.h"
+#include "UINotificationQuestion.h"
 #include "UIStorageSettingsEditor.h"
 
 /* COM includes: */
@@ -239,11 +239,13 @@ public:
     virtual ItemType rtti() const = 0;
 
     /** Returns child item with specified @a iIndex. */
-    virtual AbstractItem *childItem(int iIndex) const RT_OVERRIDE = 0;
+    virtual AbstractItem *childItem(int iIndex) const = 0;
     /** Returns child item with specified @a uId. */
     virtual AbstractItem *childItemById(const QUuid &uId) const = 0;
     /** Returns position of specified child @a pItem. */
     virtual int posOfChild(AbstractItem *pItem) const = 0;
+    /** Returns the number of children. */
+    virtual int childCount() const = 0;
 
     /** Returns tool-tip information. */
     virtual QString toolTip() const = 0;
@@ -1352,17 +1354,21 @@ void ControllerItem::updateBusInfo()
     /* Clear the buses initially: */
     m_buses.clear();
 
-    /* Load currently supported storage buses: */
-    CPlatformProperties comProperties = gpGlobalSession->virtualBox().GetPlatformProperties(arch());
-    const QVector<KStorageBus> supportedBuses = comProperties.GetSupportedStorageBuses();
-
-    /* If current bus is NOT KStorageBus_Floppy: */
+    /* For others than the KStorageBus_Floppy bus we'll
+     * have to check for a list of supported values.
+     * For floppies we'll prepend current one item only. */
     if (m_enmBus != KStorageBus_Floppy)
     {
-        /* We update the list with all supported buses
-         * and remove the current one from that list. */
-        m_buses << supportedBuses.toList();
+        /* Update the list with all supported buses: */
+        CPlatformProperties comProperties = gpGlobalSession->virtualBox().GetPlatformProperties(arch());
+        m_buses << comProperties.GetSupportedStorageBuses();
+
+        /* Remove the current one from that list,
+         * it will be prepended in any cases: */
         m_buses.removeAll(m_enmBus);
+        /* Remove KStorageBus_Floppy as well,
+         * as this list is not for floppies: */
+        m_buses.removeAll(KStorageBus_Floppy);
     }
 
     /* And prepend current bus finally: */
@@ -2277,7 +2283,7 @@ bool StorageModel::setData(const QModelIndex &specifiedIndex, const QVariant &aV
                         const QList<QUuid> opticalIds = pItemController->attachmentIDs(KDeviceType_DVD);
                         if (!opticalIds.isEmpty())
                         {
-                            if (!msgCenter().confirmStorageBusChangeWithOpticalRemoval(qobject_cast<QWidget*>(QObject::parent())))
+                            if (!UINotificationQuestion::confirmStorageBusChangeWithOpticalRemoval(qobject_cast<QWidget*>(QObject::parent())))
                                 return false;
                             foreach (const QUuid &uId, opticalIds)
                                 delAttachment(pItemController->id(), uId);
@@ -2293,7 +2299,7 @@ bool StorageModel::setData(const QModelIndex &specifiedIndex, const QVariant &aV
                     const QList<QUuid> ids = pItemController->attachmentIDs();
                     if (uMaxPortCount * uMaxDevicePerPortCount < (uint)ids.size())
                     {
-                        if (!msgCenter().confirmStorageBusChangeWithExcessiveRemoval(qobject_cast<QWidget*>(QObject::parent())))
+                        if (!UINotificationQuestion::confirmStorageBusChangeWithExcessiveRemoval(qobject_cast<QWidget*>(QObject::parent())))
                             return false;
                         for (int i = uMaxPortCount * uMaxDevicePerPortCount; i < ids.size(); ++i)
                             delAttachment(pItemController->id(), ids.at(i));
@@ -3515,7 +3521,7 @@ void UIStorageSettingsEditor::sltRemoveAttachment()
     const KDeviceType enmDeviceType = pModel->data(index, StorageModel::R_AttDevice).value<KDeviceType>();
     if (   enmDeviceType == KDeviceType_DVD
         && deviceCount(KDeviceType_DVD) == 1
-        && !msgCenter().confirmRemovingOfLastDVDDevice(this))
+        && !UINotificationQuestion::confirmRemovingOfLastDVDDevice(this))
         return;
 
     /* Remove attachment: */

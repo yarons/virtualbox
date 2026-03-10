@@ -1,10 +1,10 @@
-/* $Id: VMMR0.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: VMMR0.cpp 113159 2026-02-25 12:40:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -44,12 +44,10 @@
 #include <VBox/vmm/em.h>
 #include <VBox/vmm/stam.h>
 #include <VBox/vmm/tm.h>
+#include <iprt/nocrt/setjmp.h>
 #include "VMMInternal.h"
 #include <VBox/vmm/vmcc.h>
 #include <VBox/vmm/gvm.h>
-#ifdef VBOX_WITH_PCI_PASSTHROUGH
-# include <VBox/vmm/pdmpci.h>
-#endif
 #include <VBox/vmm/pdmapic.h>
 
 #include <VBox/vmm/gvmm.h>
@@ -189,46 +187,35 @@ DECLEXPORT(int) ModuleInit(void *hMod)
                         if (RT_SUCCESS(rc))
                         {
 #ifndef VBOX_WITH_MINIMAL_R0
-# ifdef VBOX_WITH_PCI_PASSTHROUGH
-                            rc = PciRawR0Init();
-# endif
+                            rc = CPUMR0ModuleInit();
                             if (RT_SUCCESS(rc))
                             {
-                                rc = CPUMR0ModuleInit();
-                                if (RT_SUCCESS(rc))
-                                {
 # ifdef VBOX_WITH_TRIPLE_FAULT_HACK
-                                    rc = vmmR0TripleFaultHackInit();
+                                rc = vmmR0TripleFaultHackInit();
+                                if (RT_SUCCESS(rc))
+# endif
+                                {
+# ifdef VBOX_WITH_NEM_R0
+                                    rc = NEMR0Init();
                                     if (RT_SUCCESS(rc))
 # endif
-                                    {
-# ifdef VBOX_WITH_NEM_R0
-                                        rc = NEMR0Init();
-                                        if (RT_SUCCESS(rc))
-# endif
 #endif /* !VBOX_WITH_MINIMAL_R0 */
-                                        {
-                                            LogFlow(("ModuleInit: returns success\n"));
-                                            return VINF_SUCCESS;
-                                        }
-
-                                        /*
-                                         * Bail out.
-                                         */
-#ifndef VBOX_WITH_MINIMAL_R0
+                                    {
+                                        LogFlow(("ModuleInit: returns success\n"));
+                                        return VINF_SUCCESS;
                                     }
-# ifdef VBOX_WITH_TRIPLE_FAULT_HACK
-                                    vmmR0TripleFaultHackTerm();
-# endif
+
+                                    /*
+                                     * Bail out.
+                                     */
+#ifndef VBOX_WITH_MINIMAL_R0
                                 }
-                                else
-                                    LogRel(("ModuleInit: CPUMR0ModuleInit -> %Rrc\n", rc));
-# ifdef VBOX_WITH_PCI_PASSTHROUGH
-                                PciRawR0Term();
+# ifdef VBOX_WITH_TRIPLE_FAULT_HACK
+                                vmmR0TripleFaultHackTerm();
 # endif
                             }
                             else
-                                LogRel(("ModuleInit: PciRawR0Init -> %Rrc\n", rc));
+                                LogRel(("ModuleInit: CPUMR0ModuleInit -> %Rrc\n", rc));
                             IntNetR0Term();
 #endif /* !VBOX_WITH_MINIMAL_R0 */
                         }
@@ -289,9 +276,6 @@ DECLEXPORT(void) ModuleTerm(void *hMod)
     /*
      * PGM (Darwin), HM and PciRaw global cleanup.
      */
-# ifdef VBOX_WITH_PCI_PASSTHROUGH
-    PciRawR0Term();
-# endif
     PGMDeregisterStringFormatTypes();
     HMR0Term();
 # ifdef VBOX_WITH_TRIPLE_FAULT_HACK
@@ -488,36 +472,26 @@ static int vmmR0InitVM(PGVM pGVM, uint32_t uSvnRev, uint32_t uBuildType)
                             rc = fWithFullR0 ? IOMR0InitVM(pGVM) : VINF_SUCCESS;
                             if (RT_SUCCESS(rc))
                             {
-# ifdef VBOX_WITH_PCI_PASSTHROUGH
-                                rc = fWithFullR0 ? PciRawR0InitVM(pGVM) : VINF_SUCCESS;
-# endif
+                                rc = fWithFullR0 ? GIMR0InitVM(pGVM) : VINF_SUCCESS;
                                 if (RT_SUCCESS(rc))
                                 {
-                                    rc = fWithFullR0 ? GIMR0InitVM(pGVM) : VINF_SUCCESS;
-                                    if (RT_SUCCESS(rc))
-                                    {
 #endif /* !VBOX_WITH_MINIMAL_R0 */
-                                        GVMMR0DoneInitVM(pGVM);
+                                    GVMMR0DoneInitVM(pGVM);
 #ifndef VBOX_WITH_MINIMAL_R0
-                                        if (fWithFullR0)
-                                            PGMR0DoneInitVM(pGVM);
+                                    if (fWithFullR0)
+                                        PGMR0DoneInitVM(pGVM);
 #endif
 
-                                        /*
-                                         * Collect a bit of info for the VM release log.
-                                         */
-                                        pGVM->vmm.s.fIsPreemptPendingApiTrusty = RTThreadPreemptIsPendingTrusty();
-                                        pGVM->vmm.s.fIsPreemptPossible         = RTThreadPreemptIsPossible();;
-                                        return rc;
+                                    /*
+                                     * Collect a bit of info for the VM release log.
+                                     */
+                                    pGVM->vmm.s.fIsPreemptPendingApiTrusty = RTThreadPreemptIsPendingTrusty();
+                                    pGVM->vmm.s.fIsPreemptPossible         = RTThreadPreemptIsPossible();;
+                                    return rc;
 
-                                        /* bail out*/
+                                    /* bail out*/
 #ifndef VBOX_WITH_MINIMAL_R0
-                                        //GIMR0TermVM(pGVM);
-                                    }
-# ifdef VBOX_WITH_PCI_PASSTHROUGH
-                                    if (fWithFullR0)
-                                        PciRawR0TermVM(pGVM);
-# endif
+                                    //GIMR0TermVM(pGVM);
                                 }
                             }
                         }
@@ -595,11 +569,6 @@ VMMR0_INT_DECL(int) VMMR0TermVM(PGVM pGVM, VMCPUID idCpu)
 
 #ifndef VBOX_WITH_MINIMAL_R0
     bool const fWithFullR0 = !VM_IS_NON_NATIVE_WITH_LIMITED_R0(pGVM);
-
-# ifdef VBOX_WITH_PCI_PASSTHROUGH
-    if (fWithFullR0)
-        PciRawR0TermVM(pGVM);
-# endif
 #endif
 
     /*
@@ -1228,7 +1197,7 @@ VMMR0_INT_DECL(PRTLOGGER) VMMR0GetReleaseLogger(PVMCPUCC pVCpu)
 }
 
 
-#ifdef VBOX_WITH_STATISTICS
+#if defined(VBOX_WITH_STATISTICS) && !defined(VBOX_WITH_MINIMAL_R0)
 /**
  * Record return code statistics
  * @param   pVM         The cross context VM structure.
@@ -1387,7 +1356,7 @@ static void vmmR0RecordRC(PVMCC pVM, PVMCPUCC pVCpu, int rc)
             break;
     }
 }
-#endif /* VBOX_WITH_STATISTICS */
+#endif /* VBOX_WITH_STATISTICS || !VBOX_WITH_MINIMAL_R0 */
 
 
 /**
@@ -1493,7 +1462,7 @@ VMMR0DECL(void) VMMR0EntryFast(PGVM pGVM, PVMCC pVMIgnored, VMCPUID idCpu, VMMR0
                     CPUMR0TouchHostFpu();
 # endif
                     int  rc;
-                    bool fPreemptRestored = false;
+                    bool volatile fPreemptRestored = false; /* volatile is courtesy of gcc */
                     if (!HMR0SuspendPending())
                     {
                         /*
@@ -1528,7 +1497,13 @@ VMMR0DECL(void) VMMR0EntryFast(PGVM pGVM, PVMCC pVMIgnored, VMCPUID idCpu, VMMR0
                             /*
                              * Setup the longjmp machinery and execute guest code (calls HMR0RunGuestCode).
                              */
-                            rc = vmmR0CallRing3SetJmp(&pGVCpu->vmmr0.s.AssertJmpBuf, HMR0RunGuestCode, pGVM, pGVCpu);
+                            pGVCpu->vmmr0.s.AssertJmpBuf.rflags     = ASMGetFlags();
+                            pGVCpu->vmmr0.s.AssertJmpBuf.uOperation = (uintptr_t)VMMR0_DO_HM_RUN;
+                            rc = setjmp(pGVCpu->vmmr0.s.AssertJmpBuf.Core.JmpBuf);
+                            if (rc == 0)
+                                rc = HMR0RunGuestCode(pGVM, pGVCpu);
+                            ASMSetFlags(pGVCpu->vmmr0.s.AssertJmpBuf.rflags);
+                            pGVCpu->vmmr0.s.AssertJmpBuf.Core.s.rip = 0;
 
                             /*
                              * Assert sanity on the way out.  Using manual assertions code here as normal
@@ -1659,13 +1634,15 @@ VMMR0DECL(void) VMMR0EntryFast(PGVM pGVM, PVMCC pVMIgnored, VMCPUID idCpu, VMMR0
                 /*
                  * Setup the longjmp machinery and execute guest code (calls NEMR0RunGuestCode).
                  */
-#   ifdef VBOXSTRICTRC_STRICT_ENABLED
-                int rc = vmmR0CallRing3SetJmp2(&pGVCpu->vmmr0.s.AssertJmpBuf, (PFNVMMR0SETJMP2)NEMR0RunGuestCode, pGVM, idCpu);
-#   else
-                int rc = vmmR0CallRing3SetJmp2(&pGVCpu->vmmr0.s.AssertJmpBuf, NEMR0RunGuestCode, pGVM, idCpu);
-#   endif
-                STAM_COUNTER_INC(&pGVM->vmm.s.StatRunGC);
+                pGVCpu->vmmr0.s.AssertJmpBuf.rflags     = ASMGetFlags();
+                pGVCpu->vmmr0.s.AssertJmpBuf.uOperation = (uintptr_t)VMMR0_DO_NEM_RUN;
+                int rc = setjmp(pGVCpu->vmmr0.s.AssertJmpBuf.Core.JmpBuf);
+                if (rc == 0)
+                    rc = VBOXSTRICTRC_VAL(NEMR0RunGuestCode(pGVM, idCpu));
+                ASMSetFlags(pGVCpu->vmmr0.s.AssertJmpBuf.rflags);
+                pGVCpu->vmmr0.s.AssertJmpBuf.Core.s.rip = 0;
 
+                STAM_COUNTER_INC(&pGVM->vmm.s.StatRunGC);
                 pGVCpu->vmm.s.iLastGZRc = rc;
 
                 /*
@@ -1751,7 +1728,7 @@ DECL_NO_INLINE(static, int) vmmR0EntryExWorker(PGVM pGVM, VMCPUID idCpu, VMMR0OP
      */
     if (pGVM != NULL)
     {
-        if (RT_LIKELY(((uintptr_t)pGVM & HOST_PAGE_OFFSET_MASK) == 0))
+        if (RT_LIKELY(((uintptr_t)pGVM & RT_MIN_PAGE_OFFSET_MASK) == 0))
         { /* likely */ }
         else
         {
@@ -1989,13 +1966,6 @@ DECL_NO_INLINE(static, int) vmmR0EntryExWorker(PGVM pGVM, VMCPUID idCpu, VMMR0OP
             rc = PGMR0PhysAllocateLargePage(pGVM, idCpu, u64Arg);
             break;
 
-        case VMMR0_DO_PGM_PHYS_SETUP_IOMMU:
-            if (idCpu != 0)
-                return VERR_INVALID_CPU_ID;
-            IF_NON_DEFAULT_VM_WITH_LIMITED_R0_RETURN_ERROR(g_GVM);
-            rc = PGMR0PhysSetupIoMmu(pGVM);
-            break;
-
         case VMMR0_DO_PGM_POOL_GROW:
             if (idCpu == NIL_VMCPUID)
                 return VERR_INVALID_CPU_ID;
@@ -2148,7 +2118,7 @@ DECL_NO_INLINE(static, int) vmmR0EntryExWorker(PGVM pGVM, VMCPUID idCpu, VMMR0OP
         }
 # endif
 
-# if defined(VBOX_STRICT) && HC_ARCH_BITS == 64
+# if defined(VBOX_STRICT)
         case VMMR0_DO_GMM_FIND_DUPLICATE_PAGE:
             if (u64Arg)
                 return VERR_INVALID_PARAMETER;
@@ -2311,17 +2281,6 @@ DECL_NO_INLINE(static, int) vmmR0EntryExWorker(PGVM pGVM, VMCPUID idCpu, VMMR0OP
                 return VERR_INVALID_PARAMETER;
             rc = IntNetR0IfAbortWaitReq(pSession, (PINTNETIFABORTWAITREQ)pReqHdr);
             break;
-
-#if 0 //defined(VBOX_WITH_PCI_PASSTHROUGH) && !defined(VBOX_WITH_MINIMAL_R0)
-        /*
-         * Requests to host PCI driver service.
-         */
-        case VMMR0_DO_PCIRAW_REQ:
-            if (u64Arg || !pReqHdr || !vmmR0IsValidSession(pGVM, ((PPCIRAWSENDREQ)pReqHdr)->pSession, pSession) || idCpu != NIL_VMCPUID)
-                return VERR_INVALID_PARAMETER;
-            rc = PciRawR0ProcessReq(pGVM, pSession, (PPCIRAWSENDREQ)pReqHdr);
-            break;
-#endif
 
 #ifndef VBOX_WITH_MINIMAL_R0
 
@@ -2632,8 +2591,16 @@ VMMR0DECL(int) VMMR0EntryEx(PGVM pGVM, PVMCC pVM, VMCPUID idCpu, VMMR0OPERATION 
             pGVCpu->vmmr0.s.pReq         = pReq;
             pGVCpu->vmmr0.s.u64Arg       = u64Arg;
             pGVCpu->vmmr0.s.pSession     = pSession;
-            return vmmR0CallRing3SetJmpEx(&pGVCpu->vmmr0.s.AssertJmpBuf, vmmR0EntryExWrapper, pGVCpu,
-                                          ((uintptr_t)u64Arg << 16) | (uintptr_t)enmOperation);
+
+            /* (this used to be done by vmmR0CallRing3SetJmpEx) */
+            pGVCpu->vmmr0.s.AssertJmpBuf.rflags     = ASMGetFlags();
+            pGVCpu->vmmr0.s.AssertJmpBuf.uOperation = ((uintptr_t)u64Arg << 16) | (uintptr_t)enmOperation;
+            int rc = setjmp(pGVCpu->vmmr0.s.AssertJmpBuf.Core.JmpBuf);
+            if (rc == 0)
+                rc = vmmR0EntryExWrapper(pGVCpu);
+            ASMSetFlags(pGVCpu->vmmr0.s.AssertJmpBuf.rflags);
+            pGVCpu->vmmr0.s.AssertJmpBuf.Core.s.rip = 0;
+            return rc;
         }
         return VERR_VM_THREAD_NOT_EMT;
     }
@@ -2659,9 +2626,9 @@ VMMR0DECL(int) VMMR0EntryEx(PGVM pGVM, PVMCC pVM, VMCPUID idCpu, VMMR0OPERATION 
 VMMR0_INT_DECL(bool) VMMR0IsLongJumpArmed(PVMCPUCC pVCpu)
 {
 #ifdef RT_ARCH_X86
-    return pVCpu->vmmr0.s.AssertJmpBuf.eip != 0;
+    return pVCpu->vmmr0.s.AssertJmpBuf.Core.s.eip != 0;
 #else
-    return pVCpu->vmmr0.s.AssertJmpBuf.rip != 0;
+    return pVCpu->vmmr0.s.AssertJmpBuf.Core.s.rip != 0;
 #endif
 }
 
@@ -3374,7 +3341,7 @@ static bool vmmR0LoggerFlushCommon(PRTLOGGER pLogger, PRTLOGBUFFERDESC pBufDesc,
         {
             PGVMCPU const pGVCpu = (PGVMCPU)(uintptr_t)pLogger->u64UserValue2;
             if (   RT_VALID_PTR(pGVCpu)
-                && ((uintptr_t)pGVCpu & HOST_PAGE_OFFSET_MASK) == 0)
+                && ((uintptr_t)pGVCpu & RT_MIN_PAGE_OFFSET_MASK) == 0)
             {
                 RTNATIVETHREAD const hNativeSelf = RTThreadNativeSelf();
                 PGVM const           pGVM        = pGVCpu->pGVM;
@@ -3451,7 +3418,7 @@ static DECLCALLBACK(bool) vmmR0LogFlush(PRTLOGGER pLogger, PRTLOGBUFFERDESC pBuf
 /*
  * Override RTLogDefaultInstanceEx so we can do logging from EMTs in ring-0.
  */
-DECLEXPORT(PRTLOGGER) RTLogDefaultInstanceEx(uint32_t fFlagsAndGroup)
+VMMR0DECL(PRTLOGGER) RTLogDefaultInstanceEx(uint32_t fFlagsAndGroup)
 {
 #ifdef LOG_ENABLED
     PGVMCPU pGVCpu = GVMMR0GetGVCpuByEMT(NIL_RTNATIVETHREAD);
@@ -3486,7 +3453,7 @@ DECLEXPORT(PRTLOGGER) RTLogDefaultInstanceEx(uint32_t fFlagsAndGroup)
 /*
  * Override RTLogRelGetDefaultInstanceEx so we can do LogRel to VBox.log from EMTs in ring-0.
  */
-DECLEXPORT(PRTLOGGER) RTLogRelGetDefaultInstanceEx(uint32_t fFlagsAndGroup)
+DECL_EXPORT_NOTHROW(PRTLOGGER) RTLogRelGetDefaultInstanceEx(uint32_t fFlagsAndGroup)
 {
     PGVMCPU pGVCpu = GVMMR0GetGVCpuByEMT(NIL_RTNATIVETHREAD);
     if (pGVCpu)
@@ -3789,9 +3756,9 @@ DECLEXPORT(bool) RTCALL RTAssertShouldPanic(void)
         if (pVCpu)
         {
 # ifdef RT_ARCH_X86
-            if (pVCpu->vmmr0.s.AssertJmpBuf.eip)
+            if (pVCpu->vmmr0.s.AssertJmpBuf.Core.s.eip)
 # else
-            if (pVCpu->vmmr0.s.AssertJmpBuf.rip)
+            if (pVCpu->vmmr0.s.AssertJmpBuf.Core.s.rip)
 # endif
             {
                 if (pVCpu->vmmr0.s.pfnAssertCallback)
@@ -3813,7 +3780,7 @@ DECLEXPORT(bool) RTCALL RTAssertShouldPanic(void)
 /*
  * Override this so we can push it up to ring-3.
  */
-DECLEXPORT(void) RTCALL RTAssertMsg1Weak(const char *pszExpr, unsigned uLine, const char *pszFile, const char *pszFunction)
+VMMR0DECL(void) RTAssertMsg1Weak(const char *pszExpr, unsigned uLine, const char *pszFile, const char *pszFunction)
 {
     /*
      * To host kernel log/whatever.
@@ -3869,7 +3836,7 @@ static DECLCALLBACK(size_t) rtLogOutput(void *pv, const char *pachChars, size_t 
 /*
  * Override this so we can push it up to ring-3.
  */
-DECLEXPORT(void) RTCALL RTAssertMsg2WeakV(const char *pszFormat, va_list va)
+VMMR0DECL(void) RTAssertMsg2WeakV(const char *pszFormat, va_list va)
 {
     va_list vaCopy;
 

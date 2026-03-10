@@ -1,10 +1,10 @@
-/* $Id: UINotificationObjectItem.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UINotificationObjectItem.h 113228 2026-03-03 14:46:16Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationObjectItem class declaration.
  */
 
 /*
- * Copyright (C) 2021-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2021-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -38,15 +38,18 @@
 #include <iprt/cdefs.h> // for RT_OVERRIDE stuff
 
 /* Forward declarations: */
+class QAbstractButton;
 class QHBoxLayout;
 class QLabel;
 class QProgressBar;
 class QPushButton;
 class QVBoxLayout;
+class QIDialogButtonBox;
 class QIRichTextLabel;
 class QIToolButton;
 class UINotificationObject;
 class UINotificationProgress;
+class UINotificationQuestion;
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
 class UINotificationDownloader;
 #endif
@@ -60,9 +63,28 @@ public:
 
     /** Constructs notification-object item, passing @a pParent to the base-class.
       * @param  pObject  Brings the notification-object this item created for. */
-    UINotificationObjectItem(QWidget *pParent, UINotificationObject *pObject = 0);
+    UINotificationObjectItem(QWidget *pParent,
+                             UINotificationObject *pObject);
+
+    /** Returns notification-object this item created for. */
+    UINotificationObject *internalObject() const { return m_pObject; }
+    /** Returns whether notification is of critical type. */
+    bool isCritical() const;
+
+    /** Prepares everything. */
+    void prepare();
+
+    /** Defines details label width @a iHint. */
+    void setDetailsWidthHint(int iHint);
+    /** Returns details label width hint. */
+    int detailsWidthHint() const;
 
 protected:
+
+    /** Prepares widgets. */
+    virtual void prepareWidgets();
+    /** Prepares connections. */
+    virtual void prepareConnections();
 
     /** Handles any Qt @a pEvent. */
     virtual bool event(QEvent *pEvent) RT_OVERRIDE;
@@ -73,6 +95,11 @@ protected:
     /** Holds the notification-object this item created for. */
     UINotificationObject *m_pObject;
 
+    /** Holds the minimum width hint. */
+    int  m_iMinimumWidthHint;
+    /** Holds the details width hint. */
+    int  m_iDetailsWidthHint;
+
     /** Holds the main layout instance. */
     QVBoxLayout     *m_pLayoutMain;
     /** Holds the upper layout instance. */
@@ -81,12 +108,12 @@ protected:
     QLabel          *m_pLabelName;
     /** Holds the help button instance. */
     QIToolButton    *m_pButtonHelp;
-    /** Holds the forget button instance. */
-    QPushButton     *m_pButtonForget;
     /** Holds the close button instance. */
     QIToolButton    *m_pButtonClose;
     /** Holds the details label instance. */
     QIRichTextLabel *m_pLabelDetails;
+    /** Holds the forget button instance. */
+    QPushButton     *m_pButtonForget;
 
     /** Holds whether item is hovered. */
     bool  m_fHovered;
@@ -102,6 +129,47 @@ private slots:
     void sltHandleHelpRequest();
 };
 
+/** UINotificationObjectItem extension for notification-question. */
+class UINotificationQuestionItem : public UINotificationObjectItem
+{
+    Q_OBJECT;
+
+public:
+
+    /** Constructs notification-question item, passing @a pParent to the base-class.
+      * @param  pObject  Brings the notification-object this item created for. */
+    UINotificationQuestionItem(QWidget *pParent,
+                               UINotificationObject *pObject);
+
+protected:
+
+    /** Prepares widgets. */
+    virtual void prepareWidgets() RT_OVERRIDE RT_FINAL;
+    /** Prepares connections. */
+    virtual void prepareConnections() RT_OVERRIDE RT_FINAL;
+
+    /** Handles show @a pEvent. */
+    virtual void showEvent(QShowEvent *pEvent) RT_OVERRIDE RT_FINAL;
+    /** Handles key-press @a pEvent. */
+    virtual void keyPressEvent(QKeyEvent *pEvent) RT_OVERRIDE RT_FINAL;
+
+private slots:
+
+    /** Handles @a pButton click. */
+    void sltHandleButtonClick(QAbstractButton *pButton);
+
+private:
+
+    /** Holds the notification-question this item created for. */
+    UINotificationQuestion *question() const;
+
+    /** Holds the button-box instance. */
+    QIDialogButtonBox *m_pButtonBox;
+
+    /** Holds whether item polished. */
+    bool  m_fPolished;
+};
+
 /** UINotificationObjectItem extension for notification-progress. */
 class UINotificationProgressItem : public UINotificationObjectItem
 {
@@ -110,8 +178,16 @@ class UINotificationProgressItem : public UINotificationObjectItem
 public:
 
     /** Constructs notification-progress item, passing @a pParent to the base-class.
-      * @param  pProgress  Brings the notification-progress this item created for. */
-    UINotificationProgressItem(QWidget *pParent, UINotificationProgress *pProgress = 0);
+      * @param  pObject  Brings the notification-progress this item created for. */
+    UINotificationProgressItem(QWidget *pParent,
+                               UINotificationObject *pObject);
+
+protected:
+
+    /** Prepares widgets. */
+    virtual void prepareWidgets() RT_OVERRIDE RT_FINAL;
+    /** Prepares connections. */
+    virtual void prepareConnections() RT_OVERRIDE RT_FINAL;
 
 private slots:
 
@@ -144,8 +220,16 @@ class UINotificationDownloaderItem : public UINotificationObjectItem
 public:
 
     /** Constructs notification-downloader item, passing @a pParent to the base-class.
-      * @param  pDownloader  Brings the notification-downloader this item created for. */
-    UINotificationDownloaderItem(QWidget *pParent, UINotificationDownloader *pDownloader = 0);
+      * @param  pObject  Brings the notification-downloader this item created for. */
+    UINotificationDownloaderItem(QWidget *pParent,
+                                 UINotificationObject *pObject);
+
+protected:
+
+    /** Prepares widgets. */
+    virtual void prepareWidgets() RT_OVERRIDE RT_FINAL;
+    /** Prepares connections. */
+    virtual void prepareConnections() RT_OVERRIDE RT_FINAL;
 
 private slots:
 
@@ -174,9 +258,10 @@ private:
 namespace UINotificationItem
 {
     /** Creates notification-object of required type.
-      * @param  pParent  Brings the parent constructed item being attached to.
-      * @param  pObject  Brings the notification-object item being constructed for. */
-    UINotificationObjectItem *create(QWidget *pParent, UINotificationObject *pObject);
+      * @param  pParent    Brings the parent constructed item being attached to.
+      * @param  pObject    Brings the notification-object item being constructed for. */
+    UINotificationObjectItem *create(QWidget *pParent,
+                                     UINotificationObject *pObject);
 }
 
 #endif /* !FEQT_INCLUDED_SRC_notificationcenter_UINotificationObjectItem_h */

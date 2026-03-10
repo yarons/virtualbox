@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 113056 2026-02-17 10:38:41Z alexander.eichner@oracle.com $
 ## @file
 # Makefile for the Linux installer.
 #
 
 #
-# Copyright (C) 2006-2025 Oracle and/or its affiliates.
+# Copyright (C) 2006-2026 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.
@@ -304,10 +304,8 @@ VBOX_LNX_STRIP_BIN += \
 
 # VRDP
 ifdef VBOX_WITH_VRDP
- ifndef VBOX_WITH_EXTPACK_PUEL
-  VBOX_LNX_STRIP_BIN += \
-  	VBoxVRDP.so
- endif
+ VBOX_LNX_STRIP_BIN += \
+ 	VBoxVRDP.so
 endif
 
 # Python XPCOM glue
@@ -410,7 +408,7 @@ $(PATH_STAGE_BIN)/$(VBOX_LNX_PACKAGE_NAME): \
 	$(QUIET)$(if $(VBOX_OSE),,$(INSTALL) -m 0644 $(VBOX_BRAND_LICENSE_TXT)    $(VBOX_LNX_INST_STAGE_DIR)/LICENSE)
 	$(QUIET)$(INSTALL) -m 0755 $(VBOX_LNX_INST_OUT_DIR)/install.sh            $(VBOX_LNX_INST_STAGE_DIR)/
 	$(QUIET)$(RM) -f $@
-	$(QUIET)$(VBOX_MAKESELF) --follow --nocomp $(VBOX_LNX_INST_STAGE_DIR) $@ \
+	$(QUIET)$(VBOX_MAKESELF) --follow --nocomp --sha256 $(VBOX_LNX_INST_STAGE_DIR) $@ \
 		"VirtualBox for Linux installation" ./install.sh "\$$0 1> /dev/null"
 
 $(VBOX_LNX_INST_OUT_DIR)/install.sh: $(VBOX_PATH_LNX_INST_SRC)/install.sh $(VBOX_VERSION_STAMP) $(wildcard $(VBOX_SVN_REV_KMK).ts) | $$(dir $$@)
@@ -438,19 +436,13 @@ VBOX_LNX_INST_FILES_VBOXNETFLT = $(patsubst =>%,$(PATH_STAGE_BIN)/src/vboxnetflt
 include $(PATH_ROOT)/src/VBox/HostDrivers/VBoxNetAdp/linux/files_vboxnetadp
 VBOX_LNX_INST_FILES_VBOXNETADP = $(patsubst =>%,$(PATH_STAGE_BIN)/src/vboxnetadp/%,$(filter =>%,$(subst =>, =>,$(subst $(DQUOTE),,$(VBOX_VBOXNETADP_SOURCES)))))
 
-ifdef VBOX_WITH_PCI_PASSTHROUGH
- include $(PATH_ROOT)/src/VBox/HostDrivers/VBoxPci/linux/files_vboxpci
- VBOX_LNX_INST_FILES_VBOXPCI = $(patsubst =>%,$(PATH_STAGE_BIN)/src/vboxpci/%,$(filter =>%,$(subst =>, =>,$(subst $(DQUOTE),,$(VBOX_VBOXPCI_SOURCES)))))
-endif
-
 VBOX_LNX_INST_ARCH_DEPS := \
 	$(addprefix $(VBOX_LNX_INST_OUT_DIR)/archive/, $(VBOX_LNX_ARCH_FILES)) \
 	$(VBOX_LNX_INST_DEP_ON_MAKEFILE) \
 	$(VBOX_VERSION_STAMP) \
 	$(VBOX_LNX_INST_FILES_VBOXDRV) \
 	$(VBOX_LNX_INST_FILES_VBOXNETFLT) \
-	$(VBOX_LNX_INST_FILES_VBOXNETADP) \
-	$(if $(VBOX_WITH_PCI_PASSTHROUGH),$(VBOX_LNX_INST_FILES_VBOXPCI),)
+	$(VBOX_LNX_INST_FILES_VBOXNETADP)
 
 #
 # .tar.bz2 for converting into .run

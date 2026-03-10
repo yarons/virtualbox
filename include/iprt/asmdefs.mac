@@ -3,7 +3,7 @@
 ;
 
 ;
-; Copyright (C) 2006-2025 Oracle and/or its affiliates.
+; Copyright (C) 2006-2026 Oracle and/or its affiliates.
 ;
 ; This file is part of VirtualBox base platform packages, as
 ; available from https://www.virtualbox.org.
@@ -193,6 +193,23 @@
   %define SEH64_PE_GREG_r13     13
   %define SEH64_PE_GREG_r14     14
   %define SEH64_PE_GREG_r15     15
+
+  %define SEH64_PE_XREG_xmm0     0
+  %define SEH64_PE_XREG_xmm1     1
+  %define SEH64_PE_XREG_xmm2     2
+  %define SEH64_PE_XREG_xmm3     3
+  %define SEH64_PE_XREG_xmm4     4
+  %define SEH64_PE_XREG_xmm5     5
+  %define SEH64_PE_XREG_xmm6     6
+  %define SEH64_PE_XREG_xmm7     7
+  %define SEH64_PE_XREG_xmm8     8
+  %define SEH64_PE_XREG_xmm9     9
+  %define SEH64_PE_XREG_xmm10    10
+  %define SEH64_PE_XREG_xmm11    11
+  %define SEH64_PE_XREG_xmm12    12
+  %define SEH64_PE_XREG_xmm13    13
+  %define SEH64_PE_XREG_xmm14    14
+  %define SEH64_PE_XREG_xmm15    15
   ;; @}
 
   ;; @name PE unwind operations.
@@ -320,6 +337,60 @@ RT_CONCAT(.seh64_op_label_,seh64_idxOps):
     SEH64_APPEND_SLOT_BYTES RT_CONCAT(.seh64_op_label_,seh64_idxOps) - .start_of_prologue, \
                             SEH64_PE_ALLOC_LARGE | 1, \
                             (%1) & 0xff, ((%1) >> 8) & 0xff, ((%1) >> 16) & 0xff, ((%1) >> 24) & 0xff
+   %endif
+  %endif
+  %assign seh64_idxOps      seh64_idxOps + 1
+ %endif
+%endmacro
+
+;;
+; Records a general register push.
+; @param 1 Register name.
+; @param 2 Frame offset.
+%macro SEH64_SAVE_GREG 2
+ %ifdef RT_ASM_WITH_SEH64
+        [savereg %1, %2]
+
+ %elifdef RT_ASM_WITH_SEH64_ALT
+RT_CONCAT(.seh64_op_label_,seh64_idxOps):
+  %ifdef ASM_FORMAT_PE64
+   %if (%2) & 7
+    %error "SEH64_SAVE_GREG offset must be a multiple of 8"
+   %endif
+   %if (%2) <= (65535*8)
+    SEH64_APPEND_SLOT_BYTES RT_CONCAT(.seh64_op_label_,seh64_idxOps) - .start_of_prologue, \
+                            SEH64_PE_SAVE_NONVOL | (RT_CONCAT(SEH64_PE_GREG_,%1) << 4),
+                            ((%2) / 8) & 0xff, \
+                            ((%2) / 8) >> 8
+   %else
+    %error "SEH64_SAVE_GREG implement far offsets"
+   %endif
+  %endif
+  %assign seh64_idxOps      seh64_idxOps + 1
+ %endif
+%endmacro
+
+;;
+; Records a general register push.
+; @param 1 Register name.
+; @param 2 Frame offset.
+%macro SEH64_SAVE_XMM128 2
+ %ifdef RT_ASM_WITH_SEH64
+        [savexmm128 %1, %2]
+
+ %elifdef RT_ASM_WITH_SEH64_ALT
+RT_CONCAT(.seh64_op_label_,seh64_idxOps):
+  %ifdef ASM_FORMAT_PE64
+   %if (%2) & 15
+    %error "SEH64_SAVE_XMM128 offset must be a multiple of 16"
+   %endif
+   %if (%2) <= (65535*16)
+    SEH64_APPEND_SLOT_BYTES RT_CONCAT(.seh64_op_label_,seh64_idxOps) - .start_of_prologue, \
+                            SEH64_PE_SAVE_XMM128 | (RT_CONCAT(SEH64_PE_XREG_,%1) << 4), \
+                            ((%2) / 16) & 0xff, \
+                            ((%2) / 16) >> 8
+   %else
+    %error "SEH64_SAVE_XMM128 implement far offsets"
    %endif
   %endif
   %assign seh64_idxOps      seh64_idxOps + 1
@@ -930,16 +1001,6 @@ ENDPROC_RAW NAME(%1)
  %endif
 %endif
 
-;; @def GC_ARCH_BITS
-; Defines the guest architechture bit count.
-%ifndef GC_ARCH_BITS
- %ifdef IN_RC
-  %define GC_ARCH_BITS ARCH_BITS
- %else
-  %define GC_ARCH_BITS 32
- %endif
-%endif
-
 
 
 ;; @def RTHCPTR_DEF
@@ -1049,39 +1110,23 @@ ENDPROC_RAW NAME(%1)
 
 ;; @def RTGCPTR_DEF
 ; The pesudo-instruction used to declare an initialized pointer variable in the guest context.
-%if GC_ARCH_BITS == 64
- %define RTGCPTR_DEF    dq
-%else
- %define RTGCPTR_DEF    dd
-%endif
+%define RTGCPTR_DEF     dq
 
 ;; @def RTGCPTR_RES
 ; The pesudo-instruction used to declare (=reserve space for) an uninitialized pointer
 ; variable of the guest context.
-%if GC_ARCH_BITS == 64
- %define RTGCPTR_RES    resq
-%else
- %define RTGCPTR_RES    resd
-%endif
+%define RTGCPTR_RES     resq
 
 %define RTGCPTR32_RES   resd
 %define RTGCPTR64_RES   resq
 
 ;; @def RTGCPTR_PRE
 ; The memory operand prefix used for a pointer in the guest context.
-%if GC_ARCH_BITS == 64
- %define RTGCPTR_PRE    qword
-%else
- %define RTGCPTR_PRE    dword
-%endif
+%define RTGCPTR_PRE     qword
 
 ;; @def RTGCPTR_CB
 ; The size in bytes of a pointer in the guest context.
-%if GC_ARCH_BITS == 64
- %define RTGCPTR_CB     8
-%else
- %define RTGCPTR_CB     4
-%endif
+%define RTGCPTR_CB      8
 
 
 ;; @def RTRCPTR_DEF

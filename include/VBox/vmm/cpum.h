@@ -3,7 +3,7 @@
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -299,9 +299,16 @@ typedef enum CPUMMICROARCH
     kCpumMicroarch_Apple_End,
 
     kCpumMicroarch_Qualcomm_First,
-    kCpumMicroarch_Qualcomm_Kyro = kCpumMicroarch_Qualcomm_First,
+    kCpumMicroarch_Qualcomm_Kyro = kCpumMicroarch_Qualcomm_First,   /**< Just kCpumMicroarch_Arm_Hercules/Hera? */
     kCpumMicroarch_Qualcomm_Oryon,
     kCpumMicroarch_Qualcomm_End,
+
+    kCpumMicroarch_Arm_First,
+    kCpumMicroarch_Arm_Hercules  = kCpumMicroarch_Arm_First,    /**< ARM Cortex-A78 */
+    kCpumMicroarch_Arm_Hera,                                    /**< ARM Cortex-X1 */
+    kCpumMicroarch_Arm_Chaberton,                               /**< ARM Cortex-A725 */
+    kCpumMicroarch_Arm_Blackhawk,                               /**< ARM Cortex-A925 */
+    kCpumMicroarch_Arm_End,
 
     /*
      * Unknown.
@@ -2032,6 +2039,12 @@ typedef struct CPUMDBENTRYARM
         uint32_t                        cSysRegVals;
         /** System register values specific to this CPU core variant. */
         struct SUPARMSYSREGVAL const   *paSysRegVals;
+        /** Explicit padding (must be zero). */
+        uint32_t                        uUnused;
+        /** Number of entries in the table paCacheEntries points to. */
+        uint32_t                        cCacheEntries;
+        /** Cache level info. */
+        struct SUPARMCACHELEVEL const  *paCacheEntries;
     } aVariants[2];
 } CPUMDBENTRYARM;
 /** Pointer to a const ARM CPU database entry. */

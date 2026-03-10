@@ -1,10 +1,10 @@
-/* $Id: UIChooserModel.h 109420 2025-05-05 14:58:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.h 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
 
 /*
- * Copyright (C) 2012-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -333,7 +333,11 @@ private slots:
         void sltHandleSelectionChanged();
 
         /** Handles signal about context-menu being shown. */
-        void sltUpdateContextMenu();
+        void sltHandleContextMenuAboutToShow();
+        /** Handles signal about context-menu being hidden. */
+        void sltHandleContextMenuAboutToHide();
+        /** Clears context-menu flags. */
+        void sltClearContextMenuFlags();
     /** @} */
 
     /** @name Selection stuff.

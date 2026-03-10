@@ -1,10 +1,10 @@
-/* $Id: GMMR0.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: GMMR0.cpp 113056 2026-02-17 10:38:41Z alexander.eichner@oracle.com $ */
 /** @file
  * GMM - Global Memory Manager.
  */
 
 /*
- * Copyright (C) 2007-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2007-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -173,7 +173,6 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_GMM
-#include <VBox/rawpci.h>
 #include <VBox/vmm/gmm.h>
 #include "GMMR0Internal.h"
 #include <VBox/vmm/vmcc.h>

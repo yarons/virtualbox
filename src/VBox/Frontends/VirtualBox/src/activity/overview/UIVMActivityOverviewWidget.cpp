@@ -1,10 +1,10 @@
-/* $Id: UIVMActivityOverviewWidget.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIVMActivityOverviewWidget.cpp 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class implementation.
  */
 
 /*
- * Copyright (C) 2009-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -50,7 +50,6 @@
 #include "UIGlobalSession.h"
 #include "UIIconPool.h"
 #include "UILocalMachineStuff.h"
-#include "UIMessageCenter.h"
 #include "UITranslator.h"
 #include "UITranslationEventListener.h"
 #include "UIVirtualBoxEventHandler.h"
@@ -84,9 +83,9 @@ struct ResourceColumn
 *   Class UIVMActivityOverviewDoughnutChart definition.                                                                          *
 *********************************************************************************************************************************/
 
+
 class UIVMActivityOverviewDoughnutChart : public QWidget
 {
-
     Q_OBJECT;
 
 public:
@@ -120,7 +119,6 @@ private:
 /** A container QWidget to layout host stats. related widgets. */
 class UIVMActivityOverviewHostStatsWidget : public QWidget
 {
-
     Q_OBJECT;
 
 public:
@@ -167,7 +165,6 @@ private:
 /** Each instance of UIVMActivityOverviewItem corresponds to a vm. they are owned my the model. */
 class UIVMActivityOverviewItem : public QObject
 {
-
     Q_OBJECT;
 
 public:
@@ -212,6 +209,7 @@ Q_DECLARE_METATYPE(UIVMActivityOverviewItem);
 class UIVMActivityOverviewItemLocal : public UIVMActivityOverviewItem
 {
     Q_OBJECT;
+
 public:
 
     UIVMActivityOverviewItemLocal(QObject *pParent, const QUuid &uid, const QString &strVMName);
@@ -235,8 +233,8 @@ private:
     quint64          m_uVMExitTotal;
     quint64          m_uDiskWriteTotal;
     quint64          m_uDiskReadTotal;
-    quint64          m_uNetworkDownTotal;
-    quint64          m_uNetworkUpTotal;
+    quint64          m_uNetworkReceiveTotal;
+    quint64          m_uNetworkTransmitTotal;
     CMachineDebugger m_comDebugger;
 };
 
@@ -248,6 +246,7 @@ private:
 class UIVMActivityOverviewItemCloud : public UIVMActivityOverviewItem
 {
     Q_OBJECT;
+
 public:
 
     UIVMActivityOverviewItemCloud(QObject *pParent, const QUuid &uid, const QString &strVMName, CCloudMachine &comCloudMachine);
@@ -268,6 +267,7 @@ private slots:
     void sltMetricNameListingComplete(QVector<QString> metricNameList);
     void sltMetricDataReceived(KMetricType enmMetricType,
                                const QVector<QString> &data, const QVector<QString> &timeStamps);
+
 private:
 
     void getMetricList();
@@ -286,7 +286,6 @@ private:
 /** A QItemDelegate child class to disable dashed lines drawn around selected cells in QTableViews */
 class UIVMActivityOverviewDelegate : public QItemDelegate
 {
-
     Q_OBJECT;
 
 public:
@@ -764,10 +763,10 @@ void UIVMActivityOverviewItemCloud::sltMetricDataReceived(KMetricType enmMetricT
              QString("%1%").arg(QString::number(data[0].toFloat(), 'f', iDecimalCount));
     }
     else if (enmMetricType == KMetricType_NetworksBytesOut)
-        m_columnData[VMActivityOverviewColumn_NetworkUpRate] =
+        m_columnData[VMActivityOverviewColumn_NetworkTransmitRate] =
             UITranslator::formatSize((quint64)data[0].toFloat(), iDecimalCount);
     else if (enmMetricType == KMetricType_NetworksBytesIn)
-        m_columnData[VMActivityOverviewColumn_NetworkDownRate] =
+        m_columnData[VMActivityOverviewColumn_NetworkReceiveRate] =
             UITranslator::formatSize((quint64)data[0].toFloat(), iDecimalCount);
     else if (enmMetricType == KMetricType_DiskBytesRead)
         m_columnData[VMActivityOverviewColumn_DiskIOReadRate] =
@@ -853,8 +852,8 @@ UIVMActivityOverviewItemLocal::UIVMActivityOverviewItemLocal(QObject *pParent, c
     , m_uVMExitTotal(0)
     , m_uDiskWriteTotal(0)
     , m_uDiskReadTotal(0)
-    , m_uNetworkDownTotal(0)
-    , m_uNetworkUpTotal(0)
+    , m_uNetworkReceiveTotal(0)
+    , m_uNetworkTransmitTotal(0)
 {
     if (m_enmMachineState == KMachineState_Running)
         resetDebugger();
@@ -865,8 +864,8 @@ UIVMActivityOverviewItemLocal::UIVMActivityOverviewItemLocal()
     , m_uVMExitTotal(0)
     , m_uDiskWriteTotal(0)
     , m_uDiskReadTotal(0)
-    , m_uNetworkDownTotal(0)
-    , m_uNetworkUpTotal(0)
+    , m_uNetworkReceiveTotal(0)
+    , m_uNetworkTransmitTotal(0)
 {
 }
 
@@ -951,19 +950,19 @@ void UIVMActivityOverviewItemLocal::updateColumnData()
         m_columnData[VMActivityOverviewColumn_RAMUsedPercentage] = UIVMActivityOverviewWidget::tr("N/A");
 
     /* Network rate: */
-    quint64 uPrevDownTotal = m_uNetworkDownTotal;
-    quint64 uPrevUpTotal = m_uNetworkUpTotal;
-    UIMonitorCommon::getNetworkLoad(m_comDebugger, m_uNetworkDownTotal, m_uNetworkUpTotal);
-    quint64 uNetworkDownRate = m_uNetworkDownTotal - uPrevDownTotal;
-    quint64 uNetworkUpRate = m_uNetworkUpTotal - uPrevUpTotal;
-    m_columnData[VMActivityOverviewColumn_NetworkUpRate] =
-        QString("%1").arg(UITranslator::formatSize(uNetworkUpRate, iDecimalCount));
-    m_columnData[VMActivityOverviewColumn_NetworkDownRate] =
-        QString("%1").arg(UITranslator::formatSize(uNetworkDownRate, iDecimalCount));
-    m_columnData[VMActivityOverviewColumn_NetworkUpTotal] =
-        QString("%1").arg(UITranslator::formatSize(m_uNetworkUpTotal, iDecimalCount));
-    m_columnData[VMActivityOverviewColumn_NetworkDownTotal] =
-        QString("%1").arg(UITranslator::formatSize(m_uNetworkDownTotal, iDecimalCount));
+    quint64 uPrevDownTotal = m_uNetworkReceiveTotal;
+    quint64 uPrevUpTotal = m_uNetworkTransmitTotal;
+    UIMonitorCommon::getNetworkLoad(m_comDebugger, m_uNetworkReceiveTotal, m_uNetworkTransmitTotal);
+    quint64 uNetworkReceiveRate = m_uNetworkReceiveTotal - uPrevDownTotal;
+    quint64 uNetworkTransmitRate = m_uNetworkTransmitTotal - uPrevUpTotal;
+    m_columnData[VMActivityOverviewColumn_NetworkTransmitRate] =
+        QString("%1").arg(UITranslator::formatSize(uNetworkTransmitRate, iDecimalCount));
+    m_columnData[VMActivityOverviewColumn_NetworkReceiveRate] =
+        QString("%1").arg(UITranslator::formatSize(uNetworkReceiveRate, iDecimalCount));
+    m_columnData[VMActivityOverviewColumn_NetworkTransmitTotal] =
+        QString("%1").arg(UITranslator::formatSize(m_uNetworkTransmitTotal, iDecimalCount));
+    m_columnData[VMActivityOverviewColumn_NetworkReceiveTotal] =
+        QString("%1").arg(UITranslator::formatSize(m_uNetworkReceiveTotal, iDecimalCount));
 
 
     /* IO rate: */
@@ -1057,14 +1056,18 @@ void UIVMActivityOverviewWidget::sltRetranslateUI()
     m_columnTitles[VMActivityOverviewColumn_CPUVMMLoad] = UIVMActivityOverviewWidget::tr("CPU VMM");
     m_columnTitles[VMActivityOverviewColumn_RAMUsedAndTotal] = UIVMActivityOverviewWidget::tr("RAM Used/Total");
     m_columnTitles[VMActivityOverviewColumn_RAMUsedPercentage] = UIVMActivityOverviewWidget::tr("RAM %");
-    m_columnTitles[VMActivityOverviewColumn_NetworkUpRate] = UIVMActivityOverviewWidget::tr("Network Upload Rate");
-    m_columnTitles[VMActivityOverviewColumn_NetworkDownRate] = UIVMActivityOverviewWidget::tr("Network Download Rate");
-    m_columnTitles[VMActivityOverviewColumn_NetworkUpTotal] = UIVMActivityOverviewWidget::tr("Network Upload Total");
-    m_columnTitles[VMActivityOverviewColumn_NetworkDownTotal] = UIVMActivityOverviewWidget::tr("Network Download Total");
+    m_columnTitles[VMActivityOverviewColumn_NetworkTransmitRate] = UIVMActivityOverviewWidget::tr("Network Transmit Rate");
+    m_columnTitles[VMActivityOverviewColumn_NetworkReceiveRate] = UIVMActivityOverviewWidget::tr("Network Receive Rate");
+    m_columnTitles[VMActivityOverviewColumn_NetworkTransmitTotal] = UIVMActivityOverviewWidget::tr("Network Transmit Total");
+    m_columnTitles[VMActivityOverviewColumn_NetworkReceiveTotal] = UIVMActivityOverviewWidget::tr("Network Receive Total");
     m_columnTitles[VMActivityOverviewColumn_DiskIOReadRate] = UIVMActivityOverviewWidget::tr("Disk Read Rate");
     m_columnTitles[VMActivityOverviewColumn_DiskIOWriteRate] = UIVMActivityOverviewWidget::tr("Disk Write Rate");
     m_columnTitles[VMActivityOverviewColumn_DiskIOReadTotal] = UIVMActivityOverviewWidget::tr("Disk Read Total");
     m_columnTitles[VMActivityOverviewColumn_DiskIOWriteTotal] = UIVMActivityOverviewWidget::tr("Disk Write Total");
+    m_columnTitles[VMActivityOverviewColumn_USBReadRate] = UIVMActivityOverviewWidget::tr("USB Read Rate");
+    m_columnTitles[VMActivityOverviewColumn_USBWriteRate] = UIVMActivityOverviewWidget::tr("USB Write Rate");
+    m_columnTitles[VMActivityOverviewColumn_USBReadTotal] = UIVMActivityOverviewWidget::tr("USB Read Total");
+    m_columnTitles[VMActivityOverviewColumn_USBWriteTotal] = UIVMActivityOverviewWidget::tr("USB Write Total");
     m_columnTitles[VMActivityOverviewColumn_VMExits] = UIVMActivityOverviewWidget::tr("VM Exits");
 
     updateColumnsMenu();

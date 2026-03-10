@@ -1,10 +1,10 @@
-/* $Id: HostHardwareLinux.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: HostHardwareLinux.cpp 112877 2026-02-09 09:26:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Main - Code for handling hardware detection under Linux, VBoxSVC.
  */
 
 /*
- * Copyright (C) 2008-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2008-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -774,7 +774,7 @@ private:
             return;
         bool fHaveName = false;
         if (!noProbe())
-            fHaveName = floppyGetName(mszNode, mpcszName[2] - '0', szName);
+            fHaveName = floppyGetName(mszNode, (unsigned int)(mpcszName[2] - '0'), szName);
         int vrc = RTLinuxSysFsGetLinkDest(szDriver, sizeof(szDriver), NULL, "block/%s/%s", mpcszName, "device/driver");
         if (RT_SUCCESS(vrc))
         {
@@ -784,7 +784,7 @@ private:
         else if (!fHaveName)
             return;
         floppyCreateDeviceStrings(fHaveName ? szName : NULL,
-                                  mpcszName[2] - '0', mszDesc,
+                                  (unsigned)(mpcszName[2] - '0'), mszDesc,
                                   sizeof(mszDesc), mszUdi, sizeof(mszUdi));
         misValid = true;
     }

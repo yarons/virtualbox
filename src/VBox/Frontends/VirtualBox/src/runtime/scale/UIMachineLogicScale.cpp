@@ -1,10 +1,10 @@
-/* $Id: UIMachineLogicScale.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineLogicScale.cpp 113265 2026-03-05 08:50:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicScale class implementation.
  */
 
 /*
- * Copyright (C) 2010-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -36,12 +36,10 @@
 #include "UIMachine.h"
 #include "UIMachineLogicScale.h"
 #include "UIMachineWindow.h"
-#include "UIMessageCenter.h"
+#include "UINotificationQuestion.h"
 #include "UIShortcutPool.h"
 #ifndef VBOX_WS_MAC
 # include "QIMenu.h"
-#else
-# include "VBoxUtils.h"
 #endif
 
 /* COM includes: */
@@ -63,7 +61,7 @@ bool UIMachineLogicScale::checkAvailability()
             gShortcutPool->shortcut(actionPool()->shortcutsExtraDataID(),
                                     actionPool()->action(UIActionIndexRT_M_View_T_Scale)->shortcutExtraDataID());
     const QString strHotKey = QString("Host+%1").arg(shortcut.primaryToPortableText());
-    if (!msgCenter().confirmGoingScale(strHotKey))
+    if (!UINotificationQuestion::confirmGoingScale(strHotKey))
         return false;
 
     return true;

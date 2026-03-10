@@ -1,10 +1,10 @@
-/* $Id: UINetworkManagerUtils.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UINetworkManagerUtils.cpp 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkManagerUtils namespace implementation.
  */
 
 /*
- * Copyright (C) 2017-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2017-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -149,4 +149,3 @@ QStringList UINetworkManagerUtils::makeDhcpServerProposal(const QString &strInte
                          << ipv4FromQuint32ToQString(uServerProposedAddressL)
                          << ipv4FromQuint32ToQString(uServerProposedAddressU);
 }
-

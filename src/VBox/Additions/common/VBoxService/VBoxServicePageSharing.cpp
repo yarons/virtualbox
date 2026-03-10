@@ -1,10 +1,10 @@
-/* $Id: VBoxServicePageSharing.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxServicePageSharing.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -81,7 +81,6 @@
 #endif
 
 #include "VBoxServiceInternal.h"
-#include "VBoxServiceUtils.h"
 
 
 /*********************************************************************************************************************************
@@ -580,7 +579,7 @@ static DECLCALLBACK(int) vgsvcPageSharingInit(void)
     AssertRCReturn(rc, rc);
 
 #ifdef RT_OS_WINDOWS
-    rc = VbglR3GetSessionId(&g_idSession);
+    rc = VbglR3QuerySessionId(&g_idSession);
     if (RT_FAILURE(rc))
     {
         if (rc == VERR_IO_GEN_FAILURE)
@@ -640,7 +639,7 @@ static DECLCALLBACK(int) vgsvcPageSharingWorker(bool volatile *pfShutdown)
         }
 #ifdef RT_OS_WINDOWS
         uint64_t idNewSession = g_idSession;
-        rc =  VbglR3GetSessionId(&idNewSession);
+        rc =  VbglR3QuerySessionId(&idNewSession);
         AssertRC(rc);
 
         if (idNewSession != g_idSession)
@@ -793,6 +792,8 @@ VBOXSERVICE g_PageSharing =
     NULL,
     /* pszOptions. */
     NULL,
+    /* paOptions, cOptions. */
+    NULL, 0,
     /* methods */
     VGSvcDefaultPreInit,
     VGSvcDefaultOption,

@@ -1,10 +1,10 @@
-/* $Id: DevVGA-SVGA3d-dx-savedstate.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx-savedstate.cpp 112601 2026-01-15 12:05:40Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - DX backend saved state.
  */
 
 /*
- * Copyright (C) 2022-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2022-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -33,6 +33,7 @@
 #include <VBox/AssertGuest.h>
 #include <iprt/errcore.h>
 #include <VBox/log.h>
+#include <VBox/version.h>
 #include <VBox/vmm/pdmdev.h>
 
 #include <iprt/assert.h>
@@ -112,7 +113,7 @@ static int vmsvga3dDXLoadSurface(PCPDMDEVHLPR3 pHlp, PVGASTATECC pThisCC, PSSMHA
     return VINF_SUCCESS;
 }
 
-static int vmsvga3dDXLoadContext(PCPDMDEVHLPR3 pHlp, PVGASTATECC pThisCC, PSSMHANDLE pSSM)
+static int vmsvga3dDXLoadContext(PCPDMDEVHLPR3 pHlp, PVGASTATECC pThisCC, PSSMHANDLE pSSM, uint32_t uVersion)
 {
     PVMSVGAR3STATE pSvgaR3State = pThisCC->svga.pSvgaR3State;
     PVMSVGA3DSTATE p3dState = pThisCC->svga.p3dState;
@@ -149,8 +150,13 @@ static int vmsvga3dDXLoadContext(PCPDMDEVHLPR3 pHlp, PVGASTATECC pThisCC, PSSMHA
     {
         rc = pHlp->pfnSSMGetU32(pSSM, &u32);
         AssertLogRelRCReturn(rc, rc);
+#ifndef COTABLE_NO_BACKING
         pDXContext->aCOTMobs[i] = vmsvgaR3MobGet(pSvgaR3State, u32);
         Assert(pDXContext->aCOTMobs[i] || u32 == SVGA_ID_INVALID);
+#else
+        Assert(vmsvgaR3MobGet(pSvgaR3State, u32) != NULL || u32 == SVGA_ID_INVALID);
+        pDXContext->aCOTMobs[i] = u32;
+#endif
     }
 
     struct
@@ -198,7 +204,48 @@ static int vmsvga3dDXLoadContext(PCPDMDEVHLPR3 pHlp, PVGASTATECC pThisCC, PSSMHA
         AssertReturn(u32 == cot[i].cbEntry, VERR_INVALID_STATE);
 
         *cot[i].pcEntries = cEntries;
+#ifdef COTABLE_NO_BACKING
+        if (cEntries > 0)
+        {
+            PVMSVGAMOB pMob = vmsvgaR3MobGet(pSvgaR3State, pDXContext->aCOTMobs[idxCOTable]);
+            uint32_t const cbCOT = vmsvgaR3MobSize(pMob);
+            uint32_t const cbEntries = cEntries * cot[i].cbEntry;
+            AssertReturn(cbEntries <= cbCOT, VERR_INVALID_STATE);
+
+            *cot[i].ppaEntries = RTMemAllocZ(cbCOT);
+            AssertReturn(*cot[i].ppaEntries, VERR_NO_MEMORY);
+
+            bool const fCOTable = pHlp->pfnSSMHandleVersion(pSSM) >= VBOX_FULL_VERSION_MAKE(7,2,0)
+                                ? uVersion >= VGA_SAVEDSTATE_VERSION_VMSVGA_COTABLES
+                                : uVersion >= 30 /* VGA_SAVEDSTATE_VERSION_VMSVGA_COTABLES on 7.1 branch */;
+            if (fCOTable)
+            {
+                /* Read the content of COTable to the host buffer. */
+                rc = pHlp->pfnSSMGetMem(pSSM, *cot[i].ppaEntries, cbEntries);
+                AssertRCReturn(rc, rc);
+            }
+            else
+            {
+                /* COTable content must be in the MOB host buffer. */
+                void const *pvMobData = vmsvgaR3MobBackingStorePtr(pMob, 0);
+                Assert(pvMobData);
+                if (pvMobData)
+                    memcpy(*cot[i].ppaEntries, pvMobData, cbEntries);
+            }
+        }
+        else
+            *cot[i].ppaEntries = NULL;
+#else
         *cot[i].ppaEntries = vmsvgaR3MobBackingStorePtr(pDXContext->aCOTMobs[idxCOTable], 0);
+        bool const fCOTable = pHlp->pfnSSMHandleVersion(pSSM) >= VBOX_FULL_VERSION_MAKE(7,2,0)
+                            ? uVersion >= VGA_SAVEDSTATE_VERSION_VMSVGA_COTABLES
+                            : uVersion >= 30 /* VGA_SAVEDSTATE_VERSION_VMSVGA_COTABLES on 7.1 branch */;
+        if (fCOTable)
+        {
+            if (cEntries > 0)
+                pHlp->pfnSSMSkip(pSSM, cEntries * cot[i].cbEntry);
+        }
+#endif
 
         if (cEntries)
         {
@@ -271,7 +318,7 @@ int vmsvga3dDXLoadExec(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGASTATECC pThisCC,
 
         for (uint32_t i = 0; i < p3dState->cDXContexts; ++i)
         {
-            rc = vmsvga3dDXLoadContext(pHlp, pThisCC, pSSM);
+            rc = vmsvga3dDXLoadContext(pHlp, pThisCC, pSSM, uVersion);
             AssertRCReturn(rc, rc);
         }
     }
@@ -412,7 +459,11 @@ static int vmsvga3dDXSaveContext(PCPDMDEVHLPR3 pHlp, PVGASTATECC pThisCC, PSSMHA
     AssertLogRelRCReturn(rc, rc);
     for (unsigned i = 0; i < RT_ELEMENTS(pDXContext->aCOTMobs); ++i)
     {
+#ifndef COTABLE_NO_BACKING
         uint32_t const mobId = vmsvgaR3MobId(pDXContext->aCOTMobs[i]);
+#else
+        uint32_t const mobId = pDXContext->aCOTMobs[i];
+#endif
         rc = pHlp->pfnSSMPutU32(pSSM, mobId);
         AssertLogRelRCReturn(rc, rc);
     }
@@ -449,6 +500,13 @@ static int vmsvga3dDXSaveContext(PCPDMDEVHLPR3 pHlp, PVGASTATECC pThisCC, PSSMHA
         pHlp->pfnSSMPutU32(pSSM, cot[i].cEntries);
         rc = pHlp->pfnSSMPutU32(pSSM, cot[i].cbEntry);
         AssertLogRelRCReturn(rc, rc);
+
+        /* VGA_SAVEDSTATE_VERSION_VMSVGA_COTABLES */
+        if (cot[i].cEntries)
+        {
+            rc = pHlp->pfnSSMPutMem(pSSM, cot[i].paEntries, cot[i].cEntries * cot[i].cbEntry);
+            AssertLogRelRCReturn(rc, rc);
+        }
     }
 
     rc = pSvgaR3State->pFuncsDX->pfnDXSaveState(pThisCC, pDXContext, pHlp, pSSM);

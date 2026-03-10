@@ -1,10 +1,10 @@
-/* $Id: UINotificationObject.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UINotificationObject.cpp 113228 2026-03-03 14:46:16Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationObject class implementation.
  */
 
 /*
- * Copyright (C) 2021-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2021-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -61,47 +61,12 @@ void UINotificationObject::close()
 UINotificationSimple::UINotificationSimple(const QString &strName,
                                            const QString &strDetails,
                                            const QString &strInternalName,
-                                           const QString &strHelpKeyword,
-                                           bool fCritical /* = true */)
+                                           const QString &strHelpKeyword)
     : m_strName(strName)
     , m_strDetails(strDetails)
     , m_strInternalName(strInternalName)
     , m_strHelpKeyword(strHelpKeyword)
-    , m_fCritical(fCritical)
-{
-}
-
-bool UINotificationSimple::isCritical() const
-{
-    return m_fCritical;
-}
-
-bool UINotificationSimple::isDone() const
-{
-    return true;
-}
-
-QString UINotificationSimple::name() const
-{
-    return m_strName;
-}
-
-QString UINotificationSimple::details() const
-{
-    return m_strDetails;
-}
-
-QString UINotificationSimple::internalName() const
-{
-    return m_strInternalName;
-}
-
-QString UINotificationSimple::helpKeyword() const
-{
-    return m_strHelpKeyword;
-}
-
-void UINotificationSimple::handle()
+    , m_fCritical(false)
 {
 }
 
@@ -149,26 +114,6 @@ bool UINotificationProgress::isCancelable() const
 QString UINotificationProgress::error() const
 {
     return m_pTask ? m_pTask->errorMessage() : QString();
-}
-
-bool UINotificationProgress::isCritical() const
-{
-    return true;
-}
-
-bool UINotificationProgress::isDone() const
-{
-    return m_fDone;
-}
-
-QString UINotificationProgress::internalName() const
-{
-    return QString();
-}
-
-QString UINotificationProgress::helpKeyword() const
-{
-    return QString();
 }
 
 void UINotificationProgress::handle()
@@ -250,26 +195,6 @@ ulong UINotificationDownloader::percent() const
 QString UINotificationDownloader::error() const
 {
     return m_strError;
-}
-
-bool UINotificationDownloader::isCritical() const
-{
-    return true;
-}
-
-bool UINotificationDownloader::isDone() const
-{
-    return m_fDone;
-}
-
-QString UINotificationDownloader::internalName() const
-{
-    return QString();
-}
-
-QString UINotificationDownloader::helpKeyword() const
-{
-    return QString();
 }
 
 void UINotificationDownloader::handle()

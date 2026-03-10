@@ -3,7 +3,7 @@
  */
 
 /*
- * Copyright (C) 2018-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2018-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -40,6 +40,7 @@
 #endif
 
 #include <VBox/types.h>
+#include <VBox/sup.h>
 #include <VBox/vmm/vmapi.h>
 #include <VBox/vmm/pgm.h>
 
@@ -70,11 +71,17 @@ VMMR3_INT_DECL(VBOXSTRICTRC) NEMR3RunGC(PVM pVM, PVMCPU pVCpu);
 VMMR3_INT_DECL(bool) NEMR3CanExecuteGuest(PVM pVM, PVMCPU pVCpu);
 VMMR3_INT_DECL(bool) NEMR3SetSingleInstruction(PVM pVM, PVMCPU pVCpu, bool fEnable);
 VMMR3_INT_DECL(void) NEMR3NotifyFF(PVM pVM, PVMCPU pVCpu, uint32_t fFlags);
-#if defined(VBOX_VMM_TARGET_ARMV8) && defined(RT_OS_WINDOWS)
 VMMR3_INT_DECL(int)  NEMR3Halt(PVM pVM, PVMCPU pVCpu);
+VMMR3_INT_DECL(bool) NEMR3NeedSpecialWaitMethod(PVM pVM);
+#ifdef RT_ARCH_AMD64
+VMMR3_INT_DECL(int)  NEMR3QueryHostHwvirtMsrs(PVM pVM, PSUPHWVIRTMSRS pMsrs);
 #endif
 #if defined(VBOX_VMM_TARGET_X86) && defined(RT_OS_WINDOWS)
 VMMR3_INT_DECL(int) NEMR3WinGetPartitionHandle(PVM pVM, PRTHCUINTPTR pHCPtrHandle);
+#endif
+#if defined(VBOX_VMM_TARGET_X86) && defined(RT_OS_LINUX)
+VMMR3_INT_DECL(int) NEMR3LinuxGetKvmVmFd(PVM pVM, int *piFdKvm);
+VMMR3_INT_DECL(int) NEMR3LinuxGetKvmVCpuFd(PVMCPU pVCpu, int *piFdKvmVcpu);
 #endif
 
 /**

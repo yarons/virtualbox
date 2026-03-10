@@ -1,10 +1,10 @@
-# $Id: .scm-settings 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: .scm-settings 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $
 ## @file
 # Source code massager settings for OS X guest additions installer.
 #
 
 #
-# Copyright (C) 2010-2025 Oracle and/or its affiliates.
+# Copyright (C) 2010-2026 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.
@@ -26,12 +26,11 @@
 #
 
 
---filter-out-files /VBoxGuestAdditions_mpkg/Conclusion.rtf
---filter-out-files /VBoxGuestAdditions_mpkg/Welcome.rtf
---filter-out-files /VBoxGuestAdditions_mpkg/Localizable.strings
 
-/DiskImage/Uninstall.tool:                              --treat-as .sh
-/VBoxGuestAdditionsKEXTs/postflight:                    --treat-as .sh
-/VBoxGuestAdditionsToolsAndServices/VBoxServiceWrapper: --treat-as .sh
-/VBoxGuestAdditions_mpkg/distribution.dist:             --treat-as .xml
+/DiskImage/Uninstall.tool:                              --treat-as shell
+/VBoxGuestAdditionsKEXTs/postflight:                    --treat-as shell
+/VBoxGuestAdditionsToolsAndServices/VBoxServiceWrapper: --treat-as shell
+/VBoxGuestAdditions_mpkg/distribution.dist:             --treat-as xml
+/VBoxGuestAdditions_mpkg/*.rtf:                         --treat-as plaintext
+/VBoxGuestAdditions_mpkg/*.strings:                     --treat-as plaintext
 

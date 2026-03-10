@@ -3,7 +3,7 @@
  */
 
 /*
- * Copyright (C) 2011-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -191,6 +191,16 @@ typedef uint8_t IEMMODE;
  *  IEM will ASSUME the caller has ensured these are already present. */
 # define IEM_CPUMCTX_EXTRN_SVM_VMRUN_MASK          IEM_CPUMCTX_EXTRN_SVM_VMEXIT_MASK
 #endif
+
+/** The CPUMCTX_EXTRN_XXX mask required to be cleared when recompiling anything.
+ * IEM will ASSUME the caller of IEM APIs has ensured these are already present. */
+#define IEM_CPUMCTX_EXTRN_RECOMPILER_MASK         (  IEM_CPUMCTX_EXTRN_XCPT_MASK \
+                                                   | CPUMCTX_EXTRN_DS \
+                                                   | CPUMCTX_EXTRN_ES \
+                                                   | CPUMCTX_EXTRN_FS \
+                                                   | CPUMCTX_EXTRN_GS \
+                                                   | CPUMCTX_EXTRN_GDTR \
+                                                   | CPUMCTX_EXTRN_LDTR )
 
 /** @name Given Instruction Interpreters
  * @{ */

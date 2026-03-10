@@ -1,10 +1,10 @@
-/* $Id: log.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: log.cpp 112906 2026-02-09 14:46:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * Runtime VBox - Logger.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -1563,9 +1563,9 @@ RTDECL(int) RTLogCreateExV(PRTLOGGER *ppLogger, const char *pszEnvVarBase, uint6
                     if (Thread != NIL_RTTHREAD)
                     {
                         int32_t c = RTLockValidatorWriteLockGetCount(Thread);
-                        RTSemSpinMutexRequest(pLoggerInt->hSpinMtx);
+                        rtlogLock(pLoggerInt);
                         c = RTLockValidatorWriteLockGetCount(Thread) - c;
-                        RTSemSpinMutexRelease(pLoggerInt->hSpinMtx);
+                        rtlogUnlock(pLoggerInt);
                         ASMAtomicWriteU32(&g_cLoggerLockCount, c);
                     }
 

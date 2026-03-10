@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: status.py 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: status.py 112924 2026-02-10 14:44:05Z ksenia.s.stepanova@oracle.com $
 
 """
 CGI - Administrator Web-UI.
@@ -8,7 +8,7 @@ CGI - Administrator Web-UI.
 
 __copyright__ = \
 """
-Copyright (C) 2012-2025 Oracle and/or its affiliates.
+Copyright (C) 2012-2026 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 110684 $"
+__version__ = "$Revision: 112924 $"
 
 
 # Standard python imports.
@@ -73,7 +73,8 @@ def testbox_data_processing(oDb):
         enmStatus              = aoRow[1];
         oTimeDeltaSinceStarted = aoRow[2];
         sTestBoxOs             = aoRow[3]
-        sSchedGroupNames       = aoRow[4];
+        sTestBoxArch           = aoRow[4]
+        sSchedGroupNames       = aoRow[5];
 
         # Idle testboxes will not have an assigned test set, so enmStatus
         # will be None.  Skip these.
@@ -82,6 +83,8 @@ def testbox_data_processing(oDb):
 
             if "testbox_os" not in dTestBoxes[sTextBoxName]:
                 dTestBoxes[sTextBoxName].update({"testbox_os": sTestBoxOs})
+            if "testbox_arch" not in dTestBoxes[sTextBoxName]:
+                dTestBoxes[sTextBoxName].update({"testbox_arch": sTestBoxArch})
 
             if "sched_group" not in dTestBoxes[sTextBoxName]:
                 dTestBoxes[sTextBoxName].update({"sched_group": sSchedGroupNames})
@@ -124,11 +127,12 @@ def dict_update(dTarget, sKeyName, enmStatus):
 def formatDataEntry(sKey, dEntry):
     # There are variations in the first and second "columns".
     if "hours_running" in dEntry:
-        sRet = "%s;%s;%s | running: %s;%s" \
-             % (sKey, dEntry["testbox_os"], dEntry["sched_group"], dEntry["running"], dEntry["hours_running"]);
+        sRet = "%s;%s;%s;%s | running: %s;%s" \
+             % (sKey, dEntry["testbox_os"], dEntry["testbox_arch"], dEntry["sched_group"],
+                dEntry["running"], dEntry["hours_running"]);
     else:
         if "testbox_os" in dEntry:
-            sRet = "%s;%s;%s" % (sKey, dEntry["testbox_os"], dEntry["sched_group"],);
+            sRet = "%s;%s;%s;%s" % (sKey, dEntry["testbox_os"], dEntry["testbox_arch"], dEntry["sched_group"],);
         else:
             sRet = sKey;
         sRet += " | running: %s" % (dEntry["running"],)
@@ -305,6 +309,7 @@ class StatusDispatcher(object): # pylint: disable=too-few-public-methods
             TestSets.enmStatus,
             CURRENT_TIMESTAMP - TestSets.tsCreated,
             TestBoxesWithStrings.sOS,
+            TestBoxesWithStrings.sCpuArch,
             SchedGroupNames.sSchedGroupNames
     FROM    (
             SELECT TestBoxesInSchedGroups.idTestBox AS idTestBox,
@@ -328,6 +333,7 @@ class StatusDispatcher(object): # pylint: disable=too-few-public-methods
             TestSets.enmStatus,
             CURRENT_TIMESTAMP - TestSets.tsCreated,
             TestBoxesWithStrings.sOS,
+            TestBoxesWithStrings.sCpuArch,
             SchedGroupNames.sSchedGroupNames
     FROM    (
             SELECT TestBoxesInSchedGroups.idTestBox AS idTestBox,

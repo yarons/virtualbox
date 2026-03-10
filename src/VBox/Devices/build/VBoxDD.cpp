@@ -1,10 +1,10 @@
-/* $Id: VBoxDD.cpp 110689 2025-08-12 05:31:16Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxDD.cpp 113056 2026-02-17 10:38:41Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -213,11 +213,6 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
     if (RT_FAILURE(rc))
         return rc;
 #endif
-#ifdef VBOX_WITH_PCI_PASSTHROUGH_IMPL
-    rc = pCallbacks->pfnRegister(pCallbacks, &g_DevicePciRaw);
-    if (RT_FAILURE(rc))
-        return rc;
-#endif
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceGIMDev);
     if (RT_FAILURE(rc))
         return rc;
@@ -248,6 +243,11 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
         return rc;
 
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceTpmPpi);
+    if (RT_FAILURE(rc))
+        return rc;
+#endif
+#ifdef VBOX_WITH_VFIO_PCI_PASSTHROUGH
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DevicePciVfio);
     if (RT_FAILURE(rc))
         return rc;
 #endif
@@ -458,11 +458,6 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
     if (RT_FAILURE(rc))
         return rc;
 #endif
-#ifdef VBOX_WITH_PCI_PASSTHROUGH_IMPL
-    rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvPciRaw);
-    if (RT_FAILURE(rc))
-        return rc;
-#endif
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvIfTrace);
     if (RT_FAILURE(rc))
         return rc;
@@ -495,6 +490,13 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
     if (RT_FAILURE(rc))
         return rc;
 #endif
+
+#ifdef VBOX_WITH_USB_CARDREADER_TEST
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvCardReaderReg);
+    if (RT_FAILURE(rc))
+        return rc;
+#endif
+
     return VINF_SUCCESS;
 }
 
@@ -534,6 +536,11 @@ extern "C" DECLEXPORT(int) VBoxUsbRegister(PCPDMUSBREGCB pCallbacks, uint32_t u3
 #endif
 #ifdef VBOX_WITH_USB_VIDEO_IMPL
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DevWebcam);
+    if (RT_FAILURE(rc))
+        return rc;
+#endif
+#ifdef VBOX_WITH_USB_CARDREADER
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_UsbSCardReader);
     if (RT_FAILURE(rc))
         return rc;
 #endif

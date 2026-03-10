@@ -1,10 +1,10 @@
-/* $Id: DevDP8390.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: DevDP8390.cpp 112672 2026-01-22 15:36:05Z michal.necasek@oracle.com $ */
 /** @file
  * DevDP8390 - National Semiconductor DP8390-based Ethernet Adapter Emulation.
  */
 
 /*
- * Copyright (C) 2022-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2022-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -2195,8 +2195,8 @@ static int dp8390CoreAsyncXmitLocked(PPDMDEVINS pDevIns, PDPNICSTATE pThis, PDPN
          * Sending is easy peasy, there is by definition always
          * a complete packet on hand.
          */
-        unsigned    cb  = pThis->core.TBCR; /* Packet size. */
-        const int   adr = RT_MAKE_U16(0, pThis->core.TPSR);
+        unsigned        cb  = pThis->core.TBCR; /* Packet size. */
+        const unsigned  adr = RT_MAKE_U16(0, pThis->core.TPSR);
         LogFunc(("#%d: cb=%d, adr=%04X\n", pThis->iInstance, cb, adr));
 
         if (RT_LIKELY(dp8390IsLinkUp(pThis) || fLoopback))
@@ -2271,7 +2271,7 @@ static int dp8390CoreAsyncXmitLocked(PPDMDEVINS pDevIns, PDPNICSTATE pThis, PDPN
 /* -=-=-=-=-=- I/O Port access -=-=-=-=-=- */
 
 
-static uint32_t dp8390CoreRead(PPDMDEVINS pDevIns, PDPNICSTATE pThis, int ofs)
+static uint8_t dp8390CoreRead(PPDMDEVINS pDevIns, PDPNICSTATE pThis, int ofs)
 {
     uint8_t     val;
 
@@ -3887,9 +3887,9 @@ static DECLCALLBACK(uint32_t) elnk3R3DMAXferHandler(PPDMDEVINS pDevIns, void *op
             if (!pThis->ga.gacr.ddir)
             {
                 Log2Func(("DMAWriteMemory uDmaAddr=%04X cbToXfer=%u\n", uDmaAddr, cbToXfer));
-                rc = PDMDevHlpDMAWriteMemory(pDevIns, nchan,
-                                             &pThis->abLocalRAM[uDmaAddr - 0x2000],
-                                             dma_pos, cbToXfer, &cbXferred);
+                rc = PDMDevHlpDMAWriteMemoryEx(pDevIns, nchan,
+                                               pThis->abLocalRAM, uDmaAddr - 0x2000, sizeof(pThis->abLocalRAM),
+                                               dma_pos, cbToXfer, &cbXferred);
                 AssertMsgRC(rc, ("DMAWriteMemory -> %Rrc\n", rc));
             }
             else
@@ -3905,9 +3905,9 @@ static DECLCALLBACK(uint32_t) elnk3R3DMAXferHandler(PPDMDEVINS pDevIns, void *op
             if (pThis->ga.gacr.ddir)
             {
                 Log2Func(("DMAReadMemory uDmaAddr=%04X cbToXfer=%u\n", uDmaAddr, cbToXfer));
-                rc = PDMDevHlpDMAReadMemory(pDevIns, nchan,
-                                            &pThis->abLocalRAM[uDmaAddr - 0x2000],
-                                            dma_pos, cbToXfer, &cbXferred);
+                rc = PDMDevHlpDMAReadMemoryEx(pDevIns, nchan,
+                                              pThis->abLocalRAM, uDmaAddr - 0x2000, sizeof(pThis->abLocalRAM),
+                                              dma_pos, cbToXfer, &cbXferred);
                 AssertMsgRC(rc, ("DMAReadMemory -> %Rrc\n", rc));
             }
             else
@@ -5141,6 +5141,10 @@ static DECLCALLBACK(int) dpNicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
     LogFunc(("#%d Link up delay is set to %u seconds\n",
          iInstance, pThis->cMsLinkUpDelay / 1000));
 
+    uint32_t uStatNo = iInstance;
+    rc = pHlp->pfnCFGMQueryU32Def(pCfg, "StatNo", &uStatNo, iInstance);
+    if (RT_FAILURE(rc))
+        return PDMDEV_SET_ERROR(pDevIns, rc, N_("Configuration error: Failed to get the \"StatNo\" value"));
 
     /*
      * Initialize data (most of it anyway).
@@ -5335,9 +5339,14 @@ static DECLCALLBACK(int) dpNicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
 
     /*
      * Register statistics counters.
+     * The /Public/ bits are official and used by session info in the GUI.
      */
-    PDMDevHlpSTAMRegisterF(pDevIns, &pThis->StatReceiveBytes,       STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_BYTES,          "Amount of data received",                "/Public/Net/DPNIC%u/BytesReceived", iInstance);
-    PDMDevHlpSTAMRegisterF(pDevIns, &pThis->StatTransmitBytes,      STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_BYTES,          "Amount of data transmitted",             "/Public/Net/DPNIC%u/BytesTransmitted", iInstance);
+    PDMDevHlpSTAMRegisterF(pDevIns, &pThis->StatReceiveBytes,      STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_BYTES,
+                           "Amount of data received",     "/Public/NetAdapter/%u/BytesReceived", uStatNo);
+    PDMDevHlpSTAMRegisterF(pDevIns, &pThis->StatTransmitBytes,     STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_BYTES,
+                           "Amount of data transmitted",  "/Public/NetAdapter/%u/BytesTransmitted", uStatNo);
+    PDMDevHlpSTAMRegisterF(pDevIns, &pDevIns->iInstance,           STAMTYPE_U32,     STAMVISIBILITY_ALWAYS, STAMUNIT_NONE,
+                           "Device instance number",      "/Public/NetAdapter/%u/%s", uStatNo, pDevIns->pReg->szName);
 
     PDMDevHlpSTAMRegisterF(pDevIns, &pThis->StatReceiveBytes,       STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_BYTES,          "Amount of data received",                "/Devices/DPNIC%d/ReceiveBytes", iInstance);
     PDMDevHlpSTAMRegisterF(pDevIns, &pThis->StatTransmitBytes,      STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_BYTES,          "Amount of data transmitted",             "/Devices/DPNIC%d/TransmitBytes", iInstance);

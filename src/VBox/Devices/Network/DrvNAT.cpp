@@ -1,10 +1,10 @@
-/* $Id: DrvNAT.cpp 111425 2025-10-16 05:03:51Z jack.doherty@oracle.com $ */
+/* $Id: DrvNAT.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * DrvNATlibslirp - NATlibslirp network transport driver.
  */
 
 /*
- * Copyright (C) 2022-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2022-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -85,7 +85,6 @@
 
 #define COUNTERS_INIT
 #include "slirp/counters.h"
-#include "slirp/resolv_conf_parser.h"
 
 
 /*********************************************************************************************************************************
@@ -99,15 +98,6 @@
 
 #define IPV4_MAX_MTU 65521
 #define IPV4_MIN_MTU 68
-
-#if RT_CLANG_PREREQ(3, 4) /* Most of the defined functions are not used. */
-# pragma clang diagnostic push
-# pragma clang diagnostic ignored "-Wunused-function"
-#endif
-RTVEC_DECL(InAddrList, struct in_addr)
-#if RT_CLANG_PREREQ(3, 4)
-# pragma clang diagnostic pop
-#endif
 
 
 /*********************************************************************************************************************************
@@ -302,7 +292,6 @@ static DECLCALLBACK(void) drvNATRecvWorker(PDRVNAT pThis, void *pBuf, size_t cb)
     rc = RTCritSectLeave(&pThis->DevAccessLock);
     AssertRC(rc);
     ASMAtomicDecU32(&pThis->cPkts);
-    drvNATNotifyNATThread(pThis, "drvNATRecvWorker");
     STAM_PROFILE_STOP(&pThis->StatNATRecv, a);
 }
 
@@ -562,7 +551,10 @@ static DECLCALLBACK(void) drvNATNetworkUp_EndXmit(PPDMINETWORKUP pInterface)
  */
 static void drvNATNotifyNATThread(PDRVNAT pThis, const char *pszWho)
 {
+#ifndef LOG_ENABLED
     RT_NOREF(pszWho);
+#endif
+    Log3(("Notifying NAT Thread. Culprit: %s\n", pszWho));
 #ifdef RT_OS_WINDOWS
     int cbWritten = send(pThis->ahWakeupSockPair[0], "", 1, NULL);
     if (RT_LIKELY(cbWritten != SOCKET_ERROR))
@@ -713,6 +705,7 @@ static DECLCALLBACK(int) drvNATAsyncIoThread(PPDMDRVINS pDrvIns, PPDMTHREAD pThr
         uint32_t cMsTimeout = DRVNAT_DEFAULT_TIMEOUT;
         slirp_pollfds_fill_socket(pThis->pSlirp, &cMsTimeout, drvNAT_AddPollCb /* SlirpAddPollCb */, pThis /* opaque */);
         cMsTimeout = drvNATTimersAdjustTimeoutDown(pThis, cMsTimeout);
+        Log4Func(("Timeout adjust to: %d\n", cMsTimeout));
 
 #ifdef RT_OS_WINDOWS
         int cChangedFDs = WSAPoll(pThis->aPolls, pThis->cSockets, cMsTimeout);
@@ -721,6 +714,7 @@ static DECLCALLBACK(int) drvNATAsyncIoThread(PPDMDRVINS pDrvIns, PPDMTHREAD pThr
 #endif
         if (RT_LIKELY(!(cChangedFDs >= 0)))
         {
+            Log4Func(("Poll error\n"));
 #ifdef RT_OS_WINDOWS
             int const iLastErr = WSAGetLastError(); /* (In debug builds LogRel translates to two RTLogLoggerExWeak calls.) */
             LogRel(("NAT: RTWinPoll returned error=%Rrc (cChangedFDs=%d)\n", iLastErr, cChangedFDs));
@@ -737,6 +731,7 @@ static DECLCALLBACK(int) drvNATAsyncIoThread(PPDMDRVINS pDrvIns, PPDMTHREAD pThr
 
         Log4Func(("poll\n"));
         slirp_pollfds_poll(pThis->pSlirp, cChangedFDs < 0, drvNAT_GetREventsCb, pThis /* opaque */);
+        Log4Func(("management pipe revents = %d\n", pThis->aPolls[0].revents));
 
         /*
          * Drain the control pipe if necessary.
@@ -747,8 +742,9 @@ static DECLCALLBACK(int) drvNATAsyncIoThread(PPDMDRVINS pDrvIns, PPDMTHREAD pThr
          *       control pipe of all the notifications. If there is an error
          *       on reading the pipe, we try again next time around.
          */
-        if (pThis->aPolls[0].revents & (POLLRDNORM|POLLPRI|POLLRDBAND))   /* POLLPRI won't be seen with WSAPoll. */
+        if (pThis->aPolls[0].revents & (POLLIN|POLLRDNORM|POLLPRI|POLLRDBAND))   /* POLLPRI won't be seen with WSAPoll. */
         {
+            Log4(("Draining control pipe.\n"));
             char achBuf[1024];
             size_t cbRead = 0;
             uint64_t cbWakeupNotifs = ASMAtomicReadU64(&pThis->cbWakeupNotifs);
@@ -758,13 +754,13 @@ static DECLCALLBACK(int) drvNATAsyncIoThread(PPDMDRVINS pDrvIns, PPDMTHREAD pThr
             int iError = WSAGetLastError();
             if(RT_LIKELY(!(cbRead != SOCKET_ERROR)))
             {
-                LogRel(("Wakeup socket read erorr: %d\n", iError));
+                LogRelFunc(("Wakeup socket read error in poll loop: %d\n", iError));
                 rc = VERR_PIPE_IO_ERROR;
             }
 #else
             rc = RTPipeRead(pThis->hPipeRead, &achBuf[0], RT_MIN(cbWakeupNotifs, sizeof(achBuf)), &cbRead);
             if (RT_FAILURE(rc))
-                LogRel(("Wakup socket read error (%Rrc)\n", rc));
+                LogRelFunc(("Wakup socket read error in poll loop (%Rrc)\n", rc));
 #endif
             if(RT_SUCCESS(rc))
                 ASMAtomicSubU64(&pThis->cbWakeupNotifs, cbRead);
@@ -791,6 +787,7 @@ static DECLCALLBACK(int) drvNATAsyncIoThread(PPDMDRVINS pDrvIns, PPDMTHREAD pThr
  */
 static DECLCALLBACK(int) drvNATAsyncIoWakeup(PPDMDRVINS pDrvIns, PPDMTHREAD pThread)
 {
+    LogFlowFuncEnter();
     RT_NOREF(pThread);
     PDRVNAT pThis = PDMINS_2_DATA(pDrvIns, PDRVNAT);
 
@@ -1034,6 +1031,8 @@ static DECLCALLBACK(void) drvNATNotifyDnsChanged(PPDMINETWORKNATCONFIG pInterfac
 
     LogRel(("NAT: DNS settings changed, triggering update\n"));
 
+    int rc = 0;
+
     if (pThis->fPassDomain)
     {
         if (pDnsConf->szDomainName[0] == '\0')
@@ -1047,29 +1046,38 @@ static DECLCALLBACK(void) drvNATNotifyDnsChanged(PPDMINETWORKNATCONFIG pInterfac
 
     if (pDnsConf->cNameServers > 0)
     {
-        struct InAddrList vNameservers = RTVEC_INITIALIZER;
+        struct in_addr* aIPv4Nameservers = (struct in_addr *)RTMemAllocZ(sizeof(struct in_addr) * pDnsConf->cNameServers);
+
+        /* Loop through and store in array if not on 127/8 network. */
+        size_t uStoredNameservers = 0;
         for (size_t i = 0; i < pDnsConf->cNameServers; i++)
         {
             RTNETADDRIPV4 tmpNameserver;
-            RTNetStrToIPv4Addr(pDnsConf->papszNameServers[i], &tmpNameserver);
+            rc = RTNetStrToIPv4Addr(pDnsConf->papszNameServers[i], &tmpNameserver);
+
+            if (RT_FAILURE(rc))
+            {
+                Log3Func(("Failed to convert IPv4 nameserver %s. Check for errors.\n", pDnsConf->papszNameServers[i]));
+                continue;
+            }
 
             if (!((tmpNameserver.u & RT_H2N_U32_C(IN_CLASSA_NET))
                 == RT_H2N_U32_C(INADDR_LOOPBACK & IN_CLASSA_NET)))
             {
-                struct in_addr *mNameserver = InAddrListPushBack(&vNameservers);
-                if (!mNameserver)
-                    LogRel(("Nameserver array construction failed. Out of memory.\n"));
-
-                mNameserver->s_addr = tmpNameserver.u;
-                LogRelMax(256, ("NAT DNS Update: Stored %u as nameserver #%u\n", tmpNameserver.u, i));
+                aIPv4Nameservers[uStoredNameservers].s_addr = tmpNameserver.u;
+                uStoredNameservers++;
+                LogRelMax(256, ("NAT DNS Update: Stored %RTnaipv4 as nameserver #%u\n", tmpNameserver, i));
             }
         }
 
-        size_t const cNameservers = InAddrListSize(&vNameservers);
-        if (cNameservers == 0)
+        if (aIPv4Nameservers[0].s_addr == 0)
         {
             LogRel(("Nameserver is either on 127/8 network or failed to obtain from host. "
                     "Falling back to libslirp DNS proxy.\n"));
+
+            /* Free the unused allocation before falling back. */
+            RTMemFree(aIPv4Nameservers);
+            aIPv4Nameservers = NULL;
 
             struct in_addr mProxyNameserver;
             mProxyNameserver.s_addr = slirp_get_vnetwork_addr(pThis->pSlirp).s_addr | RT_H2N_U32_C(0x00000003);
@@ -1077,14 +1085,58 @@ static DECLCALLBACK(void) drvNATNotifyDnsChanged(PPDMINETWORKNATCONFIG pInterfac
             slirp_set_vnameserver(pThis->pSlirp, mProxyNameserver);
             slirp_set_RealNameservers(pThis->pSlirp, 0, NULL);
 
-            LogRel(("fallback virtual nameserver: %u", mProxyNameserver.s_addr));
+            LogRel(("fallback virtual nameserver: %RTnaipv4", mProxyNameserver));
         }
         else
         {
-            LogRelMax(256, ("NAT DNS Update: Stored %u total nameservers\n", cNameservers));
+            LogRelMax(256, ("NAT DNS Update: Stored %u total IPv4 nameservers\n", uStoredNameservers));
+            slirp_set_RealNameservers(pThis->pSlirp, uStoredNameservers, aIPv4Nameservers);
+        }
+    }
 
-            struct in_addr *paDetachedNameservers = InAddrListDetach(&vNameservers);
-            slirp_set_RealNameservers(pThis->pSlirp, cNameservers, paDetachedNameservers);
+    if (pDnsConf->cIPv6NameServers > 0)
+    {
+        struct in6_addr* aIPv6Nameservers = (struct in6_addr *)RTMemAllocZ(sizeof(struct in6_addr) * pDnsConf->cIPv6NameServers);
+        size_t uStoredNameservers6 = 0;
+
+        /* Storing all IPv6 nameservers */
+        for (size_t i = 0; i < pDnsConf->cIPv6NameServers; i++)
+        {
+            RTNETADDRIPV6 tmpNameserver;
+            rc = RTNetStrToIPv6AddrEx(pDnsConf->papszIPv6NameServers[i], &tmpNameserver, NULL); /** @todo r=jack: IPv6 zones. */
+
+            if (RT_FAILURE(rc))
+            {
+                Log3Func(("Failed to convert IPv6 nameserver %s. Check for errors.\n", pDnsConf->papszIPv6NameServers[i]));
+                continue;
+            }
+
+            memcpy(&aIPv6Nameservers[uStoredNameservers6], &tmpNameserver, sizeof(RTNETADDRIPV6));
+            LogRelMax(256, ("NAT DNS Update: Stored %RTnaipv6 as nameserver #%u\n", &tmpNameserver, (unsigned)uStoredNameservers6));
+            uStoredNameservers6++;
+        }
+
+        if (uStoredNameservers6 == 0)
+        {
+            LogRel(("Failed to obtain nameserver from host. "
+                    "Falling back to libslirp DNS proxy for IPv6.\n"));
+
+            /* Free the unused allocation before falling back. */
+            RTMemFree(aIPv6Nameservers);
+            aIPv6Nameservers = NULL;
+
+            struct in6_addr mProxyNameserver;
+            inet_pton(AF_INET6, "fd17:625c:f037:0::3", &mProxyNameserver.s6_addr);
+
+            slirp_set_vnameserver6(pThis->pSlirp, mProxyNameserver);
+            slirp_set_IPv6RealNameservers(pThis->pSlirp, 0, NULL);
+
+            LogRel(("fallback IPv6 virtual nameserver: %RTnaipv6", &mProxyNameserver));
+        }
+        else
+        {
+            LogRelMax(256, ("NAT DNS Update: Stored %u total IPv6 nameservers\n", (unsigned)uStoredNameservers6));
+            slirp_set_IPv6RealNameservers(pThis->pSlirp, uStoredNameservers6, aIPv6Nameservers);
         }
     }
 }
@@ -1387,6 +1439,7 @@ static void drvNAT_TimerModCb(void *pvTimer, int64_t msNewDeadlineTs, void *pvUs
  */
 static void drvNAT_NotifyCb(void *opaque)
 {
+    LogFlowFuncEnter();
     PDRVNAT pThis = (PDRVNAT)opaque;
     drvNATNotifyNATThread(pThis, "drvNAT_NotifyCb");
 }

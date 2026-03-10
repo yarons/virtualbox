@@ -1,10 +1,10 @@
-/* $Id: nocrt-vsscanf.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: nocrt-vsscanf.cpp 112929 2026-02-11 09:05:51Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - No-CRT - Simplistic vsscanf().
  */
 
 /*
- * Copyright (C) 2022-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2022-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -217,7 +217,7 @@ int RT_NOCRT(vsscanf)(const char *pszString, const char *pszFormat, va_list va)
                 while (RT_C_IS_SPACE(*pszFormat))
                     pszFormat++;
                 while (RT_C_IS_SPACE(*pszString))
-                    pszFormat++;
+                    pszString++;
                 break;
 
             /*

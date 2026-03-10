@@ -1,10 +1,10 @@
-/* $Id: UINotificationObject.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UINotificationObject.h 113228 2026-03-03 14:46:16Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationObject class declaration.
  */
 
 /*
- * Copyright (C) 2021-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2021-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -63,10 +63,6 @@ public:
     /** Constructs notification-object. */
     UINotificationObject();
 
-    /** Returns whether object is critical. */
-    virtual bool isCritical() const = 0;
-    /** Returns whether object is done. */
-    virtual bool isDone() const = 0;
     /** Returns object name. */
     virtual QString name() const = 0;
     /** Returns object details. */
@@ -75,6 +71,10 @@ public:
     virtual QString internalName() const = 0;
     /** Returns object help keyword. */
     virtual QString helpKeyword() const = 0;
+    /** Returns whether object is critical. */
+    virtual bool isCritical() const = 0;
+    /** Returns whether object is done. */
+    virtual bool isDone() const = 0;
     /** Handles notification-object being added. */
     virtual void handle() = 0;
 
@@ -91,39 +91,38 @@ class SHARED_LIBRARY_STUFF UINotificationSimple : public UINotificationObject
 {
     Q_OBJECT;
 
+public:
+
+    /** Defines whether object is @a fCritical. */
+    void setCritical(bool fCritical) { m_fCritical = fCritical; }
+
 protected:
 
     /** Constructs notification-simple.
       * @param  strName          Brings the message name.
       * @param  strDetails       Brings the message details.
       * @param  strInternalName  Brings the message internal name.
-      * @param  strHelpKeyword   Brings the message help keyword.
-      * @param  fCritical        Brings whether message is critical. */
+      * @param  strHelpKeyword   Brings the message help keyword. */
     UINotificationSimple(const QString &strName,
                          const QString &strDetails,
                          const QString &strInternalName,
-                         const QString &strHelpKeyword,
-                         bool fCritical = true);
+                         const QString &strHelpKeyword);
 
-    /** Returns whether object is critical. */
-    virtual bool isCritical() const RT_OVERRIDE;
-    /** Returns whether object is done. */
-    virtual bool isDone() const RT_OVERRIDE;
     /** Returns object name. */
-    virtual QString name() const RT_OVERRIDE RT_FINAL;
+    virtual QString name() const RT_OVERRIDE RT_FINAL { return m_strName; }
     /** Returns object details. */
-    virtual QString details() const RT_OVERRIDE RT_FINAL;
+    virtual QString details() const RT_OVERRIDE RT_FINAL { return m_strDetails; }
     /** Returns object internal name. */
-    virtual QString internalName() const RT_OVERRIDE RT_FINAL;
+    virtual QString internalName() const RT_OVERRIDE RT_FINAL { return m_strInternalName; }
     /** Returns object help keyword. */
-    virtual QString helpKeyword() const RT_OVERRIDE RT_FINAL;
+    virtual QString helpKeyword() const RT_OVERRIDE RT_FINAL { return m_strHelpKeyword; }
+    /** Returns whether object is critical. */
+    virtual bool isCritical() const RT_OVERRIDE RT_FINAL { return m_fCritical; }
     /** Handles notification-object being added. */
-    virtual void handle() RT_OVERRIDE RT_FINAL;
+    virtual void handle() RT_OVERRIDE RT_FINAL {}
 
     /** Returns whether message with passed @a strInternalName is suppressed. */
     static bool isSuppressed(const QString &strInternalName);
-
-private:
 
     /** Holds the message name. */
     QString  m_strName;
@@ -169,14 +168,14 @@ public:
     /** Returns error-message if any. */
     QString error() const;
 
-    /** Returns whether object is critical. */
-    virtual bool isCritical() const RT_OVERRIDE;
-    /** Returns whether object is done. */
-    virtual bool isDone() const RT_OVERRIDE;
     /** Returns object internal name. */
-    virtual QString internalName() const RT_OVERRIDE RT_FINAL;
+    virtual QString internalName() const RT_OVERRIDE RT_FINAL { return QString(); }
     /** Returns object help keyword. */
-    virtual QString helpKeyword() const RT_OVERRIDE RT_FINAL;
+    virtual QString helpKeyword() const RT_OVERRIDE RT_FINAL { return QString(); }
+    /** Returns whether object is critical. */
+    virtual bool isCritical() const RT_OVERRIDE RT_FINAL { return true; }
+    /** Returns whether object is done. */
+    virtual bool isDone() const RT_OVERRIDE RT_FINAL { return m_fDone; }
     /** Handles notification-object being added. */
     virtual void handle() RT_OVERRIDE RT_FINAL;
 
@@ -239,14 +238,14 @@ public:
     /** Returns error-message if any. */
     QString error() const;
 
-    /** Returns whether object is critical. */
-    virtual bool isCritical() const RT_OVERRIDE;
-    /** Returns whether object is done. */
-    virtual bool isDone() const RT_OVERRIDE;
     /** Returns object internal name. */
-    virtual QString internalName() const RT_OVERRIDE RT_FINAL;
+    virtual QString internalName() const RT_OVERRIDE RT_FINAL { return QString(); }
     /** Returns object help keyword. */
-    virtual QString helpKeyword() const RT_OVERRIDE RT_FINAL;
+    virtual QString helpKeyword() const RT_OVERRIDE RT_FINAL { return QString(); }
+    /** Returns whether object is critical. */
+    virtual bool isCritical() const RT_OVERRIDE RT_FINAL { return true; }
+    /** Returns whether object is done. */
+    virtual bool isDone() const RT_OVERRIDE RT_FINAL { return m_fDone; }
     /** Handles notification-object being added. */
     virtual void handle() RT_OVERRIDE RT_FINAL;
 
@@ -273,11 +272,11 @@ private:
     /** Holds the instance of downloader being wrapped by this notification-downloader. */
     UIDownloader *m_pDownloader;
 
-    /** Holds the last cached progress percentage value. */
+    /** Holds the last cached downloader percentage value. */
     ulong    m_uPercent;
     /** Holds the error message is any. */
     QString  m_strError;
-    /** Holds whether current progress is done. */
+    /** Holds whether current downloader is done. */
     bool     m_fDone;
 };
 #endif /* VBOX_GUI_WITH_NETWORK_MANAGER */

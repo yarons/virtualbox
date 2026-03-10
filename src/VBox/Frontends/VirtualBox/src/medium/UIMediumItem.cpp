@@ -1,10 +1,10 @@
-/* $Id: UIMediumItem.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMediumItem.cpp 113267 2026-03-05 10:14:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class implementation.
  */
 
 /*
- * Copyright (C) 2009-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -111,9 +111,19 @@ bool UIMediumItem::release(bool fShowMessageBox, bool fInduced)
     if (medium().curStateMachineIds().isEmpty())
         return true;
 
+    /* Prepare the usage: */
+    QStringList usage;
+    foreach (const QUuid &uMachineId, medium().curStateMachineIds())
+    {
+        CMachine comMachine = gpGlobalSession->virtualBox().FindMachine(uMachineId.toString());
+        if (comMachine.isNull())
+            continue;
+        usage << comMachine.GetName();
+    }
+
     /* Confirm release: */
     if (fShowMessageBox)
-        if (!msgCenter().confirmMediumRelease(medium(), fInduced, treeWidget()))
+        if (!UINotificationQuestion::confirmMediumRelease(medium(), fInduced, usage, treeWidget()))
             return false;
 
     /* Release: */
@@ -211,10 +221,7 @@ bool UIMediumItem::changeMediumType(KMediumType enmNewType)
     CMedium comMedium = medium().medium();
     comMedium.SetType(enmNewType);
     if (!comMedium.isOk())
-    {
-        UINotificationMessage::cannotChangeMediumParameter(comMedium);
-        return false;
-    }
+        return UINotificationMessage::cannotChangeMediumParameter(comMedium);
 
     /* Reattach the medium to all the VMs it was previously attached: */
     foreach (const AttachmentCache &attachmentCache, attachmentCacheList)
@@ -330,7 +337,7 @@ bool UIMediumItem::releaseFrom(const QUuid &uMachineId)
         /* Save machine settings: */
         machine.SaveSettings();
         if (!machine.isOk())
-            msgCenter().cannotSaveMachineSettings(machine, treeWidget());
+            UINotificationMessage::cannotSaveMachineSettings(machine, treeWidget());
         else
             fSuccess = true;
     }
@@ -359,19 +366,18 @@ bool UIMediumItem::attachTo(const AttachmentCache &attachmentCache)
                             enmDeviceType,
                             comMedium);
     if (!comMachine.isOk())
-        msgCenter().cannotAttachDevice(comMachine,
-                                       mediumTypeToLocal(enmDeviceType),
-                                       comMedium.GetLocation(),
-                                       StorageSlot(attachmentCache.m_enmControllerBus,
-                                                   attachmentCache.m_iAttachmentPort,
-                                                   attachmentCache.m_iAttachmentDevice),
-                                       parentTree());
+        UINotificationMessage::cannotAttachDevice(comMachine,
+                                                  mediumTypeToLocal(enmDeviceType),
+                                                  comMedium.GetLocation(),
+                                                  StorageSlot(attachmentCache.m_enmControllerBus,
+                                                              attachmentCache.m_iAttachmentPort,
+                                                              attachmentCache.m_iAttachmentDevice));
     else
     {
         /* Save machine settings: */
         comMachine.SaveSettings();
         if (!comMachine.isOk())
-            msgCenter().cannotSaveMachineSettings(comMachine, parentTree());
+            UINotificationMessage::cannotSaveMachineSettings(comMachine, parentTree());
     }
 
     /* Close session: */
@@ -417,7 +423,7 @@ bool UIMediumItemHD::remove(bool fShowMessageBox)
 {
     /* Confirm medium removal: */
     if (fShowMessageBox)
-        if (!msgCenter().confirmMediumRemoval(medium(), treeWidget()))
+        if (!UINotificationQuestion::confirmMediumRemoval(medium(), treeWidget()))
             return false;
 
     /* Propose to remove medium storage: */
@@ -451,13 +457,12 @@ bool UIMediumItemHD::releaseFrom(CMachine comMachine)
         /* Try to detach device: */
         comMachine.DetachDevice(attachment.GetController(), attachment.GetPort(), attachment.GetDevice());
         if (!comMachine.isOk())
-        {
-            /* Return failure: */
-            msgCenter().cannotDetachDevice(comMachine, UIMediumDeviceType_HardDisk, location(),
-                                           StorageSlot(controller.GetBus(), attachment.GetPort(), attachment.GetDevice()),
-                                           treeWidget());
-            return false;
-        }
+            return UINotificationMessage::cannotDetachDevice(comMachine,
+                                                             UIMediumDeviceType_HardDisk,
+                                                             location(),
+                                                             StorageSlot(controller.GetBus(),
+                                                                         attachment.GetPort(),
+                                                                         attachment.GetDevice()));
         else
             fAtLeastOneRelease = true;
     }
@@ -472,7 +477,7 @@ bool UIMediumItemHD::maybeRemoveStorage()
     CMedium comMedium = medium().medium();
 
     /* We don't want to try to delete inaccessible storage as it will most likely fail.
-     * Note that UIMessageCenter::confirmMediumRemoval() is aware of that and
+     * Note that UINotificationQuestion::confirmMediumRemoval() is aware of that and
      * will give a corresponding hint. Therefore, once the code is changed below,
      * the hint should be re-checked for validity. */
     bool fDeleteStorage = false;
@@ -481,10 +486,10 @@ bool UIMediumItemHD::maybeRemoveStorage()
         uCapability |= capability;
     if (state() != KMediumState_Inaccessible && uCapability & KMediumFormatCapabilities_File)
     {
-        int rc = msgCenter().confirmDeleteHardDiskStorage(location(), treeWidget());
-        if (rc == AlertButton_Cancel)
+        const int iRc = UINotificationQuestion::confirmDeleteHardDiskStorage(location(), treeWidget());
+        if (iRc == Question::Result_Cancel)
             return false;
-        fDeleteStorage = rc == AlertButton_Choice1;
+        fDeleteStorage = iRc == Question::Result_Accept;
     }
 
     /* If user wish to delete storage: */
@@ -523,7 +528,7 @@ bool UIMediumItemCD::remove(bool fShowMessageBox)
 {
     /* Confirm medium removal: */
     if (fShowMessageBox)
-        if (!msgCenter().confirmMediumRemoval(medium(), treeWidget()))
+        if (!UINotificationQuestion::confirmMediumRemoval(medium(), treeWidget()))
             return false;
 
     /* Close optical-disk: */
@@ -585,7 +590,7 @@ bool UIMediumItemFD::remove(bool fShowMessageBox)
 {
     /* Confirm medium removal: */
     if (fShowMessageBox)
-        if (!msgCenter().confirmMediumRemoval(medium(), treeWidget()))
+        if (!UINotificationQuestion::confirmMediumRemoval(medium(), treeWidget()))
             return false;
 
     /* Close floppy-disk: */

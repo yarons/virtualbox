@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: tstVMStruct.h 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -61,7 +61,6 @@
     GEN_CHECK_SIZE(CPUMHOSTCTX);
     GEN_CHECK_OFF(CPUMHOSTCTX, XState);
     GEN_CHECK_OFF(CPUMHOSTCTX, abXState);
-#if HC_ARCH_BITS == 64
     GEN_CHECK_OFF(CPUMHOSTCTX, rbx);
     GEN_CHECK_OFF(CPUMHOSTCTX, rdi);
     GEN_CHECK_OFF(CPUMHOSTCTX, rsi);
@@ -74,38 +73,12 @@
     GEN_CHECK_OFF(CPUMHOSTCTX, r14);
     GEN_CHECK_OFF(CPUMHOSTCTX, r15);
     GEN_CHECK_OFF(CPUMHOSTCTX, rflags);
-#endif
-#if HC_ARCH_BITS == 32
-    GEN_CHECK_OFF(CPUMHOSTCTX, ebx);
-    GEN_CHECK_OFF(CPUMHOSTCTX, edi);
-    GEN_CHECK_OFF(CPUMHOSTCTX, esi);
-    GEN_CHECK_OFF(CPUMHOSTCTX, ebp);
-    GEN_CHECK_OFF(CPUMHOSTCTX, eflags);
-    GEN_CHECK_OFF(CPUMHOSTCTX, esp);
-#endif
     GEN_CHECK_OFF(CPUMHOSTCTX, ss);
     GEN_CHECK_OFF(CPUMHOSTCTX, gs);
     GEN_CHECK_OFF(CPUMHOSTCTX, fs);
     GEN_CHECK_OFF(CPUMHOSTCTX, es);
     GEN_CHECK_OFF(CPUMHOSTCTX, ds);
     GEN_CHECK_OFF(CPUMHOSTCTX, cs);
-#if HC_ARCH_BITS == 32
-    GEN_CHECK_OFF(CPUMHOSTCTX, cr0);
-    GEN_CHECK_OFF(CPUMHOSTCTX, cr3);
-    GEN_CHECK_OFF(CPUMHOSTCTX, cr4);
-    GEN_CHECK_OFF(CPUMHOSTCTX, dr0);
-    GEN_CHECK_OFF(CPUMHOSTCTX, dr1);
-    GEN_CHECK_OFF(CPUMHOSTCTX, dr2);
-    GEN_CHECK_OFF(CPUMHOSTCTX, dr3);
-    GEN_CHECK_OFF(CPUMHOSTCTX, dr6);
-    GEN_CHECK_OFF(CPUMHOSTCTX, dr7);
-    GEN_CHECK_OFF(CPUMHOSTCTX, gdtr);
-    GEN_CHECK_OFF(CPUMHOSTCTX, idtr);
-    GEN_CHECK_OFF(CPUMHOSTCTX, ldtr);
-    GEN_CHECK_OFF(CPUMHOSTCTX, tr);
-    GEN_CHECK_OFF(CPUMHOSTCTX, SysEnter);
-    GEN_CHECK_OFF(CPUMHOSTCTX, efer);
-#elif HC_ARCH_BITS == 64
     GEN_CHECK_OFF(CPUMHOSTCTX, cr0);
     GEN_CHECK_OFF(CPUMHOSTCTX, cr3);
     GEN_CHECK_OFF(CPUMHOSTCTX, cr4);
@@ -124,9 +97,6 @@
     GEN_CHECK_OFF(CPUMHOSTCTX, FSbase);
     GEN_CHECK_OFF(CPUMHOSTCTX, GSbase);
     GEN_CHECK_OFF(CPUMHOSTCTX, efer);
-#else
-# error HC_ARCH_BITS not defined
-#endif
 
     GEN_CHECK_SIZE(CPUMCTX);
     GEN_CHECK_OFF(CPUMCTX, hwvirt);

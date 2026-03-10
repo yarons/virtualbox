@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: tstDeviceStructSize.cpp 113056 2026-02-17 10:38:41Z alexander.eichner@oracle.com $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and RC uses the same
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -83,7 +83,7 @@
 #undef LOG_GROUP
 #include "../PC/DevRTC.cpp"
 # undef LOG_GROUP
-# include "../../VMM/VMMR3/APIC.cpp"
+# include "../../VMM/VMMR3/target-x86/APICR3-x86.cpp"
 #undef LOG_GROUP
 #include "../PC/DevIoApic.cpp"
 #undef LOG_GROUP
@@ -129,11 +129,6 @@
 #ifdef VBOX_WITH_NVME_IMPL
 # undef LOG_GROUP
 # include "../Storage/DevNVMe.cpp"
-#endif
-
-#ifdef VBOX_WITH_PCI_PASSTHROUGH_IMPL
-# undef LOG_GROUP
-# include "../Bus/DevPciRaw.cpp"
 #endif
 
 #ifdef VBOX_WITH_IOMMU_AMD
@@ -370,7 +365,6 @@ int main()
 #  endif
 # endif
 #endif
-    CHECK_MEMBER_ALIGNMENT(E1KSTATE, StatReceiveBytes, 8);
     CHECK_MEMBER_ALIGNMENT(IOAPIC, au64RedirTable, 8);
 # ifdef VBOX_WITH_STATISTICS
     CHECK_MEMBER_ALIGNMENT(IOAPIC, StatMmioReadRZ, 8);
@@ -411,9 +405,6 @@ int main()
     CHECK_MEMBER_ALIGNMENT(VGASTATE, bmDirtyBitmap, 8);
     CHECK_MEMBER_ALIGNMENT(VGASTATE, pciRegions, 8);
     CHECK_MEMBER_ALIGNMENT(VMMDEV, CritSect, 8);
-#ifdef VBOX_WITH_PCI_PASSTHROUGH_IMPL
-    CHECK_MEMBER_ALIGNMENT(PCIRAWSENDREQ, u.aGetRegionInfo.u64RegionSize, 8);
-#endif
 #ifdef VBOX_WITH_IOMMU_AMD
     CHECK_MEMBER_ALIGNMENT(IOMMU, IommuBar, 8);
     CHECK_MEMBER_ALIGNMENT(IOMMU, aDevTabBaseAddrs, 8);

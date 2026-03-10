@@ -1,10 +1,10 @@
-/* $Id: UIMachineWindowNormal.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineWindowNormal.h 112765 2026-01-30 11:10:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class declaration.
  */
 
 /*
- * Copyright (C) 2010-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -78,6 +78,9 @@ private slots:
     void sltActionHovered(UIAction *pAction);
 #endif /* VBOX_WS_MAC */
 
+    /** Handles request to commit data. */
+    void sltHandleCommitData();
+
 private:
 
 #ifndef VBOX_WS_MAC
@@ -88,6 +91,8 @@ private:
     void prepareStatusBar() RT_OVERRIDE;
     /** Prepare notification-center routine. */
     void prepareNotificationCenter() RT_OVERRIDE;
+    /** Prepare notification-center routine. */
+    void prepareOtherConnections() RT_OVERRIDE;
     /** Prepare visual-state routine. */
     void prepareVisualState() RT_OVERRIDE;
     /** Load settings routine. */
@@ -124,6 +129,11 @@ private:
 
     /** Returns whether this window is maximized. */
     bool isMaximizedChecked();
+
+    /** Restarts geometry save timer. */
+    void restartGeometrySaveTimer();
+    /** Shutdowns geometry save timer. */
+    void shutdownGeometrySaveTimer();
 
     /** Holds the indicator-pool instance. */
     UIIndicatorsPool *m_pIndicatorsPool;

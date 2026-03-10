@@ -1,10 +1,10 @@
-/* $Id: UITabBar.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UITabBar.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITabBar class declaration.
  */
 
 /*
- * Copyright (C) 2017-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2017-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -53,7 +53,6 @@ class QString;
 class QUuid;
 class QWidget;
 class UITabBarItem;
-
 
 /** Our own skinnable implementation of tab-bar.
   * The idea is to make tab-bar analog which looks more interesting
@@ -153,4 +152,3 @@ private:
 };
 
 #endif /* !FEQT_INCLUDED_SRC_widgets_UITabBar_h */
-

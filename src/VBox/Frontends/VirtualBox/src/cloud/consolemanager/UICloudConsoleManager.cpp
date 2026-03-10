@@ -1,10 +1,10 @@
-/* $Id: UICloudConsoleManager.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UICloudConsoleManager.cpp 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudConsoleManager class implementation.
  */
 
 /*
- * Copyright (C) 2009-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -45,7 +45,7 @@
 #include "UIIconPool.h"
 #include "UICloudConsoleDetailsWidget.h"
 #include "UICloudConsoleManager.h"
-#include "UIMessageCenter.h"
+#include "UINotificationQuestion.h"
 #include "UIShortcutPool.h"
 #include "UITranslationEventListener.h"
 #include "QIToolBar.h"
@@ -100,6 +100,7 @@ public:
     QString argument() const { return m_strArgument; }
 };
 
+
 /** Cloud Console Manager profile's tree-widget item. */
 class UIItemCloudConsoleProfile : public QITreeWidgetItem, public UIDataCloudConsoleProfile
 {
@@ -122,6 +123,7 @@ public:
     /** Returns item argument. */
     QString argument() const { return m_strArgument; }
 };
+
 
 /** QDialog extension used to acquire newly created console application parameters. */
 class UIInputDialogCloudConsoleApplication : public QDialog
@@ -166,6 +168,7 @@ private:
     /** Holds the button-box instance. */
     QIDialogButtonBox *m_pButtonBox;
 };
+
 
 /** QDialog extension used to acquire newly created console profile parameters. */
 class UIInputDialogCloudConsoleProfile : public QDialog
@@ -589,7 +592,7 @@ void UICloudConsoleManagerWidget::sltRemoveCloudConsoleApplication()
     const QString strApplicationId = pItemApplication->id();
 
     /* Confirm cloud console application removal: */
-    if (!msgCenter().confirmCloudConsoleApplicationRemoval(pItemApplication->name(), this))
+    if (!UINotificationQuestion::confirmCloudConsoleApplicationRemoval(pItemApplication->name()))
         return;
 
     /* Enumerate all the application profiles: */
@@ -665,7 +668,7 @@ void UICloudConsoleManagerWidget::sltRemoveCloudConsoleProfile()
     AssertMsgReturnVoid(pItemProfile, ("Profile item must not be null!\n"));
 
     /* Confirm cloud console profile removal: */
-    if (!msgCenter().confirmCloudConsoleProfileRemoval(pItemProfile->name(), this))
+    if (!UINotificationQuestion::confirmCloudConsoleProfileRemoval(pItemProfile->name()))
         return;
 
     /* Delete profile from extra-data: */

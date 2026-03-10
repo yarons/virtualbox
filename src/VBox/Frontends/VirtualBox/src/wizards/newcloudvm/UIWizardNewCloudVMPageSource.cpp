@@ -1,10 +1,10 @@
-/* $Id: UIWizardNewCloudVMPageSource.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIWizardNewCloudVMPageSource.cpp 112845 2026-02-05 16:55:12Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageSource class implementation.
  */
 
 /*
- * Copyright (C) 2009-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -269,7 +269,7 @@ void UIWizardNewCloudVMSource::populateFormProperties(CVirtualSystemDescription 
         default: break;
     }
     if (!comVSD.isOk())
-        UINotificationMessage::cannotChangeVirtualSystemDescriptionParameter(comVSD, pWizard->notificationCenter());
+        UINotificationMessage::cannotChangeVirtualSystemDescriptionParameter(comVSD, pWizard);
 }
 
 QString UIWizardNewCloudVMSource::currentListWidgetData(QIListWidget *pList)

@@ -1,11 +1,11 @@
-/* $Id: VBoxGuestR3LibAutoLogon.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxGuestR3LibAutoLogon.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestR3LibAutoLogon - Ring-3 utility functions for auto-logon modules
  *                           (VBoxGINA / VBoxCredProv / pam_vbox).
  */
 
 /*
- * Copyright (C) 2012-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -44,6 +44,7 @@
 #endif
 
 #include "VBoxGuestR3LibInternal.h"
+#include <VBox/VBoxGuestLibGuestProp.h>
 #include <iprt/errcore.h>
 
 
@@ -66,14 +67,14 @@ VBGLR3DECL(int) VbglR3AutoLogonReportStatus(VBoxGuestFacilityStatus enmStatus)
         int rc = VbglR3ReportAdditionsStatus(VBoxGuestFacilityType_AutoLogon, enmStatus, 0 /* Flags */);
         if (rc == VERR_NOT_SUPPORTED)
         {
+#ifdef VBOX_WITH_GUEST_PROPS
             /*
              * To maintain backwards compatibility to older hosts which don't have
              * VMMDevReportGuestStatus implemented we set the appropriate status via
              * guest property to have at least something.
              */
-#ifdef VBOX_WITH_GUEST_PROPS
-            HGCMCLIENTID idClient = 0;
-            rc = VbglR3GuestPropConnect(&idClient);
+            VBGLGSTPROPCLIENT Client;
+            rc = VbglGuestPropConnect(&Client);
             if (RT_SUCCESS(rc))
             {
                 const char *pszStatus;
@@ -96,14 +97,14 @@ VBGLR3DECL(int) VbglR3AutoLogonReportStatus(VBoxGuestFacilityStatus enmStatus)
                      * (generally sufficient unless the guest misbehaves).
                      */
                     static const char s_szPath[] = "/VirtualBox/GuestInfo/OS/AutoLogonStatus";
-                    rc = VbglR3GuestPropWrite(idClient, s_szPath, pszStatus, "TRANSRESET");
+                    rc = VbglGuestPropWrite(&Client, s_szPath, pszStatus, "TRANSRESET");
                     if (rc == VERR_PARSE_ERROR)
-                        rc = VbglR3GuestPropWrite(idClient, s_szPath, pszStatus, "TRANSIENT");
+                        rc = VbglGuestPropWrite(&Client, s_szPath, pszStatus, "TRANSIENT");
                 }
                 else
                     rc = VERR_INVALID_PARAMETER;
 
-                VbglR3GuestPropDisconnect(idClient);
+                VbglGuestPropDisconnect(&Client);
             }
 #endif
         }

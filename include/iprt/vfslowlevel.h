@@ -3,7 +3,7 @@
  */
 
 /*
- * Copyright (C) 2010-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -1110,7 +1110,7 @@ typedef struct RTVFSFILEOPS
      *          supported by the file system / host operating system.
      *
      * @param   pvThis      The implementation specific file data.
-     * @param   pcbFile     Where to store the current file size.
+     * @param   cbFile      The new file size in bytes.
      * @param   fFlags      RTVFSFILE_SET_SIZE_F_XXX.
      * @note    Optional.  If NULL, VERR_WRITE_PROTECT will be returned.
      * @sa      RTFileSetSize, RTFileSetAllocationSize

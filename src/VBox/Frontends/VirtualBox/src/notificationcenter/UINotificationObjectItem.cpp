@@ -1,10 +1,10 @@
-/* $Id: UINotificationObjectItem.cpp 111103 2025-09-24 12:21:36Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjectItem.cpp 113228 2026-03-03 14:46:16Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationObjectItem class implementation.
  */
 
 /*
- * Copyright (C) 2021-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2021-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -37,13 +37,14 @@
 #include <QVBoxLayout>
 
 /* GUI includes: */
+#include "QIDialogButtonBox.h"
 #include "QIRichTextLabel.h"
 #include "QIToolButton.h"
 #include "UIHelpBrowserDialog.h"
 #include "UIIconPool.h"
-#include "UIMessageCenter.h"
 #include "UINotificationObject.h"
 #include "UINotificationObjectItem.h"
+#include "UINotificationQuestion.h"
 #include "UITranslationEventListener.h"
 
 
@@ -51,22 +52,82 @@
 *   Class UINotificationObjectItem implementation.                                                                               *
 *********************************************************************************************************************************/
 
-UINotificationObjectItem::UINotificationObjectItem(QWidget *pParent, UINotificationObject *pObject /* = 0 */)
+UINotificationObjectItem::UINotificationObjectItem(QWidget *pParent,
+                                                   UINotificationObject *pObject)
     : QWidget(pParent)
     , m_pObject(pObject)
+    , m_iMinimumWidthHint(0)
+    , m_iDetailsWidthHint(0)
     , m_pLayoutMain(0)
     , m_pLayoutUpper(0)
     , m_pLabelName(0)
     , m_pButtonHelp(0)
-    , m_pButtonForget(0)
     , m_pButtonClose(0)
     , m_pLabelDetails(0)
+    , m_pButtonForget(0)
     , m_fHovered(false)
-    , m_fToggled(false)
+    , m_fToggled(isCritical())
+{
+}
+
+bool UINotificationObjectItem::isCritical() const
+{
+    return internalObject()->isCritical();
+}
+
+void UINotificationObjectItem::prepare()
 {
     /* Make sure item is opaque. */
     setAutoFillBackground(true);
 
+    /* Prepare everything: */
+    prepareWidgets();
+    prepareConnections();
+
+    /* Apply language settings: */
+    sltRetranslateUI();
+}
+
+void UINotificationObjectItem::setDetailsWidthHint(int iHint)
+{
+    /* Make sure something changed: */
+    if (m_iDetailsWidthHint == iHint)
+        return;
+    /* Remember new value: */
+    m_iDetailsWidthHint = iHint;
+
+    /* Passed details width hint have to be adjusted according to margins: */
+    int iDetailsWidthHint = m_iDetailsWidthHint;
+    if (iDetailsWidthHint > 0)
+    {
+        /* Acquire layout margins: */
+        int iL, iT, iR, iB;
+        m_pLayoutMain->getContentsMargins(&iL, &iT, &iR, &iB);
+        /* Adjust width hint: */
+        iDetailsWidthHint = iDetailsWidthHint - iL - iR;
+    }
+
+    /* Calculate effective width hint on the basis of mimumum and details hints: */
+    const int iEffectiveWidthHint = qMax(m_iMinimumWidthHint, iDetailsWidthHint);
+    m_pLabelDetails->setMinimumTextWidth(iEffectiveWidthHint);
+}
+
+int UINotificationObjectItem::detailsWidthHint() const
+{
+    /* Is there something cached? */
+    if (m_iDetailsWidthHint)
+        return m_iDetailsWidthHint;
+
+    /* Acquire layout margins: */
+    int iL, iT, iR, iB;
+    m_pLayoutMain->getContentsMargins(&iL, &iT, &iR, &iB);
+
+    /* Otherwise return actual details width hint adjusted for margins: */
+    return m_pLabelDetails->minimumTextWidth() + iL + iR;
+}
+
+void UINotificationObjectItem::prepareWidgets()
+{
     /* Prepare main layout: */
     m_pLayoutMain = new QVBoxLayout(this);
     if (m_pLayoutMain)
@@ -121,16 +182,9 @@ UINotificationObjectItem::UINotificationObjectItem(QWidget *pParent, UINotificat
             QFont myFont = m_pLabelDetails->font();
             myFont.setPointSize(myFont.pointSize() - 1);
             m_pLabelDetails->setBrowserFont(myFont);
-            m_pLabelDetails->setVisible(false);
-            int iHint = m_pLabelName->minimumSizeHint().width();
-            if (m_pButtonHelp)
-                iHint += m_pLayoutUpper->spacing() + m_pButtonHelp->minimumSizeHint().width();
-            if (m_pButtonForget)
-                iHint += m_pLayoutUpper->spacing() + m_pButtonForget->minimumSizeHint().width();
-            if (m_pButtonClose)
-                iHint += m_pLayoutUpper->spacing() + m_pButtonClose->minimumSizeHint().width();
-            m_pLabelDetails->setMinimumTextWidth(iHint);
             m_pLabelDetails->setText(m_pObject->details());
+            m_pLabelDetails->setVisible(m_fToggled && !m_pLabelDetails->text().isEmpty());
+            m_pLabelDetails->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Minimum);
 
             m_pLayoutMain->addWidget(m_pLabelDetails);
         }
@@ -155,10 +209,22 @@ UINotificationObjectItem::UINotificationObjectItem(QWidget *pParent, UINotificat
         }
     }
 
+    /* Calculate minimum width hint: */
+    if (m_pLabelName)
+        m_iMinimumWidthHint = m_pLabelName->minimumSizeHint().width();
+    if (m_pButtonHelp)
+        m_iMinimumWidthHint += m_pLayoutUpper->spacing() + m_pButtonHelp->minimumSizeHint().width();
+    if (m_pButtonClose)
+        m_iMinimumWidthHint += m_pLayoutUpper->spacing() + m_pButtonClose->minimumSizeHint().width();
+    if (m_pButtonForget)
+        m_iMinimumWidthHint = qMax(m_iMinimumWidthHint, m_pButtonForget->minimumSizeHint().width());
+}
+
+void UINotificationObjectItem::prepareConnections()
+{
     /* Install translation listener: */
     connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
         this, &UINotificationObjectItem::sltRetranslateUI);
-    sltRetranslateUI();
 }
 
 bool UINotificationObjectItem::event(QEvent *pEvent)
@@ -182,7 +248,7 @@ bool UINotificationObjectItem::event(QEvent *pEvent)
         case QEvent::MouseButtonRelease:
         {
             m_fToggled = !m_fToggled;
-            m_pLabelDetails->setVisible(m_fToggled);
+            m_pLabelDetails->setVisible(m_fToggled && !m_pLabelDetails->text().isEmpty());
             break;
         }
         default:
@@ -263,13 +329,184 @@ void UINotificationObjectItem::sltHandleHelpRequest()
 
 
 /*********************************************************************************************************************************
+*   Class UINotificationQuestionItem implementation.                                                                             *
+*********************************************************************************************************************************/
+
+UINotificationQuestionItem::UINotificationQuestionItem(QWidget *pParent,
+                                                       UINotificationObject *pObject)
+    : UINotificationObjectItem(pParent, pObject)
+    , m_pButtonBox(0)
+    , m_fPolished(false)
+{
+}
+
+void UINotificationQuestionItem::prepareWidgets()
+{
+    /* Call to base-class: */
+    UINotificationObjectItem::prepareWidgets();
+
+    /* Main layout was prepared in base-class: */
+    if (m_pLayoutMain)
+    {
+        /* Acquire button names and check their amount: */
+        UINotificationQuestion *pQuestion = question();
+        AssertPtrReturnVoid(pQuestion);
+        const QStringList buttonNames = pQuestion->buttonNames();
+        const int iButtonAmount = qMax(2, buttonNames.size());
+        AssertReturnVoid(iButtonAmount <= 3);
+
+        /* Compose a list of button types: */
+        QList<QDialogButtonBox::StandardButton> buttonTypes;
+            buttonTypes << QDialogButtonBox::Cancel
+                        << QDialogButtonBox::Ok;
+        if (iButtonAmount == 3)
+            buttonTypes << QDialogButtonBox::Yes;
+
+        /* Compose a flag of button types: */
+        QDialogButtonBox::StandardButtons enmButtons = QDialogButtonBox::NoButton;
+        foreach (QDialogButtonBox::StandardButton enmButtonType, buttonTypes)
+            enmButtons |= enmButtonType;
+
+        /* Preparing button-box: */
+        m_pButtonBox = new QIDialogButtonBox(enmButtons, Qt::Horizontal, this);
+        if (m_pButtonBox)
+        {
+            /* Apply button names: */
+            for (int i = 0; i < iButtonAmount; ++i)
+            {
+                const QString strName = buttonNames.value(i);
+                if (!strName.isEmpty())
+                {
+                    QPushButton *pButton = m_pButtonBox->button(buttonTypes.value(i));
+                    if (pButton)
+                        pButton->setText(strName);
+                }
+            }
+
+            m_pLayoutMain->addWidget(m_pButtonBox);
+        }
+    }
+}
+
+void UINotificationQuestionItem::prepareConnections()
+{
+    /* Call to base-class: */
+    UINotificationObjectItem::prepareConnections();
+
+    /* Connect buttons: */
+    AssertPtrReturnVoid(m_pButtonBox);
+    connect(m_pButtonBox, &QIDialogButtonBox::clicked, this, &UINotificationQuestionItem::sltHandleButtonClick);
+}
+
+void UINotificationQuestionItem::showEvent(QShowEvent *pEvent)
+{
+    /* Call to base-class: */
+    UINotificationObjectItem::showEvent(pEvent);
+
+    /* Polish once: */
+    if (!m_fPolished)
+    {
+        m_fPolished = true;
+
+        /* Make sure critical type question focused: */
+        if (isCritical())
+        {
+            /* Ask question whether Ok button should be default one: */
+            UINotificationQuestion *pQuestion = question();
+            AssertPtrReturnVoid(pQuestion);
+            /* Focus Ok or Cancel button on polishing: */
+            AssertPtrReturnVoid(m_pButtonBox);
+            QPushButton *pButton = m_pButtonBox->button(  pQuestion->isOkByDefault()
+                                                        ? QDialogButtonBox::Ok
+                                                        : QDialogButtonBox::Cancel);
+            AssertPtrReturnVoid(pButton);
+            pButton->setFocus();
+        }
+    }
+}
+
+void UINotificationQuestionItem::keyPressEvent(QKeyEvent *pEvent)
+{
+    switch (pEvent->key())
+    {
+        case Qt::Key_Enter:
+        case Qt::Key_Return:
+        {
+            /* Ask question whether Ok button should be default one: */
+            UINotificationQuestion *pQuestion = question();
+            AssertPtrReturnVoid(pQuestion);
+            /* Click Ok or Cancel button on Enter/Return: */
+            AssertPtrReturnVoid(m_pButtonBox);
+            QPushButton *pButton = m_pButtonBox->button(  pQuestion->isOkByDefault()
+                                                        ? QDialogButtonBox::Ok
+                                                        : QDialogButtonBox::Cancel);
+            AssertPtrReturnVoid(pButton);
+            pButton->click();
+            pEvent->accept();
+            break;
+        }
+        case Qt::Key_Escape:
+        {
+            /* Click Cancel button on Escape: */
+            AssertPtrReturnVoid(m_pButtonBox);
+            QPushButton *pButton = m_pButtonBox->button(QDialogButtonBox::Cancel);
+            AssertPtrReturnVoid(pButton);
+            pButton->click();
+            pEvent->accept();
+            break;
+        }
+        default:
+        {
+            /* Call to base-class: */
+            UINotificationObjectItem::keyPressEvent(pEvent);
+            break;
+        }
+    }
+}
+
+void UINotificationQuestionItem::sltHandleButtonClick(QAbstractButton *pButton)
+{
+    /* Sanity check: */
+    AssertPtrReturnVoid(pButton);
+    UINotificationQuestion *pQuestion = question();
+    AssertPtrReturnVoid(pQuestion);
+
+    /* Acquire result: */
+    AssertPtrReturnVoid(m_pButtonBox);
+    QMap<Question::Result, QAbstractButton*> results;
+    results[Question::Result_Accept] = m_pButtonBox->button(QDialogButtonBox::Ok);
+    results[Question::Result_AcceptAlternative] = m_pButtonBox->button(QDialogButtonBox::Yes);
+    const Question::Result enmResult = results.key(pButton, Question::Result_Cancel);
+
+    /* Assign result: */
+    pQuestion->setResult(enmResult);
+
+    /* Click close button: */
+    m_pButtonClose->click();
+}
+
+UINotificationQuestion *UINotificationQuestionItem::question() const
+{
+    return qobject_cast<UINotificationQuestion*>(m_pObject);
+}
+
+
+/*********************************************************************************************************************************
 *   Class UINotificationProgressItem implementation.                                                                             *
 *********************************************************************************************************************************/
 
-UINotificationProgressItem::UINotificationProgressItem(QWidget *pParent, UINotificationProgress *pProgress /* = 0 */)
-    : UINotificationObjectItem(pParent, pProgress)
+UINotificationProgressItem::UINotificationProgressItem(QWidget *pParent,
+                                                       UINotificationObject *pObject)
+    : UINotificationObjectItem(pParent, pObject)
     , m_pProgressBar(0)
 {
+}
+
+void UINotificationProgressItem::prepareWidgets()
+{
+    /* Call to base-class: */
+    UINotificationObjectItem::prepareWidgets();
+
     /* Main layout was prepared in base-class: */
     if (m_pLayoutMain)
     {
@@ -297,6 +534,12 @@ UINotificationProgressItem::UINotificationProgressItem(QWidget *pParent, UINotif
             m_pLayoutMain->addWidget(m_pProgressBar);
         }
     }
+}
+
+void UINotificationProgressItem::prepareConnections()
+{
+    /* Call to base-class: */
+    UINotificationObjectItem::prepareConnections();
 
     /* Prepare progress connections: */
     connect(progress(), &UINotificationProgress::sigProgressStarted,
@@ -369,10 +612,18 @@ void UINotificationProgressItem::updateDetails()
 *   Class UINotificationDownloaderItem implementation.                                                                           *
 *********************************************************************************************************************************/
 
-UINotificationDownloaderItem::UINotificationDownloaderItem(QWidget *pParent, UINotificationDownloader *pDownloader /* = 0 */)
-    : UINotificationObjectItem(pParent, pDownloader)
+UINotificationDownloaderItem::UINotificationDownloaderItem(QWidget *pParent,
+                                                           UINotificationObject *pObject)
+    : UINotificationObjectItem(pParent, pObject)
     , m_pProgressBar(0)
 {
+}
+
+void UINotificationDownloaderItem::prepareWidgets()
+{
+    /* Call to base-class: */
+    UINotificationObjectItem::prepareWidgets();
+
     /* Main layout was prepared in base-class: */
     if (m_pLayoutMain)
     {
@@ -400,6 +651,12 @@ UINotificationDownloaderItem::UINotificationDownloaderItem(QWidget *pParent, UIN
             m_pLayoutMain->addWidget(m_pProgressBar);
         }
     }
+}
+
+void UINotificationDownloaderItem::prepareConnections()
+{
+    /* Call to base-class: */
+    UINotificationObjectItem::prepareConnections();
 
     /* Prepare downloader connections: */
     connect(downloader(), &UINotificationDownloader::sigProgressStarted,
@@ -469,15 +726,29 @@ void UINotificationDownloaderItem::updateDetails()
 *   Namespace UINotificationProgressItem implementation.                                                                         *
 *********************************************************************************************************************************/
 
-UINotificationObjectItem *UINotificationItem::create(QWidget *pParent, UINotificationObject *pObject)
+UINotificationObjectItem *UINotificationItem::create(QWidget *pParent,
+                                                     UINotificationObject *pObject)
 {
+    /* Prepare item: */
+    UINotificationObjectItem *pItem = 0;
+
     /* Handle known types: */
-    if (pObject->inherits("UINotificationProgress"))
-        return new UINotificationProgressItem(pParent, static_cast<UINotificationProgress*>(pObject));
+    if (pObject->inherits("UINotificationQuestion"))
+        pItem = new UINotificationQuestionItem(pParent, pObject);
+    else if (pObject->inherits("UINotificationProgress"))
+        pItem = new UINotificationProgressItem(pParent, pObject);
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
     else if (pObject->inherits("UINotificationDownloader"))
-        return new UINotificationDownloaderItem(pParent, static_cast<UINotificationDownloader*>(pObject));
+        pItem = new UINotificationDownloaderItem(pParent, pObject);
 #endif
     /* Handle defaults: */
-    return new UINotificationObjectItem(pParent, pObject);
+    else
+        pItem = new UINotificationObjectItem(pParent, pObject);
+
+    /* Prepare item: */
+    if (pItem)
+        pItem->prepare();
+
+    /* Return prepared result: */
+    return pItem;
 }

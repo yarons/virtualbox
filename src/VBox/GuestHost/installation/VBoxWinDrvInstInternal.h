@@ -1,4 +1,4 @@
-/* $Id: VBoxWinDrvInstInternal.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxWinDrvInstInternal.h 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxWinDrvInstInternal.h - Internal header for VBoxWinDrvInst.cpp.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2024-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2024-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -64,15 +64,7 @@ typedef struct VBOXWINDRVINSTPARMS
     /** Union keeping specific parameters, depending on \a enmMode. */
     union
     {
-        struct
-        {
-            /** Model including decoration (e.g. "VBoxUSB.NTAMD64"); optional and might be NULL. */
-            PRTUTF16   pwszModel;
-            /** Hardware (Pnp) ID; optional and might be NULL. */
-            PRTUTF16   pwszPnpId;
-            /** Name of section to install. */
-            PRTUTF16   pwszSection;
-        } UnInstall;
+        VBOXWINDRVINFPARMS UnInstall;
         struct
         {
             /** Section within in the INF file to execute. */

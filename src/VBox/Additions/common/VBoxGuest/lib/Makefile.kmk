@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 112887 2026-02-09 10:14:42Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the common guest addition code library.
 #
 
 #
-# Copyright (C) 2006-2025 Oracle and/or its affiliates.
+# Copyright (C) 2006-2026 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.
@@ -85,6 +85,10 @@ VBoxGuestR0Lib_SOURCES      = \
 	VBoxGuestR0LibIdc.cpp \
 	VBoxGuestR0LibSharedFolders.c \
 	VBoxGuestR0LibMouse.cpp
+ifdef VBOX_WITH_GUEST_PROPS
+ VBoxGuestR0Lib_SOURCES   += \
+ 	VBoxGuestLibGuestProp.cpp
+endif
 VBoxGuestR0Lib_SOURCES.os2     = VBoxGuestR0LibIdc-os2.cpp
 VBoxGuestR0Lib_SOURCES.solaris = VBoxGuestR0LibIdc-solaris.cpp
 VBoxGuestR0Lib_SOURCES.win     = VBoxGuestR0LibIdc-win.cpp
@@ -151,7 +155,7 @@ ifneq ($(KBUILD_TARGET),win)
 endif
 ifdef VBOX_WITH_GUEST_PROPS
  VBoxGuestR3Lib_SOURCES   += \
- 	VBoxGuestR3LibGuestProp.cpp \
+ 	VBoxGuestLibGuestProp.cpp \
  	VBoxGuestR3LibHostVersion.cpp
 endif
 ifdef VBOX_WITH_SHARED_CLIPBOARD
@@ -222,12 +226,12 @@ VBoxGuestR3LibXFree86_DEFS     = \
 VBoxGuestR3LibXFree86_SOURCES  = \
 	VBoxGuestR3Lib.cpp \
 	VBoxGuestR3LibGR.cpp \
-	$(if $(VBOX_WITH_GUEST_PROPS),VBoxGuestR3LibGuestProp.cpp,) \
+	$(if $(VBOX_WITH_GUEST_PROPS),VBoxGuestLibGuestProp.cpp,) \
 	VBoxGuestR3LibMouse.cpp \
 	VBoxGuestR3LibMisc.cpp \
 	VBoxGuestR3LibSeamless.cpp \
 	VBoxGuestR3LibVideo.cpp \
-	VBoxGuestR3LibRuntimeXF86.cpp
+	VBoxGuestR3LibRuntimeXF86.c
 VBoxGuestR3LibXFree86_INCS     = \
 	$(VBOX_PATH_X11_ROOT)/XFree86-4.3/Xserver \
 	$(VBOX_PATH_X11_ROOT)/XFree86-4.3 \
@@ -248,8 +252,6 @@ VBoxGuestR3LibXOrg_DEFS     = \
 	$(if $(VBOX_WITH_DRAG_AND_DROP_GH),VBOX_WITH_DRAG_AND_DROP_GH,) \
 	$(if $(VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS),VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS,)
 VBoxGuestR3LibXOrg_SOURCES  = $(VBoxGuestR3LibXFree86_SOURCES)
-
-VBoxGuestR3LibRuntimeXF86.cpp_CXXFLAGS = -Wno-shadow
 
 include $(FILE_KBUILD_SUB_FOOTER)
 

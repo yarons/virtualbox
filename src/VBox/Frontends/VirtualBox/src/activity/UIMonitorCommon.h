@@ -1,10 +1,10 @@
-/* $Id: UIMonitorCommon.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMonitorCommon.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMonitorCommon class declaration.
  */
 
 /*
- * Copyright (C) 2016-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2016-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -59,7 +59,6 @@ private:
     CStringArray m_metricNamesArray;
 };
 
-
 class SHARED_LIBRARY_STUFF UIProgressTaskReadCloudMachineMetricData : public UIProgressTask
 {
     Q_OBJECT;
@@ -100,15 +99,14 @@ struct UIDebuggerMetricData
     quint64 m_counter;
 };
 
-
 class SHARED_LIBRARY_STUFF UIMonitorCommon
 {
-
 public:
 
     /** @name Static utility methods that query and parse IMachineDebugger outputs for specific metrix types.
       * @{ */
         static void getNetworkLoad(CMachineDebugger &debugger, quint64 &uOutNetworkReceived, quint64 &uOutNetworkTransmitted);
+        static void getUSBLoad(CMachineDebugger &debugger, quint64 &uOutUSBReceived, quint64 &uOutUSBTransmitted);
         static void getDiskLoad(CMachineDebugger &debugger, quint64 &uOutDiskWritten, quint64 &uOutDiskRead);
         static void getVMMExitCount(CMachineDebugger &debugger, quint64 &uOutVMMExitCount);
     /** @} */
@@ -135,7 +133,6 @@ private:
 
     /** Parses the xml string we get from the IMachineDebugger and returns an array of UIDebuggerMetricData. */
     static QVector<UIDebuggerMetricData> getAndParseStatsFromDebugger(CMachineDebugger &debugger, const QString &strQuery);
-
 };
 
 #endif /* !FEQT_INCLUDED_SRC_activity_UIMonitorCommon_h */

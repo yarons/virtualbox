@@ -1,10 +1,10 @@
-/* $Id: UIVMLogViewerFilterWidget.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIVMLogViewerFilterWidget.cpp 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
 
 /*
- * Copyright (C) 2010-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -47,9 +47,6 @@
 #include "UIVMLogPage.h"
 #include "UIVMLogViewerFilterWidget.h"
 #include "UIVMLogViewerWidget.h"
-#ifdef VBOX_WS_MAC
-# include "VBoxUtils-darwin.h"
-#endif
 
 /* Other VBox includes: */
 #include <iprt/assert.h>
@@ -58,6 +55,7 @@
 /*********************************************************************************************************************************
 *   UIVMFilterLineEdit definition.                                                                                               *
 *********************************************************************************************************************************/
+
 
 /** UIVMFilterLineEdit class is used to display and modify the list of filter terms.
  *  the terms are displayed as words with spaces in between and it is possible to

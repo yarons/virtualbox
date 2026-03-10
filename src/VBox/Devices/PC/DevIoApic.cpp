@@ -1,10 +1,10 @@
-/* $Id: DevIoApic.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: DevIoApic.cpp 112682 2026-01-25 17:10:52Z alexander.eichner@oracle.com $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
 
 /*
- * Copyright (C) 2016-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2016-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -671,6 +671,7 @@ static void ioapicSignalIntrForRte(PPDMDEVINS pDevIns, PIOAPIC pThis, PIOAPICCC 
                                                     ApicIntr.u8Vector,
                                                     ApicIntr.u8Polarity,
                                                     ApicIntr.u8TriggerMode,
+                                                    idxRte, /* This maps 1 to 1 to the IO-APIC pin. */
                                                     u32TagSrc);
     /* Can't reschedule to R3. */
     Assert(rc == VINF_SUCCESS || rc == VERR_APIC_INTR_DISCARDED);
@@ -1102,6 +1103,7 @@ static DECLCALLBACK(void) ioapicSendMsi(PPDMDEVINS pDevIns, PCIBDF uBusDevFn, PC
                                                     ApicIntr.u8Vector,
                                                     0 /* u8Polarity - N/A */,
                                                     ApicIntr.u8TriggerMode,
+                                                    UINT8_MAX, /* Not originating from a pin. */
                                                     uTagSrc);
     /* Can't reschedule to R3. */
     Assert(rc == VINF_SUCCESS || rc == VERR_APIC_INTR_DISCARDED); NOREF(rc);

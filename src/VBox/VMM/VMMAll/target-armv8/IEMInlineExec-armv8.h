@@ -1,4 +1,4 @@
-/* $Id: IEMInlineExec-armv8.h 109859 2025-06-15 22:07:50Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInlineExec-armv8.h 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - ARMv8 target, Inline Exec/Decoder routines.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2011-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -93,13 +93,13 @@ DECLINLINE(void) iemInitExecTargetStrict(PVMCPUCC pVCpu) RT_NOEXCEPT
 {
     iemInitDecoderStrictTarget(pVCpu);
 
-#  ifdef IEM_WITH_CODE_TLB
-    pVCpu->iem.s.offInstrNextByte   = UINT16_MAX;
-    pVCpu->iem.s.pbInstrBuf         = NULL;
-    pVCpu->iem.s.cbInstrBufTotal    = UINT16_MAX;
-    pVCpu->iem.s.uInstrBufPc        = UINT64_C(0xc0ffc0ffcff0c0ff);
+#  ifdef IEM_WITH_CODE_TLB_IN_CUR_CTX
+    ICORE(pVCpu).offInstrNextByte   = UINT16_MAX;
+    ICORE(pVCpu).pbInstrBuf         = NULL;
+    ICORE(pVCpu).cbInstrBufTotal    = UINT16_MAX;
+    ICORE(pVCpu).uInstrBufPc        = UINT64_C(0xc0ffc0ffcff0c0ff);
 #  else
-    pVCpu->iem.s.cbOpcode           = 127;
+    ICORE(pVCpu).cbOpcode           = 127;
 #  endif
 }
 

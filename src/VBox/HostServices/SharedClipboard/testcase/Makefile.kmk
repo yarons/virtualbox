@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 113171 2026-02-26 11:30:55Z brent.paulson@oracle.com $
 ## @file
 # Sub-Makefile for the Shared Clipboard Host Service testcases.
 #
 
 #
-# Copyright (C) 2011-2025 Oracle and/or its affiliates.
+# Copyright (C) 2011-2026 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.
@@ -54,6 +54,7 @@ if defined(VBOX_WITH_TESTCASES) && !defined(VBOX_ONLY_ADDITIONS) && !defined(VBO
  if1of ($(KBUILD_TARGET), linux solaris)
   PROGRAMS += tstClipboardMockHGCM
   tstClipboardMockHGCM_SOURCES += \
+  	$(PATH_ROOT)/src/VBox/GuestHost/DisplayServerType.cpp \
   	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/clipboard-x11.cpp \
   	../VBoxSharedClipboardSvc-x11.cpp
   tstClipboardMockHGCM_LIBPATH = \
@@ -79,7 +80,7 @@ if defined(VBOX_WITH_TESTCASES) && !defined(VBOX_ONLY_ADDITIONS) && !defined(VBO
   	../VBoxSharedClipboardSvc-transfers.cpp \
   	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/clipboard-transfers.cpp \
   	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/clipboard-transfers-provider-local.cpp
-  if VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS_HTTP
+  if defined(VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS_HTTP)
    if1of ($(KBUILD_TARGET), linux solaris)
     tstClipboardMockHGCM_SOURCES += \
     	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/clipboard-transfers-http.cpp

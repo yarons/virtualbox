@@ -1,10 +1,10 @@
-/* $Id: UnattendedImpl.cpp 111433 2025-10-16 13:21:23Z serkan.bayraktar@oracle.com $ */
+/* $Id: UnattendedImpl.cpp 113113 2026-02-20 20:16:20Z serkan.bayraktar@oracle.com $ */
 /** @file
  * Unattended class implementation
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -200,6 +200,237 @@ typedef struct OS2SYSLEVELENTRY
 #pragma pack()
 AssertCompileSize(OS2SYSLEVELENTRY, 0x80);
 
+/**
+ * Used by hlpMapOsVersionToSpecificType to map base OS types and major versions to specific OS types.
+ */
+typedef struct {
+    VBOXOSTYPE enmBaseType; //e.g. VBOXOSTYPE_Ubuntu
+    unsigned majorVersion;
+    VBOXOSTYPE enmSpecificType; //e.g. VBOXOSTYPE_Ubuntu24_x64
+} OsVersionMapEntry;
+
+static const OsVersionMapEntry os_version_map[] = {
+    { VBOXOSTYPE_Oracle_x64,   8,   VBOXOSTYPE_Oracle8_x64   },
+    { VBOXOSTYPE_Oracle_x64,   9,   VBOXOSTYPE_Oracle9_x64   },
+    { VBOXOSTYPE_Oracle_x64,   10,  VBOXOSTYPE_Oracle10_x64  },
+    { VBOXOSTYPE_Ubuntu,       16,  VBOXOSTYPE_Ubuntu16      },
+    { VBOXOSTYPE_Ubuntu_x64,   16,  VBOXOSTYPE_Ubuntu16_x64  },
+    { VBOXOSTYPE_Ubuntu,       17,  VBOXOSTYPE_Ubuntu17      },
+    { VBOXOSTYPE_Ubuntu_x64,   17,  VBOXOSTYPE_Ubuntu17_x64  },
+    { VBOXOSTYPE_Ubuntu_x64,   18,  VBOXOSTYPE_Ubuntu18_x64  },
+    { VBOXOSTYPE_Ubuntu_x64,   19,  VBOXOSTYPE_Ubuntu19_x64  },
+    { VBOXOSTYPE_Ubuntu_x64,   20,  VBOXOSTYPE_Ubuntu20_x64  },
+    { VBOXOSTYPE_Ubuntu_x64,   21,  VBOXOSTYPE_Ubuntu21_x64  },
+    { VBOXOSTYPE_Ubuntu_x64,   22,  VBOXOSTYPE_Ubuntu22_x64  },
+    { VBOXOSTYPE_Ubuntu_x64,   23,  VBOXOSTYPE_Ubuntu23_x64  },
+    { VBOXOSTYPE_Ubuntu_x64,   24,  VBOXOSTYPE_Ubuntu24_x64  },
+    { VBOXOSTYPE_Ubuntu_x64,   25,  VBOXOSTYPE_Ubuntu25_x64  },
+    { VBOXOSTYPE_Ubuntu_arm64, 22,  VBOXOSTYPE_Ubuntu22_arm64},
+    { VBOXOSTYPE_Ubuntu_arm64, 23,  VBOXOSTYPE_Ubuntu23_arm64},
+    { VBOXOSTYPE_Ubuntu_arm64, 24,  VBOXOSTYPE_Ubuntu24_arm64},
+    { VBOXOSTYPE_Ubuntu_arm64, 25,  VBOXOSTYPE_Ubuntu25_arm64},
+    { VBOXOSTYPE_Debian_x64,   9,   VBOXOSTYPE_Debian9_x64   },
+    { VBOXOSTYPE_Debian_x64,   10,  VBOXOSTYPE_Debian10_x64  },
+    { VBOXOSTYPE_Debian_x64,   11,  VBOXOSTYPE_Debian11_x64  },
+    { VBOXOSTYPE_Debian_x64,   12,  VBOXOSTYPE_Debian12_x64  },
+    { VBOXOSTYPE_Debian_x64,   13,  VBOXOSTYPE_Debian13_x64  },
+    { VBOXOSTYPE_Debian_arm64, 9,   VBOXOSTYPE_Debian9_arm64 },
+    { VBOXOSTYPE_Debian_arm64, 10,  VBOXOSTYPE_Debian10_arm64},
+    { VBOXOSTYPE_Debian_arm64, 11,  VBOXOSTYPE_Debian11_arm64},
+    { VBOXOSTYPE_Debian_arm64, 12,  VBOXOSTYPE_Debian12_arm64},
+    { VBOXOSTYPE_Debian_arm64, 13,  VBOXOSTYPE_Debian13_arm64},
+};
+
+/**
+ * Linearly searches through os_version_map to find a specific VBOXOSTYPE
+ * matching to @a enmOsType and @a strDetectedVersion. If it fails
+ * to find an exact match then an older version is returned, if found.
+ *
+ * @returns found VBOXOSTYPE or VBOXOSTYPE_Unknown
+ * @param   enmOsType           A base OS type id, e.g. VBOXOSTYPE_Ubuntu
+ * @param   strDetectedVersion  Detected OS version, may contain non numerical
+ *                              characters and major minor version numbers.
+ */
+static VBOXOSTYPE hlpMapOsVersionToSpecificType(VBOXOSTYPE enmOsType, const Utf8Str &strDetectedVersion)
+{
+    if (strDetectedVersion.isEmpty())
+        return VBOXOSTYPE_Unknown;
+    const size_t k = strDetectedVersion.length();
+    size_t i = 0;
+    /* Skip non-numerical prefix of strDetectedVersion */
+    for (; i < k; i++)
+    {
+        if (RT_C_IS_DIGIT( (unsigned char)strDetectedVersion.c_str()[i]) )
+            break;
+    }
+    if (i == k)
+        return VBOXOSTYPE_Unknown;
+    size_t j = i;
+    /* Skip part after the first non-numerical, possibly point, character */
+    for (; j < k; j++)
+    {
+        if (!RT_C_IS_DIGIT((unsigned char)strDetectedVersion.c_str()[j]))
+            break;
+    }
+    if (j == i)
+        return VBOXOSTYPE_Unknown;
+    unsigned majorVersion = 0;
+    for (size_t idx = i; idx < j; idx++)
+    {
+        majorVersion = majorVersion * 10 + (unsigned)(strDetectedVersion.c_str()[idx] - '0');
+    }
+    int bestDiff = INT32_MAX;
+    size_t bestIdx = ~0U;
+    for (size_t t = 0; t < RT_ELEMENTS(os_version_map); ++t)
+    {
+        if (os_version_map[t].enmBaseType != enmOsType)
+            continue;
+        /* Return in case of exact match */
+        if (os_version_map[t].majorVersion == majorVersion)
+            return os_version_map[t].enmSpecificType;
+
+        int diff = static_cast<int>(majorVersion) - static_cast<int>(os_version_map[t].majorVersion);
+        /* considering only older versions */
+        if (diff > 0)
+        {
+            if (diff < bestDiff)
+            {
+                bestDiff = diff;
+                bestIdx  = t;
+            }
+        }
+    }
+    if (bestIdx != ~0U)
+        return os_version_map[bestIdx].enmSpecificType;
+
+    return VBOXOSTYPE_Unknown;
+}
+
+/**
+ * Used by hlpVfsRecursiveFileSearch & hlpVfsRecursiveFileSearchInt to
+ * reduce the number of parameters passes during recursion.
+ */
+typedef struct HLPVFSRECURSIVE
+{
+    size_t        cchFilename;
+    const char   *pszFilename;
+    char         *pszFoundPath;
+    size_t        cbFoundPath;
+    RTDIRENTRYEX  DirEntry;
+} HLPVFSRECURSIVE;
+
+
+/**
+ * Returns VERR_FILE_NOT_FOUND if file not found, VINF_SUCCESS if found.
+ */
+static int hlpVfsRecursiveFileSearchInt(HLPVFSRECURSIVE *pThis, RTVFSDIR hVfsDir, size_t offFoundPath, int cNestingsLeft)
+{
+    int vrcStashed = VERR_FILE_NOT_FOUND;
+    for (;;)
+    {
+        size_t cbDir = sizeof(pThis->DirEntry);
+        int vrc = RTVfsDirReadEx(hVfsDir, &pThis->DirEntry, &cbDir, RTFSOBJATTRADD_NOTHING);
+        if (RT_FAILURE(vrc))
+        {
+            if (vrc == VERR_NO_MORE_FILES)
+                vrc = vrcStashed;
+            else
+                LogRel(("Unattended: hlpVfsRecursiveFileSearchInDir: RTVfsDirReadEx fails in '%s': %Rrc\n",
+                        pThis->pszFoundPath, vrc));
+            return vrc;
+        }
+        switch (pThis->DirEntry.Info.Attr.fMode & RTFS_TYPE_MASK)
+        {
+            case RTFS_TYPE_FILE:
+                if (   pThis->DirEntry.cbName == pThis->cchFilename
+                    && RTStrCmp(pThis->DirEntry.szName, pThis->pszFilename) == 0)
+                {
+                    vrc = RTStrCopy(&pThis->pszFoundPath[offFoundPath], pThis->cbFoundPath - offFoundPath, pThis->DirEntry.szName);
+                    AssertLogRelMsgReturn(RT_SUCCESS(vrc),
+                                          ("Appending '%s' to '%s': %Rrc\n", pThis->DirEntry.szName, pThis->pszFoundPath, vrc), vrc);
+                    return VINF_SUCCESS;
+                }
+                break;
+
+            case RTFS_TYPE_DIRECTORY:
+                if (RTDirEntryExIsStdDotLink(&pThis->DirEntry))
+                    continue;
+
+                /* Recurse into the sub-directory if we've got enough buffer space for it, otherwise just skip it. */
+                if (   offFoundPath + pThis->DirEntry.cbName + 1 < pThis->cbFoundPath
+                    && cNestingsLeft > 0)
+                {
+                    memcpy(&pThis->pszFoundPath[offFoundPath], pThis->DirEntry.szName, pThis->DirEntry.cbName);
+                    pThis->pszFoundPath[offFoundPath + pThis->DirEntry.cbName]     = RTPATH_SLASH;
+                    pThis->pszFoundPath[offFoundPath + pThis->DirEntry.cbName + 1] = '\0';
+
+                    RTVFSDIR hVfsSubDir = NIL_RTVFSDIR;
+                    vrc = RTVfsDirOpenDir(hVfsDir, pThis->DirEntry.szName, 0 /* fFlags */, &hVfsSubDir);
+                    if (RT_SUCCESS(vrc))
+                    {
+                        vrc = hlpVfsRecursiveFileSearchInt(pThis, hVfsSubDir, offFoundPath + pThis->DirEntry.cbName + 1,
+                                                           cNestingsLeft - 1);
+                        RTVfsDirRelease(hVfsSubDir);
+                        if (RT_SUCCESS_NP(vrc))
+                            return VINF_SUCCESS;
+                        if (vrc != VERR_FILE_NOT_FOUND)
+                        {
+                            LogRel(("Unattended: hlpVfsRecursiveFileSearchInDir: Stashing error %Rrc scanning '%s'\n",
+                                    vrc, pThis->pszFoundPath));
+                            vrcStashed = vrc;
+                        }
+                    }
+                    else
+                        LogRel(("Unattended: hlpVfsRecursiveFileSearchInDir: Failed open the directory %s: %Rrc\n",
+                                pThis->pszFoundPath, vrc));
+                    pThis->pszFoundPath[offFoundPath] = '\0';
+                }
+                else
+                    LogRel(("Unattended: hlpVfsRecursiveFileSearchInDir: %s for scanning '%s%s' - skipping.\n",
+                            cNestingsLeft > 0 ? "Insufficient buffer" : "Too many recursions",
+                            pThis->pszFoundPath, pThis->DirEntry.szName));
+                break;
+        }
+    }
+}
+
+/**
+ * Searching @a pszDir and all its whole tree for the (regular) file @a pszFilename.
+ *
+ * @returns VINF_SUCCESS and name in @a pszFoundPath on success,
+ *          VERR_FILE_NOT_FOUND dif not found and
+ * @param   hVfsIso         The file system to search in.
+ * @param   pszDir          The path to the directory to start searching in.
+ * @param   pszFilename     The name of the file to locate.
+ * @param   pszFoundPath    Where to return the path to the file.  This is only
+ *                          valid when @c VINF_SUCCESS is returned.
+ * @param   cbFoundPath     The size of the buffer @a pszFoundPath points to.
+ */
+static int hlpVfsRecursiveFileSearch(RTVFS hVfsIso, const char *pszDir, const char *pszFilename,
+                                     char *pszFoundPath, size_t cbFoundPath)
+{
+    int vrc = RTStrCopy(pszFoundPath, cbFoundPath, pszDir);
+    AssertLogRelRCReturn(vrc, vrc);
+    size_t const cchDir = RTPathEnsureTrailingSeparator(pszFoundPath, cbFoundPath);
+    AssertLogRelReturn(cchDir > 0, VERR_BUFFER_OVERFLOW);
+
+    RTVFSDIR hVfsDir = NIL_RTVFSDIR;
+    vrc = RTVfsDirOpen(hVfsIso, pszDir, 0 /*fFlags */, &hVfsDir);
+    if (RT_SUCCESS(vrc))
+    {
+        HLPVFSRECURSIVE This;
+        This.cchFilename  = strlen(pszFilename);
+        This.pszFilename  = pszFilename;
+        This.pszFoundPath = pszFoundPath;
+        This.cbFoundPath  = cbFoundPath;
+        vrc = hlpVfsRecursiveFileSearchInt(&This, hVfsDir, cchDir, 32);
+
+        RTVfsDirRelease(hVfsDir);
+    }
+    else
+        LogRel(("Unattended: %s directory not found or could not be opened: %Rrc\n", pszDir, vrc));
+    return vrc;
+}
 
 
 /**
@@ -243,6 +474,7 @@ const Utf8Str &WIMImage::formatName(Utf8Str &r_strName) const
     r_strName.append(")");
     return r_strName;
 }
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -538,6 +770,10 @@ HRESULT Unattended::i_innerDetectIsoOS(RTVFS hVfsIso)
         hrc = i_innerDetectIsoOSOs2(hVfsIso, &uBuf);
     if (hrc == S_FALSE && mEnmOsType == VBOXOSTYPE_Unknown)
         hrc = i_innerDetectIsoOSFreeBsd(hVfsIso, &uBuf);
+
+    VBOXOSTYPE specificOSTypeId =  hlpMapOsVersionToSpecificType(mEnmOsType, mStrDetectedOSVersion);
+    if (specificOSTypeId != VBOXOSTYPE_Unknown)
+        mEnmOsType = specificOSTypeId;
     if (mEnmOsType != VBOXOSTYPE_Unknown)
     {
         try {  mStrDetectedOSTypeId = Global::OSTypeId(mEnmOsType); }
@@ -1939,7 +2175,7 @@ HRESULT Unattended::i_innerDetectIsoOSLinux(RTVFS hVfsIso, DETECTBUFFER *pBuf)
     }
 
     /*
-     * All of the debian based distro versions I checked have a single line ./disk/info
+     * All of the older! debian based distro versions I checked have a single line .disk/info
      * file.  Only info I could find related to .disk folder is:
      *      https://lists.debian.org/debian-cd/2004/01/msg00069.html
      *
@@ -2002,7 +2238,7 @@ HRESULT Unattended::i_innerDetectIsoOSLinux(RTVFS hVfsIso, DETECTBUFFER *pBuf)
                 LogRel(("Unattended: .disk/info: Unknown: arch='%s'\n", pszArch));
         }
 
-        if (pszDiskName)
+        if (pszDiskName && mEnmOsType != VBOXOSTYPE_Unknown)
         {
             const char *pszVersion = NULL;
             if (detectLinuxDistroNameII(pszDiskName, &mEnmOsType, &pszVersion))
@@ -2027,6 +2263,109 @@ HRESULT Unattended::i_innerDetectIsoOSLinux(RTVFS hVfsIso, DETECTBUFFER *pBuf)
         else
             return S_FALSE;
     }
+
+    /*
+     * Debian 12 and 13 do not include architecture information in .disk/info file. Thus we check first
+     * dists/???/Release file which seems to be available in all Debian variants/versions I have checked.
+     * We have to search for Release file under dists folder to find its exact location.
+     * The content of the file is similar to the following:
+     * Origin: Debian
+     * Label: Debian
+     * Suite: oldstable
+     * Version: 12.12
+     * Codename: bookworm
+     * Changelogs: https://metadata.ftp-master.debian.org/changelogs/@CHANGEPATH@_changelog
+     * Date: Sat, 06 Sep 2025 11:02:45 UTC
+     * Acquire-By-Hash: yes
+     * No-Support-for-Architecture-all: Packages
+     * Architectures: amd64
+     * Components: main contrib
+     * Description: Debian 12.12 Released 06 September 2025
+     * MD5Sum:
+     * ......
+     * We need to recursively search under dists folder as Release file sits on seemingly randomly
+     * named subfolders.
+     */
+    char szFoundFilePath[RTPATH_MAX];
+    vrc = hlpVfsRecursiveFileSearch(hVfsIso, "dists", "Release", szFoundFilePath, sizeof(szFoundFilePath));
+    if (RT_SUCCESS(vrc))
+    {
+        vrc = RTVfsFileOpen(hVfsIso, szFoundFilePath, RTFILE_O_READ | RTFILE_O_DENY_NONE | RTFILE_O_OPEN, &hVfsFile);
+        if (RT_SUCCESS(vrc))
+        {
+            size_t cchIgn;
+            vrc = RTVfsFileRead(hVfsFile, pBuf->sz, sizeof(*pBuf) - 1, &cchIgn);
+            pBuf->sz[RT_SUCCESS(vrc) ? cchIgn : 0] = '\0';
+            RTVfsFileRelease(hVfsFile);
+
+            /* Interesting stuff is in first 10-12 lines of the file. The rest is MD5 sums. */
+            const char *apszLines[12];
+            char       *psz         = pBuf->sz;
+            unsigned    idxArchLine = ~0U;
+            for (unsigned i = 0; i < RT_ELEMENTS(apszLines); i++)
+            {
+                apszLines[i] = psz;
+                if (*psz != '\0')
+                {
+                    char *pszLine = psz;
+                    psz = (char *)strchr(psz, '\n');
+                    if (!psz)
+                         psz = strchr(pszLine, '\0');
+                    else
+                        *psz++ = '\0';
+                    apszLines[i] = RTStrStrip(pszLine);
+
+                    if (RTStrIStartsWith(pszLine, "label"))
+                    {
+                        const char *pszVersion = NULL;
+                        detectLinuxDistroNameII(apszLines[i], &mEnmOsType, &pszVersion);
+                    }
+                    else if (RTStrIStartsWith(pszLine, "version"))
+                    {
+                        const char *pszVersionLine = apszLines[i];
+                        size_t iOff = 0;
+                        // Skip until a digit is found
+                        while (pszVersionLine[iOff] != '\0' && !RT_C_IS_DIGIT(pszVersionLine[iOff]))
+                            ++iOff;
+
+                        // Remember where the version substring starts
+                        size_t iStart = iOff;
+
+                        // Scan as long as digits or dots appear (to cover "13.12", "10.4.1", etc.)
+                        while (RT_C_IS_DIGIT(pszVersionLine[iOff]) || pszVersionLine[iOff] == '.')
+                            ++iOff;
+
+                        size_t iSize = iOff - iStart;
+
+                        // Only assign if a version-like substring was actually found
+                        if (iSize != 0)
+                            mStrDetectedOSVersion.assignEx(pszVersionLine, iStart, iSize);
+                    }
+                    else if (RTStrIStartsWith(pszLine, "architecture"))
+                        idxArchLine = i;
+                }
+            }
+            /* Continue even if we fail to determine the version. */
+            if (mStrDetectedOSVersion.isEmpty())
+                LogRel(("Unattended: dists/**/Release: Failed to determine OS version\n"));
+
+            if (mEnmOsType == VBOXOSTYPE_Unknown)
+                LogRel(("Unattended: dists/**/Release: Unknown: OS type\n"));
+            else if (idxArchLine >= RT_ELEMENTS(apszLines))
+                LogRel(("Unattended: dists/**/Release: Unknown: No architecture lines in file\n"));
+            else
+            {
+                if (!detectLinuxArchII(apszLines[idxArchLine], &mEnmOsType, mEnmOsType))
+                    LogRel(("Unattended: dists/**/Release: Unknown: arch='%s'\n", apszLines[idxArchLine]));
+                else
+                    return S_FALSE;
+            }
+        }
+        else
+            LogRel(("Unattended: dists/**/Release: Failed to open Release file '%s': %Rrc\n", szFoundFilePath, vrc));
+    }
+    else
+        LogRel(("Unattended: dists/**/Release: Failed to find Release file\n"));
 
     /*
      * Fedora live iso should be recognizable from the primary volume ID (the
@@ -4243,6 +4582,12 @@ Utf8Str const &Unattended::i_getAdminPassword() const
     return mStrAdminPassword.isEmpty() ? mStrUserPassword : mStrAdminPassword;
 }
 
+bool Unattended::i_getIsAdminPasswordEmpty() const
+{
+    Assert(isReadLockedOnCurrentThread());
+    return mStrAdminPassword.isEmpty();
+}
+
 Utf8Str const &Unattended::i_getFullUserName() const
 {
     Assert(isReadLockedOnCurrentThread());
@@ -4420,6 +4765,12 @@ bool Unattended::i_getAvoidUpdatesOverNetwork() const
 {
     Assert(isReadLockedOnCurrentThread());
     return mfAvoidUpdatesOverNetwork;
+}
+
+VBOXOSTYPE Unattended::i_getGuestOsArch() const
+{
+    Assert(isReadLockedOnCurrentThread());
+    return (VBOXOSTYPE)(mEnmOsType & VBOXOSTYPE_ArchitectureMask);
 }
 
 HRESULT Unattended::i_attachImage(UnattendedInstallationDisk const *pImage, ComPtr<IMachine> const &rPtrSessionMachine,

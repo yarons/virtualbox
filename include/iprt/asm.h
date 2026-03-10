@@ -3,7 +3,7 @@
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -7044,7 +7044,7 @@ DECLINLINE(void) ASMBitSet(volatile void RT_FAR *pvBitmap, int32_t iBit) RT_NOTH
 
 # else
     int32_t offBitmap = iBit / 32;
-    AssertStmt(!((uintptr_t)pvBitmap & 3), offBitmap += (uintptr_t)pvBitmap & 3; iBit += ((uintptr_t)pvBitmap & 3) * 8);
+    AssertStmt(!((uintptr_t)pvBitmap & 3), offBitmap += (uint32_t)(uintptr_t)pvBitmap & 3; iBit += (uint32_t)((uintptr_t)pvBitmap & 3) * 8);
     ASMAtomicUoOrU32(&((uint32_t volatile *)pvBitmap)[offBitmap], RT_H2LE_U32(RT_BIT_32(iBit & 31)));
 # endif
 }
@@ -7142,7 +7142,7 @@ DECLINLINE(void) ASMBitClear(volatile void RT_FAR *pvBitmap, int32_t iBit) RT_NO
 
 # else
     int32_t offBitmap = iBit / 32;
-    AssertStmt(!((uintptr_t)pvBitmap & 3), offBitmap += (uintptr_t)pvBitmap & 3; iBit += ((uintptr_t)pvBitmap & 3) * 8);
+    AssertStmt(!((uintptr_t)pvBitmap & 3), offBitmap += (int32_t)(uintptr_t)pvBitmap & 3; iBit += (int32_t)((uintptr_t)pvBitmap & 3) * 8);
     ASMAtomicUoAndU32(&((uint32_t volatile *)pvBitmap)[offBitmap], RT_H2LE_U32(~RT_BIT_32(iBit & 31)));
 # endif
 }
@@ -7235,7 +7235,7 @@ DECLINLINE(void) ASMBitToggle(volatile void RT_FAR *pvBitmap, int32_t iBit) RT_N
 #  endif
 # else
     int32_t offBitmap = iBit / 32;
-    AssertStmt(!((uintptr_t)pvBitmap & 3), offBitmap += (uintptr_t)pvBitmap & 3; iBit += ((uintptr_t)pvBitmap & 3) * 8);
+    AssertStmt(!((uintptr_t)pvBitmap & 3), offBitmap += (int32_t)(uintptr_t)pvBitmap & 3; iBit += (int32_t)((uintptr_t)pvBitmap & 3) * 8);
     ASMAtomicUoXorU32(&((uint32_t volatile *)pvBitmap)[offBitmap], RT_H2LE_U32(RT_BIT_32(iBit & 31)));
 # endif
 }
@@ -7338,7 +7338,7 @@ DECLINLINE(bool) ASMBitTestAndSet(volatile void RT_FAR *pvBitmap, int32_t iBit) 
 
 # else
     int32_t offBitmap = iBit / 32;
-    AssertStmt(!((uintptr_t)pvBitmap & 3), offBitmap += (uintptr_t)pvBitmap & 3; iBit += ((uintptr_t)pvBitmap & 3) * 8);
+    AssertStmt(!((uintptr_t)pvBitmap & 3), offBitmap += (int32_t)(uintptr_t)pvBitmap & 3; iBit += (int32_t)((uintptr_t)pvBitmap & 3) * 8);
     rc.u32 = RT_LE2H_U32(ASMAtomicUoOrExU32(&((uint32_t volatile *)pvBitmap)[offBitmap], RT_H2LE_U32(RT_BIT_32(iBit & 31))))
           >> (iBit & 31);
     rc.u32 &= 1;
@@ -7459,7 +7459,7 @@ DECLINLINE(bool) ASMBitTestAndClear(volatile void RT_FAR *pvBitmap, int32_t iBit
 
 # else
     int32_t offBitmap = iBit / 32;
-    AssertStmt(!((uintptr_t)pvBitmap & 3), offBitmap += (uintptr_t)pvBitmap & 3; iBit += ((uintptr_t)pvBitmap & 3) * 8);
+    AssertStmt(!((uintptr_t)pvBitmap & 3), offBitmap += (int32_t)(uintptr_t)pvBitmap & 3; iBit += (int32_t)((uintptr_t)pvBitmap & 3) * 8);
     rc.u32 = RT_LE2H_U32(ASMAtomicUoAndExU32(&((uint32_t volatile *)pvBitmap)[offBitmap], RT_H2LE_U32(~RT_BIT_32(iBit & 31))))
           >> (iBit & 31);
     rc.u32 &= 1;
@@ -7582,7 +7582,7 @@ DECLINLINE(bool) ASMBitTestAndToggle(volatile void RT_FAR *pvBitmap, int32_t iBi
 
 # else
     int32_t offBitmap = iBit / 32;
-    AssertStmt(!((uintptr_t)pvBitmap & 3), offBitmap += (uintptr_t)pvBitmap & 3; iBit += ((uintptr_t)pvBitmap & 3) * 8);
+    AssertStmt(!((uintptr_t)pvBitmap & 3), offBitmap += (int32_t)(uintptr_t)pvBitmap & 3; iBit += (int32_t)((uintptr_t)pvBitmap & 3) * 8);
     rc.u32 = RT_LE2H_U32(ASMAtomicUoXorExU32(&((uint32_t volatile *)pvBitmap)[offBitmap], RT_H2LE_U32(RT_BIT_32(iBit & 31))))
           >> (iBit & 31);
     rc.u32 &= 1;
@@ -8999,6 +8999,53 @@ DECLINLINE(uint64_t) ASMRotateRightU64(uint64_t u64, uint32_t cShift) RT_NOTHROW
     cShift &= 63;
     return (u64 >> cShift) | (u64 << (64 - cShift));
 #endif
+}
+
+
+/**
+ * Read the current stack pointer register value
+ *
+ * @returns The current stack pointer register value.
+ */
+DECLINLINE(void *) ASMReadStackPointer(void) RT_NOTHROW_DEF
+{
+    void *pv = NULL;
+
+#if RT_INLINE_ASM_USES_INTRIN
+    /** @todo */
+
+#elif RT_INLINE_ASM_GNU_STYLE && defined(RT_ARCH_AMD64)
+    __asm__ __volatile__("movq %%rsp, %0" : "=r" (pv));
+
+#elif RT_INLINE_ASM_GNU_STYLE && defined(RT_ARCH_X86)
+    __asm__ __volatile__("mov %%esp, %0": "=r" (pv));
+
+#elif defined(RT_ARCH_ARM64)
+    __asm__ __volatile__("Lstart_ASMReadStackPointer_%=:\n\t"
+                         "mov %0, sp\n\t"
+                         : "=r" (pv));
+
+#else
+# ifdef RT_ARCH_AMD64
+    __asm
+    {
+        mov [pv], rsp
+    }
+# elif defined(RT_ARCH_X86)
+#  if ARCH_BITS == 32
+    __asm
+    {
+        mov [pv], esp
+    }
+#  else
+    AssertFailed();  /** @todo 16-bit */
+#  endif
+# else
+#  error "port me"
+# endif
+#endif
+
+    return pv;
 }
 
 /** @} */

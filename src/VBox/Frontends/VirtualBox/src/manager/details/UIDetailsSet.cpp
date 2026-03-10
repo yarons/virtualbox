@@ -1,10 +1,10 @@
-/* $Id: UIDetailsSet.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIDetailsSet.cpp 112700 2026-01-26 15:25:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsSet class implementation.
  */
 
 /*
- * Copyright (C) 2012-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -404,11 +404,6 @@ void UIDetailsSet::paint(QPainter *pPainter, const QStyleOptionGraphicsItem *pOp
 {
     /* Paint background: */
     paintBackground(pPainter, pOptions);
-}
-
-QString UIDetailsSet::description() const
-{
-    return tr("Contains the details of virtual machine '%1'").arg(m_pMachineItem->name());
 }
 
 void UIDetailsSet::addItem(UIDetailsItem *pItem)

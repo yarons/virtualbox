@@ -1,10 +1,10 @@
-/* $Id: UnattendedInstaller.h 111444 2025-10-18 18:40:47Z knut.osmundsen@oracle.com $ */
+/* $Id: UnattendedInstaller.h 112634 2026-01-19 10:59:07Z serkan.bayraktar@oracle.com $ */
 /** @file
  * UnattendedInstaller class header
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -676,19 +676,6 @@ public:
         mStrDefaultExtraInstallKernelParameters.setNull();
         mStrDefaultExtraInstallKernelParameters += " autoinstall";
         mStrDefaultExtraInstallKernelParameters += " ds=nocloud\\;s=/cdrom/";
-        mStrDefaultExtraInstallKernelParameters += " ---";
-        mStrDefaultExtraInstallKernelParameters += " quiet";
-        mStrDefaultExtraInstallKernelParameters += " splash";
-        mStrDefaultExtraInstallKernelParameters += " noprompt";  /* no questions about things like CD/DVD ejections */
-        mStrDefaultExtraInstallKernelParameters += " noshell";   /* No shells on VT1-3 (debian, not ubuntu). */
-        mStrDefaultExtraInstallKernelParameters += " automatic-ubiquity";   // ubiquity
-        // the following can probably go into the preseed.cfg:
-        mStrDefaultExtraInstallKernelParameters.append(" debian-installer/locale=").append(pParent->i_getLocale());
-        mStrDefaultExtraInstallKernelParameters += " keyboard-configuration/layoutcode=us";
-        mStrDefaultExtraInstallKernelParameters += " languagechooser/language-name=English"; /** @todo fixme */
-        mStrDefaultExtraInstallKernelParameters.append(" localechooser/supported-locales=").append(pParent->i_getLocale()).append(".UTF-8");
-        mStrDefaultExtraInstallKernelParameters.append(" countrychooser/shortlist=").append(pParent->i_getCountry()); // ubiquity?
-        mStrDefaultExtraInstallKernelParameters += " --";
     }
     ~UnattendedUbuntuAutoInstallInstaller() {}
 

@@ -1,10 +1,10 @@
-/* $Id: UIDetailsView.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIDetailsView.cpp 112701 2026-01-26 15:33:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsView class implementation.
  */
 
 /*
- * Copyright (C) 2012-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -32,7 +32,6 @@
 
 /* GUI includes: */
 #include "UICommon.h"
-#include "UIDetails.h"
 #include "UIDetailsItem.h"
 #include "UIDetailsModel.h"
 #include "UIDetailsView.h"
@@ -43,7 +42,7 @@
 
 
 /** QAccessibleWidget extension used as an accessibility interface for Details-view. */
-class UIAccessibilityInterfaceForUIDetailsView : public QAccessibleWidget
+class UIAccessibilityInterfaceForUIDetailsView : public QAccessibleWidget, public QAccessibleSelectionInterface
 {
 public:
 
@@ -63,68 +62,161 @@ public:
         : QAccessibleWidget(pWidget, QAccessible::List)
     {}
 
+    /** Returns a specialized accessibility interface type. */
+    virtual void *interface_cast(QAccessible::InterfaceType enmType) RT_OVERRIDE
+    {
+        switch (enmType)
+        {
+#ifdef VBOX_WS_MAC
+            /// @todo Fix selection interface for macOS first of all!
+#else
+            case QAccessible::SelectionInterface:
+                return static_cast<QAccessibleSelectionInterface*>(this);
+#endif
+            default:
+                break;
+        }
+
+        return 0;
+    }
+
     /** Returns the number of children. */
     virtual int childCount() const RT_OVERRIDE
     {
-        /* Make sure view still alive: */
+        /* Sanity check: */
         AssertPtrReturn(view(), 0);
+        AssertPtrReturn(view()->model(), 0);
+        AssertPtrReturn(view()->model()->root(), 0);
 
-        /* What amount of children root has? */
-        const int cChildCount = view()->details()->model()->root()->items().size();
+        /* Calculate a number of all elements in all sets we have: */
+        int iCount = 0;
+        foreach (UIDetailsItem *pSet, view()->model()->root()->items())
+        {
+            /* Sanity check: */
+            AssertPtrReturn(pSet, iCount);
 
-        /* Return amount of children root has (if there are many of children): */
-        if (cChildCount > 1)
-            return cChildCount;
+            /* Append result with number of elements current set has: */
+            iCount += pSet->items().size();
+        }
 
-        /* Return the number of children lone root child has (otherwise): */
-        return view()->details()->model()->root()->items().first()->items().size();
+        /* Return result: */
+        return iCount;
     }
 
     /** Returns the child with the passed @a iIndex. */
     virtual QAccessibleInterface *child(int iIndex) const RT_OVERRIDE
     {
-        /* Make sure view still alive: */
-        AssertPtrReturn(view(), 0);
-        /* Make sure index is valid: */
+        /* Sanity check: */
         AssertReturn(iIndex >= 0 && iIndex < childCount(), 0);
+        AssertPtrReturn(view(), 0);
+        AssertPtrReturn(view()->model(), 0);
+        AssertPtrReturn(view()->model()->root(), 0);
 
-        /* What amount of children root has? */
-        const int cChildCount = view()->details()->model()->root()->items().size();
+        /* Compose a list of all elements in all sets we have: */
+        QList<UIDetailsItem*> children;
+        foreach (UIDetailsItem *pSet, view()->model()->root()->items())
+        {
+            /* Sanity check: */
+            AssertPtrReturn(pSet, 0);
 
-        /* Return the root child with the passed iIndex (if there are many of children): */
-        if (cChildCount > 1)
-            return QAccessible::queryAccessibleInterface(view()->details()->model()->root()->items().at(iIndex));
+            /* Append result with elements current set has: */
+            children += pSet->items();
+        }
 
-        /* Return the lone root child's child with the passed iIndex (otherwise): */
-        return QAccessible::queryAccessibleInterface(view()->details()->model()->root()->items().first()->items().at(iIndex));
+        /* Return result: */
+        return QAccessible::queryAccessibleInterface(children.value(iIndex));
     }
 
     /** Returns the index of passed @a pChild. */
     virtual int indexOfChild(const QAccessibleInterface *pChild) const RT_OVERRIDE
     {
-        /* Make sure view still alive: */
-        AssertPtrReturn(view(), -1);
-        /* Make sure child is valid: */
-        AssertReturn(pChild, -1);
+        /* Search for corresponding child: */
+        for (int i = 0; i < childCount(); ++i)
+            if (child(i) == pChild)
+                return i;
 
-        /* Acquire item itself: */
-        UIDetailsItem *pChildItem = qobject_cast<UIDetailsItem*>(pChild->object());
+        /* -1 by default: */
+        return -1;
+    }
 
-        /* Return the index of item in it's parent: */
-        return   pChildItem && pChildItem->parentItem()
-               ? pChildItem->parentItem()->items().indexOf(pChildItem)
-               : -1;
+    /** Returns the state. */
+    virtual QAccessible::State state() const RT_OVERRIDE
+    {
+        /* Sanity check: */
+        AssertPtrReturn(view(), QAccessible::State());
+
+        /* Compose the state: */
+        QAccessible::State myState;
+        myState.focusable = true;
+        if (view()->hasFocus())
+            myState.focused = true;
+
+        /* Return the state: */
+        return myState;
     }
 
     /** Returns a text for the passed @a enmTextRole. */
     virtual QString text(QAccessible::Text enmTextRole) const RT_OVERRIDE
     {
-        /* Make sure view still alive: */
+        /* Sanity check: */
         AssertPtrReturn(view(), QString());
 
-        /* Return view tool-tip: */
-        Q_UNUSED(enmTextRole);
-        return view()->whatsThis();
+        /* Text for known roles: */
+        switch (enmTextRole)
+        {
+            case QAccessible::Name: return view()->whatsThis();
+            default: break;
+        }
+
+        /* Null string by default: */
+        return QString();
+    }
+
+    /** Returns the total number of selected accessible items. */
+    virtual int selectedItemCount() const RT_OVERRIDE
+    {
+        /* For now we are interested in just first one selected item: */
+        return 1;
+    }
+
+    /** Returns the list of selected accessible items. */
+    virtual QList<QAccessibleInterface*> selectedItems() const RT_OVERRIDE
+    {
+        /* Sanity check: */
+        AssertPtrReturn(view(), QList<QAccessibleInterface*>());
+        AssertPtrReturn(view()->model(), QList<QAccessibleInterface*>());
+        AssertPtrReturn(view()->model()->currentItem(), QList<QAccessibleInterface*>());
+
+        /* For now we are interested in just first one selected item: */
+        return QList<QAccessibleInterface*>() << QAccessible::queryAccessibleInterface(view()->model()->currentItem());
+    }
+
+    /** Adds childItem to the selection. */
+    virtual bool select(QAccessibleInterface *) RT_OVERRIDE
+    {
+        /// @todo implement
+        return false;
+    }
+
+    /** Removes childItem from the selection. */
+    virtual bool unselect(QAccessibleInterface *) RT_OVERRIDE
+    {
+        /// @todo implement
+        return false;
+    }
+
+    /** Selects all accessible child items. */
+    virtual bool selectAll() RT_OVERRIDE
+    {
+        /// @todo implement
+        return false;
+    }
+
+    /** Unselects all accessible child items. */
+    virtual bool clear() RT_OVERRIDE
+    {
+        /// @todo implement
+        return false;
     }
 
 private:
@@ -134,12 +226,21 @@ private:
 };
 
 
-UIDetailsView::UIDetailsView(UIDetails *pParent)
+UIDetailsView::UIDetailsView(QWidget *pParent)
     : QIGraphicsView(pParent)
-    , m_pDetails(pParent)
     , m_iMinimumWidthHint(0)
 {
     prepare();
+}
+
+void UIDetailsView::setModel(UIDetailsModel *pDetailsModel)
+{
+    m_pDetailsModel = pDetailsModel;
+}
+
+UIDetailsModel *UIDetailsView::model() const
+{
+    return m_pDetailsModel;
 }
 
 void UIDetailsView::sltMinimumWidthHintChanged(int iHint)

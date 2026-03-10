@@ -1,10 +1,10 @@
-/* $Id: UIShortcutConfigurationEditor.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIShortcutConfigurationEditor.h 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIShortcutConfigurationEditor class declaration.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -36,8 +36,8 @@
 
 /* Forward declartions: */
 class QLineEdit;
-class QTabWidget;
 class QITableView;
+class QITabWidget;
 class UIShortcutConfigurationModel;
 class UIShortcutConfigurationProxyModel;
 
@@ -258,15 +258,15 @@ private:
     UIShortcutConfigurationProxyModel *m_pProxyModelRuntime;
 
     /** Holds the tab-widget instance. */
-    QTabWidget                   *m_pTabWidget;
+    QITabWidget *m_pTabWidget;
     /** Holds the Manager UI shortcuts filter instance. */
-    QLineEdit                    *m_pEditorFilterManager;
+    QLineEdit   *m_pEditorFilterManager;
     /** Holds the Manager UI shortcuts table instance. */
-    QITableView                  *m_pTableManager;
+    QITableView *m_pTableManager;
     /** Holds the Runtime UI shortcuts filter instance. */
-    QLineEdit                    *m_pEditorFilterRuntime;
+    QLineEdit   *m_pEditorFilterRuntime;
     /** Holds the Runtime UI shortcuts table instance. */
-    QITableView                  *m_pTableRuntime;
+    QITableView *m_pTableRuntime;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_settings_editors_UIShortcutConfigurationEditor_h */

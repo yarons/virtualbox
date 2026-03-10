@@ -1,10 +1,10 @@
-/* $Id: UIDetailsItem.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIDetailsItem.cpp 112701 2026-01-26 15:33:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsItem class definition.
  */
 
 /*
- * Copyright (C) 2012-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -63,55 +63,46 @@ public:
         : QAccessibleObject(pObject)
     {}
 
+    /** Returns the role. */
+    virtual QAccessible::Role role() const RT_OVERRIDE
+    {
+        return QAccessible::ListItem;
+    }
+
     /** Returns the parent. */
     virtual QAccessibleInterface *parent() const RT_OVERRIDE
     {
-        /* Make sure item still alive: */
+        /* Sanity check: */
         AssertPtrReturn(item(), 0);
+        AssertPtrReturn(item()->model(), 0);
+        AssertPtrReturn(item()->model()->view(), 0);
 
-        /* Return the parent: */
-        switch (item()->type())
-        {
-            /* For a set: */
-            case UIDetailsItemType_Set:
-            {
-                /* Always return parent view: */
-                return QAccessible::queryAccessibleInterface(item()->model()->details()->view());
-            }
-            /* For an element: */
-            case UIDetailsItemType_Element:
-            {
-                /* What amount of children root has? */
-                const int cChildCount = item()->model()->root()->items().size();
+        /* Always return parent view: */
+        return QAccessible::queryAccessibleInterface(item()->model()->view());
+    }
 
-                /* Return our parent (if root has many of children): */
-                if (cChildCount > 1)
-                    return QAccessible::queryAccessibleInterface(item()->parentItem());
+    /** Returns the rect. */
+    virtual QRect rect() const RT_OVERRIDE
+    {
+        /* Sanity check: */
+        AssertPtrReturn(item(), QRect());
+        AssertPtrReturn(item()->model(), QRect());
+        AssertPtrReturn(item()->model()->view(), QRect());
 
-                /* Return parent view (otherwise): */
-                return QAccessible::queryAccessibleInterface(item()->model()->details()->view());
-            }
-            default:
-                break;
-        }
-
-        /* Null by default: */
-        return 0;
+        /* Now goes the mapping: */
+        const QSize   itemSize         = item()->size().toSize();
+        const QPointF itemPosInScene   = item()->mapToScene(QPointF(0, 0));
+        const QPoint  itemPosInView    = item()->model()->view()->mapFromScene(itemPosInScene);
+        const QPoint  itemPosInScreen  = item()->model()->view()->mapToGlobal(itemPosInView);
+        const QRect   itemRectInScreen = QRect(itemPosInScreen, itemSize);
+        return itemRectInScreen;
     }
 
     /** Returns the number of children. */
     virtual int childCount() const RT_OVERRIDE
     {
-        /* Make sure item still alive: */
+        /* Sanity check: */
         AssertPtrReturn(item(), 0);
-
-        /* Return the number of children: */
-        switch (item()->type())
-        {
-            case UIDetailsItemType_Set:     return item()->items().size();
-            case UIDetailsItemType_Element: return item()->toElement()->text().size();
-            default: break;
-        }
 
         /* Zero by default: */
         return 0;
@@ -120,18 +111,9 @@ public:
     /** Returns the child with the passed @a iIndex. */
     virtual QAccessibleInterface *child(int iIndex) const RT_OVERRIDE
     {
-        /* Make sure item still alive: */
-        AssertPtrReturn(item(), 0);
-        /* Make sure index is valid: */
+        /* Sanity check: */
         AssertReturn(iIndex >= 0 && iIndex < childCount(), 0);
-
-        /* Return the child with the iIndex: */
-        switch (item()->type())
-        {
-            case UIDetailsItemType_Set:     return QAccessible::queryAccessibleInterface(item()->items().at(iIndex));
-            case UIDetailsItemType_Element: return QAccessible::queryAccessibleInterface(&item()->toElement()->text()[iIndex]);
-            default: break;
-        }
+        AssertPtrReturn(item(), 0);
 
         /* Null be default: */
         return 0;
@@ -140,53 +122,71 @@ public:
     /** Returns the index of the passed @a pChild. */
     virtual int indexOfChild(const QAccessibleInterface *pChild) const RT_OVERRIDE
     {
-        /* Search for corresponding child: */
-        for (int i = 0; i < childCount(); ++i)
-            if (child(i) == pChild)
-                return i;
+        /* Sanity check: */
+        AssertPtrReturn(pChild, -1);
 
         /* -1 by default: */
         return -1;
     }
 
-    /** Returns the rect. */
-    virtual QRect rect() const RT_OVERRIDE
+    /** Returns the state. */
+    virtual QAccessible::State state() const RT_OVERRIDE
     {
-        /* Now goes the mapping: */
-        const QSize   itemSize         = item()->size().toSize();
-        const QPointF itemPosInScene   = item()->mapToScene(QPointF(0, 0));
-        const QPoint  itemPosInView    = item()->model()->details()->view()->mapFromScene(itemPosInScene);
-        const QPoint  itemPosInScreen  = item()->model()->details()->view()->mapToGlobal(itemPosInView);
-        const QRect   itemRectInScreen = QRect(itemPosInScreen, itemSize);
-        return itemRectInScreen;
+        /* Sanity check: */
+        AssertPtrReturn(item(), QAccessible::State());
+        AssertPtrReturn(item()->model(), QAccessible::State());
+
+        /* Compose the state: */
+        QAccessible::State myState;
+        myState.focusable = true;
+        myState.selectable = true;
+        if (item()->model()->currentItem() == item())
+        {
+            myState.focused = true;
+            myState.selected = true;
+        }
+
+        /* Return the state: */
+        return myState;
     }
 
     /** Returns a text for the passed @a enmTextRole. */
     virtual QString text(QAccessible::Text enmTextRole) const RT_OVERRIDE
     {
-        /* Make sure item still alive: */
+        /* Sanity check: */
         AssertPtrReturn(item(), QString());
+        UIDetailsElement *pElement = item()->toElement();
+        AssertPtrReturn(pElement, QString());
 
-        /* Return the description: */
-        if (enmTextRole == QAccessible::Description)
-            return item()->description();
+        /* Text for known roles: */
+        switch (enmTextRole)
+        {
+            case QAccessible::Name:
+            {
+                const QString strName = UIDetailsItem::tr("%1 details", "like 'General details' or 'Storage details'")
+                                                          .arg(pElement->name());
+                return QString("%1, ").arg(strName);
+            }
+            case QAccessible::Description:
+            {
+                QStringList result;
+                foreach (const UITextTableLine &guiTextLine, pElement->text())
+                {
+                    const QString str1 = guiTextLine.string1();
+                    QString str2 = guiTextLine.string2();
+                    if (!str2.isEmpty())
+                        str2.remove(QRegularExpression("<a[^>]*>|</a>"));
+                    const QString strLine = str2.isEmpty() ? str1 : QString("%1: %2").arg(str1, str2);
+                    result << strLine;
+                }
+                return result.join(", ");
+            }
+            default:
+                break;
+        }
 
         /* Null-string by default: */
         return QString();
-    }
-
-    /** Returns the role. */
-    virtual QAccessible::Role role() const RT_OVERRIDE
-    {
-        /* Return the role: */
-        return QAccessible::List;
-    }
-
-    /** Returns the state. */
-    virtual QAccessible::State state() const RT_OVERRIDE
-    {
-        /* Return the state: */
-        return QAccessible::State();
     }
 
 private:

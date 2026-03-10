@@ -1,10 +1,10 @@
-/* $Id: DevVGA-SVGA3d.cpp 110780 2025-08-21 13:49:48Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d.cpp 113247 2026-03-04 12:12:24Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common core code.
  */
 
 /*
- * Copyright (C) 2013-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -108,6 +108,9 @@ int vmsvga3dSurfaceDefine(PVGASTATECC pThisCC, uint32_t sid, SVGA3dSurfaceAllFla
 
     ASSERT_GUEST_RETURN(sid < SVGA3D_MAX_SURFACE_IDS, VERR_INVALID_PARAMETER);
     ASSERT_GUEST_RETURN(numMipLevels >= 1 && numMipLevels <= SVGA3D_MAX_MIP_LEVELS, VERR_INVALID_PARAMETER);
+    ASSERT_GUEST_RETURN(pMipLevel0Size->width > 0, VERR_INVALID_PARAMETER);
+    ASSERT_GUEST_RETURN(pMipLevel0Size->height > 0, VERR_INVALID_PARAMETER);
+    ASSERT_GUEST_RETURN(pMipLevel0Size->depth > 0, VERR_INVALID_PARAMETER);
     ASSERT_GUEST_RETURN(arraySize <= SVGA3D_MAX_SURFACE_ARRAYSIZE, VERR_INVALID_PARAMETER);
 
     if (sid >= pState->cSurfaces)
@@ -956,23 +959,7 @@ int vmsvga3dSurfaceBlitToScreen(PVGASTATE pThis, PVGASTATECC pThisCC, uint32_t i
     src.face = 0;
 
     PVMSVGAR3STATE const pSvgaR3State = pThisCC->svga.pSvgaR3State;
-#ifndef DX_NEW_HWSCREEN
-    if (pScreen->pHwScreen)
-    {
-        /* Use the backend accelerated method, if available. */
-        if (pSvgaR3State->pFuncs3D)
-        {
-            int rc = pSvgaR3State->pFuncs3D->pfnSurfaceBlitToScreen(pThisCC, pScreen, destRect, src, srcRect, cRects, pRect);
-            if (rc == VINF_SUCCESS)
-            {
-                return VINF_SUCCESS;
-            }
-        }
-    }
 
-    if (pSvgaR3State->pFuncsMap)
-        return vmsvga3dScreenUpdate(pThisCC, idDstScreen, destRect, src, srcRect, cRects, pRect);
-#else
     if (pSvgaR3State->pFuncsMap)
         return vmsvga3dScreenUpdateFromSurface(pThisCC, pScreen, destRect, src, srcRect, cRects, pRect);
 
@@ -980,7 +967,6 @@ int vmsvga3dSurfaceBlitToScreen(PVGASTATE pThis, PVGASTATECC pThisCC, uint32_t i
      * because the code below updates the guest VRAM and screen targets have a separate memory buffer for the
      * screen content. */
     AssertReturn(pScreen->offVRAM != VMSVGA_VRAM_OFFSET_SCREEN_TARGET, VERR_NOT_IMPLEMENTED);
-#endif
 
     /** @todo scaling */
     AssertReturn(destRect.right - destRect.left == srcRect.right - srcRect.left && destRect.bottom - destRect.top == srcRect.bottom - srcRect.top, VERR_INVALID_PARAMETER);
@@ -1054,23 +1040,16 @@ int vmsvga3dSurfaceBlitToScreen(PVGASTATE pThis, PVGASTATECC pThisCC, uint32_t i
 }
 
 
-#ifndef DX_NEW_HWSCREEN
-int vmsvga3dScreenUpdate(PVGASTATECC pThisCC, uint32_t idDstScreen, SVGASignedRect const &dstRect,
-                         SVGA3dSurfaceImageId const &srcImage, SVGASignedRect const &srcRect,
-                         uint32_t cDstClipRects, SVGASignedRect *paDstClipRect)
-#else
 static int vmsvga3dScreenUpdate(PVGASTATECC pThisCC, VMSVGASCREENOBJECT *pScreen, SVGASignedRect const &dstRect,
                                 SVGA3dSurfaceImageId const &srcImage, SVGASignedRect const &srcRect,
                                 uint32_t cDstClipRects, SVGASignedRect *paDstClipRect)
-#endif
 {
     //DEBUG_BREAKPOINT_TEST();
     PVMSVGAR3STATE const pSvgaR3State = pThisCC->svga.pSvgaR3State;
 
 #ifdef LOG_ENABLED
-# ifdef DX_NEW_HWSCREEN
     uint32_t const idDstScreen = pScreen->idScreen;
-# endif
+
     LogFunc(("[%u] %d,%d %d,%d (%dx%d) -> %d,%d %d,%d (%dx%d), %u clip rects\n",
              idDstScreen, srcRect.left, srcRect.top, srcRect.right, srcRect.bottom,
              srcRect.right - srcRect.left, srcRect.bottom - srcRect.top,
@@ -1089,16 +1068,9 @@ static int vmsvga3dScreenUpdate(PVGASTATECC pThisCC, VMSVGASCREENOBJECT *pScreen
     AssertRCReturn(rc, rc);
 
     /* Update the screen from a surface. */
-#ifndef DX_NEW_HWSCREEN
-    ASSERT_GUEST_RETURN(idDstScreen < RT_ELEMENTS(pSvgaR3State->aScreens), VERR_INVALID_PARAMETER);
-    RT_UNTRUSTED_VALIDATED_FENCE();
-
-    VMSVGASCREENOBJECT *pScreen = &pSvgaR3State->aScreens[idDstScreen];
-#else
     /* Screen which is associated with a screen target must have a system buffer, because this function
      * writes to system memory. */
     AssertReturn(pScreen->pvScreenBitmap || pScreen->offVRAM != VMSVGA_VRAM_OFFSET_SCREEN_TARGET, VERR_INVALID_PARAMETER);
-#endif
 
     uint32_t const cbScreenPixel = (pScreen->cBpp + 7) / 8;
     ASSERT_GUEST_RETURN(cbScreenPixel == pSurface->cbBlock,
@@ -1174,7 +1146,11 @@ static int vmsvga3dScreenUpdate(PVGASTATECC pThisCC, VMSVGASCREENOBJECT *pScreen
 
         uint32_t const cbDst = pScreen->cHeight * pScreen->cbPitch;
         uint8_t *pu8Dst;
+#ifndef PERMANENT_SCREEN_BITMAP
         if (pScreen->pvScreenBitmap)
+#else
+        if (pScreen->offVRAM == VMSVGA_VRAM_OFFSET_SCREEN_TARGET)
+#endif
             pu8Dst = (uint8_t *)pScreen->pvScreenBitmap;
         else
             pu8Dst = (uint8_t *)pThisCC->pbVRam + pScreen->offVRAM;
@@ -1263,7 +1239,6 @@ static int vmsvga3dScreenUpdate(PVGASTATECC pThisCC, VMSVGASCREENOBJECT *pScreen
 }
 
 
-#ifdef DX_NEW_HWSCREEN
 int vmsvga3dScreenUpdateFromScreenTarget(PVGASTATECC pThisCC, VMSVGASCREENOBJECT *pScreen, SVGA3dRect const &rect,
                                          SVGA3dSurfaceImageId const &srcImage)
 {
@@ -1327,7 +1302,7 @@ void vmsvga3dProcessPendingTasks(PVGASTATE pThis, PVGASTATECC pThisCC)
     if (pSvgaR3State->pFuncs3D && pSvgaR3State->pFuncs3D->pfnProcessPendingTasks)
         pSvgaR3State->pFuncs3D->pfnProcessPendingTasks(pThis, pThisCC);
 }
-#endif /* DX_NEW_HWSCREEN */
+
 
 int vmsvga3dCommandPresent(PVGASTATE pThis, PVGASTATECC pThisCC, uint32_t sid, uint32_t cRects, SVGA3dCopyRect *pRect)
 {
@@ -1808,7 +1783,6 @@ int vmsvga3dSurfaceMap(PVGASTATECC pThisCC, SVGA3dSurfaceImageId const *pImage, 
     {
         clipBox = *pBox;
         vmsvgaR3ClipBox(&pMipLevel->mipmapSize, &clipBox);
-        ASSERT_GUEST_RETURN(clipBox.w && clipBox.h && clipBox.d, VERR_INVALID_PARAMETER);
     }
     else
     {
@@ -1819,6 +1793,7 @@ int vmsvga3dSurfaceMap(PVGASTATECC pThisCC, SVGA3dSurfaceImageId const *pImage, 
         clipBox.h = pMipLevel->mipmapSize.height;
         clipBox.d = pMipLevel->mipmapSize.depth;
     }
+    ASSERT_GUEST_RETURN(clipBox.w && clipBox.h && clipBox.d, VERR_INVALID_PARAMETER);
 
     /// @todo Zero the box?
     //if (enmMapType == VMSVGA3D_SURFACE_MAP_WRITE_DISCARD)
@@ -1966,7 +1941,6 @@ int vmsvga3dGetBoxDimensions(PVGASTATECC pThisCC, SVGA3dSurfaceImageId const *pI
     {
         clipBox = *pBox;
         vmsvgaR3ClipBox(&pMipLevel->mipmapSize, &clipBox);
-        ASSERT_GUEST_RETURN(clipBox.w && clipBox.h && clipBox.d, VERR_INVALID_PARAMETER);
     }
     else
     {
@@ -1977,6 +1951,7 @@ int vmsvga3dGetBoxDimensions(PVGASTATECC pThisCC, SVGA3dSurfaceImageId const *pI
         clipBox.h = pMipLevel->mipmapSize.height;
         clipBox.d = pMipLevel->mipmapSize.depth;
     }
+    ASSERT_GUEST_RETURN(clipBox.w && clipBox.h && clipBox.d, VERR_INVALID_PARAMETER);
 
     uint32_t const cBlocksX = (clipBox.w + pSurface->cxBlock - 1) / pSurface->cxBlock;
     uint32_t const cBlocksY = (clipBox.h + pSurface->cyBlock - 1) / pSurface->cyBlock;

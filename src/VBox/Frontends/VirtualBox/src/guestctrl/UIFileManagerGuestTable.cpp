@@ -1,10 +1,10 @@
-/* $Id: UIFileManagerGuestTable.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIFileManagerGuestTable.cpp 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
 
 /*
- * Copyright (C) 2016-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2016-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -30,6 +30,7 @@
 #include <QDateTime>
 #include <QFileInfo>
 #include <QHBoxLayout>
+#include <QKeyEvent>
 #include <QPushButton>
 #include <QUuid>
 
@@ -47,7 +48,6 @@
 #include "UIGlobalSession.h"
 #include "UIIconPool.h"
 #include "UILocalMachineStuff.h"
-#include "UIMessageCenter.h"
 #include "UIPathOperations.h"
 #include "UIUserNamePasswordEditor.h"
 #include "UIVirtualBoxEventHandler.h"
@@ -65,6 +65,7 @@
 
 /* Other VBox includes: */
 #include <iprt/err.h>
+
 
 /*********************************************************************************************************************************
 *   UIGuestSessionWidget definition.                                                                                   *
@@ -324,6 +325,7 @@ void UIGuestSessionWidget::setLoginWidgetsEnabled(bool fEnabled)
 /*********************************************************************************************************************************
 *   UIGuestDirectoryDiskUsageComputer definition.                                                                                *
 *********************************************************************************************************************************/
+
 
 /** Open directories recursively and sum the disk usage. Don't block the GUI thread while doing this */
 class UIGuestDirectoryDiskUsageComputer : public UIDirectoryDiskUsageComputer

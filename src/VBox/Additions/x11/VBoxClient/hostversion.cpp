@@ -1,10 +1,10 @@
-/* $Id: hostversion.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: hostversion.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * X11 guest client - Host version check.
  */
 
 /*
- * Copyright (C) 2011-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -34,6 +34,9 @@
 
 #include <VBox/log.h>
 #include <VBox/VBoxGuestLib.h>
+#ifdef VBOX_WITH_GUEST_PROPS
+# include <VBox/VBoxGuestLibGuestProp.h>
+#endif
 #ifdef VBOX_OSE
 # include <VBox/version.h>
 #endif
@@ -55,8 +58,8 @@ static DECLCALLBACK(int) vbclHostVerWorker(bool volatile *pfShutdown)
 
     int rc;
 #ifdef VBOX_WITH_GUEST_PROPS
-    uint32_t uGuestPropSvcClientID;
-    rc = VbglR3GuestPropConnect(&uGuestPropSvcClientID);
+    VBGLGSTPROPCLIENT GuestPropClient;
+    rc = VbglGuestPropConnect(&GuestPropClient);
     if (RT_FAILURE(rc))
     {
         VBClLogError("Cannot connect to guest property service while chcking for host version, rc = %Rrc\n", rc);
@@ -71,11 +74,10 @@ static DECLCALLBACK(int) vbclHostVerWorker(bool volatile *pfShutdown)
     if (g_fDaemonized)
         RTThreadSleep(RT_MS_30SEC);
 
-    char *pszHostVersion;
-    char *pszGuestVersion;
-    bool  fUpdate;
-
-    rc = VbglR3HostVersionCheckForUpdate(uGuestPropSvcClientID, &fUpdate, &pszHostVersion, &pszGuestVersion);
+    char *pszHostVersion  = NULL;
+    char *pszGuestVersion = NULL;
+    bool  fUpdate         = false;
+    rc = VbglR3HostVersionCheckForUpdate(&GuestPropClient, &fUpdate, &pszHostVersion, &pszGuestVersion);
     if (RT_SUCCESS(rc))
     {
         if (fUpdate)
@@ -98,15 +100,15 @@ static DECLCALLBACK(int) vbclHostVerWorker(bool volatile *pfShutdown)
         }
 
         /* Store host version to not notify again */
-        int rc2 = VbglR3HostVersionLastCheckedStore(uGuestPropSvcClientID, pszHostVersion);
+        int rc2 = VbglR3HostVersionLastCheckedStore(&GuestPropClient, pszHostVersion);
         if (RT_SUCCESS(rc))
             rc = rc2;
 
-        VbglR3GuestPropReadValueFree(pszHostVersion);
-        VbglR3GuestPropReadValueFree(pszGuestVersion);
+        VbglGuestPropReadValueFree(pszHostVersion);
+        VbglGuestPropReadValueFree(pszGuestVersion);
     }
 
-    VbglR3GuestPropDisconnect(uGuestPropSvcClientID);
+    VbglGuestPropDisconnect(&GuestPropClient);
 #else  /* !VBOX_WITH_GUEST_PROPS */
     rc = VERR_NOT_SUPPORTED;
 #endif /* VBOX_WITH_GUEST_PROPS */

@@ -1,10 +1,10 @@
-/* $Id: UIWizardExportAppPageFormat.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIWizardExportAppPageFormat.cpp 112853 2026-02-06 13:04:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageFormat class implementation.
  */
 
 /*
- * Copyright (C) 2009-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -346,7 +346,7 @@ void UIWizardExportAppFormat::refreshLocalStuff(CAppliance &comLocalAppliance,
     CVirtualBox comVBox = gpGlobalSession->virtualBox();
     CAppliance comAppliance = comVBox.CreateAppliance();
     if (!comVBox.isOk())
-        return UINotificationMessage::cannotCreateAppliance(comVBox, pWizard->notificationCenter());
+        return UINotificationMessage::cannotCreateAppliance(comVBox, pWizard);
 
     /* Remember appliance: */
     comLocalAppliance = comAppliance;
@@ -358,11 +358,11 @@ void UIWizardExportAppFormat::refreshLocalStuff(CAppliance &comLocalAppliance,
         CVirtualBox comVBox = gpGlobalSession->virtualBox();
         CMachine comMachine = comVBox.FindMachine(uMachineId.toString());
         if (!comVBox.isOk())
-            return UINotificationMessage::cannotFindMachineById(comVBox, uMachineId, pWizard->notificationCenter());
+            return UINotificationMessage::cannotFindMachineById(comVBox, uMachineId, pWizard);
         /* Add the export description to our appliance object: */
         CVirtualSystemDescription comVsd = comMachine.ExportTo(comLocalAppliance, strUri);
         if (!comMachine.isOk())
-            return UINotificationMessage::cannotExportMachine(comMachine, pWizard->notificationCenter());
+            return UINotificationMessage::cannotExportMachine(comMachine, pWizard);
         /* Add some additional fields the user may change: */
         comVsd.AddDescription(KVirtualSystemDescriptionType_Product, "", "");
         comVsd.AddDescription(KVirtualSystemDescriptionType_ProductUrl, "", "");
@@ -540,12 +540,12 @@ void UIWizardExportAppFormat::refreshCloudStuff(CAppliance &comCloudAppliance,
     CVirtualBox comVBox = gpGlobalSession->virtualBox();
     CMachine comMachine = comVBox.FindMachine(uMachineId.toString());
     if (!comVBox.isOk())
-        return UINotificationMessage::cannotFindMachineById(comVBox, uMachineId, pWizard->notificationCenter());
+        return UINotificationMessage::cannotFindMachineById(comVBox, uMachineId, pWizard);
 
     /* Create appliance: */
     CAppliance comAppliance = comVBox.CreateAppliance();
     if (!comVBox.isOk())
-        return UINotificationMessage::cannotCreateAppliance(comVBox, pWizard->notificationCenter());
+        return UINotificationMessage::cannotCreateAppliance(comVBox, pWizard);
 
     /* Remember appliance: */
     comCloudAppliance = comAppliance;
@@ -553,7 +553,7 @@ void UIWizardExportAppFormat::refreshCloudStuff(CAppliance &comCloudAppliance,
     /* Add the export virtual system description to our appliance object: */
     CVirtualSystemDescription comVsd = comMachine.ExportTo(comCloudAppliance, strUri);
     if (!comMachine.isOk())
-        return UINotificationMessage::cannotExportMachine(comMachine, pWizard->notificationCenter());
+        return UINotificationMessage::cannotExportMachine(comMachine, pWizard);
 
     /* Remember description: */
     comCloudVsd = comVsd;
@@ -570,7 +570,7 @@ void UIWizardExportAppFormat::refreshCloudStuff(CAppliance &comCloudAppliance,
             break;
     }
     if (!comCloudVsd.isOk())
-        return UINotificationMessage::cannotChangeVirtualSystemDescriptionParameter(comCloudVsd, pWizard->notificationCenter());
+        return UINotificationMessage::cannotChangeVirtualSystemDescriptionParameter(comCloudVsd, pWizard);
 
     /* Create Cloud Client: */
     CCloudClient comClient = cloudClient(comCloudProfile);

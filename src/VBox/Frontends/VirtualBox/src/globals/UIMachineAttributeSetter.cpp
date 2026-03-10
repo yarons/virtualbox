@@ -1,10 +1,10 @@
-/* $Id: UIMachineAttributeSetter.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineAttributeSetter.cpp 113139 2026-02-24 11:03:16Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineAttributeSetter namespace implementation.
  */
 
 /*
- * Copyright (C) 2019-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2019-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -26,13 +26,14 @@
  */
 
 /* Qt includes: */
+#include <QDir>
+#include <QFileInfo>
 #include <QVariant>
 
 /* GUI includes: */
 #include "UIBootOrderEditor.h"
 #include "UILocalMachineStuff.h"
 #include "UIMachineAttributeSetter.h"
-#include "UIMessageCenter.h"
 #include "UINotificationCenter.h"
 
 /* COM includes: */
@@ -305,7 +306,7 @@ void UIMachineAttributeSetter::setMachineAttribute(const CMachine &comConstMachi
         comMachine.SaveSettings();
         if (!comMachine.isOk())
         {
-            msgCenter().cannotSaveMachineSettings(comMachine);
+            UINotificationMessage::cannotSaveMachineSettings(comMachine);
             break;
         }
     }
@@ -319,6 +320,20 @@ void UIMachineAttributeSetter::setMachineAttribute(const CMachine &comConstMachi
 void UIMachineAttributeSetter::setMachineLocation(const QUuid &uMachineId,
                                                   const QString &strLocation)
 {
+    /* Sanity check for the passed location: */
+    QFileInfo fi(strLocation);
+
+    /* Do nothing if there is a file named same way as passed folder: */
+    if (fi.exists() && fi.isFile())
+        return UINotificationMessage::cannotMoveMachineFolder(strLocation);
+    /* Make sure location exists, propose to create one, exit otherwise: */
+    else if (!fi.exists())
+    {
+        if (!UINotificationQuestion::confirmCreatingPath(strLocation))
+            return;
+        QDir().mkpath(strLocation);
+    }
+
     /* Move machine: */
     UINotificationProgressMachineMove *pNotification = new UINotificationProgressMachineMove(uMachineId,
                                                                                              strLocation,

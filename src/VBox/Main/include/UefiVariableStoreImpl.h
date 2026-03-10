@@ -1,10 +1,10 @@
-/* $Id: UefiVariableStoreImpl.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UefiVariableStoreImpl.h 113239 2026-03-04 08:25:00Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM UEFI variable store class implementation
  */
 
 /*
- * Copyright (C) 2021-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2021-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -95,7 +95,7 @@ private:
     HRESULT i_uefiVarStoreAddSignatureToDbVec(PCEFI_GUID pGuid, const char *pszDb, const std::vector<BYTE> &aData,
                                               const com::Guid &aOwnerUuid, SignatureType_T enmSignatureType, bool fRuntime = true);
     HRESULT i_uefiVarStoreAddSignatureToDb(PCEFI_GUID pGuid, const char *pszDb, const void *pvData, size_t cbData,
-                                           const com::Guid &aOwnerUuid, SignatureType_T enmSignatureType, bool fRuntime = true);
+                                           const com::Guid &aOwnerUuid, SignatureType_T enmSignatureType, bool fRuntime = true, bool fAuthenticated = true);
 
     struct Data;            // opaque data struct, defined in UefiVariableStoreImpl.cpp
     Data *m;

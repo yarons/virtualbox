@@ -1,10 +1,10 @@
-/* $Id: GVMMR0Internal.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: GVMMR0Internal.h 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * GVMM - The Global VM Manager, Internal header.
  */
 
 /*
- * Copyright (C) 2007-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2007-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -72,9 +72,7 @@ typedef struct GVMMEMTHASHENTRY
     RTNATIVETHREAD      hNativeEmt;
     /** The VCpu index. */
     VMCPUID             idVCpu;
-#if HC_ARCH_BITS == 64
     uint32_t            u32Padding;
-#endif
 } GVMMEMTHASHENTRY;
 AssertCompileSize(GVMMEMTHASHENTRY, sizeof(void *) * 2);
 

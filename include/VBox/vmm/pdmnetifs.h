@@ -3,7 +3,7 @@
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -441,14 +441,19 @@ typedef struct PDMINETWORKNATDNSCONFIG
     /** Domain name.
      * (The length is per RFC2821 plus null char.) */
     char                szDomainName[256];
-    /** Number of entries in the ppszNameServers array.   */
+    /** Number of entries in the (IPv4) ppszNameServers array.   */
     size_t              cNameServers;
-    /** Name servers (NULL terminated array). */
+    /** IPv4 Name servers (NULL terminated array). */
     const char * const *papszNameServers;
     /** Number of entries in the ppszSearchDomains array. */
     size_t              cSearchDomains;
     /** Search domains (NULL terminated array). */
     const char * const *papszSearchDomains;
+
+    /** Number of entries in the (IPv6) ppszIP6NameServers6 array. */
+    size_t              cIPv6NameServers;
+    /** IPv6 Name servers (NULL terminated array) */
+    const char * const *papszIPv6NameServers;
 } PDMINETWORKNATDNSCONFIG;
 /** Pointer to a const DNS settings update payload.
  * @sa PGMINETWORKNATCONFIG::pfnNotifyDnsChanged */
@@ -487,4 +492,3 @@ typedef struct PDMINETWORKNATCONFIG
 RT_C_DECLS_END
 
 #endif /* !VBOX_INCLUDED_vmm_pdmnetifs_h */
-

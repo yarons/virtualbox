@@ -1,10 +1,10 @@
-/* $Id: UISoftKeyboard.cpp 111064 2025-09-19 15:25:32Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISoftKeyboard.cpp 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
 
 /*
- * Copyright (C) 2016-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2016-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -38,6 +38,7 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QListWidget>
+#include <QKeyEvent>
 #include <QPainter>
 #include <QPainterPath>
 #include <QPicture>
@@ -64,12 +65,9 @@
 #include "UISoftKeyboard.h"
 #include "UITranslationEventListener.h"
 #include "UISession.h"
-#ifdef VBOX_WS_MAC
-# include "VBoxUtils-darwin.h"
-#endif
 
 /* External includes: */
-# include <math.h>
+#include <math.h>
 
 /* Forward declarations: */
 class UISoftKeyboardColorButton;
@@ -95,6 +93,7 @@ const char* predefinedColorThemes[][6] = {{"Clear Night","#000000", "#ffffff", "
 
 typedef QPair<QLabel*, UISoftKeyboardColorButton*> ColorSelectLabelButton;
 
+
 enum KeyState
 {
     KeyState_NotPressed,
@@ -102,6 +101,7 @@ enum KeyState
     KeyState_Locked,
     KeyState_Max
 };
+
 
 enum KeyType
 {
@@ -114,6 +114,7 @@ enum KeyType
     KeyType_Max
 };
 
+
 enum KeyboardColorType
 {
     KeyboardColorType_Background = 0,
@@ -123,6 +124,7 @@ enum KeyboardColorType
     KeyboardColorType_Pressed,
     KeyboardColorType_Max
 };
+
 
 enum KeyboardRegion
 {
@@ -177,6 +179,7 @@ static QPointF pointInBetween(qreal fDistance, const QPointF &p0, const QPointF 
 *   UISoftKeyboardColorButton definition.                                                                                        *
 *********************************************************************************************************************************/
 
+
 class UISoftKeyboardColorButton : public QPushButton
 {
     Q_OBJECT;
@@ -196,13 +199,14 @@ public:
 *   UISoftKeyboardPhysicalLayout definition.                                                                                     *
 *********************************************************************************************************************************/
 
+
 /** This class is used to represent the physical layout of a keyboard (in contrast to UISoftKeyboardLayout).
   * Physical layouts are read from an xml file where keys are placed in rows. Each UISoftKeyboardLayout must refer to a
   * refer to a UISoftKeyboardPhysicalLayout instance. An example of an UISoftKeyboardPhysicalLayout instance is 103 key ISO layout.*/
 class UISoftKeyboardPhysicalLayout
 {
-
 public:
+
     UISoftKeyboardPhysicalLayout();
 
     void setName(const QString &strName);
@@ -242,6 +246,7 @@ private:
 /*********************************************************************************************************************************
 *   UIKeyboardLayoutEditor definition.                                                                                  *
 *********************************************************************************************************************************/
+
 
 /** A QWidget extension thru which we can edit key captions, the physical layout of the keyboard, name of the layout etc. */
 class UIKeyboardLayoutEditor : public QWidget
@@ -310,9 +315,9 @@ private:
 *   UILayoutSelector definition.                                                                                  *
 *********************************************************************************************************************************/
 
+
 class UILayoutSelector : public QWidget
 {
-
     Q_OBJECT;
 
 signals:
@@ -354,11 +359,11 @@ private:
 *   UISoftKeyboardRow definition.                                                                                  *
 *********************************************************************************************************************************/
 
+
 /** UISoftKeyboardRow represents a row in the physical keyboard. The rows are read from a physical layout file and contained
   * keys are added to rows in the order they appear in that file.*/
 class UISoftKeyboardRow
 {
-
 public:
 
     UISoftKeyboardRow();
@@ -396,6 +401,7 @@ private:
 /*********************************************************************************************************************************
 *   UISoftKeyboardKey definition.                                                                                  *
 *********************************************************************************************************************************/
+
 
 /** UISoftKeyboardKey is a place holder for a keyboard key. Graphical key represantations are drawn according to this class.
   * The position of a key within the physical layout is read from the layout file. Note that UISoftKeyboardKey usually does not have
@@ -527,7 +533,6 @@ private:
   * example for UISoftKeyboardLayout instance is 'US International' keyboard layout. */
 class UISoftKeyboardLayout
 {
-
 public:
 
     UISoftKeyboardLayout();
@@ -594,9 +599,9 @@ private:
 *   UISoftKeyboardColorTheme definition.                                                                                  *
 *********************************************************************************************************************************/
 
+
 class UISoftKeyboardColorTheme
 {
-
 public:
 
     UISoftKeyboardColorTheme();
@@ -628,6 +633,7 @@ private:
 /*********************************************************************************************************************************
 *   UISoftKeyboardWidget definition.                                                                                  *
 *********************************************************************************************************************************/
+
 
 /** The container widget for keyboard keys. It also handles all the keyboard related events. paintEvent of this class
   * handles drawing of the soft keyboard. */
@@ -783,9 +789,9 @@ private:
 *   UIPhysicalLayoutReader definition.                                                                                  *
 *********************************************************************************************************************************/
 
+
 class UIPhysicalLayoutReader
 {
-
 public:
 
     bool parseXMLFile(const QString &strFileName, UISoftKeyboardPhysicalLayout &physicalLayout);
@@ -806,9 +812,9 @@ private:
 *   UIKeyboardLayoutReader definition.                                                                                  *
 *********************************************************************************************************************************/
 
+
 class UIKeyboardLayoutReader
 {
-
 public:
 
     bool  parseFile(const QString &strFileName, UISoftKeyboardLayout &layout);
@@ -824,6 +830,7 @@ private:
 /*********************************************************************************************************************************
 *   UISoftKeyboardStatusBarWidget  definition.                                                                                   *
 *********************************************************************************************************************************/
+
 
 class UISoftKeyboardStatusBarWidget : public QWidget
 {
@@ -859,6 +866,7 @@ private:
 /*********************************************************************************************************************************
 *   UISoftKeyboardSettingsWidget  definition.                                                                                    *
 *********************************************************************************************************************************/
+
 
 class UISoftKeyboardSettingsWidget : public QWidget
 {
@@ -3979,7 +3987,7 @@ void UISoftKeyboardSettingsWidget::sltColorSelectionButtonClicked()
 
 UISoftKeyboard::UISoftKeyboard(QWidget *pParent, UIMachine *pMachine,
                                QWidget *pCenterWidget, QString strMachineName /* = QString() */)
-    : QMainWindowWithRestorableGeometry(pParent)
+    : QIMainWindow(pParent)
     , m_pMachine(pMachine)
     , m_pCenterWidget(pCenterWidget)
     , m_pMainLayout(0)
@@ -4070,7 +4078,7 @@ bool UISoftKeyboard::event(QEvent *pEvent)
         }
     }
 
-    return QMainWindowWithRestorableGeometry::event(pEvent);
+    return QIMainWindow::event(pEvent);
 }
 
 void UISoftKeyboard::sltLayoutSelectionChanged(const QUuid &layoutUid)

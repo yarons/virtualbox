@@ -1,10 +1,10 @@
-/* $Id: UISettingsPage.cpp 110990 2025-09-15 14:47:46Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsPage.cpp 112838 2026-02-05 13:05:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsPage class implementation.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -47,7 +47,8 @@
 *********************************************************************************************************************************/
 
 UISettingsPage::UISettingsPage()
-    : m_enmConfigurationAccessLevel(ConfigurationAccessLevel_Null)
+    : m_pParentDialog(0)
+    , m_enmConfigurationAccessLevel(ConfigurationAccessLevel_Null)
     , m_cId(-1)
     , m_pValidator(0)
     , m_fIsValidatorBlocked(true)

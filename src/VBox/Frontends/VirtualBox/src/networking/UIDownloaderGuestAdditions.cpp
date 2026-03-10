@@ -1,10 +1,10 @@
-/* $Id: UIDownloaderGuestAdditions.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIDownloaderGuestAdditions.cpp 113269 2026-03-05 13:44:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDownloaderGuestAdditions class implementation.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -33,12 +33,13 @@
 
 /* GUI includes: */
 #include "QIFileDialog.h"
+#include "UIDefs.h"
 #include "UIDownloaderGuestAdditions.h"
 #include "UIGlobalSession.h"
-#include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
 #include "UINetworkReply.h"
-#include "UINotificationCenter.h"
+#include "UINotificationMessage.h"
+#include "UINotificationQuestion.h"
 #include "UIVersion.h"
 
 /* Other VBox includes: */
@@ -54,7 +55,7 @@ UIDownloaderGuestAdditions::UIDownloaderGuestAdditions()
     const QString strSourceName = QString("%1_%2.iso").arg(GUI_GuestAdditionsName, strVersion);
     const QString strSourcePath = QString("https://download.virtualbox.org/virtualbox/%1/").arg(strVersion);
     const QString strSource = strSourcePath + strSourceName;
-    const QString strPathSHA256SumsFile = QString("https://www.virtualbox.org/download/hashes/%1/SHA256SUMS").arg(strVersion);
+    const QString strPathSHA256SumsFile = QString("https://download.virtualbox.org/virtualbox/%1/SHA256SUMS").arg(strVersion);
     const QString strTarget = QDir(gpGlobalSession->homeFolder()).absoluteFilePath(QString("%1.tmp").arg(strSourceName));
 
     /* Set source/target: */
@@ -70,7 +71,8 @@ QString UIDownloaderGuestAdditions::description() const
 
 bool UIDownloaderGuestAdditions::askForDownloadingConfirmation(UINetworkReply *pReply)
 {
-    return msgCenter().confirmDownloadGuestAdditions(source().toString(), pReply->header(UINetworkReply::ContentLengthHeader).toInt());
+    return UINotificationQuestion::confirmDownloadingGuestAdditions(source().toString(),
+                                                                    pReply->header(UINetworkReply::ContentLengthHeader).toInt());
 }
 
 void UIDownloaderGuestAdditions::handleDownloadedObject(UINetworkReply *pReply)
@@ -158,7 +160,7 @@ void UIDownloaderGuestAdditions::handleVerifiedObject(UINetworkReply *pReply)
         if (fTargetFileExists)
         {
             /* We should ask user about file rewriting (or exit otherwise): */
-            if (!msgCenter().confirmOverridingFile(QDir::toNativeSeparators(target())))
+            if (!UINotificationQuestion::confirmOverridingFile(QDir::toNativeSeparators(target())))
                 break;
             /* And remove file if rewriting confirmed: */
             if (QFile::remove(target()))
@@ -172,14 +174,14 @@ void UIDownloaderGuestAdditions::handleVerifiedObject(UINetworkReply *pReply)
         if (fFileRenamed)
         {
             /* Warn the user about additions-image downloaded and saved, propose to mount it (and/or exit in any case): */
-            if (msgCenter().proposeMountGuestAdditions(source().toString(), QDir::toNativeSeparators(target())))
+            if (UINotificationQuestion::confirmMountingGuestAdditions(source().toString(), QDir::toNativeSeparators(target())))
                 emit sigDownloadFinished(target());
             break;
         }
         else
         {
             /* Warn the user about additions-image was downloaded but was NOT saved: */
-            msgCenter().cannotSaveGuestAdditions(source().toString(), QDir::toNativeSeparators(target()));
+            UINotificationMessage::cannotSaveGuestAdditions(source().toString(), QDir::toNativeSeparators(target()));
             /* Ask the user for another location for the additions-image file: */
             const QString strTarget = QIFileDialog::getExistingDirectory(QFileInfo(target()).absolutePath(),
                                                                          windowManager().mainWindowShown(),

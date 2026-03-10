@@ -1,10 +1,10 @@
-/* $Id: UISettingsPage.h 110990 2025-09-15 14:47:46Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsPage.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsPage class declaration.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -47,6 +47,7 @@ class QLabel;
 class QLayout;
 class QVariant;
 class QWidget;
+class UIAdvancedSettingsDialog;
 class UISettingsPageValidator;
 
 /* Using declarations: */
@@ -88,7 +89,6 @@ Q_DECLARE_METATYPE(UISettingsDataMachine);
 /** Validation message. */
 typedef QPair<QString, QStringList> UIValidationMessage;
 
-
 /** UIEditor sub-class used as settings page interface. */
 class UISettingsPage : public UIEditor
 {
@@ -109,6 +109,11 @@ signals:
     void sigOperationProgressError(QString strErrorInfo);
 
 public:
+
+    /** Defines parent @a pDialog. */
+    void setParentDialog(UIAdvancedSettingsDialog *pDialog) { m_pParentDialog = pDialog; }
+    /** Returns parent dialog. */
+    UIAdvancedSettingsDialog *parentDialog() { return m_pParentDialog; }
 
     /** Loads settings from external object(s) packed inside @a data to cache.
       * @note  This task WILL be performed in other than the GUI thread, no widget interactions! */
@@ -189,6 +194,9 @@ protected:
 
 private:
 
+    /** Holds the parent dialog reference. */
+    UIAdvancedSettingsDialog *m_pParentDialog;
+
     /** Holds the configuration access level. */
     ConfigurationAccessLevel  m_enmConfigurationAccessLevel;
 
@@ -205,7 +213,6 @@ private:
     /** Holds whether page processing is failed. */
     bool  m_fFailed : 1;
 };
-
 
 /** UISettingsPage extension used as Global Preferences page interface. */
 class UISettingsPageGlobal : public UISettingsPage
@@ -240,7 +247,6 @@ protected:
     CSystemProperties  m_properties;
 };
 
-
 /** UISettingsPage extension used as Machine Settings page interface. */
 class UISettingsPageMachine : public UISettingsPage
 {
@@ -270,7 +276,6 @@ protected:
     /** Holds the source of console settings. */
     CConsole  m_console;
 };
-
 
 /** UIEditor sub-class, used as settings page frame. */
 class UISettingsPageFrame : public UIEditor
@@ -314,6 +319,5 @@ private:
     /** Holds the contents layout instance. */
     QLayout *m_pLayout;
 };
-
 
 #endif /* !FEQT_INCLUDED_SRC_settings_UISettingsPage_h */

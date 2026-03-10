@@ -1,10 +1,10 @@
-/* $Id: IEMAllCImpl-armv8.cpp 110740 2025-08-15 21:46:52Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImpl-armv8.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - ARMv8 target, miscellaneous.
  */
 
 /*
- * Copyright (C) 2011-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -111,11 +111,11 @@ iemCImplA64_sysl_fallback(PVMCPU pVCpu, uint32_t idSysReg, uint32_t idxGprDst, u
  */
 DECLHIDDEN(VBOXSTRICTRC) iemCImplHlpRecalcFlags(PVMCPU pVCpu, VBOXSTRICTRC rcStrict)
 {
-    uint32_t const fExecOld = pVCpu->iem.s.fExec;
+    uint32_t const fExecOld = ICORE(pVCpu).fExec;
     uint32_t const fExecNew = iemCalcExecFlags(pVCpu) | (fExecOld & IEM_F_USER_OPTS);
     if (fExecNew != fExecOld)
-        Log(("IEM: sysreg: fExec %#x -> %#x (changed %#x)\\n", fExecOld, fExecNew, pVCpu->iem.s.fExec ^ fExecNew));
-    pVCpu->iem.s.fExec = fExecNew;
+        Log(("IEM: sysreg: fExec %#x -> %#x (changed %#x)\\n", fExecOld, fExecNew, ICORE(pVCpu).fExec ^ fExecNew));
+    ICORE(pVCpu).fExec = fExecNew;
     return rcStrict;
 }
 
@@ -260,7 +260,7 @@ DECLHIDDEN(bool)         iemCImplHlpIsGcsEnabled(PVMCPU pVCpu, uint8_t bEl) RT_N
 
 DECLHIDDEN(bool)         iemCImplHlpIsGcsEnabledAtCurrentEl(PVMCPU pVCpu) RT_NOEXCEPT
 {
-    return iemCImplHlpIsGcsEnabled(pVCpu, IEM_F_MODE_ARM_GET_EL(pVCpu->iem.s.fExec));
+    return iemCImplHlpIsGcsEnabled(pVCpu, IEM_F_MODE_ARM_GET_EL(ICORE(pVCpu).fExec));
 }
 
 

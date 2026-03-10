@@ -1,10 +1,10 @@
-/* $Id: UIDesktopWidgetWatchdog.cpp 111414 2025-10-15 10:40:18Z sergey.dubov@oracle.com $ */
+/* $Id: UIDesktopWidgetWatchdog.cpp 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class implementation.
  */
 
 /*
- * Copyright (C) 2015-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2015-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -123,6 +123,7 @@ static BOOL CALLBACK MonitorEnumProcF(HMONITOR hMonitor, HDC hdcMonitor, LPRECT 
 /* static */
 const QString
 UIDesktopWidgetWatchdog::s_strVBoxDesktopWatchdogPolicySynthTest = "VBOX_DESKTOPWATCHDOGPOLICY_SYNTHTEST";
+
 
 /** QWidget extension used as
   * an invisible window on the basis of which we
@@ -470,9 +471,7 @@ bool UIDesktopWidgetWatchdog::isFakeScreenDetected()
 double UIDesktopWidgetWatchdog::devicePixelRatio(int iHostScreenIndex /* = -1 */)
 {
     /* First, we should check whether the screen is valid: */
-    QScreen *pScreen = iHostScreenIndex == -1
-                     ? QGuiApplication::primaryScreen()
-                     : QGuiApplication::screens().value(iHostScreenIndex);
+    QScreen *pScreen = QGuiApplication::screens().value(iHostScreenIndex, QGuiApplication::primaryScreen());
     AssertPtrReturn(pScreen, 1.0);
 
     /* Then acquire device-pixel-ratio: */
@@ -917,15 +916,20 @@ void UIDesktopWidgetWatchdog::sltHandleHostScreenAvailableGeometryCalculated(int
             iHostScreenIndex, availableGeometry.x(), availableGeometry.y(),
             availableGeometry.width(), availableGeometry.height()));
 
-    /* Apply received data: */
-    const bool fSendSignal = m_availableGeometryData.value(iHostScreenIndex).isValid();
-    m_availableGeometryData[iHostScreenIndex] = availableGeometry;
     /* Forget finished worker: */
-    AssertPtrReturnVoid(m_availableGeometryWorkers.value(iHostScreenIndex));
-    m_availableGeometryWorkers.value(iHostScreenIndex)->disconnect();
-    m_availableGeometryWorkers.value(iHostScreenIndex)->deleteLater();
-    m_availableGeometryWorkers[iHostScreenIndex] = 0;
+    QWidget *pWorker = m_availableGeometryWorkers.value(iHostScreenIndex);
+    if (pWorker)
+    {
+        pWorker->disconnect();
+        pWorker->deleteLater();
+        m_availableGeometryWorkers[iHostScreenIndex] = 0;
+    }
 
+    /* We'll need to notify listeners if geometry recalculated (not the 1st time): */
+    const bool fSendSignal = m_availableGeometryData.value(iHostScreenIndex).isValid();
+    /* Save new geometry: */
+    if (iHostScreenIndex >= 0 && iHostScreenIndex < m_availableGeometryData.size())
+        m_availableGeometryData[iHostScreenIndex] = availableGeometry;
     /* Notify listeners: */
     if (fSendSignal)
         emit sigHostScreenWorkAreaRecalculated(iHostScreenIndex);
@@ -1057,6 +1061,9 @@ void UIDesktopWidgetWatchdog::updateHostScreenAvailableGeometry(int iHostScreenI
         iHostScreenIndex = UIDesktopWidgetWatchdog::primaryScreenNumber();
         AssertReturnVoid(iHostScreenIndex >= 0 && iHostScreenIndex < screenCount());
     }
+
+    /* Make sure index fits workers list bounds: */
+    AssertReturnVoid(iHostScreenIndex >= 0 && iHostScreenIndex < m_availableGeometryWorkers.size());
 
     /* Create invisible frame-less window worker: */
     UIInvisibleWindow *pWorker = new UIInvisibleWindow(iHostScreenIndex);

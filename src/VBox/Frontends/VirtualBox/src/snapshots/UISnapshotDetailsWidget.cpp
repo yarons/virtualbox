@@ -1,10 +1,10 @@
-/* $Id: UISnapshotDetailsWidget.cpp 111182 2025-09-30 09:38:54Z sergey.dubov@oracle.com $ */
+/* $Id: UISnapshotDetailsWidget.cpp 113058 2026-02-17 10:55:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
 
 /*
- * Copyright (C) 2008-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2008-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -55,10 +55,8 @@
 #include "UIIconPool.h"
 #include "UISnapshotDetailsWidget.h"
 #include "UIMediumTools.h"
-#include "UIMessageCenter.h"
 #include "UITranslator.h"
 #include "UITranslationEventListener.h"
-#include "VBoxUtils.h"
 
 /* COM includes: */
 #include "CAudioAdapter.h"

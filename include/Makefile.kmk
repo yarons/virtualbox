@@ -1,11 +1,11 @@
-# $Id: Makefile.kmk 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 112543 2026-01-13 16:32:24Z michal.necasek@oracle.com $
 ## @file
 # Some hacks to allow syntax and prerequisite include checking of headers.
 # This makefile doesn't and shouldn't build successfully.
 #
 
 #
-# Copyright (C) 2006-2025 Oracle and/or its affiliates.
+# Copyright (C) 2006-2026 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.
@@ -39,6 +39,7 @@ VBOX_HDRS_CPP_FEATURES := \
 	VBox/vmm/pdmaudiohostenuminline.h \
 	VBox/HostServices/GuestControlSvc.h \
 	VBox/HostServices/DragAndDropSvc.h \
+	VBox/HostServices/VBoxSharedClipboardSvc.h \
 	VBox/HostServices/Service.h \
 	VBox/GuestHost/GuestControl.h \
 	VBox/GuestHost/DragAndDrop.h \
@@ -95,6 +96,7 @@ VBOX_HDRS_R3_ONLY := \
 	VBox/HostServices/Service.h \
 	VBox/HostServices/TstHGCMMock.h \
 	VBox/HostServices/TstHGCMMockUtils.h \
+	VBox/HostServices/VBoxSharedClipboardSvc.h \
 	iprt/win/% \
 	iprt/alloca.h \
 	iprt/tcp.h \
@@ -165,6 +167,16 @@ VBOX_HDRS_OMIT := \
 	$(foreach os,$(filter-out $(KBUILD_TARGET),$(KBUILD_OSES)),iprt/$(os)/% VBox/$(os)/%) \
 	$(foreach arch,$(KBUILD_ARCHES),iprt/nocrt/$(arch)/%)
 
+# 64-bit (supported) only headers.
+ifn1of ($(KBUILD_TARGET_ARCH), amd64 arm64)
+ VBOX_HDRS_OMIT += \
+ 	VBox/vmm/cpumctx.h \
+ 	VBox/vmm/dbgfcorefmt.h \
+ 	VBox/vmm/gvm.h \
+ 	VBox/vmm/uvm.h \
+ 	VBox/vmm/vm.h \
+ 	VBox/vmm/vmcc.h
+endif
 # x86 / AMD64 only headers.
 ifn1of ($(KBUILD_TARGET_ARCH), x86 amd64)
  VBOX_HDRS_OMIT += \
@@ -173,9 +185,7 @@ endif
 # AMD64 only headers.
 ifneq ($(KBUILD_TARGET_ARCH),amd64)
  VBOX_HDRS_OMIT += \
- 	VBox/vmm/cpumctx.h \
- 	VBox/vmm/cpumctx-v1_6.h \
- 	VBox/vmm/dbgfcorefmt.h
+ 	VBox/vmm/cpumctx-v1_6.h
 endif
 # ARM only headers.
 ifn1of ($(KBUILD_TARGET_ARCH), arm32 arm64)

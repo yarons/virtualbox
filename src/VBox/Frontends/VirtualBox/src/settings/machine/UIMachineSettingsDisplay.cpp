@@ -1,10 +1,10 @@
-/* $Id: UIMachineSettingsDisplay.cpp 110989 2025-09-15 14:43:58Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsDisplay.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
 
 /*
- * Copyright (C) 2008-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2008-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -79,13 +79,14 @@ struct UIDataSettingsMachineDisplay
         , m_uRemoteDisplayTimeout(0)
         , m_fRemoteDisplayMultiConnAllowed(false)
         , m_fRecordingEnabled(false)
+        , m_fRecordingRunning(false)
         , m_strRecordingFolder(QString())
         , m_strRecordingFilePath(QString())
         , m_iRecordingVideoFrameWidth(0)
         , m_iRecordingVideoFrameHeight(0)
         , m_iRecordingVideoFrameRate(0)
         , m_iRecordingVideoBitRate(0)
-        , m_strRecordingOptions(QString())
+        , m_strAudioProfile(QString())
     {}
 
     /** Returns whether the @a other passed data is equal to this one. */
@@ -114,7 +115,7 @@ struct UIDataSettingsMachineDisplay
                && (m_iRecordingVideoBitRate == other.m_iRecordingVideoBitRate)
                && (m_vecRecordingScreens == other.m_vecRecordingScreens)
                && (m_strRecordingFeatures == other.m_strRecordingFeatures)
-               && (m_strRecordingOptions == other.m_strRecordingOptions)
+               && (m_strAudioProfile == other.m_strAudioProfile)
                ;
     }
 
@@ -122,121 +123,6 @@ struct UIDataSettingsMachineDisplay
     bool operator==(const UIDataSettingsMachineDisplay &other) const { return equal(other); }
     /** Returns whether the @a other passed data is different from this one. */
     bool operator!=(const UIDataSettingsMachineDisplay &other) const { return !equal(other); }
-
-    /** Recording options. Serialized as a string ('key=value,key2=value2'). */
-    enum RecordingOption
-    {
-        RecordingOption_Unknown,
-        RecordingOption_AC_Profile
-        /** @todo r=andy Add RecordingOption_VC_Quality ('vc_quality' in recording options) handling. */
-    };
-
-    /** Returns enum value corresponding to passed @a strKey. */
-    static RecordingOption toRecordingOptionKey(const QString &strKey)
-    {
-        /* Compare case-sensitive: */
-        QMap<QString, RecordingOption> keys;
-        keys["ac_profile"] = RecordingOption_AC_Profile;
-        /** @todo r=andy Add RecordingOption_VC_Quality ('vc_quality' in recording options) handling. */
-        /* Return known value or RecordingOption_Unknown otherwise: */
-        return keys.value(strKey, RecordingOption_Unknown);
-    }
-
-    /** Returns string representation for passed enum @a enmKey. */
-    static QString fromRecordingOptionKey(RecordingOption enmKey)
-    {
-        /* Compare case-sensitive: */
-        QMap<RecordingOption, QString> values;
-        values[RecordingOption_AC_Profile] = "ac_profile";
-        /** @todo r=andy Add RecordingOption_VC_Quality ('vc_quality' in recording options) handling. */
-        /* Return known value or QString() otherwise: */
-        return values.value(enmKey);
-    }
-
-    /** Parses recording options. */
-    static void parseRecordingOptions(const QString &strOptions,
-                                      QList<RecordingOption> &outKeys,
-                                      QStringList &outValues)
-    {
-        outKeys.clear();
-        outValues.clear();
-        const QStringList aPairs = strOptions.split(',');
-        foreach (const QString &strPair, aPairs)
-        {
-            const QStringList aPair = strPair.split('=');
-            if (aPair.size() != 2)
-                continue;
-            const RecordingOption enmKey = toRecordingOptionKey(aPair.value(0));
-            if (enmKey == RecordingOption_Unknown)
-                continue;
-            outKeys << enmKey;
-            outValues << aPair.value(1);
-        }
-    }
-
-    /** Serializes recording options. */
-    static void serializeRecordingOptions(const QList<RecordingOption> &inKeys,
-                                          const QStringList &inValues,
-                                          QString &strOptions)
-    {
-        QStringList aPairs;
-        for (int i = 0; i < inKeys.size(); ++i)
-        {
-            QStringList aPair;
-            aPair << fromRecordingOptionKey(inKeys.value(i));
-            aPair << inValues.value(i);
-            aPairs << aPair.join('=');
-        }
-        strOptions = aPairs.join(',');
-    }
-
-    /** @todo r=andy Add getVideoQualityFromOptions() via 'vc_quality'. */
-
-    /** Searches for ac_profile and return 1 for "low", 2 for "med", and 3 for "high". Returns 2
-        if ac_profile is missing */
-    static int getAudioQualityFromOptions(const QString &strOptions)
-    {
-        QList<RecordingOption> aKeys;
-        QStringList aValues;
-        parseRecordingOptions(strOptions, aKeys, aValues);
-        int iIndex = aKeys.indexOf(RecordingOption_AC_Profile);
-        if (iIndex == -1)
-            return 2;
-        if (aValues.value(iIndex).compare("low", Qt::CaseInsensitive) == 0)
-            return 1;
-        if (aValues.value(iIndex).compare("high", Qt::CaseInsensitive) == 0)
-            return 3;
-        return 2;
-    }
-
-    /** Sets the video recording options for @a enmOptions to @a values. */
-    static QString setRecordingOptions(const QString &strOptions,
-                                       const QVector<RecordingOption> &enmOptions,
-                                       const QStringList &values)
-    {
-        if (enmOptions.size() != values.size())
-            return QString();
-        QList<RecordingOption> aKeys;
-        QStringList aValues;
-        parseRecordingOptions(strOptions, aKeys, aValues);
-        for(int i = 0; i < values.size(); ++i)
-        {
-            QString strValue = values[i];
-            int iIndex = aKeys.indexOf(enmOptions[i]);
-            if (iIndex == -1)
-            {
-                aKeys << enmOptions[i];
-                aValues << strValue;
-            }
-            else
-            {
-                aValues[iIndex] = strValue;
-            }
-        }
-        QString strResult;
-        serializeRecordingOptions(aKeys, aValues, strResult);
-        return strResult;
-    }
 
     /** Holds the video RAM amount. */
     int                      m_iCurrentVRAM;
@@ -267,6 +153,8 @@ struct UIDataSettingsMachineDisplay
 
     /** Holds whether recording is enabled. */
     bool                        m_fRecordingEnabled;
+    /** Holds whether recording is running. */
+    bool                        m_fRecordingRunning;
     /** Holds the recording folder. */
     QString                     m_strRecordingFolder;
     /** Holds the recording file path. */
@@ -283,8 +171,8 @@ struct UIDataSettingsMachineDisplay
     QVector<bool>               m_vecRecordingScreens;
     /** Holds the recording features. */
     QVector<KRecordingFeature>  m_strRecordingFeatures;
-    /** Holds the recording options. */
-    QString                     m_strRecordingOptions;
+    /** Holds the audio profile. */
+    QString                     m_strAudioProfile;
 };
 
 
@@ -411,6 +299,15 @@ void UIMachineSettingsDisplay::loadToCacheFrom(QVariant &data)
     Assert(recordingSettings.isNotNull());
     oldDisplayData.m_fRecordingEnabled = recordingSettings.GetEnabled();
 
+    /* Check if recording is currently running: */
+    if (isMachineOnline())
+    {
+        CProgress comProgress = recordingSettings.GetProgress();
+        oldDisplayData.m_fRecordingRunning =    comProgress.isNotNull()
+                                             && !comProgress.GetCompleted()
+                                             && !comProgress.GetCanceled();
+    }
+
     /* For now we're using the same settings for all screens; so get settings from screen 0 and work with that. */
     /** @todo r=andy Since VBox 7.0 (settings 1.19) the per-screen settings can be handled. i.e. screens can have
      *               different settings.  See @bugref{10259} */
@@ -424,7 +321,14 @@ void UIMachineSettingsDisplay::loadToCacheFrom(QVariant &data)
         oldDisplayData.m_iRecordingVideoFrameRate = comRecordingScreen0Settings.GetVideoFPS();
         oldDisplayData.m_iRecordingVideoBitRate = comRecordingScreen0Settings.GetVideoRate();
         oldDisplayData.m_strRecordingFeatures = comRecordingScreen0Settings.GetFeatures();
-        oldDisplayData.m_strRecordingOptions = comRecordingScreen0Settings.GetOptions();
+        const ULONG uHz = comRecordingScreen0Settings.GetAudioHz();
+        const ULONG uChannels = comRecordingScreen0Settings.GetAudioChannels();
+        if (uHz == 8000 && uChannels == 1)
+            oldDisplayData.m_strAudioProfile = "low";
+        else if (uHz == 48000 && uChannels == 2)
+            oldDisplayData.m_strAudioProfile = "high";
+        else
+            oldDisplayData.m_strAudioProfile = "med";
     }
 
     CRecordingScreenSettingsVector comRecordingScreenSettingsVector = recordingSettings.GetScreens();
@@ -500,8 +404,9 @@ void UIMachineSettingsDisplay::getFromCache()
         m_pEditorRecordingSettings->setFrameWidth(oldDisplayData.m_iRecordingVideoFrameWidth);
         m_pEditorRecordingSettings->setFrameHeight(oldDisplayData.m_iRecordingVideoFrameHeight);
         m_pEditorRecordingSettings->setFrameRate(oldDisplayData.m_iRecordingVideoFrameRate);
-        m_pEditorRecordingSettings->setBitRate(oldDisplayData.m_iRecordingVideoBitRate);
+        m_pEditorRecordingSettings->setBitrate(oldDisplayData.m_iRecordingVideoBitRate);
         m_pEditorRecordingSettings->setScreens(oldDisplayData.m_vecRecordingScreens);
+        m_pEditorRecordingSettings->setAudioProfile(oldDisplayData.m_strAudioProfile);
 
         /* Load old 'Recording' features: */
         UISettingsDefs::RecordingMode enmMode;
@@ -514,11 +419,6 @@ void UIMachineSettingsDisplay::getFromCache()
         else
             enmMode = UISettingsDefs::RecordingMode_AudioOnly;
         m_pEditorRecordingSettings->setMode(enmMode);
-
-        /* Load old 'Recording' options: */
-        const int iAudioQualityRate =
-            UIDataSettingsMachineDisplay::getAudioQualityFromOptions(oldDisplayData.m_strRecordingOptions);
-        m_pEditorRecordingSettings->setAudioQualityRate(iAudioQualityRate);
     }
 
     /* Polish page finally: */
@@ -574,8 +474,9 @@ void UIMachineSettingsDisplay::putToCache()
         newDisplayData.m_iRecordingVideoFrameWidth = m_pEditorRecordingSettings->frameWidth();
         newDisplayData.m_iRecordingVideoFrameHeight = m_pEditorRecordingSettings->frameHeight();
         newDisplayData.m_iRecordingVideoFrameRate = m_pEditorRecordingSettings->frameRate();
-        newDisplayData.m_iRecordingVideoBitRate = m_pEditorRecordingSettings->bitRate();
+        newDisplayData.m_iRecordingVideoBitRate = m_pEditorRecordingSettings->bitrate();
         newDisplayData.m_vecRecordingScreens = m_pEditorRecordingSettings->screens();
+        newDisplayData.m_strAudioProfile = m_pEditorRecordingSettings->audioProfile();
 
         /* Gather new 'Recording' features: */
         switch (m_pEditorRecordingSettings->mode())
@@ -592,20 +493,6 @@ void UIMachineSettingsDisplay::putToCache()
             default:
                 break;
         }
-
-        /* Gather new 'Recording' options: */
-        QStringList optionValues;
-        switch (m_pEditorRecordingSettings->audioQualityRate())
-        {
-            case 1: optionValues.append("low"); break;
-            case 2: optionValues.append("med"); break;
-            default: optionValues.append("high"); break;
-        }
-        QVector<UIDataSettingsMachineDisplay::RecordingOption> optionKeys;
-        optionKeys.append(UIDataSettingsMachineDisplay::RecordingOption_AC_Profile);
-        newDisplayData.m_strRecordingOptions =
-            UIDataSettingsMachineDisplay::setRecordingOptions(m_pCache->base().m_strRecordingOptions,
-                                                              optionKeys, optionValues);
     }
 
     /* Cache new data: */
@@ -811,11 +698,6 @@ void UIMachineSettingsDisplay::polishPage()
            ((isMachineOffline() || isMachineSaved()))
         || (isMachineOnline() && !m_pCache->base().m_fRecordingEnabled);
     m_pEditorRecordingSettings->setOptionsAvailable(fIsRecordingOptionsEnabled);
-    // Recording screens option should be enabled only if:
-    // 1. Machine is in *any* valid state.
-    const bool fIsRecordingScreenOptionsEnabled =
-        isMachineInValidMode();
-    m_pEditorRecordingSettings->setScreenOptionsAvailable(fIsRecordingScreenOptionsEnabled);
 }
 
 void UIMachineSettingsDisplay::sltHandleMonitorCountChange()
@@ -1262,121 +1144,27 @@ bool UIMachineSettingsDisplay::saveRecordingData()
     CRecordingSettings recordingSettings = m_machine.GetRecordingSettings();
     Assert(recordingSettings.isNotNull());
 
-    /** @todo r=andy Make the code below more compact -- too much redundancy here. */
-
-    /* Save new 'Recording' data for online case: */
-    if (isMachineOnline())
+    /* Save new 'Recording' data for the case when VM is running and recording is enabled: */
+    if (   isMachineOnline()
+        && oldDisplayData.m_fRecordingEnabled)
     {
-        /* If 'Recording' was *enabled*: */
-        if (oldDisplayData.m_fRecordingEnabled)
+        /* Disable recording if requested: */
+        if (/*fSuccess &&*/ !newDisplayData.m_fRecordingEnabled)
         {
-            /* Save whether recording is enabled: */
-            if (fSuccess && newDisplayData.m_fRecordingEnabled != oldDisplayData.m_fRecordingEnabled)
+            recordingSettings.SetEnabled(false);
+            fSuccess = recordingSettings.isOk();
+
+            /* Stop recording if possible and necessary: */
+            if (   fSuccess
+                && isMachineOnline()
+                && oldDisplayData.m_fRecordingRunning)
             {
-                recordingSettings.SetEnabled(newDisplayData.m_fRecordingEnabled);
+                recordingSettings.Stop();
                 fSuccess = recordingSettings.isOk();
-            }
-
-            // We can still save the *screens* option.
-            /* Save recording screens: */
-            if (fSuccess)
-            {
-                CRecordingScreenSettingsVector comRecordingScreenSettingsVector = recordingSettings.GetScreens();
-                for (int iScreenIndex = 0; fSuccess && iScreenIndex < comRecordingScreenSettingsVector.size(); ++iScreenIndex)
-                {
-                    if (newDisplayData.m_vecRecordingScreens[iScreenIndex] == oldDisplayData.m_vecRecordingScreens[iScreenIndex])
-                        continue;
-
-                    CRecordingScreenSettings comRecordingScreenSettings = comRecordingScreenSettingsVector.at(iScreenIndex);
-                    comRecordingScreenSettings.SetEnabled(newDisplayData.m_vecRecordingScreens[iScreenIndex]);
-                    fSuccess = comRecordingScreenSettings.isOk();
-                }
-            }
-        }
-        /* If 'Recording' was *disabled*: */
-        else
-        {
-            CRecordingScreenSettingsVector comRecordingScreenSettingsVector = recordingSettings.GetScreens();
-            for (int iScreenIndex = 0; fSuccess && iScreenIndex < comRecordingScreenSettingsVector.size(); ++iScreenIndex)
-            {
-                CRecordingScreenSettings comRecordingScreenSettings = comRecordingScreenSettingsVector.at(iScreenIndex);
-
-                // We should save all the options *before* 'Recording' activation.
-                // And finally we should *enable* Recording if necessary.
-                /* Save recording file path: */
-                if (/*fSuccess &&*/ newDisplayData.m_strRecordingFilePath != oldDisplayData.m_strRecordingFilePath)
-                {
-                    comRecordingScreenSettings.SetFilename(newDisplayData.m_strRecordingFilePath);
-                    fSuccess = comRecordingScreenSettings.isOk();
-                }
-                /* Save recording frame width: */
-                if (fSuccess && newDisplayData.m_iRecordingVideoFrameWidth != oldDisplayData.m_iRecordingVideoFrameWidth)
-                {
-                    comRecordingScreenSettings.SetVideoWidth(newDisplayData.m_iRecordingVideoFrameWidth);
-                    fSuccess = comRecordingScreenSettings.isOk();
-                }
-                /* Save recording frame height: */
-                if (fSuccess && newDisplayData.m_iRecordingVideoFrameHeight != oldDisplayData.m_iRecordingVideoFrameHeight)
-                {
-                    comRecordingScreenSettings.SetVideoHeight(newDisplayData.m_iRecordingVideoFrameHeight);
-                    fSuccess = comRecordingScreenSettings.isOk();
-                }
-                /* Save recording frame rate: */
-                if (fSuccess && newDisplayData.m_iRecordingVideoFrameRate != oldDisplayData.m_iRecordingVideoFrameRate)
-                {
-                    comRecordingScreenSettings.SetVideoFPS(newDisplayData.m_iRecordingVideoFrameRate);
-                    fSuccess = comRecordingScreenSettings.isOk();
-                }
-                /* Save recording frame bit rate: */
-                if (fSuccess && newDisplayData.m_iRecordingVideoBitRate != oldDisplayData.m_iRecordingVideoBitRate)
-                {
-                    comRecordingScreenSettings.SetVideoRate(newDisplayData.m_iRecordingVideoBitRate);
-                    fSuccess = comRecordingScreenSettings.isOk();
-                }
-                /* Save capture features: */
-                if (fSuccess && newDisplayData.m_strRecordingFeatures != oldDisplayData.m_strRecordingFeatures)
-                {
-                    comRecordingScreenSettings.SetFeatures(newDisplayData.m_strRecordingFeatures);
-                    fSuccess = comRecordingScreenSettings.isOk();
-                }
-                /* Save recording options: */
-                if (fSuccess && newDisplayData.m_strRecordingOptions != oldDisplayData.m_strRecordingOptions)
-                {
-                    comRecordingScreenSettings.SetOptions(newDisplayData.m_strRecordingOptions);
-                    fSuccess = comRecordingScreenSettings.isOk();
-                }
-                /* Finally, save the screen's recording state: */
-                /* Note: Must come last, as modifying options with an enabled recording state is not possible. */
-                if (fSuccess && newDisplayData.m_vecRecordingScreens != oldDisplayData.m_vecRecordingScreens)
-                {
-                    comRecordingScreenSettings.SetEnabled(newDisplayData.m_vecRecordingScreens[iScreenIndex]);
-                    fSuccess = comRecordingScreenSettings.isOk();
-                }
-                if (!fSuccess)
-                {
-                    if (!comRecordingScreenSettings.isOk())
-                        notifyOperationProgressError(UIErrorString::formatErrorInfo(comRecordingScreenSettings));
-                    break; /* No point trying to handle the other screens (if any). */
-                }
-            }
-
-            /* Save whether recording is enabled:
-             * Do this last, as after enabling recording no changes via API aren't allowed anymore. */
-            if (fSuccess && newDisplayData.m_fRecordingEnabled != oldDisplayData.m_fRecordingEnabled)
-            {
-                recordingSettings.SetEnabled(newDisplayData.m_fRecordingEnabled);
-                fSuccess = recordingSettings.isOk();
-                if (fSuccess)
-                {
-                    /* Start recording when recording got enabled. */
-                    /** @todo r=andy Not sure if this is the right place for it. */
-                    CProgress comProgress = recordingSettings.Start();
-                    fSuccess = recordingSettings.isOk();
-                }
             }
         }
     }
-    /* Save new 'Recording' data for offline case: */
+    /* Save new 'Recording' data for the case when VM is NOT running or recording is NOT enabled: */
     else
     {
         CRecordingScreenSettingsVector comRecordingScreenSettingsVector = recordingSettings.GetScreens();
@@ -1420,12 +1208,9 @@ bool UIMachineSettingsDisplay::saveRecordingData()
                 comRecordingScreenSettings.SetFeatures(newDisplayData.m_strRecordingFeatures);
                 fSuccess = comRecordingScreenSettings.isOk();
             }
-            /* Save capture options: */
-            if (fSuccess && newDisplayData.m_strRecordingOptions != oldDisplayData.m_strRecordingOptions)
-            {
-                comRecordingScreenSettings.SetOptions(newDisplayData.m_strRecordingOptions);
-                fSuccess = comRecordingScreenSettings.isOk();
-            }
+            /* Save audio profile: */
+            if (fSuccess && newDisplayData.m_strAudioProfile != oldDisplayData.m_strAudioProfile)
+                fSuccess = saveRecordingAudioProfileData(newDisplayData.m_strAudioProfile, comRecordingScreenSettings);
 
             /* Finally, save the screen's recording state: */
             /* Note: Must come last, as modifying options with an enabled recording state is not possible. */
@@ -1442,12 +1227,22 @@ bool UIMachineSettingsDisplay::saveRecordingData()
             }
         }
 
-        /* Save whether recording is enabled:
+        /* Save recording state:
          * Do this last, as after enabling recording no changes via API aren't allowed anymore. */
         if (fSuccess && newDisplayData.m_fRecordingEnabled != oldDisplayData.m_fRecordingEnabled)
         {
             recordingSettings.SetEnabled(newDisplayData.m_fRecordingEnabled);
             fSuccess = recordingSettings.isOk();
+
+            /* Start recording if possible and necessary: */
+            if (   fSuccess
+                && isMachineOnline()
+                && newDisplayData.m_fRecordingEnabled
+                && !oldDisplayData.m_fRecordingRunning)
+            {
+                recordingSettings.Start();
+                fSuccess = recordingSettings.isOk();
+            }
         }
     }
 
@@ -1458,6 +1253,47 @@ bool UIMachineSettingsDisplay::saveRecordingData()
             notifyOperationProgressError(UIErrorString::formatErrorInfo(recordingSettings));
         else if (!m_machine.isOk()) /* Machine could indicate an error when saving the settings. */
             notifyOperationProgressError(UIErrorString::formatErrorInfo(m_machine));
+    }
+
+    /* Return result: */
+    return fSuccess;
+}
+
+bool UIMachineSettingsDisplay::saveRecordingAudioProfileData(const QString &strProfile, CRecordingScreenSettings &comSettings)
+{
+    /* Profiles: */
+    QMap<QString, ULONG> mapAudioHz;
+    QMap<QString, ULONG> mapAudioBits;
+    QMap<QString, ULONG> mapAudioChannels;
+    /* Low profile: */
+    mapAudioHz["low"] = 8000;
+    mapAudioBits["low"] = 16;
+    mapAudioChannels["low"] = 1;
+    /* Med profile: */
+    mapAudioHz["med"] = 22050;
+    mapAudioBits["med"] = 16;
+    mapAudioChannels["med"] = 2;
+    /* High profile: */
+    mapAudioHz["high"] = 48000;
+    mapAudioBits["high"] = 16;
+    mapAudioChannels["high"] = 2;
+
+    /* Assign profile settings: */
+    bool fSuccess = true;
+    if (fSuccess)
+    {
+        comSettings.SetAudioHz(mapAudioHz.value(strProfile));
+        fSuccess = comSettings.isOk();
+    }
+    if (fSuccess)
+    {
+        comSettings.SetAudioBits(mapAudioBits.value(strProfile));
+        fSuccess = comSettings.isOk();
+    }
+    if (fSuccess)
+    {
+        comSettings.SetAudioChannels(mapAudioChannels.value(strProfile));
+        fSuccess = comSettings.isOk();
     }
 
     /* Return result: */

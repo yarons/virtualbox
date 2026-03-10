@@ -1,10 +1,10 @@
-/* $Id: UIMachineWindow.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineWindow.h 113252 2026-03-04 14:45:19Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class declaration.
  */
 
 /*
- * Copyright (C) 2010-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -38,7 +38,7 @@
 #include "UIExtraDataDefs.h"
 #ifdef VBOX_WS_MAC
 # include "VBoxUtils-darwin.h"
-#endif /* VBOX_WS_MAC */
+#endif
 
 /* Forward declarations: */
 class QCloseEvent;
@@ -52,7 +52,6 @@ class UIMachine;
 class UIMachineLogic;
 class UIMachineView;
 class CSession;
-
 
 /* Machine-window interface: */
 class UIMachineWindow : public QMainWindow
@@ -161,16 +160,18 @@ protected:
     virtual void prepareMenu() {}
     virtual void prepareStatusBar() {}
     virtual void prepareMachineView();
-    virtual void prepareNotificationCenter();
+    virtual void prepareNotificationCenter() {}
     virtual void prepareVisualState() {}
+    virtual void prepareOtherConnections() {}
     virtual void prepareHandlers();
     virtual void loadSettings() {}
 
     /* Cleanup helpers: */
     virtual void saveSettings() {}
     virtual void cleanupHandlers();
+    virtual void cleanupOtherConnections() {}
     virtual void cleanupVisualState() {}
-    virtual void cleanupNotificationCenter();
+    virtual void cleanupNotificationCenter() {}
     virtual void cleanupMachineView();
     virtual void cleanupStatusBar() {}
     virtual void cleanupMenu() {}
@@ -215,7 +216,6 @@ private slots:
 
     /* Translate stuff: */
     void sltRetranslateUI();
-
 };
 
 #endif /* !FEQT_INCLUDED_SRC_runtime_UIMachineWindow_h */

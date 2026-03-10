@@ -1,10 +1,10 @@
-/* $Id: UISession.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UISession.cpp 113267 2026-03-05 10:14:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -167,8 +167,10 @@ bool UISession::initialize()
     /* Apply debug settings from the command line. */
     if (!debugger().isNull() && debugger().isOk())
     {
-        if (uiCommon().areWeToExecuteAllInIem())
+        if (uiCommon().areWeToExecuteAllInIem() || uiCommon().areWeToExecuteAllInRecompiler())
             debugger().SetExecuteAllInIEM(true);
+        if (uiCommon().areWeToExecuteAllInRecompiler())
+            debugger().SetRecompiledIEMExecution(true);
         if (!uiCommon().isDefaultWarpPct())
             debugger().SetVirtualTimeRate(uiCommon().getWarpPct());
     }
@@ -222,8 +224,8 @@ bool UISession::powerUp()
     if (!console().isOk() || comProgress.isNull())
     {
         if (uiCommon().showStartVMErrors())
-            msgCenter().cannotStartMachine(console(), machineName());
-        LogRel(("GUI: Aborting startup due to power up issue detected...\n"));
+            UINotificationMessage::cannotStartMachine(console(), machineName());
+        LogRel(("GUI: Aborting startup due to immediate power up issue detected...\n"));
         return false;
     }
 
@@ -246,16 +248,20 @@ bool UISession::powerUp()
     /* Show "Starting/Restoring" progress dialog: */
     if (isSaved())
     {
+#ifndef VBOX_GUI_WITH_CUSTOMIZATIONS1
         msgCenter().showModalProgressDialog(comProgress, machineName(), ":/progress_state_restore_90px.png", 0, 0);
+#else
+        msgCenter().showModalProgressDialog(comProgress, machineName(), ":/progress_state_restore_90px.png", 0, 10000);
+#endif
         /* After restoring from 'saved' state, machine-window(s) geometry should be adjusted: */
         machineLogic()->adjustMachineWindowsGeometry();
     }
     else
     {
-#ifdef VBOX_IS_QT6_OR_LATER /** @todo why is this any problem on qt6? */
+#ifndef VBOX_GUI_WITH_CUSTOMIZATIONS1
         msgCenter().showModalProgressDialog(comProgress, machineName(), ":/progress_start_90px.png", 0, 0);
 #else
-        msgCenter().showModalProgressDialog(comProgress, machineName(), ":/progress_start_90px.png");
+        msgCenter().showModalProgressDialog(comProgress, machineName(), ":/progress_start_90px.png", 0, 10000);
 #endif
         /* After VM start, machine-window(s) size-hint(s) should be sent: */
         machineLogic()->sendMachineWindowsSizeHints();
@@ -265,7 +271,7 @@ bool UISession::powerUp()
     if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
     {
         if (uiCommon().showStartVMErrors())
-            msgCenter().cannotStartMachine(comProgress, machineName());
+            UINotificationMessage::cannotStartMachine(comProgress, machineName());
         LogRel(("GUI: Aborting startup due to power up progress issue detected...\n"));
         return false;
     }
@@ -651,10 +657,7 @@ bool UISession::isClipboardFileTransferEnabled()
     bool fEnabled = comMachine.GetClipboardFileTransfersEnabled();
     const bool fSuccess = comMachine.isOk();
     if (!fSuccess)
-    {
-        UINotificationMessage::cannotAcquireMachineParameter(comMachine);
-        return false;
-    }
+        return UINotificationMessage::cannotAcquireMachineParameter(comMachine);
     return fEnabled;
 }
 
@@ -869,7 +872,7 @@ bool UISession::addEncryptionPassword(const QString &strId, const QString &strPa
     comConsole.AddEncryptionPassword(strId, strPassword, fClearOnSuspend);
     const bool fSuccess = comConsole.isOk();
     if (!fSuccess)
-        msgCenter().cannotAddDiskEncryptionPassword(comConsole);
+        UINotificationMessage::cannotAddDiskEncryptionPassword(comConsole);
     return fSuccess;
 }
 
@@ -887,10 +890,7 @@ bool UISession::mountBootMedium(const QUuid &uMediumId)
     CVirtualBox comVBox = gpGlobalSession->virtualBox();
 
     if (!comVBox.isOk())
-    {
-        UINotificationMessage::cannotAcquireVirtualBoxParameter(comVBox);
-        return false;
-    }
+        return UINotificationMessage::cannotAcquireVirtualBoxParameter(comVBox);
 
     const KStorageBus enmRecommendedDvdBus = gpGlobalSession->guestOSTypeManager().getRecommendedDVDStorageBus(osTypeId());
     const KStorageControllerType enmRecommendedDvdType = gpGlobalSession->guestOSTypeManager().getRecommendedDVDStorageController(osTypeId());
@@ -2587,6 +2587,8 @@ void UISession::prepareConsoleEventHandlers()
     m_pConsoleEventhandler = new UIConsoleEventHandler(this);
 
     /* Console event connections: */
+    connect(m_pConsoleEventhandler, &UIConsoleEventHandler::sigGuestPropertyChange,
+            this, &UISession::sigGuestPropertyChange);
     connect(m_pConsoleEventhandler, &UIConsoleEventHandler::sigAdditionsChange,
             this, &UISession::sltAdditionsChange);
     connect(m_pConsoleEventhandler, &UIConsoleEventHandler::sigAudioAdapterChange,
@@ -2787,7 +2789,11 @@ bool UISession::preprocessInitialization()
                     case KNetworkAttachmentType_Bridged:
                         strInterfaceName = comNetworkAdapter.GetBridgedInterface();
                         break;
-# ifndef VBOX_WITH_VMNET
+# ifdef VBOX_WITH_VMNET
+                    case KNetworkAttachmentType_HostOnlyNetwork:
+                        strInterfaceName = comNetworkAdapter.GetHostOnlyNetwork();
+                        break;
+# else
                     case KNetworkAttachmentType_HostOnly:
                         strInterfaceName = comNetworkAdapter.GetHostOnlyInterface();
                         break;
@@ -2808,7 +2814,7 @@ bool UISession::preprocessInitialization()
         /* Check if non-existent interfaces found: */
         if (!failedInterfaceNames.isEmpty())
         {
-            if (msgCenter().warnAboutNetworkInterfaceNotFound(machineName(), failedInterfaceNames.join(", ")))
+            if (UINotificationQuestion::warnAboutNetworkInterfaceNotFound(machineName(), failedInterfaceNames.join(", ")))
                 machineLogic()->openNetworkSettingsDialogTheModalWay();
             else
             {
@@ -2851,10 +2857,7 @@ bool UISession::mountAdHocImage(KDeviceType enmDeviceType, UIMediumDeviceType en
         /* Open the medium: */
         const CMedium comMedium = comVBox.OpenMedium(strMediumName, enmDeviceType, KAccessMode_ReadWrite, false /* fForceNewUuid */);
         if (!comVBox.isOk() || comMedium.isNull())
-        {
-            UINotificationMessage::cannotOpenMedium(comVBox, strMediumName);
-            return false;
-        }
+            return UINotificationMessage::cannotOpenMedium(comVBox, strMediumName);
 
         /* Make sure medium ID is valid: */
         const QUuid uMediumId = comMedium.GetId();
@@ -2894,10 +2897,7 @@ bool UISession::mountAdHocImage(KDeviceType enmDeviceType, UIMediumDeviceType en
     /* Make sure at least one storage slot found: */
     QList<ExactStorageSlot> sStorageSlots = aFreeStorageSlots + aBusyStorageSlots;
     if (sStorageSlots.isEmpty())
-    {
-        UINotificationMessage::cannotMountImage(machineName(), strMediumName);
-        return false;
-    }
+        return UINotificationMessage::cannotMountImage(machineName(), strMediumName);
 
     /* Try to mount medium into first available storage slot: */
     while (!sStorageSlots.isEmpty())

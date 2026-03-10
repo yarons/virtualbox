@@ -1,10 +1,10 @@
-/* $Id: isomaker.cpp 111473 2025-10-21 13:45:54Z knut.osmundsen@oracle.com $ */
+/* $Id: isomaker.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ISO Image Maker.
  */
 
 /*
- * Copyright (C) 2017-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2017-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -4733,7 +4733,7 @@ RTDECL(int) RTFsIsoMakerRename(RTFSISOMAKER hIsoMaker, uint32_t fNamespaces, con
                      */
                     PPRTFSISOMAKERNAME const ppObjName = (PPRTFSISOMAKERNAME)(  (uintptr_t)pNewName->pObj
                                                                               + g_aRTFsIsoNamespaces[i].offName);
-                    AssertStmt(*ppObjName == pFromName, VERR_ISOMK_IPE_NAMESPACE_6);
+                    AssertStmt(*ppObjName == pFromName, rc = VERR_ISOMK_IPE_NAMESPACE_6);
                     *ppObjName = pNewName;
 
                     PRTFSISOMAKERNAMEDIR const pDir = pNewName->pDir;
@@ -4746,7 +4746,7 @@ RTDECL(int) RTFsIsoMakerRename(RTFSISOMAKER hIsoMaker, uint32_t fNamespaces, con
                     }
                 }
                 else
-                    AssertFailedStmt(VERR_ISOMK_IPE_NAMESPACE_6);
+                    AssertFailedStmt(rc = VERR_ISOMK_IPE_NAMESPACE_6);
             }
         }
 

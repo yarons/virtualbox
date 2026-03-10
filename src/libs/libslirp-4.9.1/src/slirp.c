@@ -80,8 +80,13 @@ struct in_addr loopback_addr;
 unsigned long loopback_mask;
 
 /* emulated hosts use the MAC addr 52:55:IP:IP:IP:IP */
+#ifdef VBOX
+static const uint8_t special_ethaddr[ETH_ALEN] = { 0x52, 0x54, 0x00,
+                                                   0x12, 0x35, 0x00 };
+#else
 static const uint8_t special_ethaddr[ETH_ALEN] = { 0x52, 0x55, 0x00,
                                                    0x00, 0x00, 0x00 };
+#endif
 
 unsigned curtime;
 
@@ -710,7 +715,10 @@ Slirp *slirp_new(const SlirpConfig *cfg, const SlirpCb *callbacks, void *opaque)
     slirp->iSoMaxConn = cfg->iSoMaxConn;
     slirp->aRealNameservers = cfg->aRealNameservers;
     slirp->cRealNameservers = cfg->cRealNameservers;
+    slirp->aIPv6RealNameservers = cfg->aIPv6RealNameservers;
+    slirp->cIPv6RealNameservers = cfg->cIPv6RealNameservers;
     slirp->fDisableIPv6RA = cfg->fDisableIPv6RA;
+    slirp->mLoopbackMap = cfg->mLoopbackMap;
 #endif
 
     ip6_post_init(slirp);
@@ -769,11 +777,18 @@ void slirp_cleanup(Slirp *slirp)
     tftp_cleanup(slirp);
 
 #ifdef VBOX
-    if (slirp->cRealNameservers)
+    if (slirp->aRealNameservers && slirp->cRealNameservers > 0)
     {
         RTMemFree(slirp->aRealNameservers);
         slirp->cRealNameservers = 0;
         slirp->aRealNameservers = NULL;
+    }
+
+    if (slirp->aIPv6RealNameservers && slirp->cIPv6RealNameservers > 0)
+    {
+        RTMemFree(slirp->aIPv6RealNameservers);
+        slirp->cIPv6RealNameservers = 0;
+        slirp->aIPv6RealNameservers = NULL;
     }
 #endif
 
@@ -1252,6 +1267,16 @@ static void arp_input(Slirp *slirp, const uint8_t *pkt, int pkt_len)
                 if (ex_ptr->ex_addr.s_addr == ah->ar_tip)
                     goto arp_ok;
             }
+#ifdef VBOX
+            if (slirp->mLoopbackMap)
+            {
+                for (int i = 0; i < slirp->mLoopbackMap->num_lomap; i++)
+                {
+                    if ((ah->ar_tip & htonl(0x000000FF)) == htonl(slirp->mLoopbackMap->lomap[i].off))
+                        goto arp_ok;
+                }
+            }
+#endif
             return;
         arp_ok:
             memset(arp_reply, 0, sizeof(arp_reply));
@@ -1260,8 +1285,16 @@ static void arp_input(Slirp *slirp, const uint8_t *pkt, int pkt_len)
 
             /* ARP request for alias/dns mac address */
             memcpy(reh->h_dest, pkt + ETH_ALEN, ETH_ALEN);
+#ifdef VBOX
+            /*
+             * Copy whole special_ethaddr since VBox NetNAT requires at most one
+             * MAC address for all libslirp traffic.
+             */
+            memcpy(reh->h_source, special_ethaddr, ETH_ALEN);
+#else
             memcpy(reh->h_source, special_ethaddr, ETH_ALEN - 4);
             memcpy(&reh->h_source[2], &ah->ar_tip, 4);
+#endif
             reh->h_proto = htons(ETH_P_ARP);
 
             rah->ar_hrd = htons(1);
@@ -1346,8 +1379,16 @@ static int if_encap4(Slirp *slirp, struct mbuf *ifm, struct ethhdr *eh,
         if (!ifm->resolution_requested) {
             /* If the client addr is not known, send an ARP request */
             memset(reh->h_dest, 0xff, ETH_ALEN);
+#ifdef VBOX
+            /*
+             * Copy whole special_ethaddr since VBox NetNAT requires at most one
+             * MAC address for all libslirp traffic.
+             */
+            memcpy(reh->h_source, special_ethaddr, ETH_ALEN);
+#else
             memcpy(reh->h_source, special_ethaddr, ETH_ALEN - 4);
             memcpy(&reh->h_source[2], &slirp->vhost_addr, 4);
+#endif
             reh->h_proto = htons(ETH_P_ARP);
             rah->ar_hrd = htons(1);
             rah->ar_pro = htons(ETH_P_IP);
@@ -1356,8 +1397,13 @@ static int if_encap4(Slirp *slirp, struct mbuf *ifm, struct ethhdr *eh,
             rah->ar_op = htons(ARPOP_REQUEST);
 
             /* source hw addr */
+#ifdef VBOX
+            /* Same thing here (at most one MAC) */
+            memcpy(rah->ar_sha, special_ethaddr, ETH_ALEN);
+#else
             memcpy(rah->ar_sha, special_ethaddr, ETH_ALEN - 4);
             memcpy(&rah->ar_sha[2], &slirp->vhost_addr, 4);
+#endif
 
             /* source IP */
             rah->ar_sip = slirp->vhost_addr.s_addr;
@@ -1377,9 +1423,17 @@ static int if_encap4(Slirp *slirp, struct mbuf *ifm, struct ethhdr *eh,
         }
         return 0;
     } else {
+#ifdef VBOX
+        /*
+            * Copy whole special_ethaddr since VBox NetNAT requires at most one
+            * MAC address for all libslirp traffic.
+            */
+        memcpy(eh->h_source, special_ethaddr, ETH_ALEN);
+#else
         memcpy(eh->h_source, special_ethaddr, ETH_ALEN - 4);
         /* XXX: not correct */
         memcpy(&eh->h_source[2], &slirp->vhost_addr, 4);
+#endif
         eh->h_proto = htons(ETH_P_IP);
 
         /* Send this */
@@ -1772,9 +1826,16 @@ int slirp_set_vdnssearch(Slirp *pSlirp, const char * const *ppszSearchDomains)
     return translate_dnssearch(pSlirp, (const char **)ppszSearchDomains);
 }
 
+/** Sets the default vnameserver for the built in libslirp dns proxy */
 void slirp_set_vnameserver(Slirp *pSlirp, struct in_addr uAddr)
 {
     pSlirp->vnameserver_addr = uAddr;
+}
+
+/** Sets the default vnameserver for the built in libslirp dns proxy */
+void slirp_set_vnameserver6(Slirp *pSlirp, struct in6_addr mAddr)
+{
+    pSlirp->vnameserver_addr6 = mAddr;
 }
 
 void slirp_set_disable_dns(Slirp *pSlirp, bool fDisableDNS)
@@ -1782,6 +1843,7 @@ void slirp_set_disable_dns(Slirp *pSlirp, bool fDisableDNS)
     pSlirp->disable_dns = !!fDisableDNS;
 }
 
+/** Sets the nameservers for the VBox mod that sends real nameservers via DHCP.  */
 void slirp_set_RealNameservers(Slirp *pSlirp, size_t cRealNameservers, struct in_addr *paRealNameservers)
 {
     if (pSlirp->cRealNameservers)
@@ -1792,6 +1854,18 @@ void slirp_set_RealNameservers(Slirp *pSlirp, size_t cRealNameservers, struct in
     }
     pSlirp->aRealNameservers = paRealNameservers;
     pSlirp->cRealNameservers = cRealNameservers;
+}
+
+void slirp_set_IPv6RealNameservers(Slirp *pSlirp, size_t cRealNameservers, struct in6_addr *paRealNameservers)
+{
+    if (pSlirp->cIPv6RealNameservers)
+    {
+        RTMemFree(pSlirp->aIPv6RealNameservers);
+        pSlirp->cIPv6RealNameservers = 0;
+        pSlirp->aIPv6RealNameservers = NULL;
+    }
+    pSlirp->aIPv6RealNameservers = paRealNameservers;
+    pSlirp->cIPv6RealNameservers = cRealNameservers;
 }
 
 #endif /* VBOX */

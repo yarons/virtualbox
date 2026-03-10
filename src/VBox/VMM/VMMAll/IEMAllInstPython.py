@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: IEMAllInstPython.py 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -14,7 +14,7 @@ from __future__ import print_function;
 
 __copyright__ = \
 """
-Copyright (C) 2017-2025 Oracle and/or its affiliates.
+Copyright (C) 2017-2026 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 110684 $"
+__version__ = "$Revision: 112403 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -2534,7 +2534,7 @@ class McBlock(object):
         return sStr[off : off + len(sSubStr)] == sSubStr;
 
     koReCppCtrlStmts   = re.compile(r'\b(if\s*[(]|else\b|while\s*[(]|for\s*[(]|do\b)');
-    koReIemDecoderVars = re.compile(  r'iem\.s\.(fPrefixes|uRexReg|uRexB|uRexIndex|iEffSeg|offModRm|cbOpcode|offOpcode'
+    koReIemDecoderVars = re.compile(  r'(iem\.s|ICORE\([a_]*pVCpu\))\.(fPrefixes|uRexReg|uRexB|uRexIndex|iEffSeg|offModRm|cbOpcode|offOpcode'
                                     + r'|enmEffOpSize|enmDefOpSize|enmDefAddrMode|enmEffAddrMode|idxPrefix'
                                     + r'|uVex3rdReg|uVexLength|fEvxStuff|uFpuOpcode|abOpcode'
                                     + r')');
@@ -2815,8 +2815,8 @@ class McBlock(object):
                     iStmt -= 1;
                     oStmt  = aoStmts[iStmt];
                     for sArg in oStmt.asParams:
-                        if sArg.find('pVCpu->iem.s.iEffSeg') >= 0:
-                            return "statement #%u: pVCpu->iem.s.iEffSeg is used prior to IEM_MC_CALC_RM_EFF_ADDR!" % (iStmt + 1,);
+                        if sArg.find('ICORE(pVCpu).iEffSeg') >= 0:
+                            return "statement #%u: ICORE(pVCpu).iEffSeg is used prior to IEM_MC_CALC_RM_EFF_ADDR!" % (iStmt + 1,);
                 break;
         return None;
 

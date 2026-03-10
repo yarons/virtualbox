@@ -1,10 +1,10 @@
-# $Id: Config.kmk 110754 2025-08-18 20:31:07Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $
 ## @file
 # kBuild Configuration file for the VirtualBox Validation Kit.
 #
 
 #
-# Copyright (C) 2010-2025 Oracle and/or its affiliates.
+# Copyright (C) 2010-2026 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.
@@ -205,7 +205,7 @@ define def_vbox_validationkit_py_check
   pyunittest: $(name)-pyunittest.o
   $(PATH_TARGET)/pyunittest/$(name).o $(name)-pyunittest.o:: $(py) | $(PATH_TARGET)/pyunittest/
 	$(QUIET2)$(call MSG_L1,Unittesting Python source $(py)...)
-	$(QUIET)$(REDIRECT) -E LC_ALL=C -E PYTHONPATH="$(VBOX_PYTHONPATH_VALIDATIONKIT)" -C $(dir $(py)) \
+	$(QUIET)$(REDIRECT_EXT) -E LC_ALL=C -E PYTHONPATH="$(VBOX_PYTHONPATH_VALIDATIONKIT)" -C $(dir $(py)) \
 		$(if-expr $(KBUILD_KMK_REVISION)-0 >= 3685,--translate-exitcode 5=0,) \
 		-- $(VBOX_UNITTEST_PYTHON) -m unittest -v $(notdir $(basename $(py)))
 	$(QUIET)$(APPEND) -t "$(PATH_TARGET)/pyunittest/$(name).o"

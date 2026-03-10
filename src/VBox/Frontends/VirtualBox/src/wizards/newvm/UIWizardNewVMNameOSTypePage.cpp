@@ -1,10 +1,10 @@
-/* $Id: UIWizardNewVMNameOSTypePage.cpp 111086 2025-09-22 17:25:13Z brent.paulson@oracle.com $ */
+/* $Id: UIWizardNewVMNameOSTypePage.cpp 113267 2026-03-05 10:14:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameOSStype class implementation.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -40,7 +40,7 @@
 #include "UIIconPool.h"
 #include "UIMediumEnumerator.h"
 #include "UINameAndSystemEditor.h"
-#include "UINotificationCenter.h"
+#include "UINotificationMessage.h"
 #include "UIWizardNewVMNameOSTypePage.h"
 #include "UIWizardNewVM.h"
 
@@ -411,10 +411,7 @@ bool UIWizardNewVMNameOSTypeCommon::createMachineFolder(UINameAndSystemEditor *p
 
     /* Cleanup previosly created folder if any: */
     if (!cleanupMachineFolder(pWizard))
-    {
-        UINotificationMessage::cannotRemoveMachineFolder(strCreatedFolder, pWizard->notificationCenter());
-        return false;
-    }
+        return UINotificationMessage::cannotRemoveMachineFolder(strCreatedFolder, pWizard);
 
     /* Check if the folder already exists and check if it has been created by this wizard */
     if (QDir(strMachineFolder).exists())
@@ -424,19 +421,13 @@ bool UIWizardNewVMNameOSTypeCommon::createMachineFolder(UINameAndSystemEditor *p
             return true;
         /* The folder is there but not because of this wizard. Avoid overwriting a existing machine's folder */
         else
-        {
-            UINotificationMessage::cannotOverwriteMachineFolder(strMachineFolder, pWizard->notificationCenter());
-            return false;
-        }
+            return UINotificationMessage::cannotOverwriteMachineFolder(strMachineFolder, pWizard);
     }
 
     /* Try to create new folder (and it's predecessors): */
     bool fMachineFolderCreated = QDir().mkpath(strMachineFolder);
     if (!fMachineFolderCreated)
-    {
-        UINotificationMessage::cannotCreateMachineFolder(strMachineFolder, pWizard->notificationCenter());
-        return false;
-    }
+        return UINotificationMessage::cannotCreateMachineFolder(strMachineFolder, pWizard);
     pWizard->setCreatedMachineFolder(strMachineFolder);
     return true;
 }

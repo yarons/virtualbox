@@ -1,10 +1,10 @@
-; $Id: __I4D.asm 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+; $Id: __I4D.asm 112715 2026-01-27 15:33:53Z michal.necasek@oracle.com $
 ;; @file
 ; Compiler support routines.
 ;
 
 ;
-; Copyright (C) 2012-2025 Oracle and/or its affiliates.
+; Copyright (C) 2012-2026 Oracle and/or its affiliates.
 ;
 ; This file is part of VirtualBox base platform packages, as
 ; available from https://www.virtualbox.org.
@@ -66,7 +66,7 @@ if VBOX_BIOS_CPU ge 80386
                 ror     eax, 16
                 xor     edx, edx
 
-                shr     ecx, 16
+                shl     ecx, 16
                 mov     cx, bx
 
                 idiv    ecx                 ; eax:edx / ecx -> eax=quotient, edx=remainder.

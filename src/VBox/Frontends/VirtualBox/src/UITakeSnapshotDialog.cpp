@@ -1,10 +1,10 @@
-/* $Id: UITakeSnapshotDialog.cpp 111182 2025-09-30 09:38:54Z sergey.dubov@oracle.com $ */
+/* $Id: UITakeSnapshotDialog.cpp 112954 2026-02-11 14:42:55Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITakeSnapshotDialog class implementation.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -38,7 +38,6 @@
 #include "QIDialogButtonBox.h"
 #include "QILabel.h"
 #include "QITextEdit.h"
-#include "VBoxUtils.h"
 #include "UICommon.h"
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIShortcutPool.h"
@@ -66,6 +65,7 @@ void UITakeSnapshotDialog::setIcon(const QIcon &icon)
 void UITakeSnapshotDialog::setName(const QString &strName)
 {
     m_pEditorName->setText(strName);
+    m_pEditorName->selectAll();
 }
 
 QString UITakeSnapshotDialog::name() const

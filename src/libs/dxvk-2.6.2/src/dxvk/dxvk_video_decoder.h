@@ -1,10 +1,10 @@
-/* $Id: dxvk_video_decoder.h 110305 2025-07-18 12:42:15Z vitali.pelenjow@oracle.com $ */
+/* $Id: dxvk_video_decoder.h 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDxVk - Video decoder.
  */
 
 /*
- * Copyright (C) 2024-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2024-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -153,7 +153,7 @@ namespace dxvk {
 
   /**
    * \brief Video session handle
-   * 
+   *
    * Manages a handle of video session object.
    */
   class DxvkVideoSessionHandle : public RcObject {
@@ -180,7 +180,7 @@ namespace dxvk {
 
   /**
    * \brief Video session parameters handle
-   * 
+   *
    * Manages a handle of video session parameters object.
    */
   class DxvkVideoSessionParametersHandle : public RcObject {
@@ -210,7 +210,7 @@ namespace dxvk {
 
   /**
    * \brief Video bitstream buffer
-   * 
+   *
    * Manages a buffer for source bitstream for the decoder.
    */
   class DxvkVideoBitstreamBuffer : public RcObject {
@@ -257,7 +257,7 @@ namespace dxvk {
    * Provides decoding.
    */
   class DxvkVideoDecoder : public RcObject {
-    
+
   public:
 
     DxvkVideoDecoder(
@@ -299,6 +299,8 @@ namespace dxvk {
     struct DxvkVideoDecodeCapabilities {
       /* Whether vkCmdDecodeVideo output image can be not from DPB. */
       bool                              distinctOutputImage = false;
+      /* Whether DPB images are separate image resources or are array elements of one image resource. */
+      bool                              separateReferenceImages = true;
     };
     DxvkVideoDecodeCapabilities         m_caps;
 
@@ -437,5 +439,5 @@ namespace dxvk {
       VkAccessFlags2        dstAccessMask,
       VkImageLayout         newLayout);
   };
-  
+
 }

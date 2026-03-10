@@ -1,10 +1,10 @@
-/* $Id: HostDnsService.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: HostDnsService.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * Base class for Host DNS & Co services.
  */
 
 /*
- * Copyright (C) 2013-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -368,6 +368,19 @@ HRESULT HostDnsMonitorProxy::GetNameServers(std::vector<com::Utf8Str> &aNameServ
     dumpHostDnsStrVector("name server", m->info.servers);
 
     aNameServers = m->info.servers;
+
+    return S_OK;
+}
+
+HRESULT HostDnsMonitorProxy::GetV6NameServers(std::vector<com::Utf8Str> &aNameServers)
+{
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+    AssertReturn(m != NULL, E_FAIL);
+
+    LogRel(("HostDnsMonitorProxy::GetV6NameServers:\n"));
+    dumpHostDnsStrVector("name server", m->info.serversV6);
+
+    aNameServers = m->info.serversV6;
 
     return S_OK;
 }

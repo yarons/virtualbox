@@ -1,10 +1,10 @@
-/* $Id: tstVbglR0PhysHeap-1.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: tstVbglR0PhysHeap-1.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - Offset Based Heap.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -52,6 +52,7 @@
 
 #define IN_TESTCASE
 #define IN_RING0 /* pretend we're in ring-0 so we get access to the functions */
+#undef  IN_RING3
 #include <iprt/memobj.h>
 #include "../VBoxGuestR0LibInternal.h"
 #if defined(RT_OS_LINUX) && defined(RT_ARCH_ARM64)
@@ -62,6 +63,8 @@
 # define PAGE_OFFSET_MASK ((uintptr_t)(PAGE_SIZE - 1))
 # define PAGE_SHIFT 12
 #endif
+#define  IN_RING3
+
 
 
 /*********************************************************************************************************************************

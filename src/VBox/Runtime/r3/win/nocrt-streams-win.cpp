@@ -1,10 +1,10 @@
-/* $Id: nocrt-streams-win.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: nocrt-streams-win.cpp 112967 2026-02-12 10:42:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - No-CRT - minimal stream implementation
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -83,9 +83,9 @@ struct RTSTREAM
 *********************************************************************************************************************************/
 RTSTREAM g_aStdStreams[3] =
 {
-    { 0, NULL, NIL_RTFILE },
-    { 1, NULL, NIL_RTFILE },
-    { 2, NULL, NIL_RTFILE },
+    { 0, (HANDLE)(intptr_t)STD_INPUT_HANDLE,  NIL_RTFILE },
+    { 1, (HANDLE)(intptr_t)STD_OUTPUT_HANDLE, NIL_RTFILE },
+    { 2, (HANDLE)(intptr_t)STD_ERROR_HANDLE,  NIL_RTFILE },
 };
 
 RTSTREAM *g_pStdIn  = &g_aStdStreams[0];
@@ -98,6 +98,8 @@ DECLHIDDEN(void) InitStdHandles(PRTL_USER_PROCESS_PARAMETERS pParams)
 {
     if (pParams)
     {
+        /** @todo this isn't really needed any more, just use the aliases and we'll
+         *        automatically support stdout/err/in redirecting as well. */
         g_pStdIn->hNative  = pParams->StandardInput;
         g_pStdOut->hNative = pParams->StandardOutput;
         g_pStdErr->hNative = pParams->StandardError;

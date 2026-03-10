@@ -1,10 +1,10 @@
-/* $Id: UIVisoCreator.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIVisoCreator.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes declaration.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -36,7 +36,6 @@
 
 /* GUI includes: */
 #include "QIMainDialog.h"
-#include "QIWithRestorableGeometry.h"
 #include "UIFileManagerHostTable.h"
 
 /* Forward declarations: */
@@ -51,10 +50,8 @@ class UIActionPool;
 class UIVisoContentBrowser;
 class UIVisoSettingWidget;
 
-
 class UIVisoHostBrowser : public UIFileManagerHostTable
 {
-
     Q_OBJECT;
 
 public:
@@ -71,7 +68,6 @@ private:
     virtual void createFileViewContextMenu(const QWidget *pWidget, const QPoint &point) RT_OVERRIDE RT_FINAL;
     QPointer<QMenu>        m_pSubMenu;
 };
-
 
 /** A QIMainDialog extension. It hosts two UIVisoBrowserBase extensions, one for host and one
   * for VISO file system. It has the main menu, main toolbar, and a vertical toolbar and corresponding
@@ -184,8 +180,7 @@ private:
     bool                   m_fShowSettingsDialog;
 };
 
-
-class SHARED_LIBRARY_STUFF UIVisoCreatorDialog : public QIWithRestorableGeometry<QIMainDialog>
+class SHARED_LIBRARY_STUFF UIVisoCreatorDialog : public QIMainDialog
 {
     Q_OBJECT;
 
@@ -238,4 +233,5 @@ private:
     QPointer<UIActionPool> m_pActionPool;
     int                  m_iGeometrySaveTimerId;
 };
+
 #endif /* !FEQT_INCLUDED_SRC_medium_viso_UIVisoCreator_h */

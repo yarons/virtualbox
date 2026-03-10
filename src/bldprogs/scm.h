@@ -1,10 +1,10 @@
-/* $Id: scm.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: scm.h 112420 2026-01-12 20:29:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
 
 /*
- * Copyright (C) 2010-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -327,6 +327,9 @@ typedef SCMCFGENTRY const *PCSCMCFGENTRY;
 
 /** License update options. */
 typedef enum SCMLICENSE
+#if RT_CPLUSPLUS_PREREQ(201100)
+    : uint8_t
+#endif
 {
     kScmLicense_LeaveAlone = 0,     /**< Leave it alone. */
     kScmLicense_OseGpl,             /**< VBox OSE GPL if public. */
@@ -337,6 +340,19 @@ typedef enum SCMLICENSE
     kScmLicense_BasedOnMit,         /**< Copyright us but based on someone else's MIT. */
     kScmLicense_End
 } SCMLICENSE;
+
+/** Expected svn:sync-process value. */
+typedef enum SCMSVNSYNCPROCESS
+#if RT_CPLUSPLUS_PREREQ(201100)
+    : uint8_t
+#endif
+{
+    kScmSvnSyncProcess_Undefined,       /**< No particular svn:sync-process value. */
+    kScmSvnSyncProcess_All,             /**< 'svn:sync-process=export' for all. */
+    kScmSvnSyncProcess_None,            /**< 'svn:sync-process=' (absent) for all. */
+    kScmSvnSyncProcess_SubdirEitherOr,  /**< Set to 'All' when entering exported subdir, set to 'None' if subdir not exported. */
+    kScmSvnSyncProcess_End
+} SCMSVNSYNCPROCESS;
 
 /**
  * Source Code Massager Settings.
@@ -388,8 +404,13 @@ typedef struct SCMSETTINGSBASE
     bool            fUpdateCopyrightYear;
     /** Only external copyright holders. */
     bool            fExternalCopyright;
-    /** Whether there should be a LGPL disclaimer. */
+    /** Set if there must be a LGPL disclaimer when the LGPL license is used.
+     * @todo This is an odd option... (see fAllowLgplWithoutDisclaimer)  */
     bool            fLgplDisclaimer;
+    /** Whether LGPGL w/o disclaimer is allowed. */
+    bool            fAllowLgplWithoutDisclaimer;
+    /** Whether to allow UEFI-style copyright file headers are allowed. */
+    bool            fAllowUefiStyleCopyright;
     /** How to update the license. */
     SCMLICENSE      enmUpdateLicense;
 
@@ -401,10 +422,14 @@ typedef struct SCMSETTINGSBASE
     bool            fSetSvnEol;
     /** Set svn:executable according to type (unusually this means deleting it). */
     bool            fSetSvnExecutable;
+    /** Whether to set svn:mime-type on binaries. */
+    bool            fSetMimeTypeOnBinaries;
     /** Set svn:keyword if completely or partially missing. */
     bool            fSetSvnKeywords;
     /** Skip checking svn:sync-process. */
     bool            fSkipSvnSyncProcess;
+    /** svn:sync-process expectations.   */
+    SCMSVNSYNCPROCESS enmSyncProcess;
     /** Skip the unicode checks. */
     bool            fSkipUnicodeChecks;
     /** Tab size. */
@@ -435,9 +460,11 @@ typedef SCMSETTINGSBASE *PSCMSETTINGSBASE;
 typedef struct SCMPATRNOPTPAIR
 {
     char *pszPattern;
+    char *pszXcptPattern;
     char *pszOptions;
     char *pszRelativeTo;
     bool  fMultiPattern;
+    bool  fMultiXcptPattern;
 } SCMPATRNOPTPAIR;
 /** Pointer to a pattern + option pair. */
 typedef SCMPATRNOPTPAIR *PSCMPATRNOPTPAIR;
@@ -452,7 +479,7 @@ typedef struct SCMSETTINGS *PSCMSETTINGS;
  * .scm-settings file found in a directory we recurse into.  When recursing in
  * and out of a directory, we push and pop a settings set for it.
  *
- * The .scm-settings file has two kinds of setttings, first there are the
+ * The .scm-settings file has two kinds of settings, first there are the
  * unqualified base settings and then there are the settings which applies to a
  * set of files or directories.  The former are lines with command line options.
  * For the latter, the options are preceded by a string pattern and a colon.

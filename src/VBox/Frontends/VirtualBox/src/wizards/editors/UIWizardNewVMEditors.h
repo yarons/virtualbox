@@ -1,10 +1,10 @@
-/* $Id: UIWizardNewVMEditors.h 111434 2025-10-16 14:09:11Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMEditors.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMEditors class declaration.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -83,7 +83,6 @@ private:
     UIUserNamePasswordEditor *m_pUserNamePasswordEditor;
 };
 
-
 class UIGAInstallationGroupBox : public QGroupBox
 {
     Q_OBJECT;
@@ -155,7 +154,6 @@ private:
 
     UIHostnameDomainNameEditor *m_pHostnameDomainNameEditor;
 };
-
 
 class UINewVMHardwareContainer : public QWidget
 {

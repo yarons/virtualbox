@@ -1,10 +1,10 @@
-/* $Id: UINetworkManager.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UINetworkManager.cpp 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkManager class implementation.
  */
 
 /*
- * Copyright (C) 2009-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -47,7 +47,6 @@
 #include "UIExtraDataManager.h"
 #include "UIGlobalSession.h"
 #include "UIIconPool.h"
-#include "UIMessageCenter.h"
 #include "UINetworkManager.h"
 #include "UINetworkManagerUtils.h"
 #include "UINotificationCenter.h"
@@ -90,6 +89,7 @@ enum HostNetworkColumn
 };
 
 #else /* !VBOX_WS_MAC */
+
 
 /** Host network tree-widget column indexes. */
 enum HostNetworkColumn
@@ -645,7 +645,7 @@ void UINetworkManagerWidget::sltRemoveHostNetwork()
     const QString strNetworkName(pItem->name());
 
     /* Confirm host network removal: */
-    if (!msgCenter().confirmHostOnlyNetworkRemoval(strNetworkName, this))
+    if (!UINotificationQuestion::confirmHostOnlyNetworkRemoval(strNetworkName, this))
         return;
 
     /* Get VirtualBox for further activities: */
@@ -689,7 +689,7 @@ void UINetworkManagerWidget::sltRemoveHostNetwork()
     const QString strInterfaceName(pItem->name());
 
     /* Confirm host network removal: */
-    if (!msgCenter().confirmHostNetworkInterfaceRemoval(strInterfaceName, this))
+    if (!UINotificationQuestion::confirmHostNetworkInterfaceRemoval(strInterfaceName, this))
         return;
 
     /* Get host for further activities: */
@@ -873,7 +873,7 @@ void UINetworkManagerWidget::sltRemoveNATNetwork()
     const QString strNetworkName(pItem->name());
 
     /* Confirm host network removal: */
-    if (!msgCenter().confirmNATNetworkRemoval(strNetworkName, this))
+    if (!UINotificationQuestion::confirmNATNetworkRemoval(strNetworkName, this))
         return;
 
     /* Get VirtualBox for further activities: */
@@ -998,7 +998,7 @@ void UINetworkManagerWidget::sltRemoveCloudNetwork()
     const QString strNetworkName(pItem->name());
 
     /* Confirm host network removal: */
-    if (!msgCenter().confirmCloudNetworkRemoval(strNetworkName, this))
+    if (!UINotificationQuestion::confirmCloudNetworkRemoval(strNetworkName, this))
         return;
 
     /* Get VirtualBox for further activities: */

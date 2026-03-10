@@ -1,10 +1,10 @@
-/* $Id: VBoxWinDrvDefs.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxWinDrvDefs.h 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxWinDrvDefs - Common definitions for Windows driver installation functions.
  */
 
 /*
- * Copyright (C) 2024-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2024-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -40,6 +40,8 @@
 # pragma once
 #endif
 
+#include <iprt/list.h>
+#include <iprt/path.h>
 #include <iprt/utf16.h>
 
 /** If not defined explicitly, use the given / current target architecture.
@@ -82,6 +84,41 @@
 /** Maximum INF PnP ID length (in characters). */
 #define VBOXWINDRVINF_MAX_PNP_ID_LEN           255
 
+/**
+ * Enumeration specifying the INF (driver) type.
+ */
+typedef enum VBOXWINDRVINFTYPE
+{
+    /** Invalid type. */
+    VBOXWINDRVINFTYPE_INVALID = 0,
+    /** Primitive driver.
+     *  This uses a "DefaultInstall" (plus optionally "DefaultUninstall") sections
+     *  and does not have a PnP ID. */
+    VBOXWINDRVINFTYPE_PRIMITIVE,
+    /** Normal driver.
+     *  Uses a "Manufacturer" section and can have a PnP ID. */
+    VBOXWINDRVINFTYPE_NORMAL
+} VBOXWINDRVINFTYPE;
+
+/**
+ * Structure for keeping determined (or set) INF parameters
+ * required for driver (un)installation.
+ */
+typedef struct VBOXWINDRVINFPARMS
+{
+    /** Model including decoration (e.g. "VBoxUSB.NTAMD64"); optional and might be NULL.
+     *  For primitive drivers this always is NULL. */
+    PRTUTF16   pwszModel;
+    /** Hardware (Pnp) ID; optional and might be NULL.
+     * For primitive drivers this always is NULL. */
+    PRTUTF16   pwszPnpId;
+    /** Name of section to (un)install.
+     *  This marks the main section (entry point) of the specific driver model to handle. */
+    PRTUTF16   pwszSection;
+} VBOXWINDRVINFPARMS;
+/** Pointer to a atructure for keeping determined (or set) INF parameters
+ * required for driver (un)installation.*/
+typedef VBOXWINDRVINFPARMS *PVBOXWINDRVINFPARMS;
 
 /**
  * Structure for keeping INF Version section information.
@@ -97,5 +134,43 @@ typedef struct VBOXWINDRVINFSECVERSION
 } VBOXWINDRVINFSECVERSION;
 /** Pointer to structure for keeping INF Version section information. */
 typedef VBOXWINDRVINFSECVERSION *PVBOXWINDRVINFSECVERSION;
+
+/**
+ * Enumeration for specifying an INF file list entry type.
+ */
+typedef enum
+{
+    /** No / invalid type. */
+    VBOXWINDRVINFLISTENTRY_T_NONE = 0,
+    /** List entry is of type VBOXWINDRVINFLISTENTRY_COPYFILE. */
+    VBOXWINDRVINFLISTENTRY_T_COPYFILE
+} VBOXWINDRVINFLISTENTRY_T;
+
+/**
+ * Structure for keeping a single FileCopy file entry.
+ */
+typedef struct VBOXWINDRVINFLISTENTRY_COPYFILE
+{
+    RTLISTNODE Node;
+    /** Absolute path to the file on the system. */
+    RTUTF16    wszFilePath[RTPATH_MAX];
+} VBOXWINDRVINFLISTENTRY_COPYFILE;
+/** Pointer to a structure for keeping a single FileCopy file entry. */
+typedef VBOXWINDRVINFLISTENTRY_COPYFILE *PVBOXWINDRVINFLISTENTRY_COPYFILE;
+
+/**
+ * Structure for keeping a list of one type of VBOXWINDRVINFLISTENTRY_XXX entries.
+ */
+typedef struct VBOXWINDRVINFLIST
+{
+    /** List of VBOXWINDRVINFLISTENTRY_XXX entries. */
+    RTLISTANCHOR             List;
+    /** Number of current entries of type VBOXWINDRVINFLISTENTRY_T_XXX. */
+    unsigned                 cEntries;
+    /** Type of entries this list contains. */
+    VBOXWINDRVINFLISTENTRY_T enmType;
+} VBOXWINDRVINFLIST;
+/** Pointer to a structure for keeping a list of FileCopy file entries.*/
+typedef VBOXWINDRVINFLIST *PVBOXWINDRVINFLIST;
 
 #endif /* !VBOX_INCLUDED_GuestHost_VBoxWinDrvDefs_h */

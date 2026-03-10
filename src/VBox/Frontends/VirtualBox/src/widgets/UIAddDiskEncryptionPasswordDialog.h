@@ -1,10 +1,10 @@
-/* $Id: UIAddDiskEncryptionPasswordDialog.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIAddDiskEncryptionPasswordDialog.h 112850 2026-02-06 11:10:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAddDiskEncryptionPasswordDialog class declaration.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -58,9 +58,13 @@ class SHARED_LIBRARY_STUFF UIAddDiskEncryptionPasswordDialog : public QDialog
 public:
 
     /** Constructs dialog passing @a pParent to the base-class.
-      * @param  strMachineName    Brings the name of the machine we show this dialog for.
-      * @param  encryptedMedia  Brings the lists of medium ids (values) encrypted with passwords with ids (keys). */
-    UIAddDiskEncryptionPasswordDialog(QWidget *pParent, const QString &strMachineName, const EncryptedMediumMap &encryptedMedia);
+      * @param  strMachineName  Brings the name of the machine we show this dialog for.
+      * @param  encryptedMedia  Brings the lists of medium ids (values) encrypted with passwords with ids (keys).
+      * @param  pDialog         Brings the actual parent dialog reference. */
+    UIAddDiskEncryptionPasswordDialog(QWidget *pParent,
+                                      const QString &strMachineName,
+                                      const EncryptedMediumMap &encryptedMedia,
+                                      QWidget *pDialog = 0);
 
     /** Returns the shallow copy of the encryption password map
       * acquired from the UIEncryptionDataTable instance. */
@@ -92,6 +96,9 @@ private:
 
     /** Holds the encrypted medium map reference. */
     const EncryptedMediumMap &m_encryptedMedia;
+
+    /** Holds the actual parent dialog reference. */
+    QWidget *m_pDialog;
 
     /** Holds the description label instance. */
     QLabel                *m_pLabelDescription;

@@ -8,7 +8,7 @@
 #
 
 #
-# Copyright (C) 2017-2025 Oracle and/or its affiliates.
+# Copyright (C) 2017-2026 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.
@@ -214,14 +214,22 @@ fi
 # GAs
 #
 @@VBOX_COND_IS_INSTALLING_ADDITIONS@@
-#
+
+@@VBOX_COND_AVOID_UPDATES_OVER_NETWORK@@
+# Remove any stale list state
+echo '** Clean up ...' | tee -a "${MY_LOGFILE}"
+log_command_in_target /bin/sh -c "rm -rf /var/lib/apt/lists/* && apt-get clean"
+# Use the ISO as a filesystem repo (bypasses cdrom:// transport issues)
+log_command_in_target /bin/sh -c "cat > /etc/apt/sources.list <<'EOF'
+deb [trusted=yes] file:/cdrom trixie main contrib non-free-firmware
+EOF"
+# Rebuild lists from the file repo
+log_command_in_target apt-get update
 # Packages needed for GAs.
-#
 echo "--------------------------------------------------" >> "${MY_LOGFILE}"
 echo '** Installing packages for building kernel modules...' | tee -a "${MY_LOGFILE}"
-log_command_in_target apt-get -y install build-essential
-log_command_in_target apt-get -y install linux-headers-$(uname -r)
-
+log_command_in_target apt-get -y install build-essential linux-headers-amd64
+@@VBOX_COND_END@@
 echo "--------------------------------------------------" >> "${MY_LOGFILE}"
 echo '** Installing VirtualBox Guest Additions...' | tee -a "${MY_LOGFILE}"
 MY_IGNORE_EXITCODE=2  # returned if modules already loaded and reboot required.
@@ -229,6 +237,7 @@ log_command_in_target /bin/bash "${MY_CHROOT_CDROM}/vboxadditions/@@VBOX_INSERT_
 log_command_in_target /bin/bash -c "udevadm control --reload-rules" # GAs doesn't yet do this.
 log_command_in_target /bin/bash -c "udevadm trigger"                 # (ditto)
 MY_IGNORE_EXITCODE=
+log_command_in_target groupadd --force --system vboxsf
 log_command_in_target usermod -a -G vboxsf "@@VBOX_INSERT_USER_LOGIN@@"
 @@VBOX_COND_END@@
 
@@ -333,4 +342,3 @@ echo "** Final exit code: ${MY_EXITCODE}" >> "${MY_LOGFILE}"
 echo "******************************************************************************" >> "${MY_LOGFILE}"
 
 exit ${MY_EXITCODE}
-

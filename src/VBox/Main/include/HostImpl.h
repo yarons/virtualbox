@@ -1,10 +1,10 @@
-/* $Id: HostImpl.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: HostImpl.h 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * Implementation of IHost.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -117,6 +117,7 @@ private:
     HRESULT getUSBDeviceFilters(std::vector<ComPtr<IHostUSBDeviceFilter> > &aUSBDeviceFilters);
     HRESULT getNetworkInterfaces(std::vector<ComPtr<IHostNetworkInterface> > &aNetworkInterfaces);
     HRESULT getNameServers(std::vector<com::Utf8Str> &aNameServers);
+    HRESULT getV6NameServers(std::vector<com::Utf8Str> &aNameServers);
     HRESULT getDomainName(com::Utf8Str &aDomainName);
     HRESULT getSearchStrings(std::vector<com::Utf8Str> &aSearchStrings);
     HRESULT getProcessorCount(ULONG *aProcessorCount);

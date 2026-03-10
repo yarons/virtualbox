@@ -1,10 +1,10 @@
-/* $Id: UIDownloaderExtensionPack.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIDownloaderExtensionPack.cpp 113222 2026-03-03 12:39:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDownloaderExtensionPack class implementation.
  */
 
 /*
- * Copyright (C) 2011-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -33,12 +33,13 @@
 
 /* GUI includes: */
 #include "QIFileDialog.h"
+#include "UIDefs.h"
 #include "UIDownloaderExtensionPack.h"
 #include "UIGlobalSession.h"
-#include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
 #include "UINetworkReply.h"
-#include "UINotificationCenter.h"
+#include "UINotificationMessage.h"
+#include "UINotificationQuestion.h"
 #include "UIVersion.h"
 
 /* Other VBox includes: */
@@ -55,7 +56,7 @@ UIDownloaderExtensionPack::UIDownloaderExtensionPack()
     const QString strSourceName = QString("%1-%2.vbox-extpack").arg(strUnderscoredName, strVersion);
     const QString strSourcePath = QString("https://download.virtualbox.org/virtualbox/%1/").arg(strVersion);
     const QString strSource = strSourcePath + strSourceName;
-    const QString strPathSHA256SumsFile = QString("https://www.virtualbox.org/download/hashes/%1/SHA256SUMS").arg(strVersion);
+    const QString strPathSHA256SumsFile = QString("https://download.virtualbox.org/virtualbox/%1/SHA256SUMS").arg(strVersion);
     const QString strTarget = QDir(gpGlobalSession->homeFolder()).absoluteFilePath(strSourceName);
 
     /* Set source/target: */
@@ -71,7 +72,7 @@ QString UIDownloaderExtensionPack::description() const
 
 bool UIDownloaderExtensionPack::askForDownloadingConfirmation(UINetworkReply *pReply)
 {
-    return msgCenter().confirmDownloadExtensionPack(GUI_ExtPackName, source().toString(), pReply->header(UINetworkReply::ContentLengthHeader).toInt());
+    return UINotificationQuestion::confirmDownloadingExtensionPack(GUI_ExtPackName, source().toString(), pReply->header(UINetworkReply::ContentLengthHeader).toInt());
 }
 
 void UIDownloaderExtensionPack::handleDownloadedObject(UINetworkReply *pReply)
@@ -162,7 +163,7 @@ void UIDownloaderExtensionPack::handleVerifiedObject(UINetworkReply *pReply)
         }
 
         /* Warn the user about extension-pack was downloaded but was NOT saved: */
-        msgCenter().cannotSaveExtensionPack(GUI_ExtPackName, source().toString(), QDir::toNativeSeparators(target()));
+        UINotificationMessage::cannotSaveExtensionPack(GUI_ExtPackName, source().toString(), QDir::toNativeSeparators(target()));
 
         /* Ask the user for another location for the extension-pack file: */
         QString strTarget = QIFileDialog::getExistingDirectory(QFileInfo(target()).absolutePath(),

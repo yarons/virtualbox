@@ -1,10 +1,10 @@
-/* $Id: UIVMActivityOverviewModelView.h 111205 2025-10-01 13:08:24Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityOverviewModelView.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewModelView class declaration.
  */
 
 /*
- * Copyright (C) 2009-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -54,7 +54,6 @@ class UIVirtualMachineItemCloud;
 /** A simple container to store host related performance values. */
 class UIVMActivityOverviewHostStats
 {
-
 public:
 
     UIVMActivityOverviewHostStats();
@@ -67,14 +66,9 @@ public:
     quint64 m_iFSFree;
 };
 
-
 class UIVMActivityOverviewTableView : public QITableView
 {
     Q_OBJECT;
-
-signals:
-
-    void sigSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
 
 public:
 
@@ -87,7 +81,6 @@ public:
 private:
 
     virtual void resizeEvent(QResizeEvent *pEvent) RT_OVERRIDE;
-    virtual void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) RT_OVERRIDE;
     virtual void mousePressEvent(QMouseEvent *pEvent) RT_OVERRIDE;
     /** Resizes all the columns in response to resizeEvent. Columns cannot be narrower than m_minimumColumnWidths values. */
     void resizeHeaders();
@@ -97,7 +90,6 @@ private:
 
 class UIVMActivityOverviewProxyModel : public QSortFilterProxyModel
 {
-
     Q_OBJECT;
 
 public:
@@ -178,6 +170,5 @@ private:
     /** @} */
     UIVMActivityOverviewHostStats m_hostStats;
 };
-
 
 #endif /* !FEQT_INCLUDED_SRC_activity_overview_UIVMActivityOverviewModelView_h */

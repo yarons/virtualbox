@@ -3,7 +3,7 @@
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -296,6 +296,41 @@ RTDECL(int) RTZipGzipCompressIoStream(RTVFSIOSTREAM hVfsIosDst, uint32_t fFlags,
  *                              (you write to this).
  */
 RTDECL(int) RTZipXzCompressIoStream(RTVFSIOSTREAM hVfsIosDst, uint32_t fFlags, uint8_t uLevel, PRTVFSIOSTREAM phVfsIosXz);
+
+
+/**
+ * Tests if the given bytes could be the start of an gzip compression stream.
+ *
+ * @returns true if like, false if not.
+ * @param   pbStart             Pointer to a buffer containing @a cbStart bytes
+ *                              from the start of the stream.
+ * @param   cbStart             Number of bytes @a pbStart contains. Must be at
+ *                              least 4 bytes for a positive gzip detection.
+ */
+RTDECL(bool) RTZipGzipIsStartOfCompressedStream(uint8_t const *pbStart, size_t cbStart);
+
+/**
+ * Tests if the given bytes could be the start of an bzip2 compression stream.
+ *
+ * @returns true if like, false if not.
+ * @param   pbStart             Pointer to a buffer containing @a cbStart bytes
+ *                              from the start of the stream.
+ * @param   cbStart             Number of bytes @a pbStart contains. Must be at
+ *                              least 6 bytes for a positive bzip2 detection, 10
+ *                              is better.
+ */
+RTDECL(bool) RTZipBzip2IsStartOfCompressedStream(uint8_t const *pbStart, size_t cbStart);
+
+/**
+ * Tests if the given bytes could be the start of an xz compression stream.
+ *
+ * @returns true if like, false if not.
+ * @param   pbStart             Pointer to a buffer containing @a cbStart bytes
+ *                              from the start of the stream.
+ * @param   cbStart             Number of bytes @a pbStart contains.  Must be at
+ *                              least 6 bytes for a positive XZ detection.
+ */
+RTDECL(bool) RTZipXzIsStartOfCompressedStream(uint8_t const *pbStart, size_t cbStart);
 
 
 /**

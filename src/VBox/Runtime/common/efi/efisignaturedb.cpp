@@ -1,10 +1,10 @@
-/* $Id: efisignaturedb.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: efisignaturedb.cpp 113238 2026-03-04 08:22:33Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - EFI signature database helpers.
  */
 
 /*
- * Copyright (C) 2021-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2021-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -397,7 +397,7 @@ static int rtEfiSigDbWriteList(PRTLISTANCHOR pLst, PCRTEFISIGDBDESC pDesc, RTVFS
             EFI_SIGNATURE_DATA SigData;
             RTEfiGuidFromUuid(&SigData.GuidOwner, &pIt->UuidOwner);
 
-            Assert(pDesc->cbSig == pIt->cbSignature);
+            Assert(pDesc->cbSig - sizeof(SigData) == pIt->cbSignature);
             aSegs[0].pvSeg = &SigData;
             aSegs[0].cbSeg = sizeof(SigData);
             aSegs[1].pvSeg = &pIt->abSignature[0];

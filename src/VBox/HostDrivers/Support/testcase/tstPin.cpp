@@ -1,10 +1,10 @@
-/* $Id: tstPin.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: tstPin.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * SUP Testcase - Memory locking interface (ring 3).
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -54,12 +54,7 @@
 int main(int argc, char **argv)
 {
     RTTEST hTest;
-
-    uint32_t fFlags = RTR3INIT_FLAGS_TRY_SUPLIB;
-#if defined(RT_ARCH_ARM64) || defined(RT_ARCH_ARM32) /* For M1 at least. */
-    fFlags |= SUPR3INIT_F_DRIVERLESS << RTR3INIT_FLAGS_SUPLIB_SHIFT;
-#endif
-    RTEXITCODE rcExit = RTTestInitExAndCreate(argc, &argv, fFlags, "tstPin", &hTest);
+    RTEXITCODE rcExit = RTTestInitExAndCreate(argc, &argv, RTR3INIT_FLAGS_TRY_SUPLIB, "tstPin", &hTest);
     if (rcExit != RTEXITCODE_SUCCESS)
         return rcExit;
     RTTestBanner(hTest);

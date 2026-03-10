@@ -1,10 +1,10 @@
-/* $Id: elf32.h 110876 2025-09-03 15:38:09Z alexander.eichner@oracle.com $ */
+/* $Id: elf32.h 113244 2026-03-04 10:53:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ELF 32-bit header.
  */
 
 /*
- * Copyright (C) 2010-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -222,8 +222,8 @@ typedef struct
 
 /** The symbol's visibility. */
 #define ELF32_ST_VISIBILITY(other)  ((other) & 0x03)
-/** Make st_other given the visbility. */
-#define ELF32_ST_OTHER(visbility)   ((visbility) & 0x03)
+/** Make st_other given the visibility. */
+#define ELF32_ST_OTHER(visibility)  ((visibility) & 0x03)
 
 #endif /* !IPRT_INCLUDED_formats_elf32_h */
 

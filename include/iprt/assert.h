@@ -3,7 +3,7 @@
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -2950,11 +2950,7 @@ RT_C_DECLS_END
  *
  * @param   GCPtr       The address (RTGCPTR).
  */
-#if GC_ARCH_BITS == 32
-# define AssertGCPtr32(GCPtr)           do { } while (0)
-#else
 # define AssertGCPtr32(GCPtr)           AssertMsg(!((GCPtr) & UINT64_C(0xffffffff00000000)), ("%RGv\n", GCPtr))
-#endif
 
 /** @def AssertForEach
  * Equivalent to Assert for each value of the variable from the starting

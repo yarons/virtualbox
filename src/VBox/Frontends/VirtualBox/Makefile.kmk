@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 111417 2025-10-15 12:01:22Z serkan.bayraktar@oracle.com $
+# $Id: Makefile.kmk 113213 2026-03-03 07:36:58Z sergey.dubov@oracle.com $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
 
 #
-# Copyright (C) 2006-2025 Oracle and/or its affiliates.
+# Copyright (C) 2006-2026 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.
@@ -121,8 +121,6 @@ VirtualBox_DEFS.win       += VBOX_WITH_MASKED_SEAMLESS # VBOX_WITH_TRANSLUCENT_S
 ifdef VBOX_WITH_VMNET
  VirtualBox_DEFS.darwin += VBOX_WITH_VMNET
 endif
-# qt6: The UICocoaSpecialControls needs restructuring because QMacCocoaViewContainer is gone. Too lazy for now.
-# VirtualBox_DEFS.darwin   += VBOX_DARWIN_USE_NATIVE_CONTROLS
 VirtualBox_DEFS.win       += UNICODE QT_DLL
 # Sort alphabetically!
 VirtualBox_DEFS           += \
@@ -189,8 +187,6 @@ VirtualBoxVM_DEFS.win       += VBOX_WITH_MASKED_SEAMLESS # VBOX_WITH_TRANSLUCENT
 ifdef VBOX_WITH_VMNET
  VirtualBoxVM_DEFS.darwin   += VBOX_WITH_VMNET
 endif
-# qt6: The UICocoaSpecialControls needs restructuring because QMacCocoaViewContainer is gone. Too lazy for now.
-# VirtualBoxVM_DEFS.darwin   += VBOX_DARWIN_USE_NATIVE_CONTROLS
 VirtualBoxVM_DEFS.win       += UNICODE QT_DLL
 # Sort alphabetically!
 VirtualBoxVM_DEFS           += \
@@ -246,8 +242,6 @@ UICommon_DEFS.debug   = VBOX_CHECK_STATE # QT_FATAL_ASSERT
 ifdef VBOX_WITH_VMNET
  UICommon_DEFS.darwin += VBOX_WITH_VMNET
 endif
-# qt6: The UICocoaSpecialControls needs restructuring because QMacCocoaViewContainer is gone. Too lazy for now.
-# UICommon_DEFS.darwin += VBOX_DARWIN_USE_NATIVE_CONTROLS
 #UICommon_DEFS.win     += UNICODE QT_DLL
 # Sort alphabetically!
 UICommon_DEFS         += \
@@ -758,6 +752,7 @@ UICommon_QT_MOCHDRS = \
 	src/extensions/QILineEdit.h \
 	src/extensions/QIListWidget.h \
 	src/extensions/QIMainDialog.h \
+	src/extensions/QIMainWindow.h \
 	src/extensions/QIManagerDialog.h \
 	src/extensions/QIMenu.h \
 	src/extensions/QIMessageBox.h \
@@ -805,7 +800,6 @@ UICommon_QT_MOCHDRS = \
 	src/globals/UITranslationEventListener.h \
 	src/globals/UIVirtualBoxEventHandler.h \
 	src/globals/UIVirtualBoxClientEventHandler.h \
-	src/globals/VBoxUtils.h \
 	src/guestctrl/UIFileManager.h \
 	src/guestctrl/UIFileManagerGuestTable.h \
 	src/guestctrl/UIFileManagerHostTable.h \
@@ -834,11 +828,13 @@ UICommon_QT_MOCHDRS = \
 	src/medium/viso/UIVisoContentBrowser.h \
 	src/medium/viso/UIVisoCreator.h \
 	src/notificationcenter/UINotificationCenter.h \
+	src/notificationcenter/UINotificationMessage.h \
 	src/notificationcenter/UINotificationModel.h \
 	src/notificationcenter/UINotificationObject.h \
 	src/notificationcenter/UINotificationObjectItem.h \
 	src/notificationcenter/UINotificationObjects.h \
 	src/notificationcenter/UINotificationProgressTask.h \
+	src/notificationcenter/UINotificationQuestion.h \
 	src/objects/UIExecutionQueue.h \
 	src/settings/UIAdvancedSettingsDialog.h \
 	src/settings/UIAdvancedSettingsDialogSpecific.h \
@@ -883,7 +879,14 @@ UICommon_QT_MOCHDRS = \
 	src/settings/editors/UIPointingHIDEditor.h \
 	src/settings/editors/UIProcessorFeaturesEditor.h \
 	src/settings/editors/UIProxyFeaturesEditor.h \
+	src/settings/editors/UIRecordingAudioProfileEditor.h \
+	src/settings/editors/UIRecordingFilePathEditor.h \
+	src/settings/editors/UIRecordingModeEditor.h \
+	src/settings/editors/UIRecordingScreenSelectorEditor.h \
 	src/settings/editors/UIRecordingSettingsEditor.h \
+	src/settings/editors/UIRecordingVideoBitrateEditor.h \
+	src/settings/editors/UIRecordingVideoFrameRateEditor.h \
+	src/settings/editors/UIRecordingVideoFrameSizeEditor.h \
 	src/settings/editors/UIScaleFactorEditor.h \
 	src/settings/editors/UISerialSettingsEditor.h \
 	src/settings/editors/UISharedClipboardEditor.h \
@@ -949,12 +952,16 @@ UICommon_QT_MOCHDRS = \
 	src/wizards/newvd/UIWizardNewVDSizeLocationPage.h \
 	src/wizards/newvd/UIWizardNewVDExpertPage.h
 
+if "$(KBUILD_TYPE)" != "release" || defined(VBOX_GUI_WITH_EXTRADATA_MANAGER_UI)
+ UICommon_QT_MOCHDRS += \
+ 	src/extradata/UIExtraDataManagerWindow.h
+endif
+
 ifdef VBOX_GUI_WITH_NETWORK_MANAGER
  UICommon_QT_MOCHDRS += \
  	src/networking/UIDownloader.h \
  	src/networking/UIDownloaderExtensionPack.h \
  	src/networking/UIDownloaderGuestAdditions.h \
- 	src/networking/UIDownloaderUserManual.h \
  	src/networking/UINetworkCustomer.h \
  	src/networking/UINetworkRequestManager.h \
  	src/networking/UINetworkRequest.h \
@@ -967,7 +974,6 @@ ifdef VBOX_GUI_WITH_NETWORK_MANAGER
 endif
 
 UICommon_QT_MOCHDRS.darwin += \
-	src/platform/darwin/UICocoaSpecialControls.h \
 	src/platform/darwin/UIWindowMenuManager.h
 
 
@@ -1205,8 +1211,7 @@ VirtualBox_SOURCES = \
 	src/wizards/importappliance/UIWizardImportAppPageSource.cpp
 
 VirtualBox_SOURCES.darwin += \
-	src/platform/darwin/UIDesktopServices_darwin.cpp \
-	src/platform/darwin/UIDesktopServices_darwin_cocoa.mm
+	src/platform/darwin/UIDesktopServices_darwin.cpp
 
 if1of ($(KBUILD_TARGET), freebsd linux netbsd openbsd solaris) # U*nix
  VirtualBox_SOURCES += \
@@ -1282,8 +1287,8 @@ ifdef VBOX_WITH_DRAG_AND_DROP
 endif
 
 VirtualBoxVM_SOURCES.darwin += \
-	src/platform/darwin/UIAbstractDockIconPreview.cpp \
-	src/platform/darwin/UICocoaDockIconPreview.mm
+	src/platform/darwin/UIDockIconPreview.cpp \
+	src/platform/darwin/UIDockIconPreview-cocoa.mm
 
 if1of ($(KBUILD_TARGET), freebsd linux netbsd openbsd solaris) # U*nix
  VirtualBoxVM_SOURCES += \
@@ -1321,6 +1326,7 @@ UICommon_SOURCES = \
 	src/extensions/QILineEdit.cpp \
 	src/extensions/QIListWidget.cpp \
 	src/extensions/QIMainDialog.cpp \
+	src/extensions/QIMainWindow.cpp \
 	src/extensions/QIManagerDialog.cpp \
 	src/extensions/QIMenu.cpp \
 	src/extensions/QIMessageBox.cpp \
@@ -1417,11 +1423,13 @@ UICommon_SOURCES = \
 	src/medium/viso/UIVisoContentBrowser.cpp \
 	src/medium/viso/UIVisoCreator.cpp \
 	src/notificationcenter/UINotificationCenter.cpp \
+	src/notificationcenter/UINotificationMessage.cpp \
 	src/notificationcenter/UINotificationModel.cpp \
 	src/notificationcenter/UINotificationObject.cpp \
 	src/notificationcenter/UINotificationObjectItem.cpp \
 	src/notificationcenter/UINotificationObjects.cpp \
 	src/notificationcenter/UINotificationProgressTask.cpp \
+	src/notificationcenter/UINotificationQuestion.cpp \
 	src/objects/UIExecutionQueue.cpp \
 	src/objects/UIRichTextString.cpp \
 	src/settings/UISettingsDefs.cpp \
@@ -1468,7 +1476,14 @@ UICommon_SOURCES = \
 	src/settings/editors/UIPointingHIDEditor.cpp \
 	src/settings/editors/UIProcessorFeaturesEditor.cpp \
 	src/settings/editors/UIProxyFeaturesEditor.cpp \
+	src/settings/editors/UIRecordingAudioProfileEditor.cpp \
+	src/settings/editors/UIRecordingFilePathEditor.cpp \
+	src/settings/editors/UIRecordingModeEditor.cpp \
+	src/settings/editors/UIRecordingScreenSelectorEditor.cpp \
 	src/settings/editors/UIRecordingSettingsEditor.cpp \
+	src/settings/editors/UIRecordingVideoBitrateEditor.cpp \
+	src/settings/editors/UIRecordingVideoFrameRateEditor.cpp \
+	src/settings/editors/UIRecordingVideoFrameSizeEditor.cpp \
 	src/settings/editors/UIScaleFactorEditor.cpp \
 	src/settings/editors/UISerialSettingsEditor.cpp \
 	src/settings/editors/UISharedClipboardEditor.cpp \
@@ -1535,12 +1550,16 @@ UICommon_SOURCES = \
 	src/wizards/newvd/UIWizardNewVDSizeLocationPage.cpp \
 	src/wizards/newvd/UIWizardNewVDExpertPage.cpp
 
+if "$(KBUILD_TYPE)" != "release" || defined(VBOX_GUI_WITH_EXTRADATA_MANAGER_UI)
+ UICommon_SOURCES += \
+ 	src/extradata/UIExtraDataManagerWindow.cpp
+endif
+
 ifdef VBOX_GUI_WITH_NETWORK_MANAGER
  UICommon_SOURCES += \
  	src/networking/UIDownloader.cpp \
  	src/networking/UIDownloaderExtensionPack.cpp \
  	src/networking/UIDownloaderGuestAdditions.cpp \
- 	src/networking/UIDownloaderUserManual.cpp \
  	src/networking/UINetworkCustomer.cpp \
  	src/networking/UINetworkRequestManager.cpp \
  	src/networking/UINetworkRequest.cpp \
@@ -1567,7 +1586,6 @@ UICommon_SOURCES.darwin += \
 	src/platform/darwin/CocoaEventHelper.mm \
 	src/platform/darwin/DarwinKeyboard.cpp \
 	src/platform/darwin/UICocoaApplication.mm \
-	src/platform/darwin/UICocoaSpecialControls.mm \
 	src/platform/darwin/UIWindowMenuManager.cpp \
 	src/platform/darwin/VBoxUtils-darwin-cocoa.mm \
 	src/platform/darwin/VBoxUtils-darwin.cpp

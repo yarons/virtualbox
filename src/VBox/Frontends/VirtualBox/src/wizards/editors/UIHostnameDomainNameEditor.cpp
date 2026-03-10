@@ -1,10 +1,10 @@
-/* $Id: UIHostnameDomainNameEditor.cpp 111434 2025-10-16 14:09:11Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHostnameDomainNameEditor.cpp 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHostnameDomainNameEditor class implementation.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -51,14 +51,19 @@
 *   UIProductKeyLineEdit definition.                                                                                             *
 *********************************************************************************************************************************/
 
+
 class UIProductKeyLineEdit : public QILineEdit
 {
     Q_OBJECT;
+
 public:
+
     UIProductKeyLineEdit(QWidget *pParent = 0);
     QString productKey() const;
     bool isValid(bool fRequired) const;
+
 private:
+
     static const QString strInputMask;
 };
 
@@ -133,13 +138,13 @@ void UIHostnameDomainNameEditor::mark(bool fProductKeyRequired)
 {
     if (m_pHostnameLineEdit)
         m_pHostnameLineEdit->mark(!m_pHostnameLineEdit->hasAcceptableInput(),
-                                  tr("Host name should be at least 2 character long. "
-                                     "Allowed characters are alphanumerics, \"-\" and \".\""),
+                                  tr("Host name must be at least two alphanumeric characters. "
+                                     "Hyphens are allowed between characters."),
                                   tr("Host name is valid"));
     if (m_pDomainNameLineEdit)
         m_pDomainNameLineEdit->mark(!m_pDomainNameLineEdit->hasAcceptableInput(),
-                                    tr("Domain name should be at least 2 character long. "
-                                       "Allowed characters are alphanumerics, \"-\" and \".\""),
+                                    tr("Domain labels (1–63 chars) may use letters, digits, or hyphens, but not start or end with one. "
+                                       "Labels are dot-separated, and the total length must be under 254 characters."),
                                     tr("Domain name is valid"));
     if (m_pProductKeyLineEdit)
         m_pProductKeyLineEdit->mark(!m_pProductKeyLineEdit->isValid(fProductKeyRequired),
@@ -235,10 +240,20 @@ void UIHostnameDomainNameEditor::prepare()
     addLineEdit(iRow, m_pHostnameLabel, m_pHostnameLineEdit, m_pMainLayout);
     addLineEdit(iRow, m_pDomainNameLabel, m_pDomainNameLineEdit, m_pMainLayout);
 
-    /* Host name and domain should be strings of minimum length of 2 and composed of alpha numerics, '-', and '.'
-     * Exclude strings with . at the end: */
-    m_pHostnameLineEdit->setValidator(new QRegularExpressionValidator(QRegularExpression("^[a-zA-Z0-9-.]{2,}[$a-zA-Z0-9-]"), this));
-    m_pDomainNameLineEdit->setValidator(new QRegularExpressionValidator(QRegularExpression("^[a-zA-Z0-9-.]{2,}[$a-zA-Z0-9-]"), this));
+    /* Host name should be 2-63 char long, no leading and alpha numerical start and end. Can have hyphen in between:*/
+    m_pHostnameLineEdit->setValidator(new QRegularExpressionValidator(QRegularExpression("^[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9]$"), this));
+
+    /*
+      Domain names must be 1–63 characters per label, using only alphanumeric characters and hyphens,
+      with labels not starting or ending with a hyphen. Separate labels with dots, and ensure the total
+      length does not exceed 253 characters:
+    */
+    m_pDomainNameLineEdit->setValidator(
+                                        new QRegularExpressionValidator(QRegularExpression(
+                                                                                           "^(?=.{1,253}$)([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?"
+                                                                                           ")(\\.[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\\.?$"),
+                                                                        this));
+
 
     connect(m_pHostnameLineEdit, &QILineEdit::textChanged,
             this, &UIHostnameDomainNameEditor::sltHostnameChanged);
@@ -264,19 +279,11 @@ void UIHostnameDomainNameEditor::prepare()
 
 void UIHostnameDomainNameEditor::sltHostnameChanged()
 {
-    m_pHostnameLineEdit->mark(!m_pHostnameLineEdit->hasAcceptableInput(),
-                              tr("Host name should be at least 2 character long. "
-                                 "Allowed characters are alphanumerics, \"-\" and \".\""),
-                              tr("Host name is valid"));
     emit sigHostnameDomainNameChanged(hostnameDomainName(), hostDomainNameComplete());
 }
 
 void UIHostnameDomainNameEditor::sltDomainChanged()
 {
-    m_pDomainNameLineEdit->mark(!m_pDomainNameLineEdit->hasAcceptableInput(),
-                                tr("Domain name should be at least 2 character long. "
-                                   "Allowed characters are alphanumerics, \"-\" and \".\""),
-                                tr("Domain name is valid"));
     emit sigHostnameDomainNameChanged(hostnameDomainName(), hostDomainNameComplete());
 }
 

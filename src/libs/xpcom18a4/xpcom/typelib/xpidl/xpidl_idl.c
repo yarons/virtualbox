@@ -1,10 +1,10 @@
-/* $Id: xpidl_idl.c 108540 2025-02-25 07:41:51Z alexander.eichner@oracle.com $ */
+/* $Id: xpidl_idl.c 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox xpidl clone - IDL parsing.
  */
 
 /*
- * Copyright (C) 2025 Oracle and/or its affiliates.
+ * Copyright (C) 2025-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -268,7 +268,7 @@ static int xpidlParseSkipComments(PXPIDLPARSE pThis, PXPIDLINPUT pInput, bool *p
             || !strncmp(pTok->Type.Comment.pszComment, "%{ C++", sizeof("%{ C++") - 1))
         {
             if (pfRawBlock)
-                *pfRawBlock = true; 
+                *pfRawBlock = true;
             return VINF_SUCCESS;
         }
 

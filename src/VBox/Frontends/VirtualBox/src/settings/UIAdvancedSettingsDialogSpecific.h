@@ -1,10 +1,10 @@
-/* $Id: UIAdvancedSettingsDialogSpecific.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialogSpecific.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialogSpecific class declaration.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -79,7 +79,6 @@ private:
     /** Returns whether page with certain @a iPageId is available. */
     bool isPageAvailable(int iPageId) const;
 };
-
 
 /** UIAdvancedSettingsDialog extension encapsulating all the specific functionality of the Machine Settings. */
 class SHARED_LIBRARY_STUFF UIAdvancedSettingsDialogMachine : public UIAdvancedSettingsDialog
@@ -167,6 +166,5 @@ private:
     /** Holds the console reference. */
     CConsole  m_console;
 };
-
 
 #endif /* !FEQT_INCLUDED_SRC_settings_UIAdvancedSettingsDialogSpecific_h */

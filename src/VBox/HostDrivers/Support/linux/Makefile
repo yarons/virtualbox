@@ -1,10 +1,10 @@
-# $Id: Makefile 110886 2025-09-04 09:27:24Z ramshankar.venkataraman@oracle.com $
+# $Id: Makefile 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the VirtualBox Linux Host Driver.
 #
 
 #
-# Copyright (C) 2006-2025 Oracle and/or its affiliates.
+# Copyright (C) 2006-2026 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.
@@ -63,7 +63,9 @@ VBOXMOD_OBJS += \
 	r0drv/powernotification-r0drv.o \
 	r0drv/linux/assert-r0drv-linux.o \
 	r0drv/linux/alloc-r0drv-linux.o \
+	r0drv/linux/fileio-r0drv-linux.o \
 	r0drv/linux/initterm-r0drv-linux.o \
+	r0drv/linux/dbgkrnlinfo-r0drv-linux.o \
 	r0drv/linux/memobj-r0drv-linux.o \
 	r0drv/linux/memuserkernel-r0drv-linux.o \
 	r0drv/linux/mp-r0drv-linux.o \
@@ -81,6 +83,7 @@ VBOXMOD_OBJS += \
 	r0drv/linux/time-r0drv-linux.o \
 	r0drv/linux/timer-r0drv-linux.o \
 	r0drv/generic/semspinmutex-r0drv-generic.o \
+	r0drv/RTR0DbgKrnlInfoGetSymbol.o \
 	common/alloc/alloc.o \
 	common/checksum/crc32.o \
 	common/checksum/ipv4.o \
@@ -189,8 +192,7 @@ VBOXMOD_DEFS = \
 	SUPDRV_WITH_RELEASE_LOGGER \
 	VBOX_WITHOUT_EFLAGS_AC_SET_IN_VBOXDRV \
 	IPRT_WITHOUT_EFLAGS_AC_PRESERVING \
-	VBOX_WITH_HOST_VMX \
-	VBOX_WITH_64_BITS_GUESTS # <-- must be consistent with Config.kmk!
+	VBOX_WITH_HOST_VMX LOG_ENABLED
 ifndef CONFIG_VBOXDRV_FIXEDMAJOR
 VBOXMOD_DEFS += CONFIG_VBOXDRV_AS_MISC
 endif

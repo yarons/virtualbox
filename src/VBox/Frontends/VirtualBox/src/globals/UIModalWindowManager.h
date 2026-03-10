@@ -1,10 +1,10 @@
-/* $Id: UIModalWindowManager.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIModalWindowManager.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIModalWindowManager class declaration.
  */
 
 /*
- * Copyright (C) 2013-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -108,4 +108,3 @@ private:
 inline UIModalWindowManager &windowManager() { return *(UIModalWindowManager::instance()); }
 
 #endif /* !FEQT_INCLUDED_SRC_globals_UIModalWindowManager_h */
-

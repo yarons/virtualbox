@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 111351 2025-10-13 13:33:19Z sergey.dubov@oracle.com $
+# $Id: Makefile.kmk 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the Windows installer.
 #
 
 #
-# Copyright (C) 2006-2025 Oracle and/or its affiliates.
+# Copyright (C) 2006-2026 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.
@@ -556,7 +556,7 @@ VBOX_WIN_INST_ENV := \
 	-E 'VBOX_WITH_VBOXSDL=$(if $(VBOX_WITH_VBOXSDL),yes,no)' \
 	-E 'VBOX_WITH_VIRT_ARMV8=$(if $(VBOX_WITH_VIRT_ARMV8),yes,no)' \
 	-E 'VBOX_WITH_VMSVGA3D=$(if $(VBOX_WITH_VMSVGA3D),yes,no)' \
-	-E 'VBOX_WITH_VRDP=$(if-expr defined(VBOX_WITH_VRDP) && !defined(VBOX_WITH_EXTPACK_PUEL),yes,no)' \
+	-E 'VBOX_WITH_VRDP=$(if $(VBOX_WITH_VRDP),yes,no)' \
 	-E 'VBOX_WITH_WEBSERVICES=$(if $(VBOX_WITH_WEBSERVICES),yes,no)'
 
 ifndef VBOX_WIN_ATTESTATION_SIGNING
@@ -888,8 +888,8 @@ $(VBOX_WIN_INST_OUT_DIR)/VBoxGuiNLS.wxi: $(PATH_ROOT)/src/VBox/Frontends/Virtual
 	$(APPEND) -t $@ '<?xml version="1.0" ?>'
 	$(APPEND) $@ '<Include xmlns="http://wixtoolset.org/schemas/v4/wxs">'
 	$(APPEND) -n $@ $(foreach lang,$(VBOX_APPROVED_GUI_LANGUAGES), \
-	             '  <File Id="nlsqt${lang}"  Name="qt_${lang}.qm"         DiskId="$(VBOX_INSTALLER_COMMON_DISKID)" Vital="yes" Source="$$(env.PATH_OUT)\bin\nls\qt_${lang}.qm"         />' \
-	             '  <File Id="nlsgui${lang}" Name="VirtualBox_${lang}.qm" DiskId="$(VBOX_INSTALLER_COMMON_DISKID)" Vital="yes" Source="$$(env.PATH_OUT)\bin\nls\VirtualBox_${lang}.qm" />')
+	             '  <File Id="file_nlsqt${lang}"  Name="qt_${lang}.qm"         DiskId="$(VBOX_INSTALLER_COMMON_DISKID)" Vital="yes" Source="$$(env.PATH_OUT)\bin\nls\qt_${lang}.qm"         />' \
+	             '  <File Id="file_nlsgui${lang}" Name="VirtualBox_${lang}.qm" DiskId="$(VBOX_INSTALLER_COMMON_DISKID)" Vital="yes" Source="$$(env.PATH_OUT)\bin\nls\VirtualBox_${lang}.qm" />')
 	$(APPEND) $@ '</Include>'
 
 #
@@ -955,7 +955,7 @@ ifdef VBOX_UNATTENDED_TEMPLATES
 		'  <Directory Id="dir_VBoxUnattendedTemplates" Name="UnattendedTemplates">' \
 		'    <Component Id="cp_UnattendedTemplates" Guid="0571550d-aaa5-4723-c17b-5ddcc29f5686" Bitness="$$(var.Property_Bitness)">' \
 		$(foreach file,$(VBOX_UNATTENDED_TEMPLATES), \
-		'      <File Id="$(file)" Name="$(file)" Source="$$(env.PATH_OUT)\bin\UnattendedTemplates\$(file)" />') \
+		'      <File Id="file_$(file)" Name="$(file)" Source="$$(env.PATH_OUT)\bin\UnattendedTemplates\$(file)" />') \
 		'    </Component>' \
 		'  </Directory>'
 endif
@@ -1242,10 +1242,13 @@ $$(RePackScripts_0_OUTDIR)/sign-ev.cmd: | $$(dir $$@)
 $$(RePackScripts_0_OUTDIR)/VMMR0.inf: $(PATH_SUB_CURRENT)/Scripts/VMMR0.inf $(MAKEFILE_CURRENT) | $$(dir $$@)
 	$(call MSG_GENERATE,RePackScripts,$@,$<)
 	$(call VBOX_EDIT_INF_FN,$<,$@)
-
 $$(RePackScripts_0_OUTDIR)/VBoxExtPackPuel.inf: $(PATH_SUB_CURRENT)/Scripts/VBoxExtPackPuel.inf $(MAKEFILE_CURRENT) | $$(dir $$@)
 	$(call MSG_GENERATE,RePackScripts,$@,$<)
 	$(call VBOX_EDIT_INF_FN,$<,$@)
 
+vbox_uninstall:
+	@kmk_builtin_echo "Uninstalling VirtualBox ..."
+	@kmk_builtin_echo ""
+	@powershell -Command "Start-Process -Wait powershell -Verb RunAs -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File \"$(PATH_SUB_CURRENT)/Scripts/vbox_uninstall.ps1\" \"*VirtualBox*\"'"
 
 include $(FILE_KBUILD_SUB_FOOTER)

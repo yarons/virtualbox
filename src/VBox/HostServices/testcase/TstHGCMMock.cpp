@@ -1,4 +1,4 @@
-/* $Id: TstHGCMMock.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: TstHGCMMock.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * TstHGCMMock.cpp - Mocking framework for testing HGCM-based host services.
  *
@@ -11,7 +11,7 @@
  */
 
 /*
- * Copyright (C) 2022-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2022-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -545,7 +545,7 @@ VBGLR3DECL(int) VbglR3HGCMDisconnect(HGCMCLIENTID idClient)
  * @returns IPRT status code.
  * @param   pu64IdSession       Session id (out).
  */
-VBGLR3DECL(int) VbglR3GetSessionId(uint64_t *pu64IdSession)
+VBGLR3DECL(int) VbglR3QuerySessionId(uint64_t *pu64IdSession)
 {
     if (pu64IdSession)
         *pu64IdSession = 42;

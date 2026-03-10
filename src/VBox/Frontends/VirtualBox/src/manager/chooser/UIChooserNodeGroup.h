@@ -1,10 +1,10 @@
-/* $Id: UIChooserNodeGroup.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIChooserNodeGroup.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGroup class declaration.
  */
 
 /*
- * Copyright (C) 2012-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -33,7 +33,6 @@
 
 /* GUI includes: */
 #include "UIChooserNode.h"
-
 
 /** UIChooserNode subclass used as interface for invisible tree-view group nodes. */
 class UIChooserNodeGroup : public UIChooserNode
@@ -146,6 +145,5 @@ private:
     /** Holds machine children. */
     QList<UIChooserNode*>  m_nodesMachine;
 };
-
 
 #endif /* !FEQT_INCLUDED_SRC_manager_chooser_UIChooserNodeGroup_h */

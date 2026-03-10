@@ -1,10 +1,10 @@
-/* $Id: UIDetailsElement.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIDetailsElement.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class declaration.
  */
 
 /*
- * Copyright (C) 2012-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -48,7 +48,6 @@ class UIGraphicsRotatorButton;
 class UIGraphicsTextPane;
 class CCloudMachine;
 class CMachine;
-
 
 /** UIDetailsItem extension implementing element item. */
 class UIDetailsElement : public UIDetailsItem
@@ -94,6 +93,11 @@ public:
       * @{ */
         /** Returns element type. */
         DetailsElementType elementType() const { return m_enmType; }
+
+        /** Defines element @a strName. */
+        void setName(const QString &strName);
+        /** Returns the name of the item. */
+        QString name() const { return m_strName; }
 
         /** Defines the @a text table as the passed one. */
         void setText(const UITextTable &text);
@@ -167,9 +171,6 @@ protected:
         /** Returns RTTI item type. */
         virtual int type() const RT_OVERRIDE { return Type; }
 
-        /** Returns the description of the item. */
-        virtual QString description() const RT_OVERRIDE;
-
         /** Returns cached machine reference. */
         const CMachine &machine();
         /** Returns cached cloud machine reference. */
@@ -177,9 +178,6 @@ protected:
 
         /** Returns whether element is of local type. */
         bool isLocal() const;
-
-        /** Defines element @a strName. */
-        void setName(const QString &strName);
 
         /** Defines @a iAdditionalHeight during toggle animation. */
         void setAdditionalHeight(int iAdditionalHeight);

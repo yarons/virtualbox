@@ -1,10 +1,10 @@
-/* $Id: NEMR3NativeTemplate-linux.cpp.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: NEMR3NativeTemplate-linux.cpp.h 113132 2026-02-23 18:18:04Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Linux backend, common bits for x86 and arm64.
  */
 
 /*
- * Copyright (C) 2021-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2021-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -28,9 +28,447 @@
 /*
  * Supply stuff missing from the kvm.h on the build box.
  */
+
+/*
+ * Exit codes
+ */
+#ifndef KVM_EXIT_UNKNOWN
+# define KVM_EXIT_UNKNOWN 0
+#endif
+#ifndef KVM_EXIT_EXCEPTION
+# define KVM_EXIT_EXCEPTION 1
+#endif
+#ifndef KVM_EXIT_IO
+# define KVM_EXIT_IO 2
+#endif
+#ifndef KVM_EXIT_HYPERCALL
+# define KVM_EXIT_HYPERCALL 3
+#endif
+#ifndef KVM_EXIT_DEBUG
+# define KVM_EXIT_DEBUG 4
+#endif
+#ifndef KVM_EXIT_HLT
+# define KVM_EXIT_HLT 5
+#endif
+#ifndef KVM_EXIT_MMIO
+# define KVM_EXIT_MMIO 6
+#endif
+#ifndef KVM_EXIT_IRQ_WINDOW_OPEN
+# define KVM_EXIT_IRQ_WINDOW_OPEN 7
+#endif
+#ifndef KVM_EXIT_SHUTDOWN
+# define KVM_EXIT_SHUTDOWN 8
+#endif
+#ifndef KVM_EXIT_FAIL_ENTRY
+# define KVM_EXIT_FAIL_ENTRY 9
+#endif
+#ifndef KVM_EXIT_INTR
+# define KVM_EXIT_INTR 10
+#endif
+#ifndef KVM_EXIT_SET_TPR
+# define KVM_EXIT_SET_TPR 11
+#endif
+#ifndef KVM_EXIT_TPR_ACCESS
+# define KVM_EXIT_TPR_ACCESS 12
+#endif
+#ifndef KVM_EXIT_S390_SIEIC
+# define KVM_EXIT_S390_SIEIC 13
+#endif
+#ifndef KVM_EXIT_S390_RESET
+# define KVM_EXIT_S390_RESET 14
+#endif
+#ifndef KVM_EXIT_DCR
+# define KVM_EXIT_DCR 15
+#endif
+#ifndef KVM_EXIT_NMI
+# define KVM_EXIT_NMI 16
+#endif
+#ifndef KVM_EXIT_INTERNAL_ERROR
+# define KVM_EXIT_INTERNAL_ERROR 17
+#endif
+#ifndef KVM_EXIT_OSI
+# define KVM_EXIT_OSI 18
+#endif
+#ifndef KVM_EXIT_PAPR_HCALL
+# define KVM_EXIT_PAPR_HCALL 19
+#endif
+#ifndef KVM_EXIT_S390_UCONTROL
+# define KVM_EXIT_S390_UCONTROL 20
+#endif
+#ifndef KVM_EXIT_WATCHDOG
+# define KVM_EXIT_WATCHDOG 21
+#endif
+#ifndef KVM_EXIT_S390_TSCH
+# define KVM_EXIT_S390_TSCH 22
+#endif
+#ifndef KVM_EXIT_EPR
+# define KVM_EXIT_EPR 23
+#endif
+#ifndef KVM_EXIT_SYSTEM_EVENT
+# define KVM_EXIT_SYSTEM_EVENT 24
+#endif
+#ifndef KVM_EXIT_S390_STSI
+# define KVM_EXIT_S390_STSI 25
+#endif
+#ifndef KVM_EXIT_IOAPIC_EOI
+# define KVM_EXIT_IOAPIC_EOI 26
+#endif
+#ifndef KVM_EXIT_HYPERV
+# define KVM_EXIT_HYPERV 27
+#endif
+#ifndef KVM_EXIT_ARM_NISV
+# define KVM_EXIT_ARM_NISV 28
+#endif
+#ifndef KVM_EXIT_X86_RDMSR
+# define KVM_EXIT_X86_RDMSR 29
+#endif
+#ifndef KVM_EXIT_X86_WRMSR
+# define KVM_EXIT_X86_WRMSR 30
+#endif
+#ifndef KVM_EXIT_DIRTY_RING_FULL
+# define KVM_EXIT_DIRTY_RING_FULL 31
+#endif
+#ifndef KVM_EXIT_AP_RESET_HOLD
+# define KVM_EXIT_AP_RESET_HOLD 32
+#endif
+#ifndef KVM_EXIT_X86_BUS_LOCK
+# define KVM_EXIT_X86_BUS_LOCK 33
+#endif
+#ifndef KVM_EXIT_XEN
+# define KVM_EXIT_XEN 34
+#endif
+#ifndef KVM_EXIT_RISCV_SBI
+# define KVM_EXIT_RISCV_SBI 35
+#endif
+#ifndef KVM_EXIT_RISCV_CSR
+# define KVM_EXIT_RISCV_CSR 36
+#endif
+#ifndef KVM_EXIT_NOTIFY
+# define KVM_EXIT_NOTIFY 37
+#endif
+#ifndef KVM_EXIT_LOONGARCH_IOCSR
+# define KVM_EXIT_LOONGARCH_IOCSR 38
+#endif
+#ifndef KVM_EXIT_MEMORY_FAULT
+# define KVM_EXIT_MEMORY_FAULT 39
+#endif
+#ifndef KVM_EXIT_TDX
+# define KVM_EXIT_TDX 40
+#endif
+
+
+/*
+ * Flags for certain exits.
+ */
 #ifndef KVM_INTERNAL_ERROR_UNEXPECTED_EXIT_REASON /* since 5.4 */
 # define KVM_INTERNAL_ERROR_UNEXPECTED_EXIT_REASON 4
 #endif
+#ifndef KVM_GUESTDBG_BLOCKIRQ
+# define KVM_GUESTDBG_BLOCKIRQ 0x00100000
+#endif
+
+
+/*
+ * Capabilities
+ */
+#ifndef KVM_CAP_PPC_NESTED_HV
+# define KVM_CAP_PPC_NESTED_HV 160
+#endif
+#ifndef KVM_CAP_HYPERV_SEND_IPI
+# define KVM_CAP_HYPERV_SEND_IPI 161
+#endif
+#ifndef KVM_CAP_COALESCED_PIO
+# define KVM_CAP_COALESCED_PIO 162
+#endif
+#ifndef KVM_CAP_HYPERV_ENLIGHTENED_VMCS
+# define KVM_CAP_HYPERV_ENLIGHTENED_VMCS 163
+#endif
+#ifndef KVM_CAP_EXCEPTION_PAYLOAD
+# define KVM_CAP_EXCEPTION_PAYLOAD 164
+#endif
+#ifndef KVM_CAP_ARM_VM_IPA_SIZE
+# define KVM_CAP_ARM_VM_IPA_SIZE 165
+#endif
+#ifndef KVM_CAP_MANUAL_DIRTY_LOG_PROTECT
+# define KVM_CAP_MANUAL_DIRTY_LOG_PROTECT 166
+#endif
+#ifndef KVM_CAP_HYPERV_CPUID
+# define KVM_CAP_HYPERV_CPUID 167
+#endif
+#ifndef KVM_CAP_MANUAL_DIRTY_LOG_PROTECT2
+# define KVM_CAP_MANUAL_DIRTY_LOG_PROTECT2 168
+#endif
+#ifndef KVM_CAP_PPC_IRQ_XIVE
+# define KVM_CAP_PPC_IRQ_XIVE 169
+#endif
+#ifndef KVM_CAP_ARM_SVE
+# define KVM_CAP_ARM_SVE 170
+#endif
+#ifndef KVM_CAP_ARM_PTRAUTH_ADDRESS
+# define KVM_CAP_ARM_PTRAUTH_ADDRESS 171
+#endif
+#ifndef KVM_CAP_ARM_PTRAUTH_GENERIC
+# define KVM_CAP_ARM_PTRAUTH_GENERIC 172
+#endif
+#ifndef KVM_CAP_PMU_EVENT_FILTER
+# define KVM_CAP_PMU_EVENT_FILTER 173
+#endif
+#ifndef KVM_CAP_ARM_IRQ_LINE_LAYOUT_2
+# define KVM_CAP_ARM_IRQ_LINE_LAYOUT_2 174
+#endif
+#ifndef KVM_CAP_HYPERV_DIRECT_TLBFLUSH
+# define KVM_CAP_HYPERV_DIRECT_TLBFLUSH 175
+#endif
+#ifndef KVM_CAP_PPC_GUEST_DEBUG_SSTEP
+# define KVM_CAP_PPC_GUEST_DEBUG_SSTEP 176
+#endif
+#ifndef KVM_CAP_ARM_NISV_TO_USER
+# define KVM_CAP_ARM_NISV_TO_USER 177
+#endif
+#ifndef KVM_CAP_ARM_INJECT_EXT_DABT
+# define KVM_CAP_ARM_INJECT_EXT_DABT 178
+#endif
+#ifndef KVM_CAP_S390_VCPU_RESETS
+# define KVM_CAP_S390_VCPU_RESETS 179
+#endif
+#ifndef KVM_CAP_S390_PROTECTED
+# define KVM_CAP_S390_PROTECTED 180
+#endif
+#ifndef KVM_CAP_PPC_SECURE_GUEST
+# define KVM_CAP_PPC_SECURE_GUEST 181
+#endif
+#ifndef KVM_CAP_HALT_POLL
+# define KVM_CAP_HALT_POLL 181
+#endif
+#ifndef KVM_CAP_ASYNC_PF_INT
+# define KVM_CAP_ASYNC_PF_INT 182
+#endif
+#ifndef KVM_CAP_LAST_CPU
+# define KVM_CAP_LAST_CPU 183
+#endif
+#ifndef KVM_CAP_SMALLER_MAXPHYADDR
+# define KVM_CAP_SMALLER_MAXPHYADDR 184
+#endif
+#ifndef KVM_CAP_S390_DIAG318
+# define KVM_CAP_S390_DIAG318 185
+#endif
+#ifndef KVM_CAP_STEAL_TIME
+# define KVM_CAP_STEAL_TIME 186
+#endif
+#ifndef KVM_CAP_X86_USER_SPACE_MSR
+# define KVM_CAP_X86_USER_SPACE_MSR 187
+#endif
+#ifndef KVM_CAP_X86_MSR_FILTER
+# define KVM_CAP_X86_MSR_FILTER 188
+# define MY_KVM_DEFINE_MSR_FILTER
+#endif
+#ifndef KVM_CAP_ENFORCE_PV_FEATURE_CPUID
+# define KVM_CAP_ENFORCE_PV_FEATURE_CPUID 189
+#endif
+#ifndef KVM_CAP_SYS_HYPERV_CPUID
+# define KVM_CAP_SYS_HYPERV_CPUID 191
+#endif
+#ifndef KVM_CAP_DIRTY_LOG_RING
+# define KVM_CAP_DIRTY_LOG_RING 192
+#endif
+#ifndef KVM_CAP_X86_BUS_LOCK_EXIT
+# define KVM_CAP_X86_BUS_LOCK_EXIT 193
+#endif
+#ifndef KVM_CAP_PPC_DAWR1
+# define KVM_CAP_PPC_DAWR1 194
+#endif
+#ifndef KVM_CAP_SET_GUEST_DEBUG2
+# define KVM_CAP_SET_GUEST_DEBUG2 195
+#endif
+#ifndef KVM_CAP_SGX_ATTRIBUTE
+# define KVM_CAP_SGX_ATTRIBUTE 196
+#endif
+#ifndef KVM_CAP_VM_COPY_ENC_CONTEXT_FROM
+# define KVM_CAP_VM_COPY_ENC_CONTEXT_FROM 197
+#endif
+#ifndef KVM_CAP_PTP_KVM
+# define KVM_CAP_PTP_KVM 198
+#endif
+#ifndef KVM_CAP_HYPERV_ENFORCE_CPUID
+# define KVM_CAP_HYPERV_ENFORCE_CPUID 199
+#endif
+#ifndef KVM_CAP_SREGS2
+# define KVM_CAP_SREGS2 200
+#endif
+#ifndef KVM_CAP_EXIT_HYPERCALL
+# define KVM_CAP_EXIT_HYPERCALL 201
+#endif
+#ifndef KVM_CAP_PPC_RPT_INVALIDATE
+# define KVM_CAP_PPC_RPT_INVALIDATE 202
+#endif
+#ifndef KVM_CAP_BINARY_STATS_FD
+# define KVM_CAP_BINARY_STATS_FD 203
+#endif
+#ifndef KVM_CAP_EXIT_ON_EMULATION_FAILURE
+# define KVM_CAP_EXIT_ON_EMULATION_FAILURE 204
+#endif
+#ifndef KVM_CAP_ARM_MTE
+# define KVM_CAP_ARM_MTE 205
+#endif
+#ifndef KVM_CAP_VM_MOVE_ENC_CONTEXT_FROM
+# define KVM_CAP_VM_MOVE_ENC_CONTEXT_FROM 206
+#endif
+#ifndef KVM_CAP_VM_GPA_BITS
+# define KVM_CAP_VM_GPA_BITS 207
+#endif
+#ifndef KVM_CAP_XSAVE2
+# define KVM_CAP_XSAVE2 208
+#endif
+#ifndef KVM_CAP_SYS_ATTRIBUTES
+# define KVM_CAP_SYS_ATTRIBUTES 209
+#endif
+#ifndef KVM_CAP_PPC_AIL_MODE_3
+# define KVM_CAP_PPC_AIL_MODE_3 210
+#endif
+#ifndef KVM_CAP_S390_MEM_OP_EXTENSION
+# define KVM_CAP_S390_MEM_OP_EXTENSION 211
+#endif
+#ifndef KVM_CAP_PMU_CAPABILITY
+# define KVM_CAP_PMU_CAPABILITY 212
+#endif
+#ifndef KVM_CAP_DISABLE_QUIRKS2
+# define KVM_CAP_DISABLE_QUIRKS2 213
+#endif
+#ifndef KVM_CAP_VM_TSC_CONTROL
+# define KVM_CAP_VM_TSC_CONTROL 214
+#endif
+#ifndef KVM_CAP_SYSTEM_EVENT_DATA
+# define KVM_CAP_SYSTEM_EVENT_DATA 215
+#endif
+#ifndef KVM_CAP_ARM_SYSTEM_SUSPEND
+# define KVM_CAP_ARM_SYSTEM_SUSPEND 216
+#endif
+#ifndef KVM_CAP_S390_PROTECTED_DUMP
+# define KVM_CAP_S390_PROTECTED_DUMP 217
+#endif
+#ifndef KVM_CAP_X86_TRIPLE_FAULT_EVENT
+# define KVM_CAP_X86_TRIPLE_FAULT_EVENT 218
+#endif
+#ifndef KVM_CAP_X86_NOTIFY_VMEXIT
+# define KVM_CAP_X86_NOTIFY_VMEXIT 219
+#endif
+#ifndef KVM_CAP_VM_DISABLE_NX_HUGE_PAGES
+# define KVM_CAP_VM_DISABLE_NX_HUGE_PAGES 220
+#endif
+#ifndef KVM_CAP_S390_ZPCI_OP
+# define KVM_CAP_S390_ZPCI_OP 221
+#endif
+#ifndef KVM_CAP_S390_CPU_TOPOLOGY
+# define KVM_CAP_S390_CPU_TOPOLOGY 222
+#endif
+#ifndef KVM_CAP_DIRTY_LOG_RING_ACQ_REL
+# define KVM_CAP_DIRTY_LOG_RING_ACQ_REL 223
+#endif
+#ifndef KVM_CAP_S390_PROTECTED_ASYNC_DISABLE
+# define KVM_CAP_S390_PROTECTED_ASYNC_DISABLE 224
+#endif
+#ifndef KVM_CAP_DIRTY_LOG_RING_WITH_BITMAP
+# define KVM_CAP_DIRTY_LOG_RING_WITH_BITMAP 225
+#endif
+#ifndef KVM_CAP_PMU_EVENT_MASKED_EVENTS
+# define KVM_CAP_PMU_EVENT_MASKED_EVENTS 226
+#endif
+#ifndef KVM_CAP_COUNTER_OFFSET
+# define KVM_CAP_COUNTER_OFFSET 227
+#endif
+#ifndef KVM_CAP_ARM_EAGER_SPLIT_CHUNK_SIZE
+# define KVM_CAP_ARM_EAGER_SPLIT_CHUNK_SIZE 228
+#endif
+#ifndef KVM_CAP_ARM_SUPPORTED_BLOCK_SIZES
+# define KVM_CAP_ARM_SUPPORTED_BLOCK_SIZES 229
+#endif
+#ifndef KVM_CAP_ARM_SUPPORTED_REG_MASK_RANGES
+# define KVM_CAP_ARM_SUPPORTED_REG_MASK_RANGES 230
+#endif
+#ifndef KVM_CAP_USER_MEMORY2
+# define KVM_CAP_USER_MEMORY2 231
+#endif
+#ifndef KVM_CAP_MEMORY_FAULT_INFO
+# define KVM_CAP_MEMORY_FAULT_INFO 232
+#endif
+#ifndef KVM_CAP_MEMORY_ATTRIBUTES
+# define KVM_CAP_MEMORY_ATTRIBUTES 233
+#endif
+#ifndef KVM_CAP_GUEST_MEMFD
+# define KVM_CAP_GUEST_MEMFD 234
+#endif
+#ifndef KVM_CAP_VM_TYPES
+# define KVM_CAP_VM_TYPES 235
+#endif
+#ifndef KVM_CAP_PRE_FAULT_MEMORY
+# define KVM_CAP_PRE_FAULT_MEMORY 236
+#endif
+#ifndef KVM_CAP_X86_APIC_BUS_CYCLES_NS
+# define KVM_CAP_X86_APIC_BUS_CYCLES_NS 237
+#endif
+#ifndef KVM_CAP_X86_GUEST_MODE
+# define KVM_CAP_X86_GUEST_MODE 238
+#endif
+#ifndef KVM_CAP_ARM_WRITABLE_IMP_ID_REGS
+# define KVM_CAP_ARM_WRITABLE_IMP_ID_REGS 239
+#endif
+#ifndef KVM_CAP_ARM_EL2
+# define KVM_CAP_ARM_EL2 240
+#endif
+#ifndef KVM_CAP_ARM_EL2_E2H0
+# define KVM_CAP_ARM_EL2_E2H0 241
+#endif
+#ifndef KVM_CAP_RISCV_MP_STATE_RESET
+# define KVM_CAP_RISCV_MP_STATE_RESET 242
+#endif
+#ifndef KVM_CAP_ARM_CACHEABLE_PFNMAP_SUPPORTED
+# define KVM_CAP_ARM_CACHEABLE_PFNMAP_SUPPORTED 243
+#endif
+#ifndef KVM_CAP_GUEST_MEMFD_FLAGS
+# define KVM_CAP_GUEST_MEMFD_FLAGS 244
+#endif
+
+
+#ifdef MY_KVM_DEFINE_MSR_FILTER
+# define KVM_MSR_FILTER_MAX_RANGES 16
+# define KVM_MSR_FILTER_MAX_BITMAP_SIZE 0x600
+
+struct kvm_msr_filter_range
+{
+    uint32_t flags;
+    uint32_t nmsrs;
+    uint32_t base;
+    uint8_t  *bitmap;
+};
+
+#define KVM_MSR_FILTER_READ  (1 << 0)
+#define KVM_MSR_FILTER_WRITE (1 << 1)
+
+struct kvm_msr_filter
+{
+    uint32_t flags;
+    struct kvm_msr_filter_range ranges[KVM_MSR_FILTER_MAX_RANGES];
+};
+
+#define KVM_MSR_FILTER_DEFAULT_ALLOW 0
+#define KVM_MSR_FILTER_DEFAULT_DENY  1
+
+# define KVM_X86_SET_MSR_FILTER _IOW(KVMIO,  0xc6, struct kvm_msr_filter)
+
+# define KVM_MSR_EXIT_REASON_INVAL   (1 << 0)
+# define KVM_MSR_EXIT_REASON_UNKNOWN (1 << 1)
+# define KVM_MSR_EXIT_REASON_FILTER  (1 << 2)
+#endif
+
+/* This needs to be defined always. */
+typedef struct
+{
+    uint8_t error;
+    uint8_t pad[7];
+    uint32_t reason;
+    uint32_t index;
+    uint64_t data;
+} kvm_run_exit_msr;
 
 
 
@@ -88,7 +526,7 @@ static int nemR3LnxInitCheckCapabilities(PVM pVM, PRTERRINFO pErrInfo)
         CAP_ENTRY__U(17),
         CAP_ENTRY__L(KVM_CAP_IOMMU),
         CAP_ENTRY__U(19), /* Buggy KVM_CAP_JOIN_MEMORY_REGIONS? */
-        CAP_ENTRY__U(20), /* Mon-working KVM_CAP_DESTROY_MEMORY_REGION? */
+        CAP_ENTRY__U(20), /* Non-working KVM_CAP_DESTROY_MEMORY_REGION? */
         CAP_ENTRY__L(KVM_CAP_DESTROY_MEMORY_REGION_WORKS),   /* 21 */
         CAP_ENTRY__L(KVM_CAP_USER_NMI),
 #ifdef __KVM_HAVE_GUEST_DEBUG
@@ -233,7 +671,11 @@ static int nemR3LnxInitCheckCapabilities(PVM pVM, PRTERRINFO pErrInfo)
         CAP_ENTRY__L(KVM_CAP_MULTI_ADDRESS_SPACE),
         CAP_ENTRY__L(KVM_CAP_GUEST_DEBUG_HW_BPS),
         CAP_ENTRY__L(KVM_CAP_GUEST_DEBUG_HW_WPS),            /* 120 */
+#ifdef VBOX_VMM_TARGET_X86
+        CAP_ENTRY__S(KVM_CAP_SPLIT_IRQCHIP, fKvmApic),
+#else
         CAP_ENTRY__L(KVM_CAP_SPLIT_IRQCHIP),
+#endif
         CAP_ENTRY__L(KVM_CAP_IOEVENTFD_ANY_LENGTH),
         CAP_ENTRY__L(KVM_CAP_HYPERV_SYNIC),
         CAP_ENTRY__L(KVM_CAP_S390_RI),
@@ -248,7 +690,7 @@ static int nemR3LnxInitCheckCapabilities(PVM pVM, PRTERRINFO pErrInfo)
         CAP_ENTRY__L(KVM_CAP_SPAPR_RESIZE_HPT),
         CAP_ENTRY__L(KVM_CAP_PPC_MMU_RADIX),
         CAP_ENTRY__L(KVM_CAP_PPC_MMU_HASH_V3),
-        CAP_ENTRY__L(KVM_CAP_IMMEDIATE_EXIT),
+        CAP_ENTRY_ML(KVM_CAP_IMMEDIATE_EXIT),
         CAP_ENTRY__L(KVM_CAP_MIPS_VZ),
         CAP_ENTRY__L(KVM_CAP_MIPS_TE),
         CAP_ENTRY__L(KVM_CAP_MIPS_64BIT),
@@ -269,7 +711,7 @@ static int nemR3LnxInitCheckCapabilities(PVM pVM, PRTERRINFO pErrInfo)
         CAP_ENTRY__L(KVM_CAP_HYPERV_EVENTFD),
         CAP_ENTRY__L(KVM_CAP_HYPERV_TLBFLUSH),
         CAP_ENTRY__L(KVM_CAP_S390_HPAGE_1M),
-        CAP_ENTRY__L(KVM_CAP_NESTED_STATE),
+        CAP_ENTRY__S(KVM_CAP_NESTED_STATE, cbNestedState),
         CAP_ENTRY__L(KVM_CAP_ARM_INJECT_SERROR_ESR),
         CAP_ENTRY__L(KVM_CAP_MSR_PLATFORM_INFO),
         CAP_ENTRY__L(KVM_CAP_PPC_NESTED_HV),                 /* 160 */
@@ -312,7 +754,6 @@ static int nemR3LnxInitCheckCapabilities(PVM pVM, PRTERRINFO pErrInfo)
         CAP_ENTRY__L(KVM_CAP_X86_MSR_FILTER),
 #endif
         CAP_ENTRY__L(KVM_CAP_ENFORCE_PV_FEATURE_CPUID),      /* 190 */
-#ifndef RT_ARCH_ARM64 /* Buildroot is too old. */
         CAP_ENTRY__L(KVM_CAP_SYS_HYPERV_CPUID),
         CAP_ENTRY__L(KVM_CAP_DIRTY_LOG_RING),
         CAP_ENTRY__L(KVM_CAP_X86_BUS_LOCK_EXIT),
@@ -321,34 +762,52 @@ static int nemR3LnxInitCheckCapabilities(PVM pVM, PRTERRINFO pErrInfo)
         CAP_ENTRY__L(KVM_CAP_SGX_ATTRIBUTE),
         CAP_ENTRY__L(KVM_CAP_VM_COPY_ENC_CONTEXT_FROM),
         CAP_ENTRY__L(KVM_CAP_PTP_KVM),
-#else
-        CAP_ENTRY__U(191),
-        CAP_ENTRY__U(192),
-        CAP_ENTRY__U(193),
-        CAP_ENTRY__U(194),
-        CAP_ENTRY__U(195),
-        CAP_ENTRY__U(196),
-        CAP_ENTRY__U(197),
-        CAP_ENTRY__U(198),
-#endif
-        CAP_ENTRY__U(199),
-        CAP_ENTRY__U(200),
-        CAP_ENTRY__U(201),
-        CAP_ENTRY__U(202),
-        CAP_ENTRY__U(203),
-        CAP_ENTRY__U(204),
-        CAP_ENTRY__U(205),
-        CAP_ENTRY__U(206),
-        CAP_ENTRY__U(207),
-        CAP_ENTRY__U(208),
-        CAP_ENTRY__U(209),
-        CAP_ENTRY__U(210),
-        CAP_ENTRY__U(211),
-        CAP_ENTRY__U(212),
-        CAP_ENTRY__U(213),
-        CAP_ENTRY__U(214),
-        CAP_ENTRY__U(215),
-        CAP_ENTRY__U(216),
+        CAP_ENTRY__L(KVM_CAP_HYPERV_ENFORCE_CPUID),
+        CAP_ENTRY__L(KVM_CAP_SREGS2),
+        CAP_ENTRY__L(KVM_CAP_EXIT_HYPERCALL),
+        CAP_ENTRY__L(KVM_CAP_PPC_RPT_INVALIDATE),
+        CAP_ENTRY__L(KVM_CAP_BINARY_STATS_FD),
+        CAP_ENTRY__L(KVM_CAP_EXIT_ON_EMULATION_FAILURE),
+        CAP_ENTRY__L(KVM_CAP_ARM_MTE),
+        CAP_ENTRY__L(KVM_CAP_VM_MOVE_ENC_CONTEXT_FROM),
+        CAP_ENTRY__L(KVM_CAP_VM_GPA_BITS),
+        CAP_ENTRY__L(KVM_CAP_XSAVE2),
+        CAP_ENTRY__L(KVM_CAP_SYS_ATTRIBUTES),
+        CAP_ENTRY__L(KVM_CAP_PPC_AIL_MODE_3),
+        CAP_ENTRY__L(KVM_CAP_S390_MEM_OP_EXTENSION),
+        CAP_ENTRY__L(KVM_CAP_PMU_CAPABILITY),
+        CAP_ENTRY__L(KVM_CAP_DISABLE_QUIRKS2),
+        CAP_ENTRY__L(KVM_CAP_VM_TSC_CONTROL),
+        CAP_ENTRY__L(KVM_CAP_SYSTEM_EVENT_DATA),
+        CAP_ENTRY__L(KVM_CAP_ARM_SYSTEM_SUSPEND),
+        CAP_ENTRY__L(KVM_CAP_S390_PROTECTED_DUMP),
+        CAP_ENTRY__L(KVM_CAP_X86_TRIPLE_FAULT_EVENT),
+        CAP_ENTRY__L(KVM_CAP_X86_NOTIFY_VMEXIT),
+        CAP_ENTRY__L(KVM_CAP_VM_DISABLE_NX_HUGE_PAGES),
+        CAP_ENTRY__L(KVM_CAP_S390_ZPCI_OP),
+        CAP_ENTRY__L(KVM_CAP_S390_CPU_TOPOLOGY),
+        CAP_ENTRY__L(KVM_CAP_DIRTY_LOG_RING_ACQ_REL),
+        CAP_ENTRY__L(KVM_CAP_S390_PROTECTED_ASYNC_DISABLE),
+        CAP_ENTRY__L(KVM_CAP_DIRTY_LOG_RING_WITH_BITMAP),
+        CAP_ENTRY__L(KVM_CAP_PMU_EVENT_MASKED_EVENTS),
+        CAP_ENTRY__L(KVM_CAP_COUNTER_OFFSET),
+        CAP_ENTRY__L(KVM_CAP_ARM_EAGER_SPLIT_CHUNK_SIZE),
+        CAP_ENTRY__L(KVM_CAP_ARM_SUPPORTED_BLOCK_SIZES),
+        CAP_ENTRY__L(KVM_CAP_ARM_SUPPORTED_REG_MASK_RANGES),
+        CAP_ENTRY__L(KVM_CAP_USER_MEMORY2),
+        CAP_ENTRY__L(KVM_CAP_MEMORY_FAULT_INFO),
+        CAP_ENTRY__L(KVM_CAP_MEMORY_ATTRIBUTES),
+        CAP_ENTRY__L(KVM_CAP_GUEST_MEMFD),
+        CAP_ENTRY__L(KVM_CAP_VM_TYPES),
+        CAP_ENTRY__L(KVM_CAP_PRE_FAULT_MEMORY),
+        CAP_ENTRY__L(KVM_CAP_X86_APIC_BUS_CYCLES_NS),
+        CAP_ENTRY__L(KVM_CAP_X86_GUEST_MODE),
+        CAP_ENTRY__L(KVM_CAP_ARM_WRITABLE_IMP_ID_REGS),
+        CAP_ENTRY__L(KVM_CAP_ARM_EL2),
+        CAP_ENTRY__L(KVM_CAP_ARM_EL2_E2H0),
+        CAP_ENTRY__L(KVM_CAP_RISCV_MP_STATE_RESET),
+        CAP_ENTRY__L(KVM_CAP_ARM_CACHEABLE_PFNMAP_SUPPORTED),
+        CAP_ENTRY__L(KVM_CAP_GUEST_MEMFD_FLAGS),
     };
 
     LogRel(("NEM: KVM capabilities (system):\n"));
@@ -440,6 +899,39 @@ static DECLCALLBACK(VBOXSTRICTRC) nemR3LnxFixThreadPoke(PVM pVM, PVMCPU pVCpu, v
 }
 
 
+/**
+ * Makes sure GIM is not using HyperV mode as we don't support it with the KVM backend right now.
+ *
+ * This is rather ugly.
+ *
+ * @returns VBox status code
+ * @param   pVM             The cross context VM structure.
+ */
+static int nemR3LnxDisableGimHyperV(PVM pVM)
+{
+    /*
+     * Check the GIM config and rewrite it to Minimal if HyperV is currently configured.
+     */
+    PCFGMNODE pCfg = CFGMR3GetChild(CFGMR3GetRoot(pVM), "/GIM");
+    if (pCfg)
+    {
+        char szProvider[64];
+        int rc = CFGMR3QueryString(pCfg, "Provider", &szProvider[0], sizeof(szProvider));
+        AssertLogRelMsgReturn(RT_SUCCESS(rc) || rc == VERR_CFGM_VALUE_NOT_FOUND, ("%Rrc\n", rc), rc);
+        if (RT_SUCCESS(rc) && !strcmp(szProvider, "HyperV"))
+        {
+            LogRel(("NEM: Adjusting GIM configuration from HyperV to Minimal mode.  HyperV is currently not supported for GIM on NEM!\n"));
+            LogRel(("NEM: Disable KVM if you need the HyperV GIM provider for your guests!\n"));
+            rc = CFGMR3RemoveValue(pCfg, "Provider");
+            rc = CFGMR3InsertString(pCfg, "Provider", "Minimal");
+            AssertLogRelRCReturn(rc, rc);
+        }
+    }
+
+    return VINF_SUCCESS;
+}
+
+
 DECLHIDDEN(int) nemR3NativeInit(PVM pVM, bool fFallback, bool fForced)
 {
     RT_NOREF(pVM, fFallback, fForced);
@@ -500,6 +992,7 @@ DECLHIDDEN(int) nemR3NativeInit(PVM pVM, bool fFallback, bool fForced)
                      */
                     VM_SET_MAIN_EXECUTION_ENGINE(pVM, VM_EXEC_ENGINE_NATIVE_API);
                     Log(("NEM: Marked active!\n"));
+                    nemR3LnxDisableGimHyperV(pVM);
                     PGMR3EnableNemMode(pVM);
 
                     /*
@@ -607,6 +1100,10 @@ DECLHIDDEN(int) nemR3NativeTerm(PVM pVM)
             munmap(pVCpu->nem.s.pRun, pVM->nem.s.cbVCpuMmap);
             pVCpu->nem.s.pRun = NULL;
         }
+#ifdef VBOX_VMM_TARGET_X86
+        if (pVCpu->nem.s.pNestedState)
+            RTMemFree(pVCpu->nem.s.pNestedState);
+#endif
     }
 
     /*

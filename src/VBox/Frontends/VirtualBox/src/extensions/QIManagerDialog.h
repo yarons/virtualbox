@@ -1,10 +1,10 @@
-/* $Id: QIManagerDialog.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: QIManagerDialog.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIManagerDialog class declaration.
  */
 
 /*
- * Copyright (C) 2009-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -32,11 +32,10 @@
 #endif
 
 /* Qt includes: */
-#include <QMainWindow>
 #include <QMap>
 
 /* GUI includes: */
-#include "QIWithRestorableGeometry.h"
+#include "QIMainWindow.h"
 #include "UILibraryDefs.h"
 
 /* Forward declarations: */
@@ -47,14 +46,12 @@ class QIManagerDialog;
 class QIToolBar;
 #endif
 
-
 /** Widget embedding type. */
 enum EmbedTo
 {
     EmbedTo_Dialog,
     EmbedTo_Stack
 };
-
 
 /** Dialog button types. */
 enum ButtonType
@@ -67,11 +64,9 @@ enum ButtonType
     ButtonType_Help    = RT_BIT(4),
 };
 
-
 /** Manager dialog factory insterface. */
 class SHARED_LIBRARY_STUFF QIManagerDialogFactory
 {
-
 public:
 
     /** Constructs Manager dialog factory. */
@@ -92,9 +87,8 @@ protected:
     virtual void create(QIManagerDialog *&pDialog, QWidget *pCenterWidget) = 0;
 };
 
-
-/** QMainWindow sub-class used as various manager dialogs. */
-class SHARED_LIBRARY_STUFF QIManagerDialog : public QIWithRestorableGeometry<QMainWindow>
+/** QIMainWindow sub-class used as various manager dialogs. */
+class SHARED_LIBRARY_STUFF QIManagerDialog : public QIMainWindow
 {
     Q_OBJECT;
 
@@ -227,6 +221,5 @@ private:
     /** Allow factory access to private/protected members: */
     friend class QIManagerDialogFactory;
 };
-
 
 #endif /* !FEQT_INCLUDED_SRC_extensions_QIManagerDialog_h */

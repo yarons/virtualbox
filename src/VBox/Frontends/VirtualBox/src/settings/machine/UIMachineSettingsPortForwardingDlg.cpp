@@ -1,10 +1,10 @@
-/* $Id: UIMachineSettingsPortForwardingDlg.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineSettingsPortForwardingDlg.cpp 113151 2026-02-24 16:22:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsPortForwardingDlg class implementation.
  */
 
 /*
- * Copyright (C) 2010-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -26,61 +26,73 @@
  */
 
 /* Qt includes: */
-#include <QVBoxLayout>
 #include <QPushButton>
+#include <QVBoxLayout>
 
 /* GUI includes: */
 #include "QIDialogButtonBox.h"
 #include "UIDesktopWidgetWatchdog.h"
-#include "UIMachineSettingsPortForwardingDlg.h"
 #include "UIIconPool.h"
-#include "UIMessageCenter.h"
+#include "UIMachineSettingsPortForwardingDlg.h"
+#include "UINotificationCenter.h"
 #include "UITranslationEventListener.h"
+
 
 UIMachineSettingsPortForwardingDlg::UIMachineSettingsPortForwardingDlg(QWidget *pParent,
                                                                        const UIPortForwardingDataList &rules)
     : QIDialog(pParent)
     , m_pTable(0)
     , m_pButtonBox(0)
+    , m_pNotificationCenter(0)
 {
 #ifndef VBOX_WS_MAC
     /* Assign window icon: */
     setWindowIcon(UIIconPool::iconSetFull(":/nw_32px.png", ":/nw_16px.png"));
 #endif
 
-    /* Create layout: */
-    QVBoxLayout *pMainLayout = new QVBoxLayout(this);
+    /* Limit the minimum size to 33% of screen size: */
+    setMinimumSize(gpDesktop->screenGeometry(this).size() / 3);
+
+    /* Prepare local notification-center (parent to be assigned in the end): */
+    m_pNotificationCenter = new UINotificationCenter(0);
+    if (m_pNotificationCenter)
     {
-        /* Create table: */
-        m_pTable = new UIPortForwardingTable(rules, false, true);
+        QPointer<UINotificationCenter> target = m_pNotificationCenter;
+        setProperty("notification_center", QVariant::fromValue(target));
+    }
+
+    /* Create layout: */
+    QVBoxLayout *pLayout = new QVBoxLayout(this);
+    {
+        /* Prepare table: */
+        m_pTable = new UIPortForwardingTable(rules, false /* ip IPv6 protocol */, true /* allow empty guest IPs */);
         {
-            /* Configure table: */
             m_pTable->layout()->setContentsMargins(0, 0, 0, 0);
+            pLayout->addWidget(m_pTable);
         }
-        /* Create button-box: */
+
+        /* Prepare button-box: */
         m_pButtonBox = new QIDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal);
         {
-            /* Configure button-box: */
             connect(m_pButtonBox->button(QDialogButtonBox::Ok), &QPushButton::clicked,
                     this, &UIMachineSettingsPortForwardingDlg::accept);
             connect(m_pButtonBox->button(QDialogButtonBox::Cancel), &QPushButton::clicked,
                     this, &UIMachineSettingsPortForwardingDlg::reject);
+
+            pLayout->addWidget(m_pButtonBox);
         }
-        /* Add widgets into layout: */
-        pMainLayout->addWidget(m_pTable);
-        pMainLayout->addWidget(m_pButtonBox);
     }
 
-    /* Retranslate dialog: */
+    /* Assign notification-center parent (after everything else is done): */
+    m_pNotificationCenter->setParent(this);
+
+    /* Apply language settings: */
     sltRetranslateUI();
     connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
             this, &UIMachineSettingsPortForwardingDlg::sltRetranslateUI);
-
-    /* Limit the minimum size to 33% of screen size: */
-    setMinimumSize(gpDesktop->screenGeometry(this).size() / 3);
 }
 
-const UIPortForwardingDataList UIMachineSettingsPortForwardingDlg::rules() const
+UIPortForwardingDataList UIMachineSettingsPortForwardingDlg::rules() const
 {
     return m_pTable->rules();
 }
@@ -89,10 +101,11 @@ void UIMachineSettingsPortForwardingDlg::accept()
 {
     /* Make sure table has own data committed: */
     m_pTable->makeSureEditorDataCommitted();
+
     /* Validate table: */
-    bool fPassed = m_pTable->validate();
-    if (!fPassed)
+    if (!m_pTable->validate())
         return;
+
     /* Call to base-class: */
     QIDialog::accept();
 }
@@ -101,8 +114,9 @@ void UIMachineSettingsPortForwardingDlg::reject()
 {
     /* Ask user to discard table changes if necessary: */
     if (   m_pTable->isChanged()
-        && !msgCenter().confirmCancelingPortForwardingDialog(window()))
+        && !UINotificationQuestion::confirmCancelingPortForwardingDialog(this))
         return;
+
     /* Call to base-class: */
     QIDialog::reject();
 }

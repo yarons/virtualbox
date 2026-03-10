@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 111323 2025-10-10 13:24:36Z alexander.eichner@oracle.com $
+# $Id: vboxtestvms.py 113145 2026-02-24 13:36:38Z serkan.bayraktar@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -7,7 +7,7 @@ VirtualBox Test VMs
 
 __copyright__ = \
 """
-Copyright (C) 2010-2025 Oracle and/or its affiliates.
+Copyright (C) 2010-2026 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111323 $"
+__version__ = "$Revision: 113145 $"
 
 # Standard Python imports.
 import copy;
@@ -125,6 +125,14 @@ g_aaNameToDetails = \
     [ 'Windows2019_64', 'Windows2019_64',        g_k64,    1,  64, ['w2k19',  'w2k19sp[0-9]', 'win2k19', 'win2k19sp[0-9]',]], # max cpus/cores??
     [ 'Windows2022_64', 'Windows2022_64',        g_k64,    1,  64, ['w2k22',  'w2k22sp[0-9]', 'win2k22', 'win2k22sp[0-9]',]], # max cpus/cores??
     [ 'Windows11_64',   'Windows11_64',          g_k64,    2,  64, ['w11', 'w11-64', 'w11sp[0-9]-64', 'win11', 'win11-64',]], # max cpus/cores??
+    [ 'Linux_64',       'Debian9_64',            g_k64,    1, 256, ['deb9[0-9]*-64', 'debian9[0-9]*-64', ]],
+    [ 'Linux_64',       'Debian10_64',           g_k64,    1, 256, ['deb10[0-9]*-64', 'debian10[0-9]*-64', ]],
+    [ 'Linux_64',       'Debian11_64',           g_k64,    1, 256, ['deb11[0-9]*-64', 'debian11[0-9]*-64', ]],
+    [ 'Linux_arm64',    'Debian11_arm64',        g_k64,    1, 256, ['deb11[0-9]*-arm64', 'debian11[0-9]*-arm64', ]],
+    [ 'Linux_64',       'Debian12_64',           g_k64,    1, 256, ['deb12[0-9]*-64', 'debian12[0-9]*-64', ]],
+    [ 'Linux_arm64',    'Debian12_arm64',        g_k64,    1, 256, ['deb12[0-9]*-arm64', 'debian12[0-9]*-arm64', ]],
+    [ 'Linux_64',       'Debian13_64',           g_k64,    1, 256, ['deb13[0-9]*-64', 'debian13[0-9]*-64', ]],
+    [ 'Linux_arm64',    'Debian13_arm64',        g_k64,    1, 256, ['deb13[0-9]*-arm64', 'debian13[0-9]*-arm64', ]],
     [ 'Linux',          'Debian',                g_k32,    1, 256, ['deb[0-9]*', 'debian[0-9]*', ]],
     [ 'Linux_64',       'Debian_64',             g_k64,    1, 256, ['deb[0-9]*-64', 'debian[0-9]*-64', ]],
     [ 'Linux_arm64',    'Debian_arm64',          g_k64,    1, 256, ['deb[0-9]*-arm64', 'debian[0-9]*-arm64', ]],
@@ -136,6 +144,15 @@ g_aaNameToDetails = \
     [ 'Linux_arm64',    'Oracle_arm64',          g_k64,    1, 256, ['ols[0-9]*-arm64', 'oel[0-9]*-arm64', ]],
     [ 'Linux',          'OpenSUSE',              g_k32,    1, 256, ['opensuse[0-9]*', 'suse[0-9]*', ]],
     [ 'Linux_64',       'OpenSUSE_64',           g_k64,    1, 256, ['opensuse[0-9]*-64', 'suse[0-9]*-64', ]],
+    [ 'Linux',          'Ubuntu16',              g_k32,    1, 256, ['ubuntu16[0-9]*', ]],
+    [ 'Linux_64',       'Ubuntu16_64',           g_k64,    1, 256, ['ubuntu16[0-9]*-64', ]],
+    [ 'Linux',          'Ubuntu17',              g_k32,    1, 256, ['ubuntu17[0-9]*', ]],
+    [ 'Linux_64',       'Ubuntu17_64',           g_k64,    1, 256, ['ubuntu17[0-9]*-64', ]],
+    [ 'Linux_64',       'Ubuntu18_64',           g_k64,    1, 256, ['ubuntu18[0-9]*-64', ]],
+    [ 'Linux_64',       'Ubuntu19_64',           g_k64,    1, 256, ['ubuntu19[0-9]*-64', ]],
+    [ 'Linux_64',       'Ubuntu22_64',           g_k64,    1, 256, ['ubuntu22[0-9]*-64', ]],
+    [ 'Linux_64',       'Ubuntu23_64',           g_k64,    1, 256, ['ubuntu23[0-9]*-64', ]],
+    [ 'Linux_64',       'Ubuntu24_64',           g_k64,    1, 256, ['ubuntu24[0-9]*-64', ]],
     [ 'Linux',          'Ubuntu',                g_k32,    1, 256, ['ubuntu[0-9]*', ]],
     [ 'Linux_64',       'Ubuntu_64',             g_k64,    1, 256, ['ubuntu[0-9]*-64', ]],
     [ 'Linux',          'ArchLinux',             g_k32,    1, 256, ['arch[0-9]*', ]],
@@ -253,7 +270,7 @@ class BaseTestVm(object):
     Defaults to the x86 platform architecture.
     """
 
-    def __init__(self, # pylint: disable=too-many-arguments
+    def __init__(self, # pylint: disable=too-many-arguments,too-many-positional-arguments
                  sVmName,                                   # type: str
                  sPlatformArchitecture = 'x86',             # type: str
                  fGrouping = 0,                             # type: int
@@ -1052,7 +1069,7 @@ class TestVm(object):                                       # pylint: disable=to
     This is just a data object.
     """
 
-    def __init__(self, # pylint: disable=too-many-arguments
+    def __init__(self, # pylint: disable=too-many-arguments,too-many-positional-arguments
                  sVmName,                                   # type: str
                  fGrouping = 0,                             # type: int
                  oSet = None,                               # type: TestVmSet
@@ -1659,7 +1676,7 @@ class AncientTestVm(TestVm):
     """
 
 
-    def __init__(self, # pylint: disable=too-many-arguments
+    def __init__(self, # pylint: disable=too-many-arguments,too-many-positional-arguments
                  sVmName,                                   # type: str
                  fGrouping = g_kfGrpAncient | g_kfGrpNoTxs, # type: int
                  sHd = None,                                # type: str
@@ -2269,11 +2286,11 @@ class TestVmManager(object):
         TestVm('tst-ol76-64',   kfGrpStdSmoke,        sHd = '4.2/ol76/t-ol76-64.vdi',
                sKind = 'Oracle_64', acCpusSup = range(1, 33), fIoApic = True,
                fQuirks = g_kfQuirkLinuxIoApic),
-        TestVm('tst-ubuntu-20_04-64-amdvi',     kfGrpStdSmoke,    sHd = '6.1/ubuntu-20_04-64-updated_by_ksenia.vdi',
+        TestVm('tst-ubuntu-20_04-64-amdvi',     kfGrpStdSmoke,    sHd = '6.1/ubuntu-20_04-64-ksenia-cleaned.vdi',
                sKind = 'Ubuntu_64', acCpusSup = range(1, 33), fIoApic = True,
                asParavirtModesSup = [g_ksParavirtProviderKVM,], sNic0AttachType = 'nat', sChipsetType = 'ich9',
                sIommuType = 'amd'),
-        TestVm('tst-ubuntu-20_04-64-vtd',     kfGrpStdSmoke,      sHd = '6.1/ubuntu-20_04-64-updated_by_ksenia.vdi',
+        TestVm('tst-ubuntu-20_04-64-vtd',     kfGrpStdSmoke,      sHd = '6.1/ubuntu-20_04-64-ksenia-cleaned.vdi',
                sKind = 'Ubuntu_64', acCpusSup = range(1, 33), fIoApic = True,
                asParavirtModesSup = [g_ksParavirtProviderKVM,], sNic0AttachType = 'nat', sChipsetType = 'ich9',
                sIommuType = 'intel'),

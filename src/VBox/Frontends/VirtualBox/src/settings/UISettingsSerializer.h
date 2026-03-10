@@ -1,10 +1,10 @@
-/* $Id: UISettingsSerializer.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UISettingsSerializer.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsSerializer class declaration.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -54,12 +54,12 @@ class QVariant;
 class QWaitCondition;
 class QWidget;
 class QILabel;
+class UIAdvancedSettingsDialog;
 class UISettingsPage;
 
 /* Type definitions: */
 typedef QList<UISettingsPage*> UISettingsPageList;
 typedef QMap<int, UISettingsPage*> UISettingsPageMap;
-
 
 /** QThread reimplementation used for
   * loading/saving settings in async mode. */
@@ -158,7 +158,6 @@ protected:
     QWaitCondition  m_condition;
 };
 
-
 /** QIDialog reimplementation used to
   * reflect the settings serialization operation. */
 class SHARED_LIBRARY_STUFF UISettingsSerializerProgress : public QIDialog
@@ -176,8 +175,10 @@ public:
       * @param  enmDirection  Brings the load/save direction.
       * @param  data          Brings the wrapper(s) to load/save the data from/to.
       * @param  pages         Brings the page(s) to load/save the data to/from. */
-    UISettingsSerializerProgress(QWidget *pParent, UISettingsSerializer::SerializationDirection enmDirection,
-                                 const QVariant &data, const UISettingsPageList &pages);
+    UISettingsSerializerProgress(UIAdvancedSettingsDialog *pParent,
+                                 UISettingsSerializer::SerializationDirection enmDirection,
+                                 const QVariant &data,
+                                 const UISettingsPageList &pages);
 
     /** Executes the dialog. */
     int exec() RT_OVERRIDE;
@@ -224,6 +225,9 @@ private slots:
 
 private:
 
+    /** Holds the dialog reference. */
+    UIAdvancedSettingsDialog *m_pDialog;
+
     /** Holds the load/save direction. */
     const UISettingsSerializer::SerializationDirection  m_enmDirection;
 
@@ -251,6 +255,5 @@ private:
     /** Holds the template for the sub-operation progress label. */
     static QString  s_strProgressDescriptionTemplate;
 };
-
 
 #endif /* !FEQT_INCLUDED_SRC_settings_UISettingsSerializer_h */

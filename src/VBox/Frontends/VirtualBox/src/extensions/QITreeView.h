@@ -1,10 +1,10 @@
-/* $Id: QITreeView.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: QITreeView.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITreeView class declaration.
  */
 
 /*
- * Copyright (C) 2009-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -41,13 +41,15 @@
 class QITreeViewItem;
 class QITreeView;
 
-
 /** OObject subclass used as item for the QITreeView. */
 class SHARED_LIBRARY_STUFF QITreeViewItem : public QObject
 {
     Q_OBJECT;
 
 public:
+
+    /** Acquires QTreeViewItem* from passed @a idx. */
+    static QITreeViewItem *toItem(const QModelIndex &idx);
 
     /** Constructs tree-view item for passed @a pParent. */
     QITreeViewItem(QITreeView *pParent)
@@ -67,9 +69,9 @@ public:
     QITreeViewItem *parentItem() const { return m_pParentItem; }
 
     /** Returns the number of children. */
-    virtual int childCount() const = 0;
+    int count() const;
     /** Returns the child item with @a iIndex. */
-    virtual QITreeViewItem *childItem(int iIndex) const = 0;
+    QITreeViewItem *child(int iIndex) const;
 
     /** Returns the item text. */
     virtual QString text() const = 0;
@@ -87,7 +89,6 @@ private:
     /** Holds the parent item reference. */
     QITreeViewItem *m_pParentItem;
 };
-
 
 /** QTreeView subclass extending standard functionality. */
 class SHARED_LIBRARY_STUFF QITreeView : public QTreeView
@@ -129,14 +130,21 @@ public:
     QITreeView(QWidget *pParent = 0);
 
     /** Returns the number of children. */
-    virtual int childCount() const { return 0; }
+    int count() const;
     /** Returns the child item with @a iIndex. */
-    virtual QITreeViewItem *childItem(int /* iIndex */) const { return 0; }
+    QITreeViewItem *child(int iIndex) const;
+
+    /** Returns current item. */
+    QITreeViewItem *currentItem() const;
 
 protected slots:
 
-    /** Handles index changed from @a previous to @a current.*/
-    void currentChanged(const QModelIndex &current, const QModelIndex &previous) RT_OVERRIDE;
+    /** This slot is called when a new item becomes the current item.
+      * The previous current item is specified by the @a previous index, and the new item by the @a current index. */
+    virtual void currentChanged(const QModelIndex &current, const QModelIndex &previous) RT_OVERRIDE RT_FINAL;
+    /** This slot is called when the selection is changed.
+      * The previous selection (which may be empty), is specified by @a deselected, and the new selection by @a selected. */
+    virtual void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) RT_OVERRIDE RT_FINAL;
 
 protected:
 
@@ -163,12 +171,6 @@ protected:
     virtual void dragLeaveEvent(QDragLeaveEvent *pEvent) RT_OVERRIDE;
     /** Handles mouse drop @a pEvent. */
     virtual void dropEvent(QDropEvent *pEvent) RT_OVERRIDE;
-
-private:
-
-    /** Prepares all. */
-    void prepare();
 };
-
 
 #endif /* !FEQT_INCLUDED_SRC_extensions_QITreeView_h */

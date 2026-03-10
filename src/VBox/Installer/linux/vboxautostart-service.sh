@@ -1,11 +1,11 @@
 #!/bin/sh
-# $Id: vboxautostart-service.sh 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: vboxautostart-service.sh 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $
 ## @file
 # VirtualBox autostart service init script.
 #
 
 #
-# Copyright (C) 2012-2025 Oracle and/or its affiliates.
+# Copyright (C) 2012-2026 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.
@@ -81,7 +81,7 @@ fail_msg()
 start_daemon() {
     usr="$1"
     shift
-    su - $usr -c "$*"
+    runuser -u $usr -- $*
 }
 
 if which start-stop-daemon >/dev/null 2>&1; then

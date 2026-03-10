@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 111222 2025-10-02 19:34:20Z alexander.eichner@oracle.com $
+# $Id: tdUnitTest1.py 113217 2026-03-03 11:28:12Z brent.paulson@oracle.com $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -8,7 +8,7 @@ VirtualBox Validation Kit - Unit Tests.
 
 __copyright__ = \
 """
-Copyright (C) 2010-2025 Oracle and/or its affiliates.
+Copyright (C) 2010-2026 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111222 $"
+__version__ = "$Revision: 113217 $"
 
 
 # Standard Python imports.
@@ -117,6 +117,7 @@ class tdUnitTest1(vbox.TestDriver):
         'solaris.amd64': {
             'testcase/tstLdr-4': '',        # failed: Failed to get bits for '/home/vbox/test/tmp/bin/testcase/tstLdrObjR0.r0'/0,
                                                         # rc=VERR_SYMBOL_VALUE_TOO_BIG. aborting test
+            'tstVMMUnitTests-1': '',                    # Requires driverless mode not present on Solaris.
         },
         'win': {
             'testcase/tstFile': '',                     # ??
@@ -159,7 +160,6 @@ class tdUnitTest1(vbox.TestDriver):
         'testcase/tstClipboardX11Smoke': '',            # (Old naming, deprecated) Needs X, not available on all test boxes.
         'testcase/tstClipboardGH-X11Smoke': '',         # (New name) Ditto.
         'testcase/tstClipboardHttpServerX11': '',       # Ditto.
-        'testcase/tstClipboardMockHGCM': '',            # Ditto.
         'tstClipboardQt': '',                           # Is interactive and needs Qt, needed for Qt clipboard bugfixing.
         'testcase/tstClipboardQt': '',                  # In case it moves here.
         'tstDragAndDropQt': '',                         # Is interactive and needs Qt, needed for Qt drag'n drop bugfixing.
@@ -301,7 +301,7 @@ class tdUnitTest1(vbox.TestDriver):
     kdTestCasesWhiteList = {
         'testcase/tstFile': '',
         'testcase/tstFileLock': '',
-        'testcase/tstClipboardMockHGCM': '',            # Requires X on Linux OSes. Execute on remote targets only (guests).
+        'testcase/tstClipboardMockHGCM': '', # Some tests conditionally use X on Linux and Solaris. Can be run on host or guest.
         'testcase/tstRTFsQueries': '',
         'testcase/tstRTLocalIpc': '',
         'testcase/tstRTPathQueryInfo': '',

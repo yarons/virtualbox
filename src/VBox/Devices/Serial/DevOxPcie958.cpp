@@ -1,10 +1,10 @@
-/* $Id: DevOxPcie958.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: DevOxPcie958.cpp 113056 2026-02-17 10:38:41Z alexander.eichner@oracle.com $ */
 /** @file
  * DevOxPcie958 - Oxford Semiconductor OXPCIe958 PCI Express bridge to octal serial port emulation
  */
 
 /*
- * Copyright (C) 2018-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2018-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -37,7 +37,6 @@
 #include <VBox/pci.h>
 #include <VBox/msi.h>
 #include <VBox/vmm/pdm.h>
-#include <VBox/vmm/pdmpci.h>
 #include <VBox/err.h>
 #include <VBox/log.h>
 #include <iprt/assert.h>

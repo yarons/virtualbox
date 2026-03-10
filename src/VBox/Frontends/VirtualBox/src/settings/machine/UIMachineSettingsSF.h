@@ -1,10 +1,10 @@
-/* $Id: UIMachineSettingsSF.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineSettingsSF.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSF class declaration.
  */
 
 /*
- * Copyright (C) 2008-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2008-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -44,7 +44,6 @@ struct UIDataSettingsSharedFolder;
 struct UIDataSettingsSharedFolders;
 typedef UISettingsCache<UIDataSettingsSharedFolder> UISettingsCacheSharedFolder;
 typedef UISettingsCachePool<UIDataSettingsSharedFolders, UISettingsCacheSharedFolder> UISettingsCacheSharedFolders;
-
 
 /** Machine settings: Shared Folders page. */
 class SHARED_LIBRARY_STUFF UIMachineSettingsSF : public UISettingsPageMachine

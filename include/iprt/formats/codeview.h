@@ -3,7 +3,7 @@
  */
 
 /*
- * Copyright (C) 2009-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -730,7 +730,7 @@ typedef RTCVSYMV3PROC const *PCRTCVSYMV3PROC;
  */
 typedef struct RTCV8SYMBOLSBLOCK
 {
-    /** BLock type (RTCV8SYMBLOCK_TYPE_XXX). */
+    /** Block type (RTCV8SYMBLOCK_TYPE_XXX). */
     uint32_t    uType;
     /** The block length, including this header? */
     uint32_t    cb;

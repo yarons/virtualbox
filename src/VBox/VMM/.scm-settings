@@ -1,10 +1,10 @@
-# $Id: .scm-settings 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: .scm-settings 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $
 ## @file
 # Source code massager settings for the VMM.
 #
 
 #
-# Copyright (C) 2017-2025 Oracle and/or its affiliates.
+# Copyright (C) 2017-2026 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.
@@ -25,17 +25,18 @@
 # SPDX-License-Identifier: GPL-3.0-only
 #
 
+# All is exported.
+--svn-sync-process-export all
 
 /VMMAll/IEMAllInstPython.py: --license-ose-dual
 
---filter-out-files /testcase/dev.tar.gz
-
 /include/PGMGstDefs-x86.h: --no-fix-header-guards
-/include/PGMSlatDefs.h: --no-fix-header-guards
+/include/PGMSlatDefs.h:    --no-fix-header-guards
+/include/IEMCpuCoreTmpl.h: --no-fix-header-guards
 /VMMR0/PGMR0Bth.h: --no-fix-header-guards
-/VMMR3/PGMPhysRWTmpl.h: --no-fix-header-guards
+/VMMR3/PGMR3PhysRWTmpl.h: --no-fix-header-guards
 /VMMAll/CPUMAllCpuIdArmV8.cpp.h: --dont-set-svn-keywords
-/VMMAll/PGMAll*-*.cpp.h: --no-fix-header-guards
+/VMMAll/PGMAsll*-*.cpp.h: --no-fix-header-guards
 /VMMAll/target-armv8/IEMAllInstrA64Impl.h: --no-fix-header-guards
 /VMMAll/target-x86/IEMAllInstCommonBodyMacros-x86.h: --no-fix-header-guards
 /VMMAll/target-x86/IEMAllN8veLiveness-x86.h: --no-fix-header-guards
@@ -50,14 +51,14 @@
 /*.cpp: --only-guest-host-page
 /*.h:   --only-guest-host-page
 # Except in the pool where more care/work is needed.
-/VMMAll/PGMAllPool.cpp: --no-page-restrictions
-/VMMR3/PGMPool.cpp:     --no-page-restrictions
-/testcase/tstVMStructSize.cpp:     --no-page-restrictions
+/VMMAll/target-x86/PGMAllPool-x86.cpp: --no-page-restrictions
+/VMMR3/target-x86/PGMR3Pool-x86.cpp:   --no-page-restrictions
+/testcase/tstVMStructSize.cpp:         --no-page-restrictions
 
 # Forbid ASMMemIsZeroPage and ASMMemZeroPage.
 /*.cpp: --no-ASMMemPage-use
 /*.h:   --no-ASMMemPage-use
 # Except in the pool where more care/work is needed.
-/VMMR3/PGMPool.cpp:     --unrestricted-ASMMemPage-use
-/VMMAll/PGMAllPool.cpp: --unrestricted-ASMMemPage-use
+/VMMR3/target-x86/PGMPool-x86.cpp:     --unrestricted-ASMMemPage-use
+/VMMAll/target-x86/PGMAllPool-x86.cpp: --unrestricted-ASMMemPage-use
 

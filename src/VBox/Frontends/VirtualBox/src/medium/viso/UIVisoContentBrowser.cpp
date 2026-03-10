@@ -1,10 +1,10 @@
-/* $Id: UIVisoContentBrowser.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIVisoContentBrowser.cpp 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -155,7 +155,6 @@ static QList<ISOFileObject> openAndReadISODir(const QString &strISOFilePath, QSt
 /** A QItemDelegate child class to disable dashed lines drawn around selected cells in QTableViews */
 class UIContentBrowserDelegate : public QItemDelegate
 {
-
     Q_OBJECT;
 
 public:
@@ -173,6 +172,7 @@ protected:
 *   UIVisoContentTableView definition.                                                                                      *
 *********************************************************************************************************************************/
 
+
 /** An QTableView extension mainly used to handle dropeed file objects from the host browser. */
 class UIVisoContentTableView : public QTableView
 {
@@ -181,7 +181,6 @@ class UIVisoContentTableView : public QTableView
 signals:
 
     void sigNewItemsDropped(QStringList pathList);
-
 
 public:
 

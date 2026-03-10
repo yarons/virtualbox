@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the VNC Extension Pack.
 #
 
 #
-# Copyright (C) 2010-2025 Oracle and/or its affiliates.
+# Copyright (C) 2010-2026 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.
@@ -164,7 +164,11 @@ $(VBOX_PATH_PACKAGES)/$(VBOX_VNC_MANGLED_NAME)-$(VBOX_VERSION_STRING)r$(VBOX_SVN
 		$(VBoxVNCIns_0_OUTDIR)/Stage/ExtPack.manifest \
 		$(VBoxVNCIns_0_OUTDIR)/Stage/ExtPack.signature
 # Tar it up.
+if 0
 	tar -cvf - -C $(VBoxVNCIns_0_OUTDIR)/Stage/ . | gzip -9c > $@
+else
+	$(VBOX_RTTAR) -cvf "$@" $(VBOX_RTTAR_EXTPACK_OPTS) -C "$(VBoxVNCIns_0_OUTDIR)/Stage/" .
+endif
 # Clean up
 	$(RM) -Rf $(VBoxVNCIns_0_OUTDIR)/Stage/
 

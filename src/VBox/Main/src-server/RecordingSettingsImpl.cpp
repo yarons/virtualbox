@@ -1,11 +1,11 @@
-/* $Id: RecordingSettingsImpl.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: RecordingSettingsImpl.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  * VirtualBox COM class implementation - Machine capture settings.
  */
 
 /*
- * Copyright (C) 2018-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2018-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -437,6 +437,18 @@ HRESULT RecordingSettings::start(ComPtr<IProgress> &aProgress)
     }
 
     return m->mProgress.queryInterfaceTo(aProgress.asOutParam());
+#endif
+}
+
+HRESULT RecordingSettings::stop(void)
+{
+#ifndef VBOX_WITH_RECORDING
+    ReturnComNotImplemented();
+#else
+    if (m->mProgress.isNull())
+        return setError(E_FAIL, tr("Recording not started (yet)"));
+
+    return m->mProgress->Cancel();
 #endif
 }
 

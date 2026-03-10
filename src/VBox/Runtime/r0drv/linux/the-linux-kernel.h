@@ -1,10 +1,10 @@
-/* $Id: the-linux-kernel.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: the-linux-kernel.h 113065 2026-02-17 15:00:09Z vadim.galitsyn@oracle.com $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -307,8 +307,10 @@ DECLINLINE(unsigned long) msecs_to_jiffies(unsigned int cMillies)
 # else
 #  define MY_PAGE_KERNEL_EXEC   __pgprot(boot_cpu_has(X86_FEATURE_PGE) ? _PAGE_KERNEL_EXEC | _PAGE_GLOBAL : _PAGE_KERNEL_EXEC)
 # endif
-#else
+#elif defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
 # define MY_PAGE_KERNEL_EXEC    PAGE_KERNEL
+#else
+# define MY_PAGE_KERNEL_EXEC    PAGE_KERNEL_EXEC
 #endif
 
 
@@ -468,6 +470,21 @@ DECLINLINE(unsigned long) msecs_to_jiffies(unsigned int cMillies)
 #endif
 
 /*
+ * Wrappers around mmap_lock/mmap_sem difference.
+ */
+#if RTLNX_VER_MIN(5,8,0)
+# define LNX_MM_DOWN_READ(a_pMm)    down_read(&(a_pMm)->mmap_lock)
+# define LNX_MM_UP_READ(a_pMm)        up_read(&(a_pMm)->mmap_lock)
+# define LNX_MM_DOWN_WRITE(a_pMm)   down_write(&(a_pMm)->mmap_lock)
+# define LNX_MM_UP_WRITE(a_pMm)       up_write(&(a_pMm)->mmap_lock)
+#else
+# define LNX_MM_DOWN_READ(a_pMm)    down_read(&(a_pMm)->mmap_sem)
+# define LNX_MM_UP_READ(a_pMm)        up_read(&(a_pMm)->mmap_sem)
+# define LNX_MM_DOWN_WRITE(a_pMm)   down_write(&(a_pMm)->mmap_sem)
+# define LNX_MM_UP_WRITE(a_pMm)       up_write(&(a_pMm)->mmap_sem)
+#endif
+
+/*
  * Some global indicator macros.
  */
 /** @def IPRT_LINUX_HAS_HRTIMER
@@ -492,5 +509,12 @@ DECLHIDDEN(void) rtR0LnxWorkqueueFlush(void);
  * Memory hacks from memobj-r0drv-linux.c that shared folders need.
  */
 RTDECL(struct page *) rtR0MemObjLinuxVirtToPage(void *pv);
+
+
+extern struct mm_struct *g_pLnxInitMm;
+#if RTLNX_VER_MIN(6,19,0)
+extern void (*g_pfnLinuxFlushTlbAll)(void);
+#endif
+
 
 #endif /* !IPRT_INCLUDED_SRC_r0drv_linux_the_linux_kernel_h */

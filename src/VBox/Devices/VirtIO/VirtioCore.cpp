@@ -1,11 +1,11 @@
-/* $Id: VirtioCore.cpp 111394 2025-10-14 16:15:49Z michal.necasek@oracle.com $ */
+/* $Id: VirtioCore.cpp 112501 2026-01-13 14:30:58Z aleksey.ilyushin@oracle.com $ */
 
 /** @file
  * VirtioCore - Virtio Core (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
  */
 
 /*
- * Copyright (C) 2009-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -1455,7 +1455,10 @@ static void virtioCoreVirtqNotified(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, uin
         virtioCoreVirtqAvailCnt(pDevIns, pVirtio, pVirtq)));
 
     /* Inform client */
-    pVirtioCC->pfnVirtqNotified(pDevIns, pVirtio, uVirtq);
+    if (pVirtq->uEnable && pVirtq->GCPhysVirtqDesc)
+        pVirtioCC->pfnVirtqNotified(pDevIns, pVirtio, uVirtq);
+    else
+        LogFunc(("Guest driver attempted to notify disabled queue (%u)\n", uVirtq));
     RT_NOREF2(pVirtio, pVirtq);
 }
 
@@ -2182,7 +2185,7 @@ static DECLCALLBACK(VBOXSTRICTRC) virtioLegacyIOPortOut(PPDMDEVINS pDevIns, void
 #ifdef IN_RING3
         ASSERT_GUEST_MSG(cb == 2, ("cb=%u\n", cb));
         pVirtio->uQueueNotify =  u32 & 0xFFFF;
-        if (uVirtq < VIRTQ_MAX_COUNT)
+        if (pVirtio->uQueueNotify < VIRTQ_MAX_COUNT)
         {
             RT_UNTRUSTED_VALIDATED_FENCE();
 

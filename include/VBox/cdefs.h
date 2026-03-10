@@ -3,7 +3,7 @@
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -109,8 +109,6 @@
 #define IN_DIS
 #define IN_INTNET_R0
 #define IN_INTNET_R3
-#define IN_PCIRAW_R0
-#define IN_PCIRAW_R3
 #define IN_REM_R3
 #define IN_SUP_R0
 #define IN_SUP_R3
@@ -198,36 +196,6 @@
 # define INTNETR0DECL(type) DECL_EXPORT_NOTHROW(type) VBOXCALL
 #else
 # define INTNETR0DECL(type) DECL_IMPORT_NOTHROW(type) VBOXCALL
-#endif
-
-
-
-/** @def IN_PCIRAW_R3
- * Used to indicate whether we're inside the same link module as the Ring-3
- * PCI passthrough support.
- */
-/** @def PCIRAWR3DECL(type)
- * PCI passthrough export or import declaration.
- * @param   type    The return type of the function declaration.
- */
-#ifdef IN_PCIRAW_R3
-# define PCIRAWR3DECL(type) DECL_EXPORT_NOTHROW(type) VBOXCALL
-#else
-# define PCIRAWR3DECL(type) DECL_IMPORT_NOTHROW(type) VBOXCALL
-#endif
-
-/** @def IN_PCIRAW_R0
- * Used to indicate whether we're inside the same link module as the R0
- * PCI passthrough support.
- */
-/** @def PCIRAWR0DECL(type)
- * PCI passthroug export or import declaration.
- * @param   type    The return type of the function declaration.
- */
-#ifdef IN_PCIRAW_R0
-# define PCIRAWR0DECL(type) DECL_EXPORT_NOTHROW(type) VBOXCALL
-#else
-# define PCIRAWR0DECL(type) DECL_IMPORT_NOTHROW(type) VBOXCALL
 #endif
 
 

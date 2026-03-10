@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsUnattendedInst1.py 111374 2025-10-14 10:04:30Z alexander.eichner@oracle.com $
+# $Id: tdGuestOsUnattendedInst1.py 113134 2026-02-24 10:28:55Z serkan.bayraktar@oracle.com $
 
 """
 VirtualBox Validation Kit - Guest OS unattended installation tests.
@@ -8,7 +8,7 @@ VirtualBox Validation Kit - Guest OS unattended installation tests.
 
 __copyright__ = \
 """
-Copyright (C) 2010-2025 Oracle and/or its affiliates.
+Copyright (C) 2010-2026 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -37,14 +37,14 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111374 $"
+__version__ = "$Revision: 113134 $"
 
 
 # Standard Python imports.
 import copy;
 import os;
 import sys;
-
+import re;
 
 # Only the main script needs to modify the path.
 try:    __file__                            # pylint: disable=used-before-assignment
@@ -470,9 +470,14 @@ class UnattendedVm(vboxtestvms.BaseTestVm):
         #
         # Check if the OS type matches.
         #
-        if self.sKind != sDetectedOSTypeId:
-            return reporter.error('sInstallIso=%s: DetectedOSTypeId is %s, expected %s'
-                                  % (sInstallIso, sDetectedOSTypeId, self.sKind));
+        if oTestDrv.fpApiVer <= 7.1:
+            if re.match(r'^[A-Za-z]+', self.sKind).group(0) != re.match(r'^[A-Za-z]+', sDetectedOSTypeId).group(0):
+                return reporter.error('sInstallIso=%s: Prefixes of  %s and %s do not match'
+                                      % (sInstallIso, sDetectedOSTypeId, self.sKind));
+        else:
+            if self.sKind != sDetectedOSTypeId:
+                return reporter.error('sInstallIso=%s: DetectedOSTypeId is %s, expected %s'
+                                      % (sInstallIso, sDetectedOSTypeId, self.sKind));
 
         return True;
 
@@ -557,57 +562,23 @@ class tdGuestOsInstTest1(vbox.TestDriver):
             UnattendedVm(oSet, 'tst-w10-1809-64', 'Windows10_64',    '6.0/uaisos/en_windows_10_business_edition_version_1809_updated_sept_2018_x64_dvd_f0b7dc68.iso',   UnattendedVm.kfWinGaTimesync), # >=10GiB
             UnattendedVm(oSet, 'tst-w10-1903-32', 'Windows10',       '6.0/uaisos/en_windows_10_business_editions_version_1903_x86_dvd_ca4f0f49.iso',                    UnattendedVm.kfWinGaTimesync), # >=7GiB
             UnattendedVm(oSet, 'tst-w10-1903-64', 'Windows10_64',    '6.0/uaisos/en_windows_10_business_editions_version_1903_x64_dvd_37200948.iso',                    UnattendedVm.kfWinGaTimesync), # >=10GiB
-            #
-            # Ubuntu
-            #
-            ## @todo 15.10 fails with grub install error.
-            #UnattendedVm(oSet, 'tst-ubuntu-15.10-64', 'Ubuntu_64', '6.0/uaisos/ubuntu-15.10-desktop-amd64.iso'),
-            UnattendedVm(oSet, 'tst-ubuntu-16.04-64',   'Ubuntu_64', '6.0/uaisos/ubuntu-16.04-desktop-amd64.iso',    # ~5GiB
-                         UnattendedVm.kfUbuntuAvx2Crash | UnattendedVm.kfLinuxIoApic),
-            UnattendedVm(oSet, 'tst-ubuntu-16.04-32',   'Ubuntu',    '6.0/uaisos/ubuntu-16.04-desktop-i386.iso',    UnattendedVm.kfLinuxIoApic), # >=4.5GiB
-            UnattendedVm(oSet, 'tst-ubuntu-16.04.1-64', 'Ubuntu_64', '6.0/uaisos/ubuntu-16.04.1-desktop-amd64.iso', UnattendedVm.kfLinuxIoApic), # >=5GiB
-            UnattendedVm(oSet, 'tst-ubuntu-16.04.1-32', 'Ubuntu',    '6.0/uaisos/ubuntu-16.04.1-desktop-i386.iso',  UnattendedVm.kfLinuxIoApic), # >=4.5GiB
-            UnattendedVm(oSet, 'tst-ubuntu-16.04.2-64', 'Ubuntu_64', '6.0/uaisos/ubuntu-16.04.2-desktop-amd64.iso', UnattendedVm.kfLinuxIoApic), # >=5GiB
-            UnattendedVm(oSet, 'tst-ubuntu-16.04.2-32', 'Ubuntu',    '6.0/uaisos/ubuntu-16.04.2-desktop-i386.iso',  UnattendedVm.kfLinuxIoApic), # >=4.5GiB
-            UnattendedVm(oSet, 'tst-ubuntu-16.04.3-64', 'Ubuntu_64', '6.0/uaisos/ubuntu-16.04.3-desktop-amd64.iso', UnattendedVm.kfLinuxIoApic), # >=5GiB
-            UnattendedVm(oSet, 'tst-ubuntu-16.04.3-32', 'Ubuntu',    '6.0/uaisos/ubuntu-16.04.3-desktop-i386.iso',  UnattendedVm.kfLinuxIoApic), # >=4.5GiB
-            UnattendedVm(oSet, 'tst-ubuntu-16.04.4-64', 'Ubuntu_64', '6.0/uaisos/ubuntu-16.04.4-desktop-amd64.iso', UnattendedVm.kfLinuxIoApic), # >=5GiB
-            UnattendedVm(oSet, 'tst-ubuntu-16.04.4-32', 'Ubuntu',    '6.0/uaisos/ubuntu-16.04.4-desktop-i386.iso',  UnattendedVm.kfLinuxIoApic), # >=4.5GiB
-            UnattendedVm(oSet, 'tst-ubuntu-16.04.5-64', 'Ubuntu_64', '6.0/uaisos/ubuntu-16.04.5-desktop-amd64.iso', UnattendedVm.kfLinuxIoApic), # >=5GiB
-            UnattendedVm(oSet, 'tst-ubuntu-16.04.5-32', 'Ubuntu',    '6.0/uaisos/ubuntu-16.04.5-desktop-i386.iso',  UnattendedVm.kfLinuxIoApic), # >=4.5GiB
-            UnattendedVm(oSet, 'tst-ubuntu-16.04.6-64', 'Ubuntu_64', '6.0/uaisos/ubuntu-16.04.6-desktop-amd64.iso', UnattendedVm.kfLinuxIoApic), # >=5GiB
-            UnattendedVm(oSet, 'tst-ubuntu-16.04.6-32', 'Ubuntu',    '6.0/uaisos/ubuntu-16.04.6-desktop-i386.iso',  UnattendedVm.kfLinuxIoApic), # >=4.5GiB
-            UnattendedVm(oSet, 'tst-ubuntu-16.10-64',   'Ubuntu_64', '6.0/uaisos/ubuntu-16.10-desktop-amd64.iso',   UnattendedVm.kfLinuxIoApic), # >=5.5GiB
-            ## @todo 16.10-32 doesn't ask for an IP, so it always fails.
-            #UnattendedVm(oSet, 'tst-ubuntu-16.10-32',   'Ubuntu',    '6.0/uaisos/ubuntu-16.10-desktop-i386.iso'),   # >=5.5GiB?
-            UnattendedVm(oSet, 'tst-ubuntu-17.04-64',   'Ubuntu_64', '6.0/uaisos/ubuntu-17.04-desktop-amd64.iso',   UnattendedVm.kfLinuxIoApic), # >=5GiB
-            UnattendedVm(oSet, 'tst-ubuntu-17.04-32',   'Ubuntu',    '6.0/uaisos/ubuntu-17.04-desktop-i386.iso',    UnattendedVm.kfLinuxIoApic), # >=4.5GiB
-            ## @todo ubuntu 17.10, 18.04 & 18.10 do not work.  They misses all the the build tools (make, gcc, perl, ++)
-            ##       and has signed kmods:
-            UnattendedVm(oSet, 'tst-ubuntu-17.10-64',   'Ubuntu_64', '6.0/uaisos/ubuntu-17.10-desktop-amd64.iso',    # >=4Gib
-                         UnattendedVm.kfNoGAs | UnattendedVm.kfLinuxIoApic),
-            UnattendedVm(oSet, 'tst-ubuntu-18.04-64',   'Ubuntu_64', '6.0/uaisos/ubuntu-18.04-desktop-amd64.iso',    # >=6GiB
-                         UnattendedVm.kfNoGAs | UnattendedVm.kfLinuxIoApic),
-            # 18.10 hangs reading install DVD during "starting partitioner..."
-            #UnattendedVm(oSet, 'tst-ubuntu-18.10-64',   'Ubuntu_64', '6.0/uaisos/ubuntu-18.10-desktop-amd64.iso',
-            #             UnattendedVm.kfNoGAs),
-            UnattendedVm(oSet, 'tst-ubuntu-19.04-64',   'Ubuntu_64', '6.0/uaisos/ubuntu-19.04-desktop-amd64.iso',    # >=6GiB
-                         UnattendedVm.kfNoGAs | UnattendedVm.kfLinuxIoApic),
-            UnattendedVm(oSet, 'tst-ubuntu-22.04-64', 'Ubuntu_64', '7.0/uaisos/ubuntu-22.04.3-desktop-amd64.iso',    # >=6GiB ?
-                         UnattendedVm.kfNoGAs | UnattendedVm.kfLinuxIoApic),
-            UnattendedVm(oSet, 'tst-ubuntu-23.10-64', 'Ubuntu_64', '7.0/uaisos/ubuntu-23.10.1-desktop-amd64.iso',    # >=6GiB ?
-                         UnattendedVm.kfNoGAs),
-            UnattendedVm(oSet, 'tst-ubuntu-server-23.10-64', 'Ubuntu_64', '7.1/uaisos/ubuntu-23.10-live-server-amd64.iso',
-                         UnattendedVm.kfNoGAs),
+            ## @todo r=bird: Add UnattendedVm.kfMinTwoCpus or similar; get & use the msdn iso (e.g. en-us_windows_11_business_editions_version_25h2_updated_jan_2026_x64_dvd_09c1e011.iso) so we know what we're testing
+            UnattendedVm(oSet, 'tst-w11-1905-64', 'Windows11_64',    '7.1/uaisos/Win11_25H2_English_x64.iso',                                                           UnattendedVm.kfWinGaTimesync), # >=10GiB
 
             #
             # Debian
             #
-            UnattendedVm(oSet, 'tst-debian-9.3-64', 'Debian_64', '6.0/uaisos/debian-9.3.0-amd64-DVD-1.iso',  # >=6GiB?
+            UnattendedVm(oSet, 'tst-debian-9.3-64', 'Debian9_64', '6.0/uaisos/debian-9.3.0-amd64-DVD-1.iso',  # >=6GiB?
                          UnattendedVm.kfAvoidNetwork | UnattendedVm.kfNoGAs | UnattendedVm.kfLinuxIoApic),
-            UnattendedVm(oSet, 'tst-debian-9.4-64', 'Debian_64', '6.0/uaisos/debian-9.4.0-amd64-DVD-1.iso',  # >=6GiB?
+            UnattendedVm(oSet, 'tst-debian-9.4-64', 'Debian9_64', '6.0/uaisos/debian-9.4.0-amd64-DVD-1.iso',  # >=6GiB?
                          UnattendedVm.kfAvoidNetwork | UnattendedVm.kfNoGAs | UnattendedVm.kfLinuxIoApic),
-            UnattendedVm(oSet, 'tst-debian-10.0-64', 'Debian_64', '6.0/uaisos/debian-10.0.0-amd64-DVD-1.iso',  # >=6GiB?
+            UnattendedVm(oSet, 'tst-debian-10.0-64', 'Debian10_64', '6.0/uaisos/debian-10.0.0-amd64-DVD-1.iso',  # >=6GiB?
+                         UnattendedVm.kfAvoidNetwork | UnattendedVm.kfLinuxIoApic),
+            UnattendedVm(oSet, 'tst-debian-11.11-64', 'Debian11_64', '7.1/uaisos/debian-11.11.0-amd64-DVD-1.iso',  # >=6GiB?
+                         UnattendedVm.kfAvoidNetwork | UnattendedVm.kfLinuxIoApic),
+            UnattendedVm(oSet, 'tst-debian-12.8-64', 'Debian12_64', '7.1/uaisos/debian-12.8.0-amd64-DVD-1.iso',  # >=6GiB?
+                         UnattendedVm.kfAvoidNetwork | UnattendedVm.kfLinuxIoApic),
+            UnattendedVm(oSet, 'tst-debian-13.3-64', 'Debian13_64', '7.1/uaisos/debian-13.3.0-amd64-DVD-1.iso',  # >=6GiB?
                          UnattendedVm.kfAvoidNetwork | UnattendedVm.kfLinuxIoApic),
 
             #
@@ -628,6 +599,51 @@ class tdGuestOsInstTest1(vbox.TestDriver):
             UnattendedVm(oSet, 'tst-acp2',              'OS2Warp45', '7.0/uaisos/acp2_us_cd2.iso'),                  # ~400MiB
             ## @todo mcp2 too?
 
+            #
+            # Ubuntu
+            #
+            # With VirtualBox versions >= 7.2 Unattended detects a more specific OS type ID
+            ## @todo 15.10 fails with grub install error.
+            #UnattendedVm(oSet, 'tst-ubuntu-15.10-64', 'Ubuntu_64', '6.0/uaisos/ubuntu-15.10-desktop-amd64.iso'),
+            UnattendedVm(oSet, 'tst-ubuntu-16.04-64',   'Ubuntu16_64', '6.0/uaisos/ubuntu-16.04-desktop-amd64.iso',    # ~5GiB
+                             UnattendedVm.kfUbuntuAvx2Crash | UnattendedVm.kfLinuxIoApic),
+            UnattendedVm(oSet, 'tst-ubuntu-16.04-32',   'Ubuntu16',    '6.0/uaisos/ubuntu-16.04-desktop-i386.iso',    UnattendedVm.kfLinuxIoApic), # >=4.5GiB
+            UnattendedVm(oSet, 'tst-ubuntu-16.04.1-64', 'Ubuntu16_64', '6.0/uaisos/ubuntu-16.04.1-desktop-amd64.iso', UnattendedVm.kfLinuxIoApic), # >=5GiB
+            UnattendedVm(oSet, 'tst-ubuntu-16.04.1-32', 'Ubuntu16',    '6.0/uaisos/ubuntu-16.04.1-desktop-i386.iso',  UnattendedVm.kfLinuxIoApic), # >=4.5GiB
+            UnattendedVm(oSet, 'tst-ubuntu-16.04.2-64', 'Ubuntu16_64', '6.0/uaisos/ubuntu-16.04.2-desktop-amd64.iso', UnattendedVm.kfLinuxIoApic), # >=5GiB
+            UnattendedVm(oSet, 'tst-ubuntu-16.04.2-32', 'Ubuntu16',    '6.0/uaisos/ubuntu-16.04.2-desktop-i386.iso',  UnattendedVm.kfLinuxIoApic), # >=4.5GiB
+            UnattendedVm(oSet, 'tst-ubuntu-16.04.3-64', 'Ubuntu16_64', '6.0/uaisos/ubuntu-16.04.3-desktop-amd64.iso', UnattendedVm.kfLinuxIoApic), # >=5GiB
+            UnattendedVm(oSet, 'tst-ubuntu-16.04.3-32', 'Ubuntu16',    '6.0/uaisos/ubuntu-16.04.3-desktop-i386.iso',  UnattendedVm.kfLinuxIoApic), # >=4.5GiB
+            UnattendedVm(oSet, 'tst-ubuntu-16.04.4-64', 'Ubuntu16_64', '6.0/uaisos/ubuntu-16.04.4-desktop-amd64.iso', UnattendedVm.kfLinuxIoApic), # >=5GiB
+            UnattendedVm(oSet, 'tst-ubuntu-16.04.4-32', 'Ubuntu16',    '6.0/uaisos/ubuntu-16.04.4-desktop-i386.iso',  UnattendedVm.kfLinuxIoApic), # >=4.5GiB
+            UnattendedVm(oSet, 'tst-ubuntu-16.04.5-64', 'Ubuntu16_64', '6.0/uaisos/ubuntu-16.04.5-desktop-amd64.iso', UnattendedVm.kfLinuxIoApic), # >=5GiB
+            UnattendedVm(oSet, 'tst-ubuntu-16.04.5-32', 'Ubuntu16',    '6.0/uaisos/ubuntu-16.04.5-desktop-i386.iso',  UnattendedVm.kfLinuxIoApic), # >=4.5GiB
+            UnattendedVm(oSet, 'tst-ubuntu-16.04.6-64', 'Ubuntu16_64', '6.0/uaisos/ubuntu-16.04.6-desktop-amd64.iso', UnattendedVm.kfLinuxIoApic), # >=5GiB
+            UnattendedVm(oSet, 'tst-ubuntu-16.04.6-32', 'Ubuntu16',    '6.0/uaisos/ubuntu-16.04.6-desktop-i386.iso',  UnattendedVm.kfLinuxIoApic), # >=4.5GiB
+            UnattendedVm(oSet, 'tst-ubuntu-16.10-64',   'Ubuntu16_64', '6.0/uaisos/ubuntu-16.10-desktop-amd64.iso',   UnattendedVm.kfLinuxIoApic), # >=5.5GiB
+            ## @todo 16.10-32 doesn't ask for an IP, so it always fails.
+            #UnattendedVm(oSet, 'tst-ubuntu-16.10-32',   'Ubuntu',    '6.0/uaisos/ubuntu-16.10-desktop-i386.iso'),   # >=5.5GiB?
+                UnattendedVm(oSet, 'tst-ubuntu-17.04-64',   'Ubuntu17_64', '6.0/uaisos/ubuntu-17.04-desktop-amd64.iso',   UnattendedVm.kfLinuxIoApic), # >=5GiB
+            UnattendedVm(oSet, 'tst-ubuntu-17.04-32',   'Ubuntu17',    '6.0/uaisos/ubuntu-17.04-desktop-i386.iso',    UnattendedVm.kfLinuxIoApic), # >=4.5GiB
+            ## @todo ubuntu 17.10, 18.04 & 18.10 do not work.  They misses all the the build tools (make, gcc, perl, ++)
+            ##       and has signed kmods:
+                UnattendedVm(oSet, 'tst-ubuntu-17.10-64',   'Ubuntu17_64', '6.0/uaisos/ubuntu-17.10-desktop-amd64.iso',    # >=4Gib
+                             UnattendedVm.kfNoGAs | UnattendedVm.kfLinuxIoApic),
+            UnattendedVm(oSet, 'tst-ubuntu-18.04-64',   'Ubuntu18_64', '6.0/uaisos/ubuntu-18.04-desktop-amd64.iso',    # >=6GiB
+                         UnattendedVm.kfNoGAs | UnattendedVm.kfLinuxIoApic),
+            # 18.10 hangs reading install DVD during "starting partitioner..."
+            #UnattendedVm(oSet, 'tst-ubuntu-18.10-64',   'Ubuntu_64', '6.0/uaisos/ubuntu-18.10-desktop-amd64.iso',
+            #             UnattendedVm.kfNoGAs),
+                UnattendedVm(oSet, 'tst-ubuntu-19.04-64',   'Ubuntu19_64', '6.0/uaisos/ubuntu-19.04-desktop-amd64.iso',    # >=6GiB
+                             UnattendedVm.kfNoGAs | UnattendedVm.kfLinuxIoApic),
+            UnattendedVm(oSet, 'tst-ubuntu-22.04-64', 'Ubuntu22_64', '7.0/uaisos/ubuntu-22.04.3-desktop-amd64.iso',    # >=6GiB ?
+                         UnattendedVm.kfNoGAs | UnattendedVm.kfLinuxIoApic),
+            UnattendedVm(oSet, 'tst-ubuntu-23.10-64', 'Ubuntu23_64', '7.0/uaisos/ubuntu-23.10.1-desktop-amd64.iso',    # >=6GiB ?
+                         UnattendedVm.kfNoGAs),
+            UnattendedVm(oSet, 'tst-ubuntu-server-23.10-64', 'Ubuntu23_64', '7.1/uaisos/ubuntu-23.10-live-server-amd64.iso',
+                         UnattendedVm.kfNoGAs),
+            UnattendedVm(oSet, 'tst-ubuntu-24.04-64', 'Ubuntu24_64', '7.1/uaisos/ubuntu-24.04-desktop-amd64.iso',    # >=6GiB ?
+                         UnattendedVm.kfNoGAs | UnattendedVm.kfLinuxIoApic),
 
             #
             #
@@ -638,7 +654,11 @@ class tdGuestOsInstTest1(vbox.TestDriver):
             #
             # Debian
             #
-            UnattendedVm(oSet, 'tst-debian-11.8-arm64', 'Debian_arm64', '7.1/uaisos/debian-11.8.0-arm64-DVD-1.iso',   # >=6GiB?
+            UnattendedVm(oSet, 'tst-debian-11.8-arm64', 'Debian11_arm64', '7.1/uaisos/debian-11.8.0-arm64-DVD-1.iso',   # >=6GiB?
+                         UnattendedVm.kfAvoidNetwork, "ARM"),
+            UnattendedVm(oSet, 'tst-debian-12.12-arm64', 'Debian12_arm64', '7.1/uaisos/debian-12.12.0-arm64-DVD-1.iso',   # >=6GiB?
+                         UnattendedVm.kfAvoidNetwork, "ARM"),
+            UnattendedVm(oSet, 'tst-debian-13.1-arm64', 'Debian13_arm64', '7.1/uaisos/debian-13.1.0-arm64-DVD-1.iso',   # >=6GiB?
                          UnattendedVm.kfAvoidNetwork, "ARM"),
 
             #
@@ -647,6 +667,7 @@ class tdGuestOsInstTest1(vbox.TestDriver):
             UnattendedVm(oSet, 'tst-ol-9_2-arm64', 'Oracle_arm64', '7.1/uaisos/OracleLinux-R9-U2-aarch64-dvd.iso',
                          UnattendedVm.kfAvoidNetwork | UnattendedVm.kfNoGAs, "ARM"),
         ]);
+
         # pylint: enable=line-too-long
         self.oTestVmSet = oSet;
 
@@ -788,6 +809,8 @@ class tdGuestOsInstTest1(vbox.TestDriver):
         """
         Execute the testcase.
         """
+        if not self.importVBoxApi(): # So we can use the constant below.
+            return False;
         return self.oTestVmSet.actionExecute(self, self.testOneVmConfig)
 
     def testOneVmConfig(self, oVM, oTestVm): # type: (Any, UnattendedVm) -> bool

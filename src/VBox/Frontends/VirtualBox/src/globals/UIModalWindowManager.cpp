@@ -1,10 +1,10 @@
-/* $Id: UIModalWindowManager.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIModalWindowManager.cpp 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIModalWindowManager class implementation.
  */
 
 /*
- * Copyright (C) 2013-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -281,4 +281,3 @@ void UIModalWindowManager::preprocessRealParent(QWidget *pParent)
     if (UIProgressDialog *pProgressDialog = qobject_cast<UIProgressDialog*>(pParent))
         pProgressDialog->show();
 }
-

@@ -1,10 +1,10 @@
-/* $Id: UIDetails.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIDetails.cpp 112647 2026-01-20 14:47:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetails class implementation.
  */
 
 /*
- * Copyright (C) 2012-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -98,7 +98,9 @@ void UIDetails::prepareView()
     m_pDetailsView = new UIDetailsView(this);
     if (m_pDetailsView)
     {
-        m_pDetailsView->setScene(m_pDetailsModel->scene());
+        AssertPtrReturnVoid(model());
+        m_pDetailsView->setModel(model());
+        m_pDetailsView->setScene(model()->scene());
         m_pDetailsView->show();
         setFocusProxy(m_pDetailsView);
 

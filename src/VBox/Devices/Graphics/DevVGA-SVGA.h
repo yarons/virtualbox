@@ -1,9 +1,9 @@
-/* $Id: DevVGA-SVGA.h 110780 2025-08-21 13:49:48Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA.h 113247 2026-03-04 12:12:24Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VMware SVGA device
  */
 /*
- * Copyright (C) 2013-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -184,6 +184,21 @@ struct {
  * The code assumes it's at least an order of magnitude less than UINT32_MAX. */
 #define VMSVGA_MAX_Y                    _1M
 
+/** Maximum cursor dimensions (X/Y) in pixels.
+ * @note This is a VBox limit that we've set ourselves. Do not know what the
+ *       original device implementation reports.  The main objective is (/was)
+ *       to prevent interger overflows when multiplying the dimensions and to
+ *       check the input data sizes.  Since 7.2.8, this is an inclusive limit,
+ *       prior to that it was exclusive.
+ * @todo Check what the other guys return for SVGA_REG_CURSOR_MAX_DIMENSION. */
+#define VMSVGA_CURSOR_MAX_DIMENSION     2048
+/** Maximum cursor byte size.
+ * @note We have to ASSUME color cursors here with 32-bit AND and XOR masks.
+ *       This means twice the size of an alpha cursor.
+ * @todo Check what the other guys returns for SVGA_REG_CURSOR_MAX_BYTE_SIZE.
+ * @todo Does this include the header? */
+#define VMSVGA_CURSOR_MAX_BYTES         (VMSVGA_CURSOR_MAX_DIMENSION * VMSVGA_CURSOR_MAX_DIMENSION * sizeof(uint32_t) * 2)
+
 /* u32ActionFlags */
 #define VMSVGA_ACTION_CHANGEMODE_BIT    0
 #define VMSVGA_ACTION_CHANGEMODE        RT_BIT(VMSVGA_ACTION_CHANGEMODE_BIT)
@@ -259,13 +274,15 @@ typedef struct VMSVGAVIEWPORT
 } VMSVGAVIEWPORT;
 
 #ifdef VBOX_WITH_VMSVGA3D
-/// @todo Development define. Remove.
-# define DX_NEW_HWSCREEN
-# ifdef DX_NEW_HWSCREEN
-#  define VMSVGA_VRAM_OFFSET_SCREEN_TARGET UINT32_C(0xFFFFFFFF)
-# endif
 typedef struct VMSVGAHWSCREEN *PVMSVGAHWSCREEN;
 #endif
+
+#define VMSVGA_VRAM_OFFSET_SCREEN_TARGET UINT32_C(0xFFFFFFFF)
+
+/* Allocates VMSVGASCREENOBJECT::pvScreenBitmap with maximum possible size
+ * (pThis->svga.u32MaxWidth x pThis->svga.u32MaxHeight)
+ * in order to avoid reallocation of the memory on video mode change. */
+#define PERMANENT_SCREEN_BITMAP
 
 /**
  * Screen object state.
@@ -281,11 +298,7 @@ typedef struct VMSVGASCREENOBJECT
     int32_t     yOrigin;
     uint32_t    cWidth;
     uint32_t    cHeight;
-#ifndef DX_NEW_HWSCREEN
-    /** Offset of the screen buffer in the guest VRAM. */
-#else
     /** Offset of the screen buffer in the guest VRAM or VMSVGA_VRAM_OFFSET_SCREEN_TARGET. */
-#endif
     uint32_t    offVRAM;
     /** Scanline pitch. */
     uint32_t    cbPitch;
@@ -472,6 +485,7 @@ typedef struct VMSVGAState
     STAMCOUNTER                 StatRegDevCapWr;
     STAMCOUNTER                 StatRegCmdPrependLowWr;
     STAMCOUNTER                 StatRegCmdPrependHighWr;
+    STAMCOUNTER                 StatRegCursorMobIdWr;
 
     STAMCOUNTER                 StatRegBitsPerPixelRd;
     STAMCOUNTER                 StatRegBlueMaskRd;
@@ -642,6 +656,26 @@ typedef struct VMSVGAGBODESCRIPTOR
    uint64_t                 cPages;
 } VMSVGAGBODESCRIPTOR, *PVMSVGAGBODESCRIPTOR;
 typedef VMSVGAGBODESCRIPTOR const *PCVMSVGAGBODESCRIPTOR;
+#else
+/**
+ * GBO segment.
+ *
+ * This is basically RTSGSEG but with 32-bit size and an added offset member to
+ * enable binary searching.
+ */
+typedef struct VMSVGAGBOSEG
+{
+    /** Pointer to the first byte in the segment. */
+    uint8_t *pbSeg;
+    /** The segment size in bytes. */
+    uint32_t cbSeg;
+    /** The segment byte offset within the GBO. */
+    uint32_t offSeg;
+} VMSVGAGBOSEG;
+/** Pointer to a GBO segment. */
+typedef VMSVGAGBOSEG *PVMSVGAGBOSEG;
+/** Pointer to a const GBO segment. */
+typedef VMSVGAGBOSEG const *PCVMSVGAGBOSEG;
 #endif
 
 /* GBO.
@@ -655,14 +689,21 @@ typedef struct VMSVGAGBO
     uint32_t                cDescriptors;
     PVMSVGAGBODESCRIPTOR    paDescriptors;
 #else
-    uint32_t                cSegsUsed;        /**< Number of segments used in VMSVGAGBO::paSegs. */
-    void                   *pvDescriptors;    /**< Pointer to the memory for holding all the parallel arrays. */
-    RTGCPHYS               *paGCPhysPages;    /**< Pointer to the array of guest physical address for the pages. */
-    PPGMPAGEMAPLOCK         paPageLocks;      /**< Pointer to the array of PGM page map locks. */
-    void                  **papvPages;        /**< Pointer to the host adresses of mapped pages. */
-    PRTSGSEG                paSegs;           /**< Pointer to an array of segments. */
+    uint32_t                cSegsUsed;          /**< Number of segments used in VMSVGAGBO::paSegs. */
+    void                   *pvDescriptors;      /**< Pointer to the memory for holding all the parallel arrays. */
+    RTGCPHYS               *paGCPhysPages;      /**< Pointer to the array of guest physical address for the pages. */
+    PPGMPAGEMAPLOCK         paPageLocks;        /**< Pointer to the array of PGM page map locks. */
+    void                  **papvPages;          /**< Pointer to the host adresses of mapped pages. */
+    PVMSVGAGBOSEG           paSegs;             /**< Pointer to an array of segments (compressed w/ offset lookup). */
 #endif
-    void                   *pvHost; /* Pointer to cbTotal bytes on the host if VMSVGAGBO_F_HOST_BACKED is set. */
+    void                   *pvHost;             /**< Pointer to cbTotal bytes on the host if VMSVGAGBO_F_HOST_BACKED is set. */
+    /** Use a union to keep the structure layout & size the same, avoiding any
+     *  troubles if VBOX_WITH_STATISTICS is defined locally in a source file. */
+    union
+    {
+        STAMPROFILE         StatTransferPrf;    /**< VBOX_WITH_STATISTICS: Profiles vmsvgaR3GboTransfer(). */
+        STAMCOUNTER         StatTransferCalls;  /**< !VBOX_WITH_STATISTICS: Count vmsvgaR3GboTransfer() calls. */
+    } u;
 } VMSVGAGBO, *PVMSVGAGBO;
 typedef VMSVGAGBO const *PCVMSVGAGBO;
 

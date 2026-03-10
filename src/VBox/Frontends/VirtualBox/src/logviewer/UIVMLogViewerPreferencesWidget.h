@@ -1,10 +1,10 @@
-/* $Id: UIVMLogViewerPreferencesWidget.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIVMLogViewerPreferencesWidget.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
 
 /*
- * Copyright (C) 2010-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -64,7 +64,6 @@ public:
 
 public slots:
 
-
 protected:
 
     virtual void prepareWidgets() RT_OVERRIDE RT_FINAL;
@@ -87,7 +86,6 @@ private:
 
     /** Default font size in points. */
     const int    m_iDefaultFontSize;
-
 };
 
 #endif /* !FEQT_INCLUDED_SRC_logviewer_UIVMLogViewerPreferencesWidget_h */

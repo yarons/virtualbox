@@ -1,10 +1,10 @@
-/* $Id: VBoxGuestR0LibGenericRequest.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxGuestR0LibGenericRequest.cpp 113153 2026-02-24 23:06:29Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBoxGuestLibR0 - Generic VMMDev request management.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -89,7 +89,8 @@ DECLR0VBGL(int) VbglGR0Verify(const VMMDevRequestHeader *pReq, size_t cbReq)
      */
     if (   pReq->requestType == VMMDevReq_ChangeMemBalloon
         || pReq->requestType == VMMDevReq_GetDisplayChangeRequestMulti
-#ifdef VBOX_WITH_64_BITS_GUESTS
+        || pReq->requestType == VMMDevReq_GetDisplayChangeRequestMulti2
+#if ARCH_BITS == 64
         || pReq->requestType == VMMDevReq_HGCMCall64
 #endif
         || pReq->requestType == VMMDevReq_HGCMCall32

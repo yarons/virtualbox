@@ -3,7 +3,7 @@
  */
 
 /*
- * Copyright (C) 2011-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -1380,7 +1380,7 @@ DECLINLINE(PRTUINT64U) RTUInt64DivRem(PRTUINT64U pQuotient, PRTUINT64U pRemainde
         RTUINT64U NormDivisor = *pValue2;
         if (iBitAdder)
         {
-            RTUInt64ShiftLeft(&NormDivisor, pValue2, iBitAdder);
+            RTUInt64ShiftLeft(&NormDivisor, pValue2, (int)iBitAdder);
             if (RTUInt64IsLarger(&NormDivisor, pValue1))
             {
                 RTUInt64AssignShiftRight(&NormDivisor, 1);

@@ -1,10 +1,10 @@
-/* $Id: UIMachineView.cpp 111057 2025-09-19 11:27:45Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.cpp 113253 2026-03-04 14:49:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
 
 /*
- * Copyright (C) 2010-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -46,7 +46,6 @@
 #include "UIKeyboardHandler.h"
 #include "UILoggingDefs.h"
 #include "UIMachine.h"
-#include "UIMessageCenter.h"
 #include "UIMachineLogic.h"
 #include "UIMachineWindow.h"
 #include "UIMachineViewNormal.h"
@@ -54,12 +53,10 @@
 #include "UIMachineViewSeamless.h"
 #include "UIMachineViewScale.h"
 #include "UIMouseHandler.h"
-#include "UINotificationCenter.h"
 #include "UITranslationEventListener.h"
 #ifdef VBOX_WS_MAC
 # include "UICocoaApplication.h"
 # include "DarwinKeyboard.h"
-# include "DockIconPreview.h"
 #endif
 #ifdef VBOX_WITH_DRAG_AND_DROP
 # include "UIDnDHandler.h"
@@ -1524,14 +1521,25 @@ QSize UIMachineView::sizeHint() const
     return QSize(size.width() + frameWidth() * 2, size.height() + frameWidth() * 2);
 }
 
-QSize UIMachineView::storedGuestScreenSizeHint() const
+QSize UIMachineView::storedGuestScreenSizeHint(bool fFailsafe /* = true */) const
 {
     /* Load guest-screen size-hint: */
     QSize sizeHint = gEDataManager->lastGuestScreenSizeHint(m_uScreenId, uiCommon().managedVMUuid());
 
-    /* Invent the default if necessary: */
+    /* If there is no hint currently set: */
     if (!sizeHint.isValid())
+    {
+        /* Exit prematurelly if fallback hint wasn't requested: */
+        if (!fFailsafe)
+        {
+            LogRel2(("GUI: UIMachineView::storedGuestScreenSizeHint: No guest-screen size-hint present for screen %d\n",
+                     (int)screenId()));
+            return QSize();
+        }
+
+        /* Invent new default hint: */
         sizeHint = QSize(800, 600);
+    }
 
     /* Take the scale-factor(s) into account: */
     sizeHint = scaledForward(sizeHint);
@@ -2028,8 +2036,8 @@ void UIMachineView::keyReleaseEvent(QKeyEvent *pEvent)
     QAbstractScrollArea::keyReleaseEvent(pEvent);
 }
 #endif
-#ifdef VBOX_WITH_DRAG_AND_DROP
 
+#ifdef VBOX_WITH_DRAG_AND_DROP
 bool UIMachineView::dragAndDropCanAccept() const
 {
     bool fAccept = m_pDnDHandler;
@@ -2150,7 +2158,6 @@ void UIMachineView::dropEvent(QDropEvent *pEvent)
 
     DNDDEBUG(("DnD: dropEvent ended with rc=%Rrc\n", rc));
 }
-
 #endif /* VBOX_WITH_DRAG_AND_DROP */
 
 QSize UIMachineView::scaledForward(QSize size) const

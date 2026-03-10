@@ -1,10 +1,10 @@
-/* $Id: UIExtensionPackManager.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIExtensionPackManager.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtensionPackManager class declaration.
  */
 
 /*
- * Copyright (C) 2009-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -40,7 +40,6 @@ class QITreeWidget;
 class UIActionPool;
 struct UIDataExtensionPack;
 class CExtPack;
-
 
 /** QWidget extension providing GUI with the pane to control extension pack related functionality. */
 class UIExtensionPackManagerWidget : public QWidget
@@ -152,7 +151,6 @@ private:
     /** @} */
 };
 
-
 /** QIManagerDialogFactory extension used as a factory for Extension Pack Manager dialog. */
 class UIExtensionPackManagerFactory : public QIManagerDialogFactory
 {
@@ -171,7 +169,6 @@ protected:
     /** Holds the action-pool reference. */
     UIActionPool *m_pActionPool;
 };
-
 
 /** QIManagerDialog extension providing GUI with the dialog to control extension pack related functionality. */
 class UIExtensionPackManager : public QIManagerDialog

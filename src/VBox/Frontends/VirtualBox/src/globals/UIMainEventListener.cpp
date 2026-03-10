@@ -1,10 +1,10 @@
-/* $Id: UIMainEventListener.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMainEventListener.cpp 112641 2026-01-19 13:59:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class implementation.
  */
 
 /*
- * Copyright (C) 2010-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -56,6 +56,7 @@
 #include "CGuestProcessIOEvent.h"
 #include "CGuestProcessRegisteredEvent.h"
 #include "CGuestProcessStateChangedEvent.h"
+#include "CGuestPropertyChangedEvent.h"
 #include "CGuestSessionRegisteredEvent.h"
 #include "CGuestSessionStateChangedEvent.h"
 #include "CKeyboardLedsChangedEvent.h"
@@ -423,6 +424,14 @@ STDMETHODIMP UIMainEventListener::HandleEvent(VBoxEventType_T, IEvent *pEvent)
             break;
         }
 
+        case KVBoxEventType_OnGuestPropertyChanged:
+        {
+            CGuestPropertyChangedEvent comEventSpecific(pEvent);
+            emit sigGuestPropertyChange(comEventSpecific.GetMachineId(),
+                                        comEventSpecific.GetName(),
+                                        comEventSpecific.GetValue());
+            break;
+        }
         case KVBoxEventType_OnMousePointerShapeChanged:
         {
             CMousePointerShapeChangedEvent comEventSpecific(pEvent);

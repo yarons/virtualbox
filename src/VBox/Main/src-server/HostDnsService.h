@@ -1,10 +1,10 @@
-/* $Id: HostDnsService.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: HostDnsService.h 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * Host DNS listener.
  */
 
 /*
- * Copyright (C) 2005-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2005-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -52,6 +52,7 @@ public:
 
 public:
     std::vector<com::Utf8Str> servers;
+    std::vector<com::Utf8Str> serversV6;
     com::Utf8Str domain;
     std::vector<com::Utf8Str> searchList;
     bool equals(const HostDnsInformation &, uint32_t fLaxComparison = 0) const;
@@ -130,6 +131,7 @@ public:
     void notify(const HostDnsInformation &info);
 
     HRESULT GetNameServers(std::vector<com::Utf8Str> &aNameServers);
+    HRESULT GetV6NameServers(std::vector<com::Utf8Str> &aNameServers);
     HRESULT GetDomainName(com::Utf8Str *pDomainName);
     HRESULT GetSearchStrings(std::vector<com::Utf8Str> &aSearchStrings);
 
@@ -219,6 +221,8 @@ public:
 protected:
 
     HRESULT readResolvConf(void);
+    static int i_rcpParse(const char *, HostDnsInformation &) RT_NOEXCEPT;
+    static int i_rcpParseInner(struct RTSTREAM *a_pStream, HostDnsInformation &);
 
 protected:
 

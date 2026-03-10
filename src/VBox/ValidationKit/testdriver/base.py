@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 111270 2025-10-07 13:17:20Z alexander.eichner@oracle.com $
+# $Id: base.py 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -8,7 +8,7 @@ Base testdriver module.
 
 __copyright__ = \
 """
-Copyright (C) 2010-2025 Oracle and/or its affiliates.
+Copyright (C) 2010-2026 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111270 $"
+__version__ = "$Revision: 112403 $"
 
 
 # Standard Python imports.
@@ -70,7 +70,9 @@ g_ksValidationKitDir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 
 # Python 3 hacks:
 if sys.version_info[0] >= 3:
-    long = int;     # pylint: disable=redefined-builtin,invalid-name
+    long = int;         # pylint: disable=redefined-builtin,invalid-name
+else:
+    long = long;        # pylint: disable=redefined-builtin,invalid-name,self-assigning-variable
 
 
 #
@@ -1311,8 +1313,7 @@ class TestDriverBase(object): # pylint: disable=too-many-instance-attributes
             if cMsToDeadline >= 0:
                 # Adjust for fudge and enforce the minimum timeout
                 cMsToDeadline -= self.secTimeoutFudge * 1000;
-                if cMsToDeadline < (cMsMinimum if cMsMinimum is not None else 10000):
-                    cMsToDeadline = cMsMinimum if cMsMinimum is not None else 10000;
+                cMsToDeadline  = max(cMsToDeadline, cMsMinimum if cMsMinimum is not None else 10000);
 
                 # Is the timeout beyond the (adjusted) deadline, if so change it.
                 if cMsTimeout > cMsToDeadline:

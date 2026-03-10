@@ -1,10 +1,10 @@
-/* $Id: UIMachineWindowFullscreen.cpp 111483 2025-10-23 14:08:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindowFullscreen.cpp 112785 2026-02-02 16:38:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class implementation.
  */
 
 /*
- * Copyright (C) 2010-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -49,7 +49,6 @@
 # include "UIMachineDefs.h"
 # include "UIMiniToolBar.h"
 #elif defined(VBOX_WS_MAC)
-# include "VBoxUtils-darwin.h"
 # include "UICocoaApplication.h"
 #endif /* VBOX_WS_MAC */
 

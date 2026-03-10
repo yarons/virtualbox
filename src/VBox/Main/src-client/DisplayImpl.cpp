@@ -1,10 +1,10 @@
-/* $Id: DisplayImpl.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: DisplayImpl.cpp 113234 2026-03-03 18:10:34Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -2231,11 +2231,11 @@ int Display::i_recordingScreenUpdate(unsigned uScreenId, uint8_t *pauFramebuffer
         uScreenId = VBOX_VIDEO_PRIMARY_SCREEN;
 
     if (   !pCtx->IsFeatureEnabled(uScreenId, RecordingFeature_Video)
+        || !cbFramebuffer
         || !pauFramebuffer)
         return VINF_SUCCESS;
 
 #ifdef VBOX_STRICT /* Skipped in release build for speed reasons. */
-    AssertReturn   (cbFramebuffer,  VERR_INVALID_PARAMETER);
     AssertReturn   (uBytesPerLine,  VERR_INVALID_PARAMETER);
     AssertReturn   (w,              VERR_INVALID_PARAMETER);
     AssertReturn   (h,              VERR_INVALID_PARAMETER);

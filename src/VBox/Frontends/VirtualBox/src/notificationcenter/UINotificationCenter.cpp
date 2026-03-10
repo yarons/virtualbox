@@ -1,10 +1,10 @@
-/* $Id: UINotificationCenter.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UINotificationCenter.cpp 113228 2026-03-03 14:46:16Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class implementation.
  */
 
 /*
- * Copyright (C) 2021-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2021-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -156,6 +156,26 @@ UINotificationCenter *UINotificationCenter::instance()
     return s_pInstance;
 }
 
+/* static */
+UINotificationCenter *UINotificationCenter::acquire(QWidget *pParent)
+{
+    /* Do we have parent passed? */
+    while (pParent)
+    {
+        /* Acquire contained UINotificationCenter reference: */
+        QPointer<UINotificationCenter> pNotificationCenter =
+            pParent->property("notification_center").value<QPointer<UINotificationCenter>>();
+        /* Return if something present: */
+        if (!pNotificationCenter.isNull())
+            return pNotificationCenter;
+        /* Go to parent up: */
+        pParent = pParent->parentWidget();
+    }
+
+    /* Return global one otherwise: */
+    return gpNotificationCenter;
+}
+
 UINotificationCenter::UINotificationCenter(QWidget *pParent)
     : QWidget(pParent)
     , m_pModel(0)
@@ -172,7 +192,9 @@ UINotificationCenter::UINotificationCenter(QWidget *pParent)
     , m_pLayoutItems(0)
     , m_pStateMachineSliding(0)
     , m_iAnimatedValue(0)
+    , m_fExtendedMode(false)
     , m_pTimerOpen(0)
+    , m_enmLastResult(Question::Result_Cancel)
     , m_fLastResult(false)
 {
     prepare();
@@ -218,16 +240,14 @@ QUuid UINotificationCenter::append(UINotificationObject *pObject)
     AssertPtrReturn(m_pModel, QUuid());
     AssertPtrReturn(pObject, QUuid());
 
-    /* Is object critical? */
-    const bool fCritical = pObject->isCritical();
     /* Is object progress? */
     const bool fProgress = pObject->inherits("UINotificationProgress");
 
     /* Handle object. Be aware it can be deleted during handling! */
     const QUuid uId = m_pModel->appendObject(pObject);
 
-    /* If object is critical and center isn't opened yet: */
-    if (!m_pButtonOpen->isChecked() && fCritical)
+    /* If center isn't opened yet: */
+    if (!m_pButtonOpen->isChecked())
     {
         /* We should delay progresses for a bit: */
         const int iDelay = fProgress ? 2000 : 0;
@@ -244,6 +264,97 @@ void UINotificationCenter::revoke(const QUuid &uId)
 {
     AssertReturnVoid(!uId.isNull());
     return m_pModel->revokeObject(uId);
+}
+
+void UINotificationCenter::showBlocking(UINotificationMessage *pMessage)
+{
+    /* Check for the recursive run: */
+    AssertMsgReturnVoid(!m_pEventLoop, ("UINotificationCenter::showBlocking() is called recursively!\n"));
+
+    /* Switch to extended mode: */
+    setExtendedMode(true);
+    pMessage->setCritical(true);
+
+    /* Guard message for the case
+     * it destroyed itself in his append call: */
+    QPointer<UINotificationMessage> guardMessage = pMessage;
+    m_uId = append(pMessage);
+
+    /* Is progress still valid? */
+    if (guardMessage.isNull())
+        return;
+
+    /* Create a local event-loop: */
+    QEventLoop eventLoop;
+    m_pEventLoop = &eventLoop;
+
+    /* Guard ourself for the case
+     * we destroyed ourself in our event-loop: */
+    QPointer<UINotificationCenter> guardThis = this;
+
+    /* Start the blocking event-loop: */
+    eventLoop.exec();
+
+    /* Are we still valid? */
+    if (guardThis.isNull())
+        return;
+
+    /* Cleanup event-loop: */
+    m_pEventLoop = 0;
+
+    /* Revert values back: */
+    m_uId = QUuid();
+    setExtendedMode(false);
+}
+
+int UINotificationCenter::showBlocking(UINotificationQuestion *pQuestion)
+{
+    /* Check for the recursive run: */
+    AssertMsgReturn(!m_pEventLoop, ("UINotificationCenter::showBlocking() is called recursively!\n"), 0);
+
+    /* Reset the result: */
+    m_enmLastResult = Question::Result_Cancel;
+
+    /* Switch to extended mode: */
+    setExtendedMode(true);
+    pQuestion->setCritical(true);
+
+    /* Guard question for the case
+     * it destroyed itself in his append call: */
+    QPointer<UINotificationQuestion> guardQuestion = pQuestion;
+    m_uId = append(pQuestion);
+
+    /* Is progress still valid? */
+    if (guardQuestion.isNull())
+        return m_enmLastResult;
+    /* Is question still pending? */
+    if (guardQuestion->isDone())
+        return m_enmLastResult;
+
+    /* Create a local event-loop: */
+    QEventLoop eventLoop;
+    m_pEventLoop = &eventLoop;
+
+    /* Guard ourself for the case
+     * we destroyed ourself in our event-loop: */
+    QPointer<UINotificationCenter> guardThis = this;
+
+    /* Start the blocking event-loop: */
+    eventLoop.exec();
+
+    /* Are we still valid? */
+    if (guardThis.isNull())
+        return 0;
+
+    /* Cleanup event-loop: */
+    m_pEventLoop = 0;
+
+    /* Revert values back: */
+    m_uId = QUuid();
+    setExtendedMode(false);
+
+    /* Return actual result: */
+    return m_enmLastResult;
 }
 
 bool UINotificationCenter::handleNow(UINotificationProgress *pProgress)
@@ -415,11 +526,7 @@ void UINotificationCenter::sltHandleOrderChange()
 
     /* Populate model contents again: */
     foreach (const QUuid &uId, m_pModel->ids())
-    {
-        UINotificationObjectItem *pItem = UINotificationItem::create(this, m_pModel->objectById(uId));
-        m_items[uId] = pItem;
-        m_pLayoutItems->insertWidget(m_enmOrder == Qt::AscendingOrder ? -1 : 0, pItem);
-    }
+        createItem(uId);
 
     /* Hide and slide away if there are no notifications to show: */
     setHidden(m_pModel->ids().isEmpty());
@@ -494,11 +601,11 @@ void UINotificationCenter::sltHandleOpenTimerTimeout()
 
 void UINotificationCenter::sltHandleModelItemAdded(const QUuid &uId)
 {
-    /* Add corresponding model item representation: */
+    /* Make sure there is no item with such uId: */
     AssertReturnVoid(!m_items.contains(uId));
-    UINotificationObjectItem *pItem = UINotificationItem::create(this, m_pModel->objectById(uId));
-    m_items[uId] = pItem;
-    m_pLayoutItems->insertWidget(m_enmOrder == Qt::AscendingOrder ? -1 : 0, pItem);
+
+    /* Add corresponding model item representation: */
+    createItem(uId);
 
     /* Show if there are notifications to show: */
     setHidden(m_pModel->ids().isEmpty());
@@ -506,14 +613,33 @@ void UINotificationCenter::sltHandleModelItemAdded(const QUuid &uId)
 
 void UINotificationCenter::sltHandleModelItemRemoved(const QUuid &uId)
 {
-    /* Remove corresponding model item representation if present: */
+    /* If item representation registered: */
     if (m_items.contains(uId))
+    {
+        /* Acquire item representation and then item (object) itself: */
+        UINotificationObjectItem *pItem = m_items.value(uId);
+        AssertPtrReturnVoid(pItem);
+        UINotificationObject *pObject = pItem->internalObject();
+        AssertPtrReturnVoid(pObject);
+
+        /* Try to cast it to question to get the result: */
+        UINotificationQuestion *pQuestion = qobject_cast<UINotificationQuestion*>(pObject);
+        if (pQuestion)
+            m_enmLastResult = pQuestion->result();
+
+        /* Remove corresponding model item representation: */
         delete m_items.take(uId);
+    }
 
     /* Hide and slide away if there are no notifications to show: */
     setHidden(m_pModel->ids().isEmpty());
     if (m_pModel->ids().isEmpty() && m_pButtonOpen->isChecked())
         m_pButtonOpen->toggle();
+
+    /* If that's the item which locked the loop,
+     * We should break the loop if it exists: */
+    if (uId == m_uId && m_pEventLoop)
+        m_pEventLoop->exit();
 }
 
 void UINotificationCenter::sltHandleProgressFinished()
@@ -793,7 +919,10 @@ void UINotificationCenter::paintBackground(QPainter *pPainter)
 
     /* Adjust rectangle: */
     QRect rectAdjusted = rect();
-    rectAdjusted.adjust(iMetric, iMetric, 0, -iMetric);
+    if (!isExtendedMode())
+        rectAdjusted.adjust(iMetric, iMetric, 0, -iMetric);
+    else
+        rectAdjusted.adjust(iMetric, 0, -iMetric, -iMetric);
 
     /* Paint background: */
     pPainter->fillRect(rectAdjusted, backgroundColor);
@@ -813,44 +942,106 @@ void UINotificationCenter::paintFrame(QPainter *pPainter)
     /* Acquire pixel metric: */
     const int iMetric = QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize) / 4;
 
-    /* Top-left corner: */
-    QRadialGradient grad1(QPointF(iMetric, iMetric), iMetric);
+    if (!isExtendedMode())
     {
-        grad1.setColorAt(0, color2);
-        grad1.setColorAt(1, color1);
-    }
-    /* Bottom-left corner: */
-    QRadialGradient grad2(QPointF(iMetric, height() - iMetric), iMetric);
-    {
-        grad2.setColorAt(0, color2);
-        grad2.setColorAt(1, color1);
-    }
+        /* Top-left corner: */
+        QRadialGradient grad1(QPointF(iMetric, iMetric), iMetric);
+        {
+            grad1.setColorAt(0, color2);
+            grad1.setColorAt(1, color1);
+        }
+        /* Bottom-left corner: */
+        QRadialGradient grad2(QPointF(iMetric, height() - iMetric), iMetric);
+        {
+            grad2.setColorAt(0, color2);
+            grad2.setColorAt(1, color1);
+        }
 
-    /* Top line: */
-    QLinearGradient grad3(QPointF(iMetric, 0), QPointF(iMetric, iMetric));
-    {
-        grad3.setColorAt(0, color1);
-        grad3.setColorAt(1, color2);
-    }
-    /* Bottom line: */
-    QLinearGradient grad4(QPointF(iMetric, height()), QPointF(iMetric, height() - iMetric));
-    {
-        grad4.setColorAt(0, color1);
-        grad4.setColorAt(1, color2);
-    }
-    /* Left line: */
-    QLinearGradient grad5(QPointF(0, height() - iMetric), QPointF(iMetric, height() - iMetric));
-    {
-        grad5.setColorAt(0, color1);
-        grad5.setColorAt(1, color2);
-    }
+        /* Top line: */
+        QLinearGradient grad3(QPointF(iMetric, 0), QPointF(iMetric, iMetric));
+        {
+            grad3.setColorAt(0, color1);
+            grad3.setColorAt(1, color2);
+        }
+        /* Bottom line: */
+        QLinearGradient grad4(QPointF(iMetric, height()), QPointF(iMetric, height() - iMetric));
+        {
+            grad4.setColorAt(0, color1);
+            grad4.setColorAt(1, color2);
+        }
+        /* Left line: */
+        QLinearGradient grad5(QPointF(0, height() - iMetric), QPointF(iMetric, height() - iMetric));
+        {
+            grad5.setColorAt(0, color1);
+            grad5.setColorAt(1, color2);
+        }
 
-    /* Paint shape/shadow: */
-    pPainter->fillRect(QRect(0,       0,                  iMetric,           iMetric),                grad1);
-    pPainter->fillRect(QRect(0,       height() - iMetric, iMetric,           iMetric),                grad2);
-    pPainter->fillRect(QRect(iMetric, 0,                  width() - iMetric, iMetric),                grad3);
-    pPainter->fillRect(QRect(iMetric, height() - iMetric, width() - iMetric, iMetric),                grad4);
-    pPainter->fillRect(QRect(0,       iMetric,            iMetric,           height() - iMetric * 2), grad5);
+        /* Paint shape/shadow: */
+        pPainter->fillRect(QRect(0,       0,                  iMetric,           iMetric),                grad1);
+        pPainter->fillRect(QRect(0,       height() - iMetric, iMetric,           iMetric),                grad2);
+        pPainter->fillRect(QRect(iMetric, 0,                  width() - iMetric, iMetric),                grad3);
+        pPainter->fillRect(QRect(iMetric, height() - iMetric, width() - iMetric, iMetric),                grad4);
+        pPainter->fillRect(QRect(0,       iMetric,            iMetric,           height() - iMetric * 2), grad5);
+    }
+    else
+    {
+        /* Bottom-left corner: */
+        QRadialGradient grad1(QPointF(iMetric, height() - iMetric), iMetric);
+        {
+            grad1.setColorAt(0, color2);
+            grad1.setColorAt(1, color1);
+        }
+        /* Bottom-right corner: */
+        QRadialGradient grad2(QPointF(width() - iMetric, height() - iMetric), iMetric);
+        {
+            grad2.setColorAt(0, color2);
+            grad2.setColorAt(1, color1);
+        }
+
+        /* Left line: */
+        QLinearGradient grad3(QPointF(0, height() - iMetric), QPointF(iMetric, height() - iMetric));
+        {
+            grad3.setColorAt(0, color1);
+            grad3.setColorAt(1, color2);
+        }
+        /* Right line: */
+        QLinearGradient grad4(QPointF(width(), 0), QPointF(width() - iMetric, 0));
+        {
+            grad4.setColorAt(0, color1);
+            grad4.setColorAt(1, color2);
+        }
+        /* Bottom line: */
+        QLinearGradient grad5(QPointF(iMetric, height()), QPointF(iMetric, height() - iMetric));
+        {
+            grad5.setColorAt(0, color1);
+            grad5.setColorAt(1, color2);
+        }
+
+        /* Paint shape/shadow: */
+        pPainter->fillRect(QRect(0,                 height() - iMetric, iMetric,               iMetric),            grad1);
+        pPainter->fillRect(QRect(width() - iMetric, height() - iMetric, iMetric,               iMetric),            grad2);
+        pPainter->fillRect(QRect(0,                 0,                  iMetric,               height() - iMetric), grad3);
+        pPainter->fillRect(QRect(width() - iMetric, 0,                  width(),               height() - iMetric), grad4);
+        pPainter->fillRect(QRect(iMetric,           height() - iMetric, width() - iMetric * 2, iMetric),            grad5);
+    }
+}
+
+void UINotificationCenter::setExtendedMode(bool fExtended)
+{
+    /* Update extended mode: */
+    m_fExtendedMode = fExtended;
+
+    /* Hide buttons for extended mode: */
+    m_pButtonOpen->setVisible(!isExtendedMode());
+    m_pButtonToggleSorting->setVisible(!isExtendedMode());
+#ifdef VBOX_NOTIFICATION_CENTER_WITH_KEEP_BUTTON
+    m_pButtonKeepFinished->setVisible(!isExtendedMode());
+#endif
+    m_pButtonRemoveFinished->setVisible(!isExtendedMode());
+
+    /* Hide all unrelated items for extended mode: */
+    foreach (UINotificationObjectItem *pItem, m_items.values())
+        pItem->setVisible(!isExtendedMode() || pItem->isCritical());
 }
 
 void UINotificationCenter::setAnimatedValue(int iValue)
@@ -862,8 +1053,8 @@ void UINotificationCenter::setAnimatedValue(int iValue)
     // Hide items if they are masked anyway.
     // This actually shouldn't be necessary but
     // *is* required to avoid painting artifacts.
-    foreach (QWidget *pItem, m_items.values())
-        pItem->setVisible(animatedValue());
+    // foreach (QWidget *pItem, m_items.values())
+    //     pItem->setVisible(animatedValue());
 
     /* Adjust geometry: */
     adjustGeometry();
@@ -884,19 +1075,71 @@ void UINotificationCenter::adjustGeometry()
     const int iParentWidth = pParent->width();
     const int iParentHeight = pParent->height();
 
-    /* Acquire minimum width (includes margins by default): */
-    int iMinimumWidth = minimumSizeHint().width();
-    /* Acquire minimum button width (including margins manually): */
+    /* Acquire main layout margins: */
     int iL, iT, iR, iB;
     m_pLayoutMain->getContentsMargins(&iL, &iT, &iR, &iB);
-    const int iMinimumButtonWidth = m_pButtonOpen->minimumSizeHint().width() + iL + iR;
+    /* Acquire item layout spacing: */
+    const int iSpacing = m_pLayoutItems->spacing();
 
-    /* Make sure we have some default width if there is no contents: */
-    iMinimumWidth = qMax(iMinimumWidth, 200);
+    /* Gather suitable minumum and maximum notification-center widths: */
+    int iMinimumWidth = 0;
+    int iMaximumWidth = minimumSizeHint().width();
+    if (!isExtendedMode())
+    {
+        /* Acquire Open button width hint: */
+        const int iButtonWidthHint = m_pButtonOpen->minimumSizeHint().width() + iL + iR;
+        /* Make sure minimum width is no less than button width hint: */
+        iMinimumWidth = qMax(iMinimumWidth, iButtonWidthHint);
 
-    /* Move and resize notification-center finally: */
-    move(iParentWidth - (iMinimumButtonWidth + (double)animatedValue() / 100 * (iMinimumWidth - iMinimumButtonWidth)), 0);
-    resize(iMinimumWidth, iParentHeight);
+        /* Make sure minimum width is no less than sane minimum (200px): */
+        iMaximumWidth = qMax(200, iMaximumWidth);
+    }
+    else
+    {
+        /* Search for maximum item's details width hint: */
+        int iItemsWidthHint = 0;
+        foreach (UINotificationObjectItem *pItem, m_items.values())
+            iItemsWidthHint = qMax(iItemsWidthHint, pItem->detailsWidthHint());
+        /* Make sure maximum width is more or equal to items width hint: */
+        iMaximumWidth = qMax(iMaximumWidth, iItemsWidthHint);
+        iMaximumWidth += iL + iR;
+    }
+    /* Make sure maximum width is no less than minimum one: */
+    iMaximumWidth = qMax(iMaximumWidth, iMinimumWidth);
+
+    /* Calculate and propagate details width hint: */
+    const int iDetailsWidthHint = iMaximumWidth - iL - iR;
+    foreach (UINotificationObjectItem *pItem, m_items.values())
+        pItem->setDetailsWidthHint(iDetailsWidthHint);
+
+    /* Gather suitable notification-center height (parent height in Simple mode): */
+    int iMaximumHeight = iParentHeight;
+    if (isExtendedMode())
+    {
+        /* In Extended mode we're taking into account cumulative items height: */
+        int iItemsHeight = 0;
+        foreach (UINotificationObjectItem *pItem, m_items.values())
+            if (pItem->isVisible())
+                iItemsHeight += pItem->minimumSizeHint().height() + iSpacing;
+        if (iItemsHeight > 0)
+            iItemsHeight -= iSpacing;
+        iMaximumHeight = iItemsHeight + iT + iB;
+    }
+
+    /* Simple mode: */
+    if (!isExtendedMode())
+    {
+        /* Move and resize notification-center finally: */
+        move(iParentWidth - (iMinimumWidth + (double)animatedValue() / 100 * (iMaximumWidth - iMinimumWidth)), 0);
+        resize(iMaximumWidth, iMaximumHeight);
+    }
+    /* Extended mode: */
+    else
+    {
+        /* Move and resize notification-center finally: */
+        move(iParentWidth / 2 - iMaximumWidth / 2, - iMaximumHeight + (double)animatedValue() / 100 * iMaximumHeight);
+        resize(iMaximumWidth, iMaximumHeight);
+    }
 }
 
 void UINotificationCenter::adjustMask()
@@ -906,6 +1149,15 @@ void UINotificationCenter::adjustMask()
     if (!animatedValue())
         region += QRect(m_pButtonOpen->mapToParent(QPoint(0, 0)), m_pButtonOpen->size());
     setMask(region);
+}
+
+void UINotificationCenter::createItem(const QUuid &uId)
+{
+    /* Create item itself: */
+    UINotificationObjectItem *pItem = UINotificationItem::create(this, m_pModel->objectById(uId));
+    pItem->setVisible(!isExtendedMode() || pItem->isCritical());
+    m_items[uId] = pItem;
+    m_pLayoutItems->insertWidget(m_enmOrder == Qt::AscendingOrder ? -1 : 0, pItem);
 }
 
 

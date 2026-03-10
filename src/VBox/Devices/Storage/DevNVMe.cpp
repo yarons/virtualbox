@@ -1,10 +1,10 @@
-/* $Id: DevNVMe.cpp 111378 2025-10-14 13:09:52Z alexander.eichner@oracle.com $ */
+/* $Id: DevNVMe.cpp 113083 2026-02-19 11:28:35Z alexander.eichner@oracle.com $ */
 /** @file
  * DevNVMe - Non Volatile Memory express (previous name: NVMHCI)
  */
 
 /*
- * Copyright (C) 2015-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2015-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -5729,6 +5729,7 @@ static DECLCALLBACK(int) nvmeR3IoReqQueryBuf(PPDMIMEDIAEXPORT pInterface, PDMMED
         {
             pIoReq->fMapped = true;
             *pcbBuf = pIoReq->cbPrp;
+            Assert(*pcbBuf <= PDMDevHlpPhysGetPageSize(pDevIns));
         }
         else
             rc = VERR_NOT_SUPPORTED;
@@ -7095,6 +7096,20 @@ static DECLCALLBACK(int) nvmeR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
     LogFlow(("nvmeR3Construct:\n"));
 
     /*
+     * Initialize state sufficiently for the destructor to run cleanly.
+     */
+    RTListInit(&pThisCC->LstWrkThrds);
+    for (unsigned i = 0; i < RT_ELEMENTS(pThisCC->aQueuesComp); i++)
+        pThisCC->aQueuesComp[i].hMtx = NIL_RTSEMFASTMUTEX;
+
+    /*
+     * Check PGM page size ASSUMPTION in nvmeR3IoReqQueryBuf and
+     * HcCtrlCfg_w (pThis->uMpsSet must be set to 12).
+     */
+    uint32_t const cbPage = PDMDevHlpPhysGetPageSize(pDevIns);
+    AssertLogRelMsgReturn(cbPage == _4K, ("NVMe: cbPage=%#x, expected %#x!\n", cbPage, _4K), VERR_INTERNAL_ERROR);
+
+    /*
      * Validate and read configuration.
      */
     PDMDEV_VALIDATE_CONFIG_RETURN(pDevIns,
@@ -7378,7 +7393,7 @@ static DECLCALLBACK(int) nvmeR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
     /* Region #3: Controller memory buffer region, optional. */
     if (pThis->cbCtrlMemBuf)
     {
-        rc = PDMDevHlpPCIIORegionCreateMmio2Ex(pDevIns, NVME_PCI_MEM_CTRL_BUF_BAR, pThis->cbCtrlMemBuf,
+        rc = PDMDevHlpPCIIORegionCreateMmio2Ex(pDevIns, pDevIns->apPciDevs[0], NVME_PCI_MEM_CTRL_BUF_BAR, pThis->cbCtrlMemBuf,
                                                PCI_ADDRESS_SPACE_MEM, 0 /*fMmio2Flags*/, nvmeR3MapUnmapCtrlMemBuf,
                                                "NVMe-MemCtrlBuf", &pThisCC->pvCtrlMemBufR3, &pThis->hMmio2);
         if (RT_FAILURE(rc))

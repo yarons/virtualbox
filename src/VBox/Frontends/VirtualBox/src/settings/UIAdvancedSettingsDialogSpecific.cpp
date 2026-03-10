@@ -1,10 +1,10 @@
-/* $Id: UIAdvancedSettingsDialogSpecific.cpp 110929 2025-09-08 14:02:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialogSpecific.cpp 113060 2026-02-17 12:01:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialogSpecific class implementation.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -37,6 +37,7 @@
 #include "UIIconPool.h"
 #include "UILocalMachineStuff.h"
 #include "UIMessageCenter.h"
+#include "UINotificationMessage.h"
 #include "UISettingsDefs.h"
 #include "UISettingsSerializer.h"
 #include "UISettingsSelector.h"
@@ -72,6 +73,9 @@
 #include "CGraphicsAdapter.h"
 #include "CPlatform.h"
 #include "CUSBController.h"
+
+/* Other VBox includes: */
+#include "iprt/cpp/utils.h" // for unconst stuff
 
 
 /*********************************************************************************************************************************
@@ -162,13 +166,13 @@ void UIAdvancedSettingsDialogGlobal::save()
     CHost comNewHost = varData.value<UISettingsDataGlobal>().m_host;
     /* If host is not OK => show the error: */
     if (!comNewHost.isOk())
-        msgCenter().cannotSetHostSettings(comNewHost, this);
+        UINotificationMessage::cannotChangeHostParameter(comNewHost, this);
 
     /* Get updated properties: */
     CSystemProperties comNewProperties = varData.value<UISettingsDataGlobal>().m_properties;
     /* If properties are not OK => show the error: */
     if (!comNewProperties.isOk())
-        msgCenter().cannotSetSystemProperties(comNewProperties, this);
+        UINotificationMessage::cannotChangeSystemProperties(comNewProperties, this);
 
     /* Handle serializartion finished: */
     sltHandleSerializationFinished();
@@ -471,7 +475,7 @@ void UIAdvancedSettingsDialogMachine::save()
 
     /* If machine is NOT OK => show the error message: */
     if (!m_machine.isOk())
-        msgCenter().cannotSaveMachineSettings(m_machine, this);
+        UINotificationMessage::cannotSaveMachineSettings(m_machine, this);
 
     /* Handle serializartion finished: */
     sltHandleSerializationFinished();
@@ -792,7 +796,7 @@ bool UIAdvancedSettingsDialogMachine::isPageAvailable(int iPageId) const
             if (   !m_machine.isReallyOk()
                 && controllerColl.size() > 0
                 && !m_machine.GetUSBControllers().isEmpty())
-                msgCenter().warnAboutUnaccessibleUSB(m_machine, parentWidget());
+                UINotificationMessage::cannotAccessUSBSubsystem(m_machine, unconst(this));
             break;
         }
         default:
@@ -818,5 +822,5 @@ void UIAdvancedSettingsDialogMachine::updateConfigurationAccessLevel()
 
     /* Show a warning about access level decrease if we should: */
     if (isSettingsChanged() && fShouldWeWarn)
-        msgCenter().warnAboutStateChange(this);
+        UINotificationMessage::warnAboutStateChange(this);
 }

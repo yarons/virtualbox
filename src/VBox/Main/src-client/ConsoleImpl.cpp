@@ -1,10 +1,10 @@
-/* $Id: ConsoleImpl.cpp 110930 2025-09-08 16:34:44Z aleksey.ilyushin@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
 
 /*
- * Copyright (C) 2005-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2005-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -1005,19 +1005,6 @@ void Console::uninit()
         maLedSets[idxSet].paSubTypes = NULL;
     }
     mcLedSets = 0;
-
-#ifdef VBOX_WITH_FULL_VM_ENCRYPTION
-    /* Close the release log before unloading the cryptographic module. */
-    if (m_fEncryptedLog)
-    {
-        PRTLOGGER pLogEnc = RTLogRelSetDefaultInstance(NULL);
-        int vrc = RTLogDestroy(pLogEnc);
-        AssertRC(vrc);
-    }
-#endif
-
-    HRESULT hrc = i_unloadCryptoIfModule();
-    AssertComRC(hrc);
 
     LogFlowThisFuncLeave();
 }
@@ -4616,11 +4603,13 @@ HRESULT Console::i_onNATDnsChanged()
 
         DnsConfigCleanupWrapper()
         {
-            Core.szDomainName[0]    = '\0';
-            Core.cNameServers       = 0;
-            Core.papszNameServers   = NULL;
-            Core.cSearchDomains     = 0;
-            Core.papszSearchDomains = NULL;
+            Core.szDomainName[0]        = '\0';
+            Core.cNameServers           = 0;
+            Core.papszNameServers       = NULL;
+            Core.cIPv6NameServers       = 0;
+            Core.papszIPv6NameServers   = NULL;
+            Core.cSearchDomains         = 0;
+            Core.papszSearchDomains     = NULL;
         }
 
         void freeStrArray(char **papsz)
@@ -4636,9 +4625,11 @@ HRESULT Console::i_onNATDnsChanged()
         ~DnsConfigCleanupWrapper()
         {
             freeStrArray((char **)Core.papszNameServers);
-            Core.papszNameServers   = NULL;
+            Core.papszNameServers       = NULL;
+            freeStrArray((char **)Core.papszIPv6NameServers);
+            Core.papszIPv6NameServers   = NULL;
             freeStrArray((char **)Core.papszSearchDomains);
-            Core.papszSearchDomains = NULL;
+            Core.papszSearchDomains     = NULL;
         }
     } DnsConfig;
 
@@ -4674,10 +4665,20 @@ HRESULT Console::i_onNATDnsChanged()
         DnsConfig.Core.papszNameServers = bstrSafeArrayToC(nameServers, &DnsConfig.Core.cNameServers);
         if (!DnsConfig.Core.papszNameServers)
             return E_OUTOFMEMORY;
+
+        SafeArray<BSTR> v6nameServers;
+        hrc = ptrHost->COMGETTER(V6NameServers)(ComSafeArrayAsOutParam(v6nameServers));
+        if (FAILED(hrc))
+            return S_OK;
+        DnsConfig.Core.papszIPv6NameServers = bstrSafeArrayToC(v6nameServers, &DnsConfig.Core.cIPv6NameServers);
+        if (!DnsConfig.Core.papszIPv6NameServers)
+            return E_OUTOFMEMORY;
     }
-    Log(("DNS change - %zu nameservers\n", DnsConfig.Core.cNameServers));
+    Log(("DNS change - %zu nameservers\n", DnsConfig.Core.cNameServers + DnsConfig.Core.cIPv6NameServers));
     for (size_t i = 0; i < DnsConfig.Core.cNameServers; i++)
         Log(("- papszNameServers[%zu] = \"%s\"\n", i, DnsConfig.Core.papszNameServers[i]));
+    for (size_t i = 0; i < DnsConfig.Core.cIPv6NameServers; i++)
+        Log(("- papszIPv6NameServers[%zu] = \"%s\"\n", i, DnsConfig.Core.papszIPv6NameServers[i]));
 
     /* Search domains: */
     {
@@ -9788,6 +9789,8 @@ HRESULT Console::i_removeSharedFolder(const Utf8Str &strName)
     return S_OK;
 }
 
+extern DECL_HIDDEN_CONST(VBOXCRYPTOIF) g_VBoxCryptoIf;
+
 /**
  * Retains a reference to the default cryptographic interface.
  *
@@ -9802,89 +9805,13 @@ int Console::i_retainCryptoIf(PCVBOXCRYPTOIF *ppCryptoIf)
     AssertReturn(ppCryptoIf != NULL, VERR_INVALID_PARAMETER);
 
     int vrc = VINF_SUCCESS;
-    if (mhLdrModCrypto == NIL_RTLDRMOD)
-    {
-#ifdef VBOX_WITH_EXTPACK
-        /*
-         * Check that a crypto extension pack name is set and resolve it into a
-         * library path.
-         */
-        HRESULT hrc = S_OK;
-        Bstr bstrExtPack;
-
-        ComPtr<IVirtualBox> pVirtualBox;
-        hrc = mMachine->COMGETTER(Parent)(pVirtualBox.asOutParam());
-        ComPtr<ISystemProperties> pSystemProperties;
-        if (SUCCEEDED(hrc))
-            hrc = pVirtualBox->COMGETTER(SystemProperties)(pSystemProperties.asOutParam());
-        if (SUCCEEDED(hrc))
-            hrc = pSystemProperties->COMGETTER(DefaultCryptoExtPack)(bstrExtPack.asOutParam());
-        if (FAILED(hrc))
-        {
-            setErrorBoth(hrc, VERR_INVALID_PARAMETER,
-                         tr("Failed to query default extension pack name for the cryptographic module"));
-            return VERR_INVALID_PARAMETER;
-        }
-
-        Utf8Str strExtPack(bstrExtPack);
-        if (strExtPack.isEmpty())
-        {
-            setError(VBOX_E_OBJECT_NOT_FOUND,
-                     tr("Ńo extension pack providing a cryptographic support module could be found"));
-            return VERR_NOT_FOUND;
-        }
-
-        Utf8Str strCryptoLibrary;
-        vrc = mptrExtPackManager->i_getCryptoLibraryPathForExtPack(&strExtPack, &strCryptoLibrary);
-        if (RT_SUCCESS(vrc))
-        {
-            RTERRINFOSTATIC ErrInfo;
-            vrc = SUPR3HardenedLdrLoadPlugIn(strCryptoLibrary.c_str(), &mhLdrModCrypto, RTErrInfoInitStatic(&ErrInfo));
-            if (RT_SUCCESS(vrc))
-            {
-                /* Resolve the entry point and query the pointer to the cryptographic interface. */
-                PFNVBOXCRYPTOENTRY pfnCryptoEntry = NULL;
-                vrc = RTLdrGetSymbol(mhLdrModCrypto, VBOX_CRYPTO_MOD_ENTRY_POINT, (void **)&pfnCryptoEntry);
-                if (RT_SUCCESS(vrc))
-                {
-                    vrc = pfnCryptoEntry(&mpCryptoIf);
-                    if (RT_FAILURE(vrc))
-                        setErrorBoth(VBOX_E_IPRT_ERROR, vrc,
-                                     tr("Failed to query the interface callback table from the cryptographic support module '%s' from extension pack '%s'"),
-                                     strCryptoLibrary.c_str(), strExtPack.c_str());
-                }
-                else
-                    setErrorBoth(VBOX_E_IPRT_ERROR, vrc,
-                                 tr("Failed to resolve the entry point for the cryptographic support module '%s' from extension pack '%s'"),
-                                 strCryptoLibrary.c_str(), strExtPack.c_str());
-
-                if (RT_FAILURE(vrc))
-                {
-                    RTLdrClose(mhLdrModCrypto);
-                    mhLdrModCrypto = NIL_RTLDRMOD;
-                }
-            }
-            else
-                setErrorBoth(VBOX_E_IPRT_ERROR, vrc,
-                             tr("Couldn't load the cryptographic support module '%s' from extension pack '%s' (error: '%s')"),
-                             strCryptoLibrary.c_str(), strExtPack.c_str(), ErrInfo.Core.pszMsg);
-        }
-        else
-            setErrorBoth(VBOX_E_IPRT_ERROR, vrc,
-                         tr("Couldn't resolve the library path of the crpytographic support module for extension pack '%s'"),
-                         strExtPack.c_str());
+#ifdef VBOX_WITH_FULL_VM_ENCRYPTION
+    *ppCryptoIf = &g_VBoxCryptoIf;
 #else
-        setError(VBOX_E_NOT_SUPPORTED,
-                 tr("The cryptographic support module is not supported in this build because extension packs are not supported"));
-        vrc = VERR_NOT_SUPPORTED;
+    setError(VBOX_E_NOT_SUPPORTED,
+             tr("The cryptographic support module is not supported in this build because extension packs are not supported"));
+    vrc = VERR_NOT_SUPPORTED;
 #endif
-    }
-
-    if (RT_SUCCESS(vrc))
-    {
-        ASMAtomicIncU32(&mcRefsCrypto);
-        *ppCryptoIf = mpCryptoIf;
-    }
 
     return vrc;
 }
@@ -9899,9 +9826,7 @@ int Console::i_retainCryptoIf(PCVBOXCRYPTOIF *ppCryptoIf)
  */
 int Console::i_releaseCryptoIf(PCVBOXCRYPTOIF pCryptoIf)
 {
-    AssertReturn(pCryptoIf == mpCryptoIf, VERR_INVALID_PARAMETER);
-
-    ASMAtomicDecU32(&mcRefsCrypto);
+    AssertReturn(pCryptoIf == &g_VBoxCryptoIf, VERR_INVALID_PARAMETER);
     return VINF_SUCCESS;
 }
 
@@ -9916,20 +9841,6 @@ HRESULT Console::i_unloadCryptoIfModule(void)
 {
     AutoCaller autoCaller(this);
     AssertComRCReturnRC(autoCaller.hrc());
-
-    AutoWriteLock wlock(this COMMA_LOCKVAL_SRC_POS);
-
-    if (mcRefsCrypto)
-        return setError(E_ACCESSDENIED,
-                        tr("The cryptographic support module is in use and can't be unloaded"));
-
-    if (mhLdrModCrypto != NIL_RTLDRMOD)
-    {
-        int vrc = RTLdrClose(mhLdrModCrypto);
-        AssertRC(vrc);
-        mhLdrModCrypto = NIL_RTLDRMOD;
-    }
-
     return S_OK;
 }
 

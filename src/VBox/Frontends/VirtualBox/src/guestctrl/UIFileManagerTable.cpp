@@ -1,10 +1,10 @@
-/* $Id: UIFileManagerTable.cpp 111182 2025-09-30 09:38:54Z sergey.dubov@oracle.com $ */
+/* $Id: UIFileManagerTable.cpp 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
 
 /*
- * Copyright (C) 2016-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2016-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -29,10 +29,11 @@
 #include <QAction>
 #include <QApplication>
 #include <QCheckBox>
+#include <QGridLayout>
 #include <QHBoxLayout>
 #include <QHeaderView>
 #include <QItemDelegate>
-#include <QGridLayout>
+#include <QKeyEvent>
 
 /* GUI includes: */
 #include "QIDialog.h"
@@ -63,12 +64,12 @@
 *   UIGuestControlFileView definition.                                                                                           *
 *********************************************************************************************************************************/
 
+
 /** Using QTableView causes the following problem when I click on the table items
     Qt WARNING: Cannot creat accessible child interface for object:  UIGuestControlFileView.....
     so for now subclass QTableView */
 class UIGuestControlFileView : public QTableView
 {
-
     Q_OBJECT;
 
 signals:
@@ -102,7 +103,6 @@ private:
 /** A QItemDelegate child class to disable dashed lines drawn around selected cells in QTableViews */
 class UIFileDelegate : public QItemDelegate
 {
-
     Q_OBJECT;
 
 public:
@@ -120,10 +120,10 @@ protected:
 *   UStringInputDialog definition.                                                                                               *
 *********************************************************************************************************************************/
 
+
 /** A QIDialog child including a line edit whose text exposed when the dialog is accepted */
 class UIStringInputDialog : public QIDialog
 {
-
     Q_OBJECT;
 
 public:
@@ -141,10 +141,10 @@ private:
 *   UIFileDeleteConfirmationDialog definition.                                                                                   *
 *********************************************************************************************************************************/
 
+
 /** A QIDialog child including a line edit whose text exposed when the dialog is accepted */
 class UIFileDeleteConfirmationDialog : public QIDialog
 {
-
     Q_OBJECT;
 
 public:

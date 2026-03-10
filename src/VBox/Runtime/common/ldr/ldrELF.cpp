@@ -1,10 +1,10 @@
-/* $Id: ldrELF.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: ldrELF.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Binary Image Loader, Executable and Linker Format (ELF).
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -55,6 +55,7 @@
 #include <iprt/formats/elf64.h>
 #include <iprt/formats/elf-i386.h>
 #include <iprt/formats/elf-amd64.h>
+#include <iprt/formats/elf-arm64.h>
 #include "internal/ldr.h"
 #include "internal/dbgmod.h"
 
@@ -120,18 +121,12 @@ static const char *rtldrElfGetPhdrType(uint32_t iType);
 
 
 /* Select ELF mode and include the template. */
-#define ELF_MODE            32
-#define Elf_Reloc           Elf_Rel
+#define ELF_TMPL_BITS       32
 #include "ldrELFRelocatable.cpp.h"
-#undef ELF_MODE
-#undef Elf_Reloc
 
 
-#define ELF_MODE            64
-#define Elf_Reloc           Elf_Rela
+#define ELF_TMPL_BITS       64
 #include "ldrELFRelocatable.cpp.h"
-#undef ELF_MODE
-#undef Elf_Reloc
 
 
 #ifdef LOG_ENABLED

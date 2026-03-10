@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the VirtualBox WDDM user mode driver
 #
 
 #
-# Copyright (C) 2018-2025 Oracle and/or its affiliates.
+# Copyright (C) 2018-2026 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.
@@ -38,7 +38,7 @@ VBoxWddmUmHlp_TEMPLATE = NewerVccVBoxGuestR3Dll
 VBoxWddmUmHlp_INST     = $(INST_ADDITIONS_LIB)
 VBoxWddmUmHlp_DEFS     = VBOX_WITH_WDDM
 VBoxWddmUmHlp_INCS     = \
-	$(PATH_ROOT)/src/VBox/Additions/WINNT/Graphics/Video/disp/wddm/shared \
+	$(PATH_ROOT)/src/VBox/Additions/win/Graphics/Video/disp/wddm/shared \
 	$(VBOX_GRAPHICS_INCS)
 VBoxWddmUmHlp_SOURCES  = \
 	D3DKMT.cpp \

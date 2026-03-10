@@ -1,10 +1,10 @@
-/* $Id: GIMAllKvm.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: GIMAllKvm.cpp 112884 2026-02-09 09:33:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * GIM - Guest Interface Manager, KVM, All Contexts.
  */
 
 /*
- * Copyright (C) 2015-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2015-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -130,6 +130,7 @@ VMM_INT_DECL(VBOXSTRICTRC) gimKvmHypercall(PVMCPUCC pVCpu, PCPUMCTX pCtx)
         default:
             break;
     }
+    RT_NOREF(uHyperArg0, uHyperArg2, uHyperArg3);
 
     /*
      * Place the result in rax/eax.

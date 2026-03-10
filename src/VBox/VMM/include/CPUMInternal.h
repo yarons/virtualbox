@@ -1,10 +1,10 @@
-/* $Id: CPUMInternal.h 110755 2025-08-18 21:01:55Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMInternal.h 113141 2026-02-24 12:21:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - Internal header file.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -113,12 +113,14 @@ typedef uint64_t STAMCOUNTER;
  *  @todo AMD64:When bumping to next version, add CPUMCTX::enmHwVirt and
  *        uMicrocodeRevision to the saved state. */
 #if defined(VBOX_VMM_TARGET_X86)
-# define CPUM_SAVED_STATE_VERSION               CPUM_SAVED_STATE_VERSION_HWVIRT_VMX_4
+# define CPUM_SAVED_STATE_VERSION               CPUM_SAVED_STATE_VERSION_HWVIRT_CFG
 #elif defined(VBOX_VMM_TARGET_ARMV8)
 # define CPUM_SAVED_STATE_VERSION               CPUM_SAVED_STATE_VERSION_ARMV8_IDREGS2
 #endif
 
 #if defined(VBOX_VMM_TARGET_X86)
+/** The saved state version with nested hardware virtualization config. */
+# define CPUM_SAVED_STATE_VERSION_HWVIRT_CFG    24
 /** The saved state version with u32RestoreProcCtls2 for Nested Microsoft
  *  Hyper-V. */
 # define CPUM_SAVED_STATE_VERSION_HWVIRT_VMX_4  23
@@ -728,9 +730,6 @@ PCPUMMSRRANGE       cpumLookupMsrRange(PVM pVM, uint32_t idMsr);
 #  if defined(VBOX_VMM_TARGET_X86) /** @todo temporary: */ || defined(VBOX_VMM_TARGET_AGNOSTIC)
 DECLASM(int)        cpumR0SaveHostRestoreGuestFPUState(PCPUMCPU pCPUM);
 DECLASM(void)       cpumR0SaveGuestRestoreHostFPUState(PCPUMCPU pCPUM);
-#   if ARCH_BITS == 32 && defined(VBOX_WITH_64_BITS_GUESTS)
-DECLASM(void)       cpumR0RestoreHostFPUState(PCPUMCPU pCPUM);
-#   endif
 #  endif
 # endif
 

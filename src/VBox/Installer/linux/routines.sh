@@ -1,10 +1,10 @@
-# $Id: routines.sh 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: routines.sh 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $
 # Oracle VirtualBox
 # VirtualBox installer shell routines
 #
 
 #
-# Copyright (C) 2007-2025 Oracle and/or its affiliates.
+# Copyright (C) 2007-2026 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.
@@ -222,6 +222,9 @@ install_init_script()
     elif test -d /etc/init.d; then
         cp "${script}" "/etc/init.d/${name}" &&
             chmod 755 "/etc/init.d/${name}"
+    elif test -d /etc/rc.d; then
+        cp "${script}" "/etc/rc.d/rc.${name}" &&
+            chmod 755 "/etc/rc.d/rc.${name}"
     else
         { echo "${self}: error: unknown init type" >&2; return 1; }
     fi
@@ -240,6 +243,7 @@ remove_init_script()
     rm -f /lib/systemd/system/"$name".service /usr/lib/systemd/system/"$name".service
     rm -f "/etc/rc.d/init.d/$name"
     rm -f "/etc/init.d/$name"
+    rm -f "/etc/rc.d/rc.$name"
 }
 
 ## Tell systemd services have been installed or removed.  Should not be done
@@ -279,6 +283,8 @@ do_sysvinit_action()
         "/etc/rc.d/init.d/${name}" "${action}" quiet
     elif test -x "/etc/init.d/${name}"; then
         "/etc/init.d/${name}" "${action}" quiet
+    elif test -x "/etc/rc.d/${name}"; then
+        "/etc/rc.d/rc.${name}" "${action}" quiet
     fi
 }
 

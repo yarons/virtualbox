@@ -1,10 +1,10 @@
-/* $Id: UIGuestControlTreeItem.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIGuestControlTreeItem.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestControlTreeItem class declaration.
  */
 
 /*
- * Copyright (C) 2016-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2016-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -48,7 +48,6 @@ class CGuestSessionStateChangedEvent;
     to UIGuestSessionTreeItem and UIGuestProcessTreeItem classes */
 class UIGuestControlTreeItem : public QITreeWidgetItem
 {
-
     Q_OBJECT;
 
 public:
@@ -77,7 +76,6 @@ private:
 
     /** Holds the COM event listener instance. */
     CEventListener m_comEventListener;
-
 };
 
 /** UIGuestControlTreeItem extension. Represents a instance of CGuestSession
@@ -111,7 +109,6 @@ private slots:
     void sltGuestSessionUpdated(const CGuestSessionStateChangedEvent& cEvent);
     void sltGuestProcessRegistered(CGuestProcess guestProcess);
     void sltGuestProcessUnregistered(CGuestProcess guestProcess);
-
 
 private:
 

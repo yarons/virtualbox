@@ -1,10 +1,10 @@
-/* $Id: UIToolsView.h 111228 2025-10-03 11:08:48Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsView.h 112408 2026-01-12 14:12:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class declaration.
  */
 
 /*
- * Copyright (C) 2012-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -100,6 +100,12 @@ private slots:
        void sltMinimumWidthHintChanged(int iHint);
        /** Handles minimum height @a iHint change. */
        void sltMinimumHeightHintChanged(int iHint);
+   /** @} */
+
+   /** @name Theme stuff stuff.
+     * @{ */
+       /** Updates palette. */
+       void sltUpdatePalette() { preparePalette(); }
    /** @} */
 
 private:

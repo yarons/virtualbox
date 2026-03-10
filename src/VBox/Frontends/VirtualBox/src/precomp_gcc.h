@@ -1,10 +1,10 @@
-/* $Id: precomp_gcc.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $*/
+/* $Id: precomp_gcc.h 112875 2026-02-09 09:22:16Z knut.osmundsen@oracle.com $*/
 /** @file
  * VBox Qt GUI - Precompiled header for Visual C++.
  */
 
 /*
- * Copyright (C) 2016-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2016-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -108,7 +108,6 @@
 #include <QtGui/qpixelformat.h> /* 526 */
 #include <QtGui/qpainterpath.h> /* 526 */
 #include <QtGui/qpaintdevice.h> /* 526 */
-#include <QtGui/qmatrix.h> /* 526 */
 #include <QtCore/qline.h> /* 526 */
 #include <QtCore/qdatastream.h> /* 526 */
 #include <QtWidgets/qtwidgetsglobal.h> /* 520 */
@@ -171,7 +170,6 @@
 
 /* These two are freuqently used internal headers. */
 #include "UILibraryDefs.h"
-/*#include "QIWithRestorableGeometry.h" - broken as it includes iprt/log.h thru UIDefs.h via UICommon.h. */
 
 #if defined(Log) || defined(LogIsEnabled)
 # error "Log() from iprt/log.h cannot be defined in the precompiled header!"

@@ -3,7 +3,7 @@
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -583,7 +583,7 @@ typedef struct _AVLOGCPtrNodeCore
     AVLOGCPTR           pRight;
     /** Height of this tree: max(height(left), height(right)) + 1 */
     unsigned char       uchHeight;
-    unsigned char       padding[GC_ARCH_BITS == 64 ? 7 : 3];
+    unsigned char       padding[7];
 } AVLOGCPTRNODECORE, *PAVLOGCPTRNODECORE;
 
 /** A offset base tree with uint32_t keys. */
@@ -687,7 +687,7 @@ typedef struct _AVLROGCPtrNodeCore
     AVLROGCPTR          pRight;
     /** Height of this tree: max(height(left), height(right)) + 1 */
     unsigned char       uchHeight;
-    unsigned char       padding[GC_ARCH_BITS == 64 ? 7 : 7];
+    unsigned char       padding[7];
 } AVLROGCPTRNODECORE, *PAVLROGCPTRNODECORE;
 
 /** A offset base tree with uint32_t keys. */
@@ -904,9 +904,7 @@ typedef struct _AVLOHCPhysNodeCore
     AVLOHCPHYS          pRight;
     /** Height of this tree: max(height(left), height(right)) + 1 */
     unsigned char       uchHeight;
-#if HC_ARCH_BITS == 64 || GC_ARCH_BITS == 64
     unsigned char       Padding[7]; /**< Alignment padding. */
-#endif
 } AVLOHCPHYSNODECORE, *PAVLOHCPHYSNODECORE;
 
 /** A offset base tree with uint32_t keys. */

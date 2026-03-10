@@ -1,10 +1,10 @@
-/* $Id: UISoftKeyboard.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UISoftKeyboard.h 112756 2026-01-29 16:42:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class declaration.
  */
 
 /*
- * Copyright (C) 2016-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2016-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -31,11 +31,8 @@
 # pragma once
 #endif
 
-/* Qt includes: */
-#include <QMainWindow>
-
 /* GUI includes: */
-#include "QIWithRestorableGeometry.h"
+#include "QIMainWindow.h"
 
 /* Forward declarations: */
 class QHBoxLayout;
@@ -50,10 +47,7 @@ class UISoftKeyboardWidget;
 class QSplitter;
 class QStackedWidget;
 
-/* Type definitions: */
-typedef QIWithRestorableGeometry<QMainWindow> QMainWindowWithRestorableGeometry;
-
-class UISoftKeyboard : public QMainWindowWithRestorableGeometry
+class UISoftKeyboard : public QIMainWindow
 {
     Q_OBJECT;
 

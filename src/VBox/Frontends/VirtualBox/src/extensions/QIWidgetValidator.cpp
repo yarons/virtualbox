@@ -1,10 +1,10 @@
-/* $Id: QIWidgetValidator.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: QIWidgetValidator.cpp 113052 2026-02-17 09:56:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIWidgetValidator class implementation.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -33,10 +33,10 @@
 
 
 /*********************************************************************************************************************************
-*   Class QObjectValidator implementation.                                                                                       *
+*   Class QIObjectValidator implementation.                                                                                      *
 *********************************************************************************************************************************/
 
-QObjectValidator::QObjectValidator(QValidator *pValidator, QObject *pParent /* = 0 */)
+QIObjectValidator::QIObjectValidator(QValidator *pValidator, QObject *pParent /* = 0 */)
     : QObject(pParent)
     , m_pValidator(pValidator)
     , m_enmState(QValidator::Invalid)
@@ -44,7 +44,7 @@ QObjectValidator::QObjectValidator(QValidator *pValidator, QObject *pParent /* =
     prepare();
 }
 
-void QObjectValidator::sltValidate(QString strInput /* = QString() */)
+void QIObjectValidator::sltValidate(QString strInput /* = QString() */)
 {
     /* Make sure validator assigned: */
     AssertPtrReturnVoid(m_pValidator);
@@ -64,7 +64,7 @@ void QObjectValidator::sltValidate(QString strInput /* = QString() */)
     }
 }
 
-void QObjectValidator::prepare()
+void QIObjectValidator::prepare()
 {
     /* Make sure validator assigned: */
     AssertPtrReturnVoid(m_pValidator);
@@ -78,16 +78,16 @@ void QObjectValidator::prepare()
 
 
 /*********************************************************************************************************************************
-*   Class QObjectValidatorGroup implementation.                                                                                  *
+*   Class QIObjectValidatorGroup implementation.                                                                                 *
 *********************************************************************************************************************************/
 
-QObjectValidatorGroup::QObjectValidatorGroup(QObject *pParent)
+QIObjectValidatorGroup::QIObjectValidatorGroup(QObject *pParent)
     : QObject(pParent)
     , m_fResult(false)
 {
 }
 
-void QObjectValidatorGroup::addObjectValidator(QObjectValidator *pObjectValidator)
+void QIObjectValidatorGroup::addObjectValidator(QIObjectValidator *pObjectValidator)
 {
     /* Make sure object-validator passed: */
     AssertPtrReturnVoid(pObjectValidator);
@@ -99,14 +99,14 @@ void QObjectValidatorGroup::addObjectValidator(QObjectValidator *pObjectValidato
     m_group.insert(pObjectValidator, toResult(pObjectValidator->state()));
 
     /* Attach object-validator to group: */
-    connect(pObjectValidator, &QObjectValidator::sigValidityChange,
-            this, &QObjectValidatorGroup::sltValidate);
+    connect(pObjectValidator, &QIObjectValidator::sigValidityChange,
+            this, &QIObjectValidatorGroup::sltValidate);
 }
 
-void QObjectValidatorGroup::sltValidate(QValidator::State enmState)
+void QIObjectValidatorGroup::sltValidate(QValidator::State enmState)
 {
     /* Determine sender object-validator: */
-    QObjectValidator *pObjectValidatorSender = qobject_cast<QObjectValidator*>(sender());
+    QIObjectValidator *pObjectValidatorSender = qobject_cast<QIObjectValidator*>(sender());
     /* Make sure that is one of our senders: */
     AssertReturnVoid(pObjectValidatorSender && m_group.contains(pObjectValidatorSender));
 
@@ -115,7 +115,7 @@ void QObjectValidatorGroup::sltValidate(QValidator::State enmState)
 
     /* Enumerate all the registered object-validators: */
     bool fResult = true;
-    foreach (QObjectValidator *pObjectValidator, m_group.keys())
+    foreach (QIObjectValidator *pObjectValidator, m_group.keys())
         if (!toResult(pObjectValidator->state()))
         {
             fResult = false;
@@ -134,7 +134,7 @@ void QObjectValidatorGroup::sltValidate(QValidator::State enmState)
 }
 
 /* static */
-bool QObjectValidatorGroup::toResult(QValidator::State enmState)
+bool QIObjectValidatorGroup::toResult(QValidator::State enmState)
 {
     return enmState == QValidator::Acceptable;
 }

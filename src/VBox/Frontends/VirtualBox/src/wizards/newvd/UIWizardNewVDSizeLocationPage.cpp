@@ -1,10 +1,10 @@
-/* $Id: UIWizardNewVDSizeLocationPage.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIWizardNewVDSizeLocationPage.cpp 113062 2026-02-17 12:37:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDSizeLocationPage class implementation.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -33,7 +33,7 @@
 #include "UIWizardNewVDSizeLocationPage.h"
 #include "UIWizardNewVD.h"
 #include "UIGlobalSession.h"
-#include "UINotificationCenter.h"
+#include "UINotificationMessage.h"
 #include "UIWizardDiskEditors.h"
 
 /* COM includes: */
@@ -164,7 +164,7 @@ bool UIWizardNewVDSizeLocationPage::validatePage()
     fResult = !QFileInfo(strMediumPath).exists();
     if (!fResult)
     {
-        UINotificationMessage::cannotOverwriteMediumStorage(strMediumPath, wizard()->notificationCenter());
+        UINotificationMessage::cannotOverwriteMediumStorage(strMediumPath, wizard());
         return fResult;
     }
 
@@ -174,7 +174,7 @@ bool UIWizardNewVDSizeLocationPage::validatePage()
                                      pWizard->mediumSize());
     if (!fResult)
     {
-        UINotificationMessage::cannotCreateMediumStorageInFAT(strMediumPath, wizard()->notificationCenter());
+        UINotificationMessage::cannotCreateMediumStorageInFAT(strMediumPath, wizard());
         return fResult;
     }
 

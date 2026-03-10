@@ -7,7 +7,7 @@ Storage testcase using xfstests.
 
 __copyright__ = \
 """
-Copyright (C) 2012-2025 Oracle and/or its affiliates.
+Copyright (C) 2012-2026 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Id: tdStorageStress1.py 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $"
+__version__ = "$Id: tdStorageStress1.py 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $"
 
 
 # Standard Python imports.
@@ -324,8 +324,8 @@ class tdStorageStress(vbox.TestDriver):                                      # p
 
     # pylint: disable=too-many-arguments
 
-    def test1OneCfg(self, sVmName, eStorageController, sDiskFormat, sDiskPath1, sDiskPath2, \
-                    sGuestFs, cCpus, fHwVirt, fNestedPaging):
+    def test1OneCfg(self, sVmName, eStorageController, sDiskFormat, # pylint: disable=too-many-positional-arguments
+                    sDiskPath1, sDiskPath2, sGuestFs, cCpus, fHwVirt, fNestedPaging):
         """
         Runs the specified VM thru test #1.
 

@@ -1,10 +1,10 @@
-/* $Id: mappings.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: mappings.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * Shared Folders Service - Mappings support.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -130,7 +130,8 @@ int vbsfMappingLoaded(const MAPPING *pLoadedMapping, SHFLROOT root)
      * Check whether there is the same mapping in g_FolderMapping and
      * update the g_aIndexFromRoot.
      *
-     * Also update the mapping properties, which were lost: cMappings.
+     * Also update the mapping properties, which were lost: cMappings, fHostCaseSensitive,
+     * fGuestCaseSensitive.
      */
     if (root >= SHFL_MAX_MAPPINGS)
     {
@@ -157,6 +158,8 @@ int vbsfMappingLoaded(const MAPPING *pLoadedMapping, SHFLROOT root)
 
                 /* Update the mapping properties. */
                 pMapping->cMappings = pLoadedMapping->cMappings;
+                pMapping->fHostCaseSensitive = pLoadedMapping->fHostCaseSensitive;
+                pMapping->fGuestCaseSensitive = pLoadedMapping->fGuestCaseSensitive;
             }
             else
             {

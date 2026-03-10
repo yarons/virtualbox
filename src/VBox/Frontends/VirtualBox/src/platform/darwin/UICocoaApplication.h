@@ -1,10 +1,10 @@
-/* $Id: UICocoaApplication.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UICocoaApplication.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICocoaApplication class declaration.
  */
 
 /*
- * Copyright (C) 2009-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -35,7 +35,6 @@
 #include <QMap>
 
 /* GUI includes: */
-#include "VBoxCocoaHelper.h"
 #include "VBoxUtils-darwin.h"
 #include "UILibraryDefs.h"
 
@@ -60,7 +59,6 @@ typedef void (*PfnNativeNotificationCallbackForQObject)(QObject *pObject, const 
 typedef void (*PfnNativeNotificationCallbackForQWidget)(const QString &strNativeNotificationName, QWidget *pWidget);
 /** Standard window button callback type for QWidget. */
 typedef void (*PfnStandardWindowButtonCallbackForQWidget)(StandardWindowButtonType emnButtonType, bool fWithOptionKey, QWidget *pWidget);
-
 
 /** Singleton prototype for our private NSApplication object. */
 class SHARED_LIBRARY_STUFF UICocoaApplication
@@ -145,4 +143,3 @@ private:
 };
 
 #endif /* !FEQT_INCLUDED_SRC_platform_darwin_UICocoaApplication_h */
-

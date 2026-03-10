@@ -1,10 +1,10 @@
-/* $Id: UIVMActivityMonitorContainer.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIVMActivityMonitorContainer.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitorPanel class declaration.
  */
 
 /*
- * Copyright (C) 2010-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -50,7 +50,6 @@ class UIActionPool;
    for activity monitor settings. */
 class SHARED_LIBRARY_STUFF UIVMActivityMonitorPaneContainer : public UIPaneContainer
 {
-
     Q_OBJECT;
 
 signals:
@@ -70,6 +69,7 @@ private slots:
     void sltResetToDefaults();
 
 private:
+
     enum Tab
     {
         Tab_Preferences = 0
@@ -84,14 +84,12 @@ private:
     QPushButton *m_pResetButton;
 
     QColor m_color[2];
-
 };
 
 /** A QWidget extension to host a tab widget and UIVMActivityMonitorPaneContainer. The tab widget
  hosts possibly multiple pages of UIVMActivityMonitor. */
 class SHARED_LIBRARY_STUFF UIVMActivityMonitorContainer : public QWidget
 {
-
     Q_OBJECT;
 
 public:
@@ -100,6 +98,8 @@ public:
     void removeTabs(const QVector<QUuid> &machineIdsToRemove);
     void addLocalMachine(const CMachine &comMachine);
     void addCloudMachine(const CCloudMachine &comMachine);
+    /* A list of current machine ids. */
+    QVector<QUuid> machineIds() const;
 
 private slots:
 

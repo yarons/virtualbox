@@ -1,10 +1,10 @@
-/* $Id: UIMediumTools.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMediumTools.cpp 113062 2026-02-17 12:37:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumTools class implementation.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -42,7 +42,7 @@
 #include "UIMediumTools.h"
 #include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
-#include "UINotificationCenter.h"
+#include "UINotificationMessage.h"
 #include "UIVisoCreator.h"
 #include "UIWizardNewVD.h"
 
@@ -218,7 +218,7 @@ QUuid UIMediumTools::openMedium(UIMediumDeviceType enmMediumType,
         return guiMedium.id();
     }
     else
-        msgCenter().cannotOpenMedium(comVBox, strLocation, pParent);
+        UINotificationMessage::cannotOpenMedium(comVBox, strLocation, pParent);
 
     return QUuid();
 }
@@ -402,6 +402,9 @@ void UIMediumTools::prepareStorageMenu(QMenu *pMenu,
     /* Prepare choose-existing-host-drive actions: */
     foreach (const CMedium &comMedium, comMedia)
     {
+        /* Make sure host-drive is enumerated: */
+        if (!gpMediumEnumerator->mediumIDs().contains(comMedium.GetId()))
+            gpMediumEnumerator->enumerateMedia(CMediumVector() << comMedium);
         /* Make sure host-drive usage is unique: */
         bool fIsHostDriveUsed = false;
         foreach (const CMediumAttachment &comOtherAttachment, comAttachments)
@@ -637,16 +640,16 @@ void UIMediumTools::updateMachineStorage(const CMachine &comConstMachine,
         comMachine.DetachDevice(target.name, target.port, target.device);
         fWasMounted = comMachine.isOk();
         if (!fWasMounted)
-            msgCenter().cannotDetachDevice(comMachine, UIMediumDeviceType_HardDisk, strCurrentLocation,
-                                           StorageSlot(enmCurrentStorageBus, target.port, target.device));
+            UINotificationMessage::cannotDetachDevice(comMachine, UIMediumDeviceType_HardDisk, strCurrentLocation,
+                                                      StorageSlot(enmCurrentStorageBus, target.port, target.device));
         else
         {
             /* Attaching: */
             comMachine.AttachDevice(target.name, target.port, target.device, KDeviceType_HardDisk, comMedium);
             fWasMounted = comMachine.isOk();
             if (!fWasMounted)
-                msgCenter().cannotAttachDevice(comMachine, UIMediumDeviceType_HardDisk, strCurrentLocation,
-                                               StorageSlot(enmCurrentStorageBus, target.port, target.device));
+                UINotificationMessage::cannotAttachDevice(comMachine, UIMediumDeviceType_HardDisk, strCurrentLocation,
+                                                          StorageSlot(enmCurrentStorageBus, target.port, target.device));
         }
     }
     /* Optical/floppy drive case: */
@@ -676,7 +679,7 @@ void UIMediumTools::updateMachineStorage(const CMachine &comConstMachine,
     {
         comMachine.SaveSettings();
         if (!comMachine.isOk())
-            msgCenter().cannotSaveMachineSettings(comMachine, windowManager().mainWindowShown());
+            UINotificationMessage::cannotSaveMachineSettings(comMachine);
     }
 
     /* Close session to editable comMachine if necessary: */

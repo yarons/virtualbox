@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testfileset.py 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: testfileset.py 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -8,7 +8,7 @@ Test File Set
 
 __copyright__ = \
 """
-Copyright (C) 2010-2025 Oracle and/or its affiliates.
+Copyright (C) 2010-2026 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 110684 $"
+__version__ = "$Revision: 112403 $"
 
 
 # Standard Python imports.
@@ -55,7 +55,9 @@ from testdriver import reporter;
 
 # Python 3 hacks:
 if sys.version_info[0] >= 3:
-    xrange = range; # pylint: disable=redefined-builtin,invalid-name
+    xrange = range;     # pylint: disable=redefined-builtin,invalid-name
+else:
+    xrange = xrange;    # pylint: disable=redefined-builtin,invalid-name,self-assigning-variable
 
 
 
@@ -96,10 +98,9 @@ class TestFile(TestFsObj):
     def read(self, cbToRead):
         """ read() emulation. """
         assert self.off <= self.cbContent;
-        cbLeft = self.cbContent - self.off;
-        if cbLeft < cbToRead:
-            cbToRead = cbLeft;
-        abRet = self.abContent[self.off:(self.off + cbToRead)];
+        cbLeft   = self.cbContent - self.off;
+        cbToRead = min(cbToRead, cbLeft);
+        abRet    = self.abContent[self.off:(self.off + cbToRead)];
         assert len(abRet) == cbToRead;
         self.off += cbToRead;
         if sys.version_info[0] < 3:
@@ -124,9 +125,7 @@ class TestFile(TestFsObj):
         except:
             return reporter.error('seek error');
         while offFile < self.cbContent:
-            cbToRead = self.cbContent - offFile;
-            if cbToRead > 256*1024:
-                cbToRead = 256*1024;
+            cbToRead = min(self.cbContent - offFile, 256*1024);
             try:
                 abRead = oFile.read(cbToRead);
             except:
@@ -234,10 +233,9 @@ class TestFileZeroFilled(TestFile):
     def read(self, cbToRead):
         """ read() emulation. """
         assert self.off <= self.cbContent;
-        cbLeft = self.cbContent - self.off;
-        if cbLeft < cbToRead:
-            cbToRead = cbLeft;
-        abRet = bytearray(cbToRead);
+        cbLeft   = self.cbContent - self.off;
+        cbToRead = min(cbToRead, cbLeft);
+        abRet    = bytearray(cbToRead);
         assert len(abRet) == cbToRead;
         self.off += cbToRead;
         if sys.version_info[0] < 3:
@@ -303,7 +301,7 @@ class TestFileSet(object):
 
     ## @}
 
-    def __init__(self, fDosStyle, sBasePath, sSubDir, # pylint: disable=too-many-arguments
+    def __init__(self, fDosStyle, sBasePath, sSubDir, # pylint: disable=too-many-arguments,too-many-positional-arguments
                  asCompatibleWith = None,             # List of getHostOs values to the names must be compatible with.
                  oRngFileSizes = xrange(0, 16384),
                  oRngManyFiles = xrange(128, 512),
@@ -413,10 +411,8 @@ class TestFileSet(object):
             cchMaxName = self.cchMaxPath - len(oParent.sPath) - 1;
         else:
             cchMaxName = self.cchMaxPath - 4;
-        if cchMaxName > self.cchMaxName:
-            cchMaxName = self.cchMaxName;
-        if cchMaxName <= 1:
-            cchMaxName = 2;
+        cchMaxName = min(cchMaxName, self.cchMaxName)
+        cchMaxName = max(cchMaxName, 2);
 
         while True:
             cchName = self.oRandom.randrange(1, cchMaxName);

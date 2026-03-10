@@ -1,10 +1,10 @@
-/* $Id: DevVGA-SVGA3d-internal.h 111474 2025-10-21 14:56:59Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-internal.h 112601 2026-01-15 12:05:40Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part, internal header.
  */
 
 /*
- * Copyright (C) 2013-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -983,6 +983,9 @@ static SSMFIELD const g_aVMSVGA3DCONTEXTFields[] =
 /* The 3D backend DX context. The actual structure is 3D API specific. */
 typedef struct VMSVGA3DBACKENDDXCONTEXT *PVMSVGA3DBACKENDDXCONTEXT;
 
+/** @todo Make it default and remove. */
+#define COTABLE_NO_BACKING
+
 /**
  * VMSVGA3D DX context (VGPU10+). DX contexts ids are a separate namespace from legacy context ids.
  */
@@ -999,7 +1002,11 @@ typedef struct VMSVGA3DDXCONTEXT
     /** Copy of the guest memory for this context. The guest will be updated on unbind. */
     SVGADXContextMobFormat    svgaDXContext;
     /* Context-Object Tables bound to this context. */
+#ifndef COTABLE_NO_BACKING
     PVMSVGAMOB aCOTMobs[VBSVGA_NUM_COTABLES];
+#else
+    uint32_t aCOTMobs[VBSVGA_NUM_COTABLES];
+#endif
     struct
     {
         SVGACOTableDXRTViewEntry          *paRTView;
@@ -1373,6 +1380,15 @@ DECLINLINE(int) vmsvga3dDXContextFromCid(PVMSVGA3DSTATE pState, uint32_t cid, PV
 void vmsvga3dDXInitContextMobData(SVGADXContextMobFormat *p);
 void vmsvga3dDXCbFinishQuery(PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, SVGA3dQueryId queryId,
                              SVGADXQueryResultUnion const *pQueryResult, uint32_t cbQueryResult);
+
+DECLINLINE(uint32_t) vmsvga3dDXContextObjectId(uint32_t id, uint32_t cObjects)
+{
+    if (RT_LIKELY(   id < cObjects
+                  || id == SVGA3D_INVALID_ID))
+        return id;
+    ASSERT_GUEST_MSG_FAILED(("Invalid context object id %u (%u objects)\n", id, cObjects));
+    return SVGA3D_INVALID_ID;
+}
 #endif
 
 DECLINLINE(int) vmsvga3dSurfaceFromSid(PVMSVGA3DSTATE pState, uint32_t sid, PVMSVGA3DSURFACE *ppSurface)

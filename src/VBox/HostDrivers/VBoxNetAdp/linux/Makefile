@@ -1,10 +1,10 @@
-# $Id: Makefile 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: Makefile 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the VirtualBox Linux Host Virtual Network Adapter Driver.
 #
 
 #
-# Copyright (C) 2006-2025 Oracle and/or its affiliates.
+# Copyright (C) 2006-2026 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.
@@ -59,6 +59,10 @@ VBOXMOD_OBJS += \
 	math/gcc/divdi3.o \
 	math/gcc/umoddi3.o
 endif
+ifeq ($(VBOX_KBUILD_TARGET_ARCH),arm64)
+VBOXMOD_OBJS += \
+	common/asm/ASMBitFirstClear-generic.o
+endif
 VBOXMOD_INCL = \
 	$(VBOXNETADP_DIR) \
 	$(VBOXNETADP_DIR)include \
@@ -70,8 +74,7 @@ VBOXMOD_DEFS = \
 	IN_SUP_R0 \
 	VBOX \
 	RT_WITH_VBOX \
-	VBOX_WITH_HARDENING \
-	VBOX_WITH_64_BITS_GUESTS # <-- must be consistent with Config.kmk!
+	VBOX_WITH_HARDENING
 VBOXMOD_CFLAGS = -include $(VBOXNETADP_DIR)include/VBox/SUPDrvMangling.h -fno-pie -Wno-declaration-after-statement
 
 include $(obj)/Makefile-footer.gmk

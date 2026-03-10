@@ -1,10 +1,10 @@
-/* $Id: UIMachineLogicSeamless.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineLogicSeamless.cpp 113267 2026-03-05 10:14:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class implementation.
  */
 
 /*
- * Copyright (C) 2010-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -37,13 +37,12 @@
 #include "UIMachine.h"
 #include "UIMachineLogicSeamless.h"
 #include "UIMachineWindowSeamless.h"
-#include "UIMessageCenter.h"
 #include "UIMultiScreenLayout.h"
+#include "UINotificationMessage.h"
+#include "UINotificationQuestion.h"
 #include "UIShortcutPool.h"
 #ifndef VBOX_WS_MAC
 # include "QIMenu.h"
-#else
-# include "VBoxUtils.h"
 #endif
 
 /* COM includes: */
@@ -86,11 +85,7 @@ bool UIMachineLogicSeamless::checkAvailability()
         quint64 uAvailBits = uVRAMSize * _1M /* MiB to bytes */ * 8 /* to bits */;
         quint64 uUsedBits = m_pScreenLayout->memoryRequirements();
         if (uAvailBits < uUsedBits)
-        {
-            msgCenter().cannotEnterSeamlessMode(0, 0, 0,
-                                                (((uUsedBits + 7) / 8 + _1M - 1) / _1M) * _1M);
-            return false;
-        }
+            return UINotificationMessage::cannotEnterSeamlessMode((((uUsedBits + 7) / 8 + _1M - 1) / _1M) * _1M);
     }
 
     /* Show the info message. */
@@ -98,7 +93,7 @@ bool UIMachineLogicSeamless::checkAvailability()
             gShortcutPool->shortcut(actionPool()->shortcutsExtraDataID(),
                                     actionPool()->action(UIActionIndexRT_M_View_T_Seamless)->shortcutExtraDataID());
     const QString strHotKey = QString("Host+%1").arg(shortcut.primaryToPortableText());
-    if (!msgCenter().confirmGoingSeamless(strHotKey))
+    if (!UINotificationQuestion::confirmGoingSeamless(strHotKey))
         return false;
 
     return true;

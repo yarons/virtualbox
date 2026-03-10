@@ -10,7 +10,7 @@
  */
 
 /*
- * Copyright (C) 2011-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -1292,6 +1292,7 @@
 # define RTGetOptNonOptionArrayPtr                      RT_MANGLER(RTGetOptNonOptionArrayPtr)
 # define RTGetOptFormatError                            RT_MANGLER(RTGetOptFormatError)
 # define RTGetOptPrintError                             RT_MANGLER(RTGetOptPrintError)
+# define RTGetOptStringToValue                          RT_MANGLER(RTGetOptStringToValue)
 # define RTHandleClose                                  RT_MANGLER(RTHandleClose)
 # define RTHandleGetStandard                            RT_MANGLER(RTHandleGetStandard)
 # define RTHandleTableAlloc                             RT_MANGLER(RTHandleTableAlloc)
@@ -3176,6 +3177,7 @@
 # define RTVfsCreateReadAheadForIoStream                RT_MANGLER(RTVfsCreateReadAheadForIoStream)
 # define RTZipBlockCompress                             RT_MANGLER(RTZipBlockCompress)
 # define RTZipBlockDecompress                           RT_MANGLER(RTZipBlockDecompress)
+# define RTZipBzip2IsStartOfCompressedStream            RT_MANGLER(RTZipBzip2IsStartOfCompressedStream)
 # define RTZipCompCreate                                RT_MANGLER(RTZipCompCreate)
 # define RTZipCompDestroy                               RT_MANGLER(RTZipCompDestroy)
 # define RTZipCompFinish                                RT_MANGLER(RTZipCompFinish)
@@ -3185,6 +3187,7 @@
 # define RTZipDecompress                                RT_MANGLER(RTZipDecompress)
 # define RTZipGzipCompressIoStream                      RT_MANGLER(RTZipGzipCompressIoStream)
 # define RTZipGzipDecompressIoStream                    RT_MANGLER(RTZipGzipDecompressIoStream)
+# define RTZipGzipIsStartOfCompressedStream             RT_MANGLER(RTZipGzipIsStartOfCompressedStream)
 # define RTZipGzipCmd                                   RT_MANGLER(RTZipGzipCmd)
 # define RTZipPkzipFsStreamFromIoStream                 RT_MANGLER(RTZipPkzipFsStreamFromIoStream)
 # define RTZipPkzipMemDecompress                        RT_MANGLER(RTZipPkzipMemDecompress)
@@ -3204,6 +3207,7 @@
 # define RTZipCpioFsStreamFromIoStream                  RT_MANGLER(RTZipCpioFsStreamFromIoStream)
 # define RTZipXzCompressIoStream                        RT_MANGLER(RTZipXzCompressIoStream)
 # define RTZipXzDecompressIoStream                      RT_MANGLER(RTZipXzDecompressIoStream)
+# define RTZipXzIsStartOfCompressedStream               RT_MANGLER(RTZipXzIsStartOfCompressedStream)
 
 /* sort/merge into the above later: */
 # define RTAsn1ContentAllocZ                            RT_MANGLER(RTAsn1ContentAllocZ)

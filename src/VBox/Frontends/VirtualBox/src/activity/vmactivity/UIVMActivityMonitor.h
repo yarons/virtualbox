@@ -1,10 +1,10 @@
-/* $Id: UIVMActivityMonitor.h 111251 2025-10-06 09:49:35Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitor.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class declaration.
  */
 
 /*
- * Copyright (C) 2016-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2016-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -77,6 +77,7 @@ enum Metric_Type
     Metric_Type_Network_InOut,
     Metric_Type_Network_In,
     Metric_Type_Network_Out,
+    Metric_Type_USB_InOut,
     Metric_Type_VM_Exits,
     Metric_Type_Max
 };
@@ -84,7 +85,6 @@ enum Metric_Type
 /** UIMetric represents a performance metric and is used to store data related to the corresponding metric. */
 class UIMetric
 {
-
 public:
 
     UIMetric(const QString &strUnit, int iMaximumQueueSize);
@@ -125,6 +125,7 @@ public:
     bool autoUpdateMaximum() const;
 
 private:
+
     void updateMax();
 
     QString m_strUnit;
@@ -153,7 +154,6 @@ private:
   * special casing etc.*/
 class  SHARED_LIBRARY_STUFF UIVMActivityMonitor : public QWidget
 {
-
     Q_OBJECT;
 
 public:
@@ -230,6 +230,7 @@ protected:
     int m_iMaximumQueueSize;
     QColor m_dataSeriesColor[DATA_SERIES_SIZE];
     UIActionPool *m_pActionPool;
+
 private slots:
 
     /** Reads the metric values for several sources and calls corresponding update functions. */
@@ -247,7 +248,6 @@ private:
 
 class  SHARED_LIBRARY_STUFF UIVMActivityMonitorLocal : public UIVMActivityMonitor
 {
-
     Q_OBJECT;
 
 public:
@@ -287,11 +287,13 @@ private:
     void updateCPUChart(ULONG iLoadPercentage, ULONG iOtherPercentage);
     void updateRAMGraphsAndMetric(quint64 iTotalRAM, quint64 iFreeRAM);
     void updateNetworkChart(quint64 uReceiveTotal, quint64 uTransmitTotal);
+    void updateUSBChart(quint64 uReceiveTotal, quint64 uTransmitTotal);
     void updateDiskIOChart(quint64 uDiskIOTotalWritten, quint64 uDiskIOTotalRead);
     void updateVMExitMetric(quint64 uTotalVMExits);
     void resetVMExitInfoLabel();
     virtual void resetCPUInfoLabel() RT_OVERRIDE;
     void resetNetworkInfoLabel();
+    void resetUSBInfoLabel();
     void resetDiskIOInfoLabel();
     virtual void prepareWidgets() RT_OVERRIDE;
     void configureCOMPerformanceCollector();
@@ -305,18 +307,21 @@ private:
     CPerformanceCollector m_performanceCollector;
     bool                  m_fCOMPerformanceCollectorConfigured;
     CMachineDebugger      m_comMachineDebugger;
-    /** VM Exit info label strings. */
     QString m_strVMExitInfoLabelTitle;
     QString m_strVMExitLabelCurrent;
     QString m_strVMExitLabelTotal;
     QString m_strNetworkInfoLabelTitle;
+    QString m_strUSBInfoLabelTitle;
+    QString m_strUSBInfoLabelReceived;
+    QString m_strUSBInfoLabelTransmitted;
+    QString m_strUSBInfoLabelReceivedTotal;
+    QString m_strUSBInfoLabelTransmittedTotal;
     ComObjPtr<UIMainEventListenerImpl> m_pQtConsoleListener;
     CEventListener m_comConsoleListener;
 };
 
 class  SHARED_LIBRARY_STUFF UIVMActivityMonitorCloud : public UIVMActivityMonitor
 {
-
     Q_OBJECT;
 
 public:
@@ -339,6 +344,7 @@ private slots:
     void sltMachineStateUpdateTimeout();
 
 private:
+
     void setMachine(const CCloudMachine &comMachine);
     virtual void obtainDataAndUpdate() RT_OVERRIDE;
 
@@ -379,4 +385,5 @@ private:
     QString m_strNetworkInInfoLabelTitle;
     QString m_strNetworkOutInfoLabelTitle;
 };
+
 #endif /* !FEQT_INCLUDED_SRC_activity_vmactivity_UIVMActivityMonitor_h */

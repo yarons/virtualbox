@@ -1,4 +1,4 @@
-/* $Id: IEMAllStub.cpp 111432 2025-10-16 11:58:18Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllStub.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager, dummy IEM stub functions.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2023-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2023-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -44,12 +44,11 @@
 *   Internal Functions                                                                                                           *
 *********************************************************************************************************************************/
 
-VMM_INT_DECL(VBOXSTRICTRC)
-IEMExecForExits(PVMCPUCC pVCpu, uint32_t fWillExit, uint32_t cMinInstructions, uint32_t cMaxInstructions,
-                uint32_t cMaxInstructionsWithoutExits, PIEMEXECFOREXITSTATS pStats)
+VMM_INT_DECL(VBOXSTRICTRC) IEMExecForExits(PVMCPUCC pVCpu, uint32_t fWillExit, uint32_t cMaxInstructions,
+                                           uint32_t cMaxInstructionsWithoutExits, PIEMEXECFOREXITSTATS pStats)
 {
     AssertReleaseFailed();
-    RT_NOREF(pVCpu, fWillExit, cMinInstructions, cMaxInstructions, cMaxInstructionsWithoutExits);
+    RT_NOREF(pVCpu, fWillExit, cMaxInstructions, cMaxInstructionsWithoutExits);
     RT_ZERO(*pStats);
     return VERR_NOT_IMPLEMENTED;
 }

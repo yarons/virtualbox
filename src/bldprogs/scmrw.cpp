@@ -1,10 +1,10 @@
-/* $Id: scmrw.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: scmrw.cpp 112551 2026-01-13 21:41:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
 
 /*
- * Copyright (C) 2010-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -107,6 +107,9 @@ typedef struct SCMCOPYRIGHTINFO
     uint32_t            uLastYear;
     bool                fWellFormedCopyright;
     bool                fUpToDateCopyright;
+    bool                fAllowUefiStyle;        /**< Whether to allow UEFI-style copyright (+ SPDX license) file headers. */
+    bool                fUefiStyleCopyright;
+    bool                fUefiWithHtmlBr;        /**< Whether to append a BR-element to the copyright. */
     /** @} */
 
     /** @name License info
@@ -455,7 +458,7 @@ static const char g_szLgplDisclaimer[] =
     "the Lesser General Public License version 2.1 (LGPLv2) at this time for any software where\n"
     "a choice of LGPL license versions is made available with the language indicating\n"
     "that LGPLv2 or any later version may be used, or where a choice of which version\n"
-    "of the LGPL is applied is otherwise unspecified.\n";
+    "of the LGPL is applied is otherwise unspecified."; /* (no trailing newline because it causes trouble in compares) */
 
 /** Copyright+license comment start for each SCMCOMMENTSTYLE. */
 static RTSTRTUPLE const g_aCopyrightCommentStart[] =
@@ -1059,16 +1062,19 @@ SCMREWRITERRES rewrite_SvnBinary(PSCMRWSTATE pState, PSCMSTREAM pIn, PSCMSTREAM 
     }
 
     /* Make sure there is a svn:mime-type set. */
-    int rc = ScmSvnQueryProperty(pState, "svn:mime-type", NULL);
-    if (rc == VERR_NOT_FOUND)
+    if (pSettings->fSetMimeTypeOnBinaries)
     {
-        ScmVerbose(pState, 2, " * settings svn:mime-type\n");
-        rc = ScmSvnSetProperty(pState, "svn:mime-type", "application/octet-stream");
-        if (RT_FAILURE(rc))
-            ScmError(pState, rc, "ScmSvnSetProperty: %Rrc\n", rc);
+        int rc = ScmSvnQueryProperty(pState, "svn:mime-type", NULL);
+        if (rc == VERR_NOT_FOUND)
+        {
+            ScmVerbose(pState, 2, " * settings svn:mime-type\n");
+            rc = ScmSvnSetProperty(pState, "svn:mime-type", "application/octet-stream");
+            if (RT_FAILURE(rc))
+                ScmError(pState, rc, "ScmSvnSetProperty: %Rrc\n", rc);
+        }
+        else if (RT_FAILURE(rc))
+            ScmError(pState, rc, "ScmSvnQueryProperty: %Rrc\n", rc);
     }
-    else if (RT_FAILURE(rc))
-        ScmError(pState, rc, "ScmSvnQueryProperty: %Rrc\n", rc);
 
     return kScmUnmodified;
 }
@@ -1147,27 +1153,37 @@ SCMREWRITERRES rewrite_SvnSyncProcess(PSCMRWSTATE pState, PSCMSTREAM pIn, PSCMST
     {
         if (strcmp(pszSyncProcess, "export") == 0)
         {
-            char *pszParentSyncProcess;
-            rc = ScmSvnQueryParentProperty(pState, "svn:sync-process", &pszParentSyncProcess);
-            if (RT_SUCCESS(rc))
+            if (pSettings->enmSyncProcess == kScmSvnSyncProcess_None)
             {
-                if (strcmp(pszSyncProcess, "export") != 0)
-                    ScmError(pState, VERR_INVALID_STATE,
-                             "svn:sync-process=export, but parent directory differs: %s\n"
+                ScmVerbose(pState, 2, " * deleting svn:sync-process\n");
+                rc = ScmSvnSetProperty(pState, "svn:sync-process", NULL);
+                if (RT_FAILURE(rc))
+                    ScmError(pState, rc, "ScmSvnSetProperty: %Rrc\n", rc);
+            }
+            else
+            {
+                char *pszParentSyncProcess;
+                rc = ScmSvnQueryParentProperty(pState, "svn:sync-process", &pszParentSyncProcess);
+                if (RT_SUCCESS(rc))
+                {
+                    if (strcmp(pszSyncProcess, "export") != 0)
+                        ScmError(pState, VERR_INVALID_STATE,
+                                 "svn:sync-process=export, but parent directory differs: %s\n"
+                                 "WARNING! Make sure to unexport everything inside the directory first!\n"
+                                 "         Then you may export the directory and stuff inside it if you want.\n"
+                                 "         (Just exporting the directory will not make anything inside it externally visible.)\n"
+                                 , pszParentSyncProcess);
+                    RTStrFree(pszParentSyncProcess);
+                }
+                else if (rc == VERR_NOT_FOUND)
+                    ScmError(pState, VERR_NOT_FOUND,
+                             "svn:sync-process=export, but parent directory is not exported!\n"
                              "WARNING! Make sure to unexport everything inside the directory first!\n"
                              "         Then you may export the directory and stuff inside it if you want.\n"
-                             "         (Just exporting the directory will not make anything inside it externally visible.)\n"
-                             , pszParentSyncProcess);
-                RTStrFree(pszParentSyncProcess);
+                             "         (Just exporting the directory will not make anything inside it externally visible.)\n");
+                else
+                    ScmError(pState, rc, "ScmSvnQueryParentProperty: %Rrc\n", rc);
             }
-            else if (rc == VERR_NOT_FOUND)
-                ScmError(pState, VERR_NOT_FOUND,
-                         "svn:sync-process=export, but parent directory is not exported!\n"
-                         "WARNING! Make sure to unexport everything inside the directory first!\n"
-                         "         Then you may export the directory and stuff inside it if you want.\n"
-                         "         (Just exporting the directory will not make anything inside it externally visible.)\n");
-            else
-                ScmError(pState, rc, "ScmSvnQueryParentProperty: %Rrc\n", rc);
         }
         else if (strcmp(pszSyncProcess, "ignore") != 0)
             ScmError(pState, VERR_INVALID_NAME, "Bad sync-process value: %s\n", pszSyncProcess);
@@ -1175,6 +1191,13 @@ SCMREWRITERRES rewrite_SvnSyncProcess(PSCMRWSTATE pState, PSCMSTREAM pIn, PSCMST
     }
     else if (rc != VERR_NOT_FOUND)
         ScmError(pState, rc, "ScmSvnQueryProperty: %Rrc\n", rc);
+    else if (pSettings->enmSyncProcess == kScmSvnSyncProcess_All)
+    {
+        ScmVerbose(pState, 2, " * setting svn:sync-process to 'export'\n");
+        rc = ScmSvnSetProperty(pState, "svn:sync-process", "export");
+        if (RT_FAILURE(rc))
+            ScmError(pState, rc, "ScmSvnSetProperty: %Rrc\n", rc);
+    }
 
     return kScmUnmodified;
 }
@@ -1314,58 +1337,64 @@ static bool IsEqualWordByWordIgnoreCase(const char *psz1, const char *psz2, cons
  * and case.
  *
  * @returns true if found, false if not.
- * @param   pszText             The haystack to search in.
- * @param   cchText             The length @a pszText.
+ * @param   pchText             The haystack to search in.
+ * @param   cchText             The length @a pchText.
  * @param   pszFragment         The needle to search for.
- * @param   ppszStart           Where to return the address in @a pszText where
+ * @param   cchFragment         The length of the needle text.
+ * @param   ppszStart           Where to return the address in @a pchText where
  *                              the fragment was found.  Optional.
  * @param   ppszNext            Where to return the pointer to the first char in
- *                              @a pszText after the fragment.  Optional.
+ *                              @a pchText after the fragment.  Optional.
  *
  * @remarks First character of @a pszFragment must be an 7-bit ASCII character!
  *          This character must not be space or punctuation.
  */
-static bool scmContainsWordByWordIgnoreCase(const char *pszText, size_t cchText, const char *pszFragment,
+static bool scmContainsWordByWordIgnoreCase(const char *pchText, size_t cchText, const char *pszFragment, size_t cchFragment,
                                             const char **ppszStart, const char **ppszNext)
 {
     Assert(!((unsigned)*pszFragment & 0x80));
-    Assert(pszText[cchText] == '\0');
+    Assert(pszFragment[cchFragment] == '\0' && pszFragment[cchFragment - 1] != '\0');
     Assert(!RT_C_IS_BLANK(*pszFragment));
     Assert(!RT_C_IS_PUNCT(*pszFragment));
-
-    char chLower = RT_C_TO_LOWER(*pszFragment);
-    char chUpper = RT_C_TO_UPPER(*pszFragment);
-    for (;;)
+    if (cchText >= cchFragment)
     {
-        const char *pszHit = (const char *)memchr(pszText, chLower, cchText);
-        const char *pszHit2 = (const char *)memchr(pszText, chUpper, cchText);
-        if (!pszHit && !pszHit2)
+        cchText -= cchFragment - 1;
+
+        char const chLower = RT_C_TO_LOWER(*pszFragment);
+        char const chUpper = RT_C_TO_UPPER(*pszFragment);
+        for (;;)
         {
-            if (ppszStart)
-                *ppszStart = NULL;
-            if (ppszNext)
-                *ppszNext = NULL;
-            return false;
+            const char *pszHit  = (const char *)memchr(pchText, chLower, cchText);
+            const char *pszHit2 = (const char *)memchr(pchText, chUpper, cchText);
+            if (!pszHit && !pszHit2)
+                break;
+
+            if (   pszHit == NULL
+                || (   pszHit2 != NULL
+                    && ((uintptr_t)pszHit2 < (uintptr_t)pszHit)) )
+                pszHit = pszHit2;
+
+            const char *pszNext;
+            if (IsEqualWordByWordIgnoreCase(pszFragment, pszHit, &pszNext))
+            {
+                if (ppszStart)
+                    *ppszStart = pszHit;
+                if (ppszNext)
+                    *ppszNext = pszNext;
+                return true;
+            }
+
+            cchText -= pszHit - pchText + 1;
+            pchText = pszHit + 1;
         }
-
-        if (   pszHit == NULL
-            || (   pszHit2 != NULL
-                && ((uintptr_t)pszHit2 < (uintptr_t)pszHit)) )
-            pszHit = pszHit2;
-
-        const char *pszNext;
-        if (IsEqualWordByWordIgnoreCase(pszFragment, pszHit, &pszNext))
-        {
-            if (ppszStart)
-                *ppszStart = pszHit;
-            if (ppszNext)
-                *ppszNext = pszNext;
-            return true;
-        }
-
-        cchText -= pszHit - pszText + 1;
-        pszText = pszHit + 1;
     }
+
+    /* Not found. */
+    if (ppszStart)
+        *ppszStart = NULL;
+    if (ppszNext)
+        *ppszNext = NULL;
+    return false;
 }
 
 
@@ -1410,7 +1439,63 @@ rewrite_Copyright_CommentCallback(PCSCMCOMMENTINFO pInfo, const char *pszBody, s
 
     pState->cComments++;
 
+    uint32_t cBlankLinesBefore = pInfo->cBlankLinesBefore;
     uint32_t iLine = pInfo->iLineStart + pInfo->cBlankLinesBefore;
+
+    /*
+     * For UEFI sources, we will have to skip leading @file + desc stuff to
+     * get to the copyright lines.  We skip this regardless of whether UEFI-style
+     * headers is enabled or not, as it'll help us identify bogus files.
+     */
+    uint32_t iLineStart = iLine;
+    bool     fUefiStyle = false;
+    if (   pState->iLineCopyright == UINT32_MAX
+        && strncmp(pszBody, RT_STR_TUPLE("@file")) == 0)
+    {
+        /* Skip the @file line (nothing interesting on it) and any blank lines after it. */
+        const char *pszNextLine = (const char *)memchr(pszBody, '\n', cchBody);
+        if (pszNextLine)
+        {
+            cBlankLinesBefore = 0;
+            do
+            {
+                iLine++;
+                pszNextLine++;
+                cBlankLinesBefore++;
+            } while (*pszNextLine == '\n');
+            cchBody -= (size_t)(pszNextLine - pszBody);
+            pszBody  = pszNextLine;
+
+            /* UEFI sources have a file description after @file, we're not
+               interested in it, so skip it (line by line). */
+            while (   (pszNextLine = (const char *)memchr(pszBody, '\n', cchBody)) != NULL
+                   && pszNextLine != pszBody
+                   && !scmContainsWordByWordIgnoreCase(pszBody, pszNextLine - pszBody, RT_STR_TUPLE("license"),    NULL, NULL)
+                   && !scmContainsWordByWordIgnoreCase(pszBody, pszNextLine - pszBody, RT_STR_TUPLE("copyright"),  NULL, NULL)
+                   && !scmContainsWordByWordIgnoreCase(pszBody, pszNextLine - pszBody, RT_STR_TUPLE("contribute"), NULL, NULL)
+                   && !scmContainsWordByWordIgnoreCase(pszBody, pszNextLine - pszBody, RT_STR_TUPLE("SPDX"),       NULL, NULL) )
+            {
+                iLine++;
+                pszNextLine++;
+                cchBody -= (size_t)(pszNextLine - pszBody);
+                pszBody  = pszNextLine;
+                cBlankLinesBefore = 0;
+            }
+
+            /* Skip blank lines following it. */
+            while (*pszBody == '\n')
+            {
+                iLine++;
+                cBlankLinesBefore++;
+                cchBody--;
+                pszBody++;
+            }
+
+            ScmVerbose(pState->pState, 5, "* skipping %u lines starting with @file...\n", iLine - iLineStart);
+            fUefiStyle = true;
+            iLineStart = iLine;
+        }
+    }
 
     /*
      * Look for a 'contributed by' or 'includes contributions from' line, these
@@ -1429,11 +1514,13 @@ rewrite_Copyright_CommentCallback(PCSCMCOMMENTINFO pInfo, const char *pszBody, s
     {
         const char *pszNextLine = (const char *)memchr(pszBody, '\n', cchBody);
         while (pszNextLine && pszNextLine[1] != '\n')
-            pszNextLine = (const char *)memchr(pszNextLine + 1, '\n', cchBody);
+            pszNextLine = (const char *)memchr(pszNextLine + 1, '\n', &pszBody[cchBody] - pszNextLine - 1);
         if (pszNextLine)
         {
+            Assert((uintptr_t)pszNextLine < (uintptr_t)&pszBody[cchBody]);
             pchContributedBy = pszBody;
             cchContributedBy = pszNextLine - pszBody;
+            ScmVerbose(pState->pState, 3, "* contributed by '%*.*s'\n", cchContributedBy, cchContributedBy, pchContributedBy);
 
             /* Skip the copyright line and any blank lines following it. */
             cchBody -= cchContributedBy + 1;
@@ -1458,12 +1545,25 @@ rewrite_Copyright_CommentCallback(PCSCMCOMMENTINFO pInfo, const char *pszBody, s
         && cchBody > sizeof("Copyright") + RT_MIN(sizeof(g_szCopyrightHolder), sizeof(g_szOldCopyrightHolder))
         && RTStrNICmp(pszBody, RT_STR_TUPLE("copyright")) == 0)
     {
-        const char *pszNextLine = (const char *)memchr(pszBody, '\n', cchBody);
+        const char  *pszNextLine = (const char *)memchr(pszBody, '\n', cchBody);
+        size_t const cchLine     = (pszNextLine ? pszNextLine : &pszBody[cchBody]) - pszBody;
 
-        /* Oracle copyright? */
+        /* Drop trailing spaces and any UEFI-style '<BR>'. */
         const char *pszEnd  = pszNextLine ? pszNextLine : &pszBody[cchBody];
         while (RT_C_IS_SPACE(pszEnd[-1]))
             pszEnd--;
+        bool const fTrailingBr = pszEnd[-4] == '<'
+                              && pszEnd[-1] == '>'
+                              && RT_C_TO_UPPER(pszEnd[-2]) == 'R'
+                              && RT_C_TO_UPPER(pszEnd[-3]) == 'B'; /* RTStrNICmp(&pszEnd[-4], "<BR>",..) asserts on UTF-8 */
+        if (fTrailingBr)
+        {
+            pszEnd -= 4;
+            while (RT_C_IS_SPACE(pszEnd[-1]))
+                pszEnd--;
+        }
+
+        /* Oracle copyright? */
         if (   (   (uintptr_t)(pszEnd - pszBody) > sizeof(g_szCopyrightHolder)
                 && (*(unsigned char *)(pszEnd - sizeof(g_szCopyrightHolder) + 1) & 0x80) == 0 /* to avoid annoying assertion */
                 && RTStrNICmp(pszEnd - sizeof(g_szCopyrightHolder) + 1, RT_STR_TUPLE(g_szCopyrightHolder)) == 0)
@@ -1537,15 +1637,20 @@ rewrite_Copyright_CommentCallback(PCSCMCOMMENTINFO pInfo, const char *pszBody, s
                             RTMemFree(pszCopy);
                         }
                     }
-                    else if (*pszNext != g_szCopyrightHolder[0])
+                    else if (   pszNext[0] == g_szCopyrightHolder[0]
+                             || (   pszNext[0] == ','
+                                 && (  (   RT_C_IS_BLANK(pszNext[1])
+                                        && pszNext[2] == g_szCopyrightHolder[0])
+                                     || pszNext[1] == g_szCopyrightHolder[0]) ) )
+                        pState->uLastYear = pState->uFirstYear;
+                    else
                     {
                         char *pszCopy = RTStrDupN(pszBody, pszEnd - pszBody);
                         RTStrPurgeEncoding(pszCopy);
                         ScmError(pState->pState, VERR_PARSE_ERROR,
                                  "Failed to parse copyright: '%s'\n", pszCopy);
                         RTMemFree(pszCopy);
-                    } else
-                        pState->uLastYear = pState->uFirstYear;
+                    }
                 }
                 else
                 {
@@ -1564,9 +1669,15 @@ rewrite_Copyright_CommentCallback(PCSCMCOMMENTINFO pInfo, const char *pszBody, s
                          iLine, pState->iLineLicense);
 
             /* In C/C++ code, this must be a multiline comment.  While in python it
-               must be a */
-            if (pState->enmCommentStyle == kScmCommentStyle_C && pInfo->enmType != kScmCommentType_MultiLine)
-                ScmError(pState->pState, VERR_WRONG_ORDER, "Copyright must appear in a multiline comment (no doxygen stuff)\n");
+               must be a docstring.  (UEFI-style stuff is only allowed for C code
+               with multiline comment-style at the moment.) */
+            if (   pState->enmCommentStyle == kScmCommentStyle_C
+                && (   pInfo->enmType != kScmCommentType_MultiLine
+                    && (   !fUefiStyle
+                        || !pState->fAllowUefiStyle
+                        || pInfo->enmType != kScmCommentType_MultiLine_JavaDoc)))
+                ScmError(pState->pState, VERR_WRONG_ORDER, "Copyright must appear in a multiline comment%s\n",
+                         !pState->fAllowUefiStyle ? " (no doxygen stuff)" : "");
             else if (pState->enmCommentStyle == kScmCommentStyle_Python && pInfo->enmType != kScmCommentType_DocString)
                 ScmError(pState->pState, VERR_WRONG_ORDER, "Copyright must appear in a doc-string\n");
 
@@ -1578,27 +1689,32 @@ rewrite_Copyright_CommentCallback(PCSCMCOMMENTINFO pInfo, const char *pszBody, s
             if (RT_FAILURE(pState->pState->rc))
                 return VERR_CALLBACK_RETURN;
 
+            /* Take it down. */
+            pState->iLineCopyright       = iLine;
+            pState->fUefiStyleCopyright  = fUefiStyle;
+            pState->fUefiWithHtmlBr      = fUefiStyle && fTrailingBr;
+
             /* Check if it's well formed and up to date. */
             char   szWellFormed[256];
             size_t cchWellFormed;
             if (pState->uFirstYear == pState->uLastYear)
-                cchWellFormed = RTStrPrintf(szWellFormed, sizeof(szWellFormed), "Copyright (C) %u %s",
-                                            pState->uFirstYear, g_szCopyrightHolder);
+                cchWellFormed = RTStrPrintf(szWellFormed, sizeof(szWellFormed), "Copyright (C) %u %s%s",
+                                            pState->uFirstYear, g_szCopyrightHolder, pState->fUefiWithHtmlBr ? "<BR>" : "");
             else
-                cchWellFormed = RTStrPrintf(szWellFormed, sizeof(szWellFormed), "Copyright (C) %u-%u %s",
-                                            pState->uFirstYear, pState->uLastYear, g_szCopyrightHolder);
-            pState->fUpToDateCopyright   = pState->uLastYear == g_uYear;
-            pState->iLineCopyright       = iLine;
-            pState->fWellFormedCopyright = cchWellFormed == (uintptr_t)(pszEnd - pszBody)
+                cchWellFormed = RTStrPrintf(szWellFormed, sizeof(szWellFormed), "Copyright (C) %u-%u %s%s",
+                                            pState->uFirstYear, pState->uLastYear, g_szCopyrightHolder,
+                                            pState->fUefiWithHtmlBr ? "<BR>" : "");
+            pState->fWellFormedCopyright = cchWellFormed == cchLine
                                         && memcmp(pszBody, szWellFormed, cchWellFormed) == 0;
             if (!pState->fWellFormedCopyright)
                 ScmVerbose(pState->pState, 1, "* copyright isn't well formed\n");
+            pState->fUpToDateCopyright   = pState->uLastYear == g_uYear;
 
             /* If there wasn't exactly one blank line before the comment, trigger a rewrite. */
-            if (pInfo->cBlankLinesBefore != 1)
+            if (cBlankLinesBefore != 1)
             {
                 ScmVerbose(pState->pState, 1, "* copyright comment is preceded by %u blank lines instead of 1\n",
-                           pInfo->cBlankLinesBefore);
+                           cBlankLinesBefore);
                 pState->fWellFormedCopyright = false;
             }
 
@@ -1660,8 +1776,8 @@ rewrite_Copyright_CommentCallback(PCSCMCOMMENTINFO pInfo, const char *pszBody, s
             {
                 /* Take down a comment area which goes up to 'this file is based on'.
                    The license line and length isn't used but gets set to cover the current line. */
-                pState->iLineComment        = pInfo->iLineStart;
-                pState->cLinesComment       = iLine - pInfo->iLineStart;
+                pState->iLineComment        = iLineStart;
+                pState->cLinesComment       = iLine - iLineStart;
                 pState->iLineLicense        = iLine;
                 pState->cLinesLicense       = 1;
                 pState->fExternalLicense    = true;
@@ -1714,12 +1830,12 @@ rewrite_Copyright_CommentCallback(PCSCMCOMMENTINFO pInfo, const char *pszBody, s
         /* We look for typical LGPL notices. */
         if (pState->iLineLgplNotice == UINT32_MAX)
         {
-            static const char * const s_apszFragments[] =
+            static RTSTRTUPLE const s_aFragments[] =
             {
-                "under the terms of the GNU Lesser General Public License",
+                { RT_STR_TUPLE("under the terms of the GNU Lesser General Public License") },
             };
-            for (unsigned i = 0; i < RT_ELEMENTS(s_apszFragments); i++)
-                if (scmContainsWordByWordIgnoreCase(pszBody, cchBody, s_apszFragments[i], NULL, NULL))
+            for (unsigned i = 0; i < RT_ELEMENTS(s_aFragments); i++)
+                if (scmContainsWordByWordIgnoreCase(pszBody, cchBody, s_aFragments[i].psz, s_aFragments[i].cch, NULL, NULL))
                 {
                     pState->iLineLgplNotice = iLine;
                     pState->iLineAfterLgplComment = pInfo->iLineEnd + 1;
@@ -1729,7 +1845,7 @@ rewrite_Copyright_CommentCallback(PCSCMCOMMENTINFO pInfo, const char *pszBody, s
         }
 
         if (   pState->iLineLgplDisclaimer == UINT32_MAX
-            && scmContainsWordByWordIgnoreCase(pszBody, cchBody, g_szLgplDisclaimer, NULL, NULL))
+            && scmContainsWordByWordIgnoreCase(pszBody, cchBody, RT_STR_TUPLE(g_szLgplDisclaimer), NULL, NULL))
         {
             pState->iLineLgplDisclaimer = iLine;
             ScmVerbose(pState->pState, 3, "Found LGPL disclaimer at %u\n", iLine);
@@ -1765,6 +1881,8 @@ rewrite_Copyright_CommentCallback(PCSCMCOMMENTINFO pInfo, const char *pszBody, s
                         ScmError(pState->pState, VERR_WRONG_ORDER, "License must appear in a multiline comment (no doxygen stuff)\n");
                     else if (pState->enmCommentStyle == kScmCommentStyle_Python && pInfo->enmType != kScmCommentType_DocString)
                         ScmError(pState->pState, VERR_WRONG_ORDER, "License must appear in a doc-string\n");
+                    else
+                        Assert(!fUefiStyle || pState->enmCommentStyle == kScmCommentStyle_Hash);
 
                     /* Quit if we've flagged a failure. */
                     if (RT_FAILURE(pState->pState->rc))
@@ -1810,9 +1928,9 @@ rewrite_Copyright_CommentCallback(PCSCMCOMMENTINFO pInfo, const char *pszBody, s
 
                     if (fFoundCopyright)
                     {
-                        pState->iLineComment  = pInfo->iLineStart;
+                        pState->iLineComment  = iLineStart;
                         pState->cLinesComment = (fExternal ? pState->iLineLicense + pState->cLinesLicense : pInfo->iLineEnd + 1)
-                                              - pInfo->iLineStart;
+                                              - iLineStart;
                     }
                     else
                         ScmError(pState->pState, VERR_WRONG_ORDER, "License should be preceded by the copyright!\n");
@@ -1822,8 +1940,24 @@ rewrite_Copyright_CommentCallback(PCSCMCOMMENTINFO pInfo, const char *pszBody, s
         }
     }
 
-    if (fFoundCopyright && pState->iLineLicense == UINT32_MAX)
-        ScmError(pState->pState, VERR_WRONG_ORDER, "Copyright should be followed by the license text!\n");
+    if (   fFoundCopyright
+        && pState->iLineLicense == UINT32_MAX)
+    {
+        if (pState->fAllowUefiStyle && fUefiStyle)
+        {
+            if (!pchContributedBy && !pState->pszContributedBy)
+            {
+                pState->iLineComment        = iLineStart;
+                pState->cLinesComment       = 1;
+                pState->fUefiStyleCopyright = true;
+                ScmVerbose(pState->pState, 3, "* UEFI-style copyright on line %u\n", iLineStart);
+            }
+            else
+                ScmError(pState->pState, VERR_NOT_SUPPORTED, "Contributions are not support with UEFI-style headers!\n");
+        }
+        else
+            ScmError(pState->pState, VERR_WRONG_ORDER, "Copyright should be followed by the license text!\n");
+    }
 
     /*
      * Stop looking for stuff after 100 comments.
@@ -1834,7 +1968,7 @@ rewrite_Copyright_CommentCallback(PCSCMCOMMENTINFO pInfo, const char *pszBody, s
 }
 
 /**
- * Writes comment body text.
+ * Writes comment body text, ensuring it will end with a newline.
  *
  * @returns Stream status.
  * @param   pOut                The output stream.
@@ -1846,23 +1980,33 @@ rewrite_Copyright_CommentCallback(PCSCMCOMMENTINFO pInfo, const char *pszBody, s
 static int scmWriteCommentBody(PSCMSTREAM pOut, const char *pszText, size_t cchText,
                                SCMCOMMENTSTYLE enmCommentStyle, SCMEOL enmEol)
 {
-    Assert(pszText[cchText - 1] == '\n');
-    Assert(pszText[cchText - 2] != '\n');
     NOREF(cchText);
     do
     {
         const char *pszEol = strchr(pszText, '\n');
-        if (pszEol != pszText)
+        if (pszEol == pszText)
+        {
+            ScmStreamPutLine(pOut, g_aCopyrightCommentEmpty[enmCommentStyle].psz,
+                             g_aCopyrightCommentEmpty[enmCommentStyle].cch, enmEol);
+            pszText++;
+        }
+        else
         {
             ScmStreamWrite(pOut, g_aCopyrightCommentPrefix[enmCommentStyle].psz,
                            g_aCopyrightCommentPrefix[enmCommentStyle].cch);
-            ScmStreamWrite(pOut, pszText, pszEol - pszText);
-            ScmStreamPutEol(pOut, enmEol);
+            if (pszEol)
+            {
+                ScmStreamWrite(pOut, pszText, pszEol - pszText);
+                ScmStreamPutEol(pOut, enmEol);
+                pszText = pszEol + 1;
+            }
+            else
+            {
+                ScmStreamWrite(pOut, pszText, strlen(pszText));
+                ScmStreamPutEol(pOut, enmEol);
+                break;
+            }
         }
-        else
-            ScmStreamPutLine(pOut, g_aCopyrightCommentEmpty[enmCommentStyle].psz,
-                             g_aCopyrightCommentEmpty[enmCommentStyle].cch, enmEol);
-        pszText = pszEol + 1;
     } while (*pszText != '\0');
     return ScmStreamGetStatus(pOut);
 }
@@ -1905,6 +2049,9 @@ static SCMREWRITERRES rewrite_Copyright_Common(PSCMRWSTATE pState, PSCMSTREAM pI
         /*.uLastYear = */               UINT32_MAX,
         /*.fWellFormedCopyright = */    false,
         /*.fUpToDateCopyright = */      false,
+        /*.fAllowUefiStyle = */         pSettings->fAllowUefiStyleCopyright,
+        /*.fUefiStyleCopyright = */     false,
+        /*.fUefiWithHtmlBr = */         false,
 
         /*.fOpenSource = */             true,
         /*.pExpectedLicense = */        NULL,
@@ -1968,14 +2115,14 @@ static SCMREWRITERRES rewrite_Copyright_Common(PSCMRWSTATE pState, PSCMSTREAM pI
             if (   Info.iLineLgplNotice != UINT32_MAX
                 && Info.iLineLgplDisclaimer == UINT32_MAX)
             {
-                if (!pSettings->fLgplDisclaimer) /** @todo reconcile options with common sense. */
-                    ScmError(pState, VERR_NOT_FOUND, "LGPL licence notice on line %u, but no LGPL disclaimer was found!\n",
-                             Info.iLineLgplNotice + 1);
-                else
+                if (pSettings->fLgplDisclaimer) /** @todo fix this setting. */
                 {
                     ScmVerbose(pState, 1, "* Need to add LGPL disclaimer\n");
                     fAddLgplDisclaimer = true;
                 }
+                else if (!pSettings->fAllowLgplWithoutDisclaimer)
+                    ScmError(pState, VERR_NOT_FOUND, "LGPL licence notice on line %u, but no LGPL disclaimer was found!\n",
+                             Info.iLineLgplNotice + 1);
             }
             else if (   Info.iLineLgplNotice == UINT32_MAX
                      && Info.iLineLgplDisclaimer != UINT32_MAX)
@@ -1987,7 +2134,9 @@ static SCMREWRITERRES rewrite_Copyright_Common(PSCMRWSTATE pState, PSCMSTREAM pI
         {
             if (Info.iLineCopyright == UINT32_MAX)
                 ScmError(pState, VERR_NOT_FOUND, "Missing copyright!\n");
-            if (Info.iLineLicense == UINT32_MAX)
+            if (   Info.iLineLicense == UINT32_MAX
+                && (   !Info.fUefiStyleCopyright
+                    || !Info.fAllowUefiStyle))
                 ScmError(pState, VERR_NOT_FOUND, "Missing license!\n");
         }
         else if (Info.iLineCopyright != UINT32_MAX)
@@ -2004,8 +2153,10 @@ static SCMREWRITERRES rewrite_Copyright_Common(PSCMRWSTATE pState, PSCMSTREAM pI
             bool fUpdateCopyright = !pSettings->fExternalCopyright
                                  && (   !Info.fWellFormedCopyright
                                      || (!Info.fUpToDateCopyright && pSettings->fUpdateCopyrightYear));
+            Assert(!Info.fUefiStyleCopyright || Info.iLineLicense == UINT32_MAX);
             bool fUpdateLicense   = !pSettings->fExternalCopyright
                                  && Info.enmLicenceOpt != kScmLicense_LeaveAlone
+                                 && !Info.fUefiStyleCopyright /* we detected no license */
                                  && (   !Info.fWellFormedLicense
                                      || !Info.fIsCorrectLicense);
             if (   fUpdateCopyright
@@ -2032,9 +2183,10 @@ static SCMREWRITERRES rewrite_Copyright_Common(PSCMRWSTATE pState, PSCMSTREAM pI
                     if (   iLine == Info.iLineComment
                         && (fUpdateCopyright || fUpdateLicense) )
                     {
-                        /* Leading blank line. */
-                        ScmStreamPutLine(pOut, g_aCopyrightCommentStart[enmCommentStyle].psz,
-                                         g_aCopyrightCommentStart[enmCommentStyle].cch, enmEol);
+                        /* Leading blank line (unless it's an UEFI-style one). */
+                        if (!Info.fUefiStyleCopyright)
+                            ScmStreamPutLine(pOut, g_aCopyrightCommentStart[enmCommentStyle].psz,
+                                             g_aCopyrightCommentStart[enmCommentStyle].cch, enmEol);
 
                         /* Contributed by someone? */
                         if (Info.pszContributedBy)
@@ -2058,8 +2210,11 @@ static SCMREWRITERRES rewrite_Copyright_Common(PSCMRWSTATE pState, PSCMSTREAM pI
                         }
 
                         /* Write the copyright comment line. */
-                        ScmStreamWrite(pOut, g_aCopyrightCommentPrefix[enmCommentStyle].psz,
-                                       g_aCopyrightCommentPrefix[enmCommentStyle].cch);
+                        if (!Info.fUefiStyleCopyright || enmCommentStyle != kScmCommentStyle_C)
+                            ScmStreamWrite(pOut, g_aCopyrightCommentPrefix[enmCommentStyle].psz,
+                                           g_aCopyrightCommentPrefix[enmCommentStyle].cch);
+                        else
+                            ScmStreamWrite(pOut, RT_STR_TUPLE("  ")); /* UEFI-style C/C++ code */
 
                         char   szCopyright[256];
                         size_t cchCopyright;
@@ -2071,9 +2226,11 @@ static SCMREWRITERRES rewrite_Copyright_Common(PSCMRWSTATE pState, PSCMSTREAM pI
                                                        Info.uFirstYear, Info.uLastYear, g_szCopyrightHolder);
 
                         ScmStreamWrite(pOut, szCopyright, cchCopyright);
+                        if (Info.fUefiWithHtmlBr)
+                            ScmStreamWrite(pOut, RT_STR_TUPLE("<BR>"));
                         ScmStreamPutEol(pOut, enmEol);
 
-                        if (pSettings->enmUpdateLicense != kScmLicense_BasedOnMit)
+                        if (pSettings->enmUpdateLicense != kScmLicense_BasedOnMit && !Info.fUefiStyleCopyright)
                         {
                             /* Blank line separating the two. */
                             ScmStreamPutLine(pOut, g_aCopyrightCommentEmpty[enmCommentStyle].psz,
@@ -2089,7 +2246,7 @@ static SCMREWRITERRES rewrite_Copyright_Common(PSCMRWSTATE pState, PSCMSTREAM pI
                                                  g_aCopyrightCommentEnd[enmCommentStyle].cch, enmEol);
                         }
                         else
-                            Assert(Info.fExternalLicense);
+                            Assert(Info.fExternalLicense || Info.fUefiStyleCopyright);
 
                         /* Skip the copyright and license text in the input file. */
                         rc = ScmStreamGetStatus(pOut);

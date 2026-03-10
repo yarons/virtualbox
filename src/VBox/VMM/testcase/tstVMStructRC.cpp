@@ -1,4 +1,4 @@
-/* $Id: tstVMStructRC.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: tstVMStructRC.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstVMMStructRC - Generate structure member and size checks from the
  *                  RC perspective.
@@ -8,7 +8,7 @@
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -47,11 +47,7 @@ AssertCompileSize(uint16_t, 2);
 AssertCompileSize(uint32_t, 4);
 AssertCompileSize(uint64_t, 8);
 AssertCompileSize(RTRCPTR,  4);
-#ifdef VBOX_WITH_64_BITS_GUESTS
 AssertCompileSize(RTGCPTR,  8);
-#else
-AssertCompileSize(RTGCPTR,  4);
-#endif
 AssertCompileSize(RTGCPHYS, 8);
 AssertCompileSize(RTHCPHYS, 8);
 

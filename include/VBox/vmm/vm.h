@@ -3,7 +3,7 @@
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -208,18 +208,6 @@ typedef struct VMCPU
 #else
     VMTARGET                enmTarget;
 #endif
-
-#if HC_ARCH_BITS != 64
-    /** Align the structures below bit on a 64-byte boundary and make sure it starts
-     * at the same offset in both 64-bit and 32-bit builds.
-     *
-     * @remarks The alignments of the members that are larger than 48 bytes should be
-     *          64-byte for cache line reasons. structs containing small amounts of
-     *          data could be lumped together at the end with a < 64 byte padding
-     *          following it (to grow into and align the struct size).
-     */
-    uint8_t                 abAlignment1[64 - 6 * (HC_ARCH_BITS == 32 ? 4 : 8) - 8 - 4 - 4];
-#endif
     /** @} */
 
     /** HM part. */
@@ -326,6 +314,8 @@ typedef struct VMCPU
             struct APICCPU      s;
 # elif defined(VMM_INCLUDED_SRC_include_APICHvInternal_h)
             struct HVAPICCPU    s;
+# elif defined(VMM_INCLUDED_SRC_include_APICKvmInternal_h)
+            struct KVMAPICCPU   s;
 # endif
             uint8_t             padding[3840];      /* multiple of 64 */
         } apic;
@@ -378,9 +368,9 @@ typedef struct VMCPU
 #ifdef VMM_INCLUDED_SRC_include_EMInternal_h
         struct EMCPU        s;
 #endif
-        uint8_t             padding[40960];     /* multiple of 4096 */
+        uint8_t             padding[41024];     /* multiple of 4096 */
     } em;
-    uint8_t abPadding[12288];
+    uint8_t abPadding[12224];
 } VMCPU;
 
 
@@ -1450,7 +1440,7 @@ typedef struct VM
     uint8_t                     cMaxEmtHashCollisions;
 
     /** Padding - the unions must be aligned on a 64 bytes boundary. */
-    uint8_t                     abAlignment3[HC_ARCH_BITS == 64 ? 23 : 51];
+    uint8_t                     abAlignment3[23];
 
     /** CPUM part. */
     union
@@ -1644,6 +1634,8 @@ typedef struct VM
             struct APIC s;
 # elif defined(VMM_INCLUDED_SRC_include_APICHvInternal_h)
             struct HVAPIC s;
+# elif defined(VMM_INCLUDED_SRC_include_APICKvmInternal_h)
+            struct KVMAPIC s;
 # endif
             uint8_t     padding[128];   /* multiple of 8 */
         } apic;

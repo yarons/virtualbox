@@ -1,10 +1,10 @@
-/* $Id: UIVMInformationDialog.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIVMInformationDialog.cpp 113058 2026-02-17 10:55:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
 
 /*
- * Copyright (C) 2016-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2016-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -26,6 +26,7 @@
  */
 
 /* Qt includes: */
+#include <QCloseEvent>
 #include <QPushButton>
 #include <QScrollBar>
 #include <QVBoxLayout>
@@ -45,17 +46,16 @@
 #include "UIMachineLogic.h"
 #include "UIMachine.h"
 #include "UIMachineView.h"
-#include "UIMessageCenter.h"
 #include "UIVMActivityMonitorContainer.h"
 #include "UISession.h"
 #include "UIShortcutPool.h"
 #include "UITranslationEventListener.h"
 #include "UIVirtualBoxEventHandler.h"
 #include "UIVMInformationDialog.h"
-#include "VBoxUtils.h"
+
 
 UIVMInformationDialog::UIVMInformationDialog(UIActionPool *pActionPool)
-    : QMainWindowWithRestorableGeometry(0)
+    : QIMainWindow(0)
     , m_pTabWidget(0)
     , m_fCloseEmitted(false)
     , m_iGeometrySaveTimerId(-1)
@@ -130,7 +130,7 @@ bool UIVMInformationDialog::event(QEvent *pEvent)
         default:
             break;
     }
-    return QMainWindowWithRestorableGeometry::event(pEvent);
+    return QIMainWindow::event(pEvent);
 }
 
 void UIVMInformationDialog::sltHandlePageChanged(int iIndex)

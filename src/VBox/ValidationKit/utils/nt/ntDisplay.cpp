@@ -1,10 +1,10 @@
-/* $Id: ntDisplay.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: ntDisplay.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * Test cases for Display device and DirectX 3D rendering - NT.
  */
 
 /*
- * Copyright (C) 2007-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2007-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -51,6 +51,7 @@
 #include <iprt/string.h>
 #include <iprt/thread.h>
 #include <iprt/errcore.h>
+#include <iprt/file.h>
 
 
 /*********************************************************************************************************************************
@@ -336,6 +337,59 @@ bool ShowFullScreenWindows()
     return true;
 }
 
+int SetDesktopWallpaper(const char *pszWallPaperPath)
+{
+    int rc;
+
+    if (!RTFileExists(pszWallPaperPath))
+    {
+        RTPrintf("File not found '%s'\n", pszWallPaperPath);
+        return -1;
+    }
+
+    rc = SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, (PVOID)pszWallPaperPath, SPIF_SENDCHANGE);
+    RTPrintf("SystemParametersInfo SPI_SETDESKWALLPAPER '%s' rc=0x%x \n", pszWallPaperPath, rc);
+
+    return rc;
+}
+
+int SetDesktopPowerState(const char *pszPowerState)
+{
+    int rc;
+    LPARAM lParam;
+
+    if (RTStrNCmp(pszPowerState, RT_STR_TUPLE("on")) == 0)
+    {
+        lParam = -1;
+    }
+    else if (RTStrNCmp(pszPowerState, RT_STR_TUPLE("low")) == 0)
+    {
+        lParam = 1;
+    }
+    else if (RTStrNCmp(pszPowerState, RT_STR_TUPLE("off")) == 0)
+    {
+        lParam = 2;
+    }
+    else
+    {
+        RTPrintf("\nChoose on|off|low, not '%s'\n", pszPowerState);
+        return -1;
+    }
+
+    rc = SendMessage(HWND_BROADCAST, WM_SYSCOMMAND, SC_MONITORPOWER, lParam);
+    RTPrintf("\nSendMessage HWND_BROADCAST, WM_SYSCOMMAND, SC_MONITORPOWER, 0x%x. rc=0x%x\n", lParam, rc);
+
+    if (lParam == -1)
+    {
+        rc = SetThreadExecutionState(ES_SYSTEM_REQUIRED | ES_DISPLAY_REQUIRED);
+        RTPrintf("\nSetThreadExecutionState(ES_SYSTEM_REQUIRED | ES_DISPLAY_REQUIRED) rc=0x%x\n", rc);
+        rc = SetThreadExecutionState(ES_USER_PRESENT);
+        RTPrintf("\nSetThreadExecutionState(ES_USER_PRESENT) rc=0x%x\n", rc);
+    }
+
+    return 0;
+}
+
 int main(int argc, char **argv)
 {
     /*
@@ -354,6 +408,9 @@ int main(int argc, char **argv)
     {
         { "--enable",       'e',  RTGETOPT_REQ_UINT32  },
         { "--quiet",        'q',  RTGETOPT_REQ_NOTHING },
+        { "--wallpaper",    'w',  RTGETOPT_REQ_STRING  },
+        { "--power",        'p',  RTGETOPT_REQ_STRING  },
+        { "--fullscrwnd",   'f',  RTGETOPT_REQ_NOTHING },
         { "--verbose",      'v',  RTGETOPT_REQ_NOTHING },
     };
 
@@ -368,16 +425,18 @@ int main(int argc, char **argv)
             case 'e': SetDisplayDeviceState(RT_BOOL(ValueUnion.u32)); break;
             case 'q': g_cVerbosity = 0; break;
             case 'v': g_cVerbosity += 1; break;
+            case 'w': SetDesktopWallpaper(ValueUnion.psz); break;
+            case 'p': SetDesktopPowerState(ValueUnion.psz); break;
+            case 'f': ShowFullScreenWindows(); break;
             case 'h':
-                RTPrintf("usage: ntDisplay.exe [-e|--enable <0 or 1>]\n");
+                RTPrintf("Usage: ntDisplay.exe "
+                         "[-e|--enable <0 or 1>] [-w|--wallpaper <filename>] [-p|--power <on|off|low>] [-f|--fullscrwnd]\n");
                 return 0;
 
             default:
                 return RTGetOptPrintError(chOpt, &ValueUnion);
         }
     }
-
-    ShowFullScreenWindows();
 
     return !CheckDXFeatureLevel();
 }

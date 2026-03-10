@@ -1,10 +1,10 @@
-/* $Id: draganddrop-x11.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: draganddrop-x11.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * Guest Additions - VBoxClient X11 drag'n drop implementation.
  */
 
 /*
- * Copyright (C) 2011-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -2141,7 +2141,7 @@ int VBClX11DnDInst::hgDataReceive(PVBGLR3GUESTDNDMETADATA pMeta)
 int VBClX11DnDInst::checkForSessionChange(void)
 {
     uint64_t uSessionID;
-    int rc = VbglR3GetSessionId(&uSessionID);
+    int rc = VbglR3QuerySessionId(&uSessionID);
     if (   RT_SUCCESS(rc)
         && uSessionID != m_dndCtx.uSessionID)
     {

@@ -1,10 +1,10 @@
-/* $Id: UIWizardExportApp.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIWizardExportApp.cpp 113269 2026-03-05 13:44:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportApp class implementation.
  */
 
 /*
- * Copyright (C) 2009-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -33,7 +33,6 @@
 /* GUI includes: */
 #include "UIAddDiskEncryptionPasswordDialog.h"
 #include "UICloudMachineManager.h"
-#include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
 #include "UINotificationCenter.h"
 #include "UIWizardExportApp.h"
@@ -153,10 +152,7 @@ bool UIWizardExportApp::exportAppliance()
         /* Initialize VFS explorer: */
         CVFSExplorer comExplorer = comAppliance.CreateVFSExplorer(uri(false /* fWithFile */));
         if (!comAppliance.isOk())
-        {
-            UINotificationMessage::cannotCreateVfsExplorer(comAppliance, notificationCenter());
-            return false;
-        }
+            return UINotificationMessage::cannotCreateVfsExplorer(comAppliance, this);
 
         /* Update VFS explorer: */
         UINotificationProgressVFSExplorerUpdate *pNotification =
@@ -166,7 +162,7 @@ bool UIWizardExportApp::exportAppliance()
 
         /* Confirm overwriting for existing files: */
         QVector<QString> exists = comExplorer.Exists(files);
-        if (!msgCenter().confirmOverridingFiles(exists, this))
+        if (!UINotificationQuestion::confirmOverridingFiles(exists, this))
             return false;
 
         /* DELETE all the files which exists after everything is confirmed: */
@@ -278,7 +274,8 @@ bool UIWizardExportApp::exportVMs(CAppliance &comAppliance)
         QPointer<UIAddDiskEncryptionPasswordDialog> pDlg =
             new UIAddDiskEncryptionPasswordDialog(this,
                                                   window()->windowTitle(),
-                                                  encryptedMedia);
+                                                  encryptedMedia,
+                                                  this);
 
         /* Execute the dialog: */
         if (pDlg->exec() != QDialog::Accepted)
@@ -298,10 +295,7 @@ bool UIWizardExportApp::exportVMs(CAppliance &comAppliance)
         comAppliance.AddPasswords(encryptionPasswords.keys().toVector(),
                                   encryptionPasswords.values().toVector());
         if (!comAppliance.isOk())
-        {
-            UINotificationMessage::cannotAddDiskEncryptionPassword(comAppliance, notificationCenter());
-            return false;
-        }
+            return UINotificationMessage::cannotAddDiskEncryptionPassword(comAppliance, this);
     }
 
     /* Prepare export options: */

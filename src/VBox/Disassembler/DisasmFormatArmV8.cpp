@@ -1,10 +1,10 @@
-/* $Id: DisasmFormatArmV8.cpp 111175 2025-09-30 07:32:24Z knut.osmundsen@oracle.com $ */
+/* $Id: DisasmFormatArmV8.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Disassembler - ARMv8 Style Formatter.
  */
 
 /*
- * Copyright (C) 2008-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2008-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -760,10 +760,8 @@ DISDECL(size_t) DISFormatArmV8Ex(PCDISSTATE pDis, char *pszBuf, size_t cchBuf, u
      */
     if (fFlags & DIS_FMT_FLAGS_ADDR_LEFT)
     {
-#if HC_ARCH_BITS == 64 || GC_ARCH_BITS == 64
         if (pDis->uInstrAddr >= _4G)
             PUT_NUM(9, "%08x`", (uint32_t)(pDis->uInstrAddr >> 32));
-#endif
         PUT_NUM(8, "%08x", (uint32_t)pDis->uInstrAddr);
         PUT_C(' ');
     }
@@ -1240,10 +1238,8 @@ DISDECL(size_t) DISFormatArmV8Ex(PCDISSTATE pDis, char *pszBuf, size_t cchBuf, u
         if (fFlags & DIS_FMT_FLAGS_ADDR_RIGHT)
         {
             PUT_C(' ');
-#if HC_ARCH_BITS == 64 || GC_ARCH_BITS == 64
             if (pDis->uInstrAddr >= _4G)
                 PUT_NUM(9, "%08x`", (uint32_t)(pDis->uInstrAddr >> 32));
-#endif
             PUT_NUM(8, "%08x", (uint32_t)pDis->uInstrAddr);
         }
 

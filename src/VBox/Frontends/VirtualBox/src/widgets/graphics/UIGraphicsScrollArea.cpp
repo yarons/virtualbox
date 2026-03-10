@@ -1,10 +1,10 @@
-/* $Id: UIGraphicsScrollArea.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIGraphicsScrollArea.cpp 112782 2026-02-02 16:11:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGraphicsScrollArea class implementation.
  */
 
 /*
- * Copyright (C) 2019-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2019-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -33,7 +33,7 @@
 #include "UIGraphicsScrollArea.h"
 #include "UIGraphicsScrollBar.h"
 #ifdef VBOX_WS_MAC
-# include "VBoxUtils.h"
+# include "VBoxUtils-darwin.h"
 #endif
 
 

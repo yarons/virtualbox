@@ -1,10 +1,10 @@
-/* $Id: UIMediumManager.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMediumManager.cpp 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -56,7 +56,6 @@
 #include "UIMediumManager.h"
 #include "UIMediumSearchWidget.h"
 #include "UIMediumTools.h"
-#include "UIMessageCenter.h"
 #include "UINotificationCenter.h"
 #include "UIShortcutPool.h"
 #include "UITranslationEventListener.h"
@@ -74,29 +73,33 @@
 #endif /* VBOX_WS_MAC */
 
 
-
 /** Functor allowing to check if passed UIMediumItem is suitable by @a uID. */
 class CheckIfSuitableByID : public CheckIfSuitableBy
 {
 public:
+
     /** Constructor accepting @a uID to compare with. */
     CheckIfSuitableByID(const QUuid &uID) : m_uID(uID) {}
 
 private:
+
     /** Determines whether passed UIMediumItem is suitable by @a uID. */
     bool isItSuitable(UIMediumItem *pItem) const  RT_OVERRIDE RT_FINAL { return pItem->id() == m_uID; }
     /** Holds the @a uID to compare to. */
     QUuid m_uID;
 };
 
+
 /** Functor allowing to check if passed UIMediumItem is suitable by @a state. */
 class CheckIfSuitableByState : public CheckIfSuitableBy
 {
 public:
+
     /** Constructor accepting @a state to compare with. */
     CheckIfSuitableByState(KMediumState state) : m_state(state) {}
 
 private:
+
     /** Determines whether passed UIMediumItem is suitable by @a state. */
     bool isItSuitable(UIMediumItem *pItem) const  RT_OVERRIDE RT_FINAL { return pItem->state() == m_state; }
     /** Holds the @a state to compare to. */
@@ -549,7 +552,7 @@ void UIMediumManagerWidget::sltClear()
             nameList << pMediumItem->name();
         }
     }
-    if (!msgCenter().confirmInaccesibleMediaClear(nameList, currentMediumType(), this))
+    if (!UINotificationQuestion::confirmInaccesibleMediaClear(nameList, currentMediumType(), this))
         return;
 
     foreach (UIMediumItem *pMediumItem, mediumsToRemove)

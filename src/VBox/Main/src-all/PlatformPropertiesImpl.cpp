@@ -1,10 +1,10 @@
-/* $Id: PlatformPropertiesImpl.cpp 110930 2025-09-08 16:34:44Z aleksey.ilyushin@oracle.com $ */
+/* $Id: PlatformPropertiesImpl.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform properties.
  */
 
 /*
- * Copyright (C) 2023-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2023-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -1301,3 +1301,49 @@ HRESULT PlatformProperties::getSupportedTpmTypes(std::vector<TpmType_T> &aSuppor
 
     return S_OK;
 }
+
+HRESULT PlatformProperties::getMinGuestRAM(FirmwareType_T aFirmware, ULONG *aMinMegabytes)
+{
+    switch (mPlatformArchitecture)
+    {
+        case PlatformArchitecture_x86:
+            switch (aFirmware)
+            {
+                case FirmwareType_BIOS:
+                    *aMinMegabytes = MM_RAM_MIN_IN_MB;
+                    return S_OK;
+                case FirmwareType_EFI32:
+                    *aMinMegabytes = 64 /*63*/;
+                    return S_OK;
+                case FirmwareType_EFI:
+                case FirmwareType_EFI64:
+                case FirmwareType_EFIDUAL:
+                    *aMinMegabytes = 80 /*72*/;
+                    return S_OK;
+                COM_ENUM_DUMMY_CASES_BREAK(FirmwareType)
+            }
+            break;
+
+        case PlatformArchitecture_ARM:
+            switch (aFirmware)
+            {
+                case FirmwareType_EFI32: /** @todo possibly lower, but we don't really support 32-bit arm at the moment. */
+                case FirmwareType_EFI:
+                case FirmwareType_EFI64:
+                case FirmwareType_EFIDUAL:
+                    *aMinMegabytes = 1024 /*906*/;
+                    return S_OK;
+                case FirmwareType_BIOS:
+                    break;
+                COM_ENUM_DUMMY_CASES_BREAK(FirmwareType)
+            }
+            break;
+        COM_ENUM_DUMMY_CASES_BREAK(PlatformArchitecture)
+        case PlatformArchitecture_None:
+            break;
+    }
+
+    *aMinMegabytes = MM_RAM_MIN_IN_MB;
+    AssertMsgFailedReturn(("mPlatformArchitecture=%d aFirmware=%d\n", mPlatformArchitecture, aFirmware), E_INVALIDARG);
+}
+

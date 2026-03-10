@@ -1,10 +1,10 @@
-/* $Id: thread-win.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: thread-win.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Threads, Windows.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -54,6 +54,7 @@
 #elif defined(RT_ARCH_ARM64)
 # include <iprt/asm-arm.h>
 #endif
+#include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/cpuset.h>
 #include <iprt/err.h>
@@ -370,6 +371,9 @@ static DWORD __stdcall rtThreadNativeMain(void *pvArgs) RT_NOTHROW_DEF
 {
     DWORD           dwThreadId = GetCurrentThreadId();
     PRTTHREADINT    pThread = (PRTTHREADINT)pvArgs;
+
+    /* Set the stack top to the best value we can. */
+    pThread->pvStackTop = ASMReadStackPointer();
 
     if (!TlsSetValue(g_dwSelfTLS, pThread))
         AssertReleaseMsgFailed(("failed to set self TLS. lasterr=%d thread '%s'\n", GetLastError(), pThread->szName));

@@ -1,10 +1,10 @@
-/* $Id: VMInternal.h 110749 2025-08-18 14:53:14Z alexander.eichner@oracle.com $ */
+/* $Id: VMInternal.h 112688 2026-01-26 10:44:27Z alexander.eichner@oracle.com $ */
 /** @file
  * VM - Internal header file.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -154,7 +154,7 @@ typedef enum
     VMHALTMETHOD_1,
     /** The first go at a more global approach. */
     VMHALTMETHOD_GLOBAL_1,
-#if defined(VBOX_VMM_TARGET_ARMV8) && defined(RT_OS_WINDOWS) && defined(RT_ARCH_ARM64)
+#ifdef VBOX_WITH_NATIVE_NEM
     /** NEM takes over halting. */
     VMHALTMETHOD_NEM,
 #endif
@@ -209,7 +209,7 @@ typedef struct VMINTUSERPERVM
     /** Number of free request packets. */
     volatile uint32_t               cReqFree;
     /** Array of pointers to lists of free request packets. Atomic. */
-    volatile PVMREQ                 apReqFree[16 - (HC_ARCH_BITS == 32 ? 5 : 4)];
+    volatile PVMREQ                 apReqFree[16 - 4];
 
     /** The reference count of the UVM handle. */
     volatile uint32_t               cUvmRefs;
@@ -218,9 +218,6 @@ typedef struct VMINTUSERPERVM
     volatile uint32_t               cActiveEmts;
 
 # ifdef VBOX_WITH_STATISTICS
-#  if HC_ARCH_BITS == 32
-    uint32_t                        uPadding;
-#  endif
     /** Number of VMR3ReqAlloc returning a new packet. */
     STAMCOUNTER                     StatReqAllocNew;
     /** Number of VMR3ReqAlloc causing races. */
@@ -376,7 +373,7 @@ typedef struct VMINTUSERPERVMCPU
      *  already. */
     bool volatile                   fBeenThruVmDestroy;
     /** Align the next bit. */
-    bool                            afAlignment[HC_ARCH_BITS == 32 ? 2 : 6];
+    bool                            afAlignment[6];
 
     /** @name Generic Halt data
      * @{

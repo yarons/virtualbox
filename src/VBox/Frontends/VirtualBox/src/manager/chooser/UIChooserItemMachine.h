@@ -1,10 +1,10 @@
-/* $Id: UIChooserItemMachine.h 108883 2025-03-21 12:35:45Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserItemMachine.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class declaration.
  */
 
 /*
- * Copyright (C) 2012-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -38,7 +38,6 @@
 /* Forward declarations: */
 class UIChooserNodeMachine;
 class UIVirtualMachineItem;
-
 
 /** UIChooserItem extension implementing machine item. */
 class UIChooserItemMachine : public UIChooserItem
@@ -327,6 +326,5 @@ private:
         int  m_iMaximumSnapshotNameWidth;
     /** @} */
 };
-
 
 #endif /* !FEQT_INCLUDED_SRC_manager_chooser_UIChooserItemMachine_h */

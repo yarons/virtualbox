@@ -1,11 +1,11 @@
-/* $Id: VBoxBFE.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxBFE.cpp 113251 2026-03-04 14:03:34Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxBFE - The basic VirtualBox frontend for running VMs without using Main/COM/XPCOM.
  * Mainly serves as a playground for the ARMv8 VMM bringup for now.
  */
 
 /*
- * Copyright (C) 2023-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2023-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -42,6 +42,7 @@
 #include <VBox/vmm/vmmr3vtable.h>
 #include <VBox/vmm/vmapi.h>
 #include <VBox/vmm/pdm.h>
+#include <iprt/base64.h>
 #include <iprt/buildconfig.h>
 #include <iprt/ctype.h>
 #include <iprt/initterm.h>
@@ -57,6 +58,7 @@
 #include <iprt/errcore.h>
 #include <iprt/thread.h>
 #include <iprt/uuid.h>
+#include <iprt/json.h>
 
 #include <SDL.h>
 
@@ -98,17 +100,8 @@ static int gHostKeyMod  = KMOD_RCTRL;
 static int gHostKeySym1 = SDLK_RCTRL;
 static int gHostKeySym2 = SDLK_UNKNOWN;
 static bool gfGrabbed = FALSE;
-static bool gfGrabOnMouseClick = TRUE;
-static bool gfFullscreenResize = FALSE;
-static bool gfAllowFullscreenToggle = TRUE;
-static bool gfAbsoluteMouseHost = FALSE;
-static bool gfAbsoluteMouseGuest = FALSE;
 static bool gfRelativeMouseGuest = TRUE;
 static bool gfGuestNeedsHostCursor = FALSE;
-static bool gfOffCursorActive = FALSE;
-static bool gfGuestNumLockPressed = FALSE;
-static bool gfGuestCapsLockPressed = FALSE;
-static bool gfGuestScrollLockPressed = FALSE;
 
 /** modifier keypress status (scancode as index) */
 static uint8_t gaModifiersState[256];
@@ -121,6 +114,7 @@ static PVM              g_pVM               = NULL;
 static PUVM             g_pUVM              = NULL;
 static uint32_t         g_u32MemorySizeMB   = 512;
 static VMSTATE          g_enmVmState        = VMSTATE_CREATING;
+static bool             g_fReleaseLog       = true;
 static const char       *g_pszLoadMem       = NULL;
 static const char       *g_pszLoadFlash     = NULL;
 static const char       *g_pszLoadDtb       = NULL;
@@ -128,12 +122,13 @@ static const char       *g_pszSerialLog     = NULL;
 static const char       *g_pszLoadKernel    = NULL;
 static const char       *g_pszLoadInitrd    = NULL;
 static const char       *g_pszCmdLine       = NULL;
+static const char       *g_pszJsonCfg       = NULL;
+static RTJSONVAL        g_hJsonCfg          = NIL_RTJSONVAL;
 static VMM2USERMETHODS  g_Vmm2UserMethods;
 static Display          *g_pDisplay         = NULL;
 static Framebuffer      *g_pFramebuffer     = NULL;
 static Keyboard         *g_pKeyboard        = NULL;
 static bool gfIgnoreNextResize = false;
-static uint32_t gcMonitors = 1;
 static SDL_TimerID gSdlResizeTimer = 0;
 
 /** @todo currently this is only set but never read. */
@@ -688,7 +683,7 @@ DECLCALLBACK(void) vboxbfeSetVMRuntimeErrorCallback(PUVM pUVM, void *pvUser, uin
  * @param   pCallbacks      Pointer to the callback table.
  * @param   u32Version      VBox version number.
  */
-DECLCALLBACK(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_t u32Version)
+static DECLCALLBACK(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_t u32Version)
 {
     LogFlow(("VBoxDriversRegister: u32Version=%#x\n", u32Version));
     AssertReleaseMsg(u32Version == VBOX_VERSION, ("u32Version=%#x VBOX_VERSION=%#x\n", u32Version, VBOX_VERSION));
@@ -705,6 +700,9 @@ DECLCALLBACK(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_t u32Vers
 }
 
 
+#define PDMDRV_OID "0ab5e978-d6c5-48fd-97a8-a43af4ac9c56"
+
+
 /**
  * Constructs the VMM configuration tree.
  *
@@ -713,225 +711,161 @@ DECLCALLBACK(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_t u32Vers
  */
 static DECLCALLBACK(int) vboxbfeConfigConstructor(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, void *pvConsole)
 {
-    int rcAll = VINF_SUCCESS;
-    int rc;
-
     RT_NOREF(pvConsole);
     g_pUVM = pUVM;
 
-#define UPDATE_RC() do { if (RT_FAILURE(rc) && RT_SUCCESS(rcAll)) rcAll = rc; } while (0)
+    AssertPtr(g_hJsonCfg);
+    RTJSONVAL hJsonCfgm;
+    int rc = RTJsonValueQueryByName(g_hJsonCfg, "Cfgm", &hJsonCfgm);
+    if (RT_FAILURE(rc))
+        return rc;
 
-    /*
-     * Root values.
-     */
-    PCFGMNODE pRoot = pVMM->pfnCFGMR3GetRoot(pVM);
-    rc = pVMM->pfnCFGMR3InsertString(pRoot,  "Name",           "Default VM");                   UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pRoot, "TimerMillies",   1000);                           UPDATE_RC();
+    RTJSONVAL aCfgmStack[256];
+    RTJSONIT  aCfgmStackIt[256];
+    PCFGMNODE apCfgmNd[256];
+    uint32_t  cCfgmStackNesting = 1;
 
-    /*
-     * Memory setup.
-     */
-    PCFGMNODE pMem = NULL;
-    rc = pVMM->pfnCFGMR3InsertNode(pRoot, "MM", &pMem);                                         UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pMem, "MemRegions", &pMem);                                  UPDATE_RC();
+    rc = RTJsonIteratorBeginObject(hJsonCfgm, &aCfgmStackIt[0]);
+    if (RT_FAILURE(rc))
+        return rc;
 
-    PCFGMNODE pMemRegion = NULL;
-    rc = pVMM->pfnCFGMR3InsertNode(pMem, "Flash", &pMemRegion);                                 UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pMemRegion, "GCPhysStart",   0);                          UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pMemRegion, "Size", 64 * _1M);                            UPDATE_RC();
-    if (g_pszLoadMem)
+    aCfgmStack[0] = hJsonCfgm;
+    apCfgmNd[0]   = pVMM->pfnCFGMR3GetRoot(pVM);
+    while (cCfgmStackNesting && RT_SUCCESS(rc))
     {
-        rc = pVMM->pfnCFGMR3InsertString(pMemRegion, "PrepopulateFromFile", g_pszLoadMem);      UPDATE_RC();
+        RTJSONIT hJsonIt = aCfgmStackIt[cCfgmStackNesting - 1];
+        PCFGMNODE pCfgmNd = apCfgmNd[cCfgmStackNesting - 1];
+
+        RTJSONVAL hVal;
+        const char *pszName;
+        rc = RTJsonIteratorQueryValue(hJsonIt, &hVal, &pszName);
+        if (RT_FAILURE(rc))
+            break;
+
+        RTJSONVALTYPE enmType = RTJsonValueGetType(hVal);
+        switch (enmType)
+        {
+            case RTJSONVALTYPE_OBJECT:
+            {
+                rc = pVMM->pfnCFGMR3InsertNode(pCfgmNd, pszName, &pCfgmNd);
+                break;
+            }
+            case RTJSONVALTYPE_STRING:
+            {
+                const char *psz = RTJsonValueGetString(hVal);
+                if (!strncmp(psz, RT_STR_TUPLE("bytes:")))
+                {
+                    char const *pszBase64 = psz + sizeof("bytes:") - 1;
+                    ssize_t cbValue = RTBase64DecodedSize(pszBase64, NULL);
+                    if (cbValue > 0)
+                    {
+                        void *pvBytes = RTMemTmpAlloc(cbValue);
+                        if (pvBytes)
+                        {
+                            rc = RTBase64Decode(pszBase64, pvBytes, cbValue, NULL, NULL);
+                            if (RT_SUCCESS(rc))
+                                rc = pVMM->pfnCFGMR3InsertBytes(pCfgmNd, pszName, pvBytes, cbValue);
+                            RTMemTmpFree(pvBytes);
+                        }
+                        else
+                            rc = VERR_NO_TMP_MEMORY;
+                    }
+                    else if (cbValue == 0)
+                        rc = pVMM->pfnCFGMR3InsertBytes(pCfgmNd, pszName, NULL, 0);
+                    else
+                        rc = VERR_INVALID_BASE64_ENCODING;
+                }
+                else
+                    rc = pVMM->pfnCFGMR3InsertString(pCfgmNd, pszName, psz);
+                break;
+            }
+            case RTJSONVALTYPE_INTEGER:
+            {
+                int64_t i64;
+                rc = RTJsonValueQueryInteger(hVal, &i64);
+                if (RT_SUCCESS(rc))
+                    rc = pVMM->pfnCFGMR3InsertInteger(pCfgmNd, pszName, i64);
+                break;
+            }
+            case RTJSONVALTYPE_TRUE:
+            case RTJSONVALTYPE_FALSE:
+            {
+                rc = pVMM->pfnCFGMR3InsertInteger(pCfgmNd, pszName, enmType == RTJSONVALTYPE_TRUE ? 1 : 0);
+                break;
+            }
+            case RTJSONVALTYPE_ARRAY:
+            case RTJSONVALTYPE_NUMBER:
+            case RTJSONVALTYPE_NULL:
+            default:
+                rc = VERR_NOT_SUPPORTED;
+                break;
+        }
+
+        if (RT_FAILURE(rc))
+        {
+            RTJsonValueRelease(hVal);
+            break;
+        }
+
+        bool fEnd = false;
+        if (enmType == RTJSONVALTYPE_OBJECT)
+        {
+            apCfgmNd[cCfgmStackNesting]   = pCfgmNd;
+            aCfgmStack[cCfgmStackNesting] = hVal;
+            rc = RTJsonIteratorBeginObject(hVal, &aCfgmStackIt[cCfgmStackNesting]);
+            if (rc == VERR_JSON_IS_EMPTY)
+            {
+                /* Empty object, nothing to do. */
+                fEnd = true;
+                rc = VINF_SUCCESS;
+            }
+            else
+                cCfgmStackNesting++;
+        }
+        else
+            fEnd = true;
+
+        if (fEnd)
+        {
+            RTJsonValueRelease(hVal);
+
+            while (cCfgmStackNesting)
+            {
+                rc = RTJsonIteratorNext(hJsonIt);
+                if (rc == VERR_JSON_ITERATOR_END)
+                {
+                    /* Go up the stack. */
+                    RTJsonValueRelease(aCfgmStack[cCfgmStackNesting - 1]);
+                    RTJsonIteratorFree(hJsonIt);
+                    cCfgmStackNesting--;
+                    if (cCfgmStackNesting)
+                        hJsonIt = aCfgmStackIt[cCfgmStackNesting - 1];
+                    rc = VINF_SUCCESS;
+                }
+                else
+                    break;
+            }
+        }
     }
-
-    rc = pVMM->pfnCFGMR3InsertNode(pMem, "Conventional", &pMemRegion);                          UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pMemRegion, "GCPhysStart",   DTB_ADDR);                   UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pMemRegion, "Size", (uint64_t)g_u32MemorySizeMB * _1M);   UPDATE_RC();
-    if (g_pszLoadDtb)
-    {
-        rc = pVMM->pfnCFGMR3InsertString(pMemRegion, "PrepopulateFromFile", g_pszLoadDtb);      UPDATE_RC();
-
-    }
-
-    /*
-     * PDM.
-     */
-    rc = pVMM->pfnPDMR3DrvStaticRegistration(pVM, VBoxDriversRegister);                         UPDATE_RC();
-
-    /*
-     * Devices
-     */
-    PCFGMNODE pDevices = NULL;
-    PCFGMNODE pDev = NULL;          /* /Devices/Dev/ */
-    PCFGMNODE pInst = NULL;         /* /Devices/Dev/0/ */
-    PCFGMNODE pCfg = NULL;          /* /Devices/Dev/.../Config/ */
-    PCFGMNODE pLunL0 = NULL;        /* /Devices/Dev/0/LUN#0/ */
-    PCFGMNODE pLunL1 = NULL;        /* /Devices/Dev/0/LUN#0/AttachedDriver/ */
-    PCFGMNODE pLunL1Cfg = NULL;     /* /Devices/Dev/0/LUN#0/AttachedDriver/Config */
-
-    rc = pVMM->pfnCFGMR3InsertNode(pRoot, "Devices", &pDevices);                             UPDATE_RC();
-
-    rc = pVMM->pfnCFGMR3InsertNode(pDevices, "gic",          &pDev);                         UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pDev,     "0",            &pInst);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pInst, "Trusted",      1);                             UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pInst,    "Config",        &pCfg);                        UPDATE_RC();
-
-    rc = pVMM->pfnCFGMR3InsertInteger(pCfg,  "DistributorMmioBase",       0x08000000);       UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pCfg,  "RedistributorMmioBase",     0x080a0000);       UPDATE_RC();
-
-
-    rc = pVMM->pfnCFGMR3InsertNode(pDevices, "qemu-fw-cfg",   &pDev);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pDev,     "0",            &pInst);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pInst,    "Config",        &pCfg);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pCfg,  "MmioSize",       4096);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pCfg,  "MmioBase", 0x09020000);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pCfg,  "DmaEnabled",        1);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pCfg,  "QemuRamfbSupport",  1);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pInst,    "LUN#0",           &pLunL0);                    UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertString(pLunL0, "Driver",          "MainDisplay");              UPDATE_RC();
-    if (g_pszLoadKernel)
-    {
-        rc = pVMM->pfnCFGMR3InsertString(pCfg,  "KernelImage",  g_pszLoadKernel);            UPDATE_RC();
-    }
-    if (g_pszLoadInitrd)
-    {
-        rc = pVMM->pfnCFGMR3InsertString(pCfg,  "InitrdImage",  g_pszLoadInitrd);            UPDATE_RC();
-    }
-    if (g_pszCmdLine)
-    {
-        rc = pVMM->pfnCFGMR3InsertString(pCfg,  "CmdLine",  g_pszCmdLine);                   UPDATE_RC();
-    }
-
-
-    rc = pVMM->pfnCFGMR3InsertNode(pDevices, "flash-cfi",         &pDev);                    UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pDev,     "0",            &pInst);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pInst,    "Config",        &pCfg);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pCfg,  "BaseAddress", 64 * _1M);                       UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pCfg,  "Size",        64 * _1M);                       UPDATE_RC();
-    if (g_pszLoadFlash)
-    {
-        rc = pVMM->pfnCFGMR3InsertString(pCfg, "FlashFile", g_pszLoadFlash);                 UPDATE_RC();
-    }
-
-    rc = pVMM->pfnCFGMR3InsertNode(pDevices, "arm-pl011",     &pDev);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pDev,     "0",            &pInst);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pInst,    "Config",        &pCfg);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pCfg,  "Irq",               1);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pCfg,  "MmioBase", 0x09000000);                        UPDATE_RC();
-
-    if (g_pszSerialLog)
-    {
-        rc = pVMM->pfnCFGMR3InsertNode(pInst,    "LUN#0",           &pLunL0);                UPDATE_RC();
-        rc = pVMM->pfnCFGMR3InsertString(pLunL0, "Driver",          "Char");                 UPDATE_RC();
-        rc = pVMM->pfnCFGMR3InsertNode(pLunL0,   "AttachedDriver",  &pLunL1);                UPDATE_RC();
-        rc = pVMM->pfnCFGMR3InsertString(pLunL1, "Driver",          "RawFile");              UPDATE_RC();
-        rc = pVMM->pfnCFGMR3InsertNode(pLunL1,    "Config",         &pLunL1Cfg);             UPDATE_RC();
-        rc = pVMM->pfnCFGMR3InsertString(pLunL1Cfg, "Location",     g_pszSerialLog);         UPDATE_RC();
-    }
-
-    rc = pVMM->pfnCFGMR3InsertNode(pDevices, "arm-pl031-rtc", &pDev);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pDev,     "0",            &pInst);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pInst,    "Config",        &pCfg);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pCfg,  "Irq",               2);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pCfg,  "MmioBase", 0x09010000);                        UPDATE_RC();
-
-    rc = pVMM->pfnCFGMR3InsertNode(pDevices, "arm-pl061-gpio",&pDev);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pDev,     "0",            &pInst);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pInst,    "Config",        &pCfg);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pCfg,  "Irq",               7);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pCfg,  "MmioBase", 0x09030000);                        UPDATE_RC();
-
-    rc = pVMM->pfnCFGMR3InsertNode(pDevices, "pci-generic-ecam",  &pDev);                    UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pDev,     "0",            &pInst);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pInst,    "Config",        &pCfg);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pCfg,  "MmioEcamBase",   0x3f000000);                  UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pCfg,  "MmioEcamLength", 0x01000000);                  UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pCfg,  "MmioPioBase",    0x3eff0000);                  UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pCfg,  "MmioPioSize",    0x0000ffff);                  UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pCfg,  "IntPinA",        3);                           UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pCfg,  "IntPinB",        4);                           UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pCfg,  "IntPinC",        5);                           UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pCfg,  "IntPinD",        6);                           UPDATE_RC();
-
-    rc = pVMM->pfnCFGMR3InsertNode(pDevices, "usb-xhci",      &pDev);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pDev,     "0",            &pInst);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pInst, "Trusted",           1);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pInst, "PCIBusNo",          0);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pInst, "PCIDeviceNo",       2);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pInst, "PCIFunctionNo",     0);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pInst,    "Config",        &pCfg);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pInst,    "LUN#0",       &pLunL0);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertString(pLunL0, "Driver","VUSBRootHub");                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pInst,    "LUN#1",       &pLunL0);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertString(pLunL0, "Driver","VUSBRootHub");                        UPDATE_RC();
-
-    rc = pVMM->pfnCFGMR3InsertNode(pDevices, "e1000",         &pDev);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pDev,     "0",            &pInst);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pInst, "Trusted",           1);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pInst, "PCIBusNo",          0);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pInst, "PCIDeviceNo",       1);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pInst, "PCIFunctionNo",     0);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pInst,    "Config",        &pCfg);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pCfg,  "CableConnected",    1);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pCfg,  "LineSpeed",         0);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pCfg,  "AdapterType",       0);                        UPDATE_RC();
-
-    const char *pszMac = "080027ede92c";
-    Assert(strlen(pszMac) == 12);
-    RTMAC Mac;
-    RT_ZERO(Mac);
-    char *pMac = (char*)&Mac;
-    for (uint32_t i = 0; i < 6; ++i)
-    {
-        int c1 = *pszMac++ - '0';
-        if (c1 > 9)
-            c1 -= 7;
-        int c2 = *pszMac++ - '0';
-        if (c2 > 9)
-            c2 -= 7;
-        *pMac++ = (char)(((c1 & 0x0f) << 4) | (c2 & 0x0f));
-    }
-    rc = pVMM->pfnCFGMR3InsertBytes(pCfg,    "MAC",   &Mac, sizeof(Mac));                   UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pInst,    "LUN#0",       &pLunL0);                       UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertString(pLunL0, "Driver",        "NAT");                       UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pLunL0,    "Config",  &pLunL1Cfg);                       UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertString(pLunL1Cfg, "Network", "10.0.2.0/24");                  UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertString(pLunL1Cfg, "TFTPPrefix", "/Users/vbox/Library/VirtualBox/TFTP");                  UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertString(pLunL1Cfg, "BootFile", "default.pxe");                 UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pLunL1Cfg,  "AliasMode",         0);                  UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pLunL1Cfg,  "DNSProxy",          0);                  UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pLunL1Cfg,  "LocalhostReachable", 1);                 UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pLunL1Cfg,  "PassDomain",         1);                 UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pLunL1Cfg,  "UseHostResolver",    0);                 UPDATE_RC();
-
-    PCFGMNODE pUsb = NULL;
-    rc = pVMM->pfnCFGMR3InsertNode(pRoot,    "USB",           &pUsb);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pUsb,     "Msd",           &pDev);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pDev,     "0",            &pInst);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pInst, "Trusted",           1);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pInst,    "Config",        &pCfg);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pInst,    "LUN#0",       &pLunL0);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertString(pLunL0, "Driver",       "SCSI");                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pLunL0,   "AttachedDriver",  &pLunL1);                    UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertString(pLunL1, "Driver",          "VD");                       UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pLunL1,    "Config",         &pLunL1Cfg);                 UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertString(pLunL1Cfg,  "Path", "/Users/vbox/rootfs.img");          UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertString(pLunL1Cfg,  "Type", "HardDisk");                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertString(pLunL1Cfg,  "Format", "Raw");                           UPDATE_RC();
-
-    rc = pVMM->pfnCFGMR3InsertNode(pUsb,     "HidKeyboard",   &pDev);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pDev,     "0",            &pInst);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertInteger(pInst, "Trusted",           1);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pInst,    "Config",        &pCfg);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pInst,    "LUN#0",       &pLunL0);                        UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertString(pLunL0, "Driver",       "KeyboardQueue");               UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertNode(pLunL0,   "AttachedDriver",  &pLunL1);                    UPDATE_RC();
-    rc = pVMM->pfnCFGMR3InsertString(pLunL1, "Driver",          "MainKeyboard");             UPDATE_RC();
-
-#undef UPDATE_RC
-#undef UPDATE_RC
 
     pVMM->pfnVMR3AtRuntimeErrorRegister (pUVM, vboxbfeSetVMRuntimeErrorCallback, NULL);
+
+    /* Inject our PDM drivers. */
+    if (RT_SUCCESS(rc))
+    {
+        PCFGMNODE pRoot = pVMM->pfnCFGMR3GetRoot(pVM);
+
+        PCFGMNODE pCfgmNd = NULL;
+        rc = pVMM->pfnCFGMR3InsertNode(pRoot, "PDM/Drivers", &pCfgmNd);
+        if (rc == VERR_CFGM_NODE_EXISTS)
+        {
+            pCfgmNd = pVMM->pfnCFGMR3GetChild(pRoot, "PDM/Drivers");
+            AssertPtr(pCfgmNd);
+        }
+        RTUUID Uuid;
+        RTUuidFromStr(&Uuid, PDMDRV_OID);
+        pVMM->pfnCFGMR3InsertBytes(pCfgmNd, "StaticUuid", &Uuid, sizeof(Uuid));
+    }
 
     return rc;
 }
@@ -943,7 +877,7 @@ static DECLCALLBACK(int) vboxbfeConfigConstructor(PUVM pUVM, PVM pVM, PCVMMR3VTA
  * @returns VBox status code.
  * @param   pszVmmMod       The VMM module to load.
  */
-int vboxbfeLoadVMM(const char *pszVmmMod)
+static int vboxbfeLoadVMM(const char *pszVmmMod)
 {
     Assert(!g_pVMM);
 
@@ -1002,6 +936,9 @@ static DECLCALLBACK(void *) vboxbfeVmm2User_QueryGenericObject(PCVMM2USERMETHODS
     if (!RTUuidCompareStr(pUuid, KEYBOARD_OID))
         return g_pKeyboard;
 
+    if (!RTUuidCompareStr(pUuid, PDMDRV_OID))
+        return (void *)VBoxDriversRegister;
+
     return NULL;
 }
 
@@ -1014,19 +951,18 @@ DECLCALLBACK(int) vboxbfeVMPowerUpThread(RTTHREAD hThread, void *pvUser)
     int rc = VINF_SUCCESS;
     int rc2;
 
-#if 0
     /*
      * Setup the release log instance in current directory.
      */
     if (g_fReleaseLog)
     {
         static const char * const s_apszGroups[] = VBOX_LOGGROUP_NAMES;
-        static char s_szError[RTPATH_MAX + 128] = "";
         PRTLOGGER pLogger;
-        rc2 = RTLogCreateEx(&pLogger, RTLOGFLAGS_PREFIX_TIME_PROG, "all",
-                            "VBOX_RELEASE_LOG", RT_ELEMENTS(s_apszGroups), s_apszGroups, RTLOGDEST_FILE,
+        rc2 = RTLogCreateEx(&pLogger, "VBOXBFE", RTLOGFLAGS_PREFIX_TIME_PROG, "all", RT_ELEMENTS(s_apszGroups), s_apszGroups,
+                            0 /*cMaxEntriesPerGroup*/, 0 /*cBufDescs*/, NULL /*paBufDescs*/, RTLOGDEST_FILE,
                             NULL /* pfnBeginEnd */, 0 /* cHistory */, 0 /* cbHistoryFileMax */, 0 /* uHistoryTimeMax */,
-                            s_szError, sizeof(s_szError), "./VBoxBFE.log");
+                            NULL, NULL, NULL, "./VBoxBFE.log");
+
         if (RT_SUCCESS(rc2))
         {
             /* some introductory information */
@@ -1043,9 +979,9 @@ DECLCALLBACK(int) vboxbfeVMPowerUpThread(RTTHREAD hThread, void *pvUser)
             RTLogRelSetDefaultInstance(pLogger);
         }
         else
-            RTPrintf("Could not open release log (%s)\n", s_szError);
+            RTPrintf("Could not open release log\n");
     }
-#endif
+
 
     /*
      * Start VM (also from saved state) and track progress
@@ -1167,6 +1103,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
         { "--load-initrd",        'i', RTGETOPT_REQ_STRING },
         { "--cmd-line",           'c', RTGETOPT_REQ_STRING },
         { "--serial-log",         's', RTGETOPT_REQ_STRING },
+        { "--config",             'j', RTGETOPT_REQ_STRING },
     };
 
     const char *pszVmmMod = "VBoxVMM";
@@ -1210,6 +1147,9 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
             case 's':
                 g_pszSerialLog = ValueUnion.psz;
                 break;
+            case 'j':
+                g_pszJsonCfg = ValueUnion.psz;
+                break;
             case 'h':
                 show_usage();
                 return 0;
@@ -1220,6 +1160,19 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
                 ch = RTGetOptPrintError(ch, &ValueUnion);
                 show_usage();
                 return ch;
+        }
+    }
+
+    if (g_pszJsonCfg)
+    {
+        RTERRINFOSTATIC ErrInfo;
+        RTErrInfoInitStatic(&ErrInfo);
+        int vrc = RTJsonParseFromFile(&g_hJsonCfg, RTJSON_PARSE_F_JSON5, g_pszJsonCfg, &ErrInfo.Core);
+        if (RT_FAILURE(vrc))
+        {
+            RTPrintf("Loading the given JSON config \"%s\" failed with %Rrc: %s\n",
+                     g_pszJsonCfg, vrc, ErrInfo.Core.pszMsg);
+            return RTEXITCODE_FAILURE;
         }
     }
 

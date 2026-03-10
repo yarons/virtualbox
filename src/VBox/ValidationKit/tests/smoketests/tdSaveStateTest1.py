@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdSaveStateTest1.py 111030 2025-09-17 13:50:31Z brian.le.lee@oracle.com $
+# $Id: tdSaveStateTest1.py 112984 2026-02-13 04:07:08Z brian.le.lee@oracle.com $
 
 """
 VirtualBox Validation Kit - Save State Test (based on Smoke Test).
@@ -8,7 +8,7 @@ VirtualBox Validation Kit - Save State Test (based on Smoke Test).
 
 __copyright__ = \
 """
-Copyright (C) 2010-2025 Oracle and/or its affiliates.
+Copyright (C) 2010-2026 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111030 $"
+__version__ = "$Revision: 112984 $"
 
 
 #temp file for extending current smoke test
@@ -164,18 +164,27 @@ class tdSaveStateTest1(vbox.TestDriver):
         # Try waiting for a bit longer (15 minutes) until the CD is available to avoid running into timeouts.
         oSession, oTxsSession = self.startVmAndConnectToTxsViaTcp(oTestVm.sVmName, fCdWait = True, cMsCdWait = 15 * 60 * 1000);
         if oSession is not None:
+            #_ = oTxsSession;
             self.addTask(oTxsSession);
-
             ## @todo restore is not working properly fully and need to implement disk images
             fRc = oSession.saveState();
             if not fRc:
                 return reporter.error("Failed to take save state");
             reporter.log("Machine is in saved state");
-            oSession, oTxsSession = self.startVmAndConnectToTxsViaTcp(oTestVm.sVmName, fCdWait = True, cMsCdWait = 15 * 60 * 1000);
+            ## @todo check the state?
+            # Minimal terminateVmBySession.
+            #oSession.close();
+            #self.waitOnDirectSessionClose(oSession.oVM, 10000);
+            self.removeTask(oTxsSession);
+            self.removeTask(oSession);
+
+            # Start the VM again, implicitly restoring the state and reconnecting to TXS.
+            # The timeout is shorter here, as this shouldn't take quite as much time.
+            oSession, oTxsSession = self.startVmAndConnectToTxsViaTcp(oTestVm.sVmName, fCdWait = True, cMsCdWait = 3 * 60 * 1000);
             if oSession is None or oTxsSession is None:
                 return reporter.error("Failed to start test VM");
-            reporter.log("Successfully started VM after saving state");
             self.addTask(oTxsSession);
+            reporter.log("Successfully started VM after saving state");
 
             # cleanup.
             self.removeTask(oTxsSession);

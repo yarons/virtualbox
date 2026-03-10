@@ -1,10 +1,10 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
 
 /*
- * Copyright (C) 2011-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -1088,7 +1088,7 @@ VBGLR3DECL(int) VbglR3DnDConnect(PVBGLR3GUESTDNDCMDCTX pCtx)
      * This is not fatal in case we're running with an ancient VBox version.
      */
     pCtx->uSessionID = 0;
-    int rc2 = VbglR3GetSessionId(&pCtx->uSessionID); RT_NOREF(rc2);
+    int rc2 = VbglR3QuerySessionId(&pCtx->uSessionID); RT_NOREF(rc2);
     LogFlowFunc(("uSessionID=%RU64, rc=%Rrc\n", pCtx->uSessionID, rc2));
 
     /*
@@ -1221,7 +1221,7 @@ VBGLR3DECL(int) VbglR3DnDEventGetNext(PVBGLR3GUESTDNDCMDCTX pCtx, PVBGLR3DNDEVEN
     {
         /* Check for VM session change. */
         uint64_t uSessionID;
-        int rc2 = VbglR3GetSessionId(&uSessionID);
+        int rc2 = VbglR3QuerySessionId(&uSessionID);
         if (   RT_SUCCESS(rc2)
             && (uSessionID != pCtx->uSessionID))
         {

@@ -1,10 +1,10 @@
-/* $Id: UINetworkReply.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UINetworkReply.cpp 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkReply stuff implementation.
  */
 
 /*
- * Copyright (C) 2012-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -39,7 +39,6 @@
 #include "UIExtraDataManager.h"
 #ifndef VBOX_GUI_IN_TST_SSL_CERT_DOWNLOADS
 # include "UIGlobalSession.h"
-# include "VBoxUtils.h"
 # include "CSystemProperties.h"
 #endif
 
@@ -188,6 +187,7 @@ private:
 
 #ifdef VBOX_GUI_IN_TST_SSL_CERT_DOWNLOADS
 public:
+
     /** Starts the test routine. */
     static void testIt(RTTEST hTest);
 #endif /* VBOX_GUI_IN_TST_SSL_CERT_DOWNLOADS */

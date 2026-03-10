@@ -3,7 +3,7 @@
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -2512,6 +2512,14 @@
 #define VERR_GVMM_IPE_2                             (-5204)
 /** Cannot destroy VM because not all other EMTs have deregistered. */
 #define VERR_GVMM_NOT_ALL_EMTS_DEREGISTERED         (-5205)
+/** VM struct size is not compatible with the host page size. */
+#define VERR_GVMM_VM_STRUCT_NOT_PAGE_ALIGNED        (-5206)
+/** VMCPU struct size is not compatible with the host page size. */
+#define VERR_GVMM_VMCPU_STRUCT_NOT_PAGE_ALIGNED     (-5207)
+/** GVM struct size is not compatible with the host page size. */
+#define VERR_GVMM_GVM_STRUCT_NOT_PAGE_ALIGNED       (-5208)
+/** GVMCPU struct size is not compatible with the host page size. */
+#define VERR_GVMM_GVMCPU_STRUCT_NOT_PAGE_ALIGNED    (-5209)
 /** @} */
 
 

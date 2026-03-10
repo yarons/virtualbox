@@ -1,11 +1,11 @@
-/* $Id: VBoxLwipCore.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxLwipCore.h 112885 2026-02-09 09:34:33Z knut.osmundsen@oracle.com $ */
 
 /** @file
  * VBox Lwip Core Initiatetor/Finilizer.
  */
 
 /*
- * Copyright (C) 2012-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -32,10 +32,7 @@
 # pragma once
 #endif
 
-/**
- * Initializes LWIP core, and do callback on tcp/ip thread.
- */
-int vboxLwipCoreInitialize(PFNRT1 pfnCallback, void * pfnCallbackArg);
-void vboxLwipCoreFinalize(PFNRT1 pfnCallback, void * pfnCallbackArg);
+int vboxLwipCoreInitialize(PFNRT1 pfnCallback, void *pvCallbackArg);
+void vboxLwipCoreFinalize(PFNRT1 pfnCallback, void *pvCallbackArg);
 
 #endif /* !VBOX_INCLUDED_SRC_vbox_VBoxLwipCore_h */

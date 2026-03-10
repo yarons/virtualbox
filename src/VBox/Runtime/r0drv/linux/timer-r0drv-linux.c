@@ -1,10 +1,10 @@
-/* $Id: timer-r0drv-linux.c 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: timer-r0drv-linux.c 113200 2026-02-27 16:04:45Z vadim.galitsyn@oracle.com $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, Linux.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -422,7 +422,7 @@ static void rtTimerLnxStopSubTimer(PRTTIMERLNXSUBTIMER pSubTimer, bool fHighRes)
     }
     else
 #endif
-# if RTLNX_VER_MIN(6,15,0)
+# if RTLNX_VER_MIN(6,15,0) || RTLNX_RHEL_RANGE(10,2, 10,99)
         timer_delete(&pSubTimer->u.Std.LnxTimer);
 #else
         del_timer(&pSubTimer->u.Std.LnxTimer);
@@ -474,7 +474,7 @@ static void rtTimerLnxDestroyIt(PRTTIMER pTimer)
             hrtimer_cancel(&pTimer->aSubTimers[iCpu].u.Hr.LnxTimer);
         else
 #endif
-# if RTLNX_VER_MIN(6,15,0)
+# if RTLNX_VER_MIN(6,15,0) || RTLNX_RHEL_RANGE(10,2, 10,99)
             timer_delete_sync(&pTimer->aSubTimers[iCpu].u.Std.LnxTimer);
 #else
             del_timer_sync(&pTimer->aSubTimers[iCpu].u.Std.LnxTimer);
@@ -748,7 +748,7 @@ static enum hrtimer_restart rtTimerLinuxHrCallback(struct hrtimer *pHrTimer)
  */
 static void rtTimerLinuxStdCallback(struct timer_list *pLnxTimer)
 {
-# if RTLNX_VER_MIN(6,16,0)
+# if RTLNX_VER_MIN(6,16,0) || RTLNX_RHEL_RANGE(10,2, 10,99)
     PRTTIMERLNXSUBTIMER pSubTimer = timer_container_of(pSubTimer, pLnxTimer, u.Std.LnxTimer);
 # else
     PRTTIMERLNXSUBTIMER pSubTimer = from_timer(pSubTimer, pLnxTimer, u.Std.LnxTimer);
@@ -1638,7 +1638,7 @@ RTDECL(int) RTTimerCreateEx(PRTTIMER *ppTimer, uint64_t u64NanoInterval, uint32_
 #ifdef RTTIMER_LINUX_WITH_HRTIMER
         if (pTimer->fHighRes)
         {
-#if RTLNX_VER_MIN(6,15,0)
+#if RTLNX_VER_MIN(6,15,0) || RTLNX_RHEL_RANGE(10,2, 10,99)
             hrtimer_setup(&pTimer->aSubTimers[iCpu].u.Hr.LnxTimer,
                           rtTimerLinuxHrCallback, CLOCK_MONOTONIC, HRTIMER_MODE_ABS);
 #else

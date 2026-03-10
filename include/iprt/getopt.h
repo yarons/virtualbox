@@ -3,7 +3,7 @@
  */
 
 /*
- * Copyright (C) 2007-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2007-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -442,6 +442,22 @@ RTDECL(int) RTGetOptFetchValue(PRTGETOPTSTATE pState, PRTGETOPTUNION pValueUnion
  * @param   pState      The state previously initialized with RTGetOptInit.
  */
 RTDECL(char **) RTGetOptNonOptionArrayPtr(PRTGETOPTSTATE pState);
+
+
+/**
+ * Processes @a pszValue using @a fFlags, storing the result in @a pValueUnion.
+ *
+ * @returns IPRT status code.  May return other error statuses than the ones
+ *          listed, in case of parse errors.
+ * @retval  VINF_SUCCESS on success.
+ * @retval  VERR_INVALID_PARAMETER if the flags are wrong.
+ * @retval  VERR_GETOPT_INVALID_ARGUMENT_FORMAT (pValueUnion->pDef is NULL).
+ * @param   pszValue    The value to parse according to @a fFlags.
+ * @param   fFlags      How to treat pszValue, that is RTGETOPT_REQ_XXX.
+ * @param   pValueUnion Union with the converted value.  In the event of an
+ *                      error, this will either be set to pszValue or NULL.
+ */
+RTDECL(int) RTGetOptStringToValue(const char *pszValue, uint32_t fFlags, PRTGETOPTUNION pValueUnion);
 
 /**
  * Print error messages for a RTGetOpt default case.

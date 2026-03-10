@@ -1,10 +1,10 @@
-/* $Id: UICloudProfileManager.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UICloudProfileManager.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class declaration.
  */
 
 /*
- * Copyright (C) 2009-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -48,7 +48,6 @@ struct UIDataCloudProvider;
 class CCloudProfile;
 class CCloudProvider;
 
-
 /** QWidget extension providing GUI with the pane to control cloud profile related functionality. */
 class UICloudProfileManagerWidget : public QWidget
 {
@@ -77,10 +76,6 @@ public:
     /** Returns the toolbar. */
     QIToolBar *toolbar() const { return m_pToolBar; }
 #endif
-
-    /** Check for changes committed.
-      * @returns Whether changes were resolved (accepted or discarded) or still a problem otherwise. */
-    bool makeSureChangesResolved();
 
 public slots:
 
@@ -212,7 +207,6 @@ private:
     /** @} */
 };
 
-
 /** QIManagerDialogFactory extension used as a factory for Cloud Profile Manager dialog. */
 class UICloudProfileManagerFactory : public QIManagerDialogFactory
 {
@@ -231,7 +225,6 @@ protected:
     /** Holds the action-pool reference. */
     UIActionPool *m_pActionPool;
 };
-
 
 /** QIManagerDialog extension providing GUI with the dialog to control cloud profile related functionality. */
 class UICloudProfileManager : public QIManagerDialog
@@ -282,12 +275,6 @@ private:
       * @{ */
         /** Returns the widget. */
         virtual UICloudProfileManagerWidget *widget() RT_OVERRIDE;
-    /** @} */
-
-    /** @name Event-handling stuff.
-      * @{ */
-        /** Handles close @a pEvent. */
-        virtual void closeEvent(QCloseEvent *pEvent) RT_OVERRIDE;
     /** @} */
 
     /** @name Action related variables.

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 """
-Copyright (C) 2009-2025 Oracle and/or its affiliates.
+Copyright (C) 2009-2026 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -29,7 +29,7 @@ if sys.version_info >= (3, 10):
 else:
     from distutils.version import StrictVersion as Version
 
-versions = ["2.6", "2.7", "3.1", "3.2", "3.2m", "3.3", "3.3m", "3.4", "3.4m", "3.5", "3.5m", "3.6", "3.6m", "3.7", "3.7m", "3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14" ]
+versions = ["2.6", "2.7", "3.1", "3.2", "3.2m", "3.3", "3.3m", "3.4", "3.4m", "3.5", "3.5m", "3.6", "3.6m", "3.7", "3.7m", "3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
 prefixes = ["/usr", "/usr/local", "/opt", "/opt/local"]
 known = {}
 
@@ -45,12 +45,14 @@ def checkPair(p, v, dllpre, dllsuff, bitness_magic):
         if not os.path.isfile(lib):
             lib = None
 
+    ## @todo r=andy Better use sysconfig for that.
     if bitness_magic == 1:
         lib64 = os.path.join(p, "lib", "64", dllpre+"python"+v+dllsuff)
         if not os.path.isfile(lib64):
             lib64 = None
-    elif bitness_magic == 2:
-        lib64 = os.path.join(p, "lib/x86_64-linux-gnu", dllpre+"python"+v+dllsuff)
+    elif bitness_magic in (2,3):
+        lib64 = os.path.join(p, "lib/x86_64-linux-gnu" if bitness_magic == 2 else "lib/aarch64-linux-gnu",
+                             dllpre+"python"+v+dllsuff)
         if not os.path.isfile(lib64):
             lib64 = os.path.join(p, "lib64", dllpre+"python"+v+dllsuff)
             if not os.path.isfile(lib64):
@@ -82,7 +84,6 @@ def main(argv):
 
     dllpre = "lib"
     dllsuff = ".so"
-    bitness_magic = 0
 
     if len(argv) > 1:
         target = argv[1]
@@ -112,11 +113,13 @@ def main(argv):
                     '/Developer/SDKs/MacOSX10.7.sdk/usr']
         dllsuff = '.dylib'
 
+    bitness_magic = 0
     if target == 'solaris' and arch == 'amd64':
         bitness_magic = 1
-
-    if target == 'linux' and arch == 'amd64':
+    elif target == 'linux' and arch == 'amd64':
         bitness_magic = 2
+    elif target == 'linux' and arch == 'arm64':
+        bitness_magic = 3
 
     for v in versions:
         if v.endswith("m"):

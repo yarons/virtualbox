@@ -1,10 +1,10 @@
-/* $Id: Display.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: Display.cpp 113251 2026-03-04 14:03:34Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -61,6 +61,7 @@ typedef struct DRVMAINDISPLAY
 
 Display::Display()
 {
+    fVGAResizing = false;
 }
 
 Display::~Display()
@@ -101,6 +102,8 @@ int Display::i_handleDisplayResize(unsigned uScreenId, uint32_t bpp, void *pvVRA
                                    uint32_t cbLine, uint32_t w, uint32_t h, uint16_t flags,
                                    int32_t xOrigin, int32_t yOrigin, bool fVGAResize)
 {
+    RT_NOREF(fVGAResize);
+
     LogRel2(("Display::i_handleDisplayResize: uScreenId=%d pvVRAM=%p w=%d h=%d bpp=%d cbLine=0x%X flags=0x%X\n", uScreenId,
              pvVRAM, w, h, bpp, cbLine, flags));
 
@@ -120,7 +123,7 @@ int Display::i_handleDisplayResize(unsigned uScreenId, uint32_t bpp, void *pvVRA
             uScreenId, pvVRAM, w, h, bpp, cbLine, flags, xOrigin, yOrigin));
 
     int vrc = m_pFramebuffer->notifyChange(uScreenId, 0, 0, w, h);
-    LogFunc(("NotifyChange vrc=%Rrc\n", vrc));
+    LogFunc(("NotifyChange vrc=%Rrc\n", vrc)); RT_NOREF(vrc);
 
     return VINF_SUCCESS;
 }
@@ -147,6 +150,8 @@ void Display::i_handleDisplayUpdate (int x, int y, int w, int h)
 
 void Display::i_invalidateAndUpdateScreen(uint32_t aScreenId)
 {
+    RT_NOREF(aScreenId);
+
     mpDrv->IConnector.pbData     = m_pFramebuffer->getPixelData();
     mpDrv->IConnector.cbScanline = m_pFramebuffer->getBytesPerLine();
     mpDrv->IConnector.cBits      = m_pFramebuffer->getBitsPerPixel();
@@ -218,7 +223,6 @@ DECLCALLBACK(void) Display::i_displayUpdateCallback(PPDMIDISPLAYCONNECTOR pInter
 /*static*/ DECLCALLBACK(void) Display::i_displayRefreshCallback(PPDMIDISPLAYCONNECTOR pInterface)
 {
     PDRVMAINDISPLAY pDrv = RT_FROM_MEMBER(pInterface, DRVMAINDISPLAY, IConnector);
-    Display *pDisplay = pDrv->pDisplay;
 
     pDrv->pUpPort->pfnUpdateDisplay(pDrv->pUpPort);
 }
@@ -254,6 +258,7 @@ DECLCALLBACK(void) Display::i_displayProcessAdapterDataCallback(PPDMIDISPLAYCONN
 {
     PDRVMAINDISPLAY pDrv = RT_FROM_MEMBER(pInterface, DRVMAINDISPLAY, IConnector);
     //pDrv->pDisplay->processAdapterData(pvVRAM, u32VRAMSize);
+    RT_NOREF(pDrv, pvVRAM, u32VRAMSize);
 }
 
 /**
@@ -266,6 +271,15 @@ DECLCALLBACK(void) Display::i_displayProcessDisplayDataCallback(PPDMIDISPLAYCONN
 {
     PDRVMAINDISPLAY pDrv = RT_FROM_MEMBER(pInterface, DRVMAINDISPLAY, IConnector);
     //pDrv->pDisplay->processDisplayData(pvVRAM, uScreenId);
+    RT_NOREF(pDrv, pvVRAM, uScreenId);
+}
+
+
+DECLCALLBACK(int) Display::i_displayVBVAEnable(PPDMIDISPLAYCONNECTOR pInterface, unsigned uScreenId,
+                                               VBVAHOSTFLAGS RT_UNTRUSTED_VOLATILE_GUEST *pHostFlags)
+{
+    RT_NOREF(pInterface, uScreenId, pHostFlags);
+    return VINF_SUCCESS;
 }
 
 
@@ -370,6 +384,7 @@ DECLCALLBACK(int) Display::i_drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, ui
     pThis->IConnector.pfnLFBModeChange         = Display::i_displayLFBModeChangeCallback;
     pThis->IConnector.pfnProcessAdapterData    = Display::i_displayProcessAdapterDataCallback;
     pThis->IConnector.pfnProcessDisplayData    = Display::i_displayProcessDisplayDataCallback;
+    pThis->IConnector.pfnVBVAEnable            = Display::i_displayVBVAEnable;
 
     /*
      * Get the IDisplayPort interface of the above driver/device.

@@ -1,10 +1,10 @@
-/* $Id: NATNetworkImpl.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: NATNetworkImpl.cpp 113027 2026-02-14 00:50:48Z jack.doherty@oracle.com $ */
 /** @file
  * INATNetwork implementation.
  */
 
 /*
- * Copyright (C) 2013-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -966,7 +966,7 @@ void NATNetwork::i_updateDomainNameServerOption(ComPtr<IHost> &host)
         }
 
         if (lstServers.isEmpty() && fUnmappedLoopback)
-            lstServers.append(RTCStringFmt("%RTnaipv4", networkid.u | RT_H2N_U32_C(1U))); /* proxy */
+            lstServers.append(RTCStringFmt("%RTnaipv4", networkid.u | RT_H2N_U32_C(3U))); /* proxy */
 
         hrc = pDHCPConfig->SetOption(DHCPOption_DomainNameServers, DHCPOptionEncoding_Normal, Bstr(RTCString::join(lstServers, " ")).raw());
         if (FAILED(hrc))

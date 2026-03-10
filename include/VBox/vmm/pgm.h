@@ -3,7 +3,7 @@
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -1324,7 +1324,6 @@ VMMR0_INT_DECL(int)  PGMR0PhysFlushHandyPages(PGVM pGVM, VMCPUID idCpu);
 VMMR0_INT_DECL(int)  PGMR0PhysAllocateLargePage(PGVM pGVM, VMCPUID idCpu, RTGCPHYS GCPhys);
 VMMR0_INT_DECL(int)  PGMR0PhysMMIO2MapKernel(PGVM pGVM, PPDMDEVINS pDevIns, PGMMMIO2HANDLE hMmio2,
                                              size_t offSub, size_t cbSub, void **ppvMapping);
-VMMR0_INT_DECL(int)  PGMR0PhysSetupIoMmu(PGVM pGVM);
 VMMR0_INT_DECL(int)  PGMR0PhysHandlerInitReqHandler(PGVM pGVM, uint32_t cEntries);
 
 VMMR0_INT_DECL(int)  PGMR0HandlerPhysicalTypeSetUpContext(PGVM pGVM, PGMPHYSHANDLERKIND enmKind, uint32_t fFlags,
@@ -1391,6 +1390,9 @@ typedef struct PGMPHYSMMIO2REGISTERREQ
     uint32_t                fFlags;
     /** Input: The owner device key. */
     PPDMDEVINSR3            pDevIns;
+    /** Input: An existing ring-3 userspace pointer to use for the backing,
+     *         Only valid with PGMPHYS_MMIO2_FLAGS_USE_EXISTING_BACKING - must be zeroed otherwise. */
+    R3PTRTYPE(uint8_t *)    pbR3;
 } PGMPHYSMMIO2REGISTERREQ;
 /** Pointer to a PGMR0PhysAllocateRamRangeReq / VMMR0_DO_PGM_PHYS_MMIO2_REGISTER request buffer. */
 typedef PGMPHYSMMIO2REGISTERREQ *PPGMPHYSMMIO2REGISTERREQ;
@@ -1483,8 +1485,10 @@ VMMR3_INT_DECL(int) PGMR3PhysMmioUnmap(PVM pVM, PVMCPU pVCpu, RTGCPHYS GCPhys, R
 /** Track dirty pages.
  * @see PGMR3PhysMmio2QueryAndResetDirtyBitmap(), PGMR3PhysMmio2ControlDirtyPageTracking(). */
 #define PGMPHYS_MMIO2_FLAGS_TRACK_DIRTY_PAGES       RT_BIT_32(0)
+/** Use the pointer supplied in ppv as the backing storage. */
+#define PGMPHYS_MMIO2_FLAGS_USE_EXISTING_BACKING    RT_BIT_32(1)
 /** Valid flags. */
-#define PGMPHYS_MMIO2_FLAGS_VALID_MASK              UINT32_C(0x00000001)
+#define PGMPHYS_MMIO2_FLAGS_VALID_MASK              UINT32_C(0x00000003)
 /** @} */
 
 #ifdef IN_RING3

@@ -1,10 +1,10 @@
-/* $Id: tstUnattendedScript.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: tstUnattendedScript.cpp 112611 2026-01-15 13:52:52Z serkan.bayraktar@oracle.com $ */
 /** @file
  * tstUnattendedScript - testcases for UnattendedScript.
  */
 
 /*
- * Copyright (C) 2022-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2022-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -66,7 +66,7 @@ Unattended::Unattended()
     , mfIsDefaultAuxiliaryBasePath(true)
     , midxImage(0)
     , mfDoneDetectIsoOS(false)
-    , mEnmOsType(VBOXOSTYPE_Unknown)
+    , mEnmOsType(VBOXOSTYPE_x86)
     , mfAvoidUpdatesOverNetwork(false)
     , mfDoneSupportedGuestOSList(false)
 {
@@ -588,6 +588,11 @@ Utf8Str const &Unattended::i_getAdminPassword() const
     return mStrAdminPassword.isEmpty() ? mStrUserPassword : mStrAdminPassword;
 }
 
+bool          Unattended::i_getIsAdminPasswordEmpty() const
+{
+    return mStrAdminPassword.isEmpty();
+}
+
 Utf8Str const &Unattended::i_getFullUserName() const
 {
     return mStrFullUserName.isNotEmpty() ? mStrFullUserName : mStrUser;
@@ -726,6 +731,11 @@ Utf8Str const &Unattended::i_getDetectedOSVersion()
 bool Unattended::i_getAvoidUpdatesOverNetwork() const
 {
     return mfAvoidUpdatesOverNetwork;
+}
+
+VBOXOSTYPE Unattended::i_getGuestOsArch() const
+{
+    return (VBOXOSTYPE)(mEnmOsType & VBOXOSTYPE_ArchitectureMask);
 }
 
 

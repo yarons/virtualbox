@@ -1,10 +1,10 @@
-/* $Id: UIChooserModel.cpp 111162 2025-09-29 10:12:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.cpp 113173 2026-02-26 11:58:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
 
 /*
- * Copyright (C) 2012-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -674,7 +674,7 @@ void UIChooserModel::disbandSelectedGroupItem()
                 /* But we can do it for VM groups: */
                 case UIChooserNodeType_Group:
                 {
-                    if (!msgCenter().confirmAutomaticCollisionResolve(strChildName, pParentNode->name()))
+                    if (!UINotificationQuestion::confirmAutomaticCollisionResolve(strChildName, pParentNode->name()))
                         return;
                     childrenToBeRenamed << pChildNode;
                     break;
@@ -1287,8 +1287,12 @@ void UIChooserModel::sltHandleSelectionChanged()
     m_cloudMenus.value(UIChooserNodeType_Machine)->setProperty("is_valid", QVariant());
 }
 
-void UIChooserModel::sltUpdateContextMenu()
+void UIChooserModel::sltHandleContextMenuAboutToShow()
 {
+    /* Add context-menu related flag to certain actions so that their handler know that
+     * context-menu was the originator (Note: Keep in sync with ::sltClearContextMenuFlags below): */
+    actionPool()->action(UIActionIndexMN_M_Group_S_New)->setProperty("is_context_menu_action", true);
+
     /* Determine sender: */
     QMenu *pMenu = qobject_cast<QMenu*>(sender());
     AssertPtrReturnVoid(pMenu);
@@ -1388,8 +1392,8 @@ void UIChooserModel::sltUpdateContextMenu()
                 if (!pMenu->property("is_valid").toBool())
                 {
                     pMenu->clear();
-                    pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Group_S_New));
-                    pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Group_S_Add));
+                    pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Group_S_NewCloud));
+                    pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Group_S_AddCloud));
                     pMenu->addSeparator();
                     pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Group_M_Start));
                     pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Group_S_Reset));
@@ -1433,6 +1437,18 @@ void UIChooserModel::sltUpdateContextMenu()
         }
         return;
     }
+}
+
+void UIChooserModel::sltHandleContextMenuAboutToHide()
+{
+    /* Clear context-menu flags async way: */
+    QMetaObject::invokeMethod(this, "sltClearContextMenuFlags", Qt::QueuedConnection);
+}
+
+void UIChooserModel::sltClearContextMenuFlags()
+{
+    /* Clear context-menu flags (Note: Keep in sync with ::sltHandleContextMenuAboutToShow above): */
+    actionPool()->action(UIActionIndexMN_M_Group_S_New)->setProperty("is_context_menu_action", QVariant());
 }
 
 void UIChooserModel::sltMakeSureCurrentItemVisible()
@@ -1614,22 +1630,34 @@ void UIChooserModel::prepareContextMenu()
     /* Context menu for local group(s): */
     m_localMenus[UIChooserNodeType_Group] = new QMenu;
     if (QMenu *pMenuGroup = m_localMenus.value(UIChooserNodeType_Group))
-        connect(pMenuGroup, &QMenu::aboutToShow, this, &UIChooserModel::sltUpdateContextMenu);
+    {
+        connect(pMenuGroup, &QMenu::aboutToShow, this, &UIChooserModel::sltHandleContextMenuAboutToShow);
+        connect(pMenuGroup, &QMenu::aboutToHide, this, &UIChooserModel::sltHandleContextMenuAboutToHide);
+    }
 
     /* Context menu for local machine(s): */
     m_localMenus[UIChooserNodeType_Machine] = new QMenu;
     if (QMenu *pMenuMachine = m_localMenus.value(UIChooserNodeType_Machine))
-        connect(pMenuMachine, &QMenu::aboutToShow, this, &UIChooserModel::sltUpdateContextMenu);
+    {
+        connect(pMenuMachine, &QMenu::aboutToShow, this, &UIChooserModel::sltHandleContextMenuAboutToShow);
+        connect(pMenuMachine, &QMenu::aboutToHide, this, &UIChooserModel::sltHandleContextMenuAboutToHide);
+    }
 
     /* Context menu for cloud group(s): */
     m_cloudMenus[UIChooserNodeType_Group] = new QMenu;
     if (QMenu *pMenuGroup = m_cloudMenus.value(UIChooserNodeType_Group))
-        connect(pMenuGroup, &QMenu::aboutToShow, this, &UIChooserModel::sltUpdateContextMenu);
+    {
+        connect(pMenuGroup, &QMenu::aboutToShow, this, &UIChooserModel::sltHandleContextMenuAboutToShow);
+        connect(pMenuGroup, &QMenu::aboutToHide, this, &UIChooserModel::sltHandleContextMenuAboutToHide);
+    }
 
     /* Context menu for cloud machine(s): */
     m_cloudMenus[UIChooserNodeType_Machine] = new QMenu;
     if (QMenu *pMenuMachine = m_cloudMenus.value(UIChooserNodeType_Machine))
-        connect(pMenuMachine, &QMenu::aboutToShow, this, &UIChooserModel::sltUpdateContextMenu);
+    {
+        connect(pMenuMachine, &QMenu::aboutToShow, this, &UIChooserModel::sltHandleContextMenuAboutToShow);
+        connect(pMenuMachine, &QMenu::aboutToHide, this, &UIChooserModel::sltHandleContextMenuAboutToHide);
+    }
 }
 
 void UIChooserModel::prepareHandlers()
@@ -1927,7 +1955,7 @@ void UIChooserModel::removeLocalMachineItems(const QList<UIChooserItemMachine*> 
     QStringList names;
     foreach (UIChooserItemMachine *pItem, machineItems)
         names << pItem->name();
-    if (!msgCenter().confirmMachineItemRemoval(names))
+    if (!UINotificationQuestion::confirmMachineItemRemoval(names.join(", ")))
         return;
 
     /* Find and select closest unselected item: */

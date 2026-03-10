@@ -1,10 +1,10 @@
-/* $Id: VBoxWinDrvStore.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxWinDrvStore.h 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxWinDrvInst - Header for Windows driver store handling.
  */
 
 /*
- * Copyright (C) 2024-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2024-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -46,6 +46,7 @@
 
 #include <VBox/GuestHost/VBoxWinDrvDefs.h>
 
+
 /** Maximum model PnP ID length (in characters). */
 #define VBOXWINDRVSTORE_MAX_PNP_ID          255
 /** Maximum model name length (in characters). */
@@ -55,6 +56,8 @@
 
 /**
  * Structure for keeping a generic Windows driver store list.
+ *
+ * Used for VBOXWINDRVSTOREENTRY.
  */
 typedef struct VBOXWINDRVSTORELIST
 {
@@ -67,24 +70,40 @@ typedef struct VBOXWINDRVSTORELIST
 typedef VBOXWINDRVSTORELIST *PVBOXWINDRVSTORELIST;
 
 /**
+ * Structure for keeping a single generic Windows driver store file entry.
+ */
+typedef struct VBOXWINDRVSTOREFILEENTRY
+{
+    /** List node. */
+    RTLISTNODE               Node;
+    /** Full (absolute) path of the file. */
+    RTUTF16                  wszFile[RTPATH_MAX];
+} VBOXWINDRVSTOREFILEENTRY;
+/** Pointer to a Windows driver store file entry. */
+typedef VBOXWINDRVSTOREFILEENTRY *PVBOXWINDRVSTOREFILEENTRY;
+
+/**
  * Structure for keeping a Windows driver store entry.
  */
 typedef struct VBOXWINDRVSTOREENTRY
 {
     RTLISTNODE Node;
     /** Version section information. */
-    VBOXWINDRVINFSECVERSION  Ver;
+    VBOXWINDRVINFSECVERSION   Ver;
     /** Full path to the oemXXX.inf file within the driver store. */
-    RTUTF16                  wszInfFile[RTPATH_MAX];
+    RTUTF16                   wszInfFile[RTPATH_MAX];
     /** PnP ID of the driver.
      *  Only the first (valid) PnP ID is supported for now */
-    RTUTF16                  wszPnpId[VBOXWINDRVSTORE_MAX_PNP_ID];
+    RTUTF16                   wszPnpId[VBOXWINDRVSTORE_MAX_PNP_ID];
     /** Model name of the driver.
      *  Only the first (valid) model name is supported for now */
-    RTUTF16                  wszModel[VBOXWINDRVSTORE_MAX_MODEL_NAME];
+    RTUTF16                   wszModel[VBOXWINDRVSTORE_MAX_MODEL_NAME];
     /** Driver name (.sys).
      *  Only the first (valid) driver name is supported for now */
-    RTUTF16                  wszDriverName[VBOXWINDRVSTORE_MAX_DRIVER_NAME];
+    RTUTF16                   wszDriverName[VBOXWINDRVSTORE_MAX_DRIVER_NAME];
+    /** List of installed files onto the OS (e.g. in \%SystemRoot\%\\System32).
+     *  Might be NULL if not being used. */
+    PVBOXWINDRVINFLIST        pCopyFileList;
 } VBOXWINDRVSTOREENTRY;
 /** Pointer to a Windows driver store entry. */
 typedef VBOXWINDRVSTOREENTRY *PVBOXWINDRVSTOREENTRY;

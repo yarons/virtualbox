@@ -1,10 +1,10 @@
-/* $Id: UIMachineWindow.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineWindow.cpp 113058 2026-02-17 10:55:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
 
 /*
- * Copyright (C) 2010-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -40,7 +40,6 @@
 #include "UIExtraDataManager.h"
 #include "UILoggingDefs.h"
 #include "UIMachine.h"
-#include "UIMessageCenter.h"
 #include "UIMachineLogic.h"
 #include "UIMachineWindow.h"
 #include "UIMachineWindowNormal.h"
@@ -107,7 +106,7 @@ void UIMachineWindow::prepare()
     /* Prepare dialog itself: */
     prepareSelf();
 
-    /* Prepare session-connections: */
+    /* Prepare session connections: */
     prepareSessionConnections();
 
     /* Prepare main-layout: */
@@ -127,6 +126,9 @@ void UIMachineWindow::prepare()
 
     /* Prepare notification-center: */
     prepareNotificationCenter();
+
+    /* Prepare other connections: */
+    prepareOtherConnections();
 
     /* Prepare handlers: */
     prepareHandlers();
@@ -166,6 +168,9 @@ void UIMachineWindow::cleanup()
 
     /* Cleanup handlers: */
     cleanupHandlers();
+
+    /* Cleanup other connections: */
+    cleanupOtherConnections();
 
     /* Cleanup visual-state: */
     cleanupVisualState();
@@ -595,11 +600,6 @@ void UIMachineWindow::prepareMachineView()
     setFocusProxy(m_pMachineView);
 }
 
-void UIMachineWindow::prepareNotificationCenter()
-{
-    // for now it will be added from within particular visual mode windows ..
-}
-
 void UIMachineWindow::prepareHandlers()
 {
     /* Register keyboard-handler: */
@@ -616,11 +616,6 @@ void UIMachineWindow::cleanupHandlers()
 
     /* Unregister keyboard-handler: */
     machineLogic()->keyboardHandler()->cleanupListener(m_uScreenId);
-}
-
-void UIMachineWindow::cleanupNotificationCenter()
-{
-    // for now it will be removed from within particular visual mode windows ..
 }
 
 void UIMachineWindow::cleanupMachineView()

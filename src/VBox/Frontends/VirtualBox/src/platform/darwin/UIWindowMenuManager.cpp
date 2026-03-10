@@ -1,10 +1,10 @@
-/* $Id: UIWindowMenuManager.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIWindowMenuManager.cpp 112835 2026-02-05 10:41:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWindowMenuManager class implementation.
  */
 
 /*
- * Copyright (C) 2010-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -321,27 +321,6 @@ bool UIWindowMenuManager::eventFilter(QObject *pObject, QEvent *pEvent)
 {
     /* Acquire event type: */
     const QEvent::Type type = pEvent->type();
-
-#ifdef VBOX_OSE /// @todo Do we still need it?
-    // WORKAROUND:
-    // Stupid Qt: Qt doesn't check if a window is minimized when a command is
-    // executed. This leads to strange behaviour. The minimized window is
-    // partly restored, but not usable. As a workaround we raise the parent
-    // window before we let execute the command.
-    // Note: fixed in our local Qt build since 4.7.0.
-    if (pObject && type == QEvent::Show)
-    {
-        QWidget *pWidget = qobject_cast<QWidget*>(pObject);
-        if (   pWidget
-            && pWidget->parentWidget()
-            && pWidget->parentWidget()->isMinimized())
-        {
-            pWidget->parentWidget()->show();
-            pWidget->parentWidget()->raise();
-            pWidget->parentWidget()->activateWindow();
-        }
-    }
-#endif /* VBOX_OSE */
 
     /* We need to track several events which leads to different window
      * activation and change the menu items in that case. */

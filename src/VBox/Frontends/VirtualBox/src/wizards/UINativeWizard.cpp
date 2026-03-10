@@ -1,10 +1,10 @@
-/* $Id: UINativeWizard.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UINativeWizard.cpp 112845 2026-02-05 16:55:12Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class implementation.
  */
 
 /*
- * Copyright (C) 2009-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -571,8 +571,12 @@ void UINativeWizard::prepare()
     /* Prepare local notification-center: */
     m_pNotificationCenter = new UINotificationCenter(this);
     if (m_pNotificationCenter)
+    {
         connect(m_pNotificationCenter, &UINotificationCenter::sigOperationsAborted,
                 this, &UINativeWizard::close, Qt::QueuedConnection);
+        QPointer<UINotificationCenter> target = m_pNotificationCenter;
+        setProperty("notification_center", QVariant::fromValue(target));
+    }
 
     connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
             this, &UINativeWizard::sltRetranslateUI);

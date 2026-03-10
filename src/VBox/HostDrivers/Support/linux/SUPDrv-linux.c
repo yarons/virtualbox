@@ -1,10 +1,10 @@
-/* $Id: SUPDrv-linux.c 111401 2025-10-14 18:01:05Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: SUPDrv-linux.c 113066 2026-02-17 15:20:09Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -79,9 +79,10 @@
 # include <iprt/asm-amd64-x86.h>
 #endif
 
-#if (RTLNX_VER_RANGE(6,16,0, 6,18,0)) && defined(CONFIG_KVM_GENERIC_HARDWARE_ENABLING) && defined(VBOX_WITH_HOST_VMX)
+#if RTLNX_VER_MIN(6,16,0) && defined(CONFIG_MODULES) && defined(CONFIG_KVM_GENERIC_HARDWARE_ENABLING) && defined(CONFIG_KPROBES) && defined(VBOX_WITH_HOST_VMX)
 # if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
 #  include <linux/kvm_host.h>
+#  include <linux/kprobes.h>
 #  define SUPDRV_LINUX_HAS_KVM_HWVIRT_API
 # endif
 #endif
@@ -181,8 +182,22 @@ static int  supdrvLinuxLdrModuleNotifyCallback(struct notifier_block *pBlock,
  * Device extention & session data association structure.
  */
 static SUPDRVDEVEXT         g_DevExt;
+
 #ifdef SUPDRV_LINUX_HAS_KVM_HWVIRT_API
-static bool                 g_fUsingKvmHwvirtApi;
+/** Whether we have called kvm_enable_virtualization(). */
+static bool                 g_fEnabledHwvirtUsingKvm;
+/** Function pointer to kvm_enable_virtualization(). */
+static int                  (*g_pfnKvmEnableVirtualization)(void);
+/** Function pointer to kvm_disable_virtualization(). */
+static void                 (*g_pfnKvmDisableVirtualization)(void);
+# if RTLNX_VER_MIN(6,19,0)
+/** Function pointer to cr4_update_irqsoff(). */
+static void                 (*g_pfnCr4UpdateIrqsoff)(unsigned long set, unsigned long clear);
+/** Function pointer to cr4_read_shadow(). */
+static unsigned long        (*g_pfnCr4ReadShadow)(void);
+# endif
+/** Pointer to the KVM hardware specific module. */
+struct module               *g_pKvmHwvirtModule;
 #endif
 
 /** Module parameter.
@@ -345,11 +360,14 @@ DECLINLINE(RTUID) vboxdrvLinuxEuid(void)
 
 #ifdef SUPDRV_LINUX_HAS_KVM_HWVIRT_API
 /**
- * This is a hack/workaround that attempts to detect whether the kvm_intel/kvm_amd
- * module is likely to be loaded. See @bugref{10963#c14} for details.
+ * This is a hack/workaround that attempts to detect whether
+ * kvm_enable_virtualization() is likely to have been called. See
+ * @bugref{10963#c14} for details.
  */
-static bool is_kvm_hwvirt_mod_likely_loaded(void)
+static bool supdrvLinuxIsKvmVirtEnabledLikelyCalled(void)
 {
+    /** @todo Try get address of kvm_usage_count and its mutex via kallsyms_lookup_name()
+      *       which in turn should be looked up by a kprobe. */
     /*
      * We don't disable preemption/interrupts here because we assume all CPUs will have
      * the relevant bits identical in CR4 and EFER.
@@ -369,7 +387,145 @@ static bool is_kvm_hwvirt_mod_likely_loaded(void)
 
     return false;
 }
+
+
+/**
+ * Initializes usage of KVM hardware-virtualization symbols.
+ */
+static int supdrvLinuxInitKvmSymbols(void)
+{
+    /* __symbol_get() will bump the reference count for the owner of these functions. */
+    void *pfnEnable = __symbol_get("kvm_enable_virtualization");
+    if (pfnEnable)
+    {
+        void *pfnDisable = __symbol_get("kvm_disable_virtualization");
+        if (pfnDisable)
+        {
+# if RTLNX_VER_MIN(6,19,0)
+            void *pfnCr4UpdateIrqsoff = __symbol_get("cr4_update_irqsoff");
+            void *pfnRr4ReadShadow = __symbol_get("cr4_read_shadow");
+
+            if (   pfnCr4UpdateIrqsoff
+                && pfnRr4ReadShadow)
+            {
+                g_pfnCr4UpdateIrqsoff   = pfnCr4UpdateIrqsoff;
+                g_pfnCr4ReadShadow      = pfnRr4ReadShadow;
+
+                printk(KERN_INFO "vboxdrv: Found extra KVM hardware-virtualization symbols\n");
+            }
+            else
+            {
+                printk(KERN_WARNING "vboxdrv: Failed to find extra KVM hardware-virtualization symbols\n");
+
+                if (pfnCr4UpdateIrqsoff)
+                    symbol_put_addr(pfnCr4UpdateIrqsoff);
+                if (pfnRr4ReadShadow)
+                    symbol_put_addr(pfnRr4ReadShadow);
+            }
 #endif
+            /*
+             * Try to obtain a reference to kvm_intel/kvm_amd module in addition to the
+             * reference to the kvm module. If we fail, we will not try to use KVM for
+             * enabling/disable hardware-virtualization. This is due a a bug in the Linux
+             * kernel, see @bugref{10963}.
+             */
+            struct kprobe KernProbe;
+            RT_ZERO(KernProbe);
+            KernProbe.symbol_name = "find_module";
+            int const rc = register_kprobe(&KernProbe);
+            if (!rc)
+            {
+                if (RT_VALID_PTR(KernProbe.addr))
+                {
+                    struct module* (*pfnFindModule)(const char *) = (void *)(uintptr_t)KernProbe.addr;
+                    const char *pszModName = ASMIsIntelOrCompatibleCpu() ? "kvm_intel"
+                                           : ASMIsAmdOrCompatibleCpu()   ? "kvm_amd" : NULL;
+                    if (pszModName)
+                    {
+                        /*
+                         * When CET is enabled, the address obtained by kprobe may be offset by a
+                         * few bytes (endbr32/64 or a multi-byte NOP sequence). We disable CET prior
+                         * to jumping into the function, as otherwise it would cause a \#GP fault.
+                         * We deliberately do not usesupdrvOSChangeCR4() here as cr4_update_irqsoff()
+                         * disallows modifying 'pinned' bits.
+                         */
+                        RTTHREADPREEMPTSTATE Preempt = RTTHREADPREEMPTSTATE_INITIALIZER;
+                        RTThreadPreemptDisable(&Preempt);
+                        RTCCUINTREG const uOldCr4 = ASMGetCR4();
+                        if (uOldCr4 & X86_CR4_CET)
+                            ASMSetCR4(uOldCr4 & ~(RTCCUINTREG)X86_CR4_CET);
+                        struct module *pModule = pfnFindModule(pszModName);
+                        if (uOldCr4 & X86_CR4_CET)
+                            ASMSetCR4(uOldCr4);
+                        RTThreadPreemptRestore(&Preempt);
+                        if (   pModule
+                            && try_module_get(pModule))
+                        {
+                            g_pfnKvmEnableVirtualization  = pfnEnable;
+                            g_pfnKvmDisableVirtualization = pfnDisable;
+                            g_pKvmHwvirtModule            = pModule;
+                            unregister_kprobe(&KernProbe);
+                            return VINF_SUCCESS;
+                        }
+                        else
+                            printk(KERN_WARNING "vboxdrv: Failed to find or obtain reference for the KVM module\n");
+                    }
+                    else
+                        printk(KERN_WARNING "vboxdrv: Cannot determine KVM module name for this CPU architecture\n");
+                }
+                else
+                    printk(KERN_WARNING "vboxdrv: The address of the found 'find_module' symbol isn't valid\n");
+                unregister_kprobe(&KernProbe);
+            }
+            else
+                printk(KERN_WARNING "vboxdrv: Failed to register kprobe for 'find_module', rc=%d\n", rc);
+            symbol_put_addr(pfnDisable);
+        }
+        else
+            printk(KERN_WARNING "vboxdrv: Failed to find 'kvm_disable_virtualization'\n");
+        symbol_put_addr(pfnEnable);
+    }
+    else
+        printk(KERN_WARNING "vboxdrv: Failed to find 'kvm_enable_virtualization'\n");
+
+    return VERR_NOT_FOUND;
+}
+
+
+/**
+ * Terminates usage of KVM hardware-virtualization symbols.
+ */
+static void supdrvLinuxTermKvmSymbols(void)
+{
+    if (g_pfnKvmEnableVirtualization)
+    {
+        symbol_put_addr(g_pfnKvmEnableVirtualization);
+        g_pfnKvmEnableVirtualization = NULL;
+    }
+    if (g_pfnKvmDisableVirtualization)
+    {
+        symbol_put_addr(g_pfnKvmDisableVirtualization);
+        g_pfnKvmDisableVirtualization = NULL;
+    }
+# if RTLNX_VER_MIN(6,19,0)
+    if (g_pfnCr4UpdateIrqsoff)
+    {
+        symbol_put_addr(g_pfnCr4UpdateIrqsoff);
+        g_pfnCr4UpdateIrqsoff = NULL;
+    }
+    if (g_pfnCr4ReadShadow)
+    {
+        symbol_put_addr(g_pfnCr4ReadShadow);
+        g_pfnCr4ReadShadow = NULL;
+    }
+#endif
+    if (g_pKvmHwvirtModule)
+    {
+        module_put(g_pKvmHwvirtModule);
+        g_pKvmHwvirtModule = NULL;
+    }
+}
+#endif /* SUPDRV_LINUX_HAS_KVM_HWVIRT_API */
 
 
 /**
@@ -440,6 +596,13 @@ static int __init VBoxDrvLinuxInit(void)
                         if (rc2)
                             printk(KERN_WARNING "vboxdrv: failed to register module notifier! rc2=%d\n", rc2);
 #endif
+#ifdef SUPDRV_LINUX_HAS_KVM_HWVIRT_API
+                        rc2 = supdrvLinuxInitKvmSymbols();
+                        if (RT_SUCCESS(rc2))
+                            printk(KERN_INFO "vboxdrv: Found KVM hardware-virtualization symbols\n");
+                        else
+                            printk(KERN_WARNING "vboxdrv: Failed to find KVM hardware-virtualization symbols\n");
+#endif
                         printk(KERN_INFO "vboxdrv: TSC mode is %s, tentative frequency %llu Hz\n",
                                SUPGetGIPModeName(g_DevExt.pGip), g_DevExt.pGip->u64CpuHz);
                         LogFlow(("VBoxDrv::ModuleInit returning %#x\n", rc));
@@ -479,6 +642,10 @@ static int __init VBoxDrvLinuxInit(void)
 static void __exit VBoxDrvLinuxUnload(void)
 {
     Log(("VBoxDrvLinuxUnload\n"));
+
+#ifdef SUPDRV_LINUX_HAS_KVM_HWVIRT_API
+    supdrvLinuxTermKvmSymbols();
+#endif
 
 #ifdef VBOX_WITH_SUSPEND_NOTIFICATION
     platform_device_unregister(&gPlatformDevice);
@@ -1032,6 +1199,37 @@ SUPR0DECL(int) SUPDrvLinuxLdrDeregisterWrappedModule(PCSUPLDRWRAPPEDMODULE pWrap
 }
 EXPORT_SYMBOL(SUPDrvLinuxLdrDeregisterWrappedModule);
 
+#if RTLNX_VER_MIN(5,8,0)
+/**
+ * Wrapper function for cr4_update_irqsoff() which was
+ * exported only for KVM starting from kernel 6.19.
+ */
+static void supdrvLinux_cr4_update_irqsoff(unsigned long set, unsigned long clear)
+{
+# if RTLNX_VER_MIN(6,19,0) && defined(SUPDRV_LINUX_HAS_KVM_HWVIRT_API)
+    if (g_pfnCr4UpdateIrqsoff)
+        g_pfnCr4UpdateIrqsoff(set, clear);
+# else
+    cr4_update_irqsoff(set, clear);
+# endif
+}
+
+/**
+ * Wrapper function for supdrvLinux_cr4_read_shadow() which was
+ * exported only for KVM starting from kernel 6.19.
+ */
+static unsigned long supdrvLinux_cr4_read_shadow(void)
+{
+    unsigned long cr4 = 0;
+# if RTLNX_VER_MIN(6,19,0) && defined(SUPDRV_LINUX_HAS_KVM_HWVIRT_API)
+    if (g_pfnCr4ReadShadow)
+        cr4 = g_pfnCr4ReadShadow();
+# else
+    cr4 = cr4_read_shadow();
+# endif
+    return cr4;
+}
+#endif /* 5.8.0 */
 
 #if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
 RTCCUINTREG VBOXCALL supdrvOSChangeCR4(RTCCUINTREG fOrMask, RTCCUINTREG fAndMask)
@@ -1039,10 +1237,10 @@ RTCCUINTREG VBOXCALL supdrvOSChangeCR4(RTCCUINTREG fOrMask, RTCCUINTREG fAndMask
 # if RTLNX_VER_MIN(5,8,0)
     unsigned long fSavedFlags;
     local_irq_save(fSavedFlags);
-    RTCCUINTREG const uOld = cr4_read_shadow();
-    cr4_update_irqsoff(fOrMask, ~fAndMask); /* Same as this function, only it is not returning the old value. */
-    AssertMsg(cr4_read_shadow() == ((uOld & fAndMask) | fOrMask),
-              ("fOrMask=%#RTreg fAndMask=%#RTreg uOld=%#RTreg; new cr4=%#llx\n", fOrMask, fAndMask, uOld, cr4_read_shadow()));
+    RTCCUINTREG const uOld = supdrvLinux_cr4_read_shadow();
+    supdrvLinux_cr4_update_irqsoff(fOrMask, ~fAndMask); /* Same as this function, only it is not returning the old value. */
+    AssertMsg(supdrvLinux_cr4_read_shadow() == ((uOld & fAndMask) | fOrMask),
+              ("fOrMask=%#RTreg fAndMask=%#RTreg uOld=%#RTreg; new cr4=%#llx\n", fOrMask, fAndMask, uOld, supdrvLinux_cr4_read_shadow()));
     local_irq_restore(fSavedFlags);
 # else
 #  if RTLNX_VER_MIN(3,20,0)
@@ -1684,27 +1882,31 @@ int VBOXCALL    supdrvOSMsrProberModify(RTCPUID idCpu, PSUPMSRPROBER pReq)
 int VBOXCALL supdrvOSEnableHwvirt(bool fEnable)
 {
 #ifdef SUPDRV_LINUX_HAS_KVM_HWVIRT_API
+    if (   g_pfnKvmEnableVirtualization
+        && g_pfnKvmDisableVirtualization
+        && supdrvLinuxIsKvmVirtEnabledLikelyCalled())
+    { /* likely */ }
+    else
+        return VERR_NOT_AVAILABLE;
+
     if (fEnable)
     {
-        if (is_kvm_hwvirt_mod_likely_loaded())
+        /* kvm_enable_virtualization() is guarded by kvm_usage_count reference counter inside a mutex. */
+        int const rc = g_pfnKvmEnableVirtualization();
+        if (!rc)
         {
-            /* kvm_enable_virtualization() is guarded by kvm_usage_count reference counter inside a mutex. */
-            int const rc = kvm_enable_virtualization();
-            if (!rc)
-            {
-                g_fUsingKvmHwvirtApi = true;
-                printk(KERN_INFO "vboxdrv: Using KVM hardware-virtualization API\n");
-                return VINF_SUCCESS;
-            }
-            printk(KERN_ERR "vboxdrv: Failed to enable the KVM kernel API for acquiring VMX/SVM. rc=%d\n", rc);
+            g_fEnabledHwvirtUsingKvm = true;
+            printk(KERN_INFO "vboxdrv: Enabled hardware-virtualization using KVM\n");
+            return VINF_SUCCESS;
         }
+        printk(KERN_ERR "vboxdrv: Failed to enable hardware-virtualization using KVM. rc=%d\n", rc);
         return VERR_NOT_AVAILABLE;
     }
 
-    if (g_fUsingKvmHwvirtApi)
+    if (g_fEnabledHwvirtUsingKvm)
     {
-        kvm_disable_virtualization();
-        g_fUsingKvmHwvirtApi = false;
+        g_pfnKvmDisableVirtualization();
+        g_fEnabledHwvirtUsingKvm = false;
     }
     return VINF_SUCCESS;
 #endif
@@ -1896,6 +2098,9 @@ MODULE_DESCRIPTION(VBOX_PRODUCT " Support Driver");
 MODULE_LICENSE("GPL");
 #ifdef MODULE_VERSION
 MODULE_VERSION(VBOX_VERSION_STRING " r" RT_XSTR(VBOX_SVN_REV) " (" RT_XSTR(SUPDRV_IOC_VERSION) ")");
+#endif
+#ifdef SUPDRV_LINUX_HAS_KVM_HWVIRT_API
+MODULE_SOFTDEP("pre: kvm_intel kvm_amd");
 #endif
 
 module_param(force_async_tsc, int, 0444);

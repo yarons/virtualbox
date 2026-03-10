@@ -1,10 +1,10 @@
-/* $Id: UICloudProfileManager.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UICloudProfileManager.cpp 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class implementation.
  */
 
 /*
- * Copyright (C) 2009-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -27,6 +27,7 @@
 
 /* Qt includes: */
 #include <QApplication>
+#include <QCloseEvent>
 #include <QHeaderView>
 #include <QPushButton>
 #include <QVBoxLayout>
@@ -44,8 +45,8 @@
 #include "UICommon.h"
 #include "UIExtraDataManager.h"
 #include "UIIconPool.h"
-#include "UIMessageCenter.h"
-#include "UINotificationCenter.h"
+#include "UINotificationMessage.h"
+#include "UINotificationQuestion.h"
 #include "UIShortcutPool.h"
 #include "UITranslationEventListener.h"
 #include "UIVirtualBoxEventHandler.h"
@@ -101,6 +102,7 @@ public:
     /** Returns definition composed on the basis of @a strShortName. */
     static QString definition(const QString &strShortName);
 };
+
 
 /** Cloud Profile Manager profile's tree-widget item. */
 class UIItemCloudProfile : public QITreeWidgetItem, public UIDataCloudProfile
@@ -207,44 +209,6 @@ void UICloudProfileManagerWidget::sltRetranslateUI()
                                    << UICloudProfileManager::tr("Source")
                                    << UICloudProfileManager::tr("List VMs"));
     m_pTreeWidget->setWhatsThis(UICloudProfileManager::tr("Registered cloud providers and profiles"));
-}
-
-bool UICloudProfileManagerWidget::makeSureChangesResolved()
-{
-    /* Check if currently selected item is of profile type: */
-    QITreeWidgetItem *pItem = QITreeWidgetItem::toItem(m_pTreeWidget->currentItem());
-    UIItemCloudProfile *pProfileItem = qobject_cast<UIItemCloudProfile*>(pItem);
-    if (!pProfileItem)
-        return true;
-
-    /* Get item data: */
-    UIDataCloudProfile oldData = *pProfileItem;
-    UIDataCloudProfile newData = m_pDetailsWidget->data();
-
-    /* Check if data has changed: */
-    if (newData == oldData)
-        return true;
-
-    /* Ask whether user wants to Accept/Reset changes or still not sure: */
-    const int iResult = msgCenter().confirmCloudProfileManagerClosing(window());
-    switch (iResult)
-    {
-        case AlertButton_Choice1:
-        {
-            sltApplyCloudProfileDetailsChanges();
-            return true;
-        }
-        case AlertButton_Choice2:
-        {
-            sltResetCloudProfileDetailsChanges();
-            return true;
-        }
-        default:
-            break;
-    }
-
-    /* False by default: */
-    return false;
 }
 
 void UICloudProfileManagerWidget::sltResetCloudProfileDetailsChanges()
@@ -389,7 +353,7 @@ void UICloudProfileManagerWidget::sltImportCloudProfiles()
 
     /* If there are profiles exist => confirm cloud profile import. */
     if (   pProviderItem->childCount() != 0
-        && !msgCenter().confirmCloudProfilesImport(this))
+        && !UINotificationQuestion::confirmCloudProfilesImport(this))
         return;
 
     /* Acquire provider short name: */
@@ -421,7 +385,7 @@ void UICloudProfileManagerWidget::sltRemoveCloudProfile()
     const QString strProfileName = pProfileItem->name();
 
     /* Confirm cloud profile removal: */
-    if (!msgCenter().confirmCloudProfileRemoval(strProfileName, this))
+    if (!UINotificationQuestion::confirmCloudProfileRemoval(strProfileName, this))
         return;
 
     /* Acquire provider short name: */
@@ -1038,21 +1002,6 @@ void UICloudProfileManager::finalize()
 UICloudProfileManagerWidget *UICloudProfileManager::widget()
 {
     return qobject_cast<UICloudProfileManagerWidget*>(QIManagerDialog::widget());
-}
-
-void UICloudProfileManager::closeEvent(QCloseEvent *pEvent)
-{
-    /* Make sure all changes resolved: */
-    if (widget()->makeSureChangesResolved())
-    {
-        /* Call to base class: */
-        QIManagerDialog::closeEvent(pEvent);
-    }
-    else
-    {
-        /* Just ignore the event otherwise: */
-        pEvent->ignore();
-    }
 }
 
 

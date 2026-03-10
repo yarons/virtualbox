@@ -1,10 +1,10 @@
-/* $Id: VBoxGuestPropSvc.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxGuestPropSvc.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * Guest Property Service: Host service entry points.
  */
 
 /*
- * Copyright (C) 2008-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2008-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -1350,10 +1350,10 @@ int Service::notifyHost(const char *pszName, const char *pszValue, uint64_t nsTi
     int rc;
 
     /* Allocate buffer for the callback data and strings. */
-    size_t cbName = pszName? strlen(pszName): 0;
-    size_t cbValue = pszValue? strlen(pszValue): 0;
-    size_t cbFlags = pszFlags? strlen(pszFlags): 0;
-    size_t cbAlloc = sizeof(GUESTPROPHOSTCALLBACKDATA) + cbName + cbValue + cbFlags + 3;
+    size_t const cbName  = pszName  ? strlen(pszName)  : 0;
+    size_t const cbValue = pszValue ? strlen(pszValue) : 0;
+    size_t const cbFlags = pszFlags ? strlen(pszFlags) : 0;
+    size_t const cbAlloc = sizeof(GUESTPROPHOSTCALLBACKDATA) + cbName + cbValue + cbFlags + 3;
     PGUESTPROPHOSTCALLBACKDATA pHostCallbackData = (PGUESTPROPHOSTCALLBACKDATA)RTMemAlloc(cbAlloc);
     if (pHostCallbackData)
     {
@@ -1405,9 +1405,9 @@ int Service::notifyHost(const char *pszName, const char *pszValue, uint64_t nsTi
  *
  * @thread  HGCM
  */
-void Service::call (VBOXHGCMCALLHANDLE callHandle, uint32_t u32ClientID,
-                    void * /* pvClient */, uint32_t eFunction, uint32_t cParms,
-                    VBOXHGCMSVCPARM paParms[])
+void Service::call(VBOXHGCMCALLHANDLE callHandle, uint32_t u32ClientID,
+                   void * /* pvClient */, uint32_t eFunction, uint32_t cParms,
+                   VBOXHGCMSVCPARM paParms[])
 {
     int rc;
     LogFlowFunc(("u32ClientID = %d, fn = %d, cParms = %d, pparms = %p\n",

@@ -1,10 +1,10 @@
-/* $Id: UISettingsSerializer.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UISettingsSerializer.cpp 113060 2026-02-17 12:01:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsSerializer class implementation.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -35,8 +35,9 @@
 
 /* GUI includes: */
 #include "QILabel.h"
+#include "UIAdvancedSettingsDialog.h"
 #include "UIIconPool.h"
-#include "UIMessageCenter.h"
+#include "UINotificationMessage.h"
 #include "UISettingsPage.h"
 #include "UISettingsSerializer.h"
 #include "UITranslationEventListener.h"
@@ -211,11 +212,12 @@ void UISettingsSerializer::run()
 
 QString UISettingsSerializerProgress::s_strProgressDescriptionTemplate = QString("<compact elipsis=\"middle\">%1 (%2/%3)</compact>");
 
-UISettingsSerializerProgress::UISettingsSerializerProgress(QWidget *pParent,
+UISettingsSerializerProgress::UISettingsSerializerProgress(UIAdvancedSettingsDialog *pParent,
                                                            UISettingsSerializer::SerializationDirection enmDirection,
                                                            const QVariant &data,
                                                            const UISettingsPageList &pages)
     : QIDialog(pParent)
+    , m_pDialog(pParent)
     , m_enmDirection(enmDirection)
     , m_data(data)
     , m_pages(pages)
@@ -410,5 +412,5 @@ void UISettingsSerializerProgress::sltHandleOperationProgressError(QString strEr
     m_fClean = false;
 
     /* Show the error message: */
-    msgCenter().cannotSaveSettings(strErrorInfo, this);
+    UINotificationMessage::warnAboutCannotSaveSettings(strErrorInfo, m_pDialog);
 }

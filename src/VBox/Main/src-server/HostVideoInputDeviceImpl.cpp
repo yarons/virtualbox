@@ -1,10 +1,10 @@
-/* $Id: HostVideoInputDeviceImpl.cpp 110890 2025-09-04 10:04:32Z alexander.eichner@oracle.com $ */
+/* $Id: HostVideoInputDeviceImpl.cpp 112876 2026-02-09 09:24:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * Host video capture device implementation.
  */
 
 /*
- * Copyright (C) 2013-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -251,12 +251,16 @@ static void hwcClose(int handle)
         close(handle);
 }
 
-static int hwcIoctl(int handle, unsigned fn, void *pv)
+#ifdef RT_OS_SOLARIS
+static int hwcIoctl(int handle, int fn, void *pv)
+#else
+static int hwcIoctl(int handle, unsigned long fn, void *pv)
+#endif
 {
     int ret;
     do
     {
-        ret = ioctl(handle, (int)fn, pv);
+        ret = ioctl(handle, fn, pv);
     } while (ret == -1 && errno == EINTR);
 
 #ifdef RT_OS_SOLARIS

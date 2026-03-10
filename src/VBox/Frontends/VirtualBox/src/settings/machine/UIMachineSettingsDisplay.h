@@ -1,10 +1,10 @@
-/* $Id: UIMachineSettingsDisplay.h 110989 2025-09-15 14:43:58Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsDisplay.h 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class declaration.
  */
 
 /*
- * Copyright (C) 2008-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2008-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -49,6 +49,7 @@ class UIScaleFactorEditor;
 class UIVideoMemoryEditor;
 class UIVRDESettingsEditor;
 struct UIDataSettingsMachineDisplay;
+class CRecordingScreenSettings;
 typedef UISettingsCache<UIDataSettingsMachineDisplay> UISettingsCacheMachineDisplay;
 
 /** Machine settings: Display page. */
@@ -147,6 +148,8 @@ private:
     bool saveRemoteDisplayData();
     /** Saves existing 'Recording' data from cache. */
     bool saveRecordingData();
+    /** Saves existing 'Recording' / 'Audio Profile' data from cache. */
+    bool saveRecordingAudioProfileData(const QString &strProfile, CRecordingScreenSettings &comSettings);
 
     /** Updates minimum layout hint. */
     void updateMinimumLayoutHint();

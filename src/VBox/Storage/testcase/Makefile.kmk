@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 112778 2026-02-01 18:27:47Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the storage device & driver testcases.
 #
 
 #
-# Copyright (C) 2006-2025 Oracle and/or its affiliates.
+# Copyright (C) 2006-2026 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.
@@ -118,13 +118,15 @@ if defined(VBOX_WITH_TESTCASES) || defined(VBOX_WITH_VBOX_IMG)
  #
  # vbox-img - static because it might be used as a standalone tool.
  #
- ifneq ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH),solaris.sparc32 solaris.sparc64)
+ ifn1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), solaris.sparc32 solaris.sparc64)
   vbox-img_TEMPLATE := VBoxR3Exe
   vbox-img_DEFS    := IN_VBOXDDU IN_VBOXDDU_STATIC VBOX_HDD_NO_DYNAMIC_BACKENDS
  else
   vbox-img_TEMPLATE := VBoxR3Static
   vbox-img_DEFS    := IN_VBOXDDU IN_VBOXDDU_STATIC VBOX_HDD_NO_DYNAMIC_BACKENDS
  endif
+ vbox-img_DEFS += \
+ 	$(if $(VBOX_WITH_PLUGIN_CRYPT),VBOX_WITH_PLUGIN_CRYPT,)
  vbox-img_INCS     := \
  	../../Main/include
  vbox-img_SOURCES  := \
@@ -146,6 +148,11 @@ if defined(VBOX_WITH_TESTCASES) || defined(VBOX_WITH_VBOX_IMG)
  	../VISO.cpp \
  	../VCICache.cpp \
  	../VDIfVfs.cpp
+ ifdef VBOX_WITH_PLUGIN_CRYPT
+  vbox-img_SOURCES += \
+  	../VDFilterCrypt.cpp \
+  	../VDKeyStore.cpp
+ endif
  vbox-img_SOURCES.win = \
  	vbox-img.rc
  ifeq ($(vbox-img_TEMPLATE),VBoxR3Exe)
@@ -187,9 +194,7 @@ if defined(VBOX_WITH_TESTCASES) || defined(VBOX_WITH_VBOX_IMG)
 
 endif
 
-if   defined(VBOX_WITH_TESTCASES) && defined(VBOX_WITH_PLUGIN_CRYPT) \
-  && defined(VBOX_WITH_EXTPACK_PUEL) && defined(VBOX_WITH_EXTPACK_PUEL_BUILD) \
-  && defined(VBOX_WITH_VDKEYSTOREMGR)
+if defined(VBOX_WITH_TESTCASES) && defined(VBOX_WITH_PLUGIN_CRYPT) && defined(VBOX_WITH_VDKEYSTOREMGR)
  PROGRAMS += vdkeystoremgr
 
  #
@@ -206,7 +211,7 @@ if   defined(VBOX_WITH_TESTCASES) && defined(VBOX_WITH_PLUGIN_CRYPT) \
  	vdkeystoremgr.cpp \
  	../VDKeyStore.cpp
  vdkeystoremgr_SOURCES.win = \
- 	vdkeystoremgr_SOURCES.rc
+ 	vdkeystoremgr.rc
  vdkeystoremgr_LIBS = \
  	$(VBOX_LIB_RUNTIME_STATIC) \
  	$(PATH_STAGE_LIB)/SUPR3$(VBOX_SUFF_LIB)

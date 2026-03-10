@@ -1,10 +1,10 @@
-/* $Id: UIDetailsElement.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIDetailsElement.cpp 112853 2026-02-06 13:04:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
 
 /*
- * Copyright (C) 2012-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -139,6 +139,18 @@ UIDetailsElement::~UIDetailsElement()
     /* Remove item from the parent: */
     AssertMsg(parentItem(), ("No parent set for details element!"));
     parentItem()->removeItem(this);
+}
+
+void UIDetailsElement::setName(const QString &strName)
+{
+    /* Cache name: */
+    m_strName = strName;
+    const QFontMetrics fm(m_nameFont, model()->paintDevice());
+    m_nameSize = QSize(fm.horizontalAdvance(m_strName), fm.height());
+
+    /* Update linked values: */
+    updateMinimumHeaderWidth();
+    updateMinimumHeaderHeight();
 }
 
 void UIDetailsElement::setText(const UITextTable &text)
@@ -336,11 +348,6 @@ void UIDetailsElement::paint(QPainter *pPainter, const QStyleOptionGraphicsItem 
     paintElementInfo(pPainter, pOptions);
 }
 
-QString UIDetailsElement::description() const
-{
-    return tr("%1 details", "like 'General details' or 'Storage details'").arg(m_strName);
-}
-
 const CMachine &UIDetailsElement::machine()
 {
     return m_pSet->machine();
@@ -354,18 +361,6 @@ const CCloudMachine &UIDetailsElement::cloudMachine()
 bool UIDetailsElement::isLocal() const
 {
     return m_pSet->isLocal();
-}
-
-void UIDetailsElement::setName(const QString &strName)
-{
-    /* Cache name: */
-    m_strName = strName;
-    const QFontMetrics fm(m_nameFont, model()->paintDevice());
-    m_nameSize = QSize(fm.horizontalAdvance(m_strName), fm.height());
-
-    /* Update linked values: */
-    updateMinimumHeaderWidth();
-    updateMinimumHeaderHeight();
 }
 
 void UIDetailsElement::setAdditionalHeight(int iAdditionalHeight)
@@ -511,7 +506,10 @@ void UIDetailsElement::sltHandleAnchorClicked(const QString &strAnchor)
 
     /* Current anchor role: */
     const QString strRole = strAnchor.section(',', 0, 0);
-    const QString strData = strAnchor.section(',', 1);
+    QString strData = strAnchor.section(',', 1);
+
+    /* Hack anchor data, just for editor representation: */
+    strData.replace("&lt;", "<").replace("&gt;", ">");
 
     /* Handle known anchor roles: */
     const AnchorRole enmRole = roles.value(strRole, AnchorRole_Invalid);
@@ -678,7 +676,7 @@ void UIDetailsElement::sltHandleEditRequest()
 
             /* Apply form: */
             CForm comForm = pEditor->form();
-            applyCloudMachineSettingsForm(comCloudMachine, comForm, gpNotificationCenter);
+            applyCloudMachineSettingsForm(comCloudMachine, comForm);
         }
 
         /* Delete popup: */
@@ -900,7 +898,11 @@ void UIDetailsElement::popupNameAndSystemEditor(bool fChooseName, bool fChoosePa
             if (fChooseName)
                 pEditor->setName(strValue);
             else if (fChoosePath)
-                pEditor->setPath(strValue);
+            {
+                const QString strFolder = QFileInfo(strValue).absolutePath();
+                const QString strParentFolder = QFileInfo(strFolder).absolutePath();
+                pEditor->setPath(strParentFolder);
+            }
             else if (fChooseType)
                 pEditor->setGuestOSTypeByTypeId(strValue);
 

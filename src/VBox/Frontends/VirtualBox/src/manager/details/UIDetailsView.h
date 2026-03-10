@@ -1,10 +1,10 @@
-/* $Id: UIDetailsView.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIDetailsView.h 112647 2026-01-20 14:47:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsView class declaration.
  */
 
 /*
- * Copyright (C) 2012-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -35,9 +35,9 @@
 #include "QIGraphicsView.h"
 
 /* Forward declarations: */
-class UIDetails;
+class UIDetailsModel;
 
-/* Graphics details-view: */
+/** QIGraphicsView extension used as VM details pane view. */
 class UIDetailsView : public QIGraphicsView
 {
     Q_OBJECT;
@@ -49,12 +49,16 @@ signals:
 
 public:
 
-    /** Constructs a details-view passing @a pParent to the base-class.
-      * @param  pParent  Brings the details container to embed into. */
-    UIDetailsView(UIDetails *pParent);
+    /** Constructs a details-view passing @a pParent to the base-class. */
+    UIDetailsView(QWidget *pParent);
 
-    /** Returns the details reference. */
-    UIDetails *details() const { return m_pDetails; }
+    /** @name General stuff.
+      * @{ */
+        /** Defines @a pDetailsModel reference. */
+        void setModel(UIDetailsModel *pDetailsModel);
+        /** Returns Chooser-model reference. */
+        UIDetailsModel *model() const;
+    /** @} */
 
 public slots:
 
@@ -86,8 +90,11 @@ private:
     /** Updates scene rectangle. */
     void updateSceneRect();
 
-    /** Holds the details reference. */
-    UIDetails *m_pDetails;
+    /** @name General stuff.
+      * @{ */
+        /** Holds the Details-model reference. */
+        UIDetailsModel *m_pDetailsModel;
+    /** @} */
 
     /** Updates scene rectangle. */
     int m_iMinimumWidthHint;

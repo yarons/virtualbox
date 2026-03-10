@@ -1,10 +1,10 @@
-/* $Id: UIDetailsWidgetNATNetwork.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIDetailsWidgetNATNetwork.cpp 113267 2026-03-05 10:14:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsWidgetNATNetwork class implementation.
  */
 
 /*
- * Copyright (C) 2009-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -40,14 +40,15 @@
 #include "QITabWidget.h"
 #include "UIIconPool.h"
 #include "UIDetailsWidgetNATNetwork.h"
-#include "UIMessageCenter.h"
 #include "UINetworkManager.h"
 #include "UINetworkManagerUtils.h"
-#include "UINotificationCenter.h"
+#include "UINotificationMessage.h"
 #include "UITranslationEventListener.h"
 
 /* Other VBox includes: */
 #include "iprt/cidr.h"
+#include "iprt/errcore.h"
+#include "iprt/string.h"
 
 
 UIDetailsWidgetNATNetwork::UIDetailsWidgetNATNetwork(EmbedTo enmEmbedding, QWidget *pParent /* = 0 */)
@@ -93,32 +94,17 @@ bool UIDetailsWidgetNATNetwork::revalidate() const
 {
     /* Make sure network name isn't empty: */
     if (m_newData.m_strName.isEmpty())
-    {
-        UINotificationMessage::warnAboutNoNameSpecified(m_oldData.m_strName);
-        return false;
-    }
-    else
-    {
-        /* Make sure item names are unique: */
-        if (m_busyNames.contains(m_newData.m_strName))
-        {
-            UINotificationMessage::warnAboutNameAlreadyBusy(m_newData.m_strName);
-            return false;
-        }
-    }
+        return UINotificationMessage::warnAboutNoNameSpecified(m_oldData.m_strName);
+    /* Make sure item names are unique: */
+    else if (m_busyNames.contains(m_newData.m_strName))
+        return UINotificationMessage::warnAboutNameAlreadyBusy(m_newData.m_strName);
 
     /* Make sure IPv4 prefix isn't empty: */
     if (m_newData.m_strPrefixIPv4.isEmpty())
-    {
-        UINotificationMessage::warnAboutNoIPv4PrefixSpecified(m_newData.m_strName);
-        return false;
-    }
+        return UINotificationMessage::warnAboutNoIPv4PrefixSpecified(m_newData.m_strName);
     /* Make sure IPv6 prefix isn't empty if IPv6 is supported: */
     if (m_newData.m_fSupportsIPv6 && m_newData.m_strPrefixIPv6.isEmpty())
-    {
-        UINotificationMessage::warnAboutNoIPv6PrefixSpecified(m_newData.m_strName);
-        return false;
-    }
+        return UINotificationMessage::warnAboutNoIPv6PrefixSpecified(m_newData.m_strName);
 
     /* Validate 'Forwarding' tab content: */
     return m_pForwardingTableIPv4->validate() && m_pForwardingTableIPv6->validate();

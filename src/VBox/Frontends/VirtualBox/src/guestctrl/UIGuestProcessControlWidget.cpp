@@ -1,10 +1,10 @@
-/* $Id: UIGuestProcessControlWidget.cpp 111182 2025-09-30 09:38:54Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestProcessControlWidget.cpp 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlWidget class implementation.
  */
 
 /*
- * Copyright (C) 2016-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2016-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -67,7 +67,6 @@ private:
 
 class UIGuestControlTreeWidget : public QITreeWidget
 {
-
     Q_OBJECT;
 
 signals:

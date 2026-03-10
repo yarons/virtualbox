@@ -1,10 +1,10 @@
-/* $Id: UIFDCreationDialog.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIFDCreationDialog.cpp 113274 2026-03-06 15:28:08Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFDCreationDialog class implementation.
  */
 
 /*
- * Copyright (C) 2008-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2008-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -42,7 +42,6 @@
 #include "UIMedium.h"
 #include "UIMediumEnumerator.h"
 #include "UIMediumTools.h"
-#include "UIMessageCenter.h"
 #include "UINotificationCenter.h"
 #include "UIModalWindowManager.h"
 #include "UITranslationEventListener.h"
@@ -119,7 +118,7 @@ void UIFDCreationDialog::accept()
                                              KAccessMode_ReadWrite, KDeviceType_Floppy);
     if (!comVBox.isOk())
     {
-        msgCenter().cannotCreateMediumStorage(comVBox, strMediumLocation, this);
+        UINotificationMessage::cannotCreateMediumStorage(comVBox, strMediumLocation, this);
         return;
     }
 

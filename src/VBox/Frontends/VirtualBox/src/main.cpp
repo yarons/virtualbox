@@ -1,10 +1,10 @@
-/* $Id: main.cpp 110791 2025-08-22 15:14:50Z serkan.bayraktar@oracle.com $ */
+/* $Id: main.cpp 112954 2026-02-11 14:42:55Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -31,7 +31,6 @@
 #ifdef VBOX_WS_NIX
 # ifndef Q_OS_SOLARIS
 #  include <QFontDatabase>
-#  include "VBoxUtils.h"
 # endif
 #endif
 
@@ -41,7 +40,6 @@
 #include "UIModalWindowManager.h"
 #include "UIStarter.h"
 #ifdef VBOX_WS_MAC
-# include "VBoxUtils.h"
 # include "UICocoaApplication.h"
 #endif /* VBOX_WS_MAC */
 #ifdef VBOX_WS_NIX
@@ -305,6 +303,7 @@ static void ShowHelp()
         "\n"
         "Expert options:\n"
         "  --execute-all-in-iem       For debugging the interpreted execution mode.\n"
+        "  --execute-all-in-rem       For debugging the recompiled execution mode.\n"
         "  --driverless               Do not open the support driver (NEM or IEM mode).\n"
         "  --warp-pct=<pct>           time warp factor, 100%% (= 1.0) = normal speed\n"
         "  --no-keyboard-grabbing     Don't grab the keyboard on windows (for debugging).\n"

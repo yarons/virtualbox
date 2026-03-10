@@ -1,10 +1,10 @@
-/* $Id: UIBootFailureDialog.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIBootFailureDialog.h 113252 2026-03-04 14:45:19Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIBootFailureDialog class declaration.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -48,7 +48,6 @@ class UIFilePathSelector;
 /** QIDialog extension providing GUI with a dialog to select an existing medium. */
 class UIBootFailureDialog : public QIMainDialog
 {
-
     Q_OBJECT;
 
 signals:

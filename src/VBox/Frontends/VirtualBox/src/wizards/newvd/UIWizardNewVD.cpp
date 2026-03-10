@@ -1,10 +1,10 @@
-/* $Id: UIWizardNewVD.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIWizardNewVD.cpp 113267 2026-03-05 10:14:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class implementation.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -183,10 +183,7 @@ bool UIWizardNewVD::createVirtualDisk()
     CMedium comVirtualDisk = comVBox.CreateMedium(m_comMediumFormat.GetName(),
                                                   m_strMediumPath, KAccessMode_ReadWrite, m_enmDeviceType);
     if (!comVBox.isOk())
-    {
-        UINotificationMessage::cannotCreateMediumStorage(comVBox, m_strMediumPath, notificationCenter());
-        return false;
-    }
+        return UINotificationMessage::cannotCreateMediumStorage(comVBox, m_strMediumPath, this);
 
     /* Compose medium-variant: */
     QVector<KMediumVariant> variants(sizeof(qulonglong) * 8);

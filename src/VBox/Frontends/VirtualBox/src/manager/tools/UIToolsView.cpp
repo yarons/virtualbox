@@ -1,10 +1,10 @@
-/* $Id: UIToolsView.cpp 111239 2025-10-03 14:20:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsView.cpp 112408 2026-01-12 14:12:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class implementation.
  */
 
 /*
- * Copyright (C) 2012-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -380,6 +380,10 @@ void UIToolsView::prepareConnections()
     /* Translation signal: */
     connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
             this, &UIToolsView::sltRetranslateUI);
+
+    /* Prepare connections: */
+    connect(&uiCommon(), &UICommon::sigThemeChange,
+            this, &UIToolsView::sltUpdatePalette);
 }
 
 void UIToolsView::cleanupConnections()

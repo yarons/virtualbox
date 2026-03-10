@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 111404 2025-10-14 23:11:40Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 112988 2026-02-13 09:06:23Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
 
 #
-# Copyright (C) 2006-2025 Oracle and/or its affiliates.
+# Copyright (C) 2006-2026 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.
@@ -793,6 +793,7 @@ RuntimeBaseR3_SOURCES      := \
 	common/vfs/vfsstdpipe.cpp \
 	common/vfs/vfsprintf.cpp \
 	common/zip/cpiovfs.cpp \
+	common/zip/detect.cpp \
 	common/zip/tarcmd.cpp \
 	common/zip/tarvfs.cpp \
 	common/zip/tarvfswriter.cpp \
@@ -1187,6 +1188,7 @@ RuntimeBaseR3_SOURCES.linux = \
 	r3/posix/allocex-r3-posix.cpp \
 	r3/linux/RTThreadGetNativeState-linux.cpp \
 	r3/linux/fileaio-linux.cpp \
+	r3/linux/init-linux.cpp \
 	r3/linux/ioqueue-iouringfile-provider.cpp \
 	r3/linux/krnlmod-linux.cpp \
 	r3/linux/mp-linux.cpp \
@@ -1412,6 +1414,7 @@ RuntimeBaseR3_SOURCES.darwin = \
 	r3/darwin/RTCrStoreCreateSnapshotById-darwin.cpp \
 	r3/darwin/filelock-darwin.cpp \
 	r3/darwin/RTFileQuerySectorSize-darwin.cpp \
+	r3/darwin/init-darwin.cpp \
 	r3/darwin/krnlmod-darwin.cpp \
 	r3/darwin/mp-darwin.cpp \
 	r3/darwin/pathhost-darwin.cpp \
@@ -2539,6 +2542,7 @@ RuntimeBldProg_SOURCES          = \
 	common/sort/shellsort.cpp \
 	common/string/base64.cpp \
 	common/string/RTStrCat.cpp \
+	common/string/RTStrCatEx.cpp \
 	common/string/RTStrCmp.cpp \
 	common/string/RTStrCopy.cpp \
 	common/string/RTStrCopyEx.cpp \
@@ -2596,10 +2600,13 @@ RuntimeBldProg_SOURCES          = \
 	common/vfs/vfsmisc.cpp \
 	common/vfs/vfsmsg.cpp \
 	common/vfs/vfsprintf.cpp \
+	common/vfs/vfsreadahead.cpp \
 	common/vfs/vfsstddir.cpp \
 	common/vfs/vfsstdfile.cpp \
 	common/vfs/vfsstdpipe.cpp \
 	common/zip/gzipvfs.cpp \
+	common/zip/cpiovfs.cpp \
+	common/zip/detect.cpp \
 	common/zip/tarcmd.cpp \
 	common/zip/tarvfs.cpp \
 	common/zip/tarvfswriter.cpp \
@@ -2957,10 +2964,8 @@ VBoxRT_DEFS                   := $(filter-out RT_NO_GIP, $(RuntimeBaseR3_DEFS)) 
 	IPRT_WITH_XAR \
 	IPRT_WITH_GHIDRA_DBG_MOD \
 	$(if-expr !defined(VBOX_WITH_ALT_HASH_CODE),IPRT_WITHOUT_SHA512T224 IPRT_WITHOUT_SHA512T256,)
-ifn1of ($(KBUILD_TARGET_ARCH), amd64 x86)
- ifn1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), win.arm64)
-  VBoxRT_DEFS                 += RT_NO_GIP
- endif
+ifndef VBOX_WITH_R0_MODULES
+ VBoxRT_DEFS                  += RT_NO_GIP
 endif
 ifdef VBOX_WITH_LIBCURL
  VBoxRT_DEFS                  += IPRT_WITH_HTTP
@@ -3087,6 +3092,16 @@ VBoxRT_LDFLAGS.win             = /MANIFEST \
 	/delayload:ole32.dll \
 	/delayload:oleaut32.dll \
 	/delayload:advapi32.dll
+# We could alias symbols on linux this way:
+#ifn1of ($(KBUILD_TARGET), darwin os2 solaris win)
+# if "$(substr $(VBOX_GCC_std),-2)" >= "17"
+#  ifdef VBOX_USE_CLANG
+#   VBoxRT_LDFLAGS += -Wl,--defsym=_ZN22RTCRestBinaryParameter19setProducerCallbackEPFiPS_PvmmPmES1_m=_ZN22RTCRestBinaryParameter19setProducerCallbackEPDoFiPS_PvmmPmES1_m
+#  else
+#   VBoxRT_LDFLAGS += -Wl,--defsym=_ZN22RTCRestBinaryParameter19setProducerCallbackEPDoFiPS_PvmmPmES1_m=_ZN22RTCRestBinaryParameter19setProducerCallbackEPFiPS_PvmmPmES1_m
+#  endif
+# endif
+#endif
 
 if1of (VBoxRT, $(DLLS))
  $(call VBOX_SET_VER_INFO_DLL,VBoxRT,VirtualBox Runtime)
@@ -3169,7 +3184,8 @@ if1of ($(DLLS), VBoxRT)
 		$(if-expr "$(KBUILD_TARGET_ARCH)" == "x86"  ,-e "/not-x86/d",  -e "/only-x86/d") \
 		$(if-expr "$(KBUILD_TARGET_ARCH)" == "amd64",-e "/not-amd64/d",-e "/only-amd64/d") \
 		$(if-expr "$(KBUILD_TARGET_ARCH)" == "arm64",-e "/not-arm64/d",-e "/only-arm64/d") \
-		$(if-expr "$(substr $(if-expr $(KBUILD_TARGET) != 'win',$(VBOX_GCC_std), $(VBOX_VCC_std)),-2)" >= "17" \
+		$(if-expr defined(VBOX_WITH_R0_MODULES)     ,-e "/no-gip/d",   -e "/with-gip/d") \
+		$(if-expr "$(substr $(if-expr $(KBUILD_TARGET) != 'win',$(VBOX_GCC_std),$(VBOX_VCC_std)),-2)" >= "17" \
                          && ("$(KBUILD_TARGET)" != "win" || !$(intersects RT_RELAXED_CALLBACKS_TYPES,$(DEFS))) \
 		                                            ,-e "/before-noexcept/d", -e "/after-noexcept/d") \
 		$^
@@ -3252,6 +3268,7 @@ if1of ($(DLLS), VBoxRT-x86)
 		-e "/not-x86/d" \
 		-e "/only-amd64/d" \
 		-e "/only-arm64/d" \
+		$(if-expr defined(VBOX_WITH_R0_MODULES)     ,-e "/no-gip/d",   -e "/with-gip/d") \
 		$(if-expr "$(substr $(if-expr $(KBUILD_TARGET) != 'win',$(VBOX_GCC_std), $(VBOX_VCC_std)),-2)" >= "17" \
 		                                            ,-e "/before-noexcept/d", -e "/after-noexcept/d") \
 		$(VBOX_PATH_RUNTIME_SRC)/r3/win/VBoxRT-x86.def
@@ -3326,8 +3343,9 @@ if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), win.x86 win.amd64 linux.amd64 dar
 		$(if-expr "$(KBUILD_TARGET_ARCH)" == "x86"  ,-e "/not-x86/d",  -e "/only-x86/d") \
 		$(if-expr "$(KBUILD_TARGET_ARCH)" == "amd64",-e "/not-amd64/d",-e "/only-amd64/d") \
 		$(if-expr "$(KBUILD_TARGET_ARCH)" == "arm64",-e "/not-arm64/d",-e "/only-arm64/d") \
+		$(if-expr defined(VBOX_WITH_R0_MODULES)     ,-e "/no-gip/d",   -e "/with-gip/d") \
 		$(if-expr "$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)" == "darwin.arm64",, -e "/only-darwin.arm64/d") \
-		$(if-expr "$(substr $(if-expr $(KBUILD_TARGET) != 'win',$(VBOX_GCC_std), $(VBOX_VCC_std)),-2)" >= "17" \
+		$(if-expr "$(substr $(if-expr $(KBUILD_TARGET) != 'win',$(VBOX_GCC_std),$(VBOX_VCC_std)),-2)" >= "17" \
 			,-e "/before-noexcept/d", -e "/after-noexcept/d") \
 		$(if-expr $(intersects $(KBUILD_TARGET), linux) && $(intersects $(KBUILD_TARGET_ARCH), amd64 arm64) \
 			,-e "/int64=llong/d", -e "/int64=long/d") \
@@ -3385,6 +3403,7 @@ RuntimeR3NoCrt_SOURCES  := \
 	generic/rtStrFormatKernelAddress-generic.cpp
 
 RuntimeR3NoCrt_SOURCES.x86 := \
+	common/misc/setjmp.asm \
 	common/string/memcpy.asm \
 	common/string/memchr.asm \
 	common/string/memcmp.asm \
@@ -3397,6 +3416,7 @@ RuntimeR3NoCrt_SOURCES.x86 := \
 	common/string/RTStrEnd.asm
 
 RuntimeR3NoCrt_SOURCES.amd64 := \
+	common/misc/setjmp.asm \
 	common/string/memcpy.asm \
 	common/string/memchr.asm \
 	common/string/memcmp.asm \
@@ -4120,6 +4140,11 @@ RuntimeR0Drv_SOURCES.darwin.amd64 = \
 RuntimeR0Drv_SOURCES.darwin.x86 = \
 	common/string/memchr.asm \
 	common/string/mempcpy.asm
+
+RuntimeR0Drv_SOURCES.darwin.arm64 = \
+	common/asm/ASMMemFirstNonZero-generic.cpp \
+	common/string/memchr.cpp \
+	common/string/mempcpy.cpp
 
 RuntimeR0Drv_SOURCES.os2 = \
 	common/path/RTPathFilenameUtf16.cpp \

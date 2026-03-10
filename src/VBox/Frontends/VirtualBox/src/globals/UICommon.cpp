@@ -1,10 +1,10 @@
-/* $Id: UICommon.cpp 110929 2025-09-08 14:02:31Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.cpp 113062 2026-02-17 12:37:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -58,7 +58,7 @@
 #include "UIMediumEnumerator.h"
 #include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
-#include "UINotificationCenter.h"
+#include "UINotificationMessage.h"
 #include "UIPopupCenter.h"
 #include "UIShortcutPool.h"
 #include "UIThreadPool.h"
@@ -167,6 +167,7 @@ UICommon::UICommon(UIType enmType)
     , m_fNoKeyboardGrabbing(false)
     , m_fRestoreCurrentSnapshot(false)
     , m_fExecuteAllInIem(false)
+    , m_fExecuteAllInRem(false)
     , m_uWarpPct(100)
 #ifdef VBOX_WITH_DEBUGGER_GUI
     , m_fDbgEnabled(0)
@@ -480,6 +481,11 @@ void UICommon::prepare()
             enmOptType = OptType_VMRunner;
             m_fExecuteAllInIem = true;
         }
+        else if (!::strcmp(arg, "--execute-all-in-rem") || !::strcmp(arg, "--execute-all-in-recompiler"))
+        {
+            enmOptType = OptType_VMRunner;
+            m_fExecuteAllInRem = true;
+        }
         else if (!::strcmp(arg, "--driverless"))
             enmOptType = OptType_VMRunner;
         else if (MATCH_OPT_WITH_VALUE("--warp-pct"))
@@ -683,11 +689,6 @@ void UICommon::prepare()
     /* Schedule update manager: */
     UIUpdateManager::schedule();
 #endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
-
-#ifdef RT_OS_LINUX
-    /* Make sure no wrong USB mounted: */
-    checkForWrongUSBMounted();
-#endif /* RT_OS_LINUX */
 
     /* Initialize font size settings: */
     m_iOriginalFontPixelSize = qApp->font().pixelSize();
@@ -1256,6 +1257,35 @@ QString UICommon::findUniqueFileName(const QString &strFullFolderPath, const QSt
     return strNewName;
 }
 
+#ifdef RT_OS_LINUX
+/* static */
+void UICommon::checkForWrongUSBMounted()
+{
+    /* Make sure '/proc/mounts' exists and can be opened: */
+    QFile file("/proc/mounts");
+    if (!file.exists() || !file.open(QIODevice::ReadOnly | QIODevice::Text))
+        return;
+
+    /* Fetch contents: */
+    QStringList contents;
+    for (;;)
+    {
+        QByteArray line = file.readLine();
+        if (line.isEmpty())
+            break;
+        contents << line;
+    }
+    /* Grep contents for usbfs presence: */
+    QStringList grep1(contents.filter("/sys/bus/usb/drivers"));
+    QStringList grep2(grep1.filter("usbfs"));
+    if (grep2.isEmpty())
+        return;
+
+    /* Show corresponding warning: */
+    UINotificationMessage::warnAboutWrongUSBMounted();
+}
+#endif /* RT_OS_LINUX */
+
 /* static */
 void UICommon::setMinimumWidthAccordingSymbolCount(QSpinBox *pSpinBox, int cCount)
 {
@@ -1645,32 +1675,3 @@ bool UICommon::isDebuggerWorker(int *piDbgCfgVar, const char *pszExtraDataName) 
 }
 
 #endif /* VBOX_WITH_DEBUGGER_GUI */
-
-#ifdef RT_OS_LINUX
-/* static */
-void UICommon::checkForWrongUSBMounted()
-{
-    /* Make sure '/proc/mounts' exists and can be opened: */
-    QFile file("/proc/mounts");
-    if (!file.exists() || !file.open(QIODevice::ReadOnly | QIODevice::Text))
-        return;
-
-    /* Fetch contents: */
-    QStringList contents;
-    for (;;)
-    {
-        QByteArray line = file.readLine();
-        if (line.isEmpty())
-            break;
-        contents << line;
-    }
-    /* Grep contents for usbfs presence: */
-    QStringList grep1(contents.filter("/sys/bus/usb/drivers"));
-    QStringList grep2(grep1.filter("usbfs"));
-    if (grep2.isEmpty())
-        return;
-
-    /* Show corresponding warning: */
-    msgCenter().warnAboutWrongUSBMounted();
-}
-#endif /* RT_OS_LINUX */

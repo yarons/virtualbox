@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: schedulerbase.py 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: schedulerbase.py 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $
 # pylint: disable=too-many-lines
 
 
@@ -9,7 +9,7 @@ Test Manager - Base class and utilities for the schedulers.
 
 __copyright__ = \
 """
-Copyright (C) 2012-2025 Oracle and/or its affiliates.
+Copyright (C) 2012-2026 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -38,7 +38,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 110684 $"
+__version__ = "$Revision: 112403 $"
 
 
 # Standard python imports.
@@ -62,7 +62,9 @@ from testmanager.core.testset           import TestSetData, TestSetLogic;
 
 # Python 3 hacks:
 if sys.version_info[0] >= 3:
-    xrange = range; # pylint: disable=redefined-builtin,invalid-name
+    xrange = range;  # pylint: disable=redefined-builtin,invalid-name
+else:
+    xrange = xrange; # pylint: disable=redefined-builtin,invalid-name,self-assigning-variable
 
 
 
@@ -364,8 +366,8 @@ class SchedQueueData(ModelDataBase):
         self.idTestSetGangLeader    = None;
         self.cMissingGangMembers    = 1;
 
-    def initFromValues(self, idSchedGroup, idGenTestCaseArgs, idTestGroup, aidTestGroupPreReqs, # pylint: disable=too-many-arguments
-                       bmHourlySchedule, cMissingGangMembers,
+    def initFromValues(self, idSchedGroup, idGenTestCaseArgs, # pylint: disable=too-many-arguments,too-many-positional-arguments
+                       idTestGroup, aidTestGroupPreReqs, bmHourlySchedule, cMissingGangMembers,
                        idItem = None, offQueue = None, tsConfig = None, tsLastScheduled = None, idTestSetGangLeader = None):
         """
         Reinitialize with all attributes potentially given as inputs.
@@ -573,7 +575,7 @@ class SchedulerBase(object):
     def getElapsedSecs(self):
         """ Returns the number of seconds this scheduling task has been running. """
         tsSecNow = utils.timestampSecond();
-        if tsSecNow < self._tsSecStart: # paranoia
+        if tsSecNow < self._tsSecStart: # paranoia  # pylint: disable=consider-using-min-builtin
             self._tsSecStart = tsSecNow;
         return tsSecNow - self._tsSecStart;
 

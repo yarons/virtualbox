@@ -1,10 +1,10 @@
-/* $Id: UISession.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UISession.h 112641 2026-01-19 13:59:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
 
 /*
- * Copyright (C) 2010-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -86,6 +86,11 @@ signals:
 
     /** @name COM events stuff.
      ** @{ */
+        /** Notifies about guest property change.
+          * @param  strName   Brings the guest property name.
+          * @param  strValue  Brings the guest property value. */
+        void sigGuestPropertyChange(const QString &strName,
+                                    const QString &strValue);
         /** Notifies about additions state change. */
         void sigAdditionsStateChange();
         /** Notifies about additions state actually change. */

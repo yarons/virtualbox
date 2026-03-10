@@ -1,10 +1,10 @@
-/* $Id: UICommon.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UICommon.h 112957 2026-02-11 15:18:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -190,6 +190,8 @@ public:
 
         /** Returns the --execute-all-in-iem option value. */
         bool areWeToExecuteAllInIem() const { return m_fExecuteAllInIem; }
+        /** Returns the --execute-all-in-recompiler option value. */
+        bool areWeToExecuteAllInRecompiler() const { return m_fExecuteAllInRem; }
         /** Returns whether --warp-factor option value is equal to 100. */
         bool isDefaultWarpPct() const { return m_uWarpPct == 100; }
         /** Returns the --warp-factor option value. */
@@ -243,6 +245,11 @@ public:
         /** Returns a file name (unique up to extension) wrt. @a strFullFolderPath folder content. Starts
           * searching strBaseFileName and adds suffixes until a unique file name is found. */
         static QString findUniqueFileName(const QString &strFullFolderPath, const QString &strBaseFileName);
+
+#ifdef RT_OS_LINUX
+        /** Verifies that USB drivers are properly configured on Linux. */
+        static void checkForWrongUSBMounted();
+#endif
     /** @} */
 
     /** @name Widget stuff.
@@ -346,14 +353,6 @@ private:
 #endif
     /** @} */
 
-    /** @name USB stuff.
-     * @{ */
-#ifdef RT_OS_LINUX
-        /** Verifies that USB drivers are properly configured on Linux. */
-        static void checkForWrongUSBMounted();
-#endif
-    /** @} */
-
     /** Holds the singleton UICommon instance. */
     static UICommon *s_pInstance;
 
@@ -425,6 +424,8 @@ private:
 
         /** Holds the --execute-all-in-iem option value. */
         bool      m_fExecuteAllInIem;
+        /** Holds the --execute-all-in-rem/recompiler option value. */
+        bool      m_fExecuteAllInRem;
         /** Holds the --warp-factor option value. */
         uint32_t  m_uWarpPct;
 

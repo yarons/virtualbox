@@ -1,10 +1,10 @@
-/* $Id: UIWizardAddCloudVMPageExpert.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIWizardAddCloudVMPageExpert.cpp 112853 2026-02-06 13:04:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageExpert class implementation.
  */
 
 /*
- * Copyright (C) 2009-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -198,7 +198,7 @@ void UIWizardAddCloudVMPageExpert::sltRetranslateUI()
 void UIWizardAddCloudVMPageExpert::initializePage()
 {
     /* Populate providers: */
-    populateProviders(m_pProviderComboBox, wizard()->notificationCenter());
+    populateProviders(m_pProviderComboBox, wizard());
     /* Translate providers: */
     sltRetranslateUI();
     /* Fetch it, asynchronously: */
@@ -239,7 +239,7 @@ void UIWizardAddCloudVMPageExpert::sltHandleProviderComboChange()
     wizard()->setProviderShortName(m_pProviderComboBox->currentData(ProviderData_ShortName).toString());
 
     /* Update profiles: */
-    populateProfiles(m_pProfileComboBox, wizard()->notificationCenter(), wizard()->providerShortName(), wizard()->profileName());
+    populateProfiles(m_pProfileComboBox, wizard(), wizard()->providerShortName(), wizard()->profileName());
     sltHandleProfileComboChange();
 
     /* Notify about changes: */
@@ -250,10 +250,10 @@ void UIWizardAddCloudVMPageExpert::sltHandleProfileComboChange()
 {
     /* Update wizard fields: */
     wizard()->setProfileName(m_pProfileComboBox->currentData(ProfileData_Name).toString());
-    wizard()->setClient(cloudClientByName(wizard()->providerShortName(), wizard()->profileName(), wizard()->notificationCenter()));
+    wizard()->setClient(cloudClientByName(wizard()->providerShortName(), wizard()->profileName(), wizard()));
 
     /* Update profile instances: */
-    populateProfileInstances(m_pSourceInstanceList, wizard()->notificationCenter(), wizard()->client());
+    populateProfileInstances(m_pSourceInstanceList, wizard(), wizard()->client());
     sltHandleSourceInstanceChange();
 
     /* Notify about changes: */

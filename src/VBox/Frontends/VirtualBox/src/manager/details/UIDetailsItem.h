@@ -1,10 +1,10 @@
-/* $Id: UIDetailsItem.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIDetailsItem.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsItem class declaration.
  */
 
 /*
- * Copyright (C) 2012-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -45,7 +45,6 @@ class UIDetailsGroup;
 class UIDetailsModel;
 class UIDetailsSet;
 
-
 /** UIDetailsItem types. */
 enum UIDetailsItemType
 {
@@ -55,7 +54,6 @@ enum UIDetailsItemType
     UIDetailsItemType_Element,
     UIDetailsItemType_Preview
 };
-
 
 /** QIGraphicsWidget extension used as interface
   * for graphics details model/view architecture. */
@@ -94,9 +92,6 @@ public:
 
         /** Returns model reference. */
         UIDetailsModel *model() const;
-
-        /** Returns the description of the item. */
-        virtual QString description() const = 0;
 
         /** Installs event-filter for @a pSource object.
           * @note  Base-class implementation does nothing. */
@@ -153,7 +148,6 @@ private:
     UIDetailsItem *m_pParent;
 };
 
-
 /** QObject extension used to prepare details steps. */
 class UIPrepareStep : public QObject
 {
@@ -186,6 +180,5 @@ private:
     /** Holds the step number. */
     int    m_iStepNumber;
 };
-
 
 #endif /* !FEQT_INCLUDED_SRC_manager_details_UIDetailsItem_h */

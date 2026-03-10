@@ -1,10 +1,10 @@
-; $Id: VBoxRT-x86.def 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+; $Id: VBoxRT-x86.def 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - Win32 ASM exports.
 ;
 
 ;
-; Copyright (C) 2006-2025 Oracle and/or its affiliates.
+; Copyright (C) 2006-2026 Oracle and/or its affiliates.
 ;
 ; This file is part of VirtualBox base platform packages, as
 ; available from https://www.virtualbox.org.
@@ -37,20 +37,20 @@
 EXPORTS
     ASMMultU64ByU32DivByU32
 
-    RTTimeNanoTSLegacySyncInvarNoDelta
-    RTTimeNanoTSLFenceSyncInvarNoDelta
-    RTTimeNanoTSLegacyAsyncUseApicId
-    RTTimeNanoTSLegacyAsyncUseRdtscp
-    RTTimeNanoTSLegacyAsyncUseIdtrLim
-    RTTimeNanoTSLegacySyncInvarWithDeltaUseApicId
-    RTTimeNanoTSLegacySyncInvarWithDeltaUseRdtscp
-    RTTimeNanoTSLegacySyncInvarWithDeltaUseIdtrLim
-    RTTimeNanoTSLFenceAsyncUseApicId
-    RTTimeNanoTSLFenceAsyncUseRdtscp
-    RTTimeNanoTSLFenceAsyncUseIdtrLim
-    RTTimeNanoTSLFenceSyncInvarWithDeltaUseApicId
-    RTTimeNanoTSLFenceSyncInvarWithDeltaUseRdtscp
-    RTTimeNanoTSLFenceSyncInvarWithDeltaUseIdtrLim
+    RTTimeNanoTSLegacySyncInvarNoDelta                  ; with-gip
+    RTTimeNanoTSLFenceSyncInvarNoDelta                  ; with-gip
+    RTTimeNanoTSLegacyAsyncUseApicId                    ; with-gip
+    RTTimeNanoTSLegacyAsyncUseRdtscp                    ; with-gip
+    RTTimeNanoTSLegacyAsyncUseIdtrLim                   ; with-gip
+    RTTimeNanoTSLegacySyncInvarWithDeltaUseApicId       ; with-gip
+    RTTimeNanoTSLegacySyncInvarWithDeltaUseRdtscp       ; with-gip
+    RTTimeNanoTSLegacySyncInvarWithDeltaUseIdtrLim      ; with-gip
+    RTTimeNanoTSLFenceAsyncUseApicId                    ; with-gip
+    RTTimeNanoTSLFenceAsyncUseRdtscp                    ; with-gip
+    RTTimeNanoTSLFenceAsyncUseIdtrLim                   ; with-gip
+    RTTimeNanoTSLFenceSyncInvarWithDeltaUseApicId       ; with-gip
+    RTTimeNanoTSLFenceSyncInvarWithDeltaUseRdtscp       ; with-gip
+    RTTimeNanoTSLFenceSyncInvarWithDeltaUseIdtrLim      ; with-gip
 
     RTStrMemFind32
 

@@ -1,10 +1,10 @@
-/* $Id: UIWizardCloneVMEditors.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIWizardCloneVMEditors.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardDiskEditors class declaration.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -102,7 +102,6 @@ private:
     QString      m_strDefaultPath;
 };
 
-
 class UICloneVMAdditionalOptionsEditor : public QGroupBox
 {
     Q_OBJECT;
@@ -176,7 +175,6 @@ private:
     QRadioButton *m_pLinkedCloneRadio;
 };
 
-
 class UICloneVMCloneModeGroupBox : public QGroupBox
 {
     Q_OBJECT;
@@ -204,7 +202,5 @@ private:
     QRadioButton *m_pMachineAndChildsRadio;
     QRadioButton *m_pAllRadio;
 };
-
-
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_editors_UIWizardCloneVMEditors_h */

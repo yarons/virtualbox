@@ -1,10 +1,10 @@
-/* $Id: UIWizardNewVM.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIWizardNewVM.cpp 113268 2026-03-05 13:37:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -82,7 +82,6 @@ UIWizardNewVM::UIWizardNewVM(QWidget *pParent,
     , m_uMediumVariant(0)
     , m_uMediumSize(0)
     , m_enmDiskSource(SelectedDiskSource_New)
-    , m_fEmptyDiskRecommended(false)
     , m_pActionPool(pActionPool)
     , m_fStartHeadless(false)
     , m_strInitialISOFilePath(strISOFilePath)
@@ -160,7 +159,7 @@ bool UIWizardNewVM::createVM()
                                        QString(), QString(), QString());
         if (!vbox.isOk())
         {
-            UINotificationMessage::cannotCreateMachine(vbox, notificationCenter());
+            UINotificationMessage::cannotCreateMachine(vbox, this);
             cleanWizard();
             return false;
         }
@@ -189,7 +188,7 @@ bool UIWizardNewVM::createVM()
     vbox.RegisterMachine(m_machine);
     if (!vbox.isOk())
     {
-        UINotificationMessage::cannotRegisterMachine(vbox, m_machine.GetName(), notificationCenter());
+        UINotificationMessage::cannotRegisterMachine(vbox, m_machine.GetName(), this);
         cleanWizard();
         return false;
     }
@@ -228,7 +227,7 @@ bool UIWizardNewVM::createVirtualDisk()
     CMedium newVirtualDisk = comVBox.CreateMedium(m_comMediumFormat.GetName(), m_strMediumPath, KAccessMode_ReadWrite, KDeviceType_HardDisk);
     if (!comVBox.isOk())
     {
-        UINotificationMessage::cannotCreateMediumStorage(comVBox, m_strMediumPath, notificationCenter());
+        UINotificationMessage::cannotCreateMediumStorage(comVBox, m_strMediumPath, this);
         return fResult;
     }
 
@@ -291,7 +290,7 @@ bool UIWizardNewVM::attachDefaultDevices()
                     machine.AttachDevice(comHDDController.GetName(), iPortNumber, 0, KDeviceType_HardDisk, m_virtualDisk);
                     if (!machine.isOk())
                         UINotificationMessage::cannotAttachDevice(machine, UIMediumDeviceType_HardDisk, m_strMediumPath,
-                                                                  StorageSlot(enmHDDBus, iPortNumber, 0), notificationCenter());
+                                                                  StorageSlot(enmHDDBus, iPortNumber, 0), this);
                 }
             }
         }
@@ -302,7 +301,7 @@ bool UIWizardNewVM::attachDefaultDevices()
             if (machine.isOk())
                 success = true;
             else
-                UINotificationMessage::cannotSaveMachineSettings(machine, notificationCenter());
+                UINotificationMessage::cannotSaveMachineSettings(machine, this);
         }
 
         /* Attach optical drive: */
@@ -318,7 +317,7 @@ bool UIWizardNewVM::attachDefaultDevices()
                 opticalDisk =
                     vbox.OpenMedium(strISOFilePath, KDeviceType_DVD, KAccessMode_ReadWrite, false);
                 if (!vbox.isOk())
-                    UINotificationMessage::cannotOpenMedium(vbox, strISOFilePath, notificationCenter());
+                    UINotificationMessage::cannotOpenMedium(vbox, strISOFilePath, this);
             }
             LONG iPortNumber = portNumberForDevice(comDVDController);
             if (iPortNumber != -1)
@@ -326,7 +325,7 @@ bool UIWizardNewVM::attachDefaultDevices()
                 machine.AttachDevice(comDVDController.GetName(), iPortNumber, 0, KDeviceType_DVD, opticalDisk);
                 if (!machine.isOk())
                     UINotificationMessage::cannotAttachDevice(machine, UIMediumDeviceType_DVD, QString(),
-                                                              StorageSlot(enmDVDBus, 1, 0), notificationCenter());
+                                                              StorageSlot(enmDVDBus, 1, 0), this);
             }
         }
         /* Save machine settings here because  portNumberForDevice needs to inquiry port attachments of the controller: */
@@ -336,7 +335,7 @@ bool UIWizardNewVM::attachDefaultDevices()
             if (machine.isOk())
                 success = true;
             else
-                UINotificationMessage::cannotSaveMachineSettings(machine, notificationCenter());
+                UINotificationMessage::cannotSaveMachineSettings(machine, this);
         }
 
         /* Attach an empty floppy drive if recommended */
@@ -348,7 +347,7 @@ bool UIWizardNewVM::attachDefaultDevices()
                 machine.AttachDevice(comFloppyController.GetName(), 0, 0, KDeviceType_Floppy, CMedium());
                 if (!machine.isOk())
                     UINotificationMessage::cannotAttachDevice(machine, UIMediumDeviceType_Floppy, QString(),
-                                                              StorageSlot(KStorageBus_Floppy, 0, 0), notificationCenter());
+                                                              StorageSlot(KStorageBus_Floppy, 0, 0), this);
             }
         }
 
@@ -358,7 +357,7 @@ bool UIWizardNewVM::attachDefaultDevices()
             if (machine.isOk())
                 success = true;
             else
-                UINotificationMessage::cannotSaveMachineSettings(machine, notificationCenter());
+                UINotificationMessage::cannotSaveMachineSettings(machine, this);
         }
 
         session.UnlockMachine();
@@ -368,7 +367,7 @@ bool UIWizardNewVM::attachDefaultDevices()
         /* Unregister VM on failure: */
         const QVector<CMedium> media = m_machine.Unregister(KCleanupMode_DetachAllReturnHardDisksAndVMRemovable);
         if (!m_machine.isOk())
-            UINotificationMessage::cannotRemoveMachine(m_machine, notificationCenter());
+            UINotificationMessage::cannotRemoveMachine(m_machine, this);
         else
         {
             UINotificationProgressMachineMediaRemove *pNotification =
@@ -756,16 +755,6 @@ void UIWizardNewVM::setDiskSource(SelectedDiskSource enmDiskSource)
     m_enmDiskSource = enmDiskSource;
 }
 
-bool UIWizardNewVM::emptyDiskRecommended() const
-{
-    return m_fEmptyDiskRecommended;
-}
-
-void UIWizardNewVM::setEmptyDiskRecommended(bool fEmptyDiskRecommended)
-{
-    m_fEmptyDiskRecommended = fEmptyDiskRecommended;
-}
-
 void UIWizardNewVM::setDetectedWindowsImageNamesAndIndices(const QVector<QString> &names, const QVector<ulong> &ids)
 {
     AssertMsg(names.size() == ids.size(),
@@ -854,10 +843,7 @@ void UIWizardNewVM::setUnattendedPageVisible(bool fVisible)
 bool UIWizardNewVM::checkUnattendedInstallError(const CUnattended &comUnattended) const
 {
     if (!comUnattended.isOk())
-    {
-        UINotificationMessage::cannotRunUnattendedGuestInstall(comUnattended);
-        return false;
-    }
+        return UINotificationMessage::cannotRunUnattendedGuestInstall(comUnattended);
     return true;
 }
 

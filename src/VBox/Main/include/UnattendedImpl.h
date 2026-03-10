@@ -1,10 +1,10 @@
-/* $Id: UnattendedImpl.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UnattendedImpl.h 112611 2026-01-15 13:52:52Z serkan.bayraktar@oracle.com $ */
 /** @file
  * Unattended class header
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -81,6 +81,8 @@ public:
     Utf8Str const &i_getUser() const;
     Utf8Str const &i_getUserPassword() const;
     Utf8Str const &i_getAdminPassword() const;
+    /* We need the following since i_getAdminPassword returns user password when mStrAdminPassword is empty. */
+    bool           i_getIsAdminPasswordEmpty() const;
     Utf8Str const &i_getFullUserName() const;
     Utf8Str const &i_getProductKey() const;
     Utf8Str const &i_getProxy() const;
@@ -113,6 +115,7 @@ public:
     bool           i_isFirmwareEFI() const;
     Utf8Str const &i_getDetectedOSVersion();
     bool           i_getAvoidUpdatesOverNetwork() const;
+    VBOXOSTYPE     i_getGuestOsArch() const;
 
 private:
     ComPtr<VirtualBox> const mParent;       /**< Strong reference to the parent object (VirtualBox/IMachine). */

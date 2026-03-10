@@ -1,10 +1,10 @@
-/* $Id: HostImpl.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: HostImpl.cpp 113055 2026-02-17 10:27:27Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
 
 /*
- * Copyright (C) 2004-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2004-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -82,6 +82,17 @@
 # include <errno.h>
 # include <net/if.h>
 # include <net/if_arp.h>
+# ifdef VBOX_WITH_NATIVE_NEM
+#  include <unistd.h>
+#  include <fcntl.h>
+#  include <linux/kvm.h>
+#  ifndef KVM_CAP_X86_USER_SPACE_MSR
+#   define KVM_CAP_X86_USER_SPACE_MSR 187
+#  endif
+#  ifndef KVM_CAP_X86_MSR_FILTER
+#   define KVM_CAP_X86_MSR_FILTER     188
+#  endif
+# endif
 #endif /* RT_OS_LINUX */
 
 #ifdef RT_OS_SOLARIS
@@ -1085,12 +1096,21 @@ HRESULT Host::getUSBDevices(std::vector<ComPtr<IHostUSBDevice> > &aUSBDevices)
 }
 
 /**
- * This method return the list of registered name servers
+ * This method return the list of IPv4 registered name servers
  */
 HRESULT Host::getNameServers(std::vector<com::Utf8Str> &aNameServers)
 {
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
     return m->hostDnsMonitorProxy.GetNameServers(aNameServers);
+}
+
+/**
+ * This method return the list of IPv6 registered name servers
+ */
+HRESULT Host::getV6NameServers(std::vector<com::Utf8Str> &aNameServers)
+{
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+    return m->hostDnsMonitorProxy.GetV6NameServers(aNameServers);
 }
 
 
@@ -4277,15 +4297,55 @@ BOOL Host::i_HostIsNativeApiSupported()
         return FALSE;
     if (cMaxHyperLeaf >= UINT32_C(0x40000005))
         return TRUE;
+
+    return FALSE;
+#  elif defined(RT_ARCH_ARM64)
+    /** @todo would be great if we could recognize a root partition from the
+     *        CPUID info, but I currently don't dare do that. Just assume that
+     *        it is supported if running on ARM, all hardware supported by Windows/ARM
+     *        seems to support that after all. */
+    return TRUE;
 #  endif
 # elif defined(RT_OS_LINUX)
+    static const int s_aCapsReq[] =
+    {
+        KVM_CAP_USER_MEMORY,
+        KVM_CAP_NR_MEMSLOTS,
+#ifdef RT_ARCH_AMD64
+        KVM_CAP_HLT,
+        KVM_CAP_ADJUST_CLOCK,
+        KVM_CAP_XSAVE,
+        KVM_CAP_XCRS,
+        KVM_CAP_X86_USER_SPACE_MSR,            /* (since 5.10) */
+        KVM_CAP_X86_MSR_FILTER
+#endif
+#ifdef RT_ARCH_ARM64
+        KVM_CAP_ARM_PSCI,
+        KVM_CAP_ARM_SET_DEVICE_ADDR,
+        KVM_CAP_DEVICE_CTRL,
+        KVM_CAP_ARM_PSCI_0_2,
+        KVM_CAP_ARM_VM_IPA_SIZE
+#endif
+    };
+
     int fdKvm = open("/dev/kvm", O_RDWR | O_CLOEXEC);
     if (fdKvm >= 0)
     {
-        /** @todo Do we need to do anything else here? */
+        /* Check that the host has all the required capabilities. */
+        for (uint32_t i = 0; i < RT_ELEMENTS(s_aCapsReq); i++)
+        {
+            int vrcLnx = ioctl(fdKvm, KVM_CHECK_EXTENSION, s_aCapsReq[i]);
+            if (vrcLnx <= 0)
+            {
+                close(fdKvm);
+                return FALSE;
+            }
+        }
         close(fdKvm);
         return TRUE;
     }
+
+    return FALSE;
 # elif defined(RT_OS_DARWIN)
     /*
      * The kern.hv_support parameter indicates support for the hypervisor API
@@ -4298,8 +4358,9 @@ BOOL Host::i_HostIsNativeApiSupported()
         if (fHvSupport != 0)
             return TRUE;
     }
-# endif
+
     return FALSE;
+# endif
 }
 #endif
 

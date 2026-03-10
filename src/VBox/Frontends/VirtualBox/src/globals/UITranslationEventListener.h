@@ -1,10 +1,10 @@
-/* $Id: UITranslationEventListener.h 110837 2025-08-28 12:44:55Z sergey.dubov@oracle.com $ */
+/* $Id: UITranslationEventListener.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITranslationEventListener class declaration.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -69,7 +69,6 @@ private:
     static UITranslationEventListener *instance();
     /** Allows for shortcut access. */
     friend UITranslationEventListener &translationEventListener();
-
 };
 
 inline UITranslationEventListener &translationEventListener() { return *UITranslationEventListener::instance(); }

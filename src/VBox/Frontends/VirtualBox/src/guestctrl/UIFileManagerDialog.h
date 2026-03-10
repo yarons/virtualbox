@@ -1,10 +1,10 @@
-/* $Id: UIFileManagerDialog.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIFileManagerDialog.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerDialog class declaration.
  */
 
 /*
- * Copyright (C) 2010-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -44,7 +44,6 @@ class QDialogButtonBox;
 class QVBoxLayout;
 class UIActionPool;
 class UIFileManagerDialog;
-
 
 /** QIManagerDialogFactory extension used as a factory for the file manager dialog. */
 class UIFileManagerDialogFactory : public QIManagerDialogFactory
@@ -117,6 +116,5 @@ private:
     QUuid    m_uMachineId;
     QString  m_strMachineName;
 };
-
 
 #endif /* !FEQT_INCLUDED_SRC_guestctrl_UIFileManagerDialog_h */

@@ -1,10 +1,10 @@
-/* $Id: UIVMActivityToolWidget.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIVMActivityToolWidget.cpp 113058 2026-02-17 10:55:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityToolWidget class implementation.
  */
 
 /*
- * Copyright (C) 2009-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -36,7 +36,6 @@
 #include "UICommon.h"
 #include "UIVMActivityMonitor.h"
 #include "UIVMActivityToolWidget.h"
-#include "UIMessageCenter.h"
 #include "UIVirtualMachineItem.h"
 #include "UIVirtualMachineItemCloud.h"
 #include "UIVirtualMachineItemLocal.h"
@@ -47,6 +46,7 @@
 
 /* COM includes: */
 #include "CMachine.h"
+
 
 UIVMActivityToolWidget::UIVMActivityToolWidget(EmbedTo enmEmbedding, UIActionPool *pActionPool,
                                                  bool fShowToolbar /* = true */, QWidget *pParent /* = 0 */)
@@ -94,6 +94,8 @@ void UIVMActivityToolWidget::setSelectedVMListItems(const QList<UIVirtualMachine
 
 void UIVMActivityToolWidget::setMachines(const QList<UIVirtualMachineItem*> &machines)
 {
+    AssertPtrReturnVoid(m_pMonitorContainer);
+    QVector<QUuid> currentlyShownMachineIds = m_pMonitorContainer->machineIds();
     QVector<QUuid> machineIds;
     foreach (const UIVirtualMachineItem* pMachine, machines)
     {
@@ -101,9 +103,10 @@ void UIVMActivityToolWidget::setMachines(const QList<UIVirtualMachineItem*> &mac
             continue;
         machineIds << pMachine->id();
     }
+
     /* List of machines that are newly added to selected machine list: */
     QList<UIVirtualMachineItem*> newSelections;
-    QVector<QUuid> unselectedMachines(m_machineIds);
+    QVector<QUuid> unselectedMachines(currentlyShownMachineIds);
 
     foreach (UIVirtualMachineItem* pMachine, machines)
     {
@@ -111,10 +114,9 @@ void UIVMActivityToolWidget::setMachines(const QList<UIVirtualMachineItem*> &mac
             continue;
         QUuid id = pMachine->id();
         unselectedMachines.removeAll(id);
-        if (!m_machineIds.contains(id))
+        if (!currentlyShownMachineIds.contains(id))
             newSelections << pMachine;
     }
-    m_machineIds = machineIds;
 
     m_pMonitorContainer->removeTabs(unselectedMachines);
     addTabs(newSelections);

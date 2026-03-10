@@ -5,7 +5,7 @@
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -271,7 +271,7 @@ typedef struct PDMSRVINS
 #ifdef PDMSRVINSINT_DECLARED
         PDMSRVINSINT            s;
 #endif
-        uint8_t                 padding[HC_ARCH_BITS == 32 ? 32 : 32];
+        uint8_t                 padding[32];
     } Internal;
 
     /** Pointer the PDM Service API. */

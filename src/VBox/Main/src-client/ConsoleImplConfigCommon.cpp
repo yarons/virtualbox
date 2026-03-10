@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigCommon.cpp 110930 2025-09-08 16:34:44Z aleksey.ilyushin@oracle.com $ */
+/* $Id: ConsoleImplConfigCommon.cpp 112868 2026-02-09 09:10:26Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -9,7 +9,7 @@
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -1751,25 +1751,6 @@ int Console::i_configMedium(PCFGMNODE pLunL0,
                 /* Index of last image */
                 uImage--;
 
-# ifdef VBOX_WITH_EXTPACK
-                if (mptrExtPackManager->i_isExtPackUsable(ORACLE_PUEL_EXTPACK_NAME))
-                {
-                    /* Configure loading the VDPlugin. */
-                    static const char s_szVDPlugin[] = "VDPluginCrypt";
-                    PCFGMNODE pCfgPlugins = NULL;
-                    PCFGMNODE pCfgPlugin = NULL;
-                    Utf8Str strPlugin;
-                    hrc = mptrExtPackManager->i_getLibraryPathForExtPack(s_szVDPlugin, ORACLE_PUEL_EXTPACK_NAME, &strPlugin);
-                    // Don't fail, this is optional!
-                    if (SUCCEEDED(hrc))
-                    {
-                        InsertConfigNode(pCfg, "Plugins", &pCfgPlugins);
-                        InsertConfigNode(pCfgPlugins, s_szVDPlugin, &pCfgPlugin);
-                        InsertConfigString(pCfgPlugin, "Path", strPlugin);
-                    }
-                }
-# endif
-
                 hrc = ptrMedium->COMGETTER(Location)(bstr.asOutParam());                    H();
                 InsertConfigString(pCfg, "Path", bstr);
 
@@ -2762,6 +2743,8 @@ int Console::i_configNetwork(const char *pszDevice,
 /// @todo aleksey: is there anything to be done here?
 #elif defined(RT_OS_FREEBSD)
 /** @todo FreeBSD: Check out this later (HIF networking). */
+#elif defined(RT_OS_DARWIN)
+/** @todo is there anything to be done here? */
 #else
 # error "Port me"
 #endif
@@ -4568,7 +4551,7 @@ int Console::i_configStorageCtrls(ComPtr<IMachine> pMachine, BusAssignmentManage
 
                 /* Attach the status driver */
                 i_attachStatusDriver(pCtlInst, RT_BIT_32(DeviceType_HardDisk) | RT_BIT_32(DeviceType_DVD) /*?*/,
-                                     8, &paLedDevType, &mapMediumAttachments, pszCtrlDev, ulInstance);
+                                     cPorts, &paLedDevType, &mapMediumAttachments, pszCtrlDev, ulInstance);
                 break;
             }
 

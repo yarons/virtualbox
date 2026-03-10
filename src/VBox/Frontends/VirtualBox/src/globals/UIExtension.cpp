@@ -1,10 +1,10 @@
-/* $Id: UIExtension.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIExtension.cpp 113175 2026-02-26 12:33:20Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtension namespace implementation.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -29,7 +29,6 @@
 #include "UIExtension.h"
 #include "UIGlobalSession.h"
 #include "UINotificationCenter.h"
-#include "UIMessageCenter.h"
 #include "VBoxLicenseViewer.h"
 
 /* COM includes: */
@@ -77,13 +76,13 @@ void UIExtension::install(const QString &strFilePath,
     if (fReplaceIt)
     {
         QString strPackVersionCur = QString("%1r%2%3").arg(comExtPackCur.GetVersion()).arg(comExtPackCur.GetRevision()).arg(comExtPackCur.GetEdition());
-        if (!msgCenter().confirmReplaceExtensionPack(strPackName, strPackVersion, strPackVersionCur, strPackDescription, pParent))
+        if (!UINotificationQuestion::confirmReplaceExtensionPack(strPackName, strPackVersion, strPackVersionCur, strPackDescription, pParent))
             return;
     }
     /* If it's a new package just ask for general confirmation. */
     else
     {
-        if (!msgCenter().confirmInstallExtensionPack(strPackName, strPackVersion, strPackDescription, pParent))
+        if (!UINotificationQuestion::confirmInstallExtensionPack(strPackName, strPackVersion, strPackDescription, pParent))
             return;
     }
 

@@ -1,10 +1,10 @@
-/* $Id: scmrw-kmk.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: scmrw-kmk.cpp 112897 2026-02-09 11:32:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager, Makefile.kmk/kup.
  */
 
 /*
- * Copyright (C) 2010-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -414,8 +414,13 @@ static size_t scmKmkSkipExpString(const char *pchLine, size_t cchLine, size_t of
                 off++;
             }
         }
-        else if ((ch == ')' || ch == '}') && iExpDepth > 0)
-            iExpDepth--;
+        else if (iExpDepth > 0)
+        {
+            if (ch == ')' || ch == '}')
+                iExpDepth--;
+            else if (ch == '(' || ch == '{')
+                iExpDepth++;
+        }
     }
     return off;
 }

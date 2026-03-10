@@ -1,10 +1,10 @@
-/* $Id: acpi.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: acpi.cpp 112638 2026-01-19 12:47:38Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Advanced Configuration and Power Interface (ACPI) Table generation API.
  */
 
 /*
- * Copyright (C) 2024-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2024-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -933,7 +933,7 @@ RTDECL(int) RTAcpiTblMethodStart(RTACPITBL hAcpiTbl, const char *pszName, uint8_
     rtAcpiTblAppendNameString(pThis, pszName);
 
     uint8_t bFlags = cArgs;
-    bFlags |= fFlags & RTACPI_METHOD_F_SERIALIZED ? RT_BIT(3) : 0;
+    bFlags |= (fFlags & RTACPI_METHOD_F_SERIALIZED) ? RT_BIT(3) : 0;
     bFlags |= uSyncLvl << 4;
 
     rtAcpiTblAppendByte(pThis, bFlags);

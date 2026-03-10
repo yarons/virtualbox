@@ -1,10 +1,10 @@
-/* $Id: QIStatusBarIndicator.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: QIStatusBarIndicator.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIStatusBarIndicator interface declaration.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -43,7 +43,6 @@
 /* Forward declarations: */
 class QLabel;
 
-
 /** QWidget extension used as status-bar indicator. */
 class SHARED_LIBRARY_STUFF QIStatusBarIndicator : public QWidget
 {
@@ -79,7 +78,6 @@ protected:
     /** Holds currently cached size. */
     QSize  m_size;
 };
-
 
 /** QIStatusBarIndicator extension used as status-bar state indicator. */
 class SHARED_LIBRARY_STUFF QIStateStatusBarIndicator : public QIStatusBarIndicator
@@ -120,7 +118,6 @@ private:
     QMap<int, QIcon>  m_icons;
 };
 
-
 /** QIStatusBarIndicator extension used as status-bar text indicator. */
 class SHARED_LIBRARY_STUFF QITextStatusBarIndicator : public QIStatusBarIndicator
 {
@@ -141,6 +138,5 @@ private:
     /** Holds the label instance. */
     QLabel *m_pLabel;
 };
-
 
 #endif /* !FEQT_INCLUDED_SRC_extensions_QIStatusBarIndicator_h */

@@ -1,10 +1,10 @@
-; $Id: VBoxRTImp.def 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+; $Id: VBoxRTImp.def 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $
 ;; @file
 ; VirtualBox Runtime DLL - Stable Interface Definition file.
 ;
 
 ;
-; Copyright (C) 2010-2025 Oracle and/or its affiliates.
+; Copyright (C) 2010-2026 Oracle and/or its affiliates.
 ;
 ; This file is part of VirtualBox base platform packages, as
 ; available from https://www.virtualbox.org.
@@ -2040,10 +2040,10 @@ EXPORTS
     RTThreadYield
     RTTimeCompare
     RTTimeConvertToZulu
-    RTTimeDbgBad
-    RTTimeDbgExpired
-    RTTimeDbgRaces
-    RTTimeDbgSteps
+    RTTimeDbgBad                                        ; with-gip
+    RTTimeDbgExpired                                    ; with-gip
+    RTTimeDbgRaces                                      ; with-gip
+    RTTimeDbgSteps                                      ; with-gip
     RTTimeExplode
     RTTimeImplode
     RTTimeIsLeapYear
@@ -2053,20 +2053,20 @@ EXPORTS
     RTTimeLocalNow
     RTTimeMilliTS
     RTTimeNanoTS
-    RTTimeNanoTSLegacySyncInvarNoDelta
-    RTTimeNanoTSLFenceSyncInvarNoDelta
-    RTTimeNanoTSLegacyAsyncUseApicId
-    RTTimeNanoTSLegacyAsyncUseRdtscp
-    RTTimeNanoTSLegacyAsyncUseIdtrLim
-    RTTimeNanoTSLegacySyncInvarWithDeltaUseApicId
-    RTTimeNanoTSLegacySyncInvarWithDeltaUseRdtscp
-    RTTimeNanoTSLegacySyncInvarWithDeltaUseIdtrLim
-    RTTimeNanoTSLFenceAsyncUseApicId
-    RTTimeNanoTSLFenceAsyncUseRdtscp
-    RTTimeNanoTSLFenceAsyncUseIdtrLim
-    RTTimeNanoTSLFenceSyncInvarWithDeltaUseApicId
-    RTTimeNanoTSLFenceSyncInvarWithDeltaUseRdtscp
-    RTTimeNanoTSLFenceSyncInvarWithDeltaUseIdtrLim
+    RTTimeNanoTSLegacySyncInvarNoDelta                  ; with-gip
+    RTTimeNanoTSLFenceSyncInvarNoDelta                  ; with-gip
+    RTTimeNanoTSLegacyAsyncUseApicId                    ; with-gip not-arm64
+    RTTimeNanoTSLegacyAsyncUseRdtscp                    ; with-gip not-arm64
+    RTTimeNanoTSLegacyAsyncUseIdtrLim                   ; with-gip not-arm64
+    RTTimeNanoTSLegacySyncInvarWithDeltaUseApicId       ; with-gip not-arm64
+    RTTimeNanoTSLegacySyncInvarWithDeltaUseRdtscp       ; with-gip not-arm64
+    RTTimeNanoTSLegacySyncInvarWithDeltaUseIdtrLim      ; with-gip not-arm64
+    RTTimeNanoTSLFenceAsyncUseApicId                    ; with-gip not-arm64
+    RTTimeNanoTSLFenceAsyncUseRdtscp                    ; with-gip not-arm64
+    RTTimeNanoTSLFenceAsyncUseIdtrLim                   ; with-gip not-arm64
+    RTTimeNanoTSLFenceSyncInvarWithDeltaUseApicId       ; with-gip not-arm64
+    RTTimeNanoTSLFenceSyncInvarWithDeltaUseRdtscp       ; with-gip not-arm64
+    RTTimeNanoTSLFenceSyncInvarWithDeltaUseIdtrLim      ; with-gip not-arm64
     RTTimeNormalize
     RTTimeNow
     RTTimeProgramMicroTS

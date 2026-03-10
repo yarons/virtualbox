@@ -1,10 +1,10 @@
-/* $Id: UINotificationCenter.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UINotificationCenter.h 113088 2026-02-19 13:38:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class declaration.
  */
 
 /*
- * Copyright (C) 2021-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2021-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -40,7 +40,9 @@
 
 /* GUI includes: */
 #include "UILibraryDefs.h"
+#include "UINotificationMessage.h"
 #include "UINotificationObjects.h"
+#include "UINotificationQuestion.h"
 
 /* Forward declarations: */
 class QHBoxLayout;
@@ -78,6 +80,9 @@ public:
     /** Returns notification-center singleton instance. */
     static UINotificationCenter *instance();
 
+    /** Returns notification-center contained within @a pParent. */
+    static UINotificationCenter *acquire(QWidget *pParent);
+
     /** Constructs notification-center passing @a pParent to the base-class. */
     UINotificationCenter(QWidget *pParent);
     /** Destructs notification-center. */
@@ -94,6 +99,12 @@ public:
     /** Revokes a notification object referenced by @a uId from intenal model. */
     void revoke(const QUuid &uId);
 
+    /** Immediately and synchronously shows passed notification @a pMessage.
+      * @note It's a blocking call finished by sltHandleModelItemRemoved(). */
+    void showBlocking(UINotificationMessage *pMessage);
+    /** Immediately and synchronously shows passed notification @a pQuestion.
+      * @note It's a blocking call finished by sltHandleModelItemRemoved(). */
+    int showBlocking(UINotificationQuestion *pQuestion);
     /** Immediately and synchronously handles passed notification @a pProgress.
       * @note It's a blocking call finished by sltHandleProgressFinished(). */
     bool handleNow(UINotificationProgress *pProgress);
@@ -174,6 +185,11 @@ private:
     /** Paints frame using pre-configured @a pPainter. */
     void paintFrame(QPainter *pPainter);
 
+    /** Defines whether notification-center is in @a fExtended mode. */
+    void setExtendedMode(bool fExtended);
+    /** Returns whether notification-center is in extended mode. */
+    bool isExtendedMode() { return m_fExtendedMode; }
+
     /** Defines animated @a iValue. */
     void setAnimatedValue(int iValue);
     /** Returns animated value. */
@@ -183,6 +199,9 @@ private:
     void adjustGeometry();
     /** Adjusts mask. */
     void adjustMask();
+
+    /** Creates item with @a uId specified. */
+    void createItem(const QUuid &uId);
 
     /** Holds the notification-center singleton instance. */
     static UINotificationCenter *s_pInstance;
@@ -219,6 +238,8 @@ private:
     QStateMachine *m_pStateMachineSliding;
     /** Holds the sliding animation current value. */
     int            m_iAnimatedValue;
+    /** Holds whether we're in extended mode. */
+    bool           m_fExtendedMode;
 
     /** Holds the open-timer instance. */
     QTimer *m_pTimerOpen;
@@ -229,12 +250,18 @@ private:
       * @note  This event-loop is only used when the center
       *        handles progress directly via handleNow(). */
     QPointer<QEventLoop>  m_pEventLoop;
+    /** Holds the ID of message locked the loop. */
+    QUuid                 m_uId;
+    /** Holds the last showBlocking() result. */
+    Question::Result      m_enmLastResult;
     /** Holds the last handleNow() result. */
     bool                  m_fLastResult;
 };
 
 /** Singleton notification-center 'official' name. */
 #define gpNotificationCenter UINotificationCenter::instance()
+
+Q_DECLARE_METATYPE(QPointer<UINotificationCenter>);
 
 /** QObject subclass receiving notification value and storing is as a property. */
 class SHARED_LIBRARY_STUFF UINotificationReceiver : public QObject

@@ -1,10 +1,10 @@
-/* $Id: UIActionPoolManager.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIActionPoolManager.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class declaration.
  */
 
 /*
- * Copyright (C) 2010-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -34,7 +34,6 @@
 /* GUI includes: */
 #include "UIActionPool.h"
 #include "UILibraryDefs.h"
-
 
 /** VirtualBox Manager action-pool index enum.
   * Naming convention is following:
@@ -69,7 +68,9 @@ enum UIActionIndexMN
     /* 'Group' menu actions: */
     UIActionIndexMN_M_Group,
     UIActionIndexMN_M_Group_S_New,
+    UIActionIndexMN_M_Group_S_NewCloud,
     UIActionIndexMN_M_Group_S_Add,
+    UIActionIndexMN_M_Group_S_AddCloud,
     UIActionIndexMN_M_Group_S_Rename,
     UIActionIndexMN_M_Group_S_Remove,
     UIActionIndexMN_M_Group_M_MoveToGroup,
@@ -106,7 +107,9 @@ enum UIActionIndexMN
     /* 'Machine' menu actions: */
     UIActionIndexMN_M_Machine,
     UIActionIndexMN_M_Machine_S_New,
+    UIActionIndexMN_M_Machine_S_NewCloud,
     UIActionIndexMN_M_Machine_S_Add,
+    UIActionIndexMN_M_Machine_S_AddCloud,
     UIActionIndexMN_M_Machine_S_Settings,
     UIActionIndexMN_M_Machine_S_Clone,
     UIActionIndexMN_M_Machine_S_Move,
@@ -213,7 +216,6 @@ enum UIActionIndexMN
     /* Maximum index: */
     UIActionIndexMN_Max
 };
-
 
 /** UIActionPool extension
   * representing action-pool singleton for Manager UI. */
@@ -329,6 +331,5 @@ private:
     /** Enables factory in base-class. */
     friend class UIActionPool;
 };
-
 
 #endif /* !FEQT_INCLUDED_SRC_globals_UIActionPoolManager_h */

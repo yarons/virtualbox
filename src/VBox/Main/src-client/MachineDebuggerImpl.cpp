@@ -1,10 +1,10 @@
-/* $Id: MachineDebuggerImpl.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: MachineDebuggerImpl.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox IMachineDebugger COM class implementation (VBoxC).
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -289,6 +289,29 @@ HRESULT MachineDebugger::setExecuteAllInIEM(BOOL aExecuteAllInIEM)
 {
     LogFlowThisFunc(("enable=%d\n", aExecuteAllInIEM));
     return i_setEmExecPolicyProperty(EMEXECPOLICY_IEM_ALL, aExecuteAllInIEM);
+}
+
+/**
+ * Returns the current recompiled-IEM-execution setting.
+ *
+ * @returns COM status code
+ * @param   aRecompiledIEMExecution Address of result variable.
+ */
+HRESULT MachineDebugger::getRecompiledIEMExecution(BOOL *aRecompiledIEMExecution)
+{
+    return i_getEmExecPolicyProperty(EMEXECPOLICY_IEM_RECOMPILED, aRecompiledIEMExecution);
+}
+
+/**
+ * Changes the recompiled-IEM-execution setting.
+ *
+ * @returns COM status code
+ * @param   aRecompiledIEMExecution New setting.
+ */
+HRESULT MachineDebugger::setRecompiledIEMExecution(BOOL aRecompiledIEMExecution)
+{
+    LogFlowThisFunc(("enable=%d\n", aRecompiledIEMExecution));
+    return i_setEmExecPolicyProperty(EMEXECPOLICY_IEM_RECOMPILED, aRecompiledIEMExecution);
 }
 
 /**

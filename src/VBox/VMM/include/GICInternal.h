@@ -1,10 +1,10 @@
-/* $Id: GICInternal.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: GICInternal.h 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GIC).
  */
 
 /*
- * Copyright (C) 2023-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2023-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -47,10 +47,7 @@
 #ifdef VBOX_INCLUDED_vmm_pdmgic_h
 /** The VirtualBox GIC backend. */
 extern const PDMGICBACKEND g_GicBackend;
-# ifdef RT_OS_DARWIN
-/** The Hypervisor.Framework GIC backend. */
-extern const PDMGICBACKEND g_GicHvfBackend;
-# elif defined(RT_OS_WINDOWS)
+# if defined(RT_OS_WINDOWS)
 /** The Hyper-V GIC backend. */
 extern const PDMGICBACKEND g_GicHvBackend;
 # elif defined(RT_OS_LINUX)

@@ -1,10 +1,10 @@
-/* $Id: UIVMLogViewerWidget.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIVMLogViewerWidget.cpp 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
 
 /*
- * Copyright (C) 2010-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -56,7 +56,6 @@
 #include "UIExtraDataManager.h"
 #include "UIGlobalSession.h"
 #include "UIIconPool.h"
-#include "UIMessageCenter.h"
 #include "UITranslationEventListener.h"
 #include "UIVirtualMachineItem.h"
 #include "UIVMLogPage.h"
@@ -72,6 +71,7 @@
 
 /** Limit the read string size to avoid bloated log viewer pages. */
 const ULONG uAllowedLogSize = _256M;
+
 
 class UILogTabCloseButton : public QIToolButton
 {
@@ -101,16 +101,16 @@ protected:
 *   UILabelTab definition.                                                                                        *
 *********************************************************************************************************************************/
 
+
 class UILabelTab : public UIVMLogTab
 {
-
     Q_OBJECT;
 
 public:
 
     UILabelTab(QWidget *pParent, const QUuid &uMachineId, const QString &strMachineName);
-
 };
+
 
 /*********************************************************************************************************************************
 *   UITabBar definition.                                                                                        *
@@ -118,7 +118,6 @@ public:
 /** A QTabBar extention to be able to override paintEvent for custom tab coloring. */
 class UITabBar : public QTabBar
 {
-
     Q_OBJECT;
 
 public:
@@ -134,10 +133,10 @@ protected:
 *   UITabWidget definition.                                                                                        *
 *********************************************************************************************************************************/
 
+
 /** A QITabWidget used only for setTabBar since it is protected. */
 class UITabWidget : public QITabWidget
 {
-
     Q_OBJECT;
 
 public:

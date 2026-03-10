@@ -1,10 +1,10 @@
-/* $Id: UIMachineWindowSeamless.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineWindowSeamless.cpp 113252 2026-03-04 14:45:19Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowSeamless class implementation.
  */
 
 /*
- * Copyright (C) 2010-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -41,12 +41,10 @@
 #include "UIMachineLogicSeamless.h"
 #include "UIMachineView.h"
 #include "UIMachineWindowSeamless.h"
-#if   defined(VBOX_WS_WIN) || defined(VBOX_WS_NIX)
+#if defined(VBOX_WS_WIN) || defined(VBOX_WS_NIX)
 # include "UIMachineDefs.h"
 # include "UIMiniToolBar.h"
-#elif defined(VBOX_WS_MAC)
-# include "VBoxUtils.h"
-#endif /* VBOX_WS_MAC */
+#endif /* VBOX_WS_WIN || VBOX_WS_NIX */
 
 /* COM includes: */
 #include "CSnapshot.h"
@@ -203,7 +201,6 @@ void UIMachineWindowSeamless::placeOnScreen()
     Q_UNUSED(workingArea);
 
 #ifdef VBOX_WS_NIX
-
     /* Make sure we are located on corresponding host-screen: */
     if (   UIDesktopWidgetWatchdog::screenCount() > 1
         && (x() != workingArea.x() || y() != workingArea.y()))
@@ -240,7 +237,6 @@ void UIMachineWindowSeamless::placeOnScreen()
     LogRel(("GUI: UIMachineWindowSeamless::placeOnScreen: Move window: %d to: %dx%d\n",
             m_uScreenId, newPosition.x(), newPosition.y()));
     move(newPosition);
-
 #endif
 }
 

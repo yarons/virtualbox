@@ -1,10 +1,10 @@
-/* $Id: UIVirtualBoxManager.cpp 111240 2025-10-03 14:48:29Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 113267 2026-03-05 10:14:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -29,6 +29,8 @@
 #include <QActionGroup>
 #include <QApplication>
 #include <QClipboard>
+#include <QDragEnterEvent>
+#include <QDropEvent>
 #include <QFile>
 #include <QFontDatabase>
 #include <QGuiApplication>
@@ -72,7 +74,6 @@
 #include "UIMediumEnumerator.h"
 #include "UIMediumTools.h"
 #include "UIMediumManager.h"
-#include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
 #include "UINetworkManager.h"
 #include "UINotificationCenter.h"
@@ -98,7 +99,7 @@
 # include "UIImageTools.h"
 # include "UIWindowMenuManager.h"
 # include "UIVersion.h"
-# include "VBoxUtils.h"
+# include "VBoxUtils-darwin.h"
 #else
 # include "UIMenuBar.h"
 #endif
@@ -118,6 +119,7 @@
 /* Other VBox stuff: */
 #include <iprt/buildconfig.h>
 #include <VBox/version.h>
+
 
 /** QDialog extension used to ask for a public key for console connection needs. */
 class UIAcquirePublicKeyDialog : public QDialog
@@ -173,6 +175,7 @@ private:
     /** Holds the button-box instance. */
     QIDialogButtonBox *m_pButtonBox;
 };
+
 
 /** QDialog extension used to ask for a cloud machine clone name. */
 class UIAcquireCloudMachineCloneNameDialog : public QDialog
@@ -618,12 +621,12 @@ bool UIVirtualBoxManager::eventFilter(QObject *pObject, QEvent *pEvent)
 {
     /* Ignore for non-active window except for FileOpen event which should be always processed: */
     if (!isActiveWindow() && pEvent->type() != QEvent::FileOpen)
-        return QMainWindowWithRestorableGeometry::eventFilter(pObject, pEvent);
+        return QIMainWindow::eventFilter(pObject, pEvent);
 
     /* Ignore for other objects: */
     if (qobject_cast<QWidget*>(pObject) &&
         qobject_cast<QWidget*>(pObject)->window() != this)
-        return QMainWindowWithRestorableGeometry::eventFilter(pObject, pEvent);
+        return QIMainWindow::eventFilter(pObject, pEvent);
 
     /* Which event do we have? */
     switch (pEvent->type())
@@ -640,7 +643,7 @@ bool UIVirtualBoxManager::eventFilter(QObject *pObject, QEvent *pEvent)
     }
 
     /* Call to base-class: */
-    return QMainWindowWithRestorableGeometry::eventFilter(pObject, pEvent);
+    return QIMainWindow::eventFilter(pObject, pEvent);
 }
 #endif /* VBOX_WS_MAC */
 
@@ -698,13 +701,13 @@ bool UIVirtualBoxManager::event(QEvent *pEvent)
             break;
     }
     /* Call to base-class: */
-    return QMainWindowWithRestorableGeometry::event(pEvent);
+    return QIMainWindow::event(pEvent);
 }
 
 void UIVirtualBoxManager::showEvent(QShowEvent *pEvent)
 {
     /* Call to base-class: */
-    QMainWindowWithRestorableGeometry::showEvent(pEvent);
+    QIMainWindow::showEvent(pEvent);
 
     /* Is polishing required? */
     if (!m_fPolished)
@@ -723,12 +726,17 @@ void UIVirtualBoxManager::polishEvent(QShowEvent *)
 
     /* Make sure user warned about inaccessible media: */
     QMetaObject::invokeMethod(this, "sltHandleMediumEnumerationFinish", Qt::QueuedConnection);
+
+#ifdef VBOX_WS_MAC
+    /* Make sure window is activated within the cocoa hierarchy: */
+    QMetaObject::invokeMethod(this, "sltDarwinForceActiveFocus", Qt::QueuedConnection);
+#endif
 }
 
 void UIVirtualBoxManager::closeEvent(QCloseEvent *pEvent)
 {
     /* Call to base-class: */
-    QMainWindowWithRestorableGeometry::closeEvent(pEvent);
+    QIMainWindow::closeEvent(pEvent);
 
     /* Quit application: */
     QApplication::quit();
@@ -747,6 +755,13 @@ void UIVirtualBoxManager::dropEvent(QDropEvent *pEvent)
     sltHandleOpenUrlCall(pEvent->mimeData()->urls());
     pEvent->acceptProposedAction();
 }
+
+#ifdef VBOX_WS_MAC
+void UIVirtualBoxManager::sltDarwinForceActiveFocus()
+{
+    darwinForceActiveFocus();
+}
+#endif /* VBOX_WS_MAC */
 
 #ifdef VBOX_WS_NIX
 void UIVirtualBoxManager::sltHandleHostScreenAvailableAreaChange()
@@ -805,7 +820,7 @@ void UIVirtualBoxManager::sltHandleMediumEnumerationFinish()
         }
     }
     /* Warn the user about inaccessible medium, propose to open MM window/tool: */
-    if (fIsThereAnyInaccessibleMedium && msgCenter().warnAboutInaccessibleMedia())
+    if (fIsThereAnyInaccessibleMedium && UINotificationQuestion::confirmCheckingInaccessibleMedia())
     {
         /* Open the MM window: */
         sltOpenVirtualMediumManagerWindow();
@@ -865,7 +880,7 @@ void UIVirtualBoxManager::sltHandleOpenUrlCall(QList<QUrl> list /* = QList<QUrl>
             }
             else if (UICommon::hasAllowedExtension(strFile, isoExtensionList))
             {
-                openNewMachineWizard(strFile);
+                openNewMachineWizard(QString() /* means root group */, strFile);
             }
         }
     }
@@ -873,6 +888,11 @@ void UIVirtualBoxManager::sltHandleOpenUrlCall(QList<QUrl> list /* = QList<QUrl>
 
 void UIVirtualBoxManager::sltCheckUSBAccesibility()
 {
+#ifdef RT_OS_LINUX
+    /* Make sure no wrong USB mounted: */
+    UICommon::checkForWrongUSBMounted();
+#endif
+
     CHost comHost = gpGlobalSession->host();
     if (!comHost.isOk())
         return;
@@ -1233,7 +1253,7 @@ void UIVirtualBoxManager::sltOpenWizard(WizardType enmType)
         switch (enmType)
         {
             case WizardType_NewVM:
-                m_wizards[enmType] = new UIWizardNewVM(this, actionPool(), m_pWidget->fullGroupName(), m_strISOFilePath);
+                m_wizards[enmType] = new UIWizardNewVM(this, actionPool(), m_strGroupName, m_strISOFilePath);
                 break;
             case WizardType_CloneVM:
             {
@@ -1330,28 +1350,28 @@ void UIVirtualBoxManager::sltCloseWizard(WizardType enmType)
 
 void UIVirtualBoxManager::sltOpenNewMachineWizard()
 {
-    /* Get first selected item: */
-    UIVirtualMachineItem *pItem = currentItem();
+    /* Check the sender's action for the context-menu related flag: */
+    UIAction *pAction = actionPool()->action(UIActionIndexMN_M_Group_S_New);
+    AssertPtrReturnVoid(pAction);
+    const bool fIsContextMenuAction = pAction->property("is_context_menu_action").toBool();
 
-    /* If there is no items at all or first selected item is a local machine: */
-    if (!pItem || pItem->itemType() == UIVirtualMachineItemType_Local)
-        openNewMachineWizard();
-    /* Otherwise we guess it's cloud related item selected: */
-    else
-        sltOpenWizard(WizardType_NewCloudVM);
+    /* For the context-menu call we pass current group to wizard: */
+    openNewMachineWizard(fIsContextMenuAction ? m_pWidget->fullGroupName() : QString());
+}
+
+void UIVirtualBoxManager::sltOpenNewCloudMachineWizard()
+{
+    sltOpenWizard(WizardType_NewCloudVM);
 }
 
 void UIVirtualBoxManager::sltOpenAddMachineDialog()
 {
-    /* Get first selected item: */
-    UIVirtualMachineItem *pItem = currentItem();
+    openAddMachineDialog();
+}
 
-    /* If there is no items at all or first selected item is a local machine: */
-    if (!pItem || pItem->itemType() == UIVirtualMachineItemType_Local)
-        openAddMachineDialog();
-    /* Otherwise we guess it's cloud related item selected: */
-    else
-        sltOpenWizard(WizardType_AddCloudVM);
+void UIVirtualBoxManager::sltOpenAddCloudMachineWizard()
+{
+    sltOpenWizard(WizardType_AddCloudVM);
 }
 
 void UIVirtualBoxManager::sltOpenGroupNameEditor()
@@ -1950,7 +1970,7 @@ void UIVirtualBoxManager::sltPerformDiscardMachineState()
 
     /* Confirm discarding: */
     if (   machinesToDiscard.isEmpty()
-        || !msgCenter().confirmDiscardSavedState(machinesToDiscard.join(", ")))
+        || !UINotificationQuestion::confirmDiscardSavedState(machinesToDiscard.join(", ")))
         return;
 
     /* For every confirmed item to discard: */
@@ -2054,7 +2074,7 @@ void UIVirtualBoxManager::sltPerformResetMachine()
     AssertMsg(!machineNames.isEmpty(), ("This action should not be allowed!"));
 
     /* Confirm reseting VM: */
-    if (!msgCenter().confirmResetMachine(machineNames.join(", ")))
+    if (!UINotificationQuestion::confirmResetMachine(machineNames.join(", ")))
         return;
 
     /* For each selected item: */
@@ -2154,7 +2174,7 @@ void UIVirtualBoxManager::sltPerformTerminateMachine()
 
     /* Confirm terminating: */
     if (   machinesToTerminate.isEmpty()
-        || !msgCenter().confirmTerminateCloudInstance(machinesToTerminate.join(", ")))
+        || !UINotificationQuestion::confirmTerminateCloudInstance(machinesToTerminate.join(", ")))
         return;
 
     /* For every confirmed item to terminate: */
@@ -2190,7 +2210,7 @@ void UIVirtualBoxManager::sltPerformShutdownMachine()
     AssertMsg(!machineNames.isEmpty(), ("This action should not be allowed!"));
 
     /* Confirm ACPI shutdown current VM: */
-    if (!msgCenter().confirmACPIShutdownMachine(machineNames.join(", ")))
+    if (!UINotificationQuestion::confirmACPIShutdownMachine(machineNames.join(", ")))
         return;
 
     /* For each selected item: */
@@ -2248,7 +2268,7 @@ void UIVirtualBoxManager::sltPerformPowerOffMachine()
     AssertMsg(!machineNames.isEmpty(), ("This action should not be allowed!"));
 
     /* Confirm Power Off current VM: */
-    if (!msgCenter().confirmPowerOffMachine(machineNames.join(", ")))
+    if (!UINotificationQuestion::confirmPowerOffMachine(machineNames.join(", ")))
         return;
 
     /* For each selected item: */
@@ -2432,7 +2452,7 @@ void UIVirtualBoxManager::prepare()
     if (UIVersionInfo::showBetaLabel())
     {
         QPixmap betaLabel = ::betaLabel(QSize(74, darwinWindowTitleHeight(this) - 1));
-        ::darwinLabelWindow(this, &betaLabel);
+        darwinSetWindowLabel(this, &betaLabel);
     }
 #endif /* VBOX_WS_MAC */
 
@@ -2626,8 +2646,12 @@ void UIVirtualBoxManager::prepareConnections()
     /* 'Group' menu connections: */
     connect(actionPool()->action(UIActionIndexMN_M_Group_S_New), &UIAction::triggered,
             this, &UIVirtualBoxManager::sltOpenNewMachineWizard);
+    connect(actionPool()->action(UIActionIndexMN_M_Group_S_NewCloud), &UIAction::triggered,
+            this, &UIVirtualBoxManager::sltOpenNewCloudMachineWizard);
     connect(actionPool()->action(UIActionIndexMN_M_Group_S_Add), &UIAction::triggered,
             this, &UIVirtualBoxManager::sltOpenAddMachineDialog);
+    connect(actionPool()->action(UIActionIndexMN_M_Group_S_AddCloud), &UIAction::triggered,
+            this, &UIVirtualBoxManager::sltOpenAddCloudMachineWizard);
     connect(actionPool()->action(UIActionIndexMN_M_Group_S_Rename), &UIAction::triggered,
             this, &UIVirtualBoxManager::sltOpenGroupNameEditor);
     connect(actionPool()->action(UIActionIndexMN_M_Group_S_Remove), &UIAction::triggered,
@@ -2660,8 +2684,12 @@ void UIVirtualBoxManager::prepareConnections()
     /* 'Machine' menu connections: */
     connect(actionPool()->action(UIActionIndexMN_M_Machine_S_New), &UIAction::triggered,
             this, &UIVirtualBoxManager::sltOpenNewMachineWizard);
+    connect(actionPool()->action(UIActionIndexMN_M_Machine_S_NewCloud), &UIAction::triggered,
+            this, &UIVirtualBoxManager::sltOpenNewCloudMachineWizard);
     connect(actionPool()->action(UIActionIndexMN_M_Machine_S_Add), &UIAction::triggered,
             this, &UIVirtualBoxManager::sltOpenAddMachineDialog);
+    connect(actionPool()->action(UIActionIndexMN_M_Machine_S_AddCloud), &UIAction::triggered,
+            this, &UIVirtualBoxManager::sltOpenAddCloudMachineWizard);
     connect(actionPool()->action(UIActionIndexMN_M_Machine_S_Settings), &UIAction::triggered,
             this, &UIVirtualBoxManager::sltOpenSettingsDialogDefault);
     connect(actionPool()->action(UIActionIndexMN_M_Machine_S_Clone), &UIAction::triggered,
@@ -2886,10 +2914,7 @@ bool UIVirtualBoxManager::isCloudProfileUpdateInProgress() const
 bool UIVirtualBoxManager::checkUnattendedInstallError(const CUnattended &comUnattended) const
 {
     if (!comUnattended.isOk())
-    {
-        UINotificationMessage::cannotRunUnattendedGuestInstall(comUnattended);
-        return false;
-    }
+        return UINotificationMessage::cannotRunUnattendedGuestInstall(comUnattended);
     return true;
 }
 
@@ -2959,9 +2984,11 @@ void UIVirtualBoxManager::openAddMachineDialog(const QString &strFileName /* = Q
     comVBox.RegisterMachine(comMachineNew);
 }
 
-void UIVirtualBoxManager::openNewMachineWizard(const QString &strISOFilePath /* = QString() */)
+void UIVirtualBoxManager::openNewMachineWizard(const QString &strGroupName /* = QString() */,
+                                               const QString &strISOFilePath /* = QString() */)
 {
     /* Configure wizard variables: */
+    m_strGroupName = strGroupName;
     m_strISOFilePath = strISOFilePath;
 
     /* Open New VM Wizard: */
@@ -3077,7 +3104,7 @@ void UIVirtualBoxManager::performStartVirtualMachines(const QList<UIVirtualMachi
     /* But if we have more than one item to start =>
      * We should still ask user for a confirmation: */
     if (startableItems.size() > 1)
-        fStartConfirmed = msgCenter().confirmStartMultipleMachines(startableMachineNames.join(", "));
+        fStartConfirmed = UINotificationQuestion::confirmStartMultipleMachines(startableMachineNames.join(", "));
 
     /* For every item => check if it could be launched: */
     foreach (UIVirtualMachineItem *pItem, items)
@@ -3227,6 +3254,9 @@ void UIVirtualBoxManager::updateMenuGroup(QMenu *pMenu)
         pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Group_S_New));
         pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Group_S_Add));
         pMenu->addSeparator();
+        pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Group_S_NewCloud));
+        pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Group_S_AddCloud));
+        pMenu->addSeparator();
         if (   currentItem()
             && currentItem()->isItemPoweredOff())
             pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Group_M_Start));
@@ -3286,6 +3316,9 @@ void UIVirtualBoxManager::updateMenuMachine(QMenu *pMenu)
         /* Populate Machine-menu: */
         pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_New));
         pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Add));
+        pMenu->addSeparator();
+        pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_NewCloud));
+        pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_AddCloud));
         pMenu->addSeparator();
         pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Settings));
         if (gEDataManager->isSettingsInExpertMode())
@@ -3649,7 +3682,9 @@ void UIVirtualBoxManager::updateActionsAppearance()
 
     /* Enable/disable group actions: */
     actionPool()->action(UIActionIndexMN_M_Group_S_New)->setEnabled(isActionEnabled(UIActionIndexMN_M_Group_S_New, items));
+    actionPool()->action(UIActionIndexMN_M_Group_S_NewCloud)->setEnabled(isActionEnabled(UIActionIndexMN_M_Group_S_NewCloud, items));
     actionPool()->action(UIActionIndexMN_M_Group_S_Add)->setEnabled(isActionEnabled(UIActionIndexMN_M_Group_S_Add, items));
+    actionPool()->action(UIActionIndexMN_M_Group_S_AddCloud)->setEnabled(isActionEnabled(UIActionIndexMN_M_Group_S_AddCloud, items));
     actionPool()->action(UIActionIndexMN_M_Group_S_Rename)->setEnabled(isActionEnabled(UIActionIndexMN_M_Group_S_Rename, items));
     actionPool()->action(UIActionIndexMN_M_Group_S_Remove)->setEnabled(isActionEnabled(UIActionIndexMN_M_Group_S_Remove, items));
     actionPool()->action(UIActionIndexMN_M_Group_M_MoveToGroup)->setEnabled(isActionEnabled(UIActionIndexMN_M_Group_M_MoveToGroup, items));
@@ -3665,7 +3700,9 @@ void UIVirtualBoxManager::updateActionsAppearance()
 
     /* Enable/disable machine actions: */
     actionPool()->action(UIActionIndexMN_M_Machine_S_New)->setEnabled(isActionEnabled(UIActionIndexMN_M_Machine_S_New, items));
+    actionPool()->action(UIActionIndexMN_M_Machine_S_NewCloud)->setEnabled(isActionEnabled(UIActionIndexMN_M_Machine_S_NewCloud, items));
     actionPool()->action(UIActionIndexMN_M_Machine_S_Add)->setEnabled(isActionEnabled(UIActionIndexMN_M_Machine_S_Add, items));
+    actionPool()->action(UIActionIndexMN_M_Machine_S_AddCloud)->setEnabled(isActionEnabled(UIActionIndexMN_M_Machine_S_AddCloud, items));
     actionPool()->action(UIActionIndexMN_M_Machine_S_Settings)->setEnabled(isActionEnabled(UIActionIndexMN_M_Machine_S_Settings, items));
     actionPool()->action(UIActionIndexMN_M_Machine_S_Clone)->setEnabled(isActionEnabled(UIActionIndexMN_M_Machine_S_Clone, items));
     actionPool()->action(UIActionIndexMN_M_Machine_S_Move)->setEnabled(isActionEnabled(UIActionIndexMN_M_Machine_S_Move, items));
@@ -3851,9 +3888,13 @@ bool UIVirtualBoxManager::isActionEnabled(int iActionIndex, const QList<UIVirtua
             return true;
         /* For known *machine* action types: */
         case UIActionIndexMN_M_Group_S_New:
+        case UIActionIndexMN_M_Group_S_NewCloud:
         case UIActionIndexMN_M_Group_S_Add:
+        case UIActionIndexMN_M_Group_S_AddCloud:
         case UIActionIndexMN_M_Machine_S_New:
+        case UIActionIndexMN_M_Machine_S_NewCloud:
         case UIActionIndexMN_M_Machine_S_Add:
+        case UIActionIndexMN_M_Machine_S_AddCloud:
             return !isGroupSavingInProgress();
         default:
             break;

@@ -1,10 +1,10 @@
-/* $Id: tstClipboardServiceImpl.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: tstClipboardServiceImpl.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * Shared Clipboard host service implementation (backend) test case.
  */
 
 /*
- * Copyright (C) 2020-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2020-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -25,9 +25,8 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-#include "../VBoxSharedClipboardSvc-internal.h"
-
 #include <VBox/HostServices/VBoxClipboardSvc.h>
+#include <VBox/HostServices/VBoxSharedClipboardSvc.h>
 #ifdef RT_OS_WINDOWS
 # include <VBox/GuestHost/SharedClipboard-win.h>
 #endif

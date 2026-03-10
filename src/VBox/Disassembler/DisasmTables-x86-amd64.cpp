@@ -1,10 +1,10 @@
-/* $Id: DisasmTables-x86-amd64.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: DisasmTables-x86-amd64.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for X86 (32-bit and 16-bit modes).
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -431,8 +431,8 @@ const DISOPCODE g_aTwoByteMapX86[256] =
     OP("unpcklps %Vps,%Wq",  IDX_ParseModRM,     IDX_UseModRM,  0,          OP_UNPCKLPS,        OP_PARM_Vps,        OP_PARM_Wq,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
     OP("unpckhps %Vps,%Wq",  IDX_ParseModRM,     IDX_UseModRM,  0,          OP_UNPCKHPS,        OP_PARM_Vps,        OP_PARM_Wq,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
     /* can also be movlhps when reg->reg */
-    OP("&movhps/movlhps %Vq,%Wq",     IDX_ParseModRM,     IDX_UseModRM,  0,          OP_MOVHPS,          OP_PARM_Wq,         OP_PARM_Vq,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
-    OP("movhps %Wq,%Vq",     IDX_ParseModRM,     IDX_UseModRM,  0,          OP_MOVHPS,          OP_PARM_Vq,         OP_PARM_Wq,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
+    OP("&movhps/movlhps %Vq,%Wq", IDX_ParseModRM, IDX_UseModRM, 0,          OP_MOVHPS,          OP_PARM_Vq,         OP_PARM_Wq,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
+    OP("movhps %Mq,%Vq",     IDX_ParseModRM,      IDX_UseModRM,  0,         OP_MOVHPS,          OP_PARM_Mq,         OP_PARM_Vq,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
     OP("prefetch Grp16",     IDX_ParseGrp16,     0,             0,          OP_PREFETCH_GRP16,  OP_PARM_NONE,       OP_PARM_NONE,   OP_PARM_NONE,   DISOPTYPE_HARMLESS),
     INVALID_OPCODE,
     INVALID_OPCODE,

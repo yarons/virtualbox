@@ -1,10 +1,10 @@
-/* $Id: UIVirtualBoxManager.h 110737 2025-08-15 14:31:43Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.h 112957 2026-02-11 15:18:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -32,12 +32,11 @@
 #endif
 
 /* Qt includes: */
-#include <QMainWindow>
 #include <QUrl>
 #include <QUuid>
 
 /* GUI includes: */
-#include "QIWithRestorableGeometry.h"
+#include "QIMainWindow.h"
 #include "UIAdvancedSettingsDialog.h"
 #include "UICloudMachineSettingsDialog.h"
 #include "UIDefs.h"
@@ -56,11 +55,8 @@ class UIVirtualMachineItem;
 class CCloudMachine;
 class CUnattended;
 
-/* Type definitions: */
-typedef QIWithRestorableGeometry<QMainWindow> QMainWindowWithRestorableGeometry;
-
-/** Singleton QMainWindow extension used as VirtualBox Manager instance. */
-class UIVirtualBoxManager : public QMainWindowWithRestorableGeometry
+/** Singleton QIMainWindow extension used as VirtualBox Manager instance. */
+class UIVirtualBoxManager : public QIMainWindow
 {
     Q_OBJECT;
 
@@ -122,6 +118,11 @@ private slots:
 
     /** @name Common stuff.
       * @{ */
+#ifdef VBOX_WS_MAC
+        /** Makes sure window is activated within the cocoa hierarchy. */
+        void sltDarwinForceActiveFocus();
+#endif
+
 #ifdef VBOX_WS_NIX
         /** Handles host-screen available-area change. */
         void sltHandleHostScreenAvailableAreaChange();
@@ -139,7 +140,7 @@ private slots:
         /** Handles call to open a @a list of URLs. */
         void sltHandleOpenUrlCall(QList<QUrl> list = QList<QUrl>());
 
-        /** Checks if USB device list can be enumerated and host produces any warning during enumeration. */
+        /** Checks various USB stuff. */
         void sltCheckUSBAccesibility();
 
         /** Handles signal about Chooser-pane selection change.  */
@@ -217,8 +218,12 @@ private slots:
 
         /** Handles call to open new machine wizard. */
         void sltOpenNewMachineWizard();
+        /** Handles call to open new cloud machine wizard. */
+        void sltOpenNewCloudMachineWizard();
         /** Handles call to open add machine dialog. */
         void sltOpenAddMachineDialog();
+        /** Handles call to open add cloud machine wizard. */
+        void sltOpenAddCloudMachineWizard();
 
         /** Handles call to open group name editor. */
         void sltOpenGroupNameEditor();
@@ -406,8 +411,8 @@ private:
       * @{ */
         /** Opens add machine dialog specifying initial name with @a strFileName. */
         void openAddMachineDialog(const QString &strFileName = QString());
-        /** Opens new machine dialog specifying initial name with @a strFileName. */
-        void openNewMachineWizard(const QString &strISOFilePath = QString());
+        /** Opens new machine dialog specifying initial @a strGroupName and @a strISOFilePath. */
+        void openNewMachineWizard(const QString &strGroupName = QString(), const QString &strISOFilePath = QString());
 
         /** Opens Import Appliance wizard.
           * @param strFileName can bring the name of file to import appliance from. */
@@ -530,6 +535,8 @@ private:
     /** Holds the geometry save timer ID. */
     int  m_iGeometrySaveTimerId;
 
+    /** Holds the group name used by new VM wizard. */
+    QString  m_strGroupName;
     /** Holds the ISO file path used by new VM wizard. */
     QString  m_strISOFilePath;
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceLibCWrappers.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxDTraceLibCWrappers.h 112874 2026-02-09 09:21:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDTraceTLibCWrappers.h - IPRT wrappers/fake for lib C stuff.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2012-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from http://www.virtualbox.org.
@@ -31,12 +31,7 @@
 # include <process.h>
 #else
 # include <sys/types.h>
-# include <limits.h>        /* Workaround for syslimit.h bug in gcc 4.8.3 on gentoo. */
-# ifdef RT_OS_DARWIN
-#  include <sys/syslimits.h> /* PATH_MAX */
-# elif !defined(RT_OS_SOLARIS) && !defined(RT_OS_FREEBSD)
-#  include <syslimits.h>    /* PATH_MAX */
-# endif
+# include <limits.h>        /* PATH_MAX */
 # include <libgen.h>        /* basename */
 # include <unistd.h>
 # include <strings.h>       /* bzero & bcopy.*/
@@ -53,16 +48,16 @@
 
 
 #undef gethrtime
-#define gethrtime()                RTTimeNanoTS()
+#define gethrtime()                 RTTimeNanoTS()
 #undef strcasecmp
-#define strcasecmp(a_psz1, a_psz2) RTStrICmp(a_psz1, a_psz2)
+#define strcasecmp(a_psz1, a_psz2)  RTStrICmp(a_psz1, a_psz2)
 #undef strncasecmp
 #define strncasecmp(a_psz1, a_psz2, a_cch) RTStrNICmp(a_psz1, a_psz2, a_cch)
 #undef strlcpy
 #define strlcpy(a_pszDst, a_pszSrc, a_cbDst) ((void)RTStrCopy(a_pszDst, a_cbDst, a_pszSrc))
 
 #undef assert
-#define assert(expr)               Assert(expr)
+#define assert(expr)                Assert(expr)
 
 #undef PATH_MAX
 #define PATH_MAX                    RTPATH_MAX

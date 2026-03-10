@@ -1,10 +1,10 @@
-/* $Id: initterm-r0drv-linux.c 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: initterm-r0drv-linux.c 113065 2026-02-17 15:00:09Z vadim.galitsyn@oracle.com $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, Linux.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -42,6 +42,7 @@
 #include "internal/iprt.h"
 #include <iprt/errcore.h>
 #include <iprt/assert.h>
+#include <iprt/dbg.h>
 #include "internal/initterm.h"
 
 
@@ -53,6 +54,15 @@
 static struct workqueue_struct *g_prtR0LnxWorkQueue;
 #else
 static DECLARE_TASK_QUEUE(g_rtR0LnxWorkQueue);
+#endif
+
+/** Pointer to init_mm, if we have it.
+ * This is a special mm structure used to manage the kernel address space. */
+struct mm_struct *g_pLnxInitMm = NULL;
+
+#if RTLNX_VER_MIN(6,19,0)
+/** Pointer to __flush_tlb_all kernel symbol. */
+void (*g_pfnLinuxFlushTlbAll)(void);
 #endif
 
 
@@ -109,13 +119,37 @@ DECLHIDDEN(int) rtR0InitNative(void)
     IPRT_LINUX_SAVE_EFL_AC();
 
 #if RTLNX_VER_MIN(2,5,41)
- #if RTLNX_VER_MIN(2,6,13)
+# if RTLNX_VER_MIN(2,6,13)
     g_prtR0LnxWorkQueue = create_workqueue("iprt-VBoxWQueue");
- #else
+# else
     g_prtR0LnxWorkQueue = create_workqueue("iprt-VBoxQ");
- #endif
+# endif
     if (!g_prtR0LnxWorkQueue)
         rc = VERR_NO_MEMORY;
+#endif
+
+
+    /* Try get hold of 'init_mm' so we can protect kernel memory. */
+#if RTLNX_VER_MIN(3,16,0) /** @todo support this for older kernels (see also dbgkrnlinfo-r0drv-linux.c and fileio-r0drv-linux.c) */
+    {
+        RTDBGKRNLINFO hKrnlInfo;
+        int rc2 = RTR0DbgKrnlInfoOpen(&hKrnlInfo, 0);
+        if (RT_SUCCESS(rc2))
+        {
+            g_pLnxInitMm = (struct mm_struct *)RTR0DbgKrnlInfoGetSymbol(hKrnlInfo, NULL,  "init_mm");
+            //printk("rtR0InitNative: g_pLnxInitMm=%#lx\n", (unsigned long)g_pLnxInitMm);
+            printk("rtR0InitNative: g_pLnxInitMm=%p\n", g_pLnxInitMm);
+
+            RTR0DbgKrnlInfoRelease(hKrnlInfo);
+# if RTLNX_VER_MIN(6,19,0)
+            g_pfnLinuxFlushTlbAll = __symbol_get("__flush_tlb_all");
+            if (!RT_VALID_PTR(g_pfnLinuxFlushTlbAll))
+                printk("rtR0InitNative: can't load __flush_tlb_all\n");
+# endif
+        }
+        else
+            printk("rtR0InitNative: RTR0DbgKrnlInfoOpen failed: %d\n", rc);
+    }
 #endif
 
     IPRT_LINUX_RESTORE_EFL_AC();
@@ -126,6 +160,12 @@ DECLHIDDEN(int) rtR0InitNative(void)
 DECLHIDDEN(void) rtR0TermNative(void)
 {
     IPRT_LINUX_SAVE_EFL_AC();
+
+# if RTLNX_VER_MIN(6,19,0)
+    if (RT_VALID_PTR(g_pfnLinuxFlushTlbAll))
+        symbol_put_addr(g_pfnLinuxFlushTlbAll);
+    g_pfnLinuxFlushTlbAll = NULL;
+#endif
 
     rtR0LnxWorkqueueFlush();
 #if RTLNX_VER_MIN(2,5,41)

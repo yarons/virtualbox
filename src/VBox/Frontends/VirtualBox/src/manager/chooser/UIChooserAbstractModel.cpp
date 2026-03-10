@@ -1,10 +1,10 @@
-/* $Id: UIChooserAbstractModel.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIChooserAbstractModel.cpp 113060 2026-02-17 12:01:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
 
 /*
- * Copyright (C) 2012-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -42,8 +42,7 @@
 #include "UIGlobalSession.h"
 #include "UILocalMachineStuff.h"
 #include "UILoggingDefs.h"
-#include "UIMessageCenter.h"
-#include "UINotificationCenter.h"
+#include "UINotificationMessage.h"
 #include "UIProgressTaskReadCloudMachineList.h"
 #include "UIVirtualBoxEventHandler.h"
 #include "UIVirtualMachineItemCloud.h"
@@ -253,7 +252,7 @@ void UIThreadGroupSettingsSave::run()
             comMachine.SetGroups(newGroupList.toVector());
             if (!comMachine.isOk())
             {
-                msgCenter().cannotSetGroups(comMachine);
+                UINotificationMessage::cannotSetGroups(comMachine);
                 break;
             }
 
@@ -261,7 +260,7 @@ void UIThreadGroupSettingsSave::run()
             comMachine.SaveSettings();
             if (!comMachine.isOk())
             {
-                msgCenter().cannotSaveMachineSettings(comMachine);
+                UINotificationMessage::cannotSaveMachineSettings(comMachine);
                 break;
             }
         } while (0);

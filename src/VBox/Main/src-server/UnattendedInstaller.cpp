@@ -1,10 +1,10 @@
-/* $Id: UnattendedInstaller.cpp 111446 2025-10-18 23:11:22Z knut.osmundsen@oracle.com $ */
+/* $Id: UnattendedInstaller.cpp 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * UnattendedInstaller class and it's descendants implementation
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -1235,8 +1235,11 @@ HRESULT UnattendedDebianInstaller::addFilesToAuxVisoVectors(RTCList<RTCString> &
     const char *pszMenuConfigFilename = "/isolinux/txt.cfg";
     if (!hlpVfsFileExists(hVfsOrgIso, pszMenuConfigFilename))
     {
+        /* On Debian 13 and Linux Mint 22 live.cfg file is used for menu item configuration. */
+        if (hlpVfsFileExists(hVfsOrgIso, "/isolinux/live.cfg"))
+            pszMenuConfigFilename     =  "/isolinux/live.cfg";
         /* On Debian Live ISOs (at least from 9 to 11) the there is only menu.cfg. */
-        if (hlpVfsFileExists(hVfsOrgIso, "/isolinux/menu.cfg"))
+        else if (hlpVfsFileExists(hVfsOrgIso, "/isolinux/menu.cfg"))
             pszMenuConfigFilename     =  "/isolinux/menu.cfg";
         /* On Linux Mint 20.3, 21, and 19 (at least) there is only isolinux.cfg. */
         else if (hlpVfsFileExists(hVfsOrgIso, "/isolinux/isolinux.cfg"))

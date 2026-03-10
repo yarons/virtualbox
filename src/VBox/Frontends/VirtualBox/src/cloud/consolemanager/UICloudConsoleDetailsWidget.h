@@ -1,10 +1,10 @@
-/* $Id: UICloudConsoleDetailsWidget.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UICloudConsoleDetailsWidget.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudConsoleDetailsWidget class declaration.
  */
 
 /*
- * Copyright (C) 2009-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -119,7 +119,6 @@ struct UIDataCloudConsoleProfile
     /** Holds whether console profile is restricted. */
     bool     m_fRestricted;
 };
-
 
 /** Cloud Console details widget. */
 class UICloudConsoleDetailsWidget : public QWidget
@@ -250,6 +249,5 @@ private:
         QIDialogButtonBox *m_pButtonBox;
     /** @} */
 };
-
 
 #endif /* !FEQT_INCLUDED_SRC_cloud_consolemanager_UICloudConsoleDetailsWidget_h */

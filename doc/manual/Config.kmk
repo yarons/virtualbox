@@ -1,10 +1,10 @@
-# $Id: Config.kmk 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: Config.kmk 113273 2026-03-06 11:42:19Z vadim.galitsyn@oracle.com $
 ## @file
 # kBuild Configuration file for the manual.
 #
 
 #
-# Copyright (C) 2010-2025 Oracle and/or its affiliates.
+# Copyright (C) 2010-2026 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.
@@ -146,7 +146,7 @@ ifndef VBOX_DOC_MANUAL_CONFIG_KMK_INCLUDED
  endif
  # Workaround for a security (?) fix in libxml (xsltproc doesn't have a way of setting the max amp level):
  #     utilitiesDomain.mod:135: parser error : Maximum entity amplification factor exceeded, see xmlCtxtSetMaxAmplification.
- if $(firstword $(VBOX_XSLTPROC_LIBXML_VERSION) 0) >= 21206 ## @todo not sure which version introduced this issue.
+ if $(firstword $(VBOX_XSLTPROC_LIBXML_VERSION) 0) >= 21205 ## @todo not sure which version introduced this issue.
   VBOX_XSLTPROC_WORKAROUND := --novalid
  else
   VBOX_XSLTPROC_WORKAROUND :=

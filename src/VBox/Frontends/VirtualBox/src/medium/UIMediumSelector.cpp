@@ -1,10 +1,10 @@
-/* $Id: UIMediumSelector.cpp 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMediumSelector.cpp 113058 2026-02-17 10:55:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -48,7 +48,6 @@
 #include "UIMediumSearchWidget.h"
 #include "UIMediumSelector.h"
 #include "UIMediumTools.h"
-#include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
 #include "UIIconPool.h"
 #include "UIMedium.h"
@@ -70,7 +69,7 @@
 UIMediumSelector::UIMediumSelector(const QUuid &uCurrentMediumId, UIMediumDeviceType enmMediumType, const QString &machineName,
                                    const QString &machineSettingsFilePath, const QString &strMachineGuestOSTypeId,
                                    const QUuid &uMachineID, QWidget *pParent, UIActionPool *pActionPool)
-    : QIWithRestorableGeometry<QIMainDialog>(pParent)
+    : QIMainDialog(pParent)
     , m_pCentralWidget(0)
     , m_pMainLayout(0)
     , m_pTreeWidget(0)
@@ -218,7 +217,7 @@ bool UIMediumSelector::event(QEvent *pEvent)
             saveDialogGeometry();
         }
     }
-    return QIWithRestorableGeometry<QIMainDialog>::event(pEvent);
+    return QIMainDialog::event(pEvent);
 }
 
 void UIMediumSelector::configure()

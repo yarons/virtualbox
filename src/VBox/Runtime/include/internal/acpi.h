@@ -1,10 +1,10 @@
-/* $Id: acpi.h 108420 2025-02-17 10:44:24Z alexander.eichner@oracle.com $ */
+/* $Id: acpi.h 112663 2026-01-21 15:02:23Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Internal RTAcpi header.
  */
 
 /*
- * Copyright (C) 2025 Oracle and/or its affiliates.
+ * Copyright (C) 2025-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -525,6 +525,17 @@ DECLHIDDEN(int) rtAcpiAstDumpToTbl(PCRTACPIASTNODE pAstNd, PRTACPINSROOT pNsRoot
 
 
 /**
+ * Dumps the given AST node and everything it references to the given output stream as ASL source.
+ *
+ * @returns IPRT status code.
+ * @param   pAstNd              The AST node to dump.
+ * @param   hVfsIosOut          The VFS I/O stream to dump the ASL source to.
+ * @param   uLvl                The current call depth level (for indentation).
+ */
+DECLHIDDEN(int) rtAcpiAstDumpToAsl(PCRTACPIASTNODE pAstNd, RTVFSIOSTREAM hVfsIosOut, uint32_t uLvl);
+
+
+/**
  * Worker for decompiling AML bytecode to the ASL source language.
  *
  * @returns IPRT status code.
@@ -545,6 +556,14 @@ DECLHIDDEN(int) rtAcpiTblConvertFromAmlToAsl(RTVFSIOSTREAM hVfsIosOut, RTVFSIOST
  */
 DECLHIDDEN(int) rtAcpiTblConvertFromAslToAml(RTVFSIOSTREAM hVfsIosOut, RTVFSIOSTREAM hVfsIosIn, PRTERRINFO pErrInfo);
 
+
+/**
+ * Returns the ASL term for the given AST node operation type.
+ *
+ * @returns Pointer to a readonly string containing the ASL term
+ * @param   enmOp               The AST node operation to turn into a string.
+ */
+DECLHIDDEN(const char *) rtAcpiTblAstNodeOp2Str(RTACPIASTNODEOP enmOp);
 
 RT_C_DECLS_END
 

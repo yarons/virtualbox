@@ -1,10 +1,10 @@
-# $Id: .scm-settings 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $
+# $Id: .scm-settings 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $
 ## @file
 # Source code massager settings for the debian packaging.
 #
 
 #
-# Copyright (C) 2022-2025 Oracle and/or its affiliates.
+# Copyright (C) 2022-2026 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.
@@ -25,10 +25,12 @@
 # SPDX-License-Identifier: GPL-3.0-only
 #
 
-/rules: --treat-as Makefile --no-convert-eol --dont-set-svn-executable
-/changelog:           --treat-as plaintext --external-copyright --del-action force-native-eol --add-action force-lf
-/compat:              --treat-as plaintext --external-copyright --del-action force-native-eol --add-action force-lf
-/control:             --treat-as plaintext --external-copyright --del-action force-native-eol --add-action force-lf
-/dirs:                --treat-as plaintext --external-copyright --del-action force-native-eol --add-action force-lf
-/lintian-override.in: --treat-as plaintext --external-copyright --del-action force-native-eol --add-action force-lf
-/templates:           --treat-as plaintext --external-copyright --no-strip-trailing-blanks
+--svn-sync-process-export all   # Everything is exported here.
+
+/rules:                 --treat-as Makefile --dont-set-svn-executable --del-action force-native-eol --add-action force-lf
+/changelog:             --treat-as plaintext --external-copyright     --del-action force-native-eol --add-action force-lf
+/compat:                --treat-as plaintext --external-copyright     --del-action force-native-eol --add-action force-lf
+/control:               --treat-as plaintext --external-copyright     --del-action force-native-eol --add-action force-lf
+/dirs:                  --treat-as plaintext --external-copyright     --del-action force-native-eol --add-action force-lf
+/lintian-override.in:   --treat-as plaintext --external-copyright     --del-action force-native-eol --add-action force-lf
+/templates:             --treat-as plaintext --external-copyright --no-strip-trailing-blanks

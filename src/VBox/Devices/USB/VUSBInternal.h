@@ -1,4 +1,4 @@
-/* $Id: VUSBInternal.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: VUSBInternal.h 112698 2026-01-26 14:26:47Z michal.necasek@oracle.com $ */
 /** @file
  * Virtual USB - Internal header.
  *
@@ -9,7 +9,7 @@
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -435,6 +435,9 @@ typedef struct VUSBROOTHUB
     /** Alignment */
     uint32_t                   Alignment2;
 #endif
+    /** Public I/O statistics. */
+    STAMCOUNTER             StatReceiveBytes;
+    STAMCOUNTER             StatTransmitBytes;
 #ifdef VBOX_WITH_STATISTICS
     VUSBROOTHUBTYPESTATS    Total;
     VUSBROOTHUBTYPESTATS    aTypes[VUSBXFERTYPE_MSG];

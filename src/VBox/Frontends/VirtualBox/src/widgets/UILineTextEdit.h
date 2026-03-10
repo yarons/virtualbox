@@ -1,10 +1,10 @@
-/* $Id: UILineTextEdit.h 111182 2025-09-30 09:38:54Z sergey.dubov@oracle.com $ */
+/* $Id: UILineTextEdit.h 113262 2026-03-04 20:12:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UILineTextEdit class declaration.
  */
 
 /*
- * Copyright (C) 2009-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -49,6 +49,7 @@ class UITextEditor: public QIDialog
     Q_OBJECT;
 
 public:
+
     UITextEditor(QWidget *pParent = NULL);
 
     void setText(const QString& strText);
@@ -60,6 +61,7 @@ private slots:
     void open() RT_OVERRIDE;
 
 private:
+
     /* Private member vars */
     QITextEdit       *m_pTextEdit;
     QDialogButtonBox *m_pButtonBox;
@@ -79,6 +81,7 @@ signals:
     void sigFinished(QWidget *pThis);
 
 public:
+
     UILineTextEdit(QWidget *pParent = NULL);
 
     void setText(const QString& strText) { m_strText = strText; }
@@ -90,6 +93,7 @@ private slots:
     void edit();
 
 private:
+
     /* Private member vars */
     QString m_strText;
 };

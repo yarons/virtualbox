@@ -1,10 +1,10 @@
-/* $Id: NEMR3.cpp 111176 2025-09-30 07:36:29Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMR3.cpp 112688 2026-01-26 10:44:27Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Native execution manager.
  */
 
 /*
- * Copyright (C) 2018-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2018-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -125,16 +125,12 @@ VMMR3_INT_DECL(int) NEMR3InitConfig(PVM pVM)
     AssertLogRelRCReturn(rc, rc);
 
 
-#ifdef VBOX_WITH_64_BITS_GUESTS
     /** @cfgm{/NEM/Allow64BitGuests, bool, 32-bit:false, 64-bit:true}
      * Enables AMD64 CPU features.
      * On 32-bit hosts this isn't default and require host CPU support. 64-bit hosts
      * already have the support. */
-    rc = CFGMR3QueryBoolDef(pCfgNem, "Allow64BitGuests", &pVM->nem.s.fAllow64BitGuests, HC_ARCH_BITS == 64);
+    rc = CFGMR3QueryBoolDef(pCfgNem, "Allow64BitGuests", &pVM->nem.s.fAllow64BitGuests, true);
     AssertLogRelRCReturn(rc, rc);
-#else
-    pVM->nem.s.fAllow64BitGuests = false;
-#endif
 
     /** @cfgm{/NEM/LovelyMesaDrvWorkaround, bool, false}
      * Workaround for mesa vmsvga 3d driver making incorrect assumptions about
@@ -474,6 +470,24 @@ VMMR3_INT_DECL(bool) NEMR3NeedSpecialTscMode(PVM pVM)
 #ifdef VBOX_WITH_NATIVE_NEM
     if (VM_IS_NEM_ENABLED(pVM))
         return true;
+#else
+    RT_NOREF(pVM);
+#endif
+    return false;
+}
+
+
+/**
+ * Indicates to VM that VMHALTMETHOD_NEM should be used for managing the EMT halt states.
+ *
+ * @returns true if  must be used, otherwise @c false.
+ * @param   pVM     The cross context VM structure.
+ */
+VMMR3_INT_DECL(bool) NEMR3NeedSpecialWaitMethod(PVM pVM)
+{
+#ifdef VBOX_WITH_NATIVE_NEM
+    if (VM_IS_NEM_ENABLED(pVM))
+        return nemR3NativeNeedSpecialWaitMethod(pVM);
 #else
     RT_NOREF(pVM);
 #endif

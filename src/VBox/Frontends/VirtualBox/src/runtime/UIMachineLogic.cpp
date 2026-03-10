@@ -1,10 +1,10 @@
-/* $Id: UIMachineLogic.cpp 111479 2025-10-22 14:32:44Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 113272 2026-03-05 16:06:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
 
 /*
- * Copyright (C) 2010-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -42,6 +42,7 @@
 
 /* GUI includes: */
 #include "QIFileDialog.h"
+#include "QIMessageBox.h"
 #include "UIActionPoolRuntime.h"
 #include "UIAddDiskEncryptionPasswordDialog.h"
 #include "UIAdvancedSettingsDialogSpecific.h"
@@ -83,7 +84,7 @@
 #include "UIVMLogViewerDialog.h"
 #include "UIVMInformationDialog.h"
 #ifdef VBOX_WS_MAC
-# include "DockIconPreview.h"
+# include "UIDockIconPreview.h"
 # include "UIExtraDataManager.h"
 #endif
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
@@ -132,6 +133,7 @@
 
 #define VBOX_WITH_REWORKED_SESSION_INFORMATION /**< Define for reworked session-information window.  @todo r-bird: What's this for? */
 
+
 struct USBTarget
 {
     USBTarget() : attach(false), id(QUuid()) {}
@@ -141,6 +143,7 @@ struct USBTarget
     QUuid id;
 };
 Q_DECLARE_METATYPE(USBTarget);
+
 
 /** Describes enumerated webcam item. */
 struct WebCamTarget
@@ -372,7 +375,7 @@ void UIMachineLogic::sltHandleVBoxSVCAvailabilityChange()
         return;
 
     /* Warn user about that: */
-    msgCenter().warnAboutVBoxSVCUnavailable();
+    UINotificationMessage::warnAboutVBoxSVCUnavailable();
 
     /* Power VM off: */
     LogRel(("GUI: Request to power VM off due to VBoxSVC is unavailable.\n"));
@@ -388,6 +391,10 @@ void UIMachineLogic::sltHandleMachineInitialized()
     sltAdditionsStateChanged();
     sltMouseCapabilityChanged();
     checkUnattendedLeftOvers();
+#ifdef RT_OS_LINUX
+    /* Make sure no wrong USB mounted: */
+    UICommon::checkForWrongUSBMounted();
+#endif
 }
 
 void UIMachineLogic::sltChangeVisualStateToNormal()
@@ -679,14 +686,14 @@ void UIMachineLogic::sltRuntimeError(bool fIsFatal, const QString &strErrorId, c
     }
 
     /* Should the default Warning type be overridden? */
-    MessageType enmMessageType = MessageType_Warning;
+    UINotificationMessage::NotificationType enmNotificationType = UINotificationMessage::NotificationType_Warning;
     if (fIsFatal)
-        enmMessageType = MessageType_Critical;
+        enmNotificationType = UINotificationMessage::NotificationType_Critical;
     else if (fPaused)
-        enmMessageType = MessageType_Error;
+        enmNotificationType = UINotificationMessage::NotificationType_Error;
 
     /* Show runtime error: */
-    msgCenter().showRuntimeError(enmMessageType, strErrorId, strMessage);
+    UINotificationMessage::showRuntimeError(enmNotificationType, strErrorId, strMessage);
 
     /* Postprocessing: */
     if (fIsFatal)
@@ -2299,7 +2306,7 @@ void UIMachineLogic::sltInstallGuestAdditions()
     if (UINotificationDownloaderGuestAdditions::exists())
         gpNotificationCenter->invoke();
     /* Else propose to download additions: */
-    else if (msgCenter().confirmLookingForGuestAdditions())
+    else if (UINotificationQuestion::confirmLookingForGuestAdditions())
     {
         /* Download guest additions: */
         UINotificationDownloaderGuestAdditions *pNotification = UINotificationDownloaderGuestAdditions::instance(GUI_GuestAdditionsName);
@@ -2317,7 +2324,6 @@ void UIMachineLogic::sltInstallGuestAdditions()
 }
 
 #ifdef VBOX_WITH_DEBUGGER_GUI
-
 void UIMachineLogic::sltShowDebugStatistics()
 {
     if (uimachine()->dbgCreated(actionPool()->action(UIActionIndexRT_M_Debug)))
@@ -3065,7 +3071,7 @@ void UIMachineLogic::showBootFailureDialog()
 void UIMachineLogic::reset(bool fShowConfirmation)
 {
     if (   !fShowConfirmation
-        || msgCenter().confirmResetMachine(machineName()))
+        || UINotificationQuestion::confirmResetMachine(machineName()))
     {
         const bool fSuccess = uimachine()->reset();
         if (fSuccess)
@@ -3085,7 +3091,9 @@ void UIMachineLogic::checkUnattendedLeftOvers()
 {
     if (!uimachine() || !uimachine()->uisession())
         return;
-
+    QString strDialogName = gpConverter->toInternalString(UIExtraDataMetaDefs::DialogType_UnattendedCleanup);
+    if (gEDataManager->suppressedMessages().contains(strDialogName))
+        return;
     CVirtualBox comVBox = gpGlobalSession->virtualBox();
     CMediumVector comMedia = comVBox.GetDVDImages();
     QUuid iMachineId = uimachine()->uisession()->machine().GetId();
@@ -3104,6 +3112,12 @@ void UIMachineLogic::checkUnattendedLeftOvers()
         comUnattendedVISO = comMedium;
         break;
     }
-    if (!comUnattendedVISO.isNull())
-        msgCenter().confirmUnattendedFilesRemoval();
+    if (   !comUnattendedVISO.isNull()
+        && UINotificationQuestion::confirmUnattendedFilesRemoval())
+    {
+        UINotificationProgressMediumDeletingStorage *pNotification = new UINotificationProgressMediumDeletingStorage(comUnattendedVISO);
+        // connect(pNotification, &UINotificationProgressMediumDeletingStorage::sigMediumStorageDeleted,
+        //         this, &UIMediumItemHD::sltHandleMediumRemoveRequest);
+        gpNotificationCenter->append(pNotification);
+    }
 }

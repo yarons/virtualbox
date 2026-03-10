@@ -1,10 +1,10 @@
-﻿/* $Id: UIAdvancedSettingsDialog.cpp 111328 2025-10-10 13:58:00Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIAdvancedSettingsDialog.cpp 113147 2026-02-24 15:56:22Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class implementation.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -64,6 +64,7 @@
 #include "UILoggingDefs.h"
 #include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
+#include "UINotificationCenter.h"
 #include "UIPopupCenter.h"
 #include "UISettingsPage.h"
 #include "UISettingsPageValidator.h"
@@ -72,9 +73,6 @@
 #include "UISettingsWarningPane.h"
 #include "UIShortcutPool.h"
 #include "UITranslationEventListener.h"
-#ifdef VBOX_WS_MAC
-# include "VBoxUtils.h"
-#endif
 
 
 /** QCheckBox subclass used as mode checkbox. */
@@ -831,6 +829,7 @@ UIAdvancedSettingsDialog::UIAdvancedSettingsDialog(QWidget *pParent,
     , m_pScrollArea(0)
     , m_pScrollViewport(0)
     , m_pButtonBox(0)
+    , m_pNotificationCenter(0)
 {
     prepare();
 }
@@ -1088,6 +1087,34 @@ void UIAdvancedSettingsDialog::polishEvent()
     sltUpdateDisabledWidgetsLookAndFeel();
 }
 
+void UIAdvancedSettingsDialog::keyPressEvent(QKeyEvent *pEvent)
+{
+    /* Handle Enter/Return and Escape keys only if event reached us: */
+    switch (pEvent->key())
+    {
+        case Qt::Key_Enter:
+        case Qt::Key_Return:
+        {
+            AssertPtrReturn(m_pButtonBox, QMainWindow::keyPressEvent(pEvent));
+            QPushButton *pButton = m_pButtonBox->button(QDialogButtonBox::Ok);
+            AssertPtrReturn(m_pButtonBox, QMainWindow::keyPressEvent(pEvent));
+            return pButton->click();
+        }
+        case Qt::Key_Escape:
+        {
+            AssertPtrReturn(m_pButtonBox, QMainWindow::keyPressEvent(pEvent));
+            QPushButton *pButton = m_pButtonBox->button(QDialogButtonBox::Cancel);
+            AssertPtrReturn(m_pButtonBox, QMainWindow::keyPressEvent(pEvent));
+            return pButton->click();
+        }
+        default:
+            break;
+    }
+
+    /* Call to base-class: */
+    return QMainWindow::keyPressEvent(pEvent);
+}
+
 void UIAdvancedSettingsDialog::closeEvent(QCloseEvent *pEvent)
 {
     /* Ignore event initially: */
@@ -1232,6 +1259,9 @@ void UIAdvancedSettingsDialog::addItem(const QString &strBigIcon,
                                        UISettingsPage *pSettingsPage /* = 0 */,
                                        int iParentId /* = -1 */)
 {
+    /* Assign parent dialog: */
+    pSettingsPage->setParentDialog(this);
+
     /* Init m_iPageId if we haven't yet: */
     if (m_iPageId == MachineSettingsPageType_Invalid)
         m_iPageId = cId;
@@ -1474,6 +1504,14 @@ void UIAdvancedSettingsDialog::sltUpdateDisabledWidgetsLookAndFeel()
 
 void UIAdvancedSettingsDialog::prepare()
 {
+    /* Prepare local notification-center (parent to be assigned in the end): */
+    m_pNotificationCenter = new UINotificationCenter(0);
+    if (m_pNotificationCenter)
+    {
+        QPointer<UINotificationCenter> target = m_pNotificationCenter;
+        setProperty("notification_center", QVariant::fromValue(target));
+    }
+
     /* Create timer to update disabled widgets look&feel: */
     m_pTimerDisabledLookAndFeel = new QTimer(this);
     if (m_pTimerDisabledLookAndFeel)
@@ -1498,6 +1536,9 @@ void UIAdvancedSettingsDialog::prepare()
             prepareButtonBox();
         }
     }
+
+    /* Assign notification-center parent (after everything else is done): */
+    m_pNotificationCenter->setParent(this);
 
     /* Apply language settings: */
     sltRetranslateUI();
@@ -1586,8 +1627,6 @@ void UIAdvancedSettingsDialog::prepareButtonBox()
         m_pButtonBox->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel |
                                          QDialogButtonBox::NoButton | QDialogButtonBox::Help);
         m_pButtonBox->button(QDialogButtonBox::Help)->setShortcut(UIShortcutPool::standardSequence(QKeySequence::HelpContents));
-        m_pButtonBox->button(QDialogButtonBox::Ok)->setShortcut(Qt::Key_Return);
-        m_pButtonBox->button(QDialogButtonBox::Cancel)->setShortcut(Qt::Key_Escape);
         connect(m_pButtonBox, &QIDialogButtonBox::rejected, this, &UIAdvancedSettingsDialog::sltClose);
         connect(m_pButtonBox, &QIDialogButtonBox::accepted, this, &UIAdvancedSettingsDialog::accept);
         connect(m_pButtonBox->button(QDialogButtonBox::Help), &QAbstractButton::pressed,
@@ -1640,6 +1679,10 @@ void UIAdvancedSettingsDialog::cleanup()
 
     /* Delete selector early! */
     delete m_pSelector;
+
+    /* Cleanup local notification-center: */
+    delete m_pNotificationCenter;
+    m_pNotificationCenter = 0;
 }
 
 void UIAdvancedSettingsDialog::tellListenerToCloseUs()

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: usbgadget.py 111029 2025-09-17 12:57:11Z alexander.eichner@oracle.com $
+# $Id: usbgadget.py 112403 2026-01-11 19:29:08Z knut.osmundsen@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -7,7 +7,7 @@ UTS (USB Test Service) client.
 """
 __copyright__ = \
 """
-Copyright (C) 2010-2025 Oracle and/or its affiliates.
+Copyright (C) 2010-2026 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 111029 $"
+__version__ = "$Revision: 112403 $"
 
 # Standard Python imports.
 import array
@@ -56,7 +56,9 @@ from testdriver.base    import TdTaskBase;
 
 # Python 3 hacks:
 if sys.version_info[0] >= 3:
-    long = int;     # pylint: disable=redefined-builtin,invalid-name
+    long = int;         # pylint: disable=redefined-builtin,invalid-name
+else:
+    long = long;        # pylint: disable=redefined-builtin,invalid-name,self-assigning-variable
 
 
 ## @name USB gadget impersonation string constants.
@@ -629,6 +631,7 @@ class Session(TdTaskBase):
                 oTaskRc = None;
         else:
             reporter.log('utsTaskThread: cancelled already');
+            oTaskRc = None;
 
         self.lockTask();
 

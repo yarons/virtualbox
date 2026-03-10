@@ -1,10 +1,10 @@
-/* $Id: UIAdvancedSettingsDialog.h 110684 2025-08-11 17:18:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialog.h 113147 2026-02-24 15:56:22Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class declaration.
  */
 
 /*
- * Copyright (C) 2006-2025 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2026 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -47,6 +47,7 @@ class QTimer;
 class QIDialogButtonBox;
 class UIFilterEditor;
 class UIModeCheckBox;
+class UINotificationCenter;
 class UISettingsPage;
 class UISettingsPageFrame;
 class UISettingsPageValidator;
@@ -120,6 +121,8 @@ protected:
     virtual void showEvent(QShowEvent *pEvent) RT_OVERRIDE;
     /** Handles first show event. */
     virtual void polishEvent();
+    /** Handles key-press @a pEvent. */
+    virtual void keyPressEvent(QKeyEvent *pEvent) RT_OVERRIDE;
     /** Handles close @a pEvent. */
     virtual void closeEvent(QCloseEvent *pEvent) RT_OVERRIDE;
 
@@ -312,6 +315,9 @@ private:
 
         /** Holds the button-box instance. */
         QIDialogButtonBox *m_pButtonBox;
+
+        /** Holds the local notification-center instance. */
+        UINotificationCenter *m_pNotificationCenter;
     /** @} */
 };
 
